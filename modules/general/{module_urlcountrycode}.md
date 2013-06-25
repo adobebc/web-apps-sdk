@@ -8,4 +8,4 @@ Domain name country settings can be changed via Site Settings > Site Domains in 
 
 `{module_urlcountrycode}`
 
-This will output US assuming the country set for your domain is "UNITED STATES"
+This will output `US`, assuming the country set for your domain is "UNITED STATES"

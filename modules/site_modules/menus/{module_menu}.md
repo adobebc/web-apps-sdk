@@ -15,6 +15,7 @@ This module is not rendered using any specific template, but can be customized v
 
 **Example**
 
-Render the Dynamic Menu with ID *54321*
-
 `{module_menu, 54321}`
+
+Renders the Dynamic Menu with ID *54321*
+

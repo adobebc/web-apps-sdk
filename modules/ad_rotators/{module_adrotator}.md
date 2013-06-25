@@ -8,6 +8,6 @@ Display an individual Ad Rotator.
 
 **Example**
 
-Render the Ad Rotator with ID "15264"
-
 `{module_adrotator,15264}`
+
+Renders the Ad Rotator with ID "15264"

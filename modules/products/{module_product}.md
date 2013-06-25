@@ -1,6 +1,6 @@
 ##{module_product,catID,prodID,targetFrame}
 
-Displays an individual product from a given catalogue on a web page according to the Individual Product - Small layout.
+Displays an individual product from a given catalogue on a web page according to default or specified custom template.
 
 ### Parameters
 

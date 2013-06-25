@@ -1,10 +1,10 @@
-# {module_cataloguebreadcrumbs}
+## {module_cataloguebreadcrumbs}
 
 Displays the breadcrumbs for pages according to the hierarchy defined in the site's Site Map.
 
 You can modify the Site Map via Site Settings > Site Map
 
-**Example**
+### Example
 
 `{module_cataloguebreadcrumbs}` 
 

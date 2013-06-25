@@ -23,4 +23,4 @@ When processed, this will become:
   * Web Apps
      * {module_webapps}
 
-The build tool will automatically strip `{` or `}` characters, and convert any underscores to white space. Section and category names will be automatically capitalized, and articles will be hyperlinked to their corresponding pages.
+The build tool will automatically strip `{` or `}` characters, and convert any underscores to white space (apart from Modules). Section and category names will be automatically capitalized, and articles will be hyperlinked to their corresponding pages.

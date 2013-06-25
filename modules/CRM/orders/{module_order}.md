@@ -20,7 +20,7 @@ Displays Customer's Order History.
 * List Layout
 * This module also supports custom templates
 
-**Examples**
+### Examples
 
 `{module_order,c,10044,Default}`
 

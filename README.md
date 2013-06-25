@@ -15,7 +15,7 @@ File structure must follow this pattern:
 
 For example: 
 
-`/modules/web_apps/{module_webapps}.md`
+`/modules/web-apps/{module_webapps}.md`
 
 When processed, this will become:
 
@@ -23,4 +23,4 @@ When processed, this will become:
   * Web Apps
      * {module_webapps}
 
-The build tool will automatically strip `{` or `}` characters, and convert `-` to white space. Section and category names will be automatically capitalized, and articles will be hyperlinked to their corresponding pages.
+The build tool will automatically strip `{` or `}` characters, and convert `-` to white space. Section, category and article names will be automatically generated from the file name then capitalized, and articles will be hyperlinked to their corresponding pages.

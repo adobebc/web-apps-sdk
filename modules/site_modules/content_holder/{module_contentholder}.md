@@ -1,12 +1,12 @@
-# {module_contentholder,ID}
+## {module_contentholder,ID}
 
 Renders an individual Content Holder.
 
-**Parameters**
+### Parameters
 
 * `ID` - System generated ID of the Content Holder 
 
-**Examples**
+### Example
 
 `{module_contentholder,54321}`
 

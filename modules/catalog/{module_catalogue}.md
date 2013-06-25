@@ -16,4 +16,4 @@ Displays an individual catalogue on a web page.
 
 `{module_catalogue,591,_blank}`
 
-Renders the content of a single catalogue according to the Individual Catalogue Layout.
+Renders the content of a single catalogue according to the Individual Catalogue Layout, in a new browser window.

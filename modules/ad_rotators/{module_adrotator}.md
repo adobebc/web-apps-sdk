@@ -1,12 +1,12 @@
-# {module_adrotator, ID}
+## {module_adrotator, ID}
 
 Display an individual Ad Rotator.
 
-**Parameters**
+### Parameters
 
 * ID - System generated ID of the Ad Rotator
 
-**Example**
+### Example
 
 `{module_adrotator,15264}`
 

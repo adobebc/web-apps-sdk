@@ -4,7 +4,7 @@ Display an individual Ad Rotator.
 
 **Parameters**
 
-* ID - System generated ID of the ad rotator
+* ID - System generated ID of the Ad Rotator
 
 **Example**
 

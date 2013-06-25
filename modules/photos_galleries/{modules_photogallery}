@@ -1,0 +1,18 @@
+## {module_photogallery,ID,rowLength,targetFrame,resultsPerPage,Width,Height,UseStandardMethod}
+
+Renders the specified Photo Gallery as thumbnails, with a lightbox effect.
+
+### Parameters
+
+* `ID` - System generated ID (Do not change this number.)
+* `rowLength` - Set the number of photos displayed per row
+* `targetFrame` - Set the destination frame where the photos will open (such as _blank)
+* `resultsPerPage` - Set the number of photos displayed per page
+* `Width/Height` - Set the width and height of the thumbnail images. The default value is 80 pixels wide by 80 pixels high.
+* `UseStandardMethod` - Use the standard Thumbnail Generation. Set to False for better thumbnail quality (with increased file size).
+
+### Example
+
+`{module_photogallery,26800,4,,12,120,120,true}`
+
+Renders 4 photos per row at a maximum of 12 photos per page, with a thumbnail size of 120x120 pixels. 

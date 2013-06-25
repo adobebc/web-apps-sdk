@@ -1,4 +1,4 @@
-bc-reference
+BC Reference (In Development)
 ============
 
-bc-reference
+Markdown based reference docs for modules, tags and APIs. 

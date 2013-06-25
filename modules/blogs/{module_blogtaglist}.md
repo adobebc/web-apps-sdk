@@ -1,6 +1,6 @@
 ## {module_blogtaglist}
 
-Renders all tags for specific blog.
+Renders all tags for a specific blog.
 
 ### Parameters
 

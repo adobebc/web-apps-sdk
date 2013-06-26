@@ -47,6 +47,29 @@ Renders the below:
 Renders the below:
 
 ~~~
-{"SecureZoneSubscriptionList": {"EntityId": 54321,"Subscriptions": [{"ZoneName": "Member Only Area","ZoneId": "54321","ExpiryDate": "01/01/9999 00:00:00","SellAccess": false,"CostPerPeriod": "0","CycleType": ""},{"ZoneName": "Secure Zone 1","ZoneId": "54321","ExpiryDate": "01/01/9999 00:00:00","SellAccess": false,"CostPerPeriod": "0","CycleType": ""},{"ZoneName": "Secure Zone 2","ZoneId": "54321","ExpiryDate": "01/01/9999 00:00:00","SellAccess": false,"CostPerPeriod": "0","CycleType": ""},]}}
+{ "SecureZoneSubscriptionList" : { "EntityId" : 11723915,
+      "Subscriptions" : [ { "CostPerPeriod" : "0",
+            "CycleType" : "",
+            "ExpiryDate" : "01/01/9999 00:00:00",
+            "SellAccess" : false,
+            "ZoneId" : "51",
+            "ZoneName" : "Member Only Area"
+          },
+          { "CostPerPeriod" : "0",
+            "CycleType" : "",
+            "ExpiryDate" : "01/01/9999 00:00:00",
+            "SellAccess" : false,
+            "ZoneId" : "4859",
+            "ZoneName" : "test secure zone"
+          },
+          { "CostPerPeriod" : "0",
+            "CycleType" : "",
+            "ExpiryDate" : "01/01/9999 00:00:00",
+            "SellAccess" : false,
+            "ZoneId" : "4871",
+            "ZoneName" : "test secure zone 2"
+          }
+        ]
+    } }
 ~~~
         

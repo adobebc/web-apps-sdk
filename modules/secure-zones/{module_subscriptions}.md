@@ -1,4 +1,4 @@
-## {module_subscriptions,show_expiry,show_prices,reserved,render_json}
+## {module\_subscriptions,show\_expiry,show\_prices,reserved,render\_json}
 
 *Visitor must be logged in to a Secure Zone.*
 
@@ -17,26 +17,36 @@ Renders a list of logged in user's secure zone subscriptions.
 Renders the below:
 
 ~~~
-
 <ul class="zoneSubscriptions">
-<li>
-<ul>
-<li class="zoneName"><a href="/Default.aspx?PageID=5015150">Member Only Area</a></li>
-<li>Never</li>
+  <li>
+    <ul>
+      <li class="zoneName"><a href="/Default.aspx?PageID=54321">Member Only Area</a></li>
+      <li>Never</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li class="zoneName"><a href="/Default.aspx?PageID=54321">Secure Zone 1</a></li>
+      <li>Never</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li class="zoneName"><a href="/Default.aspx?PageID=54321">Secure Zone 2</a></li>
+      <li>Never</li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>
-<ul>
-<li class="zoneName"><a href="/Default.aspx?PageID=5015148">test secure zone</a></li><li>Never</li>
-</ul>
-</li>
-<li>
-<ul>
-<li class="zoneName"><a href="/Default.aspx?PageID=5015148">test secure zone 2</a></li>
-<li>Never</li></ul>
-</li>
-</ul>
-
 ~~~
 
+---
 
+
+`{module_subscriptions,true,true,,true}`
+
+Renders the below:
+
+~~~
+{"SecureZoneSubscriptionList": {"EntityId": 54321,"Subscriptions": [{"ZoneName": "Member Only Area","ZoneId": "54321","ExpiryDate": "01/01/9999 00:00:00","SellAccess": false,"CostPerPeriod": "0","CycleType": ""},{"ZoneName": "Secure Zone 1","ZoneId": "54321","ExpiryDate": "01/01/9999 00:00:00","SellAccess": false,"CostPerPeriod": "0","CycleType": ""},{"ZoneName": "Secure Zone 2","ZoneId": "54321","ExpiryDate": "01/01/9999 00:00:00","SellAccess": false,"CostPerPeriod": "0","CycleType": ""},]}}
+~~~
+        

@@ -5,7 +5,7 @@ Renders the rank of an item (number of stars).
 ### Parameters
 
 * `filter` - filtering criteria for display and can be one of the following:
-  * `i` - individual item
+	* `i` - individual item
 	* `a` - all items
 	* `l` - latest items
 	* `r` - random item
@@ -18,6 +18,7 @@ Renders the rank of an item (number of stars).
 
 * Event Layouts > List Layout
 * This module also supports custom templates
+
 ### Examples
 
 `{module_booking,a}` - Renders all bookings

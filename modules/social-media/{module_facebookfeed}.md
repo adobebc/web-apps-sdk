@@ -1,4 +1,4 @@
-## {module_facebookfeed, moduleTemplateGroup="", locale="en_US", url="", width="", height="", header="true", colorScheme="light", font="", borderColor="", recommendations="true"}
+## {module\_facebookfeed, moduleTemplateGroup="", locale="en\_US", url="", width="", height="", header="true", colorScheme="light", font="", borderColor="", recommendations="true"}
 
 Renders a Facebook Activity Feed.
 

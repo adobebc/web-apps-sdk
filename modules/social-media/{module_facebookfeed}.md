@@ -2,10 +2,6 @@
 
 Renders a Facebook Activity Feed.
 
-### Templates
-
-* Module templates > SocialMedia > FacebookComments > Default > container.html
-
 ### Parameters
 
 * `moduleTemplateGroup` - This will specify a module template group, which is a folder located in FTP under/ModuleTemplates/SocialMedia/FacebookFeed/
@@ -16,3 +12,7 @@ Renders a Facebook Activity Feed.
 * `header` – true, false. If the parameter is not present, the default value will be true
 * `color scheme` – light, dark. If the parameter is not present, the default value will be light
 * `font` – arial, lucida grande, segoe ui, tahoma, trebuchet ms, verdana
+
+### Templates
+
+* Module templates > SocialMedia > FacebookComments > Default > container.html

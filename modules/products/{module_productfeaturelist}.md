@@ -4,11 +4,11 @@ Renders all products tagged with a specified tag using using the 'Individual Pro
 
 ### Parameters
 
-* tag being the product tag
-* rowLength e.g. 3
-* sortType can be alphabetical, price, date, expirydate or weight
-* targetFrame - possible values are _blank, _self and _top. This parameter is used to specify the frame you want the item to open in.
-* useBackupTemplate can be true or false
+* `tag` - being the product tag
+* `rowLength` - e.g. 3
+* `sortType` - can be alphabetical, price, date, expirydate or weight
+* `targetFrame` - possible values are _blank, _self and _top. This parameter is used to specify the frame you want the item to open in.
+* `useBackupTemplate` - can be true or false
 
 ### Templates
 

@@ -1,6 +1,10 @@
-## Affiliate programs
+## Affiliate Program Layout
 
-*/layouts/affiliates/affiliate.html*
+### Location
+* **Admin Console:** Site Manager > Module Templates > Affiliate Program Layouts
+* **SFTP:** /layouts/affiliates/affiliate.html
+
+### Tags
 
 Tag | Description
 -------------- | -------------

@@ -8,6 +8,8 @@ Performs a generic login. The token validity can be set to Short (4 hours validi
 * **Server:** https://api.worldsecuresystems.com/
 * **Path:** /api/v1/admin/tokens
 
+Credentials object with the following parameters:
+
 Parameter | Type | Description
 -------------- | ------------- | -------------
 `username` | String |  Username (email address) of account, eg. `johnsmith@example.com`

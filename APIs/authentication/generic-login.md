@@ -2,11 +2,11 @@
 
 Performs a generic login. The token validity can be set to Short (4 hours validity) or Long (2 weeks validity).
 
+### Request
+
 * **Method:** POST
 * **Server:** https://api.worldsecuresystems.com/
 * **Path:** /api/v1/admin/tokens
-
-### Parameters
 
 Parameter | Type | Description
 -------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Parameter | Type | Description
 `password` | String | Password for specified account, eg. `password`
 `tokenExpiryPeriod` | Enum | Desired token validity eg. `short` or `long`
 
-### Returns
+### Response
 
 An authToken object with the following properties:
 
@@ -51,7 +51,6 @@ Content-Length: length
 
 **Request:**
 ~~~
-
 POST /api/v1/admin/tokens HTTPS/1.1
 Content-Length: 153
 Connection: keep-alive

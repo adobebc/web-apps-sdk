@@ -2,7 +2,8 @@
 
 ### Location
 * **Admin Console:** Site Manager > Module Templates > Online Shop Layouts > Individual Catalog > Select Country for the Domain of Purchase
-* **SFTP & Develop Mode:** /layouts/onlineshop/shopping_cart-*[country]*.html
+* **SFTP & Develop Mode:** /layouts/onlineshop/shopping_cart- *[country]* .html
+
 ### Tags
 
 Tag | Description

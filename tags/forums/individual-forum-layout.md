@@ -1,4 +1,4 @@
-## FAQ Detail Layout
+## Individual Forum Layout
 
 ### Location
 * **Admin Console:** Site Manager > Module Templates > Forum Layouts > Individual Forum Layout

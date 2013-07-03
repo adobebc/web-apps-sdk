@@ -3,6 +3,7 @@
 ### Location
 * **Admin Console:** Site Manager > Module Templates > FAQ Layouts > List Layout
 * **SFTP & Develop Mode:** /layouts/faq/list.html
+
 ### Tags
 
 Tag | Description

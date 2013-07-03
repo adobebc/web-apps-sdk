@@ -3,6 +3,7 @@
 ### Location
 * **Admin Console:** Site Manager > Module Templates > Media Download Layouts > List Layout
 * **SFTP & Develop Mode:** /layouts/literature/list.html
+
 ### Tags
 
 Tag | Description

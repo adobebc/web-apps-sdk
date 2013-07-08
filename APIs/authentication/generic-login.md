@@ -14,7 +14,7 @@ Parameter | Type | Description
 -------------- | ------------- | -------------
 `username` | String |  Username (email address) of account, eg. `johnsmith@example.com`
 `password` | String | Password for specified account, eg. `password`
-`tokenExpiryPeriod` | Enum | Desired token validity eg. `short` or `long`(default) *Optional* 
+`tokenExpiryPeriod` | Enum | *Optional* Desired token validity eg. `short` or `long`(default)
 
 ### Response
 

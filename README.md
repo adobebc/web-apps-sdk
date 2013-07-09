@@ -21,7 +21,16 @@ For example:
 When processed, this will become:
 
 * Modules
-  * Web Apps
+  * Web apps
      * {module_webapps}
 
-The build tool will automatically strip `{` or `}` characters, and convert `-` to white space. Section, category and article names will be automatically generated from the file name then capitalized, and articles will be hyperlinked to their corresponding pages.
+Additionally, each top-level section supports an `index.md` file that will act as the landing page for that particular platform section.
+
+For example, `/modules/index.md` is rendered to `/modules/index.html` 
+
+The build tool:
+
+* Strips invalid characters from article slugs
+* Generates an article name based off the file name, converting `-` to white space. 
+* The first character of each section, category and article name will be capitalized for presentation
+* HTML pages will be generated and automatically linked to the from the sidebar / search

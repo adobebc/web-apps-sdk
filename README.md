@@ -28,7 +28,7 @@ Additionally, each top-level section supports an `index.md` file that will act a
 
 For example, `/modules/index.md` is rendered to `/modules/index.html` 
 
-The build tool:
+### The build tool
 
 * Strips invalid characters from article slugs
 * Generates an article name based off the file name, converting `-` to white space. 

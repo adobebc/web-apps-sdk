@@ -1,4 +1,4 @@
-## Working Task Email
+## Workflow Task Email
 
 ### Location
 * **Admin Console:** Site Manager > System Emails > Workflow Task

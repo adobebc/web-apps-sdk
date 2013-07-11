@@ -1,4 +1,4 @@
-## Forum Post Subscriber Alert Email
+## Forum Post Subscriber Alert Email 
 
 ### Location
 * **Admin Console:** Site Manager > System Emails > Forums Subscriber Alert for New Posts

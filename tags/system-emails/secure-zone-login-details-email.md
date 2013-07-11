@@ -8,7 +8,7 @@
 
 Tag | Description
 -------------- | -------------
-`{tag_passwordresetlink}` |  undefined
+`{tag_passwordresetlink}` |  Link for user to reset password
 `{tag_recipientaddress}` |	Email address of the recipient
 `{tag_recipientname}` |	Full name of the recipient
 `{tag_securezonelist}` |	List of secure zones a contact has access to including the expiry date

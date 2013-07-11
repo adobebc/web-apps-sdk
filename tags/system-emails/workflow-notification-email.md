@@ -1,4 +1,4 @@
-## Working Notification Email
+## Workflow Notification Email
 
 ### Location
 * **Admin Console:** Site Manager > System Emails > Workflow Notification

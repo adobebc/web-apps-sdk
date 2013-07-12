@@ -1,7 +1,7 @@
 ## Web App Autoresponder Email
 
 ### Location
-* **Admin Console:** Site Manager > Web Apps > [Select Web App] > Autoresponder
+* **Admin Console:** Web Apps > [Select Web App] > Autoresponder
 
 ### Tags
 

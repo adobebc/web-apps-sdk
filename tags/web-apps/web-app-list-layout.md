@@ -41,12 +41,5 @@ Tag | Description
 
 You can customize custom image tags, by appending the below parameters to the tags:
 
-* _value - Outputs the file path of the image. For example, /folder/image.jpg
-* _nolink - Ensures that the image does not link to the detailed view of the web app item
-
-For example:
-
-~~~
-{tag_my custom image_value}
-{tag_my custom image_nolink}
-~~~
+* _value (eg. `{tag_my custom image_value}`) - Outputs the file path of the image. For example, /folder/image.jpg
+* _nolink (eg. `{tag_my custom image_nolink}`) - Ensures that the image does not link to the detailed view of the web app item

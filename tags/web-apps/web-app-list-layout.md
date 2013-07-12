@@ -8,18 +8,18 @@
 
 Tag | Description
 -------------- | -------------
-`{tag_address1}` |   Item address line 1
-`{tag_address2}` |	 Item address line 2
-`{tag_addresscity}` |	 Item city
-`{tag_addresscountry}` |	 Item country
-`{tag_addressglatlng}` |	 Item latitude and longitude values
-`{tag_addresslatitude}` |	 Item latitude value
-`{tag_addresslongitude}` |	 Item longitude value
-`{tag_addressstate}` |	 Item state
-`{tag_addresszipcode}` |	 Item zip code
+`{tag_address1}` |  Address 1
+`{tag_address2}` |  Address 2
+`{tag_addresscity}` |	City
+`{tag_addresscountry}` |	Country
+`{tag_addressglatlng}` |	This tag provides a shortcut to generate GLatLng objects for use with the Google Maps API.
+`{tag_addresslatitude}` |	Latitutde of web app item address
+`{tag_addresslongitude}` |	Longitude of web app item address
+`{tag_addressstate}` |	State
+`{tag_addresszipcode}` |	ZIP code
 `{tag_addtofavorites,addtoImage,removefromImage}` |	Add web app item to favorites list. Optionally customize to display your own custom image for adding and removing.
-`{tag_button,Your Text}` |	replace Your Text with your own text; for example, "Click for more information"
-`{tag_commentcount}` |	 Number of item comments
+`{tag_button,Your Text}` |	`{tag_button,Your Text}` | replace Your Text with your own text; for example, "Click for more information"
+`{tag_commentcount}` |	Number of comments for current post
 `{tag_counter}` |	Incremental count of the item on the page
 `{tag_delete}` |	Allows current customer to delete a web app item they have previously submitted (only available if customer logged in to a secure zone)
 `{tag_description}` |	Description of item (editor content)
@@ -31,7 +31,7 @@ Tag | Description
 `{tag_name_nolink}` |	Name of item (without hyperlink)
 `{tag_name}` |	Name of item (has hyperlink)
 `{tag_releasedate}` |	Release date of item
-`{tag_rowcss,myclass}` |	Replace myclass with your own CSS class. Alternates between classes, for example, myclass myclass_alternate
+`{tag_rowcss,myclass}` |	Replate myclass with your own CSS class. Alternates between classes, such as "myclass" and "myclass_alternate"
 `{tag_tellafriend}` |	Tell a friend about this item
 `{tag_weight}` |	Weighting of item
 

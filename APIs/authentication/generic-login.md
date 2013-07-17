@@ -80,5 +80,5 @@ This method will return the following error codes:
 * `400` - Bad request, when username/password are empty or Expiry period value is not equal to `short` or `long`
 * `401` - Unauthorized, when username/password are incorrect
   * `107003` - Terms of Use not signed. Includes links to TOU that need to be signed:
-    * `rel` - partnerTou
-    * `uri` - https://api.worldsecuresystems.com/api/v1/admin/tou/partner
+     * `rel` - partnerTou
+     * `uri` - https://api.worldsecuresystems.com/api/v1/

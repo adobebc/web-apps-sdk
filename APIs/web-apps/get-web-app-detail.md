@@ -8,7 +8,7 @@ Get the details for a specific Web App.
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
 * **Path:** /api/v2/admin/sites/current/webapps/[NAME]
-  * Alternatively use siteID instead of 'current'
+	* Alternatively use siteID instead of 'current'
 * **Auth Header:** Site token required
 * **Required Permissions:** Webapp View
 
@@ -20,13 +20,13 @@ Use the name of the webapp as part of the URL (see **Path**)
 
 A webapp object with the following properties:
 
-* `id` - the id of the webapp in the current site *(Integer)*
+* `id` - the id of the webapp in the current site *(integer)*
 * `name` - the name of the webapp *(string)*
 * `slug` -  the SEO friendly slug generated for the webapp *(string)*
 * `allowFileUpload` - permits or denies file uploads to take place when saving a webapp item *(boolean)*
-* `createBy` -  the ID of the user that created the webapp. Details can be retrieved using the Admin Users API *(Integer)*
+* `createBy` -  the ID of the user that created the webapp. Details can be retrieved using the Admin Users API *(integer)*
 * `createDate` - the date when the web app was created; uses the format mm/dd/yyyy *(string)*
-* `lastUpdateBy` - the ID of the user that created the webapp. Details can be retrieved using the Admin Users API *(Integer)*
+* `lastUpdateBy` - the ID of the user that created the webapp. Details can be retrieved using the Admin Users API *(integer)*
 * `lastUpdateDate` - the date when the web app item was created; uses the format mm/dd/yyyy *(string)*
 * `disableDetailPages` - if True the Web App items detail page will not be accessible. The detail page will also be excluded from the site search feature built into this system as well as from the sitemap.xml file submitted to the major search engines such as Google, Yahoo and Live. *(boolean)*
 * `locationEnabled` - use location for items *(boolean)*
@@ -36,22 +36,22 @@ A webapp object with the following properties:
 * `customerCanDelete` - users can delete their own items *(boolean)*
 * `requiresPayment` - users must pay to view this item *(boolean)*
 * `requiresApproval` - items must be approved prior to becoming visible in the frontend *(boolean)*
-* `roleId` -  the id of the role assigned to the webapp *(Integer)*
-* `templateId` -  the id of the template for the webapp *(Integer)*
-* `validDays` -  how many days will the item remain visible. Default value is -1, which means never expire *(Integer)*
+* `roleId` -  the id of the role assigned to the webapp *(integer)*
+* `templateId` -  the id of the template for the webapp *(integer)*
+* `validDays` -  how many days will the item remain visible. Default value is -1, which means never expire *(integer)*
 * `uploadFolder` - path to the folder where files associated with items get uploaded to *(string)*
 * `itemSystemFields` -  the id of the role assigned to the webapp *(array)*
 	* `name` - name of the webapp item *(string)*
 	* `description` - the content in the webapp item *(string)*
-	* `weight` - the weight of the item; determines order of display *(Integer)*
+	* `weight` - the weight of the item; determines order of display *(integer)*
 	* `releaseDate` - the release date of the web app item; uses the format mm/dd/yyyy *(string)*
 	* `expiryDate` - the date when the web app item will expire; uses the format mm/dd/yyyy *(string)*
 	* `createDate` - the date when the web app item was created; uses the format mm/dd/yyyy *(string)*
 	* `lastUpdateDate` - the date when the webapp item was last updated; uses the format mm/dd/yyyy *(string)*
 	* `enabled` - indicates whether this web app item is enabled or disabled *(boolean)*
-	* `roleId` - id of the role assigned; inherits from the webapp *(Integer)*
-	* `createBy` - id of the user that created the webapp item *(Integer)*
-	* `submittedBy` -  id of the user that submitted the webapp item (can be different, but the default is to equal the createBy) *(Integer)*
+	* `roleId` - id of the role assigned; inherits from the webapp *(integer)*
+	* `createBy` - id of the user that created the webapp item *(integer)*
+	* `submittedBy` -  id of the user that submitted the webapp item (can be different, but the default is to equal the createBy) *(integer)*
 	* `address` - optional, only when enableLocation is True, stores the address associated with the item *(string)*
 	* `city` - optional, only when enableLocation is True, stores the city associated with the item *(string)*
 	* `state` - optional, only when enableLocation is True, stores the state associated with the item *(string)*

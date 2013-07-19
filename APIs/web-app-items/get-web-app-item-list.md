@@ -6,11 +6,13 @@ Gets a list of Web App items, as per the specified filters.
 
 * **Method:** GET
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
-  * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
+	* Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
 * **Path:** /api/v2/admin/sites/[siteID]/webapps/[webAppName]/items
 	* Alternatively use "current" in place of siteId for current login token's site
 * **Auth Header:** Site token required
 * **Required Permissions:** View Web App
+
+#### Parameters
 
 A query string (eg. ?order=ascending) with the following properties:
 

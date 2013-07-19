@@ -12,7 +12,7 @@ Gets a list of Web App items, as per the specified filters.
 * **Auth Header:** Site token required
 * **Required Permissions:** View Web App
 
-#### Parameters
+#### Filters
 
 A query string (eg. ?order=ascending) with the following properties:
 

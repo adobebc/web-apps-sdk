@@ -18,6 +18,8 @@ Creates a new category.
 * **Auth Header:** Site token required
 * **Required Permissions:** Add Category (3101)
 
+#### Parameters ####
+
 A Category object with the following properties:
 
 * `name` - the name of the category you wish to create *(string)*

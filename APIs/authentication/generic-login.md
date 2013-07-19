@@ -49,29 +49,6 @@ Content-Length: length
 {"token":"42ab136d77ce4e57a931db9e3299c2c82db5b406ad034bcb924e73fe894fcfb1"}
 ~~~
 
-#### XML
-
-**Request:**
-~~~
-POST /api/v1/admin/tokens HTTPS/1.1
-Content-Length: 153
-Connection: keep-alive
-Content-Type: application/xml
- 
-<credentials xmlns="http://ns.adobe.com/bc/api/v1"><username>johnsmith@example.com</username><password>password/password></credentials>
-~~~
-
-**Response:**
-~~~
-HTTP/1.1 200 OK
-Content-Type: application/xml; charset=utf-8
-Content-Length: length
- 
-<authToken xmlns="http://ns.adobe.com/bc/api/v1" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
-  <token>c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73</token>
-</authToken>
-~~~
-
 ### Error Codes
 
 This method will return the following error codes:

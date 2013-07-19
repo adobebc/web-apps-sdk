@@ -116,7 +116,7 @@ This method will return the following error codes:
 
 * `200` - success
 * `400` - bad request
-	* `generic unknown error` - sub-error code - 220000
+	* `220000` - unknown error
 * `401` - unauthorized - when the Authorization header is not present, or contains an invalid site token
-	* `sub-error code` - 101000
+	* `101000` - sub-error code
 * `403` - forbidden - this is returned when the user trying to access the API does not have the proper permissions

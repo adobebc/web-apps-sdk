@@ -2,11 +2,7 @@
 
 Creates a new category.
 
-**Note:** 
-
-* A category at the root level is "Level 0"
-* A child of a "Level 0" category is "Level 1"
-* A child of a "Level 1" category is "Level 2", which is the maximum allowed
+**Note:** A category at the root level is "Level 0". A child of a "Level 0" category is "Level 1". A child of a "Level 1" category is "Level 2", which is the maximum allowed.
 
 ### Request
 

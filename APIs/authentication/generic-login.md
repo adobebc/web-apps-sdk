@@ -10,19 +10,16 @@ Performs a generic login. The token validity can be set to Short (4 hours validi
 
 Credentials object with the following parameters:
 
-Parameter | Type | Description
--------------- | ------------- | -------------
-`username` | String |  Username (email address) of account, eg. `johnsmith@example.com`
-`password` | String | Password for specified account, eg. `password`
-`tokenExpiryPeriod` | Enum | Desired token validity eg. `short` or `long`(default) *Optional* 
+* `username` (String) - Username (email address) of account, eg. `johnsmith@example.com`
+* `password` (String) - Password for specified account, eg. `password`
+* `tokenExpiryPeriod` (Enum) - Desired token validity eg. `short` or `long`(default) *Optional* 
 
 ### Response
 
 An authToken object with the following properties:
 
-Property | Type | Description
--------------- | ------------- | -------------
-`token` | String |  Generic authentication token
+
+* `token` (String) - Generic authentication token
 
 ### Examples
 

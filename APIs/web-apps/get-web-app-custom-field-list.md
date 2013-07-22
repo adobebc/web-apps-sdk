@@ -1,4 +1,4 @@
-## Get Web App Custom Fields List
+## Get Web App Custom Field List
 
 Returns a list of fields in ascending order.
 

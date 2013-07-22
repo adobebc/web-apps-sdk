@@ -13,7 +13,7 @@ Delete a custom field.
 
 ### Response
 
-Empty body with a header response code.
+Returns empty body with a header response code.
 
 ### Examples
 

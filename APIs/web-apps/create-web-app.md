@@ -15,7 +15,7 @@ Create a new Web App
 #### Parameters ####
 
 * `name` - required *(string)*
-* `allowFileUpload` - . Defaults to false 
+* `allowFileUpload` - . Defaults to false *(boolean, optional)*
 * `uploadFolder` - required only if allowFileUpload is True. Must be a valid absolute path in the site, created in advance *(string)*
 * `disableDetailPages`- *(boolean, optional)*
 * `locationEnabled` - *(boolean, optional)*

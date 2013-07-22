@@ -1,4 +1,4 @@
-## Custom Field Details
+## Get Web App Custom Field Details
 
 Returns a field definition.
 
@@ -31,7 +31,6 @@ Content-Type: application/json
 **Response:**
 
 ~~~
-
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Content-Length: 145

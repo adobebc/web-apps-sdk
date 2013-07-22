@@ -20,10 +20,10 @@ An array of all webapps; each object has the following properties:
 
 
 
-* `id` - the id of the webapp in the current site *(Integer)*
+* `id` - the id of the webapp in the current site *(integer)*
 * `name` - the name of the webapp *(string)*
 * `slug` -  the SEO friendly slug generated for the webapp *(string)*
-* `links` - a collection of uris are provided for discoverability. Each object contains links to: *(Array)*
+* `links` - a collection of uris are provided for discoverability. Each object contains links to: *(array)*
 	* `self` - a quick way of getting to the webapp detail page (GetWebappDetails API url)
 	* `items` - points to the sub-api that lists all webapp items for a webapp
 	* `fields` - points to the api that allows management of the custom fields

@@ -8,7 +8,6 @@ Gets the list of supported countries in Business Catalyst. You are not required 
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com/
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
 * **Path:** /api/v2/admin/system/countries
-	* Alternatively, use 'current' instead of siteId
 
 #### Parameters ####
 

@@ -12,7 +12,7 @@ Gets the list of supported countries in Business Catalyst. You are not required 
 #### Parameters ####
 
 * Query:
-	* ip: - the IP for which you require the appropriate country, or "current" for the current request IP. If not supplied, the entire list of countries supported by Business Catalyst is returned *(string, optional)*
+	* `ip` - the IP for which you require the appropriate country, or "current" for the current request IP. If not supplied, the entire list of countries supported by Business Catalyst is returned *(string, optional)*
 
 ### Response
 

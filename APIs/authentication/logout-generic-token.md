@@ -1,4 +1,4 @@
-## Logout for generic token
+## Logout for Generic Token
 
 Performs a logout for a generic token
 

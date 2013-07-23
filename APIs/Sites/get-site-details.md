@@ -9,7 +9,7 @@ Gets the details of a site.
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
 * **Path:** /api/v2/admin/sites/{siteId}
 	* Alternatively, use 'current' instead of siteId
-* *** Auth Header: *** Site token required
+* **Auth Header:** Site token required
 
 ### Response
 

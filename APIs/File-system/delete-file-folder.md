@@ -17,7 +17,7 @@ Delete a file or folder.
 
 | Param name | Values | Description |
 | ------------- | ------------- | ------------- |
-| version | draft | If the resource is a file and the file is a page. if the page has a draft than the draft will be deleted. if the page does not have a draft, than nothing will get deleted. I it is a folder or not a page, than it will be ignored
+| version | draft | If the page has a draft version, then the draft will be deleted. If it is a folder or not a page, than it will be ignored
 | force | true, false | In case of folders, a value of false prevents folder delete if the folder is not empty. Error throws is 403, with sub error code 104024 |
 
 ### Response

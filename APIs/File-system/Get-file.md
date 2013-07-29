@@ -61,12 +61,12 @@ This method will return the following error codes:
 	* `104001` - File not found
 	* `104002` - Not a file
 	* `104003` - Not enough privileges
-	* `104004` - Invalid login multiple sites - 
-	* `104009`- Path not found - 
-	* `104014` - Name required - 
-	* `104019` - Can't find folder - 
-	* `104023` - Unauthorized access - 
-	* `104024` - Folder not empty - 
+	* `104004` - Invalid login multiple sites
+	* `104009`- Path not found
+	* `104014` - Name required
+	* `104019` - Can't find folder
+	* `104023` - Unauthorized access
+	* `104024` - Folder not empty
 	* `104004` - File or folder name too long 
 * `401`- when authentication token is incorrect
 * `404` - the file does not exist

@@ -10,10 +10,10 @@ Renders a list of FAQ items.
 	* `l` - latest items
 	* `r` - random item
 	* `cr` - displays a random item in a particular category
-* `id` – system generated (do not change)
-* `noTemplate` – if you want to force the item not to use a site-level template when displayed pass in true, otherwise leave empty
-* `effect` – Enter ajax if you want to take advantage of the latest web technologies for a better customer experience
-* `targetFrame` – the frame in which to open the item in
+* `id` - system generated (do not change)
+* `noTemplate` - if you want to force the item not to use a site-level template when displayed pass in true, otherwise leave empty
+* `effect` - Enter ajax if you want to take advantage of the latest web technologies for a better customer experience
+* `targetFrame` - the frame in which to open the item in
 
 ### Templates
 

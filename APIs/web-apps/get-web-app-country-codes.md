@@ -71,6 +71,7 @@ This method will return the following error codes:
 
 * `200` - success
 * `401` - unauthorized - when the Authorization header is not present, or contains an invalid site token
+	* `10100` - (not authenticated) sub-error code
 * `403` - forbidden : this is returned when the user trying to access the API does not have the web app view permission
 * `404` - not found
   * `190001` - The web app could not be found (the webAppName param from the URL does not match)

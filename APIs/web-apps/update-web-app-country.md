@@ -47,9 +47,9 @@ HTTP/1.1 200 OK
 
 This method will return the following error codes:
 
-* `201` - success, country codes for the web app were successfully set
+* `200` - success, country codes for the web app were successfully set
 * `400` - bad request
-  * `230002` - Country code is invalid
+  * `230001` - Country code is invalid
 * `401` - unauthorized - when the authentication token is invalid / missing
 	* `10100` - (not authenticated) sub-error code
 * `403` - forbidden : this is returned when the user trying to access the API does not have the web app edit permission

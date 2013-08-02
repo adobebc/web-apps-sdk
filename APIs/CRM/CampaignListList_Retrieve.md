@@ -2,10 +2,39 @@
 
 Retrieves a list of Campaign Lists for a site.
 
-### Samples
+### Request
+
+* **Method:** SOAP
+* **Server:** worldsecuresystems.com
+* **Path:** /catalystwebservice/catalystcrmwebservice.asmx
+* **Auth:** Username/password or a site token can be used (example below uses site token)
+
+#### Parameters
+
+* `siteId` - ID of the site *(integer)*
+* `username` - email address of user account, leave empty if using site token *(string)*
+* `password` - password of user account, or site authentication token for specified site *(string)*
+
+To use a site token instead of username/password, send an empty `username` field and the site token as the `password`. See example below. 
+
+
+### Response
+
+A CampaignListList_RetrieveResponse object with the following properties:
+
+* `CampaignListList_RetrieveResult` *(object)*
+    * `CampaignList` *(object)*
+        * `campaignListID` - ID of campaign list *(integer)*
+        * `campaignListName` - name of campaign list *(string)*
+        * `campaignListUnsubscribe`
+
+### Examples
+
+Accepts and returns XML as Content-Type. 
 
 The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values.
 
+**Request:**
 ~~~
 POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
 Host: worldsecuresystems.com
@@ -24,6 +53,7 @@ Content-Length: length
 </soap12:Envelope>
 ~~~
 
+**Response:**
 ~~~
 HTTP/1.1 200 OK
 Content-Type: application/soap+xml; charset=utf-8
@@ -49,3 +79,12 @@ Content-Length: length
   </soap12:Body>
 </soap12:Envelope>
 ~~~
+
+### Error Codes
+
+This method will return the following error codes:
+
+* `200` - success
+* `401` - unauthorized - when the Authorization header is not present, or contains an invalid site token
+  * `101000` - sub-error code
+* `403` - forbidden : this is returned when the user trying to access the API does not have the proper permissions

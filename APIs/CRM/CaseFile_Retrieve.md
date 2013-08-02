@@ -21,10 +21,9 @@ To use a site token instead of username/password, send an empty `username` field
 
 ### Response
 
-A CampaignListList_RetrieveResponse object with the following properties:
+A CaseFile_RetrieveResponse object with the following properties:
 
-* `CaseFile_RetrieveResponse` *(object)*
-    * `CaseFile_RetrieveResult` - file contents *(base64binary)*
+* `CaseFile_RetrieveResult` - file contents *(base64binary)*
 
 ### Examples
 

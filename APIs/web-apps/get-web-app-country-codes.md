@@ -52,7 +52,7 @@ Content-Length: length
     [
       {
         "rel":"self",
-        "uri":"https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/Helpers/countries?skip=0&limit=0"
+        "uri":"https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/Helpers/countries?skip=0&limit=10"
       }
     ],
   "items":[

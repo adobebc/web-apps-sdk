@@ -9,7 +9,8 @@ Get the list of the countries where the current webapp is allowed.
 * **Method:** GET
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/$siteId/webapps/$webappname/countries
+* **Path:** /api/v2/admin/sites/current/webapps/{webappname}/countries
+  * Alternatively, use siteID instead of 'current'
 * **Auth Header:** login token required
 * **Required Permissions:** View Web Apps
 
@@ -25,7 +26,7 @@ Accepts and returns JSON as Content-Type.
 
 **Request:**
 ~~~
-GET /api/v2/admin/sites/$siteid/webapps/$webappname/countries HTTPS/1.1
+GET /api/v2/admin/sites/current/webapps/{webappname}/countries HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -51,7 +52,7 @@ Content-Length: length
     [
       {
         "rel":"self",
-        "uri":"https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/Helpers/countrycodes?skip=0&limit=0"
+        "uri":"https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/Helpers/countries?skip=0&limit=0"
       }
     ],
   "items":[

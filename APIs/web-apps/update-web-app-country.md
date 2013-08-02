@@ -9,7 +9,8 @@ Update the list of countries in which the Web App is available.
 * **Method:** PUT
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/$siteId/webapps/$webappname/countries
+* **Path:** /api/v2/admin/sites/current/webapps/{webappname}/countries
+   * Alternatively, use siteID instead of 'current'
 * **Auth Header:** login token required
 * **Required Permissions:** Edit Web Apps
 
@@ -29,7 +30,7 @@ Accepts and returns JSON as Content-Type.
 
 **Request:**
 ~~~
-PUT /api/v2/admin/sites/$siteId/webapps/$webappname/countries HTTPS/1.1
+PUT /api/v2/admin/sites/current/webapps/{webappname}/countries HTTPS/1.1
 Content-Length: 50
 Connection: keep-alive
 Content-Type: application/json

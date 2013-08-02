@@ -26,7 +26,7 @@ A CampaignListList_RetrieveResponse object with the following properties:
     * `CampaignList` *(object)*
         * `campaignListID` - ID of campaign list *(integer)*
         * `campaignListName` - name of campaign list *(string)*
-        * `campaignListUnsubscribe`
+        * `campaignListUnsubscribe` - *(boolean)*
 
 ### Examples
 
@@ -79,12 +79,3 @@ Content-Length: length
   </soap12:Body>
 </soap12:Envelope>
 ~~~
-
-### Error Codes
-
-This method will return the following error codes:
-
-* `200` - success
-* `401` - unauthorized - when the Authorization header is not present, or contains an invalid site token
-  * `101000` - sub-error code
-* `403` - forbidden : this is returned when the user trying to access the API does not have the proper permissions

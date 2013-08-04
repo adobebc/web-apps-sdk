@@ -34,3 +34,5 @@ For example, `/modules/index.md` is rendered to `/modules/index.html`
 * Generates an article name based off the file name, converting `-` to white space. 
 * The first character of each section, category and article name will be capitalized for presentation
 * HTML pages will be generated and automatically linked to the from the sidebar / search
+
+Currently builds to [docs.businesscatalyst.com](http://docs.businesscatalyst.com). Contact japalmer@adobe.com and dgundi@adobe.com to rebuild from the master repository. 

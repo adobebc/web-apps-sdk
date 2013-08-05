@@ -10,7 +10,7 @@ Tag | Description
 -------------- | -------------
 `{tag_browsepanel}` | Displays the browse panel for current catalog. (Use `{tag_browsepanel, hideOnSale, hidePriceBrackets, hideSubCatalogues}` to customize)
 `{tag_cataloguebreadcrumbs}` | Catalog breadcrumbs help customers easily navigate between related catalogs
-`{tag_cataloguelist}` | Lists the subcatalogs in the current catalog (Use `{tag_cataloguelist,x}` where x is the number of catalogs per row)
+`{tag_cataloguelist}` | Lists the subcatalogs in the current catalog (Use `{tag_cataloguelist,catalogsPerRow,,,,hideEmptyMessages,useLi} `  meaning the number of catalogs per row, Hide the no sub catlaogs message and useLI indicates a ul li output structure)
 `{tag_description}` | Catalog description
 `{tag_name}` | Catalog name
 `{tag_nextpage}` | Next page link to browse products in current catalog (can be customized to use image)

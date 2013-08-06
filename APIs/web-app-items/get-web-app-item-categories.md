@@ -10,7 +10,7 @@ Get a list of all the categories for a webapp item.
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
 * **Path:** /api/v2/admin/sites/[siteId]/webapps/[webappName]/items/[itemID]/categories
-  * Alternatively, use "current" instead of {siteId}
+  * Alternatively, use "current" instead of [siteId]
 * **Auth Header:** Site token required
 * **Required Permissions:** View Web App Items
 

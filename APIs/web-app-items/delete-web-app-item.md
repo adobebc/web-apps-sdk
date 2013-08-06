@@ -7,7 +7,7 @@ Delete a web app item.
 * **Method:** DELETE
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/{siteId}/webapps/{webAppName}/items/{webAppItemId}
+* **Path:** /api/v2/admin/sites/[siteId]/webapps/[webAppName]/items/[webAppItemId]
   * Alternatively, use "current" instead of {siteId}
 * **Auth Header:** Site token required
 * **Required Permissions:** Delete Web App Items

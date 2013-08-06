@@ -1,6 +1,6 @@
 ## {module_contentholder,ID}
 
-Renders an individual Content Holder.
+Renders an individual Content Holder. Supports named parameters, eg. `{module_contentholder,name="Example"}`, will render the content holder that exists at "/_System/ContentHolders/Example.html"
 
 ### Parameters
 
@@ -12,10 +12,3 @@ Renders an individual Content Holder.
 
 Renders the Content Holder with ID `54321`
 
-### Options
-
-Supports named content holders
-
-`{module_contentholder,name="Example"}`
-
-Renders the Content Holder with name `Example` Where the SFTP file is Example.html

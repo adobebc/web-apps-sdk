@@ -5,8 +5,9 @@ Performs a generic login. The token validity can be set to Short (4 hours validi
 ### Request
 
 * **Method:** POST
-* **Server:** https://api.worldsecuresystems.com/
-* **Path:** /api/v1/admin/tokens
+* **Server:** https://api-[dub|nj|syd].worldsecuresystems.com/
+  * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
+* **Path:** /api/v2/admin/tokens
 
 #### Parameters ####
 

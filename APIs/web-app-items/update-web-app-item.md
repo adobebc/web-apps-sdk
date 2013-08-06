@@ -7,8 +7,8 @@ Update a web app item. The update can be full (sending all properties), or parti
 * **Method:** PUT
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/{siteId}/webapps/{webAppName}/items/{webAppItemId}
-  * Alternatively, use "current" instead of {siteId}
+* **Path:** /api/v2/admin/sites/[siteId]/webapps/[webAppName]/items/[webAppItemId]
+  * Alternatively, use "current" instead of [siteId]
 * **Auth Header:** Site token required
 * **Required Permissions:** Edit Web App Items
 

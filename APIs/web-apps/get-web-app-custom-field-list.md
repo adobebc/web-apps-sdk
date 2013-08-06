@@ -9,7 +9,7 @@ Returns a list of fields in ascending order.
 * **Method:** GET
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/current/webapps/{webappName}/fields
+* **Path:** /api/v2/admin/sites/current/webapps/[webappName]/fields
 * **Auth Header:** Site token required
 * **Required Permissions:** View Web Apps
 

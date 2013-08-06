@@ -7,7 +7,8 @@ Gets a list of roles available on a specified site.
 * **Method:** GET
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com/
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/{siteId}/roles or use 'current' instead of siteId
+* **Path:** /api/v2/admin/sites/[siteId]/roles
+ * Alternatively, use 'current' instead of siteId
 * **Auth Header:** Site token required
 * **Required Permissions:** Administer System
 

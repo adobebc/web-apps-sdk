@@ -7,7 +7,7 @@ Delete a custom field.
 * **Method:** DELETE
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/current/webapps/{webappName}/fields/{fieldId}
+* **Path:** /api/v2/admin/sites/current/webapps/[webappName]/fields/[fieldId]
 * **Auth Header:** Site token required
 * **Required Permissions:** Edit Web Apps
 

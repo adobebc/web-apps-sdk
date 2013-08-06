@@ -1,3 +1,5 @@
 ## Getting started with tags.
 
-Explain that tags can be used in layouts rendered with modules.
+You can customize the functionality and appearance of modules by adding the corresponding tags to each type of module to extend it. 
+
+**Note:** Tags are not transferrable, and cannot be shared across all modules. Use the specific tags listed with for each module.

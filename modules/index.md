@@ -14,5 +14,5 @@ You have the ability to use modules within modules. This means that for example,
 		* Content Holder 2 *- LEVEL 1*
 			* Content Holder 3 *- LEVEL 2*
 				* Content Holder 4 *- LEVEL 3*
-					* Content Holder 5 - *- WILL NOT RENDER*  
+					* Content Holder 5 *- WILL NOT RENDER*  
 

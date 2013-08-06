@@ -11,3 +11,11 @@ Renders an individual Content Holder.
 `{module_contentholder,54321}`
 
 Renders the Content Holder with ID `54321`
+
+### Options
+
+Supports named content holders
+
+`{module_contentholder,name="Example"}`
+
+Renders the Content Holder with name `Example` Where the SFTP file is Example.html

@@ -9,7 +9,7 @@ Update the list of countries in which the Web App is available.
 * **Method:** PUT
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/current/webapps/{webappname}/countries
+* **Path:** /api/v2/admin/sites/current/webapps/[webappname]/countries
    * Alternatively, use siteID instead of 'current'
 * **Auth Header:** login token required
 * **Required Permissions:** Edit Web Apps

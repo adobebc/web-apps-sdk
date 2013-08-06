@@ -63,7 +63,7 @@ A webapp object with the following properties:
 	* `items`- points to the sub-api that lists all webapp items for a webapp
 	* `fields`- points to the api that allows management of the custom fields
 	* `previewUrl` - link to see the webapp in the site front-end. Composed from the site default domain and the slug
-	* `locationCountries` - link to get the list of countries allowed for location, if location is enabled for the webapp
+	* `countries` - link to get the list of countries allowed for location, if location is enabled for the webapp
 
 
 
@@ -108,7 +108,7 @@ Content-Length: length
         "uri":"http://defaultsiteurl.com/testcustomfields"
       },
       {
-        "rel":"locationCountries",
+        "rel":"countries",
         "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/testcustomfields/countries"
       }
     ],

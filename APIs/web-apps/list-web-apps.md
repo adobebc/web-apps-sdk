@@ -28,7 +28,7 @@ An array of all webapps; each object has the following properties:
 	* `items` - points to the sub-api that lists all webapp items for a webapp
 	* `fields` - points to the api that allows management of the custom fields
 	* `previewUrl` - link to see the webapp in the site front-end. Composed from the site default domain and the slug
-	* `locationCountries` - if location is enabled for the webapp, a link to get the list of countries allowed for location.
+	* `countries` - if location is enabled for the webapp, a link to get the list of countries allowed for location.
 
 
 ### Examples
@@ -80,7 +80,7 @@ Content-Length: length
           "uri":"http://defaultsiteurl.com/bc-friends"
         },
         {
-          "rel":"locationCountries",
+          "rel":"countries",
           "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Friends/countries"
         }
  
@@ -111,7 +111,7 @@ Content-Length: length
           "uri":"http://mysite.com/bc-help"
         },
         {
-          "rel":"locationCountries",
+          "rel":"countries",
           "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Friends/countries"
         }
       ],

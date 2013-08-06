@@ -7,7 +7,7 @@ Get the contents of a folder.
 * **Method:** GET
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com/
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/{siteId}/storage/{folderPath}?meta
+* **Path:** /api/v2/admin/sites/[siteId]/storage/[folderPath]?meta
 * **Auth Header:** Site token required
 * **Required Permissions:** Can use SFTP & File Manager
 

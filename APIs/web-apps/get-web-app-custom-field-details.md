@@ -36,17 +36,11 @@ Content-Type: application/json; charset=utf-8
 Content-Length: 145
  
 {
-      "links": [
-         {
-           "rel":"self",
-           "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields\/418191"
-         }
-      ],
       "id"      : "418191",
       "name"    : "Part code",
       "type"    : "String",
       "listItems": null,
-      "dataSourceId": null,
+      "dataSourceName": null,
       "required": false,
       "order"   : 1
 }

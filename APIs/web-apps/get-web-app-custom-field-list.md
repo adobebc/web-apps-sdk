@@ -34,7 +34,7 @@ Returns a list of objects with the following properties:
 	* DataSource
 * `required` - true if the field is required *(boolean)*
 * `order` - unique, the position of the field when listed starting with 1 *(integer)*
-* `dataSourceId` - for DataSource fields should be a valid webapp id *(integer)*
+* `dataSourceName` - for DataSource fields should be a valid webapp name *(string)*
 * `listItems` - used only when type is {nl:DropDown_List, CheckBox_List, Radio_List, ListBox_List fields *(array)*
 
 ### Examples
@@ -64,7 +64,7 @@ Content-Length: length
    "links": [
       {
         "rel":"self",
-        "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields"
+        "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields?limit=100&skip=0"
       }
    ],
    "items": [{

@@ -14,9 +14,9 @@ Retrieves a list of new or modified Cases based on a given date for all entities
 * `siteId` - ID of the site *(integer)*
 * `username` - email address of user account, leave empty if using site token *(string)*
 * `password` - password of user account, or site authentication token for specified site *(string)*
-* `lastUpdateDate` 
-* `recordStart` 
-* `moreRecords`  
+* `lastUpdateDate` - *(dateTime)*
+* `recordStart` - *(integer)*
+* `moreRecords`  - *(boolean)*
 
 To use a site token instead of username/password, send an empty `username` field and the site token as the `password`. See example below.
 

@@ -14,6 +14,7 @@ Gets the details of a site.
 ### Response
 
 site object with the following properties:
+
 * `id` - *(integer)*
 * `name` - *(string)*
 * `links`

@@ -17,8 +17,7 @@ Get the details for a given category.
 A category object with the following properties:
 
 * `links` - a collection of links *(array)*
-	* `self` - the API URL that will return full details for this category *(string)*
-	* `parent` - the API URL for the parent category *(string)*
+	* `parent` - the API URL for the parent category, if it's not under the root *(string)*
 * `id` - the ID of the category for the current site *(integer)*
 * `name` - the name of the category *(string)*
 * `parent` - the ID of the parent category, if this is a sub-category *(integer, nullable)*
@@ -47,16 +46,12 @@ Content-Length: {length}
 {
  "links": [
         {
-          "rel": "self",
-          "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/12345/categories/54321"
-        },
-        {
           "rel": "parent",
           "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/12345/categories/54269"
         }],
       "id"      : "54269",
       "name"    : "somecategory",
-      "parent"  : "123339",
+      "parentId"  : 123339,
       "publicAccess" : true,
       "fullPath" : "\parent\otherparent\somecategory"
 }

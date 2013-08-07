@@ -14,9 +14,9 @@ Retrieves a list of cases for a given entity.
 * `siteId` - ID of the site *(integer)*
 * `username` - email address of user account, leave empty if using site token *(string)*
 * `password` - password of user account, or site authentication token for specified site *(string)*
-* `entityId` 
-* `recordStart` 
-* `moreRecords`  
+* `entityId` - *(integer)*
+* `recordStart` - *(integer)*
+* `moreRecords`  - *(boolean)*
 
 To use a site token instead of username/password, send an empty `username` field and the site token as the `password`. See example below.
 

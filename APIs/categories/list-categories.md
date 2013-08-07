@@ -27,7 +27,8 @@ A CategoryList object with the following properties:
 		* `self` - the API URL that will return full details for this category *(string)*
 	* `id` - the ID of the category for the current site *(integer)*
 	* `name` - the name of the category *(string)*
-	* `parent` - the ID of the parent category, if this is a sub-category. Returns -1 if a root-level category *(integer)*
+	* `parentId` - the ID of the parent category, if this is a sub-category. Returns -1 if a root-level category *(integer)*
+	* `publicAccess` - whether or not the category is visible to front-end users *(boolean)*
 
 ### Examples
 
@@ -72,7 +73,8 @@ Content-Length: {length}
         }],
       "id"      : "123457",
       "name"    : "Parent category",
-      "parent"  : null
+      "parentId"  : -1,
+      "publicAccess" : true
    },
    {
        "links": [
@@ -82,7 +84,8 @@ Content-Length: {length}
         }],
       "id"      : "418191",
       "name"    : "Child category",
-      "parent"  : "123457"
+      "parentId"  : 123457,
+      "publicAccess" : false
    },
    {
        "links": [
@@ -92,7 +95,8 @@ Content-Length: {length}
         }],
       "id"      : "123453",
       "name"    : "Something else",
-      "parent"  : null
+      "parentId"  : -1,
+      "publicAccess" : true
    },
    {
        "links": [
@@ -102,7 +106,8 @@ Content-Length: {length}
         }],
       "id"      : "123459",
       "name"    : "The last one",
-      "parent"  : null
+      "parentId"  : -1
+      "publicAccess" : true
    }],
   "totalItems": 11,
   "skip": 4,

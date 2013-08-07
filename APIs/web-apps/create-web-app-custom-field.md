@@ -31,7 +31,7 @@ Object:
 	* `DataSource`
 * `required` - true if the field is required (not required) *(boolean)*
 * `order` - unique - the position of the field when listed starting with 1. 	If a field with the same order value already exists, its order value (and order value for any other fields "bellow") will be incremented by 1.	If not specified, the field is added as the last one. *(integer)*
-* `dataSourceId` - for DataSource fields should be a valid webapp id *(integer)*
+* `dataSourceName`: for DataSource fields should be a valid webapp name *(string)*
 * `listItems` - used only by DropDown_List, CheckBox_List, Radio_List, ListBox_List fields *(array)*
 
 ### Response
@@ -79,7 +79,7 @@ This method will return the following error codes:
 	* `210002` - Invalid field id specified
 	* `210003` - Invalid name
 	* `210004` - Invalid listItems
-	* `210005` - Invalid dataSourceId
+	* `210005` - Invalid dataSourceName
 	* `210006` - Invalid order value (must be between 1 and max existing order value + 1)
 	* `210007` - Invalid type
 * `401` - unauthorized - when the authentication token is incorrect

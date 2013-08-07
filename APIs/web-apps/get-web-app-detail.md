@@ -40,7 +40,7 @@ A webapp object with the following properties:
 * `templateId` -  the id of the template for the webapp *(integer)*
 * `validDays` -  how many days will the item remain visible. Default value is -1, which means never expire *(integer)*
 * `uploadFolder` - path to the folder where files associated with items get uploaded to *(string)*
-* `itemSystemFields` -  the id of the role assigned to the webapp *(array)*
+* `systemFields` -  the id of the role assigned to the webapp *(array)*
 	* `name` - name of the webapp item *(string)*
 	* `description` - the content in the webapp item *(string)*
 	* `weight` - the weight of the item; determines order of display *(integer)*
@@ -57,7 +57,7 @@ A webapp object with the following properties:
 	* `state` - optional, only when enableLocation is True, stores the state associated with the item *(string)*
 	* `zipcode` - optional, only when enableLocation is True, stores the zipcode associated with the item; client-side validation for the zipcode format is recommended *(string)*
 	* `country` - optional, only when enableLocation is True, stores the country associated with the item *(string)*
-* `itemFields` - a collection of all custom fields associated with the webapp. Added to the webapp object as shorthand for following the rel='fields' link mentioned below *(array)*
+* `fields` - a collection of all custom fields associated with the webapp. Added to the webapp object as shorthand for following the rel='fields' link mentioned below *(array)*
 * `links` - a collection of uris are provided for discoverability. Each object contains links to: *(array)*
 	* `self` - a quick way of getting to the webapp detail page
 	* `items`- points to the sub-api that lists all webapp items for a webapp
@@ -132,7 +132,7 @@ Content-Length: length
   "templateId":-1,
   "validDays":0,
   "uploadFolder":null,
-  "itemFields":
+  "fields":
     [
       {
         "name":"asdads",
@@ -150,7 +150,7 @@ Content-Length: length
           }
       }
     ],
-  "itemSystemFields":
+  "systemFields":
     [
       {
         "name":"name",

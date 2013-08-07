@@ -48,14 +48,16 @@ Access-Control-Max-Age: 99999
 Content-Length: length
  
 {
-  "links":
-    [
-      {
-        "rel":"self",
-        "uri":"https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/Helpers/countries?skip=0&limit=10"
-      }
-    ],
-  "items":[
+  -"links": [2]
+    -0: {
+       "rel":"self",
+       "uri":"https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/Helpers/countries?skip=0&limit=10"
+     }
+    -1: {
+       "rel":"countries",
+       "uri":"https://mysite.worldsecuresystems.com/api/v2/admin/system/countries"
+     },
+  -"items":[
     "RO",
     "US",
     "UK"

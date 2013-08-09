@@ -147,7 +147,7 @@ Content-Length: length
                 "item2",
                 "item3"
               ],
-         "dataSourceName": null
+         "dataSource": null
           }
       }
     ],

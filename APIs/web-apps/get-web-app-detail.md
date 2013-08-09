@@ -40,7 +40,7 @@ A webapp object with the following properties:
 * `templateId` -  the id of the template for the webapp *(integer)*
 * `validDays` -  how many days will the item remain visible. Default value is -1, which means never expire *(integer)*
 * `uploadFolder` - path to the folder where files associated with items get uploaded to *(string)*
-* `systemFields` -  the id of the role assigned to the webapp *(array)*
+* `systemFields` -  *(array)*
 	* `name` - name of the webapp item *(string)*
 	* `description` - the content in the webapp item *(string)*
 	* `weight` - the weight of the item; determines order of display *(integer)*

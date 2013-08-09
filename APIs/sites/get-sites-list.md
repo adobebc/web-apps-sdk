@@ -8,7 +8,7 @@ Gets the list of site for the currently logged in user.
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com/
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
 * **Path:** /api/v2/admin/sites
-* ** Auth Header: ** Generic token required
+* **Auth Header:** Generic token required
 
 #### Parameters ####
 

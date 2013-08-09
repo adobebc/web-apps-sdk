@@ -96,20 +96,6 @@ Content-Length: length
           "rel":"self",
           "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Help"
         },
- 
-        {
-          "rel":"items",
-          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Help/items"
-        },
- 
-        {
-          "rel":"fields",
-          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Help/fields"
-        },
-        {
-          "rel":"previewUrl",
-          "uri":"http://mysite.com/bc-help"
-        },
         {
           "rel":"countries",
           "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Friends/countries"

@@ -59,7 +59,6 @@ A webapp object with the following properties:
 	* `country` - optional, only when enableLocation is True, stores the country associated with the item *(string)*
 * `fields` - a collection of all custom fields associated with the webapp. Added to the webapp object as shorthand for following the rel='fields' link mentioned below *(array)*
 * `links` - a collection of uris are provided for discoverability. Each object contains links to: *(array)*
-	* `self` - a quick way of getting to the webapp detail page
 	* `items`- points to the sub-api that lists all webapp items for a webapp
 	* `fields`- points to the api that allows management of the custom fields
 	* `previewUrl` - link to see the webapp in the site front-end. Composed from the site default domain and the slug
@@ -91,10 +90,6 @@ Content-Length: length
 {
   "links":
     [
-      {
-        "rel":"self",
-        "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/testcustomfields"
-      },
       {
         "rel":"items",
         "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/testcustomfields/items"
@@ -135,6 +130,12 @@ Content-Length: length
   "fields":
     [
       {
+	    "links": [
+            {
+                rel: "self"
+                uri: "https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/testcustomfields/fields/130930"
+            }
+        ],
         "name":"asdads",
         "type":"DropDown_List",
         "id":130930,
@@ -146,7 +147,7 @@ Content-Length: length
                 "item2",
                 "item3"
               ],
-         "dataSourceId": null
+         "dataSourceName": null
           }
       }
     ],

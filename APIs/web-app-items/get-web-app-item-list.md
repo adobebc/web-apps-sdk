@@ -16,8 +16,8 @@ Gets a list of Web App items, as per the specified filters.
 
 A query string (eg. ?order=ascending) with the following properties:
 
-* `order` - allows sorting bit a single system field, either "ascending" or "descending" *(string, optional)* (see the [Ordering Syntax](#Ordering Syntax) section)
-* `where` - filter by a single system field *(string, optional)* (see the [Filtering syntax](#Filter syntax) section)
+* `order` - allows sorting bit a single system field, either "ascending" or "descending" *(string, optional)* (see the [Ordering Syntax](#ordering-syntax) section)
+* `where` - filter by a single system field *(string, optional)* (see the [Filtering syntax](#filtering-syntax) section)
 * `skip` - how many items to skip from the returned result. *(integer, optional)*
 * `limit` - how many items to return *(integer, optional)*
 

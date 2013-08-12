@@ -17,8 +17,8 @@ Get the details of a Web App item.
 Returns a WebAppItem object with the following properties:
 
 * `links` - contains a collection of links:
-	* `self` - the API URL that will return full details for this web app item (this same result)
 	* `previewUrl` - the frontend URL where the web app item can be viewed. It uses the site's default domain
+	* `categories` - the API URL that will return all the category ids associated with this item
 * `id` - the id of the web app item *(integer)*
 * `name` - the name of the web app item *(string)*
 * `weight` - the weight of the web app item (the order in which they will appear in frontend) *(integer)*

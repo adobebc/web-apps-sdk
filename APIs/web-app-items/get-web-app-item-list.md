@@ -32,7 +32,6 @@ A WebAppItemList object with the following properties:
 * `items` - an array of WebAppItemSummary objects with the following properties *(array)*
 	* `links` - contains a collection of links *(array)*
 		* `self` - the API URL that will return the full details of this Web App item *(string)*
-		* `previewURL` - the front-end URL where the Web App item can be viewed. Uses the sites default domain *(string)*
 	* `id` - the ID of the Web App item *(integer)*
 	* `name` - the name of the Web App item *(string)*
 	* `releaseDate` - the release date of the Web App item, in the format mm/dd/yyyy *(string)*
@@ -84,10 +83,6 @@ Content-Length: {length}
         {
           "rel": "self",
           "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/38584/webapps/TestWebapp1/items/1073041"
-        },
-        {
-          "rel": "previewUrl",
-          "uri": "http://www.test1.com/testwebapp1/item3"
         }
       ],
       "id": 1073041,

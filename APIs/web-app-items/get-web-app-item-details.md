@@ -68,12 +68,12 @@ Content-Length: {length}
 {
   "links": [
     {
-      "rel": "self",
-      "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/38584/webapps/TestWebapp1/items/1073039"
-    },
-    {
       "rel": "previewUrl",
       "uri": "http://www.test1.com/testwebapp1/item1"
+    },
+    {
+      "rel": "categories",
+      "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/38584/webapps/TestWebapp1/items/1073039/categories"
     }
   ],
   "id": 1073039,

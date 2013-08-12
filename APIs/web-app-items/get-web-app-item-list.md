@@ -129,7 +129,8 @@ This method will return the following error codes:
 * `400` - bad request
 	* `190001` - the Web App could not be found (the webAppName parameter from the URL does not match any record)
 	* `200000` - an unspecified error has occurred
-	* `200007` - there is a problem with the query, eg. invalid format, invalid field name, invalid operator, etc. 
+	* `200007` - there is a problem with the query, eg. invalid format, invalid field name, invalid operator, etc.
+	* `200009` - the category path specified in the query doesn't exist
 * `401` - unauthorized - when the Authorization header is not present, or contains an invalid site token
 	* `101000` - sub-error code
 * `403` - forbidden - this is returned when the user trying to access the API does not have the proper permissions
@@ -185,7 +186,7 @@ The filtering syntax involves specifying a list of constraints, logically chaine
     ```
     where={"category": "my/category/path"}
     ```
-* Field names, and the "category" label are case-insensitive
+* Field names, and the `category` label are case-insensitive
 * null-values will returns false for every comparison except equality and `$ne` operator. These two operators can be used to filter out the items that have missing values for certain fields
 
     ```

@@ -16,8 +16,8 @@ Gets a list of Web App items, as per the specified filters.
 
 A query string (eg. ?order=ascending) with the following properties:
 
-* `order` - allows sorting bit a single system field, either "ascending" or "descending" *(string, optional)*
-* `where` - filter by a single system field *(string, optional)*
+* `order` - allows sorting bit a single system field, either "ascending" or "descending" *(string, optional)* (see the [Ordering Syntax](#Ordering Syntax) section)
+* `where` - filter by a single system field *(string, optional)* (see the [Filtering syntax](#Filter syntax) section)
 * `skip` - how many items to skip from the returned result. *(integer, optional)*
 * `limit` - how many items to return *(integer, optional)*
 
@@ -133,3 +133,119 @@ This method will return the following error codes:
 * `401` - unauthorized - when the Authorization header is not present, or contains an invalid site token
 	* `101000` - sub-error code
 * `403` - forbidden - this is returned when the user trying to access the API does not have the proper permissions
+
+
+### Filtering Syntax
+
+Filtering is supported by constraining at most one item field. Only the specified system fields and the item's category set can be used for filtering.
+
+The list of supported system fields is:
+
+* Id
+* Name
+* Weight
+* ReleaseDate
+* ExpiryDate
+* CreateDate
+* LastUpdateDate
+* Enabled
+
+The filtering syntax involves specifying a list of constraints, logically chained using the AND operator which must apply to the one field specified. The constraints are built using the following operators:
+
+| operator | name | example | applicable type |
+|:--------:|:----:|---------|:---------------:|
+| N/A | equals (==) | `where={"name" : "item-name"}` | all |
+| $ne | not equal (\!=) | `where={"id": {"$ne": 42}}` | all |
+| $lt | less than (<) | `where={"weight" : {"$lt": 3}}` | all |
+| $lte | less than or equal (<=) | `where={"name" : {"$lte": "omega"}}` | all |
+| $gt | greater than (>) | `where={"releaseDate" : {"$gt": "jun 10 2012"}}` | all |
+| $gte | greater than or equal (>=) | `where={"name" : {"$gte": "alpha"}}` | all |
+| $contains | contains | `where={"name": {"$contains": "delta"}}` | string-only |
+| $beginsWith | begins with | `where={"name": {"$beginsWith": "prefix"}}` | string-only |
+
+#### Important Notes
+
+* Multiple constraints can be chained, and the chaining operator is AND. We do not support OR-queries
+
+    ```
+    where={"name": {"$gt": "alpha", "$lt": "omega", "$contains":"foo"}}
+    ```
+* Equality has no dedicated operator and it cannot be chained together with other constraints. The only way to specify that something must equal a value is like so:
+
+    ```
+    where={"name": "epsilon"}
+    ```
+* To check that an item is labeled with a certain category the following syntax must be used:
+
+    ```
+    where={"category": "/my/category/path"}
+    ```
+* The category is specified as a category-path string or by providing the category's numeric id. The path should start with a `/`. If it does not, the `/` will be added automatically to the category string. The following is equivalent to the previous example:
+
+    ```
+    where={"category": "my/category/path"}
+    ```
+* Field names, and the "category" label are case-insensitive
+* null-values will returns false for every comparison except equality and `$ne` operator. These two operators can be used to filter out the items that have missing values for certain fields
+
+    ```
+    where={"weight": null}
+    where={"weight": {"$ne": null}}        
+    ```
+
+#### Examples
+
+* Filtering by name
+
+    ```
+    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"name": {"$contains": "item"}}
+    ```
+* Filtering by date
+
+    ```
+    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"createDate": {"$gte": "01/01/2001", "$lte": "01/01/2013"}}
+    ```
+* Filtering by category id
+
+    ```
+    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"category": 123}
+    ```
+    
+* Filtering by category path
+
+    ```
+    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"category": "my-label"}
+    ```
+
+
+
+
+    
+### Ordering Syntax
+
+The `order` query parameter specifies which field will be used to order the results of the query. Only the following system fields can be used to order the results:
+
+* Id
+* Name
+* Weight
+* ReleaseDate
+* ExpiryDate
+* CreateDate
+* LastUpdateDate
+* Enabled
+
+To order the results in ascending order, just provide the system field name. If the results are to be sorted in descending order prefix the system field name with a `-` (dash).
+
+#### Examples
+
+* Sorting ascending by name
+    
+    ```
+    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?order=name
+    ```
+* Sorting descending by name
+
+    ```
+    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?order=-name
+    ```
+

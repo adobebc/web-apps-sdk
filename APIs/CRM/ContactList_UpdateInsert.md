@@ -43,7 +43,7 @@ To use a site token instead of username/password, send an empty `username` field
 
 ### Response
 
-An emptyontactList_UpdateInsertResponse object with a header response code
+An empty ContactList_UpdateInsertResponse object with a header response code
 
 ### Examples
 

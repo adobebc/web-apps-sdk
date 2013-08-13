@@ -15,6 +15,7 @@ Create a new Web App custom field.
 
 Object:
 
+* `id` - unique - field id, if left empty, will be auto-generated *(int)*
 * `name` - unique, required - the name of the field *(string)*
 * `type` - required, one of the below: *(string)*
   * `String`
@@ -30,7 +31,12 @@ Object:
 	* `String_Hyperlink`
 	* `DataSource`
 * `required` - true if the field is required (not required) *(boolean)*
-* `order` - unique - the position of the field when listed starting with 1. 	If a field with the same order value already exists, its order value (and order value for any other fields "bellow") will be incremented by 1.	If not specified, the field is added as the last one. *(integer)*
+* `order` - unique - the position of the field when listed starting with 1.
+
+  If a field with the same order value already exists, its order value (and order value for any other fields "bellow") will be incremented by 1.
+
+  If not specified, the field is added as the last one. *(integer)*
+  
 * `dataSourceName`: for DataSource fields should be a valid webapp name *(string)*
 * `listItems` - used only by DropDown_List, CheckBox_List, Radio_List, ListBox_List fields *(array)*
 

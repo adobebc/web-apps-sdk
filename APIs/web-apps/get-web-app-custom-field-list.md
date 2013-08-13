@@ -74,7 +74,7 @@ Content-Length: length
            "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields\/418191"
          }
       ],
-      "id"      : "418191",
+      "id"      : 1,
       "name"    : "Part code",
       "type"    : "DataSource",
       "listItems": null,
@@ -88,7 +88,7 @@ Content-Length: length
            "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields\/418193"
          }
       ],
-      "id"      : "418193",
+      "id"      : 2,
       "name"    : "Part type",
       "type"    : "CheckBox_List",
       "listItems": ["Engine", "Body", "Electronics"],
@@ -102,7 +102,7 @@ Content-Length: length
            "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields\/418192"
          }
       ],
-      "id"      : "418192",
+      "id"      : 3,
       "name"    : "Photo",
       "type"    : "Picture",
       "listItems": null,

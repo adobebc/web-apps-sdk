@@ -55,8 +55,8 @@ Accept: application/json
 {
   "name": "Item7",
   "weight": 7,
-  "releaseDate": "01/30/2013",
-  "expiryDate": "01/01/9999",
+  "releaseDate": "2013-01-30",
+  "expiryDate": "9999-01-01",
   "enabled": true,
   "urlSuffix": "item7",
   "description": "<p>item7 description<\/p>",
@@ -70,7 +70,7 @@ Accept: application/json
       "field_string_required": "item7_field1_value",
       "field2_string_optional": "item7_field2_value",
       "field3_number": 7,
-      "field4_dateTime": "01/20/2012",
+      "field4_dateTime": "2012-01-20",
       "field5_list": "item1"
   }
 }

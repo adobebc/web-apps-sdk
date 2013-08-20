@@ -109,7 +109,7 @@ Content-Length: {length}
       "parentId"  : -1
       "publicAccess" : true
    }],
-  "totalItems": 11,
+  "totalItemsCount": 11,
   "skip": 4,
   "limit": 4
 }

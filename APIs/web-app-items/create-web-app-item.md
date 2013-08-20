@@ -19,7 +19,7 @@ A WebAppItem object containg the following properties:
 * `name`- the name of the web app item, required *(string)*
 * `weight` - the weight of the web app item (the order in which they will appear in frontend). Default: null *(integer)*
 * `releaseDate` - the release date of the web app item; uses the format mm/dd/yyyy. Default: current date *(string)*
-* `expiryDate` - the date when the web app item will expire; uses the format mm/dd/yyyy. Default: "12/31/2999" *(string)*
+* `expiryDate` - the date when the web app item will expire; uses the format mm/dd/yyyy. Default: "9999-01-01" *(string)*
 * `enabled` - a boolean indicating whether this web app item is enabled or disabled. Default: true *(boolean)*
 * `urlSuffix` - the suffix that will be used to build its frontend URL. This is appended to the URL of the webapp. The URL is based on the name of the Web App, and made unique by appending "-1", "-2", etc. *(string)*
 * `description` - the description or content of the webapp item. *(string)*
@@ -60,8 +60,8 @@ Accept: application/json
 {
   "name": "Item7",
   "weight": 7,
-  "releaseDate": "01/30/2013",
-  "expiryDate": "01/01/9999",
+  "releaseDate": "9999-01-01",
+  "expiryDate": "9999-01-01",
   "enabled": true,
   "urlSuffix": "item7",
   "description": "<p>item7 description<\/p>",
@@ -78,7 +78,7 @@ Accept: application/json
       "field_string_required": "item7_field1_value",
       "field2_string_optional": "item7_field2_value",
       "field3_number": 7,
-      "field4_dateTime": "01/20/2012",
+      "field4_dateTime": "2012-01-20",
       "field5_list": "item1"
   }
 }

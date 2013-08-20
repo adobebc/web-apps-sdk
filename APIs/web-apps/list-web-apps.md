@@ -107,7 +107,7 @@ Content-Length: length
       "slug":"bc-help"
     }
   ],
-  "totalItems":19,
+  "totalItemsCount":19,
   "skip":0,
   "limit":0
 }

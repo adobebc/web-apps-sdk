@@ -58,7 +58,7 @@ Content-Type: application/json; charset=utf-8
 Content-Length: length
  
 {
-   "totalItems": 3,
+   "totalItemsCount": 3,
    "skip": 0,
    "limit": 100,
    "links": [

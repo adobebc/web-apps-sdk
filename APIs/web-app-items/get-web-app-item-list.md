@@ -88,10 +88,10 @@ Content-Length: {length}
       "id": 1073041,
       "name": "item3",
       "weight": null,
-      "releaseDate": "06/30/2013",
-      "expiryDate": "01/01/9999",
-      "createDate": "06/30/2013",
-      "lastUpdateDate": "06/30/2013",
+      "releaseDate": "2013-06-30",
+      "expiryDate": "9999-01-01",
+      "createDate": "2013-06-30",
+      "lastUpdateDate": "2013-06-30",
       "enabled": true
     },
     {
@@ -108,14 +108,14 @@ Content-Length: {length}
       "id": 1073042,
       "name": "item4",
       "weight": null,
-      "releaseDate": "06/30/2013",
-      "expiryDate": "01/01/9999",
-      "createDate": "06/30/2013",
-      "lastUpdateDate": "06/30/2013",
+      "releaseDate": "2013-06-30",
+      "expiryDate": "9999-01-01",
+      "createDate": "2013-06-30",
+      "lastUpdateDate": "2013-06-30",
       "enabled": true
     },
   ],
-  "totalItems": 7,
+  "totalItemsCount": 7,
   "skip": 2,
   "limit": 2
 }
@@ -204,7 +204,7 @@ The filtering syntax involves specifying a list of constraints, logically chaine
 * Filtering by date
 
     ```
-    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"createDate": {"$gte": "01/01/2001", "$lte": "01/01/2013"}}
+    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"createDate": {"$gte": "2001-01-01", "$lte": "2013-01-01"}}
     ```
 * Filtering by category id
 

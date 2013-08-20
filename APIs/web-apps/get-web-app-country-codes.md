@@ -62,7 +62,7 @@ Content-Length: length
     "US",
     "UK"
   ],
-  "totalItems":3,
+  "totalItemsCount":3,
   "skip":0,
   "limit":10
 }

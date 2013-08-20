@@ -50,7 +50,7 @@ Access-Control-Max-Age: 99999
 Content-Length: length
  
 {
-  "totalItems": 3,
+  "totalItemsCount": 3,
   "skip": 0,
   "limit": 100,
   "links": [

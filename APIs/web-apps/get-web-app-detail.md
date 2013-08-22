@@ -194,7 +194,7 @@ Content-Length: length
         "required":false
       },
       {
-        "name":"urlSuffix",
+        "name":"slug",
         "type":"String",
         "required":false
       },

@@ -21,7 +21,7 @@ A WebAppItem object containg the following properties:
 * `releaseDate` - the release date of the web app item; uses the format mm/dd/yyyy. Default: current date *(string)*
 * `expiryDate` - the date when the web app item will expire; uses the format mm/dd/yyyy. Default: "9999-01-01" *(string)*
 * `enabled` - a boolean indicating whether this web app item is enabled or disabled. Default: true *(boolean)*
-* `urlSuffix` - the suffix that will be used to build its frontend URL. This is appended to the URL of the webapp. The URL is based on the name of the Web App, and made unique by appending "-1", "-2", etc. *(string)*
+* `slug` - the suffix that will be used to build its frontend URL. This is appended to the URL of the webapp. The URL is based on the name of the Web App, and made unique by appending "-1", "-2", etc. *(string)*
 * `description` - the description or content of the webapp item. *(string)*
 * `roleId` - the id of the role assigned to this web app item, if any. Default: -1 *(integer)*
 * `submittedBy` - the id of the user that created this webapp item, if any. Default: -1 *(integer)*
@@ -63,7 +63,7 @@ Accept: application/json
   "releaseDate": "9999-01-01",
   "expiryDate": "9999-01-01",
   "enabled": true,
-  "urlSuffix": "item7",
+  "slug": "item7",
   "description": "<p>item7 description<\/p>",
   "roleId": null,
   "submittedBy": -1,
@@ -102,9 +102,9 @@ This method will return the following error codes:
 	* `190001` - The web app could not be found (the webAppName param from the URL does not match)
 * `400` - bad request; sub-error codes:
 	* `200000` - An unspecified error has occured
-	* `200002` - The urlSuffix is invalid
-	* `200003` - Using this urlSuffix will make the entire frontend URL larger than the maximum allowed length
-	* `200004` - The urlSuffix is already used
+	* `200002` - The slug is invalid
+	* `200003` - Using this slug will make the entire frontend URL larger than the maximum allowed length
+	* `200004` - The slug is already used
 	* `200005` - The name provided is invalid (empty or null)
 	* `200006` - A custom field failed validation
 	* `200008` - There is a problem with the address. The related webapp has "location

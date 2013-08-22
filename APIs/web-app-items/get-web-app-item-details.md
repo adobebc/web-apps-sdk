@@ -27,7 +27,7 @@ Returns a WebAppItem object with the following properties:
 * `createDate` - the date when the web app item was created; uses the format mm/dd/yyyy *(string)*
 * `lastUpdateDate` - the date when the webapp item was last updated; uses the format mm/dd/yyyy *(string)*
 * `enabled` - a boolean indicating whether this web app item is enabled or disabled *(boolean)*
-* `urlSuffix` - the suffix that will be used to build its frontend URL. This is appended to the URL of the webapp. *(string)*
+* `slug` - the suffix that will be used to build its frontend URL. This is appended to the URL of the webapp. *(string)*
 * `description` - the description or content of the webapp item *(string)*
 * `roleId` - the id of the role assigned to this web app item, if any *(integer)*
 * `createdBy` - the id of the user that created this webapp item *(integer)*
@@ -84,7 +84,7 @@ Content-Length: {length}
   "createDate": "2013-06-30",
   "lastUpdateDate": "2013-06-30",
   "enabled": true,
-  "urlSuffix": "item1",
+  "slug": "item1",
   "description": "<p>item1 description<\/p>\u000d\u000a",
   "roleId": null,
   "createBy": 54273,

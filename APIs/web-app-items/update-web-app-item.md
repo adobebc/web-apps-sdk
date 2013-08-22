@@ -21,7 +21,7 @@ Body - A WebAppItem object containg the following properties:
 * `releaseDate` - the release date of the web app item; uses the format mm/dd/yyyy *(string)*
 * `expiryDate` - the date when the web app item will expire; uses the format mm/dd/yyyy *(string)*
 * `enabled` - a boolean indicating whether this web app item is enabled or disabled *(boolean)*
-* `urlSuffix` - the suffix that will be used to build its frontend URL. This is appended to the URL of the webapp. *(string)* 
+* `slug` - the suffix that will be used to build its frontend URL. This is appended to the URL of the webapp. *(string)*
 * `description` - the description or content of the webapp item *(string)*
 * `roleId` - the id of the role assigned to this web app item, if any *(integer)*
 * `address` - the address of this webapp item if any *(string)*
@@ -58,7 +58,7 @@ Accept: application/json
   "releaseDate": "2013-01-30",
   "expiryDate": "9999-01-01",
   "enabled": true,
-  "urlSuffix": "item7",
+  "slug": "item7",
   "description": "<p>item7 description<\/p>",
   "roleId": null,
   "address": "item7_address",
@@ -95,9 +95,9 @@ This method will return the following error codes:
 	* `200001` - The webapp item was not found (the webAppName and webAppItemId from the URL do not match)
 * `400` - bad request; sub-error codes:
 	* `200000` - An unspecified error has occured
-	* `200002` - The urlSuffix is invalid
-	* `200003` - Using this urlSuffix will make the entire frontend URL larger than the maximum allowed length
-	* `200004` - The urlSuffix is already used
+	* `200002` - The slug is invalid
+	* `200003` - Using this slug will make the entire frontend URL larger than the maximum allowed length
+	* `200004` - The slug is already used
 	* `200005` - The name provided is invalid (empty or null)
 	* `200006` - A custom field failed validation
 	* `200008` - There is a problem with the address. Either the webapp does not allow storing addresses, or one of the address fields is empty

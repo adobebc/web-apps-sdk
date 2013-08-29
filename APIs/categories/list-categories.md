@@ -1,6 +1,6 @@
 ## List Categories
 
-Get a list of categories which exist on the current site.
+Get a list of categories which exist on the current site in ascending order of their ids.
 
 **Note:** This operation does not support: pagination, filtering, or sorting parameters.  
 
@@ -22,13 +22,14 @@ A CategoryList object with the following properties:
 	* `self` - the API URL that will return this result *(string)*
 	* `previous` - the API URL that will return the previous page of results, if any *(string)*
 	* `next` - the API URL that will return the next page of results, if any *(string)*
-* `items` - an array of CategorySummary objects with the following properties *(array)*
+* `items` - an array of CategorySummary objects with the following properties *(array)* 
 	* `links` - a collection of links *(array)*
 		* `self` - the API URL that will return full details for this category *(string)*
-	* `id` - the ID of the category for the current site *(integer)*
+	* `id` - the ID of the category for the current site *(integer)* 
 	* `name` - the name of the category *(string)*
 	* `parentId` - the ID of the parent category, if this is a sub-category. Returns -1 if a root-level category *(integer)*
 	* `publicAccess` - whether or not the category is visible to front-end users *(boolean)*
+
 
 ### Examples
 

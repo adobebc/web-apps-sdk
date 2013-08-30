@@ -1,0 +1,6 @@
+# CI files which must be ignored
+logs/*
+tests-output/*
+
+# IDE specific files which must be ignored
+.project

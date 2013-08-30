@@ -1,0 +1,3 @@
+[submodule "bcapi.js"]
+	path = bcapi.js
+	url = https://github.com/adobebc/bcapi.js.git

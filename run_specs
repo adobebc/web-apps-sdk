@@ -24,12 +24,14 @@ fi
 
 rm -Rf tests-output
 rm -f tests_runner.log
-java -jar $JAR_FILE --port $PORT --config $CONFIG --browser "$BROWSER" --tests $SUITES --testOutput tests-output --captureConsole >> tests_runner.log
+java -jar $JAR_FILE --port $PORT --config $CONFIG --browser "$BROWSER" --tests $SUITES --testOutput tests-output >> tests_runner.log
+
+cat tests_runner.log
 
 #if grep -i "error" tests_runner.log; then
 #   exit 1
 #fi
 
-rm tests_runner.log
+#rm tests_runner.log
 
 echo "Done."

@@ -1,4 +1,3 @@
-
 #!/bin/bash
 #
 # Simple script for executing Jasmine specs using JSTestDriver
@@ -23,12 +22,14 @@ else
     echo "Running all suites..."
 fi
 
-java -jar $JAR_FILE --port $PORT --config $CONFIG --browser "$BROWSER" --tests $SUITES --testOutput tests-output
+rm -Rf tests-output
+rm -f tests_runner.log
+java -jar $JAR_FILE --port $PORT --config $CONFIG --browser "$BROWSER" --tests $SUITES --testOutput tests-output >> tests_runner.log
 
-# Store return code of the previous command in RC
-RC=$?
-if [[ $RC != 0 ]] ; then
-    exit $RC
+if grep -i "error" tests_runner.log; then
+   exit 1
 fi
+
+rm tests_runner.log
 
 echo "Done."

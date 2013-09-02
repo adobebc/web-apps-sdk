@@ -1,6 +1,7 @@
 # CI files which must be ignored
 logs/*
 tests-output/*
+tests_runner.log
 
 # IDE specific files which must be ignored
 .project

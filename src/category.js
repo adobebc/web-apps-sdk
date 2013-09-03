@@ -23,7 +23,7 @@
             // to make sure we don't have any racing conditions
             if ($.isArray(path)) {
                 return chain(path, function(p) {
-                    return Category.createPathRecursive(p, map);
+                    return BCAPI.Category.createPathRecursive(p, map);
                 }).then(function() {
                     return map;
                 });
@@ -38,17 +38,17 @@
                 name = path.replace(/.*\//, '');
 
             if (parentPath) {
-                return Category
+                return BCAPI.Category
                     .createPathRecursive(parentPath, map)
                     .done(function(parentCategory) {
-                        return Category
+                        return BCAPI.Category
                             .create({name: name, parentId: parentCategory.attributes.id})
                             .done(function(category) {
                                 map[path] = category;
                             });
                     });
             } else {
-                return Category
+                return BCAPI.Category
                     .create({name: name})
                     .done(function(category) {
                         map[path] = category;
@@ -58,7 +58,7 @@
 
         listWithFullPath: function() {
             return $.Deferred(function(deferred) {
-                Category.list()
+            	BCAPI.Category.list()
                     .fail(deferred.reject)
                     .done(function(categories) {
                         var mapIdToPath = {},
@@ -97,7 +97,7 @@
 
     $.extend(BCAPI.Category.prototype, BCAPI.EntityCRUD, {
         uri: function() {
-            return Category.uri() + "/" + this.attributes.id;
+            return BCAPI.Category.uri() + "/" + this.attributes.id;
         },
 
         save: notSupported('Category.save()'),

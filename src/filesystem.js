@@ -47,11 +47,11 @@
             if (attributes && attributes.type === 'folder') {
                 var folder = this;
                 folder.files = $.map(attributes.contents, function(fileAttr) {
-                    return new BCFile(folder.path + '/' + fileAttr.name, fileAttr);
+                    return new BCAPI.File(folder.path + '/' + fileAttr.name, fileAttr);
                 });
             }
 
-            return EntityBase.setAttributes.call(this, attributes);
+            return BCAPI.EntityBase.setAttributes.call(this, attributes);
         },
 
         remove: function(force) {

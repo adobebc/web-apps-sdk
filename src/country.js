@@ -14,6 +14,6 @@
         }
     });
 
-    $.extend(Country.prototype, EntityBase);
+    $.extend(BCAPI.Country.prototype, BCAPI.EntityBase);
 	
 })(jQuery);

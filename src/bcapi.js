@@ -1,26 +1,27 @@
 (function($) {
     'use strict';
+    
+    /**
+     * This is a sample api library.
+     * 
+     * @name BCAPI
+     * @class
+     * @constructor
+     */    
+    function BCAPI() {
+    	
+    }
 
-    window.BCAPI = {};
-
-    BCAPI.debug = true;
-
-    BCAPI.log = function(msg) {
-        if (window.console && BCAPI.debug) console.log("BCAPI: " + msg);
-    };
-
-    BCAPI.authToken = $.cookie ? $.cookie : authTokenReaderMissing;
-
-    BCAPI.apiHost = top.authData ? top.authData.apiUrl : 'bc-local.worldsecuresystems.com';
-
-    function authTokenReaderMissing() {
-        $.error('You will need jQuery.cookie if you want BC Auth Token to be auto-populated. Alternatively implement your own BCAPI.authToken reader.');
-    };
-
-    var useGenericToken = false;
-
-    // Makes a BC REST API request.
-    var request = BCAPI.request = function(verb, uri, data, rawData) {
+    /**
+     * This method lazily obtains authentication token for the current application.
+     * 
+     * @name request
+     * @method
+     * @public
+     * @instance
+     * @memberOf BCAPI
+     */
+    BCAPI.prototype.request = function(verb, uri, data, rawData) {
         var options,
             token = BCAPI.authToken;
 
@@ -69,8 +70,28 @@
                 return data;
             })
             .promise(jqXHR); // return the original jqXHR with the new promise attached
-    }
+    }    
+    
+    window.BCAPI = new BCAPI();
 
+    BCAPI.debug = true;
+
+    BCAPI.log = function(msg) {
+        if (window.console && BCAPI.debug) console.log("BCAPI: " + msg);
+    };
+
+    BCAPI.authToken = $.cookie ? $.cookie : authTokenReaderMissing;
+
+    BCAPI.apiHost = top.authData ? top.authData.apiUrl : 'bc-local.worldsecuresystems.com';
+
+    function authTokenReaderMissing() {
+        $.error('You will need jQuery.cookie if you want BC Auth Token to be auto-populated. Alternatively implement your own BCAPI.authToken reader.');
+    };
+
+    var useGenericToken = false;
+
+    var request = BCAPI.prototye.request;
+    
     function requestEntity(entity, verb, uri, data, rawData) {
         return request(verb, uri, data, rawData)
             .then(function(data) {

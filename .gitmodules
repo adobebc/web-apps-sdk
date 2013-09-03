@@ -1,0 +1,3 @@
+[submodule "Meet The Team/team/_bcadmin/assets/bcjs"]
+	path = Meet The Team/team/_bcadmin/assets/bcjs
+	url = https://github.com/adobebc/bcapi.js.git

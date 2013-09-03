@@ -1,0 +1,9 @@
+# CI files which must be ignored
+logs/*
+tests-output/*
+tests_runner.log
+node_modules
+doc
+
+# IDE specific files which must be ignored
+.project

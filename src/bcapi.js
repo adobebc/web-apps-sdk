@@ -23,15 +23,23 @@
     var useGenericToken = false;
     
     /**
-	 * This method lazily obtains authentication token for the current application.
+	 * This method lazily obtains authentication token for the current application. 
+	 * 
+	 * Additional adds some markdown samples:
+	 * 
+	 * # Markdown heading 1
+	 * 
+	 * Simple sub paragraph.
+	 * 
+	 * ## Markdown heading 2
+	 * 
+	 * Simple heading 2.
 	 * 
 	 * @name request
-	 * @method
-	 * @public
-	 * @instance
+	 * @function
 	 * @memberOf BCAPI
 	 */
-    var request = BCAPI.prototye.request = request = function(verb, uri, data, rawData) {
+    var request = BCAPI.request = function(verb, uri, data, rawData) {
 		        var options,
 		        token = BCAPI.authToken;
 		

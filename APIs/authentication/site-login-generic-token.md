@@ -7,7 +7,7 @@ Performs a site login. The token validity cannot be set (it is Short by default)
 * **Method:** POST
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com/
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/[siteid[/tokens
+* **Path:** /api/v2/admin/sites/[siteid]/tokens
 	* Alternatively, use 'current' instead of siteId
 * **Auth Header:** generic token required
 

@@ -2,77 +2,9 @@
     'use strict';
     
     /**
-     * This is a sample api library.
-     * 
-     * @name BCAPI
-     * @class
-     * @constructor
-     */    
-    function BCAPI() {
-    	
-    }
-
-    /**
-     * This method lazily obtains authentication token for the current application.
-     * 
-     * @name request
-     * @method
-     * @public
-     * @instance
-     * @memberOf BCAPI
+     * @namespace BCAPI
      */
-    BCAPI.prototype.request = function(verb, uri, data, rawData) {
-        var options,
-            token = BCAPI.authToken;
-
-        if (typeof verb === "object") {
-            options = verb;
-            verb = options.type;
-            uri = options.url;
-            data = options.data;
-            rawData = true;
-        } else {
-            options = {
-                type: verb
-            };
-        }
-
-        if (!uri) return new $.Deferred().reject().promise();
-
-        verb = (verb || 'GET').toUpperCase();
-        BCAPI.log(verb + ' ' + uri);
-
-        if (!rawData) {
-            options.contentType = "application/json";
-            if (data instanceof Paginator) data = data.items;
-            data = data ? JSON.stringify(data) : data;
-        }
-        options.data = data;
-
-        if (!uri.match(/https?:/)) {
-            if (uri.charAt(0) !== '/') uri = '/api/v2/admin/sites/current/' + uri;
-            uri = 'https://' + BCAPI.apiHost + uri;
-        }
-        options.url = uri;
-
-        options.headers = $.extend({
-            Authorization: $.isFunction(token) ? token(useGenericToken ? "genericAuthToken" : "siteAuthToken") : token
-        }, options.headers);
-
-        var jqXHR = jQuery.ajax(options);
-
-        return jqXHR
-            .then(function(data, status, xhr) {
-                var location = xhr.getResponseHeader('Location');
-                if (location && !data) {
-                    return request('GET', location);
-                }
-                return data;
-            })
-            .promise(jqXHR); // return the original jqXHR with the new promise attached
-    }    
-    
-    window.BCAPI = new BCAPI();
+    window.BCAPI = {};
 
     BCAPI.debug = true;
 
@@ -89,8 +21,67 @@
     };
 
     var useGenericToken = false;
-
-    var request = BCAPI.prototye.request;
+    
+    /**
+	 * This method lazily obtains authentication token for the current application.
+	 * 
+	 * @name request
+	 * @method
+	 * @public
+	 * @instance
+	 * @memberOf BCAPI
+	 */
+    var request = BCAPI.prototye.request = request = function(verb, uri, data, rawData) {
+		        var options,
+		        token = BCAPI.authToken;
+		
+		    if (typeof verb === "object") {
+		        options = verb;
+		        verb = options.type;
+		        uri = options.url;
+		        data = options.data;
+		        rawData = true;
+		    } else {
+		        options = {
+		            type: verb
+		        };
+		    }
+		
+		    if (!uri) return new $.Deferred().reject().promise();
+		
+		    verb = (verb || 'GET').toUpperCase();
+		    BCAPI.log(verb + ' ' + uri);
+		
+		    if (!rawData) {
+		        options.contentType = "application/json";
+		        if (data instanceof Paginator) data = data.items;
+		        data = data ? JSON.stringify(data) : data;
+		    }
+		    options.data = data;
+		
+		    if (!uri.match(/https?:/)) {
+		        if (uri.charAt(0) !== '/') uri = '/api/v2/admin/sites/current/' + uri;
+		        uri = 'https://' + BCAPI.apiHost + uri;
+		    }
+		    options.url = uri;
+		
+		    options.headers = $.extend({
+		        Authorization: $.isFunction(token) ? token(useGenericToken ? "genericAuthToken" : "siteAuthToken") : token
+		    }, options.headers);
+		
+		    var jqXHR = jQuery.ajax(options);
+		
+		    return jqXHR
+		        .then(function(data, status, xhr) {
+		            var location = xhr.getResponseHeader('Location');
+		            if (location && !data) {
+		                return request('GET', location);
+		            }
+		            return data;
+		        })
+		        .promise(jqXHR); // return the original jqXHR with the new
+									// promise attached
+		};
     
     function requestEntity(entity, verb, uri, data, rawData) {
         return request(verb, uri, data, rawData)
@@ -106,7 +97,8 @@
             });
     }
 
-    // Makes a GET request on a paginated BC REST API endpoint, and (optionally) converts the items to entity objects.
+    // Makes a GET request on a paginated BC REST API endpoint, and (optionally)
+	// converts the items to entity objects.
     function fetchList(uri, paginator) {
         return request('GET', uri)
             .then(function(data) {
@@ -156,7 +148,8 @@
         },
 
         // Makes a POST to persist a new entity on the server.
-        // Returns an entity object. The entity attributes will be incomplete at the moment of return.
+        // Returns an entity object. The entity attributes will be incomplete at
+		// the moment of return.
         // Use onSuccess if you need to work with the returned value.
         create: function(attributes) {
             return requestEntity(new this(attributes), 'POST', this.uri(), attributes);
@@ -165,13 +158,16 @@
         // GETs all the entities of particular type from the server.
         // Returns an list, (later) populated asynchronously.
         // Use onSuccess if you need to work with the returned value.
-        // In some cases, the entities in the list will be incomplete even after onSuccess fires.
-        // Use entity.fetch() is an it does not contain all the attributes you need.
+        // In some cases, the entities in the list will be incomplete even after
+		// onSuccess fires.
+        // Use entity.fetch() is an it does not contain all the attributes you
+		// need.
         list: function() {
             return fetchList(this.uri(), new Paginator(this));
         },
 
-        // Returns an entity object. The entity attributes will be incomplete at the moment of return.
+        // Returns an entity object. The entity attributes will be incomplete at
+		// the moment of return.
         // Use onSuccess if you need to work with the returned value.
         get: function(id) {
             return new this({id: id}).fetch();
@@ -363,7 +359,8 @@
             return new this({name: name}).fetch();
         },
 
-        // Recreates a WebApp with its structure, fields, items and associated categories.
+        // Recreates a WebApp with its structure, fields, items and associated
+		// categories.
         createFromSchema: function(schema) {
             var webApp, categoriesMap;
 
@@ -415,8 +412,10 @@
                 });
         },
 
-        // Creates a schema object, containing the object graph describing a WebApp and all it's associated data.
-        // Can be serialized to JSON and later imported with a call to WebApp.createFromSchema(schema)
+        // Creates a schema object, containing the object graph describing a
+		// WebApp and all it's associated data.
+        // Can be serialized to JSON and later imported with a call to
+		// WebApp.createFromSchema(schema)
         exportSchema: function(name) {
             var schema = {},
                 mapCategoryIdToPath;
@@ -434,7 +433,8 @@
 
                     $.each(webApp.fields, function(i, field) {
                         delete field.links;
-                        delete field.webApp; // WebApp is already exposed, remove circular reference.
+                        delete field.webApp; // WebApp is already exposed,
+												// remove circular reference.
                     });
 
                     delete webApp.links;
@@ -483,7 +483,8 @@
                                 });
 
                             delete item.links;
-                            delete item.webApp; // WebApp is already exposed, remove circular reference.
+                            delete item.webApp; // WebApp is already exposed,
+												// remove circular reference.
 
                             var itemAttr = item.attributes;
                             delete itemAttr.id;
@@ -494,8 +495,10 @@
                 });
         },
 
-        // Recreates a WebApp with its structure, fields, items and associated categories
-        // from a file previously created with WebApp.get("MyApp").exportToFile()
+        // Recreates a WebApp with its structure, fields, items and associated
+		// categories
+        // from a file previously created with
+		// WebApp.get("MyApp").exportToFile()
         importFromFile: function(filename) {
             BCAPI.log('Importing WebApp from file "' + filename + '"...');
 
@@ -526,7 +529,8 @@
             }).promise();
         },
 
-        // Creates a File, accessible via FTP with the schema of the WebApp and its associated data.
+        // Creates a File, accessible via FTP with the schema of the WebApp and
+		// its associated data.
         exportToFile: function(webAppName, filename) {
             BCAPI.log('Exporting WebApp ' + webAppName + '"...');
 
@@ -569,7 +573,8 @@
                     webApp.fields.push(new WebAppField(webApp, fieldAttr));
                 });
 
-                // Updating field information directly from a WebApp.save() is not supported
+                // Updating field information directly from a WebApp.save() is
+				// not supported
                 delete webApp.attributes.fields;
             }
 
@@ -623,7 +628,8 @@
         create: WebAppField.create,
         get: WebAppField.get,
 
-        // Find items corresponding to the criteria specified in the <query> parameter.
+        // Find items corresponding to the criteria specified in the <query>
+		// parameter.
         // The <query> can be either an URL query string or a key-value object.
         list: function(webApp, query) {
             var uri = this.uri(webApp);
@@ -658,8 +664,10 @@
     $.extend(Category, FactoryCRUD, {
         uri: function() { return 'categories'; },
 
-        // Checks if a category <path> exists and, if not, creates the needed categories.
-        // The <onSuccess> callback will get the Category object as the first parameter.
+        // Checks if a category <path> exists and, if not, creates the needed
+		// categories.
+        // The <onSuccess> callback will get the Category object as the first
+		// parameter.
         createPathRecursive: function(path, map) {
             if (!path) return $.Deferred().reject().promise();
 
@@ -671,7 +679,8 @@
                     });
             }
 
-            // We will chain category creation, instead of running them in parallel,
+            // We will chain category creation, instead of running them in
+			// parallel,
             // to make sure we don't have any racing conditions
             if ($.isArray(path)) {
                 return chain(path, function() {
@@ -810,7 +819,7 @@
 
     $.extend(Site, {
         list: function() {
-            //noinspection JSUnusedAssignment
+            // noinspection JSUnusedAssignment
             useGenericToken = true;
             var list = fetchList('/api/v2/admin/sites', function(attr) { return new Site(attr); });
             useGenericToken = false;

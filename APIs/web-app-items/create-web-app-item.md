@@ -7,7 +7,7 @@ Create a web app item.
 * **Method:** POST
 * **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
   * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
-* **Path:** /api/v2/admin/sites/[siteId]/webapps/[webAppName]/items/
+* **Path:** /api/v2/admin/sites/[siteId]/webapps/[webAppName]/items
   * Alternatively, use "current" instead of [siteId]
 * **Auth Header:** Site token required
 * **Required Permissions:** Add Web App Items

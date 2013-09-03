@@ -1,0 +1,4 @@
+load:
+  - ../jquery.js
+  - src.js
+  - tests.js

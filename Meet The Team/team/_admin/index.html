@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meet The Team | Admin</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">Meet The Team</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <section id="appInstalled" class="hero-unit hide">
+            Congratulations! The app is installed.
+            Now you may <a class="editTeam">edit your team</a> or <a href="/team" target="_top">preview it</a>.
+        </section>
+        <section id="appNotInstalled" class="hero-unit hide">
+            To setup our app click <button class="btn install">Install</button>.
+        </section>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+</body>
+</html>
+
+<script src="assets/jquery.js"></script>
+<script src="assets/bcjs/src.js"></script>
+<script>
+    BCAPI.WebApp.get('Meet The Team', appInstalled, appNotInstalled);
+
+    function appInstalled(teamWebApp) {
+        var $section = $('#appInstalled').show();
+        $('#appNotInstalled').hide();
+
+        $section.find('.editTeam').attr('href', '/Admin/CustomContent_ItemList.aspx?CustomContentID=' + teamWebApp.attributes.id);
+    }
+
+    function appNotInstalled(xhr) {
+        $('#appInstalled').hide();
+        if (xhr.status === 401) {
+            alert('Unauthorized.');
+        }
+
+        var $section = $('#appNotInstalled').show();
+
+        $section.find('.install').click(function() {
+            $section.html('Installing...');
+
+            BCAPI.WebApp.importFromFile('Meet The Team', appInstalled, function() { alert('Error creating "Meet The Team" webApp.') });
+            return false;
+        });
+    }
+</script>

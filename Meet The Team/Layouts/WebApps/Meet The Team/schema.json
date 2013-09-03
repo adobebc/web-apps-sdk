@@ -1,0 +1,79 @@
+{
+    "webApp": {
+        "attributes": {
+            "name": "Helpers",
+            "slug": "helpers",
+            "allowFileUpload": false,
+            "disableDetailPages": false,
+            "locationEnabled": true,
+            "anyoneCanEdit": true,
+            "customerCanAdd": true,
+            "customerCanDelete": true,
+            "customerCanEdit": true,
+            "requiresPayment": false,
+            "requiresApproval": true,
+            "roleId": 12023,
+            "templateId": -1,
+            "validDays": 0,
+            "uploadFolder": null
+        },
+        "fields": [
+            {
+                "attributes": {
+                    "name": "My field",
+                    "type": "String",
+                    "required": true,
+                    "order": 1,
+                    "listItems": null
+                }
+            },
+            {
+                "attributes": {
+                    "name": "My other field",
+                    "type": "String",
+                    "required": true,
+                    "order": 2,
+                    "listItems": null
+                }
+            },
+            {
+                "attributes": {
+                    "name": "My other field 3",
+                    "type": "String",
+                    "required": true,
+                    "order": 3,
+                    "listItems": null
+                }
+            },
+            {
+                "attributes": {
+                    "name": "hkljkghhddhhdhhh",
+                    "type": "DataSource",
+                    "required": false,
+                    "order": 16,
+                    "listItems": null,
+                    "dataSourceName": "BC Help"
+                }
+            }
+        ]
+    },
+    "countries": ["AU", "MD", "SA"],
+    "items": [
+        {
+            "attributes": {
+                "name": "aaaa",
+                "weight": null,
+                "releaseDate": "08/08/2009",
+                "expiryDate": "01/01/9999",
+                "enabled": true
+            },
+            "categories": ["/Aaaa/Bbb/Cccca", "/Technology/Forums - Other", "/UUUUabcde", "/Solutions/Web Hosting v2"]
+        }
+    ],
+    "categories": {
+        "/Aaaa/Bbb/Cccca": 1,
+        "/Technology/Forums - Other": 1,
+        "/UUUUabcde": 1,
+        "/Solutions/Web Hosting v2": 1
+    }
+}

@@ -7,9 +7,9 @@
 
     $.extend(BCAPI.Site, {
         list: function() {
-            useGenericToken = true;
+        	BCAPI._useGenericToken = true;
             var list = fetchList('/api/v2/admin/sites', function(attr) { return new BCAPI.Site(attr); });
-            useGenericToken = false;
+            BCAPI._useGenericToken = false;
             return list;
         },
         current: function() {
@@ -17,5 +17,5 @@
         }
     });
 
-    $.extend(Site.prototype, EntityBase);	
+    $.extend(BCAPI.Site.prototype, BCAPI.EntityBase);	
 })(jQuery);

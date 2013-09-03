@@ -65,17 +65,21 @@
                 return data;
             })
             .promise(jqXHR); // return the original jqXHR with the new promise attached
-    }    
+    };  
 
-    var request = BCAPI.request;
 
+    /**
+     * When TRUE will log all requests and other info
+     * 
+     * @type Boolean
+     */
     BCAPI.debug = true;
 
     /**
-     * LOg
+     * Logger
      *
      * @function
-     * @param msg
+     * @param msg {String}
      */
     BCAPI.log = function(msg) {
         if (window.console && BCAPI.debug) console.log("BCAPI: " + msg);
@@ -90,10 +94,10 @@
         $.error('You will need jQuery.cookie if you want BC Auth Token to be auto-populated. Alternatively implement your own BCAPI.authToken reader.');
     };
 
-    var useGenericToken = false;
+    BCAPI._useGenericToken = false;
 
-    function requestEntity(entity, verb, uri, data, rawData) {
-        return request(verb, uri, data, rawData)
+    BCAPI._requestEntity = function(entity, verb, uri, data, rawData) {
+        return BCAPI.request(verb, uri, data, rawData)
             .then(function(data) {
                 if ($.type(data) === 'object') {
                     if(entity.setAttributes) {
@@ -107,8 +111,8 @@
     }
 
     // Makes a GET request on a paginated BC REST API endpoint, and (optionally) converts the items to entity objects.
-    function fetchList(uri, paginator) {
-        return request('GET', uri)
+    BCAPI._fetchList = function(uri, paginator) {
+        return BCAPI.request('GET', uri)
             .then(function(data) {
                 paginator = paginator || new Paginator();
                 var Func = paginator.ItemConstructor;
@@ -125,7 +129,7 @@
     }
 
     // Returns a function that will only be executed after being called N times.
-    function after(times, func) {
+    BCAPI.after = function(times, func) {
         return function() {
             if (--times < 1 && func) {
                 return func.apply(this, arguments);
@@ -133,7 +137,7 @@
         };
     };
 
-    function chain(items, func) {
+    BCAPI.chain = function(items, func) {
         var promise = $.Deferred().resolve().promise();
         $.each(items, function(i, item) {
             promise = promise.then(func(item));
@@ -141,7 +145,7 @@
         return promise;
     }
 
-    function notSupported(what) {
+    BCAPI._notSupported = function(what) {
         return function() { $.error(what + ' is not supported by BC API.'); };
     }
 })(jQuery);

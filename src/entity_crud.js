@@ -6,7 +6,7 @@
             $.error('EntityCRUD.uri() not implemented');
         },
         request: function(verb, data, rawData) {
-            return requestEntity(this, verb, this.uri(), data, rawData);
+            return BCAPI.requestEntity(this, verb, this.uri(), data, rawData);
         },
 
         // Asynchronously refreshes the attributes.

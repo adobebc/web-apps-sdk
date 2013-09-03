@@ -1,4 +1,4 @@
 bcapi.js
 ========
 
-Official JavaScript library for working with the Business Catalyst API
+This is a sample library for working with Business Catalyst API.

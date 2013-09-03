@@ -1,0 +1,7 @@
+{
+    "plugins": ["ci/jsdoc/markdown"],
+    "markdown": {
+        "parser": "gfm",
+        "hardwrap": true
+    }
+}

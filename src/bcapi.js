@@ -2,40 +2,39 @@
     'use strict';
 
     /**
-     * My namespace blah-blah
+     * Everything in this lib is n
      *
      * @namespace BCAPI
      */
     window.BCAPI = {};
 
     /**
-     * This method lazily obtains authentication token for the current application.
-     * 
-     * name request
-     * method
-     * public
-     * instance
-     * memberOf BCAPI
+     * Performs an AJAX request to a BC endpoint. <br>
+     *
+     * Uses JSON.
+     *
+     * Example:
+     * ```
+     * BCAPI.request('GET', 'templates').done(function(data) { console.log(data) })
+     * BCAPI.request('GET', '/api/v2/admin/sites/current/templates').done(function(data) { console.log(data) })
+     * ```
+     * The 2 calls above do the same thing: fetch a list of templates and return the JSON data .
+     *
+     * @param verb GET|POST|PUT|DELETE
+     * @param uri URL or API v2 endpoint name
+     * @param data Object
+     * @param rawData If TRUE, the data will not
+     * @returns {Promise}
      */
     BCAPI.request = function(verb, uri, data, rawData) {
-        var options,
+        var options = {},
             token = BCAPI.authToken;
-
-        if (typeof verb === "object") {
-            options = verb;
-            verb = options.type;
-            uri = options.url;
-            data = options.data;
-            rawData = true;
-        } else {
-            options = {
-                type: verb
-            };
-        }
 
         if (!uri) return new $.Deferred().reject().promise();
 
         verb = (verb || 'GET').toUpperCase();
+        options.type = verb;
+
         BCAPI.log(verb + ' ' + uri);
 
         if (!rawData) {

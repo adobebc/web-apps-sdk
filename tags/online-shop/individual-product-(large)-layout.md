@@ -39,7 +39,7 @@ Tag | Description
 `{tag_poplets,rowlength,width,height}` | Displays thumbnail version of poplet images
 `{tag_productcode}` | Product code
 `{tag_relatedproducts}` | Displays a list of products related to this product that can be browsed and added separately to cart (useful for up/cross selling purposes)
-`{tag_relatedproductslist}` | Displays a list of products related to this product that are added to the cart when this product is (useful for up/cross selling purposes)
+`{tag_relatedproductslist}` | Displays a list of products related to this product that are added to the cart when this product is. `{tag_relatedproductslist,7}` will display them as radio buttons and `{tag_relatedproductslist,8}` displays small images of the product only. (useful for up/cross selling purposes)
 `{tag_releasedate}` | Release date of item
 `{tag_reorder}` | Number of units to reorder threshold
 `{tag_retailprice}` | Retail price of the product

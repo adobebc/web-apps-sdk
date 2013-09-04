@@ -100,8 +100,8 @@
             return BCAPI.Category.uri() + "/" + this.attributes.id;
         },
 
-        save: notSupported('Category.save()'),
-        delete: notSupported('Category.delete()')
+        save: BCAPI._notSupported('Category.save()'),
+        delete: BCAPI._notSupported('Category.delete()')
     });
 	
 })(jQuery);

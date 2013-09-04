@@ -197,8 +197,8 @@
             return this.uri() + "/countries";
         },
 
-        save: notSupported('WebApp.save()'),
-        delete: notSupported('WebApp.delete()'),
+        save: BCAPI._notSupported('WebApp.save()'),
+        delete: BCAPI._notSupported('WebApp.delete()'),
 
         getCountries: function() {
             return fetchList(this.countriesUri());

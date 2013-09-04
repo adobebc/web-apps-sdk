@@ -6,7 +6,7 @@
      *
      * @namespace BCAPI
      */
-    window.BCAPI = {};
+    window.BCAPI = window.BCAPI || {};
 
     /**
      * Performs an AJAX request to a BC endpoint. <br>

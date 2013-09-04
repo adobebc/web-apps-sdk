@@ -34,6 +34,14 @@ if grep "error" tests_runner.log; then
    exit 1
 fi
 
+if grep "No lines of coverage found."; then
+   rm tests_runner.log
+   
+   echo "Coverage is 0 -> Unacceptable."
+   
+   exit 1
+fi
+
 rm tests_runner.log
 
 echo "Done."

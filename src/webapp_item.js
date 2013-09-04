@@ -99,7 +99,7 @@
 	 * item.destroy();
 	 * ```
 	 * 
-	 * @namespace
+	 * @namespace BCAPI.WebApp
 	 * 
 	 */
 	BCAPI.WebApp = {};

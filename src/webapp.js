@@ -1,6 +1,11 @@
 (function($) {
 	"use strict";
 
+    /**
+     * @property attributes
+     * @property attributes.createDate
+     * @property attributes.lastUpdateDate
+     */
     BCAPI.WebApp = function(attributes) {
         this.setAttributes(attributes);
     };
@@ -18,13 +23,13 @@
 
             BCAPI.log("Create missing Categories...");
             
-            return Category
+            return BCAPI.Category
                 .createPathRecursive($.map(schema.categories, function(count, path) { return path; }))
                 .then(function(map) {
                     categoriesMap = map;
 
                     BCAPI.log("Create WebApp...");
-                    return WebApp.create(schema.webApp.attributes);
+                    return BCAPI.WebApp.create(schema.webApp.attributes);
                 })
                 .then(function(wa) {
                     webApp = wa;
@@ -39,16 +44,16 @@
 
                 .then(function() {
                     BCAPI.log("Create fields...");
-                    return chain(schema.webApp.fields, function(field) {
-                        return WebAppField.create(webApp, field.attributes);
+                    return BCAPI.chain(schema.webApp.fields, function(field) {
+                        return BCAPI.WebAppField.create(webApp, field.attributes);
                     });
                 })
 
                 .then(function() {
                     BCAPI.log("Create items and assign categories...");
-                    return chain(schema.items, function(item) {
+                    return BCAPI.chain(schema.items, function(item) {
 
-                        return WebAppItem
+                        return BCAPI.WebAppItem
                             .create(webApp, item.attributes)
                             .then(function(itemEntity) {
                                 var categoryIds = $.map(item.categories, function(path) {
@@ -72,14 +77,14 @@
                 mapCategoryIdToPath;
 
             BCAPI.log("List Categories...");
-            return Category.listWithFullPath()
+            return BCAPI.Category.listWithFullPath()
                 .then(function(mapPathToObject, mapIdToPath) {
                     mapCategoryIdToPath = mapIdToPath;
 
                     BCAPI.log("Get WebApp schema...");
-                    return WebApp.get(name);
+                    return BCAPI.WebApp.get(name);
                 })
-                .then(function(webApp) {
+                .then(/** @param webApp {WebApp} */ function(webApp) {
                     schema.webApp = webApp;
 
                     $.each(webApp.fields, function(i, field) {
@@ -104,7 +109,7 @@
                     schema.countries = countries.items;
 
                     BCAPI.log("Get WebApp items...");
-                    return WebAppItem.list(schema.webApp, 'limit=100') // max out limit
+                    return BCAPI.WebAppItem.list(schema.webApp, 'limit=100'); // max out limit
                 })
                 .then(function(paginatedItems) {
                     return $.Deferred(function(deferred) {
@@ -112,7 +117,7 @@
 
                         // TODO: Should we export items from page 2+?
 
-                        var categoriesDoneCallback = after(schema.items.length, function() {
+                        var categoriesDoneCallback = BCAPI.after(schema.items.length, function() {
                             deferred.resolve(schema);
                         });
 
@@ -154,18 +159,18 @@
                 filename = '/Layouts/WebApps/' + filename + "/schema.json"
             }
 
-            return new BCFile(filename)
+            return new BCAPI.File(filename)
                 .read()
                 .then(function(schema) {
-                    return WebApp.createFromSchema($.parseJSON(schema));
+                    return BCAPI.WebApp.createFromSchema($.parseJSON(schema));
                 });
         },
 
         importFromFiles: function(filenames) {
             var webApps = {};
 
-            return chain(filenames, function(filename) {
-                    return WebApp
+            return BCAPI.chain(filenames, function(filename) {
+                    return BCAPI.WebApp
                         .importFromFile(filename)
                         .done(function(webApp) {
                             webApps[filename] = webApp;
@@ -179,11 +184,11 @@
         exportToFile: function(webAppName, filename) {
             BCAPI.log('Exporting WebApp ' + webAppName + '"...');
 
-            return WebApp
+            return BCAPI.WebApp
                 .exportSchema(webAppName)
                 .then(function(schema) {
                     filename = filename || '/Layouts/WebApps/' + schema.webApp.attributes.name + "/schema.json";
-                    return new BCFile(filename)
+                    return new BCAPI.File(filename)
                         .write(JSON.stringify(schema));
                 });
         }
@@ -191,7 +196,7 @@
 
     $.extend(BCAPI.WebApp.prototype, BCAPI.EntityCRUD, {
         uri: function() {
-            return WebApp.uri() + "/" + this.attributes.name;
+            return BCAPI.WebApp.uri() + "/" + this.attributes.name;
         },
         countriesUri: function() {
             return this.uri() + "/countries";
@@ -201,7 +206,7 @@
         delete: BCAPI._notSupported('WebApp.delete()'),
 
         getCountries: function() {
-            return fetchList(this.countriesUri());
+            return BCAPI._fetchList(this.countriesUri());
         },
         saveCountries: function(countries) {
             return request('PUT', this.countriesUri(), countries);
@@ -212,14 +217,14 @@
             if (attributes && attributes.fields) {
                 var webApp = this;
                 webApp.fields = $.map(attributes.fields, function(fieldAttr) {
-                    return new WebAppField(webApp, fieldAttr);
+                    return new BCAPI.WebAppField(webApp, fieldAttr);
                 });
 
                 // Updating field information directly from a WebApp.save() is not supported
                 delete attributes.fields;
             }
 
-            return EntityBase.setAttributes.call(this, attributes);
+            return BCAPI.EntityBase.setAttributes.call(this, attributes);
         }
     });
     

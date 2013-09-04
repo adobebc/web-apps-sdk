@@ -2,22 +2,15 @@
 	"use strict";
 	
     /**
-     * Paginator blah-blah.
+     * Paginator used in {Entity.list}
      *
-     * Multiline
-     *
-     * - docs
-     * - in *markdown*
-     *
-     * @name BCAPI.Paginator
-     * @class
      * @constructor
      */
 	BCAPI.Paginator = function(ItemConstructor, owner, items) {
         this.items = items || [];
         this.owner = owner;
         this.ItemConstructor = ItemConstructor;
-    }
+    };
 
     $.extend(BCAPI.Paginator.prototype, {
         items: undefined,
@@ -29,13 +22,13 @@
         linkUri: BCAPI.EntityBase.linkUri,
 
         fetchCurrPage: function() {
-            return fetchList(this.linkUri('self'), this);
+            return BCAPI._fetchList(this.linkUri('self'), this);
         },
         fetchNextPage: function() {
-            return fetchList(this.linkUri('next'), this);
+            return BCAPI._fetchList(this.linkUri('next'), this);
         },
         fetchPreviousPage: function() {
-            return fetchList(this.linkUri('previous'), this);
+            return BCAPI._fetchList(this.linkUri('previous'), this);
         },
 
         /**
@@ -56,7 +49,7 @@
                     return;
                 }
 
-                var callback = after(paginator.items.length, function() { deferred.resolve() });
+                var callback = BCAPI.after(paginator.items.length, function() { deferred.resolve() });
 
                 $.each(paginator.items, function(i, item) {
                     item.fetch()

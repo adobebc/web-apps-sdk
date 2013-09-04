@@ -55,26 +55,26 @@
         },
 
         remove: function(force) {
-            return requestEntity(this, 'DELETE', this.contentUri() + '?force=' + !!force);
+            return BCAPI._requestEntity(this, 'DELETE', this.contentUri() + '?force=' + !!force);
         },
         removeDraft: function() {
-            return requestEntity(this, 'DELETE', this.draftUri() + '?force=' + !!force);
+            return BCAPI._requestEntity(this, 'DELETE', this.draftUri());
         },
 
         // Reads the contents from the (FTP) file
         read: function() {
-            return requestEntity(this, 'GET', this.contentUri(), null, true);
+            return BCAPI._requestEntity(this, 'GET', this.contentUri(), null, true);
         },
         readDraft: function() {
-            return requestEntity(this, 'GET', this.draftUri(), null, true);
+            return BCAPI._requestEntity(this, 'GET', this.draftUri(), null, true);
         },
 
         // Writes the contents to the (FTP) file
         write: function(contents) {
-            return requestEntity(this, 'PUT', this.contentUri(), contents, true);
+            return BCAPI._requestEntity(this, 'PUT', this.contentUri(), contents, true);
         },
         writeDraft: function(contents) {
-            return requestEntity(this, 'PUT', this.draftUri(), contents, true);
+            return BCAPI._requestEntity(this, 'PUT', this.draftUri(), contents, true);
         }
     });
 })(jQuery);

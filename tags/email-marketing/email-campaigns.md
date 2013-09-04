@@ -9,6 +9,7 @@ Applies to all email marketing campaigns.
 Tag | Description
 -------------- | -------------
 `{tag_anniversarytitle}` | Title of anniversary date relevant to each recipient (use with Anniversary 1-5 campaigns only)
+`{tag_deliverydate}` | Outputs the date on which the campaign will be sent. Can be used in the campaign subject
 `{tag_recipientemail}` | Email address of the recipient
 `{tag_recipientfirstname}` | First name of the recipient (replaces with "Friend" if first name is empty)
 `{tag_recipientlastname}` | Last name of the recipient

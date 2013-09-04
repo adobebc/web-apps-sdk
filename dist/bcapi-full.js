@@ -2,40 +2,39 @@
     'use strict';
 
     /**
-     * My namespace blah-blah
+     * Everything in this lib is n
      *
      * @namespace BCAPI
      */
-    window.BCAPI = {};
+    window.BCAPI = window.BCAPI || {};
 
     /**
-     * This method lazily obtains authentication token for the current application.
-     * 
-     * name request
-     * method
-     * public
-     * instance
-     * memberOf BCAPI
+     * Performs an AJAX request to a BC endpoint. <br>
+     *
+     * Uses JSON.
+     *
+     * Example:
+     * ```
+     * BCAPI.request('GET', 'templates').done(function(data) { console.log(data) })
+     * BCAPI.request('GET', '/api/v2/admin/sites/current/templates').done(function(data) { console.log(data) })
+     * ```
+     * The 2 calls above do the same thing: fetch a list of templates and return the JSON data .
+     *
+     * @param verb GET|POST|PUT|DELETE
+     * @param uri URL or API v2 endpoint name
+     * @param data Object
+     * @param rawData If TRUE, the data will not
+     * @returns {Promise}
      */
     BCAPI.request = function(verb, uri, data, rawData) {
-        var options,
+        var options = {},
             token = BCAPI.authToken;
-
-        if (typeof verb === "object") {
-            options = verb;
-            verb = options.type;
-            uri = options.url;
-            data = options.data;
-            rawData = true;
-        } else {
-            options = {
-                type: verb
-            };
-        }
 
         if (!uri) return new $.Deferred().reject().promise();
 
         verb = (verb || 'GET').toUpperCase();
+        options.type = verb;
+
         BCAPI.log(verb + ' ' + uri);
 
         if (!rawData) {
@@ -66,17 +65,21 @@
                 return data;
             })
             .promise(jqXHR); // return the original jqXHR with the new promise attached
-    }    
+    };  
 
-    var request = BCAPI.request;
 
+    /**
+     * When TRUE will log all requests and other info
+     * 
+     * @type Boolean
+     */
     BCAPI.debug = true;
 
     /**
-     * LOg
+     * Logger
      *
      * @function
-     * @param msg
+     * @param msg {String}
      */
     BCAPI.log = function(msg) {
         if (window.console && BCAPI.debug) console.log("BCAPI: " + msg);
@@ -91,10 +94,10 @@
         $.error('You will need jQuery.cookie if you want BC Auth Token to be auto-populated. Alternatively implement your own BCAPI.authToken reader.');
     };
 
-    var useGenericToken = false;
+    BCAPI._useGenericToken = false;
 
-    function requestEntity(entity, verb, uri, data, rawData) {
-        return request(verb, uri, data, rawData)
+    BCAPI._requestEntity = function(entity, verb, uri, data, rawData) {
+        return BCAPI.request(verb, uri, data, rawData)
             .then(function(data) {
                 if ($.type(data) === 'object') {
                     if(entity.setAttributes) {
@@ -108,8 +111,8 @@
     }
 
     // Makes a GET request on a paginated BC REST API endpoint, and (optionally) converts the items to entity objects.
-    function fetchList(uri, paginator) {
-        return request('GET', uri)
+    BCAPI._fetchList = function(uri, paginator) {
+        return BCAPI.request('GET', uri)
             .then(function(data) {
                 paginator = paginator || new Paginator();
                 var Func = paginator.ItemConstructor;
@@ -126,7 +129,7 @@
     }
 
     // Returns a function that will only be executed after being called N times.
-    function after(times, func) {
+    BCAPI.after = function(times, func) {
         return function() {
             if (--times < 1 && func) {
                 return func.apply(this, arguments);
@@ -134,7 +137,7 @@
         };
     };
 
-    function chain(items, func) {
+    BCAPI.chain = function(items, func) {
         var promise = $.Deferred().resolve().promise();
         $.each(items, function(i, item) {
             promise = promise.then(func(item));
@@ -142,44 +145,13 @@
         return promise;
     }
 
-    function notSupported(what) {
+    BCAPI._notSupported = function(what) {
         return function() { $.error(what + ' is not supported by BC API.'); };
     }
-
-
-    // =============================================================================================================
-
-    // Common methods used in most Entity classes
-    var FactoryCRUD = {
-        uri: function() {
-            $.error('FactoryCRUD.uri() not implemented');
-        },
-
-        // Makes a POST to persist a new entity on the server.
-        // Returns an entity object. The entity attributes will be incomplete at the moment of return.
-        // Use onSuccess if you need to work with the returned value.
-        create: function(attributes) {
-            return requestEntity(new this(attributes), 'POST', this.uri(), attributes);
-        },
-
-        // GETs all the entities of particular type from the server.
-        // Returns an list, (later) populated asynchronously.
-        // Use onSuccess if you need to work with the returned value.
-        // In some cases, the entities in the list will be incomplete even after onSuccess fires.
-        // Use entity.fetch() is an it does not contain all the attributes you need.
-        list: function() {
-            return fetchList(this.uri(), new Paginator(this));
-        },
-
-        // Returns an entity object. The entity attributes will be incomplete at the moment of return.
-        // Use onSuccess if you need to work with the returned value.
-        get: function(id) {
-            return new this({id: id}).fetch();
-        }
-    };
-
-    // Common methods used in all Entity object
-    var EntityBase = {
+})(jQuery);;(function($) {
+	"use strict";
+	
+	BCAPI.EntityBase = {
         attributes: undefined,
         links: undefined,
 
@@ -198,13 +170,15 @@
             return this;
         }
     };
-
-    var EntityCRUD = $.extend({
+})(jQuery);;(function($) {
+	"use strict";
+	
+    BCAPI.EntityCRUD = $.extend({
         uri: function() {
             $.error('EntityCRUD.uri() not implemented');
         },
         request: function(verb, data, rawData) {
-            return requestEntity(this, verb, this.uri(), data, rawData);
+            return BCAPI.requestEntity(this, verb, this.uri(), data, rawData);
         },
 
         // Asynchronously refreshes the attributes.
@@ -221,11 +195,10 @@
         remove: function() {
             return this.request('DELETE');
         }
-    }, EntityBase);
-
-
-    // =============================================================================================================
-
+    }, BCAPI.EntityBase);
+})(jQuery);;(function($) {
+	"use strict";
+	
     /**
      * Paginator blah-blah.
      *
@@ -238,20 +211,20 @@
      * @class
      * @constructor
      */
-    var Paginator = BCAPI.Paginator = function(ItemConstructor, owner, items) {
+	BCAPI.Paginator = function(ItemConstructor, owner, items) {
         this.items = items || [];
         this.owner = owner;
         this.ItemConstructor = ItemConstructor;
     }
 
-    $.extend(Paginator.prototype, {
+    $.extend(BCAPI.Paginator.prototype, {
         items: undefined,
         totalItemsCount: undefined,
         links: undefined,
 
         owner: undefined,
         ItemConstructor: undefined,
-        linkUri: EntityBase.linkUri,
+        linkUri: BCAPI.EntityBase.linkUri,
 
         fetchCurrPage: function() {
             return fetchList(this.linkUri('self'), this);
@@ -290,24 +263,54 @@
                 });
             }).promise();
         }
-    });
+    });	
+})(jQuery);;(function($) {
+	"use strict";
+	
+    BCAPI.FactoryCRUD = {
+        uri: function() {
+            $.error('FactoryCRUD.uri() not implemented');
+        },
 
+        // Makes a POST to persist a new entity on the server.
+        // Returns an entity object. The entity attributes will be incomplete at the moment of return.
+        // Use onSuccess if you need to work with the returned value.
+        create: function(attributes) {
+            return requestEntity(new this(attributes), 'POST', this.uri(), attributes);
+        },
 
-    // =============================================================================================================
+        // GETs all the entities of particular type from the server.
+        // Returns an list, (later) populated asynchronously.
+        // Use onSuccess if you need to work with the returned value.
+        // In some cases, the entities in the list will be incomplete even after onSuccess fires.
+        // Use entity.fetch() is an it does not contain all the attributes you need.
+        list: function() {
+            return fetchList(this.uri(), new BCAPI.Paginator(this));
+        },
 
-    /**
+        // Returns an entity object. The entity attributes will be incomplete at the moment of return.
+        // Use onSuccess if you need to work with the returned value.
+        get: function(id) {
+            return new this({id: id}).fetch();
+        }
+    };
+
+})(jQuery);;(function($) {
+	"use strict";
+	
+	/**
      * BC FileSystem APIs
      *
      * @constructor
-     * @augments EntityCRUD
+     * @augments BCAPI.EntityCRUD
      */
-    var BCFile = BCAPI.File = function(path, attributes) {
+    BCAPI.File = function(path, attributes) {
         if (path.charAt(0) !== '/') path = '/' + path;
         this.path = path;
         this.setAttributes(attributes);
     };
 
-    $.extend(BCFile, {
+    $.extend(BCAPI.File, {
         create: function(path, content) {
             var file = new this(path);
             return file
@@ -324,7 +327,7 @@
         }
     });
 
-    $.extend(BCFile.prototype, EntityCRUD, {
+    $.extend(BCAPI.File.prototype, BCAPI.EntityCRUD, {
 
         contentUri: function() {
             return 'storage' + this.path;
@@ -341,11 +344,11 @@
             if (attributes && attributes.type === 'folder') {
                 var folder = this;
                 folder.files = $.map(attributes.contents, function(fileAttr) {
-                    return new BCFile(folder.path + '/' + fileAttr.name, fileAttr);
+                    return new BCAPI.File(folder.path + '/' + fileAttr.name, fileAttr);
                 });
             }
 
-            return EntityBase.setAttributes.call(this, attributes);
+            return BCAPI.EntityBase.setAttributes.call(this, attributes);
         },
 
         remove: function(force) {
@@ -371,15 +374,14 @@
             return requestEntity(this, 'PUT', this.draftUri(), contents, true);
         }
     });
+})(jQuery);;(function($) {
+	"use strict";
 
-
-    // =============================================================================================================
-
-    var WebApp = BCAPI.WebApp = function(attributes) {
+    BCAPI.WebApp = function(attributes) {
         this.setAttributes(attributes);
     };
-
-    $.extend(WebApp, FactoryCRUD, {
+	
+    $.extend(BCAPI.WebApp, BCAPI.FactoryCRUD, {
         uri: function() { return 'webapps'; },
 
         get: function(name) {
@@ -391,6 +393,7 @@
             var webApp, categoriesMap;
 
             BCAPI.log("Create missing Categories...");
+            
             return Category
                 .createPathRecursive($.map(schema.categories, function(count, path) { return path; }))
                 .then(function(map) {
@@ -562,7 +565,7 @@
         }
     });
 
-    $.extend(WebApp.prototype, EntityCRUD, {
+    $.extend(BCAPI.WebApp.prototype, BCAPI.EntityCRUD, {
         uri: function() {
             return WebApp.uri() + "/" + this.attributes.name;
         },
@@ -570,8 +573,8 @@
             return this.uri() + "/countries";
         },
 
-        save: notSupported('WebApp.save()'),
-        delete: notSupported('WebApp.delete()'),
+        save: BCAPI._notSupported('WebApp.save()'),
+        delete: BCAPI._notSupported('WebApp.delete()'),
 
         getCountries: function() {
             return fetchList(this.countriesUri());
@@ -595,16 +598,16 @@
             return EntityBase.setAttributes.call(this, attributes);
         }
     });
-
-
-    // =============================================================================================================
-
-    var WebAppField = BCAPI.WebAppField = function(webApp, attributes) {
+    
+})(jQuery);;(function($) {
+	"use strict";
+	
+    BCAPI.WebAppField = function(webApp, attributes) {
         this.webApp = webApp;
         this.setAttributes(attributes);
     };
 
-    $.extend(WebAppField, {
+    $.extend(BCAPI.WebAppField, {
         uri: function(webApp) {
             return webApp.uri() + "/fields";
         },
@@ -620,40 +623,40 @@
         }
     });
 
-    $.extend(WebAppField.prototype, EntityCRUD, {
+    $.extend(BCAPI.WebAppField.prototype, BCAPI.EntityCRUD, {
         uri: function() {
-            return WebAppField.uri(this.webApp) + "/" + this.attributes.id;
+            return BCAPI.WebAppField.uri(this.webApp) + "/" + this.attributes.id;
         }
-    });
-
-
-    // =============================================================================================================
-
-    var WebAppItem = BCAPI.WebAppItem = function(webApp, attributes) {
+    });	
+})(jQuery);;(function($) {
+	"use strict";
+	
+    BCAPI.WebAppItem = function(webApp, attributes) {
         this.webApp = webApp;
         this.setAttributes(attributes);
     };
 
-    $.extend(WebAppItem, {
+    $.extend(BCAPI.WebAppItem, {
         uri: function(webApp) {
             return webApp.uri() + "/items";
         },
 
-        create: WebAppField.create,
-        get: WebAppField.get,
+        create: BCAPI.WebAppField.create,
+        get: BCAPI.WebAppField.get,
 
         // Find items corresponding to the criteria specified in the <query> parameter.
         // The <query> can be either an URL query string or a key-value object.
         list: function(webApp, query) {
             var uri = this.uri(webApp);
             if (query) uri += '?' + (typeof query === "object" ? $.param(query) : query);
-            return fetchList(uri, new Paginator(this, webApp));
+            
+            return fetchList(uri, new BCAPI.Paginator(this, webApp));
         }
     });
 
-    $.extend(WebAppItem.prototype, EntityCRUD, {
+    $.extend(BCAPI.WebAppItem.prototype, BCAPI.EntityCRUD, {
         uri: function() {
-            return WebAppItem.uri(this.webApp) + "/" + this.attributes.id;
+            return BCAPI.WebAppItem.uri(this.webApp) + "/" + this.attributes.id;
         },
         categoriesUri: function() {
             return this.uri() + "/categories";
@@ -666,15 +669,15 @@
             return request('PUT', this.categoriesUri(), categories);
         }
     });
-
-
-    // =============================================================================================================
-
-    var Category = BCAPI.Category = function(attributes) {
+	
+})(jQuery);;(function($) {
+	"use strict";
+	
+	BCAPI.Category = function(attributes) {
         this.setAttributes(attributes);
     };
 
-    $.extend(Category, FactoryCRUD, {
+    $.extend(BCAPI.Category, BCAPI.FactoryCRUD, {
         uri: function() { return 'categories'; },
 
         // Checks if a category <path> exists and, if not, creates the needed categories.
@@ -684,7 +687,7 @@
                 return this
                     .listWithFullPath()
                     .then(function(map) {
-                        return Category.createPathRecursive(path, map)
+                        return BCAPI.Category.createPathRecursive(path, map);
                     });
             }
 
@@ -692,7 +695,7 @@
             // to make sure we don't have any racing conditions
             if ($.isArray(path)) {
                 return chain(path, function(p) {
-                    return Category.createPathRecursive(p, map);
+                    return BCAPI.Category.createPathRecursive(p, map);
                 }).then(function() {
                     return map;
                 });
@@ -707,17 +710,17 @@
                 name = path.replace(/.*\//, '');
 
             if (parentPath) {
-                return Category
+                return BCAPI.Category
                     .createPathRecursive(parentPath, map)
                     .done(function(parentCategory) {
-                        return Category
+                        return BCAPI.Category
                             .create({name: name, parentId: parentCategory.attributes.id})
                             .done(function(category) {
                                 map[path] = category;
                             });
                     });
             } else {
-                return Category
+                return BCAPI.Category
                     .create({name: name})
                     .done(function(category) {
                         map[path] = category;
@@ -727,7 +730,7 @@
 
         listWithFullPath: function() {
             return $.Deferred(function(deferred) {
-                Category.list()
+            	BCAPI.Category.list()
                     .fail(deferred.reject)
                     .done(function(categories) {
                         var mapIdToPath = {},
@@ -764,74 +767,73 @@
         }
     });
 
-    $.extend(Category.prototype, EntityCRUD, {
+    $.extend(BCAPI.Category.prototype, BCAPI.EntityCRUD, {
         uri: function() {
-            return Category.uri() + "/" + this.attributes.id;
+            return BCAPI.Category.uri() + "/" + this.attributes.id;
         },
 
-        save: notSupported('Category.save()'),
-        delete: notSupported('Category.delete()')
+        save: BCAPI._notSupported('Category.save()'),
+        delete: BCAPI._notSupported('Category.delete()')
     });
-
-
-    // =============================================================================================================
-
-    var Country = BCAPI.Country = function(attributes) {
+	
+})(jQuery);;(function($) {
+	"use strict";
+	
+    BCAPI.Country = function(attributes) {
         this.setAttributes(attributes);
     };
 
-    $.extend(Country, {
+    $.extend(BCAPI.Country, {
         uri: function() { return '/api/v2/admin/system/countries'; },
 
-        list: FactoryCRUD.list,
+        list: BCAPI.FactoryCRUD.list,
         listForIp: function(ip) {
-            return fetchList(this.uri() + '?ip=' + (ip || 'current'), new Paginator(Country));
+            return fetchList(this.uri() + '?ip=' + (ip || 'current'), new BCAPI.Paginator(Country));
         }
     });
 
-    $.extend(Country.prototype, EntityBase);
-
-
-    // =============================================================================================================
-
-    var Role = BCAPI.Role = function(attributes) {
+    $.extend(BCAPI.Country.prototype, BCAPI.EntityBase);
+	
+})(jQuery);;(function($) {
+	"use strict";
+	
+    BCAPI.Role = function(attributes) {
         this.setAttributes(attributes);
     };
 
-    $.extend(Role, {
+    $.extend(BCAPI.Role, {
         uri: function() { return 'roles'; },
-        list: FactoryCRUD.list
+        list: BCAPI.FactoryCRUD.list
     });
 
-    $.extend(Role.prototype, EntityBase);
-
-
-    // =============================================================================================================
-
-    var Template = BCAPI.Template = function(attributes) {
+    $.extend(BCAPI.Role.prototype, BCAPI.EntityBase);
+	
+})(jQuery);;(function($) {
+	"use strict";
+	
+    BCAPI.Template = function(attributes) {
         this.setAttributes(attributes);
     };
 
-    $.extend(Template, {
+    $.extend(BCAPI.Template, {
         uri: function() { return 'templates'; },
-        list: FactoryCRUD.list
+        list: BCAPI.FactoryCRUD.list
     });
 
-    $.extend(Template.prototype, EntityBase);
+    $.extend(BCAPI.Template.prototype, BCAPI.EntityBase);
+	
+})(jQuery);;(function($) {
+	"use strict";
 
-
-    // =============================================================================================================
-
-    var Site = BCAPI.Site = function(attributes) {
+    BCAPI.Site = function(attributes) {
         this.setAttributes(attributes);
     };
 
-    $.extend(Site, {
+    $.extend(BCAPI.Site, {
         list: function() {
-            //noinspection JSUnusedAssignment
-            useGenericToken = true;
-            var list = fetchList('/api/v2/admin/sites', function(attr) { return new Site(attr); });
-            useGenericToken = false;
+        	BCAPI._useGenericToken = true;
+            var list = fetchList('/api/v2/admin/sites', function(attr) { return new BCAPI.Site(attr); });
+            BCAPI._useGenericToken = false;
             return list;
         },
         current: function() {
@@ -839,6 +841,5 @@
         }
     });
 
-    $.extend(Site.prototype, EntityBase);
-
+    $.extend(BCAPI.Site.prototype, BCAPI.EntityBase);	
 })(jQuery);

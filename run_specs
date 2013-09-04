@@ -28,7 +28,7 @@ java -jar $JAR_FILE --port $PORT --config $CONFIG --browser "$BROWSER" --tests $
 
 cat tests_runner.log
 
-if grep -i "error" tests_runner.log; then
+if grep "error" tests_runner.log; then
    rm tests_runner.log
 
    exit 1

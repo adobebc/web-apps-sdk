@@ -10,7 +10,7 @@
 
         list: BCAPI.FactoryCRUD.list,
         listForIp: function(ip) {
-            return fetchList(this.uri() + '?ip=' + (ip || 'current'), new BCAPI.Paginator(Country));
+            return BCAPI.fetchList(this.uri() + '?ip=' + (ip || 'current'), new BCAPI.Paginator(Country));
         }
     });
 

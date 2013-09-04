@@ -12,10 +12,10 @@
         },
 
         create: function(webApp, attributes) {
-            return requestEntity(new this(webApp, attributes), 'POST', this.uri(webApp), attributes);
+            return BCAPI._requestEntity(new this(webApp, attributes), 'POST', this.uri(webApp), attributes);
         },
         list: function(webApp) {
-            return fetchList(this.uri(webApp), new Paginator(this, webApp));
+            return BCAPI._fetchList(this.uri(webApp), new Paginator(this, webApp));
         },
         get: function(webApp, id) {
             return new this(webApp, {id: id}).fetch();

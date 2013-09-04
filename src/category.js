@@ -22,7 +22,7 @@
             // We will chain category creation, instead of running them in parallel,
             // to make sure we don't have any racing conditions
             if ($.isArray(path)) {
-                return chain(path, function(p) {
+                return BCAPI.chain(path, function(p) {
                     return BCAPI.Category.createPathRecursive(p, map);
                 }).then(function() {
                     return map;

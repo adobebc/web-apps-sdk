@@ -1,6 +1,11 @@
 (function($) {
 	"use strict";
-	
+
+    /**
+     * @property attributes
+     * @property attributes.createDate
+     * @property attributes.lastUpdateDate
+     */
     BCAPI.WebAppItem = function(webApp, attributes) {
         this.webApp = webApp;
         this.setAttributes(attributes);
@@ -20,7 +25,7 @@
             var uri = this.uri(webApp);
             if (query) uri += '?' + (typeof query === "object" ? $.param(query) : query);
             
-            return fetchList(uri, new BCAPI.Paginator(this, webApp));
+            return BCAPI._fetchList(uri, new BCAPI.Paginator(this, webApp));
         }
     });
 
@@ -33,7 +38,7 @@
         },
 
         getCategories: function() {
-            return fetchList(this.categoriesUri());
+            return BCAPI._fetchList(this.categoriesUri());
         },
         saveCategories: function(categories) {
             return request('PUT', this.categoriesUri(), categories);

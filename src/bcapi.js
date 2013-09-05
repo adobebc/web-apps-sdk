@@ -4,6 +4,7 @@
     /**
      * @namespace BCAPI
      */
-    window.BCAPI = window.BCAPI || {};
-
+    var BCAPI = {};
+        
+    window.BCAPI = BCAPI || {};    
 })(jQuery);

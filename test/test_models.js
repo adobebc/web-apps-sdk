@@ -3,13 +3,13 @@ describe("Unit tests for BC models namespace.", function() {
 		var oldSiteHelper;
 		
 		beforeEach(function() {
-			oldSiteHelper = BCAPI.Helpers.Site;
+			oldSiteHelper = BCAPI.Helper.Site;
 			
-			BCAPI.Mocks.Site.mock(undefined, "123");
+			BCAPI.Mocks.Helper.Site(undefined, "123");
 		});
 		
 		afterEach(function() {
-			BCAPI.Helpers.Site = oldSiteHelper;
+			BCAPI.Helper.Site = oldSiteHelper;
 		});
 		
 		it("Check default authorization site header", function() {

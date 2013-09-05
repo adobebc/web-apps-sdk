@@ -24,7 +24,7 @@
     BCAPI.Models.Model = Backbone.Model.extend({
     	headers: function() {
     		return {
-    			"Authorization": BCAPI.Helpers.Site.getSiteToken()
+    			"Authorization": BCAPI.Helper.Site.getSiteToken()
     		};
     	}
     });

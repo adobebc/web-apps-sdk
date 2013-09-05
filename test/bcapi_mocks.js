@@ -7,40 +7,39 @@
 	var Mocks = {};
 	
 	/**
-	 * This namespace holds the utility methods for mocking {@link BCAPI.Helpers.Site} methods.
-	 * @namespace BCAPI.Mocks.Site
+	 * @namespace BCAPI.Mocks.Helper
 	 */
-	Mocks.Site = {};
+	Mocks.Helper = {};
 	
 	/**
-	 * This method mocks {@link BCAPI.Helpers.Site} methods namespace to return given values.
+	 * This method mocks {@link BCAPI.Helper.Site} namespace.
 	 * 
-	 * @param {String} genericToken Generic token we want to return from {@link BCAPI.Helpers.Site.getGenericToken} 
-	 * @param {String} siteToken Site token we want to return from {@link BCAPI.Helpers.Site.getSiteToken}
-	 * @param {String} rootUrl Root url we want to return from {@link BCAPI.Helpers.Site.getRootUrl}
+	 * @param {String} genericToken Generic token we want to return from {@link BCAPI.Helper.Site.getGenericToken} 
+	 * @param {String} siteToken Site token we want to return from {@link BCAPI.Helper.Site.getSiteToken}
+	 * @param {String} rootUrl Root url we want to return from {@link BCAPI.Helper.Site.getRootUrl}
 	 * @function
-	 * @memberOf BCAPI.Mocks.Site
+	 * @memberOf BCAPI.Mocks.Helper
 	 * 
 	 * @example
 	 * describe("Simple tests", function() {
 	 *  var oldSiteHelper;
 	 * 
 	 * 	beforeEach(function() {
-	 * 		oldSiteHelper = BCAPI.Helpers.Site;
-	 * 		BCAPI.Mocks.site.mock("genericToken123", "siteToken12345", "https://simple.base.url.com/");
+	 * 		oldSiteHelper = BCAPI.Helper.Site;
+	 * 		BCAPI.Mocks.Helper.Site("genericToken123", "siteToken12345", "https://simple.base.url.com/");
 	 * 	});
 	 * 
 	 * 	it("Simple test case", function() {
-	 * 		expect(BCAPI.Helpers.Site.getGenericToken()).toBe(genericToken123);
-	 * 		expect(BCAPI.Helpers.Site.getSiteToken()).toBe(siteToken123);
-	 * 		expect(BCAPI.Helpers.Site.getRootUrl()).toBe("https://simple.base.url.com/");
+	 * 		expect(BCAPI.Helper.Site.getGenericToken()).toBe(genericToken123);
+	 * 		expect(BCAPI.Helper.Site.getSiteToken()).toBe(siteToken123);
+	 * 		expect(BCAPI.Helper.Site.getRootUrl()).toBe("https://simple.base.url.com/");
 	 * 	});
 	 * });
 	 */
-	Mocks.Site.mock = function(genericToken, siteToken, rootUrl) {
-		spyOn(BCAPI.Helpers.Site, "getGenericToken").andReturn(genericToken);
-		spyOn(BCAPI.Helpers.Site, "getSiteToken").andReturn(siteToken);
-		spyOn(BCAPI.Helpers.Site, "getRootUrl").andReturn(rootUrl);
+	Mocks.Helper.Site= function(genericToken, siteToken, rootUrl) {
+		spyOn(BCAPI.Helper.Site, "getGenericToken").andReturn(genericToken);
+		spyOn(BCAPI.Helper.Site, "getSiteToken").andReturn(siteToken);
+		spyOn(BCAPI.Helper.Site, "getRootUrl").andReturn(rootUrl);
 	};
 	
 	BCAPI.Mocks = Mocks;

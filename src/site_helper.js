@@ -1,6 +1,6 @@
 (function($) {
 	/**
-	 * @namespace BCAPI.Helpers.Site 
+	 * @namespace BCAPI.Helper.Site 
 	 */
 	var Site =  {};
 	
@@ -16,5 +16,5 @@
 		return null;
 	};
 	
-	BCAPI.Helpers.Site = Site;	
+	BCAPI.Helper.Site = Site;	
 })(jQuery);

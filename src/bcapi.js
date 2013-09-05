@@ -7,15 +7,15 @@
     var BCAPI = {};
     
     /**
-     * Helpers namespace contains various utility functions aimed to ease development:
+     * Helper namespace contains various utility functions aimed to ease development:
      * 
-     * - getSiteToken
-     * - getGenericToken
+     * - Site.getSiteToken
+     * - Site.getGenericToken
      * - other such functions.
      * 
-     * @namespace BCAPI.Helpers
+     * @namespace BCAPI.Helper
      */
-    BCAPI.Helpers = {};
+    BCAPI.Helper = {};
     
     window.BCAPI = BCAPI || {};    
 })(jQuery);

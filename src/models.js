@@ -22,10 +22,47 @@
      * });
      */
     BCAPI.Models.Model = Backbone.Model.extend({
+    	/**
+    	 * This method returns the predefined headers which are automatically appended to ajax calls.
+    	 * For instance, Authorization header must be set to site token for most of the calls. If you
+    	 * need a different behavior in your model, please override this method.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
+    	 * @returns A list of headers apppended to ajax calls.
+    	 */
     	headers: function() {
     		return {
     			"Authorization": BCAPI.Helper.Site.getSiteToken()
     		};
+    	},
+    	/**
+    	 * This method automatically builds absolute url of the model.
+    	 * 
+    	 * @returns An absolute API url.
+    	 */
+    	url: function() {
+    		return BCAPI.Helper.Site.getRootUrl();
+    	},
+    	/**
+    	 * Sync method is invoked automatically when user tries to create / update a model. It automatically 
+    	 * appends the custom headers returned by {@link BCAPI.Models.Model.headers} method.
+    	 * 
+    	 * @param {String} method Http method used to persist the state of the current model. 
+    	 * @param {BCAPI.Models.Model} model The current model to persist.
+    	 * @param {Object} options Additional options which influence how http call will be done.
+    	 */
+    	sync: function(method, model, options) {
+    		var customHeaders = this.headers();
+    		
+    		options.headers = options.headers || {};
+    		
+    		for(var headerKey in customHeaders) {
+    			options.headers[headerKey] = customHeaders[headerKey];
+    		}
+    		
+    		Backbone.Model.prototype.sync(method, model, options);
     	}
     });
     

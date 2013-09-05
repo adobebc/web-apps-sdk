@@ -7,6 +7,12 @@
     var BCAPI = {};
     
     /**
+     * Helpers namespace contains various utility functions aimed to ease development:
+     * 
+     * - getSiteToken
+     * - getGenericToken
+     * - other such functions.
+     * 
      * @namespace BCAPI.Helpers
      */
     BCAPI.Helpers = {};

@@ -18,10 +18,23 @@
      * 	defaults: {
      * 		firstName: "John",
      * 		lastName: "Doe"
+     *	},
+     *	endpoint: function() {
+     *		return "/api/v2/persons";
      *	}
      * });
      */
     BCAPI.Models.Model = Backbone.Model.extend({
+    	/**
+    	 * This method must be overriden by each concrete class in order to give the correct relative path
+    	 * to API entry point.
+    	 * 
+    	 * @returns {String} the model API entry point.
+    	 * @throws An error if endpoint method is not overriden in concrete models.
+    	 */
+    	endpoint: function() {
+    		throw new Error("You must provide an endpoint for your model. E.g: /api/v2/persons");
+    	},
     	/**
     	 * This method returns the predefined headers which are automatically appended to ajax calls.
     	 * For instance, Authorization header must be set to site token for most of the calls. If you
@@ -43,8 +56,15 @@
     	 * @returns An absolute API url.
     	 */
     	url: function() {
-    		return BCAPI.Helper.Site.getRootUrl();
-    	},
+    		var url = BCAPI.Helper.Site.getRootUrl(),
+    			endpoint = this.endpoint();
+    		
+    		if(endpoint.charAt(0) == "/") {
+    			endpoint = endpoint.substring(1, endpoint.length);
+    		} 
+    		
+    		return url + endpoint;
+    	},   	
     	/**
     	 * Sync method is invoked automatically when user tries to create / update a model. It automatically 
     	 * appends the custom headers returned by {@link BCAPI.Models.Model.headers} method.

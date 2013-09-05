@@ -1,9 +1,102 @@
-@import "bootstrap.css";
-
-body {
-    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+.card-container {
+    float:left;
+    width: 122px;
+    height: 236px;
+    margin:5px;
+    padding:3px;
+    border: 1px dotted #999;
+}
+.user-add-photo {
+    margin-top: 10px;
+    text-align: center;
+}
+.user-title {
+    margin: 20px 5px 10px 5px;
 }
 
-.hide {
-    display: none;
+body {
+    height:800px;
+    padding: 10px;
+}
+
+.file-upload-area {
+    background-color: #ccc;
+    text-align: left;
+    margin-left: 0px;
+    background-image: url(images/stripe.png);
+}
+
+.file-upload-area span {
+    font-style: italic;
+    margin-left: 20%;
+}
+
+.member-upload-preview {
+    margin:4px;
+    width: 80px;
+    height: 80px;
+}
+
+#member-picture-select {
+    visibility:hidden
+}
+
+.social-tabs ul li a {
+    background-color: #F7F7F7;
+    margin-right: 5px;
+}
+
+.social-tabs ul li a {
+    margin-bottom: 2px;
+    height: 10px;
+
+}
+
+.member-profile-container, .member-profile-container .nav .active {
+    background-color: #EEEEEE !important;
+}
+
+input.small-height {
+    height: 14px !important;
+}
+
+.social-tabs {
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+
+.social-tabs ul {
+    margin-bottom: 0px;
+}
+
+.social-tabs ul li.active, .social-tabs ul li.active a {
+    background-color: #EEEEEE;
+    margin-right: 5px;
+    border: none;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.nav-tabs li {
+    margin-bottom: -2px;
+}
+.tab-pane {
+    margin-left: 16px;
+    margin-top: 10px;
+}
+
+.card-actions {
+    background-color: #EEEEEE;
+    height: 15px;
+    width: 100%;
+    border: none;
+    margin: 0px;
+    padding: 4px;
+    display:none;
+}
+
+.delete-confirmation-dialog {
+    visibility: hidden;
 }

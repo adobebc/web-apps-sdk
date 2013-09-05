@@ -21,7 +21,8 @@
      *	}
      * });
      */
-    BCAPI.Models.Model = Backbone.Model.extend({});
+    BCAPI.Models.Model = Backbone.Model.extend({    	
+    });
     
     /**
      * Collection provides the common attributes (pagination, sorting, filtering) for collections powered by Business Catalyst APIs. 

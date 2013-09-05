@@ -100,7 +100,7 @@
 	 * ```
 	 * 
 	 * @namespace BCAPI.WebApp
-	 * 
+	 * @memberOf BCAPI
 	 */
 	BCAPI.WebApp = {};
 	

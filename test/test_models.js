@@ -1,14 +1,4 @@
 describe("Unit tests for BC models namespace.", function() {
-	var PersonModel = BCAPI.Models.Model.extend({
-		defaults: {
-			firstName: "first_name_default",
-			lastName: "last_name_default"
-		},
-		endpoint: function() {
-			return "/api/v2/persons";
-		}
-	}); 
-	
 	describe("Unit tests for BC base model class.", function() {
 		var oldSiteHelper,
 			siteToken = "123",
@@ -26,14 +16,14 @@ describe("Unit tests for BC models namespace.", function() {
 		});
 
 		it("Check attributes default values.", function() {
-			var model = new PersonModel();
+			var model = new BCAPI.Mocks.Models.PersonModel();
 			
 			expect(model.get("firstName")).toBe("first_name_default");
 			expect(model.get("lastName")).toBe("last_name_default");
 		});
 		
 		it("Check attributes initialization through constructor.", function() {
-			var model = new PersonModel({
+			var model = new BCAPI.Mocks.Models.PersonModel({
 				firstName: "John",
 				lastName: "Doe"
 			});
@@ -43,7 +33,7 @@ describe("Unit tests for BC models namespace.", function() {
 		});
 		
 		it("Check default authorization site header", function() {
-			var model = new PersonModel();
+			var model = new BCAPI.Mocks.Models.PersonModel();
 			
 			var headers = model.headers();
 			
@@ -51,7 +41,7 @@ describe("Unit tests for BC models namespace.", function() {
 		});		
 		
 		it("Check attributes initialization through set.", function() {
-			var model = new PersonModel();
+			var model = new BCAPI.Mocks.Models.PersonModel();
 			
 			model.set({
 				firstName: "John",
@@ -63,7 +53,7 @@ describe("Unit tests for BC models namespace.", function() {
 		});
 		
 		it("Check url built ok.", function() {
-			var model = new PersonModel();
+			var model = new BCAPI.Mocks.Models.PersonModel();
 			
 			expect(model.url()).toBe(expectedUrl);
 		});
@@ -75,70 +65,71 @@ describe("Unit tests for BC models namespace.", function() {
 		});
 		
 		it("Check save operation ok.", function() {
-			var model = new PersonModel({
+			var model = new BCAPI.Mocks.Models.PersonModel({
 				firstName: "John",
 				lastName: "Doe"
 			});
 			
 			var callbackCalled = false;
-
-			function successHandler(returnedModel, resp, options) {
-				expect(returnedModel).toBe(model);
-				expect(resp).not.toBe(undefined);
-				expect(options.testKey).toBe(123);
+			
+			function runTest() {
+				function successHandler(returnedModel, resp, options) {
+					expect(returnedModel).toBe(model);
+					expect(resp).not.toBe(undefined);
+					expect(options.testKey).toBe(123);
+					
+					callbackCalled = true;
+				}
 				
-				callbackCalled = true;
+				spyOn($, "ajax").andCallFake(function(request) {
+					expect(request.url).toBe(expectedUrl);
+					expect(request.headers.Authorization).toBe(siteToken);
+					expect(request.dataType).toBe("json");
+					
+					var data = JSON.parse(request.data);
+					expect(data.firstName).toBe("John");
+					expect(data.lastName).toBe("Doe");
+					
+					expect(request.contentType).toBe("application/json");
+					
+					request.success(model);
+				});
+				
+				model.save({success: successHandler, testKey: 123});				
 			}
 			
-			spyOn($, "ajax").andCallFake(function(request) {
-				expect(request.url).toBe(expectedUrl);
-				expect(request.headers.Authorization).toBe(siteToken);
-				expect(request.dataType).toBe("json");
-				
-				var data = JSON.parse(request.data);
-				expect(data.firstName).toBe("John");
-				expect(data.lastName).toBe("Doe");
-				
-				expect(request.contentType).toBe("application/json");
-				
-				request.success(model);
-			});
-						
-			runs(function() {
-				model.save({success: successHandler,
-							testKey: 123});
-			});
-			
-			waitsFor(function() {
+			function doneCondition() {
 				return callbackCalled;
+			}
 				
-			}, "Model save success handler not invoked.", 50);
+			BCAPI.Mocks.Tests.runAsyncUnitTest(runTest, doneCondition, "Model save success handler not invoked.");
 		});
 		
 		it("Check operation error execute error handler.", function() {
-			var expectedModel = new PersonModel(),
+			var expectedModel = new BCAPI.Mocks.Models.PersonModel(),
 				callbackCalled = false;
 			
-			function errorHandler(model, xhr, options) {
-				expect(model).toBe(expectedModel);
-				expect(xhr).not.toBe(undefined);
-				expect(options.testKey).toBe("123");
+			function runTest() {
+				function errorHandler(model, xhr, options) {
+					expect(model).toBe(expectedModel);
+					expect(xhr).not.toBe(undefined);
+					expect(options.testKey).toBe("123");
+					
+					callbackCalled = true;				
+				}
 				
-				callbackCalled = true;				
+				spyOn($, "ajax").andCallFake(function(request) {
+					request.error(expectedModel);
+				});
+				
+				expectedModel.save({error: errorHandler, testKey: "123"});				
+			}
+            
+			function doneCondition() {
+				return callbackCalled;
 			}
 			
-			spyOn($, "ajax").andCallFake(function(request) {
-				request.error(expectedModel);
-			});
-			
-			runs(function() {
-				expectedModel.save({error: errorHandler,
-									testKey: "123"});
-			});
-			
-			waitsFor(function() {				
-				return callbackCalled;
-			}, "Model save error handler not invoked.", 50);
+			BCAPI.Mocks.Tests.runAsyncUnitTest(runTest, doneCondition, "Model save error handler not invoked.");
 		});
 	});
 });

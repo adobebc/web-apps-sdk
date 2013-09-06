@@ -57,7 +57,7 @@
 	 * 
 	 * @name PersonModel
 	 * @class
-	 * @memberOf BCAPI.Models
+	 * @memberOf BCAPI.Mocks.Models
 	 */
 	Mocks.Models.PersonModel = BCAPI.Models.Model.extend({
 		defaults: {

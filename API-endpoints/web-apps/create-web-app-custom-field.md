@@ -16,7 +16,7 @@ Create a new Web App custom field.
 Object:
 
 * `id` - unique - field id, if left empty, will be auto-generated *(int)*
-* `name` - unique, required - the name of the field *(string)*
+* `name` - unique, required - the name of the field (it must be unique amongst the custom & system fields) *(string)*
 * `type` - required, one of the below: *(string)*
   * `String`
 	* `Number`
@@ -83,7 +83,7 @@ This method will return the following error codes:
 * `400` - bad request; sub-error codes:
 	* `210000` - An unspecified error has occurred
 	* `210002` - Invalid field id specified
-	* `210003` - Invalid name
+	* `210003` - Invalid name (name is not syntactically correct or there is already a system or custom field with the same name)
 	* `210004` - Invalid listItems
 	* `210005` - Invalid dataSourceName
 	* `210006` - Invalid order value (must be between 1 and max existing order value + 1)

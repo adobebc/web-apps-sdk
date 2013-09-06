@@ -2952,7 +2952,7 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
         processData: false,
         url: _.result(queryOptions, 'url')
       }, options);
-
+      
       var promiseSuccessFormat = !(bbVer[0] === 0 &&
                                    bbVer[1] === 9 &&
                                    bbVer[2] === 10);
@@ -3638,7 +3638,7 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
         }
         queryAttributes[key] = value;
       });
-
+      
       var queryOptions = _.clone(self.paginator_core);
       _.each(queryOptions, function(value, key){
         if( _.isFunction(value) ) {
@@ -3897,6 +3897,30 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
 
 })(jQuery);;(function($) {
 	/**
+	 * This namespace holds global configuration of the sdk. You can easily change the values from here
+	 * in order to influence how various models and services work.
+	 * 
+	 * @namespace BCAPI.Config
+	 */
+	var Config = {};
+
+	/**
+	 * Namespace which holds default values for pagination (server side / client side).
+	 * 
+	 * @namespace BCAPI.Config.Pagination
+	 * @property {Integer} limit Default number of records we want to retrieve in one paginated API call.
+	 * @property {Integet} skip Default start record used in one paginated API call.
+	 * @property {Integer} lowestPage Default lowest page allowed to be requested through paginated API call. 
+	 */
+	Config.Pagination = {
+		lowestPage: 0,
+		limit: 10,
+		skip: 0
+	};
+	
+	BCAPI.Config = Config;
+})(jQuery);;(function($) {
+	/**
      * @namespace Models
      * @memberOf BCAPI
      */
@@ -4024,30 +4048,89 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
      * });
      */
     BCAPI.Models.Collection = Backbone.Paginator.requestPager.extend({
+    	/**
+    	 * This method initialize the current collection default attributes:
+    	 * 
+    	 * + _defaultLimit
+    	 * + _defaultSkip 
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	initialize: function() {
+    		this._defaultLimit = BCAPI.Config.Pagination.limit;
+    		this._defaultSkip = BCAPI.Config.Pagination.skip;
+    	},
+    	/**
+    	 * This method is used to fetch records into the current collection. Depending on the given options
+    	 * records can be filtered, sorted and paginated. For an example of how this collections are meant to be used
+    	 * please read {@link BCAPI.WebApp}
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
+    	 * @param {Object} options Options used to control what records are fetched from server.
+    	 * @param {Integer} options.limit The total number of records we want to fetch from server.
+    	 * @param {Integer} options.skip Start record index.
+    	 * @param {Object} options.where A JSON object containing the conditions for filtering records on server side.
+    	 * @param {String} options.order An attribute name by which we order records. It can be prefixed with - if you want descending order.
+    	 * @returns {Promise} a promise which can be used to determine http request state. 
+    	 */
     	fetch: function(options) {
-    		options.type = options.type || "GET";
+    		// options.type = options.type || "GET";
     		
-    		this.limit = options.limit;
-    		this.skip = options.skip;
-    		this.where = options.where;
-    		this.filter = options.filter;
+    		options.headers = new this.model().headers();
     		
-    		Backbone.Paginator.requestPager.prototype.fetch.apply(this, options);
+    		Backbone.Paginator.requestPager.prototype.fetch.call(this, options);
     	},
+    	/**
+    	 * This method returns the root url of this collection. It internally uses the model
+    	 * assigned to this collection for detecting the absolute entry point.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	url: function() {
+    		return new this.model().urlRoot();
+    	},
+    	/**
+    	 * This property defines default value for defining core paginator behavior.
+    	 */
     	paginator_core: {
-    		dataType: "json",
-        	url: "https://www.myexample.com/api/v2/"
+    		type: "GET",
+    		dataType: "json",    		
+    		url: function() {
+    			var urlWithParams = [this.url(), "?"];
+    			
+    			for(var key in this.server_api) {
+    				var val = this.server_api[key];
+    				
+    				urlWithParams.push(key);
+    				urlWithParams.push("=");
+    				urlWithParams.push(val.apply(this));
+    			}
+    			
+    			return urlWithParams.join("");
+    		}
     	},
+    	/**
+    	 * This property defines default values for how this paginated collection works.
+    	 */
     	paginator_ui: {
-        	firstPage: 0,
-        	currentPage: 0,
-        	perPage: 100    		
+    		firstPage: BCAPI.Config.Pagination.lowestPage
     	},
+    	/**
+    	 * This property defines the attributes which are used to server api.
+    	 */
     	server_api: {
-    		"where": function() { return JSON.stringify(this.where || {}); },
-    		"limit": function() { return this.limit || this.perPage; },
-    		"skip": function() { return this.skip || (this.currentPage * this.perPage); },
-    		"order": function() { return this.order || "name"; }
+    		/*"where": function() { throw new Error(); },
+    		"limit": function() { throw new Error(); },
+    		"skip": function() { throw new Error(); },
+    		"order": function() { throw new Error(); }*/
+    		"limit": function() { return this._defaultLimit; },
+    		"skip": function() { return this._defaultSkip; }
     	}
     });
 })(jQuery);

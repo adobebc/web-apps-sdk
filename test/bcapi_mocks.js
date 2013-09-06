@@ -58,6 +58,11 @@
 	 * @name PersonModel
 	 * @class
 	 * @memberOf BCAPI.Mocks.Models
+	 * @example
+	 * var model = new BCAPI.Mocks.Models({
+	 * 	firstName: "John",
+	 * 	lastName: "Doe"
+	 * });
 	 */
 	Mocks.Models.PersonModel = BCAPI.Models.Model.extend({
 		defaults: {

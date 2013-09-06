@@ -45,54 +45,6 @@
 	};
 	
 	/**
-	 * This namespace holds useful test scenarios templates meant to ease unit tests creation.
-	 * 
-	 * @namespace BCAPI.Mocks.Tests
-	 */
-	Mocks.Tests = {};
-
-	/**
-	 * This function helps you write async unit tests in a sync manner.
-	 * 
-	 * @function
-	 * @memberOf BCAPI.Mocks.Tests
-	 * @param {function} runTest A function in which test logic is encapsulated.
-	 * @param {function} doneCondition A function which returns true if the test logic was completely executed.
-	 * @param {String} errMessage A friendly message displayed if test logic reached timeout logic.
-	 * @param {function} timeout Optional timeout given in milliseconds for setting the maximum amount of time allocated for running the test. Default value is 50ms. 
-	 * @example
-	 * // sample test which relies on ajax requests.
-	 * it("Sample test", function() {
-	 *  var done = false;
-	 * 
-	 * 	function runTest() {
-	 *  	function errorHandler(model, xhr, options) {
-	 *  		expect(xhr).not.toBe(undefined);
-	 *  
-	 *          done = true;
-	 *  	}
-	 *  	
-	 *  	spyOn($, "ajax").andCallFake(function(request) {
-	 *  		request.error(expectedModel);
-	 *  	});
-	 *  }
-	 *  
-	 *  function doneCondition() {
-	 *  	return done;
-	 *  }
-	 *  
-	 *  BCAPI.Mocks.Helper.runAsyncUnitTest(runTest, doneCondition, "Error callback not invoked on time.");
-	 * }
-	 */
-	Mocks.Tests.runAsyncUnitTest = function(runTest, doneCondition, errMessage, timeout) {
-		timeout = timeout || 50;
-		
-		runs(runTest);
-		
-		waitsFor(doneCondition, errMessage, timeout);
-	};
-	
-	/**
 	 * This namespace holds mock classes compatbible with BCAPI.Models specification.
 	 * 
 	 * @namespace BCAPI.Mocks.Models

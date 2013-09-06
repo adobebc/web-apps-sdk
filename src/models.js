@@ -54,14 +54,14 @@
     		};
     	},
     	/**
-    	 * This method automatically builds absolute url of the model.
+    	 * This method automatically builds absolute entry point url of the model.
     	 *
     	 * @method
     	 * @instance
-    	 * @returns An absolute API url.
+    	 * @returns An absolute entry point API.
     	 * @memberOf BCAPI.Models.Model
     	 */
-    	url: function() {
+    	urlRoot: function() {
     		var url = BCAPI.Helper.Site.getRootUrl(),
     			endpoint = this.endpoint();
     		

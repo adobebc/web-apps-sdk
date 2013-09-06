@@ -66,7 +66,8 @@
 		},
 		endpoint: function() {
 			return "/api/v2/persons";
-		}
+		},
+		idAttribute: "idCustom"
 	});
 	
 	BCAPI.Mocks = Mocks;

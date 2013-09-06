@@ -29,8 +29,11 @@
     	 * This method must be overriden by each concrete class in order to give the correct relative path
     	 * to API entry point.
     	 * 
+    	 * @method
+    	 * @instance
     	 * @returns {String} the model API entry point.
     	 * @throws An error if endpoint method is not overriden in concrete models.
+    	 * @memberOf BCAPI.Models.Model 
     	 */
     	endpoint: function() {
     		throw new Error("You must provide an endpoint for your model. E.g: /api/v2/persons");
@@ -52,8 +55,11 @@
     	},
     	/**
     	 * This method automatically builds absolute url of the model.
-    	 * 
+    	 *
+    	 * @method
+    	 * @instance
     	 * @returns An absolute API url.
+    	 * @memberOf BCAPI.Models.Model
     	 */
     	url: function() {
     		var url = BCAPI.Helper.Site.getRootUrl(),
@@ -64,14 +70,35 @@
     		} 
     		
     		return url + endpoint;
-    	},   	
+    	},
+    	/**
+    	 * This method change default Backbone save behaviour in order to simplify save invocation.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
+    	 * @example
+    	 * var model = new PersonModel();
+    	 * model.save({
+    	 * 	success: function(model, response) {
+    	 * 		// handle success logic in here
+    	 * 	}
+    	 * });
+    	 */
+    	save: function(handlers) {
+    		Backbone.Model.prototype.save.call(this, this.attributes, handlers);
+    	},
     	/**
     	 * Sync method is invoked automatically when user tries to create / update a model. It automatically 
     	 * appends the custom headers returned by {@link BCAPI.Models.Model.headers} method.
     	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
     	 * @param {String} method Http method used to persist the state of the current model. 
     	 * @param {BCAPI.Models.Model} model The current model to persist.
     	 * @param {Object} options Additional options which influence how http call will be done.
+    	 * @returns {Promise} jQuery promise which can be used to determine when request is done.
     	 */
     	sync: function(method, model, options) {
     		var customHeaders = this.headers();

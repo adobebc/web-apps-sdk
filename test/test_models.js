@@ -1,5 +1,9 @@
 describe("Unit tests for BC models namespace.", function() {
 	var PersonModel = BCAPI.Models.Model.extend({
+		defaults: {
+			firstName: "first_name_default",
+			lastName: "last_name_default"
+		},
 		endpoint: function() {
 			return "/api/v2/persons";
 		}
@@ -20,13 +24,12 @@ describe("Unit tests for BC models namespace.", function() {
 		afterEach(function() {
 			BCAPI.Helper.Site = oldSiteHelper;
 		});
-		
-		it("Check default authorization site header", function() {
+
+		it("Check attributes default values.", function() {
 			var model = new PersonModel();
 			
-			var headers = model.headers();
-			
-			expect(headers.Authorization).toBe(siteToken);
+			expect(model.get("firstName")).toBe("first_name_default");
+			expect(model.get("lastName")).toBe("last_name_default");
 		});
 		
 		it("Check attributes initialization through constructor.", function() {
@@ -38,6 +41,14 @@ describe("Unit tests for BC models namespace.", function() {
 			expect(model.get("firstName")).toBe("John");
 			expect(model.get("lastName")).toBe("Doe");			
 		});
+		
+		it("Check default authorization site header", function() {
+			var model = new PersonModel();
+			
+			var headers = model.headers();
+			
+			expect(headers.Authorization).toBe(siteToken);
+		});		
 		
 		it("Check attributes initialization through set.", function() {
 			var model = new PersonModel();
@@ -68,7 +79,17 @@ describe("Unit tests for BC models namespace.", function() {
 				firstName: "John",
 				lastName: "Doe"
 			});
+			
+			var callbackCalled = false;
 
+			function successHandler(returnedModel, resp, options) {
+				expect(returnedModel).toBe(model);
+				expect(resp).not.toBe(undefined);
+				expect(options.testKey).toBe(123);
+				
+				callbackCalled = true;
+			}
+			
 			spyOn($, "ajax").andCallFake(function(request) {
 				expect(request.url).toBe(expectedUrl);
 				expect(request.headers.Authorization).toBe(siteToken);
@@ -79,9 +100,45 @@ describe("Unit tests for BC models namespace.", function() {
 				expect(data.lastName).toBe("Doe");
 				
 				expect(request.contentType).toBe("application/json");
+				
+				request.success(model);
 			});
 						
-			model.save();
+			runs(function() {
+				model.save({success: successHandler,
+							testKey: 123});
+			});
+			
+			waitsFor(function() {
+				return callbackCalled;
+				
+			}, "Model save success handler not invoked.", 50);
+		});
+		
+		it("Check operation error execute error handler.", function() {
+			var expectedModel = new PersonModel(),
+				callbackCalled = false;
+			
+			function errorHandler(model, xhr, options) {
+				expect(model).toBe(expectedModel);
+				expect(xhr).not.toBe(undefined);
+				expect(options.testKey).toBe("123");
+				
+				callbackCalled = true;				
+			}
+			
+			spyOn($, "ajax").andCallFake(function(request) {
+				request.error(expectedModel);
+			});
+			
+			runs(function() {
+				expectedModel.save({error: errorHandler,
+									testKey: "123"});
+			});
+			
+			waitsFor(function() {				
+				return callbackCalled;
+			}, "Model save error handler not invoked.", 50);
 		});
 	});
 });

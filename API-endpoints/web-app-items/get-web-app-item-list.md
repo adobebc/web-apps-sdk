@@ -237,6 +237,10 @@ The `order` query parameter specifies which field will be used to order the resu
 
 To order the results in ascending order, just provide the system field name. If the results are to be sorted in descending order prefix the system field name with a `-` (dash).
 
+If no ordering is specified the items will be order by `name` ascending.
+
+When sorting the items using a specified field, in case of ties due to equal values for that field, items will be further sorted by `name`.
+
 #### Examples
 
 * Sorting ascending by name

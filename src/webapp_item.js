@@ -96,7 +96,14 @@
 	 * 
 	 * ```javascript
 	 * var items = new BCAPI.WebApp.Item({id: 1}); 
-	 * item.destroy();
+	 * item.destroy({
+	 * 	success: function(webAppItem, response) {
+	 * 		// handle success here.
+	 *  },
+	 *  error: function(webAppItem, xhr, options) {
+	 * 		// handle error scenario.
+	 *  } 
+	 * });
 	 * ```
 	 * 
 	 * @namespace BCAPI.WebApp

@@ -55,7 +55,7 @@ describe("Unit tests for BC models namespace.", function() {
 		it("Check url built ok.", function() {
 			var model = new BCAPI.Mocks.Models.PersonModel();
 			
-			expect(model.url()).toBe(expectedUrl);
+			expect(model.urlRoot()).toBe(expectedUrl);
 		});
 		
 		it("Check error raised if no endpoint defined.", function() {
@@ -63,6 +63,22 @@ describe("Unit tests for BC models namespace.", function() {
 			
 			expect(model.endpoint).toThrow();
 		});
+		
+		/**
+		 * This method is reused for ensuring correct ajax call is done for save operation.
+		 */
+		function _assertCorrectSaveCall(request) {
+			expect(request.type).toBe("POST");
+			expect(request.url).toBe(expectedUrl);
+			expect(request.headers.Authorization).toBe(siteToken);
+			expect(request.dataType).toBe("json");
+			
+			var data = JSON.parse(request.data);
+			expect(data.firstName).toBe("John");
+			expect(data.lastName).toBe("Doe");
+			
+			expect(request.contentType).toBe("application/json");			
+		}
 		
 		it("Check save operation ok.", function() {
 			var model = new BCAPI.Mocks.Models.PersonModel({
@@ -81,15 +97,7 @@ describe("Unit tests for BC models namespace.", function() {
 			}
 			
 			spyOn($, "ajax").andCallFake(function(request) {
-				expect(request.url).toBe(expectedUrl);
-				expect(request.headers.Authorization).toBe(siteToken);
-				expect(request.dataType).toBe("json");
-				
-				var data = JSON.parse(request.data);
-				expect(data.firstName).toBe("John");
-				expect(data.lastName).toBe("Doe");
-				
-				expect(request.contentType).toBe("application/json");
+				_assertCorrectSaveCall(request);
 				
 				request.success(model);
 			});
@@ -105,9 +113,11 @@ describe("Unit tests for BC models namespace.", function() {
 			}, "Model save success handler not invoked.", 50);
 		});
 		
-		it("Check operation error execute error handler.", function() {
-			var expectedModel = new BCAPI.Mocks.Models.PersonModel(),
-				callbackCalled = false;
+		it("Check save operation error execute error handler.", function() {
+			var expectedModel = new BCAPI.Mocks.Models.PersonModel({
+				firstName: "John",
+				lastName: "Doe"
+			}),	callbackCalled = false;
 			
 			function errorHandler(model, xhr, options) {
 				expect(model).toBe(expectedModel);
@@ -118,6 +128,8 @@ describe("Unit tests for BC models namespace.", function() {
 			}
 			
 			spyOn($, "ajax").andCallFake(function(request) {
+				_assertCorrectSaveCall(request);
+				
 				request.error(expectedModel);
 			});
 			
@@ -129,6 +141,70 @@ describe("Unit tests for BC models namespace.", function() {
 			waitsFor(function() {				
 				return callbackCalled;
 			}, "Model save error handler not invoked.", 50);
+		});
+		
+		/**
+		 * This method makes sure request for model destroy sends correct data to server.
+		 */
+		function _assertCorrectDeleteCall(request) {
+			expect(request.type).toBe("DELETE");
+			expect(request.url).toBe(expectedUrl + "/1");
+			expect(request.headers.Authorization).toBe(siteToken);			
+		}
+		
+		it("Check destroy operation executes ok.", function() {
+			var expectedModel = new BCAPI.Mocks.Models.PersonModel({idCustom: 1});
+			
+			var callbackCalled = false;
+			
+			function successHandler(model, response) {
+				expect(model).toBe(expectedModel);
+				expect(response).not.toBe(undefined);
+				
+				callbackCalled = true;
+			};
+			
+			spyOn($, "ajax").andCallFake(function(request) {
+				_assertCorrectDeleteCall(request);
+				
+				request.success(expectedModel);
+			});
+			
+			runs(function() {
+				expectedModel.destroy({success: successHandler});
+			});
+			
+			waitsFor(function() {
+				return callbackCalled;
+			});
+		});
+		
+		it("Check destroy error handler invoked.", function() {
+			var expectedModel = new BCAPI.Mocks.Models.PersonModel({idCustom: 1});
+			
+			var callbackCalled = false;
+			
+			function errorHandler(model, xhr, options) {
+				expect(model).toBe(expectedModel);
+				expect(xhr).not.toBe(undefined);
+				expect(options.testKey).toBe(123);
+				
+				callbackCalled = true;
+			};
+			
+			spyOn($, "ajax").andCallFake(function(request) {
+				_assertCorrectDeleteCall(request);
+				
+				request.error(expectedModel);
+			});
+			
+			runs(function() {
+				expectedModel.destroy({error: errorHandler, testKey: 123});
+			});
+			
+			waitsFor(function() {
+				return callbackCalled;
+			});			
 		});
 	});
 });

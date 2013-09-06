@@ -75,5 +75,20 @@
 		idAttribute: "idCustom"
 	});
 	
+	/**
+	 * This class provides a very simple mock collection used in unit tests. It also provides
+	 * a very good example of what is required to implement for adding a new model collection for sdk.
+	 * You can read {@link BCAPI.WebApp} for seeing how collections should work.
+	 * 
+	 * @name PersonCollection
+	 * @class
+	 * @memberOf BCAPI.Mocks.Models.PersonCollection
+	 * @example
+	 * var persons = new BCAPI.Mocks.Models.PersonCollection().fetch();
+	 */
+	Mocks.Models.PersonCollection = BCAPI.Models.Collection.extend({
+		model: Mocks.Models.PersonModel
+	});
+	
 	BCAPI.Mocks = Mocks;
 })();

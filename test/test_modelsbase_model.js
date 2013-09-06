@@ -7,7 +7,7 @@ describe("Unit tests for BC base model class.", function() {
 	beforeEach(function() {
 		oldSiteHelper = BCAPI.Helper.Site;
 		
-		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
+		BCAPI.Mocks.Helper.Site(null, siteToken, rootUrl);
 	});
 	
 	afterEach(function() {
@@ -17,7 +17,7 @@ describe("Unit tests for BC base model class.", function() {
 	it("Check attributes default values.", function() {
 		var model = new BCAPI.Mocks.Models.PersonModel();
 		
-		expect(model.get("firstName")).toBe("first_name_default");
+        expect(model.get("firstName")).toBe("first_name_default");
 		expect(model.get("lastName")).toBe("last_name_default");
 	});
 	

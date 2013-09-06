@@ -46,7 +46,7 @@
     	 * @method
     	 * @instance
     	 * @memberOf BCAPI.Models.Model
-    	 * @returns A list of headers apppended to ajax calls.
+    	 * @returns {Object} A list of headers appended to ajax calls.
     	 */
     	headers: function() {
     		return {

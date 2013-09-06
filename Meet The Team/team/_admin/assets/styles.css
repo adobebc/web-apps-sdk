@@ -6,6 +6,11 @@
     padding:3px;
     border: 1px dotted #999;
 }
+
+.card-container:hover .card-actions {
+    display:block;
+}
+
 .user-add-photo {
     margin-top: 10px;
     text-align: center;
@@ -56,7 +61,7 @@ body {
     background-color: #EEEEEE !important;
 }
 
-input.small-height {
+input.small-height, .small-height {
     height: 14px !important;
 }
 
@@ -88,15 +93,50 @@ input.small-height {
 }
 
 .card-actions {
-    background-color: #EEEEEE;
-    height: 15px;
-    width: 100%;
+    background-image:url(images/actions-gradient.png);
+    height: 18px;
+    text-align: right;
     border: none;
-    margin: 0px;
-    padding: 4px;
+    margin: 0px -4px;;
+    padding: 4px 7px;
     display:none;
 }
 
 .delete-confirmation-dialog {
     visibility: hidden;
+}
+
+span.note-text {
+    font-size: smaller;
+    color: #666;
+    font-style: italic;
+    margin: 3px 0px 10px 0px;
+    display:block;
+}
+
+.member-icon-delete {
+    background-image: url(images/delete-icon.png);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 15px;
+    margin-left: 7px;
+    margin-top: 3px;
+    display: inline-block;
+}
+
+a.member-icon-delete:hover {
+    background-image: url(images/delete-icon-hover.png);
+}
+.member-icon-edit {
+    background-image: url(images/edit-icon.png);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+}
+
+.popover {
+    max-width: 800px;
+    width: auto;
+    /*left: 379px !important;*/
 }

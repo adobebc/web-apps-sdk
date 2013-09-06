@@ -3893,20 +3893,8 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     /**
      * @namespace BCAPI
      */
-    var BCAPI = {};
-    
-    /**
-     * Helper namespace contains various utility functions aimed to ease development:
-     * 
-     * - Site.getSiteToken
-     * - Site.getGenericToken
-     * - other such functions.
-     * 
-     * @namespace BCAPI.Helper
-     */
-    BCAPI.Helper = {};
-    
-    window.BCAPI = BCAPI || {};    
+    window.BCAPI = {};
+
 })(jQuery);;(function($) {
 	/**
      * @namespace Models
@@ -3955,7 +3943,7 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     	 * @method
     	 * @instance
     	 * @memberOf BCAPI.Models.Model
-    	 * @returns A list of headers apppended to ajax calls.
+    	 * @returns {Object} A list of headers appended to ajax calls.
     	 */
     	headers: function() {
     		return {

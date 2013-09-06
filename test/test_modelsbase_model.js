@@ -66,21 +66,29 @@ describe("Unit tests for BC base model class.", function() {
 	/**
 	 * This method is reused for ensuring correct ajax call is done for save operation.
 	 */
-	function _assertCorrectSaveCall(request) {
-		expect(request.type).toBe("POST");
-		expect(request.url).toBe(expectedUrl);
+	function _assertCorrectSaveCall(request, firstName, lastName, id) {
+		var url = expectedUrl + (id ? "/" + id : ""),
+			method = id ? "PUT" : "POST";
+		
+		
+		expect(request.type).toBe(method);
+		expect(request.url).toBe(url);
 		expect(request.headers.Authorization).toBe(siteToken);
 		expect(request.dataType).toBe("json");
 		
 		var data = JSON.parse(request.data);
-		expect(data.firstName).toBe("John");
-		expect(data.lastName).toBe("Doe");
+		expect(data.firstName).toBe(firstName);
+		expect(data.lastName).toBe(lastName);
 		
 		expect(request.contentType).toBe("application/json");			
 	}
 	
-	it("Check save operation ok.", function() {
+	/**
+	 * This function provides the template for testing model create / update operations.
+	 */
+	function _testSaveTemplate(isError, errMsg, modelId) {
 		var model = new BCAPI.Mocks.Models.PersonModel({
+			idCustom: modelId,
 			firstName: "John",
 			lastName: "Doe"
 		});
@@ -95,59 +103,64 @@ describe("Unit tests for BC base model class.", function() {
 			callbackCalled = true;
 		}
 		
-		spyOn($, "ajax").andCallFake(function(request) {
-			_assertCorrectSaveCall(request);
+		function errorHandler(returnedModel, xhr, options) {
+			expect(returnedModel).toBe(model);
+			expect(xhr).not.toBe(undefined);
+			expect(options.testKey).toBe(123);
 			
-			request.success(model);
+			callbackCalled = true;
+		}		
+		
+		spyOn($, "ajax").andCallFake(function(request) {
+			_assertCorrectSaveCall(request, "John", "Doe", modelId);
+			
+			if(isError) {
+				return request.error(model);
+			}
+			
+			return request.success(model);
 		});
 					
 		runs(function() {
-			model.save({success: successHandler,
-						testKey: 123});
+			var options = {testKey: 123};
+			
+			if(isError) {
+				options.error = errorHandler;
+			} else {
+				options.success = successHandler;
+			}
+			
+			model.save(options);
 		});
 		
 		waitsFor(function() {
 			return callbackCalled;
 			
-		}, "Model save success handler not invoked.", 50);
+		}, errMsg, 50);		
+	}
+	
+	it("Check save operation ok.", function() {
+		_testSaveTemplate(false, "Model save success handler not invoked.");		
 	});
 	
 	it("Check save operation error execute error handler.", function() {
-		var expectedModel = new BCAPI.Mocks.Models.PersonModel({
-			firstName: "John",
-			lastName: "Doe"
-		}),	callbackCalled = false;
-		
-		function errorHandler(model, xhr, options) {
-			expect(model).toBe(expectedModel);
-			expect(xhr).not.toBe(undefined);
-			expect(options.testKey).toBe("123");
-			
-			callbackCalled = true;				
-		}
-		
-		spyOn($, "ajax").andCallFake(function(request) {
-			_assertCorrectSaveCall(request);
-			
-			request.error(expectedModel);
-		});
-		
-		runs(function() {
-			expectedModel.save({error: errorHandler,
-								testKey: "123"});
-		});
-		
-		waitsFor(function() {				
-			return callbackCalled;
-		}, "Model save error handler not invoked.", 50);
+	    _testSaveTemplate(true, "Model save error handler not invoked.");
 	});
+		
+	it("Check model update operation ok.", function() {
+		_testSaveTemplate(false, "Model update success handler not invoked.", 101);		
+	});
+
+	it("Check model update operation error handler invoked.", function() {
+		_testSaveTemplate(true, "Model update success handler not invoked.", 101);		
+	});	
 	
 	/**
 	 * This method makes sure request for model destroy sends correct data to server.
 	 */
-	function _assertCorrectDeleteCall(request) {
+	function _assertCorrectDeleteCall(request, id) {
 		expect(request.type).toBe("DELETE");
-		expect(request.url).toBe(expectedUrl + "/1");
+		expect(request.url).toBe(expectedUrl + "/" + id);
 		expect(request.headers.Authorization).toBe(siteToken);			
 	}
 	
@@ -164,7 +177,7 @@ describe("Unit tests for BC base model class.", function() {
 		};
 		
 		spyOn($, "ajax").andCallFake(function(request) {
-			_assertCorrectDeleteCall(request);
+			_assertCorrectDeleteCall(request, 1);
 			
 			request.success(expectedModel);
 		});
@@ -192,7 +205,7 @@ describe("Unit tests for BC base model class.", function() {
 		};
 		
 		spyOn($, "ajax").andCallFake(function(request) {
-			_assertCorrectDeleteCall(request);
+			_assertCorrectDeleteCall(request, 1);
 			
 			request.error(expectedModel);
 		});

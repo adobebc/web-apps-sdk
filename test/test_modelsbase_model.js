@@ -1,16 +1,18 @@
 describe("Unit tests for BC base model class.", function() {
-	var oldSiteHelper,
+	var oldSiteHelper = undefined,
 		siteToken = "123",
 		rootUrl = "https://secure.businesscatalyst.com/",
 		expectedUrl = rootUrl + "api/v2/persons";
 	
 	beforeEach(function() {
-		oldSiteHelper = BCAPI.Helper.Site;
+		oldSiteHelper = BCAPI.Helper.Site;		
 		
 		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
 	});
 	
 	afterEach(function() {
+		expect(oldSiteHelper).not.toBe(undefined);
+		
 		BCAPI.Helper.Site = oldSiteHelper;
 	});
 

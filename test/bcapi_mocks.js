@@ -59,7 +59,7 @@
 	 * @class
 	 * @memberOf BCAPI.Mocks.Models
 	 * @example
-	 * var model = new BCAPI.Mocks.Models({
+	 * var model = new BCAPI.Mocks.Models.PersonModel({
 	 * 	firstName: "John",
 	 * 	lastName: "Doe"
 	 * });

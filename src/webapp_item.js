@@ -109,11 +109,15 @@
 	 * @namespace BCAPI.WebApp
 	 * @memberOf BCAPI
 	 */
-	BCAPI.WebApp = {};
-	
-	 /**
-	  * @constructor
-	  * @memberOf BCAPI.WebApp
-	  */
-	function Item() {}
+
+    /**
+     * @constructor
+     */
+    BCAPI.Models.WebAppItem = BCAPI.Models.Model.extend({
+        webapp: null, // TODO
+
+        url: function() {
+            return this.webapp.url() + '/items';
+        }
+    });
 })(jQuery);

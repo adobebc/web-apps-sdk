@@ -71,65 +71,64 @@ describe("Unit tests for BC models namespace.", function() {
 			});
 			
 			var callbackCalled = false;
-			
-			function runTest() {
-				function successHandler(returnedModel, resp, options) {
-					expect(returnedModel).toBe(model);
-					expect(resp).not.toBe(undefined);
-					expect(options.testKey).toBe(123);
-					
-					callbackCalled = true;
-				}
+
+			function successHandler(returnedModel, resp, options) {
+				expect(returnedModel).toBe(model);
+				expect(resp).not.toBe(undefined);
+				expect(options.testKey).toBe(123);
 				
-				spyOn($, "ajax").andCallFake(function(request) {
-					expect(request.url).toBe(expectedUrl);
-					expect(request.headers.Authorization).toBe(siteToken);
-					expect(request.dataType).toBe("json");
-					
-					var data = JSON.parse(request.data);
-					expect(data.firstName).toBe("John");
-					expect(data.lastName).toBe("Doe");
-					
-					expect(request.contentType).toBe("application/json");
-					
-					request.success(model);
-				});
-				
-				model.save({success: successHandler, testKey: 123});				
+				callbackCalled = true;
 			}
 			
-			function doneCondition() {
+			spyOn($, "ajax").andCallFake(function(request) {
+				expect(request.url).toBe(expectedUrl);
+				expect(request.headers.Authorization).toBe(siteToken);
+				expect(request.dataType).toBe("json");
+				
+				var data = JSON.parse(request.data);
+				expect(data.firstName).toBe("John");
+				expect(data.lastName).toBe("Doe");
+				
+				expect(request.contentType).toBe("application/json");
+				
+				request.success(model);
+			});
+						
+			runs(function() {
+				model.save({success: successHandler,
+							testKey: 123});
+			});
+			
+			waitsFor(function() {
 				return callbackCalled;
-			}
 				
-			BCAPI.Mocks.Tests.runAsyncUnitTest(runTest, doneCondition, "Model save success handler not invoked.");
+			}, "Model save success handler not invoked.", 50);
 		});
 		
 		it("Check operation error execute error handler.", function() {
 			var expectedModel = new BCAPI.Mocks.Models.PersonModel(),
 				callbackCalled = false;
 			
-			function runTest() {
-				function errorHandler(model, xhr, options) {
-					expect(model).toBe(expectedModel);
-					expect(xhr).not.toBe(undefined);
-					expect(options.testKey).toBe("123");
-					
-					callbackCalled = true;				
-				}
+			function errorHandler(model, xhr, options) {
+				expect(model).toBe(expectedModel);
+				expect(xhr).not.toBe(undefined);
+				expect(options.testKey).toBe("123");
 				
-				spyOn($, "ajax").andCallFake(function(request) {
-					request.error(expectedModel);
-				});
-				
-				expectedModel.save({error: errorHandler, testKey: "123"});				
-			}
-            
-			function doneCondition() {
-				return callbackCalled;
+				callbackCalled = true;				
 			}
 			
-			BCAPI.Mocks.Tests.runAsyncUnitTest(runTest, doneCondition, "Model save error handler not invoked.");
+			spyOn($, "ajax").andCallFake(function(request) {
+				request.error(expectedModel);
+			});
+			
+			runs(function() {
+				expectedModel.save({error: errorHandler,
+									testKey: "123"});
+			});
+			
+			waitsFor(function() {				
+				return callbackCalled;
+			}, "Model save error handler not invoked.", 50);
 		});
 	});
 });

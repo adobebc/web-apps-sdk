@@ -78,7 +78,13 @@
         $(function(){
             $('#upload-trigger').click(function() {
                 $('#member-picture-select').click();
-            })
+            });
+
+            // Setup the dnd listeners.)
+            var dropZone = document.getElementById('member-picture');
+            dropZone.addEventListener('dragover', handleDragOver, false);
+            dropZone.addEventListener('drop', handleFileSelect, false);
+
         })
         function previewImage(input) {
             if (input.files && input.files[0]) {
@@ -89,6 +95,22 @@
                 }
                 reader.readAsDataURL(input.files[0]);
             }
+        }
+
+        function handleFileSelect(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+
+            var files = evt.dataTransfer.files; // FileList object.
+            previewImage(evt.dataTransfer);
+            // files is a FileList of File obj
+            // ects. List some properties.
+        }
+
+        function handleDragOver(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
         }
     </script>
 </body>

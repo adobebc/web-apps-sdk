@@ -1,8 +1,8 @@
-server: http://localhost:12876
+server: http://localhost:9876
 
 load:
-  - lib/jasmine/jasmine.js
-  - lib/jasmine/jasmine-jstd.js
+  - lib/jasmine-1.3.1/jasmine.js
+  - lib/jasmine-1.3.1/jasmine-jstd.js
   - lib/jquery.js
   - lib/underscore.js
   - lib/backbone.js
@@ -11,10 +11,10 @@ load:
   - src/config.js
   - src/helper.js  
   - src/models.js
-  - src/*js
+  - test/specs/bcapi_mocks.js
 
 test:
-  - test/integration/test_*.js
+  - test/specs/test_*.js
 
 plugin:
   - name: "coverage"

@@ -86,7 +86,7 @@
     	 * });
     	 */
     	save: function(handlers) {
-    		Backbone.Model.prototype.save.call(this, this.attributes, handlers);
+    		return Backbone.Model.prototype.save.call(this, this.attributes, handlers);
     	},
     	/**
     	 * Sync method is invoked automatically when user tries to create / update a model. It automatically 
@@ -109,7 +109,7 @@
     			options.headers[headerKey] = customHeaders[headerKey];
     		}
     		
-    		Backbone.Model.prototype.sync(method, model, options);
+    		return Backbone.Model.prototype.sync(method, model, options);
     	}
     });
     
@@ -168,7 +168,7 @@
     		
     		this._order = options.order;    		
     		
-    		Backbone.Paginator.requestPager.prototype.fetch.call(this, options);
+    		return Backbone.Paginator.requestPager.prototype.fetch.call(this, options);
     	},
     	/**
     	 * This method returns the root url of this collection. It internally uses the model

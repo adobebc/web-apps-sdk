@@ -38,7 +38,7 @@
 	 * 	});
 	 * });
 	 */
-	Mocks.Helper.Site= function(genericToken, siteToken, rootUrl) {
+	Mocks.Helper.Site = function(genericToken, siteToken, rootUrl) {
 		spyOn(BCAPI.Helper.Site, "getGenericToken").andReturn(genericToken);
 		spyOn(BCAPI.Helper.Site, "getSiteToken").andReturn(siteToken);
 		spyOn(BCAPI.Helper.Site, "getRootUrl").andReturn(rootUrl);

@@ -1756,6 +1756,7 @@
       wrapError(this, options);
 
       method = this.isNew() ? 'create' : (options.patch ? 'patch' : 'update');
+        console.log(this, method);
       if (method === 'patch') options.attrs = attrs;
       xhr = this.sync(method, this, options);
 
@@ -4007,7 +4008,7 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     	 * });
     	 */
     	save: function(handlers) {
-    		Backbone.Model.prototype.save.call(this, this.attributes, handlers);
+    		return Backbone.Model.prototype.save.call(this, this.attributes, handlers);
     	},
     	/**
     	 * Sync method is invoked automatically when user tries to create / update a model. It automatically 
@@ -4030,7 +4031,7 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     			options.headers[headerKey] = customHeaders[headerKey];
     		}
     		
-    		Backbone.Model.prototype.sync(method, model, options);
+    		return Backbone.Model.prototype.sync(method, model, options);
     	}
     });
     
@@ -4078,11 +4079,18 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     	 * @returns {Promise} a promise which can be used to determine http request state. 
     	 */
     	fetch: function(options) {
-    		// options.type = options.type || "GET";
-    		
     		options.headers = new this.model().headers();
     		
-    		Backbone.Paginator.requestPager.prototype.fetch.call(this, options);
+    		this._limit = options.limit;
+    		this._skip = options.skip;
+    		
+    		if(options.where) {
+    			this._where = JSON.stringify(options.where);
+    		}
+    		
+    		this._order = options.order;    		
+    		
+    		return Backbone.Paginator.requestPager.prototype.fetch.call(this, options);
     	},
     	/**
     	 * This method returns the root url of this collection. It internally uses the model
@@ -4105,12 +4113,19 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     			var urlWithParams = [this.url(), "?"];
     			
     			for(var key in this.server_api) {
-    				var val = this.server_api[key];
+    				var val = this.server_api[key].apply(this);
     				
+    				if(val === undefined) {
+    					continue;
+    				}
+    				
+    				urlWithParams.push("&");
     				urlWithParams.push(key);
     				urlWithParams.push("=");
-    				urlWithParams.push(val.apply(this));
+    				urlWithParams.push(val);    				
     			}
+    			
+    			urlWithParams[2] = "";
     			
     			return urlWithParams.join("");
     		}
@@ -4125,12 +4140,10 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     	 * This property defines the attributes which are used to server api.
     	 */
     	server_api: {
-    		/*"where": function() { throw new Error(); },
-    		"limit": function() { throw new Error(); },
-    		"skip": function() { throw new Error(); },
-    		"order": function() { throw new Error(); }*/
-    		"limit": function() { return this._defaultLimit; },
-    		"skip": function() { return this._defaultSkip; }
+    		"limit": function() { return this._limit || this._defaultLimit; },
+    		"skip": function() { return this._skip || this._defaultSkip; },
+    		"where": function() { return this._where; },
+    		"order": function() { return this._order; }
     	}
     });
 })(jQuery);

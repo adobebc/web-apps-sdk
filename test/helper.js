@@ -26,7 +26,7 @@
             };
 
             if (!BCAPI.Helper.Site.getSiteId.isSpy) {
-                apyOn(BCAPI.Helper.Site, 'getSiteId').andReturn(config.siteId);
+                spyOn(BCAPI.Helper.Site, 'getSiteId').andReturn(config.siteId);
             }
 
             if (!BCAPI.Helper.Site.getGenericToken.isSpy) {
@@ -53,7 +53,7 @@
 
                 waitsFor(function() {
                     return !!config.genericToken;
-                }, 'Get genericToken', 10 * 1000);
+                }, 'Get genericToken', 1000);
             }
 
             if (!BCAPI.Helper.Site.getSiteToken.isSpy) {
@@ -78,7 +78,7 @@
 
                     waitsFor(function() {
                         return !!config.siteToken;
-                    }, 'Get siteToken', 5000);
+                    }, 'Get siteToken', 1000);
                 }
             }
         }

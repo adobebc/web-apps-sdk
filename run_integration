@@ -1,0 +1,47 @@
+#!/bin/bash
+#
+# Simple script for executing Jasmine specs using JSTestDriver
+#
+JAR_FILE="ci/lib/JsTestDriver.jar"
+CONFIG="integration_testdriver.conf"
+PORT=12876
+BROWSER=$1
+OUTPUT_DIR="./logs"
+SUITES="all"
+
+if [[ "$#" -eq 0 ]]; then
+    echo "You must at least provide the path to the browser(s) you'd like to test against:"
+    echo -e "\n\trun_specs BROWSERS [SUITE_NAMES]\n"
+    exit 1
+fi
+
+if [[ "$#" -eq 2 && -n "$2" ]]; then
+    SUITES=$2;
+    echo "Running the following suites: $SUITES"
+else
+    echo "Running all suites..."
+fi
+
+rm -Rf tests-output-integration
+rm -f tests_runner_integration.log
+java -jar $JAR_FILE --port $PORT --config $CONFIG --browser "$BROWSER" --tests $SUITES --testOutput tests-output-integration >> tests_runner_integration.log
+
+cat tests_runner_integration.log
+
+if grep "error" tests_runner_integration.log; then
+   rm tests_runner_integration.log
+
+   exit 1
+fi
+
+if grep "No lines of coverage found." tests_runner_integration.log; then
+   rm tests_runner_integration.log
+   
+   echo "Coverage is 0% -> Unacceptable."
+   
+   exit 1
+fi
+
+rm tests_runner_integration.log
+
+echo "Done."

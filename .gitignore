@@ -2,6 +2,8 @@
 logs/*
 tests-output/*
 tests_runner.log
+tests-output-integration/*
+tests_runner_integration.log
 node_modules
 doc
 

@@ -161,7 +161,12 @@
     		
     		this._limit = options.limit;
     		this._skip = options.skip;
-    		this._order = options.order;
+    		
+    		if(options.where) {
+    			this._where = JSON.stringify(options.where);
+    		}
+    		
+    		this._order = options.order;    		
     		
     		Backbone.Paginator.requestPager.prototype.fetch.call(this, options);
     	},
@@ -213,11 +218,9 @@
     	 * This property defines the attributes which are used to server api.
     	 */
     	server_api: {
-    		/*"where": function() { throw new Error(); },
-    		"limit": function() { throw new Error(); },
-    		"skip": function() { throw new Error(); },*/    		
     		"limit": function() { return this._limit || this._defaultLimit; },
     		"skip": function() { return this._skip || this._defaultSkip; },
+    		"where": function() { return this._where; },
     		"order": function() { return this._order; }
     	}
     });

@@ -64,12 +64,19 @@ describe("Unit tests for BC base collection class.", function() {
 			var urlRoot = personModel.urlRoot(),
 				expectedLimit = options.limit || BCAPI.Config.Pagination.limit,
 				expectedSkip = options.skip || BCAPI.Config.Pagination.skip,
+				expectedWhere = options.where,
 				expectedOrder = options.order,
 				totalAnd = request.url.split("&").length;
 			
 			expect(request.url.substring(0, urlRoot.length + 1)).toBe(urlRoot + "?");
 			expect(request.url).toContain("limit=" + expectedLimit);
 			expect(request.url).toContain("skip=" + expectedSkip);
+			
+			if(expectedWhere) {
+				expect(request.url).toContain("where=" + JSON.stringify(expectedWhere));
+			} else {
+				expect(request.url).not.toContain("where=");
+			}
 			
 			if(expectedOrder) {
 				expect(request.url).toContain("order=" + expectedOrder);
@@ -119,10 +126,17 @@ describe("Unit tests for BC base collection class.", function() {
 	
 	it("Check correct collection fetch ordering.", function() {
 		var expectedItems = [{"firstName": "Triple", "lastName": "X"},
-		                     {"firstName": "John", "lastName": "Doe"}];
-		
-		options = {"order": "-lastName"};
+		                     {"firstName": "John", "lastName": "Doe"}],
+		    options = {"order": "-lastName"};
 		
 		_testCollectionFetchWithParams(expectedItems, 3, options);
+	});
+	
+	it("Check correct collection fetch where.", function() {
+		var expectedItems = [{"firstName": "John", "lastName": "Doe"}],
+		    where = {"firstName": "John",
+					 "lastName": {"$contains": "Doe"}};
+		
+		_testCollectionFetchWithParams(expectedItems, 3, {"where": where});
 	});
 });

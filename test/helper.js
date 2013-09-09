@@ -10,6 +10,8 @@
         siteToken: null
     };
 
+    BCAPI.Config.TestServer = config;
+
     function mockGenericToken() {
         spyOn(BCAPI.Helper.Site, "getGenericToken").andReturn(config.genericToken);
     }
@@ -17,10 +19,8 @@
         spyOn(BCAPI.Helper.Site, "getSiteToken").andReturn(config.siteToken);
     }
 
-    BCAPI.Config.TestServer = config;
-
     BCAPI.Helper.Test = {
-        useTestServer: function() {
+        runTestServer: function() {
             if (!BCAPI.Helper.Site.getRootUrl.isSpy) {
                 spyOn(BCAPI.Helper.Site, "getRootUrl").andReturn(config.rootUrl);
             };
@@ -53,7 +53,7 @@
 
                 waitsFor(function() {
                     return !!config.genericToken;
-                }, 'Get genericToken', 1000);
+                }, 'Get genericToken', 20 * 1000);
             }
 
             if (!BCAPI.Helper.Site.getSiteToken.isSpy) {
@@ -78,7 +78,7 @@
 
                     waitsFor(function() {
                         return !!config.siteToken;
-                    }, 'Get siteToken', 1000);
+                    }, 'Get siteToken', 500);
                 }
             }
         }

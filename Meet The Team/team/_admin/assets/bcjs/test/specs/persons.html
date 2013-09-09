@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sample models usage</title>
+		
+		<script src="../lib/jquery.js"></script>
+		<script src="../dist/bcapi-full.js"></script>
+		
+		<script type="text/javascript">
+			var Person = BCAPI.Models.Model.extend({
+				defaults: {
+					firstName: "",
+					lastName: ""
+				}
+			});
+			
+			var PersonCollection = BCAPI.Models.Collection.extend({
+				model: Person
+			});
+			
+			var persons = (new PersonCollection()).fetch({
+				skip: 5,
+				limit: 55
+			});
+			console.log(persons);
+		</script>
+	</head>
+	
+	<body>
+		<h1>Works like a charm.</h1>
+	</body>
+</html>

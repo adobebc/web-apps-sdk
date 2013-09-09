@@ -38,6 +38,7 @@ describe("Unit tests for BC base collection class.", function() {
 	 * @param {Integer} numQueryParams The total number of query params we expect api url to have.
 	 * @param {Integer} options.skip The number of records we want to skip from data set.
 	 * @param {Integer} options.limit The total number of records we want to include in data set.
+	 * @param {Object} options.where An object describing a filtering criteria passed to API.
 	 * @param {String} options.order The order expression used.
 	 */
 	function _testCollectionFetchWithParams(expectedItems, numQueryParams, options) {
@@ -138,5 +139,17 @@ describe("Unit tests for BC base collection class.", function() {
 					 "lastName": {"$contains": "Doe"}};
 		
 		_testCollectionFetchWithParams(expectedItems, 3, {"where": where});
+	});
+	
+	it("Check correct collection fetch with pagination, filtering and sorting specified.", function() {
+		var expectedItems = [{"firstName": "John", "lastName": "Doe"},
+		                     {"firstName": "Joan", "lastName": "Doe"}],
+		    options = {skip: 2, 
+					   limit: 5, 
+					   order: "firstName",
+					   where: {"firstName": {"$beginsWith": "Jo"},
+						   	   "lastName": "Doe"}};
+		
+		_testCollectionFetchWithParams(expectedItems, 4, options);
 	});
 });

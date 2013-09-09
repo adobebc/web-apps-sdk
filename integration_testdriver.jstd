@@ -1,8 +1,8 @@
 server: http://localhost:12876
 
 load:
-  - lib/jasmine/jasmine.js
-  - lib/jasmine/jasmine-jstd.js
+  - lib/jasmine-1.3.1/jasmine.js
+  - lib/jasmine-1.3.1/jasmine-jstd.js
   - lib/jquery.js
   - lib/underscore.js
   - lib/backbone.js
@@ -15,6 +15,7 @@ load:
 
 test:
   - test/integration/test_*.js
+  - test/helper.js
 
 plugin:
   - name: "coverage"

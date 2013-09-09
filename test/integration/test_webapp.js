@@ -1,6 +1,6 @@
 describe("Helper.Models.WebApp", function() {
     beforeEach(function() {
-        BCAPI.Helper.Test.useTestServer();
+        BCAPI.Helper.Test.runTestServer();
     });
 
     it("Create, Read, Delete", function() {
@@ -40,5 +40,18 @@ describe("Helper.Models.WebApp", function() {
         }, 'Delete WebApp', 500);
 
         // TODO: Test webApp was deleted
+    });
+
+    afterEach(function() {
+        var done = false;
+
+        runs(function() {
+            var webApp = new BCAPI.Models.WebApp({name: "FirstWebAppFromApi"});
+            webApp.destroy().done(function() { done = true }).fail(function() { done = true });
+        });
+
+        waitsFor(function() {
+            return done;
+        }, 'Delete WebApp', 500);
     });
 });

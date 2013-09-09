@@ -13,7 +13,7 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return saved;
-        }, 'Create WebApp', 500);
+        }, 'Create WebApp', 10 * 1000);
 
         var fetched = false;
 

@@ -21,5 +21,11 @@
 		skip: 0
 	};
 	
+	/**
+	 * @property {String} MAX_DATE the maximum date value allowed on BC side.
+	 * @memberOf BCAPI.Config
+	 */
+	Config.MAX_DATE = "9999-01-01";
+	
 	BCAPI.Config = Config;
 })(jQuery);

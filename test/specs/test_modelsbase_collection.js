@@ -40,13 +40,24 @@ describe("Unit tests for BC base collection class.", function() {
 	 * @param {Integer} options.limit The total number of records we want to include in data set.
 	 * @param {Object} options.where An object describing a filtering criteria passed to API.
 	 * @param {String} options.order The order expression used.
+	 * @param {function} options.error The error handler we want to invoke.
 	 */
-	function _testCollectionFetchWithParams(expectedItems, numQueryParams, options) {
+	function _testCollectionFetchWithParams(expectedItems, numQueryParams, options) {		
+		options = options || {};
+		
 		var personModel = new BCAPI.Mocks.Models.PersonModel(),
 			collection = new BCAPI.Mocks.Models.PersonCollection(), 
-			callbackCalled = false;
+			callbackCalled = false,
+			errorHandler = options.error,
+			waitMsg = !errorHandler ? "Success callback not called." : "Error callback not called."; 		
 		
-		options = options || {};
+		if(errorHandler) {
+			options.error = function(model, xhr, options) {
+				errorHandler(model, xhr, options);
+				
+				callbackCalled = true;
+			};
+		}
 		
 		function successHandler(returnedCollection, response, options) {
 			var idx = 0;
@@ -90,7 +101,11 @@ describe("Unit tests for BC base collection class.", function() {
 			expect(request.dataType).toBe("json");
 			expect(request.headers.Authorization).toBe(siteToken);
 			
-			request.success(expectedItems);
+			if(!errorHandler) {
+				request.success(expectedItems);
+			} else {
+				request.error(errorHandler);
+			}
 		});
 		
 		runs(function() {
@@ -105,7 +120,7 @@ describe("Unit tests for BC base collection class.", function() {
 		
 		waitsFor(function() {
 			return callbackCalled;
-		}, "Success callback not called.", 50);		
+		}, waitMsg, 50);		
 	}
 	
 	it("Check correct collection fetch with default values..", function() {
@@ -151,5 +166,22 @@ describe("Unit tests for BC base collection class.", function() {
 						   	   "lastName": "Doe"}};
 		
 		_testCollectionFetchWithParams(expectedItems, 4, options);
+	});
+	
+	it("Check correct collection fetch error handling.", function() {
+		function errorHandler(collection, xhr, options) {
+			expect(collection).not.toBe(undefined);
+			expect(collection._defaultLimit).toBe(BCAPI.Config.Pagination.limit);
+			expect(collection._defaultSkip).toBe(BCAPI.Config.Pagination.skip);
+			
+			expect(xhr).not.toBe(undefined);
+			expect(options).not.toBe(undefined);
+			expect(options.testKey).toBe("1234");
+		}
+		
+		var options = {error: errorHandler,
+					   testKey: "1234"};
+		
+		_testCollectionFetchWithParams(undefined, 2, options);
 	});
 });

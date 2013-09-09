@@ -183,6 +183,9 @@
     	},
     	/**
     	 * This property defines default value for defining core paginator behavior.
+    	 * 
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
     	 */
     	paginator_core: {
     		type: "GET",
@@ -210,12 +213,18 @@
     	},
     	/**
     	 * This property defines default values for how this paginated collection works.
+    	 * 
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
     	 */
     	paginator_ui: {
     		firstPage: BCAPI.Config.Pagination.lowestPage
     	},
     	/**
     	 * This property defines the attributes which are used to server api.
+    	 * 
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
     	 */
     	server_api: {
     		"limit": function() { return this._limit || this._defaultLimit; },

@@ -1,6 +1,6 @@
 (function($) {
 	"use strict";
-	
+
 	/**
 	 * This class provides useful operations for interacting with web app items. You can find various examples of how to
 	 * use it.
@@ -8,7 +8,7 @@
 	 * ## Load items paginated
 	 * 
 	 * ```javascript
-	 * var items = new BCAPI.WebApp.ItemCollection("Test webapp");
+	 * var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 	 * items.fetch({
 	 * 		skip: 10, limit: 100,
      *		success: function(webAppItems) {
@@ -27,7 +27,7 @@
 	 * ## Filtering items
 	 *
 	 * ```javascript 
-	 * var items = new BCAPI.WebApp.ItemCollection("Test webapp");
+	 * var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 	 * items.fetch({ 	
 	 * 		where: {"name": ""Web app item new"},
      *		success: function(webAppItems) {
@@ -42,7 +42,7 @@
 	 * ## Ordering items
 	 * 
 	 * ```javascript 
-	 * var items = new BCAPI.WebApp.ItemCollection("Test webapp");
+	 * var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 	 * items.fetch({
 	 * 		order: "-name",
      *		success: function(webAppItems) {
@@ -57,7 +57,7 @@
 	 * ## All in one usage
 	 * 
 	 * ```javascript 
-	 * var items = new BCAPI.WebApp.ItemCollection("Test webapp");
+	 * var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 	 * items.fetch({
 	 * 		skip: 10, limit: 100,
 	 * 		where: {"name": ""Web app item new"},
@@ -76,7 +76,7 @@
 	 * ## Create item
 	 * 
 	 * ```javascript
-	 * var item = new BCAPI.WebApp.Item({
+	 * var item = new BCAPI.Models.WebApp.Item({
 	 * 		"name": "Test item"
 	 * });
 	 * 
@@ -95,7 +95,7 @@
 	 * ## Remove item
 	 * 
 	 * ```javascript
-	 * var items = new BCAPI.WebApp.Item({id: 1}); 
+	 * var items = new BCAPI.Models.WebApp.Item({id: 1});
 	 * item.destroy({
 	 * 	success: function(webAppItem, response) {
 	 * 		// handle success here.
@@ -105,19 +105,56 @@
 	 *  } 
 	 * });
 	 * ```
-	 * 
-	 * @namespace BCAPI.WebApp
-	 * @memberOf BCAPI
-	 */
-
-    /**
+     * 
+     * @name Item
+     * @class
      * @constructor
+     * @memberOf BCAPI.Models.WebApp
+     * @example
+     * 
+     * var item = new BCAPI.Models.WebApp.Item({
+	 *	"name": "Item7",
+	 *	"weight": 7,
+	 *	"releaseDate": "2013-01-30",
+	 *	"expiryDate": "9999-01-01",
+	 *	"enabled": true,
+	 *	"slug": "item7",
+	 *	"description": "item7 description",
+	 *	"roleId": null,
+	 *	"submittedBy": -1,
+	 *	"templateId": 123,
+	 *	"address": "item7_address",
+	 *	"city": "item7_city",
+	 *	"state": "item7_state",
+	 *	"zipCode": "000007",
+	 *	"country": "US",
+	 *	"fields": {
+	 *	    "field_string_required": "item7_field1_value",
+	 *	    "field2_string_optional": "item7_field2_value",
+	 *	    "field3_number": 7,
+	 *	    "field4_dateTime": "2012-01-20",
+     *	    "field5_list": "item1"
+	 *	}
+     * });
      */
-    BCAPI.Models.WebAppItem = BCAPI.Models.Model.extend({
-        webapp: null, // TODO
-
-        url: function() {
-            return this.webapp.url() + '/items';
-        }
+    BCAPI.Models.WebApp.Item = BCAPI.Models.Model.extend({
+    	defaults: {
+    		name: "",
+    		weight: 0,
+    		releaseDate: (new Date()).toISOString().substring(0, 10),
+    		expiryDate: BCAPI.Config.MAX_DATE,
+    		enabled: true,
+    		slug: "",
+    		description: "",
+    		roleId: undefined,
+    		submittedBy: -1,
+    		templateId: undefined,
+    		address: undefined,
+    		city: undefined,
+    		state: undefined,
+    		zipCode: undefined,
+    		country: undefined,
+    		fields: {}
+    	}
     });
 })(jQuery);

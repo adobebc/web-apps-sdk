@@ -157,9 +157,11 @@
     	 * @returns {Promise} a promise which can be used to determine http request state. 
     	 */
     	fetch: function(options) {
-    		// options.type = options.type || "GET";
-    		
     		options.headers = new this.model().headers();
+    		
+    		this._limit = options.limit;
+    		this._skip = options.skip;
+    		this._order = options.order;
     		
     		Backbone.Paginator.requestPager.prototype.fetch.call(this, options);
     	},
@@ -184,12 +186,19 @@
     			var urlWithParams = [this.url(), "?"];
     			
     			for(var key in this.server_api) {
-    				var val = this.server_api[key];
+    				var val = this.server_api[key].apply(this);
     				
+    				if(val === undefined) {
+    					continue;
+    				}
+    				
+    				urlWithParams.push("&");
     				urlWithParams.push(key);
     				urlWithParams.push("=");
-    				urlWithParams.push(val.apply(this));
+    				urlWithParams.push(val);    				
     			}
+    			
+    			urlWithParams[2] = "";
     			
     			return urlWithParams.join("");
     		}
@@ -206,10 +215,10 @@
     	server_api: {
     		/*"where": function() { throw new Error(); },
     		"limit": function() { throw new Error(); },
-    		"skip": function() { throw new Error(); },
-    		"order": function() { throw new Error(); }*/
-    		"limit": function() { return this._defaultLimit; },
-    		"skip": function() { return this._defaultSkip; }
+    		"skip": function() { throw new Error(); },*/    		
+    		"limit": function() { return this._limit || this._defaultLimit; },
+    		"skip": function() { return this._skip || this._defaultSkip; },
+    		"order": function() { return this._order; }
     	}
     });
 })(jQuery);

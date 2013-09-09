@@ -53,7 +53,7 @@
 
                 waitsFor(function() {
                     return !!config.genericToken;
-                }, 'Get genericToken', 20 * 1000);
+                }, 'Get genericToken', 40 * 1000);
             }
 
             if (!BCAPI.Helper.Site.getSiteToken.isSpy) {

@@ -35,7 +35,7 @@ describe("Unit tests for web app item collection.", function() {
 			
 			var idx = 0;
 			
-			_.each(collection.models, function(model) {
+			collection.each(function(model) {
 				expect(model.get("name")).toBe(expectedItems.items[idx].name);
 				expect(model.get("id")).toBe(expectedItems.items[idx].id);
 				expect(model.get("webapp").get("name")).toBe(webappName);

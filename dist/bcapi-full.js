@@ -2867,7 +2867,7 @@
      */
     BCAPI.Helper.Site.getGenericToken = function() {
         //noinspection JSValidateTypes
-        return $.cookie ? $.cookie('genericToken') :
+        return $.cookie ? $.cookie('genericAuthToken') :
             $.error('Include jQuery.cookie or override BCAPI.Helper.Site.getGenericToken with your own implementation.');
 	};
 
@@ -2876,7 +2876,7 @@
      */
     BCAPI.Helper.Site.getSiteToken = function() {
         //noinspection JSValidateTypes
-        return $.cookie ? $.cookie('siteToken') :
+        return $.cookie ? $.cookie('siteAuthToken') :
             $.error('Include jQuery.cookie or override BCAPI.Helper.Site.getSiteToken with your own implementation.');
 	};
 
@@ -2990,7 +2990,7 @@
     	urlRoot: function() {
     		var url = BCAPI.Helper.Site.getRootUrl(),
     			endpoint = this.endpoint();
-    		
+    		    		
     		if(endpoint.charAt(0) !== "/") {
     			endpoint = '/' + endpoint;
     		} 
@@ -3011,8 +3011,29 @@
     	 * 	}
     	 * });
     	 */
-    	save: function(handlers) {
-    		return Backbone.Model.prototype.save.call(this, this.attributes, handlers);
+    	save: function(options) {
+    		options.dataType = "text";
+    		
+    		return Backbone.Model.prototype.save.call(this, this.attributes, options);
+    	},
+    	/**
+    	 * This method deletes a model using the api.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
+    	 * @example
+    	 * var model = new PersonModel({id: 1});
+    	 * model.destroy({
+    	 * 	success: function() {
+    	 * 		// do something when delete is successful.
+    	 * 	}
+    	 * });
+    	 */
+    	destroy: function(options) {
+    		options.dataType = "text";
+    		
+    		return Backbone.Model.prototype.destroy.call(this, options);    		
     	},
     	/**
     	 * Sync method is invoked automatically when user tries to create / update a model. It automatically 
@@ -3035,8 +3056,13 @@
     			options.headers[headerKey] = customHeaders[headerKey];
     		}
 
-    		return Backbone.Model.prototype.sync.call(this, method, model, options);
-//            return xhr.then(function() { return this; }).promise(xhr);
+    		var xhr = Backbone.Model.prototype.sync.call(this, method, model, options);
+    		
+    		if(!xhr) {
+    			return;
+    		}
+    		
+    		return xhr.then(function() { return this; }).promise(xhr);
     	}
     });
     
@@ -3449,7 +3475,4 @@
     		return items;
     	}
     });
-})(jQuery);;(function($) {
-	"use strict";
-
 })(jQuery);

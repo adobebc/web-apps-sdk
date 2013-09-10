@@ -208,6 +208,17 @@
     		var model = new this.model(this.webappName);
     		
     		return BCAPI.Models.Collection.prototype.url.call(this, model);
-    	}
+    	},
+    	/**
+    	 * This method is invoked to automatically populate all models from this collection. We override
+    	 * this in order to correctly set web app attribute for each item. 
+    	 */
+/*    	set: function(models, options) {
+    		var self = this;
+    		
+    		_.each(models, function(item) {
+    			
+    		});
+    	}*/
     });
 })(jQuery);

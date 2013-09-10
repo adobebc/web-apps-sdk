@@ -102,7 +102,7 @@ describe("Unit tests for BC base collection class.", function() {
 			expect(request.headers.Authorization).toBe(siteToken);
 			
 			if(!errorHandler) {
-				request.success(expectedItems);
+				request.success({"items": expectedItems});
 			} else {
 				request.error(errorHandler);
 			}

@@ -178,8 +178,10 @@
     	 * @instance
     	 * @memberOf BCAPI.Models.Collection
     	 */
-    	url: function() {
-    		return new this.model().urlRoot();
+    	url: function(model) {
+    		model = model || (new this.model());
+    		
+    		return model.urlRoot();
     	},
     	/**
     	 * This property defines default value for defining core paginator behavior.

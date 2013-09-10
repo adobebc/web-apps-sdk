@@ -139,7 +139,7 @@
      */
     BCAPI.Models.WebApp.Item = BCAPI.Models.Model.extend({
     	constructor: function(webappName, attributes, options) {
-    		Backbone.Model.call(this, attributes, options);
+    		BCAPI.Models.Model.call(this, attributes, options);
     		
     		this._webappName = webappName;
     		this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});
@@ -164,6 +164,10 @@
     	},
     	/**
     	 * This method returns the correct endpoint for the web app items.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.WebApp.Item
     	 */
     	endpoint: function() {
     		var url = ["/api/v2/admin/sites/current/webapps/"];
@@ -171,6 +175,39 @@
     		url.push("/items");
     		
     		return url.join("");
+    	}
+    });
+    
+    /**
+     * This class provides a collection for working with web app items. In order to use this collection you must provide 
+     * a webapp name. For more information regarding how to interact with web app items read {@link BCAPI.Models.WebApp.Item}. 
+     * 
+     * @name ItemCollection
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models.WebApp
+     * @example
+     * var itemCollection = new BCAPI.Models.WebApp.ItemCollection("Sample webapp"); 
+     */
+    BCAPI.Models.WebApp.ItemCollection = BCAPI.Models.Collection.extend({
+    	constructor: function(webappName, models, options) {
+    		BCAPI.Models.Collection.call(this, models, options);
+    		
+    		this.webappName = webappName;
+    	},
+    	model: BCAPI.Models.WebApp.Item,
+    	/**
+    	 * This method returns items collection api entry point absolute url.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.WebApp.ItemCollection
+    	 * @returns API entry point url.
+    	 */
+    	url: function() {
+    		var model = new this.model(this.webappName);
+    		
+    		return BCAPI.Models.Collection.prototype.url.call(this, model);
     	}
     });
 })(jQuery);

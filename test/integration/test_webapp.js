@@ -12,7 +12,7 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return done;
-        }, 'Delete WebApp if it exists', 10 * 1000);
+        }, 'Delete WebApp if it exists', 60 * 1000);
     });
 
     it("Create, Read, Delete", function() {
@@ -29,7 +29,7 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return saved;
-        }, 'Create WebApp', 10 * 1000);
+        }, 'Create WebApp', 60 * 1000);
 
         runs(function() {
             expect(webApp.get('id')).toBeUndefined();
@@ -40,7 +40,7 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return fetched;
-        }, 'Read WebApp', 500);
+        }, 'Read WebApp', 1000);
 
         runs(function() {
             expect(webApp.get('id')).toBeDefined();
@@ -50,7 +50,7 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return deleted;
-        }, 'Delete WebApp', 500);
+        }, 'Delete WebApp', 1000);
 
         runs(function() {
             webApp.isNotNew = true;
@@ -59,7 +59,7 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return notFound;
-        }, 'WebApp does not exist anymore', 500);
+        }, 'WebApp does not exist anymore', 1000);
     });
 
     afterEach(function() {

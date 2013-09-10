@@ -18,14 +18,15 @@ describe("Unit tests for web app item collection.", function() {
 		expect(item.url()).toBe(expectedUrl);
 	});
 	
-	/*it("Test web app item collection fetch ok.", function() {
+	it("Test web app item collection fetch ok.", function() {
 		var webappName = "Sample webapp",
 			rootUrl = "http://test.localhost.com/",
 			expectedUrl = rootUrl + "api/v2/admin/sites/current/webapps/" + webappName + "/items",
 			item = new BCAPI.Models.WebApp.ItemCollection(webappName),
 			siteToken = "12345xaz",
 			successCalled = false,
-			expectedItems = {"name": "Item 1"}, {"name": "Item 2"}];
+			expectedItems = {"items": [{"id": 1, "name": "Item 1"}, 
+			                           {"id": 1500, "name": "Item 2"}]};
 		
 		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
 			
@@ -35,7 +36,8 @@ describe("Unit tests for web app item collection.", function() {
 			var idx = 0;
 			
 			_.each(collection.models, function(model) {
-				expect(model.name).toBe(expectedItems[idx].name);
+				expect(model.get("name")).toBe(expectedItems.items[idx].name);
+				expect(model.get("id")).toBe(expectedItems.items[idx].id);
 				expect(model.get("webapp").get("name")).toBe(webappName);
 				
 				idx++;
@@ -60,5 +62,5 @@ describe("Unit tests for web app item collection.", function() {
 		waitsFor(function() {
 			return successCalled;
 		}, "Success handler not called.", 50);
-	});*/
+	});
 });

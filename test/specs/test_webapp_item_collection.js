@@ -10,12 +10,14 @@ describe("Unit tests for web app item collection.", function() {
 	it("Test web app item collection endpoint ok.", function() {
 		var webappName = "Sample webapp",
 			rootUrl = "http://test.localhost.com",
-			expectedUrl = rootUrl + "/api/v2/admin/sites/current/webapps/Sample webapp/items",
+			expectedBeginUrl = rootUrl + "/api/v2/admin/sites/current/webapps/Sample webapp/items",
 			item = new BCAPI.Models.WebApp.ItemCollection(webappName);
 		
 		BCAPI.Mocks.Helper.Site(undefined, undefined, rootUrl);
 		
-		expect(item.url()).toBe(expectedUrl);
+		expect(item.url().substring(0, expectedBeginUrl.length)).toBe(expectedBeginUrl);
+		expect(item.url()).toContain("limit=" + BCAPI.Config.Pagination.limit);
+		expect(item.url()).toContain("skip=" + BCAPI.Config.Pagination.skip);
 	});
 	
 	it("Test web app item collection fetch ok.", function() {

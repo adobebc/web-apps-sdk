@@ -76,7 +76,7 @@ describe("Unit tests for BC base model class.", function() {
 		expect(request.type).toBe(method);
 		expect(request.url).toBe(url);
 		expect(request.headers.Authorization).toBe(siteToken);
-        expect(request.dataType).toBeNull();
+        expect(request.dataType).toBe("json");
         expect(request.contentType).toBe("application/json");
 
 		var data = JSON.parse(request.data);

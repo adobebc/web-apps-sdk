@@ -109,7 +109,7 @@
     			options.headers[headerKey] = customHeaders[headerKey];
     		}
 
-    		return Backbone.Model.prototype.sync(method, model, options);
+    		return Backbone.Model.prototype.sync.call(this, method, model, options);
             // TODO: Promises should work
 //            return xhr.then(function() { return this; }).promise(xhr);
     	}

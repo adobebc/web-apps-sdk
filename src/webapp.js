@@ -47,10 +47,16 @@
 
         endpoint: function() {
             return '/api/v2/admin/sites/current/webapps';
-//        },
-//
-//        save: function() {
-//            return this.__super__.save();
+        },
+
+        fetch: function() {
+            this.isNotNew = true;
+            return Backbone.Model.prototype.fetch.apply(this, arguments);
+        },
+
+        destroy: function() {
+            this.isNotNew = true;
+            return Backbone.Model.prototype.destroy.apply(this, arguments);
         }
     });
 

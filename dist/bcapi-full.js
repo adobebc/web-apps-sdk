@@ -4161,6 +4161,9 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     		"skip": function() { return this._skip || this._defaultSkip; },
     		"where": function() { return this._where; },
     		"order": function() { return this._order; }
+    	},
+    	parse: function(response) {
+    		return response.items;
     	}
     });
 })(jQuery);

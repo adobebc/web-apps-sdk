@@ -6,8 +6,8 @@
         siteId: 38604,
         username: 'bcadmin@bc1.local', //'bcapi-integration@mailinator.com',
         password: 'password9', // '123456'
-        genericToken: null,
-        siteToken: null
+        genericToken: "6d3d2bee64f843aa9922a712277d25eee45f55118973409684ccfd33459920f1",
+        siteToken: '3172bcb654194546801c61fec48d46022eabb6eba62245e79fa856c4a1e266ac'
     };
 
     BCAPI.Config.TestServer = config;
@@ -78,7 +78,7 @@
 
                     waitsFor(function() {
                         return !!config.siteToken;
-                    }, 'Get siteToken', 500);
+                    }, 'Get siteToken', 5 * 1000);
                 }
             }
         }

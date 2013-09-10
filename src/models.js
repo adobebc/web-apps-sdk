@@ -128,7 +128,7 @@
      * 	model: BCAPI.Examples.Person
      * });
      */
-    BCAPI.Models.Collection = Backbone.Paginator.requestPager.extend({
+    BCAPI.Models.Collection = Backbone.Collection.extend({
     	/**
     	 * This method initialize the current collection default attributes:
     	 * 
@@ -160,6 +160,7 @@
     	 */
     	fetch: function(options) {
     		options.headers = new this.model().headers();
+    		options.dataType = "json";
     		
     		this._limit = options.limit;
     		this._skip = options.skip;
@@ -168,9 +169,9 @@
     			this._where = JSON.stringify(options.where);
     		}
     		
-    		this._order = options.order;    		
+    		this._order = options.order;
     		
-    		return Backbone.Paginator.requestPager.prototype.fetch.call(this, options);
+    		return Backbone.Collection.prototype.fetch.call(this, options);
     	},
     	/**
     	 * This method returns the root url of this collection. It internally uses the model
@@ -183,46 +184,24 @@
     	url: function(model) {
     		model = model || (new this.model());
     		
-    		return model.urlRoot();
-    	},
-    	/**
-    	 * This property defines default value for defining core paginator behavior.
-    	 * 
-    	 * @instance
-    	 * @memberOf BCAPI.Models.Collection
-    	 */
-    	paginator_core: {
-    		type: "GET",
-    		dataType: "json",    		
-    		url: function() {
-    			var urlWithParams = [this.url(), "?"];
-    			
-    			for(var key in this.server_api) {
-    				var val = this.server_api[key].apply(this);
-    				
-    				if(val === undefined) {
-    					continue;
-    				}
-    				
-    				urlWithParams.push("&");
-    				urlWithParams.push(key);
-    				urlWithParams.push("=");
-    				urlWithParams.push(val);    				
-    			}
-    			
-    			urlWithParams[2] = "";
-    			
-    			return urlWithParams.join("");
-    		}
-    	},
-    	/**
-    	 * This property defines default values for how this paginated collection works.
-    	 * 
-    	 * @instance
-    	 * @memberOf BCAPI.Models.Collection
-    	 */
-    	paginator_ui: {
-    		firstPage: BCAPI.Config.Pagination.lowestPage
+			var urlWithParams = [model.urlRoot(), "?"];
+			
+			for(var key in this.server_api) {
+				var val = this.server_api[key].apply(this);
+				
+				if(val === undefined) {
+					continue;
+				}
+				
+				urlWithParams.push("&");
+				urlWithParams.push(key);
+				urlWithParams.push("=");
+				urlWithParams.push(val);    				
+			}
+			
+			urlWithParams[2] = "";
+			
+			return urlWithParams.join("");    		
     	},
     	/**
     	 * This property defines the attributes which are used to server api.

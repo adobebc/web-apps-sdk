@@ -2,7 +2,6 @@ var files =
 	[
 	 	"lib/underscore.js",
 	 	"lib/backbone.js",
-	 	"lib/backbone.paginator.js",
 	 	"src/bcapi.js",
 	 	"src/helper.js",
 	 	"src/config.js",

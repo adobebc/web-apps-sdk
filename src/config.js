@@ -16,7 +16,6 @@
 	 * @property {Integer} lowestPage Default lowest page allowed to be requested through paginated API call. 
 	 */
 	Config.Pagination = {
-		lowestPage: 0,
 		limit: 10,
 		skip: 0
 	};

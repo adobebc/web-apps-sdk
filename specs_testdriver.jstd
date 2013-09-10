@@ -6,7 +6,6 @@ load:
   - lib/jquery.js
   - lib/underscore.js
   - lib/backbone.js
-  - lib/backbone.paginator.js
   - src/bcapi.js
   - src/config.js
   - src/helper.js  

@@ -160,7 +160,7 @@
     		state: undefined,
     		zipCode: undefined,
     		country: undefined,
-    		fields: {},
+    		fields: {}
     	},
     	/**
     	 * This method returns the correct endpoint for the web app items.

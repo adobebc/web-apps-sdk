@@ -213,8 +213,11 @@
     	 * We override this method in order to transform each returned item into a strong typed 
     	 * {@link BCAPI.Models.WebApp.Item} models.
     	 * 
+    	 * @method
+    	 * @instance
     	 * @param {Object} response The JSON response received from Items api.
-    	 * @returns A list of web app items. 
+    	 * @returns A list of web app items.
+    	 * @memberOf BCAPI.Models.WebApp.ItemCollection 
     	 */
     	parse: function(response) {
     		response = BCAPI.Models.Collection.prototype.parse.call(this, response);

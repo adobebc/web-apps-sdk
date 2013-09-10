@@ -70,7 +70,7 @@
 			lastName: "last_name_default"
 		},
 		endpoint: function() {
-			return "/api/v2/persons";
+			return "api/v2/persons";
 		},
 		idAttribute: "idCustom"
 	});

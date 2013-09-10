@@ -13,18 +13,30 @@ describe("Helper.Models.WebApp", function() {
         waitsFor(function() {
             return done;
         }, 'Delete WebApp if it exists', 60 * 1000);
+
+        var sync = Backbone.sync;
+        spyOn(Backbone, "sync").andCallFake(function(method, model, options) {
+
+            // Prevent jQuery from failing on empty response
+            options.dataType = null;
+            options.contentType = 'application/json';
+
+            return sync.apply(this, arguments);
+        });
     });
 
-    it("Create, Read, Delete", function() {
-        var webApp,
+    it("Create, List, Read, Delete", function() {
+        var model,
+            collection,
             saved = false,
-            fetched = false,
+            modelFetched = false,
+            collectionFetched = false,
             deleted = false,
             notFound = false;
 
         runs(function() {
-            webApp = new BCAPI.Models.WebApp.App({name: "FirstWebAppFromApi"});
-            webApp.save().done(function() { saved = true });
+            model = new BCAPI.Models.WebApp.App({name: "FirstWebAppFromApi"});
+            model.save().done(function() { saved = true });
         });
 
         waitsFor(function() {
@@ -32,19 +44,31 @@ describe("Helper.Models.WebApp", function() {
         }, 'Create WebApp', 60 * 1000);
 
         runs(function() {
-            expect(webApp.get('id')).toBeUndefined();
+            expect(model.get('id')).toBeUndefined();
 
-            webApp.fetch().done(function() { fetched = true });
+            collection = new BCAPI.Models.WebApp.AppCollection();
+            collection.fetch().done(function() { collectionFetched = true });
         });
 
         waitsFor(function() {
-            return fetched;
+            return collectionFetched;
+        }, 'List WebApps', 1000);
+
+        runs(function() {
+            console.log(collection);
+            expect(collection.models.length).toBeGreaterThan(0);
+
+            model.fetch().done(function() { modelFetched = true });
+        });
+
+        waitsFor(function() {
+            return modelFetched;
         }, 'Read WebApp', 1000);
 
         runs(function() {
-            expect(webApp.get('id')).toBeDefined();
+            expect(model.get('id')).toBeDefined(); // check that attributes have been updated
 
-            webApp.destroy().done(function() { deleted = true });
+            model.destroy().done(function() { deleted = true });
         });
 
         waitsFor(function() {
@@ -52,8 +76,8 @@ describe("Helper.Models.WebApp", function() {
         }, 'Delete WebApp', 1000);
 
         runs(function() {
-            webApp.isNotNew = true;
-            webApp.fetch().fail(function() { notFound = true });
+            model.isNotNew = true;
+            model.fetch().fail(function() { notFound = true });
         });
 
         waitsFor(function() {

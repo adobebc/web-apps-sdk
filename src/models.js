@@ -110,7 +110,6 @@
     		}
 
     		return Backbone.Model.prototype.sync.call(this, method, model, options);
-            // TODO: Promises should work
 //            return xhr.then(function() { return this; }).promise(xhr);
     	}
     });
@@ -159,6 +158,7 @@
     	 * @returns {Promise} a promise which can be used to determine http request state. 
     	 */
     	fetch: function(options) {
+            options = options || {};
     		options.headers = new this.model().headers();
     		options.dataType = "json";
     		

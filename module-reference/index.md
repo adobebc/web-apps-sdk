@@ -1,4 +1,4 @@
-## Using Business Catalyst Modules
+## Module reference
 
 Modules are pre-built features that come included with the Business Catalyst Platform. Using either the Admin Console, "Develop" mode, or Adobe Dreamweaver, you can insert these modules inside web pages to add new features to your sites. Examples of module functionality include: forums, blogs, photo galleries, and RSS feeds. 
 
@@ -16,3 +16,4 @@ You have the ability to use modules within modules. This means that for example,
 				* Content Holder 4 *- LEVEL 3*
 					* Content Holder 5 *- WILL NOT RENDER*  
 
+For more details on working with Modules and customizing their look and feel using layoutts, [refer to our getting started article.](http://docs.businesscatalyst.com/content/developer-guides/getting-started/Business-Catalyst-for-developers.html)

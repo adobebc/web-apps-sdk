@@ -76,7 +76,7 @@
 	 * ## Create item
 	 * 
 	 * ```javascript
-	 * var item = new BCAPI.Models.WebApp.Item({
+	 * var item = new BCAPI.Models.WebApp.Item("Test webapp", {
 	 * 		"name": "Test item"
 	 * });
 	 * 
@@ -95,7 +95,7 @@
 	 * ## Remove item
 	 * 
 	 * ```javascript
-	 * var items = new BCAPI.Models.WebApp.Item({id: 1});
+	 * var items = new BCAPI.Models.WebApp.Item("Test webapp", {id: 1});
 	 * item.destroy({
 	 * 	success: function(webAppItem, response) {
 	 * 		// handle success here.

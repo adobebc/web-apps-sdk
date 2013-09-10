@@ -1,12 +1,12 @@
 describe("Helper.Models.WebApp", function() {
     beforeEach(function() {
         BCAPI.Helper.Test.runTestServer();
+
         var done = false;
 
         // afterEach is not executed if the spec fails. So we have to clean-up data first
         runs(function() {
             var webApp = new BCAPI.Models.WebApp.App({name: "FirstWebAppFromApi"});
-            webApp.isNotNew = true;
             webApp.destroy().always(function() { done = true });
         });
 
@@ -34,7 +34,6 @@ describe("Helper.Models.WebApp", function() {
         runs(function() {
             expect(webApp.get('id')).toBeUndefined();
 
-            webApp.isNotNew = true;
             webApp.fetch().done(function() { fetched = true });
         });
 

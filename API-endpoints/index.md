@@ -21,4 +21,4 @@ The APIs are split across two protocols, with the majority being RESTful:
 * CRM
 * eCommerce
 
-To get started with the APIs, [http://docs.businesscatalyst.com/content/developer-guides/APIs/getting-started.html](refer to our getting started article.)
+To get started with the APIs, [refer to our getting started article.](http://docs.businesscatalyst.com/content/developer-guides/APIs/getting-started.html)

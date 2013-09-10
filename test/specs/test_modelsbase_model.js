@@ -71,12 +71,11 @@ describe("Unit tests for BC base model class.", function() {
 	function _assertCorrectSaveCall(request, firstName, lastName, id) {
 		var url = expectedUrl + (id ? "/" + id : ""),
 			method = id ? "PUT" : "POST";
-		
-		
+				
 		expect(request.type).toBe(method);
 		expect(request.url).toBe(url);
 		expect(request.headers.Authorization).toBe(siteToken);
-        expect(request.dataType).toBe("json");
+        expect(request.dataType).toBe("text");
         expect(request.contentType).toBe("application/json");
 
 		var data = JSON.parse(request.data);
@@ -162,6 +161,7 @@ describe("Unit tests for BC base model class.", function() {
 	 * This method makes sure request for model destroy sends correct data to server.
 	 */
 	function _assertCorrectDeleteCall(request, id) {
+		expect(request.dataType).toBe("text");
 		expect(request.type).toBe("DELETE");
 		expect(request.url).toBe(expectedUrl + "/" + id);
 		expect(request.headers.Authorization).toBe(siteToken);			

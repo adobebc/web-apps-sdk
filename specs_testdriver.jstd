@@ -10,8 +10,7 @@ load:
   - src/config.js
   - src/helper.js  
   - src/models.js
-  - src/webapp.js
-  - src/webapp_item.js
+  - src/*.js
   - test/specs/mocks.js
 
 test:

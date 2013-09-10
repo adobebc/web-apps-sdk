@@ -10,7 +10,7 @@ The Business Catalyst platform consists of several key components which work tog
 
 #### Pages
 
-Pages are simple HTML files that control the structure of your Business Catalyst website. These can be created and edited via SFTP and Admin Console's "Develop" mode. Learn more about creating and editing pages [in this article.](/#)
+Pages are simple HTML files that control the structure of your Business Catalyst website. These can be created and edited via SFTP and Admin Console's "Develop" mode. Learn more about creating and editing pages [in this article.](http://helpx.adobe.com/business-catalyst/using/pages.html)
 
 Once created, you can add dynamic content to your pages using Modules. 
 
@@ -22,7 +22,7 @@ Business Catalyst includes a range of pre-built Modules out of the box, but you 
 
 You can customize the look and feel of how Modules are rendered using Tags inside Layouts. 
 
-For a complete list of available Modules, refer to our [Module reference guide.](/#)
+For a complete list of available Modules, refer to our [Module reference guide.](/content/module-reference/index.html)
 
 #### Tags
 
@@ -41,7 +41,7 @@ As you can see, Tags render specific data for each item. For example, `{tag_subj
 
 Some Modules allow you to define custom Layouts or Module Templates, giving you an unlimited number of usable layouts. 
 
-For a complete list of available Tags and the layouts they can be used in, refer to our [Tag reference guide.](/#)  
+For a complete list of available Tags and the layouts they can be used in, refer to our [Tag reference guide.](/content/tag-reference/index.html)  
 
 ### Extending Business Catalyst
 
@@ -51,12 +51,13 @@ You can extend Business Catalyst's default functionality using a range of availa
 
 Using our SOAP and RESTful APIs, you can interact with the system and create custom applications on top of the Business Catalyst infrastructure.
 
-To get started, refer to our [Getting started with APIs guide.](/#)
+To get started, refer to our [Getting started with APIs guide.](/content/developer-guides/APIs/getting-started-with-apis.html)
 
-You can also find a full list of supported API methods in our [API reference guide.](/#)
+You can also find a full list of supported API methods in our [API reference guide.](/content/API-endpoints/index.html)
 
 #### Open Admin
 
 Open Admin allows you to easily customize the Admin Console menu your clients see using JSON files. This allows to create a tailored user experience for clients and build custom Admin interfaces for managing their site. 
 
-To get started, refer to our [Getting started with Open Admin guide.](/#)
+To get started, refer to our [Getting started with Open Admin guide.](/content/developer-guides/open-admin/getting-started-with-open-admin.html)
+

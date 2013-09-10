@@ -6,7 +6,7 @@ The *Open Admin* method enables Business Catalyst partners to deliver a unique e
   
 ### Preparing your project files
 
-The Admin Console menu customization is done all done using files in *JSON* format. Unlike other site settings, there is no site specific ids or references. This means that these customized files can be easily copied from one site to another.
+The Admin Console menu customization is all done using files in *JSON* format. Unlike other site settings, there is no site specific ids or references. This means that these customized files can be easily copied from one site to another.
  
 To start customizing the admin menus, the first step is to create the following folder:
  
@@ -30,7 +30,7 @@ There are a number of customization options available, these options include:
 * Displaying an item based on the presence of another menu item
 * Adding User Role sepcific menu items
 
-To target a menu item element, use the id of the entry. You can get the id by inspecting the menu items DOM (e.g. Right click > Inspect element in Chrome). The id is in the below format:
+To target a menu item element, use the id of the entry. You can get the id by inspecting the menu items DOM (e.g. Right click > Inspect element in Chrome). The ids are in the below format:
 
 `menu-item-name`
 
@@ -48,7 +48,7 @@ For a full list of menu item names, ids and deafult weights, see the [Targeting 
 To rename a menu item, you first need to target the item, and then use the `title` attribute as shown below:
 
 
-```
+~~~
 
 {
  
@@ -119,10 +119,23 @@ Since there is no "target: _blank" attribute, the content will be opened inside 
 
 To create sub menu items, first target the menu items name you want to create, then use the `parent` attribute to set this as a sub menu item.
 
+**Note:** For any items you add, it is recommended you give this a unique name, such as adding a prefix of your company name. This will avoid any conflicts if you implement files from other partners/users. Example: "acmedesign_google" in place of "google".
+
+~~~
+{
+
+"menu-sub-menu-item": {
+ 
+"parent": "menu-parent-item",
+}
+}
+
+~~~
+
+**Example**
+
 This exmaple adds a "Google Apps" menu entry at the bottom of the menu list with links to Webmail & Drive.
 /google/_config/menu.json
-
-**Note:** For any items you add, it is recommended you give this a unique name, such as adding a prefix of your company name. This will avoid any conflicts if you implement files from other partners/users. Example: "acmedesign_google" in place of "google".
 
 ~~~
 
@@ -188,7 +201,7 @@ Each menu item has a weight property, and menu items are sorted by weight. To re
  
 "menu-":**Existing menu item name** {
  
-"weight": **weight as a whole number**
+"weight": **1234**
  
 }
  
@@ -198,7 +211,7 @@ Each menu item has a weight property, and menu items are sorted by weight. To re
 
 For a full list of default weights, see the [Targeting Menu Elements](/content/developer-guides/open-admin/targeting-menu-elements.html) reference.
 
-If you want to add a new entry between Dashboard and Site Manager, use a weight between 10001 and 19999. When there are two items with the same weight added, they'll be sorted alphabetically by title.
+If you want to add a new entry between Dashboard (10000) and Site Manager (20000), use a weight between 10001 and 19999. When there are two items with the same weight added, they'll be sorted alphabetically by title.
 
 **Example**
 

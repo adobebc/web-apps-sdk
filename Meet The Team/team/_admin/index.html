@@ -3,19 +3,25 @@
 <head>
     <title>Meet The Team</title>
     <script type="text/javascript" src="assets/jquery.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
     <script type="text/javascript" src="assets/underscore.js"></script>
     <script type="text/javascript" src="assets/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/bootstrap/bootstrapx-clickover.js"></script>
     <script type="text/javascript" src="assets/system-notifications/system-notifications.js"></script>
+    <script type="text/javascript" src="assets/bcjs/dist/bcapi-full.js"></script>
+    <script type="text/javascript" src="assets/team.js"></script>
+    <script type="text/javascript" src="assets/overrides.js"></script>
     <link rel="stylesheet" href="assets/system-notifications/system-notifications.css">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="assets/styles.css">
+
 </head>
 <body>
+
     <div id="team-members">
-
-
+        <div class="loading"></div>
     </div>
+
     <div class="card-container">
         <div class="user-add-photo">
             <a href="edit.html">
@@ -24,42 +30,45 @@
         </div>
     </div>
 
-<script type="text/javascript">
-    $(function() {
-        systemNotifications.init();
-        var templateData = $("#member-card").html();
-        var compiled = _.template(templateData);
+    <script type="text/javascript">
 
-        $('#team-members').append(compiled({name : 'Alin Turlac', position: 'Jr. Research Scientist', photo: 'assets/images/photos/aturlac.jpg', id: 1 }));
-        $('#team-members').append(compiled({name : 'Placa Parchet', position: 'Jr. Research Scientist', photo: 'assets/images/photos/aturlac.jpg', id: 2 }));
-        $('a[rel="popover"]').clickover( {html: true});
-    });
-</script>
+        $(function(){
 
-<script type="text/template" id="member-card">
-    <div class="card-container">
-        <div class="member-card">
-            <div class="user-photo">
-                <img src="<%= photo %>?action=thumbnail&width=100&height=100" style="width:120px; height: 100px;" alt="Add Team Member"/>
+            // try to get members from API; loading will be displayed until then
+            var members = new BCAPI.Models.WebApp.ItemCollection(WEBAPP_NAME);
+            members.fetch({
+                skip: 0,
+                limit: 1000, //no pagination
+                success: onMemberListFetch,
+                error: onAPIError
+            });
+        });
+    </script>
+
+    <script type="text/template" id="member-card">
+        <div class="card-container">
+            <div class="member-card">
+                <div class="user-photo">
+                    <img src="<%= member.get('picture') %>?action=thumbnail&width=100&height=100" style="width:120px; height: 100px;" alt="Add Team Member"/>
+                </div>
+
+                <div class="user-name">
+                    <h3><%= member.get('name') %></h3>
+                </div>
+                <div class="user-position">
+                    <%= member.get('fields').Position %>
+                </div>
             </div>
-
-            <div class="user-name">
-                <h3><%= name %></h3>
-            </div>
-            <div class="user-position">
-                <%= position %>
+            <div class="card-actions" id="actions_<%= member.get('id') %>">
+                <a rel="edit" href="edit.html?id=<%= member.get('id') %>" class="member-icon-edit"></a>
+                <a href="#" rel="popover" data-placement="top" title="Delete Team Member" class="member-icon-delete" data-content='<div class="delete-confirmation-text">Are you sure you want to delete <%= member.get('name') %>?</div>
+                <span class="note-text">This action has no Undo.</span>
+                <div>
+                    <a href="#" class="btn" onclick="deleteTeamMember(<%= member.get('id')%>)">Delete</a>
+                    <a href="#" class="btn btn-primary" data-toggle="button" data-dismiss="clickover">Cancel</a>
+                </div>'></a>
             </div>
         </div>
-        <div class="card-actions" id="actions_<%= id %>">
-            <a rel="edit" href="edit.html?mid=<%= id %>" class="member-icon-edit"></a>
-            <a href="#" rel="popover" data-placement="top" title="Delete Team Member" class="member-icon-delete" data-content='<div class="delete-confirmation-text">Are you sure you want to delete <%= name %>?</div>
-            <span class="note-text">This action has no Undo.</span>
-            <div>
-                <a href="#" class="btn">Delete</a>
-                <a href="#" class="btn btn-primary" data-toggle="button" data-dismiss="clickover"   >Cancel</a>
-            </div>'></a>
-        </div>
-    </div>
-</script>
+    </script>
 </body>
 </html>

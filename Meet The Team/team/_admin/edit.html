@@ -1,117 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Member</title>
+    <title>Edit Member</title>
     <script type="text/javascript" src="assets/jquery.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
     <script type="text/javascript" src="assets/underscore.js"></script>
     <script type="text/javascript" src="assets/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/system-notifications/system-notifications.js"></script>
+    <script type="text/javascript" src="assets/bcjs/dist/bcapi-full.js"></script>
+    <script type="text/javascript" src="assets/team.js"></script>
+    <script type="text/javascript" src="assets/overrides.js"></script>
+    <link rel="stylesheet" href="assets/system-notifications/system-notifications.css">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-   <form class="form-horizontal" id="member-edit-form" method="POST">
-       <div class="control-group">
-           <label class="control-label" for="member-picture">Picture:</label>
-           <div class="controls">
-               <div class="span7 file-upload-area" id="member-picture">
-                   <img id="preview" class="member-upload-preview" src="assets/images/unknown.png"/>
-                   <span>drag image here or <a href="#" id="upload-trigger">click to upload</a></span>
-               </div>
-               <input name="member-picture" id="member-picture-select" type="file" placeholder="drag image here or click to upload" onchange="previewImage(this)"/>
-           </div>
-       </div>
-       <div class="control-group">
-           <label class="control-label" for="member-name">Name:</label>
-           <div class="controls">
-               <input id="member-name" name="member-name" type="text" class="span5"/>
-           </div>
-       </div>
+<div id="form-container"></div>
 
-       <div class="control-group">
-           <label class="control-label" for="member-position">Position:</label>
-           <div class="controls">
-               <input id="member-position" name="member-position" type="text" class="span5"/>
-           </div>
-       </div>
 
-       <div class="control-group">
-           <label class="control-label" for="member-bio">Bio:</label>
-           <div class="controls">
-               <textarea rows="4" id="member-bio" name="member-bio"class="span7"></textarea>
-           </div>
-       </div>
 
-       <div class="control-group">
-           <label class="control-label">Social:</label>
-           <div class="controls">
-               <div class="social-tabs span7 "> <!-- Only required for left/right tabs -->
-                   <ul class="nav nav-tabs">
-                       <li class="active"><a href="#facebook" data-toggle="tab">Facebook</a></li>
-                       <li><a href="#twitter" data-toggle="tab">Twitter</a></li>
-                       <li><a href="#linkedin" data-toggle="tab">Linkedin</a></li>
-                   </ul>
-                   <div class="tab-content member-profile-container">
-                       <div class="tab-pane active" id="facebook">
-                           <p>http://www.facebook.com/<input type="text" class="span4 small-height" id="member-facebook" placeholder="Facebook profile - optional" /></p>
-                       </div>
-                       <div class="tab-pane" id="twitter">
-                           <p>http://www.twitter.com/<input type="text" class="span4 small-height" id="member-twitter" placeholder="Twitter profile - optional" /></p>
-                       </div>
-                       <div class="tab-pane" id="linkedin">
-                           <p>http://www.linkedin.com/<input type="text" class="span4 small-height" id="member-linkedin" placeholder="Linkedin profile - optional" /></p>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-       <hr/>
-       <div class="control-group">
-            <div class="controls">
-                <input type="submit" class="btn btn-primary" value=" Add "/>
-                <a href="index.html" class="btn btn-cancel">Cancel</a>
+    <script type="text/template" id="member-edit-form-template">
+        <form class="form-horizontal" id="member-edit-form" method="POST">
+            <div class="control-group">
+                <label class="control-label" for="member-picture">Picture:</label>
+                <div class="controls">
+                    <div class="span7 file-upload-area" id="member-picture">
+                        <img id="preview" class="member-upload-preview" src="<%= member.get('fields').Picture %>"/>
+                        <span>drag image here or <a href="#" id="upload-trigger">click to upload</a></span>
+                    </div>
+                    <input name="member-picture" id="member-picture-select" type="file" placeholder="drag image here or click to upload" onchange="previewImage(this)"/>
+                </div>
             </div>
-       </div>
-   </form>
+            <div class="control-group">
+                <label class="control-label" for="member-name">Name:</label>
+                <div class="controls">
+                    <input id="member-name" name="member-name" type="text" class="span5" value="<%= member.get('name') %>"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="member-position">Position:</label>
+                <div class="controls">
+                    <input id="member-position" name="member-position" type="text" class="span5" value="<%= member.get('fields').Position %>"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="member-bio">Bio:</label>
+                <div class="controls">
+                    <textarea rows="4" id="member-bio" name="member-bio"class="span7"><%= member.get('fields').Bio %></textarea>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Social:</label>
+                <div class="controls">
+                    <div class="social-tabs span7 "> <!-- Only required for left/right tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#facebook" data-toggle="tab">Facebook</a></li>
+                            <li><a href="#twitter" data-toggle="tab">Twitter</a></li>
+                            <li><a href="#linkedin" data-toggle="tab">Linkedin</a></li>
+                        </ul>
+                        <div class="tab-content member-profile-container">
+                            <div class="tab-pane active" id="facebook">
+                                <p>http://www.facebook.com/<input type="text" class="span4 small-height" id="member-facebook" placeholder="Facebook profile - optional" value="<%= member.get('fields').Facebook %>" /></p>
+                            </div>
+                            <div class="tab-pane" id="twitter">
+                                <p>http://www.twitter.com/<input type="text" class="span4 small-height" id="member-twitter" placeholder="Twitter profile - optional" value="<%= member.get('fields').Twitter %>"/></p>
+                            </div>
+                            <div class="tab-pane" id="linkedin">
+                                <p>http://www.linkedin.com/<input type="text" class="span4 small-height" id="member-linkedin" placeholder="Linkedin profile - optional" value="<%= member.get('fields').Linkedin %>" /></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="submit" class="btn btn-primary" value=" Add "/>
+                    <a href="index.html" class="btn btn-cancel">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </script>
 
     <script type="text/javascript">
-
         $(function(){
-            $('#upload-trigger').click(function() {
-                $('#member-picture-select').click();
-            });
+            // check if we are in edit or add mode
+            var member = {};
+            var memberId = getMemberIdFromUrl();
 
-            // Setup the dnd listeners.)
-            var dropZone = document.getElementById('member-picture');
-            dropZone.addEventListener('dragover', handleDragOver, false);
-            dropZone.addEventListener('drop', handleFileSelect, false);
-
-        })
-        function previewImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    //the only jQuery line.  All else is the File API.
-                    $('#preview').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
+            if (memberId != null) {
+                // we are in edit mode;
+                // must fetch the member data
+                // and use it to populate the form
+                var member = new BCAPI.Models.WebApp.Item(WEBAPP_NAME);
+                member.id = memberId;
+                member.fetch({
+                    success: onMemberDetailsFetch,
+                    error: onAPIError
+                })
+            } else {
+                member = new BCAPI.Models.WebApp.Item(WEBAPP_NAME);
+                renderMemberDetailsForm(member);
             }
-        }
-
-        function handleFileSelect(evt) {
-            evt.stopPropagation();
-            evt.preventDefault();
-
-            var files = evt.dataTransfer.files; // FileList object.
-            previewImage(evt.dataTransfer);
-            // files is a FileList of File obj
-            // ects. List some properties.
-        }
-
-        function handleDragOver(evt) {
-            evt.stopPropagation();
-            evt.preventDefault();
-            evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
-        }
+        });
     </script>
 </body>
 </html>

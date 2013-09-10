@@ -41,7 +41,7 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return saved;
-        }, 'Create WebApp', 60 * 1000);
+        }, 'Create model', 60 * 1000);
 
         runs(function() {
             expect(model.get('id')).toBeUndefined();
@@ -52,7 +52,7 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return collectionFetched;
-        }, 'List WebApps', 1000);
+        }, 'List collection', 1000);
 
         runs(function() {
             console.log(collection);
@@ -63,7 +63,7 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return modelFetched;
-        }, 'Read WebApp', 1000);
+        }, 'Read model', 1000);
 
         runs(function() {
             expect(model.get('id')).toBeDefined(); // check that attributes have been updated
@@ -73,16 +73,15 @@ describe("Helper.Models.WebApp", function() {
 
         waitsFor(function() {
             return deleted;
-        }, 'Delete WebApp', 1000);
+        }, 'Delete model', 1000);
 
         runs(function() {
-            model.isNotNew = true;
             model.fetch().fail(function() { notFound = true });
         });
 
         waitsFor(function() {
             return notFound;
-        }, 'WebApp does not exist anymore', 1000);
+        }, 'Model does not exist anymore', 1000);
     });
 
     afterEach(function() {

@@ -4097,7 +4097,7 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     			options.headers[headerKey] = customHeaders[headerKey];
     		}
 
-    		return Backbone.Model.prototype.sync(method, model, options);
+    		return Backbone.Model.prototype.sync.call(this, method, model, options);
             // TODO: Promises should work
 //            return xhr.then(function() { return this; }).promise(xhr);
     	}
@@ -4277,10 +4277,16 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
 
         endpoint: function() {
             return '/api/v2/admin/sites/current/webapps';
-//        },
-//
-//        save: function() {
-//            return this.__super__.save();
+        },
+
+        fetch: function() {
+            this.isNotNew = true;
+            return Backbone.Model.prototype.fetch.apply(this, arguments);
+        },
+
+        destroy: function() {
+            this.isNotNew = true;
+            return Backbone.Model.prototype.destroy.apply(this, arguments);
         }
     });
 

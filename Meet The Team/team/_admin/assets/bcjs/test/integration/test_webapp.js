@@ -13,52 +13,75 @@ describe("Helper.Models.WebApp", function() {
         waitsFor(function() {
             return done;
         }, 'Delete WebApp if it exists', 60 * 1000);
+
+        var sync = Backbone.sync;
+        spyOn(Backbone, "sync").andCallFake(function(method, model, options) {
+
+            // Prevent jQuery from failing on empty response
+            options.dataType = null;
+            options.contentType = 'application/json';
+
+            return sync.apply(this, arguments);
+        });
     });
 
-    it("Create, Read, Delete", function() {
-        var webApp,
+    it("Create, List, Read, Delete", function() {
+        var model,
+            collection,
             saved = false,
-            fetched = false,
+            modelFetched = false,
+            collectionFetched = false,
             deleted = false,
             notFound = false;
 
         runs(function() {
-            webApp = new BCAPI.Models.WebApp.App({name: "FirstWebAppFromApi"});
-            webApp.save().done(function() { saved = true });
+            model = new BCAPI.Models.WebApp.App({name: "FirstWebAppFromApi"});
+            model.save().done(function() { saved = true });
         });
 
         waitsFor(function() {
             return saved;
-        }, 'Create WebApp', 60 * 1000);
+        }, 'Create model', 60 * 1000);
 
         runs(function() {
-            expect(webApp.get('id')).toBeUndefined();
+            expect(model.get('id')).toBeUndefined();
 
-            webApp.fetch().done(function() { fetched = true });
+            collection = new BCAPI.Models.WebApp.AppCollection();
+            collection.fetch().done(function() { collectionFetched = true });
         });
 
         waitsFor(function() {
-            return fetched;
-        }, 'Read WebApp', 1000);
+            return collectionFetched;
+        }, 'List collection', 1000);
 
         runs(function() {
-            expect(webApp.get('id')).toBeDefined();
+            console.log(collection);
+            expect(collection.models.length).toBeGreaterThan(0);
 
-            webApp.destroy().done(function() { deleted = true });
+            model.fetch().done(function() { modelFetched = true });
+        });
+
+        waitsFor(function() {
+            return modelFetched;
+        }, 'Read model', 1000);
+
+        runs(function() {
+            expect(model.get('id')).toBeDefined(); // check that attributes have been updated
+
+            model.destroy().done(function() { deleted = true });
         });
 
         waitsFor(function() {
             return deleted;
-        }, 'Delete WebApp', 1000);
+        }, 'Delete model', 1000);
 
         runs(function() {
-            webApp.isNotNew = true;
-            webApp.fetch().fail(function() { notFound = true });
+            model.fetch().fail(function() { notFound = true });
         });
 
         waitsFor(function() {
             return notFound;
-        }, 'WebApp does not exist anymore', 1000);
+        }, 'Model does not exist anymore', 1000);
     });
 
     afterEach(function() {

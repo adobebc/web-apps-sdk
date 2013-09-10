@@ -20,7 +20,7 @@
      */
     BCAPI.Helper.Site.getGenericToken = function() {
         //noinspection JSValidateTypes
-        return $.cookie ? $.cookie('genericToken') :
+        return $.cookie ? $.cookie('genericAuthToken') :
             $.error('Include jQuery.cookie or override BCAPI.Helper.Site.getGenericToken with your own implementation.');
 	};
 
@@ -29,7 +29,7 @@
      */
     BCAPI.Helper.Site.getSiteToken = function() {
         //noinspection JSValidateTypes
-        return $.cookie ? $.cookie('siteToken') :
+        return $.cookie ? $.cookie('siteAuthToken') :
             $.error('Include jQuery.cookie or override BCAPI.Helper.Site.getSiteToken with your own implementation.');
 	};
 

@@ -64,7 +64,7 @@
     	urlRoot: function() {
     		var url = BCAPI.Helper.Site.getRootUrl(),
     			endpoint = this.endpoint();
-    		
+    		    		
     		if(endpoint.charAt(0) !== "/") {
     			endpoint = '/' + endpoint;
     		} 
@@ -85,8 +85,29 @@
     	 * 	}
     	 * });
     	 */
-    	save: function(handlers) {
-    		return Backbone.Model.prototype.save.call(this, this.attributes, handlers);
+    	save: function(options) {
+    		options.dataType = "text";
+    		
+    		return Backbone.Model.prototype.save.call(this, this.attributes, options);
+    	},
+    	/**
+    	 * This method deletes a model using the api.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
+    	 * @example
+    	 * var model = new PersonModel({id: 1});
+    	 * model.destroy({
+    	 * 	success: function() {
+    	 * 		// do something when delete is successful.
+    	 * 	}
+    	 * });
+    	 */
+    	destroy: function(options) {
+    		options.dataType = "text";
+    		
+    		return Backbone.Model.prototype.destroy.call(this, options);    		
     	},
     	/**
     	 * Sync method is invoked automatically when user tries to create / update a model. It automatically 
@@ -109,9 +130,13 @@
     			options.headers[headerKey] = customHeaders[headerKey];
     		}
 
-    		return Backbone.Model.prototype.sync.call(this, method, model, options);
-            // TODO: Promises should work
-//            return xhr.then(function() { return this; }).promise(xhr);
+    		var xhr = Backbone.Model.prototype.sync.call(this, method, model, options);
+    		
+    		if(!xhr) {
+    			return;
+    		}
+    		
+    		return xhr.then(function() { return this; }).promise(xhr);
     	}
     });
     
@@ -159,6 +184,7 @@
     	 * @returns {Promise} a promise which can be used to determine http request state. 
     	 */
     	fetch: function(options) {
+            options = options || {};
     		options.headers = new this.model().headers();
     		options.dataType = "json";
     		

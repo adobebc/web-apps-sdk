@@ -130,9 +130,8 @@ function saveMember(memberId) {
 }
 
 function onMemberSave(member) {
-    //systemNotifications.showSuccess("Operation successful", "Member details saved successfully");
-    debugger;
-    window.location('index.html');
+    systemNotifications.showSuccess("Operation successful", "Member details saved successfully");
+    window.location = 'index.html';
 }
 
 /*

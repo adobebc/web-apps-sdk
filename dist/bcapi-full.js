@@ -1756,7 +1756,6 @@
       wrapError(this, options);
 
       method = this.isNew() ? 'create' : (options.patch ? 'patch' : 'update');
-        console.log()
       if (method === 'patch') options.attrs = attrs;
       xhr = this.sync(method, this, options);
 
@@ -4047,15 +4046,15 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     	 *
     	 * @method
     	 * @instance
-    	 * @returns An absolute entry point API.
+    	 * @returns {string} An absolute entry point API.
     	 * @memberOf BCAPI.Models.Model
     	 */
     	urlRoot: function() {
     		var url = BCAPI.Helper.Site.getRootUrl(),
     			endpoint = this.endpoint();
     		
-    		if(endpoint.charAt(0) == "/") {
-    			endpoint = endpoint.substring(1, endpoint.length);
+    		if(endpoint.charAt(0) !== "/") {
+    			endpoint = '/' + endpoint;
     		} 
     		
     		return url + endpoint;
@@ -4097,8 +4096,10 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     		for(var headerKey in customHeaders) {
     			options.headers[headerKey] = customHeaders[headerKey];
     		}
-    		
+
     		return Backbone.Model.prototype.sync(method, model, options);
+            // TODO: Promises should work
+//            return xhr.then(function() { return this; }).promise(xhr);
     	}
     });
     
@@ -4245,25 +4246,29 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
      */
 	BCAPI.Models.WebApp.App = BCAPI.Models.Model.extend({
         idAttribute: 'name',
+
+        /**
+         * Set tot true if you want to save or delete an existing item before fetching it
+         *
+         * @type {boolean}
+         */
         isNotNew: null,
 
         defaults: {
-            name: "",
-            weight: 0,
-            releaseDate: (new Date()).toISOString().substring(0, 10),
-            expiryDate: BCAPI.Config.MAX_DATE,
-            enabled: true,
-            slug: "",
-            description: "",
-            roleId: undefined,
-            submittedBy: -1,
-            templateId: undefined,
-            address: undefined,
-            city: undefined,
-            state: undefined,
-            zipCode: undefined,
-            country: undefined,
-            fields: {}
+            templateId: -1,
+            uploadFolder: -1,
+            requiresApproval: true,
+            allowFileUpload: false,
+            customerCanAdd: false,
+            customerCanDelete: false,
+            customerCanEdit: false,
+            anyoneCanEdit: false,
+            requiresPayment: false,
+            validDays: -1, // never expire
+            roleId: 0,
+            hasAddress: false,
+            disableDetailPages: false,
+            locationEnabled: false
         },
 
         isNew: function() {
@@ -4272,6 +4277,10 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
 
         endpoint: function() {
             return '/api/v2/admin/sites/current/webapps';
+//        },
+//
+//        save: function() {
+//            return this.__super__.save();
         }
     });
 

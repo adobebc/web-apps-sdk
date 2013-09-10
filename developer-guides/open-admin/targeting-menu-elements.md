@@ -1,481 +1,425 @@
-
 <table>
   <tr>
-    <th colspan="2">Menu Item Names</th>
-    <th width="229">ID</th>
-    <th width="294">Default Weight</th>
+    <th width="191" height="58">Menu Item Names</th>
+    <th width="285" widtd="229">ID</th>
+    <th width="158" widtd="294">Default Weight</th>
   </tr>
   <tr>
-    <th width="147">Dashboard</th>
-    <td width="165">&nbsp;</td>
+  <td colspan="4"></td>
+  </tr>
+  <tr>
+  <tr>
+    <th widtd="147">Dashboard</th>
     <td>menu-dashboard</td>
     <td>10000</td>
   </tr>
   <tr>
-    <td colspan="4">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
   </tr>
   <tr>
     <th>Site Manager</th>
-    <td>&nbsp;</td>
     <td>menu-site-manager</td>
     <td>20000</td>
   </tr>
   <tr>
-    <th>&nbsp;</td>
-    <th> Pages</th>
+    <td> Pages</td>
     <td>	menu-webpages</td>
     <td>10000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Page Templates</th>
+    <td> Page Templates</td>
     <td>	menu-site-templates</td>
     <td>20000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Module Templates</th>
+    <td> Module Templates</td>
     <td>	menu-module-templates</td>
     <td>30000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th>Content Holders</th>
+    <td>Content Holders</td>
     <td>	menu-content-holders</td>
     <td>40000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Menus</th>
+    <td> Menus</td>
     <td>	menu-dynamic-menus</td>
     <td>50000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Web Forms</th>
+    <td> Web Forms</td>
     <td>	menu-webforms</td>
     <td>60000</td>
   </tr>
   <tr>
-    <td height="27">&nbsp;</td>
-    <th> File Manager</th>
+    <td> File Manager</td>
     <td>	menu-file-manager</td>
     <td>70000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Secure Zones</th>
+    <td> Secure Zones</td>
     <td>	menu-secure-pages</td>
     <td>80000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> URL Redirects</th>
+    <td> URL Redirects</td>
     <td>	menu-url-redirects</td>
     <td>90000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Site Search</th>
+    <td> Site Search</td>
     <td>	menu-site-search</td>
     <td>100000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> System Pages</th>
+    <td> System Pages</td>
     <td>	menu-system-messages</td>
     <td>110000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> System E-Mails</th>
+    <td> System E-Mails</td>
     <td>	menu-system-emails </td>
     <td>120000</td>
   </tr>
   <tr>
-    <td colspan="4">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
   </tr>
   <tr>
     <th>Web Apps</th>
-    <td>&nbsp;</td>
     <td>menu-webapps</td>
     <td>30000</td>
   </tr>
   <tr>
-    <td colspan="4">&nbsp;</td>
-  </tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+      </tr>
   <tr>
     <th>Modules</th>
-    <td>&nbsp;</td>
     <td>menu-modules</td>
     <td>40000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Blogs</th>
+    <td> Blogs</td>
     <td>	menu-blogs</td>
     <td>10000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Events</th>
+    <td> Events</td>
     <td>	menu-events</td>
     <td>20000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Photo Galleries</th>
+    <td> Photo Galleries</td>
     <td>	menu-galleries</td>
     <td>30000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> News</th>
+    <td> News</td>
     <td>	menu-news</td>
     <td>40000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Media Downloads</th>
+    <td> Media Downloads</td>
     <td>	menu-downloads</td>
     <td>50000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Comments</th>
+    <td> Comments</td>
     <td>	menu-comments</td>
     <td>60000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> FAQs</th>
+    <td> FAQs</td>
     <td>	menu-faq</td>
     <td>70000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Ad Rotators</th>
+    <td> Ad Rotators</td>
     <td>	menu-banners</td>
     <td>80000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Forums</th>
+    <td> Forums</td>
     <td>	menu-forums </td>
     <td>90000</td>
   </tr>
   <tr>
-    <td colspan="4">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
   </tr>
   <tr>
     <th>CRM</th>
-    <td>&nbsp;</td>
     <td>menu-customers</td>
     <td>50000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Search</th>
+    <td> Search</td>
     <td>	menu-customers-search</td>
     <td>30000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Customers</th>
+    <td> Customers</td>
     <td>	menu-customers-manage</td>
     <td>40000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Orders</th>
+    <td> Orders</td>
     <td>	menu-orders</td>
     <td>50000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Cases</th>
+    <td> Cases</td>
     <td>	menu-cases</td>
     <td>60000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th>Event Bookings</th>
+    <td>Event Bookings</td>
     <td>	menu-bookings</td>
     <td>70000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Opportunities</th>
+    <td> Opportunities</td>
     <td>	menu-opportunities</td>
     <td>80000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Sales Forecasts</th>
+    <td> Sales Forecasts</td>
     <td>	menu-forecasts</td>
     <td>90000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Extend CRM Database</th>
+    <td> Extend CRM Database</td>
     <td>	menu-customers-database </td>
     <td>100000</td>
   </tr>
   <tr>
-    <td colspan="4">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
   </tr>
   <tr>
     <th>E-Commerce</th>
-    <td>&nbsp;</td>
     <td>menu-ecommerce</td>
     <td>60000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Products</th>
+    <td> Products</td>
     <td>	menu-products</td>
     <td>10000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Catalogs</th>
+    <td> Catalogs</td>
     <td>	menu-catalogs</td>
     <td>20000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Discount Codes</th>
+    <td> Discount Codes</td>
     <td>	menu-discount-codes</td>
     <td>30000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Gift Vouchers</th>
+    <td> Gift Vouchers</td>
     <td>	menu-giftvouchers</td>
     <td>40000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Affiliate Programs</th>
+    <td> Affiliate Programs</td>
     <td>	menu-affiliate-programs</td>
     <td>50000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Payment Gateways</th>
+    <td> Payment Gateways</td>
     <td>	menu-payment-gateways</td>
     <td>60000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Tax Codes</th>
+    <td> Tax Codes</td>
     <td>	menu-taxcodes</td>
     <td>70000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Shipping Options</th>
+    <td> Shipping Options</td>
     <td>	menu-shipping-options</td>
     <td>80000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Shop Settings</th>
+    <td> Shop Settings</td>
     <td>	menu-settings-shop </td>
     <td>90000</td>
   </tr>
   <tr>
-    <td colspan="4">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
   </tr>
   <tr>
     <th>E-Mail Marketing</th>
-    <td>&nbsp;</td>
     <td>menu-email-marketing</td>
     <td>70000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> E-Mail Campaigns</th>
+    <td> E-Mail Campaigns</td>
     <td>	menu-email-campaigns</td>
     <td>10000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Mailing Lists</th>
+    <td> Mailing Lists</td>
     <td>	menu-mailing-lists </td>
     <td>20000</td>
   </tr>
   <tr>
-    <td colspan="4">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
   </tr>
   <tr>
     <th>Reports</th>
-    <td>&nbsp;</td>
     <td>menu-reports</td>
     <td>80000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Visitors</th>
+    <td> Visitors</td>
     <td>	menu-reports-visitors</td>
     <td>10000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Traffic Sources</th>
+    <td height="25"> Traffic Sources</td>
     <td>	menu-reports-traffic</td>
     <td>20000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Website Content</th>
+    <td> Website Content</td>
     <td>	menu-reports-content</td>
     <td>30000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Web Forms Usage</th>
+    <td> Web Forms Usage</td>
     <td>	menu-reports-webforms</td>
     <td>40000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> E-Commerce</th>
+    <td> E-Commerce</td>
     <td>	menu-reports-ecommerce</td>
     <td>50000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> E-Mail Campaigns</th>
+    <td> E-Mail Campaigns</td>
     <td>	menu-reports-email-campaigns</td>
     <td>60000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Custom Reports</th>
+    <td> Custom Reports</td>
     <td>	menu-reports-custom</td>
     <td>70000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Admin Reports</th>
+    <td> Admin Reports</td>
     <td>	menu-reports-admin-usage</td>
     <td>90000</td>
   </tr>
   <tr>
-    <td colspan="4">&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
+   <td>&nbsp;</td>
   </tr>
   <tr>
     <th>Site Settings</th>
-    <td>&nbsp;</td>
     <td>menu-site-settings</td>
     <td>90000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Site Domains</th>
+    <td> Site Domains</td>
     <td>	menu-settings-domains</td>
     <td>10000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> E-Mail Accounts</th>
+    <td> E-Mail Accounts</td>
     <td>	menu-settings-emailaccounts</td>
     <td>20000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Admin Users</th>
+    <td> Admin Users</td>
     <td>	menu-settings-adminusers</td>
     <td>30000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> User Roles</th>
+    <td> User Roles</td>
     <td>	menu-settings-userroles</td>
     <td>40000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Categories</th>
+    <td> Categories</td>
     <td>	menu-settings-categories</td>
     <td>50000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Manage Workflows</th>
+    <td> Manage Workflows</td>
     <td>	menu-settings-workflows</td>
     <td>60000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Social Integration</th>
+    <td> Social Integration</td>
     <td>	menu-settings-facebook</td>
     <td>70000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Mobile Support</th>
+    <td> Mobile Support</td>
     <td>	menu-settings-mobilesupport</td>
     <td>80000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Captcha</th>
+    <td> Captcha</td>
     <td>	menu-settings-captcha</td>
     <td>90000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Site Map</th>
+    <td> Site Map</td>
     <td>	menu-settings-site-map</td>
     <td>100000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> RSS Channels</th>
+    <td> RSS Channels</td>
     <td>	menu-settings-rss-channels</td>
     <td>110000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Site Billing</th>
+    <td> Site Billing</td>
     <td>	menu-billing-settings</td>
     <td>120000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Customer Service Ticketing</th>
+    <td> Customer Service Ticketing</td>
     <td>	menu-settings-service-ticketing</td>
     <td>130000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> QuickBooks</th>
+    <td> QuickBooks</td>
     <td>	menu-settings-quickbooks</td>
     <td>140000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th>API Integration</th>
+    <td>API Integration</td>
     <td>	menu-settings-api-integration</td>
     <td>150000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Site Management</th>
+    <td> Site Management</td>
     <td>	menu-generalsettings</td>
     <td>170000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Secure Domain Redirection</th>
+    <td> Secure Domain Redirection</td>
     <td>	menu-settings-secure-redirect</td>
     <td>180000</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <th> Beta Features</th>
+    <td> Beta Features</td>
     <td>	menu-settings-beta-features</td>
     <td>190000</td>
   </tr>

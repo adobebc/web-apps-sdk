@@ -3919,6 +3919,12 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
 		skip: 0
 	};
 	
+	/**
+	 * @property {String} MAX_DATE the maximum date value allowed on BC side.
+	 * @memberOf BCAPI.Config
+	 */
+	Config.MAX_DATE = "9999-01-01";
+	
 	BCAPI.Config = Config;
 })(jQuery);;(function($) {
 	/**
@@ -4105,6 +4111,9 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     	},
     	/**
     	 * This property defines default value for defining core paginator behavior.
+    	 * 
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
     	 */
     	paginator_core: {
     		type: "GET",
@@ -4132,12 +4141,18 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     	},
     	/**
     	 * This property defines default values for how this paginated collection works.
+    	 * 
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
     	 */
     	paginator_ui: {
     		firstPage: BCAPI.Config.Pagination.lowestPage
     	},
     	/**
     	 * This property defines the attributes which are used to server api.
+    	 * 
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
     	 */
     	server_api: {
     		"limit": function() { return this._limit || this._defaultLimit; },

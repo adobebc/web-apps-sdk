@@ -16,10 +16,15 @@
 	 * @property {Integer} lowestPage Default lowest page allowed to be requested through paginated API call. 
 	 */
 	Config.Pagination = {
-		lowestPage: 0,
 		limit: 10,
 		skip: 0
 	};
+	
+	/**
+	 * @property {String} MAX_DATE the maximum date value allowed on BC side.
+	 * @memberOf BCAPI.Config
+	 */
+	Config.MAX_DATE = "9999-01-01";
 	
 	BCAPI.Config = Config;
 })(jQuery);

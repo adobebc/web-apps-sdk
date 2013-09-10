@@ -3,7 +3,7 @@
 # Simple script for executing Jasmine specs using JSTestDriver
 #
 JAR_FILE="ci/lib/JsTestDriver.jar"
-CONFIG="specs_testdriver.conf"
+CONFIG="specs_testdriver.jstd"
 PORT=9876
 BROWSER=$1
 OUTPUT_DIR="./logs"

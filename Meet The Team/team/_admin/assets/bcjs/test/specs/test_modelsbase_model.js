@@ -1,8 +1,8 @@
 describe("Unit tests for BC base model class.", function() {
 	var oldSiteHelper = undefined,
 		siteToken = "123",
-		rootUrl = "https://secure.businesscatalyst.com/",
-		expectedUrl = rootUrl + "api/v2/persons";
+		rootUrl = "https://secure.businesscatalyst.com",
+		expectedUrl = rootUrl + "/api/v2/persons";
 	
 	beforeEach(function() {
 		oldSiteHelper = BCAPI.Helper.Site;		
@@ -76,8 +76,9 @@ describe("Unit tests for BC base model class.", function() {
 		expect(request.type).toBe(method);
 		expect(request.url).toBe(url);
 		expect(request.headers.Authorization).toBe(siteToken);
-		expect(request.dataType).toBe("json");
-		
+        expect(request.dataType).toBe("json");
+        expect(request.contentType).toBe("application/json");
+
 		var data = JSON.parse(request.data);
 		expect(data.firstName).toBe(firstName);
 		expect(data.lastName).toBe(lastName);

@@ -37,8 +37,15 @@
      * @returns {string}
      */
     BCAPI.Helper.Site.getRootUrl = function() {
-		//noinspection JSUnresolvedVariable
-        return top.authData ? top.authData.apiUrl : '';
-	};
+        //noinspection JSUnresolvedVariable
+        return top.authData ? 'https://' + top.authData.apiUrl : '';
+    };
+
+    /**
+     * @returns {string}
+     */
+    BCAPI.Helper.Site.getSiteId = function() {
+        return 'current';
+    };
 
 })(jQuery);

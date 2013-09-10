@@ -21,6 +21,7 @@
          * Set tot true if you want to save or delete an existing item before fetching it
          *
          * @type {boolean}
+         * @memberOf WebApp
          */
         isNotNew: null,
 
@@ -65,6 +66,6 @@
      * @class
      */
     BCAPI.Models.WebApp.AppCollection = BCAPI.Models.Collection.extend({
-        model: BCAPI.Models.WebApp
+        model: BCAPI.Models.WebApp.App
     });
 })(jQuery);

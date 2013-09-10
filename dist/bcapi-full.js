@@ -1756,7 +1756,7 @@
       wrapError(this, options);
 
       method = this.isNew() ? 'create' : (options.patch ? 'patch' : 'update');
-        console.log(this, method);
+        console.log()
       if (method === 'patch') options.attrs = attrs;
       xhr = this.sync(method, this, options);
 
@@ -3896,6 +3896,17 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
      */
     window.BCAPI = {};
 
+    var sync = Backbone.sync;
+
+    Backbone.sync = function(method, model, options) {
+
+        // Prevent jQuery from failing on empty response
+        options.dataType = null;
+        options.contentType = 'application/json';
+
+        return sync.apply(this, arguments);
+    };
+
 })(jQuery);;(function($) {
 
     /**
@@ -4230,21 +4241,46 @@ Backbone.Paginator = (function ( Backbone, _, $ ) {
     /**
      * This class provides the model for interacting with web apps.
      * 
-     * @name App
      * @class
-     * @constructor
-     * @memberOf BCAPI.Models.WebApp
      */
 	BCAPI.Models.WebApp.App = BCAPI.Models.Model.extend({
         idAttribute: 'name',
+        isNotNew: null,
+
+        defaults: {
+            name: "",
+            weight: 0,
+            releaseDate: (new Date()).toISOString().substring(0, 10),
+            expiryDate: BCAPI.Config.MAX_DATE,
+            enabled: true,
+            slug: "",
+            description: "",
+            roleId: undefined,
+            submittedBy: -1,
+            templateId: undefined,
+            address: undefined,
+            city: undefined,
+            state: undefined,
+            zipCode: undefined,
+            country: undefined,
+            fields: {}
+        },
 
         isNew: function() {
-            return !this.get('id');
+            return this.isNotNew ? false : !this.get('id');
         },
 
         endpoint: function() {
             return '/api/v2/admin/sites/current/webapps';
         }
+    });
+
+    /**
+     *
+     * @class
+     */
+    BCAPI.Models.WebApp.AppCollection = BCAPI.Models.Collection.extend({
+        model: BCAPI.Models.WebApp
     });
 })(jQuery);;(function($) {
 	"use strict";

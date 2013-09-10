@@ -58,15 +58,15 @@
     	 *
     	 * @method
     	 * @instance
-    	 * @returns An absolute entry point API.
+    	 * @returns {string} An absolute entry point API.
     	 * @memberOf BCAPI.Models.Model
     	 */
     	urlRoot: function() {
     		var url = BCAPI.Helper.Site.getRootUrl(),
     			endpoint = this.endpoint();
     		
-    		if(endpoint.charAt(0) == "/") {
-    			endpoint = endpoint.substring(1, endpoint.length);
+    		if(endpoint.charAt(0) !== "/") {
+    			endpoint = '/' + endpoint;
     		} 
     		
     		return url + endpoint;
@@ -108,8 +108,10 @@
     		for(var headerKey in customHeaders) {
     			options.headers[headerKey] = customHeaders[headerKey];
     		}
-    		
+
     		return Backbone.Model.prototype.sync(method, model, options);
+            // TODO: Promises should work
+//            return xhr.then(function() { return this; }).promise(xhr);
     	}
     });
     

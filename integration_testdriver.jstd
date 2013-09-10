@@ -11,11 +11,11 @@ load:
   - src/config.js
   - src/helper.js  
   - src/models.js
-  - src/*js
+  - src/*.js
+  - test/integration/helper.js
 
 test:
   - test/integration/test_*.js
-  - test/helper.js
 
 plugin:
   - name: "coverage"

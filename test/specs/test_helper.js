@@ -20,8 +20,14 @@ describe("Helper.Site", function() {
         expect(BCAPI.Helper.Site.getSiteId()).toBe('current');
     });
 
-    it("getRootUrl() returns ''", function() {
+    it("getRootUrl()", function() {
         expect(BCAPI.Helper.Site.getRootUrl()).toBe("");
+
+        var host = 'secured.bc-local.com';
+        top.authData = {};
+        top.authData.apiUrl = host;
+        expect(BCAPI.Helper.Site.getRootUrl()).toBe('https://' + host);
+        delete top.authData;
     });
 
 });

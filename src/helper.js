@@ -32,13 +32,13 @@
         return $.cookie ? $.cookie('siteToken') :
             $.error('Include jQuery.cookie or override BCAPI.Helper.Site.getSiteToken with your own implementation.');
 	};
-    38604
+
     /**
      * @returns {string}
      */
     BCAPI.Helper.Site.getRootUrl = function() {
         //noinspection JSUnresolvedVariable
-        return top.authData ? top.authData.apiUrl : '';
+        return top.authData ? 'https://' + top.authData.apiUrl : '';
     };
 
     /**

@@ -210,15 +210,23 @@
     		return BCAPI.Models.Collection.prototype.url.call(this, model);
     	},
     	/**
-    	 * This method is invoked to automatically populate all models from this collection. We override
-    	 * this in order to correctly set web app attribute for each item. 
+    	 * We override this method in order to transform each returned item into a strong typed 
+    	 * {@link BCAPI.Models.WebApp.Item} models.
+    	 * 
+    	 * @param {Object} response The JSON response received from Items api.
+    	 * @returns A list of web app items. 
     	 */
-/*    	set: function(models, options) {
-    		var self = this;
+    	parse: function(response) {
+    		response = BCAPI.Models.Collection.prototype.parse.call(this, response);
     		
-    		_.each(models, function(item) {
-    			
+    		var items = [],
+    			self = this;
+    		
+    		_.each(response, function(item) {
+    			items.push(new self.model(self.webappName, item));
     		});
-    	}*/
+    		
+    		return items;
+    	}
     });
 })(jQuery);

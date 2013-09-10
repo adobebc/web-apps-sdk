@@ -12,10 +12,10 @@ describe("Helper.Site", function() {
         jasmine.getEnv().currentSpec.spyOn($, "cookie", true);
 
         BCAPI.Helper.Site.getGenericToken();
-        expect($.cookie).toHaveBeenCalledWith('genericToken');
+        expect($.cookie).toHaveBeenCalledWith('genericAuthToken');
 
         BCAPI.Helper.Site.getSiteToken();
-        expect($.cookie).toHaveBeenCalledWith('siteToken');
+        expect($.cookie).toHaveBeenCalledWith('siteAuthToken');
 
         expect(BCAPI.Helper.Site.getSiteId()).toBe('current');
     });

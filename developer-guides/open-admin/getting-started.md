@@ -1,32 +1,79 @@
 ## Getting started with Open Admin
 
-This guide will teach 
-, you'll learn how to customize the Admin Console using Open Admin, and see working examples these customizations.
- 
-The new "Open Admin" concept enables Business Catalyst partners to deliver a unique experience for business clients (admin users) by providing a completely customized Admin Console. Through the Open Admin notion, various areas of the Admin Console can be customized. These areas include the main navigation menu on the left, and the ribbon in the upper section of the Admin Console. Customization capabilities include adding or removing menu items, or updating existing items.
-  
-### Customizing the Admin Console  menus
+Through step by step instructions and working examples, this guide will teach you how to customize the Business Catalyst Admin Console using the Open Admin method.
 
-The Admin Console menu customization is done all done using files in JSON format. Unlike other site settings, there is no Business Catalyst UI standardization restrictions. This means that  these customized files can be easily copied from one site to another.
+The *Open Admin* method enables Business Catalyst partners to deliver a unique experience for business clients (admin users) by providing a completely customized Admin Console. Through the Open Admin concept, various areas of the Admin Console can be customized. These areas include the main navigation menu on the left, and the ribbon in the upper section of the Admin. Customization capabilities include adding/removing menu items, or updating existing items.
+  
+### Preparing your project files
+
+The Admin Console menu customization is done all done using files in *JSON* format. Unlike other site settings, there is no site specific ids or references. This means that these customized files can be easily copied from one site to another.
  
-To customize the menu, first create the following folder:
+To start customizing the admin menus, the first step is to create the following folder:
  
 `_config/`
  
-This folder can be created in any directory on your site, you can create as many _config/ folders as needed. The next step is to create the below file within _config/ folder:
+This folder can be created in any directory on your site, and you can create as many _config/ folders as needed. The next step is to create the below file within _config/ folder:
  
 `menu.json`
 
-### Examples
+All the below customizations are added to the new menu.json file.
 
-#### 1. Rename an item
+### Customizing menu items
+
+There are a number of customization options available, these options include:
+
+* Renaming menu items
+* Repositioning menu items in the menu tree
+* Adding a menu item
+* Removing a menu item
+* Adding language specific item (localized)
+* Displaying an item based on the presence of another menu item
+* Adding User Role sepcific menu items
+
+To target a menu item element, use the id of the entry. You can get the id by inspecting the menu items DOM (e.g. Right click > Inspect element in Chrome). The id is in the below format:
+
+`menu-item-name`
+
+When adding or targeting a menu item, ensure that the ids start with the following:
+
+* "menu-" (for navigation menu on left)
+* "ribbon-" (for navigation ribbon at top)
+
+For a full list of menu item names, ids and deafult weights, see the [Targeting Menu Elements](/content/developer-guides/open-admin/targeting-menu-elements.html) reference.
+
+**Note:** If you are working with Web Apps, you can not have 2 or more Web Apps with the same name. This is currently not supported, however there are plans of having vendor prefixes per webapp to solve duplicate menu IDs and other issues.
+
+#### Renaming or adding menu items
+
+To rename a menu item, you first need to target the item, and then use the `title` attribute as shown below:
+
+
+```
+
+{
+ 
+"menu-**Existing menu item name** ": {
+ 
+"title": "**New item name**"
+}
+ 
+}
+
+~~~
+
+* Replace the *Existing menu item name* section, with one of the current menu items.
+* Replace the *New item name* with your own customized name
+
+If the entry id already exists in the menu, your changes will apply to the existing entry. Otherwise, a new entry will be added. 
+
+**Example**
 
 This exaxmple renames the "CRM" menu item to "Members".
  
 File Location: */_System/my-custom-stuff/_config/menu.json*
  
+~~~
 
-```
 {
  
 "menu-customers": {
@@ -36,73 +83,49 @@ File Location: */_System/my-custom-stuff/_config/menu.json*
  
 }
 
-```
+~~~
 
-The file format is a list of key-value entries:
 
-* key: id of the entry, as found by inspecting the menu items DOM (e.g. Right click > Inspect element in Chrome). 
- 
-* value: object with various properties
- 
-If the entry id already exists in the menu, your changes will apply to the existing entry. Otherwise, a new entry will be added. 
- 
-#### 2. Reposition an element
+#### Adding a menu item to the top navigation ribbon
 
-This example moves the  "Reports" tab in the menu to be the 2nd menu item.
- 
-File location: */_System/financial-vertical-sites/_config/menu.json*
+Adding an item to the top navigation ribbon is similar to the above method. You need to use "ribbon-item-name" in place of "menu-item-name. See below example:
 
-```
-{
- 
-"menu-reports": {
- 
-"weight": 11000
- 
-}
- 
-}
+**Example**
 
-``` 
+File location: */test1/_config/menu.json*
  
-Each menu item has a weight property, and menu items are sorted by weight. The default menu item weights are:
- 
-* 10000 for Dashboard
-* 20000 for Site Manager
-	* 10000 for Pages
-	* 20000 for Page Templates
-	* and so on
-* 30000 for Web Apps
-* and so on
- 
-If you want to add a new entry between Dashboard and Site Manager, use a weight between 10001 and 19999. When there are two items with the same weight added, they'll be sorted alphabetically by title.
- 
-The example above overwrites the default weight for Reports (80000) to 11000.
-
-#### 3. Remove an item
-
-This example removes the Settings > Sitemap entry for all users.
-
-```
+~~~
 
 {
  
-"menu-settings-site-map": {
+"ribbon-test1_training": {
  
-"visible": false
+"weight": 500000,
+ 
+"icon": "/icons/training.png",
+ 
+"title": "Training"
  
 }
  
 }
 
-```
- 
-#### 4. Add a multi level menu item
+~~~
+  
+Since there is no "target: _blank" attribute, the content will be opened inside admin console.
+
+
+#### Adding sub menu items
+
+To create sub menu items, first target the menu items name you want to create, then use the `parent` attribute to set this as a sub menu item.
 
 This exmaple adds a "Google Apps" menu entry at the bottom of the menu list with links to Webmail & Drive.
 /google/_config/menu.json
 
-```
+**Note:** For any items you add, it is recommended you give this a unique name, such as adding a prefix of your company name. This will avoid any conflicts if you implement files from other partners/users. Example: "acmedesign_google" in place of "google".
+
+~~~
+
 {
  
 "menu-test1_google": {
@@ -153,22 +176,112 @@ This exmaple adds a "Google Apps" menu entry at the bottom of the menu list with
  
 }
  
-``` 
+~~~
 
-For any items you add, we recommend you give this a unique name, such as adding a prefix of your company name. This will avoid any conflicts if you implement files from other partners/users. Example: "acmedesign_google" in place of "google".
+#### Repositioning menu items in the menu tree
+
+Each menu item has a weight property, and menu items are sorted by weight. To reposition an item in the menu tree, first target the item, and then use the `weight` attribute as shown below:
+
+~~~
+
+{
  
-**Important note:* The menu ids have to start with the following:
-
-* "menu-" (for navigation menu on left)
-* "ribbon-" (for navigation ribbon at top)
-
-#### 5. Add localized titles and links
-
-This example displays a localized version of menu items.
+"menu-":**Existing menu item name** {
  
-Depending on the customer's language setting for the Admin Console, you can display different link titles and URLs. The 'title' and 'attr' parameters also accept a key-value object, besides a string: 
+"weight": **weight as a whole number**
  
-``` 
+}
+ 
+}
+
+~~~ 
+
+For a full list of default weights, see the [Targeting Menu Elements](/content/developer-guides/open-admin/targeting-menu-elements.html) reference.
+
+If you want to add a new entry between Dashboard and Site Manager, use a weight between 10001 and 19999. When there are two items with the same weight added, they'll be sorted alphabetically by title.
+
+**Example**
+
+This example overwrites the default weight for Reports (80000) to 11000 which moves the "Reports" tab in the menu to be the 2nd menu item.
+
+File location: /System/financial-vertical-sites/config/menu.json
+
+~~~
+
+{
+ 
+"menu-reports": {
+ 
+"weight": 11000
+ 
+}
+ 
+}
+
+~~~ 
+
+#### Removing an item
+
+To hide a menu item from the tree, first target the item and then set the `visible:` attribute to `false` as below:
+
+~~~
+
+{
+ 
+"menu-**Existing menu item name**": {
+ 
+"visible": false
+ 
+}
+ 
+}
+
+~~~
+
+**Example**
+
+
+This example removes the Settings > Sitemap entry for all users.
+
+~~~
+
+{
+ 
+"menu-settings-site-map": {
+ 
+"visible": false
+ 
+}
+ 
+}
+
+~~~
+
+
+#### Adding localized names and links
+
+Depending on the admin users language setting for the Admin Console, you can display different link titles and URLs. 
+
+Business Catalyst will use the values corresponding to the current users' language, as selected in User > My Details. See below accepted language codes:
+ 
+* `en`
+* `de`
+* `es`
+* `fr`
+* `se`
+* `nl`
+* `jp`
+ 
+If the current users' language doesn't match any of the values you provided, the default "en" entry will be used. Therefore, it is required to always define "en". 
+
+The 'title' and 'attr' parameters also accept a key-value object as well as string. See below example.
+
+**Example**
+
+The below example displays a localized version of the "Authors" sub menu items.
+
+~~~
+
 {
  
 "menu-my_agency_blog-authors": {
@@ -201,27 +314,20 @@ Depending on the customer's language setting for the Admin Console, you can disp
  
 }
 
-```
+~~~
 
-Business Catalyst will use the values corresponding to the current users' language, as selected in User > My Details. Accepted language codes:
- 
-* `en`
-* `de`
-* `es`
-* `fr`
-* `se`
-* `nl`
-* `jp`
- 
-If the current users' language doesn't match any of the values you provided, the default "en" entry will be used. Therefore, it is required to always define "en". 
- 
-#### 6. Display an entry only if another item is present
- 
-This example displays an entry based on a blog created using two webapps, posts and authors. The top-level menu entry is called "Blog", with child entry items of "Posts" and "Authors". In this example, the Web App entries are also hidden.
- 
+
+#### Displaying a menu item based on the existence of another item
+
+You can hide/show menu items, based on whether another item is present using the `applyIf:` attribute. See below example.
+
+**Example**
+
+The below example displays an entry based on a blog created using two webapps, posts and authors. The top-level menu entry is called "Blog", with child entry items of "Posts" and "Authors". In this example, the Web App entries are also hidden.
+
 File location: */blog/_config/menu.json*
 
-```
+~~~
  
 {
  
@@ -293,29 +399,24 @@ File location: */blog/_config/menu.json*
  
 }
 
-```
- 
-**Notes:** 
+~~~
 
-* The `applyIf:` changes to that menu item will be applied only if the item already exists. This way we prevent creating a new menu entry on sites which don't have this webapp.
-
-* The  ID of the menu item corresponding to webapp "Posts" will be:
+The  ID of the menu item corresponding to webapp "Posts" will be:
   
   `menu-webapp-posts` (a *slug* version of your Web app name)
 
-* You can not have 2 or more Web Apps with the same name. This is currently not supported, however there are plans of having vendor prefixes per webapp to solve duplicate menu IDs and other issues.
- 
-#### 7. Only display an item if the user is in a certain role
- 
-In this example, we will update the blog example above, so that the default Web App menus are hidden from business owners, and only visible to the partner.
- 
-The first step is to create a role, example: "Business Owner" and add your clients to that role. 
- 
-The next step is to hide the Web App menus for the new Business Owner role.
- 
+#### Displaying a menu item based on the admin user Roles
+
+You can hide/show menu items, based on the Role the logged in user is assigned to. Ensure that the role exists in the admin conosle and then target this role using the `userHasRoles` attribute. See below example.
+
+**Example**
+
+The below example will update the blog example above, so that the default Web App menus are hidden from business owners, and only visible to the partner.
+  
 File location: */blog/_config/menu.json*
 
-```
+~~~
+
 {
  
 "menu-webapps-posts": {
@@ -348,11 +449,12 @@ File location: */blog/_config/menu.json*
  
 }
 
-```
- 
-#### 8. Using all the features above
- 
-In this example we will add several localized menu items that have user roles based conditions as well as dependencies (see example 6).
+~~~
+
+
+### Example using all the above methods
+
+In this example we will add several localized menu items that have user roles based conditions as well as dependencies.
  
 The code below will achieve the following:
  
@@ -364,7 +466,7 @@ The code below will achieve the following:
  
 File location: */test3/_config/menu.json*
 
-```
+~~~
  
 {
  
@@ -608,29 +710,6 @@ File location: */test3/_config/menu.json*
  
 }
  
-``` 
+~~~
 
-#### 9. Add a "Training" link in the top navigation ribbon
-
-File location: */test1/_config/menu.json*
  
-```
-
-{
- 
-"ribbon-test1_training": {
- 
-"weight": 500000,
- 
-"icon": "/icons/training.png",
- 
-"title": "Training"
- 
-}
- 
-}
-
-```
-  
-Since there is no "target: _blank" attribute, the content will be opened inside admin console.
-

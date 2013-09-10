@@ -1,13 +1,29 @@
 describe("Helper.Models.WebApp", function() {
     beforeEach(function() {
         BCAPI.Helper.Test.runTestServer();
+        var done = false;
+
+        // afterEach is not executed if the spec fails. So we have to clean-up data first
+        runs(function() {
+            var webApp = new BCAPI.Models.WebApp.App({name: "FirstWebAppFromApi"});
+            webApp.isNotNew = true;
+            webApp.destroy().always(function() { done = true });
+        });
+
+        waitsFor(function() {
+            return done;
+        }, 'Delete WebApp if it exists', 10 * 1000);
     });
 
     it("Create, Read, Delete", function() {
-        var webApp, saved = false;
+        var webApp,
+            saved = false,
+            fetched = false,
+            deleted = false,
+            notFound = false;
 
         runs(function() {
-            webApp = new BCAPI.Models.WebApp({name: "FirstWebAppFromApi"});
+            webApp = new BCAPI.Models.WebApp.App({name: "FirstWebAppFromApi"});
             webApp.save().done(function() { saved = true });
         });
 
@@ -15,10 +31,10 @@ describe("Helper.Models.WebApp", function() {
             return saved;
         }, 'Create WebApp', 10 * 1000);
 
-        var fetched = false;
-
         runs(function() {
-            var webApp = new BCAPI.Models.WebApp({name: "FirstWebAppFromApi"});
+            expect(webApp.get('id')).toBeUndefined();
+
+            webApp.isNotNew = true;
             webApp.fetch().done(function() { fetched = true });
         });
 
@@ -26,12 +42,9 @@ describe("Helper.Models.WebApp", function() {
             return fetched;
         }, 'Read WebApp', 500);
 
-        // TODO: Test webApp has correct attributes
-
-        var deleted = false;
-
         runs(function() {
-            var webApp = new BCAPI.Models.WebApp({name: "FirstWebAppFromApi"});
+            expect(webApp.get('id')).toBeDefined();
+
             webApp.destroy().done(function() { deleted = true });
         });
 
@@ -39,19 +52,17 @@ describe("Helper.Models.WebApp", function() {
             return deleted;
         }, 'Delete WebApp', 500);
 
-        // TODO: Test webApp was deleted
-    });
-
-    afterEach(function() {
-        var done = false;
-
         runs(function() {
-            var webApp = new BCAPI.Models.WebApp({name: "FirstWebAppFromApi"});
-            webApp.destroy().done(function() { done = true }).fail(function() { done = true });
+            webApp.isNotNew = true;
+            webApp.fetch().fail(function() { notFound = true });
         });
 
         waitsFor(function() {
-            return done;
-        }, 'Delete WebApp', 500);
+            return notFound;
+        }, 'WebApp does not exist anymore', 500);
+    });
+
+    afterEach(function() {
+
     });
 });

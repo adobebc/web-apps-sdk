@@ -138,6 +138,12 @@
      * });
      */
     BCAPI.Models.WebApp.Item = BCAPI.Models.Model.extend({
+    	constructor: function(webappName, attributes, options) {
+    		Backbone.Model.call(this, attributes, options);
+    		
+    		this._webappName = webappName;
+    		this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});
+    	},
     	defaults: {
     		name: "",
     		weight: 0,
@@ -154,7 +160,17 @@
     		state: undefined,
     		zipCode: undefined,
     		country: undefined,
-    		fields: {}
+    		fields: {},
+    	},
+    	/**
+    	 * This method returns the correct endpoint for the web app items.
+    	 */
+    	endpoint: function() {
+    		var url = ["/api/v2/admin/sites/current/webapps/"];
+    		url.push(this._webappName);
+    		url.push("/items");
+    		
+    		return url.join("");
     	}
     });
 })(jQuery);

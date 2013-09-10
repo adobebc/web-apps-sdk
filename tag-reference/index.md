@@ -1,5 +1,10 @@
-## Getting started with tags.
+## Tag reference
 
 You can customize the functionality and appearance of modules by adding the corresponding tags to each type of module to extend it. 
 
-**Note:** Tags are not transferrable, and cannot be shared across all modules. Use the specific tags listed with for each module.
+### Using tags
+
+Tags are used inside Module templates or layouts and represent data associated to an item such as a News headline or Event description.
+
+**Note:** Tags are not transferrable, and cannot be shared across all modules. Use the specific tags listed for each module, in the appropriate layout.
+

@@ -15,7 +15,6 @@ The APIs are split across two protocols, with the majority being RESTful:
 * System
 * Web App items
 * Web Apps
-* 
 
 ### SOAP APIs
 

@@ -16,25 +16,29 @@
      */
 	BCAPI.Models.WebApp.App = BCAPI.Models.Model.extend({
         idAttribute: 'name',
+
+        /**
+         * Set tot true if you want to save or delete an existing item before fetching it
+         *
+         * @type {boolean}
+         */
         isNotNew: null,
 
         defaults: {
-            name: "",
-            weight: 0,
-            releaseDate: (new Date()).toISOString().substring(0, 10),
-            expiryDate: BCAPI.Config.MAX_DATE,
-            enabled: true,
-            slug: "",
-            description: "",
-            roleId: undefined,
-            submittedBy: -1,
-            templateId: undefined,
-            address: undefined,
-            city: undefined,
-            state: undefined,
-            zipCode: undefined,
-            country: undefined,
-            fields: {}
+            templateId: -1,
+            uploadFolder: -1,
+            requiresApproval: true,
+            allowFileUpload: false,
+            customerCanAdd: false,
+            customerCanDelete: false,
+            customerCanEdit: false,
+            anyoneCanEdit: false,
+            requiresPayment: false,
+            validDays: -1, // never expire
+            roleId: 0,
+            hasAddress: false,
+            disableDetailPages: false,
+            locationEnabled: false
         },
 
         isNew: function() {
@@ -43,6 +47,10 @@
 
         endpoint: function() {
             return '/api/v2/admin/sites/current/webapps';
+//        },
+//
+//        save: function() {
+//            return this.__super__.save();
         }
     });
 

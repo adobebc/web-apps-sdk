@@ -9,8 +9,8 @@ describe("Unit tests for web app item collection.", function() {
 	
 	it("Test web app item collection endpoint ok.", function() {
 		var webappName = "Sample webapp",
-			rootUrl = "http://test.localhost.com/",
-			expectedUrl = rootUrl + "api/v2/admin/sites/current/webapps/Sample webapp/items",
+			rootUrl = "http://test.localhost.com",
+			expectedUrl = rootUrl + "/api/v2/admin/sites/current/webapps/Sample webapp/items",
 			item = new BCAPI.Models.WebApp.ItemCollection(webappName);
 		
 		BCAPI.Mocks.Helper.Site(undefined, undefined, rootUrl);
@@ -20,8 +20,8 @@ describe("Unit tests for web app item collection.", function() {
 	
 	it("Test web app item collection fetch ok.", function() {
 		var webappName = "Sample webapp",
-			rootUrl = "http://test.localhost.com/",
-			expectedUrl = rootUrl + "api/v2/admin/sites/current/webapps/" + webappName + "/items",
+			rootUrl = "http://test.localhost.com",
+			expectedUrl = rootUrl + "/api/v2/admin/sites/current/webapps/" + webappName + "/items",
 			item = new BCAPI.Models.WebApp.ItemCollection(webappName),
 			siteToken = "12345xaz",
 			successCalled = false,

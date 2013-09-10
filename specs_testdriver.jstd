@@ -13,7 +13,7 @@ load:
   - src/models.js
   - src/webapp.js
   - src/webapp_item.js
-  - test/specs/bcapi_mocks.js
+  - test/specs/mocks.js
 
 test:
   - test/specs/test_*.js

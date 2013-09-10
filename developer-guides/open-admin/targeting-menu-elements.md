@@ -1,15 +1,15 @@
 <table>
   <tr>
-    <th width="191" height="58">Menu Item Names</th>
-    <th width="285" widtd="229">ID</th>
-    <th width="158" widtd="294">Default Weight</th>
+    <th align="left" width="191" height="58">Menu Item Names</th>
+    <th align="left" width="285" widtd="229">ID</th>
+    <th align="left" width="158" widtd="294">Default Weight</th>
   </tr>
   <tr>
   <td colspan="4"></td>
   </tr>
   <tr>
   <tr>
-    <th widtd="147">Dashboard</th>
+    <th align="left" widtd="147">Dashboard</th>
     <td>menu-dashboard</td>
     <td>10000</td>
   </tr>
@@ -19,7 +19,7 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <th>Site Manager</th>
+    <th align="left">Site Manager</th>
     <td>menu-site-manager</td>
     <td>20000</td>
   </tr>
@@ -89,7 +89,7 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <th>Web Apps</th>
+    <th align="left">Web Apps</th>
     <td>menu-webapps</td>
     <td>30000</td>
   </tr>
@@ -99,7 +99,7 @@
     <td>&nbsp;</td>
       </tr>
   <tr>
-    <th>Modules</th>
+    <th align="left">Modules</th>
     <td>menu-modules</td>
     <td>40000</td>
   </tr>
@@ -154,7 +154,7 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <th>CRM</th>
+    <th align="left">CRM</th>
     <td>menu-customers</td>
     <td>50000</td>
   </tr>
@@ -204,7 +204,7 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <th>E-Commerce</th>
+    <th align="left">E-Commerce</th>
     <td>menu-ecommerce</td>
     <td>60000</td>
   </tr>
@@ -259,7 +259,7 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <th>E-Mail Marketing</th>
+    <th align="left">E-Mail Marketing</th>
     <td>menu-email-marketing</td>
     <td>70000</td>
   </tr>
@@ -279,7 +279,7 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <th>Reports</th>
+    <th align="left">Reports</th>
     <td>menu-reports</td>
     <td>80000</td>
   </tr>
@@ -329,7 +329,7 @@
    <td>&nbsp;</td>
   </tr>
   <tr>
-    <th>Site Settings</th>
+    <th align="left">Site Settings</th>
     <td>menu-site-settings</td>
     <td>90000</td>
   </tr>

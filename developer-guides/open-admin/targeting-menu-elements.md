@@ -1,3 +1,7 @@
+The below table is a reference used with the Open Admin method. The table outlines all the default menu item names, and the associated ids and weights.
+
+Use these ids to target specific menu items in your menu.json file. For more details, see [Getting started with Open Admin](/content/developer-guides/open-admin/getting-started.html).
+
 <table>
   <tr>
     <th align="left" width="191" height="58">Menu Item Names</th>

@@ -7,20 +7,6 @@ describe("Unit tests for webapp custom field model.", function() {
 		expect(field.endpoint()).toBe(expectedEndpoint);
 	});
 	
-	it("Check custom field defaults instantiation.", function() {
-		var webappName = "Test webapp",
-			field = new BCAPI.Models.WebApp.CustomField(webappName);
-		
-		_assertCustomFieldValues(field, {
-			"name": undefined,
-			"type": "String",
-			"required": false,
-			"order": 1,
-			"dataSourceName": undefined,
-			"listItems": undefined
-		});
-	});
-	
 	it("Check custom field instantiation ok.", function() {
 		var webappName = "Test webapp",
 			values = {"name": "Custom field 1",

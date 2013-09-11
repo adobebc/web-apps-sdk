@@ -23,7 +23,7 @@ Displays the list of Web App Items submitted by a customer.
 
 ### Templates
 
-* Web App Layouts > List Layout
+* [Web App Layouts > List Layout](/content/tag-reference/web-apps/web-app-list-layout.html)
 * This module also supports custom templates
 
 ### Examples

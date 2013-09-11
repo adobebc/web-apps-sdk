@@ -106,7 +106,10 @@
     	 * });
     	 */
     	destroy: function(options) {
-    		options.dataType = "text";
+    		if (!options) {
+                options = {};
+            }
+            options.dataType = "text";
     		
     		return Backbone.Model.prototype.destroy.call(this, options);    		
     	},

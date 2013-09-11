@@ -8,11 +8,7 @@
 		'endpoint': function() {
 			return '/api/v2/admin/sites/current/storage';
 		},
-
-		'destroy': function() {
-			throw new Error("Operation not supported");
-		},
-
+		
 		'url': function() {
 			var p = this.get('path');
 			if (p[0] == '/') {
@@ -39,16 +35,55 @@
 			return new BCAPI.Models.FileSystem.Folder(this.get('folderPath'));
 		},
 
-		'save': function(attributes, options) {
-			var additionalOptions = {
+		'upload': function(data) {
+			// var options = {
+			// 	'contentType': 'application/octet-stream',
+			// 	'type': 'PUT',
+			// 	'data': data,
+			// 	'processData': false,
+			// 	'dataType': 'text'
+			// };
+			// return Entity.prototype.sync.call(this, 'create', this, options);
+			return $.ajax(this.contentUrl(), {
 				'contentType': 'application/octet-stream',
 				'type': 'PUT',
-				'data': this.get('data'),
+				'data': data,
 				'processData': false,
-				'dataType': 'text'
-			};
-			var allOptions = _.extend(additionalOptions, options); 
-			return Entity.prototype.sync.call(this, 'create', this, allOptions);
+				'headers': this.headers()
+			});
+		},
+
+		'uploadAndFetch': function(data) {
+			var self = this;
+			return this.upload(data).then(function() {
+				return self.fetch();
+			});
+		},
+
+		'download': function() {
+			return $.ajax(this.contentUrl(), {
+				'type': 'GET',
+				'headers': this.headers()
+			});
+		},
+
+		'save': function(attributes, options) {
+			throw new Error('Operation not supported');
+		},
+
+		'parse': function(result) {
+			//converting to a date object instead of the date string
+			var dateStr = result.lastModified;
+			result.lastModified = new Date(dateStr);
+			return result;
+		},
+
+		'contentUrl': function() {
+			return Entity.prototype.url.call(this);
+		},
+
+		'url': function() {
+			return Entity.prototype.url.call(this) + '?meta';
 		}
 	});
 

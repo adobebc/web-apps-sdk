@@ -15,7 +15,7 @@ Renders a list of blogs according to the blog list layout. It is recommended tha
 
 ### Templates
 
-* Blog Layouts > Post Details
+* [Blog Layouts > Post Details](/content/tag-reference/blogs/blog-post-details-layout.html)
 * This module also supports custom templates
 
 ### Example

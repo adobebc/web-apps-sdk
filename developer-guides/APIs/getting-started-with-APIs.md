@@ -78,7 +78,7 @@ var request = $.ajax({
   type: "POST",
   headers : {"Authorization" : siteAuthToken}, 
   contentType: "application/json",
-  data: {"name": "MyWebApp"}
+  data: '{"name": "MyWebApp"}'
 });
  
 // Request successful, response is in "msg" variable
@@ -103,7 +103,7 @@ var request = $.ajax({
   type: "POST",
   headers : {"Authorization" : siteAuthToken}, 
   contentType: "application/json",
-  data: { "name": "MyWebAppItem" }
+  data: '{ "name": "MyWebAppItem" }'
 });
  
 // Request successful, response is in "msg" variable

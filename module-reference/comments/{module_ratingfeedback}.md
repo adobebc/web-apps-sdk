@@ -8,7 +8,7 @@ Renders user comments on an item.
 
 ### Templates
 
-* Comment layout
+* [Comment layout](/content/tag-reference/comments/comments-layout.html)
 * This module also supports custom templates
 
 ### Examples

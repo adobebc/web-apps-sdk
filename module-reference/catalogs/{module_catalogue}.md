@@ -9,7 +9,7 @@ Displays an individual catalogue on a web page.
 
 ### Templates
 
-* Online Shop Layouts > Individual Catalog
+* [Online Shop Layouts > Individual Catalog](/content/tag-reference/online-shop/individual-catalogue-layout.html)
 * This module also supports custom templates
 
 ### Examples

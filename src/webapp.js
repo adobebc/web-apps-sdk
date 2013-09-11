@@ -115,8 +115,35 @@
     });
 
     /**
+     * This class provides a collection that can be used to list all webapps from a site. For
+     * more information about a webapp see {@link BCAPI.Models.WebApp.App}.
      *
+     * @name AppCollection
      * @class
+     * @constructor
+     * @memberOf BCAPI.Models.WebApp
+     * @example
+     * // fetch all available webapps with custom fields structure in place.
+     * var appCollection = new BCAPI.Models.WebApp.AppCollection();
+     * 
+     * appCollection.fetch({fetchFields: true,
+     *  success: function(webapps) {
+     *  	webapps.each(function(webapp) {
+     *  		// here you also have access to webapp.fields.
+     *  	});
+     *  }
+     * });
+     * 
+     * @example
+     * // fetch all available webapps without custom fields structure in place.  
+     * var appCollection = new BCAPI.Models.WebApp.AppCollection();
+     * 
+     * appCollection.fetch({fetchFields: false,
+     *  success: function(webapps) {
+     *  	webapps.each(function(webapp) {
+     *  		// here webapp.fields is an empty array.
+     *  	});
+     *  }
      */
     BCAPI.Models.WebApp.AppCollection = BCAPI.Models.Collection.extend({
         model: BCAPI.Models.WebApp.App,

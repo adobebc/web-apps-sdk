@@ -11,3 +11,5 @@ doc
 .project
 .settings
 .idea
+*sublime*
+karma*

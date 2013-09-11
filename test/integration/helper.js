@@ -1,16 +1,7 @@
 (function($) {
     "use strict";
-
-    var config = {
-        rootUrl: 'http://earth.bc.corp.adobe.com', // 'https://api-dc1.secure-earth.bc.corp.adobe.com',
-        siteId: 38604,
-        username: 'bcadmin@bc1.local', //'bcapi-integration@mailinator.com',
-        password: 'password9', // '123456'
-        genericToken: "",
-        siteToken: ''
-    };
-
-    BCAPI.Config.TestServer = config;
+    
+    var config = BCAPI.Config.TestServer;
 
     function mockGenericToken() {
         spyOn(BCAPI.Helper.Site, "getGenericToken").andReturn(config.genericToken);

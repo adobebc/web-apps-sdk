@@ -16,7 +16,7 @@ Renders a Facebook like button.
 
 ### Templates
 
-* Module templates > SocialMedia > FacebookLike > Default > container.html
+* [Module templates > SocialMedia > FacebookLike > Default > container.html](/content/tag-reference/social-media/facebook-like-template.html)
 
 ### Examples
 

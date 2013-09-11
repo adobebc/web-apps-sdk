@@ -48,6 +48,11 @@
 <dd>
     
     
+    <div class="description">
+        <p>This class provides a collection that can be used to list all webapps from a site. For
+more information about a webapp see <a href="BCAPI.Models.WebApp.App.html">BCAPI.Models.WebApp.App</a>.</p>
+    </div>
+    
 
     
     
@@ -78,7 +83,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        webapp.js, line 138
+        webapp.js, line 117
     </li></ul></dd>
     
     
@@ -101,6 +106,30 @@
     
     
     
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>// fetch all available webapps with custom fields structure in place.
+var appCollection = new BCAPI.Models.WebApp.AppCollection();
+
+appCollection.fetch({fetchFields: true,
+ success: function(webapps) {
+ 	webapps.each(function(webapp) {
+ 		// here you also have access to webapp.fields.
+ 	});
+ }
+});</code></pre>
+
+    <pre class="prettyprint"><code>// fetch all available webapps without custom fields structure in place.  
+var appCollection = new BCAPI.Models.WebApp.AppCollection();
+
+appCollection.fetch({fetchFields: false,
+ success: function(webapps) {
+ 	webapps.each(function(webapp) {
+ 		// here webapp.fields is an empty array.
+ 	});
+ }</code></pre>
+
+    
 </dd>
 
     
@@ -119,6 +148,138 @@
     
     
     
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="parse"><span class="type-signature"></span>parse<span class="signature">(response)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>We override this method in order to transform each returned item into a strong typed 
+<a href="BCAPI.Models.WebApp.App.html">BCAPI.Models.WebApp.App</a> models.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>response</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The JSON response received from Web apps api.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        webapp.js, line 199
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A list of web app items.</p>
+</div>
+
+
+
+        
+    
+    
+</dd>
+
+        </dl>
+    
     
     
     
@@ -133,13 +294,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="BCAPI.Models.Category.html">Category</a></li><li><a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a></li><li><a href="BCAPI.Models.Collection.html">Collection</a></li><li><a href="BCAPI.Models.Model.html">Model</a></li><li><a href="BCAPI.Models.WebApp.App.html">App</a></li><li><a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a></li><li><a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a></li><li><a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a></li><li><a href="BCAPI.Models.WebApp.Item.html">Item</a></li><li><a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a></li></ul><h3>Namespaces</h3><ul><li><a href="BCAPI.html">BCAPI</a></li><li><a href="BCAPI.Config.html">Config</a></li><li><a href="BCAPI.Config.Pagination.html">Pagination</a></li><li><a href="BCAPI.Helper.html">Helper</a></li><li><a href="BCAPI.Helper.Site.html">Site</a></li><li><a href="BCAPI.Models.html">Models</a></li><li><a href="BCAPI.Models.WebApp.html">WebApp</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="BCAPI.Models.Category.html">Category</a></li><li><a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a></li><li><a href="BCAPI.Models.Collection.html">Collection</a></li><li><a href="BCAPI.Models.Model.html">Model</a></li><li><a href="BCAPI.Models.WebApp.App.html">App</a></li><li><a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a></li><li><a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a></li><li><a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a></li><li><a href="BCAPI.Models.WebApp.Item.html">Item</a></li><li><a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a></li></ul><h3>Namespaces</h3><ul><li><a href="BCAPI.html">BCAPI</a></li><li><a href="BCAPI.Config.html">Config</a></li><li><a href="BCAPI.Config.Pagination.html">Pagination</a></li><li><a href="BCAPI.Helper.html">Helper</a></li><li><a href="BCAPI.Helper.Site.html">Site</a></li><li><a href="BCAPI.Models.html">Models</a></li><li><a href="BCAPI.Models.WebApp.html">WebApp</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_fetchCustomField">_fetchCustomField</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Wed Sep 11 2013 15:41:53 GMT+0300 (EEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Wed Sep 11 2013 22:02:46 GMT+0300 (EEST)
 </footer>
 
 <script> prettyPrint(); </script>

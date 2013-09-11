@@ -3321,12 +3321,6 @@
      */
     BCAPI.Models.WebApp.AppCollection = BCAPI.Models.Collection.extend({
         model: BCAPI.Models.WebApp.App,
-        /**
-         * This method fetch a given webapp custom fields.
-         */
-        _fetchCustomField: function(webapp) {
-        	
-        },
         fetch: function(options) {
         	options = options || {};
 

@@ -147,7 +147,29 @@ describe("Unit tests for BC base model class.", function() {
 
 	it("Check model update operation error handler invoked.", function() {
 		_testSaveTemplate(true, "Model update success handler not invoked.", 101);		
-	});	
+	});
+	
+	it("Check save operation without params - it used to crash in the past.", function() {
+		var model = new BCAPI.Mocks.Models.PersonModel({
+						idCustom: 101,
+						firstName: "John",
+						lastName: "Doe"}),
+			ajaxCalled = false;
+		
+		spyOn($, "ajax").andCallFake(function(request) {
+			_assertCorrectSaveCall(request, "John", "Doe", 101);
+			
+			ajaxCalled = true;
+		});
+		
+		runs(function() {
+			model.save();
+		});
+		
+		waitsFor(function() {
+			return ajaxCalled;
+		}, "No ajax call done when saving without parameters.", 50);
+	});
 	
 	/**
 	 * This method makes sure request for model destroy sends correct data to server.

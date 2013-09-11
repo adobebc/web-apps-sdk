@@ -86,6 +86,7 @@
     	 * });
     	 */
     	save: function(options) {
+    		options = options || {};
     		options.dataType = "text";
     		
     		return Backbone.Model.prototype.save.call(this, this.attributes, options);

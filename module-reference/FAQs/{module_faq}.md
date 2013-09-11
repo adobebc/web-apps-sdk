@@ -17,7 +17,7 @@ Renders a list of FAQ items.
 
 ### Templates
 
-* [FAQ list layout](/reference/tags/FAQs/FAQ-list-layout.html)
+* [FAQ Layouts > list layout](/content/tag-reference/FAQs/FAQ-list-layout.html)
 * This module also supports custom templates
 
 ### Examples

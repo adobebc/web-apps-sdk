@@ -2,11 +2,14 @@
     "use strict";
 
     BCAPI.Models.ItemCategory = BCAPI.Models.Model.extend({
+        defaults: {
+            items: []
+        },
+
         constructor: function(webappName, webappItemId, attributes, options) {
             BCAPI.Models.Model.call(this, attributes, options);
             this._webappName = webappName;
             this._webappItemId = webappItemId;
-            this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});
         },
 
         endpoint: function() {
@@ -16,6 +19,18 @@
             url.push(this._webappItemId);
             url.push("/categories");
             return url.join("");
+        },
+
+        toJSON: function(){
+            return this.get('items');
+        },
+
+        save: function(options) {
+            options = options || {};
+            options.type = "PUT";
+            options.dataType = "text";
+
+            return Backbone.Model.prototype.save.call(this, this.attributes, options);
         }
     });
 })(jQuery);

@@ -15,7 +15,7 @@ Renders a list of forums.
 
 ### Templates
 
-* Forum Layouts > Individual Forum Layout
+* [Forum Layouts > Individual Forum Layout](/content/tag-reference/forums/individual-forum-layout.html)
 * This module also supports custom templates
 
 ### Examples

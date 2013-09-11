@@ -5,6 +5,7 @@
 		username: 'bcadmin@bc1.local', //'bcapi-integration@mailinator.com',
 		password: 'password9', // '123456'
 		genericToken: "",
-		siteToken: ''
+		siteToken: '',
+		tokenRequestTimeout: 60 * 1000
 	};
 })();

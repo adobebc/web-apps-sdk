@@ -44,7 +44,7 @@
 
                 waitsFor(function() {
                     return !!config.genericToken;
-                }, 'Get genericToken', 60 * 1000);
+                }, 'Get genericToken', config.tokenRequestTimeout);
             }
 
             if (!BCAPI.Helper.Site.getSiteToken.isSpy) {
@@ -69,7 +69,7 @@
 
                     waitsFor(function() {
                         return !!config.siteToken;
-                    }, 'Get siteToken', 10 * 1000);
+                    }, 'Get siteToken', config.tokenRequestTimeout);
                 }
             }
         }

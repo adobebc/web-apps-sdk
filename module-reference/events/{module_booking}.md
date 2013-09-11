@@ -16,7 +16,7 @@ Renders the rank of an item (number of stars).
 
 ### Templates
 
-* Event Layouts > List Layout
+* [Event Layouts > List Layout](/content/tag-reference/events/event-list-layout.html)
 * This module also supports custom templates
 
 ### Examples

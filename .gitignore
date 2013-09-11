@@ -10,3 +10,4 @@ doc
 # IDE specific files which must be ignored
 .project
 .settings
+.idea

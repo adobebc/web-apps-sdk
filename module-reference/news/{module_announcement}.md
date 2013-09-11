@@ -24,7 +24,7 @@ Renders a list of news items.
 
 ### Templates
 
-* News Layouts > News List Layout
+* [News Layouts > News List Layout](/content/tag-reference/news/news-list-layout.html)
 * This module also supports custom templates
 
 ### Examples

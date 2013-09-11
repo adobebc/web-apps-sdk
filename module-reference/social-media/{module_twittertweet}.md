@@ -15,7 +15,7 @@ Renders the Twitter Tweet button.
 
 ### Templates
 
-* Module templates > SocialMedia > TweeterTweet > Default > container.html
+* [Module templates > SocialMedia > TweeterTweet > Default > container.html](/content/tag-reference/social-media/twitter-tweet-template.html)
 
 ### Examples
 

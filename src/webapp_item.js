@@ -76,7 +76,7 @@
 	 * ## Create item
 	 * 
 	 * ```javascript
-	 * var item = new BCAPI.Models.WebApp.Item({
+	 * var item = new BCAPI.Models.WebApp.Item("Test webapp", {
 	 * 		"name": "Test item"
 	 * });
 	 * 
@@ -95,7 +95,7 @@
 	 * ## Remove item
 	 * 
 	 * ```javascript
-	 * var items = new BCAPI.Models.WebApp.Item({id: 1});
+	 * var items = new BCAPI.Models.WebApp.Item("Test webapp", {id: 1});
 	 * item.destroy({
 	 * 	success: function(webAppItem, response) {
 	 * 		// handle success here.
@@ -208,6 +208,28 @@
     		var model = new this.model(this.webappName);
     		
     		return BCAPI.Models.Collection.prototype.url.call(this, model);
+    	},
+    	/**
+    	 * We override this method in order to transform each returned item into a strong typed 
+    	 * {@link BCAPI.Models.WebApp.Item} models.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @param {Object} response The JSON response received from Items api.
+    	 * @returns A list of web app items.
+    	 * @memberOf BCAPI.Models.WebApp.ItemCollection 
+    	 */
+    	parse: function(response) {
+    		response = BCAPI.Models.Collection.prototype.parse.call(this, response);
+    		
+    		var items = [],
+    			self = this;
+    		
+    		_.each(response, function(item) {
+    			items.push(new self.model(self.webappName, item));
+    		});
+    		
+    		return items;
     	}
     });
 })(jQuery);

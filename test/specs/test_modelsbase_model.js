@@ -1,21 +1,13 @@
 describe("Unit tests for BC base model class.", function() {
 	var oldSiteHelper = undefined,
 		siteToken = "123",
-		rootUrl = "https://secure.businesscatalyst.com/",
-		expectedUrl = rootUrl + "api/v2/persons";
+		rootUrl = "https://secure.businesscatalyst.com",
+		expectedUrl = rootUrl + "/api/v2/persons";
 	
 	beforeEach(function() {
-		oldSiteHelper = BCAPI.Helper.Site;		
-		
 		BCAPI.Mocks.Helper.Site(null, siteToken, rootUrl);
 	});
 	
-	afterEach(function() {
-		expect(oldSiteHelper).not.toBe(undefined);
-		
-		BCAPI.Helper.Site = oldSiteHelper;
-	});
-
 	it("Check attributes default values.", function() {
 		var model = new BCAPI.Mocks.Models.PersonModel();
 		
@@ -71,13 +63,13 @@ describe("Unit tests for BC base model class.", function() {
 	function _assertCorrectSaveCall(request, firstName, lastName, id) {
 		var url = expectedUrl + (id ? "/" + id : ""),
 			method = id ? "PUT" : "POST";
-		
-		
+				
 		expect(request.type).toBe(method);
 		expect(request.url).toBe(url);
 		expect(request.headers.Authorization).toBe(siteToken);
-		expect(request.dataType).toBe("json");
-		
+        expect(request.dataType).toBe("text");
+        expect(request.contentType).toBe("application/json");
+
 		var data = JSON.parse(request.data);
 		expect(data.firstName).toBe(firstName);
 		expect(data.lastName).toBe(lastName);
@@ -161,6 +153,7 @@ describe("Unit tests for BC base model class.", function() {
 	 * This method makes sure request for model destroy sends correct data to server.
 	 */
 	function _assertCorrectDeleteCall(request, id) {
+		expect(request.dataType).toBe("text");
 		expect(request.type).toBe("DELETE");
 		expect(request.url).toBe(expectedUrl + "/" + id);
 		expect(request.headers.Authorization).toBe(siteToken);			

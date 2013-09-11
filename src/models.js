@@ -58,15 +58,15 @@
     	 *
     	 * @method
     	 * @instance
-    	 * @returns An absolute entry point API.
+    	 * @returns {string} An absolute entry point API.
     	 * @memberOf BCAPI.Models.Model
     	 */
     	urlRoot: function() {
     		var url = BCAPI.Helper.Site.getRootUrl(),
     			endpoint = this.endpoint();
-    		
-    		if(endpoint.charAt(0) == "/") {
-    			endpoint = endpoint.substring(1, endpoint.length);
+    		    		
+    		if(endpoint.charAt(0) !== "/") {
+    			endpoint = '/' + endpoint;
     		} 
     		
     		return url + endpoint;
@@ -85,8 +85,29 @@
     	 * 	}
     	 * });
     	 */
-    	save: function(handlers) {
-    		return Backbone.Model.prototype.save.call(this, this.attributes, handlers);
+    	save: function(options) {
+    		options.dataType = "text";
+    		
+    		return Backbone.Model.prototype.save.call(this, this.attributes, options);
+    	},
+    	/**
+    	 * This method deletes a model using the api.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
+    	 * @example
+    	 * var model = new PersonModel({id: 1});
+    	 * model.destroy({
+    	 * 	success: function() {
+    	 * 		// do something when delete is successful.
+    	 * 	}
+    	 * });
+    	 */
+    	destroy: function(options) {
+    		options.dataType = "text";
+    		
+    		return Backbone.Model.prototype.destroy.call(this, options);    		
     	},
     	/**
     	 * Sync method is invoked automatically when user tries to create / update a model. It automatically 
@@ -108,8 +129,14 @@
     		for(var headerKey in customHeaders) {
     			options.headers[headerKey] = customHeaders[headerKey];
     		}
+
+    		var xhr = Backbone.Model.prototype.sync.call(this, method, model, options);
     		
-    		return Backbone.Model.prototype.sync(method, model, options);
+    		if(!xhr) {
+    			return;
+    		}
+    		
+    		return xhr.then(function() { return this; }).promise(xhr);
     	}
     });
     
@@ -126,7 +153,7 @@
      * 	model: BCAPI.Examples.Person
      * });
      */
-    BCAPI.Models.Collection = Backbone.Paginator.requestPager.extend({
+    BCAPI.Models.Collection = Backbone.Collection.extend({
     	/**
     	 * This method initialize the current collection default attributes:
     	 * 
@@ -157,7 +184,9 @@
     	 * @returns {Promise} a promise which can be used to determine http request state. 
     	 */
     	fetch: function(options) {
+            options = options || {};
     		options.headers = new this.model().headers();
+    		options.dataType = "json";
     		
     		this._limit = options.limit;
     		this._skip = options.skip;
@@ -166,9 +195,9 @@
     			this._where = JSON.stringify(options.where);
     		}
     		
-    		this._order = options.order;    		
+    		this._order = options.order;
     		
-    		return Backbone.Paginator.requestPager.prototype.fetch.call(this, options);
+    		return Backbone.Collection.prototype.fetch.call(this, options);
     	},
     	/**
     	 * This method returns the root url of this collection. It internally uses the model
@@ -181,46 +210,24 @@
     	url: function(model) {
     		model = model || (new this.model());
     		
-    		return model.urlRoot();
-    	},
-    	/**
-    	 * This property defines default value for defining core paginator behavior.
-    	 * 
-    	 * @instance
-    	 * @memberOf BCAPI.Models.Collection
-    	 */
-    	paginator_core: {
-    		type: "GET",
-    		dataType: "json",    		
-    		url: function() {
-    			var urlWithParams = [this.url(), "?"];
-    			
-    			for(var key in this.server_api) {
-    				var val = this.server_api[key].apply(this);
-    				
-    				if(val === undefined) {
-    					continue;
-    				}
-    				
-    				urlWithParams.push("&");
-    				urlWithParams.push(key);
-    				urlWithParams.push("=");
-    				urlWithParams.push(val);    				
-    			}
-    			
-    			urlWithParams[2] = "";
-    			
-    			return urlWithParams.join("");
-    		}
-    	},
-    	/**
-    	 * This property defines default values for how this paginated collection works.
-    	 * 
-    	 * @instance
-    	 * @memberOf BCAPI.Models.Collection
-    	 */
-    	paginator_ui: {
-    		firstPage: BCAPI.Config.Pagination.lowestPage
+			var urlWithParams = [model.urlRoot(), "?"];
+			
+			for(var key in this.server_api) {
+				var val = this.server_api[key].apply(this);
+				
+				if(val === undefined) {
+					continue;
+				}
+				
+				urlWithParams.push("&");
+				urlWithParams.push(key);
+				urlWithParams.push("=");
+				urlWithParams.push(val);    				
+			}
+			
+			urlWithParams[2] = "";
+			
+			return urlWithParams.join("");    		
     	},
     	/**
     	 * This property defines the attributes which are used to server api.
@@ -233,6 +240,9 @@
     		"skip": function() { return this._skip || this._defaultSkip; },
     		"where": function() { return this._where; },
     		"order": function() { return this._order; }
+    	},
+    	parse: function(response) {
+    		return response.items;
     	}
     });
 })(jQuery);

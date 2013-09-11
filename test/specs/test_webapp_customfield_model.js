@@ -34,6 +34,21 @@ describe("Unit tests for webapp custom field model.", function() {
 		_assertCustomFieldValues(field, values);
 	});
 	
+	it("Check custom field set ok.", function() {
+		var webappName = "Test webapp",
+			values = {"name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]},
+			field = new BCAPI.Models.WebApp.CustomField(webappName);
+		
+		field.set(values);
+		
+		_assertCustomFieldValues(field, values);		
+	});
+	
 	/**
 	 * This method assert that field properties equals given values.
 	 */

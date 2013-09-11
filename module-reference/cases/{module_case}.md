@@ -20,7 +20,7 @@ Renders a customer's case history within a secure zone, so, when customer logs i
 
 ### Templates
 
-* This module is rendered with the Detail Layout
+* [Customer Cases Layouts > Detail Layout](/content/tag-reference/cases/case-detail-layout.html)
 * This module also supports custom templates
 * User must be logged in in order for the module to render
 

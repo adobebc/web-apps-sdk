@@ -4,7 +4,7 @@ Renders an individual or list of Web App items, as per parameters.
 
 ### Parameters
 
-* `ID` - system generated web app id (do not change)
+* `ID` or `Name` - system generated web app id or replace with the web app name
 * `filter` - filtering criteria for display and can be one of the following:
   * `i` - individual item
 	* `a` - all items

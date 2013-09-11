@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Config</title>
+    <title>JSDoc: Class: CustomField</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Namespace: Config</h1>
+    <h1 class="page-title">Class: CustomField</h1>
     
     
 
@@ -27,9 +27,9 @@
     
 <header>
     <h2>
-        <span class="ancestors"><a href="BCAPI.html">BCAPI</a>.</span>
+        <span class="ancestors"><a href="BCAPI.html">BCAPI</a><a href="BCAPI.Models.html">.Models</a><a href="BCAPI.Models.WebApp.html">.WebApp</a>.</span>
     
-    Config
+    CustomField
     </h2>
     
 </header>  
@@ -40,11 +40,41 @@
     
     
         
-            <div class="description"><p>This namespace holds global configuration of the sdk. You can easily change the values from here
-in order to influence how various models and services work.</p></div>
-        
-        
-        
+<dt>
+    <h4 class="name" id="CustomField"><span class="type-signature"></span>new CustomField<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This class provides support for custom fields description belonging to <a href="BCAPI.Models.WebApp.App.html">BCAPI.Models.WebApp.App</a></p>
+<h2>Create a new custom field</h2>
+<pre><code class="lang-javascript">var customField = new BCAPI.Models.WebApp.CustomField(&quot;Test webapp&quot;, {
+    &quot;name&quot;: &quot;Part code&quot;,
+    &quot;type&quot;: &quot;DataSource&quot;,
+    &quot;listItems&quot;: null,
+    &quot;dataSourceName&quot;: &quot;Part Codes&quot;,
+    &quot;required&quot;: false,
+    &quot;order&quot;: 1
+});
+
+customField.save({
+    success: function(fieldModel) {
+        // do something on success.
+    }
+});</code></pre>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
 <dl class="details">
     
         
@@ -67,7 +97,7 @@ in order to influence how various models and services work.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        config.js, line 2
+        webapp_customfield.js, line 4
     </li></ul></dd>
     
     
@@ -78,8 +108,20 @@ in order to influence how various models and services work.</p></div>
     
 </dl>
 
-        
-        
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     
@@ -92,38 +134,106 @@ in order to influence how various models and services work.</p></div>
     
     
     
-        <h3 class="subsection-title">Namespaces</h3>
-        
-        <dl>
-            <dt><a href="namespaces.html#BCAPI.Config.Pagination"><a href="BCAPI.Config.Pagination.html">Pagination</a></a></dt>
-            <dd></dd>
-        </dl>
     
     
     
-        <h3 class="subsection-title">Members</h3>
+    
+        <h3 class="subsection-title">Methods</h3>
         
         <dl>
             
 <dt>
-    <h4 class="name" id="Config.MAX_DATE"><span class="type-signature">&lt;static> </span>Config.MAX_DATE<span class="type-signature"></span></h4>
+    <h4 class="name" id="endpoint"><span class="type-signature"></span>endpoint<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
 <dd>
     
     
+    <div class="description">
+        <p>This method returns the endpoint for custom fields api.</p>
+    </div>
     
 
+    
+    
+    
+    
+    
+    
     
 <dl class="details">
     
         
-        <h5 class="subsection-title">Properties:</h5>
-        
-        <dl>
+    
+    
+    
 
-<table class="props">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        webapp_customfield.js, line 45
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="parse"><span class="type-signature"></span>parse<span class="signature">(response)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>We override this method in order to transform each returned item into a strong typed 
+<a href="BCAPI.Models.WebApp.CustomField.html">BCAPI.Models.WebApp.CustomField</a> models.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
     <thead>
 	<tr>
 		
@@ -145,13 +255,13 @@ in order to influence how various models and services work.</p></div>
 	
         <tr>
             
-                <td class="name"><code>MAX_DATE</code></td>
+                <td class="name"><code>response</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
@@ -161,13 +271,16 @@ in order to influence how various models and services work.</p></div>
             
             
             
-            <td class="description last"><p>the maximum date value allowed on BC side.</p></td>
+            <td class="description last"><p>The JSON response received from CustomField api.</p></td>
         </tr>
 	
 	
 	</tbody>
-</table></dl>
-        
+</table>
+    
+    
+    
+<dl class="details">
     
         
     
@@ -189,7 +302,7 @@ in order to influence how various models and services work.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        config.js, line 27
+        webapp_customfield.js, line 91
     </li></ul></dd>
     
     
@@ -202,11 +315,29 @@ in order to influence how various models and services work.</p></div>
 
     
     
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A list of web app custom fields.</p>
+</div>
+
+
+
+        
+    
+    
 </dd>
 
         </dl>
-    
-    
     
     
     
@@ -228,7 +359,7 @@ in order to influence how various models and services work.</p></div>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Wed Sep 11 2013 12:32:58 GMT+0300 (EEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Wed Sep 11 2013 12:33:00 GMT+0300 (EEST)
 </footer>
 
 <script> prettyPrint(); </script>

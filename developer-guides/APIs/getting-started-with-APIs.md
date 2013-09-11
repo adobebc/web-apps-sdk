@@ -4,9 +4,9 @@ Business Catalyst offers a wide range of APIs which allow developers to easily e
 
 ### Supported APIs
 
-Business Catalyst currently support two protocols: the older eCommerce and CRM APIs utilize the [SOAP](http://en.wikipedia.org/wiki/SOAP) protocol, while all new APIs are [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) over HTTP.
+Business Catalyst currently supports two protocols: the older eCommerce and CRM APIs utilize the [SOAP](http://en.wikipedia.org/wiki/SOAP) protocol, while all new APIs are [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) over HTTP.
 
-For a complete reference of suupported APIs, refer to [our API endpoint reference.](/content/API-endpoints/index.html)
+For a complete reference of supported APIs, refer to [our API endpoint reference.](/content/API-endpoints/index.html)
 
 ### Interacting with APIs
 

@@ -8,7 +8,7 @@ Renders a list of names of the latest posts for an individual or all blogs (list
 
 ### Templates
 
-* [Blog Layouts > List Layout](/content/tag-reference/blogs/blog-post-list-layout.html)B
+* [Blog Layouts > List Layout](/content/tag-reference/blogs/blog-post-list-layout.html)
 
 ### Example
 

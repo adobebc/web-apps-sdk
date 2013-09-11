@@ -13,7 +13,7 @@ Renders the Facebook Comments Field.
 
 ### Templates
 
-* Module templates > SocialMedia > FacebookComments > Default > container.html 
+* [Module templates > SocialMedia > FacebookComments > Default > container.html](/content/tag-reference/social-media/facebook-comment-template.html)
 
 ### Examples
 

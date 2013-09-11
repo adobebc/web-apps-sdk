@@ -8,18 +8,35 @@ describe('BCAPI.Models.FileSystem.File', function() {
         BCAPI.Helper.Test.runTestServer();
     });
 
-	it('should allow to create and then retrieve a file', function() {
+	it('should allow to create a new file by uploading content', function() {
 		var file = genFile();
+		var content = randomString();
 		var testStartTime = new Date();
 		expect(file.get('type')).toBe('file');
 		promiseScenario({
 			'promise': function() {
-				return file.save().then(function() { return file.fetch(); });
+				return file.upload(content).then(function() { return file.fetch(); });
 			},
 			'complete': function() {
 				expect(file.get('lastModified')).toBeDefined();
 				expect(file.get('size')).toBeDefined();
-				expect(file.get('lastModified')).toBeGreaterThan(testStartTime);
+				expect(file.get('lastModified').getTime()).not.toBeLessThan(testStartTime.getTime());
+			}
+		});
+	});
+
+	it('should download the same content that was uploaded', function() {
+		var file = genFile();
+		var content = randomString();
+		promiseScenario({
+			'promise': function() {
+				return file.upload(content).then(function() {
+					return file.download();
+				});
+			},
+
+			'complete': function(data) {
+				expect(data).toBe(content);
 			}
 		});
 	});
@@ -43,16 +60,20 @@ describe('BCAPI.Models.FileSystem.File', function() {
 		});
 	});
 
-	xit('should delete files', function() {
+	it('should delete files', function() {
 		var file = genFile();
 		promiseScenario({
 			'promise': function() {
-				var destroyed = file.destroy();
-				var newFile = new BcFile(file.folder(), file.get('name'));
-				var retrievedStatus = newFile.fetch().then(
-					function() { return true; },
-					function() { return false; });
-				return retrievedStatus;
+				return file.upload(randomString()).then(function() {
+					return file.destroy().then(function() {
+						return file.fetch().then(function() {
+							return true;
+						}, function() {
+							console.log('False branch');
+							return false;
+						});
+					});
+				});
 			},
 			'complete': function(wasRetrieved) {
 				expect(wasRetrieved).toBe(false);
@@ -60,35 +81,27 @@ describe('BCAPI.Models.FileSystem.File', function() {
 		});
 	});
 
-	xit('should update files', function() {
+	it('should handle re-upload properly', function() {
 		var file = genFile();
-		var newData = randomString(32);
+		var initialData = randomString();
+		var newData = randomString();
+		var creationTimestamp;
 		promiseScenario({
 			'promise': function() {
-				var creationTime;
-				var created = file.save();
-				created.then(function() {
-					var newFile = new BcFile(file.folder(), file.get('name'));
-					timestamp1 = file.get('lastModified');
-					file.set('data', newData);
-					var updated = file.save();
-					var retrieved = updated.then(function() {
-						return newFile.fetch();
+				return file.uploadAndFetch(initialData)
+					.done(function() {
+						creationTimestamp = file.get('lastModified');
+					})
+					.then(function() {
+						return file.uploadAndFetch(newData).then(function() {
+							return file.download();	
+						});
 					});
-					return retrieved.then(function() {
-						return {
-							'updatedFile': newFile,
-							'creationTime': creationTime
-						};
-					});
-				});
-				file.save();
 			},
-			'complete': function(result) {
-				var file = result.file;
-				var creationTime = result.creationTime;
+			'complete': function(downloadedData) {
+				expect(downloadedData).toBe(newData);
 				expect(file.get('data')).toBe(newData);
-				expect(file.get('lastModified')).toBeGreaterThan(creationTime);
+				expect(file.get('lastModified').getTime()).toBeGreaterThan(creationTimestamp.getTime());
 			}
 		});
 	});
@@ -102,6 +115,7 @@ describe('BCAPI.Models.FileSystem.File', function() {
 	}
 
 	function randomString(size) {
+		size = size || 32;
 		return _.times(size, randChar).join('');
 	}
 
@@ -119,7 +133,6 @@ describe('BCAPI.Models.FileSystem.File', function() {
 		runs(function() {
 			var p = promiseFun();
 			p.done(function(x) {
-				console.log('PROMISE WAS CALLED');
 				result = x;
 				finished = true;
 				success = true;
@@ -142,10 +155,8 @@ describe('BCAPI.Models.FileSystem.File', function() {
 	function genFile(directory) {
 		directory = directory || BcFolder.Root;
 		var fileName = genFileName();
-		var content = randomString(20);
 		return directory.file({
-			'name': fileName,
-			'data': content
+			'name': fileName
 		});
 	}
 

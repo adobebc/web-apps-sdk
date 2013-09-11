@@ -30,7 +30,7 @@ The previous and next links used in pagination can be customized using CSS. Each
 
 ### Templates
 
-* Web App Layouts > List Layout
+* [Web App Layouts > List Layout](/content/tag-reference/web-apps/web-app-list-layout.html)
 * This module also supports custom templates
 
 ### Examples

@@ -21,17 +21,10 @@
      */
     BCAPI.Models.Category = BCAPI.Models.Model.extend({
         /**
-         * These are the default values for fields
-         * @field defaults
-         * name: mandatory, string
-         * parentId: optional, defaults to root (-1)
-         * publicAccess: optional, default to TRUE
+         * @field name: mandatory, string
+         * @field parentId: optional, defaults to root (-1)
+         * @field publicAccess: optional, default to TRUE
          */
-        defaults: {
-            name: "",
-            parentId: -1,
-            publicAccess: true
-        },
 
         /**
          * This method returns the correct endpoint for the category.

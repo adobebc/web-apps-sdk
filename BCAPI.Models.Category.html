@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Model</title>
+    <title>JSDoc: Class: Category</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Class: Model</h1>
+    <h1 class="page-title">Class: Category</h1>
     
     
 
@@ -29,7 +29,7 @@
     <h2>
         <span class="ancestors"><a href="BCAPI.html">BCAPI</a><a href="BCAPI.Models.html">.Models</a>.</span>
     
-    Model
+    Category
     </h2>
     
 </header>  
@@ -41,7 +41,7 @@
     
         
 <dt>
-    <h4 class="name" id="Model"><span class="type-signature"></span>new Model<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Category"><span class="type-signature"></span>new Category<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -49,8 +49,7 @@
     
     
     <div class="description">
-        <p>Model provides the base class for every model included in Business Catalyst client side sdk. Each new model inherits
-Model.</p>
+        <p>This class provides a way of working with individual category items.</p>
     </div>
     
 
@@ -83,7 +82,7 @@ Model.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        models.js, line 8
+        category.js, line 4
     </li></ul></dd>
     
     
@@ -108,15 +107,14 @@ Model.</p>
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>BCAPI.Examples.Person = BCAPI.Models.Model.extend({
-	defaults: {
-		firstName: "John",
-		lastName: "Doe"
-	},
-	endpoint: function() {
-		return "/api/v2/persons";
-	}
-});</code></pre>
+    <pre class="prettyprint"><code>var category = new BCAPI.Models.Category({name: 'Test Category'});
+To save:
+category.save(options)
+To get a category by id:
+var category = new BCAPI.Models.Category({id: 1});
+category.fetch(options)
+
+Update and delete are not supported</code></pre>
 
     
 </dd>
@@ -124,6 +122,12 @@ Model.</p>
     
     </div>
     
+    
+        <h3 class="subsection-title">Extends</h3>
+        
+        <ul>
+            <li><a href="BCAPI.Models.Model.html">BCAPI.Models.Model</a></li>
+        </ul>
     
     
     
@@ -168,6 +172,11 @@ Model.</p>
     
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="BCAPI.Models.Model.html#destroy">BCAPI.Models.Model#destroy</a>
+    </li></dd>
     
     
     
@@ -221,7 +230,7 @@ model.destroy({
         
             
 <dt>
-    <h4 class="name" id="endpoint"><span class="type-signature"></span>endpoint<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="endpoint"><span class="type-signature"></span>endpoint<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -229,8 +238,7 @@ model.destroy({
     
     
     <div class="description">
-        <p>This method must be overriden by each concrete class in order to give the correct relative path
-to API entry point.</p>
+        <p>This method returns the correct endpoint for the category.</p>
     </div>
     
 
@@ -263,7 +271,7 @@ to API entry point.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        models.js, line 38
+        category.js, line 43
     </li></ul></dd>
     
     
@@ -282,42 +290,8 @@ to API entry point.</p>
     
     
     
-    <h5>Throws:</h5>
-    
-            
-
-    <div class="param-desc">
-    
-        An error if endpoint method is not overriden in concrete models.
-    
-    </div>
-
-
-        
     
     
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>the model API entry point.</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">String</span>
-
-
-	</dd>
-</dl>
-
-        
     
     
 </dd>
@@ -353,6 +327,11 @@ need a different behavior in your model, please override this method.</p>
     
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="BCAPI.Models.Model.html#headers">BCAPI.Models.Model#headers</a>
+    </li></dd>
     
     
     
@@ -444,6 +423,11 @@ need a different behavior in your model, please override this method.</p>
     
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="BCAPI.Models.Model.html#save">BCAPI.Models.Model#save</a>
+    </li></dd>
     
     
     
@@ -619,6 +603,11 @@ appends the custom headers returned by BCAPI.Models.Model.headers method.</p>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="BCAPI.Models.Model.html#sync">BCAPI.Models.Model#sync</a>
+    </li></dd>
+    
     
     
     
@@ -710,6 +699,11 @@ appends the custom headers returned by BCAPI.Models.Model.headers method.</p>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="BCAPI.Models.Model.html#urlRoot">BCAPI.Models.Model#urlRoot</a>
+    </li></dd>
+    
     
     
     
@@ -793,7 +787,7 @@ appends the custom headers returned by BCAPI.Models.Model.headers method.</p>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Wed Sep 11 2013 12:05:00 GMT+0300 (EEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Wed Sep 11 2013 12:04:59 GMT+0300 (EEST)
 </footer>
 
 <script> prettyPrint(); </script>

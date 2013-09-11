@@ -8,7 +8,7 @@ Displays the latest posts across all blogs.
 
 ### Templates
 
-* Blog Layouts > Post Details
+* [Blog Layouts > Post Details](/content/tag-reference/blogs/blog-post-details-layout.html)
 * This module also supports custom templates
 
 ### Example
@@ -16,3 +16,4 @@ Displays the latest posts across all blogs.
 `{module_blogsitepost,2}`
 
 Renders the 2 most recent posts on the site
+

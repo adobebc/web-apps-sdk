@@ -31,7 +31,7 @@ Accepts both JSON and XML requests, based on Content-Type.
 
 **Request:**
 ~~~
-POST /api/v1/admin/tokens HTTPS/1.1
+POST /api/v2/admin/tokens HTTPS/1.1
 Content-Length: 57
 Connection: keep-alive
 Content-Type: application/json
@@ -57,4 +57,4 @@ This method will return the following error codes:
 * `401` - Unauthorized, when username/password are incorrect
   * `107003` - Terms of Use not signed. Includes links to TOU that need to be signed:
      * `rel` - partnerTou
-     * `uri` - https://api.worldsecuresystems.com/api/v1/
+     * `uri` - https://api.worldsecuresystems.com/api/v2/

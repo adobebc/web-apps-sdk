@@ -95,23 +95,6 @@
          */
         isNotNew: null,
 
-        defaults: {
-            templateId: -1,
-            uploadFolder: -1,
-            requiresApproval: true,
-            allowFileUpload: false,
-            customerCanAdd: false,
-            customerCanDelete: false,
-            customerCanEdit: false,
-            anyoneCanEdit: false,
-            requiresPayment: false,
-            validDays: -1, // never expire
-            roleId: 0,
-            hasAddress: false,
-            disableDetailPages: false,
-            locationEnabled: false
-        },
-
         isNew: function() {
             return this.isNotNew ? false : !this.get('id');
         },
@@ -136,6 +119,67 @@
      * @class
      */
     BCAPI.Models.WebApp.AppCollection = BCAPI.Models.Collection.extend({
-        model: BCAPI.Models.WebApp.App
+        model: BCAPI.Models.WebApp.App,
+        /**
+         * This method fetch a given webapp custom fields.
+         */
+        _fetchCustomField: function(webapp) {
+        	
+        },
+        fetch: function(options) {
+        	options = options || {};
+
+        	oldSuccess = options.success;
+        	
+        	options.success = function(collection, xhr, options) {
+        		var currFetchedFields = 0;
+        		
+        		collection.each(function(webapp) {
+        			var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
+        			
+        			webapp.set({"fields": []});
+        			
+        			if(!options.fetchFields) {
+        				return oldSuccess(collection, xhr, options);
+        			}
+        			
+        			fieldsCollection.fetch({
+        				success: function(fields) {
+        					fields.each(function(field) {
+        						webapp.get("fields").push(field);
+        					});
+        					
+        					if(++currFetchedFields == fieldsCollection.length) {
+        						oldSuccess(collection, xhr, options);
+        					}
+        				}
+        			});
+        		});
+        	};
+        	
+        	return BCAPI.Models.Collection.prototype.fetch.call(this, options);
+        },
+    	/**
+    	 * We override this method in order to transform each returned item into a strong typed 
+    	 * {@link BCAPI.Models.WebApp.App} models.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @param {Object} response The JSON response received from Web apps api.
+    	 * @returns A list of web app items.
+    	 * @memberOf BCAPI.Models.WebApp.AppCollection 
+         */
+        parse: function(response) {
+        	var webapps = [],
+        		self = this;
+        	
+        	response = BCAPI.Models.Collection.prototype.parse.call(this, response);
+        	
+        	_.each(response, function(webapp) {        		
+        		webapps.push(self.model(webapp));
+        	});
+        	
+        	return webapps;
+        }
     });
 })(jQuery);

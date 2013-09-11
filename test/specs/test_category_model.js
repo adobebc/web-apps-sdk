@@ -1,15 +1,4 @@
 describe("Unit tests for category model.", function() {
-    it("Test Category model defaults", function() {
-       var category = new BCAPI.Models.Category();
-       var defaultValues = {
-           name: "",
-           parentId: -1,
-           publicAccess: true
-       }
-
-       _assertItemValues(category, defaultValues);
-    });
-
     it("Test Category Endpoint is correct", function() {
        var category = new BCAPI.Models.Category();
        var expectedEndpoint = "/api/v2/admin/sites/current/categories";
@@ -23,8 +12,7 @@ describe("Unit tests for category model.", function() {
            name: "Electronics"
        }
        category.set(attributes);
-       var expectedAttributes = _.extend(attributes,  {parentId: -1, publicAccess: true})
-        _assertItemValues(category,expectedAttributes);
+        _assertItemValues(category,attributes);
     });
 
     it("Test full values setter", function() {

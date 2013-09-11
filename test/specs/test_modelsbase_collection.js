@@ -23,11 +23,12 @@ describe("Unit tests for BC base collection class.", function() {
 		expect(collection._defaultSkip).toBe(BCAPI.Config.Pagination.skip);
 	});
 	
-	it("Check correct collect url.", function() {
+	it("Check correct collection url.", function() {
 		var person = new BCAPI.Mocks.Models.PersonModel();
-		var collection = new BCAPI.Mocks.Models.PersonCollection();
-		
-		expect(collection.url()).toBe(person.urlRoot());
+		var collection = new BCAPI.Mocks.Models.PersonCollection(),
+			personUrl = person.urlRoot();
+				
+		expect(collection.url().substring(0, personUrl.length)).toBe(personUrl);
 	});
 	
 	/**
@@ -80,6 +81,8 @@ describe("Unit tests for BC base collection class.", function() {
 				expectedOrder = options.order,
 				totalAnd = request.url.split("&").length;
 			
+			console.log(request.url);
+			
 			expect(request.url.substring(0, urlRoot.length + 1)).toBe(urlRoot + "?");
 			expect(request.url).toContain("limit=" + expectedLimit);
 			expect(request.url).toContain("skip=" + expectedSkip);
@@ -102,7 +105,7 @@ describe("Unit tests for BC base collection class.", function() {
 			expect(request.headers.Authorization).toBe(siteToken);
 			
 			if(!errorHandler) {
-				request.success(expectedItems);
+				request.success({"items": expectedItems});
 			} else {
 				request.error(errorHandler);
 			}

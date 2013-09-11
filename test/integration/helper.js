@@ -2,12 +2,12 @@
     "use strict";
 
     var config = {
-        rootUrl: 'https://api-dc1.secure-earth.bc.corp.adobe.com/',
+        rootUrl: 'http://earth.bc.corp.adobe.com', // 'https://api-dc1.secure-earth.bc.corp.adobe.com',
         siteId: 38604,
         username: 'bcadmin@bc1.local', //'bcapi-integration@mailinator.com',
         password: 'password9', // '123456'
-        genericToken: null,
-        siteToken: null
+        genericToken: "",
+        siteToken: ''
     };
 
     BCAPI.Config.TestServer = config;
@@ -53,7 +53,7 @@
 
                 waitsFor(function() {
                     return !!config.genericToken;
-                }, 'Get genericToken', 40 * 1000);
+                }, 'Get genericToken', 60 * 1000);
             }
 
             if (!BCAPI.Helper.Site.getSiteToken.isSpy) {
@@ -78,7 +78,7 @@
 
                     waitsFor(function() {
                         return !!config.siteToken;
-                    }, 'Get siteToken', 500);
+                    }, 'Get siteToken', 10 * 1000);
                 }
             }
         }

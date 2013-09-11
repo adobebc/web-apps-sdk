@@ -6,14 +6,12 @@ load:
   - lib/jquery.js
   - lib/underscore.js
   - lib/backbone.js
-  - lib/backbone.paginator.js
   - src/bcapi.js
   - src/config.js
   - src/helper.js  
   - src/models.js
-  - src/webapp.js
-  - src/webapp_item.js
-  - test/specs/bcapi_mocks.js
+  - src/*.js
+  - test/specs/mocks.js
 
 test:
   - test/specs/test_*.js
@@ -23,4 +21,4 @@ plugin:
     jar: "ci/lib/plugins/coverage.jar"
     module: "com.google.jstestdriver.coverage.CoverageModule"
 
-#timeout: 30
+timeout: 30

@@ -19,7 +19,7 @@
 	 * 		}
 	 * });
 	 * 
-	 * itemsCollection.each(function(webAppItem) {
+	 * items.each(function(webAppItem) {
 	 * 		// display logic
 	 * });
 	 * ```
@@ -95,7 +95,7 @@
 	 * ## Remove item
 	 * 
 	 * ```javascript
-	 * var items = new BCAPI.Models.WebApp.Item("Test webapp", {id: 1});
+	 * var item = new BCAPI.Models.WebApp.Item("Test webapp", {id: 1});
 	 * item.destroy({
 	 * 	success: function(webAppItem, response) {
 	 * 		// handle success here.

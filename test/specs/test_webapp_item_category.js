@@ -2,6 +2,7 @@ describe("Unit tests for category model.", function() {
     var oldSiteHelper = undefined,
         siteToken = "123",
         rootUrl = "";
+
     beforeEach(function() {
         BCAPI.Mocks.Helper.Site(null, siteToken, rootUrl);
     });
@@ -51,5 +52,11 @@ describe("Unit tests for category model.", function() {
             waitsFor(function() {
                 return ajaxCalled;
             }, "Not PUT method", 5000);
+    });
+
+    if("Test default items is empty", function() {
+       var itemCategories = new BCAPI.Models.ItemCategory("sample", 1);
+        expect(itemCategories.get('items') instanceof Array).toBe(true);
+        expect(itemCategories.get('items').length).toBe(0);
     });
 });

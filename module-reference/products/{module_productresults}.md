@@ -13,7 +13,7 @@ This module can only be used in conjuction with a product search form. Whenever 
 
 ### Templates
 
-* Online Shop Layouts > Individual Product - Small
+* [Online Shop Layouts > Individual Product - Small](/content/tag-reference/online-shop/individual-product-small-layout.html)
 * This module also supports custom templates
 
 ### Examples

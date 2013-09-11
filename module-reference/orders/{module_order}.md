@@ -17,7 +17,7 @@ Displays Customer's Order History.
 
 ### Templtes
 
-* List Layout
+* [Customer Orders Layouts > List Layout](/content/tag-reference/orders/order-list-layout.html)
 * This module also supports custom templates
 
 ### Examples

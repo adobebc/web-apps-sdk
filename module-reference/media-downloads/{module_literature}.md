@@ -15,7 +15,7 @@ When inserted into a page it will display the literature item(s). After adding t
 
 ### Templates
 
-* Media downloads List Layout
+* [Media downloads > List Layout](/content/tag-reference/media-downloads/media-download-list-layout.html)
 * This module also supports custom templates
 
 ### Examples

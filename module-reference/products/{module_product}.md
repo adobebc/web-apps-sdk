@@ -10,8 +10,8 @@ Displays an individual product from a given catalogue on a web page according to
 
 ### Templates
 
-* Online Shop Layouts > Individual Product - Small
-* Online Shop Layouts > Individual Product - Small {Backup)
+* [Online Shop Layouts > Individual Product - Small](/content/tag-reference/online-shop/individual-product-small-layout.html)
+* [Online Shop Layouts > Individual Product - Small {Backup)](/content/tag-reference/online-shop/individual-product-small-layout.html)
 * This module also supports custom templates
 
 ### Examples

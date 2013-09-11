@@ -24,24 +24,6 @@
          * @memberOf WebApp
          */
         isNotNew: null,
-
-        defaults: {
-            templateId: -1,
-            uploadFolder: -1,
-            requiresApproval: true,
-            allowFileUpload: false,
-            customerCanAdd: false,
-            customerCanDelete: false,
-            customerCanEdit: false,
-            anyoneCanEdit: false,
-            requiresPayment: false,
-            validDays: -1, // never expire
-            roleId: 0,
-            hasAddress: false,
-            disableDetailPages: false,
-            locationEnabled: false
-        },
-
         isNew: function() {
             return this.isNotNew ? false : !this.get('id');
         },

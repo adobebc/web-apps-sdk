@@ -12,4 +12,4 @@ Renders a Facebook Send button.
 
 ### Templates
 
-* Module templates > SocialMedia > FacebookSend > Default > container.html
+* [Module templates > SocialMedia > FacebookSend > Default > container.html](/content/tag-reference/social-media/facebook-send-template.html)

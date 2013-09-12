@@ -3324,7 +3324,7 @@
         fetch: function(options) {
         	options = options || {};
 
-        	oldSuccess = options.success;
+        	var oldSuccess = options.success;
         	
         	options.success = function(collection, xhr, options) {
         		var currFetchedFields = 0;

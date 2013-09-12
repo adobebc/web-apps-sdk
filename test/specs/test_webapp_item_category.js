@@ -1,4 +1,4 @@
-describe("Unit tests for category model.", function() {
+describe("Unit tests for item category model.", function() {
     var oldSiteHelper = undefined,
         siteToken = "123",
         rootUrl = "";

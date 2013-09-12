@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+
+.allimages {
+    width: 100%;
+}
+#report-abuse {
+    display: none;
+}
+
+ul.allimages {
+    list-style: none;
+    margin: 5px;
+    padding: 0;
+}
+
+ul.allimages li {
+    float: left;
+    margin-right: 5px;
+    position: relative;
+}
+
+ul.allimages li:hover {
+    cursor:move;
+}
+
+#trashIcon {
+    display: none;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background-image: url(/AdminConsoleXT/assets/images/sprites.png);
+	background-position: 0px -383px;
+	background-repeat: no-repeat;
+    background-color: white;
+    border-radius: 3px;
+	width: 20px;
+    height:21px;
+    opacity: 0.5;
+}
+
+#trashIcon:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#newItem {
+    display: none;
+}
+
+body div.jGrowl div.jGrowl-notification, body div.jGrowl div.jGrowl-closer {
+    background-color: #000;
+    color: #FFF;
+}
+
+div.jGrowl-close {
+    display: none;
+}
+
+div.jGrowl > .ui-state-highlight {
+    background: inherit;
+    color: inherit;
+    border: inherit;
+}

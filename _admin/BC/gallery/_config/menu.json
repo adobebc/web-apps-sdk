@@ -1,0 +1,9 @@
+{
+    "menu-gallery-sdk": {
+        "weight": 10,
+        "title": "Gallery",
+        "attr": {
+            "href": "/_admin/BC/gallery/list.html"
+        }
+    }
+}

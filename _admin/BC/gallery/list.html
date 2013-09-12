@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+        <!-- required for getting the auth cookie -->
+        <script src="//cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+
+        <!-- jquery UI needed for draggable / sortable behavior -->
+        <link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="StyleSheet" />
+		<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        
+        <!-- using jquery growl as notification mechanism -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.2.12/jquery.jgrowl.min.css" />
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.2.12/jquery.jgrowl.min.js"></script>
+        
+        <!-- using liquid as client-side templating engine -->
+        <script src="/AdminConsoleXT/assets/js/libs/liquid.js"></script>
+
+        <!-- lates BC API SDK -->
+        <script src="https://rawgithub.com/adobebc/bcapi.js/master/dist/bcapi-full.js"></script>
+
+        <!-- some helper functions -->
+		<script src="WAHelper.js"></script>
+
+        <script src="../FSApis.js"></script>
+
+        <script src="gallery.js"></script>
+        <link href="gallery.css" type="text/css" rel="StyleSheet" />
+        
+        <title>Custom Photo Gallery</title>
+    </head>
+    <body>
+        <script type="text/liquid" id="allimagesscript">
+            {% for item in models %}
+            <li id="image_{{item.attributes.id}}" data-weight="{{item.attributes.weight}}">
+                <img src="{{item.attributes.fields.Image}}?action=thumbnail&width=300&height=100&algorithm=fill_proportional" width="300" height="100"/>
+        	</li>
+            {% endfor %}
+        </script>
+        
+        <input type="button" value="Add Images" id="newItemButton"/>
+        <input type="file" name="file" id="newItem" multiple="" />
+
+        <ul class="allimages">
+        </ul>
+        <div id="trashIcon"></div>
+    </body>
+</html>

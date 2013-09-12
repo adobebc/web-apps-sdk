@@ -28,7 +28,7 @@ describe('BCAPI.Models.FileSystem.File', function() {
             'complete': function() {
                 expect(file.get('lastModified')).toBeDefined();
                 expect(file.get('size')).toBeDefined();
-                expect(file.get('lastModified')).toBeLaterThan(testStartTime, 1000);
+                expect(file.get('lastModified')).toBeLaterThan(testStartTime, 180 * 1000);
             }
         });
     });
@@ -45,25 +45,6 @@ describe('BCAPI.Models.FileSystem.File', function() {
 
             'complete': function(data) {
                 expect(data).toBe(content);
-            }
-        });
-    });
-
-    xit('should retrieve file data correctly', function() {
-        var file = genFile();
-
-        promiseScenario({
-            'promise': function() {
-                var fileUploaded = file.save();
-                var dataRetrieved = fileUploaded.then(function() {
-                    var newFile = new BcFile(file.folder(), file.get('name'));
-                    return newFile.fetchData().then(function() {
-                        return newFile;
-                    });
-                });
-            },
-            'complete': function(newFile) {
-                expect(newFile.get('data').toBe(fileContent));
             }
         });
     });
@@ -151,7 +132,7 @@ describe('BCAPI.Models.FileSystem.File', function() {
                 console.log('Call has failed');
             });
         });
-        waitsFor(function() { return finished; }, message, 2000);
+        waitsFor(function() { return finished; }, message, 5000);
         runs(function() {
             expect(success).toBeTruthy('Promise completion should be successful');
             if (success) {
@@ -161,7 +142,7 @@ describe('BCAPI.Models.FileSystem.File', function() {
     }
 
     function genFile(directory) {
-        directory = directory || BcFolder.Root;
+        directory = directory || BCAPI.Models.FileSystem.Root;
         var fileName = genFileName();
         return directory.file({
             'name': fileName

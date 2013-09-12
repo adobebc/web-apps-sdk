@@ -21,7 +21,7 @@ ul.allimages {
 
 ul.allimages li {
     float: left;
-    margin-right: 5px;
+    margin: 0 5px 5px 0;
     position: relative;
 }
 

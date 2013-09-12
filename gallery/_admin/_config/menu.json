@@ -3,7 +3,7 @@
         "weight": 10,
         "title": "Gallery",
         "attr": {
-            "href": "/_admin/BC/gallery/list.html"
+            "href": "/gallery/_admin/list.html"
         }
     }
 }

@@ -3032,7 +3032,10 @@
     	 * });
     	 */
     	destroy: function(options) {
-    		options.dataType = "text";
+    		if (!options) {
+                options = {};
+            }
+            options.dataType = "text";
     		
     		return Backbone.Model.prototype.destroy.call(this, options);    		
     	},
@@ -3840,10 +3843,7 @@
         save: function(options) {
             options = options || {};
             options.type = "PUT";
-            options.dataType = "text";
-
-            //ToDo: Move this out of here; we should call BCAPI.Models.Model.save() but it doesn't work now
-            return Backbone.Model.prototype.save.call(this, this.attributes, options);
+            return  BCAPI.Models.Model.prototype.save.call(this, options);
         }
     });
 })(jQuery);

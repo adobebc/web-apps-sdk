@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 
+body {
+    padding: 10px;
+    min-height: 450px;
+}
+
 .allimages {
     width: 100%;
 }

@@ -19,8 +19,11 @@
         <!-- lates BC API SDK -->
         <script src="https://rawgithub.com/adobebc/bcapi.js/master/dist/bcapi-full.js"></script>
 
+        <!-- Latest Bootstrap compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
         <!-- some helper functions -->
-		<script src="WAHelper.js"></script>
+        <script src="WAHelper.js"></script>
 
         <script src="gallery.js"></script>
         <link href="gallery.css" type="text/css" rel="StyleSheet" />
@@ -36,7 +39,7 @@
             {% endfor %}
         </script>
         
-        <input type="button" value="Add Images" id="newItemButton"/>
+        <input type="button" value="Add Images" id="newItemButton" class="btn btn-primary"/>
         <input type="file" name="file" id="newItem" multiple="" />
 
         <ul class="allimages">

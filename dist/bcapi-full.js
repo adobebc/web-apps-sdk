@@ -3853,11 +3853,11 @@
     var Entity = BCAPI.Models.Model.extend({
         'idAttribute': 'path',
 
-        'endpoint': function() {
+        endpoint: function() {
             return '/api/v2/admin/sites/current/storage';
         },
         
-        'url': function() {
+        url: function() {
             var p = this.get('path');
             if (p[0] == '/') {
                 p.substring(1);
@@ -3874,6 +3874,8 @@
         }
     }
     
+    BCAPI.Models.FileSystem = {};
+
     /**
      * This class allows you to interact with files stored in your BC site.
      * Usage examples:
@@ -3932,8 +3934,16 @@
      * });
      * 
      */
-    var File = Entity.extend({
-        'constructor': function(path, attributes, options) {
+    BCAPI.Models.FileSystem.File = Entity.extend({
+        /**
+         * Creates an instance of File.
+         * @param  {string|BCAPI.Models.FileSystem.Folder} path File's parent directory (as Folder or string).
+         *                                                      It can also be the file's full path if no name
+         *                                                      is specified
+         * @param  {object} attributes A hash of attributes for this file object
+         * @param  {object} options    Option hash for this model
+         */
+        constructor: function(path, attributes, options) {
             Entity.call(this, attributes, options);
             var props = {};
             if (path instanceof BCAPI.Models.FileSystem.Folder) {
@@ -3965,6 +3975,12 @@
             }
         },
 
+        /**
+         * Validates this File model
+         * @param  {object} attr The attributes of the model
+         * @return {string}      Returns a string with an error message if an error
+         *                       has been found, or nothing otherwise.
+         */
         validate: function(attr) {
             if (!attr.name) {
                 return 'Invalid name for file';
@@ -3977,11 +3993,22 @@
             }
         },
 
-        'folder': function() {
+        /**
+         * Returns the parent folder for this file.
+         * @return {BCAPI.Models.FileSystem.Folder} the parent folder
+         */
+        folder: function() {
             return new BCAPI.Models.FileSystem.Folder(this.get('folderPath'));
         },
 
-        'upload': function(data) {
+        /**
+         * Uploads a new content for the file. This method can be called if the
+         * file isn't yet created - the file will be created afterwards.
+         * @param  {any} data the data object which will be the file's content
+         * @return {promise}      a promise that will be completed when the file
+         *                        is uploaded
+         */
+        upload: function(data) {
             return $.ajax(this.contentUrl(), {
                 'contentType': 'application/octet-stream',
                 'type': 'PUT',
@@ -3991,43 +4018,66 @@
             });
         },
 
-        'uploadAndFetch': function(data) {
+        /**
+         * Uploads new content and fetches the metadata for the file which will then
+         * be used to populate the object. This method can be called even if the
+         * file isn't created yet.
+         * Useful if you want to create a file and retrieve it's metadata resulted
+         * from the new content immediatly.
+         * @param  {any} data The data object
+         * @return {promise}      a promise that will be completed when the file
+         *                        is uploaded and the new metadata is retrieved.
+         */
+        uploadAndFetch: function(data) {
             var self = this;
             return this.upload(data).then(function() {
                 return self.fetch();
             });
         },
 
-        'download': function() {
+        /**
+         * Downloads the content of the file
+         * @return {promise} a promise which will be resolved with
+         *                   the content of the file.
+         */
+        download: function() {
             return $.ajax(this.contentUrl(), {
                 'type': 'GET',
                 'headers': this.headers()
             });
         },
 
-        'save': function(attributes, options) {
+        save: function(attributes, options) {
             throw new Error('Operation not supported');
         },
 
-        'parse': function(result) {
+        parse: function(result) {
             //converting to a date object instead of the date string
             var dateStr = result.lastModified;
             result.lastModified = new Date(dateStr);
             return result;
         },
 
-        'contentUrl': function() {
+        /**
+         * Returns the URL where the file can be accessed.
+         * @return {string} The file URL.
+         */
+        contentUrl: function() {
             return Entity.prototype.url.call(this);
         },
 
-        'url': function() {
+        /**
+         * Returns the model URL - which will be used to retrieve & store metadata
+         * @return {string} the model URL
+         */
+        url: function() {
             return Entity.prototype.url.call(this) + '?meta';
         }
     });
 
-    var Folder = Entity.extend({
-        'file': function(attributes, options) {
-            return new File(this.get('path'), attributes, options);
+    BCAPI.Models.FileSystem.Folder = Entity.extend({
+        file: function(attributes, options) {
+            return new BCAPI.Models.FileSystem.File(this.get('path'), attributes, options);
         },
 
         /**
@@ -4036,16 +4086,12 @@
          * @return {promise} A promise containing the folders & files
          *                   in this folder
          */
-        'list': function() {
+        list: function() {
 
         }
     });
 
-    BCAPI.Models.FileSystem = {
-        'File': File,
-        'Folder': Folder,
-        'Root': new Folder({'path': '/'})
-    };
+    BCAPI.Models.FileSystem.Root = new BCAPI.Models.FileSystem.Folder({'path': '/'});
 
 })(jQuery);
 

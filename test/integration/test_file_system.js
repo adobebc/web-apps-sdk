@@ -150,3 +150,13 @@ describe('BCAPI.Models.FileSystem.File', function() {
     }
 
 });
+
+
+describe('BCAPI.Models.FileSystem.File', function() {
+
+    it('should allow to create a new folder', function() {
+        //var d = new BcFolder(path)
+    });
+    
+    
+});

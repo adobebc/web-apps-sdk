@@ -8,10 +8,13 @@ load:
   - lib/backbone.js
   - src/bcapi.js
   - src/config.js
+  - test/integration/config.js
+#  - test/integration/dev_test_config.js
   - src/helper.js  
   - src/models.js
   - src/*.js
   - test/specs/mocks.js
+
 
 test:
   - test/specs/test_*.js

@@ -8,7 +8,10 @@ var files =
 	 	"src/models.js",
 	 	"src/webapp.js",
 	 	"src/webapp_item.js",
-	 	"src/webapp_customfield.js"
+	 	"src/webapp_customfield.js",
+        "src/category.js",
+        "src/webapp_item_category.js",
+        "src/file_system.js"
     ];
 
 module.exports = files;

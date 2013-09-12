@@ -9,7 +9,6 @@
     <script type="text/javascript" src="assets/system-notifications/system-notifications.js"></script>
     <script type="text/javascript" src="assets/bcjs/dist/bcapi-full.js"></script>
     <script type="text/javascript" src="assets/team.js"></script>
-    <script type="text/javascript" src="assets/overrides.js"></script>
     <link rel="stylesheet" href="assets/system-notifications/system-notifications.css">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="assets/styles.css">
@@ -25,7 +24,8 @@
                 <label class="control-label" for="member-picture">Picture:</label>
                 <div class="controls">
                     <div class="span7 file-upload-area" id="member-picture">
-                        <img id="preview" class="member-upload-preview" src="<%= member.get('fields').Picture %>"/>
+                        <img id="preview" class="member-upload-preview" src="<%= imagePath %><%= member.get('fields').Picture %>"/>
+                        <input type="hidden" id="member-picture-name" value="<%= member.get('fields').Picture %>" />
                         <span>drag image here or <a href="#" id="upload-trigger">click to upload</a></span>
                     </div>
                     <input name="member-picture" id="member-picture-select" type="file" placeholder="drag image here or click to upload" onchange="previewImage(this)"/>
@@ -103,6 +103,7 @@
                 })
             } else {
                 member = new BCAPI.Models.WebApp.Item(WEBAPP_NAME);
+                member.set('fields', {});
                 renderMemberDetailsForm(member);
             }
         });

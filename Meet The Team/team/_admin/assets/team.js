@@ -1,6 +1,5 @@
 var WEBAPP_NAME = "MeetTheTeam";
-systemNotifications.init();
-
+var WEBAPP_PHOTO_FOLDER = "/team/images/"
 /*
  * Event handlers for the list page
  */
@@ -8,7 +7,6 @@ function onMemberListFetch(data) {
     $(".loading").hide(); // hide the loading indicator
     _.each(data.models, function(member) {
         // we need to fetch each item to get to the custom field
-        console.log(member);
         member.fetch({
             success: onMemberFetch,
             error: onAPIError
@@ -18,7 +16,7 @@ function onMemberListFetch(data) {
 
 function onMemberFetch(data) {
     var templateText = $("#member-card").html();
-    var context = {"member": data};
+    var context = {"member": data, imageBase: WEBAPP_PHOTO_FOLDER};
     var itemHtml = _.template(templateText, context);
     $("#team-members").append(itemHtml);
     // initialize clickover component
@@ -28,7 +26,6 @@ function onMemberFetch(data) {
 
 function onAPIError(errorMessage) {
     $(".loading").hide();
-    debugger;
     systemNotifications.showError("API Error")
 };
 
@@ -42,6 +39,7 @@ function deleteTeamMember(memberId) {
 }
 
 function onMemberDeleted(member) {
+    $("div[data-member-id='" + member.id +"']").remove();
     systemNotifications.showSuccess('Deleted', 'Team member removed')
 }
 
@@ -49,8 +47,14 @@ function onMemberDeleted(member) {
  * Create / Edit page functions
  */
 
+// store the reference to the selected file
+// so we can do deferred upload, even from dnd
+var userImageFile;
+
 function previewImage(input) {
     if (input.files && input.files[0]) {
+        userImageFile = input.files[0];
+        $("#member-picture-name").val(userImageFile.name);
         var reader = new FileReader();
         reader.onload = function (e) {
             //the only jQuery line.  All else is the File API.
@@ -81,7 +85,7 @@ function onMemberDetailsFetch(member) {
 
 function renderMemberDetailsForm(memberObject) {
     var templateText = $("#member-edit-form-template").html();
-    var context = {"member": memberObject};
+    var context = {"member": memberObject, imagePath: WEBAPP_PHOTO_FOLDER};
     $("#form-container").html(_.template(templateText, context));
 
     // setup file upload hooks for drag'n'drop
@@ -109,7 +113,8 @@ function onMemberFormSubmit(evt) {
 }
 
 function saveMember(memberId) {
-    var memberPicture = '';
+    var memberPicture = $("#member-picture-name").val();
+    var memberImage = new BCAPI.Models.FileSystem.File(WEBAPP_PHOTO_FOLDER, {name: memberPicture});
     var member = new BCAPI.Models.WebApp.Item(WEBAPP_NAME);
     member.set({
         id: memberId,
@@ -117,16 +122,26 @@ function saveMember(memberId) {
         fields: {
             Position: $('#member-position').val(),
             Bio: $('#member-bio').val(),
+            Picture: memberPicture,
             Facebook: $('#member-facebook').val(),
             Twitter: $('#member-twitter').val(),
             Linkedin: $('#member-linkedin').val()
         }
     });
 
-    member.save({
-        success: onMemberSave,
-        error: onAPIError
-    });
+    if (userImageFile) {
+        memberImage.upload(userImageFile).done(function() {
+            member.save({
+                success: onMemberSave,
+                error: onAPIError
+            });
+        });
+    } else {
+        member.save({
+            success: onMemberSave,
+            error: onAPIError
+        });
+    }
 }
 
 function onMemberSave(member) {
@@ -154,5 +169,5 @@ function getUrlVars() {
 
 function getMemberIdFromUrl() {
     var queryParams = getUrlVars();
-    return queryParams.id || null;
+    return queryParams.memberid || null;
 }

@@ -18,6 +18,7 @@ describe("Helper.Models.WebApp", function() {
         spyOn(Backbone, "sync").andCallFake(function(method, model, options) {
 
             // Prevent jQuery from failing on empty response
+            // Cannot use "text", as it will not parse JSON even when needed
             options.dataType = null;
             options.contentType = 'application/json';
 

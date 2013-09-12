@@ -3,6 +3,6 @@ BCAPI.Helper.Site.getRootUrl = function() {
 }
 
 BCAPI.Helper.Site.getSiteToken = function() {
-     return "345197dd97ab49a996f8fcd34a8f7b01e5cbc02e579d4265a225a67353d12746";
+     return "c6d8e445dd8f49149def6f2b0be519fa97c536f73cfd4087a6330e44f43e5d2b";
 }
 

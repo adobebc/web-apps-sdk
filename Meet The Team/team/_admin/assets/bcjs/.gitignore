@@ -6,7 +6,11 @@ tests-output-integration/*
 tests_runner_integration.log
 node_modules
 doc
+dev_test_config.js
 
 # IDE specific files which must be ignored
 .project
 .settings
+.idea
+*sublime*
+karma*

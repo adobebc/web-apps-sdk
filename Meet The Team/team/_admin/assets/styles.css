@@ -11,6 +11,10 @@
     display:block;
 }
 
+.member-card {
+    height: 100%;
+}
+
 .user-add-photo {
     margin-top: 10px;
     text-align: center;

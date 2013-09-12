@@ -10,7 +10,6 @@
     <script type="text/javascript" src="assets/system-notifications/system-notifications.js"></script>
     <script type="text/javascript" src="assets/bcjs/dist/bcapi-full.js"></script>
     <script type="text/javascript" src="assets/team.js"></script>
-    <script type="text/javascript" src="assets/overrides.js"></script>
     <link rel="stylesheet" href="assets/system-notifications/system-notifications.css">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="assets/styles.css">
@@ -33,7 +32,6 @@
     <script type="text/javascript">
 
         $(function(){
-
             // try to get members from API; loading will be displayed until then
             var members = new BCAPI.Models.WebApp.ItemCollection(WEBAPP_NAME);
             members.fetch({
@@ -46,10 +44,10 @@
     </script>
 
     <script type="text/template" id="member-card">
-        <div class="card-container">
+        <div class="card-container" data-member-id="<%= member.id %>">
             <div class="member-card">
                 <div class="user-photo">
-                    <img src="<%= member.get('picture') %>?action=thumbnail&width=100&height=100" style="width:120px; height: 100px;" alt="Add Team Member"/>
+                    <img src="<%=imageBase%><%= member.get('fields').Picture %>?action=thumbnail&width=100&height=100" style="width:120px; height: 100px;" alt="Add Team Member"/>
                 </div>
 
                 <div class="user-name">
@@ -60,7 +58,7 @@
                 </div>
             </div>
             <div class="card-actions" id="actions_<%= member.get('id') %>">
-                <a rel="edit" href="edit.html?id=<%= member.get('id') %>" class="member-icon-edit"></a>
+                <a rel="edit" href="edit.html?memberid=<%= member.get('id') %>" class="member-icon-edit"></a>
                 <a href="#" rel="popover" data-placement="top" title="Delete Team Member" class="member-icon-delete" data-content='<div class="delete-confirmation-text">Are you sure you want to delete <%= member.get('name') %>?</div>
                 <span class="note-text">This action has no Undo.</span>
                 <div>

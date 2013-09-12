@@ -4,10 +4,11 @@ var systemNotifications = {
     hideDelay: 2000,
 
     init: function() {
-        systemNotifications.queue = $('<div id="systemNotificationQueue"></div>').appendTo('body');
+        systemNotifications.queue = systemNotifications.queue|| $('<div id="systemNotificationQueue"></div>').appendTo('body');
     },
 
     showSticky: function (title, message, type) {
+        this.init();
         var notification = $('<div class="systemNotification systemNotificationType-' + type + '"><span class="systemNotificationTitle">' + title + '</span><div class="systemNotificationContent">' + message + '</div></div>').hide().appendTo(systemNotifications.queue).fadeIn(systemNotifications.fadeDelay);
 
         var closeButton = $('<span class="systemNotificationClose">x</span>').appendTo(notification);
@@ -19,6 +20,7 @@ var systemNotifications = {
 
     showNormal: function (title, message, type) {
         doNotShow = false;
+        this.init();
 
         if(doNotShow != true){
             var notification = $('<div class="systemNotification systemNotificationType-' + type + '"><span class="systemNotificationTitle">' + title + '</span><div class="systemNotificationContent">' + message + '</div></div>');
@@ -40,16 +42,28 @@ var systemNotifications = {
         }
     },
 
-    showError: function(title, message) {
-        this.showNormal(title, message, 'error')
+    showError: function(title, message, options) {
+        if (options && options.sticky) {
+            this.showSticky(title, message, 'error')
+        } else {
+            this.showNormal(title, message, 'error')
+        }
     },
 
-    showInfo: function(title, message) {
-        this.showNormal(title, message, 'info')
+    showInfo: function(title, message, options) {
+        if (options && options.sticky) {
+            this.showSticky(title, message, 'info')
+        } else {
+            this.showNormal(title, message, 'info')
+        }
     },
 
-    showSuccess: function(title, message) {
-        this.showNormal(title, message, 'ok')
+    showSuccess: function(title, message, options) {
+        if (options && options.sticky) {
+            this.showSticky(title, message, 'ok')
+        } else {
+            this.showNormal(title, message, 'ok')
+        }
     }
 
 

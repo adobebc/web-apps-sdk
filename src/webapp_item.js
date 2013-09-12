@@ -19,7 +19,7 @@
 	 * 		}
 	 * });
 	 * 
-	 * itemsCollection.each(function(webAppItem) {
+	 * items.each(function(webAppItem) {
 	 * 		// display logic
 	 * });
 	 * ```
@@ -95,7 +95,7 @@
 	 * ## Remove item
 	 * 
 	 * ```javascript
-	 * var items = new BCAPI.Models.WebApp.Item("Test webapp", {id: 1});
+	 * var item = new BCAPI.Models.WebApp.Item("Test webapp", {id: 1});
 	 * item.destroy({
 	 * 	success: function(webAppItem, response) {
 	 * 		// handle success here.
@@ -143,24 +143,6 @@
     		
     		this._webappName = webappName;
     		this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});
-    	},
-    	defaults: {
-    		name: "",
-    		weight: 0,
-    		releaseDate: (new Date()).toISOString().substring(0, 10),
-    		expiryDate: BCAPI.Config.MAX_DATE,
-    		enabled: true,
-    		slug: "",
-    		description: "",
-    		roleId: undefined,
-    		submittedBy: -1,
-    		templateId: undefined,
-    		address: undefined,
-    		city: undefined,
-    		state: undefined,
-    		zipCode: undefined,
-    		country: undefined,
-    		fields: {}
     	},
     	/**
     	 * This method returns the correct endpoint for the web app items.

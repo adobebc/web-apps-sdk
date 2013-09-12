@@ -1,28 +1,4 @@
 describe("Unit tests for web app item model.", function() {
-	it("Test web app item default values instantiation.", function() {
-		var webappName = "Test webapp,",
-			item = new BCAPI.Models.WebApp.Item(webappName),
-			releaseDate = (new Date()).toISOString().substring(0, 10),
-			values = {"name": "",
-					  "weight": 0,
-					  "releaseDate": releaseDate,
-					  "expiryDate": BCAPI.Config.MAX_DATE,
-					  "enabled": true,
-					  "slug": "",
-					  "description": "",
-					  "roleId": undefined,
-					  "submittedBy": -1,
-					  "templateId": undefined,
-					  "address": undefined,
-					  "city": undefined,
-					  "state": undefined,
-					  "zipCode": undefined,
-					  "country": undefined,
-					  "webappName": webappName};
-		
-		_assertItemValues(item, values);
-	});
-	
 	it("Test web app item values set through constructor.", function() {
 		var webappName = "Test webapp.",
 			attributes = {"name": "Item 1",

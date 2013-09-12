@@ -11,6 +11,7 @@ load:
   - src/helper.js  
   - src/models.js
   - src/*.js
+  - test/integration/config.js
   - test/integration/helper.js
 
 test:

@@ -9,7 +9,7 @@ load:
   - src/bcapi.js
   - src/config.js
   - test/integration/config.js
-  - test/integration/dev_test_config.js
+#  - test/integration/dev_test_config.js
   - src/helper.js  
   - src/models.js
   - src/*.js

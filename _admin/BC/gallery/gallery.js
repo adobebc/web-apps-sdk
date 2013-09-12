@@ -113,8 +113,9 @@ function initDeleteImage() {
 	    $('body').append($('#trashIcon'));
         $('.allimages').html('');
         
-        // TODO: replace with BCAPI call
-        fs.delete(imgSrc);
+        // physically delete the file
+        var fileModel = new BCAPI.Models.FileSystem.File(imgSrc);
+        fileModel.destroy();
         
         var itemToDelete = new BCAPI.Models.WebApp.Item(WEBAPP_NAME, {id: id});
         itemToDelete.destroy({
@@ -150,7 +151,9 @@ function addImage(file) {
     var path = IMAGES_PATH + file.name;
 
     // call the FS API to create the file
-    fs.upload(file, path, _.imagesUploaded);
+    
+   	var fileModel = new BCAPI.Models.FileSystem.File(path);
+    fileModel.upload(file).done(_.imagesUploaded);
     
     // call the WA Create API to create the WA Item
     var newItem = new BCAPI.Models.WebApp.Item(WEBAPP_NAME, {

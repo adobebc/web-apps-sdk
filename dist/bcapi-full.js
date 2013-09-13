@@ -3272,11 +3272,38 @@
     });
 
 })(jQuery);;(function($) {
-    "use strict";
+    'use strict';
+
+    function mkParent(x) {
+        return x == '/' ? BCAPI.Models.FileSystem.Root : new BCAPI.Models.FileSystem.Folder(x);
+    }
 
     //common model for files & folders
     var Entity = BCAPI.Models.Model.extend({
         'idAttribute': 'path',
+
+        constructor: function(a1, a2, a3) {
+            var attributes, options, initialProps = {};
+            if (typeof a1 === 'string') {
+                attributes = a2;
+                options = a3;
+                var path = a1;
+                if (path == '/') {
+                    throw new Error('Cannot instantiate the "/" folder like this. Use BCAPI.Models.FileSystem.Root instead');
+                } 
+                var o = splitPath(path);
+                initialProps.parent =  mkParent(o.parent);
+                initialProps.name = o.name;
+            } else {
+                attributes = a1;
+                options = a2;
+            }
+            BCAPI.Models.Model.call(this, attributes, options);
+            if (initialProps) {
+                this.set(initialProps);
+            }
+            this.set('path', mkFilePath(this.get('parent').get('path'), this.get('name')));
+        },
 
         endpoint: function() {
             return '/api/v2/admin/sites/current/storage';
@@ -3288,6 +3315,15 @@
                 p.substring(1);
             }
             return this.urlRoot() + p;
+        },
+
+        validate: function(attr) {
+            if (!attr.name) {
+                return 'Invalid name for file: [' + attr.name + ']';
+            }
+            if (!attr.path) {
+                return 'Invalid path for file: [' + attr.path + ']';
+            }
         }
     });
 
@@ -3298,7 +3334,25 @@
             return dirPath + '/' + name;
         }
     }
-    
+
+    function splitPath(path) {
+        var parent, name,
+            index = path.lastIndexOf('/');
+        if (index < 0) {
+            name = path;
+        } else {
+            parent = path.substring(0, index);
+            name = path.substring(index + 1);
+        }
+        if (!parent) {
+            parent = '/';
+        }
+        return {
+            'parent': parent,
+            'name': name
+        };
+    }
+
     BCAPI.Models.FileSystem = {};
 
     /**
@@ -3359,64 +3413,7 @@
      * });
      * 
      */
-    BCAPI.Models.FileSystem.File = Entity.extend({
-        /**
-         * Creates an instance of File.
-         * @param  {string|BCAPI.Models.FileSystem.Folder} path File's parent directory (as Folder or string).
-         *                                                      It can also be the file's full path if no name
-         *                                                      is specified
-         * @param  {object} attributes A hash of attributes for this file object
-         * @param  {object} options    Option hash for this model
-         */
-        constructor: function(path, attributes, options) {
-            Entity.call(this, attributes, options);
-            var props = {};
-            if (path instanceof BCAPI.Models.FileSystem.Folder) {
-                props.folderPath = path.get('path');
-                props.name = attributes.name;
-            } else if (typeof path == 'string') {
-                if (attributes && ('name' in attributes)) {
-                    props.folderPath = path;
-                    props.name = attributes.name;
-                } else {
-                    var split = path.lastIndexOf('/');
-                    if (split == -1) {
-                        props.folderPath = '/';
-                        props.name = path;
-                    } else {
-                        props.folderPath = path.substring(0, split);
-                        props.name = path.substring(split+1);
-                    }
-                }
-            }
-            if (props.folderPath && props.folderPath[0] != '/') {
-                props.folderPath = '/' + props.folderPath;
-            }
-            props.type = 'file';
-            props.path = mkFilePath(props.folderPath, props.name);
-            this.set(props);
-            if (!this.isValid()) {
-                throw new Error('Invalid construction parameters');
-            }
-        },
-
-        /**
-         * Validates this File model
-         * @param  {object} attr The attributes of the model
-         * @return {string}      Returns a string with an error message if an error
-         *                       has been found, or nothing otherwise.
-         */
-        validate: function(attr) {
-            if (!attr.name) {
-                return 'Invalid name for file';
-            }
-            if (!attr.folderPath) {
-                return 'Invalid folder path';
-            }
-            if (!attr.path) {
-                return 'Invalid path for file';
-            }
-        },
+     BCAPI.Models.FileSystem.File = Entity.extend({
 
         /**
          * Returns the parent folder for this file.
@@ -3465,7 +3462,7 @@
          * @return {promise} a promise which will be resolved with
          *                   the content of the file.
          */
-        download: function() {
+         download: function() {
             return $.ajax(this.contentUrl(), {
                 'type': 'GET',
                 'headers': this.headers()
@@ -3497,12 +3494,18 @@
          */
         url: function() {
             return Entity.prototype.url.call(this) + '?meta';
+        },
+
+        initialize: function() {
+            this.set('type', 'file');
         }
     });
 
     BCAPI.Models.FileSystem.Folder = Entity.extend({
-        file: function(attributes, options) {
-            return new BCAPI.Models.FileSystem.File(this.get('path'), attributes, options);
+
+        file: function(name, attributes, options) {
+            var fullAttributes = _.extend({'parent': this, 'name': name}, attributes);
+            return new BCAPI.Models.FileSystem.File(fullAttributes, options);
         },
 
         /**
@@ -3513,10 +3516,40 @@
          */
         list: function() {
 
+        },
+
+        initialize: function() {
+            this.set('type', 'folder');
         }
     });
 
-    BCAPI.Models.FileSystem.Root = new BCAPI.Models.FileSystem.Folder({'path': '/'});
+    var Root = BCAPI.Models.FileSystem.Folder.extend({
+        constructor: function() {
+            BCAPI.Models.Model.call(this);
+            this.set({
+                'path': '/',
+                'name': '',
+                parent: null
+            });
+        },
+
+        validate: function() { },
+
+        save: function() {
+            throw new Error('Operation not supported');
+        },
+
+        destroy: function() {
+            throw new Error('Operation not supported');
+        },
+
+        fetch: function() {
+            throw new Error('Operation not supported');
+        }
+
+    });
+
+    BCAPI.Models.FileSystem.Root = new Root();
 
 })(jQuery);
 
@@ -3672,7 +3705,7 @@
         fetch: function(options) {
         	options = options || {};
 
-        	var oldSuccess = options.success;
+        	var oldSuccess = options.success || (function() {});
         	
         	options.success = function(collection, xhr, options) {
         		var currFetchedFields = 0;

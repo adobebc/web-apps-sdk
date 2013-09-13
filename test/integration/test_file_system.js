@@ -15,6 +15,14 @@ describe('BCAPI.Models.FileSystem', function() {
                 return actual >= (compared - errorMargin);
             }
         });
+        this.addMatchers({
+            toMatchEntity: function(entity) {
+                var a = this.actual;
+                return a.get('name') === entity.get('name') &&
+                    a.get('path') === entity.get('path') &&
+                    a.get('parent').get('path') === entity.get('parent').get('path');
+            }
+        });
     });
 
     describe('BCAPI.Models.FileSystem.File', function() {
@@ -40,7 +48,6 @@ describe('BCAPI.Models.FileSystem', function() {
         it('should store the file under the specified path', function() {
             var file = genFile();
             var retrieved = new BcFile(file.get('path'));
-            console.log('File has path ' + file.get('path'));
             var data = randomString();
             promiseScenario({
                 'promise': function() {
@@ -143,6 +150,34 @@ describe('BCAPI.Models.FileSystem', function() {
                 }
             });
         });
+
+        it('should create the parent directory when the file is created, if the parent didn\'t exist before', function() {
+            var dirLevel1 = genDirName('dir_level_1_not_created_');
+            var dirLevel2 = genDirName('dir_level_2_not_created_');
+            var fileName = genFileName();
+            var path = [dirLevel1, dirLevel2, fileName].join('/');
+            var file = new BcFile(path);
+            var folderLevel2 = file.get('parent');
+            var folderLevel1 = folderLevel2.get('parent');
+            var testStart = new Date();
+            promiseScenario({
+                'promise': function() {
+                    return file.upload(randomString())
+                        .then(function() { return folderLevel1.fetch(); })
+                        .then(function() { return folderLevel2.fetch(); });
+                },
+                'complete': function() {
+                    expect(folderLevel1.get('lastModified')).toBeLaterThan(testStart, SERVER_TIME_LAG);
+                    expect(folderLevel2.get('lastModified')).toBeLaterThan(testStart, SERVER_TIME_LAG);
+                    var contents1 = folderLevel1.get('contents');
+                    expect(contents1.length).toBe(1);
+                    expect(contents1[0]).toMatchEntity(folderLevel2);
+                    var contents2 = folderLevel2.get('contents');
+                    expect(contents2.length).toBe(1);
+                    expect(contents2[0]).toMatchEntity(file);
+                }
+            });
+        });
     });
 
 
@@ -152,7 +187,7 @@ describe('BCAPI.Models.FileSystem', function() {
             var name = genDirName();
             var d1 = new BcFolder(name);
             var d2 = new BcFolder(name);
-            spyOn($, 'ajax').andCallThrough();
+            var testStartTime = new Date();
             promiseScenario({
                 'promise': function() {
                     return d1.create().then(function() {
@@ -160,6 +195,101 @@ describe('BCAPI.Models.FileSystem', function() {
                     });
                 },
                 'complete': function() {
+                    expect(d2.get('lastModified')).toBeDefined();
+                    expect(d2.get('contents')).toBeDefined();
+                    expect(d2.get('lastModified')).toBeLaterThan(testStartTime, SERVER_TIME_LAG);
+                }
+            });
+        });
+
+        it('should retrieve the contained files & folders', function() {
+            var d = new BcFolder(genDirName());
+            var f1 = new BcFile({
+                'parent': d,
+                'name': 'file1'
+            });
+            var f2 = new BcFile({
+                'parent': d,
+                'name': 'file2'
+            });
+            var sd = new BcFolder({
+                'parent': d,
+                'name': 'subfolder'
+            });
+            promiseScenario({
+                'promise': function() {
+                    return d.create()
+                        .then(function() { return sd.create(); })
+                        .then(function() { return f1.upload(randomString()); })
+                        .then(function() { return f2.upload(randomString()); })
+                        .then(function() { return d.fetch(); });
+                },
+                'complete': function() {
+                    expect(d.get('contents')).toBeDefined();
+                    function sortModels(xs) { return _.sortBy(xs, function(x) { return x.get('path'); }); }
+                    var expected = sortModels([f1, f2, sd]);
+                    var retrieved = sortModels(d.get('contents'));
+                    _.each(_.zip(expected, retrieved), function(p) {
+                        var expectedModel = p[0];
+                        var retrievedModel = p[1];
+                        expect(expectedModel.get('path')).toBe(retrievedModel.get('path'));
+                    });
+                }
+            });
+        });
+
+        it('should delete a folder', function() {
+            var d = new BcFolder(genDirName('dir_deleted_'));
+            promiseScenario({
+                'promise': function() {
+                    return d.create()
+                        .then(function() { return d.fetch(); })
+                        .then(function() { return d.destroy(); })
+                        .then(function() {
+                            return d.fetch().then(function() {
+                                return true;
+                            }, function() {
+                                var p = $.Deferred();
+                                p.resolve(false);
+                                return p;
+                            });
+                        })
+                },
+                'complete': function(retrieved) {
+                    expect(retrieved).toBe(false);
+                }
+            });
+        });
+
+        it('should delete all the contained files & folder when deleting a folder', function() {
+            var folder = new BcFolder(genDirName('dir_deleted_'));
+            var file = new BcFile({'parent': folder, 'name': 'del-file'});
+            var subFolder = new BcFolder({'parent': folder, 'name': 'del-sub-folder'});
+            var fileFound
+            promiseScenario({
+                'promise': function() {
+                    var folderDestroyed = folder.create()
+                        .then(function() { return file.upload(randomString()); })
+                        .then(function() { return subFolder.create(); })
+                        .then(function() { return folder.destroy(); });
+                    var fileFoundP = folderDestroyed.then(function() {
+                        return promiseFlag(file.fetch());
+                    });
+                    var subFolderFoundP = folderDestroyed.then(function() {
+                        return promiseFlag(subFolder.fetch());
+                    });
+                    return fileFoundP.then(function(fileFound) {
+                        return subFolderFoundP.then(function(subFolderFound) {
+                            return {
+                                'fileFound': fileFound,
+                                'subFolderFound': subFolderFound
+                            };
+                        });
+                    });
+                },
+                'complete': function(result) {
+                    expect(result.fileFound).toBe(false);
+                    expect(result.subFolderFound).toBe(false);
                 }
             });
         });
@@ -230,4 +360,24 @@ describe('BCAPI.Models.FileSystem', function() {
         function genDirName(prefix) {
             return genFileName(prefix || 'dir_');
         }
+
+        /**
+         * Takes a promise and returns another promise which resolves
+         * to a boolean value - true if the original promise succeded
+         * or false otherwise
+         * @param  {promise} promise a then-able promise
+         * @return {promise}         a promise indicated the success status of the
+         *                           original promise
+         */
+        function promiseFlag(promise) {
+            return promise.then(function() {
+                return true;
+            }, function() {
+                var p = $.Deferred();
+                p.resolve(false);
+                return p;
+            });
+        }
+
+        
 });

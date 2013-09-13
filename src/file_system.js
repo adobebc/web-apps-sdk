@@ -55,6 +55,13 @@
             if (!attr.path) {
                 return 'Invalid path for file: [' + attr.path + ']';
             }
+        },
+
+        parse: function(result) {
+            //converting to a date object instead of the date string
+            var dateStr = result.lastModified;
+            result.lastModified = new Date(dateStr);
+            return result;
         }
     });
 
@@ -204,12 +211,7 @@
             throw new Error('Operation not supported');
         },
 
-        parse: function(result) {
-            //converting to a date object instead of the date string
-            var dateStr = result.lastModified;
-            result.lastModified = new Date(dateStr);
-            return result;
-        },
+        
 
         initialize: function() {
             this.set('type', 'file');
@@ -237,8 +239,22 @@
                 'processData': false,
                 'headers': this.headers()
             });
-        }
+        },
 
+        parse: function(result) {
+            var items = Entity.prototype.parse.call(this, result);
+            var parent = this;
+            var models = _.map(items.contents, function(obj) {
+                obj.parent = parent;
+                if (obj.type === 'file') {
+                    return new BCAPI.Models.FileSystem.File(obj);
+                } else if (obj.type === 'folder') {
+                    return new BCAPI.Models.FileSystem.Folder(obj);
+                }
+            });
+            items.contents = models;
+            return items;
+        }
     });
 
     var Root = BCAPI.Models.FileSystem.Folder.extend({

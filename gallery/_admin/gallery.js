@@ -19,7 +19,9 @@ $(function() {
 // begin image loading functions
 function loadImages() {
     wadata = {};
-    $('.allimages').html('Loading...');
+    $('.allimages').html('');
+    $('div.loading').show();
+    $('div.empty').hide();
     
     // loads all the webapp items
     var items = new BCAPI.Models.WebApp.ItemCollection(WEBAPP_NAME);
@@ -34,9 +36,10 @@ function loadImages() {
 // callback when the list of webapp items was retrieved
 function loadImagesCB(data) {
     
+    $('div.loading').hide();
     if (data.models.length == 0) {
         // if no items found
-    	$('.allimages').html('Please add at least one image.');
+        $('div.empty').show();
         return;
     }
     
@@ -67,10 +70,15 @@ function loadImagesCB(data) {
 
 // callback when all individual items have been loaded
 function doneLoading() {
-    // use Liquid to generate the list of images
-    var html = $('#allimagesscript').html();
-    html = Liquid.Template.parse(html).render(wadata);
-    $('.allimages').html(html);
+    
+    // using uderscore.js templating
+    var templateText = $("#allimagesscript").html();
+    
+    _.each(wadata.models, function(item) {
+        var context = {item: item};
+        var itemHtml = _.template(templateText, context);
+        $(".allimages").append(itemHtml);
+    });
 
     // use jQuery sortable to handle drag and drop between items
     $('.allimages').sortable({
@@ -135,7 +143,7 @@ function imageDeleted() {
 // begin add image functions
 // called when the user selected some images to upload
 function addImages(e) {
-    $.jGrowl("Uploading images...");
+    systemNotifications.showInfo("Loading...", "Uploading images.");
     
     // callback is called when after images upload and items created
     _.imagesUploaded = _.after($('#newItem')[0].files.length*2, imagesUploaded);

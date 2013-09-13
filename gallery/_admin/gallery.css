@@ -29,6 +29,15 @@ ul.allimages li:hover {
     cursor:move;
 }
 
+div.loading {
+    display: block;
+}
+
+div.empty {
+    display: none;
+}
+
+
 #trashIcon {
     display: none;
     position: absolute;
@@ -51,19 +60,4 @@ ul.allimages li:hover {
 
 #newItem {
     display: none;
-}
-
-body div.jGrowl div.jGrowl-notification, body div.jGrowl div.jGrowl-closer {
-    background-color: #000;
-    color: #FFF;
-}
-
-div.jGrowl-close {
-    display: none;
-}
-
-div.jGrowl > .ui-state-highlight {
-    background: inherit;
-    color: inherit;
-    border: inherit;
 }

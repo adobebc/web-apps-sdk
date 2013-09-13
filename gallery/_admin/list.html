@@ -13,9 +13,6 @@
         <script src="https://rawgithub.com/adobebc/bc-boilerplate-app/master/Meet%20The%20Team/team/_admin/assets/system-notifications/system-notifications.js"></script>
         <link href="https://rawgithub.com/adobebc/bc-boilerplate-app/master/Meet%20The%20Team/team/_admin/assets/system-notifications/system-notifications.css" type="text/css" rel="StyleSheet" />
         
-        <!-- using liquid as client-side templating engine -->
-        <script src="/AdminConsoleXT/assets/js/libs/liquid.js"></script>
-
         <!-- lates BC API SDK -->
         <script src="https://rawgithub.com/adobebc/bcapi.js/master/dist/bcapi-full.js"></script>
 
@@ -31,12 +28,10 @@
         <title>Custom Photo Gallery</title>
     </head>
     <body>
-        <script type="text/liquid" id="allimagesscript">
-            {% for item in models %}
-            <li id="image_{{item.attributes.id}}" data-weight="{{item.attributes.weight}}">
-                <img src="{{item.attributes.fields.Image}}?action=thumbnail&width=300&height=100&algorithm=fill_proportional" width="300" height="100"/>
+        <script type="text/template" id="allimagesscript">
+            <li id="image_<%= item.id %>" data-weight="<%= item.get('weight') %>">
+                <img src="<%= item.get('fields').Image %>?action=thumbnail&width=300&height=100&algorithm=fill_proportional" width="300" height="100"/>
         	</li>
-            {% endfor %}
         </script>
         
         <input type="button" value="Add Images" id="newItemButton" class="btn btn-primary"/>
@@ -44,6 +39,8 @@
 
         <ul class="allimages">
         </ul>
+        <div class="loading">Loading...</div>
+        <div class="empty">Please add at least one image.</div>
         <div id="trashIcon"></div>
     </body>
 </html>

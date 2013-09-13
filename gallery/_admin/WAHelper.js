@@ -8,28 +8,34 @@ wahelper.fixWeightInconsistancies = function(data) {
     
     for (var i=0;i<data.models.length-1;i++) {
 
-        if (data.models[i].attributes.weight == 'null') {
+        if (data.models[i].get('weight') == null) {
 
             data.models[i].set({
-                weight: newWeights[itemId]
+                weight: wahelper.maxWeight
             });
-            data.models[i].save({});
+            data.models[i].save();
             
-            console.log("Fixing webapp null weighting for #" + data.models[i].id + ". Fixing to " + data.models[i].attributes.weight);
+            console.log("Fixing webapp null weighting for #" + data.models[i].id + ". Fixing to " + data.models[i].get('weight'));
+
+        } else {
+        
+            if (i > 0) {
+        
+                if (data.models[i-1].get('weight')  == data.models[i].get('weight') ) {
+        
+                    data.models[i].set({
+                        weight: wahelper.maxWeight
+                    });
+                    data.models[i].save();
+                    
+                    console.log("Fixing webapp duplicate weighting for #" + data.models[i].id + ". Fixing to " + wahelper.maxWeight);
+                }
+            }
         }
 
-        if (data.models[i].attributes.weight == data.models[i+1].attributes.weight) {
-
-            data.models[i+1].set({
-                weight: data.models[i].attributes.weight+1
-            });
-            data.models[i+1].save({});
-            
-            console.log("Fixing webapp duplicate weighting for #" + data.models[i+1].id + ". Fixing to " + data.models[i+1].attributes.weight);
-        }
-
-        wahelper.maxWeight = data.models[i+1].attributes.weight+1;
+        wahelper.maxWeight = data.models[i].get('weight')+1;
     }
+    
     return data;
 }
 

@@ -3310,6 +3310,10 @@
         },
         
         url: function() {
+            return this.contentUrl() + '?meta';
+        },
+
+        contentUrl: function() {
             var p = this.get('path');
             if (p[0] == '/') {
                 p.substring(1);
@@ -3318,12 +3322,19 @@
         },
 
         validate: function(attr) {
-            if (!attr.name) {
+            if (!attr.name || typeof attr.name !== 'string') {
                 return 'Invalid name for file: [' + attr.name + ']';
             }
             if (!attr.path) {
                 return 'Invalid path for file: [' + attr.path + ']';
             }
+        },
+
+        parse: function(result) {
+            //converting to a date object instead of the date string
+            var dateStr = result.lastModified;
+            result.lastModified = new Date(dateStr);
+            return result;
         }
     });
 
@@ -3420,7 +3431,7 @@
          * @return {BCAPI.Models.FileSystem.Folder} the parent folder
          */
         folder: function() {
-            return new BCAPI.Models.FileSystem.Folder(this.get('folderPath'));
+            return this.get('parent');
         },
 
         /**
@@ -3473,28 +3484,7 @@
             throw new Error('Operation not supported');
         },
 
-        parse: function(result) {
-            //converting to a date object instead of the date string
-            var dateStr = result.lastModified;
-            result.lastModified = new Date(dateStr);
-            return result;
-        },
-
-        /**
-         * Returns the URL where the file can be accessed.
-         * @return {string} The file URL.
-         */
-        contentUrl: function() {
-            return Entity.prototype.url.call(this);
-        },
-
-        /**
-         * Returns the model URL - which will be used to retrieve & store metadata
-         * @return {string} the model URL
-         */
-        url: function() {
-            return Entity.prototype.url.call(this) + '?meta';
-        },
+        
 
         initialize: function() {
             this.set('type', 'file');
@@ -3508,18 +3498,35 @@
             return new BCAPI.Models.FileSystem.File(fullAttributes, options);
         },
 
-        /**
-         * Returns a promise containing the contents of
-         * this folder
-         * @return {promise} A promise containing the folders & files
-         *                   in this folder
-         */
-        list: function() {
-
-        },
-
         initialize: function() {
             this.set('type', 'folder');
+        },
+
+        /**
+         * Creates the specified folder
+         * @return {promise} A promised that will be resolved when the folder is created
+         */
+        create: function() {
+            return $.ajax(this.contentUrl() + '?type=folder', {
+                'type': 'PUT',
+                'processData': false,
+                'headers': this.headers()
+            });
+        },
+
+        parse: function(result) {
+            var items = Entity.prototype.parse.call(this, result);
+            var parent = this;
+            var models = _.map(items.contents, function(obj) {
+                obj.parent = parent;
+                if (obj.type === 'file') {
+                    return new BCAPI.Models.FileSystem.File(obj);
+                } else if (obj.type === 'folder') {
+                    return new BCAPI.Models.FileSystem.Folder(obj);
+                }
+            });
+            items.contents = models;
+            return items;
         }
     });
 

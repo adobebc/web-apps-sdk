@@ -114,7 +114,6 @@ function onMemberFormSubmit(evt) {
 
 function saveMember(memberId) {
     var memberPicture = $("#member-picture-name").val();
-    var memberImage = new BCAPI.Models.FileSystem.File(WEBAPP_PHOTO_FOLDER, {name: memberPicture});
     var member = new BCAPI.Models.WebApp.Item(WEBAPP_NAME);
     member.set({
         id: memberId,
@@ -130,6 +129,7 @@ function saveMember(memberId) {
     });
 
     if (userImageFile) {
+        var memberImage = new BCAPI.Models.FileSystem.File(WEBAPP_PHOTO_FOLDER, {name: memberPicture});
         memberImage.upload(userImageFile).done(function() {
             member.save({
                 success: onMemberSave,

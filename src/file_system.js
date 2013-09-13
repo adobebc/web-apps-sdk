@@ -1,10 +1,6 @@
 (function($) {
     'use strict';
 
-    function trim(s) {
-        return s.replace(/^\s+/, '').replace(/\s+$/, '');
-    }
-
     function mkParent(x) {
         return x == '/' ? BCAPI.Models.FileSystem.Root : new BCAPI.Models.FileSystem.Folder(x);
     }
@@ -82,10 +78,6 @@
             'parent': parent,
             'name': name
         };
-    }
-
-    function configureEntity(a1, a2, a3) {
-
     }
 
     BCAPI.Models.FileSystem = {};
@@ -275,6 +267,10 @@
         },
 
         destroy: function() {
+            throw new Error('Operation not supported');
+        },
+
+        fetch: function() {
             throw new Error('Operation not supported');
         }
 

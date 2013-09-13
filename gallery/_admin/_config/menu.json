@@ -1,6 +1,6 @@
 {
     "menu-gallery-sdk": {
-        "weight": 10,
+        "weight": 25000,
         "title": "Gallery",
         "attr": {
             "href": "/gallery/_admin/list.html"

@@ -1,6 +1,6 @@
 // JavaScript Document
 
-var IMAGES_PATH = '/images/gallery/';
+var IMAGES_PATH = '/gallery/images/';
 var WEBAPP_NAME = 'Gallery';
 
 $(function() {
@@ -86,7 +86,7 @@ function doneLoading() {
 
 // callback after re-ordering elements (API calls) is done 
 function doneSorting() {
-    $.jGrowl("Sorting updated.");
+    systemNotifications.showSuccess("Success", "Sorting updated.");
 }
 
 // on mouse over, show the trash icon
@@ -126,7 +126,7 @@ function initDeleteImage() {
 
 // callback after the image was deleted
 function imageDeleted() {
-    $.jGrowl("Image deleted.");
+    systemNotifications.showSuccess("Success", "Image deleted.");
     loadImages();
 }
 // end delete image functions
@@ -172,7 +172,7 @@ function addImage(file) {
 // callback when all images have been uploaded and all webapp items created
 function imagesUploaded() {
     $('body').append($('#trashIcon'));
-    $.jGrowl("Images uploaded.");
+    systemNotifications.showSuccess("Success", "Images uploaded.");
     resetFormElement($('#newItem'));
     loadImages();
 }

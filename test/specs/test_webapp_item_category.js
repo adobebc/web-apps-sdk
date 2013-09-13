@@ -51,7 +51,7 @@ describe("Unit tests for item category model.", function() {
 
             waitsFor(function() {
                 return ajaxCalled;
-            }, "Not PUT method", 5000);
+            }, "Not PUT method", 50);
     });
 
     if("Test default items is empty", function() {

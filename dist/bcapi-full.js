@@ -3176,6 +3176,351 @@
     	}
     });
 })(jQuery);;(function($) {
+    "use strict";
+
+    /**
+     * This class provides a way of working with individual category items.
+     *
+     * @name Category
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models
+     * @augments BCAPI.Models.Model
+     * @example
+     * var category = new BCAPI.Models.Category({name: 'Test Category'});
+     * To save:
+     * category.save(options)
+     * To get a category by id:
+     * var category = new BCAPI.Models.Category({id: 1});
+     * category.fetch(options)
+     *
+     * Update and delete are not supported
+     */
+    BCAPI.Models.Category = BCAPI.Models.Model.extend({
+        /**
+         * @field name: mandatory, string
+         * @field parentId: optional, defaults to root (-1)
+         * @field publicAccess: optional, default to TRUE
+         */
+
+        /**
+         * This method returns the correct endpoint for the category.
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.Category
+         */
+        endpoint: function() {
+            return '/api/v2/admin/sites/current/categories';
+        }
+    });
+
+    /**
+     * This class provides a collection for working with categories.
+     *
+     * @name CategoryCollection
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models
+     * @augments BCAPI.Models.Collection
+     * @example
+     * var categories = new BCAPI.Models.CategoryCollection();
+     * categories.fetch({
+     *     success: onSuccessHandler,
+     *     error: onErrorHandler
+     * })
+     */
+    BCAPI.Models.CategoryCollection = BCAPI.Models.Collection.extend({
+        model: BCAPI.Models.Category
+    });
+})(jQuery);;(function($) {
+    "use strict";
+
+    BCAPI.Models.Country = BCAPI.Models.Model.extend({
+        defaults: {
+            countryCode: "",
+            displayName: ""
+        },
+        /**
+         * This method returns the correct endpoint for the web app countries.
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.Country
+         */
+        endpoint: function() {
+            return "/api/v2/admin/system/countries"
+        }
+    });
+
+    /**
+     * This class provides a collection of the countries available in BC. For more information regarding how to interact
+     * with the countries {@link BCAPI.Models.Country}.
+     *
+     * @name CountryCollection
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models
+     * @example
+     * var itemCollection = new BCAPI.Models.CountryCollection();
+     */
+    BCAPI.Models.CountryCollection = BCAPI.Models.Collection.extend({
+        constructor: function(webappName, models, options) {
+            BCAPI.Models.Collection.call(this, models, options);
+        },
+        model: BCAPI.Models.Country
+    });
+
+})(jQuery);;(function($) {
+    "use strict";
+
+    //common model for files & folders
+    var Entity = BCAPI.Models.Model.extend({
+        'idAttribute': 'path',
+
+        endpoint: function() {
+            return '/api/v2/admin/sites/current/storage';
+        },
+        
+        url: function() {
+            var p = this.get('path');
+            if (p[0] == '/') {
+                p.substring(1);
+            }
+            return this.urlRoot() + p;
+        }
+    });
+
+    function mkFilePath(dirPath, name) {
+        if (dirPath[dirPath.length - 1] == '/') {
+            return dirPath + name;
+        } else {
+            return dirPath + '/' + name;
+        }
+    }
+    
+    BCAPI.Models.FileSystem = {};
+
+    /**
+     * This class allows you to interact with files stored in your BC site.
+     * Usage examples:
+     *
+     * ## Create a new file.
+     * 
+     * ```javascript
+     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+     * var data = 'Hello World !';
+     * f.upload(data).done(function() {
+     *     console.log('File uploaded succesfully');
+     * });
+     * ```
+     *
+     * A file is created in your site's file system only after uploading some
+     * content.
+     *
+     * The content can be any javascript object, including file objects obtained
+     * from html upload forms.
+     *
+     * BCAPI.Models.FileSystem.Root is the root folder in your site's
+     * file structure. You can also create a file object by specifying
+     * the file's full path.
+     *
+     * ```javascript
+     * var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
+     * ```
+     *
+     * If you omit the `/` at the beginning it will be added automatically.
+     *
+     * So the below is equivalent to the above instantiation:
+     * ```javascript
+     * var f = new BCAPI.Models.FileSystem.File('hello_world.txt');
+     * ```
+     *
+     * ## Get the file metadata
+     *
+     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+     * f.fetch().done(function() {
+     *     console.log('File name is: ', f.get('name'));
+     *     console.log('Last update date is: ', f.get('lastModified'));
+     * });
+     *
+     * ## Download the file content
+     *
+     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+     * f.download().done(function(content) {
+     *     console.log('File content is: ' + content);
+     * });
+     *
+     * ## Delete the file
+     *
+     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+     * f.destroy().done(function() {
+     *     console.log('File was destroyed');
+     * });
+     * 
+     */
+    BCAPI.Models.FileSystem.File = Entity.extend({
+        /**
+         * Creates an instance of File.
+         * @param  {string|BCAPI.Models.FileSystem.Folder} path File's parent directory (as Folder or string).
+         *                                                      It can also be the file's full path if no name
+         *                                                      is specified
+         * @param  {object} attributes A hash of attributes for this file object
+         * @param  {object} options    Option hash for this model
+         */
+        constructor: function(path, attributes, options) {
+            Entity.call(this, attributes, options);
+            var props = {};
+            if (path instanceof BCAPI.Models.FileSystem.Folder) {
+                props.folderPath = path.get('path');
+                props.name = attributes.name;
+            } else if (typeof path == 'string') {
+                if (attributes && ('name' in attributes)) {
+                    props.folderPath = path;
+                    props.name = attributes.name;
+                } else {
+                    var split = path.lastIndexOf('/');
+                    if (split == -1) {
+                        props.folderPath = '/';
+                        props.name = path;
+                    } else {
+                        props.folderPath = path.substring(0, split);
+                        props.name = path.substring(split+1);
+                    }
+                }
+            }
+            if (props.folderPath && props.folderPath[0] != '/') {
+                props.folderPath = '/' + props.folderPath;
+            }
+            props.type = 'file';
+            props.path = mkFilePath(props.folderPath, props.name);
+            this.set(props);
+            if (!this.isValid()) {
+                throw new Error('Invalid construction parameters');
+            }
+        },
+
+        /**
+         * Validates this File model
+         * @param  {object} attr The attributes of the model
+         * @return {string}      Returns a string with an error message if an error
+         *                       has been found, or nothing otherwise.
+         */
+        validate: function(attr) {
+            if (!attr.name) {
+                return 'Invalid name for file';
+            }
+            if (!attr.folderPath) {
+                return 'Invalid folder path';
+            }
+            if (!attr.path) {
+                return 'Invalid path for file';
+            }
+        },
+
+        /**
+         * Returns the parent folder for this file.
+         * @return {BCAPI.Models.FileSystem.Folder} the parent folder
+         */
+        folder: function() {
+            return new BCAPI.Models.FileSystem.Folder(this.get('folderPath'));
+        },
+
+        /**
+         * Uploads a new content for the file. This method can be called if the
+         * file isn't yet created - the file will be created afterwards.
+         * @param  {any} data the data object which will be the file's content
+         * @return {promise}      a promise that will be completed when the file
+         *                        is uploaded
+         */
+        upload: function(data) {
+            return $.ajax(this.contentUrl(), {
+                'contentType': 'application/octet-stream',
+                'type': 'PUT',
+                'data': data,
+                'processData': false,
+                'headers': this.headers()
+            });
+        },
+
+        /**
+         * Uploads new content and fetches the metadata for the file which will then
+         * be used to populate the object. This method can be called even if the
+         * file isn't created yet.
+         * Useful if you want to create a file and retrieve it's metadata resulted
+         * from the new content immediatly.
+         * @param  {any} data The data object
+         * @return {promise}      a promise that will be completed when the file
+         *                        is uploaded and the new metadata is retrieved.
+         */
+        uploadAndFetch: function(data) {
+            var self = this;
+            return this.upload(data).then(function() {
+                return self.fetch();
+            });
+        },
+
+        /**
+         * Downloads the content of the file
+         * @return {promise} a promise which will be resolved with
+         *                   the content of the file.
+         */
+        download: function() {
+            return $.ajax(this.contentUrl(), {
+                'type': 'GET',
+                'headers': this.headers()
+            });
+        },
+
+        save: function(attributes, options) {
+            throw new Error('Operation not supported');
+        },
+
+        parse: function(result) {
+            //converting to a date object instead of the date string
+            var dateStr = result.lastModified;
+            result.lastModified = new Date(dateStr);
+            return result;
+        },
+
+        /**
+         * Returns the URL where the file can be accessed.
+         * @return {string} The file URL.
+         */
+        contentUrl: function() {
+            return Entity.prototype.url.call(this);
+        },
+
+        /**
+         * Returns the model URL - which will be used to retrieve & store metadata
+         * @return {string} the model URL
+         */
+        url: function() {
+            return Entity.prototype.url.call(this) + '?meta';
+        }
+    });
+
+    BCAPI.Models.FileSystem.Folder = Entity.extend({
+        file: function(attributes, options) {
+            return new BCAPI.Models.FileSystem.File(this.get('path'), attributes, options);
+        },
+
+        /**
+         * Returns a promise containing the contents of
+         * this folder
+         * @return {promise} A promise containing the folders & files
+         *                   in this folder
+         */
+        list: function() {
+
+        }
+    });
+
+    BCAPI.Models.FileSystem.Root = new BCAPI.Models.FileSystem.Folder({'path': '/'});
+
+})(jQuery);
+
+;(function($) {
 	"use strict";
 
 	/**
@@ -3380,6 +3725,169 @@
         	return webapps;
         }
     });
+})(jQuery);;(function($) {
+    "use strict";
+
+    /**
+     * This class provides an array of countries available for a certain webapp. In order to use this collection you must provide
+     * a webapp name. For more information regarding how to interact with the countries of a web app read {@link BCAPI.Models.WebApp.Country}.
+     *
+     * @name Country
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models.WebApp
+     * @example
+     * var countries = new BCAPI.Models.WebApp.Country("Sample webapp");
+     */
+    BCAPI.Models.WebApp.Country = BCAPI.Models.Model.extend({
+        constructor: function(webappName, attributes, options) {
+            BCAPI.Models.Model.call(this, attributes, options);
+            this._webappName = webappName;
+        },
+        /**
+         * This method returns the correct endpoint
+         * for the webapp countries
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.Country
+         */
+        endpoint: function() {
+            var url = ["/api/v2/admin/sites/current/webapps/"];
+            url.push(this._webappName);
+            url.push("/countries");
+            return url.join("");
+        },
+        /**
+         * This method returns the data to be json-ified when saving
+         * The API only recieves an array of strings, so we have to extract it
+         * from the items field.
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.Country
+         */
+        toJSON: function(){
+            return this.get('items');
+        },
+
+        /**
+         * This method performs the save to the server
+         * It is overwritten here to always force a PUT operation on the endpoint
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.Country
+         */
+        save: function(options) {
+            options = options || {};
+            options.type = "PUT";
+            return  BCAPI.Models.Model.prototype.save.call(this, options);
+        }
+    });
+})(jQuery);;(function($) {
+	"use strict";
+
+	/**
+	 * This class provides support for custom fields description belonging to {@link BCAPI.Models.WebApp.App}
+	 * 
+	 * ## Create a new custom field
+	 * 
+	 * ```javascript
+	 * var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
+     *	"name": "Part code",
+     *	"type": "DataSource",
+     *	"listItems": null,
+     *	"dataSourceName": "Part Codes",
+     *	"required": false,
+     *	"order": 1
+	 * });
+	 * 
+	 * customField.save({
+	 * 	success: function(fieldModel) {
+	 * 		// do something on success.
+	 * 	}
+	 * });
+	 * ```
+	 * 
+	 * @name CustomField
+	 * @class
+	 * @constructor
+	 * @memberOf BCAPI.Models.WebApp
+	 */
+	BCAPI.Models.WebApp.CustomField = BCAPI.Models.Model.extend({
+		constructor: function(webappName, attributes, options) {
+			BCAPI.Models.Model.call(this, attributes, options);
+			
+			this._webappName = webappName;
+			this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});			
+		},
+		/**
+		 * This method returns the endpoint for custom fields api.
+		 * 
+		 * @method
+		 * @instance
+		 * @memberOf BCAPI.Models.WebApp.CustomField
+		 */
+		endpoint: function() {
+			return "/api/v2/admin/sites/current/webapps/" + this._webappName + "/fields";
+		}
+	});
+	
+	/**
+     * This class provides a collection for working with web app custom fields. In order to use this collection you must provide 
+     * a webapp name. For more information regarding custom fields read {@link BCAPI.Models.WebApp.Item}. 
+     * 
+     * @name CustomFieldCollection
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models.WebApp
+     * @example
+     * var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("Sample webapp");  
+	 */
+	BCAPI.Models.WebApp.CustomFieldCollection = BCAPI.Models.Collection.extend({
+		constructor: function(webappName, attributes, options) {
+			BCAPI.Models.Collection.call(this, attributes, options);
+			
+			this.webappName = webappName;
+		},
+		model: BCAPI.Models.WebApp.CustomField,
+    	/**
+    	 * This method returns custom field collection api entry point absolute url.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.WebApp.CustomFieldCollection
+    	 * @returns API entry point url.
+    	 */
+    	url: function() {
+    		var model = new this.model(this.webappName);
+    		
+    		return BCAPI.Models.Collection.prototype.url.call(this, model);
+    	},
+    	/**
+    	 * We override this method in order to transform each returned item into a strong typed 
+    	 * {@link BCAPI.Models.WebApp.CustomField} models.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @param {Object} response The JSON response received from CustomField api.
+    	 * @returns A list of web app custom fields.
+    	 * @memberOf BCAPI.Models.WebApp.CustomField 
+    	 */
+    	parse: function(response) {
+    		response = BCAPI.Models.Collection.prototype.parse.call(this, response);
+    		
+    		var fields = [],
+    			self = this;
+    		
+    		_.each(response, function(field) {
+    			fields.push(new self.model(self.webappName, field));
+    		});
+    		
+    		return fields;
+    	}
+	});
 })(jQuery);;(function($) {
 	"use strict";
 
@@ -3597,167 +4105,6 @@
     	}
     });
 })(jQuery);;(function($) {
-	"use strict";
-
-	/**
-	 * This class provides support for custom fields description belonging to {@link BCAPI.Models.WebApp.App}
-	 * 
-	 * ## Create a new custom field
-	 * 
-	 * ```javascript
-	 * var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
-     *	"name": "Part code",
-     *	"type": "DataSource",
-     *	"listItems": null,
-     *	"dataSourceName": "Part Codes",
-     *	"required": false,
-     *	"order": 1
-	 * });
-	 * 
-	 * customField.save({
-	 * 	success: function(fieldModel) {
-	 * 		// do something on success.
-	 * 	}
-	 * });
-	 * ```
-	 * 
-	 * @name CustomField
-	 * @class
-	 * @constructor
-	 * @memberOf BCAPI.Models.WebApp
-	 */
-	BCAPI.Models.WebApp.CustomField = BCAPI.Models.Model.extend({
-		constructor: function(webappName, attributes, options) {
-			BCAPI.Models.Model.call(this, attributes, options);
-			
-			this._webappName = webappName;
-			this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});			
-		},
-		/**
-		 * This method returns the endpoint for custom fields api.
-		 * 
-		 * @method
-		 * @instance
-		 * @memberOf BCAPI.Models.WebApp.CustomField
-		 */
-		endpoint: function() {
-			return "/api/v2/admin/sites/current/webapps/" + this._webappName + "/fields";
-		}
-	});
-	
-	/**
-     * This class provides a collection for working with web app custom fields. In order to use this collection you must provide 
-     * a webapp name. For more information regarding custom fields read {@link BCAPI.Models.WebApp.Item}. 
-     * 
-     * @name CustomFieldCollection
-     * @class
-     * @constructor
-     * @memberOf BCAPI.Models.WebApp
-     * @example
-     * var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("Sample webapp");  
-	 */
-	BCAPI.Models.WebApp.CustomFieldCollection = BCAPI.Models.Collection.extend({
-		constructor: function(webappName, attributes, options) {
-			BCAPI.Models.Collection.call(this, attributes, options);
-			
-			this.webappName = webappName;
-		},
-		model: BCAPI.Models.WebApp.CustomField,
-    	/**
-    	 * This method returns custom field collection api entry point absolute url.
-    	 * 
-    	 * @method
-    	 * @instance
-    	 * @memberOf BCAPI.Models.WebApp.CustomFieldCollection
-    	 * @returns API entry point url.
-    	 */
-    	url: function() {
-    		var model = new this.model(this.webappName);
-    		
-    		return BCAPI.Models.Collection.prototype.url.call(this, model);
-    	},
-    	/**
-    	 * We override this method in order to transform each returned item into a strong typed 
-    	 * {@link BCAPI.Models.WebApp.CustomField} models.
-    	 * 
-    	 * @method
-    	 * @instance
-    	 * @param {Object} response The JSON response received from CustomField api.
-    	 * @returns A list of web app custom fields.
-    	 * @memberOf BCAPI.Models.WebApp.CustomField 
-    	 */
-    	parse: function(response) {
-    		response = BCAPI.Models.Collection.prototype.parse.call(this, response);
-    		
-    		var fields = [],
-    			self = this;
-    		
-    		_.each(response, function(field) {
-    			fields.push(new self.model(self.webappName, field));
-    		});
-    		
-    		return fields;
-    	}
-	});
-})(jQuery);;(function($) {
-    "use strict";
-
-    /**
-     * This class provides a way of working with individual category items.
-     *
-     * @name Category
-     * @class
-     * @constructor
-     * @memberOf BCAPI.Models
-     * @augments BCAPI.Models.Model
-     * @example
-     * var category = new BCAPI.Models.Category({name: 'Test Category'});
-     * To save:
-     * category.save(options)
-     * To get a category by id:
-     * var category = new BCAPI.Models.Category({id: 1});
-     * category.fetch(options)
-     *
-     * Update and delete are not supported
-     */
-    BCAPI.Models.Category = BCAPI.Models.Model.extend({
-        /**
-         * @field name: mandatory, string
-         * @field parentId: optional, defaults to root (-1)
-         * @field publicAccess: optional, default to TRUE
-         */
-
-        /**
-         * This method returns the correct endpoint for the category.
-         *
-         * @method
-         * @instance
-         * @memberOf BCAPI.Models.Category
-         */
-        endpoint: function() {
-            return '/api/v2/admin/sites/current/categories';
-        }
-    });
-
-    /**
-     * This class provides a collection for working with categories.
-     *
-     * @name CategoryCollection
-     * @class
-     * @constructor
-     * @memberOf BCAPI.Models
-     * @augments BCAPI.Models.Collection
-     * @example
-     * var categories = new BCAPI.Models.CategoryCollection();
-     * categories.fetch({
-     *     success: onSuccessHandler,
-     *     error: onErrorHandler
-     * })
-     */
-    BCAPI.Models.CategoryCollection = BCAPI.Models.Collection.extend({
-        model: BCAPI.Models.Category
-    });
-})(jQuery);;(function($) {
     "use strict";
 
     /*
@@ -3846,206 +4193,4 @@
             return  BCAPI.Models.Model.prototype.save.call(this, options);
         }
     });
-})(jQuery);;(function($) {
-    "use strict";
-
-    //common model for files & folders
-    var Entity = BCAPI.Models.Model.extend({
-        'idAttribute': 'path',
-
-        'endpoint': function() {
-            return '/api/v2/admin/sites/current/storage';
-        },
-        
-        'url': function() {
-            var p = this.get('path');
-            if (p[0] == '/') {
-                p.substring(1);
-            }
-            return this.urlRoot() + p;
-        }
-    });
-
-    function mkFilePath(dirPath, name) {
-        if (dirPath[dirPath.length - 1] == '/') {
-            return dirPath + name;
-        } else {
-            return dirPath + '/' + name;
-        }
-    }
-    
-    /**
-     * This class allows you to interact with files stored in your BC site.
-     * Usage examples:
-     *
-     * ## Create a new file.
-     * 
-     * ```javascript
-     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-     * var data = 'Hello World !';
-     * f.upload(data).done(function() {
-     *     console.log('File uploaded succesfully');
-     * });
-     * ```
-     *
-     * A file is created in your site's file system only after uploading some
-     * content.
-     *
-     * The content can be any javascript object, including file objects obtained
-     * from html upload forms.
-     *
-     * BCAPI.Models.FileSystem.Root is the root folder in your site's
-     * file structure. You can also create a file object by specifying
-     * the file's full path.
-     *
-     * ```javascript
-     * var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
-     * ```
-     *
-     * If you omit the `/` at the beginning it will be added automatically.
-     *
-     * So the below is equivalent to the above instantiation:
-     * ```javascript
-     * var f = new BCAPI.Models.FileSystem.File('hello_world.txt');
-     * ```
-     *
-     * ## Get the file metadata
-     *
-     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-     * f.fetch().done(function() {
-     *     console.log('File name is: ', f.get('name'));
-     *     console.log('Last update date is: ', f.get('lastModified'));
-     * });
-     *
-     * ## Download the file content
-     *
-     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-     * f.download().done(function(content) {
-     *     console.log('File content is: ' + content);
-     * });
-     *
-     * ## Delete the file
-     *
-     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-     * f.destroy().done(function() {
-     *     console.log('File was destroyed');
-     * });
-     * 
-     */
-    var File = Entity.extend({
-        'constructor': function(path, attributes, options) {
-            Entity.call(this, attributes, options);
-            var props = {};
-            if (path instanceof BCAPI.Models.FileSystem.Folder) {
-                props.folderPath = path.get('path');
-                props.name = attributes.name;
-            } else if (typeof path == 'string') {
-                if (attributes && ('name' in attributes)) {
-                    props.folderPath = path;
-                    props.name = attributes.name;
-                } else {
-                    var split = path.lastIndexOf('/');
-                    if (split == -1) {
-                        props.folderPath = '/';
-                        props.name = path;
-                    } else {
-                        props.folderPath = path.substring(0, split);
-                        props.name = path.substring(split+1);
-                    }
-                }
-            }
-            if (props.folderPath && props.folderPath[0] != '/') {
-                props.folderPath = '/' + props.folderPath;
-            }
-            props.type = 'file';
-            props.path = mkFilePath(props.folderPath, props.name);
-            this.set(props);
-            if (!this.isValid()) {
-                throw new Error('Invalid construction parameters');
-            }
-        },
-
-        validate: function(attr) {
-            if (!attr.name) {
-                return 'Invalid name for file';
-            }
-            if (!attr.folderPath) {
-                return 'Invalid folder path';
-            }
-            if (!attr.path) {
-                return 'Invalid path for file';
-            }
-        },
-
-        'folder': function() {
-            return new BCAPI.Models.FileSystem.Folder(this.get('folderPath'));
-        },
-
-        'upload': function(data) {
-            return $.ajax(this.contentUrl(), {
-                'contentType': 'application/octet-stream',
-                'type': 'PUT',
-                'data': data,
-                'processData': false,
-                'headers': this.headers()
-            });
-        },
-
-        'uploadAndFetch': function(data) {
-            var self = this;
-            return this.upload(data).then(function() {
-                return self.fetch();
-            });
-        },
-
-        'download': function() {
-            return $.ajax(this.contentUrl(), {
-                'type': 'GET',
-                'headers': this.headers()
-            });
-        },
-
-        'save': function(attributes, options) {
-            throw new Error('Operation not supported');
-        },
-
-        'parse': function(result) {
-            //converting to a date object instead of the date string
-            var dateStr = result.lastModified;
-            result.lastModified = new Date(dateStr);
-            return result;
-        },
-
-        'contentUrl': function() {
-            return Entity.prototype.url.call(this);
-        },
-
-        'url': function() {
-            return Entity.prototype.url.call(this) + '?meta';
-        }
-    });
-
-    var Folder = Entity.extend({
-        'file': function(attributes, options) {
-            return new File(this.get('path'), attributes, options);
-        },
-
-        /**
-         * Returns a promise containing the contents of
-         * this folder
-         * @return {promise} A promise containing the folders & files
-         *                   in this folder
-         */
-        'list': function() {
-
-        }
-    });
-
-    BCAPI.Models.FileSystem = {
-        'File': File,
-        'Folder': Folder,
-        'Root': new Folder({'path': '/'})
-    };
-
 })(jQuery);
-

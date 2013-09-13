@@ -91,6 +91,37 @@ describe('BCAPI.Models.FileSystem', function() {
             expect(new BcFolder('/hello').get('type')).toBe('folder');
         });
 
+        it('should properly parse the folder contents', function() {
+            var contents = [
+                {
+                    'name': 'file1',
+                    'type': 'file'
+                },
+                {
+                    'name': 'folder1',
+                    'type': 'folder'
+                },
+                {
+                    'name': 'file2',
+                    'type': 'file'
+                }
+            ];
+            var f = new BcFolder('hello');
+            var data = {'contents': contents};
+            var parsed = f.parse(data).contents;
+            expect(parsed[0]).toHavePaths('/hello/file1', '/hello', 'file1');
+            expect(parsed[0].get('type')).toBe('file');
+            expect(parsed[0] instanceof BcFile).toBe(true);
+
+            expect(parsed[2]).toHavePaths('/hello/file2', '/hello', 'file2');
+            expect(parsed[2].get('type')).toBe('file');
+            expect(parsed[2] instanceof BcFile).toBe(true);
+            
+            expect(parsed[1]).toHavePaths('/hello/folder1', '/hello', 'folder1');
+            expect(parsed[1].get('type')).toBe('folder');
+            expect(parsed[1] instanceof BcFolder).toBe(true);
+        });
+
         it('should not support save, destroy & fetch for the root directory', function() {
             var root = BCAPI.Models.FileSystem.Root;
             expect(function() { root.save(); }).toThrow();

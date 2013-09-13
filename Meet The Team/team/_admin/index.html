@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="assets/system-notifications/system-notifications.css">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="assets/styles.css">
-
 </head>
 <body>
 
@@ -51,20 +50,21 @@
                 </div>
 
                 <div class="user-name">
-                    <h3><%= member.get('name') %></h3>
+                    <h3><%-member.get('name') %></h3>
                 </div>
                 <div class="user-position">
-                    <%= member.get('fields').Position %>
+                    <%- member.get('fields').Position %>
                 </div>
             </div>
             <div class="card-actions" id="actions_<%= member.get('id') %>">
                 <a rel="edit" href="edit.html?memberid=<%= member.get('id') %>" class="member-icon-edit"></a>
-                <a href="#" rel="popover" data-placement="top" title="Delete Team Member" class="member-icon-delete" data-content='<div class="delete-confirmation-text">Are you sure you want to delete <%= member.get('name') %>?</div>
-                <span class="note-text">This action has no Undo.</span>
+                <a href="#" rel="popover" data-placement="top" title="Delete Team Member" class="member-icon-delete"
+                   data-content="<div class=&quot;delete-confirmation-text\&quot;>Are you sure you want to delete <%- member.get('name') %>?</div>
+                <span class=\&quot;note-text&quot;>This action has no Undo.</span>
                 <div>
-                    <a href="#" class="btn" onclick="deleteTeamMember(<%= member.get('id')%>)">Delete</a>
-                    <a href="#" class="btn btn-primary" data-toggle="button" data-dismiss="clickover">Cancel</a>
-                </div>'></a>
+                    <a href=&quot;#&quot; class=&quot;btn&quot; onclick=&quot;deleteTeamMember(<%= member.get('id')%>)&quot;>Delete</a>
+                    <a href=&quot;#&quot; class=&quot;btn btn-primary&quot; data-toggle=&quot;button&quot; data-dismiss=&quot;clickover&quot;>Cancel</a>
+                </div>"></a>
             </div>
         </div>
     </script>

@@ -34,21 +34,21 @@
             <div class="control-group">
                 <label class="control-label" for="member-name">Name:</label>
                 <div class="controls">
-                    <input id="member-name" name="member-name" type="text" class="span5" value="<%= member.get('name') %>"/>
+                    <input id="member-name" name="member-name" type="text" class="span5" value="<%- member.get('name') %>"/>
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="member-position">Position:</label>
                 <div class="controls">
-                    <input id="member-position" name="member-position" type="text" class="span5" value="<%= member.get('fields').Position %>"/>
+                    <input id="member-position" name="member-position" type="text" class="span5" value="<%- member.get('fields').Position %>"/>
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="member-bio">Bio:</label>
                 <div class="controls">
-                    <textarea rows="4" id="member-bio" name="member-bio"class="span7"><%= member.get('fields').Bio %></textarea>
+                    <textarea rows="4" id="member-bio" name="member-bio"class="span7"><%- member.get('fields').Bio %></textarea>
                 </div>
             </div>
 
@@ -63,13 +63,13 @@
                         </ul>
                         <div class="tab-content member-profile-container">
                             <div class="tab-pane active" id="facebook">
-                                <p>http://www.facebook.com/<input type="text" class="span4 small-height" id="member-facebook" placeholder="Facebook profile - optional" value="<%= member.get('fields').Facebook %>" /></p>
+                                <p>http://www.facebook.com/<input type="text" class="span4 small-height" id="member-facebook" placeholder="Facebook profile - optional" value="<%- member.get('fields').Facebook %>" /></p>
                             </div>
                             <div class="tab-pane" id="twitter">
-                                <p>http://www.twitter.com/<input type="text" class="span4 small-height" id="member-twitter" placeholder="Twitter profile - optional" value="<%= member.get('fields').Twitter %>"/></p>
+                                <p>http://www.twitter.com/<input type="text" class="span4 small-height" id="member-twitter" placeholder="Twitter profile - optional" value="<%- member.get('fields').Twitter %>"/></p>
                             </div>
                             <div class="tab-pane" id="linkedin">
-                                <p>http://www.linkedin.com/<input type="text" class="span4 small-height" id="member-linkedin" placeholder="Linkedin profile - optional" value="<%= member.get('fields').Linkedin %>" /></p>
+                                <p>http://www.linkedin.com/<input type="text" class="span4 small-height" id="member-linkedin" placeholder="Linkedin profile - optional" value="<%- member.get('fields').Linkedin %>" /></p>
                             </div>
                         </div>
                     </div>

@@ -1,66 +1,91 @@
-(function() {
+describe('BCAPI.Models.FileSystem', function() {
+    'use strict';
+
     var BcFile = BCAPI.Models.FileSystem.File;
     var BcFolder = BCAPI.Models.FileSystem.Folder;
 
+    beforeEach(function() {
+        this.addMatchers({
+            toHavePaths: function(path, parentPath, name) {
+                var x = this.actual;
+
+                this.message = function() {
+                    var expected = {
+                        'path': path,
+                        'parentPath': parentPath,
+                        'name': name
+                    };
+                    var actual = {
+                        'path': x.get('path'),
+                        'parentPath': x.get('parent').get('path'),
+                        'name': x.get('name')
+                    };
+                    return 'Expected paths ' + JSON.stringify(actual) +
+                        ' to be ' + JSON.stringify(expected);
+                };
+
+                return x.get('path') === path &&
+                    x.get('parent').get('path') === parentPath &&
+                    x.get('name') === name;
+            }
+        });
+    });
+
     describe('BCAPI.Models.FileSystem.File', function() {
-        'use strict';
 
         it('should allow instantiation by path', function() {
-            var f = new BcFile('/hello/world');
-            expect(f.get('path')).toBe('/hello/world');
-            expect(f.get('name')).toBe('world');
-            expect(f.get('folderPath')).toBe('/hello');
+            expect(new BcFile('/hello/world'))
+                .toHavePaths('/hello/world', '/hello', 'world');
         });
 
         it('should automatically add the root slash', function() {
-            var f = new BcFile('folder/file');
-            expect(f.get('path')).toBe('/folder/file');
-            expect(f.get('name')).toBe('file');
-            expect(f.get('folderPath')).toBe('/folder');
+            expect(new BcFile('folder/file'))
+                .toHavePaths('/folder/file', '/folder', 'file');
         });
 
-        it('should allow instantiation with folder path and file name', function() {
-            var f = new BcFile('/folder/path', {'name': 'file-name'});
-            expect(f.get('path')).toBe('/folder/path/file-name');
-            expect(f.get('name')).toBe('file-name');
-            expect(f.get('folderPath')).toBe('/folder/path');
-        });
-
-        it('should allow instantiation with folder and file name', function() {
-            var d = new BcFolder({'path': '/folder/path'});
-            var f = new BcFile(d, {'name': 'file'});
-            expect(f.get('path')).toBe('/folder/path/file');
-            expect(f.get('name')).toBe('file');
-            expect(f.get('folderPath')).toBe('/folder/path');
+        it('should allow instantiation be specifying parent & name', function() {
+            var f = new BcFile({
+                'parent': new BcFolder('/folder/path'),
+                'name': 'file-name'
+            });
+            expect(f).toHavePaths('/folder/path/file-name', '/folder/path', 'file-name');
         });
 
         it('should throw an error for invalid instantiation parameters', function() {
-            // var d = new BcFolder({'path': ''})
-            // expect(function() { new BcFile()})
+            expect(function() { new BcFile(); }).toThrow();
+            expect(function() { new BcFile('/'); }).toThrow();
+            expect(function() { new BcFile({'name': 'hello'});}).toThrow();
+        });
+
+        it('should have the "type" property with value "file"', function() {
+            expect(new BcFile('/myfile').get('type')).toBe('file');
         });
     });
 
-    describe('BCAPI.Models.FileSystem.File', function() {
+    describe('BCAPI.Models.FileSystem.Folder', function() {
 
         it('should allow instantiation using name in constructor arg', function() {
-            var d = new BcFolder('/my-folder');
-            expect(d.get('path')).toBe('/my-folder');
-            expect(d.get('name')).toBe('my-folder');
+            expect(new BcFolder('/my-folder'))
+                .toHavePaths('/my-folder', '/', 'my-folder');
         });
 
         it('should allow instantiation using path in attributes', function() {
-            var d = new BcFolder('/folder/path');
-            expect(d.get('path')).toBe('/folder/path');
-            expect(d.get('name')).toBe('path');
+            expect(new BcFolder('/folder/path'))
+                .toHavePaths('/folder/path', '/folder', 'path');
         });
 
         it('should allow instantiation using a parent folder and a name', function() {
-            var parent = new BcFolder('/parent/folder');
-            var child = new BcFolder(parent, {'name': 'child'});
-            expect(child.get('path')).toBe('/parent/folder/child');
-            expect(child.get('name')).toBe('child');
+            var d = new BcFolder({
+                'parent': new BcFolder('/parent/folder'),
+                'name': 'child'
+            });
+            expect(d).toHavePaths('/parent/folder/child', '/parent/folder', 'child');
+        });
+
+        it('Folders should have the type property "folder" ', function() {
+            expect(new BcFolder('/hello').get('type')).toBe('folder');
         });
 
     });
-})();
+});
 

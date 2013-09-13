@@ -86,6 +86,12 @@ describe('BCAPI.Models.FileSystem', function() {
             expect(new BcFolder('/hello').get('type')).toBe('folder');
         });
 
+        it('should not support save, destroy & fetch for the root directory', function() {
+            var root = BCAPI.Models.FileSystem.Root;
+            expect(function() { root.save(); }).toThrow();
+            expect(function() { root.destroy(); }).toThrow();
+            expect(function() { root.fetch(); }).toThrow();
+        });
     });
 });
 

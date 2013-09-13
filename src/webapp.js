@@ -150,7 +150,7 @@
         fetch: function(options) {
         	options = options || {};
 
-        	var oldSuccess = options.success;
+        	var oldSuccess = options.success || (function() {});
         	
         	options.success = function(collection, xhr, options) {
         		var currFetchedFields = 0;

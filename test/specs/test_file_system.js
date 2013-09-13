@@ -82,7 +82,12 @@ describe('BCAPI.Models.FileSystem', function() {
             expect(d).toHavePaths('/parent/folder/child', '/parent/folder', 'child');
         });
 
-        it('Folders should have the type property "folder" ', function() {
+        it('should automatically add the "/" prefix to path if not already added', function() {
+            expect(new BcFolder('my-folder/my-subfolder'))
+                .toHavePaths('/my-folder/my-subfolder', '/my-folder', 'my-subfolder');
+        });
+
+        it('Folders should have the "type" property with value "folder" ', function() {
             expect(new BcFolder('/hello').get('type')).toBe('folder');
         });
 

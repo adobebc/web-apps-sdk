@@ -144,3 +144,31 @@ a.member-icon-delete:hover {
     width: auto;
     /*left: 379px !important;*/
 }
+
+
+#member-facebook{
+    background-image: url(images/fb-icon-inactive.png);
+    bacgkround-position: left;
+    background-repeat: no-repeat;
+    background-position-x: 3px;
+    background-position-y: 3px;
+    padding-left: 20px;
+}
+
+#member-twitter{
+    background-image: url(images/tw-icon-inactive.png);
+    bacgkround-position: left;
+    background-repeat: no-repeat;
+    background-position-x: 3px;
+    background-position-y: 3px;
+    padding-left: 20px;
+}
+
+#member-linkedin{
+    background-image: url(images/ln-icon-inactive.png);
+    bacgkround-position: left;
+    background-repeat: no-repeat;
+    background-position-x: 3px;
+    background-position-y: 3px;
+    padding-left: 20px;
+}

@@ -33,6 +33,7 @@ body {
     text-align: left;
     margin-left: 0px;
     background-image: url(images/stripe.png);
+    min-height: 88px;
 }
 
 .file-upload-area span {
@@ -150,8 +151,7 @@ a.member-icon-delete:hover {
     background-image: url(images/fb-icon-inactive.png);
     bacgkround-position: left;
     background-repeat: no-repeat;
-    background-position-x: 3px;
-    background-position-y: 3px;
+    background-position: 3px 3px;
     padding-left: 20px;
 }
 
@@ -159,8 +159,7 @@ a.member-icon-delete:hover {
     background-image: url(images/tw-icon-inactive.png);
     bacgkround-position: left;
     background-repeat: no-repeat;
-    background-position-x: 3px;
-    background-position-y: 3px;
+    background-position: 3px 3px;
     padding-left: 20px;
 }
 
@@ -168,7 +167,6 @@ a.member-icon-delete:hover {
     background-image: url(images/ln-icon-inactive.png);
     bacgkround-position: left;
     background-repeat: no-repeat;
-    background-position-x: 3px;
-    background-position-y: 3px;
+    background-position: 3px 3px;
     padding-left: 20px;
 }

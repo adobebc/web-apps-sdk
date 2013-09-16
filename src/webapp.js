@@ -166,9 +166,7 @@
         			
         			fieldsCollection.fetch({
         				success: function(fields) {
-        					fields.each(function(field) {
-        						webapp.get("fields").push(field);
-        					});
+        					webapp.set({"fields": fields});
         					
         					if(++currFetchedFields == fieldsCollection.length) {
         						oldSuccess(collection, xhr, options);

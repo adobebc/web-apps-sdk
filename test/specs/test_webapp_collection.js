@@ -1,15 +1,18 @@
 describe("Unit tests for webapp collection.", function() {
 	var oldFieldCollection = undefined,
+		oldMockFieldsFetch = undefined,
 		expectedFields = [{"id": 1, "name": "Field 1", "type": "DataSource", "listItems": [1, 2, 3],
 						   "required": false, "order": 5}, 
 						  {"id": 1500, "name": "Field 2", "type": "String", "required": true}];
 	
 	beforeEach(function() {
 		oldFieldCollection = BCAPI.Models.WebApp.CustomFieldCollection;
+		oldMockFieldsFetch = MockCustomFieldCollection.prototype.fetch;
 	});
 	
 	afterEach(function() {
 		BCAPI.Models.WebApp.CustomFieldCollection = oldFieldCollection;
+		MockCustomFieldCollection.prototype.fetch = oldMockFieldsFetch;
 	});
 	
 	it("Check app collection instantiated ok.", function() {
@@ -103,12 +106,11 @@ describe("Unit tests for webapp collection.", function() {
 			expectedUrl = rootUrl + "/api/v2/admin/sites/current/webapps",
 			expectedApps = {"items": [{"id":346, "name":"BC Friends", "slug":"bc-friends"},
 			                          {"id":356, "name":"BC Help", "slug":"bc-help"}]},
+			itemErrorCalled = 0,
 			errorCalled = 0;
 
 		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
 		BCAPI.Models.WebApp.CustomFieldCollection = MockCustomFieldCollection;		
-		
-		var oldMockFieldsFetch = MockCustomFieldCollection.prototype.fetch;
 		
 		MockCustomFieldCollection.prototype.fetch = function(options) {
 			var xhr = {responseText: "Failed call."};
@@ -117,10 +119,19 @@ describe("Unit tests for webapp collection.", function() {
 		};		
 		
 		function errorHandler(collection, response, options) {
+			expect(collection).toBe(appCollection);
 			expect(options.testKey).toBe(1234);
 			expect(options.fetchFields).toBe(true);
 			
 			errorCalled++;
+		}
+		
+		function itemErrorHandler(fieldsIndex, fields, response, options) {
+			expect(fields).not.toBe(undefined);
+			expect(options.testKey).toBe(1234);
+			expect(options.fetchFields).toBe(true);
+			
+			itemErrorCalled++;
 		}
 		
 		spyOn($, "ajax").andCallFake(function(request) {
@@ -135,18 +146,18 @@ describe("Unit tests for webapp collection.", function() {
 			appCollection.fetch({
 				testKey: 1234,
 				fetchFields: true,
+				itemError: itemErrorHandler,
 				error: errorHandler
 			});
 		});
 
 		waitsFor(function() {
-			return errorCalled > 0;
-		}, "Success / Error handler not called.", 50);
+			return itemErrorCalled > 0;
+		}, "Error handler not called.", 50);
 		
 		runs(function() {
-			MockCustomFieldCollection.prototype.fetch = oldMockFieldsFetch;
-			
-			expect(errorCalled).toBe(2);
+			expect(itemErrorCalled).toBe(2);
+			expect(errorCalled).toBe(1);
 		});
 	});
 	

@@ -250,6 +250,7 @@
     	 *
     	 * @method
     	 * @instance
+    	 * @protected
     	 * @param {String} resourceField The attribute name which holds fetched collection into each model item.
     	 * @param {function} resourceBuilder A function which can give a resource collection instance.
     	 * @param {Boolean} eagerFetch A boolean flag used for deciding if the relation must be eagerly fetched.
@@ -275,9 +276,12 @@
         	options = options || {};
         	
         	var dummyHandler = function() {},
-        		oldSuccess = options.success || dummyHandler,
-        		oldError = options.error || dummyHandler,
+        		oldSuccess = options.success || dummyHandler,        		
         		self = this;
+        	
+    		options.error = options.error || dummyHandler;
+        	options.itemError = options.itemError || dummyHandler;
+        	options.itemSuccess = options.itemSuccess || dummyHandler;
         	
         	options.success = function(collection, xhr, options) {
         		var currFetchedRelations = 0;
@@ -288,7 +292,8 @@
         		
         		collection.each(function(item) {
         			var relationCollection = resourceBuilder(item),
-        				relationFields = {};
+        				relationFields = {},
+        				relationIndex = 0;
         			
         			relationFields[resourceField] = [];
         			
@@ -296,23 +301,31 @@
         			
         			if(!eagerFetch) {
         				return oldSuccess(collection, xhr, options);
-        			}
+        			}        			
         			
-        			relationCollection.fetch({
-        				success: function(relationItems) {
-        					relationFields = {};
-        					relationFields[resourceField] = relationItems;
-        					
-        					item.set(relationFields);
-        					
-        					if(++currFetchedRelations == collection.length) {
-        						self._markFetchRelationComplete(xhr, options, oldSuccess);
-        					}
-        				},
-        				error: function(relationItems, xhr) {
-        					self._markFetchRelationError(resourceField, xhr, options, oldError);
-        				}
-        			});
+        			var fetchOptions = {relationIndex: relationIndex++};
+        			
+        			fetchOptions.success = function(relationItems) {
+    					relationFields = {};
+    					relationFields[resourceField] = relationItems;
+    					
+    					item.set(relationFields);
+    					        					
+    					if(++currFetchedRelations == collection.length) {
+    						self._markFetchRelationComplete(xhr, options, oldSuccess);
+    					}
+    				};
+    				
+    				fetchOptions.error = function(relationItems, xhr) {
+    					self._markFetchRelationError(relationCollection, resourceField, fetchOptions.relationIndex, 
+								 					 xhr, options);
+    					
+    					if(++currFetchedRelations == collection.length) {
+    						self._invokeRelationGenericError(xhr, options);
+    					}
+    				};
+        			
+        			relationCollection.fetch(fetchOptions);
         		});
         	};
         	
@@ -324,12 +337,13 @@
     	 * 
     	 * @method
     	 * @instance
+    	 * @protected
     	 * @param {Object} xhr XHR object used to fetch the current collection.
     	 * @param {Object} options XHR options used for collection fetch ajax call. 
     	 * @param {function} successHandler The success handler which must be executed
     	 * @memberOf BCAPI.Models.Collection
     	 */
-    	_markFetchRelationComplete: function(xhr, options, successHandler) {
+    	_markFetchRelationComplete: function(xhr, options, successHandler) {    		
     		if(--this._relationFetchPending > 0) {
     			return;
     		}
@@ -341,18 +355,37 @@
     	 * 
     	 * @method
     	 * @instance
+    	 * @protected
+    	 * @param {BCAPI.Models.Collection} relationItems Reference to collection which failed fetch.
     	 * @param {String} resourceField Resource field identifier for the collection fetch request which failed.
+    	 * @param {Integer} relationIndex Failed relation index.
     	 * @param {Object} xhr XHR object used for fetch ajax request.
     	 * @param {Object} options The options used for ajax request. 
-    	 * @param {function} errorHandler The error handler which must be invoked for the current xhr object.
     	 * @memberOf BCAPI.Models.Collection
     	 */
-    	_markFetchRelationError: function(resourceField, xhr, options, errorHandler) {
+    	_markFetchRelationError: function(relationItems, resourceField, relationIndex, xhr, options, itemError) {
     		var errMsg = ["Collection", resourceField, "fetch action failed:", xhr.responseText];
     		
     		xhr.responseText = errMsg.join(" ");
     		
-    		return errorHandler(this, xhr, options);
+    		return options.itemError(relationIndex, relationItems, xhr, options);
+    	},
+    	/**
+    	 * This method invokes the generic error handler. It occurs only once, when all other errors were invoked.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @protected
+    	 * @param {Object} xhr XHR object used for fetch ajax request.
+    	 * @param {Object} options The options used for ajax request.
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	_invokeRelationGenericError: function(xhr, options) {
+    		var errMsg = "Unable to correctly fetch collection: " + xhr.responseText;
+    		
+    		xhr.responseText = errMsg;
+    		
+    		return options.error(this, xhr, options);
     	}
     });
 })(jQuery);

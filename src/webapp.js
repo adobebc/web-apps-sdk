@@ -133,7 +133,7 @@
      *  	});
      *  },
      *  error: function(webapps, response) {
-     *  	// this handler might be invoked multiple times if fetchFields options is given and mutiple
+     *  	// this handler might be invoked multiple times if fetchFields option is given and mutiple
      *  	// requests are failing. You can find in the error message the relation for which fetching failed.
      *  }
      * });

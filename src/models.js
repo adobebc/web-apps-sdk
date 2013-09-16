@@ -136,10 +136,6 @@
 
     		var xhr = Backbone.Model.prototype.sync.call(this, method, model, options);
     		
-    		if(!xhr) {
-    			return;
-    		}
-    		
     		return xhr.then(function() { return this; }).promise(xhr);
     	}
     });

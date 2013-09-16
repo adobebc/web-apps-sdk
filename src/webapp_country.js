@@ -13,6 +13,7 @@
      * var countries = new BCAPI.Models.WebApp.Country("Sample webapp");
      */
     BCAPI.Models.WebApp.Country = BCAPI.Models.Model.extend({
+
         constructor: function(webappName, attributes, options) {
             BCAPI.Models.Model.call(this, attributes, options);
             this._webappName = webappName;

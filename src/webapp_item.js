@@ -170,28 +170,20 @@
      * @memberOf BCAPI.Models.WebApp
      * 
      * @example
-     * // only system fields loaded for each item (lazy loading).
+     * // load items for a specified webapp (only system fields are automatically loaded).
      * var itemCollection = new BCAPI.Models.WebApp.ItemCollection("Sample webapp");
      * itemCollection.fetch({
      * 	success: function(items) {
      * 		// handle items (only system fields available in each item).
-     * 	}
-     * });
      * 
-     * @example
-     * // progressive loading
-     * var itemCollection = new BCAPI.Models.WebApp.ItemCollection("Sample webapp");
-     * itemCollection.fetch({
-     *  fetchDetails: true,
-     * 	success: function(items) {
-     * 		// handle items (only system fields available in each item).
-     * 	},
-     *  itemLoaded: function(itemIndex, item) {
-     *  	// item contains all fields
-     *  	var url = item.get("fields").url;
-     *  
-     *  	// item index tells you the index of the item in the collection.
-     *  }
+     * 		items.each(function(item) {
+     * 			item.fetch({
+     * 				success: function(itemDetails) {
+     * 					// do something with item details.
+     * 				}
+     * 			});
+     * 		});
+     * 	}
      * });
      */
     BCAPI.Models.WebApp.ItemCollection = BCAPI.Models.Collection.extend({

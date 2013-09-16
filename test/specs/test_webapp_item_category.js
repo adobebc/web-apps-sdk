@@ -43,6 +43,8 @@ describe("Unit tests for item category model.", function() {
                 expect(request.dataType).toBe("text");
                 expect(request.data).toBe(JSON.stringify(data))
                 ajaxCalled = true;
+                
+                return $.Deferred();
             });
 
             runs(function() {

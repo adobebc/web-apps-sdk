@@ -3270,7 +3270,7 @@
 })(jQuery);;(function($) {
     'use strict';
 
-    function mkParent(x) {
+    function getParent(x) {
         return x == '/' ? BCAPI.Models.FileSystem.Root : new BCAPI.Models.FileSystem.Folder(x);
     }
 
@@ -3283,12 +3283,12 @@
             if (typeof a1 === 'string') {
                 attributes = a2;
                 options = a3;
-                var path = a1;
+                var path = $.trim(a1);
                 if (path == '/') {
                     throw new Error('Cannot instantiate the "/" folder like this. Use BCAPI.Models.FileSystem.Root instead');
                 } 
                 var o = splitPath(path);
-                initialProps.parent =  mkParent(o.parent);
+                initialProps.parent =  getParent(o.parent);
                 initialProps.name = o.name;
             } else {
                 attributes = a1;
@@ -3298,7 +3298,11 @@
             if (initialProps) {
                 this.set(initialProps);
             }
-            this.set('path', mkFilePath(this.get('parent').get('path'), this.get('name')));
+            this._refreshPath();
+            var model = this;
+            this.on('change:parent sync', function() {
+                model._refreshPath();
+            });
         },
 
         endpoint: function() {
@@ -3309,6 +3313,13 @@
             return this.contentUrl() + '?meta';
         },
 
+        /**
+         * Returns the url where the content can be accessed.
+         * @return {string} The URL of the resource
+         * @memberOf BCAPI.Models.FileSystem.File
+         * @method
+         * @instance
+         */
         contentUrl: function() {
             var p = this.get('path');
             if (p[0] == '/') {
@@ -3331,6 +3342,16 @@
             var dateStr = result.lastModified;
             result.lastModified = new Date(dateStr);
             return result;
+        },
+
+        toJSON: function() {
+            //only name should be persisted. Other attributes are calculated
+            return _.pick(this.attributes, 'name');
+        },
+
+        //recomputes the path attribute. Useful to call when parent or name have changed
+        _refreshPath: function() {
+            this.set('path', mkFilePath(this.get('parent').get('path'), this.get('name')));
         }
     });
 
@@ -3360,6 +3381,9 @@
         };
     }
 
+    /**
+     * @namespace BCAPI.Models.FileSystem
+     */
     BCAPI.Models.FileSystem = {};
 
     /**
@@ -3418,6 +3442,10 @@
      * f.destroy().done(function() {
      *     console.log('File was destroyed');
      * });
+     *
+     * @class
+     * @name File
+     * @memberOf BCAPI.Models.FileSystem
      * 
      */
      BCAPI.Models.FileSystem.File = Entity.extend({
@@ -3425,6 +3453,9 @@
         /**
          * Returns the parent folder for this file.
          * @return {BCAPI.Models.FileSystem.Folder} the parent folder
+         * @memberOf BCAPI.Models.FileSystem.File
+         * @method
+         * @instance
          */
         folder: function() {
             return this.get('parent');
@@ -3476,11 +3507,6 @@
             });
         },
 
-        save: function(attributes, options) {
-            throw new Error('Operation not supported');
-        },
-
-        
 
         initialize: function() {
             this.set('type', 'file');
@@ -3543,10 +3569,6 @@
         },
 
         destroy: function() {
-            throw new Error('Operation not supported');
-        },
-
-        fetch: function() {
             throw new Error('Operation not supported');
         }
 

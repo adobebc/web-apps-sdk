@@ -234,6 +234,23 @@ describe('BCAPI.Models.FileSystem', function() {
                 }
             });
         });
+
+        it('should support names with spaces', function() {
+            var fileName = genFileName('gen_ sp   - ');
+            var file = new BcFile(fileName);
+            var data = randomString();
+            promiseScenario({
+                'promise': function() {
+                    return file.upload(data)
+                        .then(function() {
+                            return file.download();
+                        });
+                },
+                'complete': function(downloadedData) {
+                    expect(downloadedData).toBe(data);
+                }
+            });
+        });
     });
 
 

@@ -22,26 +22,26 @@ else
     echo "Running all suites..."
 fi
 
-rm -Rf tests-output-integration
-rm -f tests_runner_integration.log
-java -jar $JAR_FILE --port $PORT --config $CONFIG --browser "$BROWSER" --tests $SUITES --testOutput tests-output-integration >> tests_runner_integration.log
+rm -Rf tests-output
+rm -f tests_runner.log
+java -jar $JAR_FILE --port $PORT --config $CONFIG --browser "$BROWSER" --tests $SUITES --testOutput tests-output >> tests_runner.log
 
-cat tests_runner_integration.log
+cat tests_runner.log
 
-if grep "error" tests_runner_integration.log; then
-   rm tests_runner_integration.log
+if grep "error" tests_runner.log; then
+   rm tests_runner.log
 
    exit 1
 fi
 
-if grep "No lines of coverage found." tests_runner_integration.log; then
-   rm tests_runner_integration.log
+if grep "No lines of coverage found." tests_runner.log; then
+   rm tests_runner.log
    
    echo "Coverage is 0% -> Unacceptable."
    
    exit 1
 fi
 
-rm tests_runner_integration.log
+rm tests_runner.log
 
 echo "Done."

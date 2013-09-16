@@ -40,7 +40,7 @@ describe("Unit tests for webapp collection.", function() {
 			successCalled = false;
 		
 		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
-		BCAPI.Models.WebApp.CustomFieldCollection = MockCustomFieldCollection;
+		BCAPI.Models.WebApp.CustomFieldCollection = MockCustomFieldCollection;		
 		
 		function successHandler(collection, xhr, options) {
 			var idx = 0;
@@ -94,6 +94,60 @@ describe("Unit tests for webapp collection.", function() {
 		waitsFor(function() {
 			return successCalled;
 		}, "Success handler not called.", 50);
+	});
+	
+	it("Check app collection fails on eagerly fetching custom fields.", function() {
+		var appCollection = new BCAPI.Models.WebApp.AppCollection(),
+			siteToken = "12345xxaz",
+			rootUrl = "http://test.localhost.com",
+			expectedUrl = rootUrl + "/api/v2/admin/sites/current/webapps",
+			expectedApps = {"items": [{"id":346, "name":"BC Friends", "slug":"bc-friends"},
+			                          {"id":356, "name":"BC Help", "slug":"bc-help"}]},
+			errorCalled = 0;
+
+		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
+		BCAPI.Models.WebApp.CustomFieldCollection = MockCustomFieldCollection;		
+		
+		var oldMockFieldsFetch = MockCustomFieldCollection.prototype.fetch;
+		
+		MockCustomFieldCollection.prototype.fetch = function(options) {
+			var xhr = {responseText: "Failed call."};
+			
+			options.error(undefined, xhr, options);
+		};		
+		
+		function errorHandler(collection, response, options) {
+			expect(options.testKey).toBe(1234);
+			expect(options.fetchFields).toBe(true);
+			
+			errorCalled++;
+		}
+		
+		spyOn($, "ajax").andCallFake(function(request) {
+			expect(request.url.substring(0, expectedUrl.length)).toBe(expectedUrl);
+			expect(request.type).toBe("GET");
+			expect(request.headers.Authorization).toBe(siteToken);
+
+			request.success(expectedApps);
+		});
+				
+		runs(function() {
+			appCollection.fetch({
+				testKey: 1234,
+				fetchFields: true,
+				error: errorHandler
+			});
+		});
+
+		waitsFor(function() {
+			return errorCalled > 0;
+		}, "Success / Error handler not called.", 50);
+		
+		runs(function() {
+			MockCustomFieldCollection.prototype.fetch = oldMockFieldsFetch;
+			
+			expect(errorCalled).toBe(2);
+		});
 	});
 	
 	/**

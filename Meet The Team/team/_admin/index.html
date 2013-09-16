@@ -46,7 +46,9 @@
         <div class="card-container" data-member-id="<%= member.id %>">
             <div class="member-card">
                 <div class="user-photo">
-                    <img src="<%= member.get('fields').Picture %>?action=thumbnail&width=100&height=100" style="width:120px; height: 100px;" alt="Add Team Member"/>
+                    <a href="edit.html?memberid=<%= member.get('id') %>">
+                        <img src="<%= member.get('fields').Picture %>?action=thumbnail&width=100&height=100" style="width:120px; height: 100px;" alt="Add Team Member"/>
+                    </a>
                 </div>
 
                 <div class="user-name">

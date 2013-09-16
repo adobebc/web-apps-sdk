@@ -126,11 +126,18 @@
      * // fetch all available webapps with custom fields structure in place.
      * var appCollection = new BCAPI.Models.WebApp.AppCollection();
      * 
-     * appCollection.fetch({fetchFields: true,
+     * appCollection.fetch({
+     * 	fetchFields: true,
      *  success: function(webapps) {
      *  	webapps.each(function(webapp) {
      *  		// here you also have access to webapp.fields.
      *  	});
+     *  },
+     *  itemSuccess: function(fieldsIndex, fields) {
+     *  
+     *  },
+     *  itemError: function(fieldsIndex, fields, response) {
+     *  
      *  },
      *  error: function(webapps, response) {
      *  	// this handler might be invoked multiple times if fetchFields option is given and mutiple

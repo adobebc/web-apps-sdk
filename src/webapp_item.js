@@ -168,8 +168,31 @@
      * @class
      * @constructor
      * @memberOf BCAPI.Models.WebApp
+     * 
      * @example
-     * var itemCollection = new BCAPI.Models.WebApp.ItemCollection("Sample webapp"); 
+     * // only system fields loaded for each item (lazy loading).
+     * var itemCollection = new BCAPI.Models.WebApp.ItemCollection("Sample webapp");
+     * itemCollection.fetch({
+     * 	success: function(items) {
+     * 		// handle items (only system fields available in each item).
+     * 	}
+     * });
+     * 
+     * @example
+     * // progressive loading
+     * var itemCollection = new BCAPI.Models.WebApp.ItemCollection("Sample webapp");
+     * itemCollection.fetch({
+     *  fetchDetails: true,
+     * 	success: function(items) {
+     * 		// handle items (only system fields available in each item).
+     * 	},
+     *  itemLoaded: function(itemIndex, item) {
+     *  	// item contains all fields
+     *  	var url = item.get("fields").url;
+     *  
+     *  	// item index tells you the index of the item in the collection.
+     *  }
+     * });
      */
     BCAPI.Models.WebApp.ItemCollection = BCAPI.Models.Collection.extend({
     	constructor: function(webappName, models, options) {

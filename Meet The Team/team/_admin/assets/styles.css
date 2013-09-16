@@ -3,8 +3,9 @@
     width: 122px;
     height: 236px;
     margin:5px;
-    padding:3px;
+    padding:10px;
     border: 1px dotted #999;
+    font-family: Miriad Myriad-Pro Arial;
 }
 
 .card-container:hover .card-actions {
@@ -15,12 +16,26 @@
     height: 100%;
 }
 
-.user-add-photo {
-    margin-top: 10px;
-    text-align: center;
+.user-add-photo img {
+    width: 120px;
+    height: 235px;
 }
-.user-title {
-    margin: 20px 5px 10px 5px;
+
+.user-name {
+    margin: 5px 5px 10px 0px;
+}
+    
+.user-name h3 {
+    line-height: 30px;
+	font-weight: 500;
+	color: #4E4C4C;    
+}
+
+.user-position {
+    color: #aaaaaa;
+    font-style: italic;
+    font-size: 16px;
+    width: 70%;
 }
 
 body {
@@ -102,7 +117,7 @@ input.small-height, .small-height {
     height: 18px;
     text-align: right;
     border: none;
-    margin: 0px -4px;;
+    margin: 10px -11px;
     padding: 4px 7px;
     display:none;
 }

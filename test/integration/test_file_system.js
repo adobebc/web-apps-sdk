@@ -178,6 +178,62 @@ describe('BCAPI.Models.FileSystem', function() {
                 }
             });
         });
+
+        it('should allow renaming a file', function() {
+            var directory = new BcFolder(genDirName());
+            var initialName = genFileName();
+            var newName = genFileName();
+            var f = directory.file(initialName);
+            var data = randomString();
+            var oldNameStilExists = false;
+            var initialNameListed, newNameListed, renamingChangesListing, filePathChanged;
+            var f3;
+            function hasFile(dir, name) {
+                return _.some(dir.get('contents'), function(f) {
+                    return f.get('name') === name;
+                });
+            }
+            promiseScenario({
+                'promise': function() {
+                    return f.upload(data)
+                        .then(function() {
+                            return directory.fetch();
+                        })
+                        .then(function() {
+                            initialNameListed = hasFile(directory, initialName);
+                            f.set('name', newName);
+                            return f.save();
+                        })
+                        .then(function() {
+                            return directory.fetch();
+                        })
+                        .then(function() {
+                            renamingChangesListing = !hasFile(directory, initialName);
+                            newNameListed = hasFile(directory, newName);
+                            return promiseFlag(directory.file(initialName).fetch());
+                        })
+                        .then(function(result) {
+                            if (typeof result !== 'boolean') {
+                                throw new Error('Status does not have the expected type');
+                            }
+                            oldNameStilExists = result;
+                            f3 = directory.file(newName);
+                            filePathChanged = (f.get('path') === f3.get('path'));
+                            return f3.fetch();
+                        })
+                        .then(function() {
+                            return f3.download();
+                        });
+                },
+                'complete': function(retrievedData) {
+                    expect(retrievedData).toBe(data);
+                    expect(initialNameListed).toBe(true);
+                    expect(newNameListed).toBe(true);
+                    expect(renamingChangesListing).toBe(true);
+                    expect(filePathChanged).toBe(true);
+                }
+            });
+        });
     });
 
 
@@ -298,7 +354,11 @@ describe('BCAPI.Models.FileSystem', function() {
             var root = BCAPI.Models.FileSystem.Root;
             expect(function() { root.save(); }).toThrow();
             expect(function() { root.destroy(); }).toThrow();
-            expect(function() { root.fetch(); }).toThrow();
+        });
+
+        it('should support fetch on root directory', function() {
+            var root = BCAPI.Models.FileSystem.Root;
+            expect(function() { root.fetch(); }).not.toThrow();
         });
         
         

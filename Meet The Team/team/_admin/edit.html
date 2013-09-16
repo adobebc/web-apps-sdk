@@ -24,7 +24,7 @@
                 <label class="control-label" for="member-picture">Picture:</label>
                 <div class="controls">
                     <div class="span7 file-upload-area" id="member-picture">
-                        <img id="preview" class="member-upload-preview" src="<%= imagePath %><%= member.get('fields').Picture %>"/>
+                        <img id="preview" class="member-upload-preview" src="<%= member.get('fields').Picture %>"/>
                         <input type="hidden" id="member-picture-name" value="<%= member.get('fields').Picture %>" />
                         <span>drag image here or <a href="#" id="upload-trigger">click to upload</a></span>
                     </div>

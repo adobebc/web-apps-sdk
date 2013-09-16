@@ -16,7 +16,7 @@ function onMemberListFetch(data) {
 
 function onMemberFetch(data) {
     var templateText = $("#member-card").html();
-    var context = {"member": data, imageBase: WEBAPP_PHOTO_FOLDER};
+    var context = {"member": data};
     var itemHtml = _.template(templateText, context);
     $("#team-members").append(itemHtml);
     // initialize clickover component
@@ -85,8 +85,16 @@ function onMemberDetailsFetch(member) {
 
 function renderMemberDetailsForm(memberObject) {
     var templateText = $("#member-edit-form-template").html();
-    var context = {"member": memberObject, imagePath: WEBAPP_PHOTO_FOLDER};
+
+    var context = {"member": memberObject};
     $("#form-container").html(_.template(templateText, context));
+
+    // show unknow image when the photo is missing
+    if (memberObject.get('fields').Picture == null || memberObject.get('fields').Picture.length == 0) {
+        $("#preview").attr("src", "assets/images/unknown.png");
+    }
+
+
 
     // setup file upload hooks for drag'n'drop
     // and client-side preview functionality
@@ -94,6 +102,7 @@ function renderMemberDetailsForm(memberObject) {
     $('#upload-trigger').click(function() {
         $('#member-picture-select').click();
     });
+
 
     // Setup the dnd listeners
     var dropZone = document.getElementById('member-picture');
@@ -123,7 +132,7 @@ function saveMember(memberId) {
         fields: {
             Position: $('#member-position').val(),
             Bio: $('#member-bio').val(),
-            Picture: memberPicture,
+            Picture: WEBAPP_PHOTO_FOLDER + memberPicture,
             Facebook: $('#member-facebook').val(),
             Twitter: $('#member-twitter').val(),
             Linkedin: $('#member-linkedin').val()

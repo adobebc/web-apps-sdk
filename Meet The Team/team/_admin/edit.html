@@ -78,7 +78,7 @@
             <hr/>
             <div class="control-group">
                 <div class="controls">
-                    <input type="submit" class="btn btn-primary" value=" Add "/>
+                    <input type="submit" class="btn btn-primary" value=" <% if(member.id != null) {%> Save <% } else { %> Add <% }%> "/>
                     <a href="index.html" class="btn btn-cancel">Cancel</a>
                 </div>
             </div>

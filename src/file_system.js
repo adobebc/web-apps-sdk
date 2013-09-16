@@ -5,6 +5,8 @@
         return x == '/' ? BCAPI.Models.FileSystem.Root : new BCAPI.Models.FileSystem.Folder(x);
     }
 
+    var FILE_REGEX = /^[^\&\%]+$/;
+
     //common model for files & folders
     var Entity = BCAPI.Models.Model.extend({
         'idAttribute': 'path',
@@ -60,10 +62,10 @@
         },
 
         validate: function(attr) {
-            if (!attr.name || typeof attr.name !== 'string') {
+            if (!attr.name || typeof attr.name !== 'string' || !FILE_REGEX.test(attr.name)) {
                 return 'Invalid name for file: [' + attr.name + ']';
             }
-            if (!attr.path) {
+            if (!attr.path || attr.path === '/') {
                 return 'Invalid path for file: [' + attr.path + ']';
             }
         },
@@ -211,17 +213,6 @@
      * 
      */
      BCAPI.Models.FileSystem.File = Entity.extend({
-
-        /**
-         * Returns the parent folder for this file.
-         * @return {BCAPI.Models.FileSystem.Folder} the parent folder
-         * @memberOf BCAPI.Models.FileSystem.File
-         * @method
-         * @instance
-         */
-        folder: function() {
-            return this.get('parent');
-        },
 
         /**
          * Uploads a new content for the file. This method can be called if the

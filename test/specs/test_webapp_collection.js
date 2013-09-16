@@ -57,7 +57,7 @@ describe("Unit tests for webapp collection.", function() {
 				expect(fields.length, expectedFields.length);
 				
 				var fieldIdx = 0;
-				_.each(fields, function(field) {
+				fields.each(function(field) {
 					expect(field.get("webappName")).toBe(model.get("name"));
 					expect(field.get("id")).toBe(expectedFields[fieldIdx].id);
 					expect(field.get("name")).toBe(expectedFields[fieldIdx].name);

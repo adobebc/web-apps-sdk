@@ -30,9 +30,6 @@
      * var itemCollection = new BCAPI.Models.CountryCollection();
      */
     BCAPI.Models.CountryCollection = BCAPI.Models.Collection.extend({
-        constructor: function(webappName, models, options) {
-            BCAPI.Models.Collection.call(this, models, options);
-        },
         model: BCAPI.Models.Country
     });
 

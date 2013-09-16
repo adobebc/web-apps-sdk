@@ -80,6 +80,22 @@ describe('BCAPI.Models.FileSystem', function() {
             file.trigger('sync');
             expect(file).toHavePaths('/file2', '/', 'file2');
         });
+
+        it('should have the proper content url', function() {
+            var file = new BcFile('/my/file');
+            expect(file.contentUrl()).toBe('/api/v2/admin/sites/current/storage/my/file');
+        });
+
+        it('should validate the data', function() {
+            var invalidNames = ['', 'file&', '%data', 'da%ta'];
+            _.each(invalidNames, function(invalidName) {
+                var file = new BcFile({
+                    'parent': BCAPI.Models.FileSystem.Root,
+                    'name': invalidName
+                });
+                expect(file.isValid()).toBe(false, 'File name should not be valid: ' + invalidName);
+            });
+        });
     });
 
     describe('BCAPI.Models.FileSystem.Folder', function() {
@@ -142,10 +158,17 @@ describe('BCAPI.Models.FileSystem', function() {
             expect(parsed[1] instanceof BcFolder).toBe(true);
         });
 
-        it('should not support save, destroy & fetch for the root directory', function() {
+        it('should not support save, destroy for the root directory', function() {
             var root = BCAPI.Models.FileSystem.Root;
             expect(function() { root.save(); }).toThrow();
             expect(function() { root.destroy(); }).toThrow();
+        });
+
+        it('should properly create a file', function() {
+            var folder = new BcFolder('/my/folder');
+            var file = folder.file('hello');
+            expect(file).toHavePaths('/my/folder/hello', '/my/folder', 'hello');
+            expect(file.get('parent')).toBe(folder);
         });
     });
 });

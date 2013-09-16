@@ -51,7 +51,7 @@
     <div class="description">
         <p>This class allows you to interact with files stored in your BC site.
 Usage examples:</p>
-<h2>Create a new file.</h2>
+<h3>Create a new file.</h3>
 <pre><code class="lang-javascript">var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
 var data = 'Hello World !';
 f.upload(data).done(function() {
@@ -68,22 +68,41 @@ the file's full path.</p>
 <p>If you omit the <code>/</code> at the beginning it will be added automatically.</p>
 <p>So the below is equivalent to the above instantiation:</p>
 <pre><code class="lang-javascript">var f = new BCAPI.Models.FileSystem.File('hello_world.txt');</code></pre>
-<h2>Get the file metadata</h2>
-<p>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+<p>You can also create a file by specifying the name and the parent folder
+of the file. The following piece of code creates the file <code>/my/special/file</code>:</p>
+<pre><code class="lang-javascript">var f = new BCAPI.Models.FileSystem.File({
+    'parent': new BCAPI.Models.FileSystem.Folder('/my/special'),
+    'file': 'file'
+});
+
+f.upload(files[0]);</code></pre>
+<h3>Get the file metadata</h3>
+<pre><code class="lang-javascript">var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
 f.fetch().done(function() {
     console.log('File name is: ', f.get('name'));
     console.log('Last update date is: ', f.get('lastModified'));
-});</p>
-<h2>Download the file content</h2>
-<p>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+});</code></pre>
+<h3>Download the file content</h3>
+<pre><code class="lang-javascript">var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
 f.download().done(function(content) {
     console.log('File content is: ' + content);
-});</p>
-<h2>Delete the file</h2>
-<p>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+});</code></pre>
+<h3>Rename a file</h3>
+<p>Use <code>save</code> to change the name of a file.</p>
+<pre><code class="lang-javascript">var f = new BCAPI.Models.FileSystem.File('/my/file');
+f.set('name', 'new-file');
+f.save().done(function() {
+    console.log('File name has been changed. Path is ' + f.get('path'));
+    //prints: /my/new-file
+});
+
+### Delete the file
+
+```javascript
+var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
 f.destroy().done(function() {
     console.log('File was destroyed');
-});</p>
+});</code></pre>
     </div>
     
 
@@ -253,7 +272,99 @@ f.destroy().done(function() {
         
             
 <dt>
-    <h4 class="name" id="folder"><span class="type-signature"></span>folder<span class="signature">()</span><span class="type-signature"> &rarr; {BCAPI.Models.FileSystem.Folder}</span></h4>
+    <h4 class="name" id="download"><span class="type-signature"></span>download<span class="signature">()</span><span class="type-signature"> &rarr; {promise}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Downloads the content of the file</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        file_system.js, line 276
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>a promise which will be resolved with
+                  the content of the file.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">promise</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="folder"><span class="type-signature"></span>folder<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="BCAPI.Models.FileSystem.Folder.html">BCAPI.Models.FileSystem.Folder</a>}</span></h4>
     
     
 </dt>
@@ -294,7 +405,7 @@ f.destroy().done(function() {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        file_system.js, line 191
+        file_system.js, line 222
     </li></ul></dd>
     
     
@@ -330,7 +441,292 @@ f.destroy().done(function() {
 	</dt>
 	<dd>
 		
-<span class="param-type">BCAPI.Models.FileSystem.Folder</span>
+<span class="param-type"><a href="BCAPI.Models.FileSystem.Folder.html">BCAPI.Models.FileSystem.Folder</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="upload"><span class="type-signature"></span>upload<span class="signature">(data)</span><span class="type-signature"> &rarr; {promise}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Uploads a new content for the file. This method can be called if the
+file isn't yet created - the file will be created afterwards.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>the data object which will be the file's content</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        file_system.js, line 236
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>a promise that will be completed when the file
+                       is uploaded</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">promise</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="uploadAndFetch"><span class="type-signature"></span>uploadAndFetch<span class="signature">(data)</span><span class="type-signature"> &rarr; {promise}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Uploads new content and fetches the metadata for the file which will then
+be used to populate the object. This method can be called even if the
+file isn't created yet.
+Useful if you want to create a file and retrieve it's metadata resulted
+from the new content immediatly.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The data object</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        file_system.js, line 260
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>a promise that will be completed when the file
+                       is uploaded and the new metadata is retrieved.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">promise</span>
 
 
 	</dd>
@@ -357,13 +753,13 @@ f.destroy().done(function() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="BCAPI.Models.Category.html">Category</a></li><li><a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a></li><li><a href="BCAPI.Models.Collection.html">Collection</a></li><li><a href="BCAPI.Models.CountryCollection.html">CountryCollection</a></li><li><a href="BCAPI.Models.FileSystem.File.html">File</a></li><li><a href="BCAPI.Models.ItemCategory.html">ItemCategory</a></li><li><a href="BCAPI.Models.Model.html">Model</a></li><li><a href="BCAPI.Models.WebApp.App.html">App</a></li><li><a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a></li><li><a href="BCAPI.Models.WebApp.Country.html">Country</a></li><li><a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a></li><li><a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a></li><li><a href="BCAPI.Models.WebApp.Item.html">Item</a></li><li><a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a></li></ul><h3>Namespaces</h3><ul><li><a href="BCAPI.html">BCAPI</a></li><li><a href="BCAPI.Config.html">Config</a></li><li><a href="BCAPI.Config.Pagination.html">Pagination</a></li><li><a href="BCAPI.Helper.html">Helper</a></li><li><a href="BCAPI.Helper.Site.html">Site</a></li><li><a href="BCAPI.Models.html">Models</a></li><li><a href="BCAPI.Models.FileSystem.html">FileSystem</a></li><li><a href="BCAPI.Models.WebApp.html">WebApp</a></li></ul><h3>Global</h3><ul><li><a href="global.html#create">create</a></li><li><a href="global.html#download">download</a></li><li><a href="global.html#upload">upload</a></li><li><a href="global.html#uploadAndFetch">uploadAndFetch</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="BCAPI.Models.Category.html">Category</a></li><li><a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a></li><li><a href="BCAPI.Models.Collection.html">Collection</a></li><li><a href="BCAPI.Models.CountryCollection.html">CountryCollection</a></li><li><a href="BCAPI.Models.FileSystem.File.html">File</a></li><li><a href="BCAPI.Models.FileSystem.Folder.html">Folder</a></li><li><a href="BCAPI.Models.ItemCategory.html">ItemCategory</a></li><li><a href="BCAPI.Models.Model.html">Model</a></li><li><a href="BCAPI.Models.WebApp.App.html">App</a></li><li><a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a></li><li><a href="BCAPI.Models.WebApp.Country.html">Country</a></li><li><a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a></li><li><a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a></li><li><a href="BCAPI.Models.WebApp.Item.html">Item</a></li><li><a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a></li></ul><h3>Namespaces</h3><ul><li><a href="BCAPI.html">BCAPI</a></li><li><a href="BCAPI.Config.html">Config</a></li><li><a href="BCAPI.Config.Pagination.html">Pagination</a></li><li><a href="BCAPI.Helper.html">Helper</a></li><li><a href="BCAPI.Helper.Site.html">Site</a></li><li><a href="BCAPI.Models.html">Models</a></li><li><a href="BCAPI.Models.FileSystem.html">FileSystem</a></li><li><a href="BCAPI.Models.WebApp.html">WebApp</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Mon Sep 16 2013 15:25:51 GMT+0300 (EEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Mon Sep 16 2013 15:45:52 GMT+0300 (EEST)
 </footer>
 
 <script> prettyPrint(); </script>

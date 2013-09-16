@@ -167,6 +167,7 @@
     	initialize: function() {
     		this._defaultLimit = BCAPI.Config.Pagination.limit;
     		this._defaultSkip = BCAPI.Config.Pagination.skip;
+    		this._relationFetchPending = 0;
     	},
     	/**
     	 * This method is used to fetch records into the current collection. Depending on the given options
@@ -243,6 +244,115 @@
     	},
     	parse: function(response) {
     		return response.items;
+    	},
+    	/**
+    	 * This helper method allows easily fetching of related resources for each item from this collection.
+    	 *
+    	 * @method
+    	 * @instance
+    	 * @param {String} resourceField The attribute name which holds fetched collection into each model item.
+    	 * @param {function} resourceBuilder A function which can give a resource collection instance.
+    	 * @param {Boolean} eagerFetch A boolean flag used for deciding if the relation must be eagerly fetched.
+		 * @param {Object} options The options received when fetching the original collection.
+    	 * @param {function} options.successHandler Collection success handler we want to execute once every relation is fetched.
+    	 * @memberOf BCAPI.Models.Collection
+    	 * 
+    	 * @example
+    	 * // sample fetch implementation for webapp collection. 
+    	 * fetch: function(options) {
+         *	options = options || {};
+         *
+       	 *	var eagerFetch = options.fetchFields;
+         *	
+         *	function itemsBuilder(webapp) {
+         *		return new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
+         *	}
+         *	
+         *	return this._fetchRelation("fields", itemsBuilder, eagerFetch, options);
+         * }
+    	 */
+    	_fetchRelation: function(resourceField, resourceBuilder, eagerFetch, options) {
+        	options = options || {};
+        	
+        	var dummyHandler = function() {},
+        		oldSuccess = options.success || dummyHandler,
+        		oldError = options.error || dummyHandler,
+        		self = this;
+        	
+        	options.success = function(collection, xhr, options) {
+        		var currFetchedRelations = 0;
+        		
+        		if(collection.length > 0 && eagerFetch) {
+        			self._relationFetchPending++;
+        		}
+        		
+        		collection.each(function(item) {
+        			var relationCollection = resourceBuilder(item),
+        				relationFields = {};
+        			
+        			relationFields[resourceField] = [];
+        			
+        			item.set(relationFields);
+        			
+        			if(!eagerFetch) {
+        				return oldSuccess(collection, xhr, options);
+        			}
+        			
+        			relationCollection.fetch({
+        				success: function(relationItems) {
+        					relationFields = {};
+        					relationFields[resourceField] = relationItems;
+        					
+        					item.set(relationFields);
+        					
+        					if(++currFetchedRelations == collection.length) {
+        						self._markFetchRelationComplete(xhr, options, oldSuccess);
+        					}
+        				},
+        				error: function(relationItems, xhr) {
+        					self._markFetchRelationError(resourceField, xhr, options, oldError);
+        				}
+        			});
+        		});
+        	};
+        	
+        	return BCAPI.Models.Collection.prototype.fetch.call(this, options);
+    	},
+    	/**
+    	 * This method marks a fetch relation request as completed. When all fetch actions are completed
+    	 * success handler is invoked.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @param {Object} xhr XHR object used to fetch the current collection.
+    	 * @param {Object} options XHR options used for collection fetch ajax call. 
+    	 * @param {function} successHandler The success handler which must be executed
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	_markFetchRelationComplete: function(xhr, options, successHandler) {
+    		if(--this._relationFetchPending > 0) {
+    			return;
+    		}
+    		
+    		return successHandler(this, xhr, options);
+    	},
+    	/**
+    	 * This method marks a fetched relation request as an error and invoke registered error handler.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @param {String} resourceField Resource field identifier for the collection fetch request which failed.
+    	 * @param {Object} xhr XHR object used for fetch ajax request.
+    	 * @param {Object} options The options used for ajax request. 
+    	 * @param {function} errorHandler The error handler which must be invoked for the current xhr object.
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	_markFetchRelationError: function(resourceField, xhr, options, errorHandler) {
+    		var errMsg = ["Collection", resourceField, "fetch action failed:", xhr.responseText];
+    		
+    		xhr.responseText = errMsg.join(" ");
+    		
+    		return errorHandler(this, xhr, options);
     	}
     });
 })(jQuery);

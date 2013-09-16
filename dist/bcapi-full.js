@@ -3093,6 +3093,7 @@
     	initialize: function() {
     		this._defaultLimit = BCAPI.Config.Pagination.limit;
     		this._defaultSkip = BCAPI.Config.Pagination.skip;
+    		this._relationFetchPending = 0;
     	},
     	/**
     	 * This method is used to fetch records into the current collection. Depending on the given options
@@ -3169,6 +3170,115 @@
     	},
     	parse: function(response) {
     		return response.items;
+    	},
+    	/**
+    	 * This helper method allows easily fetching of related resources for each item from this collection.
+    	 *
+    	 * @method
+    	 * @instance
+    	 * @param {String} resourceField The attribute name which holds fetched collection into each model item.
+    	 * @param {function} resourceBuilder A function which can give a resource collection instance.
+    	 * @param {Boolean} eagerFetch A boolean flag used for deciding if the relation must be eagerly fetched.
+		 * @param {Object} options The options received when fetching the original collection.
+    	 * @param {function} options.successHandler Collection success handler we want to execute once every relation is fetched.
+    	 * @memberOf BCAPI.Models.Collection
+    	 * 
+    	 * @example
+    	 * // sample fetch implementation for webapp collection. 
+    	 * fetch: function(options) {
+         *	options = options || {};
+         *
+       	 *	var eagerFetch = options.fetchFields;
+         *	
+         *	function itemsBuilder(webapp) {
+         *		return new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
+         *	}
+         *	
+         *	return this._fetchRelation("fields", itemsBuilder, eagerFetch, options);
+         * }
+    	 */
+    	_fetchRelation: function(resourceField, resourceBuilder, eagerFetch, options) {
+        	options = options || {};
+        	
+        	var dummyHandler = function() {},
+        		oldSuccess = options.success || dummyHandler,
+        		oldError = options.error || dummyHandler,
+        		self = this;
+        	
+        	options.success = function(collection, xhr, options) {
+        		var currFetchedRelations = 0;
+        		
+        		if(collection.length > 0 && eagerFetch) {
+        			self._relationFetchPending++;
+        		}
+        		
+        		collection.each(function(item) {
+        			var relationCollection = resourceBuilder(item),
+        				relationFields = {};
+        			
+        			relationFields[resourceField] = [];
+        			
+        			item.set(relationFields);
+        			
+        			if(!eagerFetch) {
+        				return oldSuccess(collection, xhr, options);
+        			}
+        			
+        			relationCollection.fetch({
+        				success: function(relationItems) {
+        					relationFields = {};
+        					relationFields[resourceField] = relationItems;
+        					
+        					item.set(relationFields);
+        					
+        					if(++currFetchedRelations == collection.length) {
+        						self._markFetchRelationComplete(xhr, options, oldSuccess);
+        					}
+        				},
+        				error: function(relationItems, xhr) {
+        					self._markFetchRelationError(resourceField, xhr, options, oldError);
+        				}
+        			});
+        		});
+        	};
+        	
+        	return BCAPI.Models.Collection.prototype.fetch.call(this, options);
+    	},
+    	/**
+    	 * This method marks a fetch relation request as completed. When all fetch actions are completed
+    	 * success handler is invoked.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @param {Object} xhr XHR object used to fetch the current collection.
+    	 * @param {Object} options XHR options used for collection fetch ajax call. 
+    	 * @param {function} successHandler The success handler which must be executed
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	_markFetchRelationComplete: function(xhr, options, successHandler) {
+    		if(--this._relationFetchPending > 0) {
+    			return;
+    		}
+    		
+    		return successHandler(this, xhr, options);
+    	},
+    	/**
+    	 * This method marks a fetched relation request as an error and invoke registered error handler.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @param {String} resourceField Resource field identifier for the collection fetch request which failed.
+    	 * @param {Object} xhr XHR object used for fetch ajax request.
+    	 * @param {Object} options The options used for ajax request. 
+    	 * @param {function} errorHandler The error handler which must be invoked for the current xhr object.
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	_markFetchRelationError: function(resourceField, xhr, options, errorHandler) {
+    		var errMsg = ["Collection", resourceField, "fetch action failed:", xhr.responseText];
+    		
+    		xhr.responseText = errMsg.join(" ");
+    		
+    		return errorHandler(this, xhr, options);
     	}
     });
 })(jQuery);;(function($) {
@@ -3270,7 +3380,7 @@
 })(jQuery);;(function($) {
     'use strict';
 
-    function mkParent(x) {
+    function getParent(x) {
         return x == '/' ? BCAPI.Models.FileSystem.Root : new BCAPI.Models.FileSystem.Folder(x);
     }
 
@@ -3283,12 +3393,12 @@
             if (typeof a1 === 'string') {
                 attributes = a2;
                 options = a3;
-                var path = a1;
+                var path = $.trim(a1);
                 if (path == '/') {
                     throw new Error('Cannot instantiate the "/" folder like this. Use BCAPI.Models.FileSystem.Root instead');
                 } 
                 var o = splitPath(path);
-                initialProps.parent =  mkParent(o.parent);
+                initialProps.parent =  getParent(o.parent);
                 initialProps.name = o.name;
             } else {
                 attributes = a1;
@@ -3298,7 +3408,11 @@
             if (initialProps) {
                 this.set(initialProps);
             }
-            this.set('path', mkFilePath(this.get('parent').get('path'), this.get('name')));
+            this._refreshPath();
+            var model = this;
+            this.on('change:parent sync', function() {
+                model._refreshPath();
+            });
         },
 
         endpoint: function() {
@@ -3309,6 +3423,13 @@
             return this.contentUrl() + '?meta';
         },
 
+        /**
+         * Returns the url where the content can be accessed.
+         * @return {string} The URL of the resource
+         * @memberOf BCAPI.Models.FileSystem.File
+         * @method
+         * @instance
+         */
         contentUrl: function() {
             var p = this.get('path');
             if (p[0] == '/') {
@@ -3331,6 +3452,16 @@
             var dateStr = result.lastModified;
             result.lastModified = new Date(dateStr);
             return result;
+        },
+
+        toJSON: function() {
+            //only name should be persisted. Other attributes are calculated
+            return _.pick(this.attributes, 'name');
+        },
+
+        //recomputes the path attribute. Useful to call when parent or name have changed
+        _refreshPath: function() {
+            this.set('path', mkFilePath(this.get('parent').get('path'), this.get('name')));
         }
     });
 
@@ -3360,6 +3491,9 @@
         };
     }
 
+    /**
+     * @namespace BCAPI.Models.FileSystem
+     */
     BCAPI.Models.FileSystem = {};
 
     /**
@@ -3418,6 +3552,10 @@
      * f.destroy().done(function() {
      *     console.log('File was destroyed');
      * });
+     *
+     * @class
+     * @name File
+     * @memberOf BCAPI.Models.FileSystem
      * 
      */
      BCAPI.Models.FileSystem.File = Entity.extend({
@@ -3425,6 +3563,9 @@
         /**
          * Returns the parent folder for this file.
          * @return {BCAPI.Models.FileSystem.Folder} the parent folder
+         * @memberOf BCAPI.Models.FileSystem.File
+         * @method
+         * @instance
          */
         folder: function() {
             return this.get('parent');
@@ -3476,11 +3617,6 @@
             });
         },
 
-        save: function(attributes, options) {
-            throw new Error('Operation not supported');
-        },
-
-        
 
         initialize: function() {
             this.set('type', 'file');
@@ -3543,10 +3679,6 @@
         },
 
         destroy: function() {
-            throw new Error('Operation not supported');
-        },
-
-        fetch: function() {
             throw new Error('Operation not supported');
         }
 
@@ -3689,6 +3821,10 @@
      *  	webapps.each(function(webapp) {
      *  		// here you also have access to webapp.fields.
      *  	});
+     *  },
+     *  error: function(webapps, response) {
+     *  	// this handler might be invoked multiple times if fetchFields options is given and mutiple
+     *  	// requests are failing. You can find in the error message the relation for which fetching failed.
      *  }
      * });
      * 
@@ -3708,35 +3844,13 @@
         fetch: function(options) {
         	options = options || {};
 
-        	var oldSuccess = options.success || (function() {});
+       		var eagerFetch = options.fetchFields;
         	
-        	options.success = function(collection, xhr, options) {
-        		var currFetchedFields = 0;
-        		
-        		collection.each(function(webapp) {
-        			var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
-        			
-        			webapp.set({"fields": []});
-        			
-        			if(!options.fetchFields) {
-        				return oldSuccess(collection, xhr, options);
-        			}
-        			
-        			fieldsCollection.fetch({
-        				success: function(fields) {
-        					fields.each(function(field) {
-        						webapp.get("fields").push(field);
-        					});
-        					
-        					if(++currFetchedFields == fieldsCollection.length) {
-        						oldSuccess(collection, xhr, options);
-        					}
-        				}
-        			});
-        		});
-        	};
+        	function itemsBuilder(webapp) {
+        		return new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
+        	}
         	
-        	return BCAPI.Models.Collection.prototype.fetch.call(this, options);
+        	return this._fetchRelation("fields", itemsBuilder, eagerFetch, options);
         },
     	/**
     	 * We override this method in order to transform each returned item into a strong typed 

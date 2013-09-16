@@ -123,32 +123,6 @@
      * @constructor
      * @memberOf BCAPI.Models.WebApp
      * @example
-     * // fetch all available webapps with custom fields structure in place.
-     * var appCollection = new BCAPI.Models.WebApp.AppCollection();
-     * 
-     * appCollection.fetch({
-     * 	fetchFields: true,
-     *  success: function(webapps) {
-     *  	webapps.each(function(webapp) {
-     *  		// here you also have access to webapp.fields.
-     *  	});
-     *  },
-     *  itemSuccess: function(webapp, relationId, value) {
-     *  	if(relationId != "fields") {
-     *  		return;
-     *  	}
-     *  
-     *  	// in this case value = all custom fields for the given webapp. 
-     *  },
-     *  itemError: function(webapp, relationId, response) {
-     *  
-     *  },
-     *  error: function(webapps, response) {
-     *  	// this handler might be invoked multiple times if fetchFields option is given and mutiple
-     *  	// requests are failing. You can find in the error message the relation for which fetching failed.
-     *  }
-     * });
-     * 
      * @example
      * // fetch all available webapps without custom fields structure in place.  
      * var appCollection = new BCAPI.Models.WebApp.AppCollection();
@@ -156,23 +130,12 @@
      * appCollection.fetch({fetchFields: false,
      *  success: function(webapps) {
      *  	webapps.each(function(webapp) {
-     *  		// here webapp.fields is an empty array.
+     *  		// no custom fields are retrieved.
      *  	});
      *  }
      */
     BCAPI.Models.WebApp.AppCollection = BCAPI.Models.Collection.extend({
         model: BCAPI.Models.WebApp.App,
-        fetch: function(options) {
-        	options = options || {};
-
-       		var eagerFetch = options.fetchFields;
-        	
-        	function itemsBuilder(webapp) {
-        		return new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
-        	}
-        	
-        	return this._fetchRelation("fields", itemsBuilder, eagerFetch, options);
-        },
     	/**
     	 * We override this method in order to transform each returned item into a strong typed 
     	 * {@link BCAPI.Models.WebApp.App} models.

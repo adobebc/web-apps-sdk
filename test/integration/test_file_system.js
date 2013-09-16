@@ -360,8 +360,37 @@ describe('BCAPI.Models.FileSystem', function() {
             var root = BCAPI.Models.FileSystem.Root;
             expect(function() { root.fetch(); }).not.toThrow();
         });
-        
-        
+
+        it('should allow renaming a folder', function() {
+            var initialName = genDirName();
+            var newName = genDirName();
+            var fileName = genFileName();
+            var folder = new BcFolder(initialName);
+            var file = new BcFile({
+                'parent': folder,
+                'name': fileName
+            });
+            promiseScenario({
+                'promise': function() {
+                    return folder.create()
+                        .then(function() {
+                            return file.upload(randomString());
+                        })
+                        .then(function() {
+                            folder.set('name', newName);
+                            return folder.save();
+                        })
+                        .then(function() {
+                            var newDir = new BcFolder(newName);
+                            return newDir.fetch().then(function() { return newDir; });
+                        });
+                },
+                'complete': function(newDir) {
+                    expect(folder.get('path')).toBe(newDir.get('path'));
+                    expect(_.where(newDir.get('contents'), {'name': fileName})).toBeTruthy();
+                }
+            });
+        });
     });
 
 

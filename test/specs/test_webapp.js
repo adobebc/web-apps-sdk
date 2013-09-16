@@ -21,6 +21,8 @@ describe("BCAPI.Models.WebApp.App", function() {
     it('uses correct urls in fetch, even if id attribute is not set', function() {
         spyOn($ ,"ajax").andCallFake(function(options) {
             expect(options.url).toBe(itemUrl);
+            
+            return $.Deferred();
         });
 
         webApp.fetch();
@@ -29,6 +31,8 @@ describe("BCAPI.Models.WebApp.App", function() {
     it('uses correct urls in destroy, even if id attribute is not set', function() {
         spyOn($ ,"ajax").andCallFake(function(options) {
             expect(options.url).toBe(itemUrl);
+            
+            return $.Deferred();
         });
 
         webApp.destroy();

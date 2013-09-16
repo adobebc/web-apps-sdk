@@ -1,4 +1,4 @@
-var WEBAPP_NAME = "MeetTheTeam";
+var WEBAPP_NAME = "Meet The Team";
 var WEBAPP_PHOTO_FOLDER = "/team/images/"
 /*
  * Event handlers for the list page
@@ -16,6 +16,9 @@ function onMemberListFetch(data) {
 
 function onMemberFetch(data) {
     var templateText = $("#member-card").html();
+    if (data.get('fields').Picture == null || data.get('fields').Picture.length  == 0) {
+        data.get('fields').Picture = "assets/images/unknown.png";
+    }
     var context = {"member": data};
     var itemHtml = _.template(templateText, context);
     $("#team-members").append(itemHtml);
@@ -132,12 +135,14 @@ function saveMember(memberId) {
         fields: {
             Position: $('#member-position').val(),
             Bio: $('#member-bio').val(),
-            Picture: WEBAPP_PHOTO_FOLDER + memberPicture,
             Facebook: $('#member-facebook').val(),
             Twitter: $('#member-twitter').val(),
             Linkedin: $('#member-linkedin').val()
         }
     });
+    if (memberPicture && memberPicture.length > 0) {
+        member.get("fields").Picture = WEBAPP_PHOTO_FOLDER + memberPicture;
+    }
 
     if (userImageFile) {
         var memberImage = new BCAPI.Models.FileSystem.File(WEBAPP_PHOTO_FOLDER, {name: memberPicture});

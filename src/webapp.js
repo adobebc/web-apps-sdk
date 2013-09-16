@@ -123,8 +123,7 @@
      * @constructor
      * @memberOf BCAPI.Models.WebApp
      * @example
-     * @example
-     * // fetch all available webapps without custom fields structure in place.  
+     * // fetch all available webapps  
      * var appCollection = new BCAPI.Models.WebApp.AppCollection();
      * 
      * appCollection.fetch({fetchFields: false,
@@ -133,6 +132,28 @@
      *  		// no custom fields are retrieved.
      *  	});
      *  }
+     *  
+     * @example
+     * // extract and fetch webap details from a fetched collection (by webapp id).
+     * var webappId = 1,
+     *		webapp = appCollection.get(webappId);
+     *
+     * webapp.fetch({
+     * 	success: function(webapp) {
+     * 		// webapp is now fully loaded.
+     *  }
+     * });
+     *
+     * @example
+     * // extract and fetch webapp details from fetched collection (by webapp index)
+     * var idx = 1,
+     * 	    webapp = appCollection.at(idx);
+     * 
+     * webapp.fetch({
+     * 	success: function(webapp) {
+     * 		// webapp is now fully loaded.
+     *  }
+     * });
      */
     BCAPI.Models.WebApp.AppCollection = BCAPI.Models.Collection.extend({
         model: BCAPI.Models.WebApp.App,

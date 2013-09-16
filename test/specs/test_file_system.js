@@ -60,6 +60,26 @@ describe('BCAPI.Models.FileSystem', function() {
         it('should have the "type" property with value "file"', function() {
             expect(new BcFile('/myfile').get('type')).toBe('file');
         });
+
+        it('should change the path after the parent was changed', function() {
+            var parent1 = new BcFolder('folder1');
+            var parent2 = new BcFolder('folder2');
+            var f = new BcFile({
+                'parent': parent1,
+                'name': 'file1'
+            });
+            expect(f).toHavePaths('/folder1/file1', '/folder1', 'file1');
+            f.set('parent', parent2);
+            expect(f).toHavePaths('/folder2/file1', '/folder2', 'file1');
+        });
+
+        it('should change the path after the name was succesfully synced', function() {
+            var file = new BcFile('file1');
+            file.set('name', 'file2');
+            expect(file).toHavePaths('/file1', '/', 'file2');
+            file.trigger('sync');
+            expect(file).toHavePaths('/file2', '/', 'file2');
+        });
     });
 
     describe('BCAPI.Models.FileSystem.Folder', function() {
@@ -126,7 +146,6 @@ describe('BCAPI.Models.FileSystem', function() {
             var root = BCAPI.Models.FileSystem.Root;
             expect(function() { root.save(); }).toThrow();
             expect(function() { root.destroy(); }).toThrow();
-            expect(function() { root.fetch(); }).toThrow();
         });
     });
 });

@@ -150,33 +150,13 @@
         fetch: function(options) {
         	options = options || {};
 
-        	var oldSuccess = options.success || (function() {});
+       		var eagerFetch = options.fetchFields;
         	
-        	options.success = function(collection, xhr, options) {
-        		var currFetchedFields = 0;
-        		
-        		collection.each(function(webapp) {
-        			var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
-        			
-        			webapp.set({"fields": []});
-        			
-        			if(!options.fetchFields) {
-        				return oldSuccess(collection, xhr, options);
-        			}
-        			
-        			fieldsCollection.fetch({
-        				success: function(fields) {
-        					webapp.set({"fields": fields});
-        					
-        					if(++currFetchedFields == fieldsCollection.length) {
-        						oldSuccess(collection, xhr, options);
-        					}
-        				}
-        			});
-        		});
-        	};
+        	function itemsBuilder(webapp) {
+        		return new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
+        	}
         	
-        	return BCAPI.Models.Collection.prototype.fetch.call(this, options);
+        	return this._fetchRelation("fields", itemsBuilder, eagerFetch, options);
         },
     	/**
     	 * We override this method in order to transform each returned item into a strong typed 

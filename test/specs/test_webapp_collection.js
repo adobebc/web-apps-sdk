@@ -126,8 +126,9 @@ describe("Unit tests for webapp collection.", function() {
 			errorCalled++;
 		}
 		
-		function itemErrorHandler(fieldsIndex, fields, response, options) {
-			expect(fields).not.toBe(undefined);
+		function itemErrorHandler(webapp, relationId, response, options) {
+			expect(typeof webapp).toBe(BCAPI.Models.WebApp.App);
+			expect(relationId).toBe("fields");
 			expect(options.testKey).toBe(1234);
 			expect(options.fetchFields).toBe(true);
 			

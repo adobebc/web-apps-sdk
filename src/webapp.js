@@ -133,10 +133,14 @@
      *  		// here you also have access to webapp.fields.
      *  	});
      *  },
-     *  itemSuccess: function(fieldsIndex, fields) {
+     *  itemSuccess: function(webapp, relationId, value) {
+     *  	if(relationId != "fields") {
+     *  		return;
+     *  	}
      *  
+     *  	// in this case value = all custom fields for the given webapp. 
      *  },
-     *  itemError: function(fieldsIndex, fields, response) {
+     *  itemError: function(webapp, relationId, response) {
      *  
      *  },
      *  error: function(webapps, response) {

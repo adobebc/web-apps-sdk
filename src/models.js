@@ -339,10 +339,13 @@
     	/**
     	 * This method marks a fetched relation request as an error and invoke registered error handler.
     	 * 
+    	 * @method
+    	 * @instance
     	 * @param {String} resourceField Resource field identifier for the collection fetch request which failed.
     	 * @param {Object} xhr XHR object used for fetch ajax request.
     	 * @param {Object} options The options used for ajax request. 
     	 * @param {function} errorHandler The error handler which must be invoked for the current xhr object.
+    	 * @memberOf BCAPI.Models.Collection
     	 */
     	_markFetchRelationError: function(resourceField, xhr, options, errorHandler) {
     		var errMsg = ["Collection", resourceField, "fetch action failed:", xhr.responseText];

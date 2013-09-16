@@ -57,9 +57,9 @@
                 <div class="controls">
                     <div class="social-tabs span7 "> <!-- Only required for left/right tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#facebook" data-toggle="tab">Facebook</a></li>
-                            <li><a href="#twitter" data-toggle="tab">Twitter</a></li>
-                            <li><a href="#linkedin" data-toggle="tab">Linkedin</a></li>
+                            <li class="active"><a id="tab-facebook" href="#facebook" <%if (member.get('fields').Facebook){%>class="checked"<% }%> data-toggle="tab">Facebook</a></li>
+                            <li><a id="tab-twitter" href="#twitter" data-toggle="tab" <%if (member.get('fields').Twitter){%>class="checked"<% }%> >Twitter</a></li>
+                            <li><a id="tab-linkedin" href="#linkedin" data-toggle="tab" <%if (member.get('fields').Linkedin){%>class="checked"<% }%> >Linkedin</a></li>
                         </ul>
                         <div class="tab-content member-profile-container">
                             <div class="tab-pane active" id="facebook">

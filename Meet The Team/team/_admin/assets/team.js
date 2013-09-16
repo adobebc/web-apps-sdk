@@ -115,6 +115,20 @@ function renderMemberDetailsForm(memberObject) {
     // Attach form submit event handler
 
     $('#member-edit-form').on('submit',onMemberFormSubmit);
+    
+    $('.tab-pane input[type=text]').change(checkSocialTab)
+}
+
+
+function checkSocialTab(evt) {
+    var inputId = evt.target.id;
+    var socialTabId = inputId.replace("member", "tab");
+    
+    if ($("#" + inputId).val().length > 0) {        
+	    $("#" + socialTabId).addClass("checked");
+    } else {
+	    $("#" + socialTabId).removeClass("checked");        
+    }
 }
 
 function onMemberFormSubmit(evt) {
@@ -140,12 +154,13 @@ function saveMember(memberId) {
             Linkedin: $('#member-linkedin').val()
         }
     });
-    if (memberPicture && memberPicture.length > 0) {
-        member.get("fields").Picture = WEBAPP_PHOTO_FOLDER + memberPicture;
-    }
 
     if (userImageFile) {
         var memberImage = new BCAPI.Models.FileSystem.File(WEBAPP_PHOTO_FOLDER, {name: memberPicture});
+        if (memberPicture && memberPicture.length > 0) {
+            member.get("fields").Picture = WEBAPP_PHOTO_FOLDER + memberPicture;
+        }
+
         memberImage.upload(userImageFile).done(function() {
             member.save({ contentType: 'application/json',
                 success: onMemberSave,
@@ -153,6 +168,10 @@ function saveMember(memberId) {
             });
         });
     } else {
+        if (memberPicture && memberPicture.length > 0) {
+            member.get("fields").Picture = memberPicture;
+        }
+        
         member.save({
             success: onMemberSave,
             error: onAPIError

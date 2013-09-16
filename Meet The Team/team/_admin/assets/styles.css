@@ -161,6 +161,13 @@ a.member-icon-delete:hover {
     /*left: 379px !important;*/
 }
 
+.checked {
+   margin-left: 10px; 
+   background-image: url(images/checkmark.png);
+   background-repeat: no-repeat;
+   background-position: 3px 15px;
+   padding-left: 19px !important;
+}
 
 #member-facebook{
     background-image: url(images/fb-icon-inactive.png);

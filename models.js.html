@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Documentation Source: src/models.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.readable.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top ">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">Documentation</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="BCAPI.html">BCAPI</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Config.html">Config</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Config.Pagination.html">Pagination</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Helper.html">Helper</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Helper.Site.html">Site</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Mocks.html">Mocks</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Mocks.Helper.html">Helper</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Mocks.Models.html">Models</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.html">Models</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.FileSystem.html">FileSystem</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.html">WebApp</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="BCAPI.Mocks.Models.PersonCollection.PersonCollection.html">PersonCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Mocks.Models.PersonModel.html">PersonModel</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.Category.html">Category</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.Collection.html">Collection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.CountryCollection.html">CountryCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.FileSystem.File.html">File</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.FileSystem.Folder.html">Folder</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.ItemCategory.html">ItemCategory</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.Model.html">Model</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.App.html">App</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.Country.html">Country</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.Item.html">Item</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="tutorial-create_image_gallery.html">Create Image Gallery</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: src/models.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript ">(function($) {
+	/**
+     * @namespace Models
+     * @memberOf BCAPI
+     */
+    BCAPI.Models = {};
+    
+    /**
+     * Model provides the base class for every model included in Business Catalyst client side sdk. Each new model inherits
+     * Model.
+     * 
+     * @name Model
+     * @class
+     * @memberOf BCAPI.Models
+     * @example
+     * 
+     * BCAPI.Examples.Person = BCAPI.Models.Model.extend({
+     * 	defaults: {
+     * 		firstName: "John",
+     * 		lastName: "Doe"
+     *	},
+     *	endpoint: function() {
+     *		return "/api/v2/persons";
+     *	}
+     * });
+     */
+    BCAPI.Models.Model = Backbone.Model.extend({
+    	/**
+    	 * This method must be overriden by each concrete class in order to give the correct relative path
+    	 * to API entry point.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @returns {String} the model API entry point.
+    	 * @throws An error if endpoint method is not overriden in concrete models.
+    	 * @memberOf BCAPI.Models.Model 
+    	 */
+    	endpoint: function() {
+    		throw new Error("You must provide an endpoint for your model. E.g: /api/v2/persons");
+    	},
+    	/**
+    	 * This method returns the predefined headers which are automatically appended to ajax calls.
+    	 * For instance, Authorization header must be set to site token for most of the calls. If you
+    	 * need a different behavior in your model, please override this method.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
+    	 * @returns {Object} A list of headers appended to ajax calls.
+    	 */
+    	headers: function() {
+    		return {
+    			"Authorization": BCAPI.Helper.Site.getSiteToken()
+    		};
+    	},
+    	/**
+    	 * This method automatically builds absolute entry point url of the model.
+    	 *
+    	 * @method
+    	 * @instance
+    	 * @returns {string} An absolute entry point API.
+    	 * @memberOf BCAPI.Models.Model
+    	 */
+    	urlRoot: function() {
+    		var url = BCAPI.Helper.Site.getRootUrl(),
+    			endpoint = this.endpoint();
+    		    		
+    		if(endpoint.charAt(0) !== "/") {
+    			endpoint = '/' + endpoint;
+    		} 
+    		
+    		return url + endpoint;
+    	},
+    	/**
+    	 * This method change default Backbone save behaviour in order to simplify save invocation.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
+    	 * @example
+    	 * var model = new PersonModel();
+    	 * model.save({
+    	 * 	success: function(model, response) {
+    	 * 		// handle success logic in here
+    	 * 	}
+    	 * });
+    	 */
+    	save: function(options) {
+    		options = options || {};
+    		options.dataType = "text";
+    		
+    		return Backbone.Model.prototype.save.call(this, this.attributes, options);
+    	},
+    	/**
+    	 * This method deletes a model using the api.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
+    	 * @example
+    	 * var model = new PersonModel({id: 1});
+    	 * model.destroy({
+    	 * 	success: function() {
+    	 * 		// do something when delete is successful.
+    	 * 	}
+    	 * });
+    	 */
+    	destroy: function(options) {
+    		if (!options) {
+                options = {};
+            }
+            options.dataType = "text";
+    		
+    		return Backbone.Model.prototype.destroy.call(this, options);    		
+    	},
+    	/**
+    	 * Sync method is invoked automatically when user tries to create / update a model. It automatically 
+    	 * appends the custom headers returned by {@link BCAPI.Models.Model.headers} method.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Model
+    	 * @param {String} method Http method used to persist the state of the current model. 
+    	 * @param {BCAPI.Models.Model} model The current model to persist.
+    	 * @param {Object} options Additional options which influence how http call will be done.
+    	 * @returns {Promise} jQuery promise which can be used to determine when request is done.
+    	 */
+    	sync: function(method, model, options) {
+    		var customHeaders = this.headers();
+    		
+    		options.headers = options.headers || {};
+    		
+    		for(var headerKey in customHeaders) {
+    			options.headers[headerKey] = customHeaders[headerKey];
+    		}
+
+    		var xhr = Backbone.Model.prototype.sync.call(this, method, model, options);
+    		
+    		return xhr.then(function() { return this; }).promise(xhr);
+    	}
+    });
+    
+    /**
+     * Collection provides the common attributes (pagination, sorting, filtering) for collections powered by Business Catalyst APIs. 
+     * Every child collection has to provide only the underlining model for this collection.
+     * 
+     * @name Collection
+     * @class
+     * @memberOf BCAPI.Models
+     * @example
+     * 
+     * BCAPI.Examples.PersonCollection = BCAPI.Models.Models.Collection.extend({
+     * 	model: BCAPI.Examples.Person
+     * });
+     */
+    BCAPI.Models.Collection = Backbone.Collection.extend({
+    	/**
+    	 * This method initialize the current collection default attributes:
+    	 * 
+    	 * + _defaultLimit
+    	 * + _defaultSkip 
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	initialize: function() {
+    		this._defaultLimit = BCAPI.Config.Pagination.limit;
+    		this._defaultSkip = BCAPI.Config.Pagination.skip;
+    		this._relationFetchPending = 0;
+    	},
+    	/**
+    	 * This method is used to fetch records into the current collection. Depending on the given options
+    	 * records can be filtered, sorted and paginated. For an example of how this collections are meant to be used
+    	 * please read {@link BCAPI.WebApp}
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
+    	 * @param {Object} options Options used to control what records are fetched from server.
+    	 * @param {Integer} options.limit The total number of records we want to fetch from server.
+    	 * @param {Integer} options.skip Start record index.
+    	 * @param {Object} options.where A JSON object containing the conditions for filtering records on server side.
+    	 * @param {String} options.order An attribute name by which we order records. It can be prefixed with - if you want descending order.
+    	 * @returns {Promise} a promise which can be used to determine http request state. 
+    	 */
+    	fetch: function(options) {
+            options = options || {};
+    		options.headers = new this.model().headers();
+    		options.dataType = "json";
+    		
+    		this._limit = options.limit;
+    		this._skip = options.skip;
+    		
+    		if(options.where) {
+    			this._where = JSON.stringify(options.where);
+    		}
+    		
+    		this._order = options.order;
+    		
+    		return Backbone.Collection.prototype.fetch.call(this, options);
+    	},
+    	/**
+    	 * This method returns the root url of this collection. It internally uses the model
+    	 * assigned to this collection for detecting the absolute entry point.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	url: function(model) {
+    		model = model || (new this.model());
+    		
+			var urlWithParams = [model.urlRoot(), "?"];
+			
+			for(var key in this.server_api) {
+				var val = this.server_api[key].apply(this);
+				
+				if(val === undefined) {
+					continue;
+				}
+				
+				urlWithParams.push("&");
+				urlWithParams.push(key);
+				urlWithParams.push("=");
+				urlWithParams.push(val);    				
+			}
+			
+			urlWithParams[2] = "";
+			
+			return urlWithParams.join("");    		
+    	},
+    	/**
+    	 * This property defines the attributes which are used to server api.
+    	 * 
+    	 * @instance
+    	 * @memberOf BCAPI.Models.Collection
+    	 */
+    	server_api: {
+    		"limit": function() { return this._limit || this._defaultLimit; },
+    		"skip": function() { return this._skip || this._defaultSkip; },
+    		"where": function() { return this._where; },
+    		"order": function() { return this._order; }
+    	},
+    	parse: function(response) {
+    		return response.items;
+    	}
+    });
+})(jQuery);</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a>
+		on Tue Sep 17 2013 10:13:59 GMT+0300 (EEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+
+</body>
+</html>

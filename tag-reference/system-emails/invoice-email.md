@@ -4,6 +4,14 @@
 * **Admin Console:** Site Manager > System Emails > Invoice
 * **SFTP & Develop Mode:** /Layouts/OutboundEmails/Invoice.html
 
+**Note:** The Invoice Email can be used in 3 different scenarios:
+
+* Online shop - eCommerce
+* Taking payments using a Web Form
+* Event booking payments.
+
+Some of the below tags work differently for each of the above use case. Refer to the tag description field for details.
+
 ### Tags
 
 Tag | Description
@@ -72,6 +80,4 @@ Tag | Description
 `{tag_shippingtotal}` | 	Total amount for shipping (Shipping cost + Tax Rate)
 `{tag_totaltaxpercentage}` | 	`{tag_totaltaxpercentage,percentage, calculateBeforeShipping,calculateBeforeDiscount}` where the customer can supply the tax percentage as a tag parameter, such as 10 for 10% in Australia or 12.5 for 12.5% in Europe. The system calculates the percentage of the amount and display it. Enter "true" or "false" for calculateBeforeShipping and calculateBeforeDiscount to set when the tax percentage is calculated.
 
-### Important information
 
-The Invoice Email can be used for taking payments on a custom web form, payments on an event booking form and for the eCommerce. Within these use cases certain tags work or do not in these respective use cases.

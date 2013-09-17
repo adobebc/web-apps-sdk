@@ -20,7 +20,7 @@ For setting up bcapi.js project development environment follow the steps below:
     - ./run_specs &lt;browsers absolute path comma separated values&gt; (e.g: ./run_specs /usr/bin/google-chrome,/usr/bin/firefox)
   - Run integration tests (works on Linux and Mac OS)
     - ./run_integration &lt;browsers absolute path comma separated values&gt; (e.g: ./run_integration /usr/bin/google-chrome,/usr/bin/firefox)
-  - Generate a bcapi distributio:
+  - Generate a bcapi distribution:
     - ./node_modules/.bin/grunt concat uglify:bcapi_dist
     - Access dist/bcapi-full.js (non minified version of bcapi)
     - Access dist/bcapi-full.min.js (minified version of bcapi)

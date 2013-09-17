@@ -5,14 +5,15 @@
         "hardwrap": true
     },
     "opts": {
-    	"default"         : {
-			"outputSourceFiles" : true
-		},
+		"recurse": true,
     	"template": "doc-static/docstrap/template",
     	"tutorials": "doc-static/tutorials"
     },
     "templates": {
         "cleverLinks": false,
+        "default": {
+        	"outputSourceFiles": true
+        },
         "monospaceLinks": true,
         "theme": "readable"
     }

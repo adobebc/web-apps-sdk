@@ -4,7 +4,7 @@ Through step by step instructions and working examples, this guide will teach yo
 
 The *Open Admin* method enables Business Catalyst partners to deliver a unique experience for business clients (admin users) by providing a completely customized Admin Console. Through the Open Admin concept, various areas of the Admin Console can be customized. These areas include the main navigation menu on the left, and the ribbon in the upper section of the Admin. Customization capabilities include adding/removing menu items, or updating existing items.
   
-**Note:** If you are passing query parameters in the URL, avoid using the following parameters as these pages are passed through a rendering engine which will parse the parameters:
+**Note:** If you are passing through query parameters in the URL, make sure to avoid using the following parameters. These system parameters will be picked up by the rendering enginge and will cause errors if used.
 
 * id
 * preview

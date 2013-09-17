@@ -17,12 +17,12 @@ Tag | Description
 `{tag_amountpaid}` | Amount already paid on invoice
 `{tag_company}` | Renders the company name
 `{tag_countrycode}` | Two-letter country code; use it to indicate currency on invoice
-`{tag_crmform}` | The data from all CRM forms attached to an order
+`{tag_crmform}` | The data from all CRM forms attached to an order (Works only with eCommerce)
 `{tag_custom1}` | Information stored in imported Custom 1 field
 `{tag_custom2}` |   Information stored in imported Custom 2 field
 `{tag_custom3}` | 	Information stored in imported Custom 3 field
 `{tag_custom4}` | 	Information stored in imported Custom 4 field
-`{tag_customform}`	 | Displays all custom fields collected on the registration step of the check out. (This tag does not accept any parameters)
+`{tag_customform}`	 | Displays all custom fields collected on the registration step of the check out. (This tag does not accept any parameters & only works in eCommerce)
 `{tag_directdebitdate}`	 | The date automatic debit is processed for invoice
 `{tag_directdebitdays}`	 | Number of days before automatic debit is processed for invoice
 `{tag_directdebitinfo}`	 | Direct debit information relating to order. Only shown if order generated via recurring engine rather than by customer or Admin.
@@ -71,3 +71,7 @@ Tag | Description
 `{tag_shippingtaxrate}` | 	Tax rate applied to shipping (%)
 `{tag_shippingtotal}` | 	Total amount for shipping (Shipping cost + Tax Rate)
 `{tag_totaltaxpercentage}` | 	`{tag_totaltaxpercentage,percentage, calculateBeforeShipping,calculateBeforeDiscount}` where the customer can supply the tax percentage as a tag parameter, such as 10 for 10% in Australia or 12.5 for 12.5% in Europe. The system calculates the percentage of the amount and display it. Enter "true" or "false" for calculateBeforeShipping and calculateBeforeDiscount to set when the tax percentage is calculated.
+
+### Important information
+
+The Invoice Email can be used for taking payments on a custom web form, payments on an event booking form and for the eCommerce. Within these use cases certain tags work or do not in these respective use cases.

@@ -1,5 +1,100 @@
 var WEBAPP_NAME = "Meet The Team";
-var WEBAPP_PHOTO_FOLDER = "/team/images/"
+var WEBAPP_PHOTO_FOLDER = "/team/images/";
+var WEBAPP_CUSTOM_FIELDS = [
+    {
+        "name":"Position",
+        "type":"String",
+        "required":true,
+        "order":1
+    },
+    {
+        "name":"Bio",
+        "type":"String_MultiLine",
+        "required":false,
+        "order":2
+    },
+    {
+        "name":"Picture",
+        "type":"String",
+        "required":false,
+        "order":3
+    },
+    {
+        "name":"Facebook",
+        "type":"String_Hyperlink",
+        "required":false,
+        "order":4
+    },
+    {
+        "name":"Twitter",
+        "type":"String_Hyperlink",
+        "required":false,
+        "order":5
+    },
+    {
+        "name":"Linkedin",
+        "type":"String_Hyperlink",
+        "required":false,
+        "order":6
+    }
+];
+
+
+function bootStrap() {
+    var webApp = new BCAPI.Models.WebApp.App({name: WEBAPP_NAME});
+    webApp.fetch({
+        success: loadTeamMembers,
+        error: tryWebAppCreate
+    });
+}
+
+function loadTeamMembers(data) {
+    var members = new BCAPI.Models.WebApp.ItemCollection(WEBAPP_NAME);
+    members.fetch({
+        skip: 0,
+        limit: 1000, //no pagination
+        success: onMemberListFetch,
+        error: onAPIError
+    });
+};
+
+function tryWebAppCreate(data, xhr) {
+    createWebApp(WEBAPP_NAME, WEBAPP_CUSTOM_FIELDS, loadTeamMembers);
+}
+
+
+function createWebApp(name, fields, callback) {
+    var webApp = new BCAPI.Models.WebApp.App({
+        name: WEBAPP_NAME,
+        allowFileUpload: true,
+        uploadFolder: WEBAPP_PHOTO_FOLDER
+    });
+
+    webApp.save({
+        success: function(app) {
+            createCustomFields(app, fields, callback);
+        },
+
+        error: function(data, xhr) {
+            systemNotifications.showError("Could not create webapp");
+        }
+    })
+}
+
+function createCustomFields(webApp, fields, successCallback) {
+    var callAfterAllFieldsCreated = _.after(fields.length, successCallback);
+
+    _.each(fields, function(field) {
+       var customField = new BCAPI.Models.WebApp.CustomField(webApp.get('name'), field);
+        customField.save({
+            success: callAfterAllFieldsCreated,
+            error: function(data, xhr) {
+                systemNotifications.showError("Failed to create custom field " + field.name);
+            }
+        })
+    });
+}
+
 /*
  * Event handlers for the list page
  */

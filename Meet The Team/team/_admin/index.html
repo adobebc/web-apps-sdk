@@ -30,15 +30,10 @@
 
     <script type="text/javascript">
 
+
         $(function(){
+            bootStrap();
             // try to get members from API; loading will be displayed until then
-            var members = new BCAPI.Models.WebApp.ItemCollection(WEBAPP_NAME);
-            members.fetch({
-                skip: 0,
-                limit: 1000, //no pagination
-                success: onMemberListFetch,
-                error: onAPIError
-            });
         });
     </script>
 

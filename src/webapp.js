@@ -65,6 +65,7 @@
      *
      * ## Supported attributes
      *
+     * ```javascript
      * var app = new BCAPI.Models.WebApp.Item({
 	 *	templateId: -1,
      *  uploadFolder: "images",
@@ -81,7 +82,8 @@
      *  disableDetailPages: false,
      *  locationEnabled: false
      * });
-     *
+     * ```
+     * 
      * @class
      */
 	BCAPI.Models.WebApp.App = BCAPI.Models.Model.extend({

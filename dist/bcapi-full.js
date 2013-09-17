@@ -3234,10 +3234,6 @@
     "use strict";
 
     BCAPI.Models.Country = BCAPI.Models.Model.extend({
-        defaults: {
-            countryCode: "",
-            displayName: ""
-        },
         /**
          * This method returns the correct endpoint for the web app countries.
          *
@@ -3246,7 +3242,7 @@
          * @memberOf BCAPI.Models.Country
          */
         endpoint: function() {
-            return "/api/v2/admin/system/countries"
+            return "/api/v2/admin/system/countries";
         }
     });
 
@@ -3920,7 +3916,9 @@
      * @constructor
      * @memberOf BCAPI.Models.WebApp
      * @example
-     * var countries = new BCAPI.Models.WebApp.Country("Sample webapp");
+     * // assign GB and US countries to Sample webapp.
+     * var countries = new BCAPI.Models.WebApp.Country("Sample webapp", {"items": ["GB", "US"]});
+     * countries.save();
      */
     BCAPI.Models.WebApp.Country = BCAPI.Models.Model.extend({
 

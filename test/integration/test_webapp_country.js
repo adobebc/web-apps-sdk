@@ -1,4 +1,4 @@
-describe("Check webapp countries API.", function() {
+describe("Check webapp assign countries.", function() {
 	var webappName = "WebAppCountriesApp",
 		appCreated = undefined;
 	

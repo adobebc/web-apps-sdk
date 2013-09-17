@@ -15,7 +15,8 @@ load:
   - test/integration/helper.js
 
 test:
-  - test/integration/test_*.js
+#  - test/integration/test_*.js
+  - test/integration/test_webapp_item_category.js
 
 plugin:
   - name: "coverage"

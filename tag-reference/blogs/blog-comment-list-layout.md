@@ -8,9 +8,9 @@
 
 Tag | Description
 -------------- | -------------
-`{tag_blogname}` | Name of the blog that has pinged this post
-`{tag_blogpostbody}` | Details of post that has pinged this post
-`{tag_blogpostdate}` | Date of post that has pinged this post
-`{tag_blogposttitle}` | Title of post that has pinged this post
-`{tag_blogposturl}` | URL of the post that has pinged this post
-`{tag_pendingcomments}` | Displays comments that are in pending status.
+`{tag_feedback}` | Customer comment
+`{tag_fullname_nolink}` | Full name of the person who provided the comment without link (anonymous if not available)
+`{tag_fullname}` | Full name of the person who provided the feedback (anonymous if not available)
+`{tag_rating}` | Rating displayed in stars
+`{tag_usagedate}` | Date when comment was given
+`{tag_pendingcomments}` |	Displays comments that are in pending status.

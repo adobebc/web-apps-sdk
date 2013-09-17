@@ -21,12 +21,13 @@ describe("Check country model collection integration.", function() {
     	}, "List of countries not fetched.", 2000);
     	
     	runs(function() {
-			expect(fetchedCollection.length).toBe(250);
-    		
+			expect(fetchedCollection.length).toBe(241);
+    					
     		fetchedCollection.each(function(country) {
-    			foundCountries[country.countryCode] = country;
+    			foundCountries[country.get("countryCode")] = country.get("displayName");
     		});
-    		
+    		    	
+			console.log(foundCountries);    		
     		expect(foundCountries.AU).toBe("Australia");
     		expect(foundCountries.RO).toBe("Romania");
     		expect(foundCountries.US).toBe("United States");

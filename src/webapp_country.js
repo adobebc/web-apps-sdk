@@ -10,7 +10,9 @@
      * @constructor
      * @memberOf BCAPI.Models.WebApp
      * @example
-     * var countries = new BCAPI.Models.WebApp.Country("Sample webapp");
+     * // assign GB and US countries to Sample webapp.
+     * var countries = new BCAPI.Models.WebApp.Country("Sample webapp", {"items": ["GB", "US"]});
+     * countries.save();
      */
     BCAPI.Models.WebApp.Country = BCAPI.Models.Model.extend({
 

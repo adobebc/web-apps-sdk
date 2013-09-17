@@ -9,8 +9,8 @@
 Tag | Description
 -------------- | -------------
 `{tag_addtofavorites,addtoImage,removefromImage}` | Add event to favorites list. Optionally customize to display your own custom image for adding and removing.
-`{tag_body}` | Details of event (editor content)
-`{tag_bookingday}` | ay of event; for example, 12 if event date 12-Dec-2007
+`{tag_body,numberofcharacters}` | Displays the event details (editor content). Optionally limit the number of characters to display, e.g {tag_body,100) to display first 100 characters.
+`{tag_bookingday}` | Day of event; for example, 12 if event date 12-Dec-2007
 `{tag_bookingmonth}` | Month of event; for example, Dec if event date 12-Dec-2007
 `{tag_bookingmonthnumeric}` | Month part of the date of the event as a numeric value; for example, 11-Dec07 renders 12
 `{tag_bookingyear}` | Year of event; for example, 2007 if event date 12-Dec-2007

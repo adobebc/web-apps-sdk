@@ -2,6 +2,13 @@ The below table is a reference used with the Open Admin method. The table outlin
 
 Use these ids to target specific menu items in your menu.json file. For more details, see [Getting started with Open Admin](/content/developer-guides/open-admin/getting-started-with-open-admin.html).
 
+**Note:** If you are passing through query parameters in the URL, make sure to avoid using the following parameters. These system parameters will be picked up by the rendering enginge and will cause errors if used.
+
+* id
+* preview
+
+For example, if your URL has *edit.html?id=some_item_id*, this will try to find a page matching this id or will return a 404 error page.
+
 <table>
   <tr>
     <th align="left" width="191" height="58">Menu Item Names</th>

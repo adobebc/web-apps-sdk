@@ -22,7 +22,7 @@ Tag | Description
 `{tag_commentcount}` |	Number of comments for current post
 `{tag_counter}` |	Incremental count of the item on the page
 `{tag_delete}` |	Allows current customer to delete a web app item they have previously submitted (only available if customer logged in to a secure zone)
-`{tag_description}` |	Description of item (editor content)
+`{tag_description,numberofcharacters}` |	Description of item (editor content). Optionally limit the number of characters to display, e.g {tag_description,100) to display first 100 characters.
 `{tag_edit}` |	Allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone)
 `{tag_expirydate}` |	Expiry date of item
 `{tag_itemurl_nolink}` |	URL to the item being referred, without host

@@ -4,38 +4,32 @@ var WEBAPP_CUSTOM_FIELDS = [
     {
         "name":"Position",
         "type":"String",
-        "required":true,
-        "order":1
+        "required":true
     },
     {
         "name":"Bio",
         "type":"String_MultiLine",
-        "required":false,
-        "order":2
+        "required":false
     },
     {
         "name":"Picture",
         "type":"String",
-        "required":false,
-        "order":3
+        "required":false
     },
     {
         "name":"Facebook",
         "type":"String_Hyperlink",
-        "required":false,
-        "order":4
+        "required":false
     },
     {
         "name":"Twitter",
         "type":"String_Hyperlink",
-        "required":false,
-        "order":5
+        "required":false
     },
     {
         "name":"Linkedin",
         "type":"String_Hyperlink",
-        "required":false,
-        "order":6
+        "required":false
     }
 ];
 
@@ -122,7 +116,7 @@ function onMemberFetch(data) {
 
 };
 
-function onAPIError(args) {
+function onAPIError(data, xhr, options) {
     var errorMessage = "Unknown error";
     if (xhr.responseText) {
         errorMessage = "Server error. Error code: " + JSON.parse(xhr.responseText).code;

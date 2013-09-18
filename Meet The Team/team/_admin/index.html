@@ -33,7 +33,6 @@
 
         $(function(){
             bootStrap();
-            // try to get members from API; loading will be displayed until then
         });
     </script>
 
@@ -42,7 +41,7 @@
             <div class="member-card">
                 <div class="user-photo">
                     <a href="edit.html?memberid=<%= member.get('id') %>">
-                        <img src="<%= member.get('fields').Picture %>?action=thumbnail&width=100&height=100" style="width:120px; height: 100px;" alt="Add Team Member"/>
+                        <img src="<%= member.get('fields').Picture %>?action=thumbnail&width=100&height=100&algorithm=fill_proportional" style="width:120px; height: 100px;" alt="Add Team Member"/>
                     </a>
                 </div>
 

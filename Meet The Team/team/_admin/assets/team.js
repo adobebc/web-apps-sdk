@@ -123,8 +123,12 @@ function onMemberFetch(data) {
 };
 
 function onAPIError(args) {
-    $(".loading").hide();
-    systemNotifications.showError("API Error")
+    var errorMessage = "Unknown error";
+    if (xhr.responseText) {
+        errorMessage = "Server error. Error code: " + JSON.parse(xhr.responseText).code;
+    }
+    systemNotifications.showError("API Error", errorMessage);
+
 };
 
 function deleteTeamMember(memberId) {

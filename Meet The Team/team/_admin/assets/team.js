@@ -122,7 +122,7 @@ function onMemberFetch(data) {
 
 };
 
-function onAPIError(errorMessage) {
+function onAPIError(args) {
     $(".loading").hide();
     systemNotifications.showError("API Error")
 };
@@ -132,7 +132,7 @@ function deleteTeamMember(memberId) {
     member.id = memberId;
     member.destroy({
         success: onMemberDeleted,
-        error: onAPIError()
+        error: onAPIError
     });
 }
 
@@ -209,9 +209,10 @@ function renderMemberDetailsForm(memberObject) {
 
     // Attach form submit event handler
 
-    $('#member-edit-form').on('submit',onMemberFormSubmit);
+    $('#member-form-submit').click(onMemberFormSubmit);
     
-    $('.tab-pane input[type=text]').change(checkSocialTab)
+    $('.tab-pane input[type=text]').change(checkSocialTab);
+    $.validator.messages.required = "This field is required"; 
 }
 
 
@@ -226,11 +227,37 @@ function checkSocialTab(evt) {
     }
 }
 
-function onMemberFormSubmit(evt) {
+function onMemberFormSubmit(evt) {   
     evt.preventDefault();
     evt.stopPropagation();
+    
+    
+    
+    $("#member-edit-form").validate({
+        showErrors: function(errorMap, errorList) {
+            $.each( this.successList , function(index, value) {
+                $(value).popover('hide');
+            });
+			
+            if (errorList.length > 0) {
+	            var value = errorList[0];                
+                var _popover = $(value.element).popover({
+                    trigger: 'manual',
+                    placement: 'top',
+                    content: "This field is required",
+                    template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
+                });
+                
+                _popover.data('popover').options.content = value.message;
+                
+                $(value.element).popover('show');
+            }
+        }
+    });
 
-    saveMember(getMemberIdFromUrl());
+    if ($("#member-edit-form").valid()) {
+        saveMember(getMemberIdFromUrl());
+    }
 }
 
 function saveMember(memberId) {

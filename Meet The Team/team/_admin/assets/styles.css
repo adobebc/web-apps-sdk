@@ -5,7 +5,7 @@
     margin:5px;
     padding:10px;
     border: 1px dotted #999;
-    font-family: Miriad Myriad-Pro Arial;
+    font-family: Myriad, Myriad-Pro, Arial;
 }
 
 .card-container:hover .card-actions {
@@ -147,6 +147,7 @@ span.note-text {
 a.member-icon-delete:hover {
     background-image: url(images/delete-icon-hover.png);
 }
+
 .member-icon-edit {
     background-image: url(images/edit-icon.png);
     background-repeat: no-repeat;
@@ -155,6 +156,11 @@ a.member-icon-delete:hover {
     display: inline-block;
 }
 
+a.member-icon-edit:hover {
+    background-image: url(images/edit-icon-hover.png);
+}
+    
+    
 .popover {
     max-width: 800px;
     width: auto;
@@ -167,6 +173,10 @@ a.member-icon-delete:hover {
    background-repeat: no-repeat;
    background-position: 3px 15px;
    padding-left: 19px !important;
+}
+
+.control-label {
+    font-weight: bold;
 }
 
 #member-facebook{
@@ -191,4 +201,15 @@ a.member-icon-delete:hover {
     background-repeat: no-repeat;
     background-position: 3px 3px;
     padding-left: 20px;
+}
+
+
+#form-container .popover {
+    background-color: #000;
+    color: #FFF;
+}
+
+#form-container .popover.top .arrow:after
+{
+    border-top-color: #000;
 }

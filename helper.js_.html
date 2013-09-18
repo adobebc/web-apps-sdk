@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Documentation Source: test/integration/helper.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.readable.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top ">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">Documentation</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="BCAPI.html">BCAPI</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Config.html">Config</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Config.Pagination.html">Pagination</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Helper.html">Helper</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Helper.Site.html">Site</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Mocks.html">Mocks</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Mocks.Helper.html">Helper</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Mocks.Models.html">Models</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.html">Models</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.FileSystem.html">FileSystem</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.html">WebApp</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="BCAPI.Mocks.Models.PersonCollection.PersonCollection.html">PersonCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Mocks.Models.PersonModel.html">PersonModel</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.Category.html">Category</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.Collection.html">Collection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.CountryCollection.html">CountryCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.FileSystem.File.html">File</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.FileSystem.Folder.html">Folder</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.Model.html">Model</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.App.html">App</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.Country.html">Country</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.Item.html">Item</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.ItemCategory.html">ItemCategory</a>
+						</li>
+						
+						<li>
+							<a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="tutorial-create_image_gallery.html">Create Image Gallery</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: test/integration/helper.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript ">(function($) {
+    "use strict";
+    
+    var config = BCAPI.Config.TestServer;
+
+    function mockGenericToken() {
+        spyOn(BCAPI.Helper.Site, "getGenericToken").andReturn(config.genericToken);
+    }
+    function mockSiteToken() {
+        spyOn(BCAPI.Helper.Site, "getSiteToken").andReturn(config.siteToken);
+    }
+
+    BCAPI.Helper.Test = {
+        runTestServer: function() {
+            if (!BCAPI.Helper.Site.getRootUrl.isSpy) {
+                spyOn(BCAPI.Helper.Site, "getRootUrl").andReturn(config.rootUrl);
+            };
+
+            if (!BCAPI.Helper.Site.getSiteId.isSpy) {
+                spyOn(BCAPI.Helper.Site, 'getSiteId').andReturn(config.siteId);
+            }
+
+            if (!BCAPI.Helper.Site.getGenericToken.isSpy) {
+                if (config.genericToken) {
+                    mockGenericToken();
+                } else {
+                    runs(function() {
+                        $
+                            .ajax({
+                                type: 'POST',
+                                url: BCAPI.Helper.Site.getRootUrl() + '/api/v2/admin/tokens',
+                                contentType: 'application/json',
+                                data: JSON.stringify({
+                                    username: config.username,
+                                    password: config.password
+                                })
+                            })
+                            .done(function(data) {
+                                config.genericToken = data.token;
+                                mockGenericToken();
+                            });
+                    });
+                }
+
+                waitsFor(function() {
+                    return !!config.genericToken;
+                }, 'Get genericToken', config.tokenRequestTimeout);
+            }
+
+            if (!BCAPI.Helper.Site.getSiteToken.isSpy) {
+                if (config.genericToken) {
+                    mockSiteToken();
+                } else {
+                    runs(function() {
+                        $
+                            .ajax({
+                                type: 'POST',
+                                url: BCAPI.Helper.Site.getRootUrl() + '/api/v2/admin/sites/' + BCAPI.Helper.Site.getSiteId() + '/tokens',
+                                contentType: 'application/json',
+                                headers: {
+                                    Authorization: BCAPI.Helper.Site.getGenericToken()
+                                }
+                            })
+                            .done(function(data) {
+                                config.siteToken = data.token;
+                                mockSiteToken();
+                            });
+                    });
+
+                    waitsFor(function() {
+                        return !!config.siteToken;
+                    }, 'Get siteToken', config.tokenRequestTimeout);
+                }
+            }
+        }
+    };
+
+
+    
+    BCAPI.Helper.Test.PromiseUtils = {
+        /**
+         * Utility function to test aynchronous workflows. The function
+         * takes a scenario object which must contain two properties: `promise`
+         * and `complete`. The promise field must be a nullary function which
+         * returns a promise. The complete field must be a function with
+         * a single argument denoting the result of the promise - if the promise
+         * was succesful.
+         * A test written with this utility consists of specifying a promise to
+         * be run (which may be constructed by chaining multiple promises together)
+         * and a `complete` part where all the assertions are made about the
+         * outcome of the promise
+         * 
+         * @param  {object} scenario the scenario object
+         */
+        promiseScenario: function(scenario) {
+            var promiseFun = scenario.promise,
+                promiseCompletion = scenario.complete,
+                message = scenario.message || 'Promise in testing scenario',
+                finished = false,
+                success,
+                result;
+            runs(function() {
+                var p = promiseFun();
+                p.done(function(x) {
+                    result = x;
+                    finished = true;
+                    success = true;
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.log('Promise failed. Error status was: ' + textStatus + '. Error thrown was: ' + errorThrown);
+                    finished = true;
+                    success = false;
+                });
+            });
+            waitsFor(function() { return finished; }, 'Promise timed out for scenario: ' + message, 5000);
+            runs(function() {
+                expect(success).toBeTruthy(scenario.message);
+                if (success) {
+                    promiseCompletion(result);  
+                }
+            });
+        },
+
+        /**
+         * Takes a promise and returns another promise which resolves
+         * to a boolean value - true if the original promise succeded
+         * or false otherwise
+         * @param  {promise} promise a then-able promise
+         * @return {promise}         a promise indicated the success status of the
+         *                           original promise
+         */
+        promiseFlag: function(promise) {
+            return promise.then(function() {
+                return true;
+            }, function() {
+                var p = $.Deferred();
+                p.resolve(false);
+                return p;
+            });
+        }
+    };
+
+})(jQuery);</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a>
+		on Wed Sep 18 2013 15:08:56 GMT+0300 (EEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+
+</body>
+</html>

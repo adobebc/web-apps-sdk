@@ -5,6 +5,9 @@ describe('BCAPI.Models.FileSystem', function() {
 
     var SERVER_TIME_LAG = 180 * 1000;
 
+    var promiseScenario = BCAPI.Helper.Test.PromiseUtils.promiseScenario;
+    var promiseFlag = BCAPI.Helper.Test.PromiseUtils.promiseFlag;
+
     beforeEach(function() {
         BCAPI.Helper.Test.runTestServer();
         this.addMatchers({
@@ -429,33 +432,7 @@ describe('BCAPI.Models.FileSystem', function() {
             return prefix + randomString(12);
         }
 
-        function promiseScenario(scenario) {
-            var promiseFun = scenario.promise,
-                promiseCompletion = scenario.complete,
-                message = scenario.message || 'Promise in testing scenario',
-                finished = false,
-                success,
-                result;
-            runs(function() {
-                var p = promiseFun();
-                p.done(function(x) {
-                    result = x;
-                    finished = true;
-                    success = true;
-                }).fail(function(jqXHR, textStatus, errorThrown) {
-                    console.log('Promise failed. Error status was: ' + textStatus + '. Error thrown was: ' + errorThrown);
-                    finished = true;
-                    success = false;
-                });
-            });
-            waitsFor(function() { return finished; }, message, 5000);
-            runs(function() {
-                expect(success).toBeTruthy('Promise completion should be successful');
-                if (success) {
-                    promiseCompletion(result);  
-                }
-            });
-        }
+        
 
         function genFile(directory) {
             directory = directory || BCAPI.Models.FileSystem.Root;
@@ -467,23 +444,4 @@ describe('BCAPI.Models.FileSystem', function() {
             return genFileName(prefix || 'dir_');
         }
 
-        /**
-         * Takes a promise and returns another promise which resolves
-         * to a boolean value - true if the original promise succeded
-         * or false otherwise
-         * @param  {promise} promise a then-able promise
-         * @return {promise}         a promise indicated the success status of the
-         *                           original promise
-         */
-        function promiseFlag(promise) {
-            return promise.then(function() {
-                return true;
-            }, function() {
-                var p = $.Deferred();
-                p.resolve(false);
-                return p;
-            });
-        }
-
-        
 });

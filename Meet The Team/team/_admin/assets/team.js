@@ -316,8 +316,11 @@ function saveMember(memberId) {
 
 function onMemberSave(member) {
     systemNotifications.showSuccess("Operation successful", "Member details saved successfully");
-    window.location = 'index.html';
+    setTimeout(function() {
+        window.location = 'index.html';
+    }, 1000);
 }
+
 
 /*
  * Utility functions

@@ -37,7 +37,7 @@
 	 * 		"name": "Test app"
 	 * });
      *
-     * var response = app.save({
+     * app.save({
 	 * 		success: function(webAppItem) {
 	 * 			// handle success
 	 * 		},
@@ -53,7 +53,7 @@
      *
      * ```javascript
      * var app = new BCAPI.Models.WebApp.App({name: "Test app"});
-     * item.destroy({
+     * app.destroy({
 	 * 	success: function(webAppItem, response) {
 	 * 		// handle success here.
 	 *  },

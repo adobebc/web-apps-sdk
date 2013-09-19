@@ -66,7 +66,7 @@
      * ## Supported attributes
      *
      * ```javascript
-     * var app = new BCAPI.Models.WebApp.Item({
+     * var app = new BCAPI.Models.WebApp.App({
 	 *	templateId: -1,
      *  uploadFolder: "images",
      *  requiresApproval: true,

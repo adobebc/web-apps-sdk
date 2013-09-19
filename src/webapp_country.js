@@ -26,7 +26,7 @@
          *
          * @method
          * @instance
-         * @memberOf BCAPI.Models.Country
+         * @memberOf BCAPI.Models.WebApp.Country
          */
         endpoint: function() {
             var url = ["/api/v2/admin/sites/current/webapps/"];

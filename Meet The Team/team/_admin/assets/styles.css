@@ -223,3 +223,7 @@ a.member-icon-edit:hover {
 {
     border-top-color: #000;
 }
+
+#member-edit-form input[type='text'], #member-edit-form textarea {
+	background-color: #F7F9FA;	
+}

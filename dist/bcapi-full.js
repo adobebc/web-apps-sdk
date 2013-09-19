@@ -3233,9 +3233,17 @@
 })(jQuery);;(function($) {
     "use strict";
 
+    /**
+     * System countries model.
+     * 
+     * @name Country
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models
+     */
     BCAPI.Models.Country = BCAPI.Models.Model.extend({
         /**
-         * This method returns the correct endpoint for the web app countries.
+         * This method returns the correct endpoint for system countries.
          *
          * @method
          * @instance
@@ -3932,7 +3940,7 @@
          *
          * @method
          * @instance
-         * @memberOf BCAPI.Models.Country
+         * @memberOf BCAPI.Models.WebApp.Country
          */
         endpoint: function() {
             var url = ["/api/v2/admin/sites/current/webapps/"];

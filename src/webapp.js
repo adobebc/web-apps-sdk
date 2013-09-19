@@ -52,7 +52,7 @@
      * ## Remove app
      *
      * ```javascript
-     * var app = new BCAPI.Models.WebApp.Item({name: "Test app"});
+     * var app = new BCAPI.Models.WebApp.App({name: "Test app"});
      * item.destroy({
 	 * 	success: function(webAppItem, response) {
 	 * 		// handle success here.

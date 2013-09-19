@@ -113,8 +113,23 @@ function onMemberFetch(data) {
     $("#team-members").append(itemHtml);
     // initialize clickover component
     $('a[rel="popover"]').clickover( {html: true});
+    $(".card-actions").on("shown", persistActionsCard);
+    $(".card-actions").on("hidden", restoreActionsCard);
 
 };
+
+function restoreActionsCard(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    $("#" + evt.currentTarget.id).attr("class", "card-actions");
+    
+}
+
+function persistActionsCard(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    $("#" + evt.currentTarget.id).attr("class", "card-actions-persistent");
+}
 
 function onAPIError(data, xhr, options) {
     var errorMessage = "Unknown error";

@@ -122,6 +122,16 @@ input.small-height, .small-height {
     display:none;
 }
 
+
+.card-actions-persistent {
+    background-image:url(images/actions-gradient.png);
+    height: 18px;
+    text-align: right;
+    border: none;
+    margin: 10px -11px;
+    padding: 4px 7px;
+}
+
 .delete-confirmation-dialog {
     visibility: hidden;
 }

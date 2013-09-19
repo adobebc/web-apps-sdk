@@ -227,3 +227,9 @@ a.member-icon-edit:hover {
 #member-edit-form input[type='text'], #member-edit-form textarea {
 	background-color: #F7F9FA;	
 }
+
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
+  background-color: #eee;
+  border-style: none;	
+}

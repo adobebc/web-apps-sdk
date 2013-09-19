@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Documentation Class: Item</title>
+	<title>Documentation Class: Country</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -185,14 +185,14 @@
 					
 
 
-	<h1 class="page-title">Class: Item</h1>
+	<h1 class="page-title">Class: Country</h1>
 <section>
 
 <header>
     <h2>
-        <span class="ancestors"><a href="BCAPI.html">BCAPI</a><a href="BCAPI.Models.html">.Models</a><a href="BCAPI.Models.WebApp.html">.WebApp</a>.</span>
+        <span class="ancestors"><a href="BCAPI.html">BCAPI</a><a href="BCAPI.Models.html">.Models</a>.</span>
     
-    Item
+    Country
     </h2>
     
 </header>
@@ -204,7 +204,7 @@
     
         
 <dt>
-    <h4 class="name" id="Item"><span class="type-signature"></span>new Item<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Country"><span class="type-signature"></span>new Country<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -212,84 +212,7 @@
     
     
     <div class="description">
-        <p>This class provides useful operations for interacting with web app items. You can find various examples of how to
-use it.</p>
-<h2>Load items paginated</h2>
-<pre><code class="lang-javascript">var items = new BCAPI.Models.WebApp.ItemCollection(&quot;Test webapp&quot;);
-items.fetch({
-        skip: 10, limit: 100,
-        success: function(webAppItems) {
-            // handle success
-        },
-        error: function(webAppItems, xhr) {
-            // handle errors
-        }
-});
-
-items.each(function(webAppItem) {
-        // display logic
-});</code></pre>
-<h2>Filtering items</h2>
-<pre><code class="lang-javascript">var items = new BCAPI.Models.WebApp.ItemCollection(&quot;Test webapp&quot;);
-items.fetch({     
-        where: {&quot;name&quot;: &quot;&quot;Web app item new&quot;},
-        success: function(webAppItems) {
-            // handle success
-        },
-        error: function(webAppItems, xhr) {
-            // handle errors
-        }
-});</code></pre>
-<h2>Ordering items</h2>
-<pre><code class="lang-javascript">var items = new BCAPI.Models.WebApp.ItemCollection(&quot;Test webapp&quot;);
-items.fetch({
-        order: &quot;-name&quot;,
-        success: function(webAppItems) {
-            // handle success
-        },
-        error: function(webAppItems, xhr) {
-            // handle errors
-        }
-});</code></pre>
-<h2>All in one usage</h2>
-<pre><code class="lang-javascript">var items = new BCAPI.Models.WebApp.ItemCollection(&quot;Test webapp&quot;);
-items.fetch({
-        skip: 10, limit: 100,
-        where: {&quot;name&quot;: &quot;&quot;Web app item new&quot;},
-        order: &quot;-name&quot;,
-        success: function(webAppItems) {
-            webAppItems.each(function(webAppItem) {
-                 // display logic
-            });
-        },
-        error: function(webAppItems, xhr) {
-            // handle errors
-        }
-});</code></pre>
-<h2>Create item</h2>
-<pre><code class="lang-javascript">var item = new BCAPI.Models.WebApp.Item(&quot;Test webapp&quot;, {
-        &quot;name&quot;: &quot;Test item&quot;
-});
-
-var response = item.save({
-        success: function(webAppItem) {
-            // handle success
-        },
-        error: function(webAppItem, xhr) {
-            // handle errors
-        }
-});</code></pre>
-<p>If you want to refresh collections which rely on Item model please refresh those collections.</p>
-<h2>Remove item</h2>
-<pre><code class="lang-javascript">var item = new BCAPI.Models.WebApp.Item(&quot;Test webapp&quot;, {id: 1});
-item.destroy({
-    success: function(webAppItem, response) {
-        // handle success here.
- },
- error: function(webAppItem, xhr, options) {
-        // handle error scenario.
- } 
-});</code></pre>
+        <p>System countries model.</p>
     </div>
     
 
@@ -322,7 +245,7 @@ item.destroy({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="webapp_item.js.html">src/webapp_item.js</a>
+        <a href="country.js.html">src/country.js</a>
     </li></ul></dd>
     
 
@@ -344,35 +267,6 @@ item.destroy({
     
     
     
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">var item = new BCAPI.Models.WebApp.Item({
-	"name": "Item7",
-	"weight": 7,
-	"releaseDate": "2013-01-30",
-	"expiryDate": "9999-01-01",
-	"enabled": true,
-	"slug": "item7",
-	"description": "item7 description",
-	"roleId": null,
-	"submittedBy": -1,
-	"templateId": 123,
-	"address": "item7_address",
-	"city": "item7_city",
-	"state": "item7_state",
-	"zipCode": "000007",
-	"country": "US",
-	"fields": {
-	    "field_string_required": "item7_field1_value",
-	    "field2_string_optional": "item7_field2_value",
-	    "field3_number": 7,
-	    "field4_dateTime": "2012-01-20",
-	    "field5_list": "item1"
-	}
-});</pre>
-
-
     
 </dd>
 
@@ -405,7 +299,7 @@ item.destroy({
     
     
     <div class="description">
-        <p>This method returns the correct endpoint for the web app items.</p>
+        <p>This method returns the correct endpoint for system countries.</p>
     </div>
     
 
@@ -438,7 +332,7 @@ item.destroy({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="webapp_item.js.html">src/webapp_item.js</a>
+        <a href="country.js.html">src/country.js</a>
     </li></ul></dd>
     
 
@@ -484,7 +378,7 @@ item.destroy({
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a>
-		on Thu Sep 19 2013 10:16:01 GMT+0300 (EEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Thu Sep 19 2013 10:16:00 GMT+0300 (EEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

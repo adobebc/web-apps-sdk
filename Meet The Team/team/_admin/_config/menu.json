@@ -9,6 +9,7 @@
     },
 
     "menu-webapp-meet_the_team": {
+		"title": "Meet the Team",
         "visible": false
     }
 }

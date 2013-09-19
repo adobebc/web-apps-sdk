@@ -14,7 +14,7 @@
         "default": {
         	"outputSourceFiles": true
         },
-        "monospaceLinks": true,
-        "theme": "readable"
+        "monospaceLinks": false,
+        "theme": "flatly"
     }
 }

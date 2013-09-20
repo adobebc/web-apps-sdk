@@ -68,4 +68,7 @@
                     
         this._jQuery.currentFrameProxy = proxy;        
     };
+    
+    var corsBoot = new BCAPI.Helper.CORS.CorsBoot($, BCAPI.Helper.Site.getRootUrl);
+    corsBoot.boot();
 })(jQuery);

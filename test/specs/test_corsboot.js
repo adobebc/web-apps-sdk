@@ -35,7 +35,7 @@ describe("Unit tests for frameproxy boot.", function() {
 		_mockNavigatorBrowser(expectedAppName, userAgent);
 	};
 	
-	function _testProxyWorksOnIe(ieVersion) {
+	function _testProxy(results, appName, userAgent, ieVersion) {
 		var cacheEnabled = true,
 			jQuery = {ajaxSetup: function(options) {
 				cacheEnabled = options.cache;
@@ -47,23 +47,38 @@ describe("Unit tests for frameproxy boot.", function() {
 		expect(corsBoot._jQuery).toBe(jQuery);
 		expect(corsBoot._rootUrl).toBe(rootUrl);
 		
-		_mockIEUserAgent(ieVersion);
+		if(ieVersion) {
+			_mockIEUserAgent(ieVersion);
+		} else {
+			_mockNavigatorBrowser(appName, userAgent);
+		}
 		
 		frameproxy.ProxyClient = function(apiUrl) {
 			expect(apiUrl).toBe(expectedUrl);
 		};
 		
 		frameproxy.ProxyClient.prototype.wrapAll = function(enable) {
-			expect(enable).toBe(true);
+			expect(enable).toBe(results.wrapAll);
 			wrapCalled = true;
 		};
 		
 		corsBoot.boot();
 		
-		expect(wrapCalled).toBe(true);
+		expect(wrapCalled).toBe(results.wrapAll);
 		
-		expect(jQuery.currentFrameProxy instanceof frameproxy.ProxyClient).toBe(true);
-		expect(cacheEnabled).toBe(false);
+		if(results.wrapAll) {
+			expect(jQuery.currentFrameProxy instanceof frameproxy.ProxyClient).toBe(true);
+		} else {
+			expect(jQuery.currentFrameProxy).toBe(undefined);			
+		}
+		
+		expect(cacheEnabled).toBe(!results.wrapAll);
+	}
+	
+	function _testProxyWorksOnIe(ieVersion) {
+		var results = {"wrapAll": true};
+		
+		_testProxy(results, undefined, undefined, ieVersion);
 	};
 	
 	it("Check proxy boot works as expected on IE 7.", function() {

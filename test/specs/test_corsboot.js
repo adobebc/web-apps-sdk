@@ -32,7 +32,7 @@ describe("Unit tests for frameproxy boot.", function() {
 	function _mockIEUserAgent(ieVersion) {
 		var userAgent = "Mozilla/4.0 (compatible; MSIE " + ieVersion + "; Windows NT 6.2; Trident/6.0)";
 		
-		_mockNavigatorBrowser(appName, userAgent);
+		_mockNavigatorBrowser(expectedAppName, userAgent);
 	};
 	
 	function _testProxyWorksOnIe(ieVersion) {
@@ -47,7 +47,7 @@ describe("Unit tests for frameproxy boot.", function() {
 		expect(corsBoot._jQuery).toBe(jQuery);
 		expect(corsBoot._rootUrl).toBe(rootUrl);
 		
-		_mockIEUserAgent(7.0);
+		_mockIEUserAgent(ieVersion);
 		
 		frameproxy.ProxyClient = function(apiUrl) {
 			expect(apiUrl).toBe(expectedUrl);

@@ -57,9 +57,11 @@
     BCAPI.Helper.CORS.CorsBoot.prototype.boot = function() {
         var ieVersion = this._getIEVersion();
         
-        if (!(ieVersion > 0 && ieVersion < 10)) {
+        if (!(ieVersion > 0)) {
         	return;
         }
+        
+        alert("IE: " + ieVersion);
         
         this._jQuery.ajaxSetup({ cache: false });
         

@@ -291,7 +291,10 @@ function saveMember(memberId) {
     });
 
     if (userImageFile) {
-        var memberImage = new BCAPI.Models.FileSystem.File(WEBAPP_PHOTO_FOLDER, {name: memberPicture});
+        var memberImage = new BCAPI.Models.FileSystem.File({
+	    parent: new BCAPI.Models.FileSystem.Folder(WEBAPP_PHOTO_FOLDER), 
+	    name: memberPicture
+	});
         if (memberPicture && memberPicture.length > 0) {
             member.get("fields").Picture = WEBAPP_PHOTO_FOLDER + memberPicture;
         }

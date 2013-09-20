@@ -136,10 +136,6 @@
 
     		var xhr = Backbone.Model.prototype.sync.call(this, method, model, options);
     		
-    		if(!xhr) {
-    			return;
-    		}
-    		
     		return xhr.then(function() { return this; }).promise(xhr);
     	}
     });
@@ -171,6 +167,7 @@
     	initialize: function() {
     		this._defaultLimit = BCAPI.Config.Pagination.limit;
     		this._defaultSkip = BCAPI.Config.Pagination.skip;
+    		this._relationFetchPending = 0;
     	},
     	/**
     	 * This method is used to fetch records into the current collection. Depending on the given options

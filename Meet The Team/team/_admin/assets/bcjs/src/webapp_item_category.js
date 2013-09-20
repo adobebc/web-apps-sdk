@@ -1,18 +1,18 @@
 (function($) {
     "use strict";
 
-    /*
+    /**
      * This class provides a way of retrieving and assigning categories to items
-     * As an array of category ids that can be retrieved
-      * via the @BCAPI.Models.CategoryCollection
+     * As an array of category ids that can be retrieved via the {@link BCAPI.Models.CategoryCollection}
+     * 
      * @name ItemCategory
      * @class
      * @constructor
-     * @memberOf BCAPI.Models
+     * @memberOf BCAPI.Models.WebApp
      * @augments BCAPI.Models.Model
      * To get the categories assigned to an item
      * @example
-     * var itemCategories = new BCAPI.Models.ItemCategory(WEBAPP_NAME, ITEM_ID);
+     * var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
      * itemCategories.fetch({
      *                         success: function(data) {
      *                             //data = {items: [1,2,3]}
@@ -27,12 +27,12 @@
      *
      * To assign a set of categories:
      * @example
-     * var itemCategories = new BCAPI.Models.ItemCategory(WEBAPP_NAME, ITEM_ID);
+     * var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
      * itemCategories.set(items, [1,2,3,4]);
      * itemCategories.save({success: onSaveOK, error: onSaveFailed})
      */
 
-    BCAPI.Models.ItemCategory = BCAPI.Models.Model.extend({
+    BCAPI.Models.WebApp.ItemCategory = BCAPI.Models.Model.extend({
         defaults: {
             items: []
         },
@@ -49,7 +49,7 @@
          *
          * @method
          * @instance
-         * @memberOf BCAPI.Models.ItemCategory
+         * @memberOf BCAPI.Models.WebApp.ItemCategory
          */
         endpoint: function() {
             var url = ["/api/v2/admin/sites/current/webapps/"];
@@ -67,7 +67,7 @@
          *
          * @method
          * @instance
-         * @memberOf BCAPI.Models.ItemCategory
+         * @memberOf BCAPI.Models.WebApp.ItemCategory
          */
         toJSON: function(){
             return this.get('items');
@@ -79,7 +79,7 @@
          *
          * @method
          * @instance
-         * @memberOf BCAPI.Models.ItemCategory
+         * @memberOf BCAPI.Models.WebApp.ItemCategory
          */
         save: function(options) {
             options = options || {};

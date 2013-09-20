@@ -2837,6 +2837,497 @@
   };
 
 }).call(this);
+;/*
+Copyright (c) 2011 Benjamin Eidelman <@beneidel>
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+/*
+ 	-- FrameProxy --
+ 	 
+ Requirements:
+ 	- jQuery 1.5+     
+ */
+
+(function ($) {
+
+    var frameproxy = {};
+
+    var count = 0;
+
+    frameproxy.functions = [
+			"jQuery.ajax",
+			"jQuery.get",
+			"jQuery.post",
+			"jQuery.getJSON"
+    ];
+
+    frameproxy.global = window || global;
+
+    frameproxy.ppath = function (root, expr, value) {
+        if (typeof root == 'string') {
+            value = expr;
+            expr = root;
+            root = frameproxy.global;
+            if (!frameproxy.global) {
+                throw 'window not defined, specify frameproxy.global';
+            }
+        }
+        var parts = expr.split('.'), cur = root;
+        if (typeof value == 'undefined') {
+            // get value
+            for (var pi = 0; pi < parts.length - 1; pi++) {
+                if (typeof cur !== 'object') {
+                    cur = null;
+                    break;
+                }
+                cur = cur[parts[pi]];
+            };
+            return cur ? {
+                obj: cur,
+                value: cur[parts[parts.length - 1]],
+                name: parts[parts.length - 1]
+            } : {};
+        }
+        else {
+            // set value
+            for (var pi = 0; pi < parts.length; pi++) {
+                if (typeof cur == 'undefined' || cur === null) {
+                    break;
+                }
+                cur[parts[pi]] = (pi == parts.length - 1 ? value : {});
+                cur = cur[parts[pi]];
+            };
+        }
+    };
+
+    frameproxy.stripFunctions = function (obj) {
+        var res = obj;
+        if (typeof obj == 'object') {
+            if (obj instanceof Array) {
+                res = [];
+                for (var i = obj.length; i >= 0; i--) {
+                    if (typeof obj[i] == 'function') {
+                        res[i] = null;
+                    }
+                    else
+                        if (typeof obj[i] == 'object') {
+                            res[i] = frameproxy.stripFunctions(obj[i]);
+                        }
+                }
+            } else {
+                res = {};
+            }
+            for (var prop in obj) {
+                if (typeof obj[prop] != 'function') {
+                    if (typeof obj[prop] == 'object') {
+                        res[prop] = frameproxy.stripFunctions(obj[prop]);
+                    } else {
+                        res[prop] = obj[prop];
+                    }
+                }
+            }
+        }
+
+        return res;
+    }
+
+    frameproxy.message = {
+        pack: function (msg, options) {
+            return msg; // frameproxy.stripFunctions(msg);
+        },
+        unpack: function (msg, options) {
+            return msg;
+        }
+    }
+
+    /**
+    * Creates a new ProxyClient
+    * @param {String|DOMWindow} target an url to a proxy client page (to open in a hidden iframe), or a DOMWindow to post messages to
+    */
+    frameproxy.ProxyClient = function ProxyClient(target, password) {
+        if (!window.postMessage) {
+            throw 'window.postMessage not supported on this browser';
+        }
+        if (typeof jQuery == 'undefined') {
+            throw 'jQuery is required';
+        }
+        else {
+
+            this.password = password;
+            this.deferreds = {};
+            this.callbacks = {};
+            this.proxyWindow = null;
+
+            if (typeof target == 'object' && typeof target.postMessage == 'function') {
+                // use already loaded window
+                this.proxyWindow = target;
+                (function (proxy) {
+                    jQuery(function () {
+                        //                        console.log('frameproxy client ready');
+                        jQuery(proxy).trigger('ready');
+                    });
+                })(this);
+            }
+            else {
+                // prepare iframe
+                this.iframe = document.createElement('iframe');
+                this.iframe.src = target;
+                this.iframe.style.display = 'none';
+
+                // insert iframe
+                (function (iframe, proxy) {
+                    jQuery(function () {
+                        jQuery(iframe).load(function () {
+                            proxy.proxyWindow = iframe.contentWindow;
+                            //console.log('frameproxy client ready');
+                            jQuery(proxy).trigger('ready');
+                        });
+                        jQuery('body').append(iframe);
+                    });
+                })(this.iframe, this);
+            }
+
+            // listen proxy responses
+            (function (proxy) {
+                //window.addEventListener("message", function (e) {
+                var proxyMessage = function (e) {
+                    if (e.source !== proxy.proxyWindow) {
+                        return;
+                    }
+
+                    var id, deferred;
+                    try {
+                        var data = JSON.parse(e.data); // frameproxy.message.unpack(e.data);
+                        id = data.id;
+                        if (data.id && (deferred = proxy.deferreds[data.id])) {
+                            if (data.error) {
+                                deferred.reject.apply(deferred, data.args);
+                            } else {
+                                if (typeof data.args[0] == 'object') {
+                                    deferred.done(data.args[0]);
+                                }
+                                if (typeof data.result != 'undefined') {
+                                    deferred.resolve.apply(deferred, [data.result]);
+                                }
+                                else {
+                                    deferred.resolve.apply(deferred, data.args);
+                                }
+                            }
+                        }
+                    }
+                    catch (err) {
+                        if (!deferred.isRejected()) {
+                            deferred.reject(err);
+                        }
+                    }
+                    finally {
+                        if (id) {
+                            delete proxy.deferreds[id];
+                            //fake ajaxStop triggered when there are no more messages to get answer back for
+                            if (jQuery.isEmptyObject(proxy.deferreds)) {
+                                $(document).trigger("ajaxStop");
+                            }
+                        }
+                    }
+                };
+
+                if (window.addEventListener) {
+                    window.addEventListener("message", function (e) {
+                        proxyMessage(e);
+                    });
+                } else if (window.attachEvent) {
+                    window.attachEvent("onmessage", function (e) {
+                        proxyMessage(e);
+                    });
+                }
+
+            })(this);
+        }
+    };
+
+    frameproxy.ProxyClient.prototype.remote = function (expr, args) {
+
+        var url = '';
+        if (typeof args[0] == 'string') {
+            url = args[0];
+        } else if (typeof args[0] == 'object' && typeof args[0].url == 'string') {
+            url = args[0].url;
+        }
+        //don't use proxy for calls to this domain
+        if (url && (!url.match(/^https?:/) || url.indexOf(location.protocol + '//' + location.host) == 0)) {
+            var obj = frameproxy.ppath(window, expr + 'NoProxy');
+            return obj.value.apply(obj.obj, args);
+        }
+
+        count++;
+        var id = '_' + count, deferred = this.deferreds[id] = jQuery.Deferred();
+        $.each(args, function (i, arg) {
+            if (typeof arg == 'function') {
+                deferred.done(arg);
+            } else if (typeof arg == 'object' && arg != null) {
+                if (arg.error) {
+                    deferred.fail(arg.error);
+                }
+
+                if (arg.success) {
+                    deferred.done(arg.success);
+                }
+            }
+        });
+        var msg = frameproxy.message.pack({
+            id: id,
+            expr: expr,
+            args: args
+        });
+        if (this.password) {
+            msg.password = this.password;
+        }
+        var self = this;
+        this.ready(function () {
+            self.proxyWindow.postMessage(JSON.stringify(msg), '*');
+        });
+        return deferred.promise();
+
+    };
+
+    frameproxy.ProxyClient.prototype.ready = function (handler) {
+        if (!handler) return null;
+        // if iframe has loaded, just execute the handler
+        if (this.proxyWindow) {
+            handler.apply(this);
+        } else {
+            jQuery(this).bind('ready', handler);
+        }
+        return this;
+    };
+
+    frameproxy.ProxyClient.prototype.wrapAll = function () {
+        // creating a reference to the proxy in jQuery
+        jQuery.currentFrameProxy = this;
+        var args = Array.prototype.slice.apply(arguments);
+        args.push.apply(args, frameproxy.functions);
+        return this.wrap.apply(this, args);
+    };
+
+    frameproxy.ProxyClient.prototype.wrap = function (replace) {
+        var makeRemote = function (proxy, expr) {
+            return function () {
+                return proxy.remote(expr, Array.prototype.slice.apply(arguments));
+            };
+        };
+        var repl = (replace === true);
+        for (var i = 0; i < arguments.length; i++) {
+            var expr = arguments[i];
+            if (typeof expr == 'string') {
+                var rmt = makeRemote(this, expr);
+                // define on this proxy (eg: proxy.jQuery.ajax())
+                frameproxy.ppath(this, expr, rmt);
+                if (repl) {
+                    var e = frameproxy.ppath(expr);
+                    if (e.obj) {
+                        // replace local by remote 
+                        if (typeof e.obj[e.name + 'NoProxy'] == 'undefined') {
+                            e.obj[e.name + 'NoProxy'] = e.obj[e.name];
+                            e.obj[e.name] = rmt;
+                        }
+                    }
+                }
+            }
+        }
+        return this;
+    };
+
+
+    frameproxy.ProxyServer = function ProxyServer(options) {
+
+        if (!window.postMessage) {
+            throw 'window.postMessage not supported on this browser';
+        }
+        if (typeof jQuery == 'undefined') {
+            throw 'jQuery is required';
+        }
+
+        this.options = jQuery.extend(true, {}, frameproxy.ProxyServer.options, options);
+
+    };
+
+    frameproxy.ProxyServer.options = {
+        // a domain string, regex, filter function, or '*' for any
+        domain: '*', //document ? (document.location.protocol + '//' + document.location.host) : 'http://localhost',
+        // a uri string, regex, filter function, or '*' for any
+        uri: '*',
+        // for security, generate a random password, overwrite this when creating a ProxyServer
+        password: null,
+        // expressions/functions allowed (string, regex, or functions)
+        expressions: Array.prototype.slice.apply(frameproxy.functions)
+    };
+
+    frameproxy.ProxyServer.prototype.listen = function () {
+        var stringIsAllowed = function (str, filters) {
+            if (!filters) {
+                return true;
+            }
+            var f = (filters instanceof Array ? filters : [filters]);
+            for (var i = 0; i < f.length; i++) {
+                var filter = f[i];
+                if (filter === '*') {
+                    return true;
+                }
+                if (filter instanceof RegExp) {
+                    if (filter.test(str)) {
+                        return true;
+                    }
+                } else if (typeof filter == 'function') {
+                    if (filter(str)) {
+                        return true;
+                    }
+                } else if (filter === str) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        (function (options) {
+
+            //window.addEventListener("message", function (e) {
+            var proxyMessage = function (e) {
+                var id = -1;
+                try {
+
+                    var data = JSON.parse(e.data); // frameproxy.message.unpack(e.data);
+                    var sourceWindow = e.source;
+                    if (options.password) {
+                        if (e.data.password !== options.password) {
+                            throw 'request rejected: invalid password';
+                        }
+                    }
+                    if (!stringIsAllowed(e.domain, options.domain)) {
+                        throw 'request rejected: invalid domain "' + e.domain + '"';
+                    }
+                    if (!stringIsAllowed(e.uri, options.uri)) {
+                        throw 'request rejected: invalid domain "' + e.domain + '"';
+                    }
+
+                    if (typeof data.id == 'undefined') {
+                        throw 'no id specified';
+                    }
+                    if (!data.expr) {
+                        throw 'no expr specified';
+                    }
+
+                    var valid = false, id = data.id;
+
+                    if (!stringIsAllowed(data.expr, options.expressions)) {
+                        throw 'request rejected: invalid expr "' + data.expr + '"';
+                    }
+
+                    var result;
+
+                    var p = frameproxy.ppath(data.expr);
+                    if (p.obj) {
+                        if (typeof p.value == 'function') {
+                            result = p.value.apply(p.obj, data.args);
+                        } else {
+                            result = p.value;
+                        }
+                    }
+
+                    if (result && typeof result.then == 'function') {
+                        var done = function (id) {
+                            return function () {
+                                // done
+                                var msg = frameproxy.message.pack({
+                                    ok: true,
+                                    id: id,
+                                    args: Array.prototype.slice.apply(arguments)
+                                });
+                                sourceWindow.postMessage(JSON.stringify(msg), "*");
+                            }
+                        } (id);
+                        var fail = function (id) {
+                            return function () {
+                                // fail
+                                var msg = frameproxy.message.pack({
+                                    error: 'deferred failed',
+                                    id: id,
+                                    args: Array.prototype.slice.apply(arguments)
+                                });
+                                sourceWindow.postMessage(JSON.stringify(msg), '*');
+                            }
+                        } (id);
+                        result.then(done, fail);
+                    }
+                    else {
+                        var msg = frameproxy.message.pack({
+                            ok: true,
+                            id: id,
+                            result: typeof result == 'undefined' ? null : result
+                        });
+                        sourceWindow.postMessage(msg, '*');
+                    }
+                }
+                catch (err) {
+                    //console.error('error processing remote call: ' + err);
+                    var msg = frameproxy.message.pack({
+                        id: id,
+                        error: err
+                    });
+                    e.source.postMessage(msg, '*');
+                }
+            };
+
+            if (window.addEventListener) {
+                window.addEventListener("message", function (e) {
+                    proxyMessage(e);
+                });
+            } else if (window.attachEvent) {
+                window.attachEvent("onmessage", function (e) {
+                    proxyMessage(e);
+                });
+            }
+
+        })(this.options);
+
+        //console.log('frameproxy server listening');
+        $(this).trigger('ready');
+
+        return this;
+    };
+
+    frameproxy.ProxyServer.prototype.ready = function (handler) {
+        $(this).bind('ready', handler);
+        return this;
+    }
+
+    if (typeof window !== 'undefined') {
+        window.frameproxy = frameproxy;
+    }
+    else
+        if (typeof exports != 'undefined') {
+            exports.frameproxy = frameproxy;
+        }
+
+})(jQuery);
 ;(function($) {
     'use strict';
 
@@ -2895,6 +3386,79 @@
         return 'current';
     };
 
+})(jQuery);;(function ($) {	
+	/**
+	 * This namespace contains the classes used to make CORS (cross origin resource sharing) work
+	 * on IE9 and less. We need this because Business Catalyst APIs are on a different domain than
+	 * admin console.
+	 * 
+	 * @namespace BCAPI.Helper.CORS
+	 */
+	BCAPI.Helper.CORS = {};
+	
+	/**
+	 * This class boots the frameproxy (iframe) used to fix CORS ajax calls on IE9 and less.
+	 * 
+	 * @name CorsBoot
+	 * @class
+	 * @constructor
+	 * @memberOf BCAPI.Helper.CORS
+	 * 
+	 * @param {JQuery} jQuery JQuery instance which can be used in CORS fix.
+	 * @param {String} rootUrl Of Business Catalyst APIs.
+	 */
+	BCAPI.Helper.CORS.CorsBoot = function(jQuery, rootUrl) {
+		this._jQuery = jQuery;
+		this._rootUrl = rootUrl;
+	};
+	
+	/**
+	 * This method detect the Internet Explorer version based on user agent and app name.
+	 * 
+	 * @name _getIEVersion
+	 * @method
+	 * @instance
+	 * @memberOf BCAPI.Helper.CORS.CorsBoot
+	 * @returns {Number} Internet Explorer version or -1 for any other browser.
+	 */
+	BCAPI.Helper.CORS.CorsBoot.prototype._getIEVersion = function() {
+        var rv = -1;
+        
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+            var ua = navigator.userAgent;
+            var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+            if (re.exec(ua) != null)
+                rv = parseFloat(RegExp.$1);
+        }
+        
+        return rv;
+    };
+    
+    /**
+     * This method enables CORS support for Internet Explorer browsers.
+     * 
+     * @name boot
+     * @method
+     * @instance
+     * @memberOf BCAPI.Helper.CORS.CorsBoot
+     */
+    BCAPI.Helper.CORS.CorsBoot.prototype.boot = function() {
+        var ieVersion = this._getIEVersion();
+        
+        if (ieVersion == -1) {
+        	return;
+        }
+        
+        this._jQuery.ajaxSetup({ cache: false });
+        
+        var proxy = new frameproxy.ProxyClient(this._rootUrl + '/AdminConsoleXT/frameproxy.htm');
+        proxy.wrapAll(true);
+                    
+        this._jQuery.currentFrameProxy = proxy;        
+    };
+    
+    var corsBoot = new BCAPI.Helper.CORS.CorsBoot($, BCAPI.Helper.Site.getRootUrl());
+    corsBoot.boot();
 })(jQuery);;(function($) {
 	/**
 	 * This namespace holds global configuration of the sdk. You can easily change the values from here
@@ -3062,10 +3626,6 @@
 
     		var xhr = Backbone.Model.prototype.sync.call(this, method, model, options);
     		
-    		if(!xhr) {
-    			return;
-    		}
-    		
     		return xhr.then(function() { return this; }).promise(xhr);
     	}
     });
@@ -3097,6 +3657,7 @@
     	initialize: function() {
     		this._defaultLimit = BCAPI.Config.Pagination.limit;
     		this._defaultSkip = BCAPI.Config.Pagination.skip;
+    		this._relationFetchPending = 0;
     	},
     	/**
     	 * This method is used to fetch records into the current collection. Depending on the given options
@@ -3176,6 +3737,562 @@
     	}
     });
 })(jQuery);;(function($) {
+    "use strict";
+
+    /**
+     * This class provides a way of working with individual category items.
+     *
+     * @name Category
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models
+     * @augments BCAPI.Models.Model
+     * @example
+     * var category = new BCAPI.Models.Category({name: 'Test Category'});
+     * To save:
+     * category.save(options)
+     * To get a category by id:
+     * var category = new BCAPI.Models.Category({id: 1});
+     * category.fetch(options)
+     *
+     * Update and delete are not supported
+     */
+    BCAPI.Models.Category = BCAPI.Models.Model.extend({
+        /**
+         * @field name: mandatory, string
+         * @field parentId: optional, defaults to root (-1)
+         * @field publicAccess: optional, default to TRUE
+         */
+
+        /**
+         * This method returns the correct endpoint for the category.
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.Category
+         */
+        endpoint: function() {
+            return '/api/v2/admin/sites/current/categories';
+        }
+    });
+
+    /**
+     * This class provides a collection for working with categories.
+     *
+     * @name CategoryCollection
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models
+     * @augments BCAPI.Models.Collection
+     * @example
+     * var categories = new BCAPI.Models.CategoryCollection();
+     * categories.fetch({
+     *     success: onSuccessHandler,
+     *     error: onErrorHandler
+     * })
+     */
+    BCAPI.Models.CategoryCollection = BCAPI.Models.Collection.extend({
+        model: BCAPI.Models.Category
+    });
+})(jQuery);;(function($) {
+    "use strict";
+
+    /**
+     * System countries model.
+     * 
+     * @name Country
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models
+     */
+    BCAPI.Models.Country = BCAPI.Models.Model.extend({
+        /**
+         * This method returns the correct endpoint for system countries.
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.Country
+         */
+        endpoint: function() {
+            return "/api/v2/admin/system/countries";
+        }
+    });
+
+    /**
+     * This class provides a collection of the countries available in BC. For more information regarding how to interact
+     * with the countries {@link BCAPI.Models.Country}.
+     *
+     * @name CountryCollection
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models
+     * @example
+     * var itemCollection = new BCAPI.Models.CountryCollection();
+     */
+    BCAPI.Models.CountryCollection = BCAPI.Models.Collection.extend({
+        model: BCAPI.Models.Country
+    });
+
+})(jQuery);;(function($) {
+    'use strict';
+
+    function getParent(x) {
+        return x == '/' ? BCAPI.Models.FileSystem.Root : new BCAPI.Models.FileSystem.Folder(x);
+    }
+
+    var FILE_REGEX = /^[^\&\%]+$/;
+
+    //common model for files & folders
+    var Entity = BCAPI.Models.Model.extend({
+        'idAttribute': 'path',
+
+        constructor: function(a1, a2, a3) {
+            var attributes, options, initialProps = {};
+            if (typeof a1 === 'string') {
+                attributes = a2;
+                options = a3;
+                var path = $.trim(a1);
+                if (path == '/') {
+                    throw new Error('Cannot instantiate the "/" folder like this. Use BCAPI.Models.FileSystem.Root instead');
+                } 
+                var o = splitPath(path);
+                initialProps.parent =  getParent(o.parent);
+                initialProps.name = o.name;
+            } else {
+                attributes = a1;
+                options = a2;
+            }
+            BCAPI.Models.Model.call(this, attributes, options);
+            if (initialProps) {
+                this.set(initialProps);
+            }
+            this._refreshPath();
+            var model = this;
+            this.on('change:parent sync', function() {
+                model._refreshPath();
+            });
+        },
+
+        endpoint: function() {
+            return '/api/v2/admin/sites/current/storage';
+        },
+        
+        url: function() {
+            return this.contentUrl() + '?meta';
+        },
+
+        /**
+         * Returns the url where the content can be accessed.
+         * @return {string} The URL of the resource
+         * @memberOf BCAPI.Models.FileSystem.File
+         * @method
+         * @instance
+         */
+        contentUrl: function() {
+            var p = this.get('path');
+            if (p[0] == '/') {
+                p.substring(1);
+            }
+            return this.urlRoot() + p;
+        },
+
+        validate: function(attr) {
+            if (!attr.name || typeof attr.name !== 'string' || !FILE_REGEX.test(attr.name)) {
+                return 'Invalid name for file: [' + attr.name + ']';
+            }
+            if (!attr.path || attr.path === '/') {
+                return 'Invalid path for file: [' + attr.path + ']';
+            }
+        },
+
+        parse: function(result) {
+            //converting to a date object instead of the date string
+            var dateStr = result.lastModified;
+            result.lastModified = new Date(dateStr);
+            return result;
+        },
+
+        toJSON: function() {
+            //only name should be persisted. Other attributes are calculated
+            return _.pick(this.attributes, 'name');
+        },
+
+        //recomputes the path attribute. Useful to call when parent or name have changed
+        _refreshPath: function() {
+            this.set('path', mkFilePath(this.get('parent').get('path'), this.get('name')));
+        }
+    });
+
+    function mkFilePath(dirPath, name) {
+        if (dirPath[dirPath.length - 1] == '/') {
+            return dirPath + name;
+        } else {
+            return dirPath + '/' + name;
+        }
+    }
+
+    function splitPath(path) {
+        var parent, name,
+            index = path.lastIndexOf('/');
+        if (index < 0) {
+            name = path;
+        } else {
+            parent = path.substring(0, index);
+            name = path.substring(index + 1);
+        }
+        if (!parent) {
+            parent = '/';
+        }
+        return {
+            'parent': parent,
+            'name': name
+        };
+    }
+
+    /**
+     * @namespace BCAPI.Models.FileSystem
+     */
+    BCAPI.Models.FileSystem = {};
+
+    /**
+     * This class allows you to interact with files stored in your BC site.
+     * Usage examples:
+     *
+     * ### Create a new file.
+     * 
+     * ```javascript
+     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+     * var data = 'Hello World !';
+     * f.upload(data).done(function() {
+     *     console.log('File uploaded succesfully');
+     * });
+     * ```
+     *
+     * A file is created in your site's file system only after uploading some
+     * content.
+     *
+     * The content can be any javascript object, including file objects obtained
+     * from html upload forms.
+     *
+     * BCAPI.Models.FileSystem.Root is the root folder in your site's
+     * file structure. You can also create a file object by specifying
+     * the file's full path.
+     *
+     * ```javascript
+     * var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
+     * ```
+     *
+     * If you omit the `/` at the beginning it will be added automatically.
+     *
+     * So the below is equivalent to the above instantiation:
+     * 
+     * ```javascript
+     * var f = new BCAPI.Models.FileSystem.File('hello_world.txt');
+     * ```
+     *
+     * You can also create a file by specifying the name and the parent folder
+     * of the file. The following piece of code creates the file `/my/special/file`:
+     * 
+     * ```javascript
+     * var f = new BCAPI.Models.FileSystem.File({
+     *     'parent': new BCAPI.Models.FileSystem.Folder('/my/special'),
+     *     'file': 'file'
+     * });
+     *
+     * f.upload(files[0]);
+     * ```
+     * 
+     * ### Get the file metadata
+     *
+     * ```javascript
+     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+     * f.fetch().done(function() {
+     *     console.log('File name is: ', f.get('name'));
+     *     console.log('Last update date is: ', f.get('lastModified'));
+     * });
+     * ```
+     *
+     * ### Download the file content
+     *
+     * ```javascript
+     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+     * f.download().done(function(content) {
+     *     console.log('File content is: ' + content);
+     * });
+     * ```
+     *
+     * ### Rename a file
+     *
+     * Use `save` to change the name of a file.
+     *
+     * ```javascript
+     * var f = new BCAPI.Models.FileSystem.File('/my/file');
+     * f.set('name', 'new-file');
+     * f.save().done(function() {
+     *     console.log('File name has been changed. Path is ' + f.get('path'));
+     *     //prints: /my/new-file
+     * });
+     *
+     * ### Delete the file
+     *
+     * ```javascript
+     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+     * f.destroy().done(function() {
+     *     console.log('File was destroyed');
+     * });
+     * ```
+     *
+     * @class
+     * @name File
+     * @memberOf BCAPI.Models.FileSystem
+     * 
+     */
+     BCAPI.Models.FileSystem.File = Entity.extend({
+
+        /**
+         * Uploads a new content for the file. This method can be called if the
+         * file isn't yet created - the file will be created afterwards.
+         * @param  {any} data the data object which will be the file's content
+         * @return {promise}      a promise that will be completed when the file
+         *                        is uploaded
+         * @memberOf BCAPI.Models.FileSystem.File
+         * @method
+         * @instance
+         */
+        upload: function(data) {
+            return $.ajax(this.contentUrl(), {
+                'contentType': 'application/octet-stream',
+                'type': 'PUT',
+                'data': data,
+                'processData': false,
+                'headers': this.headers()
+            });
+        },
+
+        /**
+         * Uploads new content and fetches the metadata for the file which will then
+         * be used to populate the object. This method can be called even if the
+         * file isn't created yet.
+         * Useful if you want to create a file and retrieve it's metadata resulted
+         * from the new content immediatly.
+         * @param  {any} data The data object
+         * @return {promise}      a promise that will be completed when the file
+         *                        is uploaded and the new metadata is retrieved.
+         *
+         * @memberOf BCAPI.Models.FileSystem.File
+         * @method
+         * @instance
+         */
+        uploadAndFetch: function(data) {
+            var self = this;
+            return this.upload(data).then(function() {
+                return self.fetch();
+            });
+        },
+
+        /**
+         * Downloads the content of the file
+         * @return {promise} a promise which will be resolved with
+         *                   the content of the file.
+         * 
+         * @memberOf BCAPI.Models.FileSystem.File
+         * @method
+         * @instance
+         */
+         download: function() {
+            return $.ajax(this.contentUrl(), {
+                'type': 'GET',
+                'headers': this.headers()
+            });
+        },
+
+
+        initialize: function() {
+            this.set('type', 'file');
+        }
+    });
+
+    /**
+     * This class allows you to interact with the folders in the file system of your site.
+     *
+     * ### Creating a folder
+     * 
+     * A folder object can be instantiated in two ways.
+     * 
+     * You can specify the path of the folder:
+     *
+     * ```javascript
+     * var folder = new BCAPI.Models.FileSystem.Folder('/folder/path');
+     * ```
+     *
+     * You can also specify the name of the folder, and the parent directory:
+     * 
+     * ```javascript
+     * var folder = new BCAPI.Models.FileSystem.Folder({
+     *     'parent': BCAPI.Models.FileSystem.Root,
+     *     'name': 'my-folder'
+     * });
+     * ```
+     *
+     * The root directory `/` cannot be created like this. You can only get it
+     * with:
+     *
+     * ```javascript
+     * var root = BCAPI.Models.FileSystem.Root;
+     * console.log(root.get('path')); //prints '/'
+     * ```
+     *
+     * It should be noted that just creating an instance of the folder class doesn't
+     * actually create the folder on the server. If the folder doesn't exist yet,
+     * a call to create is required:
+     *
+     * ```javascript
+     * var folder = new BCAPI.Models.FileSystem.Folder('my-folder');
+     * folder.create().done(function() {
+     *     console.log('The folder has been created !');
+     * });
+     * ```
+     *
+     * ### Get the folder's metadata
+     *
+     * You use fetch to obtain the folder's details, including the files & folders that
+     * the folder contains:
+     *
+     * ```javascript
+     * var folder = new BCAPI.Models.FileSystem.Folder('/my/existing/folder');
+     * folder.fetch().done(function() {
+     *     console.log('Folder last update date is: ' + folder.get('lastModified'));
+     *     console.log('Printing the folder contents: ');
+     *     var contents = folder.get('contents');
+     *     for (var i = 0; i < contents.length; i++) {
+     *         var entity = contents[i];
+     *         var isFile = entity instanceof BCAPI.Models.FileSystem.File;
+     *         // also works: var isFile = entity.get('type') === 'file';
+     *         if (isFile) {
+     *             console.log('File ' + file.get('name') + ' updated at ' + file.get('lastModified'));
+     *         } else {
+     *             console.log('Folder ' + folder.get('name'));
+     *         }
+     *     }
+     * });
+     * ```
+     *
+     * ### Rename the folder
+     *
+     * Use `save` to rename a folder:
+     * 
+     * ```javascript
+     * var folder = new BCAPI.Models.FileSystem.Folder('/my/folder');
+     * folder.set('name', 'new-folder');
+     * folder.save().done(function() {
+     *     console.log('The folder has been renamed');
+     *     console.log('Path is now ' + folder.get('path'));
+     *     //prints: /my/new-folder
+     * });
+     * ```
+     *
+     * ### Delete the folder
+     *
+     * ```javascript
+     * var folder = new BCAPI.Models.FileSystem.Folder('/my-folder');
+     * folder.destroy().done(function() {
+     *     console.log('Folder was deleted');
+     * });
+     * ```
+     * 
+     * @class
+     * @name Folder
+     * @memberOf BCAPI.Models.FileSystem
+     * 
+     */
+    BCAPI.Models.FileSystem.Folder = Entity.extend({
+
+        /**
+         * Creates a file object with the specified name and that has as parent
+         * this folder.
+         * @param  {string} name       The name of the file
+         * @param  {object} attributes Properties of the file
+         * @param  {object} options    Options for the file
+         * @return {BCAPI.Models.FileSystem.File} A file that is a child of this folder
+         *
+         * @memberOf BCAPI.Models.FileSystem.Folder
+         * @method
+         * @instance
+         */
+        file: function(name, attributes, options) {
+            var fullAttributes = _.extend({'parent': this, 'name': name}, attributes);
+            return new BCAPI.Models.FileSystem.File(fullAttributes, options);
+        },
+
+        initialize: function() {
+            this.set('type', 'folder');
+        },
+
+        /**
+         * Creates the specified folder on the server.
+         * @return {promise} A promised that will be resolved when the folder is created
+         * 
+         * @memberOf BCAPI.Models.FileSystem.Folder
+         * @method
+         * @instance
+         */
+        create: function() {
+            return $.ajax(this.contentUrl() + '?type=folder', {
+                'type': 'PUT',
+                'processData': false,
+                'headers': this.headers()
+            });
+        },
+
+        parse: function(result) {
+            var items = Entity.prototype.parse.call(this, result);
+            var parent = this;
+            var models = _.map(items.contents, function(obj) {
+                obj.parent = parent;
+                if (obj.type === 'file') {
+                    return new BCAPI.Models.FileSystem.File(obj);
+                } else if (obj.type === 'folder') {
+                    return new BCAPI.Models.FileSystem.Folder(obj);
+                }
+            });
+            items.contents = models;
+            return items;
+        }
+    });
+
+    var Root = BCAPI.Models.FileSystem.Folder.extend({
+        constructor: function() {
+            BCAPI.Models.Model.call(this);
+            this.set({
+                'path': '/',
+                'name': '',
+                parent: null
+            });
+        },
+
+        validate: function() { },
+
+        save: function() {
+            throw new Error('Operation not supported');
+        },
+
+        destroy: function() {
+            throw new Error('Operation not supported');
+        }
+
+    });
+
+    /**
+     * The root of the file system
+     * @type {BCAPI.Models.FileSystem.Folder}
+     * @memberOf BCAPI.Models.FileSystem
+     * @static
+     */
+    BCAPI.Models.FileSystem.Root = new Root();
+
+})(jQuery);
+
+;(function($) {
 	"use strict";
 
 	/**
@@ -3214,7 +4331,7 @@
 	 * 		"name": "Test app"
 	 * });
      *
-     * var response = app.save({
+     * app.save({
 	 * 		success: function(webAppItem) {
 	 * 			// handle success
 	 * 		},
@@ -3229,8 +4346,8 @@
      * ## Remove app
      *
      * ```javascript
-     * var app = new BCAPI.Models.WebApp.Item({name: "Test app"});
-     * item.destroy({
+     * var app = new BCAPI.Models.WebApp.App({name: "Test app"});
+     * app.destroy({
 	 * 	success: function(webAppItem, response) {
 	 * 		// handle success here.
 	 *  },
@@ -3242,7 +4359,8 @@
      *
      * ## Supported attributes
      *
-     * var app = new BCAPI.Models.WebApp.Item({
+     * ```javascript
+     * var app = new BCAPI.Models.WebApp.App({
 	 *	templateId: -1,
      *  uploadFolder: "images",
      *  requiresApproval: true,
@@ -3258,7 +4376,8 @@
      *  disableDetailPages: false,
      *  locationEnabled: false
      * });
-     *
+     * ```
+     * 
      * @class
      */
 	BCAPI.Models.WebApp.App = BCAPI.Models.Model.extend({
@@ -3300,63 +4419,40 @@
      * @constructor
      * @memberOf BCAPI.Models.WebApp
      * @example
-     * // fetch all available webapps with custom fields structure in place.
-     * var appCollection = new BCAPI.Models.WebApp.AppCollection();
-     * 
-     * appCollection.fetch({fetchFields: true,
-     *  success: function(webapps) {
-     *  	webapps.each(function(webapp) {
-     *  		// here you also have access to webapp.fields.
-     *  	});
-     *  }
-     * });
-     * 
-     * @example
-     * // fetch all available webapps without custom fields structure in place.  
+     * // fetch all available webapps  
      * var appCollection = new BCAPI.Models.WebApp.AppCollection();
      * 
      * appCollection.fetch({fetchFields: false,
      *  success: function(webapps) {
      *  	webapps.each(function(webapp) {
-     *  		// here webapp.fields is an empty array.
+     *  		// no custom fields are retrieved.
      *  	});
      *  }
+     *  
+     * @example
+     * // extract and fetch webap details from a fetched collection (by webapp id).
+     * var webappId = 1,
+     *		webapp = appCollection.get(webappId);
+     *
+     * webapp.fetch({
+     * 	success: function(webapp) {
+     * 		// webapp is now fully loaded.
+     *  }
+     * });
+     *
+     * @example
+     * // extract and fetch webapp details from fetched collection (by webapp index)
+     * var idx = 1,
+     * 	    webapp = appCollection.at(idx);
+     * 
+     * webapp.fetch({
+     * 	success: function(webapp) {
+     * 		// webapp is now fully loaded.
+     *  }
+     * });
      */
     BCAPI.Models.WebApp.AppCollection = BCAPI.Models.Collection.extend({
         model: BCAPI.Models.WebApp.App,
-        fetch: function(options) {
-        	options = options || {};
-
-        	var oldSuccess = options.success;
-        	
-        	options.success = function(collection, xhr, options) {
-        		var currFetchedFields = 0;
-        		
-        		collection.each(function(webapp) {
-        			var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
-        			
-        			webapp.set({"fields": []});
-        			
-        			if(!options.fetchFields) {
-        				return oldSuccess(collection, xhr, options);
-        			}
-        			
-        			fieldsCollection.fetch({
-        				success: function(fields) {
-        					fields.each(function(field) {
-        						webapp.get("fields").push(field);
-        					});
-        					
-        					if(++currFetchedFields == fieldsCollection.length) {
-        						oldSuccess(collection, xhr, options);
-        					}
-        				}
-        			});
-        		});
-        	};
-        	
-        	return BCAPI.Models.Collection.prototype.fetch.call(this, options);
-        },
     	/**
     	 * We override this method in order to transform each returned item into a strong typed 
     	 * {@link BCAPI.Models.WebApp.App} models.
@@ -3380,6 +4476,172 @@
         	return webapps;
         }
     });
+})(jQuery);;(function($) {
+    "use strict";
+
+    /**
+     * This class provides an array of countries available for a certain webapp. In order to use this collection you must provide
+     * a webapp name. For more information regarding how to interact with the countries of a web app read {@link BCAPI.Models.WebApp.Country}.
+     *
+     * @name Country
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models.WebApp
+     * @example
+     * // assign GB and US countries to Sample webapp.
+     * var countries = new BCAPI.Models.WebApp.Country("Sample webapp", {"items": ["GB", "US"]});
+     * countries.save();
+     */
+    BCAPI.Models.WebApp.Country = BCAPI.Models.Model.extend({
+
+        constructor: function(webappName, attributes, options) {
+            BCAPI.Models.Model.call(this, attributes, options);
+            this._webappName = webappName;
+        },
+        /**
+         * This method returns the correct endpoint
+         * for the webapp countries
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.Country
+         */
+        endpoint: function() {
+            var url = ["/api/v2/admin/sites/current/webapps/"];
+            url.push(this._webappName);
+            url.push("/countries");
+            return url.join("");
+        },
+        /**
+         * This method returns the data to be json-ified when saving
+         * The API only recieves an array of strings, so we have to extract it
+         * from the items field.
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.Country
+         */
+        toJSON: function(){
+            return this.get('items');
+        },
+
+        /**
+         * This method performs the save to the server
+         * It is overwritten here to always force a PUT operation on the endpoint
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.Country
+         */
+        save: function(options) {
+            options = options || {};
+            options.type = "PUT";
+            return  BCAPI.Models.Model.prototype.save.call(this, options);
+        }
+    });
+})(jQuery);;(function($) {
+	"use strict";
+
+	/**
+	 * This class provides support for custom fields description belonging to {@link BCAPI.Models.WebApp.App}
+	 * 
+	 * ## Create a new custom field
+	 * 
+	 * ```javascript
+	 * var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
+     *	"name": "Part code",
+     *	"type": "DataSource",
+     *	"listItems": null,
+     *	"dataSourceName": "Part Codes",
+     *	"required": false,
+     *	"order": 1
+	 * });
+	 * 
+	 * customField.save({
+	 * 	success: function(fieldModel) {
+	 * 		// do something on success.
+	 * 	}
+	 * });
+	 * ```
+	 * 
+	 * @name CustomField
+	 * @class
+	 * @constructor
+	 * @memberOf BCAPI.Models.WebApp
+	 */
+	BCAPI.Models.WebApp.CustomField = BCAPI.Models.Model.extend({
+		constructor: function(webappName, attributes, options) {
+			BCAPI.Models.Model.call(this, attributes, options);
+			
+			this._webappName = webappName;
+			this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});			
+		},
+		/**
+		 * This method returns the endpoint for custom fields api.
+		 * 
+		 * @method
+		 * @instance
+		 * @memberOf BCAPI.Models.WebApp.CustomField
+		 */
+		endpoint: function() {
+			return "/api/v2/admin/sites/current/webapps/" + this._webappName + "/fields";
+		}
+	});
+	
+	/**
+     * This class provides a collection for working with web app custom fields. In order to use this collection you must provide 
+     * a webapp name. For more information regarding custom fields read {@link BCAPI.Models.WebApp.Item}. 
+     * 
+     * @name CustomFieldCollection
+     * @class
+     * @constructor
+     * @memberOf BCAPI.Models.WebApp
+     * @example
+     * var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("Sample webapp");  
+	 */
+	BCAPI.Models.WebApp.CustomFieldCollection = BCAPI.Models.Collection.extend({
+		constructor: function(webappName, attributes, options) {
+			BCAPI.Models.Collection.call(this, attributes, options);
+			
+			this.webappName = webappName;
+		},
+		model: BCAPI.Models.WebApp.CustomField,
+    	/**
+    	 * This method returns custom field collection api entry point absolute url.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.WebApp.CustomFieldCollection
+    	 * @returns API entry point url.
+    	 */
+    	url: function() {
+    		var model = new this.model(this.webappName);
+    		
+    		return BCAPI.Models.Collection.prototype.url.call(this, model);
+    	},
+    	/**
+    	 * We override this method in order to transform each returned item into a strong typed 
+    	 * {@link BCAPI.Models.WebApp.CustomField} models.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @param {Object} response The JSON response received from CustomField api.
+    	 * @returns A list of web app custom fields.
+    	 * @memberOf BCAPI.Models.WebApp.CustomField 
+    	 */
+    	parse: function(response) {
+    		response = BCAPI.Models.Collection.prototype.parse.call(this, response);
+    		
+    		var fields = [],
+    			self = this;
+    		
+    		_.each(response, function(field) {
+    			fields.push(new self.model(self.webappName, field));
+    		});
+    		
+    		return fields;
+    	}
+	});
 })(jQuery);;(function($) {
 	"use strict";
 
@@ -3550,8 +4812,23 @@
      * @class
      * @constructor
      * @memberOf BCAPI.Models.WebApp
+     * 
      * @example
-     * var itemCollection = new BCAPI.Models.WebApp.ItemCollection("Sample webapp"); 
+     * // load items for a specified webapp (only system fields are automatically loaded).
+     * var itemCollection = new BCAPI.Models.WebApp.ItemCollection("Sample webapp");
+     * itemCollection.fetch({
+     * 	success: function(items) {
+     * 		// handle items (only system fields available in each item).
+     * 
+     * 		items.each(function(item) {
+     * 			item.fetch({
+     * 				success: function(itemDetails) {
+     * 					// do something with item details.
+     * 				}
+     * 			});
+     * 		});
+     * 	}
+     * });
      */
     BCAPI.Models.WebApp.ItemCollection = BCAPI.Models.Collection.extend({
     	constructor: function(webappName, models, options) {
@@ -3597,181 +4874,20 @@
     	}
     });
 })(jQuery);;(function($) {
-	"use strict";
-
-	/**
-	 * This class provides support for custom fields description belonging to {@link BCAPI.Models.WebApp.App}
-	 * 
-	 * ## Create a new custom field
-	 * 
-	 * ```javascript
-	 * var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
-     *	"name": "Part code",
-     *	"type": "DataSource",
-     *	"listItems": null,
-     *	"dataSourceName": "Part Codes",
-     *	"required": false,
-     *	"order": 1
-	 * });
-	 * 
-	 * customField.save({
-	 * 	success: function(fieldModel) {
-	 * 		// do something on success.
-	 * 	}
-	 * });
-	 * ```
-	 * 
-	 * @name CustomField
-	 * @class
-	 * @constructor
-	 * @memberOf BCAPI.Models.WebApp
-	 */
-	BCAPI.Models.WebApp.CustomField = BCAPI.Models.Model.extend({
-		constructor: function(webappName, attributes, options) {
-			BCAPI.Models.Model.call(this, attributes, options);
-			
-			this._webappName = webappName;
-			this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});			
-		},
-		/**
-		 * This method returns the endpoint for custom fields api.
-		 * 
-		 * @method
-		 * @instance
-		 * @memberOf BCAPI.Models.WebApp.CustomField
-		 */
-		endpoint: function() {
-			return "/api/v2/admin/sites/current/webapps/" + this._webappName + "/fields";
-		}
-	});
-	
-	/**
-     * This class provides a collection for working with web app custom fields. In order to use this collection you must provide 
-     * a webapp name. For more information regarding custom fields read {@link BCAPI.Models.WebApp.Item}. 
-     * 
-     * @name CustomFieldCollection
-     * @class
-     * @constructor
-     * @memberOf BCAPI.Models.WebApp
-     * @example
-     * var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("Sample webapp");  
-	 */
-	BCAPI.Models.WebApp.CustomFieldCollection = BCAPI.Models.Collection.extend({
-		constructor: function(webappName, attributes, options) {
-			BCAPI.Models.Collection.call(this, attributes, options);
-			
-			this.webappName = webappName;
-		},
-		model: BCAPI.Models.WebApp.CustomField,
-    	/**
-    	 * This method returns custom field collection api entry point absolute url.
-    	 * 
-    	 * @method
-    	 * @instance
-    	 * @memberOf BCAPI.Models.WebApp.CustomFieldCollection
-    	 * @returns API entry point url.
-    	 */
-    	url: function() {
-    		var model = new this.model(this.webappName);
-    		
-    		return BCAPI.Models.Collection.prototype.url.call(this, model);
-    	},
-    	/**
-    	 * We override this method in order to transform each returned item into a strong typed 
-    	 * {@link BCAPI.Models.WebApp.CustomField} models.
-    	 * 
-    	 * @method
-    	 * @instance
-    	 * @param {Object} response The JSON response received from CustomField api.
-    	 * @returns A list of web app custom fields.
-    	 * @memberOf BCAPI.Models.WebApp.CustomField 
-    	 */
-    	parse: function(response) {
-    		response = BCAPI.Models.Collection.prototype.parse.call(this, response);
-    		
-    		var fields = [],
-    			self = this;
-    		
-    		_.each(response, function(field) {
-    			fields.push(new self.model(self.webappName, field));
-    		});
-    		
-    		return fields;
-    	}
-	});
-})(jQuery);;(function($) {
     "use strict";
 
     /**
-     * This class provides a way of working with individual category items.
-     *
-     * @name Category
-     * @class
-     * @constructor
-     * @memberOf BCAPI.Models
-     * @augments BCAPI.Models.Model
-     * @example
-     * var category = new BCAPI.Models.Category({name: 'Test Category'});
-     * To save:
-     * category.save(options)
-     * To get a category by id:
-     * var category = new BCAPI.Models.Category({id: 1});
-     * category.fetch(options)
-     *
-     * Update and delete are not supported
-     */
-    BCAPI.Models.Category = BCAPI.Models.Model.extend({
-        /**
-         * @field name: mandatory, string
-         * @field parentId: optional, defaults to root (-1)
-         * @field publicAccess: optional, default to TRUE
-         */
-
-        /**
-         * This method returns the correct endpoint for the category.
-         *
-         * @method
-         * @instance
-         * @memberOf BCAPI.Models.Category
-         */
-        endpoint: function() {
-            return '/api/v2/admin/sites/current/categories';
-        }
-    });
-
-    /**
-     * This class provides a collection for working with categories.
-     *
-     * @name CategoryCollection
-     * @class
-     * @constructor
-     * @memberOf BCAPI.Models
-     * @augments BCAPI.Models.Collection
-     * @example
-     * var categories = new BCAPI.Models.CategoryCollection();
-     * categories.fetch({
-     *     success: onSuccessHandler,
-     *     error: onErrorHandler
-     * })
-     */
-    BCAPI.Models.CategoryCollection = BCAPI.Models.Collection.extend({
-        model: BCAPI.Models.Category
-    });
-})(jQuery);;(function($) {
-    "use strict";
-
-    /*
      * This class provides a way of retrieving and assigning categories to items
-     * As an array of category ids that can be retrieved
-      * via the @BCAPI.Models.CategoryCollection
+     * As an array of category ids that can be retrieved via the {@link BCAPI.Models.CategoryCollection}
+     * 
      * @name ItemCategory
      * @class
      * @constructor
-     * @memberOf BCAPI.Models
+     * @memberOf BCAPI.Models.WebApp
      * @augments BCAPI.Models.Model
      * To get the categories assigned to an item
      * @example
-     * var itemCategories = new BCAPI.Models.ItemCategory(WEBAPP_NAME, ITEM_ID);
+     * var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
      * itemCategories.fetch({
      *                         success: function(data) {
      *                             //data = {items: [1,2,3]}
@@ -3786,12 +4902,12 @@
      *
      * To assign a set of categories:
      * @example
-     * var itemCategories = new BCAPI.Models.ItemCategory(WEBAPP_NAME, ITEM_ID);
+     * var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
      * itemCategories.set(items, [1,2,3,4]);
      * itemCategories.save({success: onSaveOK, error: onSaveFailed})
      */
 
-    BCAPI.Models.ItemCategory = BCAPI.Models.Model.extend({
+    BCAPI.Models.WebApp.ItemCategory = BCAPI.Models.Model.extend({
         defaults: {
             items: []
         },
@@ -3808,7 +4924,7 @@
          *
          * @method
          * @instance
-         * @memberOf BCAPI.Models.ItemCategory
+         * @memberOf BCAPI.Models.WebApp.ItemCategory
          */
         endpoint: function() {
             var url = ["/api/v2/admin/sites/current/webapps/"];
@@ -3826,7 +4942,7 @@
          *
          * @method
          * @instance
-         * @memberOf BCAPI.Models.ItemCategory
+         * @memberOf BCAPI.Models.WebApp.ItemCategory
          */
         toJSON: function(){
             return this.get('items');
@@ -3838,7 +4954,7 @@
          *
          * @method
          * @instance
-         * @memberOf BCAPI.Models.ItemCategory
+         * @memberOf BCAPI.Models.WebApp.ItemCategory
          */
         save: function(options) {
             options = options || {};
@@ -3846,206 +4962,4 @@
             return  BCAPI.Models.Model.prototype.save.call(this, options);
         }
     });
-})(jQuery);;(function($) {
-    "use strict";
-
-    //common model for files & folders
-    var Entity = BCAPI.Models.Model.extend({
-        'idAttribute': 'path',
-
-        'endpoint': function() {
-            return '/api/v2/admin/sites/current/storage';
-        },
-        
-        'url': function() {
-            var p = this.get('path');
-            if (p[0] == '/') {
-                p.substring(1);
-            }
-            return this.urlRoot() + p;
-        }
-    });
-
-    function mkFilePath(dirPath, name) {
-        if (dirPath[dirPath.length - 1] == '/') {
-            return dirPath + name;
-        } else {
-            return dirPath + '/' + name;
-        }
-    }
-    
-    /**
-     * This class allows you to interact with files stored in your BC site.
-     * Usage examples:
-     *
-     * ## Create a new file.
-     * 
-     * ```javascript
-     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-     * var data = 'Hello World !';
-     * f.upload(data).done(function() {
-     *     console.log('File uploaded succesfully');
-     * });
-     * ```
-     *
-     * A file is created in your site's file system only after uploading some
-     * content.
-     *
-     * The content can be any javascript object, including file objects obtained
-     * from html upload forms.
-     *
-     * BCAPI.Models.FileSystem.Root is the root folder in your site's
-     * file structure. You can also create a file object by specifying
-     * the file's full path.
-     *
-     * ```javascript
-     * var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
-     * ```
-     *
-     * If you omit the `/` at the beginning it will be added automatically.
-     *
-     * So the below is equivalent to the above instantiation:
-     * ```javascript
-     * var f = new BCAPI.Models.FileSystem.File('hello_world.txt');
-     * ```
-     *
-     * ## Get the file metadata
-     *
-     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-     * f.fetch().done(function() {
-     *     console.log('File name is: ', f.get('name'));
-     *     console.log('Last update date is: ', f.get('lastModified'));
-     * });
-     *
-     * ## Download the file content
-     *
-     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-     * f.download().done(function(content) {
-     *     console.log('File content is: ' + content);
-     * });
-     *
-     * ## Delete the file
-     *
-     * var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-     * f.destroy().done(function() {
-     *     console.log('File was destroyed');
-     * });
-     * 
-     */
-    var File = Entity.extend({
-        'constructor': function(path, attributes, options) {
-            Entity.call(this, attributes, options);
-            var props = {};
-            if (path instanceof BCAPI.Models.FileSystem.Folder) {
-                props.folderPath = path.get('path');
-                props.name = attributes.name;
-            } else if (typeof path == 'string') {
-                if (attributes && ('name' in attributes)) {
-                    props.folderPath = path;
-                    props.name = attributes.name;
-                } else {
-                    var split = path.lastIndexOf('/');
-                    if (split == -1) {
-                        props.folderPath = '/';
-                        props.name = path;
-                    } else {
-                        props.folderPath = path.substring(0, split);
-                        props.name = path.substring(split+1);
-                    }
-                }
-            }
-            if (props.folderPath && props.folderPath[0] != '/') {
-                props.folderPath = '/' + props.folderPath;
-            }
-            props.type = 'file';
-            props.path = mkFilePath(props.folderPath, props.name);
-            this.set(props);
-            if (!this.isValid()) {
-                throw new Error('Invalid construction parameters');
-            }
-        },
-
-        validate: function(attr) {
-            if (!attr.name) {
-                return 'Invalid name for file';
-            }
-            if (!attr.folderPath) {
-                return 'Invalid folder path';
-            }
-            if (!attr.path) {
-                return 'Invalid path for file';
-            }
-        },
-
-        'folder': function() {
-            return new BCAPI.Models.FileSystem.Folder(this.get('folderPath'));
-        },
-
-        'upload': function(data) {
-            return $.ajax(this.contentUrl(), {
-                'contentType': 'application/octet-stream',
-                'type': 'PUT',
-                'data': data,
-                'processData': false,
-                'headers': this.headers()
-            });
-        },
-
-        'uploadAndFetch': function(data) {
-            var self = this;
-            return this.upload(data).then(function() {
-                return self.fetch();
-            });
-        },
-
-        'download': function() {
-            return $.ajax(this.contentUrl(), {
-                'type': 'GET',
-                'headers': this.headers()
-            });
-        },
-
-        'save': function(attributes, options) {
-            throw new Error('Operation not supported');
-        },
-
-        'parse': function(result) {
-            //converting to a date object instead of the date string
-            var dateStr = result.lastModified;
-            result.lastModified = new Date(dateStr);
-            return result;
-        },
-
-        'contentUrl': function() {
-            return Entity.prototype.url.call(this);
-        },
-
-        'url': function() {
-            return Entity.prototype.url.call(this) + '?meta';
-        }
-    });
-
-    var Folder = Entity.extend({
-        'file': function(attributes, options) {
-            return new File(this.get('path'), attributes, options);
-        },
-
-        /**
-         * Returns a promise containing the contents of
-         * this folder
-         * @return {promise} A promise containing the folders & files
-         *                   in this folder
-         */
-        'list': function() {
-
-        }
-    });
-
-    BCAPI.Models.FileSystem = {
-        'File': File,
-        'Folder': Folder,
-        'Root': new Folder({'path': '/'})
-    };
-
 })(jQuery);
-

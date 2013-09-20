@@ -37,7 +37,7 @@
 	 * 		"name": "Test app"
 	 * });
      *
-     * var response = app.save({
+     * app.save({
 	 * 		success: function(webAppItem) {
 	 * 			// handle success
 	 * 		},
@@ -52,8 +52,8 @@
      * ## Remove app
      *
      * ```javascript
-     * var app = new BCAPI.Models.WebApp.Item({name: "Test app"});
-     * item.destroy({
+     * var app = new BCAPI.Models.WebApp.App({name: "Test app"});
+     * app.destroy({
 	 * 	success: function(webAppItem, response) {
 	 * 		// handle success here.
 	 *  },
@@ -65,7 +65,8 @@
      *
      * ## Supported attributes
      *
-     * var app = new BCAPI.Models.WebApp.Item({
+     * ```javascript
+     * var app = new BCAPI.Models.WebApp.App({
 	 *	templateId: -1,
      *  uploadFolder: "images",
      *  requiresApproval: true,
@@ -81,7 +82,8 @@
      *  disableDetailPages: false,
      *  locationEnabled: false
      * });
-     *
+     * ```
+     * 
      * @class
      */
 	BCAPI.Models.WebApp.App = BCAPI.Models.Model.extend({
@@ -123,63 +125,40 @@
      * @constructor
      * @memberOf BCAPI.Models.WebApp
      * @example
-     * // fetch all available webapps with custom fields structure in place.
-     * var appCollection = new BCAPI.Models.WebApp.AppCollection();
-     * 
-     * appCollection.fetch({fetchFields: true,
-     *  success: function(webapps) {
-     *  	webapps.each(function(webapp) {
-     *  		// here you also have access to webapp.fields.
-     *  	});
-     *  }
-     * });
-     * 
-     * @example
-     * // fetch all available webapps without custom fields structure in place.  
+     * // fetch all available webapps  
      * var appCollection = new BCAPI.Models.WebApp.AppCollection();
      * 
      * appCollection.fetch({fetchFields: false,
      *  success: function(webapps) {
      *  	webapps.each(function(webapp) {
-     *  		// here webapp.fields is an empty array.
+     *  		// no custom fields are retrieved.
      *  	});
      *  }
+     *  
+     * @example
+     * // extract and fetch webap details from a fetched collection (by webapp id).
+     * var webappId = 1,
+     *		webapp = appCollection.get(webappId);
+     *
+     * webapp.fetch({
+     * 	success: function(webapp) {
+     * 		// webapp is now fully loaded.
+     *  }
+     * });
+     *
+     * @example
+     * // extract and fetch webapp details from fetched collection (by webapp index)
+     * var idx = 1,
+     * 	    webapp = appCollection.at(idx);
+     * 
+     * webapp.fetch({
+     * 	success: function(webapp) {
+     * 		// webapp is now fully loaded.
+     *  }
+     * });
      */
     BCAPI.Models.WebApp.AppCollection = BCAPI.Models.Collection.extend({
         model: BCAPI.Models.WebApp.App,
-        fetch: function(options) {
-        	options = options || {};
-
-        	var oldSuccess = options.success;
-        	
-        	options.success = function(collection, xhr, options) {
-        		var currFetchedFields = 0;
-        		
-        		collection.each(function(webapp) {
-        			var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webapp.get("name"));
-        			
-        			webapp.set({"fields": []});
-        			
-        			if(!options.fetchFields) {
-        				return oldSuccess(collection, xhr, options);
-        			}
-        			
-        			fieldsCollection.fetch({
-        				success: function(fields) {
-        					fields.each(function(field) {
-        						webapp.get("fields").push(field);
-        					});
-        					
-        					if(++currFetchedFields == fieldsCollection.length) {
-        						oldSuccess(collection, xhr, options);
-        					}
-        				}
-        			});
-        		});
-        	};
-        	
-        	return BCAPI.Models.Collection.prototype.fetch.call(this, options);
-        },
     	/**
     	 * We override this method in order to transform each returned item into a strong typed 
     	 * {@link BCAPI.Models.WebApp.App} models.

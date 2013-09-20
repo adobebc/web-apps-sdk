@@ -1,6 +1,5 @@
 describe("Unit tests for item category model.", function() {
-    var oldSiteHelper = undefined,
-        siteToken = "123",
+    var siteToken = "123",
         rootUrl = "";
 
     beforeEach(function() {
@@ -11,7 +10,7 @@ describe("Unit tests for item category model.", function() {
         var webappName = "Sample Test";
         var webappItemId = 123;
 
-        var category = new BCAPI.Models.ItemCategory(webappName, webappItemId);
+        var category = new BCAPI.Models.WebApp.ItemCategory(webappName, webappItemId);
         var expectedEndpoint = "/api/v2/admin/sites/current/webapps/" + webappName + "/items/" + webappItemId + "/categories";
         expect(category.endpoint()).toBe(expectedEndpoint);
     });
@@ -20,7 +19,7 @@ describe("Unit tests for item category model.", function() {
         var webappName = "Sample Test";
         var webappItemId = 123;
 
-        var category = new BCAPI.Models.ItemCategory(webappName, webappItemId);
+        var category = new BCAPI.Models.WebApp.ItemCategory(webappName, webappItemId);
         var expectedEndpoint = "/api/v2/admin/sites/current/webapps/" + webappName + "/items/" + webappItemId + "/categories";
         expect(category.url()).toBe(expectedEndpoint);
 
@@ -28,14 +27,14 @@ describe("Unit tests for item category model.", function() {
 
     it("Test toJSON override returns the array alone", function() {
         var data = [1,2,3];
-        var itemCategories = new BCAPI.Models.ItemCategory("Sample App", 1, {items: [1,2,3]})
+        var itemCategories = new BCAPI.Models.WebApp.ItemCategory("Sample App", 1, {items: [1,2,3]})
         expect(itemCategories.toJSON() instanceof Array).toBe(true);
         expect(itemCategories.toJSON().toString()).toBe(data.toString());
     });
 
     it("Test save calls a PUT method with the inner array", function() {
             var data = [1,2,3];
-            var itemCategories = new BCAPI.Models.ItemCategory("Sample App", 1, {items: [1,2,3]})
+            var itemCategories = new BCAPI.Models.WebApp.ItemCategory("Sample App", 1, {items: [1,2,3]})
             var ajaxCalled = false;
 
             spyOn($, "ajax").andCallFake(function(request) {
@@ -43,6 +42,8 @@ describe("Unit tests for item category model.", function() {
                 expect(request.dataType).toBe("text");
                 expect(request.data).toBe(JSON.stringify(data))
                 ajaxCalled = true;
+                
+                return $.Deferred();
             });
 
             runs(function() {
@@ -51,11 +52,11 @@ describe("Unit tests for item category model.", function() {
 
             waitsFor(function() {
                 return ajaxCalled;
-            }, "Not PUT method", 5000);
+            }, "Not PUT method", 50);
     });
 
     if("Test default items is empty", function() {
-       var itemCategories = new BCAPI.Models.ItemCategory("sample", 1);
+       var itemCategories = new BCAPI.Models.WebApp.ItemCategory("sample", 1);
         expect(itemCategories.get('items') instanceof Array).toBe(true);
         expect(itemCategories.get('items').length).toBe(0);
     });

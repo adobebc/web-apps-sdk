@@ -7,7 +7,7 @@ describe("Helper.Models.WebApp", function() {
         // afterEach is not executed if the spec fails. So we have to clean-up data first
         runs(function() {
             var webApp = new BCAPI.Models.WebApp.App({name: "FirstWebAppFromApi"});
-            webApp.destroy().always(function() { done = true });
+            webApp.destroy().always(function() { done = true; });
         });
 
         waitsFor(function() {
@@ -37,7 +37,7 @@ describe("Helper.Models.WebApp", function() {
 
         runs(function() {
             model = new BCAPI.Models.WebApp.App({name: "FirstWebAppFromApi"});
-            model.save().done(function() { saved = true });
+            model.save().done(function() { saved = true; });
         });
 
         waitsFor(function() {

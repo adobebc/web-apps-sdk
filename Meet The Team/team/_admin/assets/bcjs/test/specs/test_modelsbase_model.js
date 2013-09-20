@@ -106,13 +106,19 @@ describe("Unit tests for BC base model class.", function() {
 		}		
 		
 		spyOn($, "ajax").andCallFake(function(request) {
+			var xhrMock = $.Deferred();
+			
 			_assertCorrectSaveCall(request, "John", "Doe", modelId);
 			
 			if(isError) {
-				return request.error(model);
+				request.error(model);
+				
+				return xhrMock;
 			}
 			
-			return request.success(model);
+			request.success(model);
+			
+			return xhrMock;
 		});
 					
 		runs(function() {
@@ -160,6 +166,8 @@ describe("Unit tests for BC base model class.", function() {
 			_assertCorrectSaveCall(request, "John", "Doe", 101);
 			
 			ajaxCalled = true;
+			
+			return $.Deferred();
 		});
 		
 		runs(function() {
@@ -197,6 +205,8 @@ describe("Unit tests for BC base model class.", function() {
 			_assertCorrectDeleteCall(request, 1);
 			
 			request.success(expectedModel);
+			
+			return $.Deferred();
 		});
 		
 		runs(function() {
@@ -225,6 +235,8 @@ describe("Unit tests for BC base model class.", function() {
 			_assertCorrectDeleteCall(request, 1);
 			
 			request.error(expectedModel);
+			
+			return $.Deferred();
 		});
 		
 		runs(function() {

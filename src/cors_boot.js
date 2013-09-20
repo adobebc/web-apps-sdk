@@ -57,11 +57,9 @@
     BCAPI.Helper.CORS.CorsBoot.prototype.boot = function() {
         var ieVersion = this._getIEVersion();
         
-        if (!(ieVersion > 0)) {
+        if (ieVersion == -1) {
         	return;
         }
-        
-        alert("IE: " + ieVersion);
         
         this._jQuery.ajaxSetup({ cache: false });
         
@@ -71,6 +69,6 @@
         this._jQuery.currentFrameProxy = proxy;        
     };
     
-    var corsBoot = new BCAPI.Helper.CORS.CorsBoot($, BCAPI.Helper.Site.getRootUrl);
+    var corsBoot = new BCAPI.Helper.CORS.CorsBoot($, BCAPI.Helper.Site.getRootUrl());
     corsBoot.boot();
 })(jQuery);

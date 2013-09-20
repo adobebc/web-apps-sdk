@@ -102,6 +102,10 @@ describe("Unit tests for frameproxy boot.", function() {
 	});
 	
 	it("Check start boot does not start on non ie browsers.", function() {
+		var nonIeAppName = "Netscape",
+			nonIeUA = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36",
+			results = {"wrapAll": false};
 		
+		_testProxy(results, nonIeAppName, nonIeUA);
 	});
 });

@@ -19,14 +19,20 @@ describe("Unit tests for frameproxy boot.", function() {
 		frameproxy.ProxyClient = oldProxyClient;
 	});
 	
-	function _mockIEUserAgent(ieVersion) {
+	function _mockNavigatorBrowser(appName, userAgent) {
 		navigator.__defineGetter__("userAgent", function(){
-		    return "Mozilla/4.0 (compatible; MSIE " + ieVersion + "; Windows NT 6.2; Trident/6.0)";
+		    return userAgent;
 		});
 
 		navigator.__defineGetter__("appName", function(){
-		    return expectedAppName;
+		    return appName;
 		});
+	}
+	
+	function _mockIEUserAgent(ieVersion) {
+		var userAgent = "Mozilla/4.0 (compatible; MSIE " + ieVersion + "; Windows NT 6.2; Trident/6.0)";
+		
+		_mockNavigatorBrowser(appName, userAgent);
 	};
 	
 	function _testProxyWorksOnIe(ieVersion) {
@@ -60,23 +66,27 @@ describe("Unit tests for frameproxy boot.", function() {
 		expect(cacheEnabled).toBe(false);
 	};
 	
-	it("Check start proxy works as expected on IE 7.", function() {
+	it("Check proxy boot works as expected on IE 7.", function() {
 		_testProxyWorksOnIe(7.0);
 	});
 	
-	it("Check start proxy works as expected on IE 8.", function() {
+	it("Check proxy boot works as expected on IE 8.", function() {
 		_testProxyWorksOnIe(8.0);
 	});
 	
-	it("Check start proxy works as expected on IE 9.", function() {
+	it("Check proxy boot works as expected on IE 9.", function() {
 		_testProxyWorksOnIe(9.0);
 	});
 
-	it("Check start proxy works as expected on IE 10.", function() {
+	it("Check proxy boot works as expected on IE 10.", function() {
 		_testProxyWorksOnIe(10.0);
 	});
 
-	it("Check start proxy works as expected on IE 11.", function() {
+	it("Check proxy boot works as expected on IE 11.", function() {
 		_testProxyWorksOnIe(11.0);
+	});
+	
+	it("Check start boot does not start on non ie browsers.", function() {
+		
 	});
 });

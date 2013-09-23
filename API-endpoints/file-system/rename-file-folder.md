@@ -43,6 +43,8 @@ HTTP/1.1 200 OK
 
 Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
 
+**Rename a file**
+
 Use `save` to change the name of a file.
 
 ~~~
@@ -51,6 +53,20 @@ f.set('name', 'new-file');
 f.save().done(function() {
     console.log('File name has been changed. Path is ' + f.get('path'));
     //prints: /my/new-file
+});
+~~~
+
+**Rename a folder**
+
+Use `save` to rename a folder:
+
+~~~
+var folder = new BCAPI.Models.FileSystem.Folder('/my/folder');
+folder.set('name', 'new-folder');
+folder.save().done(function() {
+    console.log('The folder has been renamed');
+    console.log('Path is now ' + folder.get('path'));
+    //prints: /my/new-folder
 });
 ~~~
 

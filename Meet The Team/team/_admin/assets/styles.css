@@ -2,7 +2,7 @@
     float:left;
     width: 122px;
     height: 236px;
-    margin:5px 25px 5px 5px;    
+    margin:5px 5px 25px 5px;
     padding:10px;
     border: 1px dotted #999;
     font-family: Myriad, Myriad-Pro, Arial;
@@ -63,7 +63,7 @@ body {
 }
 
 #member-picture-select {
-    visibility:hidden
+    visibility:hidden;
 }
 
 .social-tabs ul li a {
@@ -217,13 +217,11 @@ a.member-icon-edit:hover {
 #form-container .popover {
     background-color: #000;
     color: #FFF;
-	width:500px;
 }
 
 #form-container .popover.top .arrow:after
 {
     border-top-color: #000;
-	width: 400px;
 }
 
 #member-edit-form input[type='text'], #member-edit-form textarea {

@@ -3996,7 +3996,7 @@ SOFTWARE.
      * ```javascript
      * var f = new BCAPI.Models.FileSystem.File({
      *     'parent': new BCAPI.Models.FileSystem.Folder('/my/special'),
-     *     'file': 'file'
+     *     'name': 'file'
      * });
      *
      * f.upload(files[0]);

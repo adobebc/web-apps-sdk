@@ -52,14 +52,6 @@ f.save().done(function() {
     console.log('File name has been changed. Path is ' + f.get('path'));
     //prints: /my/new-file
 });
-
-### Delete the file
-
-```javascript
-var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-f.destroy().done(function() {
-    console.log('File was destroyed');
-});
 ~~~
 
 ### Error Codes

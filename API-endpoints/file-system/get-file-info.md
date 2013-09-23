@@ -54,6 +54,20 @@ Content-Type: application/json
 }
 ~~~
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+**Get file metadata**
+
+~~~
+var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+f.fetch().done(function() {
+    console.log('File name is: ', f.get('name'));
+    console.log('Last update date is: ', f.get('lastModified'));
+});
+~~~
+
 ### Error Codes
 
 This method will return the following error codes:

@@ -18,17 +18,17 @@ var WEBAPP_CUSTOM_FIELDS = [
     },
     {
         "name":"Facebook",
-        "type":"String_Hyperlink",
+        "type":"String",
         "required":false
     },
     {
         "name":"Twitter",
-        "type":"String_Hyperlink",
+        "type":"String",
         "required":false
     },
     {
         "name":"Linkedin",
-        "type":"String_Hyperlink",
+        "type":"String",
         "required":false
     }
 ];

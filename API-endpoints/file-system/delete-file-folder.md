@@ -42,6 +42,19 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 HTTP/1.1 200 OK
 ~~~
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+**Delete a file**
+
+~~~
+var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+f.destroy().done(function() {
+    console.log('File was destroyed');
+});
+~~~
+
 ### Error Codes
 
 This method will return the following error codes:

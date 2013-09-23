@@ -90,3 +90,51 @@ This method will return the following error codes:
 	* `104023` - Unauthorized access 
 	* `104028` - File or folder name too long 
 * `401`- when authentication token is incorrect
+
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+**Create a file in the root folder**
+
+~~~
+
+var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+var data = 'Hello World !';
+f.upload(data).done(function() {
+    console.log('File uploaded succesfully');
+});
+
+~~~
+
+***
+
+**Create file (specify the full path)**
+
+~~~
+
+var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
+
+~~~
+
+***
+
+***Create a file (specify the parent folder)***
+
+~~~
+
+var f = new BCAPI.Models.FileSystem.File({
+    'parent': new BCAPI.Models.FileSystem.Folder('/my/special'),
+    'file': 'file'
+});
+
+f.upload(files[0]);
+
+~~~
+
+**Notes:**
+
+* A file is created in your site's file system only after adding some content.
+* The content can be any javascript object, including file objects obtained from html upload forms.
+* BCAPI.Models.FileSystem.Root is the root folder in your site's file structure. You can also create a file object by specifying the file's full path.
+* If you omit the `/` at the beginning of the file path, the system will add this.

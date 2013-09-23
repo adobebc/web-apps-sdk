@@ -55,6 +55,15 @@ f.destroy().done(function() {
 });
 ~~~
 
+**Delete a folder**
+
+~~~
+var folder = new BCAPI.Models.FileSystem.Folder('/my-folder');
+folder.destroy().done(function() {
+    console.log('Folder was deleted');
+});
+~~~
+
 ### Error Codes
 
 This method will return the following error codes:

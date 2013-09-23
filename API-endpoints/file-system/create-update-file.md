@@ -99,12 +99,34 @@ var f = new BCAPI.Models.FileSystem.File({
 f.upload(files[0]);
 ~~~
 
+***
+
+**Create a folder**
+
+A folder object can be instantiated in two ways.
+
+You can specify the path of the folder:
+
+~~~
+var folder = new BCAPI.Models.FileSystem.Folder('/folder/path');
+~~~
+
+You can also specify the name of the folder, and the parent directory:
+
+~~~
+var folder = new BCAPI.Models.FileSystem.Folder({
+    'parent': BCAPI.Models.FileSystem.Root,
+    'name': 'my-folder'
+});
+~~~
+
 **Notes:**
 
 * A file is created in your site's file system only after adding some content.
 * The content can be any javascript object, including file objects obtained from html upload forms.
 * BCAPI.Models.FileSystem.Root is the root folder in your site's file structure. You can also create a file object by specifying the file's full path.
 * If you omit the `/` at the beginning of the file path, the system will add this.
+* When creating a folder, only creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required.
 
 ### Error Codes
 

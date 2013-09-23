@@ -34,8 +34,32 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 ~~~
 
 **Response:**
+
 ~~~
 HTTP/1.1 200 OK
+~~~
+
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+Use `save` to change the name of a file.
+
+~~~
+var f = new BCAPI.Models.FileSystem.File('/my/file');
+f.set('name', 'new-file');
+f.save().done(function() {
+    console.log('File name has been changed. Path is ' + f.get('path'));
+    //prints: /my/new-file
+});
+
+### Delete the file
+
+```javascript
+var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+f.destroy().done(function() {
+    console.log('File was destroyed');
+});
 ~~~
 
 ### Error Codes

@@ -68,6 +68,31 @@ f.fetch().done(function() {
 });
 ~~~
 
+***
+
+**Get folder metadata**
+
+You use `fetch` to obtain the folder's details, including the files & folders that the folder contains:
+
+~~~
+var folder = new BCAPI.Models.FileSystem.Folder('/my/existing/folder');
+folder.fetch().done(function() {
+    console.log('Folder last update date is: ' + folder.get('lastModified'));
+    console.log('Printing the folder contents: ');
+    var contents = folder.get('contents');
+    for (var i = 0; i < contents.length; i++) {
+        var entity = contents[i];
+        var isFile = entity instanceof BCAPI.Models.FileSystem.File;
+        // also works: var isFile = entity.get('type') === 'file';
+        if (isFile) {
+            console.log('File ' + file.get('name') + ' updated at ' + file.get('lastModified'));
+        } else {
+            console.log('Folder ' + folder.get('name'));
+        }
+    }
+});
+~~~
+
 ### Error Codes
 
 This method will return the following error codes:

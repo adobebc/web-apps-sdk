@@ -1,15 +1,10 @@
 {
     "menu-meet_the_team": {
-        "weight": 11000,
-        "parent": "menu-webapps",
+        "weight": 100000,
         "title": "Meet the Team",
+		"children": [],
         "attr" : {
             "href" : "/team/_admin/"
         }
-    },
-
-    "menu-webapp-meet_the_team": {
-		"title": "Meet the Team",
-        "visible": false
     }
 }

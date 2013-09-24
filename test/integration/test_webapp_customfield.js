@@ -37,22 +37,7 @@ describe("Check webapp assign customfields.", function() {
     it("Check webapp customfields update.", function() {
 
         _checkEmptyCustomFields();
-        var customField1 = new BCAPI.Models.WebApp.CustomField(webappName, {
-            "name"    : "Part code1",
-            "type"    : "DropDown_List1",
-            "listItems": ["First option", "Second one"],
-            "required": true
-        });
-
-        var customField2 = new BCAPI.Models.WebApp.CustomField(webappName, {
-            "name"    : "Part code2",
-            "type"    : "DropDown_List2",
-            "listItems": ["First option", "Second one"],
-            "required": true
-        });
-
-        var expectedCustomFields = [customField1, customField2];
-
+        var expectedCustomFields = _createCustomFields();
         _checkCustomFields(expectedCustomFields);
     });
 
@@ -72,6 +57,29 @@ describe("Check webapp assign customfields.", function() {
             return customfieldsRetrievedEmpty;
         }, "Webapp " + webappName + " customfields not fetched correctly.", MAX_TIMEOUT);
 
+        runs(function() {
+            expect(webappCustomfieldsCollection.length).toBe(0);
+        });
+
+    };
+
+    function _createCustomFields() {
+        var customField1 = new BCAPI.Models.WebApp.CustomField(webappName, {
+            "name"    : "Part code1",
+            "type"    : "DropDown_List1",
+            "listItems": ["First option", "Second one"],
+            "required": true
+        });
+
+        var customField2 = new BCAPI.Models.WebApp.CustomField(webappName, {
+            "name"    : "Part code2",
+            "type"    : "DropDown_List2",
+            "listItems": ["First option", "Second one"],
+            "required": true
+        });
+
+        var customfieldsCreated = [customField1, customField2];
+        return customfieldsCreated
     };
 
     function _checkCustomFields(expectedCustomfields) {
@@ -93,7 +101,7 @@ describe("Check webapp assign customfields.", function() {
         runs(function() {
             var idx = 0;
 
-            _.each(customfieldsFetched.get("items"), function(item) {
+            customfieldsFetched.each(function(item) {
                 expect(expectedCustomfields[idx++]).toBe(item);
             });
         });

@@ -9,7 +9,7 @@ describe("Check webapp assign customfields.", function() {
 
         appCreated = undefined;
         webapp.destroy().always(function() {
-            webapp = new BCAPI.Models.WebApp.App({"name": webappName})
+            webapp = new BCAPI.Models.WebApp.App({"name": webappName});
             webapp.save().then(function() {
                 return webapp.fetch();
             }).then(function() {
@@ -35,25 +35,33 @@ describe("Check webapp assign customfields.", function() {
 
 
     it("Check webapp customfields update.", function() {
-       // var expectedCustomFields = ["String", "String", "String"];
-        var expectedCustomFields = new BCAPI.Models.WebApp.CustomField("WebAppCustomfieldsApp", {
-            "name"    : "Part code",
-            "type"    : "DropDown_List",
+
+        _checkEmptyCustomFields();
+        var customField1 = new BCAPI.Models.WebApp.CustomField(webappName, {
+            "name"    : "Part code1",
+            "type"    : "DropDown_List1",
             "listItems": ["First option", "Second one"],
             "required": true
         });
 
-        _checkEmptyCustomFields();
-        _updateCustomFields(expectedCustomFields);
+        var customField2 = new BCAPI.Models.WebApp.CustomField(webappName, {
+            "name"    : "Part code2",
+            "type"    : "DropDown_List2",
+            "listItems": ["First option", "Second one"],
+            "required": true
+        });
+
+        var expectedCustomFields = [customField1, customField2];
+
         _checkCustomFields(expectedCustomFields);
     });
 
     function _checkEmptyCustomFields() {
-        var webappCustomfields = new BCAPI.Models.WebApp.CustomField(webappName),
+        var webappCustomfieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webappName),
             customfieldsRetrievedEmpty = false;
 
         runs(function() {
-            webappCustomfields.fetch({
+            webappCustomfieldsCollection.fetch({
                 success: function() {
                     customfieldsRetrievedEmpty = true;
                 }
@@ -64,34 +72,14 @@ describe("Check webapp assign customfields.", function() {
             return customfieldsRetrievedEmpty;
         }, "Webapp " + webappName + " customfields not fetched correctly.", MAX_TIMEOUT);
 
-        runs(function() {
-            expect(webappCustomfields.get("items").length).toBe(0);
-        });
-    };
-
-    function  _updateCustomFields(expectedCustomfields) {
-        var webappCustomfields = new BCAPI.Models.WebApp.CustomField(webappName, expectedCustomfields),
-            customfieldsUpdated = false;
-
-        runs(function() {
-            webappCustomfields.save({
-                success: function() {
-                    customfieldsUpdated = true;
-                }
-            });
-        });
-
-        waitsFor(function() {
-            return customfieldsUpdated;
-        }, "Webapp " + webappName + " customfields not updated correctly.", MAX_TIMEOUT);
     };
 
     function _checkCustomFields(expectedCustomfields) {
-        var webappCustomfields = new BCAPI.Models.WebApp.CustomField(webappName),
+        var webappCustomfieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webappName),
             customfieldsFetched = undefined;
 
         runs(function() {
-            webappCustomfields.fetch({
+            webappCustomfieldsCollection.fetch({
                 success: function(customfields) {
                     customfieldsFetched = customfields;
                 }
@@ -100,12 +88,12 @@ describe("Check webapp assign customfields.", function() {
 
         waitsFor(function() {
             return customfieldsFetched;
-        }, "Webapp " + webappName + " customfields not fetched correctly.", MAX_TIMEOUT);
+        }, "Webapp " + webappName + " customfields not parsed correctly.", MAX_TIMEOUT);
 
         runs(function() {
             var idx = 0;
 
-            _.each(customfieldsFetched.get(), function(item) {
+            _.each(customfieldsFetched.get("items"), function(item) {
                 expect(expectedCustomfields[idx++]).toBe(item);
             });
         });

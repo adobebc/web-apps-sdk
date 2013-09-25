@@ -34,7 +34,7 @@ Returns a list of objects with the following properties:
 	* DataSource
 * `required` - true if the field is required *(boolean)*
 * `order` - unique, the position of the field when listed starting with 1 *(integer)*
-* `dataSourceName` - for DataSource fields should be a valid webapp name *(string)*
+* `dataSource` - for DataSource fields should be a valid webapp name *(string)*
 * `listItems` - used only when type is {nl:DropDown_List, CheckBox_List, Radio_List, ListBox_List fields *(array)*
 
 ### Examples
@@ -78,7 +78,7 @@ Content-Length: length
       "name"    : "Part code",
       "type"    : "DataSource",
       "listItems": null,
-      "dataSourceId": 324232,
+      "dataSource": 324232,
       "required": false,
       "order"   : 1
    },{
@@ -92,7 +92,7 @@ Content-Length: length
       "name"    : "Part type",
       "type"    : "CheckBox_List",
       "listItems": ["Engine", "Body", "Electronics"],
-      "dataSourceId": null,
+      "dataSource": null,
       "required": false,
       "order"   : 2
    },{
@@ -106,7 +106,7 @@ Content-Length: length
       "name"    : "Photo",
       "type"    : "Picture",
       "listItems": null,
-      "dataSourceId": null,
+      "dataSource": null,
       "required": true,
       "order"  : 3
    }]

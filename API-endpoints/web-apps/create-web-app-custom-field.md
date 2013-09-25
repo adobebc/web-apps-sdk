@@ -37,7 +37,7 @@ Object:
 
   If not specified, the field is added as the last one. *(integer)*
   
-* `dataSourceName`: for DataSource fields should be a valid webapp name *(string)*
+* `dataSource`: for DataSource fields should be a valid webapp name *(string)*
 * `listItems` - used only by DropDown_List, CheckBox_List, Radio_List, ListBox_List fields *(array)*
 
 ### Response

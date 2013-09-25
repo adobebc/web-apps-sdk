@@ -15,6 +15,7 @@ Create a new Web App
 #### Parameters ####
 
 * `name` - required *(string)*
+* `slug` - *(string, optional)* - it defaults to the name of the web app, or a variation on the name, if a slug with the name already exists
 * `allowFileUpload` - . Defaults to false *(boolean, optional)*
 * `uploadFolder` - required only if allowFileUpload is True. Must be a valid absolute path in the site, created in advance *(string)*
 * `disableDetailPages`- *(boolean, optional)*
@@ -64,16 +65,17 @@ Content-Length: 0
 * if passing a value for the uploadFolder parameter that does not exist on the file system, the system will attempt to create the folder, and its entire path. It reuses the mechanism used in the FileSystem APIs to create a folder, so the same exceptions get thrown. [(see Storage Api Spec)](#)
 * Only the webapp Name parameter is mandatory. The rest have defaults, as follows:
   * templateId - -1
-	* uploadFolder - -1
-	* requiresApproval - true
-	* allowFileUpload - false
-	* customerCanAdd, customerCanDelete, customerCanEdit, anyoneCanEdit - false
-	* requiresPayment - false
-	* validDays - -1 (never expire)
-	* roleId - 0
-	* hasAddress - false
-	* disableDetailPages - false
-	* locationEnabled - false
+  * uploadFolder - -1
+  * slug - the name of the web app or a variation of the name
+  * requiresApproval - true
+  * allowFileUpload - false
+  * customerCanAdd, customerCanDelete, customerCanEdit, anyoneCanEdit - false
+  * requiresPayment - false
+  * validDays - -1 (never expire)
+  * roleId - 0
+  * hasAddress - false
+  * disableDetailPages - false
+  * locationEnabled - false
 * The webapp name must not be empty and can only contain valid characters, that can be later used on the file system and the API uris. The invalid characters are: / ? # % & * + \ | : ; . “ > <
 If you pass in values for itemSystemFields and / or itemFields they will be ignored.
 

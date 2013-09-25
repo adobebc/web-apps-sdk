@@ -40,7 +40,7 @@ Content-Length: 145
       "name"    : "Part code",
       "type"    : "String",
       "listItems": null,
-      "dataSourceName": null,
+      "dataSource": null,
       "required": false,
       "order"   : 1
 }

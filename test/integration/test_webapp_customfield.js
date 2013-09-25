@@ -1,6 +1,6 @@
 describe("Check webapp assign customfields.", function() {
     var webappName = "WebAppCustomfieldsApp",
-        appCreated;
+        appCreated = undefined;
 
     var MAX_TIMEOUT = 5000;
 
@@ -14,7 +14,7 @@ describe("Check webapp assign customfields.", function() {
                 return webapp.fetch();
             }).then(function() {
                 appCreated = webapp;
-            })
+            });
         });
 
     }
@@ -29,16 +29,10 @@ describe("Check webapp assign customfields.", function() {
         }, "Webapp " + webappName + " not created correctly.", MAX_TIMEOUT);
     });
 
-    afterEach(function() {
-        appCreated.destroy();
-    });
-
-
-    it("Check webapp customfields update.", function() {
-
+    it("Check webapp customfields update.", function() {    	
         _checkEmptyCustomFields();
-        var expectedCustomFields = _createCustomFields();
-        _checkCustomFields(expectedCustomFields);
+        
+        _createCustomFields();             
     });
 
     function _checkEmptyCustomFields() {
@@ -64,28 +58,58 @@ describe("Check webapp assign customfields.", function() {
     };
 
     function _createCustomFields() {
+    	var customFieldsCreated = undefined;
+    	
         var customField1 = new BCAPI.Models.WebApp.CustomField(webappName, {
             "name"    : "Part code1",
-            "type"    : "DropDown_List1",
+            "type"    : "DropDown_List",
             "listItems": ["First option", "Second one"],
             "required": true
         });
 
         var customField2 = new BCAPI.Models.WebApp.CustomField(webappName, {
             "name"    : "Part code2",
-            "type"    : "DropDown_List2",
+            "type"    : "DropDown_List",
             "listItems": ["First option", "Second one"],
             "required": true
         });
+        
+        var customField3 = new BCAPI.Models.WebApp.CustomField(webappName, {
+        	"name": "Datasource Custom Field",
+        	"type": "DataSource",
+        	"required": false,
+        	"dataSource": "Car Catalogue"
+        });
 
-        var customfieldsCreated = [customField1, customField2];
-        return customfieldsCreated
+        var items = [customField1, customField2, customField3],
+        	markDone = _.after(items.length, function() {
+        		customFieldsCreated = items;
+        	});
+        
+        runs(function() {
+        	_.each(items, function(field) {
+        		field.save({success: markDone});
+        	});
+        });    
+        
+        waitsFor(function() {
+        	return customFieldsCreated;
+        }, "Custom fields for webapp " + webappName + " not created.", MAX_TIMEOUT);        
+
+        runs(function() {
+        	_checkCustomFields(customFieldsCreated);
+        });
     };
 
-    function _checkCustomFields(expectedCustomfields) {
+    function _checkCustomFields(expectedCustomFields) {
         var webappCustomfieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webappName),
-            customfieldsFetched = undefined;
-
+            customfieldsFetched = undefined,
+            customFieldsIndexed = {};
+        
+        _.each(expectedCustomFields, function(field) {
+        	customFieldsIndexed[field.get("name")] = field;
+        });
+        
         runs(function() {
             webappCustomfieldsCollection.fetch({
                 success: function(customfields) {
@@ -99,10 +123,17 @@ describe("Check webapp assign customfields.", function() {
         }, "Webapp " + webappName + " customfields not parsed correctly.", MAX_TIMEOUT);
 
         runs(function() {
-            var idx = 0;
-
+            expect(customfieldsFetched.length).toBe(expectedCustomFields.length);
+            
             customfieldsFetched.each(function(item) {
-                expect(expectedCustomfields[idx++]).toBe(item);
+            	var field = customFieldsIndexed[item.get("name")],
+            		expectedDataSource = field.get("dataSource") == undefined ? null : field.get("dataSource");
+            	
+                expect(item.get("name")).toBe(field.get("name"));
+                expect(item.get("type")).toBe(field.get("type"));
+                expect(item.get("required")).toBe(field.get("required"));
+                
+                expect(item.get("dataSource")).toBe(expectedDataSource);
             });
         });
     };

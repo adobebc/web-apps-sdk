@@ -45,6 +45,7 @@ function bootStrap() {
 function loadTeamMembers(data) {
     var members = new BCAPI.Models.WebApp.ItemCollection(WEBAPP_NAME);
     members.fetch({
+		order: "name",
         skip: 0,
         limit: 1000, //no pagination
         success: onMemberListFetch,
@@ -122,7 +123,7 @@ function restoreActionsCard(evt) {
     evt.stopPropagation();
     evt.preventDefault();
     $("#" + evt.currentTarget.id).attr("class", "card-actions");
-    
+
 }
 
 function persistActionsCard(evt) {
@@ -223,46 +224,46 @@ function renderMemberDetailsForm(memberObject) {
     // Attach form submit event handler
 
     $('#member-form-submit').click(onMemberFormSubmit);
-    
+
     $('.tab-pane input[type=text]').change(checkSocialTab);
-    $.validator.messages.required = "This field is required"; 
+    $.validator.messages.required = "This field is required";
 }
 
 
 function checkSocialTab(evt) {
     var inputId = evt.target.id;
     var socialTabId = inputId.replace("member", "tab");
-    
-    if ($("#" + inputId).val().length > 0) {        
+
+    if ($("#" + inputId).val().length > 0) {
 	    $("#" + socialTabId).addClass("checked");
     } else {
-	    $("#" + socialTabId).removeClass("checked");        
+	    $("#" + socialTabId).removeClass("checked");
     }
 }
 
-function onMemberFormSubmit(evt) {   
+function onMemberFormSubmit(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    
-    
-    
+
+
+
     $("#member-edit-form").validate({
         showErrors: function(errorMap, errorList) {
             $.each( this.successList , function(index, value) {
                 $(value).popover('hide');
             });
-			
+
             if (errorList.length > 0) {
-	            var value = errorList[0];                
+	            var value = errorList[0];
                 var _popover = $(value.element).popover({
                     trigger: 'manual',
                     placement: 'top',
                     content: "This field is required",
                     template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
                 });
-                
+
                 _popover.data('popover').options.content = value.message;
-                
+
                 $(value.element).popover('show');
             }
         }
@@ -292,7 +293,7 @@ function saveMember(memberId) {
 
     if (userImageFile) {
         var memberImage = new BCAPI.Models.FileSystem.File({
-	    parent: new BCAPI.Models.FileSystem.Folder(WEBAPP_PHOTO_FOLDER), 
+	    parent: new BCAPI.Models.FileSystem.Folder(WEBAPP_PHOTO_FOLDER),
 	    name: memberPicture
 	});
         if (memberPicture && memberPicture.length > 0) {
@@ -309,7 +310,7 @@ function saveMember(memberId) {
         if (memberPicture && memberPicture.length > 0) {
             member.get("fields").Picture = memberPicture;
         }
-        
+
         member.save({
             success: onMemberSave,
             error: onAPIError

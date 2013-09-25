@@ -4552,9 +4552,8 @@ SOFTWARE.
      *	"name": "Part code",
      *	"type": "DataSource",
      *	"listItems": null,
-     *	"dataSourceName": "Part Codes",
-     *	"required": false,
-     *	"order": 1
+     *	"dataSource": "Part Codes",
+     *	"required": false
 	 * });
 	 * 
 	 * customField.save({

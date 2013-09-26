@@ -95,7 +95,15 @@ function createCustomFields(webApp, fields, successCallback) {
  */
 function onMemberListFetch(data) {
     $(".loading").hide(); // hide the loading indicator
+    
+    var templateText = $("#member-card-loading").html();
+    
     _.each(data.models, function(member) {
+        // First, add item to the view, with loading indicator
+        var context = {"member": member};
+    	var itemHtml = _.template(templateText, context);
+        $("#team-members").append(itemHtml);
+        
         // we need to fetch each item to get to the custom field
         member.fetch({
             success: onMemberFetch,
@@ -111,7 +119,14 @@ function onMemberFetch(data) {
     }
     var context = {"member": data};
     var itemHtml = _.template(templateText, context);
+    
+    var loadingCard = $("div[data-member-id=loading-" + data.get("id") +"]");
+    if(loadingCard) {
+        loadingCard.replaceWith(itemHtml)
+    } else {
     $("#team-members").append(itemHtml);
+    }
+    
     // initialize clickover component
     $('a[rel="popover"]').clickover( {html: true});
     $(".card-actions").on("shown", persistActionsCard);

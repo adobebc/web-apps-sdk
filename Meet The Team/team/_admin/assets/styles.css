@@ -227,13 +227,11 @@ a.member-icon-edit:hover {
 #form-container .popover {
     background-color: #000;
     color: #FFF;
-	width:500px;
 }
 
 #form-container .popover.top .arrow:after
 {
     border-top-color: #000;
-	width: 400px;
 }
 
 #member-edit-form input[type='text'], #member-edit-form textarea {

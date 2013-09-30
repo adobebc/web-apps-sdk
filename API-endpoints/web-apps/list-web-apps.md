@@ -113,6 +113,56 @@ Content-Length: length
 }
 ~~~
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+
+**Fetch all available webapps**
+
+~~~  
+var appCollection = new BCAPI.Models.WebApp.AppCollection();
+
+appCollection.fetch({fetchFields: false,
+ success: function(webapps) {
+ 	webapps.each(function(webapp) {
+ 		// no custom fields are retrieved.
+ 	});
+ }
+
+~~~
+
+***
+
+**extract and fetch webap details from a fetched collection (by webapp id)**
+
+~~~  
+var webappId = 1,
+		webapp = appCollection.get(webappId);
+
+webapp.fetch({
+	success: function(webapp) {
+		// webapp is now fully loaded.
+ }
+});
+~~~
+
+***
+
+**extract and fetch webapp details from fetched collection (by webapp index)**
+
+~~~  
+var idx = 1,
+	    webapp = appCollection.at(idx);
+
+webapp.fetch({
+	success: function(webapp) {
+		// webapp is now fully loaded.
+ }
+});
+~~~
+
+
 ### Error Codes
 
 This method will return the following error codes:

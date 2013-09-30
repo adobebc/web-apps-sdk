@@ -74,6 +74,22 @@ Content-Type: application/json; charset=utf-8
 Content-Length: length
 ~~~
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+~~~
+var category = new BCAPI.Models.Category({name: 'Test Category'});
+To save:
+category.save(options)
+To get a category by id:
+var category = new BCAPI.Models.Category({id: 1});
+category.fetch(options)
+~~~
+
+**Note:** Update and delete methods are not supported.
+
+
 ### Error Codes
 
 This method will return the following error codes:

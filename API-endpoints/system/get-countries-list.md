@@ -71,6 +71,14 @@ Content-Type: application/json; charset=utf-8
 }
 ~~~
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+~~~
+var itemCollection = new BCAPI.Models.CountryCollection();
+~~~
+
 ### Error Codes
 
 This method will return the following error codes:

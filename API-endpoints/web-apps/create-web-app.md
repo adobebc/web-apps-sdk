@@ -79,6 +79,26 @@ Content-Length: 0
 * The webapp name must not be empty and can only contain valid characters, that can be later used on the file system and the API uris. The invalid characters are: / ? # % & * + \ | : ; . “ > <
 If you pass in values for itemSystemFields and / or itemFields they will be ignored.
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+~~~
+var app = new BCAPI.Models.WebApp.App({
+        "name": "Test app"
+});
+
+app.save({
+        success: function(webAppItem) {
+            // handle success
+        },
+        error: function(webAppItem, xhr) {
+            // handle errors
+        }
+});
+~~~
+
+
 ### Error Codes
 
 This method will return the following error codes:

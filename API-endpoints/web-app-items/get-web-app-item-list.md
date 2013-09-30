@@ -125,6 +125,7 @@ Content-Length: {length}
 
 Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
 
+**Load items paginated**
 ~~~
 var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 items.fetch({
@@ -142,6 +143,39 @@ items.each(function(webAppItem) {
 });
 ~~~
 
+***
+
+**Filtering items**
+
+~~~
+var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({     
+        where: {"name": ""Web app item new"},
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+~~~
+
+***
+
+**Ordering items**
+
+~~~
+var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({
+        order: "-name",
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+~~~
 
 ### Filtering Syntax
 

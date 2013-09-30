@@ -113,6 +113,14 @@ Content-Length: length
 }
 ~~~
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+~~~
+var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("Sample webapp");
+~~~
+
 ### Error Codes
 
 This method will return the following error codes:

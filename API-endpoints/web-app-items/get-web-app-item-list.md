@@ -121,19 +121,26 @@ Content-Length: {length}
 }
 ~~~
 
-### Error Codes
+### Sample code
 
-This method will return the following error codes:
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
 
-* `200` - success
-* `400` - bad request
-	* `190001` - the Web App could not be found (the webAppName parameter from the URL does not match any record)
-	* `200000` - an unspecified error has occurred
-	* `200007` - there is a problem with the query, eg. invalid format, invalid field name, invalid operator, etc.
-	* `200009` - the category path specified in the query doesn't exist
-* `401` - unauthorized - when the Authorization header is not present, or contains an invalid site token
-	* `101000` - sub-error code
-* `403` - forbidden - this is returned when the user trying to access the API does not have the proper permissions
+~~~
+var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({
+        skip: 10, limit: 100,
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+
+items.each(function(webAppItem) {
+        // display logic
+});
+~~~
 
 
 ### Filtering Syntax
@@ -217,10 +224,6 @@ The filtering syntax involves specifying a list of constraints, logically chaine
     ```
     GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"category": "my-label"}
     ```
-
-
-
-
     
 ### Ordering Syntax
 
@@ -253,4 +256,18 @@ When sorting the items using a specified field, in case of ties due to equal val
     ```
     GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?order=-name
     ```
+
+### Error Codes
+
+This method will return the following error codes:
+
+* `200` - success
+* `400` - bad request
+	* `190001` - the Web App could not be found (the webAppName parameter from the URL does not match any record)
+	* `200000` - an unspecified error has occurred
+	* `200007` - there is a problem with the query, eg. invalid format, invalid field name, invalid operator, etc.
+	* `200009` - the category path specified in the query doesn't exist
+* `401` - unauthorized - when the Authorization header is not present, or contains an invalid site token
+	* `101000` - sub-error code
+* `403` - forbidden - this is returned when the user trying to access the API does not have the proper permissions
 

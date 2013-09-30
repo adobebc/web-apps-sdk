@@ -36,6 +36,22 @@ Connection: keep-alive
 HTTP/1.1 204 No Content
 ~~~
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+~~~
+var app = new BCAPI.Models.WebApp.App({name: "Test app"});
+app.destroy({
+    success: function(webAppItem, response) {
+        // handle success here.
+ },
+ error: function(webAppItem, xhr, options) {
+        // handle error scenario.
+ }
+});
+~~~
+
 ### Error Codes
 
 This method will return the following error codes:
@@ -46,5 +62,3 @@ This method will return the following error codes:
 * `403` - forbidden : this is returned when the user trying to access the API does not have the proper permissions
 * `404` - if trying to access a webapp that does not exist
     * `190001` - sub-error code
-
-

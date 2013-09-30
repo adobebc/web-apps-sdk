@@ -44,6 +44,16 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 ~~~
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+~~~
+var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
+itemCategories.set(items, [1,2,3,4]);
+itemCategories.save({success: onSaveOK, error: onSaveFailed})
+~~~
+
 ### Error Codes
 
 This method will return the following error codes:

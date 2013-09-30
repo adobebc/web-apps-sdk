@@ -71,6 +71,24 @@ Content-Length: length
 }
 ~~~
 
+### Sample code
+
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+
+~~~
+var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
+itemCategories.fetch({
+                        success: function(data) {
+                            //data = {items: [1,2,3]}
+                            _.each(data.items, function(categoryId) {
+                                var category = new BCAPI.Models.Category({id: categoryId});
+                                category.fetch({success: doSomethingWithCategName, error: onError})
+                            })
+                        },
+                        error: function(data, xhr){}
+                     });
+~~~
+
 ### Error Codes
 
 This method will return the following error codes:

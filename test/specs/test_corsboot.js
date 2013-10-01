@@ -75,7 +75,7 @@ describe("Unit tests for frameproxy boot.", function() {
 		expect(cacheEnabled).toBe(!results.wrapAll);
 	}
 	
-	function _testProxyWorksOnIe(ieVersion) {
+	function _testProxyWorksOnIe(ieVersion) {	
 		var results = {"wrapAll": true};
 		
 		_testProxy(results, undefined, undefined, ieVersion);
@@ -93,12 +93,27 @@ describe("Unit tests for frameproxy boot.", function() {
 		_testProxyWorksOnIe(9.0);
 	});
 
+	/**
+	 * This method ensures proxy boot is not enabled for internet explorer versions which natively
+	 * support CORS. 
+	 */
+	function _testProxyBootNotRequired(ieVersion) {
+		_mockIEUserAgent(ieVersion);
+		
+		var jQuery = {
+						ajaxSetup: function() { throw new Error("Unexpected proxy setup."); }
+					 },
+			corsBoot = new BCAPI.Helper.CORS.CorsBoot(jQuery, rootUrl);
+		
+		corsBoot.boot();		
+	}
+	
 	it("Check proxy boot works as expected on IE 10.", function() {
-		_testProxyWorksOnIe(10.0);
+		_testProxyBootNotRequired(10);
 	});
 
 	it("Check proxy boot works as expected on IE 11.", function() {
-		_testProxyWorksOnIe(11.0);
+		_testProxyBootNotRequired(11);
 	});
 	
 	it("Check start boot does not start on non ie browsers.", function() {

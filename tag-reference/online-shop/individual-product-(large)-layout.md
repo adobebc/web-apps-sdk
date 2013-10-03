@@ -57,3 +57,7 @@ Tag | Description
 `{tag_totalretailprice}` | Total retail price of the product: Retail Price + Tax
 `{tag_unittype}` | Product unit type: single, by the dozen
 `{tag_volumeprices}` | Displays volume pricing for product
+`{tag_productid}` | Displays product system id
+`{tag_catalogueid}` | Displays catalog system id the product is currently displayed in
+
+

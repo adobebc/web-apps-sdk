@@ -4,19 +4,23 @@ describe("Check webapp item assign categories.", function() {
 		expectedCategories = undefined,
 		itemId = undefined;
 
-	var MAX_TIMEOUT = 3000;
+	var MAX_TIMEOUT = 6000;
 	
 	function createApp() {
 		var webapp = new BCAPI.Models.WebApp.App({"name": webappName});
 		
-		webapp.save({
-			success: function(webapp) {			
-				webapp.fetch({
-					success: function() {
-						appCreated = webapp;
-					}
-				});
-			}
+		webapp.destroy().always(function() {
+			var webapp = new BCAPI.Models.WebApp.App({"name": webappName});
+			
+			webapp.save({
+				success: function(webapp) {			
+					webapp.fetch({
+						success: function() {
+							appCreated = webapp;
+						}
+					});
+				}
+			});			
 		});
 	}
 	

@@ -51,9 +51,9 @@ You can extend Business Catalyst's default functionality using a range of availa
 
 Using our SOAP and RESTful APIs, you can interact with the system and create custom applications on top of the Business Catalyst infrastructure.
 
-To get started, refer to our [Getting started with APIs guide.](/content/developer-guides/APIs/getting-started-with-apis.html)
+To get started, refer to our [Getting started with APIs guide.](/content/developer-guides/apis/getting-started-with-apis.html)
 
-You can also find a full list of supported API methods in our [API reference guide.](/content/API-endpoints/index.html)
+You can also find a full list of supported API methods in our [API reference guide.](/content/api-endpoints/index.html)
 
 #### Open Admin
 

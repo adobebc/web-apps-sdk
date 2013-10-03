@@ -77,7 +77,7 @@ Location: https://api.localsecuresyd.worldsecuresystems.com/api/v2/admin/sites/1
 
 ### Sample code
 
-Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/APIs/javascript-SDK.html)
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/apis/javascript-sdk.html)
 
 ~~~
 var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {

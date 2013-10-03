@@ -79,8 +79,7 @@ Below is some sample code using the bcapi.js SDK. For more information, see [Int
 var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
 itemCategories.fetch({
                         success: function(data) {
-                            //data = {items: [1,2,3]}
-                            _.each(data.items, function(categoryId) {
+                            _.each(data.get("items"), function(categoryId) {
                                 var category = new BCAPI.Models.Category({id: categoryId});
                                 category.fetch({success: doSomethingWithCategName, error: onError})
                             })

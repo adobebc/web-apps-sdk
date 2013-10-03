@@ -6,7 +6,7 @@ Business Catalyst offers a wide range of APIs which allow developers to easily e
 
 Business Catalyst currently supports two protocols: the older eCommerce and CRM APIs utilize the [SOAP](http://en.wikipedia.org/wiki/SOAP) protocol, while all new APIs are [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) over HTTP.
 
-For a complete reference of supported APIs, refer to [our API endpoint reference.](/content/API-endpoints/index.html)
+For a complete reference of supported APIs, refer to [our API endpoint reference.](/content/api-endpoints/index.html)
 
 ### Interacting with APIs
 
@@ -75,7 +75,7 @@ request.fail(function(jqXHR) {
 });
 ~~~
 
-If the request is successful, you'll be returned a object containing the response data [documented here.](http://docs.businesscatalyst.com/content/API-endpoints/web-apps/list-web-apps.html)
+If the request is successful, you'll be returned a object containing the response data [documented here.](http://docs.businesscatalyst.com/content/api-endpoints/web-apps/list-web-apps.html)
 
 Again we've used jQuery to send an AJAX request to the List Web Apps API endpoint and written some simple success/error handling to deal with the response. You'll notice we're able to use `current` in the place of specifiying the Site ID, as we're sending the request to our secure/system site URL. 
 
@@ -109,7 +109,7 @@ request.fail(function(jqXHR) {
 
 You'll notice that this time we've specified the type as `POST` and sent some JSON data through to BC that defines our new Web App's properties. 
 
-You can expand upon this JSON string to set a range of other Web App properties. [See the parameters here](/content/API-endpoints/web-apps/create-web-app.html) for a complete list of what's supported. 
+You can expand upon this JSON string to set a range of other Web App properties. [See the parameters here](/content/api-endpoints/web-apps/create-web-app.html) for a complete list of what's supported. 
 
 #### 4. Add a new Web App item
 
@@ -139,9 +139,9 @@ request.fail(function(jqXHR) {
 
 We're using the Create Web App Item API method and an AJAX POST request to send BC the details of our new Web App item. You'll need to replace "MyWebApp" with the slug of your actual Web App for this to work. 
 
-Just like our previous example, we've defined the Web App Item name here using JSON data sent during the request. You can find a [full list of item parameters supported here.](/content/API-endpoints/web-app-items/create-web-app-item.html)
+Just like our previous example, we've defined the Web App Item name here using JSON data sent during the request. You can find a [full list of item parameters supported here.](/content/api-endpoints/web-app-items/create-web-app-item.html)
 
-To update an existing Web App item, you use the `PUT` HTTP method instead of `POST`. [See the reference for more details.](/content/API-endpoints/web-app-items/update-web-app-item.html)
+To update an existing Web App item, you use the `PUT` HTTP method instead of `POST`. [See the reference for more details.](/content/api-endpoints/web-app-items/update-web-app-item.html)
 
 #### 5. Invalidating an Authentication token
 

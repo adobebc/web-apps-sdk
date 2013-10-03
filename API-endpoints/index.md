@@ -21,4 +21,4 @@ The APIs are split across two protocols, with the majority being RESTful:
 * CRM
 * eCommerce
 
-To get started with the APIs, [refer to our getting started article.](/content/developer-guides/APIs/getting-started-with-APIs.html)
+To get started with the APIs, [refer to our getting started article.](/content/developer-guides/apis/getting-started-with-apis.html)

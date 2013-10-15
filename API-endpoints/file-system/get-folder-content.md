@@ -87,6 +87,7 @@ This method will return the following error codes:
 * `200` - OK
 * `400` - Bad request:
 	* `104000` - Generic FileAPI error
+	* `104002` - Operation is applicable to files, not folders
 	* `104003` - Not enough privileges
 	* `104004` - Invalid login multiple sites
 	* `104009`- Path not found

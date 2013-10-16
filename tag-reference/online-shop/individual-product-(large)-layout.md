@@ -11,7 +11,7 @@ Tag | Description
 `{tag_addtocart}` | Ability to add products to the shopping cart (vertical layout)
 `{tag_addtocartinputfield}` | Input field to enter product quantity
 `{tag_addtofavorites,addtoImage,removefromImage}` | Add product to favorites list. Optionally customize to display your own custom image for adding and removing.
-`{tag_attributes}` | Renders attribute dropdowns for a given product
+`{tag_attributes, horizontal, hideDisabledVariations, autoSelectFirstVariation}` | Renders attribute dropdowns for a given product. Parameters: horizontal – kept existing behavior, hideDisabledVariations – true or false, autoSelectFirstVariation – true or false
 `{tag_buynow}` | Add to cart and redirects to check out
 `{tag_capturedetails}` | Displays a text box that allows the customer to enter instructions related to the product that they are purchasing
 `{tag_countrycode}` | Display the country code; for example, AU
@@ -26,7 +26,7 @@ Tag | Description
 `{tag_expirydate}` | Expiration date of product
 `{tag_grouping}` | Pop-up menu of product attributes used to select a product to add to cart
 `{tag_groupinglist}` | List of product attributes used to switch between products
-`{tag_instock}` | Number of units in stock
+`{tag_instock, syncWithAttributes, noSelectionMessage, disabledSelectionMessage}` | Number of units in stock. Parameters: syncWithAttributes – true or false, noSelectionMessage – specify the message displayed when site customer has not selected a variation, disabledSelectionMessage – specify the message displayed when site customer has selected a variation that is disabled
 `{tag_itemurl_nolink}` | URL to the item referred, without host
 `{tag_itemurl_withhost}` | URL to the item referred, with host
 `{tag_largeimage}` | Large image for product
@@ -34,10 +34,10 @@ Tag | Description
 `{tag_maxunits}` | Maximum units
 `{tag_minunits}` | Minimum units
 `{tag_name}` | Name of product
-`{tag_onorder}` | Number of units on order
+`{tag_onorder, syncWithAttributes, noSelectionMessage, disabledSelectionMessage}` | Number of units on order. Options: syncWithAttributes – true or false, noSelectionMessage – specify the message displayed when site customer has not selected a variation, disabledSelectionMessage – specify the message displayed when site customer has selected a variation that is disabled
 `{tag_onsale}` | Renders 1 if product on sale, otherwise 0. If page elements need to be altered for products on sale, then embed tag in relevant javascript.
 `{tag_poplets,rowlength,width,height}` | Displays thumbnail version of poplet images
-`{tag_productcode}` | Product code
+`{tag_productcode, syncWithAttributes, noSelectionMessage, disabledSelectionMessage}` | Product code. With variations enabled, tg product will render the variation code instead of the product codes in all layouts where this is used. Parameters: syncWithAttributes – true or false, noSelectionMessage – specify the message displayed when site customer has not selected a variation, disabledSelectionMessage – specify the message displayed when site customer has selected a variation that is disabled
 `{tag_productmetadescription}` | Meta description information added in the SEO Metadata section of product details page.
 `{tag_relatedproducts}` | Displays a list of products related to this product that can be browsed and added separately to cart (useful for up/cross selling purposes)
 `{tag_relatedproductslist}` | Displays a list of products related to this product that are added to the cart when this product is. `{tag_relatedproductslist,7}` will display them as radio buttons and `{tag_relatedproductslist,8}` displays small images of the product only. (useful for up/cross selling purposes)
@@ -59,5 +59,10 @@ Tag | Description
 `{tag_volumeprices}` | Displays volume pricing for product
 `{tag_productid}` | Displays product system id
 `{tag_catalogueid}` | Displays catalog system id the product is currently displayed in
+`{tag_attributes_json}` | Renders all the product attributes in JSON format
+`{tag_instock_json}` | Renders the total stock and SKU variation stock in JSON format
+`{tag_onorder_json}` | Renders on order information in JSON format
+`{tag_productcode_json}` | Renders the product code and SKU codes in JSON format
+`{tag_product_json}` | Renders the product ID, Catalog ID the currently being viewed and template ID being used in JSON format
 
 

@@ -6,7 +6,13 @@ You can modify the Site Map via Site Settings > Site Map
 
 ### Example
 
-`{module_breadcrumbs}` 
+`{module_breadcrumbs,SEPERATOR}` 
+
+You can define the breacrumb seperator by provding your symbol or html as a paramater in the module.
+#### Examples:
+{module_breadcrumbs,&nbsp;|&nbsp;}
+{module_breadcrumbs,>}
+{module_breadcrumbs, <span>:</span> }
 
 Assuming the page "Child Page" is a child item of "Parent Page", this will render the following HTML code: 
 

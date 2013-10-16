@@ -13,7 +13,7 @@ describe("Unit tests for web app item collection.", function() {
 			expectedBeginUrl = rootUrl + "/api/v2/admin/sites/current/webapps/Sample webapp/items",
 			item = new BCAPI.Models.WebApp.ItemCollection(webappName);
 		
-		BCAPI.Mocks.Helper.Site(undefined, undefined, rootUrl);
+		BCAPI.Mocks.Helper.Site(undefined, rootUrl);
 		
 		expect(item.url().substring(0, expectedBeginUrl.length)).toBe(expectedBeginUrl);
 		expect(item.url()).toContain("limit=" + BCAPI.Config.Pagination.limit);
@@ -30,7 +30,7 @@ describe("Unit tests for web app item collection.", function() {
 			expectedItems = {"items": [{"id": 1, "name": "Item 1"}, 
 			                           {"id": 1500, "name": "Item 2"}]};
 		
-		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
+		BCAPI.Mocks.Helper.Site(siteToken, rootUrl);
 			
 		function successHandler(collection, xhr, options) {
 			expect(options.testKey).toBe("123");

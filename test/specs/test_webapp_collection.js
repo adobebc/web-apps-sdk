@@ -10,7 +10,7 @@ describe("Unit tests for webapp collection.", function() {
 			rootUrl = "http://test.localhost.com",
 			expectedBeginUrl = rootUrl + "/api/v2/admin/sites/current/webapps";
 		
-		BCAPI.Mocks.Helper.Site(undefined, undefined, rootUrl);
+		BCAPI.Mocks.Helper.Site(undefined, rootUrl);
 		
 		expect(appCollection.url().substring(0, expectedBeginUrl.length)).toBe(expectedBeginUrl);
 		expect(appCollection.url()).toContain("limit=" + BCAPI.Config.Pagination.limit);
@@ -26,7 +26,7 @@ describe("Unit tests for webapp collection.", function() {
 			                          {"id":356, "name":"BC Help", "slug":"bc-help"}]},
 			successCalled = false;
 		
-		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
+		BCAPI.Mocks.Helper.Site(siteToken, rootUrl);
 		
 		function successHandler(collection, xhr, options) {
 			var idx = 0;

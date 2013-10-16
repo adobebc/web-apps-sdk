@@ -5,7 +5,7 @@ describe("Unit tests for BC base model class.", function() {
 		expectedUrl = rootUrl + "/api/v2/persons";
 	
 	beforeEach(function() {
-		BCAPI.Mocks.Helper.Site(null, siteToken, rootUrl);
+		BCAPI.Mocks.Helper.Site(siteToken, rootUrl);
 	});
 	
 	it("Check attributes default values.", function() {

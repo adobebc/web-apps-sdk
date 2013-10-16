@@ -6,7 +6,7 @@ describe("Unit tests for frameproxy boot.", function() {
 		oldProxyClient = undefined;
 
 	beforeEach(function() {
-		BCAPI.Mocks.Helper.Site(undefined, undefined, rootUrl);
+		BCAPI.Mocks.Helper.Site(undefined, rootUrl);
 		
 		oldAppName = navigator.appName;
 		oldUserAgent = navigator.userAgent;

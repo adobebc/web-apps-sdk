@@ -6,7 +6,7 @@ describe("BCAPI.Models.WebApp.App", function() {
         itemUrl = collectionUrl + '/SampleApp';
 
     beforeEach(function() {
-        BCAPI.Mocks.Helper.Site(null, siteToken, rootUrl);
+        BCAPI.Mocks.Helper.Site(siteToken, rootUrl);
 
         webApp = new BCAPI.Models.WebApp.App({"name" : "SampleApp"});
     });

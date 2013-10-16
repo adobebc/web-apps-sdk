@@ -3,7 +3,7 @@ describe("Unit tests for item category model.", function() {
         rootUrl = "";
 
     beforeEach(function() {
-        BCAPI.Mocks.Helper.Site(null, siteToken, rootUrl);
+        BCAPI.Mocks.Helper.Site(siteToken, rootUrl);
     });
 
     it("Test Item Category Endpoint is correct", function() {

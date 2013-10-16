@@ -6,7 +6,7 @@ describe("Unit tests for BC base collection class.", function() {
 	beforeEach(function() {
 		oldSiteHelper = BCAPI.Helper.Site;		
 		
-		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
+		BCAPI.Mocks.Helper.Site(siteToken, rootUrl);
 	});
 	
 	afterEach(function() {

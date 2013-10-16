@@ -13,7 +13,7 @@ describe("Unit tests for custom field collection.", function() {
 			expectedBeginUrl = rootUrl + "/api/v2/admin/sites/current/webapps/Sample webapp/fields",
 			fieldCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webappName);
 		
-		BCAPI.Mocks.Helper.Site(undefined, undefined, rootUrl);
+		BCAPI.Mocks.Helper.Site(undefined, rootUrl);
 		
 		expect(fieldCollection.url().substring(0, expectedBeginUrl.length)).toBe(expectedBeginUrl);
 		expect(fieldCollection.url()).toContain("limit=" + BCAPI.Config.Pagination.limit);
@@ -31,7 +31,7 @@ describe("Unit tests for custom field collection.", function() {
 										"required": false, "order": 5}, 
 			                           {"id": 1500, "name": "Field 2", "type": "String", "required": true}]};
 		
-		BCAPI.Mocks.Helper.Site(undefined, siteToken, rootUrl);
+		BCAPI.Mocks.Helper.Site(siteToken, rootUrl);
 			
 		function successHandler(collection, xhr, options) {
 			expect(options.testKey).toBe("123");

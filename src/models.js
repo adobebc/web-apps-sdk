@@ -50,7 +50,7 @@
     	 */
     	headers: function() {
     		return {
-    			"Authorization": BCAPI.Helper.Site.getSiteToken()
+    			"Authorization": BCAPI.Helper.Site.getAccessToken()
     		};
     	},
     	/**

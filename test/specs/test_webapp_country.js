@@ -6,7 +6,7 @@ describe("Unit tests for webapp country.", function() {
         rootUrl = "";
 
     beforeEach(function() {
-        BCAPI.Mocks.Helper.Site(null, siteToken, rootUrl);
+        BCAPI.Mocks.Helper.Site(siteToken, rootUrl);
     });
 
     it("Test webapp country instantiated correctly.", function() {

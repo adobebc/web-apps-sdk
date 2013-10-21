@@ -40,7 +40,7 @@ Tag | Description
 `{tag_productcode, syncWithAttributes, noSelectionMessage, disabledSelectionMessage}` | Product code. With variations enabled, tg product will render the variation code instead of the product codes in all layouts where this is used. Parameters: syncWithAttributes – true or false, noSelectionMessage – specify the message displayed when site customer has not selected a variation, disabledSelectionMessage – specify the message displayed when site customer has selected a variation that is disabled
 `{tag_productmetadescription}` | Meta description information added in the SEO Metadata section of product details page.
 `{tag_relatedproducts}` | Displays a list of products related to this product that can be browsed and added separately to cart (useful for up/cross selling purposes)
-`{tag_relatedproductslist}` | Displays a list of products related to this product that are added to the cart when this product is. `{tag_relatedproductslist,7}` will display them as radio buttons and `{tag_relatedproductslist,8}` displays small images of the product only. (useful for up/cross selling purposes)
+`{tag_relatedproductslist}` | Displays a list of products related to this product that are added to the cart when this product is. By default this renders as check boxes otherwise: `{tag_relatedproductslist,7}` will display them as radio buttons, `{tag_relatedproductslist,6}` will display them as check boxes and `{tag_relatedproductslist,8}` displays small images of the product only. (useful for up/cross selling purposes)
 `{tag_releasedate}` | Release date of item
 `{tag_reorder}` | Number of units to reorder threshold
 `{tag_retailprice}` | Retail price of the product

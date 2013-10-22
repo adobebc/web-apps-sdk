@@ -117,7 +117,7 @@
           delete this.attr.tid;
         }
 
-		// provide some callback hooks
+                // provide some callback hooks
         typeof this.options.onHidden == 'function' && this.options.onHidden.call(this);
         this.$element.trigger('hidden');
       }
@@ -205,4 +205,3 @@
   })
 
 }( window.jQuery );
-

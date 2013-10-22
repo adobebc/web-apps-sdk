@@ -1,7 +1,5 @@
 var files = 
 	[
-	 	"lib/underscore.js",
-	 	"lib/backbone.js",
 	 	"lib/frameproxy.js",
 	 	"src/bcapi.js",
 	 	"src/helper.js",

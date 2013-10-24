@@ -523,11 +523,9 @@ SOFTWARE.
      */
     BCAPI.Helper.Site.getAccessToken = function() {
         //noinspection JSValidateTypes
-
-        var errMessage = 'Include jQuery.cookie or override BCAPI.Helper.Site.getAccessToken with your own implementation.';
         
         if (!$.cookie) {
-            return $.error(errMessage);
+            return $.error('Include jQuery.cookie or override BCAPI.Helper.Site.getAccessToken with your own implementation.');
         }
         var tokenCookie = $.cookie('access_token');
         if (tokenCookie){
@@ -540,7 +538,7 @@ SOFTWARE.
             $.cookie('access_token', parameters['access_token']);
             return parameters['access_token'];
         }
-        return $.error(errMessage);
+        return $.error('No access_token passed in hash fragment.');
 	};
 
     /**

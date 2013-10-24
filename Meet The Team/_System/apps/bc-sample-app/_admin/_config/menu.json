@@ -4,7 +4,7 @@
         "title": "Meet the Team",
 		"children": [],
         "attr" : {
-            "href" : "/team/_admin/"
+            "href" : "/_System/apps/bc-sample-app/_admin/index.html"
         }
     }
 }

@@ -542,11 +542,18 @@ SOFTWARE.
 	};
 
     /**
-     * @returns {string}
+     * This method obtains secure url required for API calls. It uses the current host from location
+     * in order to detect prefix of APIs url. We can do this because BC api js sdk is always used 
+     * with 3rd party applications served from a separated domain. 
+     * 
+     * @returns {string} API secure url.
      */
-    BCAPI.Helper.Site.getRootUrl = function() {
-        //noinspection JSUnresolvedVariable
-        return top.authData ? 'https://' + top.authData.apiUrl : '';
+    BCAPI.Helper.Site.getRootUrl = function(wnd) {
+    	wnd = wnd || window;
+    	
+        var url = [wnd.location.protocol, "//", wnd.location.hostname].join("");
+        
+        return url;
     };
 
     /**

@@ -522,22 +522,30 @@ SOFTWARE.
      * @returns {string} The access_token
      */
     BCAPI.Helper.Site.getAccessToken = function() {
-        //noinspection JSValidateTypes
         
         if (!$.cookie) {
             return $.error('Include jQuery.cookie or override BCAPI.Helper.Site.getAccessToken with your own implementation.');
         }
+
+        var location = BCAPI.Helper.Http.getCurrentLocation();
+        var parameters = BCAPI.Helper.Http.getHashFragments(location);
+        var paramAccessToken = parameters['access_token'];
+        if (paramAccessToken){
+            var expireTimeSeconds = parameters['expires_in'];
+            if (!expireTimeSeconds){
+                expireTimeSeconds = 14400; // default is 4h
+            }
+            var expireDate = new Date(Date.now() + expireTimeSeconds * 1000);
+            
+            $.cookie('access_token', paramAccessToken, { expires: expireDate});
+            return paramAccessToken;
+        }
+
         var tokenCookie = $.cookie('access_token');
         if (tokenCookie){
             return tokenCookie;
         }
-
-        var location = BCAPI.Helper.Http.getCurrentLocation();
-        var parameters = BCAPI.Helper.Http.getHashFragments(location);
-        if (parameters['access_token']){
-            $.cookie('access_token', parameters['access_token']);
-            return parameters['access_token'];
-        }
+        
         return $.error('No access_token passed in hash fragment.');
 	};
 

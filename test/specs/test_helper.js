@@ -1,33 +1,69 @@
 describe("Helper.Site", function() {
 
-    it("Test if no $.cookie", function(){     
-        spyOn($, "error");
+    describe("Helper.Site.getAccessToken", function(){
+        
+        function _fakeGetCurrentLocation(location){
+            spyOn(BCAPI.Helper.Http, "getCurrentLocation").andCallFake(function(){
+                var link = document.createElement("a");
+                link.href = location;
+                return link;
+            });
+        }
 
-        BCAPI.Helper.Site.getAccessToken();
-        expect($.error).toHaveBeenCalled();
-    });
+        it("Test if no $.cookie", function(){     
+            spyOn($, "error");
 
-    it("Test it gets token from cookie if it exists", function(){
-        spyOn($, "cookie").andCallFake(function(){return true;});
+            BCAPI.Helper.Site.getAccessToken();
+            expect($.error).toHaveBeenCalled();
+        });
+     
+        it("Test it gets token from hash parameters", function(){
+            spyOn($, "cookie").andCallFake(function(){return undefined;});
 
-        BCAPI.Helper.Site.getAccessToken();
-        expect($.cookie).toHaveBeenCalledWith('access_token');
-    });
- 
-    it("Test it gets token from hash parameters if it it's not in cookie", function(){
-        spyOn($, "cookie").andCallFake(function(){return undefined;});
+            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027");
 
-        spyOn(BCAPI.Helper.Http, "getCurrentLocation").andCallFake(function(){
-            var link = document.createElement("a");
-            link.href = "http://businesscatalyst.com#access_token=febf7b6a027";
-            return link;
+            expect(BCAPI.Helper.Site.getAccessToken()).toBe('febf7b6a027');
+            expect($.cookie).toHaveBeenCalled();
         });
 
-        expect(BCAPI.Helper.Site.getAccessToken()).toBe('febf7b6a027');
+        it("Test token is set in cookie with expiration from hash parameter", function(){
+            spyOn($, "cookie").andCallFake(function(){return undefined;});
+            
+            var fakeNowDateString = "2013-10-29T00:00:00";
+            spyOn(Date, "now").andCallFake(function(){return new Date(fakeNowDateString)});
 
-        expect($.cookie).toHaveBeenCalledWith('access_token','febf7b6a027');
+            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027&expire_in=900"); // 900 = 15min
+
+            BCAPI.Helper.Site.getAccessToken()
+
+            var expireDate = new Date(Date.now() + 900 * 1000);
+            expect($.cookie).toHaveBeenCalledWith('access_token','febf7b6a027', {expires: expireDate});
+        });
+
+        it("Test token is set in cookie with default expiration if not in hash parameters", function(){
+            spyOn($, "cookie").andCallFake(function(){return undefined;});
+            var fakeNowDateString = "2013-10-29T00:00:00";
+            spyOn(Date, "now").andCallFake(function(){return new Date(fakeNowDateString)});
+
+            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027");
+
+            BCAPI.Helper.Site.getAccessToken()
+
+            //default expiration is 4h if none was passed
+            var expireDate = new Date(Date.now() + 14400 * 1000);
+            expect($.cookie).toHaveBeenCalledWith('access_token','febf7b6a027', { expires: expireDate});
+        });
+
+        it("Test it gets token from cookie if it's not in hash", function(){
+            _fakeGetCurrentLocation("http://businesscatalyst.com");
+
+            spyOn($, "cookie").andCallFake(function(){return true;});
+
+            BCAPI.Helper.Site.getAccessToken();
+            expect($.cookie).toHaveBeenCalledWith('access_token');
+        });
     });
-
+    
     it("Test getSiteId returns 'current'", function() {
         expect(BCAPI.Helper.Site.getSiteId()).toBe('current');
     });

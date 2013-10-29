@@ -28,19 +28,21 @@ describe("Helper.Site", function() {
         expect($.cookie).toHaveBeenCalledWith('access_token','febf7b6a027');
     });
 
-    it("Test getSiteId returns 'current'", function(){
+    it("Test getSiteId returns 'current'", function() {
         expect(BCAPI.Helper.Site.getSiteId()).toBe('current');
     });
 
-    it("Test getRootUrl()", function() {
-        expect(BCAPI.Helper.Site.getRootUrl()).toBe("");
-
-        var host = 'secured.bc-local.com';
-        top.authData = {};
-        top.authData.apiUrl = host;
-        expect(BCAPI.Helper.Site.getRootUrl()).toBe('https://' + host);
-        delete top.authData;
-    });
+    it("Test getRootUrl correct location.", function() {
+    	var protocol = "https:",
+    		hostname = "appkey-123-apps.worldsecuresystems.com",
+    		expectedLocation = [protocol, "//", hostname].join(""),
+    		wnd = {"location": {
+    			"hostname": hostname,
+    			"protocol": protocol
+    		}};
+    	
+    	expect(BCAPI.Helper.Site.getRootUrl(wnd)).toBe(expectedLocation)
+    });    
 });
 
 describe("Helper.Http", function(){

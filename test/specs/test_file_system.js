@@ -1,10 +1,15 @@
 describe('BCAPI.Models.FileSystem', function() {
     'use strict';
 
-    var BcFile = BCAPI.Models.FileSystem.File;
-    var BcFolder = BCAPI.Models.FileSystem.Folder;
-
+    var BcFile = BCAPI.Models.FileSystem.File,
+    	BcFolder = BCAPI.Models.FileSystem.Folder,
+    	apiUrl = "https://blog-app-1234-apps.worldsecuresystem.com";
+	
     beforeEach(function() {
+		spyOn(BCAPI.Helper.Site, "getRootUrl").andCallFake(function() {
+			return apiUrl;
+		});    	
+    	
         this.addMatchers({
             toHavePaths: function(path, parentPath, name) {
                 var x = this.actual;
@@ -83,7 +88,7 @@ describe('BCAPI.Models.FileSystem', function() {
 
         it('should have the proper content url', function() {
             var file = new BcFile('/my/file');
-            expect(file.contentUrl()).toBe('/api/v2/admin/sites/current/storage/my/file');
+            expect(file.contentUrl()).toBe(apiUrl + '/api/v2/admin/sites/current/storage/my/file');
         });
 
         it('should validate the data', function() {

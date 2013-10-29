@@ -1,4 +1,12 @@
 describe("Unit tests for category model.", function() {
+	var apiUrl = "https://blog-app-1234-apps.worldsecuresystem.com";
+	
+	beforeEach(function() {
+		spyOn(BCAPI.Helper.Site, "getRootUrl").andCallFake(function() {
+			return apiUrl;
+		});
+	});	
+	
     it("Test Category Endpoint is correct", function() {
        var category = new BCAPI.Models.Category();
        var expectedEndpoint = "/api/v2/admin/sites/current/categories";
@@ -45,8 +53,9 @@ describe("Unit tests for category model.", function() {
     });
 
     it("Test item url contains id", function() {
-        var category = new BCAPI.Models.Category({id:1, name: "Test"});
-        expect(category.url()).toBe(category.endpoint() + "/" + category.id);
+        var category = new BCAPI.Models.Category({id:1, name: "Test"}),
+        	expectedUrl = [apiUrl, category.endpoint(), "/", category.id].join("");
+        expect(category.url()).toBe(expectedUrl);
     });
 
     function _assertItemValues(item, values) {

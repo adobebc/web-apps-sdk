@@ -1,9 +1,7 @@
 var files = 
 	[
-	 	"lib/frameproxy.js",
 	 	"src/bcapi.js",
 	 	"src/helper.js",
-	 	"src/cors_boot.js",
 	 	"src/config.js",
 	 	"src/models.js",
         "src/category.js",

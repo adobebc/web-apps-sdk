@@ -10,5 +10,6 @@
 		"grunt-contrib-concat": "*",
 		"grunt-contrib-uglify": "*",
 		"grunt-jsdoc": "*"
-	}
+	},
+	"license": "MIT"
 }

@@ -1,5 +1,5 @@
 describe("Check category integration.", function() {
-	var MAX_TIMEOUT = 3000;
+	var MAX_TIMEOUT = BCAPI.Config.MAX_TIMEOUT;
 	
 	beforeEach(function() {
 	    BCAPI.Helper.Test.runTestServer();

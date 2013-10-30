@@ -8,4 +8,6 @@
 		genericToken: "",
 		tokenRequestTimeout: 60 * 1000
 	};
+	
+	BCAPI.Config.MAX_TIMEOUT = 10000;
 })();

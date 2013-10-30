@@ -2,7 +2,7 @@ describe("Check webapp assign countries.", function() {
 	var webappName = "WebAppCountriesApp",
 		appCreated = undefined;
 	
-	var MAX_TIMEOUT = 2000;
+	var MAX_TIMEOUT = BCAPI.Config.MAX_TIMEOUT;
 	
 	function createApp() {
 		var webapp = new BCAPI.Models.WebApp.App({"name": webappName});

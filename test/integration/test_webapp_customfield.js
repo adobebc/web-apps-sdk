@@ -2,7 +2,7 @@ describe("Check webapp assign customfields.", function() {
     var webappName = "WebAppCustomfieldsApp",
         appCreated = undefined;
 
-    var MAX_TIMEOUT = 5000;
+    var MAX_TIMEOUT = BCAPI.Config.MAX_TIMEOUT;
 
     function createApp() {
         var webapp = new BCAPI.Models.WebApp.App({"name": webappName});

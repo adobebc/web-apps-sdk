@@ -4,7 +4,7 @@ describe("Check webapp item assign categories.", function() {
 		expectedCategories = undefined,
 		itemId = undefined;
 
-	var MAX_TIMEOUT = 6000;
+	var MAX_TIMEOUT = BCAPI.Config.MAX_TIMEOUT;
 	
 	function createApp() {
 		var webapp = new BCAPI.Models.WebApp.App({"name": webappName});

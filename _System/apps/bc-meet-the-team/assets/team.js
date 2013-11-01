@@ -1,5 +1,5 @@
 var WEBAPP_NAME = "Meet The Team";
-var WEBAPP_PHOTO_FOLDER = "/bc-sample-app/images/";
+var WEBAPP_PHOTO_FOLDER = "/bc-meet-the-team/images/";
 var WEBAPP_CUSTOM_FIELDS = [
     {
         "name":"Position",

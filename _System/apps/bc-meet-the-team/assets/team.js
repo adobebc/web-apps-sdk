@@ -1,5 +1,6 @@
 var WEBAPP_NAME = "Meet The Team";
 var WEBAPP_PHOTO_FOLDER = "/bc-meet-the-team/images/";
+var WEBAPP_SLUG = "bc-meet-the-team";
 var WEBAPP_CUSTOM_FIELDS = [
     {
         "name":"Position",
@@ -61,6 +62,7 @@ function tryWebAppCreate(data, xhr) {
 function createWebApp(name, fields, callback) {
     var webApp = new BCAPI.Models.WebApp.App({
         name: WEBAPP_NAME,
+        slug: WEBAPP_SLUG,
         allowFileUpload: true,
         uploadFolder: WEBAPP_PHOTO_FOLDER
     });

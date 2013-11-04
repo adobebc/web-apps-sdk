@@ -152,12 +152,7 @@ function persistActionsCard(evt) {
 }
 
 function onAPIError(data, xhr, options) {
-    var errorMessage = "Unknown error";
-    if (xhr.responseText) {
-        errorMessage = "Server error. Error code: " + JSON.parse(xhr.responseText).code;
-    }
-    systemNotifications.showError("API Error", errorMessage);
-
+    showErrorMessage(xhr, "API Error");
 };
 
 function deleteTeamMember(memberId) {
@@ -243,6 +238,7 @@ function renderMemberDetailsForm(memberObject) {
     // Attach form submit event handler
 
     $('#member-form-submit').click(onMemberFormSubmit);
+    $("#member-form-cancel").click(onMemberFormLeave);
 
     $('.tab-pane input[type=text]').change(checkSocialTab);
     $.validator.messages.required = "This field is required";
@@ -263,11 +259,11 @@ function checkSocialTab(evt) {
 function onMemberFormSubmit(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-
-
+    enableButtons(false);
 
     $("#member-edit-form").validate({
         showErrors: function(errorMap, errorList) {
+
             $.each( this.successList , function(index, value) {
                 $(value).popover('hide');
             });
@@ -284,6 +280,8 @@ function onMemberFormSubmit(evt) {
                 _popover.data('popover').options.content = value.message;
 
                 $(value.element).popover('show');
+
+                enableButtons(true);
             }
         }
     });
@@ -319,32 +317,62 @@ function saveMember(memberId) {
         if (memberPicture && memberPicture.length > 0) {
             member.get("fields").Picture = WEBAPP_PHOTO_FOLDER + memberPicture;
         }
-
-        memberImage.upload(userImageFile).done(function() {
-            member.save({ contentType: 'application/json',
-                success: onMemberSave,
-                error: onAPIError
-            });
-        });
+        
+        memberImage.upload(userImageFile)
+            .done(function() {
+                member.save({ contentType: 'application/json',
+                    success: onMemberSaveSuccess,
+                    error: onMemberSaveError
+                })
+            })
+            .fail(onMemberUploadError);
     } else {
         if (memberPicture && memberPicture.length > 0) {
             member.get("fields").Picture = memberPicture;
         }
 
         member.save({
-            success: onMemberSave,
-            error: onAPIError
+            success: onMemberSaveSuccess,
+            error: onMemberSaveError
         });
     }
 }
 
-function onMemberSave(member) {
+function onMemberUploadError(xhr, textStatus, errorThrown){
+    enableButtons(true);
+
+    showErrorMessage(xhr, "File Upload Error");
+}
+
+function onMemberSaveError(data, xhr, options){
+    enableButtons(true);
+
+    onAPIError(data, xhr, options);
+}
+
+function onMemberSaveSuccess(member) {
     systemNotifications.showSuccess("Operation successful", "Member details saved successfully");
     setTimeout(function() {
-        window.location = 'index.html';
+        onMemberFormLeave();
     }, 1000);
 }
 
+function onMemberFormLeave(evt) {
+    window.location = 'index.html';
+}
+
+// enable - boolean desired state of buttons
+function enableButtons(enabled) {
+    $('.control-group .controls .btn').prop('disabled', !enabled);
+}
+
+function showErrorMessage(xhr, title) {
+    var errorMessage = "Unknown error.";
+    if (xhr.responseText) {
+        errorMessage = "Server error. Error code: " + JSON.parse(xhr.responseText).code;
+    }
+    systemNotifications.showError( (typeof title != undefined) ? title : "Error", errorMessage);
+}
 
 /*
  * Utility functions

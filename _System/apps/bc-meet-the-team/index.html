@@ -43,7 +43,7 @@
             <div class="member-card">
                 <div class="user-photo">
                     <a href="edit.html?memberid=<%= member.get('id') %>">
-                        <img src="<%= member.get('fields').Picture %>?action=thumbnail&width=100&height=100&algorithm=fill_proportional" style="width:120px; height: 100px;" alt="Picture Not Available"/>
+                        <img src="<%= member.get('fields').Picture %>?action=thumbnail&width=120&height=100&algorithm=fill_proportional" style="max-width:120px; max-height: 100px;" alt="Picture Not Available"/>
                     </a>
                 </div>
 

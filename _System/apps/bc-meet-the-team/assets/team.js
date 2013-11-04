@@ -1,6 +1,8 @@
 var WEBAPP_NAME = "Meet The Team";
 var WEBAPP_PHOTO_FOLDER = "/bc-meet-the-team/images/";
 var WEBAPP_SLUG = "bc-meet-the-team";
+var MEMBER_DEFAULT_PHOTO = WEBAPP_PHOTO_FOLDER + "unknown.png";
+
 var WEBAPP_CUSTOM_FIELDS = [
     {
         "name":"Position",
@@ -304,15 +306,16 @@ function saveMember(memberId) {
             Bio: $('#member-bio').val(),
             Facebook: $('#member-facebook').val(),
             Twitter: $('#member-twitter').val(),
-            Linkedin: $('#member-linkedin').val()
+            Linkedin: $('#member-linkedin').val(),
+            Picture: MEMBER_DEFAULT_PHOTO
         }
     });
 
     if (userImageFile) {
         var memberImage = new BCAPI.Models.FileSystem.File({
-	    parent: new BCAPI.Models.FileSystem.Folder(WEBAPP_PHOTO_FOLDER),
-	    name: memberPicture
-	});
+    	    parent: new BCAPI.Models.FileSystem.Folder(WEBAPP_PHOTO_FOLDER),
+    	    name: memberPicture
+    	});
         if (memberPicture && memberPicture.length > 0) {
             member.get("fields").Picture = WEBAPP_PHOTO_FOLDER + memberPicture;
         }

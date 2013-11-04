@@ -157,6 +157,21 @@
     		url.push("/items");
     		
     		return url.join("");
+    	},
+    	/**
+    	 * This method is overriden in order to remove *webapp* field from API request. 
+    	 * Webapp it's a pseudo attribute used internally by an item collection.
+    	 * 
+    	 * @method
+    	 * @instance
+    	 * @memberOf BCAPI.Models.WebApp.Item
+    	 */
+    	toJSON: function(options) {
+    		var result = BCAPI.Models.Model.prototype.toJSON.call(this, options);
+    		
+    		delete result["webapp"];
+    		
+    		return result;
     	}
     });
     

@@ -6,15 +6,19 @@ describe("Check webapp assign countries.", function() {
 	
 	function createApp() {
 		var webapp = new BCAPI.Models.WebApp.App({"name": webappName});
-		
-		webapp.save({
-			success: function(webapp) {			
-				webapp.fetch({
-					success: function() {
-						appCreated = webapp;
-					}
-				});
-			}
+
+		webapp.destroy().always(function() {
+			webapp = new BCAPI.Models.WebApp.App({"name": webappName});
+			
+			webapp.save({
+				success: function(webapp) {			
+					webapp.fetch({
+						success: function() {
+							appCreated = webapp;
+						}
+					});
+				}
+			});			
 		});
 	}
 	

@@ -220,14 +220,24 @@ function renderMemberDetailsForm(memberObject) {
         $("#preview").attr("src", "assets/images/unknown.png");
     }
 
+    // Check for the various File API support.
+    if ((typeof window.File == "undefined") 
+        || (typeof window.FileReader == "undefined") 
+        || (typeof window.FileList == "undefined")
+        || (typeof window.Blob == "undefined")) {
+        //we don't have needed File API support, hide file upload
+        $('.upload-not-supported').show();
+        $('.trigger-info').hide();
+    }
+    else {
+        // setup file upload hooks for drag'n'drop
+        // and client-side preview functionality
+        $('.upload-not-supported').hide();
 
-
-    // setup file upload hooks for drag'n'drop
-    // and client-side preview functionality
-
-    $('#upload-trigger').click(function() {
-        $('#member-picture-select').click();
-    });
+        $('#upload-trigger').click(function() {
+            $('#member-picture-select').click();
+        });
+    }
 
 
     // Setup the dnd listeners
@@ -242,6 +252,7 @@ function renderMemberDetailsForm(memberObject) {
 
     $('.tab-pane input[type=text]').change(checkSocialTab);
     $.validator.messages.required = "This field is required";
+    
 }
 
 

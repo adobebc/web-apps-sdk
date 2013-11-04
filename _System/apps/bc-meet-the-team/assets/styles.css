@@ -250,3 +250,8 @@ a.member-icon-edit:hover {
   background-color: #eee;
   border-style: none;	
 }
+
+.upload-not-supported {
+    display: none;
+    font-style: italic;
+}

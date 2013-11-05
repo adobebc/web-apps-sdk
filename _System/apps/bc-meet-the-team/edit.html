@@ -27,7 +27,7 @@
                 <label class="control-label" for="member-picture">Picture:</label>
                 <div class="controls">
                     <div class="span7 file-upload-area" id="member-picture">
-                        <span class="preview-wrapper"><img id="preview" class="member-upload-preview" src="<%= member.get('fields').Picture %>"/></span>
+                        <span class="preview-wrapper"><img id="preview" class="member-upload-preview" src="<%= member.get('fields').Picture %>?action=thumbnail&width=120&height=100&algorithm=fill_proportional"/></span>
                         <input type="hidden" id="member-picture-name" value="<%= member.get('fields').Picture %>" />
                         <span class="trigger-info">drag image here or <a href="#" id="upload-trigger">click to upload</a></span>
                         <span class="upload-not-supported">File upload is not supported on this browser.</span>

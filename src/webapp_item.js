@@ -1,6 +1,14 @@
 (function($) {
 	"use strict";
 
+    var endpointGenerator = function(webappName) {
+		var url = ["/api/v2/admin/sites/current/webapps/"];
+		url.push(webappName);
+		url.push("/items");
+
+		return url.join("");
+    };
+
 	/**
 	 * This class provides useful operations for interacting with web app items. You can find various examples of how to
 	 * use it.
@@ -152,11 +160,7 @@
     	 * @memberOf BCAPI.Models.WebApp.Item
     	 */
     	endpoint: function() {
-    		var url = ["/api/v2/admin/sites/current/webapps/"];
-    		url.push(this._webappName);
-    		url.push("/items");
-    		
-    		return url.join("");
+    		return endpointGenerator(this._webappName);    		
     	},
     	/**
     	 * This method is overriden in order to remove *webapp* field from API request. 
@@ -209,18 +213,17 @@
     	},
     	model: BCAPI.Models.WebApp.Item,
     	/**
-    	 * This method returns items collection api entry point absolute url.
-    	 * 
-    	 * @method
-    	 * @instance
-    	 * @memberOf BCAPI.Models.WebApp.ItemCollection
-    	 * @returns API entry point url.
-    	 */
-    	url: function() {
-    		var model = new this.model(this.webappName);
-    		
-    		return BCAPI.Models.Collection.prototype.url.call(this, model);
-    	},
+         * This method is overriden because we need access to members
+         * in order to create the endpoint.
+         * 
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.CustomField
+         * @returns {string} An absolute entry point API.
+         */
+        urlRoot: function() {
+            return this.model.prototype.urlRoot(endpointGenerator(this.webappName));
+        },
     	/**
     	 * We override this method in order to transform each returned item into a strong typed 
     	 * {@link BCAPI.Models.WebApp.Item} models.

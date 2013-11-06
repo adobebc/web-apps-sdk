@@ -5,31 +5,37 @@ var MEMBER_DEFAULT_PHOTO = WEBAPP_PHOTO_FOLDER + "unknown.png";
 
 var WEBAPP_CUSTOM_FIELDS = [
     {
+        "id": 1,
         "name":"Position",
         "type":"String",
         "required":true
     },
     {
+        "id": 2,
         "name":"Bio",
         "type":"String_MultiLine",
         "required":false
     },
     {
+        "id": 3,
         "name":"Picture",
         "type":"String",
         "required":false
     },
     {
+        "id": 4,
         "name":"Facebook",
         "type":"String",
         "required":false
     },
     {
+        "id": 5,
         "name":"Twitter",
         "type":"String",
         "required":false
     },
     {
+        "id": 6,
         "name":"Linkedin",
         "type":"String",
         "required":false

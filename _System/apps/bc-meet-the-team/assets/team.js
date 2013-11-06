@@ -3,46 +3,6 @@ var WEBAPP_PHOTO_FOLDER = "/bc-meet-the-team/images/";
 var WEBAPP_SLUG = "bc-meet-the-team";
 var MEMBER_DEFAULT_PHOTO = WEBAPP_PHOTO_FOLDER + "unknown.png";
 
-var WEBAPP_CUSTOM_FIELDS = [
-    {
-        "id": 1,
-        "name":"Position",
-        "type":"String",
-        "required":true
-    },
-    {
-        "id": 2,
-        "name":"Bio",
-        "type":"String_MultiLine",
-        "required":false
-    },
-    {
-        "id": 3,
-        "name":"Picture",
-        "type":"String",
-        "required":false
-    },
-    {
-        "id": 4,
-        "name":"Facebook",
-        "type":"String",
-        "required":false
-    },
-    {
-        "id": 5,
-        "name":"Twitter",
-        "type":"String",
-        "required":false
-    },
-    {
-        "id": 6,
-        "name":"Linkedin",
-        "type":"String",
-        "required":false
-    }
-];
-
-
 function bootStrap() {
     var webApp = new BCAPI.Models.WebApp.App({name: WEBAPP_NAME});
     webApp.fetch({
@@ -63,11 +23,16 @@ function loadTeamMembers(data) {
 };
 
 function tryWebAppCreate(data, xhr) {
-    createWebApp(WEBAPP_NAME, WEBAPP_CUSTOM_FIELDS, loadTeamMembers);
+    $.getJSON("assets/webapp.json")
+        .done(function(webAppJsonDescriptor) {
+            createWebApp(WEBAPP_NAME, webAppJsonDescriptor.webAppCustomFields, webAppJsonDescriptor.webAppSampleData, loadTeamMembers);    
+        })
+        .fail(function() {
+            systemNotifications.showError("Could not load webapp definition file");
+        });
 }
 
-
-function createWebApp(name, fields, callback) {
+function createWebApp(name, fields, sampleData, callback) {
     var webApp = new BCAPI.Models.WebApp.App({
         name: WEBAPP_NAME,
         slug: WEBAPP_SLUG,
@@ -77,7 +42,7 @@ function createWebApp(name, fields, callback) {
 
     webApp.save({
         success: function(app) {
-            createCustomFields(app, fields, callback);
+            createCustomFields(app, fields, sampleData, callback);
         },
 
         error: function(data, xhr) {
@@ -86,8 +51,10 @@ function createWebApp(name, fields, callback) {
     })
 }
 
-function createCustomFields(webApp, fields, successCallback) {
-    var callAfterAllFieldsCreated = _.after(fields.length, successCallback);
+function createCustomFields(webApp, fields, sampleData, successCallback) {
+    var callAfterAllFieldsCreated = _.after(fields.length, function() {
+        createSampleData(webApp, sampleData, successCallback);
+    });
 
     _.each(fields, function(field) {
        var customField = new BCAPI.Models.WebApp.CustomField(webApp.get('name'), field);
@@ -95,6 +62,20 @@ function createCustomFields(webApp, fields, successCallback) {
             success: callAfterAllFieldsCreated,
             error: function(data, xhr) {
                 systemNotifications.showError("Failed to create custom field " + field.name);
+            }
+        })
+    });
+}
+
+function createSampleData(webApp, sampleData, successCallback) {
+    var callAfterSampleDataCreated = _.after(sampleData.length, successCallback);
+
+    _.each(sampleData, function(member) {
+        var webAppItem = new BCAPI.Models.WebApp.Item(webApp.get('name'), member);
+        webAppItem.save({
+            success: callAfterSampleDataCreated,
+            error: function(data, xhr) {
+                systemNotifications.showError("Failed to create sample data for " + field.name);
             }
         })
     });

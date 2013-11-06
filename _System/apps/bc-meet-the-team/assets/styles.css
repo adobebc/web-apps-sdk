@@ -12,7 +12,7 @@
     .card-container {
         float:left;
         width: 140px;
-        height: 206px;
+        height: 216px;
         margin: 5px 5px 25px 5px;
         padding: 10px;
         border: 1px dotted #999;
@@ -153,24 +153,25 @@
         margin-top: 10px;
     }
 
-    .card-actions {
+    .card-actions, .card-actions-persistent {
         background-color:#eeeeee;
         height: 18px;
         text-align: right;
         border: none;
-        margin: 10px -11px;
+        margin: -15px -11px;
         padding: 4px 7px;
-        display:none;
     }
 
+    .card-actions {
+        display: none;
+    }
 
-    .card-actions-persistent {
-        background-color:#eeeeee;
-        height: 18px;
-        text-align: right;
-        border: none;
-        margin: 10px -11px;
-        padding: 4px 7px;
+    a.btn-primary:link, a.btn-primary:visited {
+        color: #ffffff;
+    }
+
+    a.btn, a.btn:visited {
+        color: #333333;
     }
 
     .delete-confirmation-dialog {

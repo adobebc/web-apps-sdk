@@ -6,7 +6,7 @@ var WEBAPP_NAME = 'Gallery';
 $(function() {
 
     // update the page title
-    parent.document.title = document.title;
+    //parent.document.title = document.title;
     
     loadImages();
     $('#newItem').change(addImages);

@@ -16,10 +16,10 @@ a.member-icon-edit:hover {
 .card-container {
     float:left;
     width: 140px;
-    height: 216px;
+    height: 246px;
     margin: 5px 5px 25px 5px;
     padding: 10px;
-    border: 1px dotted #999;
+    border: 1px solid #dddddd;
     font-family: Myriad, Myriad-Pro, Arial;
 }
 
@@ -29,7 +29,7 @@ a.member-icon-edit:hover {
 
 .card-container img {
     max-width: 140px; 
-    max-height: 105px;
+    max-height: 127px;
 }
 
 .member-card {
@@ -39,10 +39,10 @@ a.member-icon-edit:hover {
 
 .user-add-photo a {
     width: 140px;
-    height: 216px;
+    height: 246px;
     max-width: 140px;
-    max-height: 216px;
-    line-height: 216px;
+    max-height: 246px;
+    line-height: 246px;
     background-color: #e6e6e6;
     display: inline-block;
     text-align: center;

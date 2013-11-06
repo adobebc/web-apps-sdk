@@ -3,7 +3,6 @@ describe("Unit tests for custom field collection.", function() {
 		var webappName = "Sample webapp",
 			fieldCollection = new BCAPI.Models.WebApp.CustomFieldCollection(webappName);
 		
-		expect(fieldCollection._webappName).toBe(webappName);
 		expect(fieldCollection.model).toBe(BCAPI.Models.WebApp.CustomField);
 	});
 	

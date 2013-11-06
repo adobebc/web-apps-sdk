@@ -213,8 +213,7 @@
     	},
     	model: BCAPI.Models.WebApp.Item,
     	/**
-         * This method is overriden because we need access to members
-         * in order to create the endpoint.
+         * This method is overriden because we need access to members in order to create the endpoint.
          * 
          * @method
          * @instance

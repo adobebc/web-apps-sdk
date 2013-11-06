@@ -106,8 +106,7 @@
 		model: BCAPI.Models.WebApp.CustomField,
 
         /**
-         * This method is overriden because we need access to members
-         * in order to create the endpoint.
+         * This method is overriden because we need access to members in order to create the endpoint.
          * 
          * @method
          * @instance
@@ -134,7 +133,7 @@
     			self = this;
     		
     		_.each(response, function(field) {
-    			fields.push(new self.model(self._webappName, field, null, false));
+    			fields.push(new self.model(self._webappName, field, false));
     		});
     		
     		return fields;

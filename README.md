@@ -6,7 +6,6 @@ Markdown-based reference docs for:
 * Modules
 * Tags
 * APIs
-* OpenAdmin
 
 ### Structure requirements
 

@@ -1,3 +1,7 @@
+    body {
+        padding: 10px;
+    }
+
     .checked, 
     #member-facebook, 
     #member-twitter, 
@@ -76,11 +80,6 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 100%;
-    }
-
-    body {
-        height:800px;
-        padding: 10px;
     }
 
     .file-upload-area {

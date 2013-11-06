@@ -240,14 +240,22 @@
         max-width: 500px;
     }
 
-    .person-social ul li {
+    .person-social ul li 
+    {
         display: inline-block;
     }
 
-    .person-social ul {
+    .person-social ul 
+    {
         padding: 0;
     }
 
-    .person-clear{
+    .person-clear
+    {
         clear:both;
+    }
+
+    .article p.view-all a
+    {
+        font-size: 20px;
     }

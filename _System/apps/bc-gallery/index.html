@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <!-- required for getting the auth cookie -->
+        <script src="//cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+
+        <!-- jquery UI needed for draggable / sortable behavior -->
+        <link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="StyleSheet" />
+        <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        
+        <!-- notification engine -->
+        <script src="/_System/apps/bc-gallery/assets/system-notifications/system-notifications.js"></script>
+        <link href="/_System/apps/bc-gallery/assets/system-notifications/system-notifications.css" type="text/css" rel="StyleSheet" />
+        
+        <!-- BC API SDK -->
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+        <script type="text/javascript" src="//cdn.worldsecuresystems.com/bcapi/bcapi-0.0.1.min.js"></script>
+
+        <!-- Latest Bootstrap compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+        <!-- some helper functions -->
+        <script src="WAHelper.js"></script>
+
+        <script src="gallery.js"></script>
+        <link href="gallery.css" type="text/css" rel="StyleSheet" />
+        
+        <title>Custom Photo Gallery</title>
+    </head>
+    <body>
+        <script type="text/template" id="allimagesscript">
+            <li id="image_<%= item.id %>" data-weight="<%= item.get('weight') %>">
+                <img src="<%= item.get('fields').Image %>?action=thumbnail&width=300&height=100&algorithm=fill_proportional" width="300" height="100"/>
+            </li>
+        </script>
+        
+        <input type="button" value="Add Images" id="newItemButton" class="btn btn-primary"/>
+        <input type="file" name="file" id="newItem" multiple="" />
+
+        <ul class="allimages">
+        </ul>
+        <div class="loading">Loading...</div>
+        <div class="empty">Please add at least one image.</div>
+        <div id="trashIcon"></div>
+    </body>
+</html>

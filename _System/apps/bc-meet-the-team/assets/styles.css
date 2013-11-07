@@ -16,7 +16,7 @@ a.member-icon-edit:hover {
 .card-container {
     float:left;
     width: 140px;
-    height: 246px;
+    height: 226px;
     margin: 5px 5px 25px 5px;
     padding: 10px;
     border: 1px solid #dddddd;
@@ -39,10 +39,10 @@ a.member-icon-edit:hover {
 
 .user-add-photo a {
     width: 140px;
-    height: 246px;
+    height: 226px;
     max-width: 140px;
-    max-height: 246px;
-    line-height: 246px;
+    max-height: 226px;
+    line-height: 226px;
     background-color: #e6e6e6;
     display: inline-block;
     text-align: center;
@@ -59,7 +59,7 @@ a.member-icon-edit:hover {
 }
 
 .user-name {
-    margin: 5px 5px 10px 0px;
+    height: 53px;
 }
     
 .user-name h3 {
@@ -67,15 +67,17 @@ a.member-icon-edit:hover {
     font-weight: 500;
     color: #4E4C4C;  
     font-size: 1.3em; 
-    line-height: 1.6em;
+    line-height: 1.3em;
     max-height: 3.3em;
     overflow: hidden; 
+    margin-bottom: 6px;
+    margin-top: 5px;
 }
 
 .user-position {
     color: #aaaaaa;
     font-style: italic;
-    font-size: 1em;
+    font-size: 1.1em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

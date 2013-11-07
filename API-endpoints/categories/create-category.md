@@ -7,8 +7,8 @@ Creates a new category.
 ### Request
 
 * **Method:** POST
-* **Server:** https://api-[dub|nj|syd].worldsecuresystems.com
-  * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
+* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
+  * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/sites/[siteID]/categories
 	* Alternatively use "current" in place of siteId for current login token's site
 * **Auth Header:** Site token required

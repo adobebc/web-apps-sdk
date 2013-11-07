@@ -27,30 +27,31 @@ describe("Helper.Site", function() {
         });
 
         it("Test token is set in cookie with expiration from hash parameter", function(){
-            spyOn($, "cookie").andCallFake(function(){return undefined;});
-            
-            var fakeNowDateString = "2013-10-29T00:00:00";
-            spyOn(Date, "now").andCallFake(function(){return new Date(fakeNowDateString)});
+            var mockDateTime = (new Date(2013,10,13,0,0,0)).getTime();
 
-            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027&expire_in=900"); // 900 = 15min
+            spyOn($, "cookie").andCallFake(function(){return undefined;});
+            spyOn(Date, "now").andCallFake(function(){return mockDateTime;});
+
+            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027&expires_in=900");
 
             BCAPI.Helper.Site.getAccessToken()
 
-            var expireDate = new Date(Date.now() + 900 * 1000);
+            var expireDate = new Date(mockDateTime + 15 * 60 * 1000); // 900 = 15min
             expect($.cookie).toHaveBeenCalledWith('access_token','febf7b6a027', {expires: expireDate});
         });
 
         it("Test token is set in cookie with default expiration if not in hash parameters", function(){
+            var mockDateTime = (new Date(2013,10,13,0,0,0)).getTime();
+
             spyOn($, "cookie").andCallFake(function(){return undefined;});
-            var fakeNowDateString = "2013-10-29T00:00:00";
-            spyOn(Date, "now").andCallFake(function(){return new Date(fakeNowDateString)});
+            spyOn(Date, "now").andCallFake(function(){return mockDateTime});
 
             _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027");
 
             BCAPI.Helper.Site.getAccessToken()
 
             //default expiration is 4h if none was passed
-            var expireDate = new Date(Date.now() + 14400 * 1000);
+            var expireDate = new Date(mockDateTime + 4 * 60 * 60 * 1000); //4h default
             expect($.cookie).toHaveBeenCalledWith('access_token','febf7b6a027', { expires: expireDate});
         });
 

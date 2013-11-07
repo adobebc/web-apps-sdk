@@ -1,5 +1,4 @@
 ﻿@charset "utf-8";
-/* "Meet The Team" Web App Styles */
 
 /* #Reset & Basics (Inspired by E. Meyers)
 ================================================== */
@@ -26,21 +25,30 @@
         border-collapse: collapse;
         border-spacing: 0; }
 
-
-/* #Basic Styles
+/* #"BC Meet The Team" Web App Styles
 ================================================== */
     body {
         background: #fff;
-        font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #444;
+        color: #444444;
+        font-size: 18px;
+        font-family: 'Open Sans', Arial, sans-serif;
+        line-height: 27px;
         -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
         -webkit-text-size-adjust: 100%;
+        width: 940px;
         padding: 40px 20px 20px 20px;
- }
+        margin: 0 auto;
+    }
 
+    a, a:visited { color: #333; text-decoration: underline; outline: 0; }
+    a:hover, a:focus { color: #000; }
+    p a, p a:visited { line-height: inherit; }
 
-/* #Typography
-================================================== */
+    a.contrast
+    {
+        color: #d08a0f;
+    }
+
     h1, h2, h3, h4, h5, h6 {
         color: #181818;
         font-weight: normal; }
@@ -51,70 +59,8 @@
     h4 { font-size: 21px; line-height: 30px; margin-bottom: 4px; }
     h5 { font-size: 17px; line-height: 24px; }
     h6 { font-size: 14px; line-height: 21px; }
-    .subheader { color: #777; }
 
     p { margin: 0 0 20px 0; }
-    p img { margin: 0; }
-    p.lead { font-size: 21px; line-height: 27px; color: #777;  }
-
-    em { font-style: italic; }
-    strong { font-weight: bold; color: #333; }
-    small { font-size: 80%; }
-
-/*  Blockquotes  */
-    blockquote, blockquote p { font-size: 17px; line-height: 24px; color: #777; font-style: italic; }
-    blockquote { margin: 0 0 20px; padding: 9px 20px 0 19px; border-left: 1px solid #ddd; }
-    blockquote cite { display: block; font-size: 12px; color: #555; }
-    blockquote cite:before { content: "\2014 \0020"; }
-    blockquote cite a, blockquote cite a:visited, blockquote cite a:visited { color: #555; }
-
-    hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 30px; height: 0; }
-
-
-/* #Links
-================================================== */
-    a, a:visited { color: #333; text-decoration: underline; outline: 0; }
-    a:hover, a:focus { color: #000; }
-    p a, p a:visited { line-height: inherit; }
-
-
-/* #Lists
-================================================== */
-    ul, ol { margin-bottom: 20px; }
-    ul { list-style: none outside; }
-    ol { list-style: decimal; }
-    ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
-    ul.square { list-style: square outside; }
-    ul.circle { list-style: circle outside; }
-    ul.disc { list-style: disc outside; }
-    ul ul, ul ol,
-    ol ol, ol ul { margin: 4px 0 5px 30px; font-size: 90%;  }
-    ul ul li, ul ol li,
-    ol ol li, ol ul li { margin-bottom: 6px; }
-    li { line-height: 18px; margin-bottom: 12px; }
-    ul.large li { line-height: 21px; }
-    li p { line-height: 21px; }
-
-/* #Site Styles
-================================================== */
-    body
-    {
-        color: #444444;
-        font-size: 18px;
-        font-family: 'Open Sans', Arial, sans-serif;
-        line-height: 27px;
-        width: 940px;
-    }
-
-    a.contrast
-    {
-        color: #d08a0f;
-    }
-
-    hr
-    {
-        margin: 10px 0px 20px;
-    }
 
     h1, h2, h3, h4, h5, h6
     {
@@ -139,7 +85,6 @@
     article
     {
         margin-bottom: 50px !important;
-        margin-left: 20px;
         width: 700px;
         position: relative;
     }
@@ -261,6 +206,11 @@
     .big-person-title
     {
         max-width: 500px;
+    }
+
+    .person-social 
+    {
+        margin-bottom: 20px;
     }
 
     .person-social ul li 

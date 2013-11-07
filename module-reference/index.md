@@ -16,4 +16,4 @@ You have the ability to use modules within modules. This means that for example,
 				* Content Holder 4 *- LEVEL 3*
 					* Content Holder 5 *- WILL NOT RENDER*  
 
-For more details on working with Modules and customizing their look and feel using layoutts, [refer to our getting started article.](http://docs.businesscatalyst.com)
+For more details on working with Modules and customizing their look and feel using layouts, [refer to our getting started article.](http://docs.businesscatalyst.com)

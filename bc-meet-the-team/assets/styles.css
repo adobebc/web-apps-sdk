@@ -216,17 +216,19 @@
     .image-with-position.big
     {
         margin-bottom: 10px;
+        border: 1px solid #dcdcdc;
+        text-align: center;
     }
     
     .image-with-position.big img
     {
-        border: 1px solid #dcdcdc;
+        display: inline-block;
     }
 
     article .image-with-position.big
     {
-        width: 702px;
-        height: 508px;
+        width: 700px;
+        height: 480px;
     }
 
     .description
@@ -255,7 +257,7 @@
         clear:both;
     }
 
-    .article p.view-all a
+    article p.view-all a
     {
         font-size: 20px;
     }

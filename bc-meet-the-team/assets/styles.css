@@ -103,11 +103,12 @@
         font-size: 18px;
         font-family: 'Open Sans', Arial, sans-serif;
         line-height: 27px;
+        width: 940px;
     }
 
-    a
+    a.contrast
     {
-        font-size: 14px;
+        color: #d08a0f;
     }
 
     hr
@@ -138,9 +139,15 @@
     article
     {
         margin-bottom: 50px !important;
-        margin-left: 50px;
+        margin-left: 20px;
         width: 700px;
         position: relative;
+    }
+
+    .person-grid
+    {
+        font-size: 0;
+        overflow: auto;
     }
 
     .person-wrapper
@@ -148,13 +155,26 @@
         width: 220px;
         display: inline;
         float: left;
+        height: 330px;
         margin-right: 10px;
         margin-left: 10px;
+        vertical-align: top;
+    }
+
+    .person-wrapper:nth-child(4n+1)
+    {
+        margin-left: 0;
+    }
+
+    .person-wrapper:nth-child(4n+4)
+    {
+        margin-right: 0;
     }
 
     .person
     {
-        margin-bottom: 53px;
+        margin-bottom: 25px;
+        margin-top: 25px;
         text-align: center;
         font-weight: bold;
         font-size: 18px;
@@ -211,6 +231,7 @@
         bottom: auto;
         right: 10px;
         margin-top: 0;
+        max-width: 500px;
     }
 
     .image-with-position.big

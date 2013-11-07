@@ -51,7 +51,7 @@ You can extend Business Catalyst's default functionality using a range of availa
 
 Using our SOAP and RESTful APIs, you can interact with the system and create custom applications on top of the Business Catalyst infrastructure.
 
-To get started, refer to our [Getting started with APIs guide.](/content/developer-guides/apis/getting-started-with-apis.html)
+To get started, refer to our [Getting started with APIs guide.](http://developers.businesscatalyst.com/developer-documentation/api-reference.html)
 
 You can also find a full list of supported API methods in our [API reference guide.](/content/api-endpoints/index.html)
 
@@ -59,5 +59,5 @@ You can also find a full list of supported API methods in our [API reference gui
 
 Open Admin allows you to easily customize the Admin Console menu your clients see using JSON files. This allows to create a tailored user experience for clients and build custom Admin interfaces for managing their site. 
 
-To get started, refer to our [Getting started with Open Admin guide.](/content/developer-guides/open-admin/getting-started-with-open-admin.html)
+To get started, refer to our [Getting started with Open Admin guide.](http://developers.businesscatalyst.com/developer-documentation/customize-admin-menu.html)
 

@@ -183,6 +183,7 @@
 	
 	BCAPI.Config = Config;
 })(jQuery);;(function($) {
+
 	/**
      * @namespace Models
      * @memberOf BCAPI
@@ -211,10 +212,10 @@
     BCAPI.Models.Model = Backbone.Model.extend({
     	/**
     	 * This method must be overriden by each concrete class in order to give the correct relative path
-    	 * to API entry point.
+         * to API entry point.         
     	 * 
     	 * @method
-    	 * @instance
+    	 * @instance 
     	 * @returns {String} the model API entry point.
     	 * @throws An error if endpoint method is not overriden in concrete models.
     	 * @memberOf BCAPI.Models.Model 
@@ -228,32 +229,36 @@
     	 * need a different behavior in your model, please override this method.
     	 * 
     	 * @method
-    	 * @instance
+    	 * @static
     	 * @memberOf BCAPI.Models.Model
     	 * @returns {Object} A list of headers appended to ajax calls.
     	 */
     	headers: function() {
-    		return {
-    			"Authorization": BCAPI.Helper.Site.getAccessToken()
-    		};
+            return {
+                "Authorization": BCAPI.Helper.Site.getAccessToken()
+            };
     	},
     	/**
     	 * This method automatically builds absolute entry point url of the model.
+         * 
+         * This method accepts as parameter the model's endpoint. If this is not 
+         * specified, then the {@link endpoint} method is called.
     	 *
     	 * @method
     	 * @instance
-    	 * @returns {string} An absolute entry point API.
-    	 * @memberOf BCAPI.Models.Model
+         * @memberOf BCAPI.Models.Model
+         * @param {String} modelEndpoint The model's endpoint. 
+    	 * @returns {string} An absolute entry point API.    	 
     	 */
-    	urlRoot: function() {
-    		var url = BCAPI.Helper.Site.getRootUrl(),
-    			endpoint = this.endpoint();
-    		    		
-    		if(endpoint.charAt(0) !== "/") {
-    			endpoint = '/' + endpoint;
-    		} 
-    		
-    		return url + endpoint;
+    	urlRoot: function(modelEndpoint) {
+            var url = BCAPI.Helper.Site.getRootUrl(),
+                modelEndpoint = modelEndpoint || this.endpoint();
+
+            if(modelEndpoint.charAt(0) !== "/") {
+                modelEndpoint = '/' + modelEndpoint;
+            } 
+            
+            return url + modelEndpoint;
     	},
     	/**
     	 * This method change default Backbone save behaviour in order to simplify save invocation.
@@ -353,6 +358,36 @@
     		this._defaultSkip = BCAPI.Config.Pagination.skip;
     		this._relationFetchPending = 0;
     	},
+        /**
+         * This method returns the predefined headers which are automatically appended to ajax calls.
+         * 
+         * The default implementation delegates this to the model's method.
+         * 
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.Model
+         * @returns {Object} A list of headers appended to ajax calls.
+         */
+        headers: function() {
+            return this.model.prototype.headers.call();
+        },
+        /**
+         * This method automatically builds the absolute entry point url of the collection.
+         *
+         * This default implementation of this method assumes that the endpoint and
+         * urlRoot of the corresponding model class are static.
+         * In case this is not true, and member access is needed to create the endpoint,
+         * this method will need to be overriden in the implementing collection class.
+         * 
+         * @method
+         * @static
+         * @memberOf BCAPI.Models.Collection
+         * @returns {string} An absolute entry point API.        
+         */
+        urlRoot: function() {
+            var modelEndpoint = this.model.prototype.endpoint();
+            return this.model.prototype.urlRoot(modelEndpoint);
+        },
     	/**
     	 * This method is used to fetch records into the current collection. Depending on the given options
     	 * records can be filtered, sorted and paginated. For an example of how this collections are meant to be used
@@ -368,9 +403,9 @@
     	 * @param {String} options.order An attribute name by which we order records. It can be prefixed with - if you want descending order.
     	 * @returns {Promise} a promise which can be used to determine http request state. 
     	 */
-    	fetch: function(options) {
+    	fetch: function(options) {            
             options = options || {};
-    		options.headers = new this.model().headers();
+    		options.headers = this.headers();
     		options.dataType = "json";
     		
     		this._limit = options.limit;
@@ -392,10 +427,8 @@
     	 * @instance
     	 * @memberOf BCAPI.Models.Collection
     	 */
-    	url: function(model) {
-    		model = model || (new this.model());
-    		
-			var urlWithParams = [model.urlRoot(), "?"];
+    	url: function() {    		
+			var urlWithParams = [this.urlRoot(), "?"];
 			
 			for(var key in this.server_api) {
 				var val = this.server_api[key].apply(this);
@@ -1236,6 +1269,10 @@
 })(jQuery);;(function($) {
 	"use strict";
 
+    var endpointGenerator = function(webappName) {
+        return "/api/v2/admin/sites/current/webapps/" + webappName + "/fields";
+    }
+
 	/**
 	 * This class provides support for custom fields description belonging to {@link BCAPI.Models.WebApp.App}
 	 * 
@@ -1243,12 +1280,13 @@
 	 * 
 	 * ```javascript
 	 * var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
+     *  "id": 1,
      *	"name": "Part code",
      *	"type": "DataSource",
      *	"listItems": null,
      *	"dataSource": "Part Codes",
      *	"required": false
-	 * });
+	 * }, true);
 	 * 
 	 * customField.save({
 	 * 	success: function(fieldModel) {
@@ -1257,17 +1295,29 @@
 	 * });
 	 * ```
 	 * 
+     * In the attributes, the id must be passed.
+     *
+     * The last parameter specifies if the custom field is new or exists already. This is used
+     * to determine the correct HTTP verb to call since the id is always passed.
+     * If omitted, it is assumed that the custom field is new.
+     *
 	 * @name CustomField
 	 * @class
 	 * @constructor
 	 * @memberOf BCAPI.Models.WebApp
 	 */
 	BCAPI.Models.WebApp.CustomField = BCAPI.Models.Model.extend({
-		constructor: function(webappName, attributes, options) {
+        constructor: function(webappName, attributes, isNew, options) {
 			BCAPI.Models.Model.call(this, attributes, options);
+                        
+            this._isNew = _.isBoolean(isNew) ? isNew : true;
+
+            if(this._isNew && (_.isUndefined(attributes) || !_.isNumber(attributes["id"]))) {
+                throw new Error("The id for the custom field must be specified.");
+            }
 			
 			this._webappName = webappName;
-			this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});			
+			this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});
 		},
 		/**
 		 * This method returns the endpoint for custom fields api.
@@ -1277,7 +1327,7 @@
 		 * @memberOf BCAPI.Models.WebApp.CustomField
 		 */
 		endpoint: function() {
-			return "/api/v2/admin/sites/current/webapps/" + this._webappName + "/fields";
+			return endpointGenerator(this._webappName);
 		},
     	/**
     	 * This method is overriden in order to remove *webapp* field from API request. 
@@ -1293,7 +1343,14 @@
     		delete result["webapp"];
     		
     		return result;
-    	}    	
+    	},
+        /**
+         * This method is overriden in order to use the correct HTTP verb on creation and update
+         * since the id of the item is always passed.
+         */
+        isNew: function() {
+            return this._isNew;
+        }
 	});
 	
 	/**
@@ -1311,22 +1368,22 @@
 		constructor: function(webappName, attributes, options) {
 			BCAPI.Models.Collection.call(this, attributes, options);
 			
-			this.webappName = webappName;
+			this._webappName = webappName;
 		},
+
 		model: BCAPI.Models.WebApp.CustomField,
-    	/**
-    	 * This method returns custom field collection api entry point absolute url.
-    	 * 
-    	 * @method
-    	 * @instance
-    	 * @memberOf BCAPI.Models.WebApp.CustomFieldCollection
-    	 * @returns API entry point url.
-    	 */
-    	url: function() {
-    		var model = new this.model(this.webappName);
-    		
-    		return BCAPI.Models.Collection.prototype.url.call(this, model);
-    	},
+
+        /**
+         * This method is overriden because we need access to members in order to create the endpoint.
+         * 
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.CustomField
+         * @returns {string} An absolute entry point API.
+         */
+        urlRoot: function() {
+            return this.model.prototype.urlRoot(endpointGenerator(this._webappName));
+        },
     	/**
     	 * We override this method in order to transform each returned item into a strong typed 
     	 * {@link BCAPI.Models.WebApp.CustomField} models.
@@ -1344,7 +1401,7 @@
     			self = this;
     		
     		_.each(response, function(field) {
-    			fields.push(new self.model(self.webappName, field));
+    			fields.push(new self.model(self._webappName, field, false));
     		});
     		
     		return fields;
@@ -1352,6 +1409,14 @@
 	});
 })(jQuery);;(function($) {
 	"use strict";
+
+    var endpointGenerator = function(webappName) {
+		var url = ["/api/v2/admin/sites/current/webapps/"];
+		url.push(webappName);
+		url.push("/items");
+
+		return url.join("");
+    };
 
 	/**
 	 * This class provides useful operations for interacting with web app items. You can find various examples of how to
@@ -1504,11 +1569,7 @@
     	 * @memberOf BCAPI.Models.WebApp.Item
     	 */
     	endpoint: function() {
-    		var url = ["/api/v2/admin/sites/current/webapps/"];
-    		url.push(this._webappName);
-    		url.push("/items");
-    		
-    		return url.join("");
+    		return endpointGenerator(this._webappName);    		
     	},
     	/**
     	 * This method is overriden in order to remove *webapp* field from API request. 
@@ -1561,18 +1622,16 @@
     	},
     	model: BCAPI.Models.WebApp.Item,
     	/**
-    	 * This method returns items collection api entry point absolute url.
-    	 * 
-    	 * @method
-    	 * @instance
-    	 * @memberOf BCAPI.Models.WebApp.ItemCollection
-    	 * @returns API entry point url.
-    	 */
-    	url: function() {
-    		var model = new this.model(this.webappName);
-    		
-    		return BCAPI.Models.Collection.prototype.url.call(this, model);
-    	},
+         * This method is overriden because we need access to members in order to create the endpoint.
+         * 
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.CustomField
+         * @returns {string} An absolute entry point API.
+         */
+        urlRoot: function() {
+            return this.model.prototype.urlRoot(endpointGenerator(this.webappName));
+        },
     	/**
     	 * We override this method in order to transform each returned item into a strong typed 
     	 * {@link BCAPI.Models.WebApp.Item} models.

@@ -5,7 +5,7 @@ Performs a generic login. The token validity can be set to Short (4 hours validi
 ### Request
 
 * **Method:** POST
-* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URL)
+* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
   * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/tokens
 

@@ -7,8 +7,8 @@ Get the progress of the user's uploads.
 ### Request
 
 * **Method:** GET
-* **Server:** https://api-[dub|nj|syd].worldsecuresystems.com/
-  * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
+* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
+  * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/sites/[siteId]/storage?status
 * **Auth Header:** Site token required
 * **Required Permissions:** Can use SFTP & File Manager

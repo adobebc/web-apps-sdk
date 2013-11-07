@@ -5,8 +5,8 @@ Gets the list of supported countries in Business Catalyst. You are not required 
 ### Request
 
 * **Method:** GET
-* **Server:** https://api-[dub|nj|syd].worldsecuresystems.com/
-  * Alternatively, use secure site URI (eg. https://mysite.worldsecuresystems.com)
+* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
+  * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/system/countries
 
 #### Parameters ####

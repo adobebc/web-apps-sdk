@@ -17,9 +17,12 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
+<div class="loading" style="display:none">
+    <div class="opacifier"></div>
+    <span><img src="assets/images/loading.gif" alt="Loading..."></span>
+</div>
+    
 <div id="form-container"></div>
-
-
 
     <script type="text/template" id="member-edit-form-template">
         <form class="form-horizontal" id="member-edit-form" method="POST" novalidate="novalidate">
@@ -81,7 +84,7 @@
             </div>
             <hr/>
             <div class="control-group">
-                <div class="controls">
+                <div class="controls footer-buttons">
                     <input type="submit" id="member-form-submit" class="btn btn-primary" value=" <% if(member.id != null) {%> Save <% } else { %> Add <% }%> "/>
                     <input type="button" id="member-form-cancel" class="btn btn-cancel" value="Cancel" />
                 </div>

@@ -1,5 +1,13 @@
 body {
     padding: 10px;
+
+    font-family: Myriad-Pro, myriad-pro-1, myriad-pro-2, Arial, Helvetica, sans-serif;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased; 
+}
+
+hr {
+    margin-bottom: 10px;
 }
 
 .checked, 
@@ -25,6 +33,10 @@ a.member-icon-edit:hover {
 
 .card-container:hover .card-actions {
     display:block;
+}
+
+.card-container .card-actions-disabled {
+    display: none;
 }
 
 .card-container img {
@@ -68,7 +80,7 @@ a.member-icon-edit:hover {
     color: #4E4C4C;  
     font-size: 1.3em; 
     line-height: 1.3em;
-    max-height: 3.3em;
+    max-height: 2.6em;
     overflow: hidden; 
     margin-bottom: 6px;
     margin-top: 5px;
@@ -98,6 +110,7 @@ a.member-icon-edit:hover {
     line-height: 105px;
     margin: 4px;
     width: 140px;
+    height: 107px;
     display: inline-block;
 }
 
@@ -176,12 +189,70 @@ input.small-height, .small-height {
     display: none;
 }
 
-a.btn-primary:link, a.btn-primary:visited {
+.btn {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 10px;
+    padding: 5px 15px 6px;
+
+    color: #333;
+
+    border-width: 1px !important;
+    border-color: #9c9c9c;
+    border-style: solid !important;
+
+    background: #ffffff;
+    background: -moz-linear-gradient(top,  #ffffff 0%, #dedede 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dedede));
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#dedede 100%);
+    background: -o-linear-gradient(top,  #ffffff 0%,#dedede 100%);
+    background-image: -ms-linear-gradient(top,  #ffffff 0%,#dedede 100%);
+    background: linear-gradient(top,  #ffffff 0%,#dedede 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dedede',GradientType=0 );
+}
+
+.btn-primary {
+    color: white !important;
+    text-shadow: 0 -1px 0 #0453C9 !important;
+
+    border-color: #137EDA #0D6ACC #0652BA #0652BA !important;
+    
+    background: #179dfe !important;
+    background: -moz-linear-gradient(top,  #179dfe 0%, #0461d2 100%) !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#179dfe), color-stop(100%,#0461d2)) !important;
+    background: -webkit-linear-gradient(top,  #179dfe 0%,#0461d2 100%) !important;
+    background: -o-linear-gradient(top,  #179dfe 0%,#0461d2 100%) !important;
+    background: -ms-linear-gradient(top,  #179dfe 0%,#0461d2 100%) !important;
+    background: linear-gradient(top,  #179dfe 0%,#0461d2 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#179dfe', endColorstr='#0461d2',GradientType=0 ) !important;
+}
+
+.btn:hover, .btn:focus {
+    background-position: 0 0 ;
+    transition: none;
+}
+
+a.btn, 
+a.btn:link, 
+a.btn:visited {
+    color: #333333;
+}
+
+a.btn-primary, 
+a.btn-primary:link, 
+a.btn-primary:visited {
     color: #ffffff;
 }
 
-a.btn, a.btn:visited {
-    color: #333333;
+.controls.footer-buttons {
+    margin-left: 10px;
+}
+
+.controls.footer-buttons .btn {
+
 }
 
 .delete-confirmation-dialog {
@@ -200,9 +271,10 @@ span.note-text {
     width: 100%;
     height: 100%;
 
-    background-image: url(images/loading-big.gif);
+    background-image: url(images/loading.gif);
     background-repeat: no-repeat;
     background-position: center center;
+    background-color: #ffffff;
 }
 
 .member-icon-delete {
@@ -286,4 +358,55 @@ a.member-icon-edit:hover {
 .upload-not-supported {
     display: none;
     font-style: italic;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 10000;
+}
+
+.loading span{
+    display: inline-block;
+    height: 90px;
+    width: 90px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin-left: -45px;
+    margin-top: -45px;
+
+    z-index: 10000;
+}
+
+.loading.semiopaque span{
+    background: url("images/bg-loading.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.loading span img{
+    left: 28px;
+    position: absolute;
+    top: 27px;
+}
+
+.loading .opacifier{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    z-index: 10000;
+    opacity: 1;
+    background-color: #ffffff;
+}
+
+.loading.semiopaque .opacifier{ 
+    opacity: 0.5;
 }

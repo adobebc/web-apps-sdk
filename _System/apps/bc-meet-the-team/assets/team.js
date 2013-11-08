@@ -1,9 +1,11 @@
 var WEBAPP_NAME = "Meet The Team";
 var WEBAPP_PHOTO_FOLDER = "/bc-meet-the-team/images/";
 var WEBAPP_SLUG = "bc-meet-the-team";
-var MEMBER_DEFAULT_PHOTO = WEBAPP_PHOTO_FOLDER + "unknown.png";
+var MEMBER_DEFAULT_PHOTO = WEBAPP_PHOTO_FOLDER + "unknown.jpg";
 
 function bootStrap() {
+    showPageLoadingIndicator(true);
+
     var webApp = new BCAPI.Models.WebApp.App({name: WEBAPP_NAME});
     webApp.fetch({
         success: loadTeamMembers,
@@ -85,7 +87,7 @@ function createSampleData(webApp, sampleData, successCallback) {
  * Event handlers for the list page
  */
 function onMemberListFetch(data) {
-    $(".loading").hide(); // hide the loading indicator
+    showPageLoadingIndicator(false);
     
     var templateText = $("#member-card-loading").html();
     
@@ -97,13 +99,13 @@ function onMemberListFetch(data) {
         
         // we need to fetch each item to get to the custom field
         member.fetch({
-            success: onMemberFetch,
+            success: onMemberListFetchSuccess,
             error: onAPIError
         });
     })
 };
 
-function onMemberFetch(data) {
+function onMemberListFetchSuccess(data) {
     var templateText = $("#member-card").html();
     if (data.get('fields').Picture == null || data.get('fields').Picture.length  == 0) {
         data.get('fields').Picture = "assets/images/unknown.png";
@@ -125,35 +127,78 @@ function onMemberFetch(data) {
 
 };
 
-function restoreActionsCard(evt) {
-    evt.stopPropagation();
-    evt.preventDefault();
-    $("#" + evt.currentTarget.id).attr("class", "card-actions");
-
+function restoreActionsCard(evt, memberId) {
+    var elementId;
+    if (typeof evt != "undefined"){
+        evt.stopPropagation();
+        evt.preventDefault();
+        elementId = evt.currentTarget.id;
+    }
+    else{
+        elementId = "actions_" + memberId;
+    }
+    $("#" + elementId).attr("class", "card-actions");
 }
 
-function persistActionsCard(evt) {
-    evt.stopPropagation();
-    evt.preventDefault();
-    $("#" + evt.currentTarget.id).attr("class", "card-actions-persistent");
+function persistActionsCard(evt, memberId) {
+    var elementId;
+    if (typeof evt != "undefined"){
+        evt.stopPropagation();
+        evt.preventDefault();
+        elementId = evt.currentTarget.id;
+    }
+    else{
+        elementId = "actions_" + memberId;
+    }
+    $("#" + elementId).attr("class", "card-actions-persistent");
+}
+
+function disableActionsCard(memberId) {
+    var elementId = "actions_" + memberId;
+    $("#" + elementId).attr("class", "card-actions-disabled");
+}
+
+function enableActionsCard(memberId) {
+    var elementId = "actions_" + memberId;
+    $("#" + elementId).attr("class", "card-actions");
 }
 
 function onAPIError(data, xhr, options) {
+    showPageLoadingIndicator(false);
+
     showErrorMessage(xhr, "API Error");
 };
 
 function deleteTeamMember(memberId) {
+
     var member = new BCAPI.Models.WebApp.Item(WEBAPP_NAME);
     member.id = memberId;
+
+    var $memberDiv = $("div[data-member-id='" + member.id +"']");
+    $memberDiv.children(".member-card").hide();    
+    $memberDiv.append("<div class='member-loader'></div>");
+    disableActionsCard(memberId);
+
     member.destroy({
-        success: onMemberDeleted,
-        error: onAPIError
+        success: onMemberDeleteSuccess,
+        error: function(data, xhr, options){
+            onMemberDeleteError(memberId, data, xhr, options);
+        }
     });
 }
 
-function onMemberDeleted(member) {
+function onMemberDeleteSuccess(member) {
     $("div[data-member-id='" + member.id +"']").remove();
     systemNotifications.showSuccess('Deleted', 'Team member removed')
+}
+
+function onMemberDeleteError(memberId, data, xhr, options) {
+    var $memberDiv = $("div[data-member-id='" + memberId +"']");
+    $memberDiv.children(".member-card").show();
+    $memberDiv.children(".member-loader").remove();
+    enableActionsCard(memberId);
+
+    onAPIError(data, xhr, options);
 }
 
 /*
@@ -258,6 +303,7 @@ function onMemberFormSubmit(evt) {
     evt.preventDefault();
     evt.stopPropagation();
     enableButtons(false);
+    showPageLoadingIndicator(true, true);
 
     $("#member-edit-form").validate({
         showErrors: function(errorMap, errorList) {
@@ -280,6 +326,7 @@ function onMemberFormSubmit(evt) {
                 $(value.element).popover('show');
 
                 enableButtons(true);
+                showPageLoadingIndicator(false);
             }
         }
     });
@@ -338,18 +385,23 @@ function saveMember(memberId) {
 
 function onMemberUploadError(xhr, textStatus, errorThrown){
     enableButtons(true);
+    showPageLoadingIndicator(false);
 
     showErrorMessage(xhr, "File Upload Error");
 }
 
 function onMemberSaveError(data, xhr, options){
     enableButtons(true);
+    showPageLoadingIndicator(false);
 
     onAPIError(data, xhr, options);
 }
 
 function onMemberSaveSuccess(member) {
+    showPageLoadingIndicator(false);
+
     systemNotifications.showSuccess("Operation successful", "Member details saved successfully");
+    
     setTimeout(function() {
         onMemberFormLeave();
     }, 1000);
@@ -370,6 +422,22 @@ function showErrorMessage(xhr, title) {
         errorMessage = "Server error. Error code: " + JSON.parse(xhr.responseText).code;
     }
     systemNotifications.showError( (typeof title != undefined) ? title : "Error", errorMessage);
+}
+
+// show - boolean show or hide loading indicator
+function showPageLoadingIndicator(show, semiopaque){
+    if (show){
+        $(".loading").show(); // show the loading indicator
+        if (semiopaque){
+            $(".loading").addClass("semiopaque");
+        }
+        else{
+            $(".loading").removeClass("semiopaque");
+        }
+    }
+    else{
+        $(".loading").hide(); // hide the loading indicator
+    }
 }
 
 /*

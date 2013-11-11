@@ -29,6 +29,7 @@ Tag | Description
 `{tag_releasedate}` |	Release date of item
 `{tag_tellafriend}` |	Tell a friend about this item
 `{tag_weight}` |	Weighting of item
+`{tag_itemid}` |	Item's system ID
 
 **Note:** When using a custom image field type for Web Apps, by default the image tag outputs the full HTML image source and a link. Example:
 

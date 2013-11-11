@@ -34,6 +34,7 @@ Tag | Description
 `{tag_rowcss,myclass}` |	Replate myclass with your own CSS class. Alternates between classes, such as "myclass" and "myclass_alternate"
 `{tag_tellafriend}` |	Tell a friend about this item
 `{tag_weight}` |	Weighting of item
+`{tag_itemid}` |	Item's system ID
 
 **Note:** When using a custom image field type for Web Apps, by default the image tag outputs the full HTML image source and a link. Example:
 

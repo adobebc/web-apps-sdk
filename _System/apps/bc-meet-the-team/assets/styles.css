@@ -1,13 +1,59 @@
 body {
-    padding: 10px;
-
     font-family: Myriad-Pro, myriad-pro-1, myriad-pro-2, Arial, Helvetica, sans-serif;
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased; 
+    padding: 0 !important;
 }
 
 hr {
     margin-bottom: 10px;
+}
+
+.content-wrapper {
+    padding: 10px;
+}
+
+.inlinehelp {
+    padding: 7px 20px 27px 20px;
+    background-color: #f9f9f9;
+    position: relative;
+    color: #333 !important;
+    font-size: 12px !important;
+    font-weight: 400;
+    line-height: 16px;
+    border-bottom: 1px dashed #d4d4d4;
+    display: none;
+}
+
+.inlinehelp span.close-btn {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #666;
+    font-weight: 700;
+    font-size: 18px!important;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.inlinehelp h2 {
+    font-size: 18px !important;
+    margin: 0;
+    font-weight: 400;
+}
+
+.inlinehelp .helpcontent {
+    line-height: 17px;
+}
+
+a {
+    color: #1e86e3;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .checked, 

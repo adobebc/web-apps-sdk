@@ -5,11 +5,26 @@ var MEMBER_DEFAULT_PHOTO = WEBAPP_PHOTO_FOLDER + "unknown.jpg";
 
 function bootStrap() {
     showPageLoadingIndicator(true);
+    showInlineHelp();
 
     var webApp = new BCAPI.Models.WebApp.App({name: WEBAPP_NAME});
     webApp.fetch({
         success: loadTeamMembers,
         error: tryWebAppCreate
+    });
+}
+
+function showInlineHelp() {
+
+    if ($.cookie("sampleAppInlineHelpDismissed")){
+        return;
+    }
+
+    $(".inlinehelp").show();
+
+    $(".inlinehelp .close-btn").click( function(){
+        $(".inlinehelp").hide();
+        $.cookie("sampleAppInlineHelpDismissed", true, { expires: 365 });
     });
 }
 

@@ -2,11 +2,13 @@ body {
     font-family: Myriad-Pro, myriad-pro-1, myriad-pro-2, Arial, Helvetica, sans-serif;
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased; 
-    padding: 0 !important;
+    padding: 0;
 }
 
 hr {
     margin-bottom: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
 }
 
 .content-wrapper {
@@ -93,6 +95,11 @@ a.member-icon-edit:hover {
 .member-card {
     height: 100%;
     overflow: hidden;
+}
+
+.user-photo {
+    width: 140px;
+    height: 127px;
 }
 
 .user-add-photo a {
@@ -380,6 +387,9 @@ a.member-icon-edit:hover {
     margin-top: -1px;
 }
 
+#form-container {
+    margin-top: 10px;
+}
 
 #form-container .popover {
     background-color: #000;

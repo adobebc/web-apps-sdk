@@ -1,6 +1,6 @@
 var WEBAPP_NAME = "Meet The Team";
-var WEBAPP_PHOTO_FOLDER = "/bc-meet-the-team/images/";
 var WEBAPP_SLUG = "bc-meet-the-team";
+var WEBAPP_PHOTO_FOLDER = "/bc-meet-the-team/images/";
 var MEMBER_DEFAULT_PHOTO = WEBAPP_PHOTO_FOLDER + "unknown.jpg";
 
 function bootStrap() {
@@ -123,7 +123,7 @@ function onMemberListFetch(data) {
 function onMemberListFetchSuccess(data) {
     var templateText = $("#member-card").html();
     if (data.get('fields').Picture == null || data.get('fields').Picture.length  == 0) {
-        data.get('fields').Picture = "assets/images/unknown.png";
+        data.get('fields').Picture = MEMBER_DEFAULT_PHOTO;
     }
     var context = {"member": data};
     var itemHtml = _.template(templateText, context);
@@ -264,7 +264,7 @@ function renderMemberDetailsForm(memberObject) {
 
     // show unknow image when the photo is missing
     if (memberObject.get('fields').Picture == null || memberObject.get('fields').Picture.length == 0) {
-        $("#preview").attr("src", "assets/images/unknown.png");
+        $("#preview").attr("src", MEMBER_DEFAULT_PHOTO);
     }
 
     // Check for the various File API support.

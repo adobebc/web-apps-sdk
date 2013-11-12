@@ -10,13 +10,13 @@
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="//cdn.worldsecuresystems.com/bcapi/bcapi-0.0.1.min.js"></script>   
     <script type="text/javascript" src="assets/system-notifications/system-notifications.js"></script>    
-    <script type="text/javascript" src="assets/team.js?a=2"></script>
+    <script type="text/javascript" src="assets/team.js"></script>
 
     <link rel="stylesheet" href="assets/system-notifications/system-notifications.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body>
+<body class="content-wrapper">
 <div class="loading" style="display:none">
     <div class="opacifier"></div>
     <span><img src="assets/images/loading.gif" alt="Loading..."></span>
@@ -30,7 +30,7 @@
                 <label class="control-label" for="member-picture">Picture:</label>
                 <div class="controls">
                     <div class="span7 file-upload-area" id="member-picture">
-                        <span class="preview-wrapper"><img id="preview" class="member-upload-preview" src="<%= member.get('fields').Picture %>?action=thumbnail&width=140&height=105&algorithm=fill_proportional"/></span>
+                        <span class="preview-wrapper"><img id="preview" class="member-upload-preview" <%if (member.get('fields').Picture){%>src="<%= member.get('fields').Picture %>?action=thumbnail&width=140&height=105&algorithm=fill_proportional" <% }%> /></span>
                         <input type="hidden" id="member-picture-name" value="<%= member.get('fields').Picture %>" />
                         <span class="trigger-info">drag image here or <a href="#" id="upload-trigger">click to upload</a></span>
                         <span class="upload-not-supported">File upload is not supported on this browser.</span>

@@ -1,7 +1,7 @@
 // JavaScript Document
 
 var IMAGES_PATH = '/bc-gallery/images/';
-var WEBAPP_NAME = 'Gallery';
+var WEBAPP_NAME = 'bc-gallery';
 
 $(function() {
 

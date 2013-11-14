@@ -203,7 +203,8 @@ function createWebApp() {
         success: function() {
             var customField = new BCAPI.Models.WebApp.CustomField(WEBAPP_NAME, {
                 name: "Image",
-                type: "Image"
+                type: "Image",
+		id: 1
             });
             
             // create the webapp "Image" custom fields

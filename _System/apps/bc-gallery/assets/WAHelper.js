@@ -1,6 +1,8 @@
 // JavaScript Document
 if (typeof wahelper == 'undefined') {
-	var wahelper = {};
+	var wahelper = {
+		masWeight: 1
+	};
 }
 
 wahelper.fixWeightInconsistancies = function(data) {

@@ -9,7 +9,7 @@ describe("Unit tests for webapp custom field model.", function() {
 		expect(field.get("id")).toBe(expectedId);
 	});
 	
-	it("Check custom field instantiation ok.", function() {
+	it("Check custom field instantiation ok with number id.", function() {
 		var webappName = "Test webapp",
 			expectedId = 63563,
 			values = {"id": expectedId,
@@ -24,10 +24,144 @@ describe("Unit tests for webapp custom field model.", function() {
 		_assertCustomFieldValues(field, values);
 	});
 	
+	it("Check custom field instantiation ok with string id that is a number.", function() {
+		var webappName = "Test webapp",
+			expectedId = "63563",
+			values = {"id": expectedId,
+					  "name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]},
+			field = new BCAPI.Models.WebApp.CustomField(webappName, values);
+		
+		_assertCustomFieldValues(field, values);
+	});
+
+	it("Check custom field instantiation ok with string id that is a number with spaces.", function() {
+		var webappName = "Test webapp",
+			expectedId = "  63563 ",
+			values = {"id": expectedId,
+					  "name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]},
+			field = new BCAPI.Models.WebApp.CustomField(webappName, values);
+		
+		_assertCustomFieldValues(field, values);
+	});
+
+	it("Check custom field instantiation failure with string id that is a number with spaces.", function() {
+		var webappName = "Test webapp",
+			expectedId = "  63 563 ",
+			values = {"id": expectedId,
+					  "name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]};
+
+		expect(function() {new BCAPI.Models.WebApp.CustomField(webappName, values)}).toThrow()
+	});
+
+	it("Check custom field instantiation failure with negative id", function() {
+		var webappName = "Test webapp",
+			expectedId = -1223,
+			values = {"id": expectedId,
+					  "name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]};
+
+		expect(function() {new BCAPI.Models.WebApp.CustomField(webappName, values)}).toThrow()
+	});
+
+	it("Check custom field instantiation failure with negative id as string", function() {
+		var webappName = "Test webapp",
+			expectedId = "-1223",
+			values = {"id": expectedId,
+					  "name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]};
+
+		expect(function() {new BCAPI.Models.WebApp.CustomField(webappName, values)}).toThrow()
+	});
+
+	it("Check custom field instantiation failure with null id", function() {
+		var webappName = "Test webapp",
+			expectedId = null,
+			values = {"id": expectedId,
+					  "name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]};
+
+		expect(function() {new BCAPI.Models.WebApp.CustomField(webappName, values)}).toThrow()
+	});
+
+	it("Check custom field instantiation failure with NaN id", function() {
+		var webappName = "Test webapp",
+			expectedId = NaN,
+			values = {"id": expectedId,
+					  "name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]};
+
+		expect(function() {new BCAPI.Models.WebApp.CustomField(webappName, values)}).toThrow()
+	});
+
+	it("Check custom field instantiation failure with undefined id", function() {
+		var webappName = "Test webapp",
+			expectedId = undefined,
+			values = {"id": expectedId,
+					  "name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]};
+
+		expect(function() {new BCAPI.Models.WebApp.CustomField(webappName, values)}).toThrow()
+	});
+
+	it("Check custom field instantiation failure with missing id", function() {
+		var webappName = "Test webapp",
+			values = {"name": "Custom field 1",
+					  "type": "Boolean",
+					  "required": true,
+					  "order": 5,
+					  "dataSourceName": "Simple Data Source",
+					  "listItems": [1, 2, 3]};
+
+		expect(function() {new BCAPI.Models.WebApp.CustomField(webappName, values)}).toThrow()
+	});
+
+	it("Check custom field instantiation failure with missing attributes", function() {
+		var webappName = "Test webapp",
+			values = null;
+
+		expect(function() {new BCAPI.Models.WebApp.CustomField(webappName, values)}).toThrow()
+	});
+	
 	it("Check custom field set ok.", function() {
 		var webappName = "Test webapp",
 			expectedId = 63563,
-			values = {"id": expectedId,"name": "Custom field 1",
+			values = {"id": expectedId,
+					  "name": "Custom field 1",
 					  "type": "Boolean",
 					  "required": true,
 					  "order": 5,

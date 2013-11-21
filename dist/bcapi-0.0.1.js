@@ -1312,8 +1312,13 @@
                         
             this._isNew = _.isBoolean(isNew) ? isNew : true;
 
-            if(this._isNew && (_.isUndefined(attributes) || !_.isNumber(attributes["id"]))) {
+            if(this._isNew && (_.isUndefined(attributes) || _.isUndefined(attributes["id"]))) {
                 throw new Error("The id for the custom field must be specified.");
+            }
+
+            var id = Number(attributes["id"]);
+            if(!_.isNumber(id) || _.isNaN(id) || id <= 0) {
+                throw new Error("The id for the custom field must be a positive number.");
             }
 			
 			this._webappName = webappName;

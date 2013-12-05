@@ -30,6 +30,7 @@ Tag | Description
 `{tag_itemurl_nolink}` | URL to the item referred, without host
 `{tag_itemurl_withhost}` | URL to the item referred, with host
 `{tag_largeimage}` | Large image for product
+`{tag_largeimage,zoom,width,height}` | 	Large image for a product. You can now allow a zoom effect for the large product image. Simply alter {tag_largeimage} to {tag_largeimage,zoom,150,150}
 `{tag_largeimage_path}` | Outputs the file path of the image; for example, /images/imagename.jpg
 `{tag_maxunits}` | Maximum units
 `{tag_minunits}` | Minimum units

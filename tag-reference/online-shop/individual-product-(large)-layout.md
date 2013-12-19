@@ -37,7 +37,7 @@ Tag | Description
 `{tag_name}` | Name of product
 `{tag_onorder, syncWithAttributes, noSelectionMessage, disabledSelectionMessage}` | Number of units on order. Options: syncWithAttributes – true or false, noSelectionMessage – specify the message displayed when site customer has not selected a variation, disabledSelectionMessage – specify the message displayed when site customer has selected a variation that is disabled
 `{tag_onsale}` | Renders 1 if product on sale, otherwise 0. If page elements need to be altered for products on sale, then embed tag in relevant javascript.
-`{tag_poplets,rowlength,width,height}` | Displays thumbnail version of poplet images
+`{tag_poplets,rowlength,width,height}` | Displays thumbnail version of poplet images. If you add ,noscript to this tag this will render the poplets with no default javascript lightbox feature. E.G. {tag_poplets,4,100,100,noscript}
 `{tag_productcode, syncWithAttributes, noSelectionMessage, disabledSelectionMessage}` | Product code. With variations enabled, tg product will render the variation code instead of the product codes in all layouts where this is used. Parameters: syncWithAttributes – true or false, noSelectionMessage – specify the message displayed when site customer has not selected a variation, disabledSelectionMessage – specify the message displayed when site customer has selected a variation that is disabled
 `{tag_productmetadescription}` | Meta description information added in the SEO Metadata section of product details page.
 `{tag_relatedproducts}` | Displays a list of products related to this product that can be browsed and added separately to cart (useful for up/cross selling purposes)

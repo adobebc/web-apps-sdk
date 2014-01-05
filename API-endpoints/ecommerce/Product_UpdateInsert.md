@@ -285,3 +285,9 @@ Content-Length: length
   </soap12:Body>
 </soap12:Envelope>
 ~~~
+
+The minimum product information that is required to make an update are:
+
+* <productId>int</productId>
+* <productCode>string</productCode>
+* <productName>string</productName>

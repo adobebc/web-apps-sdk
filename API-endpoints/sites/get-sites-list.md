@@ -8,7 +8,7 @@ Gets the list of site for the currently logged in user.
 * **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
   * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/sites
-* **Auth Header:** Generic token required
+* **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
 
 #### Parameters ####
 

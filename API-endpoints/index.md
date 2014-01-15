@@ -6,7 +6,6 @@ The APIs are split across two protocols, with the majority being RESTful:
 
 ### REST APIs
 
-* Authentication (Admin users)
 * Categories
 * File System
 * Page Templates

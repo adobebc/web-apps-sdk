@@ -11,7 +11,7 @@ Assigns a new list of categories to a webapp item
   * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/sites/[siteId]/webapps/[webappName]/items/[itemID]/categories
   * Alternatively, use "current" instead of [siteId]
-* **Auth Header:** Site token required
+* **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
 * **Required Permissions:** Edit Web App Items
 
 ### Parameters

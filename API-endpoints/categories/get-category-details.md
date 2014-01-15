@@ -9,7 +9,7 @@ Get the details for a given category.
   * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/sites/[siteID]/categories/[categoryID]
 	* Alternatively use "current" in place of siteId for current login token's site
-* **Auth Header:** Site token required
+* **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
 * **Required Permissions:** View Category (3100)
 
 ### Response

@@ -9,7 +9,7 @@ Delete a web app item.
   * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/sites/[siteId]/webapps/[webAppName]/items/[webAppItemId]
   * Alternatively, use "current" instead of {siteId}
-* **Auth Header:** Site token required
+* **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
 * **Required Permissions:** Delete Web App Items
 
 ### Response

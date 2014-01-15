@@ -7,7 +7,7 @@ Updates any number of Contact records. Uses ExternalID as unique key. If Externa
 * **Method:** SOAP
 * **Server:** worldsecuresystems.com
 * **Path:** /catalystwebservice/catalystcrmwebservice.asmx
-* **Auth:** Username/password or a site token can be used (example below uses site token)
+* **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
 
 #### Parameters
 

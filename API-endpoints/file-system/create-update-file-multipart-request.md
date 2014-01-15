@@ -8,7 +8,7 @@ Uploads a one or more files in a given folder through a multipart POST action (l
 * **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
   * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/sites/[siteId]/storage/[filePath]
-* **Auth Header:** Site token required
+* **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
 * **Required Permissions:** Can use SFTP & File Manager
 
 #### Parameters ####

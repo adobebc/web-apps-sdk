@@ -9,7 +9,7 @@ Create a new Web App
   * Note: For Open Admin applications, always use relative request URLs
 * **Path:** /api/v2/admin/sites/current/webapps 
   * Alternatively use siteID instead of 'current'
-* **Auth Header:** Site token required
+* **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
 * **Required Permissions:** Create Web Apps
 
 #### Parameters ####

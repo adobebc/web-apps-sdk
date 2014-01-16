@@ -1,13 +1,26 @@
-## {module_facebookaccountlink, FbAccountLinkImg, FbAccountLinkText FbAccountUnlinkImg, FbAccountUnlinkText}
-
-*Visitor must be logged in to a Secure Zone.*
-
-The account link module will allow your customers to link their Facebook account with the Facebook application you have setup on your site.
-
-
-### Parameters
-
-* `FbAccountLinkImg` - Image used to display the Facebook account link button
-* `FbAccountLinkText` - Text used in the Facebook account link button
-* `FbAccountUnlinkImg` - Image used to display the Facebook account un-link button
-* `FbAccountUnlinkText` - Text used in the Facebook account un-link button
+<div class="description">
+<h3 class="skiptoc">Description</h3>
+<p>The account link module will allow your customers to link their Facebook account with the Facebook <a href="http://knowledgebase6.businesscatalyst.com/kb/crm-and-customer-related/social-media/facebook-login">application</a> you have setup on your site.<br />
+<span style="color: red;">Note:</span> The account link module must be inserted within a secure zone. Customers must login in order for this module to render.<br />
+<br />
+To insert this module, open the web page or template you would like to add this module to. Open the module manager, select Social media &gt; Facebook Account link &gt; Customize, select an image for Account Link/Unlink Image and then click Insert.</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p>{<span>module_facebookaccountlink, FbAccountLinkImg, FbAccountLinkText FbAccountUnlinkImg, FbAccountUnlinkText</span>}</p>
+</div>
+<div id="parameters">
+<h3>Parameters</h3>
+<ul>
+    <li>FbAccountLinkImg - Image used to display the Facebook account link button 	 </li>
+    <li>FbAccountLinkText - Text used in the Facebook account link button 	 </li>
+    <li>FbAccountUnlinkImg - Image used to display the Facebook account un-link button 	 </li>
+    <li>FbAccountUnlinkText - Text used in the Facebook account un-link button</li>
+</ul>
+</div>
+<div id="Examples">
+<h3>Examples</h3>
+<ul>
+    <li>See this <a href="http://knowledgebase6.businesscatalyst.com/kb/crm-and-customer-related/social-media/facebook-login">article</a> for a full reference</li>
+</ul>
+</div>

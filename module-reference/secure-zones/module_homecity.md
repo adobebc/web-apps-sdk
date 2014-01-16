@@ -1,5 +1,8 @@
-## {module_homecity}
-
-*Visitor must be logged in to a Secure Zone.* 
-
-Renders the logged in customer's home city.
+<div class="description">
+<h3 class="skiptoc">Description</h3>
+<p>Displays the customer's home city (must be logged into a secure zone).</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p>{<span>module_homecity</span>}</p>
+</div>

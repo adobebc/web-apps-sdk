@@ -1,19 +1,18 @@
-## {module_breadcrumbs,Separator}
-
-Renders the breadcrumbs for pages according to the hierarchy defined in the site's Site Map.
-
-You can modify the Site Map via Site Settings > Site Map
-
-### Example
-
-`{module_breadcrumbs,SEPERATOR}` 
-
-You can define the breacrumb seperator by provding your symbol or html as a paramater in the module.
-#### Examples:
-{module_breadcrumbs,&nbsp;|&nbsp;}
-{module_breadcrumbs,>}
-{module_breadcrumbs, <span>:</span> }
-
-Assuming the page "Child Page" is a child item of "Parent Page", this will render the following HTML code: 
-
-`<a href="/parentpage.htm">Parentpage</a> " : " <a href="/childpage.htm">Childpage</a>`
+<div class="description">
+<h3 class="skiptoc">Description</h3>
+<p>Displays the breadcrumbs for pages according to the hierarchy defined in the site Site Map (Site Settings -&gt; Site Map)</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p>{<span>module_cataloguebreadcrumbs</span>}</p>
+</div>
+<div id="Examples">
+<h3>Examples</h3>
+<ul>
+    <li>{<span>module_cataloguebreadcrumbs</span>} - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
+    <br />
+    &lt;a href="/parentpage.htm"&gt;Parentpage&lt;/a&gt;
+    " : "
+    &lt;a href="/childpage.htm"&gt;Childpage&lt;/a&gt;</li>
+</ul>
+</div>

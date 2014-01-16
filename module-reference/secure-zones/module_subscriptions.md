@@ -1,3 +1,4 @@
+
 ## {module\_subscriptions,show\_expiry,show\_prices,reserved,render\_json}
 
 *Visitor must be logged in to a Secure Zone.*
@@ -49,21 +50,21 @@ Renders the below:
 ~~~
 { "SecureZoneSubscriptionList" : { "EntityId" : 11723915,
       "Subscriptions" : [ { "CostPerPeriod" : "0",
-            "CycleType" : "",
+            "CycleType" : ",
             "ExpiryDate" : "01/01/9999 00:00:00",
             "SellAccess" : false,
             "ZoneId" : "51",
             "ZoneName" : "Member Only Area"
           },
           { "CostPerPeriod" : "0",
-            "CycleType" : "",
+            "CycleType" : ",
             "ExpiryDate" : "01/01/9999 00:00:00",
             "SellAccess" : false,
             "ZoneId" : "4859",
             "ZoneName" : "test secure zone"
           },
           { "CostPerPeriod" : "0",
-            "CycleType" : "",
+            "CycleType" : ",
             "ExpiryDate" : "01/01/9999 00:00:00",
             "SellAccess" : false,
             "ZoneId" : "4871",

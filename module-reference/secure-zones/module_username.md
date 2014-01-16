@@ -1,5 +1,8 @@
-## {module_username}
-
-*Visitor must be logged in to a Secure Zone.*
-
-Renders the logged in customer's user name.
+<div class="description">
+<h3 class="skiptoc">Description</h3>
+<p>Displays the customer's username in plain text (must be logged in to secure zone).</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p>{<span>module_username</span>}</p>
+</div>

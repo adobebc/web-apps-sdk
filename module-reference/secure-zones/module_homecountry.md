@@ -1,11 +1,14 @@
-## {module_homecountry}
-
-*Visitor must be logged in to a Secure Zone.* 
-
-Renders the logged in customer's home country
-
-### Examples
-
-`{module_homecountry}`
-
-Will redner US for customer with a home country of United States.
+<div class="description">
+<h3 class="skiptoc">Description</h3>
+<p>Displays the customer's home country (must be logged in to secure zone).</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p>{<span>module_homecountry</span>}</p>
+</div>
+<div id="Examples">
+<h3>Examples</h3>
+<ul>
+    <li>{<span>module_homecountry</span>} - this displays "AU" for Australia.</li>
+</ul>
+</div>

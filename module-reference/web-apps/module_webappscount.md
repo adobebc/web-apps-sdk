@@ -1,8 +1,8 @@
-<div class=""description"">
-<h3 class=""skiptoc"">Description</h3>
+<div class="description">
+<h3 class="skiptoc">Description</h3>
 <p>When placed onto a web page or a template it displays the web app items.</p>
 </div>
-<div id=""syntax"">
+<div id="syntax">
 <h3>Syntax</h3>
 <p>{<span>module_webapps,ID,filter,itemID,notUsed,target,bkp,results,hideEmpty,rowLength,Sort</span>}</p>
 </div>
@@ -35,20 +35,20 @@
     </ul>
     </li>
 </ul>
-<div id=""layouts"">
+<div id="layouts">
 <h3>This module is rendered with these layouts</h3>
 <ul>
-    <li>Web App Layouts &gt;&nbsp;<a href=""/kb/modules-and-tags-reference/layouts/WebApps/webapp-list-layout "">List Layout </a></li>
-    <li>This module also supports <a href=""/kb/modules-and-tags-reference/layouts/custom-templates"">custom templates</a></li>
+    <li>Web App Layouts &gt;&nbsp;<a href="/kb/modules-and-tags-reference/layouts/WebApps/webapp-list-layout ">List Layout </a></li>
+    <li>This module also supports <a href="/kb/modules-and-tags-reference/layouts/custom-templates">custom templates</a></li>
 </ul>
 </div>
-<div id=""Examples"">
+<div id="Examples">
 <h3>Examples</h3>
 <ul>
     <li>{<span>module_webapps,56,a,,,_blank,true,12,true,3</span> } - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
     <li>{<span>module_webapps,123,a,,,,,12</span> } - will only display 12 items per page </li>
     <li>{<span>module_webapps,123,l,5</span> } - will only display the latest 5 items (by date) on the page</li>
-    <li>{<span>module_webapps,56,a,,,,,10,,1 template=""/layouts/custom/walist.html""</span> } - will only display 10 items using the walist.html <a href=""/kb/modules-and-tags-reference/layouts/custom-templates"">custom template</a></li>
+    <li>{<span>module_webapps,56,a,,,,,10,,1 template="/layouts/custom/walist.html"</span> } - will only display 10 items using the walist.html <a href="/kb/modules-and-tags-reference/layouts/custom-templates">custom template</a></li>
 </ul>
 <p>The previous and next links can be customized using CSS. Each link has its own custom CSS class. To see the CSS class assigned to these links view the web page source where these links appear. The CSS class name format is: WebAppIDPrev and WebAppIDNext where ID is the internal ID assigned to your Web App. You can easily find the ID using Firebug once on the live page.</p>
 </div>

@@ -1,13 +1,13 @@
-<div class=""description"">
-<h3 class=""skiptoc"">Description</h3>
+<div class="description">
+<h3 class="skiptoc">Description</h3>
 <p>Displays web app search results.
 </p>
 </div>
-<div id=""syntax"">
+<div id="syntax">
 <h3>Syntax</h3>
 <p>{<span>module_webappsresults,notUsed,target,bkp,resultsPerPage,hideEmptyMessage,rowLength,sort</span>}</p>
 </div>
-<div id=""parameters"">
+<div id="parameters">
 <h3>Parameters</h3>
 <ul>
     <li>notUsed - RESERVED (please do not use this space)</li>
@@ -26,17 +26,17 @@
     </li>
 </ul>
 </div>
-<div id=""layouts"">
+<div id="layouts">
 <h3>This module is rendered with these layouts</h3>
 <ul>
-    <li>Web App Layouts &gt;&nbsp;<a href=""/kb/modules-and-tags-reference/layouts/WebApps/webapp-list-layout "">List Layout </a></li>
-    <li>This module also supports <a href=""/kb/modules-and-tags-reference/layouts/custom-templates"">custom templates</a></li>
+    <li>Web App Layouts &gt;&nbsp;<a href="/kb/modules-and-tags-reference/layouts/WebApps/webapp-list-layout ">List Layout </a></li>
+    <li>This module also supports <a href="/kb/modules-and-tags-reference/layouts/custom-templates">custom templates</a></li>
 </ul>
 </div>
-<div id=""Examples"">
+<div id="Examples">
 <h3>Examples</h3>
 <ul>
     <li>{<span>module_webappsresults,,_blank,true,16,true,3,REVERSEDATE</span>} - This module will display the web app search results</li>
-    <li>{<span>module_webappsresults template=""/layouts/custom/walist.html""</span>} - This module will display the web app search results using the walist.html <a href=""/kb/modules-and-tags-reference/layouts/custom-templates"">custom template</a></li>
+    <li>{<span>module_webappsresults template="/layouts/custom/walist.html"</span>} - This module will display the web app search results using the walist.html <a href="/kb/modules-and-tags-reference/layouts/custom-templates">custom template</a></li>
 </ul>
 </div>

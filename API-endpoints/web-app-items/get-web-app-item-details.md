@@ -5,8 +5,8 @@ Get the details of a Web App item.
 ### Request
 
 * **Method:** GET
-* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
-  * Note: For Open Admin applications, always use relative request URLs
+* **Server:**  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the [OAuth in Business Catalyst](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html) document for more info on how this URL is formed.
+  * Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.
 * **Path:** /api/v2/admin/sites/[siteId]/webapps/[webAppName]/items/[webAppItemId]
   * Alternatively, use "current" instead of [siteId]
 * **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
@@ -52,7 +52,7 @@ Accepts and returns JSON as Content-Type.
 
 **Request:**
 ~~~
-GET /api/v2/admin/sites/123/webapps/TestWebapp1/items/1073039
+GET /api/v2/admin/sites/current/webapps/TestWebapp1/items/1073039
 Authorization: 3e8d891d91eb433e9c800cebe3b132a4e64ac661c5ed4dd8bdecae0487e4ad7c
 Accept: application/json
 ~~~
@@ -73,7 +73,7 @@ Content-Length: {length}
     },
     {
       "rel": "categories",
-      "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/38584/webapps/TestWebapp1/items/1073039/categories"
+      "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items/1073039/categories"
     }
   ],
   "id": 1073039,

@@ -5,8 +5,8 @@ Gets a list of Web App items, as per the specified filters.
 ### Request
 
 * **Method:** GET
-* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
-  * Note: For Open Admin applications, always use relative request URLs
+* **Server:**  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the [OAuth in Business Catalyst](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html) document for more info on how this URL is formed.
+  * Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.
 * **Path:** /api/v2/admin/sites/[siteID]/webapps/[webAppName]/items
 	* Alternatively use "current" in place of siteId for current login token's site
 * **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
@@ -51,7 +51,7 @@ Accepts and returns JSON as Content-Type.
 
 **Request:**
 ~~~
-GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?skip=2&limit=2 HTTPS/1.1
+GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=2&limit=2 HTTPS/1.1
 Authorization: 3e8d891d91eb433e9c800cebe3b132a4e64ac661c5ed4dd8bdecae0487e4ad7c
 Accept: application/json
 ~~~
@@ -66,15 +66,15 @@ Content-Length: {length}
   "links": [
     {
       "rel": "self",
-      "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/38584/webapps/TestWebapp1/items?skip=2&limit=2"
+      "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=2&limit=2"
     },
     {
       "rel": "previous",
-      "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/38584/webapps/TestWebapp1/items?skip=0&limit=2"
+      "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=0&limit=2"
     },
     {
       "rel": "next",
-      "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/38584/webapps/TestWebapp1/items?skip=4&limit=2"
+      "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=4&limit=2"
     }
   ],
   "items": [
@@ -82,7 +82,7 @@ Content-Length: {length}
       "links": [
         {
           "rel": "self",
-          "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/38584/webapps/TestWebapp1/items/1073041"
+          "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items/1073041"
         }
       ],
       "id": 1073041,
@@ -98,7 +98,7 @@ Content-Length: {length}
       "links": [
         {
           "rel": "self",
-          "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/38584/webapps/TestWebapp1/items/1073042"
+          "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items/1073042"
         },
         {
           "rel": "previewUrl",
@@ -123,7 +123,7 @@ Content-Length: {length}
 
 ### Sample code
 
-Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/apis/javascript-sdk.html)
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://adobebc.github.io/bcapi.js/)
 
 **Load items paginated**
 ~~~
@@ -240,23 +240,23 @@ The filtering syntax involves specifying a list of constraints, logically chaine
 * Filtering by name
 
     ```
-    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"name": {"$contains": "item"}}
+    GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"name": {"$contains": "item"}}
     ```
 * Filtering by date
 
     ```
-    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"createDate": {"$gte": "2001-01-01", "$lte": "2013-01-01"}}
+    GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"createDate": {"$gte": "2001-01-01", "$lte": "2013-01-01"}}
     ```
 * Filtering by category id
 
     ```
-    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"category": 123}
+    GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"category": 123}
     ```
     
 * Filtering by category path
 
     ```
-    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?where={"category": "my-label"}
+    GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"category": "my-label"}
     ```
     
 ### Ordering Syntax
@@ -283,12 +283,12 @@ When sorting the items using a specified field, in case of ties due to equal val
 * Sorting ascending by name
     
     ```
-    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?order=name
+    GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?order=name
     ```
 * Sorting descending by name
 
     ```
-    GET /api/v2/admin/sites/123/webapps/TestWebapp1/items?order=-name
+    GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?order=-name
     ```
 
 ### Error Codes

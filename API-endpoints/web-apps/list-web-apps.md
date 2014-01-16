@@ -7,8 +7,8 @@ Get the list of web apps for the current site sorted by create date.
 ### Request
 
 * **Method:** GET
-* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
-  * Note: For Open Admin applications, always use relative request URLs
+* **Server:**  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the [OAuth in Business Catalyst](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html) document for more info on how this URL is formed.
+  * Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.
 * **Path:** /api/v2/admin/sites/current/webapps 
   * Alternatively use siteID instead of 'current'
 * **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
@@ -39,7 +39,7 @@ Accepts and returns JSON as Content-Type.
 
 **Request:**
 ~~~
-GET /api/v2/admin/sites/-2/webapps HTTPS/1.1
+GET /api/v2/admin/sites/current/webapps HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -65,15 +65,15 @@ Content-Length: length
       "links": [
         {
           "rel":"self",
-          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Friends"
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends"
         },
         {
           "rel":"items",
-          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Friends/items"
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends/items"
         },
         {
           "rel":"fields",
-          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Friends/fields"
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends/fields"
         },
         {
           "rel":"previewUrl",
@@ -81,7 +81,7 @@ Content-Length: length
         },
         {
           "rel":"countries",
-          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Friends/countries"
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends/countries"
         }
  
       ],
@@ -94,11 +94,11 @@ Content-Length: length
       "links": [
         {
           "rel":"self",
-          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Help"
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Help"
         },
         {
           "rel":"countries",
-          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/-2/webapps/BC%20Friends/countries"
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends/countries"
         }
       ],
  
@@ -115,7 +115,7 @@ Content-Length: length
 
 ### Sample code
 
-Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/apis/javascript-sdk.html)
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://adobebc.github.io/bcapi.js/)
 
 
 **Fetch all available webapps**

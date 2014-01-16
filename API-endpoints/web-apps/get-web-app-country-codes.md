@@ -7,8 +7,8 @@ Get the list of the countries where the current webapp is allowed.
 ### Request
 
 * **Method:** GET
-* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
-  * Note: For Open Admin applications, always use relative request URLs
+* **Server:**  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the [OAuth in Business Catalyst](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html) document for more info on how this URL is formed.
+  * Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.
 * **Path:** /api/v2/admin/sites/current/webapps/{webappname}/countries
   * Alternatively, use siteID instead of 'current'
 * **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).

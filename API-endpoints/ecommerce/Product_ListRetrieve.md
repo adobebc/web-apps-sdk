@@ -5,7 +5,7 @@ Retrieve a list of products for a given catalog (or all products if CatalogId = 
 ### Request
 
 * **Method:** SOAP
-* **Server:** worldsecuresystems.com
+* **Server:**  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the [OAuth in Business Catalyst](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html) document for more info on how this URL is formed.  
 * **Path:** /catalystwebservice/catalystcrmwebservice.asmx
 * **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
 

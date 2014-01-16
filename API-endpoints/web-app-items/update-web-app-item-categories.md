@@ -7,8 +7,8 @@ Assigns a new list of categories to a webapp item
 ### Request
 
 * **Method:** PUT
-* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
-  * Note: For Open Admin applications, always use relative request URLs
+* **Server:**  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the [OAuth in Business Catalyst](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html) document for more info on how this URL is formed.
+  * Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.
 * **Path:** /api/v2/admin/sites/[siteId]/webapps/[webappName]/items/[itemID]/categories
   * Alternatively, use "current" instead of [siteId]
 * **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
@@ -30,7 +30,7 @@ Accepts and returns JSON as Content-Type.
 
 **Request:**
 ~~~
-PUT /api/v2/admin/sites/45345/webapps/Cars/items/564567/categories HTTPS/1.1
+PUT /api/v2/admin/sites/current/webapps/Cars/items/564567/categories HTTPS/1.1
 Content-Length: length
 Connection: keep-alive
 Content-Type: application/json
@@ -46,7 +46,7 @@ HTTP/1.1 200 OK
 
 ### Sample code
 
-Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/apis/javascript-sdk.html)
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://adobebc.github.io/bcapi.js/)
 
 ~~~
 var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);

@@ -5,8 +5,8 @@ Gets the list of supported countries in Business Catalyst. You are not required 
 ### Request
 
 * **Method:** GET
-* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
-  * Note: For Open Admin applications, always use relative request URLs
+* **Server:**  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the [OAuth in Business Catalyst](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html) document for more info on how this URL is formed.
+  * Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.
 * **Path:** /api/v2/admin/system/countries
 
 #### Parameters ####
@@ -30,7 +30,7 @@ Accepts and returns JSON as Content-Type.
 
 **Request:**
 ~~~
-GET https://api.worldsecuresystems.com/api/v2/admin/countries HTTPS/1.1
+GET /api/v2/admin/countries HTTPS/1.1
 Connection: keep-alive
 Content-Type: application/json
 ~~~
@@ -73,7 +73,7 @@ Content-Type: application/json; charset=utf-8
 
 ### Sample code
 
-Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://docs.businesscatalyst.com/content/developer-guides/apis/javascript-sdk.html)
+Below is some sample code using the bcapi.js SDK. For more information, see [Interacting with APIs using the bcapi.js SDK](http://adobebc.github.io/bcapi.js/)
 
 ~~~
 var itemCollection = new BCAPI.Models.CountryCollection();

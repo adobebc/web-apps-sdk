@@ -7,8 +7,8 @@ Get the progress of the user's uploads.
 ### Request
 
 * **Method:** GET
-* **Server:** https://mysite.worldsecuresystems.com/ (the secure site URI)
-  * Note: For Open Admin applications, always use relative request URLs
+* **Server:**  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the [OAuth in Business Catalyst](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html) document for more info on how this URL is formed.
+  * Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.
 * **Path:** /api/v2/admin/sites/[siteId]/storage?status
 * **Authorization header:** This should contain the authorization token. Here is how to [obtain the token](http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html).
 * **Required Permissions:** Can use SFTP & File Manager
@@ -29,7 +29,7 @@ Accepts and returns JSON as Content-Type.
 
 **Request:**
 ~~~
-PUT https://api.worldsecuresystems.com/api/v2/admin/sites/123/storage?status=c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73 HTTPS/1.1
+PUT /api/v2/admin/sites/current/storage?status=c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73 HTTPS/1.1
 Accept: application/json
 Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 ~~~

@@ -1,4 +1,4 @@
-"<div class=""description"">
+<div class=""description"">
 <h3 class=""skiptoc"">Description</h3>
 <p>When placed onto a web page or a template it displays the web app items.</p>
 </div>
@@ -51,4 +51,4 @@
     <li>{<span>module_webapps,56,a,,,,,10,,1 template=""/layouts/custom/walist.html""</span> } - will only display 10 items using the walist.html <a href=""/kb/modules-and-tags-reference/layouts/custom-templates"">custom template</a></li>
 </ul>
 <p>The previous and next links can be customized using CSS. Each link has its own custom CSS class. To see the CSS class assigned to these links view the web page source where these links appear. The CSS class name format is: WebAppIDPrev and WebAppIDNext where ID is the internal ID assigned to your Web App. You can easily find the ID using Firebug once on the live page.</p>
-</div>"
+</div>

@@ -77,6 +77,7 @@ A Product_ListRetrieveResponse object with the following properties:
 		* `slug` - *(string)*
 		* `hasVariations` - *(boolean)*
 		* `variations` - *(array)*
+		* `metaDescription` - *(string)*
 
 ### Examples
 

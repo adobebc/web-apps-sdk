@@ -1,0 +1,81 @@
+<div class="description">
+<h3>What are custom templates?</h3>
+<p>
+With very few exceptions (the products modules for example are an exception, they have 2 "Individual Product - Small" layouts) most modules had one of each, the  but the general rule is one module - a single set of layouts.</p>
+<p>Custom templates are basically an extension to regular layouts. Until they were introduced you could only use a limited number of layouts. </p>
+<h3>How to use them?</h3>
+<p>
+The custom templates are actually plain  files however we usually  advise to change their extension to .tpl - that is to avoid having them indexed by search engine bots.
+</p>
+<p>
+The simplest way to get started is to create a new empty file, let's call it productfeaturelist.tpl and create it under the /layouts/onlineshop/custom/ folder.
+Next, we need to populate it with some tags. The easiest way to get started is to copy the HTML code of an existing layout and paste it into the productfeaturelist.tpl file.
+</p>
+<h4>Step 1 - create the custom template file</h4>
+<br />
+<ol>
+    <li>
+    Go to the Pages &gt; Module Templates &gt; Online Shop Layouts and open up the <a href="/reference/tag-reference/e-commerce/individual-product-small">Individual Product - Small</a>.
+    </li>
+    <li>
+    Switch to the HTML view and copy everything. Go to the productfeaturelist.tpl file and paste everything in there. To confirm the new custom template is rendering properly add a few new tags so it looks differently then the regular <a href="/reference/tag-reference/e-commerce/individual-product-small">Individual Product - Small</a> layout.
+    </li>
+</ol>
+<h4>Step 2 - configure the module to use the custom template</h4>
+<br />
+<ol>
+    <li>Now that the custom template is created and populated we need to add an eCommerce module and configure it to use it.</li>
+    <li> Let's assume we need a product listing to use this new template. This means we will use the {<span><a href="/reference/module-reference/e-Commerce/Product/module_productfeaturelist">module_productfeaturelist</a></span>} module. This is the syntax we will use:
+    <br />
+    <br />
+    {<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/onlineshop/custom/productfeaturelist.tpl"</span>}</li>
+</ol>
+<p>
+If you insert this on a webpage and preview that webpage you will notice it is using the custom layout instead of the default <a href="/reference/tag-reference/e-commerce/individual-product-small">Individual Product - Small</a>.
+</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p>The general rule is the template="/layouts/onlineshop/custom/productfeaturelist.tpl" string is added at the end of the module declaration just before the ending curly bracket.</p>
+<p>Make sure you use double brackets instead of single brackets. This is incorrect: {<span>module_productfeaturelist,special offer,3,price,_blank,true template=<span style="font-weight: bold; margin: 0px 10px; font-size: 16px; color: red;">'</span>/layouts/onlineshop/custom/productfeaturelist.tpl<span style="font-weight: bold; margin: 0px 10px; font-size: 16px; color: red;">'</span></span>}</p>
+</div>
+<div id="parameters">
+<h3>Parameters</h3>
+<p>The custom template declaration has only one parameter, that is the path to the file itself. If the file does not exist or it cannot be found for any reason the module will render with its default layout instead. So for example if the custom template file "/layouts/onlineshop/custom/productfeaturelist.tpl" does not exist or we have a typo in its path the {<span><a href="/reference/module-reference/e-Commerce/Product/module_productfeaturelist">module_productfeaturelist</a></span>} module will render using the <a href="/reference/tag-reference/e-commerce/individual-product-small">Individual Product - Small</a> layout instead.</p>
+</div>
+<div id="Examples">
+<h3>Examples</h3>
+<ul>
+    <li>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/onlineshop/custom/productfeaturelist.tpl"</span>} - this rendes a list of products using this custom template</li>
+    <li>{<span>module_booking,i,63522 template="/layouts/custom/bookings.tpl"</span>} - this rendes an individual event a custom template</li>
+    <li>{<span>module_product,63882,5450055,_top template="/layouts/custom/productfeaturelist.tpl"</span>} - this rendes an individual product a custom template</li>
+    <li>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/custom/productfeaturelist.tpl"</span>} - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li>{<span>module_productresults,2,_self,2,,,true  template="/layouts/custom/productfeaturelist.tpl"</span>} - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found.
+    The structure is no longer an unordered list as the "true" parameter would suggest, the custom template is used instead.</li>
+</ul>
+</div>
+<div id="supported">
+<h3>Supported Modules</h3>
+<p> Here is the list of modules where you can apply your own templates as attributes:</p>
+<ul>
+    <li>module_literature</li>
+    <li>   module_announcement</li>
+    <li>  module_faq</li>
+    <li>    module_forum</li>
+    <li>    module_blog</li>
+    <li>    module_case</li>
+    <li>    module_order</li>
+    <li>    module_webappscustomer</li>
+    <li>    module_affiliateprogram</li>
+    <li>    module_industrycontentresults, module_webappsresults</li>
+    <li>    module_booking</li>
+    <li>    module_catalogue</li>
+    <li>    module_product</li>
+    <li>    module_productresults, module_productresultsold</li>
+    <li>    module_ratingfeedback</li>
+    <li>    module_caseresults</li>
+    <li>    module_webapp</li>
+    <li>    module_blogsitepost</li>
+    <li>   module_blogpostlist</li>
+</ul>
+</div>

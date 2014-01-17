@@ -77,6 +77,7 @@ A Product_ListRetrieveResponse object with the following properties:
 		* `slug` - *(string)*
 		* `hasVariations` - *(boolean)*
 		* `variations` - *(array)*
+		* `roleResponsible` - *(string)*
 		* `metaDescription` - *(string)*
 
 ### Examples
@@ -280,6 +281,8 @@ Content-Length: length
           <cycletypeId>int</cycletypeId>
           <cycletypeCount>int</cycletypeCount>
           <slug>string</slug>
+          <roleResponsible>role_name</roleResponsible>
+          <metaDescription>This is the meta description</metaDescription>
           <hasVariations>boolean</hasVariations>
           <variations>
             <ProductVariation xsi:nil="true" />

@@ -1,12 +1,26 @@
-## Workflow Completion Email
-
-### Location
-* **Admin Console:** Site Manager > System Emails > Workflow Completion
-* **SFTP & Develop Mode:** /Layouts/OutboundEmails/WorkflowCompletion.html
-
-### Tags
-
-Tag | Description
--------------- | -------------
-`{tag_objectname}` |  Name of the item type this workflow step refers to (case, order, web page, template)
-`{tag_workflowname}` |	Name of the triggered workflow
+<h2>Workflow completion email</h2>
+<h3>Location</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; System Emails &gt; Workflow Completion</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong> /Layouts/OutboundEmails/WorkflowCompletion.html</li>
+</ul>
+<h3>Tags</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{tag_objectname}</td>
+      <td>Name of the item type this workflow step refers to (case, order, web page, template)</td>
+    </tr>
+    <tr>
+      <td>{tag_workflowname}</td>
+      <td>Name of the triggered workflow</td>
+    </tr>
+  </tbody>
+</table>
+<br>

@@ -1,55 +1,198 @@
-## Customer Order Detail Layout
-
-### Location
-* **Admin Console:** Site Manager > Module Templates > Customer Order Layouts > Detail Layout
-* **SFTP & Develop Mode:** /layouts/customerorders/detail.html
-
-### Tags
-
-Tag | Description
--------------- | -------------
-`{tag_addressbilling}` | Billing address for order
-`{tag_addressdefault}` | Default address for contact/company
-`{tag_addressshipping}` | Shipping address for order
-`{tag_amountoutstanding}` | Amount outstanding on invoice
-`{tag_amountoutstandingactual}` | Amount of invoice outstanding, only taking into account successful payments (pending payments excluded)
-`{tag_amountpaid}` | Amount already paid on invoice
-`{tag_amountpaidactual}` | Amount of invoice paid with a successful payment (pending payments excluded)
-`{tag_awbnumber}` | Tracking number from shipping provider(also known as AWB number). You can edit this information for each order
-`{tag_countrycode}` | 2-Letter Country Code, use it to indicate currency on invoice
-`{tag_crmform}` | The data from all CRM forms attached to an order
-`{tag_directdebitdate}` | The date automatic debit is processed for invoice
-`{tag_directdebitdays}` | Number of days before automatic debit is processed for invoice
-`{tag_directdebittype}` | Type of automatic debit for invoice; for example, credit card or direct debit
-`{tag_invoicedate}` | Date of invoice
-`{tag_invoicediscountamount}` | Total discounted amount of invoice excluding shipping charges
-`{tag_invoicediscountcode}` | Discount code used
-`{tag_invoicediscountpercent}` | Discount percent applied to invoice total
-`{tag_invoicegiftvoucher}` | Gift voucher used
-`{tag_invoicegiftvoucheramount}` | Amount paid using a gift voucher
-`{tag_invoicenumber}` | Invoice number
-`{tag_invoicetotal}` | Total invoice amount
-`{tag_invoicetotaltaxamount}` | Total tax associated with order (product tax + shipping tax)
-`{tag_ordername}` | Name of order
-`{tag_productcode}` | Product code
-`{tag_productdescription}` | Product description you entered when generating order
-`{tag_productextaxamount}` | Product price exclusive of tax
-`{tag_productgrandtotal}` | Total cost of products (Total Product cost + Total Tax for Products)
-`{tag_productinctaxamount}` | Product price inclusive of tax
-`{tag_productname}` | Name of Product
-`{tag_productquantity}` | Product quantity
-`{tag_productsubtotal}` | Total cost of all products exclusive of tax
-`{tag_producttaxamount}` | Amount of tax for one product ($)
-`{tag_producttaxrate}` | Tax rate applied to product (%)
-`{tag_producttaxtotal}` | Total amount of tax payable for products
-`{tag_producttotal}` | Total amount for product (Product x Quantity + Tax Rate)
-`{tag_recipientaddress}` | Email address of the recipient
-`{tag_recipientname}` | Full name of contact or company
-`{tag_shippingattention}` | The person to address the order to
-`{tag_shippingdescription}` | Description of shipping product
-`{tag_shippingextaxamount}` | Shipping cost exclusive of tax
-`{tag_shippinginstructions}` | Any specific shipping instructions that accompany the order
-`{tag_shippingtaxamount}` | Amount of tax for shipping
-`{tag_shippingtaxrate}` | Tax rate applied to shipping (%)
-`{tag_shippingtotal}` | Total amount for shipping (Shipping cost + Tax Rate)
-`{tag_trackingurl,Your Text}` | URL of the shipper to track shipments. You can edit this information for each order
+<h2>Customer order detail layout</h2>
+<h3>Location</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; Customer Order Layouts &gt; Detail Layout</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong> /layouts/customerorders/detail.html</li>
+</ul>
+<h3>Tags</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{tag_addressbilling}</td>
+      <td>Billing address for order</td>
+    </tr>
+    <tr>
+      <td>{tag_addressdefault}</td>
+      <td>Default address for contact/company</td>
+    </tr>
+    <tr>
+      <td>{tag_addressshipping}</td>
+      <td>Shipping address for order</td>
+    </tr>
+    <tr>
+      <td>{tag_amountoutstanding}</td>
+      <td>Amount outstanding on invoice</td>
+    </tr>
+    <tr>
+      <td>{tag_amountoutstandingactual}</td>
+      <td>Amount of invoice outstanding, only taking into account successful payments (pending payments excluded)</td>
+    </tr>
+    <tr>
+      <td>{tag_amountpaid}</td>
+      <td>Amount already paid on invoice</td>
+    </tr>
+    <tr>
+      <td>{tag_amountpaidactual}</td>
+      <td>Amount of invoice paid with a successful payment (pending payments excluded)</td>
+    </tr>
+    <tr>
+      <td>{tag_awbnumber}</td>
+      <td>Tracking number from shipping provider(also known as AWB number). You can edit this information for each order</td>
+    </tr>
+    <tr>
+      <td>{tag_countrycode}</td>
+      <td>2-Letter Country Code, use it to indicate currency on invoice</td>
+    </tr>
+    <tr>
+      <td>{tag_crmform}</td>
+      <td>The data from all CRM forms attached to an order</td>
+    </tr>
+    <tr>
+      <td>{tag_directdebitdate}</td>
+      <td>The date automatic debit is processed for invoice</td>
+    </tr>
+    <tr>
+      <td>{tag_directdebitdays}</td>
+      <td>Number of days before automatic debit is processed for invoice</td>
+    </tr>
+    <tr>
+      <td>{tag_directdebittype}</td>
+      <td>Type of automatic debit for invoice; for example, credit card or direct debit</td>
+    </tr>
+    <tr>
+      <td>{tag_invoicedate}</td>
+      <td>Date of invoice</td>
+    </tr>
+    <tr>
+      <td>{tag_invoicediscountamount}</td>
+      <td>Total discounted amount of invoice excluding shipping charges</td>
+    </tr>
+    <tr>
+      <td>{tag_invoicediscountcode}</td>
+      <td>Discount code used</td>
+    </tr>
+    <tr>
+      <td>{tag_invoicediscountpercent}</td>
+      <td>Discount percent applied to invoice total</td>
+    </tr>
+    <tr>
+      <td>{tag_invoicegiftvoucher}</td>
+      <td>Gift voucher used</td>
+    </tr>
+    <tr>
+      <td>{tag_invoicegiftvoucheramount}</td>
+      <td>Amount paid using a gift voucher</td>
+    </tr>
+    <tr>
+      <td>{tag_invoicenumber}</td>
+      <td>Invoice number</td>
+    </tr>
+    <tr>
+      <td>{tag_invoicetotal}</td>
+      <td>Total invoice amount</td>
+    </tr>
+    <tr>
+      <td>{tag_invoicetotaltaxamount}</td>
+      <td>Total tax associated with order (product tax + shipping tax)</td>
+    </tr>
+    <tr>
+      <td>{tag_ordername}</td>
+      <td>Name of order</td>
+    </tr>
+    <tr>
+      <td>{tag_productcode}</td>
+      <td>Product code</td>
+    </tr>
+    <tr>
+      <td>{tag_productdescription}</td>
+      <td>Product description you entered when generating order</td>
+    </tr>
+    <tr>
+      <td>{tag_productextaxamount}</td>
+      <td>Product price exclusive of tax</td>
+    </tr>
+    <tr>
+      <td>{tag_productgrandtotal}</td>
+      <td>Total cost of products (Total Product cost + Total Tax for Products)</td>
+    </tr>
+    <tr>
+      <td>{tag_productinctaxamount}</td>
+      <td>Product price inclusive of tax</td>
+    </tr>
+    <tr>
+      <td>{tag_productname}</td>
+      <td>Name of Product</td>
+    </tr>
+    <tr>
+      <td>{tag_productquantity}</td>
+      <td>Product quantity</td>
+    </tr>
+    <tr>
+      <td>{tag_productsubtotal}</td>
+      <td>Total cost of all products exclusive of tax</td>
+    </tr>
+    <tr>
+      <td>{tag_producttaxamount}</td>
+      <td>Amount of tax for one product ($)</td>
+    </tr>
+    <tr>
+      <td>{tag_producttaxrate}</td>
+      <td>Tax rate applied to product (%)</td>
+    </tr>
+    <tr>
+      <td>{tag_producttaxtotal}</td>
+      <td>Total amount of tax payable for products</td>
+    </tr>
+    <tr>
+      <td>{tag_producttotal}</td>
+      <td>Total amount for product (Product x Quantity + Tax Rate)</td>
+    </tr>
+    <tr>
+      <td>{tag_recipientaddress}</td>
+      <td>Email address of the recipient</td>
+    </tr>
+    <tr>
+      <td>{tag_recipientname}</td>
+      <td>Full name of contact or company</td>
+    </tr>
+    <tr>
+      <td>{tag_shippingattention}</td>
+      <td>The person to address the order to</td>
+    </tr>
+    <tr>
+      <td>{tag_shippingdescription}</td>
+      <td>Description of shipping product</td>
+    </tr>
+    <tr>
+      <td>{tag_shippingextaxamount}</td>
+      <td>Shipping cost exclusive of tax</td>
+    </tr>
+    <tr>
+      <td>{tag_shippinginstructions}</td>
+      <td>Any specific shipping instructions that accompany the order</td>
+    </tr>
+    <tr>
+      <td>{tag_shippingtaxamount}</td>
+      <td>Amount of tax for shipping</td>
+    </tr>
+    <tr>
+      <td>{tag_shippingtaxrate}</td>
+      <td>Tax rate applied to shipping (%)</td>
+    </tr>
+    <tr>
+      <td>{tag_shippingtotal}</td>
+      <td>Total amount for shipping (Shipping cost + Tax Rate)</td>
+    </tr>
+    <tr>
+      <td>{tag_trackingurl,Your Text}</td>
+      <td>URL of the shipper to track shipments. You can edit this information for each order</td>
+    </tr>
+  </tbody>
+</table>
+<br>

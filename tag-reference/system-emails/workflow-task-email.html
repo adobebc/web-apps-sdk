@@ -1,17 +1,46 @@
-## Workflow Task Email
-
-### Location
-* **Admin Console:** Site Manager > System Emails > Workflow Task
-* **SFTP & Develop Mode:** /Layouts/OutboundEmails/WorkflowTask.html
-
-### Tags
-
-Tag | Description
--------------- | -------------
-`{tag_currentusername}` |  Name of user currently logged in to site
-`{tag_formsummary}` |	Summary of the web form submitted
-`{tag_objectname}` |	Name of the item type this workflow step refers to (case, order, web page, template)
-`{tag_objecturl}` |	URL to view the item associated with the workflow
-`{tag_objecturlsecure}` |	Secure URL to view the item associated with the workflow
-`{tag_rolename}` |	Name of the role the user belongs to
-`{tag_workflowname}` |	Name of the triggered workflow
+<h2>Workflow task email</h2>
+<h3>Location</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; System Emails &gt; Workflow Task</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong> /Layouts/OutboundEmails/WorkflowTask.html</li>
+</ul>
+<h3>Tags</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{tag_currentusername}</td>
+      <td>Name of user currently logged in to site</td>
+    </tr>
+    <tr>
+      <td>{tag_formsummary}</td>
+      <td>Summary of the web form submitted</td>
+    </tr>
+    <tr>
+      <td>{tag_objectname}</td>
+      <td>Name of the item type this workflow step refers to (case, order, web page, template)</td>
+    </tr>
+    <tr>
+      <td>{tag_objecturl}</td>
+      <td>URL to view the item associated with the workflow</td>
+    </tr>
+    <tr>
+      <td>{tag_objecturlsecure}</td>
+      <td>Secure URL to view the item associated with the workflow</td>
+    </tr>
+    <tr>
+      <td>{tag_rolename}</td>
+      <td>Name of the role the user belongs to</td>
+    </tr>
+    <tr>
+      <td>{tag_workflowname}</td>
+      <td>Name of the triggered workflow</td>
+    </tr>
+  </tbody>
+</table>
+<br>

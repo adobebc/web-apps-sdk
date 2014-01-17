@@ -1,0 +1,54 @@
+<div class="description">
+<h3 class="skiptoc">Description</h3>
+<p>When placed onto a web page or a template it displays the web app items.</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p>{<span>module_webapps,ID,filter,itemID,notUsed,target,bkp,results,hideEmpty,rowLength,Sort</span>}</p>
+</div>
+<ul>
+    <li>ID - system generated web app id (do not change)</li>
+    <li>filter - filtering criteria for display and can be one of the following:
+    <ul>
+        <li>i - individual item</li>
+        <li>a - all items</li>
+        <li>l - latest items</li>
+        <li>r - random item</li>
+        <li>cl - latest items in a particular category</li>
+        <li>cr - displays a random item in a particular category</li>
+    </ul>
+    </li>
+    <li>itemID - system generated individual item id (do not change)</li>
+    <li>notUsed - leave empty</li>
+    <li>target - e.g. _blank. Specify the frame you want the item to open in</li>
+    <li>bkp - specify True if you want to use the backup list template or leave empty</li>
+    <li>results - total number of items per page before pagination is used (limit of 500 items per page)</li>
+    <li>hideEmpty - specify True if you don't want the No Items Found message to be displayed.</li>
+    <li>rowLength - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+    <li>Sort - will sort the web apps in specified order
+    <ul>
+        <li>alphabetical (default) - items are sorted in alphabetical order form A-Z</li>
+        <li>date - will display the web app items newest to oldest</li>
+        <li>datereverse - will display the web app items oldest to newest</li>
+        <li>weightreverse - allows you to display the web apps by weight but in reverse, that is the item with the smallest weight is displayed first.</li>
+        <li>comments - display the items with the largest number of Comments first (can be used for a 'highest votes' type display).</li>
+    </ul>
+    </li>
+</ul>
+<div id="layouts">
+<h3>This module is rendered with these layouts</h3>
+<ul>
+    <li>Web App Layouts &gt;&nbsp;<a href="/reference/tag-reference/WebApps/webapp-list-layout ">List Layout </a></li>
+    <li>This module also supports <a href="/reference/tag-reference/custom-templates">custom templates</a></li>
+</ul>
+</div>
+<div id="Examples">
+<h3>Examples</h3>
+<ul>
+    <li>{<span>module_webapps,56,a,,,_blank,true,12,true,3</span> } - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
+    <li>{<span>module_webapps,123,a,,,,,12</span> } - will only display 12 items per page </li>
+    <li>{<span>module_webapps,123,l,5</span> } - will only display the latest 5 items (by date) on the page</li>
+    <li>{<span>module_webapps,56,a,,,,,10,,1 template="/layouts/custom/walist.html"</span> } - will only display 10 items using the walist.html <a href="/reference/tag-reference/custom-templates">custom template</a></li>
+</ul>
+<p>The previous and next links can be customized using CSS. Each link has its own custom CSS class. To see the CSS class assigned to these links view the web page source where these links appear. The CSS class name format is: WebAppIDPrev and WebAppIDNext where ID is the internal ID assigned to your Web App. You can easily find the ID using Firebug once on the live page.</p>
+</div>

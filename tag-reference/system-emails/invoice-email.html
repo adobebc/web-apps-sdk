@@ -1,0 +1,197 @@
+<div id="accessible">
+<h3 class="navi_index1">Accessible from</h3>
+<p>
+In the "Develop" section of the site or if you connect via sFTP you can find this layout at this path - /Layouts/OutboundEmails/invoice.html
+</p>
+</div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<br />
+<h4>Most common tags used</h4>
+<br />
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_invoicedate</span><span>}</span><span class="cellcontent">Date of Invoice</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_invoicenumber</span><span>}</span><span class="cellcontent">Invoice Number</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_recipientname</span><span>}</span><span class="cellcontent">Fullname of contact or company</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_addressdefault</span><span>}</span><span class="cellcontent">Default address for contact/company</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_productcode</span><span>}</span><span class="cellcontent">Product code</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_productname</span><span>}</span><span class="cellcontent">Name of product</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_productdescription</span><span>}</span><span class="cellcontent">Product description entered by you when generating order</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_producttaxamount</span><span>}</span><span class="cellcontent">Amount of tax for one product ($)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_productquantity</span><span>}</span><span class="cellcontent">Product quantity</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_producttotal</span><span>}</span><span class="cellcontent">Total amount for product (Product x Quantity + Tax Rate)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_shippingextaxamount</span><span>}</span><span class="cellcontent">Shipping cost exclusive of tax</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_shippingtaxamount</span><span>}</span><span class="cellcontent">Amount of tax for shipping</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_invoicetotal</span><span>}</span><span class="cellcontent">Total invoice amount</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_amountpaid</span><span>}</span><span class="cellcontent">Amount already paid on invoice</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_amountoutstanding</span><span>}</span><span class="cellcontent">Amount outstanding on invoice</span></td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<h4>Other tags</h4>
+<br />
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_addressbilling</span><span>}</span><span class="cellcontent">Billing address for order</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_addresshome</span><span>}</span><span class="cellcontent">Home address of the customer</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_addressshipping</span><span>}</span><span class="cellcontent">Shipping address for order</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_addresswork</span><span>}</span><span class="cellcontent">Work address of the customer</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_amountoutstandingactual</span><span>}</span><span class="cellcontent">Amount of invoice actually outstanding only taking into account successful payments (pending payments excluded)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_amountpaidactual</span><span>}</span><span class="cellcontent">Total successful payments received for an order. Excludes pending payments such as Check and COD.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_company</span><span>}</span><span class="cellcontent">Company name the contact is associated to.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_countrycode</span><span>}</span><span class="cellcontent">2-Letter Country Code, use it to indicate currency on invoice</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_custom1</span><span>}</span><span class="cellcontent">Information stored in imported Custom 1 field</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_custom2</span><span>}</span><span class="cellcontent">Information stored in imported Custom 2 field</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_custom3</span><span>}</span><span class="cellcontent">Information stored in imported Custom 3 field</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_custom4</span><span>}</span><span class="cellcontent">Information stored in imported Custom 4 field</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_customform</span><span>}</span><span class="cellcontent">Displays all custom fields collected on the registration step of the checkout. (Please note that this tag does not accept any parameters)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_directdebitdate</span><span>}</span><span class="cellcontent">The date automatic debit is processed for invoice</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_directdebitdays</span><span>}</span><span class="cellcontent">Number of days before automatic debit is processed for invoice</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_directdebitinfo</span><span>}</span><span class="cellcontent">Direct debit information relating to order. Only shown if order generated via recurring engine rather than by customer or Admin.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_directdebittype</span><span>}</span><span class="cellcontent">Type of automatic debit for invoice, e.g. Credit Card or Direct Debit</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_invoicediscountamount</span><span>}</span><span class="cellcontent">Total discounted amount of invoice excluding shipping charges</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_invoicetime</span><span>}</span><span class="cellcontent">Time of Invoice</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_invoicetotaltaxamount</span><span>}</span><span class="cellcontent">Total tax associated with order (product tax + shipping tax)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_invoicetotalextaxamount</span><span>}</span><span class="cellcontent">Invoice total amount excluding tax (i.e. products ex tax + shipping ex tax)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_orderid</span><span>}</span><span class="cellcontent">Order ID normally assigned to quotes. Can search on this value via Customersection</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_ordername</span><span>}</span><span class="cellcontent">Name of order</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_phonecell</span><span>}</span><span class="cellcontent">Cell phone number for contact/company</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_phonehome</span><span>}</span><span class="cellcontent">Home phone number for contact/company</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_phonework</span><span>}</span><span class="cellcontent">Work phone number for contact/company</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_producteditorcontent</span><span>}</span><span class="cellcontent">Product description as it appears in the WYSIWYG editor</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_productextaxamount</span><span>}</span><span class="cellcontent">Product price exclusive of tax</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_productgrandtotal</span><span>}</span><span class="cellcontent">Total cost of products (Total Product cost + Total Tax for Products)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_productimage</span><span>}</span><span class="cellcontent">Small image of the product</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_productinctaxamount</span><span>}</span><span class="cellcontent">Product price inclusive of tax</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_productsubtotal</span><span>}</span><span class="cellcontent">Total cost of all products exclusive of tax</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_producttaxrate</span><span>}</span><span class="cellcontent">Tax rate applied to product (%)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_producttaxtotal</span><span>}</span><span class="cellcontent">Total amount of tax payable for products</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_producttotalextax</span><span>}</span><span class="cellcontent">Total amount for product excluding tax (Product x Quantity)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_recipientaddress</span><span>}</span><span class="cellcontent">Email address of the recipient</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_recipientrelated</span><span>}</span><span class="cellcontent">Displays the first contact/company related to the invoicee</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_shippingdescription</span><span>}</span><span class="cellcontent">Description of shipping product</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_shippinginstructions</span><span>}</span><span class="cellcontent">Any specific shipping instructions that accompany the order</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_shippingtaxrate</span><span>}</span><span class="cellcontent">Tax rate applied to shipping (%)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_shippingtotal</span><span>}</span><span class="cellcontent">Total amount for shipping (Shipping cost + Tax Rate)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_producttaxpercentage,percentage</span><span>}</span><span class="cellcontent">To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the product price will be paid as a sales tax, use {tag_producttaxpercentage, 12.5} tag where 12.5 is the percentage of tax to be paid.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_totaltaxpercentage,percentage</span><span>}</span><span class="cellcontent">To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the total price will be paid as a sales tax , use {tag_producttaxpercentage, 12.5} tag where 12.5 is the percentage of tax to be paid.</span></td>
+        </tr>
+    </tbody>
+</table>
+</div>

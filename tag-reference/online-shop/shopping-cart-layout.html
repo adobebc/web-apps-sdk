@@ -1,0 +1,158 @@
+<div class="description">
+<h3>Description</h3>
+<p>This layout controls the look and content of the Shopping Cart.
+</p>
+</div>
+<div id="accessible">
+<h3 class="navi_index1">Accessible from</h3>
+<p>
+The Shopping Cart is the panel customer see after clicking the "View Cart" link outputted by the module {<span><a href="/reference/module-reference/e-Commerce/Checkout/module_shoppingcartsummary"><span>module_shoppingcartsummary</span></a></span>} or after they click a product's "Buy now" button (this is outputted by the {<span>tag_buynow</span>} tag  used in a product's <a href="/reference/tag-reference/e-commerce/individual-product-small">Individual Product - Small</a> or <a href="/reference/tag-reference/e-commerce/individual-product-large">Individual Product - Large</a> layouts.)</p>
+<p>
+In the "Develop" section of the site or if you connect via sFTP you can find this layout at this path - /Layouts/OnlineShop/shopping_cart-XX
+<br />
+<br />
+Replace "XX" with the country code you have added in the Site Settings &gt; Site Domains panel (see the "Country" column).
+<br />
+<br />
+If you have multiple domains with different "Country" values you will find multiple quote-receipt-XX files, one for each country.
+This way, with one layout for every country defined you can vary the contents of the layout to accomodate a multilingual website.
+</p>
+</div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_buybutton,Text or Image,true</span>}<span class="cellcontent">Link to checkout and purchase products in cart (Text or Image allow you to render your own text or to use image instead). True is validation function that checks to make sure every order has a valid shipping charge before the customer is able to pay and finalize the order.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_cataloguebreadcrumbs</span>}<span class="cellcontent">Catalogue breadcrumbs help customers easily navigate between related catalogues</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_clearcartbutton,imagepath</span>}<span class="cellcontent">Link to clear the cart (add an 'imagepath' to use image instead)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_custom1</span>}<span class="cellcontent">Custom field #1. Use to display any information about a product</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_custom2</span>}<span class="cellcontent">Custom field #2. Use to display any information about a product</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_custom3</span>}<span class="cellcontent">Custom field #3. Use to display any information about a product</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_custom4</span>}<span class="cellcontent">Custom field #4. Use to display any information about a product</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_discountcode</span>}<span class="cellcontent">An input box for customers to enter discount code in</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_getquotebutton</span>}<span class="cellcontent">Link to checkout and request a quote (customize to use image instead)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_giftvoucher</span>}<span class="cellcontent">An input box for customer to enter gift voucher code in</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_giftvoucheramount</span>}<span class="cellcontent">Total amount of credit applied to this order as a result of a gift voucher</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_invoicediscountamount</span>}<span class="cellcontent">Total discount amount based on the discount code entered (shipping price isnotdiscounted)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_invoicetotal</span>}<span class="cellcontent">Total cost of the current cart (factoring in all costs and discounts)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_invoicetotalextaxamount</span>}<span class="cellcontent">Invoice total amount excluding tax (i.e. products ex tax + shipping ex tax)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_invoicetotaltaxamount,state,state special tax rate,regular tax rate name,special tax rate name</span>}<span class="cellcontent">Invoice total amount of tax (i.e. products tax + shipping tax).  The additional parameters allow a user to configure the system to break out part of the tax for a specific state into two parts. This is useful in some countries where by law you are required to show GST or similar tax on a separate line, eg...
+            <ul>
+                <li>Tax code BC is configured as 12% (the sum of 7% PST and 5% GST)</li>
+                <li>Our tag is configured like this: {<span>tag_invoicetotaltaxamount,BC,5,PST,GST</span>}</li>
+                <li>$100 order for BC would render the tax like this: PST: $7
+                <br />
+                GST: $5</li>
+            </ul>
+            </span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_producttaxpercentage,percentage</span>}<span class="cellcontent">To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the product price will be paid as a sales tax, use {tag_producttaxpercentage, 12.5} tag where 12.5 is the percentage of tax to be paid.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_totaltaxpercentage,percentage</span>}<span class="cellcontent">To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the total price will be paid as a sales tax , use {tag_producttaxpercentage, 12.5} tag where 12.5 is the percentage of tax to be paid.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_orderid</span>}<span class="cellcontent">Order ID normally assigned to quotes. Can search on this value via Customersection</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productcode</span>}<span class="cellcontent">Product code of the product in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productdescription</span>}<span class="cellcontent">Product description captured from the 'Instructions' box or 'Product Attributes'</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_producteditorcontent</span>}<span class="cellcontent">Product description as it appears in the WYSIWYG editor</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productextaxamount</span>}<span class="cellcontent">Price of each product excluding tax in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productgrandtotal</span>}<span class="cellcontent">Total price of all products including tax in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productimage</span>}<span class="cellcontent">Small image of the product</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productinctaxamount</span>}<span class="cellcontent">Price of each product including tax in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productname</span>}<span class="cellcontent">List of product names in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productname_nolink</span>}<span class="cellcontent">Product name already in the cart without a link back to the product</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productquantity</span>}<span class="cellcontent">Number of units of each product in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productremovelink</span>}<span class="cellcontent">Link to remove product from the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productsubtotal</span>}<span class="cellcontent">Total price of all products excluding tax in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_producttaxamount</span>}<span class="cellcontent">Amount of tax for each product in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_producttaxrate</span>}<span class="cellcontent">Tax rate associated with each product in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_producttaxtotal</span>}<span class="cellcontent">Total tax amount for all products in the cart</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_producttotal</span>}<span class="cellcontent">Total price of each product in the cart (i.e. units x unit price inc tax)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_producttotalextax</span>}<span class="cellcontent">Total amount for product excluding tax (Product x Quantity)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_shippingextaxamount</span>}<span class="cellcontent">Price of shipping option chosen excluding tax</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_shippingoptions</span>}<span class="cellcontent">List of shipping options. Extend via {tag_shippingoptions,X,Y,Z}. Set X to true to enable country and state dropdowns, for use with the Limit Delivery To feature or state taxes. Set Y to true to enable state tax regardless of customer country (otherwise only for customers in your country). Se Z to 2-letter country code to limit shipping country, e.g. US for United States. Use a semi-colon to add additional countries, e.g US;AU.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_shippingtaxamount</span>}<span class="cellcontent">Amount of tax associated with the shipping option chosen</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_shippingtaxrate</span>}<span class="cellcontent">Tax rate associated with the shipping option chosen</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_shippingtotal</span>}<span class="cellcontent">Total cost of the shipping option chosen (i.e. shipping ex tax + shipping tax)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_totalunits</span>}<span class="cellcontent">Total product units in the cart</span></td>
+        </tr>
+    </tbody>
+</table>
+</div>

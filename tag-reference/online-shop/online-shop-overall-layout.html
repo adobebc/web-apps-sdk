@@ -1,0 +1,51 @@
+<div id="accessible">
+<h3 class="navi_index1">Accessible from</h3>
+<p>
+In the "Develop" section of the site or if you connect via sFTP you can find this layout at this path - /Layouts/OnlineShop/page_content.html
+</p>
+</div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_browsepanel</span>}<span class="cellcontent">Displays the browse panel for current catalogue. (Use {tag_browsepanel, hideOnSale, hidePriceBrackets, hideSubCatalogues} to customize) Example of use: {tag_browsepanel,true,false,true}</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_cataloguebreadcrumbs</span>}<span class="cellcontent">Catalogue breadcrumbs help customers easily navigate between related catalogues</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_cataloguelist</span>}<br />
+            <br />
+            <span class="cellcontent">Lists the sub-catalogues in the current catalogue (Use {tag_cataloguelist,x}where x isthe number of catalogues per row). <br />
+            <br />
+            {tag_cataloguelist,rowLength,targetFrame,notUsed,sortType,hideEmptyMessage,list/table}<br />
+            <br />
+            <div>Change: {<span>tag_cataloguelist,4</span>} to {<span>tag_cataloguelist,4,,,,,true</span>} to display as LI.<br />
+            </div>
+            </span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_description</span>}<span class="cellcontent">Catalogue Description</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_name</span>}<span class="cellcontent">Catalogue Name</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_nextpage</span>}<span class="cellcontent">Next page link to traverse products in current catalogue (can be customized to use image)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_pagination</span>}<span class="cellcontent">Enhanced pagination e.g. "1 .. 2 3 4 5 .. 10" to provide fast access to adjacentpages</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_previouspage</span>}<span class="cellcontent">Previous page link to traverse products in current catalogue (can be customized to useimage)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_productlist</span>}<span class="cellcontent">Lists the products in the current catalogue (Use {tag_productlist,u,v,w,x,y,z} where u is the number of products per row; v is the target frame, e.g. _blank or leave empty; w is the number of products per page (limit of 500 products per page); x is the sort type, e.g. Price, or Alphabetical; y allows you to hide empty message, e.g. 'this catalog has no products' and z is list type). Change: {tag_productlist,4} to {tag_productlist,4,,,,,true} to display as LI.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder">{<span>tag_shoppingcartsummary</span>}<span class="cellcontent">Shows shopping cart summary with view cart link {tag_shoppingcartsummary,horizonal} and {tag_shoppingcartsummary,vertical} to display horizontally and vertically respectively, {tag_shoppingcartsummary,,quote} to display total.</span></td>
+        </tr>
+    </tbody>
+</table>
+</div>

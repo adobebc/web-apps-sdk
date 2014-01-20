@@ -5,7 +5,7 @@
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p>{<span>module_webapps,ID,filter,itemID,notUsed,target,bkp,results,hideEmpty,rowLength,Sort</span>}</p>
+<p><code class="language-markup">{<span>module_webapps,ID,filter,itemID,notUsed,target,bkp,results,hideEmpty,rowLength,Sort</span>}</code></p>
 </div>
 <ul>
     <li>ID - system generated web app id (do not change)</li>
@@ -46,10 +46,10 @@
 <div id="examples">
 <h3>Examples</h3>
 <ul>
-    <li>{<span>module_webapps,56,a,,,_blank,true,12,true,3</span> } - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
-    <li>{<span>module_webapps,123,a,,,,,12</span> } - will only display 12 items per page </li>
-    <li>{<span>module_webapps,123,l,5</span> } - will only display the latest 5 items (by date) on the page</li>
-    <li>{<span>module_webapps,56,a,,,,,10,,1 template="/layouts/custom/walist.html"</span> } - will only display 10 items using the walist.html <a href="/reference/tag-reference/custom-templates.html">custom template</a></li>
+    <li><code class="language-markup">{<span>module_webapps,56,a,,,_blank,true,12,true,3</span> } - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
+    <li><code class="language-markup">{<span>module_webapps,123,a,,,,,12</span> } - will only display 12 items per page </li>
+    <li><code class="language-markup">{<span>module_webapps,123,l,5</span> } - will only display the latest 5 items (by date) on the page</li>
+    <li><code class="language-markup">{<span>module_webapps,56,a,,,,,10,,1 template="/layouts/custom/walist.html"</span> } - will only display 10 items using the walist.html <a href="/reference/tag-reference/custom-templates.html">custom template</a></li>
 </ul>
 <p>The previous and next links can be customized using CSS. Each link has its own custom CSS class. To see the CSS class assigned to these links view the web page source where these links appear. The CSS class name format is: WebAppIDPrev and WebAppIDNext where ID is the internal ID assigned to your Web App. You can easily find the ID using Firebug once on the live page.</p>
 </div>

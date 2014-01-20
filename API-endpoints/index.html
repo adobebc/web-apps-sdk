@@ -1,23 +1,56 @@
-## API endpoints
-
-Business Catalyst offers a wide range of API endpoints that allow developers to extend the core functionality of the platform. 
-
-The APIs are split across two protocols, with the majority being RESTful:
-
-### REST APIs
-
-* Categories
-* File System
-* Page Templates
-* Roles
-* Sites
-* System
-* Web App items
-* Web Apps
-
-### SOAP APIs
-
-* CRM
-* eCommerce
-
-
+<h1>Getting Started with Business Catalyst's APIs</h1>
+      <p>Business Catalyst offers a wide range of APIs which allow developers to easily extend the core functionality of the platform, create entirely new applications on top of our infrastructure, and integrate with external third-party systems.</p>
+      <h1>Supported APIs</h1>
+      <p>Business Catalyst currently supports two protocols: the older eCommerce and CRM APIs utilize the <a href="http://en.wikipedia.org/wiki/SOAP">SOAP</a> protocol, while all new APIs are <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> over HTTP.</p>
+<p>For a complete reference of supported APIs, refer to <a href="http://developers.businesscatalyst.com/reference/api-endpoints/index.html">our API endpoint reference.</a></p>
+      <h1>Interacting with APIs</h1>
+      <p>As a developer, you're able to interact with our APIs as you wish - be it through a simple HTTP console, client-side JavaScript, or a server-side application you've written in your preferred language.</p>
+<p>For this getting started guide, we're going to be making all API requests once we're logged into the Admin Console using Chrome Developer Tools &gt; Console. As packaged apps will utilize Open Admin and run from within the Admin Console itself, this is a great way to start learning how to interact with the APIs.</p>
+      <h1>Before you get started</h1>
+      <p>There are a few important things to watch out for when interacting with BC's APIs:</p>
+<ul>
+        <li>All APIs should be accessed over the HTTPS protocol. For your server address, this means using<br>
+          <br>
+          <em>https://mysite.worldsecuresystems.com </em>(the sites secure/system URL - easier when using Open Admin) <br>
+          <br>
+  </li>
+        <li>Many endpoints require you to specify the Site ID in the path of your request. You can alternatively use "current" if sending the request to the secure/system URL of your site</li>
+        <li>Once you've finished the <a href="/developer-documentation/oauth-in-bc.html">authorization sequence</a> and got the access token, always send this as an "Authorization" header with your HTTP request, and don't accidentally send an "Authentication" header.</li>
+        <li>If you're generating tokens and running code on a server external to BC, we recommend that you always invalidate these tokens once you're finished interacting with the API. This helps avoid any security issues and can be easily achieved using the logout endpoints. See below for an example of this.</li>
+      </ul>
+      <h1 id="examples">Example API requests</h1>
+      <div class="alert alert-info">
+      <p><strong>Note:</strong> For security reasons, make sure you're logged in securely over HTTPS to your Admin Console before running these examples. For example, login at <br>
+        <br>
+        https://mysite.worldsecuresystems.com/admin</p>
+      </div>
+      <p>To get started, login to the secure URL of your site (<em>eg. https://mysite.worldsecuresystems.com/admin</em>) and make sure you've landed on the Dashboard of the Admin Console.</p>
+<p>Before making any API calls you will need to install an app (any app) on your site. The reason behind this is you will need the <a href="/developer-documentation/oauth-in-bc.html#unserstanding_app_loader">App Loader</a> to generate the access token.</p>
+      <h2>Install an app</h2>
+      <p>To quickly get you started you can install the "<a href="/getting-started/building-your-first-app.html#hello_world">Hello World</a>" app.</p>
+      <p>Once the app is installed click its menu entry in the Admin console to open up the app and then hit F12 to open up Chrome Developer Tools.</p>
+      <p>Switch across to the "Sources" tab, open up the index.html landing page and add a break like so:</p>
+      <p><a class="fancybox" href="http://screencasteu.worldsecuresystems.com/Mihai_T/2013-11-05_1028.png"><img src="http://screencasteu.worldsecuresystems.com/Mihai_T/2013-11-05_1028.png?Action=thumbnail&Width=500&algorithm=fill"></a></p>
+      <p>This break will pause the script and will allow us to run the test API calls while in context of the app.</p>
+      <p>After adding the break, click the app's Open Admin menu item again. This should fire it again and this time it will stop at the break we added.</p>
+<p>At this point you can test any of the <a href="http://developers.businesscatalyst.com/reference/api-endpoints/index.html">API calls available</a>, let's take a look at a few of them.</p>
+      <h2>1. Get a list of Web Apps that exist on the current site</h2>
+      <p>Now that we are in the app's context, got the access token we can pass it through as an Authorization header to access the range APIs available.</p>
+      <p>Let's grab a list of the Web Apps that exist on the website we're currently logged in to. Paste the following code into the Console and hit enter to run:</p>
+    <script src="https://gist.github.com/dgundi/7331199.js"></script>
+      <p>If the request is successful, you'll be returned a object containing the response data <a href="http://developers.businesscatalyst.com/reference/api-endpoints/web-apps/list-web-apps.html">documented here.</a></p>
+      <p>Again we've used jQuery to send an AJAX request to the List Web Apps API endpoint and written some simple success/error handling to deal with the response. You'll notice we're able to use <strong>current</strong> in the place of specifiying the Site ID, as we're sending the request to our secure/system site URL.</p>
+<p>From the returned object, you could then use the Get Web App Item List method (sending the ID of the desired Web App) to request a list of all items that exist for a specific Web App.</p>
+      <h2>2. Create a new Web App</h2>
+      <p>We can also easily create an actual Web App using the API. This time we'll be using a POST request instead of a GET request, as we need to tell BC what we want our Web App to look like.</p>
+      <script src="https://gist.github.com/dgundi/7331214.js"></script>
+      <p>You'll notice that this time we've specified the type as POST and sent some JSON data through to BC that defines our new Web App's properties.</p>
+<p>You can expand upon this JSON string to set a range of other Web App properties. <a href="http://developers.businesscatalyst.com/reference/api-endpoints/web-apps/create-web-app.html">See the parameters here</a> for a complete list of what's supported.</p>
+      <h2>3 Add a new Web App item</h2>
+      <p>Now that we have an empty Web App, let's add an item. Paste the following code in the Console and hit enter to run:</p>
+  <div class="alert alert-info">
+    <p>You'll need to replace "MyWebApp" with the name of your actual Web App for this to work.</p></div>
+    <script src="https://gist.github.com/dgundi/7331228.js"></script>
+      <p>We're using the Create Web App Item API method and an AJAX POST request to send BC the details of our new Web App item.</p>
+      <p>Just like our previous example, we've defined the Web App Item name here using JSON data sent during the request. You can find a <a href="http://developers.businesscatalyst.com/reference/api-endpoints/web-app-items/create-web-app-item.html">full list of item parameters supported here.</a></p>
+<p>To update an existing Web App item, you use the PUT HTTP method instead of POST. <a href="http://developers.businesscatalyst.com/reference/api-endpoints/web-app-items/update-web-app-item.html">See the reference for more details.</a></p>

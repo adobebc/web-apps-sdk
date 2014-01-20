@@ -1,22 +1,23 @@
 <h2>Double opt-in email</h2>
 <div id="accessible">
 <h3>Accessible from</h3>
-<p>
-In the "Develop" section of the site or if you connect via sFTP you can find this layout at this path - /Layouts/OutboundEmails/DoubleOptInEmail.html
-</p>
-</div>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; System E-mails &gt; Double Opt-In Email</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/OutboundEmails/DoubleOptInEmail.html
+</li>
+</ul></div>
 <div id="tags">
 <h3>Renders these tags</h3>
 <table width="100%" class="data-bordered">
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_emailaddress</span><span>}</span><span class="cellcontent">Email address of the recipient</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_emailaddress</span><span>}</span></code><span class="cellcontent">Email address of the recipient</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_recipientname</span><span>}</span><span class="cellcontent">Full name of the recipient</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_recipientname</span><span>}</span></code><span class="cellcontent">Full name of the recipient</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_verificationurl,Type</span><span>}</span><span class="cellcontent">The verification url for customer to select and opt-in to your newsletter. Type is either <strong>Html</strong> or <strong>Text</strong>. Html will render <strong>&lt;a href="verifyUrl"&gt;Your_html&lt;/a&gt;</strong> and text mode, <strong>your_text verifyUrl</strong></span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_verificationurl,Type</span><span>}</span></code><span class="cellcontent">The verification url for customer to select and opt-in to your newsletter. Type is either <strong>Html</strong> or <strong>Text</strong>. Html will render <strong>&lt;a href="verifyUrl"&gt;Your_html&lt;/a&gt;</strong> and text mode, <strong>your_text verifyUrl</strong></span></td>
         </tr>
     </tbody>
 </table>

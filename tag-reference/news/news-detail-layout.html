@@ -2,47 +2,48 @@
 <div id="modules">
 <h3>This layout is not used by any module per se.</h3>
 <p>
-Site visitors get to it only after clicking the links outputted by the tag {<span>tag_subject</span>} or {<span>tag_subject</span>} which can both be found on the <a title="News List Layout" href="http://developers.businesscatalyst.com/reference/tag-reference/news/news-list-layout.html">news list layout</a>.
+Site visitors get to it only after clicking the links outputted by the tag <code class="language-markup">{<span>tag_subject</span>}</code> or <code class="language-markup">{<span>tag_subject</span>}</code> which can both be found on the <a title="News List Layout" href="/reference/tag-reference/news/news-list-layout.html">news list layout</a>.
 </p>
 </div>
 <div id="accessible">
 <h3>Accessible from</h3>
-<p>
-In the "Develop" section of the site or if you connect via sFTP you can find this layout at this path - /Layouts/Announcement/detail.html</p>
-</div>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; News Layouts</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/Announcement/detail.html</li>
+</ul></div>
 <div id="tags">
 <h3>Renders these tags</h3>
 <table width="100%" class="data-bordered">
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_addtofavorites,addtoImage,removefromImage</span><span>}</span><span class="cellcontent">Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span class="tagname">tag_addtofavorites,&lt;img alt=" src="/images/add.gif" /&gt;,&lt;img alt=" src="/images/remove.gif" /&gt;</span>}</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_addtofavorites,addtoImage,removefromImage</span><span>}</span></code><span class="cellcontent">Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - <code class="language-markup">{<span class="tagname">tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}</code></code></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_announcementurl_value</span><span>}</span><span class="cellcontent">This tag renders the announcement URL value. For example: /announcement-prefix-url/new-announcement. If customizable URLs are not enabled, this tag will render /AnnouncementRetrieve.aspx?Id=123</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_announcementurl_value</span><span>}</span></code><span class="cellcontent">This tag renders the announcement URL value. For example: <strong>/announcement-prefix-url/new-announcement</strong>. If customizable URLs are not enabled, this tag will render <strong>/AnnouncementRetrieve.aspx?Id=123</strong></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_body</span><span>}</span><span class="cellcontent">Details of  the news item (editor content)</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_body</span><span>}</span></code><span class="cellcontent">Details of  the news item (editor content)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_eventfromdate</span><span>}</span><span class="cellcontent">Start date of the event (if applicable)</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_eventfromdate</span><span>}</span></code><span class="cellcontent">Start date of the event (if applicable)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_eventtodate</span><span>}</span><span class="cellcontent">End date of the event (if applicable)</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_eventtodate</span><span>}</span></code><span class="cellcontent">End date of the event (if applicable)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_expirydate</span><span>}</span><span class="cellcontent">Expiry date of the news item.</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_expirydate</span><span>}</span></code><span class="cellcontent">Expiry date of the news item.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_lastupdatedate</span><span>}</span><span class="cellcontent">Last update date of  the news item.</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_lastupdatedate</span><span>}</span></code><span class="cellcontent">Last update date of  the news item.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_releasedate</span><span>}</span><span class="cellcontent">Release date of  the news item.</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_releasedate</span><span>}</span></code><span class="cellcontent">Release date of  the news item.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_subject</span><span>}</span><span class="cellcontent">Subject of news item in plain text</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_subject</span><span>}</span></code><span class="cellcontent">Subject of news item in plain text</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_tellafriend</span><span>}</span><span class="cellcontent">Opens up a popup that contains the "Tell a friend" form.</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_tellafriend</span><span>}</span></code><span class="cellcontent">Opens up a popup that contains the "Tell a friend" form.</span></td>
         </tr>
     </tbody>
 </table>

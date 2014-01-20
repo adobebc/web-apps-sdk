@@ -2,62 +2,63 @@
 <div id="modules">
 <h3>Is used by these modules</h3>
 <ul>
-    <li><a href="http://developers.businesscatalyst.com/reference/module-reference/web-apps/module_webapps.html" title=" module_webapps ">{<span>module_webapps</span>}</a></li>
-    <li><a href="http://developers.businesscatalyst.com/reference/module-reference/web-apps/module_webappscustomer.html">{<span>module_webappscustomer</span>}</a></li>
-    <li><a href="http://developers.businesscatalyst.com/reference/module-reference/web-apps/module_webappsresults.html">{<span>module_webappsresults</span>}</a></li>
+    <li><a href="/reference/module-reference/web-apps/module_webapps.html" title=" module_webapps "><code class="language-markup">{<span>module_webapps</span>}</code></a></li>
+    <li><a href="/reference/module-reference/web-apps/module_webappscustomer.html"><code class="language-markup">{<span>module_webappscustomer</span>}</code></a></li>
+    <li><a href="/reference/module-reference/web-apps/module_webappsresults.html"><code class="language-markup">{<span>module_webappsresults</span>}</code></a></li>
 </ul>
 </div>
 <div id="accessible">
 <h3>Accessible from</h3>
-<p>
-In the "Develop" section of the site or if you connect via sFTP you can find this layout at this path - /Layouts/WebApps/WEBAPP_NAME/list.html (for example&nbsp;/Layouts/WebApps/Car Catalogue/list.html)</p>
-</div>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; Web App Layouts &gt; WEBAPP_NAME</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/WebApps/WEBAPP_NAME/list.html (for example&nbsp;/Layouts/WebApps/Car Catalogue/list.html)</li>
+</ul></div>
 <div id="tags">
 <h3>Renders these tags</h3>
 <table width="100%" class="data-bordered">
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_addtofavorites,addtoImage,removefromImage</span><span>}</span><span class="cellcontent">Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span class="tagname">tag_addtofavorites,&lt;img alt=" src="/images/add.gif" /&gt;,&lt;img alt=" src="/images/remove.gif" /&gt;</span>}</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_addtofavorites,addtoImage,removefromImage</span><span>}</span></code><span class="cellcontent">Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - <code class="language-markup">{<span class="tagname">tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}</code></code></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_button,Your Text</span><span>}</span><span class="cellcontent">will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="http://developers.businesscatalyst.com/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_button,Your Text</span><span>}</span></code><span class="cellcontent">will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_counter</span><span>}</span><span class="cellcontent">Incremental count of the item on the page</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_counter</span><span>}</span></code><span class="cellcontent">Incremental count of the item on the page</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_delete</span><span>}</span><span class="cellcontent">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone)</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_delete</span><span>}</span></code><span class="cellcontent">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_description</span><span>}</span><span class="cellcontent">Description of item (editor content). On the "Llist Layoutyout (Backup)" you can use {tag_description,10} to display the first 10 characters of the webapp item's description.</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_description</span><span>}</span></code><span class="cellcontent">Description of item (editor content). On the "List Layout (Backup)&quot; you can use <code class="language-markup"><span>{</span>tag_description,10</code>}</span> to display the first 10 characters of the webapp item's description.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_edit</span><span>}</span><span class="cellcontent">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="http://developers.businesscatalyst.com/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_edit</span><span>}</span></code><span class="cellcontent">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_expirydate</span><span>}</span><span class="cellcontent">Expiry date of item in this format - 01-Jan-9999<br />
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_expirydate</span><span>}</span></code><span class="cellcontent">Expiry date of item in this format - <strong>01-Jan-9999</strong><br />
             </span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_lastupdatedate</span><span>}</span><span class="cellcontent">Last update date of item in this format - 28-May-2012 11:07 PM</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_lastupdatedate</span><span>}</span></code><span class="cellcontent">Last update date of item in this format - <strong>28-May-2014 11:07 PM</strong></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_name_nolink</span><span>}</span><span class="cellcontent">Name of item (without hyperlink)</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_name_nolink</span><span>}</span></code><span class="cellcontent">Name of item (without hyperlink)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_name</span><span>}</span><span class="cellcontent">Name of the item - will have hyperlink that points to the item's <a href="http://developers.businesscatalyst.com/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_name</span><span>}</span></code><span class="cellcontent">Name of the item - will have hyperlink that points to the item's <a href="/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_releasedate</span><span>}</span><span class="cellcontent">Release date of item in this format - 08-Sep-2012</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_releasedate</span><span>}</span></code><span class="cellcontent">Release date of item in this format - <strong>08-Sep-2014</strong></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_weight</span><span>}</span><span class="cellcontent">Weighting of item</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_weight</span><span>}</span></code><span class="cellcontent">Weighting of item</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_itemurl_withhost</span><span>}</span><span class="cellcontent">Full URL of the web app item including host for example "http://mysamplesite.com/car-catalogue/ford-explorer"</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_itemurl_withhost</span><span>}</span></code><span class="cellcontent">Full URL of the web app item including host for example <strong>http://mysamplesite.com/car-catalogue/ford-explorer</strong></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_itemurl_nolink</span><span>}</span><span class="cellcontent">Relative URL of the web app item for example "/car-catalogue/ford-explorer"</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_itemurl_nolink</span><span>}</span></code><span class="cellcontent">Relative URL of the web app item for example <strong>/car-catalogue/ford-explorer</strong></span></td>
         </tr>
     </tbody>
 </table>

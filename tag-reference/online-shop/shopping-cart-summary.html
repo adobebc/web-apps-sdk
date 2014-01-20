@@ -1,41 +1,42 @@
 <h2>Shopping cart layout</h2>
-<h3>Tags</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Tag</th>
-      <th>Description</th>
-    </tr>
-  </thead>
+
+<div id="accessible">
+<h3>Accessible from</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Online Shop Layouts &gt;
+Shopping Cart </li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/OnlineShop/shopping-cart-XX.html
+  <br/><br/>
+  Replace "XX" with the country code you have added in the Site Settings &gt; Site Domains panel (see the "Country" column). <br>
+  <br>
+  If you have multiple domains with different "Country" values you will find multiple shopping-cart-XX files, one for each country. This way, with one layout for every country defined you can vary the contents of the layout to accomodate a multilingual website. </li>
+</ul></div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+  
   <tbody>
     <tr>
-      <td>{tag_cartUrl}</td>
-      <td>Renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_cartUrl</span><span>}</span></code><span class="cellcontent">Renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</span></td>
+        </tr>
     <tr>
-      <td>{tag_itemCount}</td>
-      <td>Renders the number of the items in the cart or 0 if none.</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_itemCount</span><span>}</span></code><span class="cellcontent">Renders the number of the items in the cart or <strong>0</strong> if none.</span></td>
+        </tr>
     <tr>
-      <td>{tag_totalAmount}</td>
-      <td>Renders the total money amount of the items (with two decimals) or 0.00 if the items don't have prices or there are no items in the cart</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_totalAmount</span><span>}</span></code><span class="cellcontent">Renders the total money amount of the items (with two decimals) or <strong>0.00</strong> if the items don't have prices or there are no items in the cart</span></td>
+        </tr>
     <tr>
-      <td>{tag_currency}</td>
-      <td>Renders the currency of the current country setting, which is either the site country or the country of the order (if set)</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_currency</span><span>}</span></code><span class="cellcontent">Renders the currency of the current country setting, which is either the site country or the country of the order (if set)</span></td>
+        </tr>
     <tr>
-      <td>{tag_totalAmountWithCurrency}</td>
-      <td>Renders both currency and total amount (this is only for the sake of convenience, you might want to use it instead of {tag_currency}{tag_totalAmount})</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_totalAmountWithCurrency</span><span>}</span></code><span class="cellcontent">Renders both currency and total amount (this is only for the sake of convenience, you might want to use it instead of <code class="language-markup">{<span>tag_currency</span>}{<span>tag_totalAmount</span>}</code>)</span></td>
+        </tr>
     <tr>
-      <td>{tag_isEmpty}</td>
-      <td>Renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_isEmpty</span><span>}</span></code><span class="cellcontent">Renders <strong>0</strong> or <strong>1</strong> (for when the cart is empty - used to display a different message when there are no items)</span></td>
+        </tr>
     <tr>
-      <td>{tag_countryCode}</td>
-      <td>Renders the country code (of the site or of the order, if set)</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_countryCode</span><span>}</span></code><span class="cellcontent">Renders the country code (of the site or of the order, if set)</span></td>
+        </tr>
   </tbody>
 </table>
-<br>
+</div>

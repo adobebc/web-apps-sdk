@@ -2,15 +2,17 @@
 <div id="modules">
 <h3>Is used by these modules</h3>
 <ul>
-    <li>{<span><a href="http://developers.businesscatalyst.com/reference/module-reference/products/module_productfeaturelist.html">module_productfeaturelist</a></span>}</li>
-    <li>{<span><a href="http://developers.businesscatalyst.com/reference/module-reference/products/module_product.html">module_product</a></span>}</li>
-    <li>{<span><a href="http://developers.businesscatalyst.com/reference/module-reference/products/module_productresults.html">module_productresults</a></span>}</li>
+    <li><code class="language-markup">{<span><a href="/reference/module-reference/products/module_productfeaturelist.html">module_productfeaturelist</a></span>}</code></li>
+    <li><code class="language-markup">{<span><a href="/reference/module-reference/products/module_product.html">module_product</a></span>}</code></li>
+    <li><code class="language-markup">{<span><a href="/reference/module-reference/products/module_productresults.html">module_productresults</a></span>}</code></li>
 </ul>
 </div>
 <div id="accessible">
 <h3>Accessible from</h3>
-<p>
-In the "Develop" section of the site or if you connect via sFTP you can find this layout at this path - /Layouts/OnlineShop/quote_receipt-XX.html
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Online Shop Layouts &gt; 
+Registration - Quote </li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/OnlineShop/quote_receipt-XX.html
 <br />
 <br />
 Replace "XX" with the country code you have added in the Site Settings &gt; Site Domains panel (see the "Country" column).
@@ -18,14 +20,14 @@ Replace "XX" with the country code you have added in the Site Settings &gt; Site
 <br />
 If you have multiple domains with different "Country" values you will find multiple quote-receipt-XX files, one for each country.
 This way, with one layout for every country defined you can vary the contents of the layout to accomodate a multilingual website.
-</p>
-</div>
+</li>
+</ul></div>
 <div id="tags">
 <h3>Renders these tags</h3>
 <table width="100%" class="data-bordered">
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder">{<span>tag_orderid</span>}<span class="cellcontent">Internal ID associated with the purchase</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_orderid</span><span>}</span></code><span class="cellcontent">Internal ID associated with the purchase</span></td>
         </tr>
     </tbody>
 </table>

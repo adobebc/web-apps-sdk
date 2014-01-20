@@ -1,58 +1,44 @@
 <h2>Workflow reminder email</h2>
-<h3>Location</h3>
+<h3>Accessible from</h3>
 <ul>
   <li><strong>Admin Console:</strong> Site Manager &gt; System Emails &gt; Workflow Reminder</li>
   <li><strong>SFTP &amp; Develop Mode:</strong> /Layouts/OutboundEmails/WorkflowReminder.html</li>
-</ul>
-<h3>Tags</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Tag</th>
-      <th>Description</th>
-    </tr>
-  </thead>
+</ul></div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+  
   <tbody>
     <tr>
-      <td>{tag_CreateDate}</td>
-      <td>Date of workflow instance</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_CreateDate</span><span>}</span></code><span class="cellcontent">Date of workflow instance</span></td>
+        </tr>
     <tr>
-      <td>{tag_EscalatedRoleName}</td>
-      <td>Role responsible when workflow step is escalated</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_EscalatedRoleName</span><span>}</span></code><span class="cellcontent">Role responsible when workflow step is escalated</span></td>
+        </tr>
     <tr>
-      <td>{tag_EscalationDate}</td>
-      <td>Escalation date for the workflow step</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_EscalationDate</span><span>}</span></code><span class="cellcontent">Escalation date for the workflow step</span></td>
+        </tr>
     <tr>
-      <td>{tag_expirydate}</td>
-      <td>Expiration date for workflow step</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_expirydate</span><span>}</span></code><span class="cellcontent">Expiration date for workflow step</span></td>
+        </tr>
     <tr>
-      <td>{tag_objectname}</td>
-      <td>Name of the item type this workflow step refers to (case, order, web page, template)</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_objectname</span><span>}</span></code><span class="cellcontent">Name of the item type this workflow step refers to (<strong>case</strong>, <strong>order</strong>, <strong>web page</strong>, <strong>template</strong>)</span></td>
+        </tr>
     <tr>
-      <td>{tag_objecturl}</td>
-      <td>URL to view the item associated with the workflow</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_objecturl</span><span>}</span></code><span class="cellcontent">URL to view the item associated with the workflow</span></td>
+        </tr>
     <tr>
-      <td>{tag_ReminderDate}</td>
-      <td>Remind date for the workflow step</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_ReminderDate</span><span>}</span></code><span class="cellcontent">Remind date for the workflow step</span></td>
+        </tr>
     <tr>
-      <td>{tag_RoleName}</td>
-      <td>Role responsible for the workflow step</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_RoleName</span><span>}</span></code><span class="cellcontent">Role responsible for the workflow step</span></td>
+        </tr>
     <tr>
-      <td>{tag_stepname}</td>
-      <td>Current step of the workflow</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_stepname</span><span>}</span></code><span class="cellcontent">Current step of the workflow</span></td>
+        </tr>
     <tr>
-      <td>{tag_workflowname}</td>
-      <td>Name of the triggered workflow</td>
-    </tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup"><span>{</span><span class="tagname">tag_workflowname</span><span>}</span></code><span class="cellcontent">Name of the triggered workflow</span></td>
+        </tr>
   </tbody>
 </table>
 <br>

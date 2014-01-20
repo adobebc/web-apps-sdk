@@ -16,43 +16,43 @@ Next, we need to populate it with some tags. The easiest way to get started is t
 <br />
 <ol>
     <li>
-    Go to the Pages &gt; Module Templates &gt; Online Shop Layouts and open up the <a href="http://developers.businesscatalyst.com/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a>.
+    Go to the Pages &gt; Module Templates &gt; Online Shop Layouts and open up the <a href="/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a>.
     </li>
     <li>
-    Switch to the HTML view and copy everything. Go to the productfeaturelist.tpl file and paste everything in there. To confirm the new custom template is rendering properly add a few new tags so it looks differently then the regular <a href="http://developers.businesscatalyst.com/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout.
+    Switch to the HTML view and copy everything. Go to the productfeaturelist.tpl file and paste everything in there. To confirm the new custom template is rendering properly add a few new tags so it looks differently then the regular <a href="/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout.
     </li>
 </ol>
 <h4>Step 2 - configure the module to use the custom template</h4>
 <br />
 <ol>
     <li>Now that the custom template is created and populated we need to add an eCommerce module and configure it to use it.</li>
-    <li> Let's assume we need a product listing to use this new template. This means we will use the {<span><a href="http://developers.businesscatalyst.com/reference/module-reference/products/module_productfeaturelist.html">module_productfeaturelist</a></span>} module. This is the syntax we will use:
+    <li> Let's assume we need a product listing to use this new template. This means we will use the <code class="language-markup">{<span><a href="/reference/module-reference/products/module_productfeaturelist.html">module_productfeaturelist</a></span>}</code> module. This is the syntax we will use:
     <br />
     <br />
-    {<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/onlineshop/custom/productfeaturelist.tpl"</span>}</li>
+    <code class="language-markup">{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/onlineshop/custom/productfeaturelist.tpl"</span>}</code></li>
 </ol>
 <p>
-If you insert this on a webpage and preview that webpage you will notice it is using the custom layout instead of the default <a href="http://developers.businesscatalyst.com/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a>.
+If you insert this on a webpage and preview that webpage you will notice it is using the custom layout instead of the default <a href="/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a>.
 </p>
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
 <p>The general rule is the template="/layouts/onlineshop/custom/productfeaturelist.tpl" string is added at the end of the module declaration just before the ending curly bracket.</p>
-<p>Make sure you use double brackets instead of single brackets. This is incorrect: {<span>module_productfeaturelist,special offer,3,price,_blank,true template=<span style="font-weight: bold; margin: 0px 10px; font-size: 16px; color: red;">'</span>/layouts/onlineshop/custom/productfeaturelist.tpl<span style="font-weight: bold; margin: 0px 10px; font-size: 16px; color: red;">'</span></span>}</p>
+<p>Make sure you use double brackets instead of single brackets. This is incorrect: <code class="language-markup">{<span>module_productfeaturelist,special offer,3,price,_blank,true template=<span style="font-weight: bold; margin: 0px 10px; font-size: 16px; color: red;">'</span>/layouts/onlineshop/custom/productfeaturelist.tpl<span style="font-weight: bold; margin: 0px 10px; font-size: 16px; color: red;">'</span></span>}</code></p>
 </div>
 <div id="parameters">
 <h3>Parameters</h3>
-<p>The custom template declaration has only one parameter, that is the path to the file itself. If the file does not exist or it cannot be found for any reason the module will render with its default layout instead. So for example if the custom template file "/layouts/onlineshop/custom/productfeaturelist.tpl" does not exist or we have a typo in its path the {<span><a href="http://developers.businesscatalyst.com/reference/module-reference/products/module_productfeaturelist.html">module_productfeaturelist</a></span>} module will render using the <a href="http://developers.businesscatalyst.com/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout instead.</p>
+<p>The custom template declaration has only one parameter, that is the path to the file itself. If the file does not exist or it cannot be found for any reason the module will render with its default layout instead. So for example if the custom template file "/layouts/onlineshop/custom/productfeaturelist.tpl" does not exist or we have a typo in its path the <code class="language-markup">{<span><a href="/reference/module-reference/products/module_productfeaturelist.html">module_productfeaturelist</a></span>}</code> module will render using the <a href="/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout instead.</p>
 </div>
 <div id="Examples">
 <h3>Examples</h3>
 <ul>
-    <li>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/onlineshop/custom/productfeaturelist.tpl"</span>} - this rendes a list of products using this custom template</li>
-    <li>{<span>module_booking,i,63522 template="/layouts/custom/bookings.tpl"</span>} - this rendes an individual event a custom template</li>
-    <li>{<span>module_product,63882,5450055,_top template="/layouts/custom/productfeaturelist.tpl"</span>} - this rendes an individual product a custom template</li>
-    <li>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/custom/productfeaturelist.tpl"</span>} - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
-    <li>{<span>module_productresults,2,_self,2,,,true  template="/layouts/custom/productfeaturelist.tpl"</span>} - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found.
-    The structure is no longer an unordered list as the "true" parameter would suggest, the custom template is used instead.</li>
+    <li><code class="language-markup">{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/onlineshop/custom/productfeaturelist.tpl"</span>}</code> - this rendes a list of products using this custom template</li>
+    <li><code class="language-markup">{<span>module_booking,i,63522 template="/layouts/custom/bookings.tpl"</span>}</code> - this rendes an individual event a custom template</li>
+    <li><code class="language-markup">{<span>module_product,63882,5450055,_top template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - this rendes an individual product a custom template</li>
+    <li><code class="language-markup">{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li><code class="language-markup">{<span>module_productresults,2,_self,2,,,true  template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - displays the products that match the search criteria 2 per page and renders <strong>No products found matching your query</strong>. if no products are found.
+    The structure is no longer an unordered list as the <strong>true </strong>parameter would suggest, the custom template is used instead.</li>
 </ul>
 </div>
 <div id="supported">

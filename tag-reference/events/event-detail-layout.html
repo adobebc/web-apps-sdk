@@ -2,45 +2,71 @@
 <div id="modules">
 <h3>This layout is not used by any module per se.</h3>
 <p>
-Site visitors get to it only after clicking the links outputted by any of these tags {<span>tag_button,Your Text</span>}&nbsp;or {<span>tag_question</span>}.
+Site visitors get to it only after clicking the links outputted by any of these tags <code class="language-markup">{<span>tag_button,Your Text</span>}</code>&nbsp;or <code class="language-markup">{<span>tag_question</span>}</code>.
 </p>
 </div>
 <div id="accessible">
 <h3>Accessible from</h3>
-<p>
-In the "Develop" section of the site or if you connect via sFTP you can find this layout at this path - /Layouts/FAQ/detail.html
-</p>
-</div>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; Event Layouts</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/Booking/detail.html
+</li>
+</ul></div>
 <div id="tags">
 <h3>Renders these tags</h3>
 <table width="100%" class="data-bordered">
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_addtofavorites,addtoImage,removefromImage</span><span>}</span><span class="cellcontent">Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span class="tagname">tag_addtofavorites,&lt;img alt=" src="/images/add.gif" /&gt;,&lt;img alt=" src="/images/remove.gif" /&gt;</span>}</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_name_nolink}</span></code><span class="cellcontent">Booking name (will not have a hyperlink) e.g. <strong>This is the event name</strong></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_answer</span><span>}</span><span class="cellcontent">Answer for frequently asked question  (editor content). This outputs the text of the FAQ.</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_name</span><span>}</span></code><span class="cellcontent">Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/kb/modules-and-tags-reference/layouts/events/event-detail-layout">detail layout</a></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_classifications</span><span>}</span><span class="cellcontent">List of categories that this FAQ is classified under. The categories are in plain text and are sepparated by commas for example "Company, Products"</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_body}</span></code><span class="cellcontent">Details of booking (editor content) e.g. <strong>Something about the event goes here.</strong></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_expirydate</span><span>}</span><span class="cellcontent">Expiry date of FAQ for example 16-Apr-2013 03:48 AM</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_capacity}</span></code><span class="cellcontent">Total number of seats for booking e.g. <strong>130</strong></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_internalnotes</span><span>}</span><span class="cellcontent">Outputs the text entered in the "Internal FAQ Information" textbox.</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_percentfull}</span></code><span class="cellcontent">Percentage of booking seats already booked e.g. <strong>40%</strong></span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_lastupdatedate</span><span>}</span><span class="cellcontent">Last update date of FAQ for example 16-Apr-2013 03:48 AM</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_date</span><span>}</span></code><span class="cellcontent">Date of booking e.g. <strong>24-Aug-2014</strong></td>
+        </tr>
+
+        <tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_addtofavorites,addtoImage,removefromImage</span><span>}</span></code><span class="cellcontent">Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - <code class="language-markup">{<span>tag_addtofavorites,&lt;img alt="" src="/images/plus_icon" /&gt;,&lt;img alt="" src="/images/minus_icon" /&gt;</span>}</code> </span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_question</span><span>}</span><span class="cellcontent">Frequently asked question (will have hyperlink). This outputs the FAQ's title as an anchor. When clicked the site visitor is taken to the detail view. The text of the anchor is the FAQ's title.</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_bookingday</span><span>}</span></code><span class="cellcontent">Day of Booking e.g. <strong>24</strong> if the booking date is 24-Aug-2014 </span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_releasedate</span><span>}</span><span class="cellcontent">Release date of FAQ in this format - 16-Sep-2012</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_bookingmonth}</span></code><span class="cellcontent">Month of Booking e.g. <strong>Aug</strong> if the booking date is 24-Aug-2014</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><span>{</span><span class="tagname">tag_tellafriend</span><span>}</span><span class="cellcontent">Tell a friend about this FAQ. This outputs a link that when clicks opens up a popup that contains the "Tell a Friend" form.</span></td>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_bookingyear</span><span>}</span></code><span class="cellcontent">Year of Booking e.g. <strong>2014</strong> if the booking date is 24-Aug-2014</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_button,Your Text</span><span>}</span></code><span class="cellcontent">creates a link that enables the user to navigate to the event's <a href="/kb/modules-and-tags-reference/layouts/events/event-detail-layout">detail layout</a> (replace Your Text with your own text) </span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_capacitydescription</span><span>}</span></code><span class="cellcontent">Description for number of seats available. The possible values are: <strong>Available</strong>, <strong>Filling Up</strong>, <strong>Almost Full</strong> and <strong>Full</strong></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_capacityempty}</span></code><span class="cellcontent">Number of available seats left for booking e.g. <strong>79</strong></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_day}</span></code><span class="cellcontent">Day of booking e.g. <strong>Saturday </strong>if the booking date is 24-Aug-2013</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_lastupdatedate}</span></code><span class="cellcontent">Date and time the booking was last updated e.g. <strong>29-Jan-2013 08:57 PM</strong></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_tellafriend</span><span>}</span></code><span class="cellcontent">Tell a friend about this booking</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code class="language-markup">{<span>tag_classifications</span><span>}</span></code><span class="cellcontent">List of categories that this booking is classified under e.g. <strong>Company, Solutions</strong></td>
         </tr>
     </tbody>
 </table>

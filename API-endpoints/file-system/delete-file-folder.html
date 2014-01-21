@@ -55,15 +55,15 @@
 
 <p><strong>Request:</strong></p>
 
-<code class="language-javascript"><pre>DELETE /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
+<pre class="language-javascript"><code>DELETE /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
 Accept: application/json
 Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
-</pre></code>
+</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<code class="language-javascript"><pre>HTTP/1.1 200 OK
-</pre></code>
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+</code></pre>
 
 <h3>Sample code</h3>
 
@@ -71,19 +71,19 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 
 <p><strong>Delete a file</strong></p>
 
-<code class="language-javascript"><pre>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+<pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
 f.destroy().done(function() {
     console.log('File was destroyed');
 });
-</pre></code>
+</code></pre>
 
 <p><strong>Delete a folder</strong></p>
 
-<code class="language-javascript"><pre>var folder = new BCAPI.Models.FileSystem.Folder('/my-folder');
+<pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder('/my-folder');
 folder.destroy().done(function() {
     console.log('Folder was deleted');
 });
-</pre></code>
+</code></pre>
 
 <h3>Error Codes</h3>
 

@@ -38,14 +38,14 @@
 
 <p><strong>Request:</strong></p>
 
-<code class="language-javascript"><pre>GET /api/v2/admin/sites/current/storage/images/cat.jpg?meta HTTPS/1.1
+<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/storage/images/cat.jpg?meta HTTPS/1.1
 Accept: application/json
 Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
-</pre></code>
+</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<code class="language-javascript"><pre>HTTP/1.1 200 OK
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -60,7 +60,7 @@ Content-Type: application/json
         }
     ]
 }
-</pre></code>
+</code></pre>
 
 <h3>Sample code</h3>
 
@@ -68,12 +68,12 @@ Content-Type: application/json
 
 <p><strong>Get file metadata</strong></p>
 
-<code class="language-javascript"><pre>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+<pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
 f.fetch().done(function() {
     console.log('File name is: ', f.get('name'));
     console.log('Last update date is: ', f.get('lastModified'));
 });
-</pre></code>
+</code></pre>
 
 <hr>
 
@@ -81,7 +81,7 @@ f.fetch().done(function() {
 
 <p>You use <code>fetch</code> to obtain the folder's details, including the files &amp; folders that the folder contains:</p>
 
-<code class="language-javascript"><pre>var folder = new BCAPI.Models.FileSystem.Folder('/my/existing/folder');
+<pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder('/my/existing/folder');
 folder.fetch().done(function() {
     console.log('Folder last update date is: ' + folder.get('lastModified'));
     console.log('Printing the folder contents: ');
@@ -97,7 +97,7 @@ folder.fetch().done(function() {
         }
     }
 });
-</pre></code>
+</code></pre>
 
 <h3>Error Codes</h3>
 

@@ -56,14 +56,14 @@
 
 <p><strong>Request:</strong></p>
 
-<code class="language-javascript"><pre>GET /api/v2/admin/sites/current/webapps/Cars/fields HTTPS/1.1
+<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/webapps/Cars/fields HTTPS/1.1
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
-</pre></code>
+</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<code class="language-javascript"><pre>HTTP/1.1 200 OK
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Content-Length: length
 
@@ -121,14 +121,14 @@ Content-Length: length
       "order"  : 3
    }]
 }
-</pre></code>
+</code></pre>
 
 <h3>Sample code</h3>
 
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
-<code class="language-javascript"><pre>var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("Sample webapp");
-</pre></code>
+<pre class="language-javascript"><code>var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("Sample webapp");
+</code></pre>
 
 <h3>Error Codes</h3>
 

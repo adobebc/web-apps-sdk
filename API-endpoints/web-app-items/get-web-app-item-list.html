@@ -73,14 +73,14 @@
 
 <p><strong>Request:</strong></p>
 
-<code class="language-javascript"><pre>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=2&amp;limit=2 HTTPS/1.1
+<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=2&amp;limit=2 HTTPS/1.1
 Authorization: 3e8d891d91eb433e9c800cebe3b132a4e64ac661c5ed4dd8bdecae0487e4ad7c
 Accept: application/json
-</pre></code>
+</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<code class="language-javascript"><pre>HTTP/1.1 200 OK
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Content-Length: {length}
 
@@ -141,7 +141,7 @@ Content-Length: {length}
   "skip": 2,
   "limit": 2
 }
-</pre></code>
+</code></pre>
 
 <h3>Sample code</h3>
 
@@ -149,7 +149,7 @@ Content-Length: {length}
 
 <p><strong>Load items paginated</strong></p>
 
-<code class="language-javascript"><pre>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+<pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 items.fetch({
         skip: 10, limit: 100,
         success: function(webAppItems) {
@@ -163,13 +163,13 @@ items.fetch({
 items.each(function(webAppItem) {
         // display logic
 });
-</pre></code>
+</code></pre>
 
 <hr>
 
 <p><strong>Filtering items</strong></p>
 
-<code class="language-javascript"><pre>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+<pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 items.fetch({     
         where: {"name": ""Web app item new"},
         success: function(webAppItems) {
@@ -179,13 +179,13 @@ items.fetch({
             // handle errors
         }
 });
-</pre></code>
+</code></pre>
 
 <hr>
 
 <p><strong>Ordering items</strong></p>
 
-<code class="language-javascript"><pre>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+<pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 items.fetch({
         order: "-name",
         success: function(webAppItems) {
@@ -195,7 +195,7 @@ items.fetch({
             // handle errors
         }
 });
-</pre></code>
+</code></pre>
 
 <h3>Filtering Syntax</h3>
 

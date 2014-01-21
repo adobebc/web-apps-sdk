@@ -62,7 +62,7 @@
 
 <p><strong>Request:</strong></p>
 
-<code class="language-javascript"><pre>POST /api/v2/admin/sites/current/webapps/Cars/fields HTTPS/1.1
+<pre class="language-javascript"><code>POST /api/v2/admin/sites/current/webapps/Cars/fields HTTPS/1.1
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Length: 157
 Connection: keep-alive
@@ -75,20 +75,20 @@ Content-Type: application/json
    "required": false,
    "order"   : 3
 }
-</pre></code>
+</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<code class="language-javascript"><pre>HTTP/1.1 201 OK
+<pre class="language-javascript"><code>HTTP/1.1 201 OK
 Content-Type: application/json; charset=utf-8
 Location: /api/v2/admin/sites/current/webapps/Cars/fields/123
-</pre></code>
+</code></pre>
 
 <h3>Sample code</h3>
 
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
-<code class="language-javascript"><pre>var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
+<pre class="language-javascript"><code>var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
     "name": "Part code",
     "type": "DataSource",
     "listItems": null,
@@ -101,7 +101,7 @@ customField.save({
         // do something on success.
     }
 });
-</pre></code>
+</code></pre>
 
 <h3>Error Codes</h3>
 

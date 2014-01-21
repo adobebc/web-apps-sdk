@@ -58,14 +58,14 @@
 
 <p><strong>Request:</strong></p>
 
-<pre><code>GET https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/categories
+<pre class="language-javascript"><code class="language-javascript">GET https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/categories
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
 </code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre><code>HTTP/1.1 200 OK
+<pre class="language-javascript"><code class="language-javascript">HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Content-Length: {length}
 
@@ -139,7 +139,7 @@ Content-Length: {length}
 
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
-<pre><code>var categories = new BCAPI.Models.CategoryCollection();
+<pre class="language-javascript"><code class="language-javascript">var categories = new BCAPI.Models.CategoryCollection();
 categories.fetch({
     success: onSuccessHandler,
     error: onErrorHandler

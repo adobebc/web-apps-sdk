@@ -68,14 +68,14 @@
 
 <p><strong>Request:</strong></p>
 
-<pre><code>PUT /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
+<pre class="language-javascript"><code class="language-javascript">PUT /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
 Accept: application/json
 Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 </code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre><code>HTTP/1.1 200 OK
+<pre class="language-javascript"><code class="language-javascript">HTTP/1.1 200 OK
 </code></pre>
 
 <h3>Sample code</h3>
@@ -84,7 +84,7 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 
 <p><strong>Create a file in the root folder</strong></p>
 
-<pre><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+<pre class="language-javascript"><code class="language-javascript">var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
 var data = 'Hello World !';
 f.upload(data).done(function() {
     console.log('File uploaded succesfully');
@@ -95,14 +95,14 @@ f.upload(data).done(function() {
 
 <p><strong>Create file (specify the full path)</strong></p>
 
-<pre><code>var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
+<pre class="language-javascript"><code class="language-javascript">var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
 </code></pre>
 
 <hr>
 
 <p><strong><em>Create a file (specify the parent folder)</em></strong></p>
 
-<pre><code>var f = new BCAPI.Models.FileSystem.File({
+<pre class="language-javascript"><code class="language-javascript">var f = new BCAPI.Models.FileSystem.File({
     'parent': new BCAPI.Models.FileSystem.Folder('/my/special'),
     'file': 'file'
 });
@@ -118,12 +118,12 @@ f.upload(files[0]);
 
 <p>You can specify the path of the folder:</p>
 
-<pre><code>var folder = new BCAPI.Models.FileSystem.Folder('/folder/path');
+<pre class="language-javascript"><code class="language-javascript">var folder = new BCAPI.Models.FileSystem.Folder('/folder/path');
 </code></pre>
 
 <p>You can also specify the name of the folder, and the parent directory:</p>
 
-<pre><code>var folder = new BCAPI.Models.FileSystem.Folder({
+<pre class="language-javascript"><code class="language-javascript">var folder = new BCAPI.Models.FileSystem.Folder({
     'parent': BCAPI.Models.FileSystem.Root,
     'name': 'my-folder'
 });

@@ -29,7 +29,7 @@
 
 <p><strong>Request:</strong></p>
 
-<pre><code>PUT /api/v2/admin/sites/current/storage/images/cat.jpg?meta HTTPS/1.1
+<pre class="language-javascript"><code class="language-javascript">PUT /api/v2/admin/sites/current/storage/images/cat.jpg?meta HTTPS/1.1
 Connection: keep-alive
 Accept: application/json
 Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
@@ -41,7 +41,7 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 
 <p><strong>Response:</strong></p>
 
-<pre><code>HTTP/1.1 200 OK
+<pre class="language-javascript"><code class="language-javascript">HTTP/1.1 200 OK
 </code></pre>
 
 <h3>Sample code</h3>
@@ -52,7 +52,7 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 
 <p>Use <code>save</code> to change the name of a file.</p>
 
-<pre><code>var f = new BCAPI.Models.FileSystem.File('/my/file');
+<pre class="language-javascript"><code class="language-javascript">var f = new BCAPI.Models.FileSystem.File('/my/file');
 f.set('name', 'new-file');
 f.save().done(function() {
     console.log('File name has been changed. Path is ' + f.get('path'));
@@ -64,7 +64,7 @@ f.save().done(function() {
 
 <p>Use <code>save</code> to rename a folder:</p>
 
-<pre><code>var folder = new BCAPI.Models.FileSystem.Folder('/my/folder');
+<pre class="language-javascript"><code class="language-javascript">var folder = new BCAPI.Models.FileSystem.Folder('/my/folder');
 folder.set('name', 'new-folder');
 folder.save().done(function() {
     console.log('The folder has been renamed');

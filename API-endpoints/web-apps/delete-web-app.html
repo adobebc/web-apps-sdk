@@ -35,21 +35,21 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">DELETE /api/v2/admin/sites/current/webapps/testcustomfields HTTPS/1.1
+<code class="language-javascript"><pre>DELETE /api/v2/admin/sites/current/webapps/testcustomfields HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 </pre></code>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">HTTP/1.1 204 No Content
+<code class="language-javascript"><pre>HTTP/1.1 204 No Content
 </pre></code>
 
 <h3>Sample code</h3>
 
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
-<pre class="language-javascript"><code class="language-javascript">var app = new BCAPI.Models.WebApp.App({name: "Test app"});
+<code class="language-javascript"><pre>var app = new BCAPI.Models.WebApp.App({name: "Test app"});
 app.destroy({
     success: function(webAppItem, response) {
         // handle success here.

@@ -53,7 +53,7 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">POST /api/v2/admin/sites/current/webapps HTTPS/1.1
+<code class="language-javascript"><pre>POST /api/v2/admin/sites/current/webapps HTTPS/1.1
 Content-Length: 57
 Connection: keep-alive
 Content-Type: application/json
@@ -64,7 +64,7 @@ Content-Type: application/json
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">HTTP/1.1 201 OK
+<code class="language-javascript"><pre>HTTP/1.1 201 OK
 Location: https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/FirstWebAppFromApi
 Content-Type: application/json; charset=utf-8
 Content-Length: 0
@@ -99,7 +99,7 @@ If you pass in values for itemSystemFields and / or itemFields they will be igno
 
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
-<pre class="language-javascript"><code class="language-javascript">var app = new BCAPI.Models.WebApp.App({
+<code class="language-javascript"><pre>var app = new BCAPI.Models.WebApp.App({
         "name": "Test app"
 });
 

@@ -73,14 +73,14 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=2&amp;limit=2 HTTPS/1.1
+<code class="language-javascript"><pre>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=2&amp;limit=2 HTTPS/1.1
 Authorization: 3e8d891d91eb433e9c800cebe3b132a4e64ac661c5ed4dd8bdecae0487e4ad7c
 Accept: application/json
 </pre></code>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">HTTP/1.1 200 OK
+<code class="language-javascript"><pre>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Content-Length: {length}
 
@@ -149,7 +149,7 @@ Content-Length: {length}
 
 <p><strong>Load items paginated</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+<code class="language-javascript"><pre>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 items.fetch({
         skip: 10, limit: 100,
         success: function(webAppItems) {
@@ -169,7 +169,7 @@ items.each(function(webAppItem) {
 
 <p><strong>Filtering items</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+<code class="language-javascript"><pre>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 items.fetch({     
         where: {"name": ""Web app item new"},
         success: function(webAppItems) {
@@ -185,7 +185,7 @@ items.fetch({
 
 <p><strong>Ordering items</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+<code class="language-javascript"><pre>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
 items.fetch({
         order: "-name",
         success: function(webAppItems) {

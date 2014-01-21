@@ -62,7 +62,7 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">POST /api/v2/admin/sites/current/webapps/Cars/fields HTTPS/1.1
+<code class="language-javascript"><pre>POST /api/v2/admin/sites/current/webapps/Cars/fields HTTPS/1.1
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Length: 157
 Connection: keep-alive
@@ -79,7 +79,7 @@ Content-Type: application/json
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code class="language-javascript">HTTP/1.1 201 OK
+<code class="language-javascript"><pre>HTTP/1.1 201 OK
 Content-Type: application/json; charset=utf-8
 Location: https://api.localsecuresyd.worldsecuresystems.com/api/v2/admin/sites/current/webapps/Cars/fields/123
 </pre></code>
@@ -88,7 +88,7 @@ Location: https://api.localsecuresyd.worldsecuresystems.com/api/v2/admin/sites/c
 
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
-<pre class="language-javascript"><code class="language-javascript">var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
+<code class="language-javascript"><pre>var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
     "name": "Part code",
     "type": "DataSource",
     "listItems": null,

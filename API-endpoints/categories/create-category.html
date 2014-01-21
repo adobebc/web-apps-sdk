@@ -51,7 +51,7 @@ Content-Type: application/json
 Content-Length: 20
 
 {"name": "My category"}
-</code></pre>
+</pre></code>
 
 <p><strong>Response:</strong></p>
 
@@ -59,7 +59,7 @@ Content-Length: 20
 Location: https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/categories/232323
 Content-Type: application/json; charset=utf-8
 Content-Length: length
-</code></pre>
+</pre></code>
 
 <hr>
 
@@ -75,7 +75,7 @@ Content-Length: 120
   "parent": "2222",
   "publicAccess" : false
 }
-</code></pre>
+</pre></code>
 
 <p><strong>Response:</strong></p>
 
@@ -83,23 +83,23 @@ Content-Length: 120
 Location: https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/categories/232323
 Content-Type: application/json; charset=utf-8
 Content-Length: length
-</code></pre>
+</pre></code>
 
 <h3>Sample code</h3>
 
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
 <pre class="language-javascript"><code class="language-javascript">var category = new BCAPI.Models.Category({name: 'Test Category'});
-</code></pre>
+</pre></code>
 <p>To save:</p>
 <pre class="language-javascript"><code class="language-javascript">
 category.save(options)
-</code></pre>
+</pre></code>
 <p>To get a category by id:</p>
 <pre class="language-javascript"><code class="language-javascript">
 var category = new BCAPI.Models.Category({id: 1});
 category.fetch(options)
-</code></pre>
+</pre></code>
 
 <p><strong>Note:</strong> Update and delete methods are not supported.</p>
 

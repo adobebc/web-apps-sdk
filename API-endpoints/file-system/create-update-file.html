@@ -71,12 +71,12 @@
 <pre class="language-javascript"><code class="language-javascript">PUT /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
 Accept: application/json
 Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
-</code></pre>
+</pre></code>
 
 <p><strong>Response:</strong></p>
 
 <pre class="language-javascript"><code class="language-javascript">HTTP/1.1 200 OK
-</code></pre>
+</pre></code>
 
 <h3>Sample code</h3>
 
@@ -89,14 +89,14 @@ var data = 'Hello World !';
 f.upload(data).done(function() {
     console.log('File uploaded succesfully');
 });
-</code></pre>
+</pre></code>
 
 <hr>
 
 <p><strong>Create file (specify the full path)</strong></p>
 
 <pre class="language-javascript"><code class="language-javascript">var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
-</code></pre>
+</pre></code>
 
 <hr>
 
@@ -108,7 +108,7 @@ f.upload(data).done(function() {
 });
 
 f.upload(files[0]);
-</code></pre>
+</pre></code>
 
 <hr>
 
@@ -119,7 +119,7 @@ f.upload(files[0]);
 <p>You can specify the path of the folder:</p>
 
 <pre class="language-javascript"><code class="language-javascript">var folder = new BCAPI.Models.FileSystem.Folder('/folder/path');
-</code></pre>
+</pre></code>
 
 <p>You can also specify the name of the folder, and the parent directory:</p>
 
@@ -127,7 +127,7 @@ f.upload(files[0]);
     'parent': BCAPI.Models.FileSystem.Root,
     'name': 'my-folder'
 });
-</code></pre>
+</pre></code>
 
 <p><strong>Notes:</strong></p>
 

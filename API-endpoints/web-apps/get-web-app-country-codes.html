@@ -1,0 +1,98 @@
+
+        <h2>Get Web App Country Codes</h2>
+
+<p>Get the list of the countries where the current webapp is allowed.</p>
+
+<p><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/current/webapps/{webappname}/countries
+
+<ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> View Web Apps</li>
+</ul>
+
+<h3>Response</h3>
+
+<p>Returns an array of strings. Each string contains two letters that correspond to the name of the country.</p>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>GET /api/v2/admin/sites/current/webapps/{webappname}/countries HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Encoding: gzip
+Vary: Accept-Encoding
+Server: Microsoft-IIS/7.5
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: Authorization, Accept-Language, Content-Type
+Access-Control-Allow-Methods: GET, HEAD, POST, PUT, DELETE
+Access-Control-Expose-Headers: Location
+Access-Control-Max-Age: 99999
+Content-Length: length
+
+{
+  -"links": [2]
+    -0: {
+       "rel":"self",
+       "uri":"https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/Helpers/countries?skip=0&amp;limit=10"
+     }
+    -1: {
+       "rel":"countries",
+       "uri":"https://mysite.worldsecuresystems.com/api/v2/admin/system/countries"
+     },
+  -"items":[
+    "RO",
+    "US",
+    "UK"
+  ],
+  "totalItemsCount":3,
+  "skip":0,
+  "limit":10
+}
+</code></pre>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+
+<ul>
+<li><code>10100</code> - (not authenticated) sub-error code</li>
+</ul></li>
+<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the web app view permission</li>
+<li><code>404</code> - not found
+
+<ul>
+<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+</ul></li>
+</ul>
+
+        

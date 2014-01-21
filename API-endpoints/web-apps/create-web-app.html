@@ -1,0 +1,146 @@
+
+        <h2>Create Web App</h2>
+
+<p>Create a new Web App</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/current/webapps 
+
+<ul>
+<li>Alternatively use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Create Web Apps</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<ul>
+<li><code>name</code> - required <em>(string)</em></li>
+<li><code>slug</code> - <em>(string, optional)</em> - it defaults to the name of the web app, or a variation on the name, if a slug with the name already exists</li>
+<li><code>allowFileUpload</code> - . Defaults to false <em>(boolean, optional)</em></li>
+<li><code>uploadFolder</code> - required only if allowFileUpload is True. Must be a valid absolute path in the site, created in advance <em>(string)</em></li>
+<li><code>disableDetailPages</code>- <em>(boolean, optional)</em></li>
+<li><code>locationEnabled</code> - <em>(boolean, optional)</em></li>
+<li><code>anyoneCanEdit</code> - <em>(boolean, optional)</em></li>
+<li><code>customerCanAdd</code> - <em>(boolean, optional)</em></li>
+<li><code>customerCanEdit</code> - <em>(boolean, optional)</em></li>
+<li><code>customerCanDelete</code> - <em>(boolean, optional)</em></li>
+<li><code>requiresPayment</code> - <em>(boolean, optional)</em></li>
+<li><code>requiresApproval</code> - <em>(boolean, optional)</em></li>
+<li><code>roleId</code> - optional, defaults to -1 <em>(integer)</em></li>
+<li><code>templateId</code> - optional, defaults to -1 <em>(integer)</em></li>
+<li><code>validDays</code> - optional, defaults to -1 (never expire) <em>(integer)</em></li>
+</ul>
+
+<h3>Response</h3>
+
+<p>Returns an empty body and a location header containing the URI to retrieve category details.</p>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>POST /api/v2/admin/sites/current/webapps HTTPS/1.1
+Content-Length: 57
+Connection: keep-alive
+Content-Type: application/json
+
+{"name": "FirstWebAppFromApi"}
+
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 201 OK
+Location: https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/FirstWebAppFromApi
+Content-Type: application/json; charset=utf-8
+Content-Length: 0
+</code></pre>
+
+<h3>Notes</h3>
+
+<ul>
+<li>Creating a Web App does not allow passing in the custom fields. To add custom fields, use the Custom Fields API endpoint. Creating a Web App will create (or preserve) the default layouts (list, alternate, detail, edit)</li>
+<li>if passing a value for the uploadFolder parameter that does not exist on the file system, the system will attempt to create the folder, and its entire path. It reuses the mechanism used in the FileSystem APIs to create a folder, so the same exceptions get thrown. <a href="#">(see Storage Api Spec)</a></li>
+<li>Only the webapp Name parameter is mandatory. The rest have defaults, as follows:
+
+<ul>
+<li>templateId - -1</li>
+<li>uploadFolder - -1</li>
+<li>slug - the name of the web app or a variation of the name</li>
+<li>requiresApproval - true</li>
+<li>allowFileUpload - false</li>
+<li>customerCanAdd, customerCanDelete, customerCanEdit, anyoneCanEdit - false</li>
+<li>requiresPayment - false</li>
+<li>validDays - -1 (never expire)</li>
+<li>roleId - 0</li>
+<li>hasAddress - false</li>
+<li>disableDetailPages - false</li>
+<li>locationEnabled - false</li>
+</ul></li>
+<li>The webapp name must not be empty and can only contain valid characters, that can be later used on the file system and the API uris. The invalid characters are: / ? # % &amp; * + \ | : ; . “ &gt; &lt;
+If you pass in values for itemSystemFields and / or itemFields they will be ignored.</li>
+</ul>
+
+<h3>Sample code</h3>
+
+<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
+
+<pre><code>var app = new BCAPI.Models.WebApp.App({
+        "name": "Test app"
+});
+
+app.save({
+        success: function(webAppItem) {
+            // handle success
+        },
+        error: function(webAppItem, xhr) {
+            // handle errors
+        }
+});
+</code></pre>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>201/Created</code> - Web App successfully created</li>
+<li><code>400/Bad request</code> - Invalid request. Sub-codes are:
+
+<ul>
+<li><code>190000</code> - Generic error</li>
+<li><code>190002</code> - Invalid slug</li>
+<li><code>190003</code> - Slug URL too long</li>
+<li><code>190004</code> - slug already exists</li>
+<li><code>190005</code> - webapp with same name already exists</li>
+<li><code>190009</code> - invalid webapp name; see notes section below for list of invalid characters</li>
+<li><code>190010</code> - invalid template id</li>
+</ul></li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+
+<ul>
+<li><code>101000</code> - sub-error code</li>
+</ul></li>
+<li><code>403</code> - Forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+<li><code>404</code> - Not Found
+
+<ul>
+<li><code>190001</code> - Not Found</li>
+</ul></li>
+</ul>
+
+        

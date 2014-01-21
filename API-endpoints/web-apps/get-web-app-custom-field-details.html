@@ -1,0 +1,79 @@
+
+        <h2>Get Web App Custom Field Details</h2>
+
+<p>Returns a field definition.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/current/webapps/[webappName]/fields/[fieldId]</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> View Web Apps</li>
+</ul>
+
+<h3>Response</h3>
+
+<p>An object, similar to the ones in the List API.</p>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>GET /api/v2/admin/sites/current/webapps/Cars/fields/418191 HTTPS/1.1
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 145
+
+{
+      "id"      : "418191",
+      "name"    : "Part code",
+      "type"    : "String",
+      "listItems": null,
+      "dataSource": null,
+      "required": false,
+      "order"   : 1
+}
+</code></pre>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>400</code> - bad request; sub-error codes:
+
+<ul>
+<li><code>210000</code> - An unspecified error has occurred</li>
+</ul></li>
+<li><code>401</code> - unauthorized - when the authentication token is incorrect
+
+<ul>
+<li><code>101000</code> - sub-error code</li>
+</ul></li>
+<li><code>403</code> - forbidden - when the user does not have View WebApps Permission</li>
+<li><code>404</code> - not found
+
+<ul>
+<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+<li><code>210001</code> - The custom field was not found (the fieldId from the URL do not match)</li>
+</ul></li>
+</ul>
+
+        

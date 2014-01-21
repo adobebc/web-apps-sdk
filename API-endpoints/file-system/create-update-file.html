@@ -1,0 +1,174 @@
+
+        <h2>Create / Update a file</h2>
+
+<p>Uploads a file in a specified folder.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> PUT</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/storage/[filePath]?version=draft</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Can use SFTP &amp; File Manager</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<p>File contents as binary</p>
+
+<h3>Response</h3>
+
+<p>Returns the status of the new file.</p>
+
+<h3>Notes</h3>
+
+<p>Mandatory header <code>Content-Type: application/octet-stream</code></p>
+
+<p><strong>Datacenter location</strong></p>
+
+<p>If the url for the PUT request does not correspond to the datacenter where the site is located, a 301 response will be returned that will redirect the request to the correct location.</p>
+
+<p><strong>Nested folders</strong></p>
+
+<p>If you use a filePath with nested folders, the API will automatically create the nested folder structure.</p>
+
+<p>The depth of the nested folder structure is limited only by the URL length.</p>
+
+<p>The maximum URL length that can be used with PUT in the File API is: (TBD)\</p>
+
+<p><strong>Query params</strong></p>
+
+<p>The API supports an optional query param named version that as the following possible values:</p>
+
+<ul>
+<li>draft
+
+<ul>
+<li>If the file is a page, than a drat of it will be created/updated. The live version will not be touched.</li>
+<li>If the file is not a page, than this will be ignored</li>
+</ul></li>
+<li>draft-publish
+
+<ul>
+<li>If the file in question is a page than the content will first be saved as a draft, overwriting the current one and a publish operation will be done at the end.</li>
+<li>If the file in question is not a page, that this will be ignored. </li>
+</ul></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>PUT /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
+Accept: application/json
+Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<h3>Sample code</h3>
+
+<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
+
+<p><strong>Create a file in the root folder</strong></p>
+
+<pre><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+var data = 'Hello World !';
+f.upload(data).done(function() {
+    console.log('File uploaded succesfully');
+});
+</code></pre>
+
+<hr>
+
+<p><strong>Create file (specify the full path)</strong></p>
+
+<pre><code>var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
+</code></pre>
+
+<hr>
+
+<p><strong><em>Create a file (specify the parent folder)</em></strong></p>
+
+<pre><code>var f = new BCAPI.Models.FileSystem.File({
+    'parent': new BCAPI.Models.FileSystem.Folder('/my/special'),
+    'file': 'file'
+});
+
+f.upload(files[0]);
+</code></pre>
+
+<hr>
+
+<p><strong>Create a folder</strong></p>
+
+<p>A folder object can be instantiated in two ways.</p>
+
+<p>You can specify the path of the folder:</p>
+
+<pre><code>var folder = new BCAPI.Models.FileSystem.Folder('/folder/path');
+</code></pre>
+
+<p>You can also specify the name of the folder, and the parent directory:</p>
+
+<pre><code>var folder = new BCAPI.Models.FileSystem.Folder({
+    'parent': BCAPI.Models.FileSystem.Root,
+    'name': 'my-folder'
+});
+</code></pre>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>A file is created in your site's file system only after adding some content.</li>
+<li>The content can be any javascript object, including file objects obtained from html upload forms.</li>
+<li>BCAPI.Models.FileSystem.Root is the root folder in your site's file structure. You can also create a file object by specifying the file's full path.</li>
+<li>If you omit the <code>/</code> at the beginning of the file path, the system will add this.</li>
+<li>When creating a folder, only creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required.</li>
+</ul>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - OK</li>
+<li><code>301</code> - Redirect to correct data center url</li>
+<li><code>400</code> - Bad request:
+
+<ul>
+<li><code>104000</code> - Generic FileAPI error</li>
+<li><code>104002</code> - Not a file</li>
+<li><code>104003</code> - Not enough privileges </li>
+<li><code>104004</code> - Invalid login multiple sites </li>
+<li><code>104005</code> - Exceeded maximum file size </li>
+<li><code>104006</code> - Invalid editable region name, if a template </li>
+<li><code>104007</code> - Can't find tag {pagecontent} in editable region, if a template </li>
+<li><code>104008</code> - Can't find tag {pagecontent}, if a template </li>
+<li><code>104009</code> - Path not found</li>
+<li><code>104010</code> - Destination path not found </li>
+<li><code>104012</code> - Web page in workflow updated, if trying to update a page in a workflow </li>
+<li><code>104014</code> - Name required</li>
+<li><code>104015</code> - Invalid URL </li>
+<li><code>104016</code> - Name not unique </li>
+<li><code>104019</code> - Can't find folder </li>
+<li><code>104022</code> - Destination exists </li>
+<li><code>104023</code> - Unauthorized access </li>
+<li><code>104028</code> - File or folder name too long </li>
+</ul></li>
+<li><code>401</code>- when authentication token is incorrect</li>
+</ul>
+
+        

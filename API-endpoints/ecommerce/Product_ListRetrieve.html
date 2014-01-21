@@ -1,0 +1,311 @@
+
+        <h2>Product_ListRetrieve</h2>
+
+<p>Retrieve a list of products for a given catalog (or all products if CatalogId = -1).</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> SOAP</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.  </li>
+<li><strong>Path:</strong> /catalystwebservice/catalystcrmwebservice.asmx</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<ul>
+<li><code>siteId</code> - ID of the site <em>(integer)</em></li>
+<li><code>username</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
+<li><code>password</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
+<li><code>CatalogId</code> - <em>(string)</em>  </li>
+</ul>
+
+<p>To use a site token instead of username/password, send an empty <code>username</code> field and the site token as the <code>password</code>. See example below.</p>
+
+<h3>Response</h3>
+
+<p>A Product_ListRetrieveResponse object with the following properties:</p>
+
+<ul>
+<li><code>Product_ListRetrieveResult</code> - <em>(object)</em> 
+
+<ul>
+<li><code>Products</code> - <em>(object)</em><br>
+
+<ul>
+<li><code>productId</code> - <em>(integer)</em> </li>
+<li><code>productCode</code> - <em>(string)</em> </li>
+<li><code>productName</code> - <em>(string)</em> </li>
+<li><code>description</code> - <em>(string)</em> </li>
+<li><code>smallImage</code> - <em>(string)</em> </li>
+<li><code>largeImage</code> - <em>(string)</em> </li>
+<li><code>cataloguesArray</code> - <em>(array)</em> </li>
+<li><code>pricesSaleArray</code> - <em>(array)</em> </li>
+<li><code>pricesRetailArray</code> - <em>(array)</em> </li>
+<li><code>pricesWholesaleArray</code> - <em>(array)</em> </li>
+<li><code>wholesaleTaxCodeArray</code> - <em>(array)</em> </li>
+<li><code>taxCodeArray</code> - <em>(array)</em> </li>
+<li><code>groupProducts</code> - <em>(array)</em> </li>
+<li><code>groupProductsDescriptions</code> - <em>(array)</em> </li>
+<li><code>supplierEntityId</code> - <em>(integer)</em> </li>
+<li><code>supplierCommission</code> - <em>(double)</em> </li>
+<li><code>weight</code> - <em>(integer)</em> </li>
+<li><code>relatedProducts</code> - <em>(array)</em> </li>
+<li><code>tags</code> - <em>(string)</em> </li>
+<li><code>unitType</code> - <em>(string)</em> </li>
+<li><code>minUnits</code> - <em>(integer)</em> </li>
+<li><code>maxUnits</code> - <em>(integer)</em> </li>
+<li><code>inStock</code> - <em>(integer)</em> </li>
+<li><code>onOrder</code> - <em>(integer)</em> </li>
+<li><code>reOrder</code> - <em>(integer)</em> </li>
+<li><code>inventoryControl</code> - <em>(boolean)</em> </li>
+<li><code>canPreOrder</code> - <em>(boolean)</em> </li>
+<li><code>custom1</code> - <em>(string)</em> </li>
+<li><code>custom2</code> - <em>(string)</em> </li>
+<li><code>custom3</code> - <em>(string)</em> </li>
+<li><code>custom4</code> - <em>(string)</em> </li>
+<li><code>popletImages</code> - <em>(string)</em> </li>
+<li><code>enabled</code> - <em>(boolean)</em> </li>
+<li><code>deleted</code> - <em>(boolean)</em> </li>
+<li><code>captureDetails</code> - <em>(boolean)</em> </li>
+<li><code>downloadLimitCount</code> - <em>(integer)</em> </li>
+<li><code>limitDownloadsToIP</code> - <em>(integer)</em> </li>
+<li><code>isOnSale</code> - <em>(boolean)</em> </li>
+<li><code>hideIfNoStock</code> - <em>(boolean)</em> </li>
+<li><code>productAttributes</code> - <em>(string)</em> </li>
+<li><code>isGiftVoucher</code> - <em>(boolean)</em> </li>
+<li><code>enableDropShipping</code> - <em>(boolean)</em> </li>
+<li><code>productWeight</code> - <em>(double)</em> </li>
+<li><code>productWidth</code> - <em>(double)</em> </li>
+<li><code>productHeight</code> - <em>(double)</em> </li>
+<li><code>productDepth</code> - <em>(double)</em></li>
+<li><code>excludeFromSearch</code> - <em>(boolean)</em></li>
+<li><code>productTitle</code> - <em>(string)</em></li>
+<li><code>cycletypeId</code> - <em>(integer)</em></li>
+<li><code>cycletypeCount</code> - <em>(integer)</em></li>
+<li><code>slug</code> - <em>(string)</em></li>
+<li><code>hasVariations</code> - <em>(boolean)</em></li>
+<li><code>variations</code> - <em>(array)</em></li>
+<li><code>roleResponsible</code> - <em>(string)</em></li>
+<li><code>metaDescription</code> - <em>(string)</em></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns XML as Content-Type.</p>
+
+<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values.</p>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>POST /catalystwebservice/catalystecommercewebservice.asmx HTTP/1.1
+Host: www.businesscatalyst.com.au
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: length
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
+  &lt;soap12:Body&gt;
+    &lt;Product_ListRetrieve xmlns="http://tempuri.org/CatalystDeveloperService/CatalystEcommerceWebservice"&gt;
+      &lt;Username&gt;string&lt;/Username&gt;
+      &lt;Password&gt;string&lt;/Password&gt;
+      &lt;SiteId&gt;int&lt;/SiteId&gt;
+      &lt;CatalogId&gt;int&lt;/CatalogId&gt;
+    &lt;/Product_ListRetrieve&gt;
+  &lt;/soap12:Body&gt;
+&lt;/soap12:Envelope&gt;
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: length
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
+  &lt;soap12:Body&gt;
+    &lt;Product_ListRetrieveResponse xmlns="http://tempuri.org/CatalystDeveloperService/CatalystEcommerceWebservice"&gt;
+      &lt;Product_ListRetrieveResult&gt;
+        &lt;Products&gt;
+          &lt;productId&gt;int&lt;/productId&gt;
+          &lt;productCode&gt;string&lt;/productCode&gt;
+          &lt;productName&gt;string&lt;/productName&gt;
+          &lt;description&gt;string&lt;/description&gt;
+          &lt;smallImage&gt;string&lt;/smallImage&gt;
+          &lt;largeImage&gt;string&lt;/largeImage&gt;
+          &lt;cataloguesArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/cataloguesArray&gt;
+          &lt;pricesSaleArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/pricesSaleArray&gt;
+          &lt;pricesRetailArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/pricesRetailArray&gt;
+          &lt;pricesWholesaleArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/pricesWholesaleArray&gt;
+          &lt;wholesaleTaxCodeArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/wholesaleTaxCodeArray&gt;
+          &lt;taxCodeArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/taxCodeArray&gt;
+          &lt;groupProducts&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/groupProducts&gt;
+          &lt;groupProductsDescriptions&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/groupProductsDescriptions&gt;
+          &lt;supplierEntityId&gt;int&lt;/supplierEntityId&gt;
+          &lt;supplierCommission&gt;double&lt;/supplierCommission&gt;
+          &lt;weight&gt;int&lt;/weight&gt;
+          &lt;relatedProducts&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/relatedProducts&gt;
+          &lt;tags&gt;string&lt;/tags&gt;
+          &lt;unitType&gt;string&lt;/unitType&gt;
+          &lt;minUnits&gt;int&lt;/minUnits&gt;
+          &lt;maxUnits&gt;int&lt;/maxUnits&gt;
+          &lt;inStock&gt;int&lt;/inStock&gt;
+          &lt;onOrder&gt;int&lt;/onOrder&gt;
+          &lt;reOrder&gt;int&lt;/reOrder&gt;
+          &lt;inventoryControl&gt;boolean&lt;/inventoryControl&gt;
+          &lt;canPreOrder&gt;boolean&lt;/canPreOrder&gt;
+          &lt;custom1&gt;string&lt;/custom1&gt;
+          &lt;custom2&gt;string&lt;/custom2&gt;
+          &lt;custom3&gt;string&lt;/custom3&gt;
+          &lt;custom4&gt;string&lt;/custom4&gt;
+          &lt;popletImages&gt;string&lt;/popletImages&gt;
+          &lt;enabled&gt;boolean&lt;/enabled&gt;
+          &lt;deleted&gt;boolean&lt;/deleted&gt;
+          &lt;captureDetails&gt;boolean&lt;/captureDetails&gt;
+          &lt;downloadLimitCount&gt;int&lt;/downloadLimitCount&gt;
+          &lt;limitDownloadsToIP&gt;int&lt;/limitDownloadsToIP&gt;
+          &lt;isOnSale&gt;boolean&lt;/isOnSale&gt;
+          &lt;hideIfNoStock&gt;boolean&lt;/hideIfNoStock&gt;
+          &lt;productAttributes&gt;string&lt;/productAttributes&gt;
+          &lt;isGiftVoucher&gt;boolean&lt;/isGiftVoucher&gt;
+          &lt;enableDropShipping&gt;boolean&lt;/enableDropShipping&gt;
+          &lt;productWeight&gt;double&lt;/productWeight&gt;
+          &lt;productWidth&gt;double&lt;/productWidth&gt;
+          &lt;productHeight&gt;double&lt;/productHeight&gt;
+          &lt;productDepth&gt;double&lt;/productDepth&gt;
+          &lt;excludeFromSearch&gt;boolean&lt;/excludeFromSearch&gt;
+          &lt;productTitle&gt;string&lt;/productTitle&gt;
+          &lt;cycletypeId&gt;int&lt;/cycletypeId&gt;
+          &lt;cycletypeCount&gt;int&lt;/cycletypeCount&gt;
+          &lt;slug&gt;string&lt;/slug&gt;
+          &lt;hasVariations&gt;boolean&lt;/hasVariations&gt;
+          &lt;variations&gt;
+            &lt;ProductVariation xsi:nil="true" /&gt;
+            &lt;ProductVariation xsi:nil="true" /&gt;
+          &lt;/variations&gt;
+        &lt;/Products&gt;
+        &lt;Products&gt;
+          &lt;productId&gt;int&lt;/productId&gt;
+          &lt;productCode&gt;string&lt;/productCode&gt;
+          &lt;productName&gt;string&lt;/productName&gt;
+          &lt;description&gt;string&lt;/description&gt;
+          &lt;smallImage&gt;string&lt;/smallImage&gt;
+          &lt;largeImage&gt;string&lt;/largeImage&gt;
+          &lt;cataloguesArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/cataloguesArray&gt;
+          &lt;pricesSaleArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/pricesSaleArray&gt;
+          &lt;pricesRetailArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/pricesRetailArray&gt;
+          &lt;pricesWholesaleArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/pricesWholesaleArray&gt;
+          &lt;wholesaleTaxCodeArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/wholesaleTaxCodeArray&gt;
+          &lt;taxCodeArray&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/taxCodeArray&gt;
+          &lt;groupProducts&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/groupProducts&gt;
+          &lt;groupProductsDescriptions&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/groupProductsDescriptions&gt;
+          &lt;supplierEntityId&gt;int&lt;/supplierEntityId&gt;
+          &lt;supplierCommission&gt;double&lt;/supplierCommission&gt;
+          &lt;weight&gt;int&lt;/weight&gt;
+          &lt;relatedProducts&gt;
+            &lt;string&gt;string&lt;/string&gt;
+            &lt;string&gt;string&lt;/string&gt;
+          &lt;/relatedProducts&gt;
+          &lt;tags&gt;string&lt;/tags&gt;
+          &lt;unitType&gt;string&lt;/unitType&gt;
+          &lt;minUnits&gt;int&lt;/minUnits&gt;
+          &lt;maxUnits&gt;int&lt;/maxUnits&gt;
+          &lt;inStock&gt;int&lt;/inStock&gt;
+          &lt;onOrder&gt;int&lt;/onOrder&gt;
+          &lt;reOrder&gt;int&lt;/reOrder&gt;
+          &lt;inventoryControl&gt;boolean&lt;/inventoryControl&gt;
+          &lt;canPreOrder&gt;boolean&lt;/canPreOrder&gt;
+          &lt;custom1&gt;string&lt;/custom1&gt;
+          &lt;custom2&gt;string&lt;/custom2&gt;
+          &lt;custom3&gt;string&lt;/custom3&gt;
+          &lt;custom4&gt;string&lt;/custom4&gt;
+          &lt;popletImages&gt;string&lt;/popletImages&gt;
+          &lt;enabled&gt;boolean&lt;/enabled&gt;
+          &lt;deleted&gt;boolean&lt;/deleted&gt;
+          &lt;captureDetails&gt;boolean&lt;/captureDetails&gt;
+          &lt;downloadLimitCount&gt;int&lt;/downloadLimitCount&gt;
+          &lt;limitDownloadsToIP&gt;int&lt;/limitDownloadsToIP&gt;
+          &lt;isOnSale&gt;boolean&lt;/isOnSale&gt;
+          &lt;hideIfNoStock&gt;boolean&lt;/hideIfNoStock&gt;
+          &lt;productAttributes&gt;string&lt;/productAttributes&gt;
+          &lt;isGiftVoucher&gt;boolean&lt;/isGiftVoucher&gt;
+          &lt;enableDropShipping&gt;boolean&lt;/enableDropShipping&gt;
+          &lt;productWeight&gt;double&lt;/productWeight&gt;
+          &lt;productWidth&gt;double&lt;/productWidth&gt;
+          &lt;productHeight&gt;double&lt;/productHeight&gt;
+          &lt;productDepth&gt;double&lt;/productDepth&gt;
+          &lt;excludeFromSearch&gt;boolean&lt;/excludeFromSearch&gt;
+          &lt;productTitle&gt;string&lt;/productTitle&gt;
+          &lt;cycletypeId&gt;int&lt;/cycletypeId&gt;
+          &lt;cycletypeCount&gt;int&lt;/cycletypeCount&gt;
+          &lt;slug&gt;string&lt;/slug&gt;
+          &lt;roleResponsible&gt;role_name&lt;/roleResponsible&gt;
+          &lt;metaDescription&gt;This is the meta description&lt;/metaDescription&gt;
+          &lt;hasVariations&gt;boolean&lt;/hasVariations&gt;
+          &lt;variations&gt;
+            &lt;ProductVariation xsi:nil="true" /&gt;
+            &lt;ProductVariation xsi:nil="true" /&gt;
+          &lt;/variations&gt;
+        &lt;/Products&gt;
+      &lt;/Product_ListRetrieveResult&gt;
+    &lt;/Product_ListRetrieveResponse&gt;
+  &lt;/soap12:Body&gt;
+&lt;/soap12:Envelope&gt;
+</code></pre>
+
+        

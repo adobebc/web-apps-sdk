@@ -1,0 +1,185 @@
+
+        <h2>List Web Apps</h2>
+
+<p>Get the list of web apps for the current site sorted by create date.</p>
+
+<p><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/current/webapps 
+
+<ul>
+<li>Alternatively use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Webapp View</li>
+</ul>
+
+<h3>Response</h3>
+
+<p>An array of all webapps; each object has the following properties:</p>
+
+<ul>
+<li><code>id</code> - the id of the webapp in the current site <em>(integer)</em></li>
+<li><code>name</code> - the name of the webapp <em>(string)</em></li>
+<li><code>slug</code> -  the SEO friendly slug generated for the webapp <em>(string)</em></li>
+<li><code>links</code> - a collection of uris are provided for discoverability. Each object contains links to: <em>(array)</em>
+
+<ul>
+<li><code>self</code> - a quick way of getting to the webapp detail page (GetWebappDetails API url)</li>
+<li><code>items</code> - points to the sub-api that lists all webapp items for a webapp</li>
+<li><code>fields</code> - points to the api that allows management of the custom fields</li>
+<li><code>previewUrl</code> - link to see the webapp in the site front-end. Composed from the site default domain and the slug</li>
+<li><code>countries</code> - if location is enabled for the webapp, a link to get the list of countries allowed for location.</li>
+</ul></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>GET /api/v2/admin/sites/current/webapps HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code><br>HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Encoding: gzip
+Content-Length: length
+
+{
+  "links": [
+      {
+        "rel":"self",
+        "uri":"https://mysite.worldsecuresystems.com/api\/v2\/admin\/sites\/-2\/webapps"
+      }
+  ],
+  "items": [
+    {
+      "links": [
+        {
+          "rel":"self",
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends"
+        },
+        {
+          "rel":"items",
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends/items"
+        },
+        {
+          "rel":"fields",
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends/fields"
+        },
+        {
+          "rel":"previewUrl",
+          "uri":"http://defaultsiteurl.com/bc-friends"
+        },
+        {
+          "rel":"countries",
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends/countries"
+        }
+
+      ],
+
+      "id":346,
+      "name":"BC Friends",
+      "slug":"bc-friends"
+    },
+    {
+      "links": [
+        {
+          "rel":"self",
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Help"
+        },
+        {
+          "rel":"countries",
+          "uri":"https://api-[dub|nj|syd].worldsecuresystems.com/api/v2/admin/sites/current/webapps/BC%20Friends/countries"
+        }
+      ],
+
+      "id":356,
+      "name":"BC Help",
+      "slug":"bc-help"
+    }
+  ],
+  "totalItemsCount":19,
+  "skip":0,
+  "limit":0
+}
+</code></pre>
+
+<h3>Sample code</h3>
+
+<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
+
+<p><strong>Fetch all available webapps</strong></p>
+
+<pre><code>var appCollection = new BCAPI.Models.WebApp.AppCollection();
+
+appCollection.fetch({fetchFields: false,
+ success: function(webapps) {
+    webapps.each(function(webapp) {
+        // no custom fields are retrieved.
+    });
+ }
+
+</code></pre>
+
+<hr>
+
+<p><strong>extract and fetch webap details from a fetched collection (by webapp id)</strong></p>
+
+<pre><code>var webappId = 1,
+        webapp = appCollection.get(webappId);
+
+webapp.fetch({
+    success: function(webapp) {
+        // webapp is now fully loaded.
+ }
+});
+</code></pre>
+
+<hr>
+
+<p><strong>extract and fetch webapp details from fetched collection (by webapp index)</strong></p>
+
+<pre><code>var idx = 1,
+        webapp = appCollection.at(idx);
+
+webapp.fetch({
+    success: function(webapp) {
+        // webapp is now fully loaded.
+ }
+});
+</code></pre>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+
+<ul>
+<li><code>101000</code> - sub-error code</li>
+</ul></li>
+<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+</ul>
+
+        

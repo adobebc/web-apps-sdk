@@ -1,0 +1,272 @@
+
+        <h2>Order_Retrieve</h2>
+
+<p>Retrieves details for an Order including details, products and payments. Use EntityID to retrieve owner Contact/Company information for order.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> SOAP</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.  </li>
+<li><strong>Path:</strong> /catalystwebservice/catalystcrmwebservice.asmx</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<ul>
+<li><code>siteId</code> - ID of the site <em>(integer)</em></li>
+<li><code>username</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
+<li><code>password</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
+<li><code>orderId</code> - <em>(integer)</em></li>
+</ul>
+
+<p>To use a site token instead of username/password, send an empty <code>username</code> field and the site token as the <code>password</code>. See example below.</p>
+
+<h3>Response</h3>
+
+<p>A Order_RetrieveResponse object with the following properties:</p>
+
+<ul>
+<li><code>Order_RetrieveResult</code> - <em>(object)</em>
+
+<ul>
+<li><code>OrderDetails</code> - <em>(object)</em>
+
+<ul>
+<li><code>entityId</code> - <em>(integer)</em></li>
+<li><code>orderId</code> - <em>(integer)</em></li>
+<li><code>orderName</code> - <em>(string)</em></li>
+<li><code>workflowId</code> - <em>(integer)</em></li>
+<li><code>statusTypeId</code> - <em>(integer)</em></li>
+<li><code>countryCode</code> - <em>(string)</em></li>
+<li><code>orderType</code> - <em>(integer)</em></li>
+<li><code>invoiceNumber</code> - <em>(integer)</em></li>
+<li><code>invoiceDate</code> - <em>(dateTime)</em></li>
+<li><code>userID_AssignedTo</code> - <em>(integer)</em></li>
+<li><code>shippingAmount</code> - <em>(double)</em></li>
+<li><code>shippingTaxRate</code> - <em>(double)</em></li>
+<li><code>shippingAttention</code> - <em>(string)</em></li>
+<li><code>shippingInstructions</code> - <em>(string)</em></li>
+<li><code>shippingOptionId</code> - <em>(integer)</em></li>
+<li><code>discountCodeId</code> - <em>(integer)</em></li>
+<li><code>discountRate</code> - <em>(double)</em></li>
+<li><code>totalOrderAmount</code> - <em>(double)</em></li>
+<li><code>directDebitTypeId</code> - <em>(integer)</em></li>
+<li><code>directDebitDays</code> - <em>(integer)</em></li>
+<li><code>isRecur</code> - <em>(boolean)</em></li>
+<li><code>nextInvoiceDate</code> - <em>(dateTime)</em></li>
+<li><code>endRecurDate</code> - <em>(dateTime)</em></li>
+<li><code>cycleTypeID</code> - <em>(integer)</em></li>
+<li><code>createDate</code> - <em>(dateTime)</em>   </li>
+<li><code>lastUpdateDate</code> - <em>(dateTime)</em>   </li>
+<li><code>deleted</code> - <em>(boolean)</em>   </li>
+<li><code>products</code> - <em>(object)</em>
+
+<ul>
+<li><code>Product</code> - <em>(object)</em>
+
+<ul>
+<li><code>productId</code> - <em>(integer)</em></li>
+<li><code>productCode</code> - <em>(string)</em></li>
+<li><code>productDescription</code> - <em>(string)</em></li>
+<li><code>units</code> - <em>(integer)</em></li>
+<li><code>unitPrice</code> - <em>(double)</em></li>
+<li><code>unitTaxRate</code> - <em>(double)</em></li>
+<li><code>totalProductPrice</code> - <em>(double)</em></li>
+<li><code>productName</code> - <em>(string)</em></li>
+<li><code>variationId</code> - <em>(integer)</em>   </li>
+</ul></li>
+</ul></li>
+<li><code>payments</code> - <em>(object)</em><br>
+
+<ul>
+<li><code>Payment</code> - <em>(object)</em>
+
+<ul>
+<li><code>paymentMethodTypeID</code> - <em>(integer)</em></li>
+<li><code>amount</code> - <em>(double)</em></li>
+<li><code>paymentStatusID</code> - <em>(integer)</em></li>
+<li><code>transactionNumber</code> - <em>(string)</em></li>
+<li><code>transactionAuthCode</code> - <em>(string)</em></li>
+<li><code>Description</code> - <em>(string)</em></li>
+<li><code>paymentDate</code> - <em>(dateTime)</em></li>
+</ul></li>
+</ul></li>
+<li><code>addresses</code> - <em>(object)</em>
+
+<ul>
+<li><code>Address</code> - <em>(object)</em>
+
+<ul>
+<li><code>addressTypeID</code> - <em>(integer)</em></li>
+<li><code>addressLine1</code> - <em>(string)</em></li>
+<li><code>addressLine2</code> - <em>(string)</em></li>
+<li><code>city</code> - <em>(string)</em></li>
+<li><code>zipcode</code> - <em>(string)</em></li>
+<li><code>state</code> - <em>(string)</em></li>
+<li><code>countryCode</code> - <em>(string)</em></li>
+</ul></li>
+</ul></li>
+<li><code>crmForms</code> - <em>(object)</em>
+
+<ul>
+<li><code>CrmForms</code> - <em>(object)</em>
+
+<ul>
+<li><code>formId</code> - <em>(integer)</em></li>
+<li><code>formName</code> - <em>(string)</em></li>
+<li><code>crmFormFields</code> - <em>(array)</em>   </li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns XML as Content-Type.</p>
+
+<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values.</p>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
+Host: worldsecuresystems.com
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: length
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
+  &lt;soap12:Body&gt;
+    &lt;Order_Retrieve xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice"&gt;
+      &lt;username&gt;string&lt;/username&gt;
+      &lt;password&gt;string&lt;/password&gt;
+      &lt;siteId&gt;int&lt;/siteId&gt;
+      &lt;orderId&gt;int&lt;/orderId&gt;
+    &lt;/Order_Retrieve&gt;
+  &lt;/soap12:Body&gt;
+&lt;/soap12:Envelope&gt;
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: length
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
+  &lt;soap12:Body&gt;
+    &lt;Order_RetrieveResponse xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice"&gt;
+      &lt;Order_RetrieveResult&gt;
+        &lt;entityId&gt;int&lt;/entityId&gt;
+        &lt;orderId&gt;int&lt;/orderId&gt;
+        &lt;orderName&gt;string&lt;/orderName&gt;
+        &lt;workflowId&gt;int&lt;/workflowId&gt;
+        &lt;statusTypeId&gt;int&lt;/statusTypeId&gt;
+        &lt;countryCode&gt;string&lt;/countryCode&gt;
+        &lt;orderType&gt;int&lt;/orderType&gt;
+        &lt;invoiceNumber&gt;int&lt;/invoiceNumber&gt;
+        &lt;invoiceDate&gt;dateTime&lt;/invoiceDate&gt;
+        &lt;userID_AssignedTo&gt;int&lt;/userID_AssignedTo&gt;
+        &lt;shippingAmount&gt;double&lt;/shippingAmount&gt;
+        &lt;shippingTaxRate&gt;double&lt;/shippingTaxRate&gt;
+        &lt;shippingAttention&gt;string&lt;/shippingAttention&gt;
+        &lt;shippingInstructions&gt;string&lt;/shippingInstructions&gt;
+        &lt;shippingOptionId&gt;int&lt;/shippingOptionId&gt;
+        &lt;discountCodeId&gt;int&lt;/discountCodeId&gt;
+        &lt;discountRate&gt;double&lt;/discountRate&gt;
+        &lt;totalOrderAmount&gt;double&lt;/totalOrderAmount&gt;
+        &lt;directDebitTypeId&gt;int&lt;/directDebitTypeId&gt;
+        &lt;directDebitDays&gt;int&lt;/directDebitDays&gt;
+        &lt;isRecur&gt;boolean&lt;/isRecur&gt;
+        &lt;nextInvoiceDate&gt;dateTime&lt;/nextInvoiceDate&gt;
+        &lt;endRecurDate&gt;dateTime&lt;/endRecurDate&gt;
+        &lt;cycleTypeID&gt;int&lt;/cycleTypeID&gt;
+        &lt;createDate&gt;dateTime&lt;/createDate&gt;
+        &lt;lastUpdateDate&gt;dateTime&lt;/lastUpdateDate&gt;
+        &lt;deleted&gt;boolean&lt;/deleted&gt;
+        &lt;products&gt;
+          &lt;Product&gt;
+            &lt;productId&gt;int&lt;/productId&gt;
+            &lt;productCode&gt;string&lt;/productCode&gt;
+            &lt;productDescription&gt;string&lt;/productDescription&gt;
+            &lt;units&gt;int&lt;/units&gt;
+            &lt;unitPrice&gt;double&lt;/unitPrice&gt;
+            &lt;unitTaxRate&gt;double&lt;/unitTaxRate&gt;
+            &lt;totalProductPrice&gt;double&lt;/totalProductPrice&gt;
+            &lt;productName&gt;string&lt;/productName&gt;
+            &lt;variationId&gt;int&lt;/variationId&gt;
+          &lt;/Product&gt;
+          &lt;Product&gt;
+            &lt;productId&gt;int&lt;/productId&gt;
+            &lt;productCode&gt;string&lt;/productCode&gt;
+            &lt;productDescription&gt;string&lt;/productDescription&gt;
+            &lt;units&gt;int&lt;/units&gt;
+            &lt;unitPrice&gt;double&lt;/unitPrice&gt;
+            &lt;unitTaxRate&gt;double&lt;/unitTaxRate&gt;
+            &lt;totalProductPrice&gt;double&lt;/totalProductPrice&gt;
+            &lt;productName&gt;string&lt;/productName&gt;
+            &lt;variationId&gt;int&lt;/variationId&gt;
+          &lt;/Product&gt;
+        &lt;/products&gt;
+        &lt;payments&gt;
+          &lt;Payment&gt;
+            &lt;paymentMethodTypeID&gt;int&lt;/paymentMethodTypeID&gt;
+            &lt;amount&gt;double&lt;/amount&gt;
+            &lt;paymentStatusID&gt;int&lt;/paymentStatusID&gt;
+            &lt;transactionNumber&gt;string&lt;/transactionNumber&gt;
+            &lt;transactionAuthCode&gt;string&lt;/transactionAuthCode&gt;
+            &lt;Description&gt;string&lt;/Description&gt;
+            &lt;paymentDate&gt;dateTime&lt;/paymentDate&gt;
+          &lt;/Payment&gt;
+          &lt;Payment&gt;
+            &lt;paymentMethodTypeID&gt;int&lt;/paymentMethodTypeID&gt;
+            &lt;amount&gt;double&lt;/amount&gt;
+            &lt;paymentStatusID&gt;int&lt;/paymentStatusID&gt;
+            &lt;transactionNumber&gt;string&lt;/transactionNumber&gt;
+            &lt;transactionAuthCode&gt;string&lt;/transactionAuthCode&gt;
+            &lt;Description&gt;string&lt;/Description&gt;
+            &lt;paymentDate&gt;dateTime&lt;/paymentDate&gt;
+          &lt;/Payment&gt;
+        &lt;/payments&gt;
+        &lt;addresses&gt;
+          &lt;Address&gt;
+            &lt;addressTypeID&gt;int&lt;/addressTypeID&gt;
+            &lt;addressLine1&gt;string&lt;/addressLine1&gt;
+            &lt;addressLine2&gt;string&lt;/addressLine2&gt;
+            &lt;city&gt;string&lt;/city&gt;
+            &lt;zipcode&gt;string&lt;/zipcode&gt;
+            &lt;state&gt;string&lt;/state&gt;
+            &lt;countryCode&gt;string&lt;/countryCode&gt;
+          &lt;/Address&gt;
+          &lt;Address&gt;
+            &lt;addressTypeID&gt;int&lt;/addressTypeID&gt;
+            &lt;addressLine1&gt;string&lt;/addressLine1&gt;
+            &lt;addressLine2&gt;string&lt;/addressLine2&gt;
+            &lt;city&gt;string&lt;/city&gt;
+            &lt;zipcode&gt;string&lt;/zipcode&gt;
+            &lt;state&gt;string&lt;/state&gt;
+            &lt;countryCode&gt;string&lt;/countryCode&gt;
+          &lt;/Address&gt;
+        &lt;/addresses&gt;
+        &lt;crmForms&gt;
+          &lt;CrmForms&gt;
+            &lt;formId&gt;int&lt;/formId&gt;
+            &lt;formName&gt;string&lt;/formName&gt;
+            &lt;crmFormFields xsi:nil="true" /&gt;
+          &lt;/CrmForms&gt;
+          &lt;CrmForms&gt;
+            &lt;formId&gt;int&lt;/formId&gt;
+            &lt;formName&gt;string&lt;/formName&gt;
+            &lt;crmFormFields xsi:nil="true" /&gt;
+          &lt;/CrmForms&gt;
+        &lt;/crmForms&gt;
+      &lt;/Order_RetrieveResult&gt;
+    &lt;/Order_RetrieveResponse&gt;
+  &lt;/soap12:Body&gt;
+&lt;/soap12:Envelope&gt;
+</code></pre>
+
+        

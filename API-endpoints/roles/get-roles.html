@@ -1,0 +1,92 @@
+
+        <h2>Get Roles</h2>
+
+<p>Gets a list of roles available on a specified site.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/roles
+
+<ul>
+<li>Alternatively, use 'current' instead of siteId</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Administer System</li>
+</ul>
+
+<h3>Response</h3>
+
+<p>Returns a list of site role objects, with the below fields:</p>
+
+<ul>
+<li><code>id</code> - the role id in the database <em>(integer)</em></li>
+<li><code>name</code> - the user friendly name, to be used as label <em>(string)</em></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>GET /api/v2/admin/sites/current/roles HTTPS/1.1
+Connection: keep-alive
+Content-Type: application/json
+Authorization: {site_authorization_token}
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: length
+
+{
+    "CurrentPage":1,
+    "Items":[
+        "Role":
+        {
+            "Id": 10000,
+            "Name": "Admin"
+        },
+        "Role":
+        {
+            "Id": 10013,
+            "Name": "Users"
+        }
+    ],
+    "ItemsPerPageCount":100,
+    "Links":[
+        {
+            "Rel":"previous",
+            "Uri":null
+        },
+        {
+            "Rel":"next",
+            "Uri":null
+        }
+    ],
+    "TotalItemsCount":2
+}
+</code></pre>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>401</code> - when authentication token is incorrect</li>
+<li><code>403</code> - when the user attempting the call does not have the proper permissions</li>
+</ul>
+
+        

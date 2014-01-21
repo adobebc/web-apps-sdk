@@ -1,0 +1,168 @@
+
+        <h2>List Categories</h2>
+
+<p>Get a list of categories which exist on the current site in ascending order of their ids.</p>
+
+<p><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteID]/categories 
+
+<ul>
+<li>Alternatively use "current" in place of siteId for current login token's site</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> View Category (3100)</li>
+</ul>
+
+<h3>Response</h3>
+
+<p>A CategoryList object with the following properties:</p>
+
+<ul>
+<li><code>links</code> - a collection of links <em>(array)</em>
+
+<ul>
+<li><code>self</code> - the API URL that will return this result <em>(string)</em></li>
+<li><code>previous</code> - the API URL that will return the previous page of results, if any <em>(string)</em></li>
+<li><code>next</code> - the API URL that will return the next page of results, if any <em>(string)</em></li>
+</ul></li>
+<li><code>items</code> - an array of CategorySummary objects with the following properties <em>(array)</em> 
+
+<ul>
+<li><code>links</code> - a collection of links <em>(array)</em>
+
+<ul>
+<li><code>self</code> - the API URL that will return full details for this category <em>(string)</em></li>
+</ul></li>
+<li><code>id</code> - the ID of the category for the current site <em>(integer)</em> </li>
+<li><code>name</code> - the name of the category <em>(string)</em></li>
+<li><code>parentId</code> - the ID of the parent category, if this is a sub-category. Returns -1 if a root-level category <em>(integer)</em></li>
+<li><code>publicAccess</code> - whether or not the category is visible to front-end users <em>(boolean)</em></li>
+</ul></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>GET https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/categories
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: {length}
+
+{
+"links": [
+    {
+      "rel": "self",
+      "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/current/categories?skip=4&amp;limit=4"
+    },
+    {
+      "rel": "previous",
+      "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/current/categories?skip=0&amp;limit=4"
+    },
+    {
+      "rel": "next",
+      "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/current/categories?skip=8&amp;limit=4"
+    }
+  ],
+   "items": [
+   {
+       "links": [
+        {
+          "rel": "self",
+          "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/current/categories/123457"
+        }],
+      "id"      : "123457",
+      "name"    : "Parent category",
+      "parentId"  : -1,
+      "publicAccess" : true
+   },
+   {
+       "links": [
+        {
+          "rel": "self",
+          "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/current/categories/418191"
+        }],
+      "id"      : "418191",
+      "name"    : "Child category",
+      "parentId"  : 123457,
+      "publicAccess" : false
+   },
+   {
+       "links": [
+        {
+          "rel": "self",
+          "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/current/categories/123453"
+        }],
+      "id"      : "123453",
+      "name"    : "Something else",
+      "parentId"  : -1,
+      "publicAccess" : true
+   },
+   {
+       "links": [
+        {
+          "rel": "self",
+          "uri": "https://localbc.worldsecuresystems.com/api/v2/admin/sites/current/categories/123459"
+        }],
+      "id"      : "123459",
+      "name"    : "The last one",
+      "parentId"  : -1
+      "publicAccess" : true
+   }],
+  "totalItemsCount": 11,
+  "skip": 4,
+  "limit": 4
+}
+</code></pre>
+
+<h3>Sample code</h3>
+
+<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
+
+<pre><code>var categories = new BCAPI.Models.CategoryCollection();
+categories.fetch({
+    success: onSuccessHandler,
+    error: onErrorHandler
+})
+</code></pre>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>400</code> - bad request
+
+<ul>
+<li><code>220000</code> - unknown error</li>
+</ul></li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+
+<ul>
+<li><code>101000</code> - sub-error code</li>
+</ul></li>
+<li><code>403</code> - forbidden - this is returned when the user trying to access the API does not have the proper permissions</li>
+</ul>
+
+        

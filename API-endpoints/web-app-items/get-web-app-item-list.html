@@ -1,0 +1,373 @@
+
+        <h2>Get Web App Item List</h2>
+
+<p>Gets a list of Web App items, as per the specified filters.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteID]/webapps/[webAppName]/items
+
+<ul>
+<li>Alternatively use "current" in place of siteId for current login token's site</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> View Web App</li>
+</ul>
+
+<h4>Filters</h4>
+
+<p>A query string (eg. ?order=ascending) with the following properties:</p>
+
+<ul>
+<li><code>order</code> - allows sorting bit a single system field, either "ascending" or "descending" <em>(string, optional)</em> (see the <a href="#ordering-syntax">Ordering Syntax</a> section)</li>
+<li><code>where</code> - filter by a single system field <em>(string, optional)</em> (see the <a href="#filtering-syntax">Filtering syntax</a> section)</li>
+<li><code>skip</code> - how many items to skip from the returned result. <em>(integer, optional)</em></li>
+<li><code>limit</code> - how many items to return <em>(integer, optional)</em></li>
+</ul>
+
+<h3>Response</h3>
+
+<p>A WebAppItemList object with the following properties:</p>
+
+<ul>
+<li><code>links</code> - contains a collection of links <em>(array)</em>
+
+<ul>
+<li><code>self</code> - the API URL that returned this result</li>
+<li><code>previous</code> - the API URL that will return the previous page of results, if any</li>
+<li><code>next</code> - the API URL that will return the next page of results, if any</li>
+</ul></li>
+<li><code>items</code> - an array of WebAppItemSummary objects with the following properties <em>(array)</em>
+
+<ul>
+<li><code>links</code> - contains a collection of links <em>(array)</em>
+
+<ul>
+<li><code>self</code> - the API URL that will return the full details of this Web App item <em>(string)</em></li>
+</ul></li>
+<li><code>id</code> - the ID of the Web App item <em>(integer)</em></li>
+<li><code>name</code> - the name of the Web App item <em>(string)</em></li>
+<li><code>releaseDate</code> - the release date of the Web App item, in the format mm/dd/yyyy <em>(string)</em></li>
+<li><code>expiryDate</code> - the date the Web App will expire, in the format mm/dd/yyyy <em>(string)</em></li>
+<li><code>createDate</code> - the date the Web App was created, in the format mm/dd/yyyy <em>(string)</em></li>
+<li><code>lastUpdateDate</code> - the date the Web App item was last updated, in the format mm/dd/yyyy <em>(string)</em></li>
+<li><code>enabled</code> - whether the Web App item is enabled or disabled <em>(boolean)</em></li>
+</ul></li>
+<li><code>totalitems</code> - the number of Web App items that match the specified filter <em>(integer)</em></li>
+<li><code>skip</code> - the number of Web App items skipped in this response <em>(integer)</em></li>
+<li><code>limit</code> - the number of Web App items returned in this response <em>(integer)</em></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=2&amp;limit=2 HTTPS/1.1
+Authorization: 3e8d891d91eb433e9c800cebe3b132a4e64ac661c5ed4dd8bdecae0487e4ad7c
+Accept: application/json
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: {length}
+
+{
+  "links": [
+    {
+      "rel": "self",
+      "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=2&amp;limit=2"
+    },
+    {
+      "rel": "previous",
+      "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=0&amp;limit=2"
+    },
+    {
+      "rel": "next",
+      "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items?skip=4&amp;limit=2"
+    }
+  ],
+  "items": [
+    {
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items/1073041"
+        }
+      ],
+      "id": 1073041,
+      "name": "item3",
+      "weight": null,
+      "releaseDate": "2013-06-30",
+      "expiryDate": "9999-01-01",
+      "createDate": "2013-06-30",
+      "lastUpdateDate": "2013-06-30",
+      "enabled": true
+    },
+    {
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://mysite.worldsecuresystems.com/api/v2/admin/sites/current/webapps/TestWebapp1/items/1073042"
+        },
+        {
+          "rel": "previewUrl",
+          "uri": "http://www.test1.com/testwebapp1/item4"
+        }
+      ],
+      "id": 1073042,
+      "name": "item4",
+      "weight": null,
+      "releaseDate": "2013-06-30",
+      "expiryDate": "9999-01-01",
+      "createDate": "2013-06-30",
+      "lastUpdateDate": "2013-06-30",
+      "enabled": true
+    },
+  ],
+  "totalItemsCount": 7,
+  "skip": 2,
+  "limit": 2
+}
+</code></pre>
+
+<h3>Sample code</h3>
+
+<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
+
+<p><strong>Load items paginated</strong></p>
+
+<pre><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({
+        skip: 10, limit: 100,
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+
+items.each(function(webAppItem) {
+        // display logic
+});
+</code></pre>
+
+<hr>
+
+<p><strong>Filtering items</strong></p>
+
+<pre><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({     
+        where: {"name": ""Web app item new"},
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+</code></pre>
+
+<hr>
+
+<p><strong>Ordering items</strong></p>
+
+<pre><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({
+        order: "-name",
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+</code></pre>
+
+<h3>Filtering Syntax</h3>
+
+<p>Filtering is supported by constraining at most one item field. Only the specified system fields and the item's category set can be used for filtering.</p>
+
+<p>The list of supported system fields is:</p>
+
+<ul>
+<li>Id</li>
+<li>Name</li>
+<li>Weight</li>
+<li>ReleaseDate</li>
+<li>ExpiryDate</li>
+<li>CreateDate</li>
+<li>LastUpdateDate</li>
+<li>Enabled</li>
+</ul>
+
+<p>The filtering syntax involves specifying a list of constraints, logically chained using the AND operator which must apply to the one field specified. The constraints are built using the following operators:</p>
+
+<table>
+<thead>
+<tr>
+  <th align="center">operator</th>
+  <th align="center">name</th>
+  <th>example</th>
+  <th align="center">applicable type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="center">N/A</td>
+  <td align="center">equals (==)</td>
+  <td><code>where={"name" : "item-name"}</code></td>
+  <td align="center">all</td>
+</tr>
+<tr>
+  <td align="center">$ne</td>
+  <td align="center">not equal (!=)</td>
+  <td><code>where={"id": {"$ne": 42}}</code></td>
+  <td align="center">all</td>
+</tr>
+<tr>
+  <td align="center">$lt</td>
+  <td align="center">less than (&lt;)</td>
+  <td><code>where={"weight" : {"$lt": 3}}</code></td>
+  <td align="center">all</td>
+</tr>
+<tr>
+  <td align="center">$lte</td>
+  <td align="center">less than or equal (&lt;=)</td>
+  <td><code>where={"name" : {"$lte": "omega"}}</code></td>
+  <td align="center">all</td>
+</tr>
+<tr>
+  <td align="center">$gt</td>
+  <td align="center">greater than (&gt;)</td>
+  <td><code>where={"releaseDate" : {"$gt": "jun 10 2012"}}</code></td>
+  <td align="center">all</td>
+</tr>
+<tr>
+  <td align="center">$gte</td>
+  <td align="center">greater than or equal (&gt;=)</td>
+  <td><code>where={"name" : {"$gte": "alpha"}}</code></td>
+  <td align="center">all</td>
+</tr>
+<tr>
+  <td align="center">$contains</td>
+  <td align="center">contains</td>
+  <td><code>where={"name": {"$contains": "delta"}}</code></td>
+  <td align="center">string-only</td>
+</tr>
+<tr>
+  <td align="center">$beginsWith</td>
+  <td align="center">begins with</td>
+  <td><code>where={"name": {"$beginsWith": "prefix"}}</code></td>
+  <td align="center">string-only</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Important Notes</h4>
+
+<ul>
+<li><p>Multiple constraints can be chained, and the chaining operator is AND. We do not support OR-queries</p>
+
+<p><code>where={"name": {"$gt": "alpha", "$lt": "omega", "$contains":"foo"}}</code></p></li>
+<li><p>Equality has no dedicated operator and it cannot be chained together with other constraints. The only way to specify that something must equal a value is like so:</p>
+
+<p><code>where={"name": "epsilon"}</code></p></li>
+<li><p>To check that an item is labeled with a certain category the following syntax must be used:</p>
+
+<p><code>where={"category": "/my/category/path"}</code></p></li>
+<li><p>The category is specified as a category-path string or by providing the category's numeric id. The path should start with a <code>/</code>. If it does not, the <code>/</code> will be added automatically to the category string. The following is equivalent to the previous example:</p>
+
+<p><code>where={"category": "my/category/path"}</code></p></li>
+<li>Field names, and the <code>category</code> label are case-insensitive</li>
+<li><p>null-values will returns false for every comparison except equality and <code>$ne</code> operator. These two operators can be used to filter out the items that have missing values for certain fields</p>
+
+<p><code>where={"weight": null}
+where={"weight": {"$ne": null}}</code></p></li>
+</ul>
+
+<h4>Examples</h4>
+
+<ul>
+<li><p>Filtering by name</p>
+
+<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"name": {"$contains": "item"}}</code></p></li>
+<li><p>Filtering by date</p>
+
+<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"createDate": {"$gte": "2001-01-01", "$lte": "2013-01-01"}}</code></p></li>
+<li><p>Filtering by category id</p>
+
+<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"category": 123}</code></p></li>
+<li><p>Filtering by category path</p>
+
+<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"category": "my-label"}</code></p></li>
+</ul>
+
+<h3>Ordering Syntax</h3>
+
+<p>The <code>order</code> query parameter specifies which field will be used to order the results of the query. Only the following system fields can be used to order the results:</p>
+
+<ul>
+<li>Id</li>
+<li>Name</li>
+<li>Weight</li>
+<li>ReleaseDate</li>
+<li>ExpiryDate</li>
+<li>CreateDate</li>
+<li>LastUpdateDate</li>
+<li>Enabled</li>
+</ul>
+
+<p>To order the results in ascending order, just provide the system field name. If the results are to be sorted in descending order prefix the system field name with a <code>-</code> (dash).</p>
+
+<p>If no ordering is specified the items will be order by <code>name</code> ascending.</p>
+
+<p>When sorting the items using a specified field, in case of ties due to equal values for that field, items will be further sorted by <code>name</code>.</p>
+
+<h4>Examples</h4>
+
+<ul>
+<li><p>Sorting ascending by name</p>
+
+<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?order=name</code></p></li>
+<li><p>Sorting descending by name</p>
+
+<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?order=-name</code></p></li>
+</ul>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>400</code> - bad request
+
+<ul>
+<li><code>190001</code> - the Web App could not be found (the webAppName parameter from the URL does not match any record)</li>
+<li><code>200000</code> - an unspecified error has occurred</li>
+<li><code>200007</code> - there is a problem with the query, eg. invalid format, invalid field name, invalid operator, etc.</li>
+<li><code>200009</code> - the category path specified in the query doesn't exist</li>
+</ul></li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+
+<ul>
+<li><code>101000</code> - sub-error code</li>
+</ul></li>
+<li><code>403</code> - forbidden - this is returned when the user trying to access the API does not have the proper permissions</li>
+</ul>
+
+        

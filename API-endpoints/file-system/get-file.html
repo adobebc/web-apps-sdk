@@ -1,0 +1,93 @@
+
+        <h2>Get file</h2>
+
+<p>Get a file.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/storage/[filePath]?version=draft</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Can use SFTP &amp; File Manager</li>
+</ul>
+
+<h3>Response</h3>
+
+<p>Returns the content of a file.</p>
+
+<h3>Notes</h3>
+
+<p><strong>Optional query parameters</strong></p>
+
+<p>The API supports an optional query parameter, version with the following values:</p>
+
+<ul>
+<li>draft
+
+<ul>
+<li>If the file is a page
+
+<ul>
+<li>If the page has a draft, than that content will be returned</li>
+<li>If the page does not have a draft than the live content will be returned</li>
+</ul></li>
+<li>If the file is not a page, than this will be ignored</li>
+</ul></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>GET /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
+Connection: keep-alive
+Accept: application/json
+Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+Content-Length: 1024
+Last-Modified: Mon, 26 Jul 2010 12:45:26 GMT
+
+Body: file contents as binary
+</code></pre>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - OK</li>
+<li><code>400</code> - Bad request:
+
+<ul>
+<li><code>104000</code> - Generic FileAPI error</li>
+<li><code>104001</code> - File not found</li>
+<li><code>104002</code> - Not a file</li>
+<li><code>104003</code> - Not enough privileges</li>
+<li><code>104004</code> - Invalid login multiple sites</li>
+<li><code>104009</code>- Path not found</li>
+<li><code>104014</code> - Name required</li>
+<li><code>104019</code> - Can't find folder</li>
+<li><code>104023</code> - Unauthorized access</li>
+<li><code>104024</code> - Folder not empty</li>
+<li><code>104004</code> - File or folder name too long </li>
+</ul></li>
+<li><code>401</code>- when authentication token is incorrect</li>
+<li><code>404</code> - the file does not exist</li>
+</ul>
+
+        

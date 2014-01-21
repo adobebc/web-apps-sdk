@@ -1,0 +1,137 @@
+
+        <h2>Create Web App Custom Field</h2>
+
+<p>Create a new Web App custom field.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/current/webapps/[webappName]/fields</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="http://developers.businesscatalyst.com/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Edit Web Apps</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<p>Object:</p>
+
+<ul>
+<li><code>id</code> - unique - field id, if left empty, will be auto-generated <em>(int)</em></li>
+<li><code>name</code> - unique, required - the name of the field (it must be unique amongst the custom &amp; system fields) <em>(string)</em></li>
+<li><code>type</code> - required, one of the below: <em>(string)</em>
+
+<ul>
+<li><code>String</code></li>
+<li><code>Number</code></li>
+<li><code>Boolean</code></li>
+<li><code>DateTime</code></li>
+<li><code>DropDown_List</code></li>
+<li><code>CheckBox_List</code></li>
+<li><code>Radio_List</code></li>
+<li><code>Image</code></li>
+<li><code>String_MultiLine</code></li>
+<li><code>ListBox_List</code></li>
+<li><code>String_Hyperlink</code></li>
+<li><code>DataSource</code></li>
+</ul></li>
+<li><code>required</code> - true if the field is required (not required) <em>(boolean)</em></li>
+<li><p><code>order</code> - unique - the position of the field when listed starting with 1.</p>
+
+<p>If a field with the same order value already exists, its order value (and order value for any other fields "bellow") will be incremented by 1.</p>
+
+<p>If not specified, the field is added as the last one. <em>(integer)</em></p></li>
+<li><p><code>dataSource</code>: for DataSource fields should be a valid webapp name <em>(string)</em></p></li>
+<li><code>listItems</code> - used only by DropDown_List, CheckBox_List, Radio_List, ListBox_List fields <em>(array)</em></li>
+</ul>
+
+<h3>Response</h3>
+
+<p>The URI of the newly created custom field in the Location HTTP header.</p>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre><code>POST /api/v2/admin/sites/current/webapps/Cars/fields HTTPS/1.1
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Length: 157
+Connection: keep-alive
+Content-Type: application/json
+
+{
+   "name"    : "Part code",
+   "type"    : "DropDown_List",
+   "listItems": ["First option", "Second one"],
+   "required": false,
+   "order"   : 3
+}
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre><code>HTTP/1.1 201 OK
+Content-Type: application/json; charset=utf-8
+Location: https://api.localsecuresyd.worldsecuresystems.com/api/v2/admin/sites/current/webapps/Cars/fields/123
+</code></pre>
+
+<h3>Sample code</h3>
+
+<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
+
+<pre><code>var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
+    "name": "Part code",
+    "type": "DataSource",
+    "listItems": null,
+    "dataSource": "Part Codes",
+    "required": false
+});
+
+customField.save({
+    success: function(fieldModel) {
+        // do something on success.
+    }
+});
+</code></pre>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>201</code> - created</li>
+<li><code>400</code> - bad request; sub-error codes:
+
+<ul>
+<li><code>210000</code> - An unspecified error has occurred</li>
+<li><code>210002</code> - Invalid field id specified</li>
+<li><code>210003</code> - Invalid name (name is not syntactically correct or there is already a system or custom field with the same name)</li>
+<li><code>210004</code> - Invalid listItems</li>
+<li><code>210005</code> - Invalid dataSourceName</li>
+<li><code>210006</code> - Invalid order value (must be between 1 and max existing order value + 1)</li>
+<li><code>210007</code> - Invalid type</li>
+</ul></li>
+<li><code>401</code> - unauthorized - when the authentication token is incorrect
+
+<ul>
+<li><code>101000</code> - sub-error code</li>
+</ul></li>
+<li><code>403</code> - forbidden - when the user does not have Edit WebApp Permission</li>
+<li><code>404</code> - not found
+
+<ul>
+<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+<li><code>210001</code> - The custom field was not found (the fieldId from the URL do not match)</li>
+</ul></li>
+</ul>
+
+        

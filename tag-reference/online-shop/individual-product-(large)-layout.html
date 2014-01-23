@@ -31,7 +31,7 @@ Site visitors get to it only after clicking the links outputted by any of these 
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addtofavorites,addtoImage,removefromImage</span>}</code><span class="cellcontent">Add product to favorites list. Optionally customize to display your own custom image for adding and removing.</span></td>
         </tr>
 <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_attributes, horizontal, hideDisabledVariations, autoSelectFirstVariation</span>}</code><span class="cellcontent"> Renders attribute dropdowns for a given product. <br/><br/>Parameters: 
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_attributes, horizontal, hideDisabledVariations, autoSelectFirstVariation</span>}</code><span class="cellcontent"> Renders attribute dropdowns for a given product. <p>Parameters: </p>
             <ul>
             <li><em>horizontal</em> – kept existing behavior</li>
             <li><em>hideDisabledVariations</em> – true or false</li>
@@ -114,7 +114,7 @@ Site visitors get to it only after clicking the links outputted by any of these 
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_name</span>}</code><span class="cellcontent">Name of product</span></td>
         </tr>
 <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_onorder, syncWithAttributes, noSelectionMessage, disabledSelectionMessage</span>}</code><span class="cellcontent">Number of units on order. <br/><br/>Parameters:
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_onorder, syncWithAttributes, noSelectionMessage, disabledSelectionMessage</span>}</code><span class="cellcontent">Number of units on order. <p>Parameters:</p>
             <ul>
             <li><em>syncWithAttributes</em> – true or false</li>
             <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
@@ -130,7 +130,15 @@ Site visitors get to it only after clicking the links outputted by any of these 
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_poplets,rowlength,width,height</span>}</code><span class="cellcontent">Displays thumbnail version of poplet images. If you add ,noscript to this tag this will render the poplets with no default javascript lightbox feature. e.g. {<span>tag_poplets,4,100,100,noscript</span>}</code></span></td>
         </tr>
 <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productcode, syncWithAttributes, noSelectionMessage, disabledSelectionMessage</span>}</code><span class="cellcontent">Product code. With variations enabled, tg product will render the variation code instead of the product codes in all layouts where this is used. Parameters: syncWithAttributes – true or false, noSelectionMessage – specify the message displayed when site customer has not selected a variation, disabledSelectionMessage – specify the message displayed when site customer has selected a variation that is disabled</span></td>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productcode, syncWithAttributes, noSelectionMessage, disabledSelectionMessage</span>}</code><span class="cellcontent">Product code. With variations enabled, tg product will render the variation code instead of the product codes in all layouts where this is used. <p>Parameters:</p> 
+            
+            <ul>
+            <li><em>syncWithAttributes</em> – true or false</li>
+            <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
+            <li><em>disabledSelectionMessage</em> – specify the message displayed when site customer has selected a variation that is disabled</li>
+            
+            </ul>
+            </span></td>
         </tr>
 <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productmetadescription</span>}</code><span class="cellcontent">Meta description information added in the SEO Metadata section of product details page.</span></td>

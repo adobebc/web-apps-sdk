@@ -45,7 +45,7 @@
         </tbody>
     </table>
     <p>Below is a example of a custom template using the above tags:</p>
-    <code class="language-markup">
+    <pre class="language-markup"><code>
     &lt;div class="cartSummary empty{tag_isEmpty}"&gt;<br/>
     &lt;div class="cartSummaryItem"&gt;Shopping cart is empty&lt;/div&gt;<br/>
     &lt;/div&gt;<br/>
@@ -53,7 +53,7 @@
     &lt;div class="cartSummaryItem"&gt;{tag_itemCount} item(s), Total {tag_currency}{tag_totalAmount}&lt;/div&gt;<br/>
     &lt;div&gt;&lt;a class="cartSummaryLink" href="{tag_cartUrl}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
     &lt;/div&gt;<br/>
-    </code>
+    </code></pre>
     <p class="alert alert-info"><strong>Note:</strong> If you are using the above example, ensure that you add the below to your CSS to change the table class based on whether an item is added to the cart or not.</p>
     <p><em>&nbsp;&nbsp;.empty0 { display:none; }</em></p>
     <p><em>&nbsp;&nbsp;.notEmpty1 { display:none; }</em></p>
@@ -68,11 +68,7 @@
     Locate the {module_shoppingcartsummary} module on your site. By default this can be found in&nbsp;<strong>Site Manager &gt; Module Templates &gt; Online Shop Layouts &gt; Overall Layout.</strong>
     </li>
     <li>
-    Replace this module with:<br />
-    <br />
-    <code>{<span>module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"</span>}</code><br />
-    <br />
-    For example:
+    Replace this module with: <code>{<span>module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"</span>}</code><br /> - for example 
     <code>{<span>module_shoppingcartsummary template="/cartsummary.tpl"</span>}</code>
     </li>
     <li>

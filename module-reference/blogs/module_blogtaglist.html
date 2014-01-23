@@ -5,13 +5,13 @@
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p><code class="language-markup">{<span>module_blogtaglist</span>}</code></p>
+<p><code>{<span>module_blogtaglist</span>}</code></p>
 </div>
 <div id="parameters">
 <h3>Parameters</h3>
 <ul>
-    <li>blogId - ID of the targeted blog</li>
-    <li>rowCount - number of rows to be generated (each tag is listed on a separate row, so if the row count is limited to 2, only the first 2 tags will  be generated)</li>
+    <li><strong>blogId</strong> - ID of the targeted blog</li>
+    <li><strong>rowCount</strong> - number of rows to be generated (each tag is listed on a separate row, so if the row count is limited to 2, only the first 2 tags will  be generated)</li>
 </ul>
 </div>
 <div id="layouts">
@@ -20,11 +20,12 @@
 </div>
 <div id="examples">
 <h3>Examples</h3>
-<p><code class="language-markup">{<span>module_blogtaglist,4168,3</span>}</code> will output:</p>
+<p>{<span>module_blogtaglist,4168,3</span>} will output:</p>
 <pre class="language-markup"><code>
 &lt;ul&gt;<br>
 &lt;li&gt; Tag 1 (1)&lt;/li&gt;<br>
 &lt;li&gt; Tag 2 (2)&lt;/li&gt;<br>
 &lt;li&gt; Tag 3 (1)&lt;/li&gt;<br>
 &lt;/ul&gt;
-</code></pre></div>
+</code>
+</pre></div>

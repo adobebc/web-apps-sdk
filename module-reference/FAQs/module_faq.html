@@ -7,13 +7,13 @@
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p><code class="language-markup">{<span>module_faq,filter,id,noTemplate,effect,targetFrame</span>}</code></p>
+<p><code>{<span>module_faq,filter,id,noTemplate,effect,targetFrame</span>}</code></p>
 </div>
 <div id="parameters">
 <h3>Parameters</h3>
 <ul>
-    <li>filter - filtering criteria for display and can be one of the following:
-    <ul>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
         <li>i - individual item</li>
         <li>a - all items</li>
         <li>l - latest items</li>
@@ -21,10 +21,10 @@
         <li>cr - displays a random item in a particular category</li>
     </ul>
     </li>
-    <li>id &ndash; system generated (do not change)</li>
-    <li>noTemplate &ndash; if you want to force the item not to use a site-level template when displayed pass in true, otherwise leave empty</li>
-    <li>effect &ndash; Enter ajax if you want to take advantage of the latest web technologies for a better customer experience</li>
-    <li>targetFrame &ndash; the frame in which to open the item in</li>
+    <li><strong>id</strong> &ndash; system generated (do not change)</li>
+    <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <em>true</em>, otherwise leave empty</li>
+    <li><strong>effect</strong> &ndash; enter <em>ajax</em> if you want to take advantage of the latest web technologies for a better customer experience</li>
+    <li><strong>targetFrame</strong> &ndash; the frame in which to open the item in</li>
 </ul>
 </div>
 <div id="layouts">
@@ -37,9 +37,9 @@
 <div id="examples">
 <h3>Examples</h3>
 <ul>
-    <li><code class="language-markup">{<span>module_faq,a,,,,_parent</span>}</code> - will display all FAQs and open them in parent frame.</li>
-    <li><code class="language-markup">{<span>module_faq,a, template="/layouts/custom/faq.tpl"</span>}</code> - will display all FAQs using the faq.tpl custom template.</li>
-    <li><code class="language-markup">{<span>module_faq,l,5</span>}</code> - will display the latest 5 FAQs.</li>
-    <li><code class="language-markup">{<span>module_faq,r,,true,ajax,_blank</span>}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li>
+    <li><code>{<span>module_faq,a,,,,_parent</span>}</code> - will display all FAQs and open them in parent frame.</li>
+    <li><code>{<span>module_faq,a, template="/layouts/custom/faq.tpl"</span>}</code> - will display all FAQs using the faq.tpl custom template.</li>
+    <li><code>{<span>module_faq,l,5</span>}</code> - will display the latest 5 FAQs.</li>
+    <li><code>{<span>module_faq,r,,true,ajax,_blank</span>}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li>
 </ul>
 </div>

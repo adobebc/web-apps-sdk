@@ -1,21 +1,21 @@
 <h2>{<span>module_webappsresults</span>}</h2>
 <div id="description">
 <h3>Description</h3>
-<p>Displays the webapp search results as pointers on a Google map. This module can be used together with <a href="/reference/module-reference/web-apps/module_webappsresults.html"><code class="language-markup">{<span>module_webappsresults</span>}</code></a></p>
+<p>Displays the webapp search results as pointers on a Google map. This module can be used together with <a href="/reference/module-reference/web-apps/module_webappsresults.html">{<span>module_webappsresults</span>}</a></p>
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p><code class="language-markup">{<span>module_webappsresultsmap,Google key,width,height,resultsPerPage,sort type</span>}</code></p>
+<p><code>{<span>module_webappsresultsmap,Google key,width,height,resultsPerPage,sort type</span>}</code></p>
 </div>
 <div id="parameters">
 <h3>Parameters</h3>
 <ul>
-    <li>Google key - enter the Google Maps key here. To get a key please follow the steps described in <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">this article</a>.</li>
-    <li>width - the width in pixels of the Google Maps canvas</li>
-    <li>height - the height in pixels of the Google Maps canvas</li>
-    <li>resultsPerPage - total number of items that will be rendered, enter "-1" to render all the items</li>
-    <li>sort type
-    <ul>
+    <li><strong>Google key</strong> - enter the Google Maps key here. To get a key please follow the steps described in <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">this article</a>.</li>
+    <li><strong>width</strong> - the width in pixels of the Google Maps canvas</li>
+    <li><strong>height</strong> - the height in pixels of the Google Maps canvas</li>
+    <li><strong>resultsPerPage</strong> - total number of items that will be rendered, enter "-1" to render all the items</li>
+    <li><strong>sort type</strong>
+<ul>
         <li>ALPHABETICAL (default) - items are sorted in alphabetical order form A-Z</li>
         <li>DATE - items are sorted from newest to oldest. The most recent item is displayed first.</li>
         <li>DATEREVERSE - will display the web app items oldest to newest</li>
@@ -33,6 +33,6 @@
 <div id="examples">
 <h3>Examples</h3>
 <ul>
-    <li><code class="language-markup">{<span>module_webappsresultsmap,MY_GOOGLE_MAPS_KEY,400,400,-1,default</span>}</code> - displays all the search result webapp items ordered alphabetically on a 400px x 400px Google map</li>
+    <li><code>{<span>module_webappsresultsmap,MY_GOOGLE_MAPS_KEY,400,400,-1,default</span>}</code> - displays all the search result webapp items ordered alphabetically on a 400px x 400px Google map</li>
 </ul>
 </div>

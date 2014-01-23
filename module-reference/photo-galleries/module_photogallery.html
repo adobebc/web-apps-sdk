@@ -6,18 +6,18 @@
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p><code class="language-markup">{<span>module_photogallery,ID,rowLength,targetFrame,resultsPerPage,Width,Height,UseStandardMethod</span>}</code></p>
+<p><code>{<span>module_photogallery,ID,rowLength,targetFrame,resultsPerPage,Width,Height,UseStandardMethod</span>}</code></p>
 </div>
 <div id="parameters">
 <h3>Parameters</h3>
 <ul>
-    <li>ID - System generated ID (Do not change this number.)</li>
-    <li>rowLength - Set the number of photos displayed per row</li>
-    <li>targetFrame - Set the destination frame where the photos will open (such as _blank)</li>
-    <li>resultsPerPage - Set the number of photos displayed per page</li>
-    <li>Width/Height - Set the width and height of the  						thumbnail images. The default value is 80 pixels wide by 80 pixels high.</li>
-    <li>UseStandardMethod - Use the standard Thumbnail Generation.  Set to False for better thumbnail quality (with increased file size).</li>
-	 <li>thumbnailAlgorithm - To avoid squashed images and control image proportion size. Use the following paramaters: proportional,fill, fill_proportional.</li>
+    <li><strong>ID</strong> - System generated ID (Do not change this number.)</li>
+    <li><strong>rowLength</strong> - Set the number of photos displayed per row</li>
+    <li><strong>targetFrame</strong> - Set the destination frame where the photos will open (such as <em>_blank</em>)</li>
+    <li><strong>resultsPerPage</strong> - Set the number of photos displayed per page</li>
+    <li><strong>Width/Height</strong> - Set the width and height of the  						thumbnail images. The default value is 80 pixels wide by 80 pixels high.</li>
+    <li><strong>UseStandardMethod</strong> - Use the standard Thumbnail Generation.  Set to <em>False</em> for better thumbnail quality (with increased file size).</li>
+	 <li><strong>thumbnailAlgorithm</strong> - To avoid squashed images and control image proportion size. Use the following paramaters: <em>proportional</em>,<em>fill</em>, <em>fill_proportional</em>.</li>
 </ul>
 <p class="alert alert-info">
 Note: If an image is 640 pixels wide x 400 pixels high and you set the thumbnail size to 120 x 120 pixels, the thumbnail image will have a maximum width of 120 and a smaller height. Proportions are respected when creating the thumbnail image.
@@ -39,5 +39,5 @@ Alternatively if the image dimensions are 400 pixels wide x 640 pixels high, the
 </div>
 <div id="examples">
 <h3>Examples</h3>
-<li><code class="language-markup">{<span>module_photogallery,26800,4,,12,120,120,true</span>}</code> - this displays 4 photos per line and a maximum of 12 photos per page. The thumbnail size has also been set to 120x120 pixels</li>
+<li>{<span>module_photogallery,26800,4,,12,120,120,true</span>} - this displays 4 photos per line and a maximum of 12 photos per page. The thumbnail size has also been set to 120x120 pixels</li>
 </div>

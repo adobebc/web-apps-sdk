@@ -5,17 +5,17 @@
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p><code class="language-markup">{<span>module_facebookcomments, moduleTemplateGroup="", language="en_US", url="", posts="", width="450", colorScheme=""</span>}</code></p>
+<p><code>{<span>module_facebookcomments, moduleTemplateGroup="", language="en_US", url="", posts="", width="450", colorScheme=""</span>}</code></p>
 </div>
 <div id="parameters">
 <h3>Parameters</h3>
 <ul>
-    <li>moduleTemplateGroup - This will specify a module template group, which is a folder located in FTP under <strong>/ModuleTemplates/SocialMedia/FacebookComments/</strong></li>
-    <li>language &ndash; Can be any <a href="http://www.facebook.com/translations/FacebookLocales.xml">Facebook locales</a> ISO language and country codes combined by an underscore (e.g en_US). If the parameter is not present, this will default to en_US</li>
-    <li>url &ndash;  If the parameter is not present, this will default to the current page URL. This must be a valid URL otherwise the Facebook plugin returns error when the button is pressed</li>
-    <li>posts &ndash; Any positive integers. 	This is used to set the maximum number of posts to display. If the parameter is not present, this will default to 10</li>
-    <li>width &ndash; Any positive integers. If the parameter is not present, the default value will be 450</li>
-    <li>color scheme &ndash; light, dark. If the parameter is not present, the default value will be light</li>
+    <li><strong>moduleTemplateGroup</strong> - This will specify a module template group, which is a folder located in FTP under <strong>/ModuleTemplates/SocialMedia/FacebookComments/</strong></li>
+    <li><strong>language</strong> &ndash; Can be any <a href="http://www.facebook.com/translations/FacebookLocales.xml">Facebook locales</a> ISO language and country codes combined by an underscore (e.g en_US). If the parameter is not present, this will default to en_US</li>
+    <li><strong>url</strong> &ndash;  If the parameter is not present, this will default to the current page URL. This must be a valid URL otherwise the Facebook plugin returns error when the button is pressed</li>
+    <li><strong>posts</strong> &ndash; Any positive integers. 	This is used to set the maximum number of posts to display. If the parameter is not present, this will default to 10</li>
+    <li><strong>width</strong> &ndash; Any positive integers. If the parameter is not present, the default value will be 450</li>
+    <li>color scheme &ndash; <em>light</em>, <em>dark</em>. If the parameter is not present, the default value will be <em>light</em></li>
 </ul>
 </div>
 <div id="layouts">
@@ -28,6 +28,6 @@
 <div id="examples">
 <h3>Examples</h3>
 <ul>
-    <li><code class="language-markup"><span>{</span>module_facebookcomments, url="<span>{</span>tag_itemurl_withhost<span>}</span>"}</code> - This enables Facebook comments and use the full URL of the module item, for example http://mysite.com/module-url. </li>
+    <li><code><span>{</span>module_facebookcomments, url="<span>{</span>tag_itemurl_withhost<span>}</span>"}</code> - This enables Facebook comments and use the full URL of the module item, for example <em>http://mysite.com/module-url</em>. </li>
 </ul>
 </div>

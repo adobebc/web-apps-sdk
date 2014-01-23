@@ -5,13 +5,13 @@
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p><code class="language-markup">{<span>module_literature,filter,id,targetFrame</span>}</code></p>
+<p><code>{<span>module_literature,filter,id,targetFrame</span>}</code></p>
 </div>
 <div id="parameters">
 <h3>Parameters</h3>
 <ul>
-    <li>filter - filtering criteria for display and can be one of the following:
-    <ul>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
         <li>i - individual item</li>
         <li>a - all items</li>
         <li>l - latest items</li>
@@ -19,8 +19,8 @@
         <li>cr - displays a random item in a particular category</li>
     </ul>
     </li>
-    <li>id system generated (do not change)</li>
-    <li>targetFrame the frame in which to open the item in</li>
+    <li><strong>id</strong> - system generated (do not change)</li>
+    <li><strong>targetFrame</strong> - the frame in which to open the item in</li>
 </ul>
 </div>
 <div id="layouts">
@@ -33,10 +33,10 @@
 <div id="examples">
 <h3>Examples</h3>
 <ul>
-    <li><code class="language-markup">{<span>module_literature,i,823,_blank</span>}</code> - This will display the link to individual literature item which when clicked will open in the new window</li>
-    <li><code class="language-markup">{<span>module_literature,a,,_blank</span>}</code> - This module will display links to all literature items which when clicked will open in the new window</li>
-    <li><code class="language-markup">{<span>module_literature,l,</span>}</code> - This module will display the latest items (default is 10 items)</li>
-    <li><code class="language-markup">{<span>module_literature,r,</span>}</code> - This module will display 1 random literature item</li>
-    <li><code class="language-markup">{<span>module_literature,cr,14606,</span>}</code> - This module will display 1 random literature item, from the category called "Company", identified through id 14606</li>
+    <li><code>{<span>module_literature,i,823,_blank</span>}</code> - This will display the link to individual literature item which when clicked will open in the new window</li>
+    <li><code>{<span>module_literature,a,,_blank</span>}</code> - This module will display links to all literature items which when clicked will open in the new window</li>
+    <li><code>{<span>module_literature,l,</span>}</code> - This module will display the latest items (default is 10 items)</li>
+    <li><code>{<span>module_literature,r,</span>}</code> - This module will display 1 random literature item</li>
+    <li><code>{<span>module_literature,cr,14606,</span>}</code> - This module will display 1 random literature item, from the category called "Company", identified through id 14606</li>
 </ul>
 </div>

@@ -5,25 +5,25 @@
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p><code class="language-markup">{<span>module_order,filter,SystemID,SortType,flat</span>}</code></p>
+<p><code>{<span>module_order,filter,SystemID,SortType,flat</span>}</code></p>
 </div>
 <div id="parameters">
 <h3>Parameters</h3>
 <ul>
-    <li>filter - filtering criteria for display and can be one of the following:
-    <ul>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
         <li>a - all items</li>
         <li>c - all items in a particular workflow classification</li>
     </ul>
     </li>
-    <li>SystemID - system generated, do not change - appears only when selecting "all items in a workflow" as a display criteria (a/c)</li>
-    <li>SortType- system generated (do not change)
-    <ul>
+    <li><strong>SystemID</strong> - system generated, do not change - appears only when selecting "all items in a workflow" as a display criteria (a/c)</li>
+    <li><strong>SortType</strong>- system generated (do not change)
+<ul>
         <li>Default - Sorts the orders by date</li>
         <li>Alphabetical - Sorts the orders alphabetically</li>
     </ul>
     </li>
-    <li>flat: if added, outputs the tags from the <a title="Order list layout" href="/reference/tag-reference/orders/order-list-layout.html">Order list layout</a> separately for each product inside the order </li>
+    <li><strong>flat</strong>: if added, outputs the tags from the <a title="Order list layout" href="/reference/tag-reference/orders/order-list-layout.html">Order list layout</a> separately for each product inside the order </li>
 </ul>
 </div>
 <div id="layouts">
@@ -36,8 +36,8 @@
 </a>
 <h3>Examples</h3>
 <ul>
-    <li><code class="language-markup">{<span>module_order,c,10044,Default</span>}</code> - will display all orders that belong to workflow with ID of 10044, sorting them by date</li>
-    <li><code class="language-markup">{<span>module_order,a,Alphabetically,flat</span>}</code> - will display all orders, alphabetically, also displaying every product within each order</li>
+    <li><code>{<span>module_order,c,10044,Default</span>}</code> - will display all orders that belong to workflow with ID of 10044, sorting them by date</li>
+    <li><code>{<span>module_order,a,Alphabetically,flat</span>}</code> - will display all orders, alphabetically, also displaying every product within each order</li>
 </ul>
 </div>
 </div>

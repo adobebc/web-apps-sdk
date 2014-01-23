@@ -6,14 +6,14 @@
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p><code class="language-markup">{<span>module_webappscustomer,ID,filter,itemID,,target,bkp,resultsPerPage,hideEmptyMessage,rowLength</span>}</code></p>
+<p><code>{<span>module_webappscustomer,ID,filter,itemID,,target,bkp,resultsPerPage,hideEmptyMessage,rowLength</span>}</code></p>
 </div>
 <div id="parameters">
 <h3>Parameters</h3>
 <ul>
-    <li>ID - system generated web app id (do not change)</li>
-    <li>filter - filtering criteria for display and can be one of the following:
-    <ul>
+    <li><strong>ID</strong> - system generated web app id (do not change)</li>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
         <li>i - individual item</li>
         <li>a - all items</li>
         <li>l - latest items</li>
@@ -22,12 +22,12 @@
         <li>cr - displays a random item in a particular category</li>
     </ul>
     </li>
-    <li>itemID - system generated individual item id (do not change)</li>
-    <li>target - e.g. _blank. Specify the frame you want the item to open in</li>
-    <li>bkp- specify True if you want to use the backup list template or leave empty</li>
-    <li>resultsPerPage - total number of items per page before pagination is used (limit of 500 items per page)</li>
-    <li>hideEmptyMessage - specify True if you don't want the No Items Found message to be displayed.</li>
-    <li>rowLength - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+    <li><strong>itemID</strong> - system generated individual item id (do not change)</li>
+    <li><strong>target</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
+    <li><strong>bkp</strong> - specify True if you want to use the backup list template or leave empty</li>
+    <li><strong>resultsPerPage</strong> - total number of items per page before pagination is used (limit of 500 items per page)</li>
+    <li><strong>hideEmptyMessage</strong> - specify <em>True</em> if you don't want the <em>No Items Found</em> message to be displayed.</li>
+    <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
 </ul>
 </div>
 <div id="layouts">
@@ -40,7 +40,7 @@
 <div id="examples">
 <h3>Examples</h3>
 <ul>
-    <li><code class="language-markup">{<span>module_webappscustomer,56,a,</span>}</code> - will display all web app items that belong to the customer that's logged in for a web app with ID 56</li>
-    <li><code class="language-markup">{<span>module_webappscustomer,56,c,14609,,_blank,,13 template="/layouts/custom/walist.html"</span>}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
+    <li><code>{<span>module_webappscustomer,56,a,</span>}</code> - will display all web app items that belong to the customer that's logged in for a web app with ID 56</li>
+    <li><code>{<span>module_webappscustomer,56,c,14609,,_blank,,13 template="/layouts/custom/walist.html"</span>}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
 </ul>
 </div>

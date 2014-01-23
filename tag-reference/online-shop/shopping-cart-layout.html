@@ -64,7 +64,7 @@ This way, with one layout for every country defined you can vary the contents of
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicetotalextaxamount</span>}</code><span class="cellcontent">Invoice total amount excluding tax (e.g. products ex tax + shipping ex tax)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicetotaltaxamount,state,state special tax rate,regular tax rate name,special tax rate name</span>}</code><span class="cellcontent">Invoice total amount of tax (e.g. products tax + shipping tax).  The additional parameters allow a user to configure the system to break out part of the tax for a specific state into two parts. This is useful in some countries where by law you are required to show GST or similar tax on a separate line, eg...
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicetotaltaxamount,state,state special tax rate,regular tax rate name,special tax rate name</span>}</code><span class="cellcontent">Invoice total amount of tax (e.g. products tax + shipping tax).  The additional parameters allow a user to configure the system to break out part of the tax for a specific state into two parts. This is useful in some countries where by law you are required to show GST or similar tax on a separate line, for example:
             <ul>
                 <li>Tax code BC is configured as 12% (the sum of 7% PST and 5% GST)</li>
                 <li>Our tag is configured like this: {<span>tag_invoicetotaltaxamount,BC,5,PST,GST</span>}</code></li>
@@ -138,11 +138,11 @@ This way, with one layout for every country defined you can vary the contents of
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingextaxamount</span>}</code><span class="cellcontent">Price of shipping option chosen excluding tax</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingoptions</span>}</code><span class="cellcontent">List of shipping options. Extend via {<span>tag_shippingoptions,X,Y,Z</span>}</code>. 
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingoptions</span>}</code><span class="cellcontent">List of shipping options. Extend via {<span>tag_shippingoptions,X,Y,Z</span>}</code><p>Parameters:</p>
             <ul>
             <li>set <em>X</em> to <em>true</em> to enable country and state dropdowns, for use with the Limit Delivery To feature or state taxes</li>
             <li>set <em>Y</em> to <em>true</em> to enable state tax regardless of customer country (otherwise only for customers in your country)</li>
-            <li>se <em>Z</em> to 2-letter country code to limit shipping country, e.g. <em>US</em> for United States. Use a semi-colon to add additional countries, e.g <em>US;AU</em></li>
+            <li>se <em>Z</em> to 2-letter country code to limit shipping country, e.g. <em>US</em> for United States. Use a semi-colon to add additional countries, e.g. <em>US;AU</em></li>
             </ul>
             </span></td>
         </tr>

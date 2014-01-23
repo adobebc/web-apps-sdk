@@ -52,10 +52,9 @@
     &lt;div class="cartSummary notEmpty{tag_isEmpty}"&gt;<br/>
     &lt;div class="cartSummaryItem"&gt;{tag_itemCount} item(s), Total {tag_currency}{tag_totalAmount}&lt;/div&gt;<br/>
     &lt;div&gt;&lt;a class="cartSummaryLink" href="{tag_cartUrl}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
-    &nbsp;&nbsp;<br/>
     &lt;/div&gt;<br/>
     </code>
-    <p><strong>Note:</strong> If you are using the above example, ensure that you add the below to your CSS to change the table class based on whether an item is added to the cart or not.</p>
+    <p class="alert alert-info"><strong>Note:</strong> If you are using the above example, ensure that you add the below to your CSS to change the table class based on whether an item is added to the cart or not.</p>
     <p><em>&nbsp;&nbsp;.empty0 { display:none; }</em></p>
     <p><em>&nbsp;&nbsp;.notEmpty1 { display:none; }</em></p>
     </li>
@@ -71,9 +70,9 @@
     <li>
     Replace this module with:<br />
     <br />
-    <em>{<span>module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"</span>}</em><br />
+    <code>{<span>module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"</span>}</code><br />
     <br />
-    Example:
+    For example:
     <code>{<span>module_shoppingcartsummary template="/cartsummary.tpl"</span>}</code>
     </li>
     <li>
@@ -81,5 +80,5 @@
     </li>
 </ol>
 <p>Test the new layout out by adding a product to the cart on the front end of your website.</p>
-<p><strong><strong>Note</strong></strong><em>: If the tpl file is not found, the module renders as if not having the parameter.</em></p>
+<p class="alert alert-info"><strong>Note</strong><em>: If the tpl file is not found, the module renders as if not having the parameter.</em></p>
 </div>

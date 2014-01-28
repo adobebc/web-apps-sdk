@@ -18,13 +18,42 @@
 <table width="100%" class="data-bordered">
     <tbody>
 	<tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_itemidt</span>}</code><span class="cellcontent">Item's system ID</span></td>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_itemid</span>}</code><span class="cellcontent">Item's system ID</span></td>
+        </tr>
+         <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_address1</span>}</code><span class="cellcontent">Address1</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_address2</span>}</code><span class="cellcontent">Address2</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addresscity</span>}</code><span class="cellcontent">City</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addresscountry</span>}</code>Country<span class="cellcontent"></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addressglatlng</span>}</code><span class="cellcontent">This tag provides a shortcut to generate GLatLng objects for use with the Google Maps API.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addresslatitude</span>}</code><span class="cellcontent">Latitutde of web app item address</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addresslongitude</span>}</code><span class="cellcontent"></span>Longitude of web app item address</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addressstate</span>}</code><span class="cellcontent">State</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addresszipcode</span>}</code><span class="cellcontent">ZIP code</span></td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addtofavorites,addtoImage,removefromImage</span>}</code><span class="cellcontent">Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span class="tagname">tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}</code></code></span></td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_button,Your Text</span>}</code><span class="cellcontent">will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></span></td>
+        </tr>
+          <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_commentcount</span>}</code><span class="cellcontent">Number of comments for current post</span></td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_counter</span>}</code><span class="cellcontent">Incremental count of the item on the page</span></td>
@@ -33,7 +62,7 @@
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_delete</span>}</code><span class="cellcontent">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_description</span>}</code><span class="cellcontent">Description of item (editor content). On the "List Layout  (Backup)" you can use <span>{</span>tag_description,10</code>}</span> to display the first 10 characters of the webapp item's description.</span></td>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_description,numberofcharacters</span>}</code><span class="cellcontent">Description of item (editor content). On the "List Layout  (Backup)" you can use <span>{</span>tag_description,10</code>}</span> to display the first 10 characters of the webapp item's description.</span></td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_edit</span>}</code><span class="cellcontent">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></span></td>
@@ -62,6 +91,12 @@
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_itemurl_nolink</span>}</code><span class="cellcontent">Relative URL of the web app item for example <em>/car-catalogue/ford-explorer</em></span></td>
+        </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_rowcss,myclass</span>}</code><span class="cellcontent">Replate myclass with your own CSS class. Alternates between classes, such as "myclass" and "myclass_alternate"</span></td>
+        </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_tellafriend</span>}</code><span class="cellcontent">Tell a friend about this item</span></td>
         </tr>
     </tbody>
 </table>

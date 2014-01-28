@@ -1,0 +1,42 @@
+<h2>Shopping cart</h2>
+
+<div id="accessible">
+<h3>Accessible from</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Online Shop Layouts &gt;
+Shopping Cart </li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/OnlineShop/shopping-cart-XX.html
+  <br/><br/>
+  Replace "XX" with the country code you have added in the Site Settings &gt; Site Domains panel (see the "Country" column). <br>
+  <br>
+  If you have multiple domains with different "Country" values you will find multiple shopping-cart-XX files, one for each country. This way, with one layout for every country defined you can vary the contents of the layout to accomodate a multilingual website. </li>
+</ul></div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+  
+  <tbody>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_cartUrl</span>}</code><span class="cellcontent">Renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_itemCount</span>}</code><span class="cellcontent">Renders the number of the items in the cart or <em>0</em> if none.</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_totalAmount</span>}</code><span class="cellcontent">Renders the total money amount of the items (with two decimals) or <em>0.00</em> if the items don't have prices or there are no items in the cart</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_currency</span>}</code><span class="cellcontent">Renders the currency of the current country setting, which is either the site country or the country of the order (if set)</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_totalAmountWithCurrency</span>}</code><span class="cellcontent">Renders both currency and total amount (this is only for the sake of convenience, you might want to use it instead of {<span>tag_currency</span>}{<span>tag_totalAmount</span>}</code>)</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_isEmpty</span>}</code><span class="cellcontent">Renders <em>0</em> or <em>1</em> (for when the cart is empty - used to display a different message when there are no items)</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_countryCode</span>}</code><span class="cellcontent">Renders the country code (of the site or of the order, if set)</span></td>
+        </tr>
+  </tbody>
+</table>
+</div>

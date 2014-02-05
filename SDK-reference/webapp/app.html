@@ -7,10 +7,35 @@
       <p>This class provides the model for interacting with web apps.</p>
       
       <h3>Load webapps list</h3>
-      <pre class="language-javascript"><code>var apps = new BCAPI.Models.WebApp.AppCollection();<br>apps.fetch({<br>    success: function (webAppItems) {<br>        // handle success          <br>    },<br>    error: function (webAppItems, xhr) {<br>        // handle errors          <br>    }<br>});<br>apps.each(function (webApp) {<br>    // display logic  <br>});</code></pre>
+      <pre class="language-javascript"><code>var apps = new BCAPI.Models.WebApp.AppCollection();
+apps.fetch({
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+
+apps.each(function(webApp) {
+        // display logic
+});
+</code></pre>
+      <br>
       
       <h3>Create webapp</h3>
-      <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({<br>    &amp;quot;name&amp;quot;: &amp;quot;Test app&amp;quot;<br>});<br>app.save({<br>    success: function (webAppItem) {<br>        // handle success          <br>    },<br>    error: function (webAppItem, xhr) {<br>        // handle errors          <br>    }<br>});</code></pre>
+      <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({
+        "name": "Test app"
+});
+
+app.save({
+        success: function(webAppItem) {
+            // handle success
+        },
+        error: function(webAppItem, xhr) {
+            // handle errors
+        }
+});</code></pre>
       <p>If you want to refresh collections which rely on Item model please refresh those collections.</p>
       
       <h3>Remove app</h3>

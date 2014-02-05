@@ -1,0 +1,55 @@
+
+  
+    <h2 id="App">new App()</h2>
+  
+  
+    
+      <p>This class provides the model for interacting with web apps.</p>
+      
+      <h3>Load webapps list</h3>
+      <pre class="language-javascript"><code>var apps = new BCAPI.Models.WebApp.AppCollection();<br>apps.fetch({<br>    success: function (webAppItems) {<br>        // handle success          <br>    },<br>    error: function (webAppItems, xhr) {<br>        // handle errors          <br>    }<br>});<br>apps.each(function (webApp) {<br>    // display logic  <br>});</code></pre>
+      
+      <h3>Create webapp</h3>
+      <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({<br>    &amp;quot;name&amp;quot;: &amp;quot;Test app&amp;quot;<br>});<br>app.save({<br>    success: function (webAppItem) {<br>        // handle success          <br>    },<br>    error: function (webAppItem, xhr) {<br>        // handle errors          <br>    }<br>});</code></pre>
+      <p>If you want to refresh collections which rely on Item model please refresh those collections.</p>
+      
+      <h3>Remove app</h3>
+      <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({name: "Test app"});
+app.destroy({
+    success: function(webAppItem, response) {
+        // handle success here.
+ },
+ error: function(webAppItem, xhr, options) {
+        // handle error scenario.
+ }
+});
+</code></pre>
+      
+      <h3>Supported attributes</h3>
+      <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({
+    templateId: -1,
+ uploadFolder: "images",
+ requiresApproval: true,
+ allowFileUpload: true,
+ customerCanAdd: false,
+ customerCanDelete: false,
+ customerCanEdit: false,
+ anyoneCanEdit: false,
+ requiresPayment: false,
+ validDays: -1, // never expire
+ roleId: 0,
+ hasAddress: false,
+ disableDetailPages: false,
+ locationEnabled: false
+});</code></pre>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp.js.html">src/webapp.js</a></li>
+        </ul>
+      
+    
+  
+

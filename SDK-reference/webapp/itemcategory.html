@@ -1,28 +1,35 @@
 
   
-    <h2 id="Category">new Category()</h2>
+    <h2 id="ItemCategory">new ItemCategory()</h2>
   
   
     
-      <p>This class provides a way of working with individual category items.</p>
+      <p>This class provides a way of retrieving and assigning categories to items As an array of category ids that can be retrieved via the<a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.CategoryCollection.html">BCAPI.Models.CategoryCollection</a></p>
     
     
       <p><strong>Source:</strong></p>
       
         <ul>
-          <li><a href="http://adobebc.github.io/bcapi.js/category.js.html">src/category.js</a></li>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item_category.js.html">src/webapp_item_category.js</a></li>
         </ul>
       
     
-    <h3>Example</h3>
-    <pre class="language-javascript"><code>var category = new BCAPI.Models.Category({name: 'Test Category'});
-To save:
-category.save(options)
-To get a category by id:
-var category = new BCAPI.Models.Category({id: 1});
-category.fetch(options)</code></pre>
-<p>Update and delete are not supported
-</p>
+    <h3>Examples</h3>
+    <pre class="language-javascript"><code>var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
+itemCategories.fetch({
+                        success: function(data) {
+                            _.each(data.get("items"), function(categoryId) {
+                                var category = new BCAPI.Models.Category({id: categoryId});
+                                category.fetch({success: doSomethingWithCategName, error: onError})
+                            })
+                        },
+                        error: function(data, xhr){}
+                     });</code></pre>
+                     <p>To assign a set of categories:</p>
+    <pre class="language-javascript"><code>var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
+itemCategories.set(items, [1,2,3,4]);
+itemCategories.save({success: onSaveOK, error: onSaveFailed})
+</code></pre>
   
 
 
@@ -68,13 +75,13 @@ model.destroy({
   
   
     
-      <p>This method returns the correct endpoint for the category.</p>
+      <p>This method returns the correct endpoint for the specific webapp and item id.</p>
     
     
       <p><strong>Source:</strong></p>
       
         <ul>
-          <li><a href="http://adobebc.github.io/bcapi.js/category.js.html">src/category.js</a></li>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item_category.js.html">src/webapp_item_category.js</a></li>
         </ul>
       
     
@@ -106,7 +113,7 @@ model.destroy({
       <p>A list of headers appended to ajax calls.</p>
     
     
-      <p><strong>Type:</strong> objectg</p>
+      <p><strong>Type:</strong> object</p>
     
   
   
@@ -114,30 +121,16 @@ model.destroy({
   
   
     
-      <p>This method change default Backbone save behaviour in order to simplify save invocation.</p>
+      <p>This method performs the save to the server It is overwritten here to always force a PUT operation on the endpoint</p>
     
     
-      <p><strong>Inherited From:</strong></p>
-      
-        <ul>
-          <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html#save">BCAPI.Models.Model#save</a></li>
-        </ul>
-      
       <p><strong>Source:</strong></p>
       
         <ul>
-          <li><a href="http://adobebc.github.io/bcapi.js/models.js.html">src/models.js</a></li>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item_category.js.html">src/webapp_item_category.js</a></li>
         </ul>
       
     
-    <h3>Example</h3>
-    <pre class="language-javascript"><code>var model = new PersonModel();
-model.save({
-	success: function(model, response) {
-		// handle success logic in here
-	}
-});
-</code></pre>
   
   
     <h3 id="sync"> sync(method, model, options) → {Promise}</h3>
@@ -193,6 +186,22 @@ model.save({
     
     
       <p><strong>Type:</strong> promise</p>
+    
+  
+  
+    <h3 id="toJSON"> toJSON()</h3>
+  
+  
+    
+      <p>This method returns the data to be json-ified when saving The API only recieves an array of ints, so we have to extract it from the items field.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item_category.js.html">src/webapp_item_category.js</a></li>
+        </ul>
+      
     
   
   

@@ -1,0 +1,168 @@
+
+  
+    <h2 id="Item">new Item()</h2>
+  
+  
+    
+      <p>This class provides useful operations for interacting with web app items. You can find various examples of how to use it.</p>
+      
+      <h3>Load items paginated</h3>
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({
+        skip: 10, limit: 100,
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+
+items.each(function(webAppItem) {
+        // display logic
+});
+</code></pre>
+      
+      <h3>Filtering items</h3>
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({     
+        where: {"name": ""Web app item new"},
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+</code></pre>
+      
+      <h3>Ordering items</h3>
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({
+        order: "-name",
+        success: function(webAppItems) {
+            // handle success
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+</code></pre>
+      
+      <h3>All in one usage</h3>
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+items.fetch({
+        skip: 10, limit: 100,
+        where: {"name": ""Web app item new"},
+        order: "-name",
+        success: function(webAppItems) {
+            webAppItems.each(function(webAppItem) {
+                 // display logic
+            });
+        },
+        error: function(webAppItems, xhr) {
+            // handle errors
+        }
+});
+</code></pre>
+      
+      <h3>Create item</h3>
+      <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("Test webapp", {
+        "name": "Test item"
+});
+
+var response = item.save({
+        success: function(webAppItem) {
+            // handle success
+        },
+        error: function(webAppItem, xhr) {
+            // handle errors
+        }
+});</code></pre>
+      <p>If you want to refresh collections which rely on Item model please refresh those collections.</p>
+      
+      <h3>Remove item</h3>
+      <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("Test webapp", {id: 1});
+item.destroy({
+    success: function(webAppItem, response) {
+        // handle success here.
+ },
+ error: function(webAppItem, xhr, options) {
+        // handle error scenario.
+ } 
+});</code></pre>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item.js.html">src/webapp_item.js</a></li>
+        </ul>
+      
+    
+    <h3>Example</h3>
+    <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item({
+	"name": "Item7",
+	"weight": 7,
+	"releaseDate": "2013-01-30",
+	"expiryDate": "9999-01-01",
+	"enabled": true,
+	"slug": "item7",
+	"description": "item7 description",
+	"roleId": null,
+	"submittedBy": -1,
+	"templateId": 123,
+	"address": "item7_address",
+	"city": "item7_city",
+	"state": "item7_state",
+	"zipCode": "000007",
+	"country": "US",
+	"fields": {
+	    "field_string_required": "item7_field1_value",
+	    "field2_string_optional": "item7_field2_value",
+	    "field3_number": 7,
+	    "field4_dateTime": "2012-01-20",
+	    "field5_list": "item1"
+	}
+});
+</code></pre>
+  
+<br><pre class="language-javascript"><code>&nbsp;</code></pre>
+  
+
+
+<h2>Methods</h2>
+
+  
+    <h3 id="endpoint"> endpoint()</h3>
+  
+  
+    
+      <p>This method returns the correct endpoint for the web app items.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item.js.html">src/webapp_item.js</a></li>
+        </ul>
+      
+    
+  
+  
+    <h3 id="toJSON"> toJSON()</h3>
+  
+  
+    
+      <p>This method is overriden in order to remove <em>webapp</em> field from API request. Webapp it's a pseudo attribute used internally by an item collection.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item.js.html">src/webapp_item.js</a></li>
+        </ul>
+      
+    
+  
+

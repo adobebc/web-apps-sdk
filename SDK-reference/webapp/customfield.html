@@ -1,0 +1,155 @@
+
+  
+    <h2 id="CustomField">new CustomField()</h2>
+  
+  
+    
+      <p>This class provides support for custom fields description belonging to <a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.WebApp.App.html">BCAPI.Models.WebApp.App</a></p>
+      
+      <h3>Create a new custom field</h3>
+      <pre class="language-javascript"><code>var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
+ "id": 1,
+    "name": "Part code",
+    "type": "DataSource",
+    "listItems": null,
+    "dataSource": "Part Codes",
+    "required": false
+}, true);
+
+customField.save({
+    success: function(fieldModel) {
+        // do something on success.
+    }
+});</code></pre>
+      <p>In the attributes, the <strong>id</strong> must be passed.</p>
+      <p>The last parameter specifies if the custom field is new or exists already. This is used to determine the correct HTTP verb to call since the id is always passed. If omitted, it is assumed that the custom field is new.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_customfield.js.html">src/webapp_customfield.js</a></li>
+        </ul>
+      
+    
+  
+
+
+<h2>Methods</h2>
+
+  
+    <h3 id="endpoint"> endpoint()</h3>
+  
+  
+    
+      <p>This method returns the endpoint for custom fields api.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_customfield.js.html">src/webapp_customfield.js</a></li>
+        </ul>
+      
+    
+  
+  
+    <h3 id="parse"> parse(response)</h3>
+  
+  
+    
+      <p>We override this method in order to transform each returned item into a strong typed <a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.WebApp.CustomField.html">BCAPI.Models.WebApp.CustomField</a> models.</p>
+    
+    <h3>Parameters:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>response</td>
+          <td>Object</td>
+          <td><p>The JSON response received from CustomField api.</p></td>
+        </tr>
+      </tbody>
+    </table>
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_customfield.js.html">src/webapp_customfield.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>A list of web app custom fields.</p>
+    
+  
+  
+    <h3 id="toJSON"> toJSON()</h3>
+  
+  
+    
+      <p>This method is overriden in order to remove <em>webapp</em> field from API request. Webapp it's a pseudo attribute used internally by an item collection.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_customfield.js.html">src/webapp_customfield.js</a></li>
+        </ul>
+      
+    
+  
+  
+    <h3 id="urlRoot"> urlRoot() → {string}</h3>
+  
+  
+    
+      <p>This method is overriden because we need access to members in order to create the endpoint.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_customfield.js.html">src/webapp_customfield.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>An absolute entry point API.</p>
+    
+    
+      <p><strong>Type:</strong> string</p>
+    
+  
+  
+    <h3 id="urlRoot"> urlRoot() → {string}</h3>
+  
+  
+    
+      <p>This method is overriden because we need access to members in order to create the endpoint.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item.js.html">src/webapp_item.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>An absolute entry point API.</p>
+    
+    
+      <p><strong>Type:</strong> string</p>
+    
+  
+

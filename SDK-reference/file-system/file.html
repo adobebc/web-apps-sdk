@@ -1,0 +1,203 @@
+
+  
+    <h2 id="File">new File()</h2>
+  
+  
+    
+      <p>This class allows you to interact with files stored in your BC site. Usage examples:</p>
+      
+      <h3>Create a new file.</h3>
+      <pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+var data = 'Hello World !';
+f.upload(data).done(function() {
+    console.log('File uploaded succesfully');
+});</code></pre>
+      <p>A file is created in your site's file system only after uploading some content.</p>
+      <p>The content can be any javascript object, including file objects obtained from html upload forms.</p>
+      <p>BCAPI.Models.FileSystem.Root is the root folder in your site's file structure. You can also create a file object by specifying the file's full path.</p>
+      <pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
+</code></pre>
+      <p>If you omit the / at the beginning it will be added automatically.</p>
+      <p>So the below is equivalent to the above instantiation:</p>
+      <pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File('hello_world.txt');
+</code></pre>
+      <p>You can also create a file by specifying the name and the parent folder of the file. The following piece of code creates the file /my/special/file:</p>
+      <pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File({
+    'parent': new BCAPI.Models.FileSystem.Folder('/my/special'),
+    'name': 'file'
+});
+
+f.upload(files[0]);
+</code></pre>
+      
+      <h3>Get the file metadata</h3>
+      <pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+f.fetch().done(function() {
+    console.log('File name is: ', f.get('name'));
+    console.log('Last update date is: ', f.get('lastModified'));
+});
+</code></pre>
+      
+      <h3>Download the file content</h3>
+      <pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+f.download().done(function(content) {
+    console.log('File content is: ' + content);
+});
+</code></pre>
+      
+      <h3>Rename a file</h3>
+      <p>Use save to change the name of a file.</p>
+      <pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File('/my/file');
+f.set('name', 'new-file');
+f.save().done(function() {
+    console.log('File name has been changed. Path is ' + f.get('path'));
+    //prints: /my/new-file
+});
+
+// Delete the file
+
+var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+f.destroy().done(function() {
+    console.log('File was destroyed');
+});</code></pre>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/file_system.js.html">src/file_system.js</a></li>
+        </ul>
+      
+    
+  
+
+
+<h2>Methods</h2>
+
+  
+    <h3 id="contentUrl"> contentUrl() → {string}</h3>
+  
+  
+    
+      <p>Returns the url where the content can be accessed.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/file_system.js.html">src/file_system.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>The URL of the resource</p>
+    
+    
+      <p><strong>Type:</strong> string</p>
+    
+  
+  
+    <h3 id="download"> download() → {promise}</h3>
+  
+  
+    
+      <p>Downloads the content of the file</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/file_system.js.html">src/file_system.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>A promise which will be resolved with the content of the file.</p>
+    
+    
+      <p><strong>Type:</strong> Promise</p>
+    
+  
+  
+    <h3 id="upload"> upload(data) → {promise}</h3>
+  
+  
+    
+      <p>Uploads a new content for the file. This method can be called if the file isn't yet created - the file will be created afterwards.</p>
+    
+    <h3>Parameters:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>data</td>
+          <td>any</td>
+          <td><p>the data object which will be the file's content</p></td>
+        </tr>
+      </tbody>
+    </table>
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/file_system.js.html">src/file_system.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>A promise that will be completed when the file is uploaded</p>
+    
+    
+      <p><strong>Type:</strong> Promise</p>
+    
+  
+  
+    <h3 id="uploadAndFetch"> uploadAndFetch(data) → {promise}</h3>
+  
+  
+    
+      <p>Uploads new content and fetches the metadata for the file which will then be used to populate the object. This method can be called even if the file isn't created yet. Useful if you want to create a file and retrieve it's metadata resulted from the new content immediatly.</p>
+    
+    <h3>Parameters:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>data</td>
+          <td>any</td>
+          <td><p>The data object</p></td>
+        </tr>
+      </tbody>
+    </table>
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/file_system.js.html">src/file_system.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>A promise that will be completed when the file is uploaded and the new metadata is retrieved.</p>
+    
+    
+      <p><strong>Type:</strong> Promise</p>
+    
+  
+

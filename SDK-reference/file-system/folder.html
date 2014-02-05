@@ -1,0 +1,121 @@
+
+  
+    <h2 id="Folder">new Folder()</h2>
+  
+  
+    
+      <p>This class allows you to interact with the folders in the file system of your site.</p>
+      
+      <h3>Creating a folder</h3>
+      <p>A folder object can be instantiated in two ways.</p>
+      <p>You can specify the path of the folder:</p>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder('/folder/path');</code></pre>
+      <p>You can also specify the name of the folder, and the parent directory:</p>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder({
+    &#39;parent&#39;: BCAPI.Models.FileSystem.Root,
+    &#39;name&#39;: &#39;my-folder&#39;
+});</code></pre>
+      <p>The root directory / cannot be created like this. You can only get it with:</p>
+      <pre class="language-javascript"><code>var root = BCAPI.Models.FileSystem.Root;<br>console.log(root.get(&amp;#39;path&amp;#39;)); //prints &amp;#39;/&amp;#39;</code></pre>
+      <p>It should be noted that just creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required:</p>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&amp;#39;my-folder&amp;#39;);<br>folder.create().done(function () {<br>    console.log(&amp;#39;The folder has been created !&amp;#39;);<br>});</code></pre>
+      
+      <h3>Get the folder's metadata</h3>
+      <p>You use fetch to obtain the folder's details, including the files &amp; folders that the folder contains:</p>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&amp;#39;/my/existing/folder&amp;#39;);<br>folder.fetch().done(function () {<br>    console.log(&amp;#39;Folder last update date is: &amp;#39; + folder.get(&amp;#39;lastModified&amp;#39;));<br>    console.log(&amp;#39;Printing the folder contents: &amp;#39;);<br>    var contents = folder.get(&amp;#39;contents&amp;#39;);<br>    for (var i = 0; i &amp;lt; contents.length; i++) {<br>        var entity = contents[i];<br>        var isFile = entity instanceof BCAPI.Models.FileSystem.File;<br>        // also works: <br>        var isFile = entity.get(&amp;#39;type&amp;#39;) === &amp;#39;file&amp;#39;;<br>        if (isFile) {<br>            console.log(&amp;#39;File &amp;#39; + file.get(&amp;#39;name&amp;#39;) + &amp;#39; updated at &amp;#39; + file.get(&amp;#39;lastModified&amp;#39;));<br>        } else {<br>            console.log(&amp;#39;Folder &amp;#39; + folder.get(&amp;#39;name&amp;#39;));<br>        }<br>    }<br>});</code></pre>
+      
+      <h3>Rename the folder</h3>
+      <p>Use save to rename a folder:</p>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&amp;#39;/my/folder&amp;#39;);<br>folder.set(&amp;#39;name&amp;#39;, &amp;#39;new-folder&amp;#39;);<br>folder.save().done(function () {<br>        console.log(&amp;#39;The folder has been renamed&amp;#39;);<br>        console.log(&amp;#39;Path is now &amp;#39; + folder.get(&amp;#39;path&amp;#39;)); <br>  //prints: /my/new-folder  <br>});</code></pre>
+      
+      <h3>Delete the folder</h3>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&amp;#39;/my-folder&amp;#39;);<br>folder.destroy().done(function () {<br>    console.log(&amp;#39;Folder was deleted&amp;#39;);<br>});</code></pre>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/file_system.js.html">src/file_system.js</a></li>
+        </ul>
+      
+    
+  
+
+
+<h2>Methods</h2>
+
+  
+    <h3 id="create"> create() → {promise}</h3>
+  
+  
+    
+      <p>Creates the specified folder on the server.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/file_system.js.html">src/file_system.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>A promised that will be resolved when the folder is created</p>
+    
+    
+      <p><strong>Type:</strong> Promise</p>
+    
+  
+  
+    <h3 id="file"> file(name, attributes, options) → {<a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.FileSystem.File.html">BCAPI.Models.FileSystem.File</a>}</h3>
+  
+  
+    
+      <p>Creates a file object with the specified name and that has as parent this folder.</p>
+    
+    <h3>Parameters:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>name</td>
+          <td>string</td>
+          <td><p>The name of the file</p></td>
+        </tr>
+        <tr>
+          <td>attributes</td>
+          <td>object</td>
+          <td><p>Properties of the file</p></td>
+        </tr>
+        <tr>
+          <td>options</td>
+          <td>object</td>
+          <td><p>Options for the file</p></td>
+        </tr>
+      </tbody>
+    </table>
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/file_system.js.html">src/file_system.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>A file that is a child of this folder</p>
+    
+    
+      Type
+      <a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.FileSystem.File.html">BCAPI.Models.FileSystem.File</a>
+    
+  
+

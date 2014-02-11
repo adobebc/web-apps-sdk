@@ -61,6 +61,7 @@ describe("Check webapp assign customfields.", function() {
     	var customFieldsCreated = undefined;
     	
         var customField1 = new BCAPI.Models.WebApp.CustomField(webappName, {
+            "id"      : 1,
             "name"    : "Part code1",
             "type"    : "DropDown_List",
             "listItems": ["First option", "Second one"],
@@ -68,6 +69,7 @@ describe("Check webapp assign customfields.", function() {
         });
 
         var customField2 = new BCAPI.Models.WebApp.CustomField(webappName, {
+            "id"      : 2,
             "name"    : "Part code2",
             "type"    : "DropDown_List",
             "listItems": ["First option", "Second one"],
@@ -75,7 +77,8 @@ describe("Check webapp assign customfields.", function() {
         });
         
         var customField3 = new BCAPI.Models.WebApp.CustomField(webappName, {
-        	"name": "Datasource Custom Field",
+            "id"      : 3,
+            "name": "Datasource Custom Field",
         	"type": "DataSource",
         	"required": false,
         	"dataSource": "Car Catalogue"

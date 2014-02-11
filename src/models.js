@@ -1,4 +1,5 @@
 (function($) {
+
 	/**
      * @namespace Models
      * @memberOf BCAPI
@@ -27,10 +28,10 @@
     BCAPI.Models.Model = Backbone.Model.extend({
     	/**
     	 * This method must be overriden by each concrete class in order to give the correct relative path
-    	 * to API entry point.
+         * to API entry point.         
     	 * 
     	 * @method
-    	 * @instance
+    	 * @instance 
     	 * @returns {String} the model API entry point.
     	 * @throws An error if endpoint method is not overriden in concrete models.
     	 * @memberOf BCAPI.Models.Model 
@@ -44,32 +45,36 @@
     	 * need a different behavior in your model, please override this method.
     	 * 
     	 * @method
-    	 * @instance
+    	 * @static
     	 * @memberOf BCAPI.Models.Model
     	 * @returns {Object} A list of headers appended to ajax calls.
     	 */
     	headers: function() {
-    		return {
-    			"Authorization": BCAPI.Helper.Site.getAccessToken()
-    		};
+            return {
+                "Authorization": BCAPI.Helper.Site.getAccessToken()
+            };
     	},
     	/**
     	 * This method automatically builds absolute entry point url of the model.
+         * 
+         * This method accepts as parameter the model's endpoint. If this is not 
+         * specified, then the {@link endpoint} method is called.
     	 *
     	 * @method
     	 * @instance
-    	 * @returns {string} An absolute entry point API.
-    	 * @memberOf BCAPI.Models.Model
+         * @memberOf BCAPI.Models.Model
+         * @param {String} modelEndpoint The model's endpoint. 
+    	 * @returns {string} An absolute entry point API.    	 
     	 */
-    	urlRoot: function() {
-    		var url = BCAPI.Helper.Site.getRootUrl(),
-    			endpoint = this.endpoint();
-    		    		
-    		if(endpoint.charAt(0) !== "/") {
-    			endpoint = '/' + endpoint;
-    		} 
-    		
-    		return url + endpoint;
+    	urlRoot: function(modelEndpoint) {
+            var url = BCAPI.Helper.Site.getRootUrl(),
+                modelEndpoint = modelEndpoint || this.endpoint();
+
+            if(modelEndpoint.charAt(0) !== "/") {
+                modelEndpoint = '/' + modelEndpoint;
+            } 
+            
+            return url + modelEndpoint;
     	},
     	/**
     	 * This method change default Backbone save behaviour in order to simplify save invocation.
@@ -169,6 +174,36 @@
     		this._defaultSkip = BCAPI.Config.Pagination.skip;
     		this._relationFetchPending = 0;
     	},
+        /**
+         * This method returns the predefined headers which are automatically appended to ajax calls.
+         * 
+         * The default implementation delegates this to the model's method.
+         * 
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.Model
+         * @returns {Object} A list of headers appended to ajax calls.
+         */
+        headers: function() {
+            return this.model.prototype.headers.call();
+        },
+        /**
+         * This method automatically builds the absolute entry point url of the collection.
+         *
+         * This default implementation of this method assumes that the endpoint and
+         * urlRoot of the corresponding model class are static.
+         * In case this is not true, and member access is needed to create the endpoint,
+         * this method will need to be overriden in the implementing collection class.
+         * 
+         * @method
+         * @static
+         * @memberOf BCAPI.Models.Collection
+         * @returns {string} An absolute entry point API.        
+         */
+        urlRoot: function() {
+            var modelEndpoint = this.model.prototype.endpoint();
+            return this.model.prototype.urlRoot(modelEndpoint);
+        },
     	/**
     	 * This method is used to fetch records into the current collection. Depending on the given options
     	 * records can be filtered, sorted and paginated. For an example of how this collections are meant to be used
@@ -184,9 +219,9 @@
     	 * @param {String} options.order An attribute name by which we order records. It can be prefixed with - if you want descending order.
     	 * @returns {Promise} a promise which can be used to determine http request state. 
     	 */
-    	fetch: function(options) {
+    	fetch: function(options) {            
             options = options || {};
-    		options.headers = new this.model().headers();
+    		options.headers = this.headers();
     		options.dataType = "json";
     		
     		this._limit = options.limit;
@@ -208,10 +243,8 @@
     	 * @instance
     	 * @memberOf BCAPI.Models.Collection
     	 */
-    	url: function(model) {
-    		model = model || (new this.model());
-    		
-			var urlWithParams = [model.urlRoot(), "?"];
+    	url: function() {    		
+			var urlWithParams = [this.urlRoot(), "?"];
 			
 			for(var key in this.server_api) {
 				var val = this.server_api[key].apply(this);

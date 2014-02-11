@@ -1,6 +1,10 @@
 (function($) {
 	"use strict";
 
+    var endpointGenerator = function(webappName) {
+        return "/api/v2/admin/sites/current/webapps/" + webappName + "/fields";
+    }
+
 	/**
 	 * This class provides support for custom fields description belonging to {@link BCAPI.Models.WebApp.App}
 	 * 
@@ -8,12 +12,13 @@
 	 * 
 	 * ```javascript
 	 * var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
+     *  "id": 1,
      *	"name": "Part code",
      *	"type": "DataSource",
      *	"listItems": null,
      *	"dataSource": "Part Codes",
      *	"required": false
-	 * });
+	 * }, true);
 	 * 
 	 * customField.save({
 	 * 	success: function(fieldModel) {
@@ -22,17 +27,34 @@
 	 * });
 	 * ```
 	 * 
+     * In the attributes, the id must be passed.
+     *
+     * The last parameter specifies if the custom field is new or exists already. This is used
+     * to determine the correct HTTP verb to call since the id is always passed.
+     * If omitted, it is assumed that the custom field is new.
+     *
 	 * @name CustomField
 	 * @class
 	 * @constructor
 	 * @memberOf BCAPI.Models.WebApp
 	 */
 	BCAPI.Models.WebApp.CustomField = BCAPI.Models.Model.extend({
-		constructor: function(webappName, attributes, options) {
+        constructor: function(webappName, attributes, isNew, options) {
 			BCAPI.Models.Model.call(this, attributes, options);
+                        
+            this._isNew = _.isBoolean(isNew) ? isNew : true;
+
+            if(this._isNew && (_.isUndefined(attributes) || _.isUndefined(attributes["id"]))) {
+                throw new Error("The id for the custom field must be specified.");
+            }
+
+            var id = Number(attributes["id"]);
+            if(!_.isNumber(id) || _.isNaN(id) || id <= 0) {
+                throw new Error("The id for the custom field must be a positive number.");
+            }
 			
 			this._webappName = webappName;
-			this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});			
+			this.set({webapp: new BCAPI.Models.WebApp.App({name: webappName})});
 		},
 		/**
 		 * This method returns the endpoint for custom fields api.
@@ -42,7 +64,7 @@
 		 * @memberOf BCAPI.Models.WebApp.CustomField
 		 */
 		endpoint: function() {
-			return "/api/v2/admin/sites/current/webapps/" + this._webappName + "/fields";
+			return endpointGenerator(this._webappName);
 		},
     	/**
     	 * This method is overriden in order to remove *webapp* field from API request. 
@@ -58,7 +80,14 @@
     		delete result["webapp"];
     		
     		return result;
-    	}    	
+    	},
+        /**
+         * This method is overriden in order to use the correct HTTP verb on creation and update
+         * since the id of the item is always passed.
+         */
+        isNew: function() {
+            return this._isNew;
+        }
 	});
 	
 	/**
@@ -76,22 +105,22 @@
 		constructor: function(webappName, attributes, options) {
 			BCAPI.Models.Collection.call(this, attributes, options);
 			
-			this.webappName = webappName;
+			this._webappName = webappName;
 		},
+
 		model: BCAPI.Models.WebApp.CustomField,
-    	/**
-    	 * This method returns custom field collection api entry point absolute url.
-    	 * 
-    	 * @method
-    	 * @instance
-    	 * @memberOf BCAPI.Models.WebApp.CustomFieldCollection
-    	 * @returns API entry point url.
-    	 */
-    	url: function() {
-    		var model = new this.model(this.webappName);
-    		
-    		return BCAPI.Models.Collection.prototype.url.call(this, model);
-    	},
+
+        /**
+         * This method is overriden because we need access to members in order to create the endpoint.
+         * 
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.CustomField
+         * @returns {string} An absolute entry point API.
+         */
+        urlRoot: function() {
+            return this.model.prototype.urlRoot(endpointGenerator(this._webappName));
+        },
     	/**
     	 * We override this method in order to transform each returned item into a strong typed 
     	 * {@link BCAPI.Models.WebApp.CustomField} models.
@@ -109,7 +138,7 @@
     			self = this;
     		
     		_.each(response, function(field) {
-    			fields.push(new self.model(self.webappName, field));
+    			fields.push(new self.model(self._webappName, field, false));
     		});
     		
     		return fields;

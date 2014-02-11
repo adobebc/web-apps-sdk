@@ -16,20 +16,21 @@
     &#39;name&#39;: &#39;my-folder&#39;
 });</code></pre>
       <p>The root directory / cannot be created like this. You can only get it with:</p>
-      <pre class="language-javascript"><code>var root = BCAPI.Models.FileSystem.Root;<br>console.log(root.get(&amp;#39;path&amp;#39;)); //prints &amp;#39;/&amp;#39;</code></pre>
+      <pre class="language-javascript"><code>var root = BCAPI.Models.FileSystem.Root;<br>console.log(root.get(&quot;path&quot;)); 
+//prints &quot;/&quot;</code></pre>
       <p>It should be noted that just creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required:</p>
-      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&amp;#39;my-folder&amp;#39;);<br>folder.create().done(function () {<br>    console.log(&amp;#39;The folder has been created !&amp;#39;);<br>});</code></pre>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&quot;my-folder&quot;);<br>folder.create().done(function () {<br>    console.log(&quot;The folder has been created !&quot;);<br>});</code></pre>
       
       <h3>Get the folder's metadata</h3>
       <p>You use fetch to obtain the folder's details, including the files &amp; folders that the folder contains:</p>
-      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&amp;#39;/my/existing/folder&amp;#39;);<br>folder.fetch().done(function () {<br>    console.log(&amp;#39;Folder last update date is: &amp;#39; + folder.get(&amp;#39;lastModified&amp;#39;));<br>    console.log(&amp;#39;Printing the folder contents: &amp;#39;);<br>    var contents = folder.get(&amp;#39;contents&amp;#39;);<br>    for (var i = 0; i &amp;lt; contents.length; i++) {<br>        var entity = contents[i];<br>        var isFile = entity instanceof BCAPI.Models.FileSystem.File;<br>        // also works: <br>        var isFile = entity.get(&amp;#39;type&amp;#39;) === &amp;#39;file&amp;#39;;<br>        if (isFile) {<br>            console.log(&amp;#39;File &amp;#39; + file.get(&amp;#39;name&amp;#39;) + &amp;#39; updated at &amp;#39; + file.get(&amp;#39;lastModified&amp;#39;));<br>        } else {<br>            console.log(&amp;#39;Folder &amp;#39; + folder.get(&amp;#39;name&amp;#39;));<br>        }<br>    }<br>});</code></pre>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&quot;/my/existing/folder&quot;);<br>folder.fetch().done(function () {<br>    console.log(&quot;Folder last update date is: &quot; + folder.get(&quot;lastModified&quot;));<br>    console.log(&quot;Printing the folder contents: &quot;);<br>    var contents = folder.get(&quot;contents&quot;);<br>    for (var i = 0; i &amp;lt; contents.length; i++) {<br>        var entity = contents[i];<br>        var isFile = entity instanceof BCAPI.Models.FileSystem.File;<br>        // also works: <br>        var isFile = entity.get(&quot;type&quot;) === &quot;file&quot;;<br>        if (isFile) {<br>            console.log(&quot;File &quot; + file.get(&quot;name&quot;) + &quot; updated at &quot; + file.get(&quot;lastModified&quot;));<br>        } else {<br>            console.log(&quot;Folder &quot; + folder.get(&quot;name&quot;));<br>        }<br>    }<br>});</code></pre>
       
       <h3>Rename the folder</h3>
       <p>Use save to rename a folder:</p>
-      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&amp;#39;/my/folder&amp;#39;);<br>folder.set(&amp;#39;name&amp;#39;, &amp;#39;new-folder&amp;#39;);<br>folder.save().done(function () {<br>        console.log(&amp;#39;The folder has been renamed&amp;#39;);<br>        console.log(&amp;#39;Path is now &amp;#39; + folder.get(&amp;#39;path&amp;#39;)); <br>  //prints: /my/new-folder  <br>});</code></pre>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&quot;/my/folder&quot;);<br>folder.set(&quot;name&quot;, &quot;new-folder&quot;);<br>folder.save().done(function () {<br>        console.log(&quot;The folder has been renamed&quot;);<br>        console.log(&quot;Path is now &quot; + folder.get(&quot;path&quot;)); <br>  //prints: /my/new-folder  <br>});</code></pre>
       
       <h3>Delete the folder</h3>
-      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&amp;#39;/my-folder&amp;#39;);<br>folder.destroy().done(function () {<br>    console.log(&amp;#39;Folder was deleted&amp;#39;);<br>});</code></pre>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&quot;/my-folder&quot;);<br>folder.destroy().done(function () {<br>    console.log(&quot;Folder was deleted&quot;);<br>});</code></pre>
     
     
       <p><strong>Source:</strong></p>

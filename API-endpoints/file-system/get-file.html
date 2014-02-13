@@ -1,7 +1,7 @@
 
         <h2>Get file</h2>
 
-<p>Get a file.</p>
+<p>Get a file's content.</p>
 
 <h3>Request</h3>
 
@@ -41,12 +41,10 @@
 </ul></li>
 </ul>
 
-<h3>Examples</h3>
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
-
+<hr>
 <p><strong>Request:</strong></p>
 
 <pre class="language-javascript"><code>GET /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
@@ -64,7 +62,29 @@ Last-Modified: Mon, 26 Jul 2010 12:45:26 GMT
 
 Body: file contents as binary
 </code></pre>
+<hr>
+<h3>Sample code</h3>
 
+<p><strong>Get a file's content</strong></p>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/description2.txt",
+    type: "GET",
+    connection: "keep-alive",
+    accept: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

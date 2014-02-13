@@ -3,7 +3,7 @@
 
 <p>Delete a file or folder.</p>
 
-<p><strong>Note:</strong> Deleting a parent folder will automatically delete its contents</p>
+<p class="alert alert-info"><strong>Note:</strong> Deleting a parent folder will automatically delete its contents</p>
 
 <h3>Request</h3>
 
@@ -47,11 +47,11 @@
 
 <p>Returns a status Code</p>
 
-<h3>Examples</h3>
+
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
+
 
 <p><strong>Request:</strong></p>
 
@@ -64,27 +64,29 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 
 <pre class="language-javascript"><code>HTTP/1.1 200 OK
 </code></pre>
-
+<hr>
 <h3>Sample code</h3>
 
-<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
-
-<p><strong>Delete a file</strong></p>
-
-<pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-f.destroy().done(function() {
-    console.log('File was destroyed');
-});
+<p><strong>Delete a particular file</strong></p>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/testing/description2.txt",
+    type: "DELETE",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }    
+});  
 </code></pre>
-
 <p><strong>Delete a folder</strong></p>
 
-<pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder('/my-folder');
-folder.destroy().done(function() {
-    console.log('Folder was deleted');
-});
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/testing",
+    type: "DELETE",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }    
+});  
 </code></pre>
-
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

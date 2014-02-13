@@ -19,13 +19,9 @@
 
 <h3>Response</h3>
 
-<p>Returns a status Code</p>
+<p>Returns a status code, accepts and returns JSON as Content-Type.</p>
 
-<h3>Examples</h3>
-
-<p>Accepts and returns JSON as Content-Type.</p>
-
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
@@ -43,36 +39,59 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 
 <pre class="language-javascript"><code>HTTP/1.1 200 OK
 </code></pre>
-
+<hr>
 <h3>Sample code</h3>
-
-<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
 <p><strong>Rename a file</strong></p>
 
-<p>Use <code>save</code> to change the name of a file.</p>
 
-<pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File('/my/file');
-f.set('name', 'new-file');
-f.save().done(function() {
-    console.log('File name has been changed. Path is ' + f.get('path'));
-    //prints: /my/new-file
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/original.txt?meta",
+    type: "PUT",
+    contentType: "application/json",
+    processData: false,
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    data: JSON.stringify({"name":"renamed.txt"})
 });
-</code></pre>
+        
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
 
 <p><strong>Rename a folder</strong></p>
 
 <p>Use <code>save</code> to rename a folder:</p>
 
-<pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder('/my/folder');
-folder.set('name', 'new-folder');
-folder.save().done(function() {
-    console.log('The folder has been renamed');
-    console.log('Path is now ' + folder.get('path'));
-    //prints: /my/new-folder
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/csss/?meta",
+    type: "PUT",
+    contentType: "application/json",
+    processData: false,
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    data: JSON.stringify({"name":"css"})
 });
-</code></pre>
-
+              
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

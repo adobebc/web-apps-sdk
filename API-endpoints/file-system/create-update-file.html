@@ -39,8 +39,6 @@
 
 <p>The depth of the nested folder structure is limited only by the URL length.</p>
 
-<p>The maximum URL length that can be used with PUT in the File API is: (TBD)\</p>
-
 <p><strong>Query params</strong></p>
 
 <p>The API supports an optional query param named version that as the following possible values:</p>
@@ -60,16 +58,17 @@
 </ul></li>
 </ul>
 
-<h3>Examples</h3>
+
 
 <p>Accepts and returns JSON as Content-Type.</p>
+<hr>
 
-<h4>JSON</h4>
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>PUT /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
+<pre class="language-javascript"><code>PUT /api/v2/admin/sites/current/storage/images/test.jpg HTTPS/1.1
 Accept: application/json
+ContentType: "application/octet-stream"
 Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 </code></pre>
 
@@ -77,68 +76,42 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 
 <pre class="language-javascript"><code>HTTP/1.1 200 OK
 </code></pre>
-
+<hr>
 <h3>Sample code</h3>
 
-<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
-
-<p><strong>Create a file in the root folder</strong></p>
-
-<pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-var data = 'Hello World !';
-f.upload(data).done(function() {
-    console.log('File uploaded succesfully');
+<p><strong>Create a new file in the root folder</strong></p>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/testing.txt?version=draft-publish",
+    type: "PUT",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/octet-stream",
+    data: 'The file's content goes here'
 });
 </code></pre>
-
-<hr>
-
 <p><strong>Create file (specify the full path)</strong></p>
 
-<pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File('/hello_world.txt');
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/description2.txt?version=draft-publish",
+    type: "PUT",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/octet-stream",
+    data: 'New content'
+});        
+      
 </code></pre>
-
-<hr>
-
-<p><strong><em>Create a file (specify the parent folder)</em></strong></p>
-
-<pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File({
-    'parent': new BCAPI.Models.FileSystem.Folder('/my/special'),
-    'file': 'file'
-});
-
-f.upload(files[0]);
-</code></pre>
-
-<hr>
-
-<p><strong>Create a folder</strong></p>
-
-<p>A folder object can be instantiated in two ways.</p>
-
-<p>You can specify the path of the folder:</p>
-
-<pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder('/folder/path');
-</code></pre>
-
-<p>You can also specify the name of the folder, and the parent directory:</p>
-
-<pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder({
-    'parent': BCAPI.Models.FileSystem.Root,
-    'name': 'my-folder'
-});
-</code></pre>
-
 <p><strong>Notes:</strong></p>
 
 <ul>
 <li>A file is created in your site's file system only after adding some content.</li>
 <li>The content can be any javascript object, including file objects obtained from html upload forms.</li>
-<li>BCAPI.Models.FileSystem.Root is the root folder in your site's file structure. You can also create a file object by specifying the file's full path.</li>
 <li>If you omit the <code>/</code> at the beginning of the file path, the system will add this.</li>
-<li>When creating a folder, only creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required.</li>
 </ul>
-
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

@@ -3,7 +3,7 @@
 
 <p>Creates a new category.</p>
 
-<p><strong>Note:</strong> A category at the root level is "Level 0". A child of a "Level 0" category is "Level 1". A child of a "Level 1" category is "Level 2", which is the maximum allowed.</p>
+<p class="alert alert-info"><strong>Note:</strong> A category at the root level is "Level 0". A child of a "Level 0" category is "Level 1". A child of a "Level 1" category is "Level 2", which is the maximum allowed.</p>
 
 <h3>Request</h3>
 
@@ -37,15 +37,13 @@
 
 <p>Returns an empty body and a location header containing the URI to retrieve category details.</p>
 
-<h3>Examples</h3>
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /admin/sites/current/categories
+<pre class="language-javascript"><code>POST /api/v2/admin/sites/current/categories
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
 Content-Length: 20
@@ -56,7 +54,7 @@ Content-Length: 20
 <p><strong>Response:</strong></p>
 
 <pre class="language-javascript"><code>HTTP/1.1 201 OK
-Location: /v2/admin/sites/current/categories/232323
+Location: /api/v2/admin/sites/current/categories/232323
 Content-Type: application/json; charset=utf-8
 Content-Length: length
 </code></pre>
@@ -65,8 +63,8 @@ Content-Length: length
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /admin/sites/current/categories
-Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56"
+<pre class="language-javascript"><code>POST /api/v2/admin/sites/current/categories
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
 Content-Length: 120
 
@@ -80,28 +78,31 @@ Content-Length: 120
 <p><strong>Response:</strong></p>
 
 <pre class="language-javascript"><code>HTTP/1.1 201 OK
-Location: /v2/admin/sites/current/categories/232323
+Location: /api/v2/admin/sites/current/categories/123456
 Content-Type: application/json; charset=utf-8
 Content-Length: length
 </code></pre>
 
 <h3>Sample code</h3>
 
-<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/categories",
+    type: "POST",
+    processData: false,
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json",
+    data: JSON.stringify({
+        "name": "My category4",
+        "parent": "123456",
+        "publicAccess": true
+    })
+});
+</code></pre>
 
-<pre class="language-javascript"><code>var category = new BCAPI.Models.Category({name: 'Test Category'});
-</code></pre>
-<p>To save:</p>
-<pre class="language-javascript"><code>
-category.save(options)
-</code></pre>
-<p>To get a category by id:</p>
-<pre class="language-javascript"><code>
-var category = new BCAPI.Models.Category({id: 1});
-category.fetch(options)
-</code></pre>
 
-<p><strong>Note:</strong> Update and delete methods are not supported.</p>
+<p>Update and delete methods are not supported.</p>
 
 <h3>Error Codes</h3>
 

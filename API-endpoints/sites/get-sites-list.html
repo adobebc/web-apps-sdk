@@ -100,11 +100,9 @@
 </tbody>
 </table>
 
-<h3>Examples</h3>
 
 <p>Accepts and returns JSON as Content-Type.</p>
-
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
@@ -140,7 +138,26 @@ Content-Type: application/json; charset=utf-8
 "totalItemsCount":12
 }
 </code></pre>
-
+<hr>
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites",
+    type: "GET",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

@@ -3,7 +3,7 @@
 
 <p>Get a list of categories which exist on the current site in ascending order of their ids.</p>
 
-<p><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
 
 <h3>Request</h3>
 
@@ -50,15 +50,13 @@
 </ul></li>
 </ul>
 
-<h3>Examples</h3>
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /admin/sites/current/categories
+<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/categories
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
 </code></pre>
@@ -137,14 +135,22 @@ Content-Length: {length}
 
 <h3>Sample code</h3>
 
-<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
-<pre class="language-javascript"><code>var categories = new BCAPI.Models.CategoryCollection();
-categories.fetch({
-    success: onSuccessHandler,
-    error: onErrorHandler
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/categories",
+    type: "GET",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json"
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
 })
-</code></pre>
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
 
 <h3>Error Codes</h3>
 

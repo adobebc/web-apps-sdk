@@ -1,5 +1,5 @@
 
-        <h2>Get file info</h2>
+        <h2>Get file  metadata</h2>
 
 <p>Get information on a file.</p>
 
@@ -30,11 +30,9 @@
 <li><code>rel -storage</code> : URL for the API endpoint to perform other operations on the file <em>(string)</em></li>
 </ul>
 
-<h3>Examples</h3>
 
 <p>Accepts and returns JSON as Content-Type.</p>
-
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
@@ -61,44 +59,33 @@ Content-Type: application/json
     ]
 }
 </code></pre>
-
+<hr>
 <h3>Sample code</h3>
 
-<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
+
 
 <p><strong>Get file metadata</strong></p>
 
-<pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-f.fetch().done(function() {
-    console.log('File name is: ', f.get('name'));
-    console.log('Last update date is: ', f.get('lastModified'));
-});
-</code></pre>
-
-<hr>
-
-<p><strong>Get folder metadata</strong></p>
-
-<p>You use <code>fetch</code> to obtain the folder's details, including the files &amp; folders that the folder contains:</p>
-
-<pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder('/my/existing/folder');
-folder.fetch().done(function() {
-    console.log('Folder last update date is: ' + folder.get('lastModified'));
-    console.log('Printing the folder contents: ');
-    var contents = folder.get('contents');
-    for (var i = 0; i &lt; contents.length; i++) {
-        var entity = contents[i];
-        var isFile = entity instanceof BCAPI.Models.FileSystem.File;
-        // also works: var isFile = entity.get('type') === 'file';
-        if (isFile) {
-            console.log('File ' + file.get('name') + ' updated at ' + file.get('lastModified'));
-        } else {
-            console.log('Folder ' + folder.get('name'));
-        }
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/desc.txt?meta",
+    type: "GET",
+    accept: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
     }
 });
-</code></pre>
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
 
+
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

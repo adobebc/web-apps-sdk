@@ -37,14 +37,12 @@
 
 <p>If you use a path with nested folders, the API will automatically create the nested folder structure.</p>
 
-<p>The depth of the nested folder structure is limited only by the URL length.The maximum URL length that can be used with POST in the File API is: (TBD)</p>
+<p>The depth of the nested folder structure is limited only by the URL length.</p>
 
-<h3>Examples</h3>
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
-
+<hr>
 <p><strong>Request:</strong></p>
 
 <pre class="language-javascript"><code>PUT /api/v2/admin/sites/current/storage/images HTTPS/1.1
@@ -59,7 +57,7 @@ Authorization: 73370c2c02db48a6a6494c955f13abe48e4d11342fcc4f288eb1dfc79827e777
 Content-Type: application/json
 {"status": "success"}
 </code></pre>
-
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

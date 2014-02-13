@@ -41,12 +41,11 @@
 <li><code>displayFileName</code> - the  name of the file on the filesystem <em>(string)</em></li>
 </ul>
 
-<h3>Examples</h3>
+
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
-
+<hr>
 <p><strong>Request:</strong></p>
 
 <pre class="language-javascript"><code>GET /api/v2/admin/sites/current/templates HTTPS/1.1
@@ -57,57 +56,80 @@ Content-Type: application/json
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-Content-Encoding: gzip
-Content-Length: length
-{
-  "links": [
-    {
-       "rel":"self",
-       "uri":"http:\/\/myapi.worldsecuresystems.com\/api\/v2\/admin\/templates"
-    },
-    {
-       "rel":"previous",
-       "uri":null
-    },
-    {
-       "rel":"next",
-       "uri":null
-    }
-  ],
-  "items": [ 
-    {
-       "id":-1,
-       "siteId":38587,
-       "name":"Don't use a template",
-       "displayFileName":"Don't use a template"
-    },
-    {
-       "id":0,
-       "siteId":38587,
-       "name":"Use default template",
-       "displayFileName":"Use default template"
-    },
-    {
-       "id":555110,
-       "siteId":38587,
-       "name":"a'b",
-       "displayFileName":"a&amp;quot;b.htm"
-    },
-    {
-       "id":555101,
-       "siteId":38587,
-       "name":"tehTemplate",
-       "displayFileName":"tehTemplate.htm"
-    }
-  ],
-  "totalItemsCount":4,
-  "itemsPerPageCount":100,
-  "currentPage":1
+<pre class="language-javascript"><code>{
+    "links": [{
+        "rel": "self",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/templates?skip=0&limit=10"
+    }, {
+        "rel": "previous",
+        "uri": null
+    }, {
+        "rel": "next",
+        "uri": null
+    }],
+    "items": [{
+        "id": -1,
+        "siteId": 246884,
+        "name": "Don't use a template",
+        "displayFileName": "Don't use a template"
+    }, {
+        "id": 0,
+        "siteId": 246884,
+        "name": "Use default template",
+        "displayFileName": "Use default template"
+    }, {
+        "id": 613934,
+        "siteId": 246884,
+        "name": "Blog",
+        "displayFileName": "Blog.html"
+    }, {
+        "id": 591936,
+        "siteId": 246884,
+        "name": "Default",
+        "displayFileName": "Default.html"
+    }, {
+        "id": 592040,
+        "siteId": 246884,
+        "name": "Homepage",
+        "displayFileName": "Homepage.html"
+    }, {
+        "id": 597258,
+        "siteId": 246884,
+        "name": "Page with sidebar",
+        "displayFileName": "Page with sidebar.html"
+    }, {
+        "id": 595788,
+        "siteId": 246884,
+        "name": "Products category",
+        "displayFileName": "Products category.html"
+    }],
+    "totalItemsCount": 7,
+    "skip": 0,
+    "limit": 10,
+    "siteId": 246884
 }
 </code></pre>
-
+<hr>
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/templates",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

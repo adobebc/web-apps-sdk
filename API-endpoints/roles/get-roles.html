@@ -30,18 +30,17 @@
 <li><code>name</code> - the user friendly name, to be used as label <em>(string)</em></li>
 </ul>
 
-<h3>Examples</h3>
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
 <pre class="language-javascript"><code>GET /api/v2/admin/sites/current/roles HTTPS/1.1
 Connection: keep-alive
 Content-Type: application/json
-Authorization: {site_authorization_token}
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 </code></pre>
 
 <p><strong>Response:</strong></p>
@@ -51,34 +50,47 @@ Content-Type: application/json; charset=utf-8
 Content-Length: length
 
 {
-    "CurrentPage":1,
-    "Items":[
-        "Role":
-        {
-            "Id": 10000,
-            "Name": "Admin"
-        },
-        "Role":
-        {
-            "Id": 10013,
-            "Name": "Users"
-        }
-    ],
-    "ItemsPerPageCount":100,
-    "Links":[
-        {
-            "Rel":"previous",
-            "Uri":null
-        },
-        {
-            "Rel":"next",
-            "Uri":null
-        }
-    ],
-    "TotalItemsCount":2
+    "links": [{
+        "rel": "self",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/%7BsiteId%7D/roles"
+    }, {
+        "rel": "previous",
+        "uri": null
+    }, {
+        "rel": "next",
+        "uri": null
+    }],
+    "items": [{
+        "id": 10000,
+        "name": "Administrators"
+    }, {
+        "id": 10013,
+        "name": "Users"
+    }],
+    "totalItemsCount": 2,
+    "itemsPerPageCount": 1000,
+    "currentPage": 1
 }
 </code></pre>
-
+<hr>
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/roles",
+    type: "GET",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

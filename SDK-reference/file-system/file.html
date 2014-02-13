@@ -7,10 +7,15 @@
       <p>This class allows you to interact with files stored in your BC site. Usage examples:</p>
       
       <h3>Create a new file.</h3>
-      <pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+      <pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('test-file.txt');
 var data = 'Hello World !';
-f.upload(data).done(function() {
+f.upload(data).done(function () {
     console.log('File uploaded succesfully');
+}).error(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
 });</code></pre>
       <p>A file is created in your site's file system only after uploading some content.</p>
       <p>The content can be any javascript object, including file objects obtained from html upload forms.</p>
@@ -32,16 +37,26 @@ f.upload(files[0]);
       
       <h3>Get the file metadata</h3>
       <pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-f.fetch().done(function() {
+f.fetch().done(function () {
     console.log('File name is: ', f.get('name'));
     console.log('Last update date is: ', f.get('lastModified'));
+}).error(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
 });
 </code></pre>
       
       <h3>Download the file content</h3>
-      <pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-f.download().done(function(content) {
+      <pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('new-filea.txt');
+f.download().done(function (content) {
     console.log('File content is: ' + content);
+}).error(function (jqXHR) {
+    console.log("Dwonload failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
 });
 </code></pre>
       
@@ -49,16 +64,23 @@ f.download().done(function(content) {
       <p>Use save to change the name of a file.</p>
       <pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File('/my/file');
 f.set('name', 'new-file');
-f.save().done(function() {
-    console.log('File name has been changed. Path is ' + f.get('path'));
-    //prints: /my/new-file
-});
-
-// Delete the file
-
-var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
-f.destroy().done(function() {
-    console.log('File was destroyed');
+f.save().done(function () {
+    console.log('File name has been changed. Path is ' + f.get('path'))
+}).error(function (jqXHR) {
+    console.log("Rename failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+      <h3>Delete a file</h3>
+<pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
+f.destroy().done(function () {
+    console.log('File was deleted');
+}).error(function (jqXHR) {
+    console.log("Delete failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
 });</code></pre>
     
     

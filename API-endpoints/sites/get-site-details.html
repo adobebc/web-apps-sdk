@@ -110,11 +110,9 @@
 </tbody>
 </table>
 
-<h3>Examples</h3>
 
 <p>Accepts and returns JSON as Content-Type.</p>
-
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
@@ -124,26 +122,124 @@ Content-Type: application/json
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-
-{
-"id":42314,
-"name":"bcpremiumpartner",
-"links":[{"rel":"self","uri":"https:\/\/api.worldsecuresystems.com\/api\/v2\/admin\/sites\/42314"}, ...],
-"dataCenterId":1,
-"daysToExpiry":2918070,
-"displayExpiryWarning":false,
-"readyToGoLive":false,
-"pathWithTags":["\/Layouts\/"],
-"pathWithoutTags":["\/Layouts\/SystemMessages\/"],
-"siteStatus":1,
-"siteStatusDescription":"TrialInProgress",
-"canExtendExpiryDate":false
+<pre class="language-javascript"><code>{
+    "id": 246884,
+    "name": "perfume",
+    "links": [{
+        "rel": "self",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884"
+    }, {
+        "rel": "photogalleries",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/photogalleries"
+    }, {
+        "rel": "siteLogin",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/tokens"
+    }, {
+        "rel": "oneTimeToken",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/tokens/onetime"
+    }, {
+        "rel": "create",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/pp/sites"
+    }, {
+        "rel": "storage",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/storage"
+    }, {
+        "rel": "siteUsers",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/users"
+    }, {
+        "rel": "dreamweaverSiteDefinition",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/dreamweaver/definition"
+    }, {
+        "rel": "modules",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/rendering/modules"
+    }, {
+        "rel": "publicTypes",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/rendering/types"
+    }, {
+        "rel": "bindingRules",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/rendering/bindings/rules"
+    }, {
+        "rel": "webforms",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webforms"
+    }, {
+        "rel": "customFieldTypes",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webformfieldtypes/custom"
+    }, {
+        "rel": "systemFieldTypes",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webformfieldtypes/system"
+    }, {
+        "rel": "workflows",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/workflows"
+    }, {
+        "rel": "features",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/features"
+    }, {
+        "rel": "deviceRedirects",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/redirects/devices"
+    }, {
+        "rel": "webapps",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webapps"
+    }, {
+        "rel": "categories",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories"
+    }],
+    "siteLinks": [{
+        "rel": "systemUrl",
+        "uri": "http://perfume10.bcrb.tk/"
+    }, {
+        "rel": "siteThumbUrl",
+        "uri": "http://perfume10.bcrb.tk/CatalystImages/SitePreview/sitepreview-118x100.png"
+    }, {
+        "rel": "secureUrl",
+        "uri": "https://perfume10.worldsecuresystems.com/"
+    }, {
+        "rel": "toolboxPanelUrl",
+        "uri": "http://perfume10.bcrb.tk/Admin/Index2.aspx?A=DW&SiteAuthToken=@@siteAuthTok…rsion%40%40%26AppColor%3d%40%40dwColor%40%40%26Language%3d%40%40lang%40%40"
+    }, {
+        "rel": "adminUrl",
+        "uri": "http://perfume10.bcrb.tk/Admin/Index2.aspx?A=DW&SiteAuthToken=@@siteAuthToken@@&URL=%2fAdminConsole%2f"
+    }, {
+        "rel": "publicUrl",
+        "uri": "http://perfume10.bcrb.tk/"
+    }, {
+        "rel": "manageUrl",
+        "uri": "https://ava.worldsecuresystems.com/Admin/GoSite.aspx?SiteGuid=3548c582-a7be-4801-a42a-8c2b8a05d7b0"
+    }],
+    "useAdvancedModuleDataEdit": true,
+    "siteStatus": 1,
+    "billingMethodTypeId": 0,
+    "createDate": "2011-09-20T23:04:54",
+    "dataCenterId": 7,
+    "daysToExpiry": 2065,
+    "displayExpiryWarning": false,
+    "pathWithTags": ["/Layouts/"],
+    "pathWithoutTags": ["/Layouts/SystemMessages/"],
+    "siteStatusDescription": "TrialInProgress",
+    "canExtendExpiryDate": false,
+    "readyToGoLive": false,
+    "isPartnerSite": false
 }
 </code></pre>
-
+<hr>
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current",
+    type: "GET",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

@@ -38,15 +38,15 @@
 <li><code>fullPath</code> - the full hierarchy for the current category <em>(string)</em></li>
 </ul>
 
-<h3>Examples</h3>
+
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
+
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /admin/sites/current/categories/54321
+<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/categories/123456
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
 </code></pre>
@@ -58,17 +58,35 @@ Content-Type: application/json; charset=utf-8
 Content-Length: {length}
 
 {
- "links": [
-        {
-          "rel": "parent",
-          "uri": "/admin/sites/current/categories/54269"
-        }],
-      "id"      : "54269",
-      "name"    : "somecategory",
-      "parentId"  : 123339,
-      "publicAccess" : true,
-      "fullPath" : "\parent\otherparent\somecategory"
+    "links": [{
+        "rel": "parent",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14606"
+    }],
+    "id": 155310,
+    "name": "Company1 Private",
+    "parentId": 14606,
+    "publicAccess": false,
+    "fullPath": "/Company/Company1 Private"
 }
+</code></pre>
+
+<h3>Sample code</h3>
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/categories/123456",
+    type: "GET",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json"
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})
 </code></pre>
 
 <h3>Error Codes</h3>

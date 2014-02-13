@@ -4,7 +4,7 @@
   
   
     
-      <p>This class provides a way of working with individual category items.</p>
+      <p>This class provides a methods for working with individual category items.</p>
     
     
       <p><strong>Source:</strong></p>
@@ -13,15 +13,30 @@
           <li><a href="http://adobebc.github.io/bcapi.js/category.js.html">src/category.js</a></li>
         </ul>
       
-    
-    <h3>Example</h3>
-    <pre class="language-javascript"><code>var category = new BCAPI.Models.Category({name: 'Test Category'});
-To save:
-category.save(options)
-To get a category by id:
-var category = new BCAPI.Models.Category({id: 1});
-category.fetch(options)</code></pre>
-<p>Update and delete are not supported
+    <hr>
+    <h3>Sample code</h3>
+    <h4>Create a category</h4>
+    <pre class="language-javascript"><code>var category = new BCAPI.Models.Category({name: 'Test Category6', parentId: 123456});
+category.save()
+    </code></pre>
+<h4>Get a category's details</h4>
+
+    <pre class="language-javascript"><code>var category = new BCAPI.Models.Category({
+    id: 123456
+});
+category.fetch({
+    success: function (category) {
+        console.log("Name: " + category.get('name') + " " +
+            "ID: " + category.get('id') + " " +
+            "parentId: " + category.get('parentId')
+        );
+
+    },
+    error: function (data) {
+        console.log('Encountered an error.')
+    }
+})</code></pre>
+<p>Update and delete operations are not supported
 </p>
   
 
@@ -30,7 +45,7 @@ category.fetch(options)</code></pre>
 <ul>
   <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html">BCAPI.Models.Model</a></li>
 </ul>
-
+<hr>
 <h2>Methods</h2>
 
   

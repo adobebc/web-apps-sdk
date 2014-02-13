@@ -17,8 +17,7 @@
 });</code></pre>
       <p>The root directory / cannot be created like this. You can only get it with:</p>
       <pre class="language-javascript"><code>var root = BCAPI.Models.FileSystem.Root;
-console.log(root.get("path")); 
-//prints "/"</code></pre>
+console.log(root.get("path")); </code></pre>
       <p>It should be noted that just creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required:</p>
       <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("my-folder");
 folder.create().done(function () {
@@ -27,7 +26,7 @@ folder.create().done(function () {
       
       <h3>Get the folder's metadata</h3>
       <p>You use fetch to obtain the folder's details, including the files &amp; folders that the folder contains:</p>
-      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("/my/existing/folder");
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("/css");
 folder.fetch().done(function () {
     console.log("Folder last update date is: " + folder.get("lastModified"));
     console.log("Printing the folder contents: ");
@@ -35,12 +34,12 @@ folder.fetch().done(function () {
     for (var i = 0; i < contents.length; i++) {
         var entity = contents[i];
         var isFile = entity instanceof BCAPI.Models.FileSystem.File;
-        // also works: 
-        var isFile = entity.get("type") === "file";
+        //you can also use:
+        //var isFile = entity.get("type") === "file";
         if (isFile) {
-            console.log("File " + file.get("name") + " updated at " + file.get("lastModified"));
+            console.log("File " + entity.get("name") + " updated at " + entity.get("lastModified"));
         } else {
-            console.log("Folder " + folder.get("name"));
+            console.log("Folder " + entity.get("name"));
         }
     }
 });</code></pre>
@@ -52,13 +51,22 @@ folder.set("name", "new-folder");
 folder.save().done(function () {
         console.log("The folder has been renamed");
         console.log("Path is now " + folder.get("path")); 
-  //prints: /my/new-folder  
+}).error(function (jqXHR) {
+    console.log("Rename failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
 });</code></pre>
       
       <h3>Delete the folder</h3>
       <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("/my-folder");
 folder.destroy().done(function () {
     console.log("Folder was deleted");
+}).error(function (jqXHR) {
+    console.log("Delete failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
 });</code></pre>
     
     
@@ -68,7 +76,13 @@ folder.destroy().done(function () {
           <li><a href="http://adobebc.github.io/bcapi.js/file_system.js.html">src/file_system.js</a></li>
         </ul>
       
-    
+    <p><strong>Notes:</strong></p>
+
+<ul>
+<li>BCAPI.Models.FileSystem.Root is the root folder in your site's file structure. You can also create a file object by specifying the file's full path.</li>
+<li>If you omit the <code>/</code> at the beginning of the file path, the system will add this.</li>
+<li>When creating a folder, only creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required.</li>
+</ul>
   
 
 
@@ -117,17 +131,17 @@ folder.destroy().done(function () {
         <tr>
           <td>name</td>
           <td>string</td>
-          <td><p>The name of the file</p></td>
+          <td>The name of the file</td>
         </tr>
         <tr>
           <td>attributes</td>
           <td>object</td>
-          <td><p>Properties of the file</p></td>
+          <td>Properties of the file</td>
         </tr>
         <tr>
           <td>options</td>
           <td>object</td>
-          <td><p>Options for the file</p></td>
+          <td>Options for the file</td>
         </tr>
       </tbody>
     </table>

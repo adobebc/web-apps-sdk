@@ -4,7 +4,7 @@
   
   
     
-      <p>This class provides a way of retrieving and assigning categories to items As an array of category ids that can be retrieved via the<a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.CategoryCollection.html">BCAPI.Models.CategoryCollection</a></p>
+      <p>This class provides a way of retrieving and assigning categories to items As an array of category ids that can be retrieved via the <a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.CategoryCollection.html">BCAPI.Models.CategoryCollection</a></p>
     
     
       <p><strong>Source:</strong></p>
@@ -17,21 +17,29 @@
     <h3>Examples</h3>
     <pre class="language-javascript"><code>var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
 itemCategories.fetch({
-                        success: function(data) {
-                            _.each(data.get("items"), function(categoryId) {
-                                var category = new BCAPI.Models.Category({id: categoryId});
-                                category.fetch({success: doSomethingWithCategName, error: onError})
-                            })
-                        },
-                        error: function(data, xhr){}
-                     });</code></pre>
+    success: function (data) {
+        _.each(data.get("items"), function (categoryId) {
+            var category = new BCAPI.Models.Category({
+                id: categoryId
+            });
+            category.fetch({
+                success: doSomethingWithCategName,
+                error: onError
+            })
+        })
+    },
+    error: function (data, xhr) {}
+});</code></pre>
                      <p>To assign a set of categories:</p>
     <pre class="language-javascript"><code>var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
-itemCategories.set(items, [1,2,3,4]);
-itemCategories.save({success: onSaveOK, error: onSaveFailed})
+itemCategories.set(items, [1, 2, 3, 4]);
+itemCategories.save({
+    success: onSaveOK,
+    error: onSaveFailed
+})
 </code></pre>
   
-
+<hr>
 
 <h3>Extends</h3>
 <ul>

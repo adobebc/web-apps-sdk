@@ -9,7 +9,7 @@
 <li><strong>Method:</strong> SOAP</li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.  </li>
 <li><strong>Path:</strong> /catalystwebservice/catalystcrmwebservice.asmx</li>
-<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>The username and password fields:</strong>You can make SOAP API calls can be authorized either by using the actual username or password of an Admin username or, if you are making the calls from an app leave the username field empty and use the <a href="/developer-documentation/oauth-in-bc.html">authorization token</a> as the password.</li>
 </ul>
 
 <h4>Parameters</h4>
@@ -73,7 +73,7 @@
 
 <p>Accepts and returns XML as Content-Type.</p>
 
-<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values.</p>
+<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values, please note the data in the request and response is only for explanatory purposes.</p>
 
 <p><strong>Request:</strong></p>
 
@@ -86,10 +86,10 @@ Content-Length: length
 &lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
   &lt;soap12:Body&gt;
     &lt;OrderList_RetrieveByContact xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice"&gt;
-      &lt;username&gt;string&lt;/username&gt;
-      &lt;password&gt;string&lt;/password&gt;
-      &lt;siteId&gt;int&lt;/siteId&gt;
-      &lt;entityId&gt;int&lt;/entityId&gt;
+      &lt;username&gt;jdoe@yourdomain.com&lt;/username&gt;
+      &lt;password&gt;Y0urP@ssw0rdH3re&lt;/password&gt;
+      &lt;siteid&gt;12345&lt;/siteid&gt;
+      &lt;entityId&gt;1234&lt;/entityId&gt;
     &lt;/OrderList_RetrieveByContact&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
@@ -107,33 +107,33 @@ Content-Length: length
     &lt;OrderList_RetrieveByContactResponse xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice"&gt;
       &lt;OrderList_RetrieveByContactResult&gt;
         &lt;OrderDetails&gt;
-          &lt;entityId&gt;int&lt;/entityId&gt;
-          &lt;orderId&gt;int&lt;/orderId&gt;
-          &lt;orderName&gt;string&lt;/orderName&gt;
-          &lt;workflowId&gt;int&lt;/workflowId&gt;
-          &lt;statusTypeId&gt;int&lt;/statusTypeId&gt;
-          &lt;countryCode&gt;string&lt;/countryCode&gt;
-          &lt;orderType&gt;int&lt;/orderType&gt;
-          &lt;invoiceNumber&gt;int&lt;/invoiceNumber&gt;
-          &lt;invoiceDate&gt;dateTime&lt;/invoiceDate&gt;
-          &lt;userID_AssignedTo&gt;int&lt;/userID_AssignedTo&gt;
-          &lt;shippingAmount&gt;double&lt;/shippingAmount&gt;
-          &lt;shippingTaxRate&gt;double&lt;/shippingTaxRate&gt;
-          &lt;shippingAttention&gt;string&lt;/shippingAttention&gt;
-          &lt;shippingInstructions&gt;string&lt;/shippingInstructions&gt;
-          &lt;shippingOptionId&gt;int&lt;/shippingOptionId&gt;
-          &lt;discountCodeId&gt;int&lt;/discountCodeId&gt;
-          &lt;discountRate&gt;double&lt;/discountRate&gt;
-          &lt;totalOrderAmount&gt;double&lt;/totalOrderAmount&gt;
-          &lt;directDebitTypeId&gt;int&lt;/directDebitTypeId&gt;
-          &lt;directDebitDays&gt;int&lt;/directDebitDays&gt;
-          &lt;isRecur&gt;boolean&lt;/isRecur&gt;
-          &lt;nextInvoiceDate&gt;dateTime&lt;/nextInvoiceDate&gt;
-          &lt;endRecurDate&gt;dateTime&lt;/endRecurDate&gt;
-          &lt;cycleTypeID&gt;int&lt;/cycleTypeID&gt;
-          &lt;createDate&gt;dateTime&lt;/createDate&gt;
-          &lt;lastUpdateDate&gt;dateTime&lt;/lastUpdateDate&gt;
-          &lt;deleted&gt;boolean&lt;/deleted&gt;
+          &lt;entityId&gt;1234&lt;/entityId&gt;
+          &lt;orderId&gt;12345&lt;/orderId&gt;
+          &lt;orderName&gt;Order Name&lt;/orderName&gt;
+          &lt;workflowId&gt;12345&lt;/workflowId&gt;
+          &lt;statusTypeId&gt;52866&lt;/statusTypeId&gt;
+          &lt;countryCode&gt;GB&lt;/countryCode&gt;
+          &lt;orderType&gt;2&lt;/orderType&gt;
+          &lt;invoiceNumber&gt;12345&lt;/invoiceNumber&gt;
+          &lt;invoiceDate&gt;2014-02-02T10:20:00&lt;/invoiceDate&gt;
+          &lt;userID_AssignedTo&gt;12345&lt;/userID_AssignedTo&gt;
+          &lt;shippingAmount&gt;0&lt;/shippingAmount&gt;
+          &lt;shippingTaxRate&gt;0&lt;/shippingTaxRate&gt;
+          &lt;shippingAttention&gt;Text in the shipping attention here&lt;/shippingAttention&gt;
+          &lt;shippingInstructions&gt;No shipping instructions required&lt;/shippingInstructions&gt;
+          &lt;shippingOptionId&gt;0&lt;/shippingOptionId&gt;
+          &lt;discountcodeId&gt;1234&lt;/discountcodeId&gt;
+          &lt;discountRate&gt;0&lt;/discountRate&gt;
+          &lt;totalOrderAmount&gt;120&lt;/totalOrderAmount&gt;
+          &lt;directDebitTypeId&gt;0&lt;/directDebitTypeId&gt;
+          &lt;directDebitDays&gt;0&lt;/directDebitDays&gt;
+          &lt;isRecur&gt;true&lt;/isRecur&gt;
+          &lt;nextInvoiceDate&gt;2014-07-07T9:27:00&lt;/nextInvoiceDate&gt;
+          &lt;endRecurDate&gt;2014-07-07T9:27:00&lt;/endRecurDate&gt;
+          &lt;cycleTypeID&gt;1&lt;/cycleTypeID&gt;
+          &lt;createDate&gt;2010-08-08T12:22:00&lt;/createDate&gt;
+          &lt;lastUpdateDate&gt;2012-08-08T12:22:00&lt;/lastUpdateDate&gt;
+          &lt;deleted&gt;false&lt;/deleted&gt;
           &lt;products&gt;
             &lt;Product xsi:nil="true" /&gt;
             &lt;Product xsi:nil="true" /&gt;
@@ -152,33 +152,33 @@ Content-Length: length
           &lt;/crmForms&gt;
         &lt;/OrderDetails&gt;
         &lt;OrderDetails&gt;
-          &lt;entityId&gt;int&lt;/entityId&gt;
-          &lt;orderId&gt;int&lt;/orderId&gt;
-          &lt;orderName&gt;string&lt;/orderName&gt;
-          &lt;workflowId&gt;int&lt;/workflowId&gt;
-          &lt;statusTypeId&gt;int&lt;/statusTypeId&gt;
-          &lt;countryCode&gt;string&lt;/countryCode&gt;
-          &lt;orderType&gt;int&lt;/orderType&gt;
-          &lt;invoiceNumber&gt;int&lt;/invoiceNumber&gt;
-          &lt;invoiceDate&gt;dateTime&lt;/invoiceDate&gt;
-          &lt;userID_AssignedTo&gt;int&lt;/userID_AssignedTo&gt;
-          &lt;shippingAmount&gt;double&lt;/shippingAmount&gt;
-          &lt;shippingTaxRate&gt;double&lt;/shippingTaxRate&gt;
-          &lt;shippingAttention&gt;string&lt;/shippingAttention&gt;
-          &lt;shippingInstructions&gt;string&lt;/shippingInstructions&gt;
-          &lt;shippingOptionId&gt;int&lt;/shippingOptionId&gt;
-          &lt;discountCodeId&gt;int&lt;/discountCodeId&gt;
-          &lt;discountRate&gt;double&lt;/discountRate&gt;
-          &lt;totalOrderAmount&gt;double&lt;/totalOrderAmount&gt;
-          &lt;directDebitTypeId&gt;int&lt;/directDebitTypeId&gt;
-          &lt;directDebitDays&gt;int&lt;/directDebitDays&gt;
-          &lt;isRecur&gt;boolean&lt;/isRecur&gt;
-          &lt;nextInvoiceDate&gt;dateTime&lt;/nextInvoiceDate&gt;
-          &lt;endRecurDate&gt;dateTime&lt;/endRecurDate&gt;
-          &lt;cycleTypeID&gt;int&lt;/cycleTypeID&gt;
-          &lt;createDate&gt;dateTime&lt;/createDate&gt;
-          &lt;lastUpdateDate&gt;dateTime&lt;/lastUpdateDate&gt;
-          &lt;deleted&gt;boolean&lt;/deleted&gt;
+          &lt;entityId&gt;1234&lt;/entityId&gt;
+          &lt;orderId&gt;12345&lt;/orderId&gt;
+          &lt;orderName&gt;Order Name&lt;/orderName&gt;
+          &lt;workflowId&gt;12345&lt;/workflowId&gt;
+          &lt;statusTypeId&gt;52866&lt;/statusTypeId&gt;
+          &lt;countryCode&gt;GB&lt;/countryCode&gt;
+          &lt;orderType&gt;2&lt;/orderType&gt;
+          &lt;invoiceNumber&gt;12345&lt;/invoiceNumber&gt;
+          &lt;invoiceDate&gt;2014-02-02T10:20:00&lt;/invoiceDate&gt;
+          &lt;userID_AssignedTo&gt;12345&lt;/userID_AssignedTo&gt;
+          &lt;shippingAmount&gt;0&lt;/shippingAmount&gt;
+          &lt;shippingTaxRate&gt;0&lt;/shippingTaxRate&gt;
+          &lt;shippingAttention&gt;Text in the shipping attention here&lt;/shippingAttention&gt;
+          &lt;shippingInstructions&gt;No shipping instructions required&lt;/shippingInstructions&gt;
+          &lt;shippingOptionId&gt;0&lt;/shippingOptionId&gt;
+          &lt;discountcodeId&gt;1234&lt;/discountcodeId&gt;
+          &lt;discountRate&gt;0&lt;/discountRate&gt;
+          &lt;totalOrderAmount&gt;120&lt;/totalOrderAmount&gt;
+          &lt;directDebitTypeId&gt;0&lt;/directDebitTypeId&gt;
+          &lt;directDebitDays&gt;0&lt;/directDebitDays&gt;
+          &lt;isRecur&gt;true&lt;/isRecur&gt;
+          &lt;nextInvoiceDate&gt;2014-07-07T9:27:00&lt;/nextInvoiceDate&gt;
+          &lt;endRecurDate&gt;2014-07-07T9:27:00&lt;/endRecurDate&gt;
+          &lt;cycleTypeID&gt;1&lt;/cycleTypeID&gt;
+          &lt;createDate&gt;2010-08-08T12:22:00&lt;/createDate&gt;
+          &lt;lastUpdateDate&gt;2012-08-08T12:22:00&lt;/lastUpdateDate&gt;
+          &lt;deleted&gt;false&lt;/deleted&gt;
           &lt;products&gt;
             &lt;Product xsi:nil="true" /&gt;
             &lt;Product xsi:nil="true" /&gt;

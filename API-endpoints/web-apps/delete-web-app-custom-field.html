@@ -25,11 +25,11 @@
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>DELETE /api/v2/admin/sites/current/webapps/Cars/fields/418191 HTTPS/1.1
+<pre class="language-javascript"><code>DELETE /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE/fields/CUSTOM_FIELD_ID_HERE HTTPS/1.1
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
 </code></pre>
@@ -38,8 +38,27 @@ Content-Type: application/json
 
 <pre class="language-javascript"><code>HTTP/1.1 200 OK
 </code></pre>
+<hr><h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/test app/fields/12345",
+    type: "DELETE",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})
 
-<h3>Error Codes</h3>
+</code></pre>
+<hr><h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>
 

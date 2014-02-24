@@ -8,64 +8,91 @@
       
       <h3>Load webapps list</h3>
       <pre class="language-javascript"><code>var apps = new BCAPI.Models.WebApp.AppCollection();
-apps.fetch({
-        success: function(webAppItems) {
-            // handle success
-        },
-        error: function(webAppItems, xhr) {
-            // handle errors
-        }
+var response = apps.fetch();
+response.done(function (webApps) {
+    console.log("Existing webapps: ");
+    console.log("-------------------------------");
+    _.each(webApps.items, function (webApp) {
+        console.log("Webapp name: " + webApp.name);
+        console.log("Webapp id: " + webApp.id);
+        console.log("Webapp slug: " + webApp.slug);
+        console.log("-------------------------------");
+    })
 });
-
-apps.each(function(webApp) {
-        // display logic
-});
-</code></pre>
+response.fail(function (jqXHR) {
+    console.debug('Webapp listing failed.');
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
       <br>
       
-      <h3>Create webapp</h3>
+      <h3>Create a basic webapp</h3>
       <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({
-        "name": "Test app"
+    "name": "Test app",
+    "templateId": -1,
+    "uploadFolder": "images",
+    "requiresApproval": true,
+    "allowFileUpload": true,
+    "customerCanAdd": false,
+    "customerCanDelete": false,
+    "customerCanEdit": false,
+    "anyoneCanEdit": false,
+    "requiresPayment": false,
+    "validDays": -1,
+    "roleId": 0,
+    "hasAddress": false,
+    "disableDetailPages": false,
+    "locationEnabled": false
 });
 
 app.save({
-        success: function(webAppItem) {
-            // handle success
-        },
-        error: function(webAppItem, xhr) {
-            // handle errors
-        }
+    success: function (webAppItem, jqXHR) {
+        console.log(webAppItem)
+    },
+    error: function (webAppItem, jqXHR) {
+        console.log("Webapp creation failed.");
+        console.log("Error code: " + jqXHR.status);
+        console.log("Error text: " + jqXHR.statusText);
+        console.log("Response text: " + jqXHR.responseText);
+    }
 });</code></pre>
       <p>If you want to refresh collections which rely on Item model please refresh those collections.</p>
       
       <h3>Remove app</h3>
-      <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({name: "Test app"});
-app.destroy({
-    success: function(webAppItem, response) {
-        // handle success here.
- },
- error: function(webAppItem, xhr, options) {
-        // handle error scenario.
- }
+      <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({
+    name: "Test app"
 });
-</code></pre>
-      
+app.destroy({
+    success: function (webAppItem, response) {
+        console.log("Webapp deleted")
+    },
+    error: function (webAppItem, jqXHR, options) {
+
+        console.log("Delete failed.");
+        console.log("Error code: " + jqXHR.status);
+        console.log("Error text: " + jqXHR.statusText);
+        console.log("Response text: " + jqXHR.responseText);
+    }
+});</code></pre>
+      <hr>
       <h3>Supported attributes</h3>
       <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({
-    templateId: -1,
- uploadFolder: "images",
- requiresApproval: true,
- allowFileUpload: true,
- customerCanAdd: false,
- customerCanDelete: false,
- customerCanEdit: false,
- anyoneCanEdit: false,
- requiresPayment: false,
- validDays: -1, // never expire
- roleId: 0,
- hasAddress: false,
- disableDetailPages: false,
- locationEnabled: false
+    "name": "Test app",
+    "templateId": -1,
+    "uploadFolder": "images",
+    "requiresApproval": true,
+    "allowFileUpload": true,
+    "customerCanAdd": false,
+    "customerCanDelete": false,
+    "customerCanEdit": false,
+    "anyoneCanEdit": false,
+    "requiresPayment": false,
+    "validDays": -1, // never expire
+    "roleId": 0,
+    "hasAddress": false,
+    "disableDetailPages": false,
+    "locationEnabled": false
 });</code></pre>
     
     

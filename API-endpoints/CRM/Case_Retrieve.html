@@ -9,7 +9,7 @@
 <li><strong>Method:</strong> SOAP</li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.  </li>
 <li><strong>Path:</strong> /catalystwebservice/catalystcrmwebservice.asmx</li>
-<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>The username and password fields:</strong>You can make SOAP API calls can be authorized either by using the actual username or password of an Admin username or, if you are making the calls from an app leave the username field empty and use the <a href="/developer-documentation/oauth-in-bc.html">authorization token</a> as the password.</li>
 </ul>
 
 <h4>Parameters</h4>
@@ -72,7 +72,7 @@
 
 <p>Accepts and returns XML as Content-Type.</p>
 
-<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values.</p>
+<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values, please note the data in the request and response is only for explanatory purposes.</p>
 
 <p><strong>Request:</strong></p>
 
@@ -85,10 +85,10 @@ Content-Length: length
 &lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
   &lt;soap12:Body&gt;
     &lt;Case_Retrieve xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice"&gt;
-      &lt;username&gt;string&lt;/username&gt;
-      &lt;password&gt;string&lt;/password&gt;
-      &lt;siteId&gt;int&lt;/siteId&gt;
-      &lt;caseId&gt;int&lt;/caseId&gt;
+      &lt;username&gt;jdoe@yourdomain.com&lt;/username&gt;
+      &lt;password&gt;Y0urP@ssw0rdH3re&lt;/password&gt;
+      &lt;siteid&gt;12345&lt;/siteid&gt;
+      &lt;caseId&gt;1234&lt;/caseId&gt;
     &lt;/Case_Retrieve&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
@@ -105,52 +105,77 @@ Content-Length: length
   &lt;soap12:Body&gt;
     &lt;Case_RetrieveResponse xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice"&gt;
       &lt;Case_RetrieveResult&gt;
-        &lt;entityId&gt;int&lt;/entityId&gt;
-        &lt;caseId&gt;int&lt;/caseId&gt;
-        &lt;assignedTo&gt;int&lt;/assignedTo&gt;
-        &lt;caseSubject&gt;string&lt;/caseSubject&gt;
-        &lt;createDate&gt;dateTime&lt;/createDate&gt;
-        &lt;lastUpdateDate&gt;dateTime&lt;/lastUpdateDate&gt;
-        &lt;messageThreads&gt;
-          &lt;MessageThreads&gt;
-            &lt;message&gt;string&lt;/message&gt;
-            &lt;createDate&gt;dateTime&lt;/createDate&gt;
-            &lt;objectId&gt;int&lt;/objectId&gt;
-            &lt;objectType&gt;int&lt;/objectType&gt;
-            &lt;isInternal&gt;boolean&lt;/isInternal&gt;
-            &lt;entityId&gt;int&lt;/entityId&gt;
-          &lt;/MessageThreads&gt;
-          &lt;MessageThreads&gt;
-            &lt;message&gt;string&lt;/message&gt;
-            &lt;createDate&gt;dateTime&lt;/createDate&gt;
-            &lt;objectId&gt;int&lt;/objectId&gt;
-            &lt;objectType&gt;int&lt;/objectType&gt;
-            &lt;isInternal&gt;boolean&lt;/isInternal&gt;
-            &lt;entityId&gt;int&lt;/entityId&gt;
-          &lt;/MessageThreads&gt;
-        &lt;/messageThreads&gt;
-        &lt;crmForms&gt;
-          &lt;CrmForms&gt;
-            &lt;formId&gt;int&lt;/formId&gt;
-            &lt;formName&gt;string&lt;/formName&gt;
-            &lt;crmFormFields xsi:nil="true" /&gt;
-          &lt;/CrmForms&gt;
-          &lt;CrmForms&gt;
-            &lt;formId&gt;int&lt;/formId&gt;
-            &lt;formName&gt;string&lt;/formName&gt;
-            &lt;crmFormFields xsi:nil="true" /&gt;
-          &lt;/CrmForms&gt;
-        &lt;/crmForms&gt;
+        &lt;entityId&gt;1234&lt;/entityId&gt;
+        &lt;caseId&gt;1234&lt;/caseId&gt;
+        &lt;assignedTo&gt;1234&lt;/assignedTo&gt;
+        &lt;caseSubject&gt;Case subject&lt;/caseSubject&gt;
+        &lt;createDate&gt;2010-08-08T12:22:00&lt;/createDate&gt;
+        &lt;lastUpdateDate&gt;2012-08-08T12:22:00&lt;/lastUpdateDate&gt;
+            &lt;messageThreads&gt;
+        &lt;MessageThreads&gt;
+           &lt;message&gt;Case queued for assignment.&lt;/message&gt;
+           &lt;createDate&gt;2011-10-25T10:57:00&lt;/createDate&gt;
+           &lt;objectId&gt;138039&lt;/objectId&gt;
+           &lt;objectType&gt;14&lt;/objectType&gt;
+           &lt;isInternal&gt;true&lt;/isInternal&gt;
+           &lt;entityId&gt;0&lt;/entityId&gt;
+        &lt;/MessageThreads&gt;
+        &lt;MessageThreads&gt;
+           &lt;message&gt;test reply&amp;lt;br&gt;&lt;/message&gt;
+           &lt;createDate&gt;2011-10-25T10:57:00&lt;/createDate&gt;
+           &lt;objectId&gt;138039&lt;/objectId&gt;
+           &lt;objectType&gt;14&lt;/objectType&gt;
+           &lt;isInternal&gt;false&lt;/isInternal&gt;
+           &lt;entityId&gt;0&lt;/entityId&gt;
+        &lt;/MessageThreads&gt;
+            &lt;crmForms&gt;
+        &lt;CrmForms&gt;
+           &lt;formId&gt;86343&lt;/formId&gt;
+           &lt;formName&gt;attached to case&lt;/formName&gt;
+           &lt;crmFormFields&gt;
+              &lt;CrmFormFields&gt;
+                 &lt;fieldId&gt;244672&lt;/fieldId&gt;
+                 &lt;fieldTypeId&gt;1&lt;/fieldTypeId&gt;
+                 &lt;fieldName&gt;attached to case&lt;/fieldName&gt;
+                 &lt;fieldValue/&gt;
+              &lt;/CrmFormFields&gt;
+           &lt;/crmFormFields&gt;
+        &lt;/CrmForms&gt;
+        &lt;CrmForms&gt;
+           &lt;formId&gt;224&lt;/formId&gt;
+           &lt;formName&gt;Contact Us Form&lt;/formName&gt;
+           &lt;crmFormFields&gt;
+              &lt;CrmFormFields&gt;
+                 &lt;fieldId&gt;244672&lt;/fieldId&gt;
+                 &lt;fieldTypeId&gt;1&lt;/fieldTypeId&gt;
+                 &lt;fieldName&gt;attached to case&lt;/fieldName&gt;
+                 &lt;fieldValue/&gt;
+              &lt;/CrmFormFields&gt;
+              &lt;CrmFormFields&gt;
+                 &lt;fieldId&gt;868&lt;/fieldId&gt;
+                 &lt;fieldTypeId&gt;7&lt;/fieldTypeId&gt;
+                 &lt;fieldName&gt;Preferred Contact Method&lt;/fieldName&gt;
+                 &lt;fieldValue&gt;Never contact&lt;/fieldValue&gt;
+              &lt;/CrmFormFields&gt;
+              &lt;CrmFormFields&gt;
+                 &lt;fieldId&gt;869&lt;/fieldId&gt;
+                 &lt;fieldTypeId&gt;9&lt;/fieldTypeId&gt;
+                 &lt;fieldName&gt;Your message:&lt;/fieldName&gt;
+                 &lt;fieldValue&gt;Your message:&lt;/fieldValue&gt;
+              &lt;/CrmFormFields&gt;
+           &lt;/crmFormFields&gt;
+        &lt;/CrmForms&gt;
+            &lt;/crmForms&gt;
         &lt;fileList&gt;
           &lt;Files&gt;
-            &lt;fileId&gt;int&lt;/fileId&gt;
-            &lt;fileName&gt;string&lt;/fileName&gt;
-            &lt;fileSize&gt;long&lt;/fileSize&gt;
+           &lt;fileId&gt;147191&lt;/fileId&gt;
+           &lt;fileName&gt;file_name_here.txt&lt;/fileName&gt;
+           &lt;fileSize&gt;636&lt;/fileSize&gt;
           &lt;/Files&gt;
           &lt;Files&gt;
-            &lt;fileId&gt;int&lt;/fileId&gt;
-            &lt;fileName&gt;string&lt;/fileName&gt;
-            &lt;fileSize&gt;long&lt;/fileSize&gt;
+           &lt;fileId&gt;147192&lt;/fileId&gt;
+           &lt;fileName&gt;file2_name_here.txt&lt;/fileName&gt;
+           &lt;fileSize&gt;637&lt;/fileSize&gt;
           &lt;/Files&gt;
         &lt;/fileList&gt;
       &lt;/Case_RetrieveResult&gt;

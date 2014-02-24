@@ -85,11 +85,11 @@
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/webapps/testcustomfields HTTPS/1.1
+<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -97,167 +97,144 @@ Content-Type: application/json
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-Content-Encoding: gzip
-Content-Length: length
-
-{
-  "links":
-    [
-      {
-        "rel":"items",
-        "uri":"/v2/admin/sites/current/webapps/testcustomfields/items"
-      },
-      {
-        "rel":"fields",
-        "uri":"/v2/admin/sites/current/webapps/testcustomfields/fields"
-      },
-      {
-        "rel":"previewUrl",
-        "uri":"http://defaultsiteurl.com/testcustomfields"
-      },
-      {
-        "rel":"countries",
-        "uri":"/v2/admin/sites/current/webapps/testcustomfields/countries"
-      }
-    ],
-  "id":5564,
-  "name":"testcustomfields",
-  "slug":"testcustomfields",
-  "allowFileUpload":false,
-  "createBy":167,
-  "createDate":"2012-31-01",
-  "lastUpdateBy":167,
-  "lastUpdateDate":"2012-31-01",
-  "disableDetailPages":false,
-  "locationEnabled":false,
-  "anyoneCanEdit":false,
-  "customerCanAdd":false,
-  "customerCanDelete":false,
-  "customerCanEdit":false,
-  "requiresPayment":false,
-  "requiresApproval":true,
-  "roleId":0,
-  "templateId":-1,
-  "validDays":0,
-  "uploadFolder":null,
-  "fields":
-    [
-      {
-        "links": [
-            {
-                rel: "self"
-                uri: "/v2/admin/sites/current/webapps/testcustomfields/fields/130930"
-            }
-        ],
-        "name":"asdads",
-        "type":"DropDown_List",
-        "id":130930,
-        "order":1,
-        "required":false,
-        "listItems":
-              [
-                "test",
-                "item2",
-                "item3"
-              ],
-         "dataSource": null
-          }
-      }
-    ],
-  "systemFields":
-    [
-      {
-        "name":"name",
-        "type":"String",
-        "required":true
-      },
-      {
-        "name":"weight",
-        "type":"Number",
-        "required":false
-      },
-      {
-        "name":"description",
-        "type":"String",
-        "required":false
-      },
-      {
-        "name":"releaseDate",
-        "type":"DateTime",
-        "required":false
-      },
-      {
-        "name":"expiryDate",
-        "type":"DateTime",
-        "required":false
-      },
-      {
-        "name":"createDate",
-        "type":"DateTime",
-        "required":false
-      },
-      {
-        "name":"lastUpdateDate",
-        "type":"DateTime",
-        "required":false
-      },
-      {
-        "name":"enabled",
-        "type":"Boolean",
-        "required":false
-      },
-      {
-        "name":"slug",
-        "type":"String",
-        "required":false
-      },
-      {
-        "name":"roleId",
-        "type":"Number",
-        "required":false
-      },
-      {
-        "name":"createBy",
-        "type":"Number",
-        "required":false
-      },
-      {
-        "name":"submittedBy",
-        "type":"Number",
-        "required":false
-      },
-      {
-        "name":"address",
-        "type":"String",
-        "required":false
-      },
-      {
-        "name":"city",
-        "type":"String",
-        "required":false
-      },
-      {
-        "name":"state",
-        "type":"String",
-        "required":false
-      },
-      {
-        "name":"zipCode",
-        "type":"String",
-        "required":false
-      },
-      {
-        "name":"country",
-        "type":"String",
-        "required":false
-      }
-    ]
-  }
+<pre class="language-javascript"><code>{
+    "links": [{
+        "rel": "items",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webapps/Test%20app2/items"
+    }, {
+        "rel": "fields",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webapps/Test%20app2/fields"
+    }, {
+        "rel": "previewUrl",
+        "uri": "http://perfume10.bcrb.tk/test-app2"
+    }, {
+        "rel": "countries",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webapps/Test%20app2/countries"
+    }],
+    "id": 35209,
+    "name": "Test app2",
+    "slug": "test-app2",
+    "allowFileUpload": false,
+    "createBy": 138039,
+    "createDate": "2014-02-20",
+    "lastUpdateBy": 138039,
+    "lastUpdateDate": "2014-02-24",
+    "disableDetailPages": false,
+    "locationEnabled": true,
+    "anyoneCanEdit": false,
+    "customerCanAdd": false,
+    "customerCanDelete": false,
+    "customerCanEdit": false,
+    "requiresPayment": false,
+    "requiresApproval": true,
+    "roleId": 0,
+    "templateId": -1,
+    "validDays": 0,
+    "uploadFolder": null,
+    "systemFields": [{
+        "name": "name",
+        "type": "String",
+        "required": true
+    }, {
+        "name": "weight",
+        "type": "Number",
+        "required": false
+    }, {
+        "name": "description",
+        "type": "String",
+        "required": false
+    }, {
+        "name": "releaseDate",
+        "type": "DateTime",
+        "required": false
+    }, {
+        "name": "expiryDate",
+        "type": "DateTime",
+        "required": false
+    }, {
+        "name": "createDate",
+        "type": "DateTime",
+        "required": false
+    }, {
+        "name": "lastUpdateDate",
+        "type": "DateTime",
+        "required": false
+    }, {
+        "name": "enabled",
+        "type": "Boolean",
+        "required": false
+    }, {
+        "name": "slug",
+        "type": "String",
+        "required": false
+    }, {
+        "name": "roleId",
+        "type": "Number",
+        "required": false
+    }, {
+        "name": "createBy",
+        "type": "Number",
+        "required": false
+    }, {
+        "name": "submittedBy",
+        "type": "Number",
+        "required": false
+    }, {
+        "name": "address",
+        "type": "String",
+        "required": false
+    }, {
+        "name": "city",
+        "type": "String",
+        "required": false
+    }, {
+        "name": "state",
+        "type": "String",
+        "required": false
+    }, {
+        "name": "zipCode",
+        "type": "String",
+        "required": false
+    }, {
+        "name": "country",
+        "type": "String",
+        "required": true
+    }],
+    "fields": [{
+        "links": [{
+            "rel": "self",
+            "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webapps/Test%20app2/fields/1"
+        }],
+        "id": 1,
+        "name": "FIELD1",
+        "type": "String",
+        "required": false,
+        "order": 1,
+        "listItems": null,
+        "dataSource": null
+    }]
+}
 </code></pre>
-
-<h3>Error Codes</h3>
+<hr><h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/test app2",
+    type: "get",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})
+</code></pre>
+<hr><h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>
 

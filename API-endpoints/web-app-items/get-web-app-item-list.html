@@ -65,11 +65,9 @@
 <li><code>limit</code> - the number of Web App items returned in this response <em>(integer)</em></li>
 </ul>
 
-<h3>Examples</h3>
-
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
@@ -143,7 +141,7 @@ Content-Length: {length}
 }
 </code></pre>
 
-<h3>Sample code</h3>
+<hr><h3>Sample code</h3>
 
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
@@ -337,18 +335,52 @@ where={"weight": {"$ne": null}}</code></p></li>
 
 <p>When sorting the items using a specified field, in case of ties due to equal values for that field, items will be further sorted by <code>name</code>.</p>
 
-<h4>Examples</h4>
+<hr>
+<h3>Sample code</h3>
+<p><strong>Sorting ascending by name</strong></p>
 
-<ul>
-<li><p>Sorting ascending by name</p>
+<pre class="language-javascript"><code>GET var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/apicreated/items?order=name",
+    type: "GET",
+    connection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}) </code></pre><p><strong>Sorting descending by name</strong></p>
 
-<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?order=name</code></p></li>
-<li><p>Sorting descending by name</p>
+<pre class="language-javascript"><code>GET var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/apicreated/items?order=-name",
+    type: "GET",
+    connection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}) </code></pre>
 
-<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?order=-name</code></p></li>
-</ul>
 
-<h3>Error Codes</h3>
+
+
+<hr><h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>
 

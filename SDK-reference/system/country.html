@@ -1,10 +1,10 @@
 
   
-    <h2 id="Country">new Country()</h2>
+    <h2 id="CountryCollection">new CountryCollection()</h2>
   
   
     
-      <p>System countries model.</p>
+      <p>This class provides a collection of the countries available in Business Catalyst. </p>
     
     
       <p><strong>Source:</strong></p>
@@ -14,25 +14,21 @@
         </ul>
       
     
-  
-
-
-<h2>Methods</h2>
-
-  
-    <h3 id="endpoint"> endpoint()</h3>
-  
-  
-    
-      <p>This method returns the correct endpoint for system countries.</p>
-    
-    
-      <p><strong>Source:</strong></p>
-      
-        <ul>
-          <li><a href="http://adobebc.github.io/bcapi.js/country.js.html">src/country.js</a></li>
-        </ul>
-      
-    
+    <h3>Sample code</h3>
+    <pre class="language-javascript"><code>var itemCollection = new BCAPI.Models.CountryCollection();
+itemCollection.fetch({
+    success: function (Country) {
+        itemCollection.each(function (Country) {
+            console.log(Country.get('countryCode') + " // " + Country.get('displayName'))
+        });
+    },
+    error: function (Country, xhr) {
+        console.log("Request failed.");
+        console.log("Error code: " + jqXHR.status);
+        console.log("Error text: " + jqXHR.statusText);
+        console.log("Response text: " + jqXHR.responseText)
+    }
+});
+</code></pre>
   
 

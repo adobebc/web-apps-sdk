@@ -1,7 +1,8 @@
+<h2>Update Web App Item Categories</h2>
 
-        <h2>Update Web App Item</h2>
+<p>Assigns a new list of categories to a webapp item</p>
 
-<p>Update a web app item. The update can be full (sending all properties), or partial (sending just the ones that need updating). Sending a property with a null value or not sending it at all has the same effect: it will not be changed.</p>
+<p class="alert alert-info"><strong>Note:</strong> Assigning a new list of categories to a Web App item will replace the existing categories.</p>
 
 <h3>Request</h3>
 
@@ -12,7 +13,7 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/webapps/[webAppName]/items/[webAppItemId]
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/webapps/[webappName]/items/[itemID]/categories
 
 <ul>
 <li>Alternatively, use "current" instead of [siteId]</li>
@@ -21,108 +22,75 @@
 <li><strong>Required Permissions:</strong> Edit Web App Items</li>
 </ul>
 
-<h4>Parameters</h4>
+<h3>Parameters</h3>
 
-<p>Body - A WebAppItem object containg the following properties:</p>
-
-<ul>
-<li><code>name</code> - the name of the web app item <em>(string)</em></li>
-<li><code>weight</code> - the weight of the web app item (the order in which they will appear in frontend) <em>(integer)</em></li>
-<li><code>releaseDate</code> - the release date of the web app item; uses the format mm/dd/yyyy <em>(string)</em></li>
-<li><code>expiryDate</code> - the date when the web app item will expire; uses the format mm/dd/yyyy <em>(string)</em></li>
-<li><code>enabled</code> - a boolean indicating whether this web app item is enabled or disabled <em>(boolean)</em></li>
-<li><code>slug</code> - the suffix that will be used to build its frontend URL. This is appended to the URL of the webapp. <em>(string)</em></li>
-<li><code>description</code> - the description or content of the webapp item <em>(string)</em></li>
-<li><code>roleId</code> - the id of the role assigned to this web app item, if any <em>(integer)</em></li>
-<li><code>address</code> - the address of this webapp item if any <em>(string)</em></li>
-<li><code>city</code> - the city of this webapp item if any <em>(string)</em></li>
-<li><code>state</code> - the state of this webapp item if any <em>(string)</em></li>
-<li><code>zipCode</code> - the zip code of this webapp item if any <em>(string)</em></li>
-<li><code>country</code> - the country of this webapp item if any. It should be the 2 letter country code returned by the Countries API (https://zerowing.corp.adobe.com/display/BusinessCatalyst/System+API+reference#SystemAPIreference-GetCountriesList) <em>(string)</em></li>
-<li><code>fields</code> - an object storing the webapp item's custom fields. This field is represented in 2 ways:
-
-<ul>
-<li>in json, each custom field is a property of this object</li>
-<li>in xml, it is an array of objects having the following properties:
-
-<ul>
-<li><code>name</code> - the name of the custom field</li>
-<li><code>value</code> - the value of the custom field. It can be any of the supported types: number, string, boolean</li>
-</ul></li>
-</ul></li>
-</ul>
+<p>Use the ids of the categories as parameters for this method.</p>
 
 <h3>Response</h3>
 
 <p>Returns empty body with a header response code.</p>
 
-<h3>Examples</h3>
-
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>PUT /api/v2/admin/sites/current/webapps/TestWebapp1/items/123
-Authorization: 3e8d891d91eb433e9c800cebe3b132a4e64ac661c5ed4dd8bdecae0487e4ad7c
+<pre class="language-javascript"><code>PUT /api/v2/admin/sites/current/webapps/Cars/items/564567/categories HTTPS/1.1
+Content-Length: length
+Connection: keep-alive
 Content-Type: application/json
-Accept: application/json
 
-{
-  "name": "Item7",
-  "weight": 7,
-  "releaseDate": "2013-01-30",
-  "expiryDate": "9999-01-01",
-  "enabled": true,
-  "slug": "item7",
-  "description": "&lt;p&gt;item7 description&lt;\/p&gt;",
-  "roleId": null,
-  "address": "item7_address",
-  "city": "item7_city",
-  "state": "item7_state",
-  "zipCode": "000007",
-  "country": "US",
-  "fields": {
-      "field_string_required": "item7_field1_value",
-      "field2_string_optional": "item7_field2_value",
-      "field3_number": 7,
-      "field4_dateTime": "2012-01-20",
-      "field5_list": "item1"
-  }
-}
+[45345,45346]
 </code></pre>
 
 <p><strong>Response:</strong></p>
 
 <pre class="language-javascript"><code>HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
 </code></pre>
 
-<h3>Error Codes</h3>
+<hr><h3>Sample code</h3>
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/apicreated/items/7370535/categories",
+    type: "PUT",
+    connection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    data: JSON.stringify(["155320"])
+});
+request.done(function (msg) {
+    console.log("Update successful");
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}) 
+</code></pre>
+
+<hr><h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>
 
 <ul>
 <li><code>200</code> - success</li>
-<li><code>401</code> - unauthorized - when the authentication token is incorrect</li>
-<li><code>403</code> - forbidden - when the user does not have the proper permissions</li>
-<li><code>404</code> - not found
+<li><code>400</code> - bad request
+
+<ul>
+<li><code>200000</code> - An unspecified error has occured</li>
+<li><code>200009</code> - Category id is invalid</li>
+</ul></li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token</li>
+<li><code>403</code> - forbidden - when the user does not have Edit WebApp Item permission</li>
+<li><code>404</code> - not found:
 
 <ul>
 <li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
 <li><code>200001</code> - The webapp item was not found (the webAppName and webAppItemId from the URL do not match)</li>
-</ul></li>
-<li><code>400</code> - bad request; sub-error codes:
-
-<ul>
-<li><code>200000</code> - An unspecified error has occured</li>
-<li><code>200002</code> - The slug is invalid</li>
-<li><code>200003</code> - Using this slug will make the entire frontend URL larger than the maximum allowed length</li>
-<li><code>200004</code> - The slug is already used</li>
-<li><code>200005</code> - The name provided is invalid (empty or null)</li>
-<li><code>200006</code> - A custom field failed validation</li>
-<li><code>200008</code> - There is a problem with the address. Either the webapp does not allow storing addresses, or one of the address fields is empty</li>
 </ul></li>
 </ul>
 

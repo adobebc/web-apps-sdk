@@ -4,7 +4,7 @@
   
   
     
-      <p>This class provides a methods for working with individual category items.</p>
+      <p>This class provides methods for working with categories.</p>
     
     
       <p><strong>Source:</strong></p>
@@ -39,7 +39,69 @@ category.fetch({
 <p>Update and delete operations are not supported
 </p>
   
-
+<h4>List all the categories</h4>
+    <pre class="language-javascript"><code>var categories = new BCAPI.Models.CategoryCollection();
+categories.fetch({
+    success: function (data) {
+        data.each(function (category) {
+            console.log(
+                "Name: " + category.get('name') + " " +
+                "ID: " + category.get('id') + " " +
+                "parentId: " + category.get('parentId') + " " +
+                "links: " + JSON.stringify(category.get('links'))
+            );
+        });
+    },
+    error: function (data) {
+        console.log('Encountered an error.')
+    }
+})</code></pre>
+  
+<strong>Response</strong>
+<pre class="language-javascript"><code>Name: Root ID: 14075 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14075"
+}]
+Name: Company ID: 14606 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14606"
+}]
+Name: Products ID: 14609 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14609"
+}]
+Name: Solutions ID: 14610 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14610"
+}]
+Name: Customers ID: 14744 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14744"
+}]
+Name: Company1 Private ID: 155310 parentId: 14606 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155310"
+}]
+Name: Company2 Public ID: 155311 parentId: 14606 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155311"
+}]
+Name: My category ID: 155312 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155312"
+}]
+Name: My category2 ID: 155313 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155313"
+}]
+Name: My category3 ID: 155314 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155314"
+}]
+Name: My category4 ID: 155315 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155315"
+}]</code></pre>
 
 <h3>Extends</h3>
 <ul>

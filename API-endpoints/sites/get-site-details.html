@@ -210,7 +210,7 @@ Content-Type: application/json
     "billingMethodTypeId": 0,
     "createDate": "2011-09-20T23:04:54",
     "dataCenterId": 7,
-    "daysToExpiry": 2065,
+    "daysToExpiry": 2052,
     "displayExpiryWarning": false,
     "pathWithTags": ["/Layouts/"],
     "pathWithoutTags": ["/Layouts/SystemMessages/"],
@@ -218,23 +218,23 @@ Content-Type: application/json
     "canExtendExpiryDate": false,
     "readyToGoLive": false,
     "isPartnerSite": false
-}
-</code></pre>
+}</code></pre>
 <hr>
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: "/api/v2/admin/sites/current",
-    type: "GET",
-    contentType: "application/json",
-    headers: {
+    "url": "/api/v2/admin/sites/current",
+    "headers": {
         "Authorization": $.cookie('access_token')
-    }
-});
+    },
+    "contentType": "application/json"
+})
+
 request.done(function (msg) {
     console.log(JSON.stringify(msg));
 })
+
 request.fail(function (jqXHR) {
-    console.log("Request failed.");
+    console.log("Get site list failed.");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);

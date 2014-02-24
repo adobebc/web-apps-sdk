@@ -7,89 +7,150 @@
       <p>This class provides useful operations for interacting with web app items. You can find various examples of how to use it.</p>
       
       <h3>Load items paginated</h3>
-      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
 items.fetch({
-        skip: 10, limit: 100,
+        skip: 2, limit: 100,
         success: function(webAppItems) {
-            // handle success
-        },
-        error: function(webAppItems, xhr) {
-            // handle errors
-        }
+            items.each(function(webAppItem) {
+    console.log("createDate: " + webAppItem.get('createDate'))
+    console.log("enabled: " + webAppItem.get('enabled'))
+    console.log("expiryDate: " + webAppItem.get('expiryDate'))
+    console.log("id: " + webAppItem.get('id'))
+    console.log("lastUpdateDate: " + webAppItem.get('lastUpdateDate'))
+    console.log("name: " + webAppItem.get('name'))
+    console.log("releaseDate: " + webAppItem.get('releaseDate'))
 });
-
-items.each(function(webAppItem) {
-        // display logic
+        },
+        error: function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}
 });
 </code></pre>
-      
       <h3>Filtering items</h3>
-      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
-items.fetch({     
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
+items.fetch({
         where: {"name": ""Web app item new"},
         success: function(webAppItems) {
-            // handle success
+            items.each(function(webAppItem) {
+    console.log("createDate: " + webAppItem.get('createDate'))
+    console.log("enabled: " + webAppItem.get('enabled'))
+    console.log("expiryDate: " + webAppItem.get('expiryDate'))
+    console.log("id: " + webAppItem.get('id'))
+    console.log("lastUpdateDate: " + webAppItem.get('lastUpdateDate'))
+    console.log("name: " + webAppItem.get('name'))
+    console.log("releaseDate: " + webAppItem.get('releaseDate'))
+});
         },
-        error: function(webAppItems, xhr) {
-            // handle errors
-        }
+        error: function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}
 });
 </code></pre>
       
       <h3>Ordering items</h3>
-      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
 items.fetch({
         order: "-name",
         success: function(webAppItems) {
-            // handle success
+            items.each(function(webAppItem) {
+    console.log("createDate: " + webAppItem.get('createDate'))
+    console.log("enabled: " + webAppItem.get('enabled'))
+    console.log("expiryDate: " + webAppItem.get('expiryDate'))
+    console.log("id: " + webAppItem.get('id'))
+    console.log("lastUpdateDate: " + webAppItem.get('lastUpdateDate'))
+    console.log("name: " + webAppItem.get('name'))
+    console.log("releaseDate: " + webAppItem.get('releaseDate'))
+});
         },
-        error: function(webAppItems, xhr) {
-            // handle errors
-        }
+        error: function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}
 });
 </code></pre>
       
       <h3>All in one usage</h3>
-      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("Test webapp");
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
 items.fetch({
-        skip: 10, limit: 100,
-        where: {"name": ""Web app item new"},
+        skip: 0, limit: 100,
+        where: {"name": "My webapp item"},
         order: "-name",
         success: function(webAppItems) {
-            webAppItems.each(function(webAppItem) {
-                 // display logic
-            });
+            items.each(function(webAppItem) {
+    console.log("createDate: " + webAppItem.get('createDate'))
+    console.log("enabled: " + webAppItem.get('enabled'))
+    console.log("expiryDate: " + webAppItem.get('expiryDate'))
+    console.log("id: " + webAppItem.get('id'))
+    console.log("lastUpdateDate: " + webAppItem.get('lastUpdateDate'))
+    console.log("name: " + webAppItem.get('name'))
+    console.log("releaseDate: " + webAppItem.get('releaseDate'))
+});
         },
-        error: function(webAppItems, xhr) {
-            // handle errors
-        }
+        error: function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}
 });
 </code></pre>
-      
-      <h3>Create item</h3>
-      <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("Test webapp", {
-        "name": "Test item"
-});
+      <h3>Load the webapp items collection</h3>
+      <pre class="language-javascript"><code>
+var itemCollection = new BCAPI.Models.WebApp.ItemCollection("test app2");
+itemCollection.fetch({
+    success: function (items) {
+        console.log('Items loaded successfully, here are the details:')
 
+        items.each(function (item) {
+            item.fetch({
+                success: function (itemDetails) {
+                    console.log(JSON.stringify(itemDetails.attributes))
+                }
+            });
+        });
+    },
+    error: function (jqXHR) {
+        console.log("Request failed.");
+    }
+});
+</code></pre>
+      <h3>Create item</h3>
+      <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("webapp_name_here", {
+    "name": "4"
+});
 var response = item.save({
-        success: function(webAppItem) {
-            // handle success
-        },
-        error: function(webAppItem, xhr) {
-            // handle errors
-        }
+    success: function (webAppItem) {
+        console.log('Item created')
+    },
+    error: function (jqXHR) {
+        console.log("Request failed.");
+        console.log("Error code: " + jqXHR.status);
+        console.log("Error text: " + jqXHR.statusText);
+        console.log("Response text: " + jqXHR.responseText);
+    }
 });</code></pre>
-      <p>If you want to refresh collections which rely on Item model please refresh those collections.</p>
-      
       <h3>Remove item</h3>
-      <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("Test webapp", {id: 1});
-item.destroy({
-    success: function(webAppItem, response) {
-        // handle success here.
- },
- error: function(webAppItem, xhr, options) {
-        // handle error scenario.
- } 
+      <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("apicreated", {
+    "id": "7370534"
+});
+var response = item.destroy({
+    success: function (webAppItem) {
+        console.log('Item deleted')
+    },
+    error: function (jqXHR) {
+        console.log("Request failed.");
+        console.log("Error code: " + jqXHR.status);
+        console.log("Error text: " + jqXHR.statusText);
+        console.log("Response text: " + jqXHR.responseText);
+    }
 });</code></pre>
     
     
@@ -98,9 +159,9 @@ item.destroy({
         <ul>
           <li><a href="http://adobebc.github.io/bcapi.js/webapp_item.js.html">src/webapp_item.js</a></li>
         </ul>
-      
+      <hr>
     
-    <h3>Example</h3>
+    <h3>Supported attributes</h3>
     <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item({
 	"name": "Item7",
 	"weight": 7,

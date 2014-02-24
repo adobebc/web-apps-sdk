@@ -9,7 +9,7 @@
 <li><strong>Method:</strong> SOAP</li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.  </li>
 <li><strong>Path:</strong> /catalystwebservice/catalystcrmwebservice.asmx</li>
-<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>The username and password fields:</strong>You can make SOAP API calls can be authorized either by using the actual username or password of an Admin username or, if you are making the calls from an app leave the username field empty and use the <a href="/developer-documentation/oauth-in-bc.html">authorization token</a> as the password.</li>
 </ul>
 
 <h4>Parameters</h4>
@@ -43,7 +43,7 @@
 <li><code>firstName</code> - <em>(string)</em></li>
 <li><code>lastName</code> - <em>(string)</em></li>
 <li><code>username</code> - <em>(string)</em></li>
-<li><code>password</code> - <em>(string)</em></li>
+<li><code>password</code> - this field has been deprecated, it always returns a blank value</li>
 <li><code>dateOfBirth</code> - <em>(dateTime)</em></li>
 <li><code>createDate</code> - <em>(dateTime)</em></li>
 <li><code>lastUpdateDate</code> - <em>(dateTime)</em></li>
@@ -65,7 +65,7 @@
 
 <p>Accepts and returns XML as Content-Type.</p>
 
-<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values.</p>
+<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values, please note the data in the request and response is only for explanatory purposes.</p>
 
 <p><strong>Request:</strong></p>
 
@@ -78,12 +78,12 @@ Content-Length: length
 &lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
   &lt;soap12:Body&gt;
     &lt;ContactList_Retrieve xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice"&gt;
-      &lt;username&gt;string&lt;/username&gt;
-      &lt;password&gt;string&lt;/password&gt;
-      &lt;siteId&gt;int&lt;/siteId&gt;
-      &lt;lastUpdateDate&gt;dateTime&lt;/lastUpdateDate&gt;
-      &lt;recordStart&gt;int&lt;/recordStart&gt;
-      &lt;moreRecords&gt;boolean&lt;/moreRecords&gt;
+      &lt;username&gt;jdoe@yourdomain.com&lt;/username&gt;
+      &lt;password&gt;Y0urP@ssw0rdH3re&lt;/password&gt;
+      &lt;siteid&gt;12345&lt;/siteid&gt;
+      &lt;lastUpdateDate&gt;2012-08-08T12:22:00&lt;/lastUpdateDate&gt;
+      &lt;recordStart&gt;0&lt;/recordStart&gt;
+      &lt;moreRecords&gt;true&lt;/moreRecords&gt;
     &lt;/ContactList_Retrieve&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
@@ -101,19 +101,19 @@ Content-Length: length
     &lt;ContactList_RetrieveResponse xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice"&gt;
       &lt;ContactList_RetrieveResult&gt;
         &lt;ContactRecord&gt;
-          &lt;entityId&gt;int&lt;/entityId&gt;
-          &lt;externalId&gt;string&lt;/externalId&gt;
-          &lt;emailAddress&gt;string&lt;/emailAddress&gt;
+          &lt;entityId&gt;1234&lt;/entityId&gt;
+          &lt;externalId&gt;12345&lt;/externalId&gt;
+          &lt;emailAddress&gt;jdoe@yourdomain.com&lt;/emailAddress&gt;
           &lt;contactTitle&gt;string&lt;/contactTitle&gt;
-          &lt;deleted&gt;boolean&lt;/deleted&gt;
-          &lt;fullName&gt;string&lt;/fullName&gt;
-          &lt;firstName&gt;string&lt;/firstName&gt;
-          &lt;lastName&gt;string&lt;/lastName&gt;
-          &lt;username&gt;string&lt;/username&gt;
-          &lt;password&gt;string&lt;/password&gt;
-          &lt;dateOfBirth&gt;dateTime&lt;/dateOfBirth&gt;
-          &lt;createDate&gt;dateTime&lt;/createDate&gt;
-          &lt;lastUpdateDate&gt;dateTime&lt;/lastUpdateDate&gt;
+          &lt;deleted&gt;false&lt;/deleted&gt;
+          &lt;fullName&gt;John Doe&lt;/fullName&gt;
+          &lt;firstName&gt;John&lt;/firstName&gt;
+          &lt;lastName&gt;Doe&lt;/lastName&gt;
+          &lt;username&gt;jdoe@yourdomain.com&lt;/username&gt;
+          &lt;password&gt;Y0urP@ssw0rdH3re&lt;/password&gt;
+          &lt;dateOfBirth&gt;1980-03-03T10:20:00&lt;/dateOfBirth&gt;
+          &lt;createDate&gt;2010-08-08T12:22:00&lt;/createDate&gt;
+          &lt;lastUpdateDate&gt;2012-08-08T12:22:00&lt;/lastUpdateDate&gt;
           &lt;customerType&gt;string&lt;/customerType&gt;
           &lt;industryType&gt;string&lt;/industryType&gt;
           &lt;leadSourceType&gt;string&lt;/leadSourceType&gt;
@@ -134,22 +134,22 @@ Content-Length: length
             &lt;CrmForms xsi:nil="true" /&gt;
             &lt;CrmForms xsi:nil="true" /&gt;
           &lt;/crmForms&gt;
-          &lt;MasterOptIn&gt;boolean&lt;/MasterOptIn&gt;
+          &lt;MasterOptIn&gt;true&lt;/MasterOptIn&gt;
         &lt;/ContactRecord&gt;
         &lt;ContactRecord&gt;
-          &lt;entityId&gt;int&lt;/entityId&gt;
-          &lt;externalId&gt;string&lt;/externalId&gt;
-          &lt;emailAddress&gt;string&lt;/emailAddress&gt;
+          &lt;entityId&gt;1234&lt;/entityId&gt;
+          &lt;externalId&gt;12345&lt;/externalId&gt;
+          &lt;emailAddress&gt;jdoe@yourdomain.com&lt;/emailAddress&gt;
           &lt;contactTitle&gt;string&lt;/contactTitle&gt;
-          &lt;deleted&gt;boolean&lt;/deleted&gt;
-          &lt;fullName&gt;string&lt;/fullName&gt;
-          &lt;firstName&gt;string&lt;/firstName&gt;
-          &lt;lastName&gt;string&lt;/lastName&gt;
-          &lt;username&gt;string&lt;/username&gt;
-          &lt;password&gt;string&lt;/password&gt;
-          &lt;dateOfBirth&gt;dateTime&lt;/dateOfBirth&gt;
-          &lt;createDate&gt;dateTime&lt;/createDate&gt;
-          &lt;lastUpdateDate&gt;dateTime&lt;/lastUpdateDate&gt;
+          &lt;deleted&gt;false&lt;/deleted&gt;
+          &lt;fullName&gt;John Doe&lt;/fullName&gt;
+          &lt;firstName&gt;John&lt;/firstName&gt;
+          &lt;lastName&gt;Doe&lt;/lastName&gt;
+          &lt;username&gt;jdoe@yourdomain.com&lt;/username&gt;
+          &lt;password&gt;Y0urP@ssw0rdH3re&lt;/password&gt;
+          &lt;dateOfBirth&gt;1980-03-03T10:20:00&lt;/dateOfBirth&gt;
+          &lt;createDate&gt;2010-08-08T12:22:00&lt;/createDate&gt;
+          &lt;lastUpdateDate&gt;2012-08-08T12:22:00&lt;/lastUpdateDate&gt;
           &lt;customerType&gt;string&lt;/customerType&gt;
           &lt;industryType&gt;string&lt;/industryType&gt;
           &lt;leadSourceType&gt;string&lt;/leadSourceType&gt;
@@ -170,11 +170,11 @@ Content-Length: length
             &lt;CrmForms xsi:nil="true" /&gt;
             &lt;CrmForms xsi:nil="true" /&gt;
           &lt;/crmForms&gt;
-          &lt;MasterOptIn&gt;boolean&lt;/MasterOptIn&gt;
+          &lt;MasterOptIn&gt;true&lt;/MasterOptIn&gt;
         &lt;/ContactRecord&gt;
       &lt;/ContactList_RetrieveResult&gt;
-      &lt;recordStart&gt;int&lt;/recordStart&gt;
-      &lt;moreRecords&gt;boolean&lt;/moreRecords&gt;
+      &lt;recordStart&gt;0&lt;/recordStart&gt;
+      &lt;moreRecords&gt;true&lt;/moreRecords&gt;
     &lt;/ContactList_RetrieveResponse&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;

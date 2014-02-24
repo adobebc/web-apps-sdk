@@ -58,11 +58,11 @@
 
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /api/v2/admin/sites/current/webapps/Cars/fields HTTPS/1.1
+<pre class="language-javascript"><code>POST /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE/fields HTTPS/1.1
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Length: 157
 Connection: keep-alive
@@ -84,26 +84,29 @@ Content-Type: application/json; charset=utf-8
 Location: /api/v2/admin/sites/current/webapps/Cars/fields/123
 </code></pre>
 
-<h3>Sample code</h3>
-
-<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
-
-<pre class="language-javascript"><code>var customField = new BCAPI.Models.WebApp.CustomField("Test webapp", {
-    "name": "Part code",
-    "type": "DataSource",
-    "listItems": null,
-    "dataSource": "Part Codes",
-    "required": false
+<hr><h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/test app2/fields",
+    type: "POST",
+    connection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    data: JSON.stringify({"name": "Customfield1", "type": "String","required": true, "order": 1})
 });
-
-customField.save({
-    success: function(fieldModel) {
-        // do something on success.
-    }
-});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})
 </code></pre>
 
-<h3>Error Codes</h3>
+<hr><h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>
 

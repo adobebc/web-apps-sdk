@@ -63,11 +63,9 @@
 </ul></li>
 </ul>
 
-<h3>Examples</h3>
-
 <p>Accepts and returns JSON as Content-Type.</p>
 
-<h4>JSON</h4>
+<hr>
 
 <p><strong>Request:</strong></p>
 
@@ -121,9 +119,28 @@ Content-Length: {length}
   }
 }
 </code></pre>
+<hr><h3>Sample code</h3>
+<pre class="language-javascript"><code>
+var request = $.ajax({
+    "url": "/api/v2/admin/sites/current/webapps/apicreated/items/7370535",
+    "headers": {
+        "Authorization": $.cookie('access_token')
+    },
+    "contentType": "application/json"
+})
 
-<h3>Error Codes</h3>
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
 
+request.fail(function (jqXHR) {
+    console.log("Get site list failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<pre class="language-javascript"><code>
+<hr><h3>Error Codes</h3>
 <p>This method will return the following error codes:</p>
 
 <ul>

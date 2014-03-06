@@ -87,7 +87,7 @@ Site visitors get to it only after clicking the links outputted by any of these 
             <li><em>syncWithAttributes</em> – true or false</li>
             <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
             <li><em>disabledSelectionMessage</em> – specify the message displayed when site customer has selected a variation that is disabled</li>
-            </ul><p>Take a look at <a href="http://forums.adobe.com/docs/DOC-2721" target="_blank">this article </a>for more details.</p></span></td>
+            </ul></span></td>
         </tr>
 <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_itemurl_nolink</span>}</code></td><td><span class="cellcontent">URL to the item referred, without host</span></td>
@@ -120,7 +120,7 @@ Site visitors get to it only after clicking the links outputted by any of these 
             <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
             <li><em>disabledSelectionMessage</em> – specify the message displayed when site customer has selected a variation that is disabled</li>
            
-            </ul><p>Take a look at <a href="http://forums.adobe.com/docs/DOC-2721" target="_blank">this article </a>for more details.</p>
+            </ul>
             </span></td>
         </tr>
 <tr>
@@ -137,18 +137,15 @@ Site visitors get to it only after clicking the links outputted by any of these 
             <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
             <li><em>disabledSelectionMessage</em> – specify the message displayed when site customer has selected a variation that is disabled</li>
             
-            </ul><p>Take a look at <a href="http://forums.adobe.com/docs/DOC-2721" target="_blank">this article </a>for more details.</p>
+            </ul>
             </span></td>
         </tr>
 <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productmetadescription</span>}</code></td><td><span class="cellcontent">Meta description information added in the SEO Metadata section of product details page.</span></td>
         </tr>
 <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_relatedproducts,rowlength, hideifempty</span>}</code></td>
-            <td><span class="cellcontent">Displays a list of products related to this product that can be browsed and added separately to cart (useful for up/cross selling purposes). <p>Parameters:</p> <ul><li><em>rowlength</em> - how many items to display per row</li>
-              <li><em>hideifempty</em> - if set to <strong>true</strong> will not render anything if no related products are found. if set to <strong>false</strong> will render <em>This product has no related products.</em> if no empty products are found</li>
-            </ul>
-            </span></td>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_relatedproducts</span>,itemsperrow, hideEmptyMessage}</code></td>
+            <td><span class="cellcontent">Displays a list of products related to this product that can be browsed and added separately to cart (useful for up/cross selling purposes), {&lt;span class=&quot;tagname&quot;&gt;tag_relatedproducts&lt;/span&gt;,itemsperrow, hideEmptyMessage} renders a table containing the related products, 6 per row and hides the "<strong>This product has no related products.</strong>" message if no related products are found.</span></td>
         </tr>
 <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_relatedproductslist</span>}</code></td><td><span class="cellcontent">Displays a list of products related to this product that are added to the cart when this product is. By default this renders as check boxes otherwise: {<span>tag_relatedproductslist,7</span>}</code> will display them as radio buttons, {<span>tag_relatedproductslist,6</span>}</code> will display them as check boxes and {<span>tag_relatedproductslist,8</span>}</code> displays small images of the product only. (useful for up/cross selling purposes)</span></td>
@@ -208,21 +205,19 @@ Site visitors get to it only after clicking the links outputted by any of these 
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_catalogueid</span>}</code></td><td><span class="cellcontent">Displays catalog system id the product is currently displayed in</span></td>
         </tr>
 <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_attributes_json</span>}</code></td>
-            <td><span class="cellcontent">Renders all the product attributes in JSON format. Take a look at <a href="http://forums.adobe.com/docs/DOC-2721" target="_blank">this article </a>for more details.</span></td>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_attributes_json</span>}</code></td><td><span class="cellcontent">Renders all the product attributes in JSON format</span></td>
         </tr>
 <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_instock_json</span>}</code></td><td><span class="cellcontent">Renders the total stock and SKU variation stock in JSON format. Take a look at <a href="http://forums.adobe.com/docs/DOC-2721" target="_blank">this article </a>for more details.</span></td>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_instock_json</span>}</code></td><td><span class="cellcontent">Renders the total stock and SKU variation stock in JSON format</span></td>
         </tr>
 <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_onorder_json</span>}</code></td>
-            <td><span class="cellcontent">Renders on order information in JSON format. Take a look at <a href="http://forums.adobe.com/docs/DOC-2721" target="_blank">this article </a>for more details.</span></td>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_onorder_json</span>}</code></td><td><span class="cellcontent">Renders on order information in JSON format</span></td>
         </tr>
 <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productcode_json</span>}</code></td><td><span class="cellcontent">Renders the product code and SKU codes in JSON format. Take a look at <a href="http://forums.adobe.com/docs/DOC-2721" target="_blank">this article </a>for more details.</span></td>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productcode_json</span>}</code></td><td><span class="cellcontent">Renders the product code and SKU codes in JSON format</span></td>
         </tr>
 <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_product_json</span>}</code></td><td><span class="cellcontent">Renders the product ID, Catalog ID the currently being viewed and template ID being used in JSON format. Take a look at <a href="http://forums.adobe.com/docs/DOC-2721" target="_blank">this article </a>for more details.</span></td>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_product_json</span>}</code></td><td><span class="cellcontent">Renders the product ID, Catalog ID the currently being viewed and template ID being used in JSON format</span></td>
         </tr>
 </tbody>
 </table>

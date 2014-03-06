@@ -44,7 +44,7 @@
 	        "fields": {
 	            "Position": "Interface Designer",
 	            "Bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque commodo egestas. Curabitur laoreet condimentum commodo. Suspendisse laoreet, arcu vel dapibus imperdiet, lectus elit faucibus nulla, eu gravida erat dolor eget odio. Pellentesque sed nisl neque.",
-	            "Picture": "/bc-meet-the-team/images/Christian.jpg",
+	            "Picture": "/bc-meet-the-team/images/generic-profile.jpg",
 	            "Facebook": "",
 	            "Twitter": "",
 	            "Linkedin": ""
@@ -55,7 +55,7 @@
 	        "fields": {
 	            "Position": "Product Manager",
 	            "Bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque commodo egestas. Curabitur laoreet condimentum commodo. Suspendisse laoreet, arcu vel dapibus imperdiet, lectus elit faucibus nulla, eu gravida erat dolor eget odio. Pellentesque sed nisl neque.",
-	            "Picture": "/bc-meet-the-team/images/Carmen.jpg",
+	            "Picture": "/bc-meet-the-team/images/generic-profile.jpg",
 	            "Facebook": "",
 	            "Twitter": "",
 	            "Linkedin": ""
@@ -66,7 +66,7 @@
 	        "fields": {
 	            "Position": "Frontend Developer",
 	            "Bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque commodo egestas. Curabitur laoreet condimentum commodo. Suspendisse laoreet, arcu vel dapibus imperdiet, lectus elit faucibus nulla, eu gravida erat dolor eget odio. Pellentesque sed nisl neque.",
-	            "Picture": "/bc-meet-the-team/images/Bridgett.jpg",
+	            "Picture": "/bc-meet-the-team/images/generic-profile.jpg",
 	            "Facebook": "",
 	            "Twitter": "",
 	            "Linkedin": ""

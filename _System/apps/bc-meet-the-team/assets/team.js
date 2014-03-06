@@ -22,7 +22,7 @@
 var WEBAPP_NAME = "bc-meet-the-team";
 var WEBAPP_SLUG = "bc-meet-the-team";
 var WEBAPP_PHOTO_FOLDER = "/bc-meet-the-team/images/";
-var MEMBER_DEFAULT_PHOTO = WEBAPP_PHOTO_FOLDER + "unknown.jpg";
+var MEMBER_DEFAULT_PHOTO = WEBAPP_PHOTO_FOLDER + "generic-profile.jpg";
 
 function bootStrap() {
     showPageLoadingIndicator(true);

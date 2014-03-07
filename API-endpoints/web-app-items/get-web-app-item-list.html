@@ -143,6 +143,45 @@ Content-Length: {length}
 
 <hr><h3>Sample code</h3>
 
+<p><strong>Sorting ascending by name</strong></p>
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/apicreated/items?order=name",
+    type: "GET",
+    connection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}) </code></pre><p><strong>Sorting descending by name</strong></p>
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/apicreated/items?order=-name",
+    type: "GET",
+    connection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}) </code></pre>
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
 
 <p><strong>Load items paginated</strong></p>
@@ -334,48 +373,6 @@ where={"weight": {"$ne": null}}</code></p></li>
 <p>If no ordering is specified the items will be order by <code>name</code> ascending.</p>
 
 <p>When sorting the items using a specified field, in case of ties due to equal values for that field, items will be further sorted by <code>name</code>.</p>
-
-<hr>
-<h3>Sample code</h3>
-<p><strong>Sorting ascending by name</strong></p>
-
-<pre class="language-javascript"><code>GET var request = $.ajax({
-    url: "/api/v2/admin/sites/current/webapps/apicreated/items?order=name",
-    type: "GET",
-    connection: "keep-alive",
-    contentType: "application/json",
-    headers: {
-        "Authorization": $.cookie('access_token')
-    }
-});
-request.done(function (msg) {
-    console.log(JSON.stringify(msg));
-})
-request.fail(function (jqXHR) {
-    console.log("Request failed.");
-    console.log("Error code: " + jqXHR.status);
-    console.log("Error text: " + jqXHR.statusText);
-    console.log("Response text: " + jqXHR.responseText);
-}) </code></pre><p><strong>Sorting descending by name</strong></p>
-
-<pre class="language-javascript"><code>GET var request = $.ajax({
-    url: "/api/v2/admin/sites/current/webapps/apicreated/items?order=-name",
-    type: "GET",
-    connection: "keep-alive",
-    contentType: "application/json",
-    headers: {
-        "Authorization": $.cookie('access_token')
-    }
-});
-request.done(function (msg) {
-    console.log(JSON.stringify(msg));
-})
-request.fail(function (jqXHR) {
-    console.log("Request failed.");
-    console.log("Error code: " + jqXHR.status);
-    console.log("Error text: " + jqXHR.statusText);
-    console.log("Response text: " + jqXHR.responseText);
-}) </code></pre>
 
 
 

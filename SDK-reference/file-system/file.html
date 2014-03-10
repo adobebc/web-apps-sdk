@@ -26,14 +26,15 @@ f.upload(data).done(function () {
       <p>So the below is equivalent to the above instantiation:</p>
       <pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File('hello_world.txt');
 </code></pre>
-      <p>You can also create a file by specifying the name and the parent folder of the file. The following piece of code creates the file /my/special/file:</p>
+      <p>You can also create a file by specifying the name and the parent folder of the file. The following piece of code creates the file /my/special/file.txt:</p>
       <pre class="language-javascript"><code>var f = new BCAPI.Models.FileSystem.File({
-    'parent': new BCAPI.Models.FileSystem.Folder('/my/special'),
-    'name': 'file'
+    'parent': new BCAPI.Models.FileSystem.Folder('/my/test/special'),
+    'name': 'file.txt'
 });
 
-f.upload(files[0]);
+f.upload(f[0]);
 </code></pre>
+<p>In the example above if the parent folders <strong>my</strong>, <strong>test</strong> and <strong>special</strong> do not exist they wull be created on the fly.</p>
       
       <h3>Get the file metadata</h3>
       <pre class="language-javascript"><code>var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');

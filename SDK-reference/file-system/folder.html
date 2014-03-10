@@ -18,13 +18,13 @@
       <p>The root directory / cannot be created like this. You can only get it with:</p>
       <pre class="language-javascript"><code>var root = BCAPI.Models.FileSystem.Root;
 console.log(root.get("path")); </code></pre>
-      <p>It should be noted that just creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required:</p>
-      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("my-folder");
+      <p>At this moment the folder does not exist just yet, we need to call the <strong>create()</strong> function to actually write the folder to the disk. Here is a complete example:</p>
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("something/test1/test2/my-folder");
 folder.create().done(function () {
     console.log("The folder has been created !");
 });</code></pre>
-      
-      <h3>Get the folder's metadata</h3>
+      <p>In the example above if the folders <strong>something</strong>, <strong>test1</strong> and <strong>test2</strong> does not exist they will all be created on the fly.</p>
+<h3>Get the folder's metadata</h3>
       <p>You use fetch to obtain the folder's details, including the files &amp; folders that the folder contains:</p>
       <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("/css");
 folder.fetch().done(function () {

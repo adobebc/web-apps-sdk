@@ -15,7 +15,7 @@ For SDK and API documentation, visit http://developers.businesscatalyst.com/deve
 
 Sample applications
 
-To get you started faster, we?ve created some sample applications that you can take and install on any of your Business Catalyst sites. You can get the source code from our Git repository: https://github.com/adobebc/web-apps-sdk
+To get you started faster, we've created some sample applications that you can take and install on any of your Business Catalyst sites. You can get the source code from our Git repository: https://github.com/adobebc/web-apps-sdk/samples
 
 ## Contributing to Web Apps SDK for Adobe Business Catalyst
 

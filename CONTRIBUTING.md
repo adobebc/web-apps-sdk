@@ -26,15 +26,19 @@ Once you’re ready, move on to the [Contributing Code](https://github.com/adobe
 To get started editing the Web Apps SDK code, read [TBD - How to commit code].
 
 Before submitting any pull request, please make sure to:
-1.	Discuss any major changes or questions beforehand in the Adobe Business Catalyst developer forum
-2.	TBD - Follow the Pull Request Checklist to ensure a good-quality pull request.
-3.	TBD - Sign the Web Apps SDK Contributor License Agreement (we cannot merge before this).
+
+1. Discuss any major changes or questions beforehand in the Adobe Business Catalyst developer forum
+2. TBD - Follow the Pull Request Checklist to ensure a good-quality pull request.
+3. TBD - Sign the Web Apps SDK Contributor License Agreement (we cannot merge before this).
+
 High quality code and consistent look and feel for sample applications are important to us and therefore we carefully review every pull request. The better you follow the guidelines above, the more likely we are to accept your pull request - and the faster the code review will go.
 
 # The Code Review Process
 
 Web Apps SDK approvers have write access to the source three. They are responsible for reviewing contributions, providing feedback, merging code into the master and mediating disputes. Approvers are responsible for making sure that contributions do not break the build.
+
 Once you've opened a pull request, an approver will generally respond to it within a week with an initial set of comments (you don't need to ping anyone to find a reviewer). Some pull requests could raise larger questions about architecture, design or project scope.
+
 The best way to avoid this sort of holdup is to discuss your changes on the newsgroup first!
 Once your pull request is approved and merged, it will appear in the next release, generally within a month.
 

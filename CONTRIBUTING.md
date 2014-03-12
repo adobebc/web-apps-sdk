@@ -19,7 +19,7 @@ Here is some starting points for :
 +	Building your first app guide
 +	Reference guides README.md
 
-Once you’re ready, move on to the Contributing Code section, to learn more about how you can contribute code or text.
+Once you’re ready, move on to the [Contributing Code](https://github.com/adobebc/web-apps-sdk/blob/master/CONTRIBUTING.md#contributing-code) section, to learn more about how you can contribute code or text.
 
 # Contributing Code
 

@@ -7,7 +7,7 @@ Web Apps SDK for Adobe Business Catalyst allows web developers to create custom 
 
 CDN
 
-You can reference the Web Apps SDK for Adobe Business Catalyst directly from our CDN: [TBD - LINK]
+You can reference the Web Apps SDK for Adobe Business Catalyst directly from our CDN: cdn.worldsecuresystems.com/bcapi/bcapi-0.0.1.min.js
 
 Documentation
 For SDK and API documentation, visit http://developers.businesscatalyst.com/developer-documentation/

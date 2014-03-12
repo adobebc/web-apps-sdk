@@ -1,5 +1,7 @@
 # bc-meet-the-team-app
 
+Simple team listing management
+
 Meet the Team is a free sample application provided by Adobe Business Catalyst to showcase the capabilities of the Business Catalyst APIs and Web Apps SDK. The app leverages the web apps and file system APIs platform capabilities to deliver a friendly team listing and management experience.
 
 +	Display team members’ profiles on the site

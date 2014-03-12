@@ -28,9 +28,12 @@ To get started editing the Web Apps SDK code, read [TBD - How to commit code].
 
 Before submitting any pull request, please make sure to:
 
-1. Discuss any major changes or questions beforehand in the Adobe Business Catalyst developer forum
-2. TBD - Follow the Pull Request Checklist to ensure a good-quality pull request.
-3. TBD - Sign the Web Apps SDK Contributor License Agreement (we cannot merge before this).
+1. Discuss any major changes or questions beforehand in the Adobe Business Catalyst [developer forum](forums.adobe.com/community/business_catalyst/developer_forum)
+2. Signed the Web Apps SDK Contributor License Agreement (we cannot merge before this).
+3. Code is well documented
+4. Passes unit tests
+5. Includes unit tests if new functionality
+6. User interfaces are polished
 
 High quality code and consistent look and feel for sample applications are important to us and therefore we carefully review every pull request. The better you follow the guidelines above, the more likely we are to accept your pull request - and the faster the code review will go.
 

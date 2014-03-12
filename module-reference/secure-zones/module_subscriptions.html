@@ -1,11 +1,16 @@
 <h2>{<span>module_subscriptions</span>}</h2>
 <p><em>Visitor must be logged in to a Secure Zone.</em></p>
 <p>Renders a list of logged in user's secure zone subscriptions.</p>
+<div id="syntax">
+<h3>Syntax</h3>
+<p><code>{<span>module_subscriptions,show_expiry,show_prices,show_cancel_link,render_json</span>}</code></p>
+</div>
 <h3>Parameters</h3>
 <ul>
-  <li>show_expiry - shows or hides the expiry date of the secure zone (true/false; default:true)</li>
-  <li>show_prices - shows or hides the cost of the subscription to that secure zone (true/false; default:true)</li>
-  <li>render_json - Will render the secure zone information in Json format which can be manually parsed (true/false)</li>
+  <li><strong>show_expiry</strong> - shows or hides the expiry date of the secure zone (true/false; default:true)</li>
+  <li><strong>show_prices</strong> - shows or hides the cost of the subscription to that secure zone (true/false; default:true)</li>
+  <li><strong>show_cancel_link</strong> - will show the cancel subscription link. This works only when not setting the <strong>render_json</strong> to <strong>true</strong></li>
+  <li><strong>render_json</strong> - Will render the secure zone information in Json format which can be manually parsed (true/false)</li>
 </ul>
 <div id="examples">
 <h3>Examples</h3>
@@ -13,70 +18,112 @@
 <li>
 {<span>module_subscriptions</span>} - renders
 <br/>
-<code class="language-markup">
-&lt;ul class=&quot;zoneSubscriptions&quot;&gt;<br>
-&lt;li&gt;<br>
-&lt;ul&gt;<br>
-&lt;li class=&quot;zoneName&quot;&gt;<br>
-&lt;a href=&quot;/Default.aspx?PageID=54321&quot;&gt;Member Only Area&lt;/a&gt;<br>
-&lt;/li&gt;<br>
-&lt;li&gt;Never&lt;/li&gt;<br>
-&lt;/ul&gt;<br>
-&lt;/li&gt;<br>
-&lt;li&gt;<br>
-&lt;ul&gt;<br>
-&lt;li class=&quot;zoneName&quot;&gt;<br>
-&lt;a href=&quot;/Default.aspx?PageID=54321&quot;&gt;Secure Zone 1&lt;/a&gt;<br>
-&lt;/li&gt;<br>
-&lt;li&gt;Never&lt;/li&gt;<br>
-&lt;/ul&gt;<br>
-&lt;/li&gt;<br>
-&lt;li&gt;<br>
-&lt;ul&gt;<br>
-&lt;li class=&quot;zoneName&quot;&gt;<br>
-&lt;a href=&quot;/Default.aspx?PageID=54321&quot;&gt;Secure Zone 2&lt;/a&gt;<br>
-&lt;/li&gt;<br>
-&lt;li&gt;Never&lt;/li&gt;<br>
-&lt;/ul&gt;<br>
-&lt;/li&gt;<br>
+<pre class="language-markup">
+<code>&lt;ul class=&quot;zoneSubscriptions&quot;&gt;
+    &lt;li&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;zoneName&quot;&gt;
+                &lt;a href=&quot;/Default.aspx?PageID=54321&quot;&gt;Member Only Area&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Never&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;zoneName&quot;&gt;
+                &lt;a href=&quot;/Default.aspx?PageID=54321&quot;&gt;Secure Zone 1&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Never&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;zoneName&quot;&gt;
+                &lt;a href=&quot;/Default.aspx?PageID=54321&quot;&gt;Secure Zone 2&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Never&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
 &lt;/ul&gt;
 </code>
+</pre>
 </li>
 </li>
 <li>
 {<span>module_subscriptions,true,true,,true</span>} - renders
 <br/>
-<code class="language-javascript">
-&quot;SecureZoneSubscriptionList&quot;: {<br>
-&quot;EntityId&quot;: 11723915,<br>
-&quot;Subscriptions&quot;: [{<br>
-&quot;CostPerPeriod&quot;: &quot;0&quot;,<br>
-&quot;CycleType&quot;: &quot;, &quot;<br>
-ExpiryDate &quot; : &quot;<br>
-01 / 01 / 9999 00: 00: 00 &quot;, &quot;<br>
-SellAccess &quot; : false, &quot;<br>
-ZoneId &quot; : &quot;<br>
-51 &quot;, &quot;<br>
-ZoneName &quot; : &quot;<br>
-Member Only Area &quot; }, { &quot;<br>
-CostPerPeriod &quot; : &quot;<br>
-0 &quot;, &quot;<br>
-CycleType &quot; : &quot;,<br>
-&quot;ExpiryDate&quot;: &quot;01/01/9999 00:00:00&quot;,<br>
-&quot;SellAccess&quot;: false,<br>
-&quot;ZoneId&quot;: &quot;4859&quot;,<br>
-&quot;ZoneName&quot;: &quot;test secure zone&quot;<br>
-}, {<br>
-&quot;CostPerPeriod&quot;: &quot;0&quot;,<br>
-&quot;CycleType&quot;: &quot;, &quot;<br>
-ExpiryDate &quot; : &quot;<br>
-01 / 01 / 9999 00: 00: 00 &quot;, &quot;<br>
-SellAccess &quot; : false, &quot;<br>
-ZoneId &quot; : &quot;<br>
-4871 &quot;, &quot;<br>
-ZoneName &quot; : &quot;<br>
-test secure zone 2 &quot; } ] } }
+<pre class="language-javascript">
+<code>
+"SecureZoneSubscriptionList": {
+    "EntityId": 11723915,
+    "Subscriptions": [{
+            "CostPerPeriod": "0",
+            "CycleType": ", "
+            ExpiryDate " : "
+            01 / 01 / 9999 00: 00: 00 ", "
+            SellAccess " : false, "
+            ZoneId " : "
+            51 ", "
+            ZoneName " : "
+            Member Only Area " }, { "
+            CostPerPeriod " : "
+            0 ", "
+            CycleType " : ",
+            "ExpiryDate": "01/01/9999 00:00:00",
+            "SellAccess": false,
+            "ZoneId": "4859",
+            "ZoneName": "test secure zone"
+        }, {
+            "CostPerPeriod": "0",
+            "CycleType": ", "
+            ExpiryDate " : "
+            01 / 01 / 9999 00: 00: 00 ", "
+            SellAccess " : false, "
+            ZoneId " : "
+            4871 ", "
+            ZoneName " : "
+            test secure zone 2 " } ] } }
 </code>
+</pre>
+</li>
+<li>
+{<span>module_subscriptions,true,true,true</span>} - renders
+<br/>
+<pre class="language-markup">
+<code>
+&lt;ul class=&quot;zoneSubscriptions&quot;&gt;
+    &lt;li&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;zoneName&quot;&gt;&lt;a href=&quot;/Default.aspx?PageID=5387991&quot;&gt;Member Only Area&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Never&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/ZoneProcess.aspx?A=Cancel&amp;amp;ZoneId=51&quot;&gt;Cancel&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;zoneName&quot;&gt;&lt;a href=&quot;/Default.aspx?PageID=5059413&quot;&gt;photo download premium&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Never&lt;/li&gt;
+            &lt;li&gt;&#163;20.00 Monthly&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/ZoneProcess.aspx?A=Cancel&amp;amp;ZoneId=2722&quot;&gt;Cancel&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;zoneName&quot;&gt;&lt;a href=&quot;/Default.aspx?PageID=5059413&quot;&gt;photo download standard&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Never&lt;/li&gt;
+            &lt;li&gt;&#163;6.00 Monthly&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/ZoneProcess.aspx?A=Cancel&amp;amp;ZoneId=2723&quot;&gt;Cancel&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code>
+</pre>
 </li>
 </ul>
 </div>

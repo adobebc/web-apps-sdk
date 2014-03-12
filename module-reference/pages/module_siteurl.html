@@ -5,11 +5,15 @@
 </div>
 <div id="syntax">
 <h3>Syntax</h3>
-<p><code>{<span>module_siteurl</span>}</code></p>
+<p><code>{<span>module_siteurl</span>,includeProtocol,URLencode}</code></p>
 </div>
 <div id="examples">
 <h3>Examples</h3>
 <ul>
-    <li><code>{<span>module_siteurl</span>}</code> - will display the current site URL in plain text, for example "www.mysite.com"</li>
+    <li><code>{<span>module_siteurl</span>}</code> - will display "mtica1.businesscatalyst.com"</li>
+     <li><code>{<span>module_siteurl,true,false</span>}</code> - will display "http%3a%2f%2fmtica1.businesscatalyst.com "</li>
+      <li><code>{<span>module_siteurl</span>,false,true}</code> - will display "mtica1.businesscatalyst.com"</li>
+       <li><code>{<span>module_siteurl</span>,true,false}</code> - will display "http://mtica1.businesscatalyst.com"</li>
+        <li><code>{<span>module_siteurl</span>,false,false}</code> - will display "mtica1.businesscatalyst.com"</li>
 </ul>
 </div>

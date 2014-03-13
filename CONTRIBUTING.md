@@ -30,10 +30,10 @@ Before submitting any pull request, please make sure to:
 
 1. Discuss any major changes or questions beforehand in the Adobe Business Catalyst [developer forum](forums.adobe.com/community/business_catalyst/developer_forum)
 2. Sign the Web Apps SDK Contributor License Agreement (we cannot merge before this).
-3. Code is well documented
-4. Passes unit tests
-5. Includes unit tests if new functionality
-6. User interfaces are polished
+3. Document code
+4. Check the code passes unit test
+5. Write unit tests for any new functionality
+6. Have polished user interfaces
 
 High quality code and consistent look and feel for sample applications are important to us and therefore we carefully review every pull request. The better you follow the guidelines above, the more likely we are to accept your pull request - and the faster the code review will go.
 

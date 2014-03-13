@@ -16,8 +16,7 @@ There are several ways you can help the Web Apps SDK project, choose the one tha
 # Where Do I Start?
 
 Here are some ressources you might want to check out before writing out code:
-+	Web Apps SDK README.md
-+	Reference guides README.md
++	[Web Apps SDK README.md](https://github.com/adobebc/web-apps-sdk/blob/master/README.md)
 +	[Building your first app guide](http://developers.businesscatalyst.com/getting-started/building-your-first-app.html)
 + [Reference guides](http://developers.businesscatalyst.com/reference#!/api-endpoints/index.html)
 

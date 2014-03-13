@@ -6,22 +6,22 @@ The project includes the SDK itself, some sample applications and the reference 
 
 # How you can Contribute
 
-There are several ways you can help the Web Apps SDK project, you may choose one that best suites you:
+There are several ways you can help the Web Apps SDK project, choose the one that best suites you:
 +	Fix a bug or implement a new feature
-+	Create an app based on Web Apps SDK and include it in the project
++	Create an sample app based on Web Apps SDK
 +	Write or update documentation
-+	Test the Web Apps SDK or any of the sample apps and report the bugs you find.
++	Test the Web Apps SDK or any of the sample apps and report the bugs you find
 +	Write unit tests
 
 # Where Do I Start?
 
-Here is some starting points for :
+Here are some ressources you might want to check out before writing out code:
 +	Web Apps SDK README.md
 +	Reference guides README.md
 +	[Building your first app guide](http://developers.businesscatalyst.com/getting-started/building-your-first-app.html)
-+ [Reference guides] (http://developers.businesscatalyst.com/reference#!/api-endpoints/index.html)
++ [Reference guides](http://developers.businesscatalyst.com/reference#!/api-endpoints/index.html)
 
-Once you’re ready, move on to the [Contributing Code](https://github.com/adobebc/web-apps-sdk/blob/master/CONTRIBUTING.md#contributing-code) section, to learn more about how you can contribute code or text.
+Once you’re ready, move on to the [Contributing Code](https://github.com/adobebc/web-apps-sdk/blob/master/CONTRIBUTING.md#contributing-code) section, to learn more about how you can contribute code or docs.
 
 # Contributing Code
 

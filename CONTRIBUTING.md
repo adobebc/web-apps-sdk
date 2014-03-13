@@ -17,7 +17,7 @@ There are several ways you can help the Web Apps SDK project, you may choose one
 
 Here is some starting points for :
 +	Web Apps SDK README.md
-+	Building your first app guide
++	[Building your first app guide](http://developers.businesscatalyst.com/getting-started/building-your-first-app.html)
 +	Reference guides README.md
 
 Once you’re ready, move on to the [Contributing Code](https://github.com/adobebc/web-apps-sdk/blob/master/CONTRIBUTING.md#contributing-code) section, to learn more about how you can contribute code or text.

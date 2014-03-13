@@ -25,7 +25,7 @@ Once you’re ready, move on to the [Contributing Code](https://github.com/adobe
 
 # Contributing Code
 
-To get started editing the Web Apps SDK code, read [TBD - How to commit code].
+To get started editing the Web Apps SDK code, read about [developing for Web Apps SDK](https://github.com/adobebc/web-apps-sdk/wiki#wiki-developing-for-web-apps-sdk).
 
 Before submitting any pull request, please make sure to:
 

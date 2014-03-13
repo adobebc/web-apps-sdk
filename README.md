@@ -19,7 +19,7 @@ To get you started faster, we've created some sample applications that you can t
 
 ## Contributing to Web Apps SDK for Adobe Business Catalyst
 
-Your contribution to Web Apps SDK for Adobe Business Catalyst, Sample Applications or Reference Guides is welcomed. For more information on how to contribute, read the Web Apps SDK for Adobe Business Catalyst Governance Document: [TBD - LINK]
+Your contribution to Web Apps SDK for Adobe Business Catalyst, Sample Applications or Reference Guides is welcomed. For more information on how to contribute, read the [CONTRIBUTING](https://github.com/adobebc/web-apps-sdk/blob/master/CONTRIBUTING.md) guide.
 
 ## Additional information and support
 

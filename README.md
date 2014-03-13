@@ -23,4 +23,5 @@ Your contribution to Web Apps SDK for Adobe Business Catalyst, Sample Applicatio
 
 ## Additional information and support
 
-For feature requests, bug reports, suggestions or questions, visit: [TBD - LINK]
++	[Bug reports](https://github.com/adobebc/web-apps-sdk/issues)
++	[Forum](forums.adobe.com/community/business_catalyst/developer_forum)

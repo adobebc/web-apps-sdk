@@ -39,6 +39,28 @@ itemCategories.save({
 })
 </code></pre>
   
+<hr><h2>Error Codes</h2>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>400</code> - bad request
+
+<ul>
+<li><code>200000</code> - An unspecified error has occured</li>
+<li><code>200009</code> - Category id is invalid</li>
+</ul></li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token</li>
+<li><code>403</code> - forbidden - when the user does not have Edit WebApp Item permission</li>
+<li><code>404</code> - not found:
+
+<ul>
+<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+<li><code>200001</code> - The webapp item was not found (the webAppName and webAppItemId from the URL do not match)</li>
+</ul></li>
+</ul>
+
 <hr>
 
 <h3>Extends</h3>

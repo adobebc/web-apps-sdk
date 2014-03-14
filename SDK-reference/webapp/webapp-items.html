@@ -187,6 +187,34 @@ var response = item.destroy({
 	}
 });
 </code></pre>
+
+<hr><h2>Error Codes</h2>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>201</code> - success</li>
+<li><code>401</code> - unauthorized - when the authentication token is incorrect</li>
+<li><code>403</code> - forbidden - when the user does not have the proper permissions</li>
+<li><code>404</code> - not found
+
+<ul>
+<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+</ul></li>
+<li><code>400</code> - bad request; sub-error codes:
+
+<ul>
+<li><code>200000</code> - An unspecified error has occured</li>
+<li><code>200002</code> - The slug is invalid</li>
+<li><code>200003</code> - Using this slug will make the entire frontend URL larger than the maximum allowed length</li>
+<li><code>200004</code> - The slug is already used</li>
+<li><code>200005</code> - The name provided is invalid (empty or null)</li>
+<li><code>200006</code> - A custom field failed validation</li>
+<li><code>200008</code> - There is a problem with the address. The related webapp has "location</li>
+</ul></li>
+</ul>
+
+        <hr>
 <h2>Methods</h2>
 
   

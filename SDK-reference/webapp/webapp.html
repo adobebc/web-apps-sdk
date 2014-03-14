@@ -75,6 +75,36 @@ app.destroy({
         console.log("Response text: " + jqXHR.responseText);
     }
 });</code></pre>
+
+<hr><h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>201/Created</code> - Web App successfully created</li>
+<li><code>400/Bad request</code> - Invalid request. Sub-codes are:
+
+<ul>
+<li><code>190000</code> - Generic error</li>
+<li><code>190002</code> - Invalid slug</li>
+<li><code>190003</code> - Slug URL too long</li>
+<li><code>190004</code> - slug already exists</li>
+<li><code>190005</code> - webapp with same name already exists</li>
+<li><code>190009</code> - invalid webapp name; see notes section below for list of invalid characters</li>
+<li><code>190010</code> - invalid template id</li>
+</ul></li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+
+<ul>
+<li><code>101000</code> - sub-error code</li>
+</ul></li>
+<li><code>403</code> - Forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+<li><code>404</code> - Not Found
+
+<ul>
+<li><code>190001</code> - Not Found</li>
+</ul></li>
+</ul>
       <hr>
       <h3>Supported attributes</h3>
       <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({

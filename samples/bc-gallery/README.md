@@ -14,7 +14,8 @@ BC Gallery is a free sample application provided by Adobe(r) Business Catalyst t
 
 In order to deploy "Gallry" on a Business Catalyst site do the following:
 
-+ git clone https://github.com/adobebc/bc-gallery-app.git
++ git clone `https://github.com/adobebc/web-apps-sdk.git`
++ `cd samples/bc-gallery/`
 + copy the `Layouts/` folder on your site using sftp.
 + copy the `bc-gallery/` folder on your site using sftp.
 + copy the `_System/` folder on your site using sftp.

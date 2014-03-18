@@ -1,0 +1,109 @@
+#systemNotificationQueue {
+    /*position: fixed;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*padding: 5px;*/
+    /*z-index: 9002;*/
+
+    position:fixed;
+    right:30px;
+    top:10px;
+    width:215px;
+    z-index: 100000;
+}
+
+.systemNotificationQueue-tool {
+    bottom: 58px;
+}
+
+.systemNotification {
+    background-color:#1f1f1f;
+    background-repeat:no-repeat;
+    background-position:10px 10px;
+    margin-bottom:5px;
+    border-radius:4px;
+    -webkitbox-shadow:0 0 10px #333!important;
+    -moz-box-shadow:0 0 10px #333!important;
+    box-shadow:0 0 10px #333!important;
+    padding:10px
+}
+
+.systemNotificationClose {
+    background: url(images/systemNotificationClose.png);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 14px;
+    height: 14px;
+    font-size: 1px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.systemNotificationClose-hover {
+    background: url(images/systemNotificationClose-hover.png);
+}
+
+.systemNotificationClose-pressed {
+    background: url(images/systemNotificationClose-pressed.png);
+}
+
+.systemNotificationClose-hover,
+.systemNotificationClose-pressed {
+    cursor: pointer;
+}
+
+.systemNotificationType-info {
+    background-image: url(images/systemNotificationType-info.png);
+}
+
+.systemNotificationType-ok {
+    background-image: url(images/systemNotificationType-ok.png);
+}
+
+.systemNotificationType-warning {
+    background-image: url(images/systemNotificationType-warning.png);
+}
+
+.systemNotificationType-error {
+    background-image: url(images/systemNotificationType-error.png);
+}
+
+.systemNotificationIcon {
+    position: absolute;
+}
+
+.systemNotificationTitle {
+    color: white;
+    font-weight: bold;
+    display: block;
+    text-shadow: 0 -1px 1px #000;
+}
+
+.systemNotificationContent {
+    color: #cdcdcd;
+    margin-top: 4px;
+    text-shadow: 0 -1px 1px #000;
+}
+
+.systemNotificationTitle{font-size:13px;padding-left:25px;color:#fff}
+.systemNotificationContent{font-size:12px;padding-left:25px;color:#c8c8c8}
+
+
+.systemNotificationContent p {
+    padding: 0;
+    margin: 0;
+}
+
+/* Glass panel */
+
+.ui-widget-overlay {
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 1000; /* put it above top navigation bar */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    position: fixed;
+    top: 0;
+    left: 0;
+}

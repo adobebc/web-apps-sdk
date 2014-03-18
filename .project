@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>sample-app</name>
+=======
+	<name>app-bodi</name>
+>>>>>>> bc-gallery/master
 	<comment></comment>
 	<projects>
 	</projects>

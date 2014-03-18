@@ -1,0 +1,20 @@
+{
+    "plugins": ["ci/jsdoc/markdown"],
+    "markdown": {
+        "parser": "gfm",
+        "hardwrap": true
+    },
+    "opts": {
+		"recurse": true,
+    	"template": "doc-static/docstrap/template",
+    	"tutorials": "doc-static/tutorials"
+    },
+    "templates": {
+        "cleverLinks": false,
+        "default": {
+        	"outputSourceFiles": true
+        },
+        "monospaceLinks": false,
+        "theme": "flatly"
+    }
+}

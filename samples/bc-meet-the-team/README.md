@@ -16,7 +16,8 @@ Meet the Team is a free sample application provided by Adobe Business Catalyst t
 
 In order to deploy "Meet the Team" on a Business Catalyst site do the following:
 
-+ git clone https://github.com/adobebc/bc-meet-the-team-app.git
++ git clone `https://github.com/adobebc/web-apps-sdk.git`
++ `cd samples/bc-meet-the-team/`
 + copy the `Layouts` folder on your site using sftp.
 + copy the `bc-meet-the-team` folder on your site using sftp.
 + copy the `\_System` folder on your site using sftp.

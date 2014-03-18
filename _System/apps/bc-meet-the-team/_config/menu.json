@@ -1,0 +1,10 @@
+{
+    "menu-meet_the_team": {
+        "weight": 100000,
+        "title": "Meet the Team",
+		"children": [],
+        "attr" : {
+            "href" : "/Admin/AppLoader.aspx?client_id=bc-meet-the-team"
+        }
+    }
+}

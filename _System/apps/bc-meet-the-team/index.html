@@ -1,0 +1,114 @@
+<!--
+* 
+* 
+* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"), 
+* to deal in the Software without restriction, including without limitation 
+* the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+* and/or sell copies of the Software, and to permit persons to whom the 
+* Software is furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+* DEALINGS IN THE SOFTWARE.
+* 
+*
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meet The Team</title>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/bootstrapx-clickover.js"></script>
+    <script type="text/javascript" src="assets/system-notifications/system-notifications.js"></script>
+    <script type="text/javascript" src="//cdn.worldsecuresystems.com/bcapi/bcapi-0.0.1.min.js"></script>
+    <script type="text/javascript" src="assets/team.js"></script>
+    
+    <link rel="stylesheet" href="assets/system-notifications/system-notifications.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div class="loading">
+        <div class="opacifier"></div>
+        <span><img src="assets/images/loading.gif" alt="Loading..."></span>
+    </div>
+    
+    <div class="inlinehelp">
+        <span class="close-btn">×</span>
+        <div class="helpcontent">
+            <h2>Welcome to the sample app</h2>
+            This sample application is provided as a reference for the Business Catalyst Developer Program. The app’s data structure is based on a custom Web App with the same name, and can be modified by changing that Web App. We encourage you to read the source code readily available in Develop mode, under the application folder (_System/Apps/bc-meet-the-team/). For more information on how to develop apps for Business Catalyst, please visit the <a href="http://developers.businesscatalyst.com/" target="_blank">Business Catalyst Developer Documentation</a>.
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+
+        <div id="team-members">
+        </div>
+
+        <div class="card-container">
+            <div class="user-add-photo">
+                <a href="edit.html"><span></span></a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+        $(function(){
+            bootStrap();
+        });
+    </script>
+
+    <script type="text/template" id="member-card">
+        <div class="card-container" data-member-id="<%= member.id %>">
+            <div class="member-card">
+                <div class="user-photo">
+                    <a href="edit.html?memberid=<%= member.get('id') %>">
+                        <img src="<%= member.get('fields').Picture %>?action=thumbnail&width=140&height=127&algorithm=fill_proportional" alt="Picture Not Available"/>
+                    </a>
+                </div>
+
+                <div class="user-name">
+                    <h3><%-member.get('name') %></h3>
+                </div>
+                <div class="user-position">
+                    <%- member.get('fields').Position %>
+                </div>
+            </div>
+            <div class="card-actions" id="actions_<%= member.get('id') %>">
+                <a rel="edit" href="edit.html?memberid=<%= member.get('id') %>" class="member-icon-edit"></a>
+                <a href="#" rel="popover" data-placement="top" title="Delete Team Member" class="member-icon-delete"
+                   data-content="<div class=&quot;delete-confirmation-text\&quot;>Are you sure you want to delete <%- member.get('name') %>?</div>
+                <span class=&quot;note-text&quot;>This action has no Undo.</span>
+                <div>
+                    <a href=&quot;#&quot; class=&quot;btn&quot; onclick=&quot;deleteTeamMember(<%= member.get('id')%>)&quot;>Delete</a>
+                    <a href=&quot;#&quot; class=&quot;btn btn-primary&quot; data-toggle=&quot;button&quot; data-dismiss=&quot;clickover&quot;>Cancel</a>
+                </div>"></a>
+            </div>
+        </div>
+    </script>
+    
+    <script type="text/template" id="member-card-loading">
+        <div class="card-container" data-member-id="loading-<%= member.id %>">
+            <div class="member-loader"></div>
+    	</div>
+    </script>
+</body>
+</html>

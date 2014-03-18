@@ -1,0 +1,492 @@
+/* 
+* 
+* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"), 
+* to deal in the Software without restriction, including without limitation 
+* the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+* and/or sell copies of the Software, and to permit persons to whom the 
+* Software is furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+* DEALINGS IN THE SOFTWARE.
+* 
+*/
+
+body {
+    font-family: Myriad-Pro, myriad-pro-1, myriad-pro-2, Arial, Helvetica, sans-serif;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased; 
+    padding: 0;
+}
+
+hr {
+    margin-bottom: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.content-wrapper {
+    padding: 10px;
+}
+
+.inlinehelp {
+    padding: 7px 20px 27px 20px;
+    background-color: #f9f9f9;
+    position: relative;
+    color: #333 !important;
+    font-size: 12px !important;
+    font-weight: 400;
+    line-height: 16px;
+    border-bottom: 1px dashed #d4d4d4;
+    display: none;
+}
+
+.inlinehelp span.close-btn {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #666;
+    font-weight: 700;
+    font-size: 18px!important;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.inlinehelp h2 {
+    font-size: 18px !important;
+    margin: 0;
+    font-weight: 400;
+}
+
+.inlinehelp .helpcontent {
+    line-height: 17px;
+}
+
+a {
+    color: #1e86e3;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.checked, 
+#member-facebook, 
+#member-twitter, 
+#member-linkedin, 
+.member-icon-delete, 
+a.member-icon-delete:hover, 
+.member-icon-edit, 
+a.member-icon-edit:hover {
+    background: url(images/sprite.png) no-repeat;
+}
+
+.card-container {
+    float:left;
+    width: 140px;
+    height: 226px;
+    margin: 5px 5px 25px 5px;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    font-family: Myriad, Myriad-Pro, Arial;
+}
+
+.card-container:hover .card-actions {
+    display:block;
+}
+
+.card-container .card-actions-disabled {
+    display: none;
+}
+
+.card-container img {
+    max-width: 140px; 
+    max-height: 127px;
+}
+
+.member-card {
+    height: 100%;
+    overflow: hidden;
+}
+
+.user-photo {
+    width: 140px;
+    height: 127px;
+}
+
+.user-add-photo a {
+    width: 140px;
+    height: 226px;
+    max-width: 140px;
+    max-height: 226px;
+    line-height: 226px;
+    background-color: #e6e6e6;
+    display: inline-block;
+    text-align: center;
+}
+
+.user-add-photo a span {
+    background-image: url(images/sprite.png);
+    background-repeat: no-repeat;
+    background-position: 0 -290px;
+    display: inline-block;
+    width: 50px;
+    height: 50px; 
+    vertical-align: middle;
+}
+
+.user-name {
+    height: 53px;
+}
+    
+.user-name h3 {
+    line-height: 30px;
+    font-weight: 500;
+    color: #4E4C4C;  
+    font-size: 1.3em; 
+    line-height: 1.3em;
+    max-height: 2.6em;
+    overflow: hidden; 
+    margin-bottom: 6px;
+    margin-top: 5px;
+}
+
+.user-position {
+    color: #aaaaaa;
+    font-style: italic;
+    font-size: 1.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.file-upload-area {
+    background-color: #ccc;
+    text-align: left;
+    margin-left: 0px;
+    background-image: url(images/stripe.png);
+    min-height: 108px;
+}
+
+.file-upload-area span.preview-wrapper {
+    vertical-align: middle;
+    text-align: center;
+    line-height: 105px;
+    margin: 4px;
+    width: 140px;
+    height: 107px;
+    display: inline-block;
+}
+
+.file-upload-area span.trigger-info {
+    font-style: italic;
+}
+
+.member-upload-preview {
+    max-width: 140px;
+    max-height: 105px;
+    vertical-align: middle;
+}
+
+#member-picture-select {
+    visibility:hidden;
+}
+
+.social-tabs ul li a {
+    background-color: #F7F7F7;
+    margin-right: 5px;
+    padding-left: 19px !important;
+}
+
+.social-tabs ul li a {
+    margin-bottom: 2px;
+    height: 10px;
+
+}
+
+.member-profile-container, .member-profile-container .nav .active {
+    background-color: #EEEEEE !important;
+}
+
+input.small-height, .small-height {
+    /*height: 17px !important;*/
+}
+
+.social-tabs {
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+
+.social-tabs ul {
+    margin-bottom: 0px;
+}
+
+.social-tabs ul li.active, .social-tabs ul li.active a {
+    background-color: #EEEEEE;
+    margin-right: 5px;
+    border: none;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.nav-tabs li {
+    margin-bottom: -2px;
+    list-style: none outside none;
+}
+.tab-pane {
+    margin-left: 16px;
+    margin-top: 10px;
+}
+
+.card-actions, .card-actions-persistent {
+    background-color:#eeeeee;
+    height: 18px;
+    text-align: right;
+    border: none;
+    margin: -15px -11px;
+    padding: 4px 7px;
+}
+
+.card-actions {
+    display: none;
+}
+
+.btn {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 10px;
+    padding: 5px 15px 6px;
+
+    color: #333;
+
+    border-width: 1px !important;
+    border-color: #9c9c9c;
+    border-style: solid !important;
+
+    background: #ffffff;
+    background: -moz-linear-gradient(top,  #ffffff 0%, #dedede 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dedede));
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#dedede 100%);
+    background: -o-linear-gradient(top,  #ffffff 0%,#dedede 100%);
+    background-image: -ms-linear-gradient(top,  #ffffff 0%,#dedede 100%);
+    background: linear-gradient(top,  #ffffff 0%,#dedede 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dedede',GradientType=0 );
+}
+
+.btn-primary {
+    color: white !important;
+    text-shadow: 0 -1px 0 #0453C9 !important;
+
+    border-color: #137EDA #0D6ACC #0652BA #0652BA !important;
+    
+    background: #179dfe !important;
+    background: -moz-linear-gradient(top,  #179dfe 0%, #0461d2 100%) !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#179dfe), color-stop(100%,#0461d2)) !important;
+    background: -webkit-linear-gradient(top,  #179dfe 0%,#0461d2 100%) !important;
+    background: -o-linear-gradient(top,  #179dfe 0%,#0461d2 100%) !important;
+    background: -ms-linear-gradient(top,  #179dfe 0%,#0461d2 100%) !important;
+    background: linear-gradient(top,  #179dfe 0%,#0461d2 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#179dfe', endColorstr='#0461d2',GradientType=0 ) !important;
+}
+
+.btn:hover, .btn:focus {
+    background-position: 0 0 ;
+    transition: none;
+}
+
+a.btn, 
+a.btn:link, 
+a.btn:visited {
+    color: #333333;
+}
+
+a.btn-primary, 
+a.btn-primary:link, 
+a.btn-primary:visited {
+    color: #ffffff;
+}
+
+.controls.footer-buttons {
+    margin-left: 10px;
+}
+
+.controls.footer-buttons .btn {
+
+}
+
+.delete-confirmation-dialog {
+    visibility: hidden;
+}
+
+span.note-text {
+    font-size: smaller;
+    color: #666;
+    font-style: italic;
+    margin: 3px 0px 10px 0px;
+    display:block;
+}
+
+.member-loader {
+    width: 100%;
+    height: 100%;
+
+    background-image: url(images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #ffffff;
+}
+
+.member-icon-delete {
+    background-position: -2px -150px ;
+    width: 20px;
+    height: 15px;
+    margin-left: 7px;
+    margin-top: 3px;
+    display: inline-block;
+}
+
+a.member-icon-delete:hover {
+    background-position: -1px -186px ;
+}
+
+.member-icon-edit {
+    background-position: 0 -220px ;
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+}
+
+a.member-icon-edit:hover {
+    background-position: 0 -255px ;
+}
+    
+    
+.popover {
+    max-width: 800px;
+    width: auto;
+    /*left: 379px !important;*/
+}
+
+.checked {
+    background-position: 2px -100px ;
+}
+
+.control-label {
+    font-weight: bold;
+}
+
+#member-facebook{
+    background-position: 2px 6px;
+    padding-left: 20px;
+    margin-top: -1px;
+}
+
+#member-twitter{   
+    background-position: 2px -65px;
+    padding-left: 20px;
+    margin-top: -1px;
+}
+
+#member-linkedin{
+    background-position: 2px -29px;
+    padding-left: 20px;
+    margin-top: -1px;
+}
+
+#form-container {
+    margin-top: 10px;
+}
+
+#form-container .popover {
+    background-color: #000;
+    color: #FFF;
+}
+
+#form-container .popover.top .arrow:after
+{
+    border-top-color: #000;
+}
+
+#member-edit-form input[type='text'], #member-edit-form textarea {
+    background-color: #F7F9FA;  
+}
+
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
+  background-color: #eee;
+  border-style: none;   
+}
+
+.upload-not-supported {
+    display: none;
+    font-style: italic;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 10000;
+}
+
+.loading span{
+    display: inline-block;
+    height: 90px;
+    width: 90px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin-left: -45px;
+    margin-top: -45px;
+
+    z-index: 10000;
+}
+
+.loading.semiopaque span{
+    background: url("images/bg-loading.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.loading span img{
+    left: 28px;
+    position: absolute;
+    top: 27px;
+}
+
+.loading .opacifier{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    z-index: 10000;
+    opacity: 1;
+    background-color: #ffffff;
+}
+
+.loading.semiopaque .opacifier{ 
+    opacity: 0.5;
+}

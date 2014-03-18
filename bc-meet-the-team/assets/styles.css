@@ -1,0 +1,258 @@
+/* 
+* 
+* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"), 
+* to deal in the Software without restriction, including without limitation 
+* the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+* and/or sell copies of the Software, and to permit persons to whom the 
+* Software is furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+* DEALINGS IN THE SOFTWARE.
+* 
+*/
+
+@charset "utf-8";
+
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline; }
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+        display: block; }
+    body {
+        line-height: 1; }
+    ol, ul {
+        list-style: none; }
+    blockquote, q {
+        quotes: none; }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none; }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0; }
+
+/* #"BC Meet The Team" Web App Styles
+================================================== */
+    body {
+        background: #fff;
+        color: #444444;
+        font-size: 18px;
+        font-family: 'Open Sans', Arial, sans-serif;
+        line-height: 27px;
+        -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+        -webkit-text-size-adjust: 100%;
+        width: 940px;
+        padding: 40px 20px 20px 20px;
+        margin: 0 auto;
+    }
+
+    a, a:visited { color: #333; text-decoration: underline; outline: 0; }
+    a:hover, a:focus { color: #000; }
+    p a, p a:visited { line-height: inherit; }
+
+    a.contrast
+    {
+        color: #d08a0f;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #181818;
+        font-weight: normal; }
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+    h1 { font-size: 46px; line-height: 50px; margin-bottom: 14px;}
+    h2 { font-size: 35px; line-height: 40px; margin-bottom: 10px; }
+    h3 { font-size: 28px; line-height: 34px; margin-bottom: 8px; }
+    h4 { font-size: 21px; line-height: 30px; margin-bottom: 4px; }
+    h5 { font-size: 17px; line-height: 24px; }
+    h6 { font-size: 14px; line-height: 21px; }
+
+    p { margin: 0 0 20px 0; }
+
+    h1, h2, h3, h4, h5, h6
+    {
+        color: #444;
+        font-weight: 600; /* semibold */
+        font-family: 'Open Sans', Arial, sans-serif;
+    }
+    
+    h3
+    {
+        margin-bottom: 22px;
+        font-size: 24px;
+    }
+    
+    h4
+    {
+        font-size: 18px;
+        margin-bottom: 20px;
+        line-height: normal;
+    }
+
+    article
+    {
+        margin-bottom: 50px !important;
+        width: 700px;
+        position: relative;
+    }
+
+    .person-grid
+    {
+        font-size: 0;
+        overflow: auto;
+    }
+
+    .person-wrapper
+    {
+        width: 220px;
+        display: inline;
+        float: left;
+        height: 330px;
+        margin-right: 10px;
+        margin-left: 10px;
+        vertical-align: top;
+    }
+
+    .person-wrapper:nth-child(4n+1)
+    {
+        margin-left: 0;
+    }
+
+    .person-wrapper:nth-child(4n+4)
+    {
+        margin-right: 0;
+    }
+
+    .person
+    {
+        margin-bottom: 25px;
+        margin-top: 25px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        width: 220px;
+        height: 280px;
+    }
+    
+    .person a
+    {
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    .image-with-position
+    {
+        position: relative;
+        margin-bottom: 13px;
+    }
+    
+    .image-with-position a,
+    .image-with-position a img,
+    .image-with-position img
+    {
+        display: block;
+    }
+
+    .person .image-with-position a
+    {
+        width: 220px;
+        height: 200px;
+    }
+
+    .image-with-position span
+    {
+        margin-top: -20px;
+        display: inline-block;
+        padding: 0px 20px;
+        height: 40px;
+        background: #d0530f;
+        color: white;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 38px;
+        max-width: 160px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .image-with-position.big span
+    {
+        position: absolute;
+        top: -20px;
+        bottom: auto;
+        right: 10px;
+        margin-top: 0;
+        max-width: 500px;
+    }
+
+    .image-with-position.big
+    {
+        margin-bottom: 10px;
+        border: 1px solid #dcdcdc;
+        text-align: center;
+    }
+    
+    .image-with-position.big img
+    {
+        display: inline-block;
+    }
+
+    article .image-with-position.big
+    {
+        width: 700px;
+        height: 480px;
+    }
+
+    .description
+    {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .big-person-title
+    {
+        max-width: 500px;
+    }
+
+    .person-social 
+    {
+        margin-bottom: 20px;
+    }
+
+    .person-social ul li 
+    {
+        display: inline-block;
+    }
+
+    .person-social ul 
+    {
+        padding: 0;
+    }
+
+    .person-clear
+    {
+        clear:both;
+    }
+
+    article p.view-all a
+    {
+        font-size: 20px;
+    }

@@ -1,0 +1,80 @@
+<h2>Shopping cart</h2>
+<div id="description">
+<h3>Description</h3>
+<p>The shopping cart summary is displayed in the overall layout of your online shop using <a href="/reference/module-reference/checkout/module_shoppingcartsummary.html" title="module_shoppingcartsummary">{<span>module_shoppingcartsummary</span>}</a>. The summary is displayed when a customer adds an item to the cart. The default layout of this module is shown below:<br />
+<img alt="" src="http://helpx.adobe.com/business-catalyst/partner/customize-your-online-shop-look/_jcr_content/main-pars/image_7.img.png/shopping-cart-summary.png" /></p>
+</div>
+<div id="accessible">
+<h3>Accessible from</h3>
+<p>This layout is not created by default. You will first need to create it using the Develop tab or via sFTP, (see the Custom templates article for more info on how to create layouts) as described below:</p>
+<h4 id="Creating the template">Creating the template</h4>
+<ol>
+    <li> Open a code editor of your choice, however for this article we will be using the Business Catalyst&nbsp;<a href="http://helpx.adobe.com/business-catalyst/partner/pages-site-assets-using-develop.html" onclick="s_objectID='http://helpx.adobe.com/business-catalyst/partner/pages-site-assets-using-develop.html_1';return this.s_oc?this.s_oc(e):true">Develop mode</a>. Open the Develop mode by clicking the&nbsp;<strong>Develop&nbsp;</strong>tab in the top ribbon menu of the admin.    </li>
+    <li> Click the&nbsp;<em>New file&nbsp;</em>icon and give your file a name with a&nbsp;<strong>.tpl&nbsp;</strong>extension, for example <em>cartsummary.tpl </em></li>
+    <li> Remove all the HTML default markup as it is not needed for custom templates. Customize how you would like the shopping cart summary to look by using the below tags:
+    <table>
+        <tbody>
+            <tr>
+                <td style="width: 224px;"><code>{<span>tag_cartUrl</span>}</code></td>
+                <td style="width: 342px;">renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>
+            </tr>
+            <tr>
+                <td><code>{<span>tag_itemCount</span>}</code></td>
+                <td>renders the number of the items in the cart or 0 if none.</td>
+            </tr>
+            <tr>
+                <td><code>{<span>tag_totalAmount</span>}</code></td>
+                <td>renders the total money amount of the items (with two decimals) or 0.00 if the items don't have prices or there are no items in the cart</td>
+            </tr>
+            <tr>
+                <td><code>{<span>tag_currency</span>}</code></td>
+                <td>renders the coin of the current country, which is either the site country or the country of the order (if set)</td>
+            </tr>
+            <tr>
+                <td><code>{<span>tag_totalAmountWithCurrency</span>}</code></td>
+                <td>renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>{tag_currency}</code><code>{<span>tag_totalAmount</span>}</code>)</td>
+            </tr>
+            <tr>
+                <td><code>{<span>tag_isEmpty</span>}</code></td>
+                <td>renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
+            </tr>
+            <tr>
+                <td><code>{<span>tag_countryCode</span>}</code></td>
+                <td>renders the country code (of the site or of the order, if set)</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Below is a example of a custom template using the above tags:</p>
+    <pre class="language-markup"><code>
+    &lt;div class="cartSummary empty{tag_isEmpty}"&gt;<br/>
+    &lt;div class="cartSummaryItem"&gt;Shopping cart is empty&lt;/div&gt;<br/>
+    &lt;/div&gt;<br/>
+    &lt;div class="cartSummary notEmpty{tag_isEmpty}"&gt;<br/>
+    &lt;div class="cartSummaryItem"&gt;{tag_itemCount} item(s), Total {tag_currency}{tag_totalAmount}&lt;/div&gt;<br/>
+    &lt;div&gt;&lt;a class="cartSummaryLink" href="{tag_cartUrl}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
+    &lt;/div&gt;<br/>
+    </code></pre>
+    <p class="alert alert-info"><strong>Note:</strong> If you are using the above example, ensure that you add the below to your CSS to change the table class based on whether an item is added to the cart or not.</p>
+    <p><em>&nbsp;&nbsp;.empty0 { display:none; }</em></p>
+    <p><em>&nbsp;&nbsp;.notEmpty1 { display:none; }</em></p>
+    </li>
+    <li>
+    Save this file by clicking&nbsp;<strong>Publish</strong>
+    </li>
+</ol>
+<h4 id="Assigning the template">Assigning the template</h4>
+<ol>
+    <li>
+    Locate the {module_shoppingcartsummary} module on your site. By default this can be found in&nbsp;<strong>Site Manager &gt; Module Templates &gt; Online Shop Layouts &gt; Overall Layout.</strong>
+    </li>
+    <li>
+    Replace this module with: <code>{<span>module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"</span>}</code><br /> - for example 
+    <code>{<span>module_shoppingcartsummary template="/cartsummary.tpl"</span>}</code>
+    </li>
+    <li>
+    Save the layout.
+    </li>
+</ol>
+<p>Test the new layout out by adding a product to the cart on the front end of your website.</p>
+<p class="alert alert-info"><strong>Note</strong><em>: If the tpl file is not found, the module renders as if not having the parameter.</em></p>
+</div>

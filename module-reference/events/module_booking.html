@@ -1,0 +1,47 @@
+<div id="description">
+<h3>Description</h3>
+<p>Something about the Booking module.</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p><code>{<span>module_booking,filter,ID or numberOfBookings</span>}</code></p>
+</div>
+<div id="parameters">
+<h3>Parameters</h3>
+<ul>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li>i - individual item</li>
+        <li>a - all items</li>
+        <li>l - latest items</li>
+        <li>r - random item</li>
+        <li>cr - displays a random item in a particular category</li>
+    </ul>
+    </li>
+    <li><strong>ID</strong> or numberOfBookings
+<ul>
+        <li>id - the ID of the booking module. This is system generated and does not need to be changed</li>
+        <li>numberOfBookings - can be used in conjunction with l parameter to limit the number of bookings displayed</li>
+    </ul>
+    </li>
+</ul>
+</div>
+<div id="layouts">
+<h3>Layouts</h3>
+<ul>
+    <li>Event Layouts &gt;&nbsp;<a href="/reference/tag-reference/events/event-list-layout.html" title="List Layout">List Layout</a></li>
+    <li>This module also supports <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div id="examples">
+<h3>Examples</h3>
+<ul>
+    <li><code>{<span>module_booking,a</span>}</code> - displays all the bookings</li>
+    <li><code>{<span>module_booking,i,24407</span>}</code> - displays an individual event item with the ID 24407</li>
+    <li><code>{<span>module_booking,l,5</span>}</code> - displays 5 latest events</li>
+    <li><code>{<span>module_booking,r</span>}</code> - displays a single random item</li>
+    <li><code>{<span>module_booking,c,14075</span>}</code> - displays all the items classified in the category with the ID 14075</li>
+    <li><code>{<span>module_booking,cr,14075</span>}</code> - displays a random item classified in the category with the ID 14075</li>
+    <li><code>{<span>module_booking,i,63522  template="/layouts/custom/bookings.tpl"</span>}</code> - displays an individual item using a <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+</ul>
+</div>

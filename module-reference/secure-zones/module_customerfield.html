@@ -1,0 +1,40 @@
+<h2>{<span>module_customerfield</span>}</h2>
+<div id="description">
+<h3>Description</h3>
+<p>This module renders the information stored in a custom field (also known as an extended database field) attached to the CRM record that is currently logged into your site's front-end.</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p><code>{<span>module_customerfield,extended database id,custom field id</span>}</code></p>
+</div>
+<div id="parameters">
+<h3>Parameters</h3>
+<ul>
+    <li><strong>extended database id</strong> - this is the ID of the extended database field collection
+    </li>
+    <li><strong>custom field id</strong> - this is the ID of the individual field you wish to render</li>
+</ul>
+</div>
+<div id="examples">
+<h3>How to get the IDs for this module</h3>
+<p>There are basically two ways you can get the IDs for that particular module:</p>
+<p><strong>Use the Update User Details form</strong></p>
+<ul>
+<li>create a test page</li>
+<li>from the Toolbox insert the <strong>Site Modules > Secure zones > Update User Details form</strong></li>
+<li>from the Insert module dialog make sure you select <strong>All CRM forms</strong><br/>
+<a href="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-01-30_0956.png"><img src="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-01-30_0956.png?Action=thumbnail&Width=500&algorithm=fill" /></a>
+</li>
+<li>after you insert the form  look for the custom fields you want to get the module for, the module_customerfield module will be used to pre-fill the information in the form's fields</li>
+</ul>
+<p><strong>Manually getting the IDs</strong></p>
+<ul>
+    <li>To get the extended database id go to<strong> CRM > Extended CRM Database</strong> and hover the extended database form's name: <br/>
+    <a href="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-01-30_1003.png"><img src="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-01-30_1003.png?Action=thumbnail&Width=500&algorithm=fill" /></a>
+    </li>
+    <li>To get the custom field id go to the particular Extended database form and inspect the list of fields: <br/>
+    <A HREF="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-01-30_1005.png"><img src="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-01-30_1005.png?Action=thumbnail&Width=500&algorithm=fill" /></A>
+    </li>
+</ul>
+
+</div>

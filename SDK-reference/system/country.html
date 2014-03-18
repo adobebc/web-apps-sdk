@@ -1,0 +1,34 @@
+
+  
+    <h2 id="CountryCollection">new CountryCollection()</h2>
+  
+  
+    
+      <p>This class provides a collection of the countries available in Business Catalyst. </p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/country.js.html">src/country.js</a></li>
+        </ul>
+      
+    
+    <h3>Sample code</h3>
+    <pre class="language-javascript"><code>var itemCollection = new BCAPI.Models.CountryCollection();
+itemCollection.fetch({
+    success: function (Country) {
+        itemCollection.each(function (Country) {
+            console.log(Country.get('countryCode') + " // " + Country.get('displayName'))
+        });
+    },
+    error: function (Country, xhr) {
+        console.log("Request failed.");
+        console.log("Error code: " + jqXHR.status);
+        console.log("Error text: " + jqXHR.statusText);
+        console.log("Response text: " + jqXHR.responseText)
+    }
+});
+</code></pre>
+  
+

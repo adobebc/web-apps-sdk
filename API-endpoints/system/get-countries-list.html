@@ -1,0 +1,108 @@
+
+        <h2>Get Countries List</h2>
+
+<p>Gets the list of supported countries in Business Catalyst. You are not required to be logged in to use this API.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/system/countries</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<ul>
+<li>Query:
+
+<ul>
+<li><code>ip</code> - the IP for which you require the appropriate country, or "current" for the current request IP. If not supplied, the entire list of countries supported by Business Catalyst is returned <em>(string, optional)</em></li>
+</ul></li>
+</ul>
+
+<h3>Response</h3>
+
+<p>countryList object with the following properties:</p>
+
+<ul>
+<li><code>items</code> - an array of country objects which have the following properties:
+
+<ul>
+<li><code>countryCode</code></li>
+<li><code>displayName</code></li>
+</ul></li>
+</ul>
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+<hr>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>GET /api/v2/admin/countries HTTPS/1.1
+Connection: keep-alive
+Content-Type: application/json
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code><br>HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "currentPage":1,
+  "items":
+  [
+    {
+      "countryCode":"AU",
+      "displayName":"Australia"
+    },
+    {
+      "countryCode":"US",
+      "displayName":"United States"
+    },
+    ...
+  ],
+  "itemsPerPageCount":1000,
+  "links":
+  [
+    {
+      "rel":"previous",
+      "uri":null
+    },
+    {
+      "rel":"next",
+      "uri":null
+    }
+  ],
+  "totalItemsCount":240
+}
+</code></pre>
+<hr>
+<h3>Sample code</h3>
+
+<p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="http://adobebc.github.io/bcapi.js/">Interacting with APIs using the bcapi.js SDK</a></p>
+
+<pre class="language-javascript"><code>var itemCollection = new BCAPI.Models.CountryCollection();
+</code></pre>
+<hr>
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>401</code>
+
+<ul>
+<li><code>105000</code> sub-code - invalid IP passed to "ip" argument</li>
+</ul></li>
+<li><code>500</code> - internal server error</li>
+</ul>
+
+        

@@ -1,0 +1,252 @@
+
+  
+    <h2 id="Item">new Item()</h2>
+  
+  
+    
+      <p>This class provides useful operations for interacting with web app items. You can find various examples of how to use it.</p>
+      
+      <h3>Load items paginated</h3>
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
+items.fetch({
+        skip: 2, limit: 100,
+        success: function(webAppItems) {
+            items.each(function(webAppItem) {
+    console.log("createDate: " + webAppItem.get('createDate'))
+    console.log("enabled: " + webAppItem.get('enabled'))
+    console.log("expiryDate: " + webAppItem.get('expiryDate'))
+    console.log("id: " + webAppItem.get('id'))
+    console.log("lastUpdateDate: " + webAppItem.get('lastUpdateDate'))
+    console.log("name: " + webAppItem.get('name'))
+    console.log("releaseDate: " + webAppItem.get('releaseDate'))
+});
+        },
+        error: function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}
+});
+</code></pre>
+      <h3>Filtering items</h3>
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
+items.fetch({
+        where: {"name": ""Web app item new"},
+        success: function(webAppItems) {
+            items.each(function(webAppItem) {
+    console.log("createDate: " + webAppItem.get('createDate'))
+    console.log("enabled: " + webAppItem.get('enabled'))
+    console.log("expiryDate: " + webAppItem.get('expiryDate'))
+    console.log("id: " + webAppItem.get('id'))
+    console.log("lastUpdateDate: " + webAppItem.get('lastUpdateDate'))
+    console.log("name: " + webAppItem.get('name'))
+    console.log("releaseDate: " + webAppItem.get('releaseDate'))
+});
+        },
+        error: function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}
+});
+</code></pre>
+      
+      <h3>Ordering items</h3>
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
+items.fetch({
+        order: "-name",
+        success: function(webAppItems) {
+            items.each(function(webAppItem) {
+    console.log("createDate: " + webAppItem.get('createDate'))
+    console.log("enabled: " + webAppItem.get('enabled'))
+    console.log("expiryDate: " + webAppItem.get('expiryDate'))
+    console.log("id: " + webAppItem.get('id'))
+    console.log("lastUpdateDate: " + webAppItem.get('lastUpdateDate'))
+    console.log("name: " + webAppItem.get('name'))
+    console.log("releaseDate: " + webAppItem.get('releaseDate'))
+});
+        },
+        error: function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}
+});
+</code></pre>
+      
+      <h3>All in one usage</h3>
+      <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
+items.fetch({
+        skip: 0, limit: 100,
+        where: {"name": "My webapp item"},
+        order: "-name",
+        success: function(webAppItems) {
+            items.each(function(webAppItem) {
+    console.log("createDate: " + webAppItem.get('createDate'))
+    console.log("enabled: " + webAppItem.get('enabled'))
+    console.log("expiryDate: " + webAppItem.get('expiryDate'))
+    console.log("id: " + webAppItem.get('id'))
+    console.log("lastUpdateDate: " + webAppItem.get('lastUpdateDate'))
+    console.log("name: " + webAppItem.get('name'))
+    console.log("releaseDate: " + webAppItem.get('releaseDate'))
+});
+        },
+        error: function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}
+});
+</code></pre>
+      <h3>Load the webapp items collection</h3>
+      <pre class="language-javascript"><code>
+var itemCollection = new BCAPI.Models.WebApp.ItemCollection("test app2");
+itemCollection.fetch({
+    success: function (items) {
+        console.log('Items loaded successfully, here are the details:')
+
+        items.each(function (item) {
+            item.fetch({
+                success: function (itemDetails) {
+                    console.log(JSON.stringify(itemDetails.attributes))
+                }
+            });
+        });
+    },
+    error: function (jqXHR) {
+        console.log("Request failed.");
+    }
+});
+</code></pre>
+      <h3>Create item</h3>
+      <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("webapp_name_here", {
+    "name": "4"
+});
+var response = item.save({
+    success: function (webAppItem) {
+        console.log('Item created')
+    },
+    error: function (jqXHR) {
+        console.log("Request failed.");
+        console.log("Error code: " + jqXHR.status);
+        console.log("Error text: " + jqXHR.statusText);
+        console.log("Response text: " + jqXHR.responseText);
+    }
+});</code></pre>
+      <h3>Remove item</h3>
+      <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("apicreated", {
+    "id": "7370534"
+});
+var response = item.destroy({
+    success: function (webAppItem) {
+        console.log('Item deleted')
+    },
+    error: function (jqXHR) {
+        console.log("Request failed.");
+        console.log("Error code: " + jqXHR.status);
+        console.log("Error text: " + jqXHR.statusText);
+        console.log("Response text: " + jqXHR.responseText);
+    }
+});</code></pre>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item.js.html">src/webapp_item.js</a></li>
+        </ul>
+      <hr>
+    
+    <h3>Supported attributes</h3>
+    <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item({
+	"name": "Item7",
+	"weight": 7,
+	"releaseDate": "2013-01-30",
+	"expiryDate": "9999-01-01",
+	"enabled": true,
+	"slug": "item7",
+	"description": "item7 description",
+	"roleId": null,
+	"submittedBy": -1,
+	"templateId": 123,
+	"address": "item7_address",
+	"city": "item7_city",
+	"state": "item7_state",
+	"zipCode": "000007",
+	"country": "US",
+	"fields": {
+	    "field_string_required": "item7_field1_value",
+	    "field2_string_optional": "item7_field2_value",
+	    "field3_number": 7,
+	    "field4_dateTime": "2012-01-20",
+	    "field5_list": "item1"
+	}
+});
+</code></pre>
+
+<hr><h2>Error Codes</h2>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>201</code> - success</li>
+<li><code>401</code> - unauthorized - when the authentication token is incorrect</li>
+<li><code>403</code> - forbidden - when the user does not have the proper permissions</li>
+<li><code>404</code> - not found
+
+<ul>
+<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+</ul></li>
+<li><code>400</code> - bad request; sub-error codes:
+
+<ul>
+<li><code>200000</code> - An unspecified error has occured</li>
+<li><code>200002</code> - The slug is invalid</li>
+<li><code>200003</code> - Using this slug will make the entire frontend URL larger than the maximum allowed length</li>
+<li><code>200004</code> - The slug is already used</li>
+<li><code>200005</code> - The name provided is invalid (empty or null)</li>
+<li><code>200006</code> - A custom field failed validation</li>
+<li><code>200008</code> - There is a problem with the address. The related webapp has "location</li>
+</ul></li>
+</ul>
+
+        <hr>
+<h2>Methods</h2>
+
+  
+    <h3 id="endpoint"> endpoint()</h3>
+  
+  
+    
+      <p>This method returns the correct endpoint for the web app items.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item.js.html">src/webapp_item.js</a></li>
+        </ul>
+      
+    
+  
+  
+    <h3 id="toJSON"> toJSON()</h3>
+  
+  
+    
+      <p>This method is overriden in order to remove <em>webapp</em> field from API request. Webapp it's a pseudo attribute used internally by an item collection.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/webapp_item.js.html">src/webapp_item.js</a></li>
+        </ul>
+      
+    
+  
+

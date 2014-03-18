@@ -1,0 +1,50 @@
+<h2>News detail layout</h2>
+<div id="modules">
+<h3>This layout is not used by any module per se.</h3>
+<p>
+Site visitors get to it only after clicking the links outputted by the tag {<span>tag_subject</span>}</code> or {<span>tag_subject</span>}</code> which can both be found on the <a title="News List Layout" href="/reference/tag-reference/news/news-list-layout.html">news list layout</a>.
+</p>
+</div>
+<div id="accessible">
+<h3>Accessible from</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; News Layouts</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/Announcement/detail.html</li>
+</ul></div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addtofavorites,add_Image, remove_Image</span>}</code></td><td><span class="cellcontent">Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span class="tagname">tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}</code></code></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_announcementurl_value</span>}</code></td><td><span class="cellcontent">This tag renders the announcement URL value. For example: <em>/announcement-prefix-url/new-announcement</em>. If customizable URLs are not enabled, this tag will render <em>/AnnouncementRetrieve.aspx?Id=123</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_body</span>}</code></td><td><span class="cellcontent">Details of  the news item (editor content)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_eventfromdate</span>}</code></td><td><span class="cellcontent">Start date of the event (if applicable)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_eventtodate</span>}</code></td><td><span class="cellcontent">End date of the event (if applicable)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_expirydate</span>}</code></td><td><span class="cellcontent">Expiry date of the news item.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_lastupdatedate</span>}</code></td><td><span class="cellcontent">Last update date of  the news item.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_releasedate</span>}</code></td><td><span class="cellcontent">Release date of  the news item.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_subject</span>}</code></td><td><span class="cellcontent">Subject of news item in plain text</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_tellafriend</span>}</code></td><td><span class="cellcontent">Opens up a popup that contains the "Tell a friend" form.</span></td>
+        </tr>
+    </tbody>
+</table>
+</div>

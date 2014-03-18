@@ -1,0 +1,28 @@
+<h2>{<span>module_whosloggedin</span>}</h2>
+<div id="description">
+<h3>Description</h3>
+<p>Displays the name of the contact that's currently logged in and it also displays the Log Out link. If the contact is not logged in the module will display "No one logged in. [Log in]"</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p><code>{<span>module_whosloggedin,page</span>}</code></p>
+</div>
+<div id="parameters">
+<h3>Parameters</h3>
+<ul>
+    <li><strong>page</strong> - is the page you want to send the customer to when they click on [Log in] link. </li>
+</ul>
+</div>
+<div id="examples">
+<h3>Examples</h3>
+<p><code>{<span>module_whosloggedin,/loginpage.htm</span>}</code></p>
+<ul>
+    <li>when customer logged in - <code>"John Smith logged in. <a href="/LogOutProcess.aspx">Log out</a>"</code></li>
+    <li>when customer not logged in - <code>"No one logged in. <a href="/loginpage.html">Log in</a>"</code></li>
+</ul>
+<p><code>{<span>module_whosloggedin</span>}</code></p>
+<ul>
+    <li>when customer logged in - <code>"John Smith logged in. <a href="/LogOutProcess.aspx">Log out</a>"</code></li>
+    <li>when customer not logged in - <code>"No one logged in."</code></li>
+</ul>
+</div>

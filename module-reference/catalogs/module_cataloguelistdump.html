@@ -1,0 +1,32 @@
+<h2>{<span>module_cataloguelistdump</span>}</h2>
+<div class="description>">
+<h3>Description</h3>
+<p>Displays the List of all Catalogues as names that are links to those catalogues</p>
+</div>
+<div id="syntax">
+<h3>Syntax</h3>
+<p><code>{<span>module_cataloguelistdump,-1,rowLength,targetFrame,sortBy</span>}</code></p>
+</div>
+<div id="parameters">
+<h3>Parameters</h3>
+<ul>
+<li><strong>-1</strong> - Use <em>-1</em> to display parent catalogs, use <em>-2</em> to display all catalogs including sub-catalogs</li>
+<li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
+<li><strong>targetFrame</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
+
+<li><strong>sortBy</strong> - will sort the web apps in specified order
+<ul>
+<li>Alphabetical - sorts items alphabetically</li>
+<li>Weight - sorts items by weight</li>
+</ul>
+</li>
+</ul>
+
+</div>
+<div id="examples">
+  <h3>Examples</h3>
+<ul>
+<li><code>{<span>module_cataloguelistdump,-1,1,_blank,Alphabetical</span>}</code> - this module will display the catalogue list in the new window, alphabetically and all in one column</li>
+</ul>
+</div>
+</div>

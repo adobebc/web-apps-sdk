@@ -1,0 +1,125 @@
+
+        <h2>Rename file or folder</h2>
+
+<p>Rename a file or a folder.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> PUT</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/storage/[filePath]?meta</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Can use SFTP &amp; File Manager</li>
+</ul>
+
+<h3>Response</h3>
+
+<p>Returns a status code, accepts and returns JSON as Content-Type.</p>
+
+<hr>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>PUT /api/v2/admin/sites/current/storage/images/cat.jpg?meta HTTPS/1.1
+Connection: keep-alive
+Accept: application/json
+Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
+
+{
+    "name":"dog.jpg"
+}
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+</code></pre>
+<hr>
+<h3>Sample code</h3>
+
+<p><strong>Rename a file</strong></p>
+
+
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/original.txt?meta",
+    type: "PUT",
+    contentType: "application/json",
+    processData: false,
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    data: JSON.stringify({"name":"renamed.txt"})
+});
+        
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+
+<p><strong>Rename a folder</strong></p>
+
+<p>Use <code>save</code> to rename a folder:</p>
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/csss/?meta",
+    type: "PUT",
+    contentType: "application/json",
+    processData: false,
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    data: JSON.stringify({"name":"css"})
+});
+              
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - OK</li>
+<li><code>400</code> - Bad request:
+
+<ul>
+<li><code>104000</code> - Generic FileAPI error</li>
+<li><code>104003</code> - Not enough privileges</li>
+<li><code>104004</code> - Invalid login multiple sites</li>
+<li><code>104009</code>- Path not found</li>
+<li><code>104013</code> - Web page in workflow moved, if trying to move a page in workflow</li>
+<li><code>104014</code> - Name required</li>
+<li><code>104015</code> - Invalid URL if the page name would cause an invalid URL</li>
+<li><code>104016</code> - Name not unique</li>
+<li><code>104017</code> - Not allowed web extension</li>
+<li><code>104018</code> - Can't move folder</li>
+<li><code>104019</code> - Can't find folder</li>
+<li><code>104020</code> - Folder reserved</li>
+<li><code>104021</code> - Folder already exists</li>
+<li><code>104022</code> - Destination exists</li>
+<li><code>104023</code> - Unauthorized access</li>
+<li><code>104028</code> - File or folder name too long</li>
+</ul></li>
+<li><code>401</code>- when authentication token is incorrect</li>
+<li><code>404</code> - the folder does not exist</li>
+</ul>
+
+        

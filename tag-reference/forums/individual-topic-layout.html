@@ -1,0 +1,51 @@
+<h2>Forum individual topic layout</h2>
+<div id="modules">
+<h3>Is used by these modules</h3>
+<p>
+This layout is not used by any modules, instead it is outputted by the <span>{</span>tag_topiclist<span>}</span> tag. For more info on this tag see the <a href="/reference/tag-reference/forums/topics-page.html">topics page layout</a> layout.
+</p>
+</div>
+<div id="accessible">
+<h3>Accessible from</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt;Forum Layouts</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/Forum/topic.html
+</li>
+</ul></div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addtofavorites,add_Image, remove_Image</span>}</code></td><td><span class="cellcontent">Add forum to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span class="tagname">tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}</code></code></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_avatar,placeholderimage,width,height</span>}</code></td><td><span class="cellcontent">Display avatar image used by forum members. Optionally define placeholder image (e.g. <em>/img/avatar.png</em>) and maximum width/height for avatar.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_counter</span>}</code></td><td><span class="cellcontent">Incremental count of the topics on the page</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_readstatus</span>}</code></td><td><span class="cellcontent">An icon showing whether the user has previously read the post or not (must be logged in) for example <span>{</span>tag_readstatus,&lt;img src="/img/read.png" /&gt;,&lt;img src="/img/unread.png" /&gt;</code>}</span></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_topiclastpostauthor</span>}</code></td><td><span class="cellcontent">Name (alias) of the person who last added a comment to the topic</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_topiclastpostdate</span>}</code></td><td><span class="cellcontent">Date and time of the last post in the topic in this format - <em>27-Mar-2014</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_topicname</span>}</code></td><td><span class="cellcontent">Name of  topic</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_topicposts</span>}</code></td><td><span class="cellcontent">Total number of the posts in topic</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_topicviews</span>}</code></td><td><span class="cellcontent">Total number of times this topic has been viewed</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_sticky,stickyImage</span>}</code></td><td><span class="cellcontent">Image indicating the forum topic is sticky. Optionally customize with own image, for example {<span>tag_sticky,&lt;img alt=&quot; src=&quot;/img/sticky.png&quot; /&gt;</span>}</code></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>

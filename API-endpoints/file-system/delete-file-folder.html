@@ -1,0 +1,116 @@
+
+        <h2>Delete file or folder</h2>
+
+<p>Delete a file or folder.</p>
+
+<p class="alert alert-info"><strong>Note:</strong> Deleting a parent folder will automatically delete its contents</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/{siteId}/storage/{path}?version=draft&amp;force=true|false</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Can use SFTP &amp; File Manager</li>
+</ul>
+
+<h4>Optional query params</h4>
+
+<table>
+<thead>
+<tr>
+  <th>Param name</th>
+  <th>Values</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>version</td>
+  <td>draft</td>
+  <td>If the page has a draft version, then the draft will be deleted. If it is a folder or not a page, than it will be ignored</td>
+</tr>
+<tr>
+  <td>force</td>
+  <td>true, false</td>
+  <td>In case of folders, a value of false prevents folder delete if the folder is not empty. Error throws is 403, with sub error code 104024</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Response</h3>
+
+<p>Returns a status Code</p>
+
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>DELETE /api/v2/admin/sites/current/storage/images/cat.jpg HTTPS/1.1
+Accept: application/json
+Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+</code></pre>
+<hr>
+<h3>Sample code</h3>
+
+<p><strong>Delete a particular file</strong></p>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/testing/description2.txt",
+    type: "DELETE",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }    
+});  
+</code></pre>
+<p><strong>Delete a folder</strong></p>
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/testing",
+    type: "DELETE",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }    
+});  
+</code></pre>
+<hr>
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - OK</li>
+<li><code>400</code> - Bad request:
+
+<ul>
+<li><code>104000</code> - Generic FileAPI error</li>
+<li><code>104001</code> - File not found</li>
+<li><code>104003</code> - Not enough privileges</li>
+<li><code>104004</code> - Invalid login multiple sites</li>
+<li><code>104009</code>- Path not found</li>
+<li><code>104010</code> - Destination path not found</li>
+<li><code>104011</code> - Web page in workflow deleted, if trying to delete a page in workflow</li>
+<li><code>104014</code> - Name required</li>
+<li><code>104020</code> - Folder reserved</li>
+<li><code>104023</code> - Unauthorized access</li>
+<li><code>104024</code> - Folder not empty</li>
+</ul></li>
+<li><code>401</code>- when authentication token is incorrect</li>
+<li><code>403</code> - sub error code 104024 when false flag was set to false, and you are attempting to delete a folder that is not empty</li>
+<li><code>404</code> - resource does not exist</li>
+</ul>
+
+        

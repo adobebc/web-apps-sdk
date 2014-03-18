@@ -1,0 +1,24 @@
+<h2>Double opt-in email</h2>
+<div id="accessible">
+<h3>Accessible from</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; System E-mails &gt; Double Opt-In Email</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/OutboundEmails/DoubleOptInEmail.html
+</li>
+</ul></div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_emailaddress</span>}</code></td><td><span class="cellcontent">Email address of the recipient</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_recipientname</span>}</code></td><td><span class="cellcontent">Full name of the recipient</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_verificationurl,Type</span>}</code></td><td><span class="cellcontent">The verification url for customer to select and opt-in to your newsletter. Type is either <em>Html</em> or <em>Text</em>. Html will render <em>&lt;a href="verifyUrl"&gt;Your_html&lt;/a&gt;</em> and text mode, <em>your_text verifyUrl</em></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>

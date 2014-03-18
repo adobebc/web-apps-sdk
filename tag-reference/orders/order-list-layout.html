@@ -1,0 +1,84 @@
+<h2>Customer order list layout</h2>
+<div id="accessible">
+<h3>Accessible from</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; Customer Order Layouts &gt; List Layout</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong> /layouts/customerorders/list.html</li>
+</ul></div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+  
+  <tbody>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amountoutstanding</span>}</code></td><td><span class="cellcontent">Amount outstanding on invoice</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amountoutstandingactual</span>}</code></td><td><span class="cellcontent">Amount of invoice outstanding, only taking into account successful payments (pending payments excluded)</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amountpaid</span>}</code></td><td><span class="cellcontent">Amount already paid on invoice</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amountpaidactual</span>}</code></td><td><span class="cellcontent">Amount of invoice paid with a successful payment (pending payments excluded)</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_assignedto</span>}</code></td><td><span class="cellcontent">Name of the person whom the order is assigned to</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_awbnumber</span>}</code></td><td><span class="cellcontent">Tracking number from shipping provider(also known as AWB number). You can edit this information for each order</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_createdate</span>}</code></td><td><span class="cellcontent">Create date of the order</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicedate</span>}</code></td><td><span class="cellcontent">Date of Invoice</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicenumber</span>}</code></td><td><span class="cellcontent">Invoice number</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicetotal</span>}</code></td><td><span class="cellcontent">Total invoice amount</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicetotaltaxamount</span>}</code></td><td><span class="cellcontent">Total tax associated with order (product tax + shipping tax)</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_lastupdatedate</span>}</code></td><td><span class="cellcontent">Last update date of the order</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_orderid</span>}</code></td><td><span class="cellcontent">Order ID (you can use this value to search for the order in the CRM &gt; Search panel)</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_ordername</span>}</code></td><td><span class="cellcontent">Name of order</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_ordertype</span>}</code></td><td><span class="cellcontent">Type of the order; for example, Invoice or Quote</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_ownername</span>}</code></td><td><span class="cellcontent">Name of the person who owns the order</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productextension</span>}</code></td><td><span class="cellcontent">Three-letter extension of the file if an e-Product; for example, PDF. Use to render out relevant icon for e-Product (applies to flat listing only; for example, <span>{module_order,a,,flat</span>})</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productid</span>}</code></td><td><span class="cellcontent">Displays the internal ID of the product in the order (applies to flat listing only; for example, {<span>module_order,a,,flat</span>})</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productname</span>}</code></td><td><span class="cellcontent">Displays the name of the product in the order (applies to flat listing only; for example,{<span>module_order,a,,flat</span>}). Provides a link to download product if e-Product.</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippinginstructions</span>}</code></td><td><span class="cellcontent">Any specific shipping instructions that accompany the order</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_status</span>}</code></td><td><span class="cellcontent">Stats of the order</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_trackingurl,Your Text</span>}</code></td><td><span class="cellcontent">URL of the shipper to track shipments. You can edit this information for each order</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_workflow</span>}</code></td><td><span class="cellcontent">Workflow name assigned to order</span></td>
+        </tr>
+  </tbody>
+</table>
+</div>

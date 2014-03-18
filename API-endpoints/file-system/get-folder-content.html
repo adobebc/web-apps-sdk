@@ -1,0 +1,138 @@
+
+        <h2>Get folder content</h2>
+
+<p>Get the contents of a folder.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/storage/[folderPath]?meta</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Can use SFTP &amp; File Manager</li>
+</ul>
+
+<h3>Response</h3>
+
+<p>Returns a storage entity object that contains the following properties:</p>
+
+<ul>
+<li><code>type</code> : "folder" <em>(string)</em></li>
+<li><code>name</code> : name of the folder <em>(string)</em></li>
+<li><code>size</code> : will be 0 <em>(integer)</em></li>
+<li><code>lastModified</code>: can be null <em>(date)</em></li>
+<li><code>links</code> : an array of link objects <em>(array)</em></li>
+<li><code>rel -storage</code> : URL for the API endpoint to perform other operations on the file <em>(string)</em></li>
+<li><code>contents</code>: an array of storageEntitySummary objects with the following properties:
+
+<ul>
+<li><code>type</code> : either "file" or "folder" <em>(string)</em></li>
+<li><code>name</code> : file or folder name <em>(string)</em></li>
+<li><code>links</code> : an array of link objects <em>(array)</em></li>
+<li><code>rel -storage</code> : URL for the API endpoint to perform other operations on the file <em>(string)</em></li>
+</ul></li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<hr>
+
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/storage/images/?meta HTTPS/1.1
+Accept: application/json
+Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
+</code></pre>
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+
+{
+    "type": "folder",
+    "name": "images",
+    "size": 0,
+    "lastModified": null,
+    "links": [
+        {
+            "rel": "storage",
+            "uri": "/api/v2/admin/sites/current/storage/images/"
+        }
+    ],
+    "contents": [
+        {
+            "type": "folder",
+            "name": "animals",
+            "links": [
+                {
+                    "rel": "storage",
+                    "uri": "/api/v2/admin/sites/current/storage/images/animals/"
+                }
+            ]
+        },
+        {
+            "type": "file",
+            "name": "cat.jpg",
+            "links": [
+                {
+                    "rel": "storage",
+                    "uri": "/api/v2/admin/sites/current/storage/images/cat.jpg"
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+
+<hr>
+<h3>Sample code</h3>
+
+<p><strong>Get folder metadata</strong></p>
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/images/?meta",
+    type: "GET",
+    accept: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - OK</li>
+<li><code>400</code> - Bad request:
+
+<ul>
+<li><code>104000</code> - Generic FileAPI error</li>
+<li><code>104002</code> - Operation is applicable to files, not folders</li>
+<li><code>104003</code> - Not enough privileges</li>
+<li><code>104004</code> - Invalid login multiple sites</li>
+<li><code>104009</code>- Path not found</li>
+<li><code>104014</code> - Name required</li>
+<li><code>104019</code> - Can't find folder</li>
+<li><code>104023</code> - Unauthorized access</li>
+<li><code>104028</code> - File or folder name too long</li>
+</ul></li>
+<li><code>401</code>- when authentication token is incorrect</li>
+<li><code>404</code> - the folder does not exist</li>
+</ul>
+
+        

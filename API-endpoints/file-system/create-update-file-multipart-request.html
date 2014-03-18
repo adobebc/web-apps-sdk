@@ -1,0 +1,93 @@
+
+        <h2>Create / Update files through multipart request</h2>
+
+<p>Uploads a one or more files in a given folder through a multipart POST action (like an HTML form). The login token is sent as a query parameter in the URL (We'll then be able to query for progress, based on that token).</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/storage/[filePath]</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Can use SFTP &amp; File Manager</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<p>File contents as binary</p>
+
+<h3>Response</h3>
+
+<p>Returns a status code</p>
+
+<h3>Notes</h3>
+
+<p>Mandatory header: <code>Content-Type: application/octet-stream</code></p>
+
+<p><strong>Datacenter location</strong></p>
+
+<p>If the url for the POST request does not correspond to the datacenter where the site is located, a 301 response will be returned that will redirect the request to the correct location.</p>
+
+<p><strong>Nested folders</strong></p>
+
+<p>If you use a path with nested folders, the API will automatically create the nested folder structure.</p>
+
+<p>The depth of the nested folder structure is limited only by the URL length.</p>
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<hr>
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>PUT /api/v2/admin/sites/current/storage/images HTTPS/1.1
+Accept: application/json
+Authorization: 73370c2c02db48a6a6494c955f13abe48e4d11342fcc4f288eb1dfc79827e777
+...(multipart request)...
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+{"status": "success"}
+</code></pre>
+<hr>
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - OK</li>
+<li><code>301</code> - Redirect to correct data center url</li>
+<li><code>400</code> - Bad request:
+
+<ul>
+<li><code>104000</code> - Generic FileAPI error</li>
+<li><code>104002</code> - Not a file</li>
+<li><code>104003</code> - Not enough privileges </li>
+<li><code>104004</code> - Invalid login multiple sites </li>
+<li><code>104005</code> - Exceeded maximum file size </li>
+<li><code>104006</code> - Invalid editable region name, if a template </li>
+<li><code>104007</code> - Can't find tag {pagecontent} in editable region, if a template </li>
+<li><code>104008</code> - Can't find tag {pagecontent}, if a template </li>
+<li><code>104009</code> - Path not found</li>
+<li><code>104010</code> - Destination path not found </li>
+<li><code>104012</code> - Web page in workflow updated, if trying to update a page in a workflow </li>
+<li><code>104014</code> - Name required</li>
+<li><code>104015</code> - Invalid URL </li>
+<li><code>104016</code> - Name not unique </li>
+<li><code>104019</code> - Can't find folder </li>
+<li><code>104022</code> - Destination exists </li>
+<li><code>104023</code> - Unauthorized access </li>
+<li><code>104028</code> - File or folder name too long </li>
+</ul></li>
+<li><code>401</code>- when authentication token is incorrect</li>
+</ul>
+
+        

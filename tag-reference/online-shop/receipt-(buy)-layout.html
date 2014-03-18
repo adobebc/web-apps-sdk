@@ -1,0 +1,49 @@
+<h2>Receipt (buy) layout</h2>
+<div id="accessible">
+  <h3>Accessible from</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; Online Shop Layouts</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/OnlineShop/order_receipt-XX.html
+</li>
+</ul>
+<p>Replace "XX" with the country code you have added in the Site Settings &gt; Site Domains panel (see the "Country" column). <br>
+</p>
+  <p>If you have multiple domains with different "Country" values you will find multiple order-receipt-XX files, one for each country. This way, with one layout for every country defined you can vary the contents of the layout to accomodate a multilingual website.</p>
+</div>
+
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_orderid</span>}</code></td><td><span class="cellcontent">Internal ID associated with the purchase</span></td>
+            
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amount</span>}</code></td>
+            <td><span class="cellcontent">The amount paid</span></td>
+            
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_authorizationcode</span>}</code></td>
+            <td><span class="cellcontent">Authorization code returned by the payment gateway</span></td>
+            
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_errormessage</span>}</code></td>
+            <td><span class="cellcontent">Error message returned by the payment dateway</span></td>
+            
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicenumber</span>}</code></td>
+            <td><span class="cellcontent">Invoice number</span></td>
+            
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_paymentstatus</span>}</code></td>
+            <td><span class="cellcontent">The status of the order, possible values <em>Success</em>, <em>Failed</em> or <em>Pending</em></span></td>
+            
+        </tr>
+    </tbody>
+</table>
+</div>

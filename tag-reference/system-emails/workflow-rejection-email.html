@@ -1,0 +1,33 @@
+<h2>Workflow rejection email</h2>
+<div id="accessible">
+<h3>Accessible from</h3>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; System Emails &gt; Workflow Rejection</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong> /Layouts/OutboundEmails/WorkflowRejection.html</li>
+</ul></div>
+<div id="tags">
+<h3>Renders these tags</h3>
+<table width="100%" class="data-bordered">
+  
+  <tbody>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_currentusername</span>}</code></td><td><span class="cellcontent">Name of user currently logged in to site</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_objectname</span>}</code></td><td><span class="cellcontent">Name of the item type this workflow step is about (<em>case</em>, <em>order</em>, <em>web page</em>, <em>template</em>)</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_objecturl</span>}</code></td><td><span class="cellcontent">URL to view the item associated with the workflow</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_objecturlsecure</span>}</code></td><td><span class="cellcontent">Secure URL to view the item associated with the workflow</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_rejectionreason</span>}</code></td><td><span class="cellcontent">Reason for rejecting task, as Admin entered</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_rolename</span>}</code></td><td><span class="cellcontent">Name of the role the user belongs to</span></td>
+        </tr>
+  </tbody>
+</table>
+</div>

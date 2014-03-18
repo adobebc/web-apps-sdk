@@ -1,0 +1,322 @@
+
+  
+    <h2 id="Category">new Category()</h2>
+  
+  
+    
+      <p>This class provides methods for working with categories.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/category.js.html">src/category.js</a></li>
+        </ul>
+      
+    <hr>
+    <h3>Sample code</h3>
+    <h4>Create a category</h4>
+    <pre class="language-javascript"><code>var category = new BCAPI.Models.Category({name: 'Test Category6', parentId: 123456});
+category.save()
+    </code></pre>
+<h4>Get a category's details</h4>
+
+    <pre class="language-javascript"><code>var category = new BCAPI.Models.Category({
+    id: 123456
+});
+category.fetch({
+    success: function (category) {
+        console.log("Name: " + category.get('name') + " " +
+            "ID: " + category.get('id') + " " +
+            "parentId: " + category.get('parentId')
+        );
+
+    },
+    error: function (data) {
+        console.log('Encountered an error.')
+    }
+})</code></pre>
+<p>Update and delete operations are not supported
+</p>
+  
+<h4>List all the categories</h4>
+    <pre class="language-javascript"><code>var categories = new BCAPI.Models.CategoryCollection();
+categories.fetch({
+    success: function (data) {
+        data.each(function (category) {
+            console.log(
+                "Name: " + category.get('name') + " " +
+                "ID: " + category.get('id') + " " +
+                "parentId: " + category.get('parentId') + " " +
+                "links: " + JSON.stringify(category.get('links'))
+            );
+        });
+    },
+    error: function (data) {
+        console.log('Encountered an error.')
+    }
+})</code></pre>
+  
+<strong>Response</strong>
+<pre class="language-javascript"><code>Name: Root ID: 14075 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14075"
+}]
+Name: Company ID: 14606 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14606"
+}]
+Name: Products ID: 14609 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14609"
+}]
+Name: Solutions ID: 14610 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14610"
+}]
+Name: Customers ID: 14744 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14744"
+}]
+Name: Company1 Private ID: 155310 parentId: 14606 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155310"
+}]
+Name: Company2 Public ID: 155311 parentId: 14606 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155311"
+}]
+Name: My category ID: 155312 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155312"
+}]
+Name: My category2 ID: 155313 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155313"
+}]
+Name: My category3 ID: 155314 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155314"
+}]
+Name: My category4 ID: 155315 parentId: -1 links: [{
+    "rel": "self",
+    "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155315"
+}]</code></pre>
+
+<h3>Extends</h3>
+<ul>
+  <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html">BCAPI.Models.Model</a></li>
+</ul>
+<hr>
+<h2>Methods</h2>
+
+  
+    <h3 id="destroy"> destroy()</h3>
+  
+  
+    
+      <p>This method deletes a model using the api.</p>
+    
+    
+      <p><strong>Inherited From:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html#destroy">BCAPI.Models.Model#destroy</a></li>
+        </ul>
+      
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/models.js.html">src/models.js</a></li>
+        </ul>
+      
+    
+    <h3>Example</h3>
+    <pre class="language-javascript"><code>var model = new PersonModel({id: 1});
+model.destroy({
+	success: function() {
+		// do something when delete is successful.
+	}
+});
+</code></pre>
+  
+  
+    <h3 id="endpoint"> endpoint()</h3>
+  
+  
+    
+      <p>This method returns the correct endpoint for the category.</p>
+    
+    
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/category.js.html">src/category.js</a></li>
+        </ul>
+      
+    
+  
+  
+    <h3 id="headers"> headers() → {Object}</h3>
+  
+  
+    
+      <p>This method returns the predefined headers which are automatically appended to ajax calls.</p>
+      <p>The default implementation delegates this to the model's method.</p>
+    
+    
+      <p><strong>Inherited From:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html#headers">BCAPI.Models.Model#headers</a></li>
+        </ul>
+      
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/models.js.html">src/models.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>A list of headers appended to ajax calls.</p>
+    
+    
+      <p><strong>Type:</strong> objectg</p>
+    
+  
+  
+    <h3 id="save"> save()</h3>
+  
+  
+    
+      <p>This method change default Backbone save behaviour in order to simplify save invocation.</p>
+    
+    
+      <p><strong>Inherited From:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html#save">BCAPI.Models.Model#save</a></li>
+        </ul>
+      
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/models.js.html">src/models.js</a></li>
+        </ul>
+      
+    
+    <h3>Example</h3>
+    <pre class="language-javascript"><code>var model = new PersonModel();
+model.save({
+	success: function(model, response) {
+		// handle success logic in here
+	}
+});
+</code></pre>
+  
+  
+    <h3 id="sync"> sync(method, model, options) → {Promise}</h3>
+  
+  
+    
+      <p>Sync method is invoked automatically when user tries to create / update a model. It automatically appends the custom headers returned by<a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html#headers">BCAPI.Models.Model.headers</a> method.</p>
+    
+    <h3>Parameters:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>method</td>
+          <td>String</td>
+          <td><p>Http method used to persist the state of the current model.</p></td>
+        </tr>
+        <tr>
+          <td>model</td>
+          <td><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html">BCAPI.Models.Model</a></td>
+          <td><p>The current model to persist.</p></td>
+        </tr>
+        <tr>
+          <td>options</td>
+          <td>Object</td>
+          <td><p>Additional options which influence how http call will be done.</p></td>
+        </tr>
+      </tbody>
+    </table>
+    
+      <p><strong>Inherited From:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html#sync">BCAPI.Models.Model#sync</a></li>
+        </ul>
+      
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/models.js.html">src/models.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>jQuery promise which can be used to determine when request is done.</p>
+    
+    
+      <p><strong>Type:</strong> promise</p>
+    
+  
+  
+    <h3 id="urlRoot"> urlRoot(modelEndpoint) → {string}</h3>
+  
+  
+    
+      <p>This method automatically builds absolute entry point url of the model.</p>
+      <p>This method accepts as parameter the model's endpoint. If this is not specified, then the endpoint method is called.</p>
+    
+    <h3>Parameters:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>modelEndpoint</td>
+          <td>String</td>
+          <td><p>The model's endpoint.</p></td>
+        </tr>
+      </tbody>
+    </table>
+    
+      <p><strong>Inherited From:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html#urlRoot">BCAPI.Models.Model#urlRoot</a></li>
+        </ul>
+      
+      <p><strong>Source:</strong></p>
+      
+        <ul>
+          <li><a href="http://adobebc.github.io/bcapi.js/models.js.html">src/models.js</a></li>
+        </ul>
+      
+    
+    <h3>Returns:</h3>
+    
+      <p>An absolute entry point API.</p>
+    
+    
+      <p><strong>Type:</strong> string</p>
+    
+  
+

@@ -1,0 +1,68 @@
+
+        <h2>Get upload progress through multipart request</h2>
+
+<p>Get the progress of the user's uploads.</p>
+
+<p class="alert alert-info"><strong>Note:</strong> If the url for the POST request does not correspond to the datacenter where the site is located, a 301 response will be returned that will redirect the request to the correct location.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/storage?status</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Can use SFTP &amp; File Manager</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<p>File contents as binary</p>
+
+<h3>Response</h3>
+
+<p>Returns <code>percent: 'value'</code> - an integer value between 0 and 100</p>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<h4>JSON</h4>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>PUT /api/v2/admin/sites/current/storage?status=c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73 HTTPS/1.1
+Accept: application/json
+Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+{"percent":100}
+</code></pre>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - OK</li>
+<li><code>301</code> - Redirect to correct data center url</li>
+<li><code>400</code> - Bad request:
+
+<ul>
+<li><code>104000</code> - Generic FileAPI error</li>
+<li><code>104001</code> - File not found</li>
+<li><code>104002</code> - Not a file</li>
+<li><code>104003</code> - Not enough privileges</li>
+</ul></li>
+<li><code>401</code>- when authentication token is incorrect</li>
+</ul>
+
+        

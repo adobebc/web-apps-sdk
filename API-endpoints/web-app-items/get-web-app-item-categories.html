@@ -1,0 +1,122 @@
+
+        <h2>Get Web App Item Categories</h2>
+
+<p>Get a list of all the categories for a webapp item.</p>
+
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/webapps/[webappName]/items/[itemID]/categories
+
+<ul>
+<li>Alternatively, use "current" instead of [siteId]</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> View Web App Items</li>
+</ul>
+
+<h3>Response</h3>
+
+<p>Returns a paginator object with items array of integers (category ids).</p>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<hr>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/webapps/Cars/items/454365/categories HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code><br>HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Encoding: gzip
+Vary: Accept-Encoding
+Server: Microsoft-IIS/7.5
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: Authorization, Accept-Language, Content-Type
+Access-Control-Allow-Methods: GET, HEAD, POST, PUT, DELETE
+Access-Control-Expose-Headers: Location
+Access-Control-Max-Age: 99999
+Content-Length: length
+
+{
+  "totalItemsCount": 3,
+  "skip": 0,
+  "limit": 100,
+  "links": [
+      {
+        "rel":"self",
+        "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/items\/454365\/categories"
+      },
+      {
+        "rel":"categories",
+        "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/categories"
+      },
+      {
+        "rel":"category",
+        "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/categories/{categoryId}"
+      }
+  ],
+  "items": [45345,45346,45400]
+}
+</code></pre>
+
+<hr><h3>Sample code</h3>
+
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/apicreated/items/7370535/categories",
+    type: "GET",
+    connection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})    
+</code></pre>
+
+<hr><h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>400</code> - bad request
+
+<ul>
+<li><code>200000</code> - An unspecified error has occured</li>
+</ul></li>
+<li>``401` - unauthorized - when the Authorization header is not present, or contains an invalid site token</li>
+<li><code>403</code> - forbidden - when the user does not have View WebApp Item Permission</li>
+<li><code>404</code> - not found:
+
+<ul>
+<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+<li><code>200001</code> - The webapp item was not found (the webAppName and webAppItemId from the URL do not match)</li>
+</ul></li>
+</ul>
+
+        

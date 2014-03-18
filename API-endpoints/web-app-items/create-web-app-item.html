@@ -1,0 +1,178 @@
+
+        <h2>Create Web App Item</h2>
+
+<p>Create a web app item.</p>
+
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developer-documentation/oauth-in-bc.html">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/webapps/[webAppName]/items
+
+<ul>
+<li>Alternatively, use "current" instead of [siteId]</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developer-documentation/oauth-in-bc.html">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Add Web App Items</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<p>A WebAppItem object containg the following properties:</p>
+
+<ul>
+<li><code>name</code>- the name of the web app item, required <em>(string)</em></li>
+<li><code>weight</code> - the weight of the web app item (the order in which they will appear in frontend). Default: null <em>(integer)</em></li>
+<li><code>releaseDate</code> - the release date of the web app item; uses the format mm/dd/yyyy. Default: current date <em>(string)</em></li>
+<li><code>expiryDate</code> - the date when the web app item will expire; uses the format mm/dd/yyyy. Default: "9999-01-01" <em>(string)</em></li>
+<li><code>enabled</code> - a boolean indicating whether this web app item is enabled or disabled. Default: true <em>(boolean)</em></li>
+<li><code>slug</code> - the suffix that will be used to build its frontend URL. This is appended to the URL of the webapp. The URL is based on the name of the Web App, and made unique by appending "-1", "-2", etc. <em>(string)</em></li>
+<li><code>description</code> - the description or content of the webapp item. <em>(string)</em></li>
+<li><code>roleId</code> - the id of the role assigned to this web app item, if any. Default: -1 <em>(integer)</em></li>
+<li><code>submittedBy</code> - the id of the user that created this webapp item, if any. Default: -1 <em>(integer)</em></li>
+<li><code>templateId</code> - the id of the site template assigned for this webapp item. Default: the id of the template set on the webapp. It has 2 special values: <em>(integer)</em>
+
+<ul>
+<li><code>-1</code> - no template</li>
+<li><code>0</code> - use the template marked as default</li>
+</ul></li>
+<li><code>address</code> - the address of this webapp item if any <em>(string)</em></li>
+<li><code>city</code> - the city of this webapp item if any <em>(string)</em></li>
+<li><code>state</code> - the state of this webapp item if any <em>(string)</em></li>
+<li><code>zipCode</code> - the zip code of this webapp item if any <em>(string)</em></li>
+<li><code>country</code> - the country of this webapp item if any. It should be the 2 letter country code returned by the Countries API (https://zerowing.corp.adobe.com/display/BusinessCatalyst/System+API+reference#SystemAPIreference-GetCountriesList). Required if the Web App has <code>hasAddress</code> set to true or null otherwise
+<em>(string)</em></li>
+<li><code>fields</code> - an object storing the webapp item's custom fields. This field is represented in 2 ways:
+
+<ul>
+<li>in json, each custom field is a property of this object</li>
+<li>in xml, it is an array of objects having the following properties:
+
+<ul>
+<li><code>name</code> - the name of the custom field <em>(string)</em></li>
+<li><code>value</code> - the value of the custom field. It can be any of the supported types: number, string, boolean <em>(object)</em></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3>Response</h3>
+
+<p>Returns the URI of the newly created webapp item in the Location HTTP header.</p>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<hr>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>POST /api/v2/admin/sites/current/webapps/TestWebapp1/items
+Authorization: 3e8d891d91eb433e9c800cebe3b132a4e64ac661c5ed4dd8bdecae0487e4ad7c
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Item7",
+  "weight": 7,
+  "releaseDate": "9999-01-01",
+  "expiryDate": "9999-01-01",
+  "enabled": true,
+  "slug": "item7",
+  "description": "&lt;p&gt;item7 description&lt;\/p&gt;",
+  "roleId": null,
+  "submittedBy": -1,
+  "templateId": 123,
+
+  "address": "item7_address",
+  "city": "item7_city",
+  "state": "item7_state",
+  "zipCode": "000007",
+  "country": "US",
+  "fields": {
+      "field_string_required": "item7_field1_value",
+      "field2_string_optional": "item7_field2_value",
+      "field3_number": 7,
+      "field4_dateTime": "2012-01-20",
+      "field5_list": "item1"
+  }
+}
+</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>HTTP/1.1 201 OK
+Content-Type: application/json; charset=utf-8
+Location: /api/v2/admin/sites/current/webapps/TestWebapp1/items/123
+</code></pre>
+<hr>
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/apicreated/items",
+    type: "POST",
+    connection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    data: JSON.stringify({
+    "name": "Item 9",
+    "weight": 9,
+    "releaseDate": "2013-01-30",
+    "expiryDate": "9999-01-01",
+    "enabled": true,
+    "slug": "item9",
+    "description": "<p>item9 description<\/p>",
+    "roleId": null,
+    "address": "item9_address",
+    "city": "item9_city",
+    "state": "item9_state",
+    "zipCode": "000007",
+    "country": "US",
+    "fields": {
+        "Customfield1": "some value here",
+        "Customfield2": "some other value here"
+    }
+})
+});
+request.done(function (msg) {
+    console.log("Item created");
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}) 
+</code></pre>
+
+<hr><h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>201</code> - success</li>
+<li><code>401</code> - unauthorized - when the authentication token is incorrect</li>
+<li><code>403</code> - forbidden - when the user does not have the proper permissions</li>
+<li><code>404</code> - not found
+
+<ul>
+<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+</ul></li>
+<li><code>400</code> - bad request; sub-error codes:
+
+<ul>
+<li><code>200000</code> - An unspecified error has occured</li>
+<li><code>200002</code> - The slug is invalid</li>
+<li><code>200003</code> - Using this slug will make the entire frontend URL larger than the maximum allowed length</li>
+<li><code>200004</code> - The slug is already used</li>
+<li><code>200005</code> - The name provided is invalid (empty or null)</li>
+<li><code>200006</code> - A custom field failed validation</li>
+<li><code>200008</code> - There is a problem with the address. The related webapp has "location</li>
+</ul></li>
+</ul>
+
+        

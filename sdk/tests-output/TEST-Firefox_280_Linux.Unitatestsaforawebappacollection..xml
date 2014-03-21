@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Unit tests for webapp collection." errors="0" failures="0" tests="3" time="0.013">
+<testcase classname="Firefox_280_Linux.Unit tests for webapp collection." name="Check app collection instantiated ok." time="0.0"/>
+<testcase classname="Firefox_280_Linux.Unit tests for webapp collection." name="Check app collection url ok." time="0.003"/>
+<testcase classname="Firefox_280_Linux.Unit tests for webapp collection." name="Check app collection fetch ok." time="0.01"/>
+</testsuite>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Helper.Http Helper.Http.getDecodedParameters" errors="0" failures="0" tests="4" time="0.0060000005">
+<testcase classname="Firefox_280_Linux.Helper.Http Helper.Http.getDecodedParameters" name="Check it returns correct parameter" time="0.001"/>
+<testcase classname="Firefox_280_Linux.Helper.Http Helper.Http.getDecodedParameters" name="Check it works with multiple parameters" time="0.0"/>
+<testcase classname="Firefox_280_Linux.Helper.Http Helper.Http.getDecodedParameters" name="Check it ignores params without value" time="0.004"/>
+<testcase classname="Firefox_280_Linux.Helper.Http Helper.Http.getDecodedParameters" name="Check it decodes param values" time="0.001"/>
+</testsuite>

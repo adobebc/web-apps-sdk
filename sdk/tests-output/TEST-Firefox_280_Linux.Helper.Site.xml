@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Helper.Site" errors="0" failures="0" tests="2" time="0.0">
+<testcase classname="Firefox_280_Linux.Helper.Site" name="Test getSiteId returns 'current'" time="0.0"/>
+<testcase classname="Firefox_280_Linux.Helper.Site" name="Test getRootUrl correct location." time="0.0"/>
+</testsuite>

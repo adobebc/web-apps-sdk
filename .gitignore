@@ -7,6 +7,9 @@ tests_runner_integration.log
 node_modules
 doc
 dev_test_config.js
+ci.zip
+sdk/ci/*
+sdk/lib/*
 
 # IDE specific files which must be ignored
 .project

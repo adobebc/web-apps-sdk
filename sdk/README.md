@@ -1,7 +1,7 @@
 # bcapi.js
 
 This is a sample library for working with Business Catalyst API. For more information on how to use this please read 
-[BCAPI generated doc](http://adobebc.github.io/bcapi.js/index.html).
+[BC Developers](http://developers.businesscatalyst.com/).
 
 ## Setup dev environment
 
@@ -11,7 +11,9 @@ For setting up bcapi.js project development environment follow the steps below:
   - install [NodeJS](http://nodejs.org/) on your computer (optional)
   - launch a command line / terminal
   - git clone https://github.com/adobebc/bcapi.js.git
-  - cd bcapi.js
+  - cd sdk
+  - Download https://cdn.worldsecuresystems.com/bcapi/dev/ci.zip
+  - Unpack ci.zip into sdk folder.
   - npm install grunt grunt-cli grunt-jsdoc grunt-contrib-concat grunt-contrib-uglify
   - Generate documentation: 
     - node_modules/.bin/grunt jsdoc

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Unit tests for custom field collection." errors="0" failures="0" tests="3" time="0.010000001">
+<testcase classname="Firefox_280_Linux.Unit tests for custom field collection." name="Test custom field collection instantiated correctly." time="0.001"/>
+<testcase classname="Firefox_280_Linux.Unit tests for custom field collection." name="Test custom field collection endpoint ok." time="0.001"/>
+<testcase classname="Firefox_280_Linux.Unit tests for custom field collection." name="Test custom field collection fetch ok." time="0.008"/>
+</testsuite>

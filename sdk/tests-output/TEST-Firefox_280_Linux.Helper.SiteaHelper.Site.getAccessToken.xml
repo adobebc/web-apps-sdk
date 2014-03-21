@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Helper.Site Helper.Site.getAccessToken" errors="0" failures="0" tests="5" time="0.004">
+<testcase classname="Firefox_280_Linux.Helper.Site Helper.Site.getAccessToken" name="Test if no $.cookie" time="0.001"/>
+<testcase classname="Firefox_280_Linux.Helper.Site Helper.Site.getAccessToken" name="Test it gets token from hash parameters" time="0.001"/>
+<testcase classname="Firefox_280_Linux.Helper.Site Helper.Site.getAccessToken" name="Test token is set in cookie with expiration from hash parameter" time="0.001"/>
+<testcase classname="Firefox_280_Linux.Helper.Site Helper.Site.getAccessToken" name="Test token is set in cookie with default expiration if not in hash parameters" time="0.001"/>
+<testcase classname="Firefox_280_Linux.Helper.Site Helper.Site.getAccessToken" name="Test it gets token from cookie if it's not in hash" time="0.0"/>
+</testsuite>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Unit tests for web app item collection." errors="0" failures="0" tests="3" time="0.015000001">
+<testcase classname="Firefox_280_Linux.Unit tests for web app item collection." name="Test web app item instantiated correctly." time="0.001"/>
+<testcase classname="Firefox_280_Linux.Unit tests for web app item collection." name="Test web app item collection endpoint ok." time="0.002"/>
+<testcase classname="Firefox_280_Linux.Unit tests for web app item collection." name="Test web app item collection fetch ok." time="0.012"/>
+</testsuite>

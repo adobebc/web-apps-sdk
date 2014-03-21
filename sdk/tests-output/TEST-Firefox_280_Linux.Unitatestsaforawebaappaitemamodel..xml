@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Unit tests for web app item model." errors="0" failures="0" tests="3" time="0.003">
+<testcase classname="Firefox_280_Linux.Unit tests for web app item model." name="Test web app item values set through constructor." time="0.002"/>
+<testcase classname="Firefox_280_Linux.Unit tests for web app item model." name="Test web app item values set through setter." time="0.001"/>
+<testcase classname="Firefox_280_Linux.Unit tests for web app item model." name="Test web app item correct endpoint." time="0.0"/>
+</testsuite>

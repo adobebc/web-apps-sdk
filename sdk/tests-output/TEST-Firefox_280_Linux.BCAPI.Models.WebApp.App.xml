@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.BCAPI.Models.WebApp.App" errors="0" failures="0" tests="3" time="0.003">
+<testcase classname="Firefox_280_Linux.BCAPI.Models.WebApp.App" name="url()" time="0.001"/>
+<testcase classname="Firefox_280_Linux.BCAPI.Models.WebApp.App" name="uses correct urls in fetch, even if id attribute is not set" time="0.001"/>
+<testcase classname="Firefox_280_Linux.BCAPI.Models.WebApp.App" name="uses correct urls in destroy, even if id attribute is not set" time="0.001"/>
+</testsuite>

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Unit tests for country model." errors="0" failures="0" tests="3" time="0.001">
-<testcase classname="Firefox_280_Linux.Unit tests for country model." name="Test collection endpoint is correct" time="0.001"/>
-<testcase classname="Firefox_280_Linux.Unit tests for country model." name="Test Country Endpoint is correct" time="0.0"/>
-<testcase classname="Firefox_280_Linux.Unit tests for country model." name="Test attribute setter, partial value preserves defaults" time="0.0"/>
-</testsuite>

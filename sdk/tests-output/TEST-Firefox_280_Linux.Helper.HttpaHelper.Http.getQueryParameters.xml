@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Helper.Http Helper.Http.getQueryParameters" errors="0" failures="0" tests="3" time="0.003">
-<testcase classname="Firefox_280_Linux.Helper.Http Helper.Http.getQueryParameters" name="Test if location is undefined" time="0.001"/>
-<testcase classname="Firefox_280_Linux.Helper.Http Helper.Http.getQueryParameters" name="Test if parameter string is empty (no ?)" time="0.001"/>
-<testcase classname="Firefox_280_Linux.Helper.Http Helper.Http.getQueryParameters" name="Check it returns correct number of parameters" time="0.001"/>
-</testsuite>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Unit tests for category model." errors="0" failures="0" tests="7" time="0.054999996">
-<testcase classname="Firefox_280_Linux.Unit tests for category model." name="Test collection edpoint is correct" time="0.05"/>
-<testcase classname="Firefox_280_Linux.Unit tests for category model." name="Test Category Endpoint is correct" time="0.0"/>
-<testcase classname="Firefox_280_Linux.Unit tests for category model." name="Test attribute setter, partial value preserves defaults" time="0.001"/>
-<testcase classname="Firefox_280_Linux.Unit tests for category model." name="Test full values setter" time="0.0"/>
-<testcase classname="Firefox_280_Linux.Unit tests for category model." name="Test values set via constructor match" time="0.001"/>
-<testcase classname="Firefox_280_Linux.Unit tests for category model." name="Test id is set properly" time="0.003"/>
-<testcase classname="Firefox_280_Linux.Unit tests for category model." name="Test item url contains id" time="0.0"/>
-</testsuite>

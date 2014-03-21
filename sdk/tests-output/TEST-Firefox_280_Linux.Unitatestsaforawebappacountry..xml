@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite name="Firefox_280_Linux.Unit tests for webapp country." errors="0" failures="0" tests="4" time="0.014">
-<testcase classname="Firefox_280_Linux.Unit tests for webapp country." name="Test webapp country instantiated correctly." time="0.0"/>
-<testcase classname="Firefox_280_Linux.Unit tests for webapp country." name="Test webapp country endpoint ok." time="0.006"/>
-<testcase classname="Firefox_280_Linux.Unit tests for webapp country." name="Test toJSON override returns the array alone" time="0.001"/>
-<testcase classname="Firefox_280_Linux.Unit tests for webapp country." name="Test save calls a PUT method with the inner array" time="0.007"/>
-</testsuite>

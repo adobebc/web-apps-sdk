@@ -1,19 +1,19 @@
 # CI files which must be ignored
-logs/*
-tests-output/*
-tests_runner.log
-tests-output-integration/*
-tests_runner_integration.log
-node_modules
-doc
-dev_test_config.js
-ci.zip
+sdk/logs/*
+sdk/tests-output/*
+sdk/tests_runner.log
+sdk/tests-output-integration/*
+sdk/tests_runner_integration.log
+sdk/node_modules
+sdk/doc
+sdk/dev_test_config.js
+sdk/ci.zip
 sdk/ci/*
 sdk/lib/*
 
 # IDE specific files which must be ignored
-.project
-.settings
-.idea
-*sublime*
-karma*
+sdk/.project
+sdk/.settings
+sdk/.idea
+sdk/*sublime*
+sdk/karma*

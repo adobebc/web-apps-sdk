@@ -16,7 +16,7 @@ For setting up bcapi.js project development environment follow the steps below:
   - Unpack ci.zip into sdk folder.
   - npm install grunt grunt-cli grunt-jsdoc grunt-contrib-concat grunt-contrib-uglify
   - Generate documentation: 
-    - node_modules/.bin/grunt jsdoc
+    - ./node_modules/.bin/grunt jsdoc
     - Access doc/index.html (for getting started)
   - Run unit tests (works on Linux and Mac OS):
     - ./run_specs &lt;browsers absolute path comma separated values&gt; (e.g: ./run_specs /usr/bin/google-chrome,/usr/bin/firefox)

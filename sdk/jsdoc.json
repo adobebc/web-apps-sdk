@@ -7,7 +7,7 @@
     "opts": {
 		"recurse": true,
     	"template": "doc-static/docstrap/template",
-    	"tutorials": "doc-static/tutorials"
+    	"tutorials": ""
     },
     "templates": {
         "cleverLinks": false,

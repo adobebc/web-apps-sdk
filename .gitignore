@@ -12,8 +12,8 @@ sdk/ci/*
 sdk/lib/*
 
 # IDE specific files which must be ignored
-sdk/.project
-sdk/.settings
-sdk/.idea
-sdk/*sublime*
-sdk/karma*
+*/.project
+*/.settings
+*/.idea
+*/*sublime*
+*/karma*

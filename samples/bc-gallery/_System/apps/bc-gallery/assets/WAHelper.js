@@ -23,6 +23,7 @@
 */
 
 // JavaScript Document
+
 if (typeof wahelper == 'undefined') {
 	var wahelper = {
 		maxWeight: 1

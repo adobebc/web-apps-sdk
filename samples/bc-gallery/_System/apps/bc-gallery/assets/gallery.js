@@ -1,13 +1,33 @@
+/* 
+* 
+* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"), 
+* to deal in the Software without restriction, including without limitation 
+* the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+* and/or sell copies of the Software, and to permit persons to whom the 
+* Software is furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+* DEALINGS IN THE SOFTWARE.
+* 
+*/
+
 // JavaScript Document
 
 var IMAGES_PATH = '/bc-gallery/images/';
 var WEBAPP_NAME = 'bc-gallery';
 
-$(function() {
-
-    // update the page title
-    //parent.document.title = document.title;
-    
+$(function() {    
     loadImages();
     $('#newItem').change(addImages);
     $('#trashIcon').click(initDeleteImage);
@@ -20,8 +40,19 @@ $(function() {
 function loadImages() {
     wadata = {};
     $('.allimages').html('');
+    $('div.inlinehelp').show();
     $('div.loading').show();
     $('div.empty').hide();
+
+// Shows / hides app helper
+    if ($.cookie("bcGalleryInlineHelpDismissed")){
+        return;
+    }
+
+    $('.inlinehelp .close-btn').click( function(){
+        $('div.inlinehelp').hide();
+        $.cookie("bcGalleryInlineHelpDismissed", true, { expires: 365 });
+    });
     
     // loads all the webapp items
     var items = new BCAPI.Models.WebApp.ItemCollection(WEBAPP_NAME);
@@ -29,7 +60,7 @@ function loadImages() {
         order: "weight",
         limit: 1000, // get all items
         success: loadImagesCB,
-        error: createWebApp
+        error: createWebAppAndSampleData
     });
 }
 
@@ -62,7 +93,8 @@ function loadImagesCB(data) {
                 // update the local model (that did not include the custom fields) with the one with the custom fields
                 wadata.models[localI] = item;
                 _.doneLoading();
-            }
+            },
+            error: onAPIError
         });
     });
     
@@ -127,7 +159,8 @@ function initDeleteImage() {
         
         var itemToDelete = new BCAPI.Models.WebApp.Item(WEBAPP_NAME, {id: id});
         itemToDelete.destroy({
-            success: imageDeleted
+            success: imageDeleted,
+            error: onAPIError
         });        
     }
 }
@@ -146,23 +179,25 @@ function addImages(e) {
     systemNotifications.showInfo("Loading...", "Uploading images.");
     
     // callback is called when after images upload and items created
-    _.imagesUploaded = _.after($('#newItem')[0].files.length*2, imagesUploaded);
+    var callback = _.after($('#newItem')[0].files.length, imagesUploaded);
     
     _.each($('#newItem')[0].files, function(file) {
-        addImage(file);
+        addImage(file, callback);
     });
 }
 
 // upload individual image and create the webapp item
-function addImage(file) {
-
+function addImage(file, callback) {
     var path = IMAGES_PATH + file.name;
 
-    // call the FS API to create the file
-    
-   	var fileModel = new BCAPI.Models.FileSystem.File(path);
-    fileModel.upload(file).done(_.imagesUploaded);
-    
+    // call the FS API to create the file    
+    var fileModel = new BCAPI.Models.FileSystem.File(path);
+    fileModel.upload(file).done(function() {
+        createWebappItem(file, path, callback);
+    });
+}
+
+function createWebappItem(file, path, callback) {
     // call the WA Create API to create the WA Item
     var newItem = new BCAPI.Models.WebApp.Item(WEBAPP_NAME, {
         name: file.name,
@@ -173,7 +208,8 @@ function addImage(file) {
     });
     
     var response = newItem.save({
-            success: _.imagesUploaded
+            success: callback,
+            error: onAPIError
     });    
 }
 
@@ -193,24 +229,66 @@ function resetFormElement(e) {
 // end add image functions
 
 // init functions. Creates the webapp if not created
-function createWebApp() {
+function createWebAppAndSampleData() {
+    $.getJSON("assets/webapp.json")
+        .done(function(webAppJsonDescriptor) {
+            createWebApp(WEBAPP_NAME, webAppJsonDescriptor.webAppCustomFields, webAppJsonDescriptor.webAppSampleData, loadImages);
+        })
+        .fail(function() {
+            systemNotifications.showError("Could not load webapp definition file");
+        });
+}
+
+function createWebApp(name, fields, sampleData, callback) {
     var app = new BCAPI.Models.WebApp.App({
-            name: WEBAPP_NAME
+            name: name
     });
-    
-    // create the web app
+
     app.save({
-        success: function() {
-            var customField = new BCAPI.Models.WebApp.CustomField(WEBAPP_NAME, {
-                name: "Image",
-                type: "Image",
-		id: 1
-            });
-            
-            // create the webapp "Image" custom fields
-            customField.save({
-                success: loadImages
-            });
+        success: function(app) {
+            createCustomFields(app, fields, sampleData, callback);
+        },
+
+        error: function(data, xhr) {
+            systemNotifications.showError("Could not create webapp");
         }
+    })
+}
+
+function createCustomFields(webApp, fields, sampleData, successCallback) {
+    var callAfterAllFieldsCreated = _.after(fields.length, function() {
+        createSampleData(webApp, sampleData, successCallback);
+    });
+
+    _.each(fields, function(field) {
+       var customField = new BCAPI.Models.WebApp.CustomField(webApp.get('name'), field);
+        customField.save({
+            success: callAfterAllFieldsCreated,
+            error: function(data, xhr) {
+                systemNotifications.showError("Failed to create custom field " + field.name);
+            }
+        })
     });
 }
+
+function createSampleData(webApp, sampleData, successCallback) {
+    var callAfterSampleDataCreated = _.after(sampleData.length, successCallback);
+
+    _.each(sampleData, function(member) {
+        var webAppItem = new BCAPI.Models.WebApp.Item(webApp.get('name'), member);
+        webAppItem.save({
+            success: callAfterSampleDataCreated,
+            error: function(data, xhr) {
+                systemNotifications.showError("Failed to create sample data for " + field.name);
+            }
+        })
+    });
+}
+
+function onAPIError(data, xhr, options) {
+    var errorMessage = "Unknown error.";
+    if (xhr.responseText) {
+        errorMessage = "Server error. Error code: " + JSON.parse(xhr.responseText).code;
+    }
+    systemNotifications.showError("API Error", errorMessage);
+};

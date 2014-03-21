@@ -1,0 +1,34 @@
+{
+	"webAppCustomFields": [
+		{
+	        "id": 1,
+	        "name": "Image",
+	        "type": "Image",
+	        "required": false
+	    }
+	],
+
+	"webAppSampleData": [
+	    {
+	        "name": "City.jpg",
+	        "weight": 1,
+	        "fields": {
+	            "Image": "/bc-gallery/images/City.jpg"
+	        }
+	    },
+	    {
+	        "name": "Clouds.jpg",
+	        "weight": 2,
+	        "fields": {
+	            "Image": "/bc-gallery/images/Clouds.jpg"
+	        }
+	    },
+	    {
+	        "name": "River.jpg",
+	        "weight": 3,
+	        "fields": {
+	            "Image": "/bc-gallery/images/River.jpg"
+	        }
+	    }
+	]
+}

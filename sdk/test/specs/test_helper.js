@@ -22,9 +22,17 @@
 * 
 */
 describe("Helper.Site", function() {
-
-    describe("Helper.Site.getAccessToken", function(){
-        
+	var cookieFn = undefined;
+	
+	beforeEach(function() {
+		cookieFn = $.cookie;
+	});
+	
+	afterEach(function() {
+		$.cookie = cookieFn;
+	});
+	
+    describe("Helper.Site.getAccessToken", function(){        
         function _fakeGetCurrentLocation(location){
             spyOn(BCAPI.Helper.Http, "getCurrentLocation").andCallFake(function(){
                 var link = document.createElement("a");
@@ -33,49 +41,46 @@ describe("Helper.Site", function() {
             });
         }
 
-        it("Test if no $.cookie", function(){     
-            spyOn($, "error");
-
+        it("Test if no $.cookie", function(){
+        	spyOn($, "error");
+        	
+        	$.cookie = undefined;
             BCAPI.Helper.Site.getAccessToken();
+            
             expect($.error).toHaveBeenCalled();
         });
      
-        it("Test it gets token from hash parameters", function(){
-            spyOn($, "cookie").andCallFake(function(){return undefined;});
+        it("Test gets token from hash parameters without expires_in", function(){
+        	var expectedToken = "febf7b6   a027";
 
-            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027");
+        	spyOn($, "error");
+            spyOn($, "cookie").andCallFake(function() { return undefined; });
 
-            expect(BCAPI.Helper.Site.getAccessToken()).toBe('febf7b6a027');
-            expect($.cookie).toHaveBeenCalled();
+            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=" + encodeURIComponent(expectedToken));
+
+            expect(BCAPI.Helper.Site.getAccessToken()).toBe(undefined);
+            expect($.cookie.calls.length).toBe(0);
+            expect($.error.calls.length).toBe(1);
         });
 
-        it("Test token is set in cookie with expiration from hash parameter", function(){
-            var mockDateTime = (new Date(2013,10,13,0,0,0)).getTime();
+        it("Test token is set in cookie with expiration from hash parameter", function() {
+        	var expectedToken = "      febf7b6a027      ";
+        	var currentLocation = "http://businesscatalyst.com#access_token=" + encodeURIComponent(expectedToken) + "&expires_in=900";
+        	
+            var mockDateTime = (new Date(2013,10,13, 0, 0, 0)).getTime();
+            
+            spyOn($, "cookie").andCallFake(function() { return undefined; });
+            spyOn(Date, "now").andCallFake(function() { return mockDateTime; });
 
-            spyOn($, "cookie").andCallFake(function(){return undefined;});
-            spyOn(Date, "now").andCallFake(function(){return mockDateTime;});
+            _fakeGetCurrentLocation(currentLocation);
 
-            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027&expires_in=900");
-
-            BCAPI.Helper.Site.getAccessToken()
+            debugger;
+            var accessToken = BCAPI.Helper.Site.getAccessToken();
+            
+            expect(accessToken).toBe(expectedToken);
 
             var expireDate = new Date(mockDateTime + 15 * 60 * 1000); // 900 = 15min
-            expect($.cookie).toHaveBeenCalledWith('access_token','febf7b6a027', {expires: expireDate});
-        });
-
-        it("Test token is set in cookie with default expiration if not in hash parameters", function(){
-            var mockDateTime = (new Date(2013,10,13,0,0,0)).getTime();
-
-            spyOn($, "cookie").andCallFake(function(){return undefined;});
-            spyOn(Date, "now").andCallFake(function(){return mockDateTime});
-
-            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027");
-
-            BCAPI.Helper.Site.getAccessToken()
-
-            //default expiration is 4h if none was passed
-            var expireDate = new Date(mockDateTime + 4 * 60 * 60 * 1000); //4h default
-            expect($.cookie).toHaveBeenCalledWith('access_token','febf7b6a027', { expires: expireDate});
+            expect($.cookie).toHaveBeenCalledWith("access_token", expectedToken, {expires: expireDate});
         });
 
         it("Test it gets token from cookie if it's not in hash", function(){

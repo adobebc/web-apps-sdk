@@ -50,7 +50,6 @@ describe("Check country model collection integration.", function() {
     			foundCountries[country.get("countryCode")] = country.get("displayName");
     		});
     		    	
-			console.log(foundCountries);    		
     		expect(foundCountries.AU).toBe("Australia");
     		expect(foundCountries.RO).toBe("Romania");
     		expect(foundCountries.US).toBe("United States");

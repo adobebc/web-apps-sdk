@@ -37,7 +37,7 @@ load:
   - test/integration/helper.js
 
 test:
-  - test/integration/test_webapp.js
+  - test/integration/test_webapp_country.js
 
 plugin:
   - name: "coverage"

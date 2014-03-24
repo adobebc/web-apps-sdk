@@ -51,10 +51,10 @@ describe("Check webapp item assign categories.", function() {
     	var categoryCollection = new BCAPI.Models.CategoryCollection();
     	
     	categoryCollection.fetch({
-    		success: function(categories) {
+    		success: function() {
     			expectedCategories = [];
     			
-    			categories.each(function(category) {
+    			categoryCollection.each(function(category) {
     				expectedCategories.push(category.get("id"));
     			});
     		}

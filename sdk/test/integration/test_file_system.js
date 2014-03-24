@@ -26,7 +26,7 @@ describe('BCAPI.Models.FileSystem', function() {
     var BcFile = BCAPI.Models.FileSystem.File;
     var BcFolder = BCAPI.Models.FileSystem.Folder;
 
-    var SERVER_TIME_LAG = 180 * 1000;
+    var SERVER_TIME_LAG = 3780 * 1000;
 
     var promiseScenario = BCAPI.Helper.Test.PromiseUtils.promiseScenario;
     var promiseFlag = BCAPI.Helper.Test.PromiseUtils.promiseFlag;

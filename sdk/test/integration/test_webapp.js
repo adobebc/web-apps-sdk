@@ -71,7 +71,21 @@ describe("Helper.Models.WebApp", function() {
             expect(model.get('id')).toBeUndefined();
 
             collection = new BCAPI.Models.WebApp.AppCollection();
-            collection.fetch().done(function() { collectionFetched = true });
+            collection.fetch().done(function() {
+            	var appFound = false;
+            	
+            	expect(collection.each).toBeDefined();
+            	
+            	collection.each(function(app) {
+            		if(app.get("name") == "FirstWebAppFromApi") {
+            			appFound = true;
+            		}
+            	});
+            	
+            	expect(appFound).toBeTruthy();            	
+            	
+            	collectionFetched = true            	
+            });
         });
 
         waitsFor(function() {
@@ -79,7 +93,6 @@ describe("Helper.Models.WebApp", function() {
         }, 'List collection', 1000);
 
         runs(function() {
-            console.log(collection);
             expect(collection.models.length).toBeGreaterThan(0);
 
             model.fetch().done(function() { modelFetched = true });

@@ -1427,16 +1427,11 @@
     	 * @memberOf BCAPI.Models.WebApp.AppCollection 
          */
         parse: function(response) {
-        	var webapps = [],
-        		self = this;
+        	var self = this;
         	
         	response = BCAPI.Models.Collection.prototype.parse.call(this, response);
         	
-        	_.each(response, function(webapp) {        		
-        		webapps.push(self.model(webapp));
-        	});
-        	
-        	return webapps;
+        	return response;
         }
     });
 })(jQuery);

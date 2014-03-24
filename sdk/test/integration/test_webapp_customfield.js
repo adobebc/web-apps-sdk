@@ -138,8 +138,8 @@ describe("Check webapp assign customfields.", function() {
         
         runs(function() {
             webappCustomfieldsCollection.fetch({
-                success: function(customfields) {
-                    customfieldsFetched = customfields;
+                success: function() {
+                    customfieldsFetched = webappCustomfieldsCollection;
                 }
             });
         });

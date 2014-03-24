@@ -23,10 +23,10 @@
 */
 (function() {
 	BCAPI.Config.TestServer = {
-		rootUrl: 'http://earth.bc.corp.adobe.com', // 'https://api-dc-id.worldsecuresystems.com',
-		siteId: 38604,	// bcapi-integration site id
-		username: 'bcadmin@bc1.local', //'your-email@yourdomain.com',
-		password: 'P@ssword1', // '123456'
+		rootUrl: '', // 'https://api-dc-id.worldsecuresystems.com',
+		siteId: 0,	// bcapi-integration site id
+		username: '', //'your-email@yourdomain.com',
+		password: '', // '123456'
 		accessToken: "",
 		genericToken: "",
 		tokenRequestTimeout: 60 * 1000

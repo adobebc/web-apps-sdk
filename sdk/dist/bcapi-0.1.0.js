@@ -24,7 +24,15 @@
 (function($) {
     'use strict';
 
+    /**
+     * This disables jQuery ajax internal cache.
+     */
     $.ajaxSetup({ cache: false });
+    
+    /**
+     * This forces jQuery cookie plugin to set cookie values as received (no urlencode applied). 
+     */
+    $.cookie.raw = true;
     
     /**
      * @namespace BCAPI
@@ -77,27 +85,31 @@
      * 
      * @returns {string} The access_token
      */
-    BCAPI.Helper.Site.getAccessToken = function() {    	
+    BCAPI.Helper.Site.getAccessToken = function() {        
         if (!$.cookie) {
             return $.error('Include jQuery.cookie or override BCAPI.Helper.Site.getAccessToken with your own implementation.');
         }
 
-        var currLocation = BCAPI.Helper.Http.getCurrentLocation();
-        var parameters = BCAPI.Helper.Http.getHashFragments(currLocation);
+        var location = BCAPI.Helper.Http.getCurrentLocation();
+        var parameters = BCAPI.Helper.Http.getHashFragments(location);
         var paramAccessToken = parameters['access_token'];
-        var expiresIn = parseInt(parameters["expires_in"] || "0");
-
-        if(paramAccessToken) {
-        	if(expiresIn <= 0) {
-        		return $.error("Access token can not be set without an expires_in period.");
-        	}
-        	
-        	expiresIn = new Date(Date.now() + expiresIn * 1000); 
-        		
-        	$.cookie("access_token", paramAccessToken, {expires: expiresIn});
-        }
+        var expiresIn = parseInt(parameters['expires_in'] || 
+        									      "" + BCAPI.Config.ACCESS_TOKEN_DEFAULT_EXPIRATION);
         
-        return paramAccessToken || $.cookie('access_token');         
+        if (paramAccessToken){
+            var expiryDate = new Date(Date.now());
+
+            expiryDate.setTime(expiryDate.getTime() + expiresIn * 1000);
+            
+            var cookieOptions = {
+            		"expires": expiryDate,
+            		"path": "/",
+            		"secure": true
+            };
+            $.cookie('access_token', paramAccessToken, cookieOptions);           
+        }
+
+        return paramAccessToken || $.cookie('access_token');
 	};
 
     /**
@@ -141,17 +153,29 @@
      */
     BCAPI.Helper.Http.getDecodedParameters = function(paramString) {
         var params = paramString.split('&'),
-            i,
-            p,
-            decodedParams = {};
-        if (params === "") { return {}; }
-        for (i = 0; i < params.length; i += 1) {
-            p = params[i].split('=');
-            if (p.length === 2) {
-                decodedParams[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-            }
+        		decodedParams = {};
+        
+        if (params === "") { 
+        	return {}; 
         }
-        return decodedParams;
+        
+	    for (var i = 0; i < params.length; i += 1) {            
+	        var param = params[i],
+	            	firstEqual = param.indexOf("=");
+	        
+	        p = [];
+	        
+	        if(firstEqual > -1) {
+	         	p.push(param.substr(0, firstEqual));
+	            p.push(param.substr(firstEqual + 1));
+	        }
+	        
+	        if (p.length === 2) {
+	            decodedParams[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+	        }
+	    }
+	    
+	    return decodedParams;
     };
 
     /**
@@ -245,6 +269,12 @@
 	 * @memberOf BCAPI.Config
 	 */
 	Config.MAX_DATE = "9999-01-01";
+	
+	/**
+	 * @property {String} ACCESS_TOKEN_DEFAULT_EXPIRATION default access token expiration in seconds..
+	 * @memberOf BCAPI.Config
+	 */
+	Config.ACCESS_TOKEN_DEFAULT_EXPIRATION = 14400;
 	
 	BCAPI.Config = Config;
 })(jQuery);

@@ -42,14 +42,11 @@ describe("Helper.Site", function() {
         };
         
         /**
-         * This method calculates an expiry date starting from a given current date and compensate $.cookie
-         * behavior toUTCString by adding timezone offset.
+         * This method calculates an expiry date starting from a given current date.
          */
-        function _calculateExpiryDateWithOffset(currDate, expiryPeriod) {
+        function _calculateExpiryDate(currDate, expiryPeriod) {
             var expiryDate = currDate;
-            var offset = expiryDate.getTimezoneOffset();
             
-            expiryDate.setMinutes(-offset);
             expiryDate.setTime(expiryDate.getTime() + expiryPeriod * 1000);
             
             return expiryDate;
@@ -94,7 +91,7 @@ describe("Helper.Site", function() {
             
             expect(accessToken).toBe(expectedToken);
 
-            var expiryDate = _calculateExpiryDateWithOffset(currDate, 15 * 60);
+            var expiryDate = _calculateExpiryDate(currDate, 15 * 60);
             
             expect($.cookie).toHaveBeenCalledWith('access_token',expectedToken, 
             				{"expires": expiryDate,
@@ -120,7 +117,7 @@ describe("Helper.Site", function() {
             expect(accessToken).toBe(expectedToken);
             
             //default expiration is 4h if none was passed
-            var expiryDate = _calculateExpiryDateWithOffset(currDate, 4 * 60 * 60);
+            var expiryDate = _calculateExpiryDate(currDate, 4 * 60 * 60);
 
             expect($.cookie).toHaveBeenCalledWith('access_token', expectedToken, 
             			{ "expires": expiryDate,

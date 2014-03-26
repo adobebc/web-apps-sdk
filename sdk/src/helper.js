@@ -56,9 +56,7 @@
         
         if (paramAccessToken){
             var expiryDate = new Date(Date.now());
-            var offset = expiryDate.getTimezoneOffset();
 
-            expiryDate.setMinutes(-offset);
             expiryDate.setTime(expiryDate.getTime() + expiresIn * 1000);
             
             var cookieOptions = {

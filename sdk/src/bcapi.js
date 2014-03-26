@@ -24,7 +24,15 @@
 (function($) {
     'use strict';
 
+    /**
+     * This disables jQuery ajax internal cache.
+     */
     $.ajaxSetup({ cache: false });
+    
+    /**
+     * This forces jQuery cookie plugin to set cookie values as received (no urlencode applied). 
+     */
+    $.cookie.raw = true;
     
     /**
      * @namespace BCAPI

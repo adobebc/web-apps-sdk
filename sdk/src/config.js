@@ -49,5 +49,11 @@
 	 */
 	Config.MAX_DATE = "9999-01-01";
 	
+	/**
+	 * @property {String} ACCESS_TOKEN_DEFAULT_EXPIRATION default access token expiration in seconds..
+	 * @memberOf BCAPI.Config
+	 */
+	Config.ACCESS_TOKEN_DEFAULT_EXPIRATION = 14400;
+	
 	BCAPI.Config = Config;
 })(jQuery);

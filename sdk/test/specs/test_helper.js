@@ -21,66 +21,111 @@
 * DEALINGS IN THE SOFTWARE.
 * 
 */
-describe("Helper.Site", function() {
-	var cookieFn = undefined;
-	
-	beforeEach(function() {
-		cookieFn = $.cookie;
-	});
-	
-	afterEach(function() {
-		$.cookie = cookieFn;
-	});
-	
-    describe("Helper.Site.getAccessToken", function(){        
-        function _fakeGetCurrentLocation(location){
+describe("Helper.Site", function() {		
+    describe("Helper.Site.getAccessToken", function(){
+        var jQueryCookie;
+    	
+    	beforeEach(function() {
+    		jQueryCookie = $.cookie;
+    	});
+    	
+        afterEach(function() {
+        	$.cookie = jQueryCookie;        	
+        });
+    	
+        function _fakeGetCurrentLocation(location) {
             spyOn(BCAPI.Helper.Http, "getCurrentLocation").andCallFake(function(){
                 var link = document.createElement("a");
                 link.href = location;
                 return link;
             });
-        }
-
-        it("Test if no $.cookie", function(){
-        	spyOn($, "error");
-        	
-        	$.cookie = undefined;
-            BCAPI.Helper.Site.getAccessToken();
+        };
+        
+        /**
+         * This method calculates an expiry date starting from a given current date and compensate $.cookie
+         * behavior toUTCString by adding timezone offset.
+         */
+        function _calculateExpiryDateWithOffset(currDate, expiryPeriod) {
+            var expiryDate = currDate;
+            var offset = expiryDate.getTimezoneOffset();
             
+            expiryDate.setMinutes(-offset);
+            expiryDate.setTime(expiryDate.getTime() + expiryPeriod * 1000);
+            
+            return expiryDate;
+        };
+
+        it("Test if no $.cookie", function() {
+        	$.cookie = undefined;
+        	
+            spyOn($, "error");
+
+            var accessToken = BCAPI.Helper.Site.getAccessToken();
+            
+            expect(accessToken).toBeUndefined();
             expect($.error).toHaveBeenCalled();
         });
      
-        it("Test gets token from hash parameters without expires_in", function(){
-        	var expectedToken = "febf7b6   a027";
+        it("Test it gets token from hash parameters", function() {        	
+            spyOn($, "cookie").andCallFake(function(){return undefined;});
 
-        	spyOn($, "error");
-            spyOn($, "cookie").andCallFake(function() { return undefined; });
+            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=febf7b6a027");
 
-            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=" + encodeURIComponent(expectedToken));
-
-            expect(BCAPI.Helper.Site.getAccessToken()).toBe(undefined);
-            expect($.cookie.calls.length).toBe(0);
-            expect($.error.calls.length).toBe(1);
+            expect(BCAPI.Helper.Site.getAccessToken()).toBe('febf7b6a027');
+            expect($.cookie).toHaveBeenCalled();
         });
 
         it("Test token is set in cookie with expiration from hash parameter", function() {
-        	var expectedToken = "      febf7b6a027      ";
-        	var currentLocation = "http://businesscatalyst.com#access_token=" + encodeURIComponent(expectedToken) + "&expires_in=900";
-        	
-            var mockDateTime = (new Date(2013,10,13, 0, 0, 0)).getTime();
+        	var currDate = new Date();
+        	var expectedToken = "febf7b6a027==";
+            var mockDateTime = currDate.getTime();
+
+            spyOn($, "cookie").andCallFake(function() {
+            	return undefined;
+            });
             
-            spyOn($, "cookie").andCallFake(function() { return undefined; });
-            spyOn(Date, "now").andCallFake(function() { return mockDateTime; });
+            spyOn(Date, "now").andCallFake(function() {
+            	return mockDateTime;
+            });
 
-            _fakeGetCurrentLocation(currentLocation);
+            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=" + expectedToken + "&expires_in=900");
 
-            debugger;
-            var accessToken = BCAPI.Helper.Site.getAccessToken();
+            var accessToken = BCAPI.Helper.Site.getAccessToken()
             
             expect(accessToken).toBe(expectedToken);
 
-            var expireDate = new Date(mockDateTime + 15 * 60 * 1000); // 900 = 15min
-            expect($.cookie).toHaveBeenCalledWith("access_token", expectedToken, {expires: expireDate});
+            var expiryDate = _calculateExpiryDateWithOffset(currDate, 15 * 60);
+            
+            expect($.cookie).toHaveBeenCalledWith('access_token',expectedToken, 
+            				{"expires": expiryDate,
+            				 "path": "/",
+            				 "secure": true});
+        });
+
+        it("Test token is set in cookie with default expiration if not in hash parameters", function(){
+        	var currDate = new Date();
+        	var expectedToken = "=febf7b6a027=="
+            var mockDateTime = currDate.getTime();
+
+            spyOn($, "cookie").andCallFake(function() {
+            	return undefined;
+            });
+            spyOn(Date, "now").andCallFake(function() {
+            	return mockDateTime;
+            });
+
+            _fakeGetCurrentLocation("http://businesscatalyst.com#access_token=" + expectedToken);
+
+            var accessToken = BCAPI.Helper.Site.getAccessToken()
+            expect(accessToken).toBe(expectedToken);
+            
+            //default expiration is 4h if none was passed
+            var expiryDate = _calculateExpiryDateWithOffset(currDate, 4 * 60 * 60);
+
+            expect($.cookie).toHaveBeenCalledWith('access_token', expectedToken, 
+            			{ "expires": expiryDate,
+            			  "path": "/",
+            			  "secure": true});
         });
 
         it("Test it gets token from cookie if it's not in hash", function(){

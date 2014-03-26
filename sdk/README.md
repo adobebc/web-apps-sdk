@@ -14,7 +14,7 @@ For setting up bcapi.js project development environment follow the steps below:
   - cd sdk
   - Download https://cdn.worldsecuresystems.com/bcapi/dev/ci.zip
   - Unpack ci.zip into sdk folder.
-  - npm install grunt grunt-cli grunt-jsdoc grunt-contrib-concat grunt-contrib-uglify
+  - npm install -d
   - Generate documentation: 
     - ./node_modules/.bin/grunt jsdoc
     - Access doc/index.html (for getting started)

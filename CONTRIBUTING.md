@@ -29,7 +29,7 @@ To get started editing the Web Apps SDK code, read about [developing for Web App
 Before submitting any pull request, please make sure to:
 
 1. Discuss any major changes or questions beforehand in the Adobe Business Catalyst [developer forum](forums.adobe.com/community/business_catalyst/developer_forum)
-2. Sign the Web Apps SDK Contributor License Agreement (we cannot merge before this).
+2. Sign the [Web Apps SDK Contributor License Agreement](http://www.businesscatalyst.com/developers/adobe-cla-for-web-apps-sdk-for-business-catalyst-mit) (we cannot merge before this).
 3. Document code
 4. Check the code passes unit test
 5. Write unit tests for any new functionality

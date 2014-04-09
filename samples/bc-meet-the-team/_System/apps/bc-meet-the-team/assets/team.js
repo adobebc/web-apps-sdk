@@ -43,7 +43,6 @@ function bootStrap() {
 }
 
 function initAppOnDocumentReady() {
-	showPageLoadingIndicator(false);
 	_loadInstructions();
 }
 
@@ -66,8 +65,48 @@ function _loadInstructions() {
 	});
 }
 
-function _uninstallApplication() {
-	alert("Uninstalling bc-meet-the-team app.");
+function _uninstallApplication() { 	
+	var backendFolderPath = "/_System/apps/bc-meet-the-team",
+		   frontendFolderPath = "/bc-meet-the-team",
+		   redirected = false;
+	
+	var frontendFolder = new BCAPI.Models.FileSystem.Folder(frontendFolderPath);
+	var backendFolder = new BCAPI.Models.FileSystem.Folder(backendFolderPath);
+	var webapp = new BCAPI.Models.WebApp.App({"name": WEBAPP_NAME});
+
+	frontendFolder.destroy().always(function() {
+		console.log(frontendFolderPath + " folder was completely removed.");
+		
+		if(!redirected) {
+			redirected = true;
+			_redirectToDashboard();			
+		}			
+	});
+	
+	backendFolder.destroy().always(function() {
+		console.log(backendFrontendFolder + " folder was completely removed.");
+		
+		if(!redirected) {
+			redirected = true;
+			_redirectToDashboard();			
+		}		
+	});
+	
+	webapp.destroy().always(function() {
+		console.log(WEBAPP_NAME + " webapp was completely removed.");
+		
+		if(!redirected) {
+			redirected = true;
+			_redirectToDashboard();			
+		}		
+	});
+}
+
+function _redirectToDashboard() {
+	var parentLocation = window.parent.location || window.location,
+			dashboardUrl = parentLocation.protocol + "//" + parentLocation.host + "/Admin/Dashboard_Business.aspx";
+	
+	parentLocation.href = dashboardUrl;
 }
 
 function showInlineHelp() {

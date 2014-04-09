@@ -84,7 +84,7 @@ function _uninstallApplication() {
 	});
 	
 	backendFolder.destroy().always(function() {
-		console.log(backendFrontendFolder + " folder was completely removed.");
+		console.log(frontendFolderPath + " folder was completely removed.");
 		
 		if(!redirected) {
 			redirected = true;

@@ -3,7 +3,7 @@
         "weight": 100000,
         "title": "Meet the Team",
         "attr" : {
-            "href" : "/Admin/AppLoader.aspx?client_id=bc-meet-the-team"
+            "href" : "index.html"
         }
     }
 }

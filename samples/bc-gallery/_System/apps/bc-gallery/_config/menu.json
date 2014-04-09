@@ -3,7 +3,7 @@
         "weight": 25000,
         "title": "Gallery",
         "attr": {
-            "href": "/Admin/AppLoader.aspx?client_id=bc-gallery"
+            "href": "index.html"
         }
     }
 }

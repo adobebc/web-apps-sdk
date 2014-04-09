@@ -41,7 +41,8 @@
         <!-- BC API SDK -->
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-        <script type="text/javascript" src="//cdn.worldsecuresystems.com/bcapi/bcapi-0.0.1.min.js"></script>
+        <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="//cdn.worldsecuresystems.com/bcapi/bcapi-0.1.0.min.js"></script>
 
         <!-- Latest Bootstrap compiled and minified CSS -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -61,22 +62,33 @@
             </li>
         </script>
         
-        <div class="inlinehelp">
-            <span class="close-btn">×</span>
-            <div class="helpcontent">
-                <h2>Welcome to BC Gallery</h2>
-                This sample application is provided as a reference for the Business Catalyst Developer Program. The app’s data structure is based on a custom Web App with the same name, and can be modified by changing that Web App. We encourage you to read the source code readily available in Develop mode, under the application folder (_System/Apps/bc-gallery/). For more information on how to develop apps for Business Catalyst, please visit the <a href="http://docs.businesscatalyst.com/developers/" target="_blank">Business Catalyst Developer Documentation</a>.
-            </div>
-        </div>
+        <ul class="nav nav-tabs nav-tabs-menu" data-sid="navigation-menu">
+	  		<li class="active"><a href="#tab-gallery" data-toggle="tab">View members</a></li>
+	  		<li><a href="#tab-instructions" data-toggle="tab">Instructions</a></li>
+		</ul>
         
-        <input type="button" value="Add Images" id="newItemButton" class="btn"/>
-        <input type="file" name="file" id="newItem" multiple="" />
-
-        <ul class="allimages">
-        </ul>
-
-        <div class="loading">Loading...</div>
-        <div class="empty">Please add at least one image.</div>
-        <div id="trashIcon"></div>
+        <div class="tab-content">		
+			<div class="tab-pane active" id="tab-gallery">
+		        <div class="inlinehelp">
+		            <span class="close-btn">×</span>
+		            <div class="helpcontent">
+		                <h2>Welcome to BC Gallery</h2>
+		                This sample application is provided as a reference for the Business Catalyst Developer Program. The app’s data structure is based on a custom Web App with the same name, and can be modified by changing that Web App. We encourage you to read the source code readily available in Develop mode, under the application folder (_System/Apps/bc-gallery/). For more information on how to develop apps for Business Catalyst, please visit the <a href="http://docs.businesscatalyst.com/developers/" target="_blank">Business Catalyst Developer Documentation</a>.
+		            </div>
+		        </div>
+		        
+		        <input type="button" value="Add Images" id="newItemButton" class="btn"/>
+		        <input type="file" name="file" id="newItem" multiple="" />
+		
+		        <ul class="allimages">
+		        </ul>
+		
+		        <div class="loading">Loading...</div>
+		        <div class="empty">Please add at least one image.</div>
+		        <div id="trashIcon"></div>
+		    </div>
+		    
+		    <div class="tab-pane" id="tab-instructions"></div>
+		 </div>
     </body>
 </html>

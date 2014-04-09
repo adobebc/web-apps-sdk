@@ -164,3 +164,50 @@ a:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+.nav-tabs {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.nav-tabs li {
+    margin-bottom: -2px;
+    list-style: none outside none;
+}
+
+.tab-pane {
+    margin-left: 16px;
+    margin-top: 10px;
+}
+
+.nav-tabs-menu {
+	border-bottom: 1px solid #ccc;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+	background-color: transparent;
+	color: #fff;
+}
+
+.nav-tabs-menu a, .nav-tabs-menu a:hover, .nav-tabs-menu a:focus {
+	background-color: transparent;
+	color: #515151;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+.nav-tabs-menu .active {
+	background: #2996e3; /* Old browsers */
+	background: -moz-linear-gradient(top, #2996e3 0px, #387ed7 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0px,#2996e3), color-stop(100%,#387ed7)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #2996e3 0px,#387ed7 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #2996e3 0px,#387ed7 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #2996e3 0px,#387ed7 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #2996e3 0px,#387ed7 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2996e3', endColorstr='#387ed7',GradientType=0 ); /* IE6-9 */	
+}
+
+.nav-tabs-menu .active > a, .nav-tabs-menu .active > a:hover, .nav-tabs-menu .active > a:focus {
+	background-color: transparent;
+    color: #FFF;
+}

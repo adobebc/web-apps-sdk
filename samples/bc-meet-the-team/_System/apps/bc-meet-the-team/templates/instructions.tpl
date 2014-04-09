@@ -35,4 +35,4 @@
 			
 			<div class="deleteWarning">Uninstall operation can not be undone.</div>
 			
-			<button type="button" class="btn btn-primary" data-sid="btn-uninstall-app">Uninstall application</button>
+			<button type="button" class="btn btn-default" data-sid="btn-uninstall-app">Uninstall application</button>

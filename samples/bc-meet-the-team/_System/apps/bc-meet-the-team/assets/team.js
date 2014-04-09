@@ -103,10 +103,14 @@ function _uninstallApplication() {
 }
 
 function _redirectToDashboard() {
-	var parentLocation = window.parent.location || window.location,
-			dashboardUrl = parentLocation.protocol + "//" + parentLocation.host + "/Admin/Dashboard_Business.aspx";
+	var parentLocation = document.referrer,
+		  dashboardUrl = parentLocation.substring(0, parentLocation.indexOf("/Admin")) + "/Admin/Dashboard_Business.aspx";
 	
-	parentLocation.href = dashboardUrl;
+	if(window.parent) {
+		window.parent.location = dashboardUrl;
+	} else {
+		window.location = dashboardUrl;
+	}
 }
 
 function showInlineHelp() {

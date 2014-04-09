@@ -211,3 +211,11 @@ a:hover {
 	background-color: transparent;
     color: #FFF;
 }
+
+.deleteWarning {
+	background: url("/CatalystImages/ra_exclamation_a.png") no-repeat scroll 0 0 transparent;
+	font-weight: bold;
+	margin-bottom: 25px;
+	padding-left: 27px;
+	padding-top: 3px;
+}

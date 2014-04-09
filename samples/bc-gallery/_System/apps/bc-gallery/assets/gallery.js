@@ -59,8 +59,48 @@ function _loadInstructions() {
 	});
 }
 
-function _uninstallApplication() {
-	alert("Uninstalling bc-gallery");
+function _uninstallApplication() { 	
+	var backendFolderPath = "/_System/apps/bc-gallery",
+		   frontendFolderPath = "/bc-gallery",
+		   redirected = false;
+	
+	var frontendFolder = new BCAPI.Models.FileSystem.Folder(frontendFolderPath);
+	var backendFolder = new BCAPI.Models.FileSystem.Folder(backendFolderPath);
+	var webapp = new BCAPI.Models.WebApp.App({"name": WEBAPP_NAME});
+
+	frontendFolder.destroy().always(function() {
+		console.log(frontendFolderPath + " folder was completely removed.");
+		
+		if(!redirected) {
+			redirected = true;
+			_redirectToDashboard();			
+		}			
+	});
+	
+	backendFolder.destroy().always(function() {
+		console.log(frontendFolderPath + " folder was completely removed.");
+		
+		if(!redirected) {
+			redirected = true;
+			_redirectToDashboard();			
+		}		
+	});
+	
+	webapp.destroy().always(function() {
+		console.log(WEBAPP_NAME + " webapp was completely removed.");
+		
+		if(!redirected) {
+			redirected = true;
+			_redirectToDashboard();			
+		}		
+	});
+}
+
+function _redirectToDashboard() {
+	var parentLocation = document.referrer,
+		  dashboardUrl = parentLocation.substring(0, parentLocation.indexOf("/Admin")) + "/Admin/Dashboard_Business.aspx";
+	
+	window.parent.location = dashboardUrl;
 }
 
 // begin image loading functions

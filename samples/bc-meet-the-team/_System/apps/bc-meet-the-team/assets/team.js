@@ -106,11 +106,7 @@ function _redirectToDashboard() {
 	var parentLocation = document.referrer,
 		  dashboardUrl = parentLocation.substring(0, parentLocation.indexOf("/Admin")) + "/Admin/Dashboard_Business.aspx";
 	
-	if(window.parent) {
-		window.parent.location = dashboardUrl;
-	} else {
-		window.location = dashboardUrl;
-	}
+	window.parent.location = dashboardUrl;
 }
 
 function showInlineHelp() {

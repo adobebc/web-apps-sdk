@@ -43,34 +43,45 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-    <div class="loading">
-        <div class="opacifier"></div>
-        <span><img src="assets/images/loading.gif" alt="Loading..."></span>
-    </div>
-    
-    <div class="inlinehelp">
-        <span class="close-btn">×</span>
-        <div class="helpcontent">
-            <h2>Welcome to the sample app</h2>
-            This sample application is provided as a reference for the Business Catalyst Developer Program. The app’s data structure is based on a custom Web App with the same name, and can be modified by changing that Web App. We encourage you to read the source code readily available in Develop mode, under the application folder (_System/Apps/bc-meet-the-team/). For more information on how to develop apps for Business Catalyst, please visit the <a href="http://docs.businesscatalyst.com/developers/" target="_blank">Business Catalyst Developer Documentation</a>.
-        </div>
-    </div>
+	<ul class="nav nav-tabs nav-tabs-menu" data-sid="navigation-menu">
+	  <li class="active"><a href="#tab-view-members" data-toggle="tab">View members</a></li>
+	  <li><a href="#tab-instructions" data-toggle="tab">Instructions</a></li>
+	</ul>
 
-    <div class="content-wrapper">
-
-        <div id="team-members">
-        </div>
-
-        <div class="card-container">
-            <div class="user-add-photo">
-                <a href="edit.html"><span></span></a>
-            </div>
-        </div>
-    </div>
+	<div class="tab-content">
+		<!-- sample app main screen tab. -->
+		<div class="tab-pane active" id="tab-view-members">
+		    <div class="loading">
+		        <div class="opacifier"></div>
+		        <span><img src="assets/images/loading.gif" alt="Loading..."></span>
+		    </div>
+		    
+		    <div class="inlinehelp">
+		        <span class="close-btn">×</span>
+		        <div class="helpcontent">
+		            <h2>Welcome to the sample app</h2>
+		            This sample application is provided as a reference for the Business Catalyst Developer Program. The app’s data structure is based on a custom Web App with the same name, and can be modified by changing that Web App. We encourage you to read the source code readily available in Develop mode, under the application folder (_System/Apps/bc-meet-the-team/). For more information on how to develop apps for Business Catalyst, please visit the <a href="http://docs.businesscatalyst.com/developers/" target="_blank">Business Catalyst Developer Documentation</a>.
+		        </div>
+		    </div>
+		
+		    <div class="content-wrapper">
+		
+		        <div id="team-members">
+		        </div>
+		
+		        <div class="card-container">
+		            <div class="user-add-photo">
+		                <a href="edit.html"><span></span></a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		
+		<!-- sample app instructions tab -->
+		<div class="tab-pane" id="tab-instructions"></div>
+	</div>
 
     <script type="text/javascript">
-
-
         $(function(){
             bootStrap();
         });

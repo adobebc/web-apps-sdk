@@ -36,6 +36,38 @@ function bootStrap() {
         success: loadTeamMembers,
         error: tryWebAppCreate
     });
+    
+    $(document).ready(function() {
+    	initAppOnDocumentReady();
+    });
+}
+
+function initAppOnDocumentReady() {
+	showPageLoadingIndicator(false);
+	_loadInstructions();
+}
+
+function _loadInstructions() {
+	var instructionsHolder = $("#tab-instructions");
+	
+	var request = $.ajax({
+		"url": "templates/instructions.tpl",
+		"contentType": "text/plain"
+	});
+	
+	request.done(function(data) {
+		instructionsHolder.html(data);
+		
+		$(instructionsHolder).find("button[data-sid='btn-uninstall-app']").click(_uninstallApplication);
+	});
+	
+	request.fail(function(xhr, textStatus, err) {
+		console.log("bc-meet-the-team instructions are not found.");
+	});
+}
+
+function _uninstallApplication() {
+	alert("Uninstalling bc-meet-the-team app.");
 }
 
 function showInlineHelp() {

@@ -42,13 +42,26 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body class="content-wrapper">
-<div class="loading" style="display:none">
-    <div class="opacifier"></div>
-    <span><img src="assets/images/loading.gif" alt="Loading..."></span>
-</div>
+<body>
+	<ul class="nav nav-tabs nav-tabs-menu" data-sid="navigation-menu">
+	  <li class="active"><a href="#tab-edit-member" data-toggle="tab">Edit members</a></li>
+	  <li><a href="#tab-instructions" data-toggle="tab">Instructions</a></li>
+	</ul>
     
-<div id="form-container"></div>
+    <div class="tab-content">
+		<!-- sample app main screen tab. -->
+		<div class="tab-pane active" id="tab-edit-member">
+			<div id="form-container"></div>
+		</div>
+		
+		<!-- sample app instructions tab -->
+		<div class="tab-pane" id="tab-instructions"></div>		
+	</div>
+
+	<div class="loading" style="display:none">
+	    <div class="opacifier"></div>
+	    <span><img src="assets/images/loading.gif" alt="Loading..."></span>
+	</div>
 
     <script type="text/template" id="member-edit-form-template">
         <form class="form-horizontal" id="member-edit-form" method="POST" novalidate="novalidate">
@@ -116,6 +129,12 @@
                 </div>
             </div>
         </form>
+    </script>
+
+    <script type="text/javascript">
+            $(document).ready(function() {
+            	initAppOnDocumentReady();
+            });
     </script>
 
     <script type="text/javascript">

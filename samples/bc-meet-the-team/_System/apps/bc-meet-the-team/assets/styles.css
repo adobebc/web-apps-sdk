@@ -35,10 +35,6 @@ hr {
     margin-right: -10px;
 }
 
-.content-wrapper {
-    padding: 10px;
-}
-
 .inlinehelp {
     padding: 7px 20px 27px 20px;
     background-color: #f9f9f9;
@@ -77,7 +73,7 @@ a {
     color: #1e86e3;
 }
 
-a:hover {
+a:hover {	
     text-decoration: none;
     cursor: pointer;
 }
@@ -248,6 +244,7 @@ input.small-height, .small-height {
     margin-bottom: -2px;
     list-style: none outside none;
 }
+
 .tab-pane {
     margin-left: 16px;
     margin-top: 10px;
@@ -413,6 +410,7 @@ a.member-icon-edit:hover {
 
 #form-container {
     margin-top: 10px;
+    width: 99%;
 }
 
 #form-container .popover {
@@ -433,6 +431,26 @@ a.member-icon-edit:hover {
 .nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
   background-color: #eee;
   border-style: none;   
+}
+
+.nav-tabs-menu {
+	border-bottom: 1px solid #ccc;
+}
+
+.nav-tabs-menu a, .nav-tabs-menu a:hover, .nav-tabs-menu a:focus {
+	background-color: transparent;
+	color: #515151;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+.nav-tabs-menu .active {
+	background-image: -webkit-linear-gradient(top, rgb(41, 150, 227) 0px, rgb(56, 126, 215) 100%);	
+}
+
+.nav-tabs-menu .active > a, .nav-tabs-menu .active > a:hover, .nav-tabs-menu .active > a:focus {
+	background-color: transparent;
+    color: #FFF;
 }
 
 .upload-not-supported {
@@ -489,4 +507,12 @@ a.member-icon-edit:hover {
 
 .loading.semiopaque .opacifier{ 
     opacity: 0.5;
+}
+
+.deleteWarning {
+	background: url("/CatalystImages/ra_exclamation_a.png") no-repeat scroll 0 0 transparent;
+	font-weight: bold;
+	margin-bottom: 25px;
+	padding-left: 27px;
+	padding-top: 3px;
 }

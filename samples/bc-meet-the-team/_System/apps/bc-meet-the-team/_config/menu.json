@@ -1,6 +1,11 @@
 {
+	"menu-bcam-apps": {
+	    "weight": 600000,
+	    "title": "Apps"
+	  },
     "menu-meet_the_team": {
-        "weight": 100000,
+    	"parent": "menu-bcam-apps",
+        "weight": 100,
         "title": "Meet the Team",
         "attr" : {
             "href" : "index.html"

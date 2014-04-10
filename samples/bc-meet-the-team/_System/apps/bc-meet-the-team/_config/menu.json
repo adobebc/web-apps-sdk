@@ -1,5 +1,6 @@
 {
 	"menu-bcam-apps": {
+	    "icon": "/_System/apps/bc-meet-the-team/assets/images/apps_icon.png",
 	    "weight": 600000,
 	    "title": "Apps"
 	  },

@@ -1,5 +1,11 @@
 {
+	"menu-bcam-apps": {
+	    "icon": "/_System/apps/bc-gallery/assets/images/apps_icon.png",
+	    "weight": 600000,
+	    "title": "Apps"
+	  },
     "menu-bc-gallery": {
+    	"parent": "menu-bcam-apps",
         "weight": 25000,
         "title": "Gallery",
         "attr": {

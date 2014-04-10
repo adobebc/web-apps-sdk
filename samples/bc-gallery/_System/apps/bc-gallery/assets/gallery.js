@@ -26,6 +26,7 @@
 
 var IMAGES_PATH = '/bc-gallery/images/';
 var WEBAPP_NAME = 'bc-gallery';
+var GALLERY_DISMISSED_COOKIE = 'bcGalleryInlineHelpDismissed';
 
 $(function() {    
     loadImages();
@@ -68,6 +69,8 @@ function _uninstallApplication() {
 	var backendFolder = new BCAPI.Models.FileSystem.Folder(backendFolderPath);
 	var webapp = new BCAPI.Models.WebApp.App({"name": WEBAPP_NAME});
 
+	$.removeCookie(GALLERY_DISMISSED_COOKIE);
+	
 	frontendFolder.destroy().always(function() {
 		console.log(frontendFolderPath + " folder was completely removed.");
 		
@@ -106,20 +109,11 @@ function _redirectToDashboard() {
 // begin image loading functions
 function loadImages() {
     wadata = {};
-    $('.allimages').html('');
-    $('div.inlinehelp').show();
+    $('.allimages').html('');    
     $('div.loading').show();
     $('div.empty').hide();
 
-// Shows / hides app helper
-    if ($.cookie("bcGalleryInlineHelpDismissed")){
-        return;
-    }
-
-    $('.inlinehelp .close-btn').click( function(){
-        $('div.inlinehelp').hide();
-        $.cookie("bcGalleryInlineHelpDismissed", true, { expires: 365 });
-    });
+    _showAppHelper();
     
     // loads all the webapp items
     var items = new BCAPI.Models.WebApp.ItemCollection(WEBAPP_NAME);
@@ -128,6 +122,19 @@ function loadImages() {
         limit: 1000, // get all items
         success: loadImagesCB,
         error: createWebAppAndSampleData
+    });
+}
+
+function _showAppHelper() {
+    if ($.cookie(GALLERY_DISMISSED_COOKIE)) {
+        return;
+    }
+
+    $('div.inlinehelp').show();    
+    
+    $('.inlinehelp .close-btn').click( function(){
+        $('div.inlinehelp').hide();
+        $.cookie(GALLERY_DISMISSED_COOKIE, true, { expires: 365 });
     });
 }
 

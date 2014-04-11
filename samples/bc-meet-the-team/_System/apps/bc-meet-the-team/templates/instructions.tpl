@@ -29,7 +29,7 @@
 			<p>Once the app is installed and launched, you can add new members to the using the "Add member" button. Member images are saved to the 
 			<b>/bc-meet-the-team/images/</b> folder. Deleting a member can be done right from the list using the delete icon displayed when hovering over a team member.</p>
 			
-			<p>In the front-end things are pretty straightforward: on the <b>/bc-meet-the-team/index.html</b> page lists all the team members.</p>
+			<p>In the front-end things are pretty straightforward: on the <b>/bc-meet-the-team/demo.html</b> page lists all the team members.</p>
 			
 			<br/><br/>
 			

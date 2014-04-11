@@ -27,7 +27,7 @@ Once the app is installed and launched, you can add new images to the gallery us
 Images are saved to the <strong>/bc-gallery/images/</strong> folder.  
 Deleting an image can be done right from the list using the delete image icon displayed when hovering over an image.
 
-In the front-end things are pretty straightforward: the <strong>/bc-gallery/index.html</strong> page lists all the images currently available in your gallery using the jQuery bxSlider plug-in.
+In the front-end things are pretty straightforward: the <strong>/bc-gallery/demo.html</strong> page lists all the images currently available in your gallery using the jQuery bxSlider plug-in.
 
 <br/><br/>
 

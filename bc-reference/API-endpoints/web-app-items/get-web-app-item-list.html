@@ -235,7 +235,7 @@ items.fetch({
 });
 </code></pre>
 
-<h3>Filtering Syntax</h3>
+<h3 id="filtering-syntax">Filtering Syntax</h3>
 
 <p>Filtering is supported by constraining at most one item field. Only the specified system fields and the item's category set can be used for filtering.</p>
 
@@ -354,7 +354,7 @@ where={"weight": {"$ne": null}}</code></p></li>
 <p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"category": "my-label"}</code></p></li>
 </ul>
 
-<h3>Ordering Syntax</h3>
+<h3 id="ordering-syntax">Ordering Syntax</h3>
 
 <p>The <code>order</code> query parameter specifies which field will be used to order the results of the query. Only the following system fields can be used to order the results:</p>
 

@@ -50,4 +50,4 @@ Once your pull request is approved and merged, it will appear in the next releas
 
 All participants in the community are encouraged to provide support for new users within the project management infrastructure. This support is provided as a way of growing the community. Those seeking support should recognize that all support activity within the project is voluntary and is therefore provided as and when time allows.
 +	[Bug reports](https://github.com/adobebc/web-apps-sdk/issues)
-+	[Forum](forums.adobe.com/community/business_catalyst/developer_forum)
++	[Forum](http://forums.adobe.com/community/business_catalyst/developer_forum)

@@ -32,7 +32,7 @@ itemCategories.fetch({
 });</code></pre>
                      <p>To assign a set of categories:</p>
     <pre class="language-javascript"><code>var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
-itemCategories.set(items, [1, 2, 3, 4]);
+itemCategories.set('items', [1, 2, 3, 4]);
 itemCategories.save({
     success: onSaveOK,
     error: onSaveFailed

@@ -7,11 +7,15 @@
       <p>This class provides support for custom fields.</p>
       
       <h3>List a webapp's custom fields</h3>
-      <pre class="language-javascript"><code>var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("test app2");
-fieldsCollection.fetch().done(function (items) {
-    console.log(JSON.stringify(items))
+      <pre class="language-javascript"><code>var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("apicreated"),
+    response = fieldsCollection.fetch();
+
+response.done(function () {
+    fieldsCollection.each(function (field) {
+        console.log(JSON.stringify(field))
+    });
 }).fail(function (jqXHR) {
-    console.log("Request failed.");
+    console.log("Could not list the custom fields.");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);

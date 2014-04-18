@@ -7,20 +7,16 @@
       <p>This class provides the model for interacting with web apps.</p>
       
       <h3>Load webapps list</h3>
-      <pre class="language-javascript"><code>var apps = new BCAPI.Models.WebApp.AppCollection();
-var response = apps.fetch();
-response.done(function (webApps) {
-    console.log("Existing webapps: ");
-    console.log("-------------------------------");
-    _.each(webApps.items, function (webApp) {
-        console.log("Webapp name: " + webApp.name);
-        console.log("Webapp id: " + webApp.id);
-        console.log("Webapp slug: " + webApp.slug);
-        console.log("-------------------------------");
-    })
-});
-response.fail(function (jqXHR) {
-    console.debug('Webapp listing failed.');
+      <pre class="language-javascript"><code>var collection = new BCAPI.Models.WebApp.AppCollection();
+collection.fetch().done(function () {
+    collection.each(function (app) {
+        console.log("ID: " + app.get("id"));
+        console.log("Name: " + app.get("name"));
+        console.log("Slug: " + app.get("slug"));
+        console.log("Links: " + app.get("links"));
+    });
+}).fail(function (jqXHR) {
+    console.log("Request failed.");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);

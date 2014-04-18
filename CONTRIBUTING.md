@@ -12,6 +12,7 @@ There are several ways you can help the Web Apps SDK project, choose the one tha
 +	Write or update documentation
 +	Test the Web Apps SDK or any of the sample apps and report the bugs you find
 +	Write unit tests
++	Write integration tests
 
 # Where Do I Start?
 

@@ -26,20 +26,20 @@ folder.create().done(function () {
       <p>In the example above if the folders <strong>something</strong>, <strong>test1</strong> and <strong>test2</strong> does not exist they will all be created on the fly.</p>
 <h2>Get the folder's metadata</h2>
       <p>You use fetch to obtain the folder's details, including the files &amp; folders that the folder contains:</p>
-      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("/css");
+      <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder(&quot;/css&quot;);
 folder.fetch().done(function () {
-    console.log("Folder last update date is: " + folder.get("lastModified"));
-    console.log("Printing the folder contents: ");
-    var contents = folder.get("contents");
-    for (var i = 0; i < contents.length; i++) {
+    console.log(&quot;Folder last update date is: &quot; + folder.get(&quot;lastModified&quot;));
+    console.log(&quot;Printing the folder contents: &quot;);
+    var contents = folder.get(&quot;contents&quot;);
+    for (var i = 0; i &lt; contents.length; i++) {
         var entity = contents[i];
         var isFile = entity instanceof BCAPI.Models.FileSystem.File;
         //you can also use:
-        //var isFile = entity.get("type") === "file";
+        //var isFile = entity.get(&quot;type&quot;) === &quot;file&quot;;
         if (isFile) {
-            console.log("File " + entity.get("name") + " updated at " + entity.get("lastModified"));
+            console.log(&quot;File &quot; + entity.get(&quot;name&quot;) + &quot; updated at &quot; + entity.get(&quot;lastModified&quot;));
         } else {
-            console.log("Folder " + entity.get("name"));
+            console.log(&quot;Folder &quot; + entity.get(&quot;name&quot;));
         }
     }
 });</code></pre>

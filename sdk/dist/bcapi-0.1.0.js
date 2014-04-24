@@ -1137,11 +1137,10 @@
      *     for (var i = 0; i < contents.length; i++) {
      *         var entity = contents[i];
      *         var isFile = entity instanceof BCAPI.Models.FileSystem.File;
-     *         // also works: var isFile = entity.get('type') === 'file';
      *         if (isFile) {
-     *             console.log('File ' + file.get('name') + ' updated at ' + file.get('lastModified'));
+     *             console.log('File ' + entity.get('name') + ' updated at ' + entity.get('lastModified'));
      *         } else {
-     *             console.log('Folder ' + folder.get('name'));
+     *             console.log('Folder ' + entity.get('name'));
      *         }
      *     }
      * });

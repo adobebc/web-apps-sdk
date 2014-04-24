@@ -1,12 +1,12 @@
 
   
-    <h2 id="Folder">new Folder()</h2>
+    <h1 id="Folder">new Folder()</h1>
   
   
     
       <p>This class allows you to interact with the folders in the file system of your site.</p>
       
-      <h3>Creating a folder</h3>
+      <h2>Creating a folder</h2>
       <p>A folder object can be instantiated in two ways.</p>
       <p>You can specify the path of the folder:</p>
       <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder('/folder/path');</code></pre>
@@ -24,7 +24,7 @@ folder.create().done(function () {
     console.log("The folder has been created !");
 });</code></pre>
       <p>In the example above if the folders <strong>something</strong>, <strong>test1</strong> and <strong>test2</strong> does not exist they will all be created on the fly.</p>
-<h3>Get the folder's metadata</h3>
+<h2>Get the folder's metadata</h2>
       <p>You use fetch to obtain the folder's details, including the files &amp; folders that the folder contains:</p>
       <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("/css");
 folder.fetch().done(function () {
@@ -44,7 +44,7 @@ folder.fetch().done(function () {
     }
 });</code></pre>
       
-      <h3>Rename the folder</h3>
+      <h2>Rename the folder</h2>
       <p>Use save to rename a folder:</p>
       <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("/my/folder");
 folder.set("name", "new-folder");
@@ -58,7 +58,7 @@ folder.save().done(function () {
     console.log("Response text: " + jqXHR.responseText);
 });</code></pre>
       
-      <h3>Delete the folder</h3>
+      <h2>Delete the folder</h2>
       <pre class="language-javascript"><code>var folder = new BCAPI.Models.FileSystem.Folder("/my-folder");
 folder.destroy().done(function () {
     console.log("Folder was deleted");
@@ -82,14 +82,10 @@ folder.destroy().done(function () {
 <li>BCAPI.Models.FileSystem.Root is the root folder in your site's file structure. You can also create a file object by specifying the file's full path.</li>
 <li>If you omit the <code>/</code> at the beginning of the file path, the system will add this.</li>
 <li>When creating a folder, only creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required.</li>
-</ul>
-  
-
-
-<h2>Methods</h2>
+</ul><h2>Methods</h2>
 
   
-    <h3 id="create"> create() → {promise}</h3>
+    <h3 id="create"> create() → {promise}</h2>
   
   
     
@@ -103,7 +99,7 @@ folder.destroy().done(function () {
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>A promised that will be resolved when the folder is created</p>
     
@@ -112,13 +108,13 @@ folder.destroy().done(function () {
     
   
   
-    <h3 id="file"> file(name, attributes, options) → {<a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.FileSystem.File.html">BCAPI.Models.FileSystem.File</a>}</h3>
+    <h3 id="file"> file(name, attributes, options) → {<a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.FileSystem.File.html">BCAPI.Models.FileSystem.File</a>}</h2>
   
   
     
       <p>Creates a file object with the specified name and that has as parent this folder.</p>
     
-    <h3>Parameters:</h3>
+    <h2>Parameters:</h2>
     <table>
       <thead>
         <tr>
@@ -153,7 +149,7 @@ folder.destroy().done(function () {
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>A file that is a child of this folder</p>
     

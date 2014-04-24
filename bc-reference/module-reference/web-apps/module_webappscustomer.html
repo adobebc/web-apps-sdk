@@ -1,15 +1,15 @@
 
-<h2>{<span>module_webappscustomer</span>}</h2>
+<h1>{<span>module_webappscustomer</span>}</h1>
 <div id="description">
-<h3>Description</h3>
+<h2>Description</h2>
 <p>Displays the list of Web App Items submitted by a customer (must be logged in).</p>
 </div>
 <div id="syntax">
-<h3>Syntax</h3>
+<h2>Syntax</h2>
 <p><code>{<span>module_webappscustomer,ID,filter,itemID,,target,bkp,resultsPerPage,hideEmptyMessage,rowLength</span>}</code></p>
 </div>
 <div id="parameters">
-<h3>Parameters</h3>
+<h2>Parameters</h2>
 <ul>
     <li><strong>ID</strong> - system generated web app id (do not change)</li>
     <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
@@ -31,14 +31,14 @@
 </ul>
 </div>
 <div id="layouts">
-<h3>Layouts</h3>
+<h2>Layouts</h2>
 <ul>
     <li>Web App Layouts &gt;&nbsp;<a href="/dev-assets/reference/tag-reference/web-apps/web-app-list-layout.html">List Layout </a></li>
     <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
 </ul>
 </div>
 <div id="examples">
-<h3>Examples</h3>
+<h2>Examples</h2>
 <ul>
     <li><code>{<span>module_webappscustomer,56,a,</span>}</code> - will display all web app items that belong to the customer that's logged in for a web app with ID 56</li>
     <li><code>{<span>module_webappscustomer,56,c,14609,,_blank,,13 template="/layouts/custom/walist.html"</span>}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>

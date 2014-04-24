@@ -1,12 +1,12 @@
 
   
-    <h2 id="App">new App()</h2>
+    <h1 id="App">new App()</h1>
   
   
     
       <p>This class provides the model for interacting with web apps.</p>
       
-      <h3>Load webapps list</h3>
+      <h2>Load webapps list</h2>
       <pre class="language-javascript"><code>var collection = new BCAPI.Models.WebApp.AppCollection();
 collection.fetch().done(function () {
     collection.each(function (app) {
@@ -23,7 +23,7 @@ collection.fetch().done(function () {
 });</code></pre>
       <br>
       
-      <h3>Create a basic webapp</h3>
+      <h2>Create a basic webapp</h2>
       <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({
     "name": "Test app",
     "templateId": -1,
@@ -55,7 +55,7 @@ app.save({
 });</code></pre>
       <p>If you want to refresh collections which rely on Item model please refresh those collections.</p>
       
-      <h3>Remove app</h3>
+      <h2>Remove app</h2>
       <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({
     name: "Test app"
 });
@@ -72,7 +72,7 @@ app.destroy({
     }
 });</code></pre>
 
-<hr><h3>Error Codes</h3>
+<hr><h2>Error Codes</h2>
 
 <p>This method will return the following error codes:</p>
 
@@ -102,7 +102,7 @@ app.destroy({
 </ul></li>
 </ul>
       <hr>
-      <h3>Supported attributes</h3>
+      <h2>Supported attributes</h2>
       <pre class="language-javascript"><code>var app = new BCAPI.Models.WebApp.App({
     "name": "Test app",
     "templateId": -1,

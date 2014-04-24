@@ -1,13 +1,11 @@
-<h2>Layout reference</h2><p>You can customize the functionality and appearance of modules by editing their corresponding layouts. To make it easier to understand the concept, layouts are for modules what templates are for webpages.</p><p>Each individual module is rendered using one or in some cases more layouts.
-</p>
-<h2>Using tags</h2>
+<h1>Layout reference</h1><p>You can customize the functionality and appearance of modules by editing their corresponding layouts. To make it easier to understand the concept, layouts are for modules what templates are for webpages.</p><p>Each individual module is rendered using one or in some cases more layouts.
+</p><h2>Using tags</h2>
 <p>Tags are used inside Module templates or layouts and represent the data associated to a module, for example the "News" module can be rendered using 2 different layouts:</p>
 <ul>
 <li>When you are viewing the list of news items you will be using the <a href="/dev-assets/reference/tag-reference/news/news-list-layout.html">"List" layout</a> which has a set of tags like {tag_subject} which outputs a hyperlink that takes you to the detail view, {<span>tag_eventfromdate</span>} which outputs the start date of the event</li>  <li>When you are viewing the news item itself the system will use the <a href="/dev-assets/reference/tag-reference/news/news-detail-layout.html">"Detail" layout</a> which has its own set of possible tags.</li>
 </ul>
 <p>Each layout has its own set of tags, you can think of tags as the properties for a particular item, for example a blog has a title, a body, a blog author and so on. Each of these properties is represented by a tag - {<span>tag_blogtitle</span>}, {<span>tag_description</span>} and {<span>tag_blogpostauthor</span>}.</p>
-<div class="alert alert-info"><p><strong>Note:</strong> Tags are not transferrable, and cannot be shared across all modules. Each module has its own layouts which can contain only their own tags.</p></div>
-<h2>Even more layouts</h2>
+<div class="alert alert-info"><p><strong>Note:</strong> Tags are not transferrable, and cannot be shared across all modules. Each module has its own layouts which can contain only their own tags.</p></div><h2>Even more layouts</h2>
 <p>Most modules have a fixed set of layouts they can use, for example the &quot;list&quot; or &quot;detail&quot; layout, each with its own set of tags.</p>
 <p>Some modules though, can use <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates (or custom layouts)</a>, this means you can create a layout of your own and configure the module to use this custom tag you have created, for example:</p>
 

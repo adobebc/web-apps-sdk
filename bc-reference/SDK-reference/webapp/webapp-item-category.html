@@ -1,6 +1,6 @@
 
   
-    <h2 id="ItemCategory">new ItemCategory()</h2>
+    <h1 id="ItemCategory">new ItemCategory()</h1>
   
   
     
@@ -14,7 +14,7 @@
         </ul>
       
     
-    <h3>Examples</h3>
+    <h2>Examples</h2>
     <pre class="language-javascript"><code>var itemCategories = new BCAPI.Models.WebApp.ItemCategory(WEBAPP_NAME, ITEM_ID);
 itemCategories.fetch({
     success: function (data) {
@@ -63,15 +63,13 @@ itemCategories.save({
 
 <hr>
 
-<h3>Extends</h3>
+<h2>Extends</h2>
 <ul>
   <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html">BCAPI.Models.Model</a></li>
-</ul>
-
-<h2>Methods</h2>
+</ul><h2>Methods</h2>
 
   
-    <h3 id="destroy"> destroy()</h3>
+    <h3 id="destroy"> destroy()</h2>
   
   
     
@@ -91,7 +89,7 @@ itemCategories.save({
         </ul>
       
     
-    <h3>Example</h3>
+    <h2>Example</h2>
     <pre class="language-javascript"><code>var model = new PersonModel({id: 1});
 model.destroy({
 	success: function() {
@@ -101,7 +99,7 @@ model.destroy({
 </code></pre>
   
   
-    <h3 id="endpoint"> endpoint()</h3>
+    <h3 id="endpoint"> endpoint()</h2>
   
   
     
@@ -117,7 +115,7 @@ model.destroy({
     
   
   
-    <h3 id="headers"> headers() → {Object}</h3>
+    <h3 id="headers"> headers() → {Object}</h2>
   
   
     
@@ -138,7 +136,7 @@ model.destroy({
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>A list of headers appended to ajax calls.</p>
     
@@ -147,7 +145,7 @@ model.destroy({
     
   
   
-    <h3 id="save"> save()</h3>
+    <h3 id="save"> save()</h2>
   
   
     
@@ -163,13 +161,13 @@ model.destroy({
     
   
   
-    <h3 id="sync"> sync(method, model, options) → {Promise}</h3>
+    <h3 id="sync"> sync(method, model, options) → {Promise}</h2>
   
   
     
       <p>Sync method is invoked automatically when user tries to create / update a model. It automatically appends the custom headers returned by<a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html#headers">BCAPI.Models.Model.headers</a> method.</p>
     
-    <h3>Parameters:</h3>
+    <h2>Parameters:</h2>
     <table>
       <thead>
         <tr>
@@ -210,7 +208,7 @@ model.destroy({
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>jQuery promise which can be used to determine when request is done.</p>
     
@@ -219,7 +217,7 @@ model.destroy({
     
   
   
-    <h3 id="toJSON"> toJSON()</h3>
+    <h3 id="toJSON"> toJSON()</h2>
   
   
     
@@ -235,14 +233,14 @@ model.destroy({
     
   
   
-    <h3 id="urlRoot"> urlRoot(modelEndpoint) → {string}</h3>
+    <h3 id="urlRoot"> urlRoot(modelEndpoint) → {string}</h2>
   
   
     
       <p>This method automatically builds absolute entry point url of the model.</p>
       <p>This method accepts as parameter the model's endpoint. If this is not specified, then the endpoint method is called.</p>
     
-    <h3>Parameters:</h3>
+    <h2>Parameters:</h2>
     <table>
       <thead>
         <tr>
@@ -273,7 +271,7 @@ model.destroy({
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>An absolute entry point API.</p>
     

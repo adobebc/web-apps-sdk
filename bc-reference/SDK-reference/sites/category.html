@@ -1,6 +1,6 @@
 
   
-    <h2 id="Category">new Category()</h2>
+    <h1 id="Category">new Category()</h1>
   
   
     
@@ -14,7 +14,7 @@
         </ul>
       
     <hr>
-    <h3>Sample code</h3>
+    <h2>Sample code</h2>
     <h4>Create a category</h4>
     <pre class="language-javascript"><code>var category = new BCAPI.Models.Category({name: 'Test Category6', parentId: 123456});
 category.save()
@@ -103,15 +103,14 @@ Name: My category4 ID: 155315 parentId: -1 links: [{
     "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155315"
 }]</code></pre>
 
-<h3>Extends</h3>
+<h2>Extends</h2>
 <ul>
   <li><a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html">BCAPI.Models.Model</a></li>
 </ul>
-<hr>
-<h2>Methods</h2>
+<hr><h2>Methods</h2>
 
   
-    <h3 id="destroy"> destroy()</h3>
+    <h3 id="destroy"> destroy()</h2>
   
   
     
@@ -131,7 +130,7 @@ Name: My category4 ID: 155315 parentId: -1 links: [{
         </ul>
       
     
-    <h3>Example</h3>
+    <h2>Example</h2>
     <pre class="language-javascript"><code>var model = new PersonModel({id: 1});
 model.destroy({
 	success: function() {
@@ -141,7 +140,7 @@ model.destroy({
 </code></pre>
   
   
-    <h3 id="endpoint"> endpoint()</h3>
+    <h3 id="endpoint"> endpoint()</h2>
   
   
     
@@ -157,7 +156,7 @@ model.destroy({
     
   
   
-    <h3 id="headers"> headers() → {Object}</h3>
+    <h3 id="headers"> headers() → {Object}</h2>
   
   
     
@@ -178,7 +177,7 @@ model.destroy({
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>A list of headers appended to ajax calls.</p>
     
@@ -187,7 +186,7 @@ model.destroy({
     
   
   
-    <h3 id="save"> save()</h3>
+    <h3 id="save"> save()</h2>
   
   
     
@@ -207,7 +206,7 @@ model.destroy({
         </ul>
       
     
-    <h3>Example</h3>
+    <h2>Example</h2>
     <pre class="language-javascript"><code>var model = new PersonModel();
 model.save({
 	success: function(model, response) {
@@ -217,13 +216,13 @@ model.save({
 </code></pre>
   
   
-    <h3 id="sync"> sync(method, model, options) → {Promise}</h3>
+    <h3 id="sync"> sync(method, model, options) → {Promise}</h2>
   
   
     
       <p>Sync method is invoked automatically when user tries to create / update a model. It automatically appends the custom headers returned by<a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.Model.html#headers">BCAPI.Models.Model.headers</a> method.</p>
     
-    <h3>Parameters:</h3>
+    <h2>Parameters:</h2>
     <table>
       <thead>
         <tr>
@@ -264,7 +263,7 @@ model.save({
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>jQuery promise which can be used to determine when request is done.</p>
     
@@ -273,14 +272,14 @@ model.save({
     
   
   
-    <h3 id="urlRoot"> urlRoot(modelEndpoint) → {string}</h3>
+    <h3 id="urlRoot"> urlRoot(modelEndpoint) → {string}</h2>
   
   
     
       <p>This method automatically builds absolute entry point url of the model.</p>
       <p>This method accepts as parameter the model's endpoint. If this is not specified, then the endpoint method is called.</p>
     
-    <h3>Parameters:</h3>
+    <h2>Parameters:</h2>
     <table>
       <thead>
         <tr>
@@ -311,7 +310,7 @@ model.save({
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>An absolute entry point API.</p>
     

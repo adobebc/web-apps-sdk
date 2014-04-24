@@ -1,12 +1,12 @@
 
   
-    <h2 id="Item">new Item()</h2>
+    <h1 id="Item">new Item()</h1>
   
   
     
       <p>This class provides useful operations for interacting with web app items. You can find various examples of how to use it.</p>
       
-      <h3>Load items paginated</h3>
+      <h2>Load items paginated</h2>
       <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
 items.fetch({
         skip: 2, limit: 100,
@@ -29,7 +29,7 @@ items.fetch({
 }
 });
 </code></pre>
-      <h3>Filtering items</h3>
+      <h2>Filtering items</h2>
       <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
 items.fetch({
         where: {"name": ""Web app item new"},
@@ -53,7 +53,7 @@ items.fetch({
 });
 </code></pre>
       
-      <h3>Ordering items</h3>
+      <h2>Ordering items</h2>
       <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
 items.fetch({
         order: "-name",
@@ -77,7 +77,7 @@ items.fetch({
 });
 </code></pre>
       
-      <h3>All in one usage</h3>
+      <h2>All in one usage</h2>
       <pre class="language-javascript"><code>var items = new BCAPI.Models.WebApp.ItemCollection("test app2");
 items.fetch({
         skip: 0, limit: 100,
@@ -102,7 +102,7 @@ items.fetch({
 }
 });
 </code></pre>
-      <h3>Load the webapp items collection</h3>
+      <h2>Load the webapp items collection</h2>
       <pre class="language-javascript"><code>
 var itemCollection = new BCAPI.Models.WebApp.ItemCollection("test app2");
 itemCollection.fetch({
@@ -122,7 +122,7 @@ itemCollection.fetch({
     }
 });
 </code></pre>
-      <h3>Create item</h3>
+      <h2>Create item</h2>
       <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("webapp_name_here", {
     "name": "4"
 });
@@ -137,7 +137,7 @@ var response = item.save({
         console.log("Response text: " + jqXHR.responseText);
     }
 });</code></pre>
-      <h3>Remove item</h3>
+      <h2>Remove item</h2>
       <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item("apicreated", {
     "id": "7370534"
 });
@@ -161,7 +161,7 @@ var response = item.destroy({
         </ul>
       <hr>
     
-    <h3>Supported attributes</h3>
+    <h2>Supported attributes</h2>
     <pre class="language-javascript"><code>var item = new BCAPI.Models.WebApp.Item({
 	"name": "Item7",
 	"weight": 7,
@@ -214,11 +214,10 @@ var response = item.destroy({
 </ul></li>
 </ul>
 
-        <hr>
-<h2>Methods</h2>
+        <hr><h2>Methods</h2>
 
   
-    <h3 id="endpoint"> endpoint()</h3>
+    <h3 id="endpoint"> endpoint()</h2>
   
   
     
@@ -234,7 +233,7 @@ var response = item.destroy({
     
   
   
-    <h3 id="toJSON"> toJSON()</h3>
+    <h3 id="toJSON"> toJSON()</h2>
   
   
     

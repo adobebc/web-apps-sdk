@@ -1,10 +1,10 @@
-<h2>Custom templates (layouts)</h2>
+<h1>Custom templates (layouts)</h1>
 <div id="description">
-<h3>What are custom templates?</h3>
+<h2>What are custom templates?</h2>
 <p>
 With very few exceptions (the products modules for example are an exception, they have 2 "Individual Product - Small" layouts) most modules had one of each, the  but the general rule is one module - a single set of layouts.</p>
 <p>Custom templates are basically an extension to regular layouts. Until they were introduced you could only use a limited number of layouts. </p>
-<h3>How to use them?</h3>
+<h2>How to use them?</h2>
 <p>
 The custom templates are actually plain  files however we usually  advise to change their extension to .tpl - that is to avoid having them indexed by search engine bots.
 </p>
@@ -36,16 +36,16 @@ If you insert this on a webpage and preview that webpage you will notice it is u
 </p>
 </div>
 <div id="syntax">
-<h3>Syntax</h3>
+<h2>Syntax</h2>
 <p>The general rule is the template="/layouts/onlineshop/custom/productfeaturelist.tpl" string is added at the end of the module declaration just before the ending curly bracket.</p>
 <p>Make sure you use double brackets instead of single brackets. This is incorrect: {<span>module_productfeaturelist,special offer,3,price,_blank,true template=<span style="font-weight: bold; margin: 0px 10px; font-size: 16px; color: red;">'</span>/layouts/onlineshop/custom/productfeaturelist.tpl<span style="font-weight: bold; margin: 0px 10px; font-size: 16px; color: red;">'</span></span>}</p>
 </div>
 <div id="parameters">
-<h3>Parameters</h3>
+<h2>Parameters</h2>
 <p>The custom template declaration has only one parameter, that is the path to the file itself. If the file does not exist or it cannot be found for any reason the module will render with its default layout instead. So for example if the custom template file "/layouts/onlineshop/custom/productfeaturelist.tpl" does not exist or we have a typo in its path the {<span><a href="/dev-assets/reference/module-reference/products/module_productfeaturelist.html">module_productfeaturelist</a></span>} module will render using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout instead.</p>
 </div>
 <div id="Examples">
-<h3>Examples</h3>
+<h2>Examples</h2>
 <ul>
     <li><code>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/onlineshop/custom/productfeaturelist.tpl"</span>}</code> - this rendes a list of products using this custom template</li>
     <li><code>{<span>module_booking,i,63522 template="/layouts/custom/bookings.tpl"</span>}</code> - this rendes an individual event a custom template</li>
@@ -56,7 +56,7 @@ If you insert this on a webpage and preview that webpage you will notice it is u
 </ul>
 </div>
 <div id="supported">
-<h3>Supported Modules</h3>
+<h2>Supported Modules</h2>
 <p> Here is the list of modules where you can apply your own templates as attributes:</p>
 <ul>
     <li><code>{<span>module_literature</span>}</code></li>

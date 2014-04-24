@@ -1,12 +1,12 @@
 
   
-    <h2 id="CustomField">new CustomField()</h2>
+    <h1 id="CustomField">new CustomField()</h1>
   
   
     
       <p>This class provides support for custom fields.</p>
       
-      <h3>List a webapp's custom fields</h3>
+      <h2>List a webapp's custom fields</h2>
       <pre class="language-javascript"><code>var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("apicreated"),
     response = fieldsCollection.fetch();
 
@@ -21,7 +21,7 @@ response.done(function () {
     console.log("Response text: " + jqXHR.responseText);
 });
 </code></pre>
-      <h3>Create a new custom field</h3>
+      <h2>Create a new custom field</h2>
       <pre class="language-javascript"><code>var customField = new BCAPI.Models.WebApp.CustomField("test app2", {
     "id": 3,
     "name": "Part code",
@@ -82,12 +82,10 @@ customField.save({
 </ul></li>
 </ul>
   
-<hr>
-
-<h2>Methods</h2>
+<hr><h2>Methods</h2>
 
   
-    <h3 id="endpoint"> endpoint()</h3>
+    <h3 id="endpoint"> endpoint()</h2>
   
   
     
@@ -103,13 +101,13 @@ customField.save({
     
   
   
-    <h3 id="parse"> parse(response)</h3>
+    <h3 id="parse"> parse(response)</h2>
   
   
     
       <p>We override this method in order to transform each returned item into a strong typed <a href="http://adobebc.github.io/bcapi.js/BCAPI.Models.WebApp.CustomField.html">BCAPI.Models.WebApp.CustomField</a> models.</p>
     
-    <h3>Parameters:</h3>
+    <h2>Parameters:</h2>
     <table>
       <thead>
         <tr>
@@ -134,13 +132,13 @@ customField.save({
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>A list of web app custom fields.</p>
     
   
   
-    <h3 id="toJSON"> toJSON()</h3>
+    <h3 id="toJSON"> toJSON()</h2>
   
   
     
@@ -156,7 +154,7 @@ customField.save({
     
   
   
-    <h3 id="urlRoot"> urlRoot() → {string}</h3>
+    <h3 id="urlRoot"> urlRoot() → {string}</h2>
   
   
     
@@ -170,7 +168,7 @@ customField.save({
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>An absolute entry point API.</p>
     
@@ -179,7 +177,7 @@ customField.save({
     
   
   
-    <h3 id="urlRoot"> urlRoot() → {string}</h3>
+    <h3 id="urlRoot"> urlRoot() → {string}</h2>
   
   
     
@@ -193,7 +191,7 @@ customField.save({
         </ul>
       
     
-    <h3>Returns:</h3>
+    <h2>Returns:</h2>
     
       <p>An absolute entry point API.</p>
     

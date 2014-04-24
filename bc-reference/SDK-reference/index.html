@@ -1,4 +1,4 @@
-<h2 id="linking">What is the bcapi.js SDK?</h2><p>This SDK provides a collection of methods you can use to easily interact with the API system. It offers the same functionality as the <a href="/dev-assets/reference/api-endpoints/index.html">API endpoints</a> but it is easier to work with.</p><h2 id="linking">Using the bcapi.js SDK</h2><p>In order to call the bcapi.js methods you need to make sure the bcapi.js and its dependencies are all linked from your pages:</p>
+<h1 id="linking">What is the bcapi.js SDK?</h1><p>This SDK provides a collection of methods you can use to easily interact with the API system. It offers the same functionality as the <a href="/dev-assets/reference/api-endpoints/index.html">API endpoints</a> but it is easier to work with.</p><h2 id="linking">Using the bcapi.js SDK</h2><p>In order to call the bcapi.js methods you need to make sure the bcapi.js and its dependencies are all linked from your pages:</p>
 <pre class="language-javascript"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;//code.jquery.com/jquery-1.10.2.min.js&quot;&gt;&lt;/script&gt;<br>&lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js&quot;&gt;&lt;/script&gt;<br>&lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js&quot;&gt;&lt;/script&gt;<br>&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.worldsecuresystems.com/bcapi/bcapi-0.0.1.min.js&quot;&gt;&lt;/script&gt;</code></pre>
 
@@ -12,8 +12,7 @@ response.done(function (webApps) {
 response.fail(function () { 
 //Do something in case of error
 });
-</code></pre>
-<h2>2. Create a file on the site, then delete it</h2><p>Creating the file</p>
+</code></pre><h2>2. Create a file on the site, then delete it</h2><p>Creating the file</p>
 <pre class="language-javascript"><code>
 var f = BCAPI.Models.FileSystem.Root.file('hello_world.txt');
 var data = 'Hello World !';

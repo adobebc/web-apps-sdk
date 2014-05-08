@@ -19,27 +19,10 @@
 <li><code>siteId</code> - ID of the site <em>(integer)</em></li>
 <li><code>username</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
 <li><code>password</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
-<li><code>ParentCatalogueId</code> - <em>(integer)</em> </li>
+<li><code>ParentCatalogueId</code> - <em>(integer)</em> or <em>-1</em> for listing all the catalogs</li>
 </ul>
 
 <p>To use a site token instead of username/password, send an empty <code>username</code> field and the site token as the <code>password</code>. See example below.</p>
-
-<h3>Response</h3>
-
-<p>A Catalogue_ListRetrieveResponse object with the following properties:</p>
-
-<ul>
-<li><code>Catalogue_ListRetrieveResult</code> - <em>(object)</em>
-
-<ul>
-<li><code>Catalogue</code> - <em>(object)</em><br>
-
-<ul>
-<li><code>Url</code> - <em>(string)</em>    </li>
-<li><code>Slug</code> - <em>(string)</em>   </li>
-</ul></li>
-</ul></li>
-</ul>
 
 <h3>Examples</h3>
 
@@ -61,7 +44,7 @@ Content-Length: length
       &lt;Username&gt;jdoe@yourdomain.com&lt;/Username&gt;
       &lt;Password&gt;Y0urP@ssw0rdH3re&lt;/Password&gt;
       &lt;SiteId&gt;12345&lt;/SiteId&gt;
-      &lt;ParentCatalogueId&gt;12345&lt;/ParentCatalogueId&gt;
+      &lt;ParentCatalogueId&gt;88&lt;/ParentCatalogueId&gt;
     &lt;/Catalogue_ListRetrieve&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;

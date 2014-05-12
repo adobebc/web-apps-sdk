@@ -58,6 +58,56 @@ Content-Type: application/json
 {"status": "success"}
 </code></pre>
 <hr>
+<h3>Sample code</h3>
+<p><strong>Upload a file from your system and log the progress</strong></p>
+<pre class="language-markup"><code>
+&lt;input type=&quot;file&quot; id=&quot;datafile&quot;&gt;
+&lt;input type=&quot;button&quot; onclick = &quot;attachmentMultipart()&quot; value=&quot;Send&quot;&gt;
+</code></pre>
+<pre class="language-javascript"><code>function attachmentMultipart() {
+            
+	var fileContent = $("#datafile").get(0).files[0],
+        formData = new FormData();
+    
+    formData.append("file-0", fileContent);
+            
+	var request = $.ajax({
+	    url: "/api/v2/admin/sites/current/storage/my/large_video.avi", //replace this with the actual file name
+	    type: "POST",
+	    headers: {
+	        "Authorization": $.cookie('access_token')
+	    },
+		cache: false,
+    	contentType: false,
+        processData: false,
+        data: formData}); 
+
+    var progressChecker = window.setInterval(function() {
+    	_checkUploadStatus();
+    }, 500);    
+    
+    request.done(function() {
+        window.clearInterval(progressChecker);
+    });
+};
+
+        
+function _checkUploadStatus() {
+    var response = $.ajax({
+        "url": "/api/v2/admin/sites/current/storage?status",
+        "type": "GET",
+        "headers": {
+	        "Authorization": $.cookie('access_token')
+	    },
+        "contentType": "application/json"        
+    });
+    
+    response.done(function(data) {
+        console.log("Progress: " + data.percent); 
+    });
+};
+</code></pre>
+<hr>
 <h3>Error Codes</h3>
 
 <p>This method will return the following error codes:</p>

@@ -103,6 +103,37 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 });        
       
 </code></pre>
+
+<p><strong>Upload files from your computer</strong></p>
+<pre class="language-markup"><code>&lt;input type=&quot;file&quot; id=&quot;datafile&quot;&gt;
+&lt;input type=&quot;button&quot; onclick = &quot;attachment()&quot; value=&quot;Send&quot;&gt;
+&lt;script&gt;
+var access_token = BCAPI.Helper.Site.getAccessToken();
+function attachment() {
+            
+	var fileContent = $(&quot;#datafile&quot;).get(0).files[0];
+            
+	var request = $.ajax({
+	    url: &quot;/api/v2/admin/sites/current/storage/my/large_video.avi&quot;, //change this to reflect the name of your file
+	    type: &quot;PUT&quot;,
+	    headers: {
+	        &quot;Authorization&quot;: $.cookie(&#39;access_token&#39;)
+	    },
+    	contentType: &quot;application/octet-stream&quot;,        
+    	data: fileContent,
+        processData: false
+	}); 
+
+    var progressChecker = window.setInterval(function() {
+    	_checkUploadStatus();
+    }, 500);    
+    
+    request.done(function() {
+        window.clearInterval(progressChecker);
+    });
+};
+&lt;/script&gt;</code></pre>
+
 <p><strong>Notes:</strong></p>
 
 <ul>

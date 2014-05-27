@@ -1,28 +1,58 @@
 <h1>{<span>module_shoppingcartsummary</span>}</h1>
-<div id="description">
+<div class="description">
 <h2>Description</h2>
 <p>Displays the summary of the cart on the current catalogue page or web page. It will display <em>Shopping cart is empty.</em> when the cart is empty and something like this when you have a product in it - <em>1 item(s), Total: $12.00 View Cart</em>. 
 </p>
 <p>Pressing "View Cart" will direct the user to the Shopping Cart that renders with the <a href="/dev-assets/reference/tag-reference/online-shop/shopping-cart-layout.html"> Shopping cart layout</a>.</p>
 </div>
-<div id="syntax">
+<ul id="tabs" class="alpha">
+
+    <li><a href="#named-params">New named parameters dcumentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="alpha nocontent">
+  <div class="syntax">
 <h2>Syntax</h2>
 <p><code>{<span>module_shoppingcartsummary,Vertical,quote</span>}</code></p>
 </div>
-<div id="parameters">
+<div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>Vertical</strong> - renders details vertically. Possible values are <em>vertical</em> or <em>horizontal</em>. Default is that the output is displayed horizontally. </li>
     <li><strong>isQuote</strong></li>
 </ul>
 </div>
-<div id="layouts">
+<div class="layouts">
 <h2>This module can be rendered using a custom layout</h2>
 <p>In order to customize the output of this module you will first need to create the layout, please take a look at the <a href="/dev-assets/reference/tag-reference/online-shop/shopping-cart-summary.html" title="Shopping cart summary layout"> Shopping cart summary layout </a> article for the exact steps you need to take.</p>
 </div>
-<div id="examples">
+<div class="examples">
 <h2>Examples</h2>
 <ul>
     <li><code>{<span>module_shoppingcartsummary,vertical,false</span>}</code> - this module will display the output vertically.</li>
 </ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<p><code>{<span>module_shoppingcartsummary,Vertical,quote</span>}</code></p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>Vertical</strong> - renders details vertically. Possible values are <em>vertical</em> or <em>horizontal</em>. Default is that the output is displayed horizontally. </li>
+    <li><strong>isQuote</strong></li>
+</ul>
+</div>
+<div class="layouts">
+<h2>This module can be rendered using a custom layout</h2>
+<p>In order to customize the output of this module you will first need to create the layout, please take a look at the <a href="/dev-assets/reference/tag-reference/online-shop/shopping-cart-summary.html" title="Shopping cart summary layout"> Shopping cart summary layout </a> article for the exact steps you need to take.</p>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_shoppingcartsummary,vertical,false</span>}</code> - this module will display the output vertically.</li>
+</ul>
+</div>
 </div>

@@ -4,17 +4,23 @@
 <h2>Description</h2>
 <p>Displays the breadcrumbs for pages according to the hierarchy defined in the site Site Map (Site Settings -&gt; Site Map)</p>
 </div>
-<div id="syntax">
+<ul id="tabs" class="alpha">
+
+    <li><a href="#named-params">New named parameters dcumentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="alpha nocontent">
+  <div class="syntax">
 <h2>Syntax</h2>
 <p><code>{<span>module_breadcrumbs, separator</span>}</code></p>
 </div>
-<div id="parameters">
+<div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>separator</strong> - the separator which will be used between the links</li>
 </ul>
 </div>
-<div id="examples">
+<div class="examples">
 <h2>Examples</h2>
 <ul>
     <li><code>{<span>module_breadcrumbs, |</span>}</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
@@ -26,4 +32,30 @@
 </code>	</pre>
 	</li>
 </ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<p><code>{<span>module_breadcrumbs, separator</span>}</code></p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>separator</strong> - the separator which will be used between the links</li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_breadcrumbs, |</span>}</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
+<pre class="language-markup">
+<code>
+    &lt;a href="/parentpage.htm"&gt;Parentpage&lt;/a&gt;
+    " | "
+    &lt;a href="/childpage.htm"&gt;Childpage&lt;/a&gt;
+</code>	</pre>
+	</li>
+</ul>
+</div>
 </div>

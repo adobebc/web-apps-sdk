@@ -1,5 +1,5 @@
 <h1>{<span>module_calendar</span>}</h1>
-<div id="description">
+<div class="description">
 <h2>Description</h2>
 <p>This module renders either the News or the Events modules on a calendar.
 </p>
@@ -11,10 +11,10 @@
     <li><a href="#legacy">Legacy module documentation</a></li>
   </ul>
 
-<div id="named-params" class="alpha">
-<div class="syntax">
+<div id="named-params" class="alpha nocontent">
+  <div class="syntax">
 <h2>Syntax</h2>
-<p><code>{<span>module_calendar eventType="all/news/events" filter="all/classified" classificationid="classificationid" notemplate="false" targetframe="_blank"</span>}</code></p>
+<pre class="language-markup"><code>{<span>module_calendar eventType="all/news/events" filter="all/classified" classificationid="classificationid" notemplate="false" targetframe="_blank"</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -55,13 +55,12 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_calendar eventType="all" filter="all" notemplate="false" targetframe="_blank"</span>}</code> - displays all the news and announcement items on the calendar view and opens the detail view in a new window when clicked</li>    <li><code>{<span>module_calendar eventType="news" filter="classified" classificationid="12345" notemplate="false" targetframe="_blank"</span>}</code> - displays the news item classified in the category with the ID 12345 and opens the detail view in the same window when clicked</li>
+    <li><pre class="language-markup"><code>{<span>module_calendar eventType="all" filter="all" notemplate="false" targetframe="_blank"</span>}</code></pre> - displays all the news and announcement items on the calendar view and opens the detail view in a new window when clicked</li>    <li><pre class="language-markup"><code>{<span>module_calendar eventType="news" filter="classified" classificationid="12345" notemplate="false" targetframe="_blank"</span>}</code></pre> - displays the news item classified in the category with the ID 12345 and opens the detail view in the same window when clicked</li>
 </ul>
 </div>
 </div>
 <div id="legacy">
-
-<div class="syntax">
+  <div class="syntax">
 <h2> Syntax</h2>
 <p><code>{<span>module_calendar,what,filter,</span>}</code></p>
 </div>

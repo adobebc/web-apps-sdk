@@ -1,17 +1,23 @@
 <h1>{<span>module_categorylist</span>}</h1>
-<div id="description">
+<div class="description">
 <h2>Description</h2>
 <p>Renders an option list of categories.</p>
 </div>
-<div id="syntax">
+<ul id="tabs" class="alpha">
+
+    <li><a href="#named-params">New named parameters dcumentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="alpha nocontent">
+  <div class="syntax">
 <h2>Syntax</h2>
 <p>{module_categorylist}</p>
 </div>
-<div id="layouts">
+<div class="layouts">
 <h2>Layouts</h2>
 <p>This module is not rendered with a layout.</p>
 </div>
-<div id="examples">
+<div class="examples">
 <h2>Examples</h2>
 <p>When using this module always wrap it in a select tag like so:</p>
 <pre class="language-markup"><code>
@@ -25,4 +31,30 @@
 <pre class="language-markup"><code>
 &lt;select&gt;<br><br>&lt;option value=&quot;-1&quot;&gt;-- All Categories --&lt;/option&gt;<br><br>&lt;option  value=&quot;32142&quot;&gt;Category1&lt;/option&gt;<br><br>&lt;option  value=&quot;28940&quot;&gt;---Category1A&lt;/option&gt;<br><br>&lt;option  value=&quot;43243&quot;&gt;Category2&lt;/option&gt;<br><br>&lt;option  value=&quot;29324&quot;&gt;---Category1&lt;/option&gt;<br><br>&lt;/select&gt;
 </code></pre>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<p>{module_categorylist}</p>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<p>This module is not rendered with a layout.</p>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<p>When using this module always wrap it in a select tag like so:</p>
+<pre class="language-markup"><code>
+&lt;select&gt;<br>
+{<span>module_categorylist</span>}<br>
+&lt;/select&gt;
+</code>
+</pre>
+
+<p>It will output a drop down containing the categories on your site</p>
+<pre class="language-markup"><code>
+&lt;select&gt;<br><br>&lt;option value=&quot;-1&quot;&gt;-- All Categories --&lt;/option&gt;<br><br>&lt;option  value=&quot;32142&quot;&gt;Category1&lt;/option&gt;<br><br>&lt;option  value=&quot;28940&quot;&gt;---Category1A&lt;/option&gt;<br><br>&lt;option  value=&quot;43243&quot;&gt;Category2&lt;/option&gt;<br><br>&lt;option  value=&quot;29324&quot;&gt;---Category1&lt;/option&gt;<br><br>&lt;/select&gt;
+</code></pre>
+</div>
 </div>

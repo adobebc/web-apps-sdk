@@ -1,14 +1,20 @@
 
 <h1>{<span>module_webappscustomer</span>}</h1>
-<div id="description">
+<div class="description">
 <h2>Description</h2>
 <p>Displays the list of Web App Items submitted by a customer (must be logged in).</p>
 </div>
-<div id="syntax">
+<ul id="tabs" class="alpha">
+
+    <li><a href="#named-params">New named parameters dcumentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="alpha nocontent">
+  <div class="syntax">
 <h2>Syntax</h2>
 <p><code>{<span>module_webappscustomer,ID,filter,itemID,,target,bkp,resultsPerPage,hideEmptyMessage,rowLength</span>}</code></p>
 </div>
-<div id="parameters">
+<div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>ID</strong> - system generated web app id (do not change)</li>
@@ -30,17 +36,60 @@
     <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
 </ul>
 </div>
-<div id="layouts">
+<div class="layouts">
 <h2>Layouts</h2>
 <ul>
     <li>Web App Layouts &gt;&nbsp;<a href="/dev-assets/reference/tag-reference/web-apps/web-app-list-layout.html">List Layout </a></li>
     <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
 </ul>
 </div>
-<div id="examples">
+<div class="examples">
 <h2>Examples</h2>
 <ul>
     <li><code>{<span>module_webappscustomer,56,a,</span>}</code> - will display all web app items that belong to the customer that's logged in for a web app with ID 56</li>
     <li><code>{<span>module_webappscustomer,56,c,14609,,_blank,,13 template="/layouts/custom/walist.html"</span>}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
 </ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<p><code>{<span>module_webappscustomer,ID,filter,itemID,,target,bkp,resultsPerPage,hideEmptyMessage,rowLength</span>}</code></p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>ID</strong> - system generated web app id (do not change)</li>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li>i - individual item</li>
+        <li>a - all items</li>
+        <li>l - latest items</li>
+        <li>r - random item</li>
+        <li>cl - latest items in a particular category</li>
+        <li>cr - displays a random item in a particular category</li>
+    </ul>
+    </li>
+    <li><strong>itemID</strong> - system generated individual item id (do not change)</li>
+    <li><strong>target</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
+    <li><strong>bkp</strong> - specify True if you want to use the backup list template or leave empty</li>
+    <li><strong>resultsPerPage</strong> - total number of items per page before pagination is used (limit of 500 items per page)</li>
+    <li><strong>hideEmptyMessage</strong> - specify <em>True</em> if you don't want the <em>No Items Found</em> message to be displayed.</li>
+    <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<ul>
+    <li>Web App Layouts &gt;&nbsp;<a href="/dev-assets/reference/tag-reference/web-apps/web-app-list-layout.html">List Layout </a></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_webappscustomer,56,a,</span>}</code> - will display all web app items that belong to the customer that's logged in for a web app with ID 56</li>
+    <li><code>{<span>module_webappscustomer,56,c,14609,,_blank,,13 template="/layouts/custom/walist.html"</span>}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
+</ul>
+</div>
 </div>

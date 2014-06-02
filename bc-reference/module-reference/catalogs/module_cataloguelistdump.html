@@ -11,19 +11,19 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>odule_cataloguelistdump/cataloglistdump catalogId=&quot;14886&quot; rowCount=&quot;2&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Weight&quot;}</code></p>
+<pre class="language-markup"><code>{<span>module_cataloguelistdump/cataloglistdump catalogId=&quot;14886&quot; rowCount=&quot;2&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Weight&quot;</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>-1</strong> - Use <em>-1</em> to display parent catalogs, use <em>-2</em> to display all catalogs including sub-catalogs</li>
-<li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
+<li><strong>catalogId</strong> - Use <em>-1</em> to display parent catalogs, use <em>-2</em> to display all catalogs including sub-catalogs</li>
+<li><strong>rowCount</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
 <li><strong>targetFrame</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
 
-<li><strong>sortBy</strong> - will sort the web apps in specified order
+<li><strong>sortType</strong> - will sort the web apps in specified order
 <ul>
-<li>Alphabetical - sorts items alphabetically</li>
-<li>Weight - sorts items by weight</li>
+<li><strong>Alphabetical</strong> - sorts items alphabetically</li>
+<li><strong>Weight</strong> - sorts items by weight</li>
 </ul>
 </li>
 </ul>
@@ -32,26 +32,26 @@
 <div class="examples">
   <h2>Examples</h2>
 <ul>
-<li><code>{<span>module_cataloguelistdump,-1,1,_blank,Alphabetical</span>}</code> - this module will display the catalogue list in the new window, alphabetically and all in one column</li>
+<li><code>{<span>module_cataloguelistdump catalogId="-1" </span>rowCount=&quot;<span>1&quot; </span>targetFrame=&quot;<span>_blank&quot; sortType=&quot;Alphabetical</span>&quot;}</code> - this module will display the catalogue list in the new window, alphabetically and all in one column</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_cataloguelistdump,-1,rowLength,targetFrame,sortBy</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_cataloguelistdump,catalogID,rowLength,targetFrame,sortBy</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>-1</strong> - Use <em>-1</em> to display parent catalogs, use <em>-2</em> to display all catalogs including sub-catalogs</li>
+<li><strong>catalogID</strong> - Use <em>-1</em> to display parent catalogs, use <em>-2</em> to display all catalogs including sub-catalogs</li>
 <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
 <li><strong>targetFrame</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
 
 <li><strong>sortBy</strong> - will sort the web apps in specified order
 <ul>
-<li>Alphabetical - sorts items alphabetically</li>
-<li>Weight - sorts items by weight</li>
+<li><strong>Alphabetical</strong> - sorts items alphabetically</li>
+<li><strong>Weight</strong> - sorts items by weight</li>
 </ul>
 </li>
 </ul>

@@ -11,18 +11,18 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_url,param=&quot;param1&quot;}</code></p>
+<pre class="language-markup"><code>{<span></span>module_url param=&quot;param1&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>variable</strong> -this is the name of the query parameter, see the example below</li>
+    <li><strong>param</strong> -this is the name of the query parameter, see the example below</li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_url,question</span>}</code> - assuming the URL is mysite.com?question=how_are_you this module will display in plain text <em>How_are_you</em></li>
+    <li><code>{<span>module_url param=&quot;question</span>&quot;}</code> - assuming the URL is mysite.com?question=how_are_you this module will display in plain text <em>How_are_you</em></li>
 </ul>
 </div>
 </div>

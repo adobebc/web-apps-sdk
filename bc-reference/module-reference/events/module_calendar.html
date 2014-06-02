@@ -21,19 +21,19 @@
 <ul>
     <li><strong>eventType</strong> - the type of item to display. This parameter has 3 possible values:
 <ul>
-        <li>&quot;all&quot; - display both News and Events</li>
-        <li>&quot;news&quot; - display only News</li>
-        <li>&quot;events&quot; - display only Events</li>
+        <li><strong>all</strong> - display both News and Events</li>
+        <li><strong>news</strong> - display only News</li>
+        <li><strong>events</strong> - display only Events</li>
     </ul>
     </li>
     <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
 <ul>
-        <li>&quot;all&quot; - all items</li>
-        <li>&quot;classified&quot; - displays an item in a particular category</li>
+        <li><strong>all</strong> - all items</li>
+        <li><strong>classified</strong> - displays an item in a particular category</li>
     </ul>
     </li>
     <li><strong>classificationid</strong> -if you choose to display the classified calendar items specify the classification ID here</li>
-        <li><strong>notemplate</strong> -if you choose to display the classified calendar items specify the classification ID here</li>
+        <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
             <li><strong>targetframe</strong> - specify the way the item opens when it is clicked. the possible values are:
             <ul>
             <li><strong>_blank</strong> - open the new item in a new window</li>
@@ -62,7 +62,7 @@
 <div id="legacy">
   <div class="syntax">
 <h2> Syntax</h2>
-<pre class="language-markup"><code>{<span>module_calendar,what,filter,</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_calendar,what,filter,</span>classificationid, notemplate, targetFrame}</code></pre>
 </div>
 <div class="parameters">
 <h2> Parameters</h2>
@@ -76,9 +76,17 @@
     </li>
     <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
 <ul>
-        <li>a - all items</li>
-        <li>c - displays an item in a particular category</li>
-    </ul>
+  <li>a - all items</li>
+  <li>c - displays an item in a particular category</li>
+</ul>
+    </li>
+    <li><strong>classificationid</strong> -if you choose to display the classified calendar items specify the classification ID here</li>
+    <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
+    <li><strong>targetframe</strong> - specify the way the item opens when it is clicked. the possible values are:
+      <ul>
+        <li><strong>_blank</strong> - open the new item in a new window</li>
+        <li><strong>_self</strong> - open the new item in the same window</li>
+      </ul>
     </li>
 </ul>
 </div>

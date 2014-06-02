@@ -12,7 +12,7 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_breadcrumbs separator=&quot;:&quot;</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_breadcrumbs separator=&quot;|&quot;</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -23,8 +23,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_breadcrumbs, |</span>}</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
-<pre class="language-markup">
+    <li><code>{<span>module_breadcrumbs separator=&quot;|&quot;</span>}</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
+      <pre class="language-markup">
 <code>
     &lt;a href="/parentpage.htm"&gt;Parentpage&lt;/a&gt;
     " | "

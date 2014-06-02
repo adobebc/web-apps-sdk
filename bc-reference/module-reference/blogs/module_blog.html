@@ -12,21 +12,24 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_blog filter=&quot;item(individual)/all/classified/lastclassified/random/latest/randomclassified&quot; itemId=&quot;1&quot;}</code></p>
+<pre class="language-markup"><code>{<span></span>module_blog filter=&quot;item(individual)/all/classified/lastclassified/random/latest/randomclassified&quot; itemId=&quot;1&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+  <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
 <ul>
-        <li>i - individual item</li>
-        <li>a - all items</li>
-        <li>l - latest items</li>
-        <li>r - random item</li>
-        <li>cr - displays a random item in a particular category</li>
+        <li><strong>item</strong> - individual item</li>
+        <li><strong>all</strong> - all items</li>
+        <li><strong>latest</strong> - latest items</li>
+        <li><strong>lastclassified</strong> - latest items in a category</li>
+        
+        <li><strong>random</strong> - random item</li>
+        <li><strong>randomclassified</strong> - displays a random item in a particular category</li>
+        <li><strong>classified</strong> - all the items in a category</li>
     </ul>
     </li>
-    <li><strong>ID</strong> - system generated (do not change)</li>
+    <li><strong>itemId</strong>- system generated (do not change), this is the blog item's ID</li>
 </ul>
 </div>
 <div class="layouts">
@@ -40,7 +43,7 @@
 <h2>Examples</h2>
 <ul>
     <li>
-    <code>{<span>module_blog,i,419</span>}</code> - will display the individual blog with ID of 419
+    <code>{<span>module_blog filter=&quot;item&quot; itemId=&quot;419</span>&quot;}</code> - will display the individual blog with ID of 419
     </li>
 </ul>
 </div>

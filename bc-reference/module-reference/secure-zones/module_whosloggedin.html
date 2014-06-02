@@ -16,12 +16,14 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>page</strong> - is the page you want to send the customer to when they click on [Log in] link. </li>
+<li><strong>loginUrl</strong> - is the page you want to send the customer to when they click on [Log in] link. </li>
+
+    <li><strong>logoutRedirUrl</strong> - is the page you want to send the customer to when they click on [Log in] link. </li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<pre class="language-markup"><code>{<span>module_whosloggedin,/loginpage.htm</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_whosloggedin loginUrl="/loginpage.htm"</span>}</code></pre>
 <ul>
     <li>when customer logged in - <code>&quot;John Smith logged in. &lt;a href=&quot;/LogOutProcess.aspx&quot;&gt;Log out&lt;/a&gt;&quot;</code></li>
     <li>when customer not logged in - <code>&quot;No one logged in. &lt;a href=&quot;/loginpage.html&quot;&gt;Log in&lt;/a&gt;&quot;</code></li>
@@ -36,12 +38,15 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_whosloggedin,page</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_whosloggedin,loginUrl,logoutRedirUrl</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>page</strong> - is the page you want to send the customer to when they click on [Log in] link. </li>
+    
+  <li><strong>loginUrl</strong> - is the page you want to send the customer to when they click on [Log in] link. </li>
+  <li><strong>logoutRedirUrl</strong> - is the page you want to send the customer to when they click on [Log in] link. </li>
+  <li></li>
 </ul>
 </div>
 <div class="examples">

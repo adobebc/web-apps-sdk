@@ -17,8 +17,8 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>ID</strong> - if you use <em>-1</em>, you will display the summary across the whole site. For a single blog you need to use the blog ID.</li>
-    <li><strong>numberfOfPosts</strong> - limits the number of posts the module can display. Default is <em>5</em> posts.</li>
+    <li><strong>blogId</strong> - if you use <em>-1</em>, you will display the summary across the whole site. For a single blog you need to use the blog ID.</li>
+    <li><strong>rowCount</strong> - limits the number of posts the module can display. Default is <em>5</em> posts.</li>
 </ul>
 </div>
 <div class="layouts">
@@ -29,7 +29,7 @@
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<pre class="language-markup"><code>{<span>module_blogsitesummary,9216</span>}</code> will output:</p>
+<code>{<span>module_blogsitesummary blogId=&quot;9216</span>&quot;}</code> will output:
 <ul>
     <li>Some Philosophical questions Richard Dawkins 01-Jan-2000</li>
     <li>Welcome to my Blog! Woody Mark 01-Jan-2000</li>
@@ -59,7 +59,7 @@ As you can see above, the module displays the post titles followed by the name o
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<pre class="language-markup"><code>{<span>module_blogsitesummary,9216</span>}</code> will output:</p>
+<code>{<span>module_blogsitesummary,9216</span>}</code> will output:
 <ul>
     <li>Some Philosophical questions Richard Dawkins 01-Jan-2000</li>
     <li>Welcome to my Blog! Woody Mark 01-Jan-2000</li>

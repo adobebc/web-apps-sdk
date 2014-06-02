@@ -1,6 +1,6 @@
 <div class="description">
 <h2>Description</h2>
-<p>Something about the Booking module.</p>
+<p>Displays Booking items.</p>
 </div>
 <ul id="tabs" class="alpha">
 
@@ -10,25 +10,32 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_booking filter=&quot;item(individual)/all/classified/random/latest/randomClassified&quot; itemid=&quot;newsId or classificationId&quot; rowCount=&quot;10&quot; template=&quot;a.tpl&quot;</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_booking filter=&quot;item(individual)/all/classified/random/latest/randomClassified&quot; itemid=&quot;neventId or classificationId&quot; rowCount=&quot;10&quot; template=&quot;a.tpl&quot;</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+     <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
 <ul>
-        <li>i - individual item</li>
-        <li>a - all items</li>
-        <li>l - latest items</li>
-        <li>r - random item</li>
-        <li>cr - displays a random item in a particular category</li>
+        <li><strong>item</strong> - individual item</li>
+        <li><strong>all</strong> - all items</li>
+        <li><strong>latest</strong> - latest items</li>
+        
+        <li><strong>random</strong> - random item</li>
+        <li><strong>randomclassified</strong> - displays a random item in a particular category</li>
+        <li><strong>classified</strong> - all the items in a category</li>
     </ul>
     </li>
-    <li><strong>ID</strong> or numberOfBookings
-<ul>
-        <li>id - the ID of the booking module. This is system generated and does not need to be changed</li>
-        <li>numberOfBookings - can be used in conjunction with l parameter to limit the number of bookings displayed</li>
+    <li><strong>itemid</strong> - depending on the filter chosen this can be either one of (see the Examples section for details):
+      <ul>
+    <li>the ID of the booking module</li>
+    <li>the ID of the category</li>
+    <li>the number of booking items to be displayed</li>
     </ul>
+    </li>
+      <li><strong>rowCount</strong> - number of items per row</li>
+        <li><strong>template</strong> - the path to the custom template you want this module to be rendered with</li>
+      
     </li>
 </ul>
 </div>
@@ -42,13 +49,13 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_booking,a</span>}</code> - displays all the bookings</li>
-    <li><code>{<span>module_booking,i,24407</span>}</code> - displays an individual event item with the ID 24407</li>
-    <li><code>{<span>module_booking,l,5</span>}</code> - displays 5 latest events</li>
-    <li><code>{<span>module_booking,r</span>}</code> - displays a single random item</li>
-    <li><code>{<span>module_booking,c,14075</span>}</code> - displays all the items classified in the category with the ID 14075</li>
-    <li><code>{<span>module_booking,cr,14075</span>}</code> - displays a random item classified in the category with the ID 14075</li>
-    <li><code>{<span>module_booking,i,63522  template="/layouts/custom/bookings.tpl"</span>}</code> - displays an individual item using a <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{<span>module_booking filter=&quot;all&quot;</span>}</code> - displays all the bookings</li>
+    <li><code>{<span>module_booking </span>filter=&quot;<span>item&quot; itemid=&quot;24407</span>&quot;}</code> - displays an individual event item with the ID 24407</li>
+    <li><code>{<span>module_booking </span>filter=&quot;<span>l&quot; itemid=&quot;5&quot;</span>}</code> - displays 5 latest events</li>
+    <li><code>{<span>module_booking </span>filter=&quot;random&quot;}</code> - displays a single random item</li>
+    <li><code>{<span>module_booking </span>filter=&quot;<span>classified&quot; </span>itemid=&quot;<span>14075</span>&quot;}</code> - displays all the items classified in the category with the ID 14075</li>
+    <li><code>{<span>module_booking </span>filter=&quot;<span>randomclassified&quot; </span>itemid=&quot;<span>14075&quot;</span>}</code> - displays a random item classified in the category with the ID 14075</li>
+    <li><code>{<span>module_booking </span>filter=&quot;<span>item&quot; </span>itemid=&quot;<span>63522&quot;  template="/layouts/custom/bookings.tpl"</span>}</code> - displays an individual item using a <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 </div>
 </div>

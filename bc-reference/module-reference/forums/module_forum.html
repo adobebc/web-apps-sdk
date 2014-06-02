@@ -12,22 +12,27 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_forum filter="item(individual)/all/classified/lastclassified/random/latest/randomclassified" itemid="newsId or classificationId" noTemplate="false/true" template="a.tpl"</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_forum filter="item(individual)/all/classified/lastclassified/random/latest/randomclassified" itemid="newsId or classificationId" noTemplate="false/true" targetFrame=&quot;_self&quot; template="a.tpl"</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<li><strong>filter</strong> - filtering criteria for display and can be one of the following:
 <ul>
-        <li>i - individual item</li>
-        <li>a - all items</li>
-        <li>l - latest items</li>
-        <li>r - random item</li>
-        <li>cr - displays a random item in a particular category</li>
+        <li><strong>item</strong> - individual item</li>
+        <li><strong>all</strong> - all items</li>
+        <li><strong>latest</strong> - latest items</li>
+        <li><strong>lastclassified</strong> - latest items in a category</li>
+        
+        <li><strong>random</strong> - random item</li>
+        <li><strong>randomclassified</strong> - displays a random item in a particular category</li>
+        <li><strong>classified</strong> - all the items in a category</li>
     </ul>
     </li>
-    <li><strong>ID</strong> - system generated (do not change)</li>
+    <li><strong>itemid</strong> - system generated (do not change)</li>
+    <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
     <li><strong>targetFrame</strong> - the frame in which to open the item in</li>
+    <li><strong>template </strong>- the custom template to be used</li>
 </ul>
 </div>
 <div class="layouts">
@@ -40,8 +45,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_forum,i,317,true</span>}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
-    <li><code>{<span>module_forum,a, template="/layouts/custom/individual_forum.tpl"</span>}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{<span>module_forum filter=&quot;item&quot; itemid=&quot;317&quot; targetFrame=&quot;_blank&quot;</span>}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
+    <li><code>{<span>module_forum filter=&quot;all&quot;  template="/layouts/custom/individual_forum.tpl"</span>}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 </div>
 </div>
@@ -76,7 +81,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_forum,i,317,true</span>}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
+    <li><code>{<span>module_forum,i,317,_blank</span>}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
     <li><code>{<span>module_forum,a, template="/layouts/custom/individual_forum.tpl"</span>}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 </div>

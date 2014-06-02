@@ -11,15 +11,15 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_productlistdump catalogId=&quot;14886&quot; rowCount=&quot;2&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Weight&quot;}</code></p>
+<pre class="language-markup"><code>{<span></span>module_productlistdump catalogId=&quot;14886&quot; rowCount=&quot;2&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Weight&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>catID</strong> - the catalogID, the productlistdump will list the products inside that catalog. This can also be "-1" - this will list all the products in the site.</li>
-    <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
+    <li><strong>catalogId</strong> - the catalogID, the productlistdump will list the products inside that catalog. This can also be "-1" - this will list all the products in the site.</li>
+    <li><strong>rowCount</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
     <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
-    <li><strong>sortBy</strong> - will sort the item in specified order
+    <li><strong>sortType</strong> - will sort the item in specified order
 <ul>
         <li>Alphabetical - sorts items alphabetically</li>
         <li>Weight - sorts items by weight</li>
@@ -40,8 +40,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_productlistdump,63858,,_blank,Alphabetical</span>}</code> - displays all the products in the catalog with the ID 63858 ordered alphabetically. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) in a new tab.</li>
-    <li><code>{<span>module_productlistdump,-1,,_self,weight</span>}</code> - displays all the products regardless of the catalog they are in ordered by weight. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) in the same tab.</li>
+    <li><code>{<span>module_productlistdump catalogId=&quot;63858&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Alphabetical</span>&quot;}</code> - displays all the products in the catalog with the ID 63858 ordered alphabetically. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) in a new tab.</li>
+    <li><code>{<span>module_productlistdump </span>catalogId=&quot;<span>-1&quot; </span>targetFrame=&quot;<span>_self&quot; </span>sortType=&quot;<span>weight</span>&quot;}</code> - displays all the products regardless of the catalog they are in ordered by weight. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) in the same tab.</li>
 </ul>
 </div>
 </div>
@@ -58,8 +58,8 @@
     <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
     <li><strong>sortBy</strong> - will sort the item in specified order
 <ul>
-        <li>Alphabetical - sorts items alphabetically</li>
-        <li>Weight - sorts items by weight</li>
+        <li><strong>Alphabetical</strong> - sorts items alphabetically</li>
+        <li><strong>Weight</strong> - sorts items by weight</li>
     </ul>
     </li>
 </ul>

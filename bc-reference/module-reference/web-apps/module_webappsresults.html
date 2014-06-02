@@ -10,7 +10,7 @@
     <li><a href="#named-params">New named parameters dcumentation</a></li>
     <li><a href="#legacy">Legacy module documentation</a></li>
   </ul>
-  <div id="named-params" class="alpha nocontent">
+<div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
 <pre class="language-markup"><code>{<span>module_webappsresults|industrycontentresults targetFrame="_blank" useBackupTemplate="true|false" resultsPerPage="4" hideEmptyMessage="true|fasle" rowCount="2" sortType="Default|DATE|DATEREVERSE|ALPHABETICAL|WEIGHTREVERSE"</span>}</code></pre>
@@ -18,18 +18,17 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>notUsed</strong> - RESERVED (please do not use this space)</li>
-    <li><strong>target</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
-    <li><strong>bkp </strong>- specify <em>True</em> if you want to use the backup list template or leave empty</li>
+    <li><strong>targetFrame</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
+    <li><strong>useBackupTemplate </strong>- specify <strong>true</strong> if you want to use the backup list template or leave empty</li>
     <li><strong>resultsPerPage</strong> - total number of items per page before pagination is used</li>
-    <li><strong>hideEmptyMessage</strong> - specify <em>True</em> if you don't want the <em>No Items Found</em> message to be displayed.</li>
-    <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
-    <li><strong>sort</strong>
-<ul>
+    <li><strong>hideEmptyMessage</strong> - specify <strong>true </strong>if you don't want the <em>No Items Found</em> message to be displayed.</li>
+    <li><strong>rowCount</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+    <li><strong>sortType</strong>
+      <ul>
         <li>ALPHABETICAL (default) - items are sorted in alphabetical order form A-Z</li>
         <li>DATE - items are sorted from newest to oldest. The most recent item is displayed first.</li>
         <li>DATEREVERSE - will display the web app items oldest to newest</li>
-        <li>weightreverse - allows you to display the web apps by weight but in reverse, that is the item with the smallest weight is displayed first.</li>
+        <li>WEIGHTREVERSE - allows you to display the web apps by weight but in reverse, that is the item with the smallest weight is displayed first.</li>
     </ul>
     </li>
 </ul>
@@ -44,7 +43,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_webappsresults,,_blank,true,16,true,3,REVERSEDATE</span>}</code> - This module will display the web app search results</li>
+    <li><code>{<span>module_webappsresults targetFrame=&quot;_blank&quot; useBackupTemplate=&quot;true&quot; resultsPerPage=&quot;16&quot; hideEmptyMessage=&quot;true&quot; rowCount=&quot;3&quot; sortType=&quot;REVERSEDATE</span>&quot;}</code> - This module will display the web app search results</li>
     <li><code>{<span>module_webappsresults template="/layouts/custom/walist.html"</span>}</code> - This module will display the web app search results using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 </div>
@@ -59,9 +58,9 @@
 <ul>
     <li><strong>notUsed</strong> - RESERVED (please do not use this space)</li>
     <li><strong>target</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
-    <li><strong>bkp </strong>- specify <em>True</em> if you want to use the backup list template or leave empty</li>
+    <li><strong>bkp </strong>- specify <strong>true</strong> if you want to use the backup list template or leave empty</li>
     <li><strong>resultsPerPage</strong> - total number of items per page before pagination is used</li>
-    <li><strong>hideEmptyMessage</strong> - specify <em>True</em> if you don't want the <em>No Items Found</em> message to be displayed.</li>
+    <li><strong>hideEmptyMessage</strong> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed.</li>
     <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
     <li><strong>sort</strong>
 <ul>

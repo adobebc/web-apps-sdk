@@ -1,4 +1,4 @@
-<h1>{<span>module_webappsresults</span>}</h1>
+<h1>{<span>module_webappsresultsmap</span>}</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Displays the webapp search results as pointers on a Google map. This module can be used together with <a href="/dev-assets/reference/module-reference/web-apps/module_webappsresults.html">{<span>module_webappsresults</span>}</a></p>
@@ -16,16 +16,16 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>Google key</strong> - enter the Google Maps key here. To get a key please follow the steps described in <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">this article</a>.</li>
+    <li><strong>googleKey</strong> - enter the Google Maps key here. To get a key please follow the steps described in <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">this article</a>.</li>
     <li><strong>width</strong> - the width in pixels of the Google Maps canvas</li>
     <li><strong>height</strong> - the height in pixels of the Google Maps canvas</li>
     <li><strong>resultsPerPage</strong> - total number of items that will be rendered, enter "-1" to render all the items</li>
-    <li><strong>sort type</strong>
+    <li><strong>sortType</strong>
 <ul>
         <li>ALPHABETICAL (default) - items are sorted in alphabetical order form A-Z</li>
         <li>DATE - items are sorted from newest to oldest. The most recent item is displayed first.</li>
         <li>DATEREVERSE - will display the web app items oldest to newest</li>
-        <li>weightreverse - allows you to display the web apps by weight but in reverse, that is the item with the smallest weight is displayed first.</li>
+        <li>WEIGHTREVERSE - allows you to display the web apps by weight but in reverse, that is the item with the smallest weight is displayed first.</li>
     </ul>
     </li>
 </ul>
@@ -39,14 +39,14 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_webappsresultsmap,MY_GOOGLE_MAPS_KEY,400,400,-1,default</span>}</code> - displays all the search result webapp items ordered alphabetically on a 400px x 400px Google map</li>
+    <li><code>{<span>module_webappsresultsmap googleKey="ABCDEGHHIJKLMNOPQ" width=&quot;400&quot; height=&quot;400&quot; resultsPerPage=&quot;-1&quot; sortType=&quot;default</span>&quot;}</code> - displays all the search result webapp items ordered alphabetically on a 400px x 400px Google map</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_webappsresultsmap,Google key,width,height,resultsPerPage,sort type</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_webappsresultsmap,Google key,width,height,resultsPerPage,sortType</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -55,8 +55,8 @@
     <li><strong>width</strong> - the width in pixels of the Google Maps canvas</li>
     <li><strong>height</strong> - the height in pixels of the Google Maps canvas</li>
     <li><strong>resultsPerPage</strong> - total number of items that will be rendered, enter "-1" to render all the items</li>
-    <li><strong>sort type</strong>
-<ul>
+    <li><strong>sortType</strong>
+      <ul>
         <li>ALPHABETICAL (default) - items are sorted in alphabetical order form A-Z</li>
         <li>DATE - items are sorted from newest to oldest. The most recent item is displayed first.</li>
         <li>DATEREVERSE - will display the web app items oldest to newest</li>

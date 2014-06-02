@@ -13,7 +13,7 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_case filter=&quot;all|workflow&quot; workflowId=&quot;123&quot; sortType=&quot;Subject|Default&quot;</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_case filter=&quot;all|workflow&quot; workflowId=&quot;123&quot; sortType=&quot;Subject|Default&quot; templateId=&quot;&quot;</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -26,11 +26,12 @@
     </li>
     <li><strong>sortBy</strong> - allows you to select the order in which you want to sort the items.
 <ul>
-        <li>Default - default sort here is Date Created</li>
+        <li>Default - default sort here is <strong>Date Created</strong></li>
         <li>Subject - sorts items according to the subject name alphabetically</li>
     </ul>
     </li>
-    <li><strong>templateId</strong> - the sitewide template used to display the case details page</li>
+     <li><strong>workflowId</strong> - appears only when selecting "all items in a workflow" as a display criteria </li>
+    <li><strong>templateId</strong> - the ID of the sitewide template used to display the case details page</li>
 </ul>
 </div>
 <div class="layouts">
@@ -44,9 +45,9 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_case,a,,Default</span>}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by date</li>
-    <li><code>{<span>module_case,a,,Subject</span>}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by subject which is the web form name if generated automatically and will be displayed alphabetically</li>
-    <li><code>{<span>module_case,c,25261,Default,1440381</span>}</code> - This module will display all cases that have workflow 25261 assigned to them, sort them by date, and assign template id #1440381 to the detail list for each case opened from the generated list </li>
+    <li><code>{<span>module_case filter=&quot;a&quot; sortType=&quot;Default</span>&quot;}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by date</li>
+    <li><code>{<span>module_case filter=&quot;a&quot; </span>sortType=&quot;<span>Subject</span>&quot;}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by subject which is the web form name if generated automatically and will be displayed alphabetically</li>
+    <li><code>{<span>module_case filter=&quot;c&quot; workflowId=&quot;25261&quot; sortType=&quot;Default&quot; templateId=&quot;1440381</span>&quot;}</code> - This module will display all cases that have workflow 25261 assigned to them, sort them by date, and assign template id #1440381 to the detail list for each case opened from the generated list </li>
 </ul>
 </div>
 </div>
@@ -60,8 +61,8 @@
 <ul>
     <li><strong>filter</strong> - sets display criteria.
 <ul>
-        <li>a - displays all items that belong to that customer</li>
-        <li>c - display all cases that have a particular workflow assigned to them. Please note that only if this filter is used is the workflowID used as a next parameter. The best way to set the ID is to use module manager.</li>
+        <li><strong>a</strong> - displays all items that belong to that customer</li>
+        <li><strong>c</strong> - display all cases that have a particular workflow assigned to them. Please note that only if this filter is used is the workflowID used as a next parameter. The best way to set the ID is to use module manager.</li>
     </ul>
     </li>
     <li><strong>sortBy</strong> - allows you to select the order in which you want to sort the items.
@@ -70,7 +71,8 @@
         <li>Subject - sorts items according to the subject name alphabetically</li>
     </ul>
     </li>
-    <li><strong>templateId</strong> - the sitewide template used to display the case details page</li>
+    <li><strong>workflowId</strong> - appears only when selecting "all items in a workflow" as a display criteria </li>
+    <li><strong>templateId</strong> - the ID of the sitewide template used to display the case details page</li>
 </ul>
 </div>
 <div class="layouts">

@@ -16,12 +16,16 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+    <li><strong>rowCount</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
     <li><strong>targetFrame</strong> - possible values are  <em>_blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
     <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page.</li>
     <li><strong>sortType</strong> - sortType can be alphabetical, price, date, or weight. Do note the sortType is ignored if the "Sort By" field is present in the product search form.</li>
-    <li><strong>hideEmptyMessage</strong> - specify <em>True</em> if you don't want the <em>No Items Found</em> message to be displayed</li>
-    <li><strong>UseLi</strong> - specify <em>True</em> to render the output in Li's instead of tables</li>
+    <li><strong>hideEmptyMessage</strong> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed</li>
+    <li><strong>useLi</strong> - specify <strong>true</strong> to render the output in Li's instead of tables</li>
+    <li><strong>hidePageNumbers</strong> - specify <strong>true</strong> to render the output in Li's instead of tables ???</li>
+    <li><strong>paginationLinks</strong> - specify <strong>true</strong> to render the output in Li's instead of tables ???</li>
+    <li><strong>hideSecuredItems</strong> - do not show items that are in a secure zone</li>
+    <li><strong>template</strong> - specify the custom template you want to render this module with</li>
 </ul>
 </div>
 <div class="layouts">
@@ -34,9 +38,9 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_productresults,4,_blank,10,,true</span>}</code> - displays the products that match the search criteria 4 per rotw, 10 per page and hides the "No products found matching your query." if no products are found. The structure rendered is a table. When clicking the product name the detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in a new tab.</li>
-    <li><code>{<span>module_productresults,,_self,2,,,true</span>}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure rendered is an unordered list. When clicking the product name the detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in the same tab.</li>
-    <li><code>{<span>module_productresults,2,_self,2,,,true  template="/layouts/custom/moduleproductresults.tpl"</span>}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure is no longer an unordered list as it is in the example above, the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> is used instead.</li>
+    <li><code>{<span>module_productresults rowCount=&quot;4&quot; targetFrame=&quot;_blank&quot; resultsPerPage=&quot;10&quot; hideEmptyMessage=&quot;true</span>&quot;}</code> - displays the products that match the search criteria 4 per rotw, 10 per page and hides the "No products found matching your query." if no products are found. The structure rendered is a table. When clicking the product name the detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in a new tab.</li>
+    <li><code>{<span>module_productresults </span>targetFrame=&quot;<span>_self&quot; </span>resultsPerPage=&quot;<span>2&quot; </span>hideEmptyMessage=&quot;<span>true</span>&quot;}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure rendered is an unordered list. When clicking the product name the detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in the same tab.</li>
+    <li><code>{<span>module_productresults </span>rowCount=&quot;<span>2&quot; </span>targetFrame=&quot;<span>_self&quot; </span>resultsPerPage=&quot;<span>2&quot; </span>hideEmptyMessage=&quot;<span>true&quot;  template="/layouts/custom/moduleproductresults.tpl"</span>}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure is no longer an unordered list as it is in the example above, the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> is used instead.</li>
 </ul>
 </div>
 </div>
@@ -52,8 +56,12 @@
     <li><strong>targetFrame</strong> - possible values are  <em>_blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
     <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page.</li>
     <li><strong>sortType</strong> - sortType can be alphabetical, price, date, or weight. Do note the sortType is ignored if the "Sort By" field is present in the product search form.</li>
-    <li><strong>hideEmptyMessage</strong> - specify <em>True</em> if you don't want the <em>No Items Found</em> message to be displayed</li>
-    <li><strong>UseLi</strong> - specify <em>True</em> to render the output in Li's instead of tables</li>
+    <li><strong>hideEmptyMessage</strong> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed</li>
+    <li><strong>UseLi</strong> - specify <strong>true</strong> to render the output in Li's instead of tables</li>
+    <li><strong>hidePageNumbers</strong> - specify <strong>true</strong> to render the output in Li's instead of tables ???</li>
+    <li><strong>paginationLinks</strong> - specify <strong>true</strong> to render the output in Li's instead of tables ???</li>
+    <li><strong>hideSecuredItems</strong> - do not show items that are in a secure zone</li>
+    <li><strong>template</strong> - specify the custom template you want to render this module with</li>
 </ul>
 </div>
 <div class="layouts">

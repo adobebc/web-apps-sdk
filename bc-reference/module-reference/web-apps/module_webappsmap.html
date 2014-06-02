@@ -17,7 +17,21 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>Google key</strong> - enter the Google Maps key here. To get a key please follow the steps described in <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">this article</a>.</li>
+    <li><strong>id </strong>- the webapp ID or the webapp name</li>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+  <ul>
+    <li><strong>item</strong> - individual item</li>
+    <li><strong>all</strong> - all items</li>
+    <li><strong>latest</strong> - latest items</li>
+    <li><strong>lastclassified</strong> - latest items in a category</li>
+    
+    <li><strong>random</strong> - random item</li>
+    <li><strong>randomclassified</strong> - displays a random item in a particular category</li>
+    <li><strong>classified</strong> - all the items in a category</li>
+  </ul>
+    </li>
+    <li><strong>itemid </strong>-the category ID or the category name</li>
+    <li><strong>googleKey</strong> - enter the Google Maps key here. To get a key please follow the steps described in <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">this article</a>.</li>
     <li><strong>width</strong> - the width in pixels of the Google Maps canvas</li>
     <li><strong>height</strong> - the height in pixels of the Google Maps canvas</li>
     <li><strong>resultsPerPage</strong> - total number of items that will be rendered, enter "-1" to render all the items</li>
@@ -32,19 +46,31 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_webappsmap,56,a,,MY_GOOGLE_KEY,400,400,-1}</span>}</code> - displays all the webapp items on a 400px x 400px Google map</li>
+    <li><code>{<span>module_webappsmap id=&quot;56&quot; filter=&quot;a&quot; googleKey= &quot;ABCD&quot; width=&quot;400&quot; height=&quot;400&quot; resultsPerPage=&quot;-1&quot;</span>}</code> - displays all the webapp items on a 400px x 400px Google map</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_webappsmap,Google key,,width,height,resultsPerPage</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_webappsmap,id,filter,itemid,Google key,width,height,resultsPerPage</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>Google key</strong> - enter the Google Maps key here. To get a key please follow the steps described in <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">this article</a>.</li>
+    <li><strong>id </strong>- the webapp ID or the webapp name</li>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+      <ul>
+        <li>i - individual item</li>
+        <li>a - all items</li>
+        <li>l - latest items</li>
+        <li>r - random item</li>
+        <li>cl - latest items in a particular category</li>
+        <li>cr - displays a random item in a particular category</li>
+      </ul>
+      </li><li><strong>itemid </strong>-the category ID or the category name
+      </li>
+      <li><strong>Google key</strong> - enter the Google Maps key here. To get a key please follow the steps described in <a href="https://developers.google.com/maps/documentation/javascript/tutorial#api_key">this article</a>.</li>
     <li><strong>width</strong> - the width in pixels of the Google Maps canvas</li>
     <li><strong>height</strong> - the height in pixels of the Google Maps canvas</li>
     <li><strong>resultsPerPage</strong> - total number of items that will be rendered, enter "-1" to render all the items</li>
@@ -59,7 +85,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_webappsmap,56,a,,MY_GOOGLE_KEY,400,400,-1}</span>}</code> - displays all the webapp items on a 400px x 400px Google map</li>
+    <li><code>{<span>module_webappsmap,56,a,,MY_GOOGLE_KEY,400,400,-1</span>}</code> - displays all the webapp items on a 400px x 400px Google map</li>
 </ul>
 </div>
 </div>

@@ -17,23 +17,33 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>ID</strong> - system generated web app id (do not change)</li>
-    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+    <li><strong>id</strong> -  web app id or the web app's name</li>
+<li><strong>filter</strong> - filtering criteria for display and can be one of the following:
 <ul>
-        <li>i - individual item</li>
-        <li>a - all items</li>
-        <li>l - latest items</li>
-        <li>r - random item</li>
-        <li>cl - latest items in a particular category</li>
-        <li>cr - displays a random item in a particular category</li>
+        <li><strong>item</strong> - individual item</li>
+        <li><strong>all</strong> - all items</li>
+        <li><strong>latest</strong> - latest items</li>
+        <li><strong>lastclassified</strong> - latest items in a category</li>
+        
+        <li><strong>random</strong> - random item</li>
+        <li><strong>randomclassified</strong> - displays a random item in a particular category</li>
+        <li><strong>classified</strong> - all the items in a category</li>
     </ul>
     </li>
-    <li><strong>itemID</strong> - system generated individual item id (do not change)</li>
-    <li><strong>target</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
-    <li><strong>bkp</strong> - specify True if you want to use the backup list template or leave empty</li>
+    <li><strong>itemid</strong> - system generated individual item id (do not change)</li>
+    <li><strong>targetFrame</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
+    <li><strong>useBackupTemplate</strong> - specify True if you want to use the backup list template or leave empty</li>
     <li><strong>resultsPerPage</strong> - total number of items per page before pagination is used (limit of 500 items per page)</li>
-    <li><strong>hideEmptyMessage</strong> - specify <em>True</em> if you don't want the <em>No Items Found</em> message to be displayed.</li>
-    <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+    <li><strong>hideEmptyMessage</strong> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed.</li>
+    <li><strong>rowCount</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+    <li><strong>sortType</strong>
+<ul>
+        <li>ALPHABETICAL (default) - items are sorted in alphabetical order form A-Z</li>
+        <li>DATE - items are sorted from newest to oldest. The most recent item is displayed first.</li>
+        <li>DATEREVERSE - will display the web app items oldest to newest</li>
+        <li>WEIGHTREVERSE - allows you to display the web apps by weight but in reverse, that is the item with the smallest weight is displayed first.</li>
+    </ul>
+    </li>
 </ul>
 </div>
 <div class="layouts">
@@ -46,15 +56,15 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_webappscustomer,56,a,</span>}</code> - will display all web app items that belong to the customer that's logged in for a web app with ID 56</li>
-    <li><code>{<span>module_webappscustomer,56,c,14609,,_blank,,13 template="/layouts/custom/walist.html"</span>}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
+    <li><code>{<span>module_webappscustomer id=&quot;56&quot; filter=&quot;all&quot;</span>}</code> - will display all web app items that belong to the customer that's logged in for a web app with ID 56</li>
+    <li><code>{<span>module_webappscustomerid=&quot;56&quot; filter=&quot;classified&quot; itemid=&quot;14609&quot; targetFrame=&quot;_blank&quot; resultsPerPage=&quot;13&quot; template="/layouts/custom/walist.html"</span>}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_webappscustomer,ID,filter,itemID,,target,bkp,resultsPerPage,hideEmptyMessage,rowLength</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_webappscustomer,ID,filter,itemID,,target,bkp,resultsPerPage,hideEmptyMessage,rowLength,sortType</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -74,8 +84,16 @@
     <li><strong>target</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
     <li><strong>bkp</strong> - specify True if you want to use the backup list template or leave empty</li>
     <li><strong>resultsPerPage</strong> - total number of items per page before pagination is used (limit of 500 items per page)</li>
-    <li><strong>hideEmptyMessage</strong> - specify <em>True</em> if you don't want the <em>No Items Found</em> message to be displayed.</li>
+    <li><strong>hideEmptyMessage</strong> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed.</li>
     <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+    <li><strong>sortType</strong>
+      <ul>
+        <li>ALPHABETICAL (default) - items are sorted in alphabetical order form A-Z</li>
+        <li>DATE - items are sorted from newest to oldest. The most recent item is displayed first.</li>
+        <li>DATEREVERSE - will display the web app items oldest to newest</li>
+        <li>WEIGHTREVERSE - allows you to display the web apps by weight but in reverse, that is the item with the smallest weight is displayed first.</li>
+      </ul>
+    </li>
 </ul>
 </div>
 <div class="layouts">

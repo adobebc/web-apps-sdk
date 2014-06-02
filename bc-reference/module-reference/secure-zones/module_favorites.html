@@ -11,24 +11,72 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_favorites filter=&quot;item(individual)|all&quot; itemType=&quot;7(news)|48(events)|9(faqs)|6(mediadownloads)|27(products)|35(webapps)&quot; itemId=&quot;&quot;</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_favorites filter=&quot;item(individual)|all&quot; itemType=&quot;7&quot; itemId=&quot;&quot;</span>}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+     <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li>item - individual item</li>
+        <li>all - all items</li>
+</ul>
+     </li>
+    <li><strong>itemType</strong> - 
+      <ul>
+        <li>7 - news items</li>
+    <li>48 - event items</li>
+    <li>9 - FAQ items</li>
+    <li>6 - media downloads</li>
+    <li>27 - products</li>
+    <li>35 - webapps</li>
+      </ul>
+    </li>
+      <li><strong>itemID</strong> - display a particular favorite item</li>
+      
+    </li>
+</ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_favorites</span>}</code> - displays the items that have been added as "favorites" by the currently logged in user. The items (products, news items, faq items, etc) are displayed using their "List" layout.</li>
+    <li><code>{<span>module_favorites</span> itemType=&quot;35&quot;}</code> - displays the webapp items that have been added as "favorites" by the currently logged in user. The items (products, news items, faq items, etc) are displayed using their "List" layout.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_favorites</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_favorites,filter</span>,itemType,itemId}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+     <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li>i - individual item</li>
+        <li>a - all items</li>
+</ul>
+     </li>
+    <li><strong>itemType</strong> - 
+      <ul>
+        <li>7 - news items</li>
+    <li>48 - event items</li>
+    <li>9 - FAQ items</li>
+    <li>6 - media downloads</li>
+    <li>27 - products</li>
+    <li>35 - webapps</li>
+      </ul>
+    </li>
+      <li><strong>itemID</strong> - display a particular favorite item</li>
+      
+    </li>
+</ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_favorites</span>}</code> - displays the items that have been added as "favorites" by the currently logged in user. The items (products, news items, faq items, etc) are displayed using their "List" layout.</li>
+    <li><code>{<span>module_favorites,</span>35}</code> - displays the webapp items that have been added as "favorites" by the currently logged in user. The items (products, news items, faq items, etc) are displayed using their "List" layout.</li>
 </ul>
 </div>
 </div>

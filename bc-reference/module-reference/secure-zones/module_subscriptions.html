@@ -9,18 +9,20 @@
     <li><a href="#named-params">New named parameters dcumentation</a></li>
     <li><a href="#legacy">Legacy module documentation</a></li>
   </ul>
-  <div id="named-params" class="alpha nocontent">
+<div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
 <pre class="language-markup"><code>{<span>module_subscriptions showExpiry="true|false" showPrice="true|false" allowCancel="false|true" renderAsJson="false|true"</span>}</code></pre>
 </div>
+<div class="parameters">
 <h2>Parameters</h2>
 <ul>
-  <li><strong>show_expiry</strong> - shows or hides the expiry date of the secure zone (true/false; default:true)</li>
-  <li><strong>show_prices</strong> - shows or hides the cost of the subscription to that secure zone (true/false; default:true)</li>
-  <li><strong>show_cancel_link</strong> - will show the cancel subscription link. This works only when not setting the <strong>render_json</strong> to <strong>true</strong></li>
-  <li><strong>render_json</strong> - Will render the secure zone information in Json format which can be manually parsed (true/false)</li>
+  <li><strong>showExpiry</strong> - shows or hides the expiry date of the secure zone (true/false; default:true)</li>
+  <li><strong>showPrice</strong> - shows or hides the cost of the subscription to that secure zone (true/false; default:true)</li>
+  <li><strong>allowCancel</strong> - will show the cancel subscription link. This works only when not setting the <strong>renderAsJson</strong> to <strong>true</strong></li>
+  <li><strong>renderAsJson</strong> - Will render the secure zone information in Json format which can be manually parsed. Possible values are <strong>true</strong> or <strong>false</strong>.</li>
 </ul>
+</div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
@@ -59,7 +61,7 @@
 </li>
 </li>
 <li>
-{<span>module_subscriptions,true,true,,true</span>} - renders
+{<span>module_subscriptions showExpiry="true" showPrice="true" renderAsJson="true"</span>} - renders
 <br/>
 <pre class="language-javascript">
 <code>
@@ -96,7 +98,7 @@
 </pre>
 </li>
 <li>
-{<span>module_subscriptions,true,true,true</span>} - renders
+{<span>module_subscriptions showExpiry="true" showPrice="true" allowCancel="true"</span>} - renders
 <br/>
 <pre class="language-markup">
 <code>

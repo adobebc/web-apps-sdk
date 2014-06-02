@@ -12,12 +12,13 @@
   <div id="named-params" class="alpha nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_ratingfeedback sortType=&quot;datereverse|date&quot; template=&quot;&quot;}</code></p>
+<pre class="language-markup"><code>{<span></span>module_ratingfeedback sortType=&quot;datereverse|date&quot; template=&quot;&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>date</strong> - if this parameter is present the comments are ordered newest first</li>
+    <li><strong>sortType</strong> - if this parameter is present the comments are ordered newest first</li>
+     <li><strong>template</strong> - the path to the custom template you want this module to be rendered with</li>
 </ul>
 </div>
 <div class="layouts">
@@ -30,7 +31,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_ratingfeedback,date</span>}</code> - displays the comments newest first</li>
+    <li><code>{<span>module_ratingfeedback sortType="date"</span>}</code> - displays the comments newest first</li>
     <li><code>{<span>module_ratingfeedback template="/layouts/custom/comments.tpl"</span>}</code> - displays the comments using the comments.tpl custom template</li>
 </ul>
 </div>
@@ -38,12 +39,13 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_ratingfeedback,date</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_ratingfeedback,date template=&quot;/customtemplate.tpl&quot;</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>date</strong> - if this parameter is present the comments are ordered newest first</li>
+    <li><strong>template</strong> - the path to the custom template you want this module to be rendered with</li>
 </ul>
 </div>
 <div class="layouts">

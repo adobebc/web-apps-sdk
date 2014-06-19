@@ -1,0 +1,170 @@
+<h1>Supported filters and operators</h1>
+  <h2>Filters</h2>
+  <h3>Mathematical filters</h3>
+<div class="filters math">
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><code><span class="tagname">divided_by</span></code></td>
+            <td><span class="cellcontent">{{500 | divided_by: 20}} is 50</span></td>
+
+           
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code><span class="tagname">minus</span></code></td>
+            <td><span class="cellcontent">{{ 500 | minus: 20}} is 480</span></td>
+        </tr>
+		<tr>
+            <td valign="top" class="cellrowborder"><code>plus</code></td>
+          <td><span class="cellcontent">{{ 500 | plus: 20}} is 520</span></td>
+        </tr>
+		<tr>
+            <td valign="top" class="cellrowborder"><code>times</code></td><td><span class="cellcontent">{{ 500 | times: 2}} is 1000</span></td>
+        </tr>
+        
+    </tbody>
+</table>
+</div>
+
+  <h3>String manipulation filters</h3>
+
+<div class="filters string">
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><code><span class="tagname">append</span></code></td>
+            <td><span class="cellcontent">{{ &quot;This is the first part&quot; | append: &quot; appending the second part&quot;}} outputs &quot;This is the first part  appending the second part&quot;</span></td>
+
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code><span class="tagname">prepend</span></code></td>
+            <td><span class="cellcontent">{{ &quot; this is the second part&quot; | append: &quot;This is the first part&quot;}} outputs &quot;This is the first part  this is thesecond part&quot;</span></td>
+
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code><span class="tagname">capitalize</span></code></td>
+            <td>{{ 'Sample text' | capitalize}}outputs &quot;Sample Text&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top" class="cellrowborder"><code>downcase</code></td>
+          <td>{{ 'Sample text' | capitalize}}outputs &quot;sample text&quot;</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>upcase</code></td>
+          <td>{{ 'Sample text' | capitalize}}outputs &quot;SAMPLE TEXT&quot;</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>remove</code></td>
+          <td>{{ 'Sample text. All occurences of &quot;text&quot; will be removed.' | remove: &quot;text&quot;}}outputs 'Sample . All occurences of &quot;&quot; will be removed.'</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>removefirst</code></td>
+          <td>{{ 'Sample text. The first occurence of &quot;text&quot; will be removed.' | removefirst: &quot;text&quot;}}outputs 'Sample . The first occurence of &quot;text&quot; will be removed.'</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>replace</code></td>
+          <td>{{ 'Sample text. All occurences of &quot;text&quot; will be replced.' | replace: &quot;text&quot;, &quot;string&quot;}}outputs 'Sample string. All occurences of &quot;string&quot; will be replaced.'</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>replacefirst</code></td>
+          <td>{{ 'Sample text. The first occurence of &quot;text&quot; will be replaced.' | replacefirst: &quot;text&quot;, &quot;string&quot;}}outputs 'Sample string. The first occurence of &quot;text&quot; will be replaced.'</td>
+        </tr>
+		
+        
+    </tbody>
+</table>
+</div>
+<h3>Other filters</h3>
+<div class="filters other">
+<table width="100%" class="data-bordered">
+<tbody>
+<tr>
+            <td valign="top" class="cellrowborder"><code>json</code></td>
+            <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using - 
+            <code>{{<span>webapp1.items[0] | json</span>}}</code> 
+            looks like:
+            
+            <pre class="language-javascript"><code>{
+   "itemid":"4646524",
+   "name":"ABA",
+   "urlWithHost":"http://lq2001.mercury.bc.corp.adobe.com/car-catalogue/ABA",
+   "url":"/car-catalogue/ABA",
+   "releaseDate":"2014-06-18",
+   "expiryDate":"9999-01-01",
+   "lastUpdateDate":"2014-06-18",
+   "counter":"1",
+   "weight":"",
+   "Make":"AC model",
+   "Color":"red",
+   "Country":"",
+   "Review":"no review just yet"
+}</pre>
+            Do note you need to make the webapp listing available in a collection before you can access the items in JSON format.</span></td>
+        </tr>
+         <tr>
+            <td valign="top" class="cellrowborder"><code>date</code></td>
+          <td><span class="cellcontent">For this example let's use 2014-06-18. Here are the available switches:<br/>
+          <ul>
+          <li><code>%d</code> - outputs the day of the month - 18</li>
+          <li><code>%M</code> - outputs the month of the year - 6</li>
+          <li><code>%Y</code> - outputs the year - 14</li>
+          </ul>
+          </span></td>
+        </tr>
+        </tbody></table>
+        </div>
+
+<h2>Operators</h2>
+<table>
+  <tbody>
+    <tr>
+      <td><code>==</code></td>
+      <td>equals</td>
+    </tr>
+    <tr>
+      <td><code>!=</code></td>
+      <td>does not equal</td>
+    </tr>
+    <tr>
+      <td><code>&gt;</code></td>
+      <td>greater than</td>
+    </tr>
+    <tr>
+      <td><code>&lt;</code></td>
+      <td>less than</td>
+    </tr>
+    <tr>
+      <td><code>&gt;=</code></td>
+      <td>greater than or equal to</td>    
+
+    </tr>
+    <tr>
+      <td><code>&lt;=</code></td>
+      <td>less than or equal to</td>
+    </tr>
+    <tr>
+      <td><code>or</code></td>
+      <td>this <strong>or</strong> that</td>
+    </tr>
+    <tr>
+      <td><code>and</code></td>
+      <td>this <strong>and</strong> that</td>
+    </tr>
+    <tr>
+      <td><code>contains</code></td>
+      <td>You can use "contains" to check whether a string contains another string, for example:
+      <pre class="language-javascript"><code>{% if {{<span>webapp1.items[0].name</span>}} contains 'Jaguar' %}
+  This car is a Jaguar.
+{% endif %}
+</code></pre>
+or to check whether an array contains a value. Assuming <code>{{<span>cars_available_now</span>}} </code>is an array containing car makes:
+<pre class="language-javascript"><code>	
+{% if {{<span>cars_available_now</span>}} contains 'Jaguar' %}
+  A Jaguar is available now.
+{% endif %}
+</code></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

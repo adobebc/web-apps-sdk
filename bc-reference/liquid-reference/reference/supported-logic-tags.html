@@ -1,5 +1,17 @@
 <h1>Supported logic tags</h1>
-<h2>IF</h2>
+<ul class="toc">
+<li> <a href="#IF">IF</a></li>
+<li> <a href="#IF-else">IF else</a></li>
+<li> <a href="#Unless">Unless</a></li>
+<li> <a href="#Case">Case</a></li>
+<li> <a href="#FOR">FOR</a></li>
+<li> <a href="#Cycle">Cycle</a></li>
+<li> <a href="#Assign">Assign</a></li>
+<li> <a href="#Capture">Capture</a></li>
+<li> <a href="#Comment">Comment</a></li>
+<li> <a href="#Tablerow">Tablerow</a></li>
+</ul>
+<h2 id="IF">IF</h2>
 <p>Simple if decision block.</p>
 <pre class="language-javascript"><code>  {% if item.Color == &#39;red&#39; %}
     &lt;p&gt;Red is the color&lt;/p&gt;
@@ -35,7 +47,7 @@
 {% endif %}
 {% endfor %}
 </code></pre>
-<h2>IF else</h2>
+<h2 id="IF-else">IF else</h2>
 <p>Just like a regular IF condition, the only difference is this adds another possible choice.</p>
 <pre class="language-javascript"><code>  {% if item.Color == &#39;red&#39; %}
     &lt;p&gt;Red is the color&lt;/p&gt;
@@ -45,7 +57,7 @@
     &lt;p&gt;Neither red nor blue.&lt;/p&gt;
   {% endif %}
 </code></pre>
-<h2>UNLESS</h2>
+<h2 id="Unless">UNLESS</h2>
 <p>Unless the condition is true the code is executed</p>
 <pre class="language-javascript"><code>  {% unless item.Color == &#39;red&#39; %}
 		&lt;p&gt;The color is not red.&lt;/p&gt;
@@ -56,7 +68,7 @@
 		&lt;p&gt;The color is not red nor blue.&lt;/p&gt;
   {% endunless %}
 </code></pre>
-<h2>CASE</h2>
+<h2 id="Case">CASE</h2>
 <p>Do something based on the possible values of a variable. If none of the "known" values are encountered the last &quot;else&quot; branch will be executed.</p>
 <pre class="language-javascript"><code>
  {% case item.country %}
@@ -70,14 +82,14 @@
       Bine ai venit
   {% endcase %}
 </code></pre>
-<h2>FOR</h2>
+<h2 id="FOR">FOR</h2>
 <p>FOR is used to loop over a collection of items.</p>
 <pre class="language-javascript"><code>{%<span> for item in webapp1.items </span>%}
 &lt;p&gt;
     This item&#39;s name is: {{item.name}} 
 &lt;/p&gt;
 {%<span> endfor </span>%}</code></pre>
-<h2>CYCLE</h2>
+<h2 id="Cycle">CYCLE</h2>
 <p>Render one of a few possible items. For example:</p><pre class="language-javascript"><code>
 {% cycle 'red', 'green', 'blue' %}<br /> 
 {% cycle 'red', 'green', 'blue' %}<br /> 
@@ -88,24 +100,24 @@ red<br />
 green<br /> 
 blue<br /> 
 red<br /> 
-<h2>ASSIGN</h2>
+<h2 id="Assign">ASSIGN</h2>
 <p>This is used to create a new variable.</p>
 <pre class="language-javascript"><code>{% assign new_variable = &quot;this is my new value&quot; %}</code></pre>
 <p>Or update a variable's value:</p>
 <pre class="language-javascript"><code>{% assign new_variable = &quot;this is the new value&quot; %}</code></pre>
-<h2>CAPTURE</h2>
+<h2 id="Capture">CAPTURE</h2>
 <p>Assign a block of text, HTML code to a variable.</p>
 <pre class="language-javascript"><code>{% capture item_date %}&lt;span style=&quot;color:blue&quot;&gt;{{item.releaseDate}}&lt;/span&gt;{% endcapture %}
 </code></pre>
 <p>You can then use <code>{{<span>item_date</span>}}</code> to output the release date of the item in blue. The HTML code or text between the capture tags does not render on the page.</p>
-<h2>COMMENT</h2>
+<h2 id="Comment">COMMENT</h2>
 <p>Comments out a block of text. The text between the comment tags does not render in the front-end.</p>
 <pre class="language-javascript"><code>{%comment%}
 	Do not forget to remove comments
 {%endcomment%}
 </code></pre>
 <p>The comment will only be visible in the Admin Console.</p>
-<h2>TABLEROW</h2>
+<h2 id="Tablerow">TABLEROW</h2>
 <p>This will draw a table. You can specify how many columns the table will contain using the "cols:" value.</p>
 <pre class="language-javascript"><code>
 &lt;table&gt;

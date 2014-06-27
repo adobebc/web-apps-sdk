@@ -1,0 +1,82 @@
+<h1>{<span>module_productfeaturelist</span>}</h1>
+<div class="description">
+<h2>Description</h2>
+<p>Displays using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout all the products tagged with a specified tag.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/getting-started-with-liquid#override_layouts" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</div>
+<ul id="tabs" class="beta nocontent">
+
+    <li><a href="#named-params">New named parameters dcumentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta nocontent">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{<span>module_productfeaturelist tag="featured" rowCount="4" sortType="Weight" useBackupLayout="false"</span> collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>tag</strong> being the product tag</li>
+   <li><strong>rowCount</strong> - will limit the number of items per row </li>
+    <li><strong>sortType</strong> can be <em>alphabetical</em>, <em>price</em>, <em>date</em>, <em>expirydate</em> or <em>weight</em></li>
+    <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
+    <li><strong>useBackupLayout</strong> can be <em>true</em> or <em>false</em></li>
+    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - optional, use this if you need to <a href="http://docs-stage.businesscatalyst.com/Developers#!/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<p>
+The {<span>module_productfeaturelist</span>} module is always rendered using either the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout or the backup one. The site visitor is redirected to the product detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) only after clicking one of the links outputted by one of these tags: {<span>tag_button,Your Text</span>}, {<span>tag_name</span>} or {<span>tag_itemurl_withhost</span>}.
+</p>
+<ul>
+    <li>Online Shop Layouts &gt; <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a></li>
+    <li>Online Shop Layouts &gt; Individual Product - Small {<span>Backup)</span></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot;}</code> - lists all the products that are tagged with the "special offer" tag</li>
+    <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot;<span> sortType=&quot;price&quot; targetFrame=&quot;_blank&quot; useBackupLayout="true"</span>}</code> - lists the products that are tagged with the "special offer" tag using the backup template. The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot; <span>rowCount=&quot;3&quot; </span>sortType=&quot;price&quot; targetFrame=&quot;_blank&quot; useBackupLayout="true"<span> template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{<span>module_productfeaturelist,tag,rowLength,sortType,targetFrame,useBackupTemplate</span>}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>tag</strong> being the product tag</li>
+    <li><strong>rowLength</strong> e.g. <em>3</em></li>
+    <li><strong>sortType</strong> can be <strong>alphabetical</strong>, <strong>price</strong>, <strong>date</strong>, <strong>expirydate</strong> or <strong>weight</strong></li>
+    <li><strong>targetFrame</strong> - possible values are <strong> _blank</strong>, <strong>_self</strong> and <strong>_top</strong>. This parameter is used to specify the frame you want the item to open in.</li>
+    <li><strong>useBackupTemplate</strong> can be <strong>true</strong> or <strong>false</strong></li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<p>
+The {<span>module_productfeaturelist</span>} module is always rendered using either the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout or the backup one. The site visitor is redirected to the product detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) only after clicking one of the links outputted by one of these tags: {<span>tag_button,Your Text</span>}, {<span>tag_name</span>} or {<span>tag_itemurl_withhost</span>}.
+</p>
+<ul>
+    <li>Online Shop Layouts &gt; <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a></li>
+    <li>Online Shop Layouts &gt; Individual Product - Small {<span>Backup)</span></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_productfeaturelist,special offer</span>}</code> - lists all the products that are tagged with the "special offer" tag</li>
+    <li><code>{<span>module_productfeaturelist,special offer,,price,_blank,true</span>}</code> - lists the products that are tagged with the "special offer" tag using the backup template. The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li><code>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+</ul>
+</div>
+</div>

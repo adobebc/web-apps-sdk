@@ -1,0 +1,88 @@
+<h1>{<span>module_order</span>}</h1>
+<div class="description">
+<h2>Description</h2>
+<p>Displays Customer's Order History (must be logged in to secure zone).</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/getting-started-with-liquid#override_layouts" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</div>
+<ul id="tabs" class="beta nocontent">
+
+    <li><a href="#named-params">New named parameters dcumentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta nocontent">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{<span>module_order filter=&quot;all&quot; workflowId=&quot;123&quot; sortType=&quot;Alphabetical&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li>all - all items</li>
+        <li>workflow - all items in a particular workflow classification </li>
+    </ul>
+    </li>
+    <li><strong>workflowID</strong> - appears only when selecting "all items in a workflow" as a display criteria </li>
+    <li><strong>sortType</strong>- system generated (do not change)
+      <ul>
+        <li><strong>Default</strong> - Sorts the orders by date</li>
+        <li><strong>Alphabetical</strong> - Sorts the orders alphabetically</li>
+    </ul>
+    </li>
+    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - optional, use this if you need to <a href="http://docs-stage.businesscatalyst.com/Developers#!/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<ul>
+    <li><a title="Order list layout" href="/dev-assets/reference/tag-reference/orders/order-list-layout.html">Order list layout</a></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_order filter=&quot;c&quot; workflowID=&quot;10044&quot; sortType=&quot;Default</span>&quot;}</code> - will display all orders that belong to workflow with ID of 10044, sorting them by date</li>
+    <li><code>{<span>module_order </span>filter=&quot;<span>a&quot;,Alphabetically</span>}</code> - will display all orders, alphabetically</li>
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{<span>module_order,filter,workflowID,SortType</span>}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li>a - all items</li>
+        <li>c - all items in a particular workflow classification</li>
+    </ul>
+    </li>
+    <li><strong>workflowID</strong> - appears only when selecting "all items in a workflow" as a display criteria </li>
+    <li><strong>SortType</strong>- system generated (do not change)
+<ul>
+        <li><strong>Default</strong> - Sorts the orders by date</li>
+        <li><strong>Alphabetical</strong> - Sorts the orders alphabetically</li>
+    </ul>
+    </li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<ul>
+    <li><a title="Order list layout" href="/dev-assets/reference/tag-reference/orders/order-list-layout.html">Order list layout</a></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_order,c,10044,Default</span>}</code> - will display all orders that belong to workflow with ID of 10044, sorting them by date</li>
+    <li><code>{<span>module_order,a,,Alphabetically</span>}</code> - will display all orders, alphabetically, also displaying every product within each order</li>
+</ul>
+</div>
+</div>

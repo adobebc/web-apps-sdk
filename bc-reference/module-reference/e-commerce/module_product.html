@@ -1,0 +1,84 @@
+<h1>{<span>module_product</span>}</h1>
+<div class="description">
+<h2>Description</h2>
+<p>Displays an individual product from a given catalogue on a web page according to the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/getting-started-with-liquid#override_layouts" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</div>
+<ul id="tabs" class="beta nocontent">
+
+    <li><a href="#named-params">New named parameters dcumentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta nocontent">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{<span>module_product catalogId=&quot;14886&quot; productid=&quot;954557&quot; decoration=&quot;no&quot;</span> collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>catalogId</strong> - system generated catalogue id (do not change)</li>
+    <li><strong>productid</strong> - system generated product id (do not change)</li>
+    <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
+    <li><strong>useLi</strong> - wrap the module output in a list rather than a table</li>
+    <li><strong>usebackupLayout</strong> - use the backup layout instead of the default one</li>
+    <li>useWrapperMarkup - ???</li>
+    <li>isLarge - ???</li>
+    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - optional, use this if you need to <a href="http://docs-stage.businesscatalyst.com/Developers#!/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<p>
+The {<span>module_product</span>} module is always rendered using either the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout or the backup one. The site visitor is redirected to the product detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) only after clicking one of the links outputted by one of these tags: {<span>tag_button,Your Text</span>}, {<span>tag_name</span>} or {<span>tag_itemurl_withhost</span>}.
+</p>
+<ul>
+    <li>Online Shop Layouts &gt; <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a></li>
+    <li>Online Shop Layouts &gt; Individual Product - Small {<span>Backup)</span></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_product,591,166845,_blank </span>}</code> - will display a single product according to the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a>. If one clicks the product link the product detail window will open in a new tab.</li>
+    <li><code>{<span>module_product,63882,5450055,_top template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - this rendes an individual product a custom template.</li>
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{<span>module_product,catID,prodID,targetFrame</span>, useLi, usebackupLayout, useWrapperMarkup,isLarge}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>catID</strong> - system generated catalogue id (do not change)</li>
+    <li><strong>prodID</strong> - system generated product id (do not change)</li>
+    <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
+    <li><strong>useLi</strong> - wrap the module output in a list rather than a table</li>
+    <li><strong>usebackupLayout</strong> - use the backup layout instead of the default one</li>
+    <li>useWrapperMarkup - ???</li>
+    <li>isLarge - ???</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<p>
+The {<span>module_product</span>} module is always rendered using either the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a> layout or the backup one. The site visitor is redirected to the product detail view (rendered using the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-large-layout.html">Individual Product - Large</a> layout) only after clicking one of the links outputted by one of these tags: {<span>tag_button,Your Text</span>}, {<span>tag_name</span>} or {<span>tag_itemurl_withhost</span>}.
+</p>
+<ul>
+    <li>Online Shop Layouts &gt; <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a></li>
+    <li>Online Shop Layouts &gt; Individual Product - Small {<span>Backup)</span></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_product,591,166845,_blank </span>}</code> - will display a single product according to the <a href="/dev-assets/reference/tag-reference/online-shop/individual-product-small-layout.html">Individual Product - Small</a>. If one clicks the product link the product detail window will open in a new tab.</li>
+    <li><code>{<span>module_product,63882,5450055,_top template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - this rendes an individual product a custom template.</li>
+</ul>
+</div>
+</div>

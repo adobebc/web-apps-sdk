@@ -1,0 +1,44 @@
+<h1>{<span>module_oid</span>}</h1>
+<div class="description">
+<h2>Description</h2>
+<p>{<span>module_oid</span>}will output in plain text the current item's object ID.</p>
+<p>For example if I isnert this module on a page that has this URL in the Admin console - <em>http://mtica1.businesscatalyst.com/Admin/WebPages_Detail.aspx?PageID=<strong>15663711</strong></em> it will output &quot;15663711&quot;. The same is valid for other entities as well (products, webapp items, blogs and so on).</p>
+<p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/getting-started-with-liquid#override_layouts" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</div>
+<ul id="tabs" class="beta nocontent">
+    <li><a href="#named-params">New named parameters dcumentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>  <div id="named-params" class="beta nocontent">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{<span>module_oid </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - optional, use this if you need to <a href="http://docs-stage.businesscatalyst.com/Developers#!/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_oid</span>}</code> - if this is inserted on a page it will output the page's system ID, for example &quot;15663711&quot;</li>
+</ul>
+
+</div>
+</div>
+<div id="legacy">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{<span>module_oid</span>}</code></pre>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{<span>module_oid</span>}</code> - if this is inserted on a page it will output the page's system ID, for example &quot;15663711&quot;</li>
+</ul>
+
+</div>
+
+</div>

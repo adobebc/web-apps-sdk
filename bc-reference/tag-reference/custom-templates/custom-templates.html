@@ -47,11 +47,11 @@ If you insert this on a webpage and preview that webpage you will notice it is u
 <div id="Examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/onlineshop/custom/productfeaturelist.tpl"</span>}</code> - this rendes a list of products using this custom template</li>
-    <li><code>{<span>module_booking,i,63522 template="/layouts/custom/bookings.tpl"</span>}</code> - this rendes an individual event a custom template</li>
-    <li><code>{<span>module_product,63882,5450055,_top template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - this rendes an individual product a custom template</li>
-    <li><code>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
-    <li><code>{<span>module_productresults,2,_self,2,,,true  template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - displays the products that match the search criteria 2 per page and renders <em>No products found matching your query</em>. if no products are found.
+    <li><code>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/custom-layouts/prod.tpl"</span>}</code> - this rendes a list of products using this custom template</li>
+    <li><code>{<span>module_booking,i,63522 template="</span>/custom-layouts/booking.tpl}</code> - this rendes an individual event a custom template</li>
+    <li><code>{<span>module_product,63882,5450055,_top template="</span>/custom-layouts/prod.tpl<span>"</span>}</code> - this rendes an individual product a custom template</li>
+    <li><code>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="</span>/custom-layouts/prod.tpl<span>"</span>}</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li><code>{<span>module_productresults,2,_self,2,,,true  template="</span>/custom-layouts/prod.tpl<span>"</span>}</code> - displays the products that match the search criteria 2 per page and renders <em>No products found matching your query</em>. if no products are found.
     The structure is no longer an unordered list as the <em>true </em>parameter would suggest, the custom template is used instead.</li>
 </ul>
 </div>

@@ -11,7 +11,7 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_productresults rowCount=&quot;3&quot; targetFrame=&quot;_blank&quot; resultPerPage=&quot;6&quot; sortType=&quot;Weight&quot; hideEmptyMessage=&quot;true&quot; useLi=&quot;false&quot; hidePageNumbers=&quot;true&quot; paginationLinks=&quot;4&quot; emptySearchResultString=&quot;not found&quot; hideSecuredItems=&quot;true&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_productresults rowCount=&quot;3&quot; targetFrame=&quot;_blank&quot; resultPerPage=&quot;6&quot; sortType=&quot;Weight&quot; hideEmptyMessage=&quot;true&quot; useLi=&quot;false&quot; emptySearchResultString=&quot;not found&quot; hideSecuredItems=&quot;true&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -22,8 +22,6 @@
     <li><strong>sortType</strong> - sortType can be alphabetical, price, date, or weight. Do note the sortType is ignored if the "Sort By" field is present in the product search form.</li>
     <li><strong>hideEmptyMessage</strong> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed</li>
     <li><strong>useLi</strong> - specify <strong>true</strong> to render the output in Li's instead of tables</li>
-    <li><strong>hidePageNumbers</strong> - specify <strong>true</strong> to render the output in Li's instead of tables ???</li>
-    <li><strong>paginationLinks</strong> - specify <strong>true</strong> to render the output in Li's instead of tables ???</li>
     <li><strong>hideSecuredItems</strong> - do not show items that are in a secure zone</li>
     <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="http://docs-stage.businesscatalyst.com/Developers#!/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
@@ -59,8 +57,6 @@
     <li><strong>sortType</strong> - sortType can be alphabetical, price, date, or weight. Do note the sortType is ignored if the "Sort By" field is present in the product search form.</li>
     <li><strong>hideEmptyMessage</strong> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed</li>
     <li><strong>UseLi</strong> - specify <strong>true</strong> to render the output in Li's instead of tables</li>
-    <li><strong>hidePageNumbers</strong> - specify <strong>true</strong> to render the output in Li's instead of tables ???</li>
-    <li><strong>paginationLinks</strong> - specify <strong>true</strong> to render the output in Li's instead of tables ???</li>
     <li><strong>hideSecuredItems</strong> - do not show items that are in a secure zone</li>
     <li><strong>template</strong> - specify the custom template you want to render this module with</li>
 </ul>

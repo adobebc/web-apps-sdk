@@ -11,17 +11,14 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_searchresults targetFrame=“_blank" resultsPerPage=“20" hightlightType=“Bold|Span" characterLimit="440" hidePageNumbers="true" paginationLinks="10" emptySearchResultString=“No results found"</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_searchresults targetFrame=“_blank" resultsPerPage=“20" characterLimit="440" emptySearchResultString=“No results found"</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>targetFrame</strong> - specifies in which frame the the results need to be opened</li>
     <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page. Default is <em>10</em> results per page.</li>
-    <li><strong>highlightType</strong> - ???</li>
-    <li><strong>characterLimit</strong> - ???</li>
-    <li><strong>hidePageNumbers</strong> - ???</li>
-    <li><strong>paginationLinks</strong> - ?????</li>
+    <li><strong>characterLimit</strong> - the number of characters to be rendered in each search result</li>
     <li><strong>emptySearchResultString</strong> - specify the message to be displayed when no results are found</li>
 </ul>
 </div>
@@ -48,10 +45,7 @@
 <ul>
     <li><strong>targetFrame</strong> - specifies in which frame the the results need to be opened</li>
     <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page. Default is <em>10</em> results per page.</li>
-    <li><strong>highlightType</strong> - ???</li>
-    <li><strong>characterLimit</strong> - ???</li>
-    <li><strong>hidePageNumbers</strong> - ???</li>
-    <li><strong>paginationLinks</strong> - ?????</li>
+    <li><strong>characterLimit</strong> - the number of characters to be rendered in each search result</li>
     <li><strong>emptySearchResultString</strong> - specify the message to be displayed when no results are found</li>
     <li></li>
 </ul>
@@ -65,7 +59,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_searchresults,_blank,12</span>}</code> - This module will display 12 results per page in the new window.</li>
+    <li><code>{<span>module_searchresults,_blank,12,,50,,Sorry, found no results</span>,,}</code> - This module will display 12 results per page in the new window. The results body will be truncated to 50 characters.</li>
 </ul>
 </div>
 </div>

@@ -144,9 +144,13 @@ Site visitors get to it only after clicking the links outputted by any of these 
 <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productmetadescription</span>}</code></td><td><span class="cellcontent">Meta description information added in the SEO Metadata section of product details page.</span></td>
         </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productmetatitle</span>}</code></td>
+            <td><span class="cellcontent">Meta title information added in the SEO Metadata section of product details page.</span></td>
+        </tr>
 <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_relatedproducts</span>,itemsperrow, hideEmptyMessage}</code></td>
-            <td><span class="cellcontent">Displays a list of products related to this product that can be browsed and added separately to cart (useful for up/cross selling purposes), {&lt;span class=&quot;tagname&quot;&gt;tag_relatedproducts&lt;/span&gt;,itemsperrow, hideEmptyMessage} renders a table containing the related products, 6 per row and hides the "<strong>This product has no related products.</strong>" message if no related products are found.</span></td>
+            <td><span class="cellcontent">Displays a list of products related to this product that can be browsed and added separately to cart (useful for up/cross selling purposes), <code>{<span class="tagname">tag_relatedproducts,6, true</span>}</code> renders a table containing the related products, 6 per row and hides the "<strong>This product has no related products.</strong>" message if no related products are found.</span></td>
         </tr>
 <tr>
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_relatedproductslist</span>}</code></td><td><span class="cellcontent">Displays a list of products related to this product that are added to the cart when this product is. By default this renders as check boxes otherwise: {<span>tag_relatedproductslist,7</span>}</code> will display them as radio buttons, {<span>tag_relatedproductslist,6</span>}</code> will display them as check boxes and {<span>tag_relatedproductslist,8</span>}</code> displays small images of the product only. (useful for up/cross selling purposes)</span></td>

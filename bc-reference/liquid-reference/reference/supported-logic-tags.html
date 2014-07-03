@@ -17,41 +17,11 @@
     &lt;p&gt;Red is the color&lt;/p&gt;
   {% endif %}
 </code></pre>
-<p>A more complex example that uses a FOR loop to go over the items of a webapp collection and make some additional decisions using the CASE statement:
-<pre class="language-javascript"><code>
-{% assign european_make = &quot;This vehicle is from Europe!&quot;%} //create a variable named european_make<br>
-{% for item in webapp1.items %} // looping the webapp1.items
-{% if item.Color == &quot;red&quot; and (item.Country contains &quot;U&quot; or item.Country == &quot;US&quot;) and item.name contains &quot;a&quot; and item.name contains &quot;e&quot;%}
-&lt;p&gt;
-    Item number {{item.counter}} name is: {{item.name}} and its color is &lt;span style=&quot;color:{{item.Color}}&quot;&gt;{{item.Color}}&lt;/span&gt; and country is {{item.Country}}
-&lt;/p&gt;
-{%unless item.country == &quot;US&quot; or item.country == &quot;AU&quot;%} // if the country is not US nor AU display the contents of the european_make variable
-{{european_make}}
-&lt;br/&gt;
-{%endunless%}
-{%comment%}
-	If you also have Japanese cars the &quot;unless&quot; statement above is not accurate - whoops...
-{%endcomment%}
-{% capture item_productionDate %}&lt;span style=&quot;color:blue&quot;&gt;{{item.releaseDate}}&lt;/span&gt;{% endcapture %}
- {% case item.country %}
-    {% when &#39;DE&#39; %}
-      Jahr der Wagen rollte vom Band auf
-    {% when &#39;EN&#39; %}
-      Año el coche salió de la línea de montaje el
-    {% else %}
-      Year the car rolled off the assembly line on 
-  {% endcase %}
-{{item_productionDate}}
-&lt;br/&gt;
-&lt;br/&gt;
-{% endif %}
-{% endfor %}
-</code></pre>
 <h2 id="IF-else">IF else</h2>
 <p>Just like a regular IF condition, the only difference is this adds another possible choice.</p>
 <pre class="language-javascript"><code>  {% if item.Color == &#39;red&#39; %}
     &lt;p&gt;Red is the color&lt;/p&gt;
-  {% elsif item.Color == blue %}
+  {% elsif item.Color == 'blue' %}
     &lt;p&gt;Blue is the color&lt;/p&gt;
   {% else %}
     &lt;p&gt;Neither red nor blue.&lt;/p&gt;
@@ -125,4 +95,35 @@ red<br />
     {{ item.name }}{{item.counter}}
 {% endtablerow %}
 &lt;/table&gt;
+</code></pre>
+<h2 id="Tablerow">Examples</h2>
+<p>A more complex example that uses a FOR loop to go over the items of a webapp collection and make some additional decisions using the CASE statement:
+<pre class="language-javascript"><code>
+{% assign european_make = &quot;This vehicle is from Europe!&quot;%} //create a variable named european_make<br>
+{% for item in webapp1.items %} // looping the webapp1.items
+{% if item.Color == &quot;red&quot; and (item.Country contains &quot;U&quot; or item.Country == &quot;US&quot;) and item.name contains &quot;a&quot; and item.name contains &quot;e&quot;%}
+&lt;p&gt;
+    Item number {{item.counter}} name is: {{item.name}} and its color is &lt;span style=&quot;color:{{item.Color}}&quot;&gt;{{item.Color}}&lt;/span&gt; and country is {{item.Country}}
+&lt;/p&gt;
+{%unless item.country == &quot;US&quot; or item.country == &quot;AU&quot;%} // if the country is not US nor AU display the contents of the european_make variable
+{{european_make}}
+&lt;br/&gt;
+{%endunless%}
+{%comment%}
+	this is a comment - if you also have Japanese cars the &quot;unless&quot; statement above is not accurate - whoops...
+{%endcomment%}
+{% capture item_productionDate %}&lt;span style=&quot;color:blue&quot;&gt;{{item.releaseDate}}&lt;/span&gt;{% endcapture %}
+ {% case item.country %}
+    {% when &#39;DE&#39; %}
+      Jahr der Wagen rollte vom Band auf
+    {% when &#39;EN&#39; %}
+      Año el coche salió de la línea de montaje el
+    {% else %}
+      Year the car rolled off the assembly line on 
+  {% endcase %}
+{{item_productionDate}}
+&lt;br/&gt;
+&lt;br/&gt;
+{% endif %}
+{% endfor %}
 </code></pre>

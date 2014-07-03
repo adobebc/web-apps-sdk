@@ -15,8 +15,7 @@
 <p>Simple if decision block.</p>
 <pre class="language-javascript"><code>  {% if item.Color == &#39;red&#39; %}
     &lt;p&gt;Red is the color&lt;/p&gt;
-  {% endif %}
-</code></pre>
+  {% endif %}</code></pre>
 <h2 id="IF-else">IF else</h2>
 <p>Just like a regular IF condition, the only difference is this adds another possible choice.</p>
 <pre class="language-javascript"><code>  {% if item.Color == &#39;red&#39; %}
@@ -31,8 +30,7 @@
 <p>Unless the condition is true the code is executed</p>
 <pre class="language-javascript"><code>  {% unless item.Color == &#39;red&#39; %}
 		&lt;p&gt;The color is not red.&lt;/p&gt;
-  {% endunless %}
-</code></pre>
+  {% endunless %}</code></pre>
 <p>or</p>
 <pre class="language-javascript"><code>  {% unless item.Color == &#39;red&#39; or item.Color == &#39;blue&#39;%}
 		&lt;p&gt;The color is not red nor blue.&lt;/p&gt;
@@ -60,8 +58,7 @@
 &lt;/p&gt;
 {%<span> endfor </span>%}</code></pre>
 <h2 id="Cycle">CYCLE</h2>
-<p>Render one of a few possible items. For example:</p><pre class="language-javascript"><code>
-{% cycle 'red', 'green', 'blue' %}<br /> 
+<p>Render one of a few possible items. For example:</p><pre class="language-javascript"><code>{% cycle 'red', 'green', 'blue' %}<br /> 
 {% cycle 'red', 'green', 'blue' %}<br /> 
 {% cycle 'red', 'green', 'blue' %}<br /> 
 {% cycle 'red', 'green', 'blue' %}<br /> </code></pre>

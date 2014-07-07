@@ -17,7 +17,7 @@
 <h2>Parameters</h2>
 <ul>
     <li><strong>tag</strong> being the product tag</li>
-   <li><strong>rowCount</strong> - will limit the number of items per row </li>
+   <li><strong>rowCount</strong> - will limit the number of items displayed</li>
     <li><strong>sortType</strong> can be <em>alphabetical</em>, <em>price</em>, <em>date</em>, <em>expirydate</em> or <em>weight</em></li>
     <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
     <li><strong>useBackupLayout</strong> can be <em>true</em> or <em>false</em></li>
@@ -41,7 +41,7 @@ The {<span>module_productfeaturelist</span>} module is always rendered using eit
 <ul>
     <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot;}</code> - lists all the products that are tagged with the "special offer" tag</li>
     <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot;<span> sortType=&quot;price&quot; targetFrame=&quot;_blank&quot; useBackupLayout="true"</span>}</code> - lists the products that are tagged with the "special offer" tag using the backup template. The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
-    <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot; <span>rowCount=&quot;3&quot; </span>sortType=&quot;price&quot; targetFrame=&quot;_blank&quot; useBackupLayout="true"<span> template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot; <span>rowCount=&quot;3&quot; </span>sortType=&quot;price&quot; targetFrame=&quot;_blank&quot; useBackupLayout="true"<span> template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists 3 products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
 </ul>
 </div>
 </div>
@@ -76,7 +76,7 @@ The {<span>module_productfeaturelist</span>} module is always rendered using eit
 <ul>
     <li><code>{<span>module_productfeaturelist,special offer</span>}</code> - lists all the products that are tagged with the "special offer" tag</li>
     <li><code>{<span>module_productfeaturelist,special offer,,price,_blank,true</span>}</code> - lists the products that are tagged with the "special offer" tag using the backup template. The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
-    <li><code>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li><code>{<span>module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists 3 products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
 </ul>
 </div>
 </div>

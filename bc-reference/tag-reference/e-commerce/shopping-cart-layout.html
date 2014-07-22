@@ -138,12 +138,10 @@ This way, with one layout for every country defined you can vary the contents of
             <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingextaxamount</span>}</code></td><td><span class="cellcontent">Price of shipping option chosen excluding tax</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingoptions</span>}</code></td><td><span class="cellcontent">List of shipping options. The full syntax is  <code>{<span>tag_shippingoptions,X,Y,Z</span>}</code><p>Parameters:</p>
-            <ul>
-            <li>set <em>X</em> to <em>true</em> to enable country and state dropdowns, for use with the Limit Delivery To feature or state taxes</li>
-            <li>set <em>Y</em> to <em>true</em> to enable state tax regardless of customer country (otherwise only for customers in your country)</li>
-            <li>se <em>Z</em> to 2-letter country code to limit shipping country, e.g. <em>US</em> for United States. Use a semi-colon to add additional countries, e.g. <em>US;AU</em></li>
-            </ul>
+            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingoptions</span>}</code></td>
+            <td><span class="cellcontent">List of shipping options. The full syntax is  <code>{<span>tag_shippingoptions, true, OnlyChargeCountryUsers, ShipToSingleCountry, ApplyTaxToShipping, ApplyTaxToGiftVouchers</span>}</code>
+                <p>Take a look at the <a href="/user-manual/e-Commerce/Shipping/displaying-shipping-options#tag_shippingoptions" title="Customizing the shipping options tag">Displaying shipping options</a> article for more details on each parameter.</p>
+           
             </span></td>
         </tr>
         <tr>

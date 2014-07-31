@@ -1,0 +1,219 @@
+<h1>Pages and secure zones</h1>
+<p>This section details the endpoints you can use to list, add or remove pages from a secure zone.</p>
+<h2>List the pages in a particular secure zone</h2>
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/securezones/[secure_zone_ID]/pages
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+
+<h3>Response</h3>
+
+<p>An array of the first 500 web pages contained by the secure zone.</p>
+<hr>
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: &quot;/webresources/api/v3/sites/current/securezones/3309/pages&quot;,
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<h3>Sample response</h3>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "objectId": 2411253,
+      "zoneId": 3309,
+      "objectType": 1,
+      "displayable": 1,
+      "siteId": 38581,
+      "page": {
+        "id": 2411253,
+        "siteId": 38581,
+        "url": "/img/shipping/testurl123",
+        "name": "Page1",
+        "deleted": false,
+        "categoryId": -1,
+        "roleId": 10000,
+        "templateId": 0,
+        "parentId": 736557,
+        "displayFileName": "testurl123.htm",
+        "size": 202,
+        "enabled": true,
+        "startPage": false,
+        "pageStatusId": 1,
+        "releaseDate": "2043-12-31T08:00:00",
+        "expiryDate": "9999-01-01T00:00:00",
+        "displayable": true,
+        "excludeFromSearch": false,
+        "reIndex": true,
+        "livePageId": null,
+        "content": "\n\n    \n    \n        \n        \n    \n    \n    Page 1 content -\n\n\n\r\n",
+        "redirect301": "",
+        "pageTitle": null,
+        "seoMetadataDescription": null
+      }
+    },
+    {
+      "objectId": 4518424,
+      "zoneId": 3309,
+      "objectType": 1,
+      "displayable": 1,
+      "siteId": 38581,
+      "page": {
+        "id": 4518424,
+        "siteId": 38581,
+        "url": "/img/shipping/testurl123_copy",
+        "name": "Page2",
+        "deleted": false,
+        "categoryId": -1,
+        "roleId": 10000,
+        "templateId": 0,
+        "parentId": 736557,
+        "displayFileName": "testurl123_copy.htm",
+        "size": 203,
+        "enabled": true,
+        "startPage": false,
+        "pageStatusId": 1,
+        "releaseDate": "2043-12-31T08:00:00",
+        "expiryDate": "9999-01-01T00:00:00",
+        "displayable": true,
+        "excludeFromSearch": false,
+        "reIndex": true,
+        "livePageId": null,
+        "content": "\n\n    \n    \n        \n        \n    \n    \n    Page 2 content -\n\n\n\n\r\n",
+        "redirect301": "",
+        "pageTitle": null,
+        "seoMetadataDescription": null
+      }
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}
+</code></pre>
+<hr>
+<h2>Add pages to a secure zone</h2>
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/[secure_zone_ID]/pages
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+
+<h3>Response</h3>
+
+<p>The response should be "204 no content" if the page was successfully added to the secure zone.</p>
+<hr>
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+     url: &quot;/webresources/api/v3/sites/current/securezones/3309/pages&quot;,<br>      data: JSON.stringify({<br>          &quot;items&quot;: [{<br>            &quot;objectId&quot;: 4518424<br>          }]<br>        }),<br>    type: &quot;POST&quot;,
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
+<h2>Remove pages from a secure zone</h2>
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/securezones/[secure_zone_ID]/pages?items=[page1_ID,page2_ID,page3_ID]
+
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+
+<h3>Response</h3>
+
+<p>The response should be "204 no content" if the pages were successfully removed from the the secure zone.</p>
+<hr>
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/securezones/3309/pages?items=[4518424]",
+    type: "DELETE",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
+
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+
+<ul>
+<li><code>101000</code> sub-error code</li>
+</ul></li>
+<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+</ul>
+
+        

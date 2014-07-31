@@ -1,0 +1,216 @@
+<h1>List available secure zones and get their attributes</h1>
+
+<p>This section details the endpoints you can use to list the secure zones created on a particular site and get their properties.</p>
+
+
+<h2>List the secure zones in a site</h2>
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/securezones
+
+<ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+
+<h3>Response</h3>
+
+<p>An array of the first 500 secure zones; each object has the following properties:</p>
+
+<ul>
+<li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
+<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
+<li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+<li><code>name</code> - the name of the secure zone <em>(string)</em></li>
+<li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+<li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
+<li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+<li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
+<ul>
+	  <li> "1" Once</li>
+	  <li> "2" Daily</li>
+	  <li> "3" Weekly</li>
+	  <li> "4" Fortnightly</li>
+	  <li> "5" Monthly</option>
+			<li> "6" Quarterly</li>
+	  <li> "7" Half Yearly</li>
+	  <li> "8" Yearly</li>
+
+</ul>
+</li>
+<li><code>deleted</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
+
+</ul>
+
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+<hr>
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/securezones",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<h3>Sample response</h3>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "id": 3309,
+      "siteId": 38581,
+      "landingPageId": 4518247,
+      "name": "Secure Zone 1",
+      "sellAccess": false,
+      "costPerPeriod": 0,
+      "orderCountryCode": null,
+      "cycleType": null,
+      "deleted": false
+    },
+    {
+      "id": 3310,
+      "siteId": 38581,
+      "landingPageId": 2411253,
+      "name": "Secure Zone 2",
+      "sellAccess": false,
+      "costPerPeriod": 0,
+      "orderCountryCode": null,
+      "cycleType": null,
+      "deleted": false
+    },
+    {
+      "id": 3311,
+      "siteId": 38581,
+      "landingPageId": 2411253,
+      "name": "Secure zone 3",
+      "sellAccess": false,
+      "costPerPeriod": 0,
+      "orderCountryCode": null,
+      "cycleType": null,
+      "deleted": false
+    }
+  ],
+  "totalItemsCount": 3,
+  "skip": 0,
+  "limit": 10
+}
+</code></pre>
+
+<hr>
+<h2>Get a secure zone's attributes</h2>
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/securezones/[secure_zone_ID]
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+
+<h3>Response</h3>
+
+<p>Displays the details for the secure zone as a JSON object</p>
+<ul>
+  <li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
+  <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
+  <li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+  <li><code>name</code> - the name of the secure zone <em>(string)</em></li>
+  <li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+  <li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
+  <li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+  <li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
+    <ul>
+      <li> "1" Once</li>
+      <li> "2" Daily</li>
+      <li> "3" Weekly</li>
+      <li> "4" Fortnightly</li>
+      <li> "5" Monthly
+        </option>
+      <li> "6" Quarterly</li>
+      <li> "7" Half Yearly</li>
+      <li> "8" Yearly</li>
+    </ul>
+  </li>
+  <li><code>deleted</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+<hr>
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/securezones/3309",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<h3>Sample response</h3>
+<pre class="language-javascript"><code>{
+  "id": 3309,
+  "siteId": 38581,
+  "landingPageId": 4518247,
+  "name": "Secure Zone 1",
+  "sellAccess": true,
+  "costPerPeriod": 1,
+  "orderCountryCode": "AU",
+  "cycleType": 5,
+  "deleted": false
+}
+</code></pre>
+
+<hr>
+<h3>Error Codes</h3>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>200</code> - success</li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+
+<ul>
+<li><code>101000</code> sub-error code</li>
+</ul></li>
+<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+</ul>
+
+        

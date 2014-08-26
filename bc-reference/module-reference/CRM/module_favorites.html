@@ -32,7 +32,7 @@
     <li>35 - webapps</li>
       </ul>
     </li>
-      <li><strong>itemID</strong> - display a particular favorite item</li>
+      <li><strong>itemID</strong> - if you choose itemType 35 (a webapp) you can specify the webapp's ID. In this case only the favorite webapp items in that particular webapp will be displayed.</li>
       
     </li>
 </ul>
@@ -40,7 +40,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_favorites</span> itemType=&quot;35&quot;}</code> - displays the webapp items that have been added as "favorites" by the currently logged in user. The items (products, news items, faq items, etc) are displayed using their "List" layout.</li>
+    <li><code>{<span>module_favorites</span> itemType=&quot;35&quot; itemID=&quot;24325&quot;}</code> - displays the webapp items contained by the webapp with the ID 24325 that have been added as "favorites" by the currently logged in user. The items are displayed using their "List" layout.</li>
+    <li><code>{<span>module_favorites</span> filter=&quot;all&quot;}</code> - displays all the items (regardless of the item type) added marked as favorite by the logged in user. The items are displayed using their "List" layout.</li>
 </ul>
 </div>
 </div>
@@ -68,7 +69,7 @@
     <li>35 - webapps</li>
       </ul>
     </li>
-      <li><strong>itemID</strong> - display a particular favorite item</li>
+      <li><strong>itemID</strong> - if you choose itemType 35 (a webapp) you can specify the webapp's ID. In this case only the favorite webapp items in that particular webapp will be displayed.</li>
       
     </li>
 </ul>
@@ -76,7 +77,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_favorites,</span>35}</code> - displays the webapp items that have been added as "favorites" by the currently logged in user. The items (products, news items, faq items, etc) are displayed using their "List" layout.</li>
+    <li><code>{<span>module_favorites,</span>35,24325}</code> - displays the webapp items contained by the webapp with the ID <code>24325</code>that have been added as "favorites" by the currently logged in user. The items are displayed using their "List" layout.</li>
+    <li><code>{<span>module_favorites</span>,a}</code> - displays all the items (regardless of the item type) added marked as favorite by the logged in user. The items are displayed using their "List" layout.</li>
 </ul>
 </div>
 </div>

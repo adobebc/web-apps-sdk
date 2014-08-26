@@ -30,10 +30,10 @@ The response should be "201 created" if the page was successfully created.
   <li><code>url</code> - the page's URL</li>
   <li><code>name</code> - the page's NAME</li>
   <li><code>deleted</code> - whether the page is deleted or not</li>
-  <li><code>categoryId</code> - the ID of the category (-1 of the page is not classified)</li>
+  <li><code>categoryId</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned)</li>
   <li><code>roleId</code> - the ID of the role responsible (-1 if not applicable)</li>
   <li><code>templateId</code> - the ID of the template (-1 if no template is applied or 0 to use the default template)</li>
-  <li><code>parentId</code> - the ID of the parent folder (-1 if the page is placed in the site's root folder). To find out the ID of any given folder use the File Manager <img src="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-07-31_16.57.57.png"/> </li>
+
   <li><code>displayFileName</code> - the page's display name</li>
   <li><code>size</code> - the page's size</li>
   <li><code>enabled</code> - whether the page is enabled or not</li>
@@ -53,7 +53,7 @@ The response should be "201 created" if the page was successfully created.
 <hr>
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: &quot;/webresources/api/v3/sites/current/pages&quot;,<br>     data: JSON.stringify({<br>         &quot;name&quot;: &quot;API created&quot;,<br>         &quot;url&quot;: &quot;/api-created.html&quot;,<br>         &quot;deleted&quot;: false,<br>         &quot;categoryId&quot;: -1,<br>         &quot;templateId&quot;: 0,<br>         &quot;parentId&quot;: -1,<br>         &quot;displayFileName&quot;: &quot;api_created_page.htm&quot;,<br>         &quot;startPage&quot;: false,<br>         &quot;pageStatusId&quot;: 1,<br>         &quot;displayable&quot;: false,<br>         &quot;excludeFromSearch&quot;: false,<br>         &quot;reIndex&quot;: false,<br>         &quot;imported&quot;: false,<br>         &quot;content&quot;: &quot;&lt;html&gt;Sample content here&lt;/html&gt;&quot;<br>     }),<br>     type: &quot;POST&quot;,<br>     contentType: &quot;application/json&quot;,<br>     headers: {<br>         &quot;Authorization&quot;: $.cookie('access_token')<br>     }
+    url: &quot;/webresources/api/v3/sites/current/pages&quot;,<br>     data: JSON.stringify({<br>         &quot;name&quot;: &quot;API created&quot;,<br>         &quot;url&quot;: &quot;/api-created.html&quot;,<br>         &quot;deleted&quot;: false,<br>         &quot;categoryId&quot;: -1,<br>         &quot;templateId&quot;: 0,<br>         &quot;displayFileName&quot;: &quot;api_created_page.htm&quot;,<br>         &quot;startPage&quot;: false,<br>         &quot;pageStatusId&quot;: 1,<br>         &quot;displayable&quot;: false,<br>         &quot;excludeFromSearch&quot;: false,<br>         &quot;reIndex&quot;: false,<br>         &quot;imported&quot;: false,<br>         &quot;content&quot;: &quot;&lt;html&gt;Sample content here&lt;/html&gt;&quot;<br>     }),<br>     type: &quot;POST&quot;,<br>     contentType: &quot;application/json&quot;,<br>     headers: {<br>         &quot;Authorization&quot;: $.cookie('access_token')<br>     }
 });
 request.done(function (msg) {
     console.log(msg);
@@ -94,10 +94,9 @@ request.fail(function (jqXHR) {
   <li><code>url</code> - the page's URL</li>
   <li><code>name</code> - the page's NAME</li>
   <li><code>deleted</code> - whether the page is deleted or not</li>
-  <li><code>categoryId</code> - the ID of the category (-1 of the page is not classified)</li>
+  <li><code>categoryId</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned)</li>
   <li><code>roleId</code> - the ID of the role responsible (-1 if not applicable)</li>
   <li><code>templateId</code> - the ID of the template (-1 if no template is applied or 0 to use the default template)</li>
-  <li><code>parentId</code> - the ID of the parent folder (-1 if the page is placed in the site's root folder). To find out the ID of any given folder use the File Manager <img src="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-07-31_16.57.57.png"/> </li>
   <li><code>displayFileName</code> - the page's display name</li>
   <li><code>size</code> - the page's size</li>
   <li><code>enabled</code> - whether the page is enabled or not</li>

@@ -9,6 +9,7 @@
 <li> <a href="#Assign">Assign</a></li>
 <li> <a href="#Capture">Capture</a></li>
 <li> <a href="#Comment">Comment</a></li>
+<li> <a href="#Raw">Raw</a></li>
 <li> <a href="#Tablerow">Tablerow</a></li>
 </ul>
 <h2 id="IF">IF</h2>
@@ -86,6 +87,13 @@ red<br />
 {%endcomment%}
 </code></pre>
 <p>The comment will only be visible in the Admin Console.</p>
+<h2 id="Raw">RAW</h2>
+<p>Raw renders liquid markup in plain text. </p>
+<pre class="language-javascript"><code>{%raw%}
+	{{this | json}}
+{%endraw%}
+</code></pre>
+<p>This will render the Liquid code in plain text.</p>
 <h2 id="Tablerow">TABLEROW</h2>
 <p>This will draw a table. You can specify how many columns the table will contain using the "cols:" value.</p>
 <pre class="language-javascript"><code>

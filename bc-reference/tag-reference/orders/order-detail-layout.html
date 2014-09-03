@@ -9,145 +9,198 @@
 <h2>Renders these tags</h2>
 <table width="100%" class="data-bordered">
   
-  <tbody>
+  <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
   <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_orderid</span>}</code></td>
-            <td><span class="cellcontent">Renders the order's ID</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_orderid</span>}</code></td>
+            <td class="description"><span>Renders the order's ID</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addressbilling</span>}</code></td><td><span class="cellcontent">Billing address for order</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addressbilling</span>}</code></td><td class="description"><span>Billing address for order</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addressdefault</span>}</code></td><td><span class="cellcontent">Default address for contact/company</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addressdefault</span>}</code></td><td class="description"><span>Default address for contact/company</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addressshipping</span>}</code></td><td><span class="cellcontent">Shipping address for order</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addressshipping</span>}</code></td><td class="description"><span>Shipping address for order</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amountoutstanding</span>}</code></td><td><span class="cellcontent">Amount outstanding on invoice</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amountoutstanding</span>}</code></td><td class="description"><span>Amount outstanding on invoice</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amountoutstandingactual</span>}</code></td><td><span class="cellcontent">Amount of invoice outstanding, only taking into account successful payments (pending payments excluded)</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amountoutstandingactual</span>}</code></td><td class="description"><span>Amount of invoice outstanding, only taking into account successful payments (pending payments excluded)</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amountpaid</span>}</code></td><td><span class="cellcontent">Amount already paid on invoice</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amountpaid</span>}</code></td><td class="description"><span>Amount already paid on invoice</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amountpaidactual</span>}</code></td><td><span class="cellcontent">Amount of invoice paid with a successful payment (pending payments excluded)</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amountpaidactual</span>}</code></td><td class="description"><span>Amount of invoice paid with a successful payment (pending payments excluded)</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_awbnumber</span>}</code></td><td><span class="cellcontent">Tracking number from shipping provider(also known as AWB number). You can edit this information for each order</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_awbnumber</span>}</code></td><td class="description"><span>Tracking number from shipping provider(also known as AWB number). You can edit this information for each order</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_countrycode</span>}</code></td><td><span class="cellcontent">2-Letter Country Code, use it to indicate currency on invoice</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_countrycode</span>}</code></td><td class="description"><span>2-Letter Country Code, use it to indicate currency on invoice</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_crmform</span>}</code></td><td><span class="cellcontent">The data from all CRM forms attached to an order</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_crmform</span>}</code></td><td class="description"><span>The data from all CRM forms attached to an order</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_directdebitdate</span>}</code></td><td><span class="cellcontent">The date automatic debit is processed for invoice</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_directdebitdate</span>}</code></td><td class="description"><span>The date automatic debit is processed for invoice</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_directdebitdays</span>}</code></td><td><span class="cellcontent">Number of days before automatic debit is processed for invoice</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_directdebitdays</span>}</code></td><td class="description"><span>Number of days before automatic debit is processed for invoice</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_directdebittype</span>}</code></td><td><span class="cellcontent">Type of automatic debit for invoice; for example, credit card or direct debit</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_directdebittype</span>}</code></td><td class="description"><span>Type of automatic debit for invoice; for example, credit card or direct debit</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicedate</span>}</code></td><td><span class="cellcontent">Date of invoice</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicedate</span>}</code></td><td class="description"><span>Date of invoice</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicediscountamount</span>}</code></td><td><span class="cellcontent">Total discounted amount of invoice excluding shipping charges</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicediscountamount</span>}</code></td><td class="description"><span>Total discounted amount of invoice excluding shipping charges</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicediscountcode</span>}</code></td><td><span class="cellcontent">Discount code used</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicediscountcode</span>}</code></td><td class="description"><span>Discount code used</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicediscountpercent</span>}</code></td><td><span class="cellcontent">Discount percent applied to invoice total</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicediscountpercent</span>}</code></td><td class="description"><span>Discount percent applied to invoice total</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicegiftvoucher</span>}</code></td><td><span class="cellcontent">Gift voucher used</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicegiftvoucher</span>}</code></td><td class="description"><span>Gift voucher used</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicegiftvoucheramount</span>}</code></td><td><span class="cellcontent">Amount paid using a gift voucher</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicegiftvoucheramount</span>}</code></td><td class="description"><span>Amount paid using a gift voucher</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicenumber</span>}</code></td><td><span class="cellcontent">Invoice number</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicenumber</span>}</code></td><td class="description"><span>Invoice number</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicetotal</span>}</code></td><td><span class="cellcontent">Total invoice amount</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicetotal</span>}</code></td><td class="description"><span>Total invoice amount</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicetotaltaxamount</span>}</code></td><td><span class="cellcontent">Total tax associated with order (product tax + shipping tax)</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicetotaltaxamount</span>}</code></td><td class="description"><span>Total tax associated with order (product tax + shipping tax)</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_ordername</span>}</code></td><td><span class="cellcontent">Name of order</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_ordername</span>}</code></td><td class="description"><span>Name of order</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productcode</span>}</code></td><td><span class="cellcontent">Product code</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productcode</span>}</code></td><td class="description"><span>Product code</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productdescription</span>}</code></td><td><span class="cellcontent">Product description you entered when generating order</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productdescription</span>}</code></td><td class="description"><span>Product description you entered when generating order</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productextaxamount</span>}</code></td><td><span class="cellcontent">Product price exclusive of tax</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productextaxamount</span>}</code></td><td class="description"><span>Product price exclusive of tax</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productgrandtotal</span>}</code></td><td><span class="cellcontent">Total cost of products (Total Product cost + Total Tax for Products)</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productgrandtotal</span>}</code></td><td class="description"><span>Total cost of products (Total Product cost + Total Tax for Products)</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productinctaxamount</span>}</code></td><td><span class="cellcontent">Product price inclusive of tax</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productinctaxamount</span>}</code></td><td class="description"><span>Product price inclusive of tax</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productname</span>}</code></td><td><span class="cellcontent">Name of Product</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productname</span>}</code></td><td class="description"><span>Name of Product</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productquantity</span>}</code></td><td><span class="cellcontent">Product quantity</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productquantity</span>}</code></td><td class="description"><span>Product quantity</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_productsubtotal</span>}</code></td><td><span class="cellcontent">Total cost of all products exclusive of tax</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productsubtotal</span>}</code></td><td class="description"><span>Total cost of all products exclusive of tax</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_producttaxamount</span>}</code></td><td><span class="cellcontent">Amount of tax for one product ($)</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttaxamount</span>}</code></td><td class="description"><span>Amount of tax for one product ($)</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_producttaxrate</span>}</code></td><td><span class="cellcontent">Tax rate applied to product (%)</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttaxrate</span>}</code></td><td class="description"><span>Tax rate applied to product (%)</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_producttaxtotal</span>}</code></td><td><span class="cellcontent">Total amount of tax payable for products</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttaxtotal</span>}</code></td><td class="description"><span>Total amount of tax payable for products</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_producttotal</span>}</code></td><td><span class="cellcontent">Total amount for product (Product x Quantity + Tax Rate)</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttotal</span>}</code></td><td class="description"><span>Total amount for product (Product x Quantity + Tax Rate)</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_recipientaddress</span>}</code></td><td><span class="cellcontent">Email address of the recipient</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_recipientaddress</span>}</code></td><td class="description"><span>Email address of the recipient</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_recipientname</span>}</code></td><td><span class="cellcontent">Full name of contact or company</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_recipientname</span>}</code></td><td class="description"><span>Full name of contact or company</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingattention</span>}</code></td><td><span class="cellcontent">The person to address the order to</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingattention</span>}</code></td><td class="description"><span>The person to address the order to</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingdescription</span>}</code></td><td><span class="cellcontent">Description of shipping product</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingdescription</span>}</code></td><td class="description"><span>Description of shipping product</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingextaxamount</span>}</code></td><td><span class="cellcontent">Shipping cost exclusive of tax</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingextaxamount</span>}</code></td><td class="description"><span>Shipping cost exclusive of tax</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippinginstructions</span>}</code></td><td><span class="cellcontent">Any specific shipping instructions that accompany the order</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippinginstructions</span>}</code></td><td class="description"><span>Any specific shipping instructions that accompany the order</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingtaxamount</span>}</code></td><td><span class="cellcontent">Amount of tax for shipping</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingtaxamount</span>}</code></td><td class="description"><span>Amount of tax for shipping</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingtaxrate</span>}</code></td><td><span class="cellcontent">Tax rate applied to shipping (%)</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingtaxrate</span>}</code></td><td class="description"><span>Tax rate applied to shipping (%)</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_shippingtotal</span>}</code></td><td><span class="cellcontent">Total amount for shipping (Shipping cost + Tax Rate)</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingtotal</span>}</code></td><td class="description"><span>Total amount for shipping (Shipping cost + Tax Rate)</span></td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_trackingurl,Your Text</span>}</code></td><td><span class="cellcontent">URL of the shipper to track shipments. You can edit this information for each order</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_trackingurl,Your Text</span>}</code></td><td class="description"><span>URL of the shipper to track shipments. You can edit this information for each order</span></td>
         </tr>
   </tbody>
 </table>

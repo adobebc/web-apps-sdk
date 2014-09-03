@@ -15,27 +15,41 @@ This layout is not used by any modules. The site visitor gets to see it after cl
 <div id="tags">
 <h2>Renders these tags</h2>
 <table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_editor</span>}</code></td><td><span class="cellcontent">Placeholder for the WYSIWYG editor after the new/reply post link is selected</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_editor</span>}</code></td><td class="description"><span>Placeholder for the WYSIWYG editor after the new/reply post link is selected</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_forumdescription</span>}</code></td><td><span class="cellcontent">Description of  forum</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_forumdescription</span>}</code></td><td class="description"><span>Description of  forum</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_forumname</span>}</code></td><td><span class="cellcontent">Name of the forum</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_forumname</span>}</code></td><td class="description"><span>Name of the forum</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_newpostlink</span>}</code></td><td><span class="cellcontent">Hyperlink to make a new entry for the current topic</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_newpostlink</span>}</code></td><td class="description"><span>Hyperlink to make a new entry for the current topic</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_postlist,date</span>}</code></td><td><span class="cellcontent">Normally when viewing a forum thread, the posts are displayed from oldest to newest. However it is possible to sort posts in reverse date order, i.e. newest to oldest. To utilize this feature simply go to Admin-&gt; More Customization Options -&gt; Forum Layouts -&gt; Post Page and change {<span>tag_postlist</span>}</code> to {<span>tag_postlist,date</span>}</code>.</span> This tag is rendered using the <a href="/dev-assets/reference/tag-reference/forums/individual-post-layout.html">individual post layout</a></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_postlist,date</span>}</code></td><td class="description"><span>Normally when viewing a forum thread, the posts are displayed from oldest to newest. However it is possible to sort posts in reverse date order, i.e. newest to oldest. To utilize this feature simply go to Admin-&gt; More Customization Options -&gt; Forum Layouts -&gt; Post Page and change {<span>tag_postlist</span>}</code> to {<span>tag_postlist,date</span>}</code>.</span> This tag is rendered using the <a href="/dev-assets/reference/tag-reference/forums/individual-post-layout.html">individual post layout</a></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_topicname</span>}</code></td><td><span class="cellcontent">Name of topic</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_topicname</span>}</code></td><td class="description"><span>Name of topic</span></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_topicsubscribe</span>}</code></td><td><span class="cellcontent">Hyperlink allowing the user to subscribe to the current topic</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_topicsubscribe</span>}</code></td><td class="description"><span>Hyperlink allowing the user to subscribe to the current topic</span></td>
         </tr>
     </tbody>
 </table>

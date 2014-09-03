@@ -13,7 +13,14 @@
     <li> Click the&nbsp;<em>New file&nbsp;</em>icon and give your file a name with a&nbsp;<strong>.tpl&nbsp;</strong>extension, for example <em>cartsummary.tpl </em></li>
     <li> Remove all the HTML default markup as it is not needed for custom templates. Customize how you would like the shopping cart summary to look by using the below tags:
     <table>
-        <tbody>
+        <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
             <tr>
                 <td style="width: 224px;"><code>{<span>tag_cartUrl</span>}</code></td>
                 <td style="width: 342px;">renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>

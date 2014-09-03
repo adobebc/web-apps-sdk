@@ -15,58 +15,82 @@
 <div id="tags">
 <h2>Renders these tags</h2>
 <table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_name_nolink</span>}</code>Booking name (will not have a hyperlink) e.g. <em>This is the event name</em></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name_nolink</span>}</code>Booking name (will not have a hyperlink) e.g. <em>This is the event name</em></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_name</span>}</code>Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">Detail Layout</a></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name</span>}</code>Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">Detail Layout</a></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_body</span>}</code>Details of booking (editor content) e.g. <em>Something about the event goes here.</em></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_body</span>}</code>Details of booking (editor content) e.g. <em>Something about the event goes here.</em></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_capacity</span>}</code>Total number of seats for booking e.g. <em>130</em></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_capacity</span>}</code>Total number of seats for booking e.g. <em>130</em></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_percentfull</span>}</code>Percentage of booking seats already booked e.g <em>40%</em></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_percentfull</span>}</code>Percentage of booking seats already booked e.g <em>40%</em></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_date</span>}</code>Date of booking e.g. "24-Aug-2013"</td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_date</span>}</code>Date of booking e.g. "24-Aug-2013"</td>
         </tr>
 
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_addtofavorites,add_Image, remove_Image</span>}</code>Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - {<span>tag_addtofavorites,&lt;img alt=" src="/images/plus_icon" /&gt;,&lt;img alt=" src="/images/minus_icon" /&gt;</span>}</code></code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addtofavorites,add_Image, remove_Image</span>}</code>Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - {<span>tag_addtofavorites,&lt;img alt=" src="/images/plus_icon" /&gt;,&lt;img alt=" src="/images/minus_icon" /&gt;</span>}</code></code></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_bookingday</span>}</code>Day of Booking e.g. <em>24</em> if the booking date is 24-Aug-2014 </td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_bookingday</span>}</code>Day of Booking e.g. <em>24</em> if the booking date is 24-Aug-2014 </td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_bookingmonth</span>}</code>Month of Booking e.g. <em>Aug</em> if the booking date is 24-Aug-2014</td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_bookingmonth</span>}</code>Month of Booking e.g. <em>Aug</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_bookingyear</span>}</code>Year of Booking e.g. <em>2014</em> if the booking date is 24-Aug-2014</td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_bookingyear</span>}</code>Year of Booking e.g. <em>2014</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_button,Your Text</span>}</code>creates a link that enables the user to navigate to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">Detail Layout</a> (replace <em>Your Text</em> with your own text) </td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_button,Your Text</span>}</code>creates a link that enables the user to navigate to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">Detail Layout</a> (replace <em>Your Text</em> with your own text) </td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_capacitydescription</span>}</code>Description for number of seats available. The possible values are: <em>Available, </em> <em>Filling Up, </em><em>Almost Full</em> and <em>Full</em></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_capacitydescription</span>}</code>Description for number of seats available. The possible values are: <em>Available, </em> <em>Filling Up, </em><em>Almost Full</em> and <em>Full</em></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_capacityempty</span>}</code>Number of available seats left for booking e.g. <em>79</em></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_capacityempty</span>}</code>Number of available seats left for booking e.g. <em>79</em></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_counter</span>}</code>Incremental count of the booking on the page e.g. <em>1</em></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_counter</span>}</code>Incremental count of the booking on the page e.g. <em>1</em></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_day</span>}</code>Day of booking e.g. "Saturday" if the booking date is <em>24-Aug-2013</em></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_day</span>}</code>Day of booking e.g. "Saturday" if the booking date is <em>24-Aug-2013</em></td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_lastupdatedate</span>}</code>Date and time the booking was last updated e.g. <em>29-Jan-2013 08:57 PM</em> </td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_lastupdatedate</span>}</code>Date and time the booking was last updated e.g. <em>29-Jan-2013 08:57 PM</em> </td>
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_tellafriend</span>}</code>Tell a friend about this booking</td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_tellafriend</span>}</code>Tell a friend about this booking</td>
         </tr>
     </tbody>
 </table>

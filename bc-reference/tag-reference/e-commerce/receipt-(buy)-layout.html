@@ -14,34 +14,47 @@
 <div id="tags">
 <h2>Renders these tags</h2>
 <table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_orderid</span>}</code></td><td><span class="cellcontent">Internal ID associated with the purchase</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_orderid</span>}</code></td><td class="description"><span>Internal ID associated with the purchase</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_amount</span>}</code></td>
-            <td><span class="cellcontent">The amount paid</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amount</span>}</code></td>
+            <td class="description"><span>The amount paid</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_authorizationcode</span>}</code></td>
-            <td><span class="cellcontent">Authorization code returned by the payment gateway</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_authorizationcode</span>}</code></td>
+            <td class="description"><span>Authorization code returned by the payment gateway</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_errormessage</span>}</code></td>
-            <td><span class="cellcontent">Error message returned by the payment dateway</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_errormessage</span>}</code></td>
+            <td class="description"><span>Error message returned by the payment dateway</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_invoicenumber</span>}</code></td>
-            <td><span class="cellcontent">Invoice number</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicenumber</span>}</code></td>
+            <td class="description"><span>Invoice number</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>{<span class="tagname">tag_paymentstatus</span>}</code></td>
-            <td><span class="cellcontent">The status of the order, possible values <em>Success</em>, <em>Failed</em> or <em>Pending</em></span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_paymentstatus</span>}</code></td>
+            <td class="description"><span>The status of the order, possible values <em>Success</em>, <em>Failed</em> or <em>Pending</em></span></td>
             
         </tr>
     </tbody>

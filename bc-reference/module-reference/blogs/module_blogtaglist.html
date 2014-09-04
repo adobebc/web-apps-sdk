@@ -23,9 +23,36 @@
 </ul>
 </div>
 <div class="layouts">
-<p>The module outputs a generic list: </p><a href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/module_blogtaglist_output.png" class="fancybox">
+<h2>This module can be rendered using:</h2>
+<ul>
+    <li>a generic list (this layout cannot be modified):<br/><a href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/module_blogtaglist_output.png" class="fancybox">
 <img alt="module_blogtaglist_output" style="border: 0px none;" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/module_blogtaglist_output.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/>
-</a></div>
+</a></li>
+    <li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
+    </ul>
+    <table width="100%" class="data-bordered">
+  <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+    <tr>
+            <td valign="top" class="liquid tag"><code>{{id}}</code></td>
+         <td class="description"><span>The ID of the tag</span></td>
+        </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{{<span class="tagname">name</span>}}</code></td>
+         <td class="description"><span>The name of the tag</span></td>
+        </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{{<span class="tagname">count</span>}}</code></td>
+         <td class="description"><span>The number of posts that have been associated with this particular tag</span></td>
+        </tr>
+  </tbody>
+</table>
+</div>
 <div class="examples">
 <h2>Examples</h2>
 <code>{<span>module_blogtaglist blogId="4168" rowCount="3"</span>}</code> will output:

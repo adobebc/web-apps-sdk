@@ -21,33 +21,37 @@
 </tr>
 </thead>
     <tbody>
-            <tr>
-                <td style="width: 224px;"><code>{<span>tag_cartUrl</span>}</code></td>
-                <td style="width: 342px;">renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">cartUrl</span>}}</code></td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_cartUrl</span>}</code></td>
+                <td class="description">renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>
             </tr>
-            <tr>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">itemCount</span>}}</code></td>
                 <td><code>{<span>tag_itemCount</span>}</code></td>
-                <td>renders the number of the items in the cart or 0 if none.</td>
+                <td class="description">renders the number of the items in the cart or 0 if none.</td>
             </tr>
-            <tr>
-                <td><code>{<span>tag_totalAmount</span>}</code></td>
-                <td>renders the total money amount of the items (with two decimals) or 0.00 if the items don't have prices or there are no items in the cart</td>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">totalAmount</span>}}</code></td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_totalAmount</span>}</code></td>
+                <td class="description">renders the total money amount of the items (with two decimals) or 0.00 if the items don't have prices or there are no items in the cart</td>
             </tr>
-            <tr>
-                <td><code>{<span>tag_currency</span>}</code></td>
-                <td>renders the coin of the current country, which is either the site country or the country of the order (if set)</td>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">currencyFormat</span>}}</code></td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_currency</span>}</code></td>
+                <td class="description">renders the coin of the current country, which is either the site country or the country of the order (if set)</td>
             </tr>
-            <tr>
-                <td><code>{<span>tag_totalAmountWithCurrency</span>}</code></td>
-                <td>renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>{tag_currency}</code><code>{<span>tag_totalAmount</span>}</code>)</td>
+            <tr><td valign="top" class="liquid tag">&nbsp;</td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_totalAmountWithCurrency</span>}</code></td>
+                <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>{tag_currency}</code><code>{<span>tag_totalAmount</span>}</code>)</td>
             </tr>
-            <tr>
-                <td><code>{<span>tag_isEmpty</span>}</code></td>
-                <td>renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">countryCode</span>}}</code></td>
+                <td>&nbsp;</td>
+                <td class="description">the country code of the currency used</td>
             </tr>
-            <tr>
-                <td><code>{<span>tag_countryCode</span>}</code></td>
-                <td>renders the country code (of the site or of the order, if set)</td>
+          <tr><td valign="top" class="liquid tag">&nbsp;</td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_isEmpty</span>}</code></td>
+                <td class="description">renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">countryCode</span>}}</code></td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_countryCode</span>}</code></td>
+                <td class="description">renders the country code (of the site or of the order, if set)</td>
             </tr>
         </tbody>
     </table>

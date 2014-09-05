@@ -23,8 +23,51 @@
 </ul>
 </div>
 <div class="layouts">
-<h2>Layouts</h2>
-<p>This module is not rendered with a layout.</p>
+<h2>This module can be rendered:</h2>
+<ul>
+    <li><strong>as aregular drop down</strong> - the module outputs the <em>option</em> tags, to use it wrap it into a <em>select</em> like this:
+      <pre><code>&lt;select&gt;{<span>module_catalogueselect</span>}&lt;/select</code>&gt;</pre></li>
+    <li><strong>using Liquid collections</strong> - you can create an object representation of your catalog tree like this:
+      <pre class="language-javascript">
+    <code>
+  "catalogue": {
+    "moduleName": "catalogueselect",
+    "moduleDescriptor": {
+      "templatePath": "",
+      "parameters": "collection=\"catalogue\"",
+      "apiEndpoint": "/api/v3/catalogueselect",
+      "objectType": "-1",
+      "objectId": "-1",
+      "adminUrl": ""
+    },
+    "items": [
+      {
+        "id": 25479,
+        "name": "Classic Boutique",
+        "items": [
+          {
+            "id": 270280,
+            "name": "Special perfumes"
+          }
+        ]
+      },
+      {
+        "id": 26077,
+        "name": "Designer Brands"
+      },
+      {
+        "id": 25482,
+        "name": "Spicy Perfumes"
+      },
+      {
+        "id": 25481,
+        "name": "Woody Perfumes"
+      }
+    ]
+  }
+    </code>
+    </pre></li>
+</ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>

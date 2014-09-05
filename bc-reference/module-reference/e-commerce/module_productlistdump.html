@@ -30,15 +30,64 @@
 </ul>
 </div>
 <div class="layouts">
-<h2>This module is not rendered using a layout.</h2>
-<p>The list of catalogs is ordered as an unordered list:</p>
-<pre class="language-markup">
+<h2>This module can be rendered using:</h2>
+<ul>
+  <li><strong>a generic unordered list:</strong>
+  <pre class="language-markup">
 <code>&lt;ul class="catalogueitemdump"&gt;<br/>
 &lt;li&gt;&lt;a href="/catalog1/product1"&gt;This is my first product&lt;/a&gt;&lt;/li&gt;<br/>
 &lt;li&gt;&lt;a href="/catalog1/product2"&gt;This is my secondproduct&lt;/a&gt;&lt;/li&gt;<br/>
-&lt;/ul&gt;
-</code>
+&lt;/ul&gt;</code>
+</pre></li>
+  <li><strong> Liquid collections</strong> - the output is a Liquid collection containing the products:</li>
+</ul><pre class="language-javascript"><code>
+"dump": {
+    "moduleName": "productlistdump",
+    "moduleDescriptor": {
+      "templatePath": "",
+      "parameters": "collection=\"dump\"",
+      "apiEndpoint": "/api/v3/productlistdump",
+      "objectType": "27",
+      "objectId": "-1",
+      "adminUrl": "/Admin/Products_Detail.aspx?ProductID=-1"
+    },
+    "items": [
+      {
+        "name": "Sample Product 1",
+        "url": "/spicy-perfumes/sample-product-1"
+      },
+      {
+        "name": "Sample Product 2",
+        "url": "/designer-brands/sample-product-2"
+      },
+      {
+        "name": "Sample Product 3",
+        "url": "/designer-brands/sample-product-3"
+      },
+      {
+        "name": "Sample Product 4",
+        "url": "/woody-parfumes/sample-product-4"
+      },
+      {
+        "name": "Sample Product 5",
+        "url": "/classic-boutique/sample-product-5"
+      },
+      {
+        "name": "Sample Product 6",
+        "url": "/woody-parfumes/sample-product-6"
+      },
+      {
+        "name": "Sample Product 7",
+        "url": "/spicy-perfumes/sample-product-7"
+      },
+      {
+        "name": "Sample Product 8",
+        "url": "/classic-boutique/sample-product-8"
+      }
+    ]
+  }</code>
 </pre>
+
 </div>
 <div class="examples">
 <h2>Examples</h2>

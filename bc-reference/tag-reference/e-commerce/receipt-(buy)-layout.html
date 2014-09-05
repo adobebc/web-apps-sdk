@@ -23,38 +23,44 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">orderId</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_orderid</span>}</code></td><td class="description"><span>Internal ID associated with the purchase</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">amount</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amount</span>}</code></td>
             <td class="description"><span>The amount paid</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">authorizationCode</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_authorizationcode</span>}</code></td>
             <td class="description"><span>Authorization code returned by the payment gateway</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">errorMessage</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_errormessage</span>}</code></td>
             <td class="description"><span>Error message returned by the payment dateway</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">invoiceNumber</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicenumber</span>}</code></td>
             <td class="description"><span>Invoice number</span></td>
             
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">paymentStatus</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_paymentstatus</span>}</code></td>
             <td class="description"><span>The status of the order, possible values <em>Success</em>, <em>Failed</em> or <em>Pending</em></span></td>
+            
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">amountExceptShipping</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+            <td class="description"><span>The total amount excluding shipping cost<em></em></span></td>
             
         </tr>
     </tbody>

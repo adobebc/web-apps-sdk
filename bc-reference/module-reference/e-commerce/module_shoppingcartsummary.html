@@ -24,8 +24,54 @@
 </ul>
 </div>
 <div class="layouts">
-<h2>This module can be rendered using a custom layout</h2>
-<p>In order to customize the output of this module you will first need to create the layout, please take a look at the <a href="/dev-assets/reference/tag-reference/e-commerce/shopping-cart-summary.html" title="Shopping cart summary layout"> Shopping cart summary layout </a> article for the exact steps you need to take.</p>
+<h2>This module can be rendered using:</h2>
+<ul>
+<li><strong>your custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/e-commerce/shopping-cart-summary.html" title="Shopping cart summary layout"> Shopping cart summary layout </a> article for the exact steps you need to take</li>
+<li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
+</ul>
+<table>
+        <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">cartUrl</span>}}</code></td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_cartUrl</span>}</code></td>
+                <td class="description">renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">itemCount</span>}}</code></td>
+                <td><code>{<span>tag_itemCount</span>}</code></td>
+                <td class="description">renders the number of the items in the cart or 0 if none.</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">totalAmount</span>}}</code></td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_totalAmount</span>}</code></td>
+                <td class="description">renders the total money amount of the items (with two decimals) or 0.00 if the items don't have prices or there are no items in the cart</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">currencyFormat</span>}}</code></td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_currency</span>}</code></td>
+                <td class="description">renders the coin of the current country, which is either the site country or the country of the order (if set)</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag">&nbsp;</td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_totalAmountWithCurrency</span>}</code></td>
+                <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>{tag_currency}</code><code>{<span>tag_totalAmount</span>}</code>)</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">countryCode</span>}}</code></td>
+                <td>&nbsp;</td>
+                <td class="description">the country code of the currency used</td>
+            </tr>
+          <tr><td valign="top" class="liquid tag">&nbsp;</td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_isEmpty</span>}</code></td>
+                <td class="description">renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">countryCode</span>}}</code></td>
+                <td valign="top" class="legacy tag"><code>{<span>tag_countryCode</span>}</code></td>
+                <td class="description">renders the country code (of the site or of the order, if set)</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <div class="examples">
 <h2>Examples</h2>

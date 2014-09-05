@@ -18,44 +18,47 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_browsepanel</span>}</code></td><td class="description"><span>Displays the browse panel for current catalogue. The fyll syntax is {<span>tag_browsepanel, hideOnSale, hidePriceBrackets, hideSubCatalogues</span>} Example of use: {<span>tag_browsepanel,true,false,true</span>}</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_browsepanel_(UNIQUE-ID-HERE)</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_browsepanel</span>}</code></td><td class="description"><span>Displays the browse panel for current catalogue. The fyll syntax is {<span>tag_browsepanel, hideOnSale, hidePriceBrackets, hideSubCatalogues</span>} Example of use: {<span>tag_browsepanel,true,false,true</span>}<br/>
+         For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_cataloguebreadcrumbs</span>}</code></td><td class="description"><span>Catalogue breadcrumbs help customers easily navigate between related catalogues</span></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_cataloguebreadcrumbs_(UNIQUE-ID-HERE)</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_cataloguebreadcrumbs</span>}</code></td><td class="description"><span>Catalogue breadcrumbs help customers easily navigate between related catalogues.<br/>
+         For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
         </tr>
-        <tr>
+        <tr> <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_cataloguelist_(UNIQUE-ID-HERE)</span>}}</code></td>
             <td valign="top" class="legacy tag"><p><code>{<span class="tagname">tag_cataloguelist</span>}</code>
               </td><td class="description"><span>Lists the sub-catalogues in the current catalogue, for example {<span>tag_cataloguelist,x</span>} where <em>x</em> is the number of catalogues per row). </span></p>
               <p><span class="cellcontent">The full syntax is {<span>tag_cataloguelist,rowLength,targetFrame,notUsed,sortType,hideEmptyMessage,list/table</span>}
               </span></p>
               <p><span class="cellcontent">Change: {<span>tag_cataloguelist,4</span>} to {<span>tag_cataloguelist,4,,,,,true</span>} to display in an unordered list structure.<br />
-                
+              
+         For additional information on how to render the list of comments using Liquid take a look at this article
             </span></p></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">description</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_description</span>}</code></td><td class="description"><span>Catalogue description</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>name}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name</span>}</code></td><td class="description"><span>Catalogue name</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_nextpage</span>}</code></td><td class="description"><span>Next page link to traverse products in current catalogue (can be customized to use image)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">pagination</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_pagination</span>}</code></td><td class="description"><span>Enhanced pagination e.g. <em>1 .. 2 3 4 5 .. 10</em> to provide fast access to adjacentpages</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_previouspage</span>}</code></td><td class="description"><span>Previous page link to traverse products in current catalogue (can be customized to useimage)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_productlist_(UNIQUE-ID-HERE)</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productlist</span>}</code></td><td class="description"><span>Lists the products in the current catalogue. Use {<span>tag_productlist,u,v,w,x,y,z</span>} where:
             <ul>
             <li> <em>u</em> is the number of products per row</li>
@@ -64,11 +67,8 @@
             <li><em>x</em> is the sort type, e.g. <em>Price</em> or <em>Alphabetical</em></li>
             <li><em>y</em> allows you to hide empty message, e.g. <em>This catalog has no products</em></li>
             <li><em>z </em>is list type, for example change {<span>tag_productlist,4</span>} to {<span>tag_productlist,4,,,,,true</span>} to display in an unordered list structure.
-            </li></ul></span></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shoppingcartsummary</span>}</code></td><td class="description"><span>Shows shopping cart summary with view cart link {<span>tag_shoppingcartsummary,horizonal</span>} and {<span>tag_shoppingcartsummary,vertical</span>} to display horizontally and vertically respectively, {<span>tag_shoppingcartsummary,,quote</span>} to display total.</span></td>
+            </li></ul>
+         For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
         </tr>
     </tbody>
 </table>

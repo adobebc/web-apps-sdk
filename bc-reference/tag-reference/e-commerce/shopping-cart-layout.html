@@ -29,63 +29,88 @@ This way, with one layout for every country defined you can vary the contents of
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_buybutton,Text or Image,true</span>}</code></td><td class="description"><span>Link to checkout and purchase products in cart (Text or Image allow you to render your own text or to use image instead). True is validation function that checks to make sure every order has a valid shipping charge before the customer is able to pay and finalize the order.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">buyUrl</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>The URL for the Buy button</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">buyButtonOnClick</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>The javascript event to be assigned to the Buy button</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_cataloguebreadcrumbs_(UNIQUE-ID-HERE)</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_cataloguebreadcrumbs</span>}</code></td><td class="description"><span>Catalogue breadcrumbs help customers easily navigate between related catalogues</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_clearcartbutton,imagepath</span>}</code></td><td class="description"><span>Link to clear the cart (add an 'imagepath' to use image instead)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">clearCartOnClick</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>The javascript event to be assigned to the clear cart button</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{items.custom1<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom1</span>}</code></td><td class="description"><span>Custom field #1. Use to display any information about a product</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{items.custom2<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom2</span>}</code></td><td class="description"><span>Custom field #2. Use to display any information about a product</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{items.custom3}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom3</span>}</code></td><td class="description"><span>Custom field #3. Use to display any information about a product</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{items.custom4<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom4</span>}</code></td><td class="description"><span>Custom field #4. Use to display any information about a product</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">discountCode</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_discountcode</span>}</code></td><td class="description"><span>An input box for customers to enter discount code in</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">quoteUrl</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description">Link to checkout and request a quote.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_getquotebutton</span>}</code></td><td class="description"><span>Link to checkout and request a quote (customize to use image instead)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">giftVoucher</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_giftvoucher</span>}</code></td><td class="description"><span>An input box for customer to enter gift voucher code in</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">giftVoucherAmount</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_giftvoucheramount</span>}</code></td><td class="description"><span>Total amount of credit applied to this order as a result of a gift voucher</span></td>
         </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">giftVoucherOnChange</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>The javascript event applied to the gift voucher controls</span></td>
+        </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">invoiceDiscountAmount</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicediscountamount</span>}</code></td><td class="description"><span>Total discount amount based on the discount code entered (shipping price isnotdiscounted)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">invoiceTotal</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicetotal</span>}</code></td><td class="description"><span>Total cost of the current cart (factoring in all costs and discounts)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">invoiceTotalExceptTaxAmount</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicetotalextaxamount</span>}</code></td><td class="description"><span>Invoice total amount excluding tax (e.g. products ex tax + shipping ex tax)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicetotaltaxamount,state,state special tax rate,regular tax rate name,special tax rate name</span>}</code></td><td class="description"><span>Invoice total amount of tax (e.g. products tax + shipping tax).  The additional parameters allow a user to configure the system to break out part of the tax for a specific state into two parts. This is useful in some countries where by law you are required to show GST or similar tax on a separate line, for example:
             <ul>
                 <li>Tax code BC is configured as 12% (the sum of 7% PST and 5% GST)</li>
@@ -97,27 +122,27 @@ This way, with one layout for every country defined you can vary the contents of
             </span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productTaxPercentage</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttaxpercentage,percentage</span>}</code></td><td class="description"><span>To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the product price will be paid as a sales tax, use {<span>tag_producttaxpercentage, 12.5</span>}</code> tag where <em>12.5</em> is the percentage of tax to be paid.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">totalTaxPercentage</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_totaltaxpercentage,percentage</span>}</code></td><td class="description"><span>To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the total price will be paid as a sales tax , use {<span>tag_producttaxpercentage, 12.5</span>}</code> tag where <em>12.5</em> is the percentage of tax to be paid.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">orderId</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_orderid</span>}</code></td><td class="description"><span>Order ID normally assigned to quotes. You can also use this value to search for the order in the Admin console's CRM &gt; Search panel</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">code</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productcode</span>}</code></td><td class="description"><span>Product code of the product in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productdescription</span>}</code></td><td class="description"><span>Product description captured from the 'Instructions' box or 'Product Attributes'</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">body</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producteditorcontent</span>}</code></td><td class="description"><span>Product description as it appears in the WYSIWYG editor</span></td>
         </tr>
         <tr>
@@ -125,55 +150,65 @@ This way, with one layout for every country defined you can vary the contents of
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productextaxamount</span>}</code></td><td class="description"><span>Price of each product excluding tax in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productGrandTotal</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productgrandtotal</span>}</code></td><td class="description"><span>Total price of all products including tax in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productimage</span>}</code></td><td class="description"><span>Small image of the product</span></td>
         </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">imagePath</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>The path of the product's image</span></td>
+        </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productAmountIncludingTax</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productinctaxamount</span>}</code></td><td class="description"><span>Price of each product including tax in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">name</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productname</span>}</code></td><td class="description"><span>List of product names in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productname_nolink</span>}</code></td><td class="description"><span>Product name already in the cart without a link back to the product</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">quantity</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productquantity</span>}</code></td><td class="description"><span>Number of units of each product in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productremovelink</span>}</code></td><td class="description"><span>Link to remove product from the cart</span></td>
         </tr>
+          <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">removeOnClick</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>The event to be associated with the remove product button</span></td>
+        </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productSubTotal</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productsubtotal</span>}</code></td><td class="description"><span>Total price of all products excluding tax in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productTaxAmount</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttaxamount</span>}</code></td><td class="description"><span>Amount of tax for each product in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productTaxRate</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttaxrate</span>}</code></td><td class="description"><span>Tax rate associated with each product in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productTaxTotal</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttaxtotal</span>}</code></td><td class="description"><span>Total tax amount for all products in the cart</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productTotal</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttotal</span>}</code></td><td class="description"><span>Total price of each product in the cart (e.g. units x unit price inc tax)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productTotalExceptTax</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttotalextax</span>}</code></td><td class="description"><span>Total amount for product excluding tax (Product x Quantity)</span></td>
         </tr>
         <tr>
@@ -189,19 +224,19 @@ This way, with one layout for every country defined you can vary the contents of
             </span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">shippingTaxAmount</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingtaxamount</span>}</code></td><td class="description"><span>Amount of tax associated with the shipping option chosen</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">shippingTaxRate</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingtaxrate</span>}</code></td><td class="description"><span>Tax rate associated with the shipping option chosen</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">shippingTotal</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingtotal</span>}</code></td><td class="description"><span>Total cost of the shipping option chosen (e.g. shipping ex tax + shipping tax)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">totalUnits</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_totalunits</span>}</code></td><td class="description"><span>Total product units in the cart</span></td>
         </tr>
     </tbody>

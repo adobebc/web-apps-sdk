@@ -38,12 +38,10 @@ The response should be "201 created" if the page was successfully created.
   <li><code>size</code> - the page's size</li>
   <li><code>enabled</code> - whether the page is enabled or not</li>
   <li><code>startPage</code> - whether the page is set as start page</li>
-  <li><code>pageStatusId</code> - </li>
   <li><code>releaseDate</code> - the release date of the page</li>
   <li><code>expiryDate</code> - the expiry date of the page</li>
   <li><code>displayable</code> - whether the page is live or it is a draft page</li>
   <li><code>excludeFromSearch</code> - whether to exclude the page from the site search</li>
-  <li><code>reIndex</code> - whether to re-index the page</li>
   <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
   <li><code>content</code> - the content of the page HTML encoded</li>
   <li><code>redirect301</code> - the URL this page should 301 redirect to</li>
@@ -53,7 +51,7 @@ The response should be "201 created" if the page was successfully created.
 <hr>
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: &quot;/webresources/api/v3/sites/current/pages&quot;,<br>     data: JSON.stringify({<br>         &quot;name&quot;: &quot;API created&quot;,<br>         &quot;url&quot;: &quot;/api-created.html&quot;,<br>         &quot;deleted&quot;: false,<br>         &quot;categoryId&quot;: -1,<br>         &quot;templateId&quot;: 0,<br>         &quot;displayFileName&quot;: &quot;api_created_page.htm&quot;,<br>         &quot;startPage&quot;: false,<br>         &quot;pageStatusId&quot;: 1,<br>         &quot;displayable&quot;: false,<br>         &quot;excludeFromSearch&quot;: false,<br>         &quot;reIndex&quot;: false,<br>         &quot;imported&quot;: false,<br>         &quot;content&quot;: &quot;&lt;html&gt;Sample content here&lt;/html&gt;&quot;<br>     }),<br>     type: &quot;POST&quot;,<br>     contentType: &quot;application/json&quot;,<br>     headers: {<br>         &quot;Authorization&quot;: $.cookie('access_token')<br>     }
+    url: &quot;/webresources/api/v3/sites/current/pages&quot;,<br>     data: JSON.stringify({<br>         &quot;name&quot;: &quot;API created&quot;,<br>         &quot;url&quot;: &quot;/api-created.html&quot;,<br>         &quot;deleted&quot;: false,<br>         &quot;categoryId&quot;: -1,<br>         &quot;templateId&quot;: 0,<br>         &quot;displayFileName&quot;: &quot;api_created_page.htm&quot;,<br>         &quot;startPage&quot;: false,<br>         &quot;displayable&quot;: false,<br>         &quot;excludeFromSearch&quot;: false,<br>         &quot;imported&quot;: false,<br>         &quot;content&quot;: &quot;&lt;html&gt;Sample content here&lt;/html&gt;&quot;<br>     }),<br>     type: &quot;POST&quot;,<br>     contentType: &quot;application/json&quot;,<br>     headers: {<br>         &quot;Authorization&quot;: $.cookie('access_token')<br>     }
 });
 request.done(function (msg) {
     console.log(msg);
@@ -101,12 +99,10 @@ request.fail(function (jqXHR) {
   <li><code>size</code> - the page's size</li>
   <li><code>enabled</code> - whether the page is enabled or not</li>
   <li><code>startPage</code> - whether the page is set as start page</li>
-  <li><code>pageStatusId</code> - </li>
   <li><code>releaseDate</code> - the release date of the page</li>
   <li><code>expiryDate</code> - the expiry date of the page</li>
   <li><code>displayable</code> - whether the page is live or it is a draft page</li>
   <li><code>excludeFromSearch</code> - whether to exclude the page from the site search</li>
-  <li><code>reIndex</code> - whether to re-index the page</li>
   <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
   <li><code>content</code> - the content of the page HTML encoded</li>
   <li><code>redirect301</code> - the URL this page should 301 redirect to</li>

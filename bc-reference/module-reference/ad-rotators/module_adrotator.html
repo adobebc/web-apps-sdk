@@ -19,6 +19,60 @@
     <li><strong>ID</strong> - this parameter is assigned by the system and should nor be altered</li>
 </ul>
 </div>
+<div class="layouts">
+<h2>This module can be rendered using:</h2>
+<ul>
+    <li><strong>a single image nested in a hyperlink</strong> - when the user clicks the image he is taken to the URL specified in the &quot;Click-Thru URL&quot; field.</li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
+</ul>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">id</span>}}</code></td>
+         <td class="description"><span>The Ad rotator's ID</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">itemLabel</span>}}</code></td>
+         <td class="description"><span>The image's label</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">itemSource</span>}}</code></td>
+         <td class="description"><span>The URL of the image currently on display</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">itemClickUrl</span>}}</code></td>
+         <td class="description"><span>The URL the site is redirected after clicking the image</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">itemId</span>}}</code></td>
+         <td class="description"><span>The individual ID of the image</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">itemFrame</span>}}</code></td>
+         <td class="description"><span>Whether the &quot;Click-Thru URL&quot; is opened in a new window or in the current one</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">itemWidth</span>}}</code></td>
+         <td class="description"><span>The image width</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">itemHeight</span>}}</code></td>
+            <td class="description"><span>The image height</span></td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">itemType</span>}}</code></td>
+         <td class="description"><span>The item's type (image, Flash or HTML)</span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>

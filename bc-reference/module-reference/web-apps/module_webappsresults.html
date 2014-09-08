@@ -36,11 +36,186 @@
 </ul>
 </div>
 <div class="layouts">
-<h2>Layouts</h2>
+<h2>This module can be rendered using:</h2>
 <ul>
-    <li>Web App Layouts &gt;&nbsp;<a href="/dev-assets/reference/tag-reference/web-apps/web-app-list-layout.html">List Layout </a></li>
-    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+    <li><strong>the webapp list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the<a href="/dev-assets/reference/tag-reference/blogs/blog-listing-layout.html"> </a><a href="/dev-assets/reference/tag-reference/web-apps/web-app-list-layout.html">Webapp List Layout's reference page </a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
 </ul>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+	<tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">itemid</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_itemid</span>}</code></td><td class="description"><span>Item's system ID</span></td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">address1</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_address1</span>}</code></td><td class="description"><span>Address1</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">address2</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_address2</span>}</code></td><td class="description"><span>Address2</span></td>
+        </tr>
+    <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">city</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addresscity</span>}</code></td><td class="description"><span>City</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">country</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addresscountry</span>}</code></td><td class="description"><span>Country</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addressglatlng</span>}</code></td><td class="description"><span>This tag provides a shortcut to generate GLatLng objects for use with the Google Maps API.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">latitude</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addresslatitude</span>}</code></td><td class="description"><span>Latitutde of web app item address</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">longitude</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addresslongitude</span>}</code></td><td class="description"><span></span>Longitude of web app item address</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">state</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addressstate</span>}</code></td><td class="description"><span>State</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">zipcode</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addresszipcode</span>}</code></td><td class="description"><span>ZIP code</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_addtofavorites_(UNIQUE-ID-HERE)</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addtofavorites,add_Image, remove_Image</span>}</code></td>
+            <td class="description"><span>Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span class="tagname">tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}&lt;br/&gt;<br>
+            For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">button</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_button,Your Text</span>}</code></td><td class="description"><span>will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="/dev-assets/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></span></td>
+        </tr>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">commentCount</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_commentcount</span>}</code></td><td class="description"><span>Number of comments for current post</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">counter</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_counter</span>}</code></td><td class="description"><span>Incremental count of the item on the page</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag">&nbsp;</td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_delete</span>}</code></td>
+         <td class="description"><span>Creates a link that allows current customer to delete a web app item they have previously submitted (only available if customer logged in to a secure zone)</span></td>
+        </tr>
+            <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">deleteUrl</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>The URL that allows current customer to delete a web app item they have previously submitted (only available if customer logged in to a secure zone)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">description</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_description,number of characters</span>}</code></td><td class="description"><span>Description of item (editor content). On the "List Layout  (Backup)" you can use <span>{</span>tag_description,10</code>}</span> to display the first 10 characters of the webapp item's description.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag">&nbsp;</td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_edit</span>}</code></td><td class="description"><span>Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/dev-assets/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">editUrl</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td><td class="description"><span>Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/dev-assets/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_expirydate</span>}</code></td><td class="description"><span>Expiry date of item in this format - <em>01-Jan-9999</em><br />
+            </span></td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>_raw}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>Expiry timestamp of item in this format -<em>1/1/9999 12:00:00 AM</em><br />
+            </span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">lastUpdateDate</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_lastupdatedate</span>}</code></td><td class="description"><span>Last update date of item in this format -<em>01-Jan-9999</em></span></td>
+        </tr>
+          <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">lastUpdateDate_raw</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>Last update timestamp of item in this format - <em>28-May-2014 11:07 PM</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">name</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name_nolink</span>}</code></td><td class="description"><span>Name of item (without hyperlink)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag">&nbsp;</td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name</span>}</code></td><td class="description"><span>Name of the item - will have hyperlink that points to the item's <a href="/dev-assets/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">releaseDate</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_releasedate</span>}</code></td><td class="description"><span>Release date of item in this format - <em>08-Sep-2014</em></span></td>
+        </tr>
+          <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">releaseDate_raw</span>}}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+         <td class="description"><span>Release timestamp of item in this format - <em>9/5/2014 7:00:00 AM</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">weight</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_weight</span>}</code></td><td class="description"><span>Weighting of item</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">urlWithHost</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_itemurl_withhost</span>}</code></td><td class="description"><span>Full URL of the web app item including host for example <em>http://mysamplesite.com/car-catalogue/ford-explorer</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">url</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_itemurl_nolink</span>}</code></td><td class="description"><span>Relative URL of the web app item for example <em>/car-catalogue/ford-explorer</em></span></td>
+        </tr>
+          <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">rowcss</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_rowcss,myclass</span>}</code></td><td class="description"><span>Replate myclass with your own CSS class. Alternates between classes, such as "myclass" and "myclass_alternate"</span></td>
+        </tr>
+          <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_tellafriend_(UNIQUE-ID-HERE)</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_tellafriend</span>}</code></td>
+         <td class="description"><span>Tell a friend about this item. <br>
+         For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image</span>}</code></td>
+            <td class="description"><span>For &quot;Image&quot; type fields only - renders the image wrapped in a hyperlink</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image_value}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image_value</span>}</code></td>
+            <td class="description"><span>For &quot;Image&quot; type fields only - renders the image's src</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{image_nolink<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image_nolink</span>}</code></td>
+            <td class="description"><span>For &quot;Image&quot; type fields only - renders only the image</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">datasource_id</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_datasource_id</span>}</code></td>
+            <td class="description"><span>Renders the ID of the datasource field e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{<span>tag_country_id</span>}</code></span></td>
+        </tr>
+  <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">datasource</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_datasource</span>}</code></td>
+            <td class="description"><span>Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{<span>tag_country</span>}</code></span></span></td>
+    </tr>
+    </tbody>
+</table>
 </div>
 <div class="examples">
 <h2>Examples</h2>

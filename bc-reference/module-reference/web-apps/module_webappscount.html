@@ -32,7 +32,8 @@
 <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_webappscount id=&quot;56&quot;}</span></code> - assuming there are 4 webapp items in the webapp with the ID 56 this module will render "4" </li>
+    <li><code>{<span>module_webappscount id=&quot;56&quot;</span>}</code> - assuming there are 4 webapp items in the webapp with the ID 56 this module will render "4" </li>
+    <li><code>{<span>module_webappscount id=&quot;56&quot; collection="counter" template=""</span>}</code> - assuming there are 4 webapp items in the webapp with the ID 56 the Liquid code <code>{{<span>this.counter.count | json</span>}}</code> will render "4"</li>
 </ul>
 </div>
 </div>

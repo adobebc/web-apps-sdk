@@ -26,13 +26,75 @@
 <div class="layouts">
 <h2>Layouts</h2>
 <ul>
-    <li><a href="/dev-assets/reference/tag-reference/affiliate-programs/affiliate-program-layout.html">Affiliate Program</a></li>
-    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+    <li><strong>the affiliate program list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/dev-assets/reference/tag-reference/affiliate-programs/affiliate-program-layout.html">Affiliate Program reference page</a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
 </ul>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag">&nbsp;</td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_actiontotal,actionTypeId,days</span>}</code></td><td class="description"><span>Total number of actions for the last x days.  the Action type ID's are as follows:
+            <ul>
+            <li>(Inquiries) WebForm = 2 </li>
+            <li>Purchase = 3 </li>
+            <li>Quote = 4 </li>
+            <li>SecureZoneLogin = 5 </li>
+            <li>EmailListSubscribe = 6 </li>
+            <li>EmailListSubscribeDoubleOptIn = 12 </li>
+            <li>EProductDownload = 7 </li>
+            <li>ReferAFriend = 8 </li>
+            <li>BookingForm = 9 </li>
+            <li>EmailListUnsubscribe = 10 </li>
+            <li>CampaignOpen = 11 </li>
+            <li>CampaignLinkClick = 13 </li>
+            <li>ForumNewTopic = 14 </li>
+            <li>ForumNewPost = 15</li>
+            </ul>
+            
+            </span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">affiliateLink</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_affiliatelink</span>}</code></td><td class="description"><span>The link for this affiliate to use on his/her website or forward to friends for tracking purposes.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">clickThrusTotal</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_clickthrustotal</span>}</code></td><td class="description"><span>Total click-thrus via the affiliate link</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">commissionOwing</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_commissionowing</span>}</code></td><td class="description"><span>Commission owing to the affiliate logged into the secure zone</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">referralsLastMonth</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_referralslastmonth</span>}</code></td><td class="description"><span>Referrals made last month by the affiliate logged into the secure zone</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">referralsLastWeek</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_referralslastweek</span>}</code></td><td class="description"><span>Referrals made last week by the affiliate logged into the secure zone</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">referralsToday</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_referralstoday</span>}</code></td><td class="description"><span>Referrals made today by the affiliate logged into the secure zone</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">referralsTotal</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_referralstotal</span>}</code></td><td class="description"><span>Total number of referrals made by the affiliate logged into the secure zone</span></td>
+        </tr>
+    </tbody>
+</table>
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<pre class="language-markup"><code>{<span> module_affiliateprogram id=&quot;1429</span>&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_affiliateprogram id=&quot;1429</span>&quot;}</code></pre>
 </div>
 </div>
   <div id="legacy">

@@ -53,11 +53,26 @@
 </code></pre>
 <h2 id="FOR">FOR</h2>
 <p>FOR is used to loop over a collection of items.</p>
-<pre class="language-javascript"><code>{%<span> for item in webapp1.items </span>%}
+<pre class="language-markup"><code>{%<span> for item in webapp1.items </span>%}
 &lt;p&gt;
     This item&#39;s name is: {{item.name}} 
 &lt;/p&gt;
 {%<span> endfor </span>%}</code></pre>
+<p>In FOR loops you can also access the key/value pairs, for example:</p>
+<pre class="language-markup"><code>&lt;ul&gt;
+{% for getParam in this.globals.visitor %} 
+  &lt;li&gt;{{getParam[0]}} = &#39;{{getParam[1]}}&#39;&lt;/li&gt;
+{% endfor %}
+&lt;/ul&gt;
+</code></pre>
+<p>will render the <code>this.globals.visitor</code> object like so:</p>
+<pre class="language-markup"><code>&lt;ul&gt;
+  &lt;li&gt;deviceClass = &#39;desktop&#39;&lt;/li&gt;
+  &lt;li&gt;ip = &#39;10.10.10.10&#39;&lt;/li&gt;
+  &lt;li&gt;country = &#39;US&#39;&lt;/li&gt;
+  &lt;li&gt;userAgent = &#39;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36&#39;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
 <h2 id="Cycle">CYCLE</h2>
 <p>Render one of a few possible items. For example:</p><pre class="language-javascript"><code>{% cycle 'red', 'green', 'blue' %}<br /> 
 {% cycle 'red', 'green', 'blue' %}<br /> 

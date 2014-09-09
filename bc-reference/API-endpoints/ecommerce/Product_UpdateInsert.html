@@ -1,6 +1,6 @@
         <h1>Product_UpdateInsert</h1>
 
-<p>Create or update any number of Products.</p>
+<p>Create or update any number of products.</p>
 
 <h3>Request</h3>
 
@@ -57,7 +57,7 @@ A Product_RetrieveResponse object with the following properties:</li>
 <li><code>limitDownloadsToIP</code> - <em>(integer)</em> </li>
 <li><code>isOnSale</code> - <em>(boolean)</em> </li>
 <li><code>hideIfNoStock</code> - <em>(boolean)</em> </li>
-<li><code>productAttributes</code> - <em>(string)</em> </li>
+<li><code>productAttributes</code> - <em>(string)</em> - if you have product variations enabled and wish to make a call to edit parameters of the variations (stock levels, update or disable them and so on) you will need to remove the <strong>productAttributes</strong> parameter from the call</li>
 <li><code>isGiftVoucher</code> - <em>(boolean)</em> </li>
 <li><code>enableDropShipping</code> - <em>(boolean)</em> </li>
 <li><code>productWeight</code> - <em>(double)</em> </li>
@@ -286,12 +286,7 @@ Content-Length: length
 &lt;/soap12:Envelope&gt;
 </code></pre>
 
-<p>The minimum product information that is required to make an update are:</p>
-
-<ul>
-<li><productid>int</productid></li>
-<li><productcode>string</productcode></li>
-<li><productname>string</productname></li>
-</ul>
+<p>When <strong>creating</strong>  products that have Variations enabled you will  need to include both the <code>productAttributes</code> and the <code>variations</code> tags. </p>
+<p>When <strong>updating</strong> products that use variations you need to remove the <code>productAttributes</code> tag.</p>
 
         

@@ -40,11 +40,79 @@
 </ul>
 </div>
 <div class="layouts">
-<h2>Layouts</h2>
+<h2>This module can be rendered using:</h2>
 <ul>
-    <li>Event Layouts &gt;&nbsp;<a href="/dev-assets/reference/tag-reference/events/event-list-layout.html" title="List Layout">List Layout</a></li>
-    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
-</ul>
+    <li><strong>the  list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/dev-assets/reference#!/tag-reference/events/event-list-layout.html" title="News layout">Event layout reference page</a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
+</ul><table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">name</span>}}</code></td>
+         <td class="description"><span>Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">detail layout</a></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">body</span>}}</code></td>
+         <td class="description"><span>Details of booking (editor content) e.g. <em>Something about the event goes here.</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">capacity</span>}}</code></td>
+         <td class="description"><span>Total number of seats for booking e.g. <em>130</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">percentfull</span>}}</code></td>
+         <td class="description"><span>Percentage of booking seats already booked e.g. <em>40%</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">date</span>}}</code></td>
+         <td class="description"><span>Date of booking e.g. <em>24-Aug-2014</em></td>
+        </tr>
+
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_addtofavorites_(UNIQUE-ID-HERE)</span>}}</code></td>
+         <td class="description"><span>Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - {<span>tag_addtofavorites,&lt;img alt="" src="/images/plus_icon" /&gt;,&lt;img alt="" src="/images/minus_icon" /&gt;</span>}</code> </span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">day</span>}}</code></td>
+         <td class="description"><span>Day of Booking e.g. <em>24</em> if the booking date is 24-Aug-2014 </span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">monthName</span>}}</code></td>
+         <td class="description"><span>Month of Booking e.g. <em>Aug</em> if the booking date is 24-Aug-2014</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">year</span>}}</code></td>
+         <td class="description"><span>Year of Booking e.g. <em>2014</em> if the booking date is 24-Aug-2014</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">capacityEmpty</span>}}</code></td>
+         <td class="description"><span>Number of available seats left for booking e.g. <em>79</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">weekday</span>}}</code></td>
+         <td class="description"><span>Day of booking e.g. <em>Saturday </em>if the booking date is 24-Aug-2013</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">lastUpdateDate</span>}}</code></td>
+         <td class="description"><span>Date and time the booking was last updated e.g. <em>29-Jan-2013 08:57 PM</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_tellafriend_(UNIQUE-ID-HERE)</span>}}</code></td>
+         <td class="description"><span>Tell a friend about this booking</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">classifications</span>}}</code></td>
+         <td class="description"><span>List of categories that this booking is classified under e.g. <em>Company, Solutions</em></td>
+        </tr>
+    </tbody>
+</table>
 </div>
 <div class="examples">
 <h2>Examples</h2>

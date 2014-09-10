@@ -45,11 +45,40 @@
 </ul>
 </div>
 <div class="layouts">
-<h2>This module is rendered with these layouts</h2>
+<h2>This module can be rendered:</h2>
 <ul>
-    <li>This module does not use a layout, here is how its output looks like:
-    <a class="fancybox" href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1458.png"><img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1458.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/></a>
+    <li><strong>in its generic shape</strong>, as by default this module does not use a layout. Here is how the output looks like: <a class="fancybox" href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1458.png"><img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1458.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/></a>
     </li>
+    <li><strong>using Liquid collections</strong> - the output is a Liquid collection containing the days :    <br>
+      <br>
+      <code>"my_custom_collection_name": {<br>
+      "moduleName": "calendar",<br>
+      "moduleDescriptor": {<br>
+      "templatePath": "",<br>
+      "parameters": "0,a,,collection=\"my_custom_collection_name\"",<br>
+      "apiEndpoint": "/api/v3/calendar",<br>
+      "objectType": "-1",<br>
+      "objectId": "-1",<br>
+      "adminUrl": ""<br>
+      },<br>
+      "days": [<br>
+      {<br>
+        "day": "2014-09-01T00:00:00",<br>
+        "items": []<br>
+      },<br>
+      {<br>
+      "day": "2014-09-12T00:00:00",<br>
+      "items": [<br>
+      {<br>
+      "startDate": "2014-09-12T00:00:00",<br>
+      "endDate": "0001-01-01T00:00:00",<br>
+      "objectId": 20460,<br>
+      "objectType": 48,<br>
+      "name": "First Appearance",<br>
+      "url": "/BookingRetrieve.aspx?ID=20460"<br>
+      }<br>
+      ]<br>
+      },</code></li>
 </ul>
 </div>
 <div class="examples">

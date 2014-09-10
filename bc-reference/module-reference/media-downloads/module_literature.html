@@ -34,11 +34,69 @@
 </ul>
 </div>
 <div class="layouts">
-<h2>Layouts</h2>
+<h2>This module can be rendered using:</h2>
 <ul>
-    <li>Media downloads <a href="/dev-assets/reference/tag-reference/media-downloads/media-download-list-layout.html">List Layout</a></li>
-    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
-</ul>
+     <li><strong>the  list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/dev-assets/reference/tag-reference/media-downloads/media-download-list-layout.html" title="News layout">News layout reference page</a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
+</ul><table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_addtofavorites_(UNIQUE-ID-HERE)</span>}}</code></td>
+         <td class="description"><span>Add literature to favorites list. Optionally customize to display your own custom image for adding and removing.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td class="description"><span><span>{</span>tag_button,Your Text</code>}</span> replace Your Text with your own text, e.g. <em>Click for more information</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">counter</span>}}</code></td>
+         <td class="description"><span>Incremental count of the literature on the page</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">description</span>}}</code></td>
+         <td class="description"><span>Description of literature</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>}}</code></td>
+         <td class="description"><span>Expiry date of literature</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">fileSize</span>}}</code></td>
+         <td class="description"><span>File size of the literature in KB</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">iconUrl</span>}}</code></td>
+         <td class="description"><span>Icon representing the file type of the literature (16x16 pixels)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">lastUpdateDate</span>}}</code></td>
+         <td class="description"><span>Last update date of literature</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">name</span>}}</code></td>
+         <td class="description"><span>Literature name (will not have hyperlink)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td class="description"><span>Literature name (will have hyperlink)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">releaseDate</span>}}</code></td>
+         <td class="description"><span>Release date of literature</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_tellafriend_(UNIQUE-ID-HERE)</span>}}</code></td>
+         <td class="description"><span>Tell a friend about this literature</span></td>
+        </tr>
+    </tbody>
+</table>
 </div>
 <div class="examples">
 <h2>Examples</h2>

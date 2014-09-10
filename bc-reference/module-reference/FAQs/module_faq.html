@@ -40,7 +40,7 @@
 <div class="layouts">
 <h2>This module can be rendered using:</h2>
 <ul>
-    <li><strong>the list layout</strong>. On this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use: <a href="/dev-assets/reference/tag-reference/faqs/faq-list-layout.html">FAQ layout's reference page</a></li>
+    <li><strong>the list layout</strong>. On this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use: <a href="/dev-assets/reference#!/tag-reference/faqs/faq-list-layout.html">FAQ layout's reference page</a></li>
     <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong>  - here are the Liquid output tags you can use:</li>
 </ul>
@@ -53,44 +53,36 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span>tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}</code></code></span></td>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_addtofavorites_(UNIQUE-ID-HERE)</span>}}</code></td>
+          <td class="description"><span>Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span>tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}</code></code></span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>Answer for frequently asked question  (editor content). This outputs the text of the FAQ.</span></td>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">answer</span>}}</code></td>
+          <td class="description"><span>Answer for frequently asked question  (editor content). This outputs the text of the FAQ.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>replace Your Text with your own text. This outputs an anchor that takes the user to the detail view of the FAQ. The anchor's text is in this example "Your Text".</span></td>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">counter</span>}}</code></td>
+          <td class="description"><span>Incremental count of the FAQ on the page.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>Incremental count of the FAQ on the page.</span></td>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>}}</code></td>
+          <td class="description"><span>Expiry date of FAQ for example <em>16-Apr-2014 03:48 AM</em></span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>Expiry date of FAQ for example <em>16-Apr-2014 03:48 AM</em></span></td>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">lastUpdateDate</span>}}</code></td>
+          <td class="description"><span>Last update date of FAQ for example <em>16-Apr-2014 03:48 AM</em></span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>Last update date of FAQ for example <em>16-Apr-2014 03:48 AM</em></span></td>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">question</span>}}</code></td>
+          <td class="description"><span>Frequently asked question (will not have hyperlink). This outputs the FAQ's title in plain text.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>Frequently asked question (will not have hyperlink). This outputs the FAQ's title in plain text.</span></td>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">releaseDate</span>}}</code></td>
+          <td class="description"><span>Release date of FAQ in this format - <em>16-Sep-2014</em></span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>Frequently asked question (will have hyperlink). This outputs the FAQ's title as an anchor. When clicked the site visitor is taken to the detail view. The text of the anchor is the FAQ's title.</span></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>Release date of FAQ in this format - <em>16-Sep-2014</em></span></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
-         <td class="description"><span>Tell a friend about this FAQ. This outputs a link that when clicks opens up a popup that contains the "Tell a Friend" form.</span></td>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_tellafriend_(UNIQUE-ID-HERE)</span>}}</code></td>
+          <td class="description"><span>Tell a friend about this FAQ. This outputs a link that when clicks opens up a popup that contains the "Tell a Friend" form.</span></td>
         </tr>
     </tbody>
 </table>

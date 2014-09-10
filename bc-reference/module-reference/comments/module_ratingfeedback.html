@@ -22,11 +22,55 @@
 </ul>
 </div>
 <div class="layouts">
-<h2>Layouts</h2>
+<h2>This module can be rendered using:</h2>
 <ul>
-    <li><a href="/dev-assets/reference/tag-reference/comments/comments-layout.html" title="Comment layout">Comment layout</a></li>
-    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
-</ul>
+    <li><strong>the comment layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/dev-assets/reference/tag-reference/comments/comments-layout.html" title="Comment layout">Comment layout reference page</a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
+</ul><table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">country</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_country</span>}</code></td><td class="description"><span>Country of the person who provided the comment</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">body</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_feedback</span>}</code></td><td class="description"><span>Customer comment</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">flagUrl</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_flag</span>}</code></td><td class="description"><span>Image of the flag of the country of the person who provided the comment</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag">&nbsp;</td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_fullname</span>}</code></td><td class="description"><span>Displays the full name of the person who provided the comment.If the  "Website" field was not blank when the comment form was submitted the name is rendered as an anchor. If the "Website" field was blank at the time the comment form was submitted the output is in plain text. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">fullName</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_fullname_nolink</span>}</code></td><td class="description"><span>Full name in plain text of the person who provided the comment. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">rating</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_rating</span>}</code></td><td class="description"><span>Rating in stars</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_usagedate</span>}</code></td>
+            <td class="description"><span>Date when comment was given in this format - <em>27-Mar-2014 12:02</em></span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">website</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_website</span>}</code></td><td class="description"><span>Website of the person who provided the comment. If the comment form was submitted with the "Website" field not filled in this tag will output "{<span class="tagname">tag_website</span>}</code>"</span></td>
+        </tr>
+    </tbody>
+</table>
 </div>
 <div class="examples">
 <h2>Examples</h2>

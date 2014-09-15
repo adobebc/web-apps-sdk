@@ -127,9 +127,15 @@ For additional information on how to render the list of comments using Liquid ta
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostauthorpictureurl</span>}</code></td><td class="description"><span>Will render the picture url (relative to site root). e.g. <em>/images/profile.jpg</em></span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag">&nbsp;</td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostauthorpicture</span>}</code></td><td class="description"><span>Will render the full HTML image tag of the authors profile picture</span></td>
+          <td valign="top" class="liquid tag"><code>{{<span class="tagname">url_withhost</span>}}</code></td>
+          <td valign="top" class="legacy tag"><code>{tag_itemurl_withhost}</code></td>
+          <td class="description"><span>URL to the item referred, with host</span></td>
         </tr>
+         <tr>
+           <td valign="top" class="liquid tag"><code>{{<span class="tagname">rating</span>}}</code></td>
+           <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_rating</span>}</code></td>
+           <td class="description"><span>Rating in stars, the Liquid tag represents the numeric value of the rating </span></td>
+         </tr>
     </tbody>
 </table>
 </div>

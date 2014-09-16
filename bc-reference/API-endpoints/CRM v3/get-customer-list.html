@@ -136,6 +136,133 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
+<p>In this case the response looks like this:</p>
+
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "email1": {
+        "id": 8489222,
+        "siteId": 38581,
+        "value": "john.doe.1@mail.com",
+        "deleted": false,
+        "customerId": 7051740,
+        "default": true
+      },
+      "email2": {},
+      "email3": {},
+      "homeFax": {},
+      "mobilePhone": {},
+      "pager": {},
+      "webAddress": {
+        "id": 8489224,
+        "siteId": 38581,
+        "value": "johndoerepairs.com",
+        "deleted": false,
+        "customerId": 7051740,
+        "default": false
+      },
+      "workFax": {},
+      "workPhone": {},
+      "anniversary": {
+        "customerId": 7051740,
+        "siteId": 38581,
+        "anniversary1Date": "1993-09-01T07:00:00",
+        "anniversary1Title": "Birth",
+        "anniversary2Date": "2013-12-31T08:00:00",
+        "anniversary2Title": "New year!",
+        "anniversary3Date": "2014-08-01T07:00:00",
+        "anniversary3Title": "Mom's birthday",
+        "anniversary4Date": null,
+        "anniversary4Title": "",
+        "anniversary5Date": null,
+        "anniversary5Title": ""
+      },
+      "titleType": {
+        "id": 249385,
+        "siteId": 38581,
+        "titleType": "MR",
+        "default": true
+      },
+      "ratingType": {
+        "id": 85977,
+        "siteId": 38581,
+        "ratingType": "Hot",
+        "default": false
+      },
+      "leadSourceType": {
+        "id": 318173,
+        "siteId": 38581,
+        "leadSourceType": "Web",
+        "default": false
+      },
+      "industryType": {
+        "id": 743915,
+        "siteId": 38581,
+        "industryType": "Aerospace & Defence",
+        "default": true
+      },
+      "customerType": {
+        "id": 287044,
+        "siteId": 38581,
+        "customerType": "Analyst",
+        "default": false
+      }
+    },
+    {
+      "email1": {},
+      "email2": {},
+      "email3": {},
+      "homeFax": {},
+      "mobilePhone": {
+        "id": 8489223,
+        "siteId": 38581,
+        "value": "0244154154",
+        "deleted": false,
+        "customerId": 7051757,
+        "default": true
+      },
+      "pager": {},
+      "webAddress": {},
+      "workFax": {},
+      "workPhone": {},
+      "anniversary": {},
+      "titleType": {
+        "id": 249385,
+        "siteId": 38581,
+        "titleType": "MR",
+        "default": true
+      },
+      "ratingType": {
+        "id": 85979,
+        "siteId": 38581,
+        "ratingType": "Cold",
+        "default": false
+      },
+      "leadSourceType": {
+        "id": 318175,
+        "siteId": 38581,
+        "leadSourceType": "Other",
+        "default": true
+      },
+      "industryType": {
+        "id": 743939,
+        "siteId": 38581,
+        "industryType": "Other",
+        "default": false
+      },
+      "customerType": {
+        "id": 287049,
+        "siteId": 38581,
+        "customerType": "Other",
+        "default": true
+      }
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
 </div>
 <hr>
 <div class="error nocontent" style="display:none;">

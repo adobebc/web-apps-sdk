@@ -1,6 +1,6 @@
 
-<h1>Delete  a customer record</h1>
-<div class="description">Delete a CRM record.</div>
+<h1>Delete  a ratingType entity</h1>
+<div class="description">Delete a customerType entity.</div>
 <div class="request">
 <h3>Request</h3>
 <ul>
@@ -10,7 +10,7 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/customers/
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/ratingTypes/[customerType_ID]
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
 </ul>
@@ -29,7 +29,7 @@
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>DELETE /webresources/api/v3/sites/current/customers/9593213 HTTPS/1.1
+<pre class="language-javascript"><code>DELETE /webresources/api/v3/sites/current/ratingTypes/9593213 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -40,7 +40,7 @@ Content-Type: application/json
 
 <pre class="language-javascript"><code>
 HTTP/1.1 204 NO CONTENT
-Location: /webresources/api/v3/sites/current/customers
+Location: /webresources/api/v3/sites/current/ratingTypes
 Content-Type: application/json; charset=utf-8
 Content-Length: length</code></pre>
 
@@ -49,9 +49,8 @@ Content-Length: length</code></pre>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<p><strong>Delete  a customer record</strong></p>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/customers/9593213",
+    url: "/webresources/api/v3/sites/current/ratingTypes/9593213",
     type: "DELETE",
     conenection: "keep-alive",
     contentType: "application/json",

@@ -25,9 +25,9 @@
 <ul>
 <li><code>id</code> - the id of the template in the current site <em>(integer)</em></li>
 <li><code>siteId</code>- the id of the site <em>(integer)</em></li>
-<li><code>categoryId</code></li>
+<li><code>categoryId</code> - the ID of the workflow assigned <em>(integer)</em></li>
 <li><code>name</code> - the name of the template <em>(string)</em></li>
-<li><code>description</code></li>
+
 
 <li><code>displayFileName</code> - the  name of the file on the filesystem <em>(string)</em></li>
 
@@ -36,7 +36,8 @@
 <li><code>displayable</code> - whether the template is live or draft <em>(boolean)</em></li>
 
 <li><code>enabled</code> - whether the template is enabled or not <em>(boolean)</em></li>
-<li><code>liveTemplateId</code> - if the template is in draft mode this is the ID of the live template it corresponds to<em>(integer)</em></li>
+<li><code>liveTemplateId</code> - if the template is in draft mode this is the ID of the live template it corresponds to <em>(integer)</em>. 
+<p class="alert alert-info">In the Admin Console the the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
 
 <li><code>noHeaders</code> - whether this template has the &quot;No HEAD elements&quot; option checked or not<em>(boolean)</em></li>
 <li><code>desktopContent</code> -the template's content <em>(string)</em></li>
@@ -61,7 +62,6 @@ Content-Type: application/json
 {
   "categoryId": -1,
   "name": "New template",
-  "description": null,
   "displayFileName": "Test filename",
   "printerView": false,
   "displayable": false,

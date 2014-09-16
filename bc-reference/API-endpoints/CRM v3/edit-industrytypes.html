@@ -1,20 +1,16 @@
 
-<h1>Create a template </h1>
-<div class="description">
-<p>Create a new template.</p>
-
-
-</div>
+<h1>Edit  a industryType resource</h1>
+<div class="description">Using this method you can edit a industryType's resource label and\or set its default value.</div>
 <div class="request">
 <h3>Request</h3>
 <ul>
-<li><strong>Method:</strong> POST</li>
+<li><strong>Method:</strong> PUT</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
 
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/templates/
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/industryTypes/[customerType_ID]
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
 </ul>
@@ -23,22 +19,8 @@
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>categoryId</code> - the ID of the workflow assigned <em>(integer)</em></li>
-<li><code>name</code> - the name of the template <em>(string)</em></li>
-
-
-<li><code>displayFileName</code> - the  name of the file on the filesystem <em>(string)</em></li>
-
-<li><code>printerView</code> - whether this is marked as <em>&quot;Printer View&quot; (boolean)</em></li>
-
-<li><code>displayable</code> - whether the template is live or draft <em>(boolean)</em></li>
-
-<li><code>enabled</code> - whether the template is enabled or not <em>(boolean)</em></li>
-<li><code>liveTemplateId</code> - if the template is in draft mode this is the ID of the live template it corresponds to <em>(integer)</em>. 
-<p class="alert alert-info">In the Admin Console the the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
-
-<li><code>noHeaders</code> - whether this template has the &quot;No HEAD elements&quot; option checked or not<em>(boolean)</em></li>
-<li><code>desktopContent</code> -the template's content <em>(string)</em></li>
+<li><code>label</code> - the name of the industryType resource<em> (string)</em></li>
+<li><code>default</code><em> (boolean)</em></li>
 </ul>
 </div>
 <div class="response">
@@ -52,60 +34,43 @@
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /webresources/api/v3/sites/current/templates HTTPS/1.1
+<pre class="language-javascript"><code>PUT /webresources/api/v3/sites/current/industryTypes/28742 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
 
+
 {
-  "categoryId": -1,
-  "name": "New template",
-  "displayFileName": "Test filename",
-  "printerView": false,
-  "displayable": false,
-  "enabled": false,
-  "default": false,
-  "liveTemplateId": null,
-  "noHeaders": null,
-  "desktopContent": {
-    "content": "{<span>tag_pagecontent</span>}"
-  }
-}
-</code></pre>
+    "label": "Woodworks and others",
+    "default": false
+}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
-<pre class="language-javascript"><code>HTTP/1.1 201 CREATED
-Location: /webresources/api/v3/sites/current/templates
+
+<pre class="language-javascript"><code>
+HTTP/1.1 204 NO CONTENT
+Location: /api/v2/admin/sites/current/industryTypes/28742
 Content-Type: application/json; charset=utf-8
 Content-Length: length</code></pre>
+
+
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<p><strong>Create a new template</strong></p>
 <pre class="language-javascript"><code>var request = $.ajax({
-url: "/webresources/api/v3/sites/current/templates",
-type: "POST",
+url: "/webresources/api/v3/sites/current/industryTypes/28742",
+type: "PUT",
 conenection: "keep-alive",
 contentType: "application/json",
 headers: {
-"Authorization": $.cookie('access_token')
+    "Authorization": $.cookie('access_token')
 },
 processData: false,
-
 data: JSON.stringify({
-"categoryId": -1,
-"name": "New template",
-"displayFileName": "Test-filename",
-"printerView": false,
-"displayable": true,
-"enabled": true,
-"default": false,
-"noHeaders": false,
-"desktopContent": {
-    "content": "test test test{<span>tag_pagecontent</span>}"
-}
+    "label": "Woodworks and others",
+    "default": false
 })
 });
 request.done(function(msg) {

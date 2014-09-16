@@ -93,7 +93,7 @@ Content-Type: application/json
       "displayable": true,
       "excludeFromSearch": false,
       "livePageId": null,
-      "content": "<html></html>",
+      "content": "&lt;html&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Web page has no content&lt;/body&gt;&lt;/html&gt;",
       "redirect301": null,
       "pageTitle": "Mamaremures",
       "seoMetadataDescription": ""
@@ -116,7 +116,7 @@ Content-Type: application/json
       "displayable": false,
       "excludeFromSearch": false,
       "livePageId": null,
-      "content": "<html><head><title></title></head><body>Web page has no content</body></html>",
+      "content": "&lt;html&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Web page has no content&lt;/body&gt;&lt;/html&gt;",
       "redirect301": null,
       "pageTitle": "",
       "seoMetadataDescription": ""
@@ -148,69 +148,7 @@ console.log("Error code: " + jqXHR.status);
 console.log("Error text: " + jqXHR.statusText);
 console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
-<p>Sample response 1:</p>
-<pre class="language-javascript"><code>{
-  "id": 1386374,
-  "siteId": 1576341,
-  "categoryId": -1,
-  "name": "Default_safe_save_151634",
-  "displayFileName": "Default_safe_save_151634",
-  "printerView": false,
-  "displayable": true,
-  "deleted": false,
-  "enabled": true,
-  "default": false,
-  "liveTemplateId": null,
-  "noHeaders": true
-}
-</code></pre>
-<p>Sample response 2:</p>
-<pre class="language-javascript"><code>    {
-      "id": 1656541,
-      "siteId": 1576341,
-      "categoryId": -1,
-      "name": "Draft_template",
 
-      "displayFileName": "test1.htm",
-      "printerView": false,
-      "displayable": false, //this template is not live, it is in draft mode
-      "deleted": false,
-      "enabled": true,
-      "default": false,
-      "liveTemplateId": 1656539, //this is the ID of the live template that corresponds to this draft
-      "noHeaders": false
-    }</code></pre>
-<p><strong>Get the list of templates - this only includes the specified fields:</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/templates/1386374?fields= desktopContent,tabletContent,mobileContent",
-    type: "GET",
-    conenection: "keep-alive",
-    contentType: "application/json",
-    headers: {
-        "Authorization": $.cookie('access_token')
-    }
-});
-request.done(function (msg) {
-    console.log(msg);
-})
-request.fail(function (jqXHR) {
-    console.log("Request failed.");
-    console.log("Error code: " + jqXHR.status);
-    console.log("Error text: " + jqXHR.statusText);
-    console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
-<p>Sample response:</p>
-<pre class="language-javascript"><code>{
-  "desktopContent": {
-    "templateId": 1386374,
-    "siteId": 1576341,
-    "deviceId": 3,
-    "content": "SAMPLE-CONTENT-HERE",
-    "size": 3517
-  },
-  "tabletContent": {},
-  "mobileContent": {}
-}</code></pre>
 </div>
 <hr>
 <div class="error nocontent" style="display:none;">

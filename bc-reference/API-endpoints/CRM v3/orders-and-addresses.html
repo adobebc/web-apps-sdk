@@ -1,9 +1,9 @@
-
-<h1>Get ratingTypes</h1>
+<h1>Orders and addresses</h1>
+<ul id="toc"></ul>
+<div id="list">
+<h2>Get an order's addresses</h2>
 <div class="description">
-<p>Gets the list of ratingType resources available.</p>
-
-
+<p>Get the addresses (billing, pickup and shipping) set for a specific order.</p>
 </div>
 <div class="request">
 <h3>Request</h3>
@@ -14,10 +14,10 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/ratingTypes
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/orders/[order_ID]/addresses
   <ul>
-  <li>Alternatively, use use siteID instead of 'current'</li>
-</ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+  </ul>
 </li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
 </ul>
@@ -28,11 +28,23 @@
 <p>The details for the specified customer ID in JSON format.</p>
 
 <ul>
-<li><code>id</code> - the id of the ratingType <em>(integer)</em></li>
+<li><code>id</code> - the address ID <em>(integer)</em></li>
+<li><code>siteId</code> - <em>the site's ID (integer)</em></li>
 
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>label</code> - the name of the customer Type <em>(string)</em></li>
-<li><code>default</code> <em>(boolean)</em></li>
+<li><code>addresstype</code> - the type of address <em>(integer)</em>
+<ul>
+<li><strong>5</strong> - Shipping address</li>
+<li><strong>6</strong> - Pickup address</li>
+<li><strong>8</strong> - Billing address</li>
+</ul></li>
+<li><code>objectId</code> - the order's<em>(integer)</em></li>
+<li><code>default</code> - whether this address is marked as default <em>(boolean)</em></li>
+<li><code>address1</code> - <em>(string)</em></li>
+<li><code>address2</code> - <em>(string)</em></li>
+<li><code>postcode</code> - <em>(string)</em></li>
+<li><code>suburb</code> - <em>(string)</em></li>
+<li><code>countryCode</code>- <em>(string)</em></li>
+<li><code>state</code> - <em>(string)</em></li>
 
 </ul>
 <p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the API V3: sorting and filtering for additional switches you can use.</p>
@@ -42,7 +54,7 @@
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /webresources/api/v3/sites/current/ratingTypes HTTPS/1.1
+<pre class="language-javascript"><code>GET /webresources/api/v3/sites/current/orders/108250/addresses HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -54,25 +66,35 @@ Content-Type: application/json
 <pre class="language-javascript"><code>{
   "items": [
     {
-      "id": 287045,
+      "id": 1736666,
       "siteId": 38581,
-      "label": "Cold",
-      "default": false
+      "addressType": 5,
+      "objectId": 108267,
+      "objectType": 2008,
+      "default": true,
+      "address1": "Hope Street 265",
+      "address2": null,
+      "postcode": "112442",
+      "suburb": "New York",
+      "countryCode": "US",
+      "state": "State of New York"
     },
     {
-      "id": 287046,
+      "id": 1736667,
       "siteId": 38581,
-      "label": "Warm",
-      "default": false
-    },
-    {
-      "id": 287047,
-      "siteId": 38581,
-      "label": "Hot",
-      "default": false
+      "addressType": 6,
+      "objectId": 108267,
+      "objectType": 2008,
+      "default": false,
+      "address1": "31 Montgomery St",
+      "address2": null,
+      "postcode": "112212",
+      "suburb": "San Francisco",
+      "countryCode": "US",
+      "state": "California"
     }
   ],
-  "totalItemsCount": 3,
+  "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
 }</code></pre>
@@ -80,28 +102,9 @@ Content-Type: application/json
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<p><strong>Get the list of ratingTypes</strong></p>
+<p><strong>Get the addresses for a specific order</strong></p>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/ratingTypes",
-    type: "GET",
-    conenection: "keep-alive",
-    contentType: "application/json",
-    headers: {
-        "Authorization": $.cookie('access_token')
-    }
-});
-request.done(function (msg) {
-    console.log(msg);
-})
-request.fail(function (jqXHR) {
-    console.log("Request failed.");
-    console.log("Error code: " + jqXHR.status);
-    console.log("Error text: " + jqXHR.statusText);
-    console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
-<p><strong>Get the details of a particular ratingType</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/ratingTypes/287045",
+    url: "/webresources/api/v3/sites/current/orders/7051740/addresses",
     type: "GET",
     conenection: "keep-alive",
     contentType: "application/json",
@@ -120,18 +123,4 @@ request.fail(function (jqXHR) {
 })</code></pre>
 </div>
 <hr>
-<div class="error nocontent" style="display:none;">
-<h3>Error Codes</h3>
-
-<p>This method will return the following error codes:</p>
-<ul>
-<li><code>200</code> - success</li>
-<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token.
-<ul>
-<li><code>101000</code> sub-error code</li>
-</ul></li>
-<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
-</ul>
 </div>
-
-        

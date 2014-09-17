@@ -1,0 +1,436 @@
+<h1>Pages</h1>
+<ul id="toc"></ul>
+<div id="list">
+<h2>List available webpages and get their attributes</h2>
+<div class="description">
+<p>This section details the endpoints you can use to list the webpages created on a particular site and get their properties.</p>
+</div>
+
+<h2>List the webpages in a site</h2>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+
+<li><strong>Version:</strong> v3, this API call supports additional sort and filter mechanisms as well as retrieving only a sub-set of fields</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/pages
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+<p>An array of the first 500 web pages; each object has the following properties:</p>
+<ul>
+  <li><code>id</code> - the page's ID</li>
+  <li><code>siteId</code> - the ID of the site the page is on</li>
+  <li><code>url</code> - the page's URL</li>
+  <li><code>name</code> - the page's NAME</li>
+  <li><code>deleted</code> - whether the page is deleted or not</li>
+  <li><code>categoryId</code> - the ID of the category (-1 of the page is not classified)</li>
+  <li><code>roleId</code> - the ID of the role responsible (-1 if not applicable)</li>
+  <li><code>templateId</code> - the ID of the template (-1 if no template is applied or 0 to use the default template)</li>
+  <li><code>parentId</code> - the ID of the parent folder (-1 if the page is placed in the site's root folder) </li>
+  <li><code>displayFileName</code> - the page's display name</li>
+  <li><code>size</code> - the page's size</li>
+  <li><code>enabled</code> - whether the page is enabled or not</li>
+  <li><code>startPage</code> - whether the page is set as start page</li>
+  <li><code>releaseDate</code> - the release date of the page</li>
+  <li><code>expiryDate</code> - the expiry date of the page</li>
+  <li><code>displayable</code> - whether the page is live or it is a draft page</li>
+  <li><code>excludeFromSearch</code> - whether to exclude the page from the site search</li>
+  <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the corresponding live page.</li>
+  <li><code>content</code> - the content of the page</li>
+  <li><code>redirect301</code> - the URL this page should 301 redirect to</li>
+  <li><code>pageTitle</code> - the page's title</li>
+  <li><code>seoMetadataDescription</code> - the page's SEO meta description</li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+<hr>
+</div>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/admin/sites/current/pages",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>
+{
+  "items": [
+    {
+      "id": 2411253,
+      "siteId": 38581,
+      "url": "/page1",
+      "name": "Page 1 name",
+      "deleted": false,
+      "categoryId": -1,
+      "roleId": -1,
+      "templateId": -1,
+      "parentId": -1,
+      "displayFileName": "page1.htm",
+      "size": 183,
+      "enabled": false,
+      "startPage": false,
+      "releaseDate": "2044-01-01T00:00:00",
+      "expiryDate": "9999-01-01T00:00:00",
+      "displayable": true,
+      "excludeFromSearch": true,
+      "livePageId": null,
+      "content": "Page1 content",
+      "redirect301": "",
+      "pageTitle": "Page1 title",
+      "seoMetadataDescription": "Sample metadata"
+    },
+    {
+      "id": 2411254,
+      "siteId": 38581,
+      "url": "/page2",
+      "name": "page2",
+      "deleted": false,
+      "categoryId": -1,
+      "roleId": -1,
+      "templateId": 0,
+      "parentId": -1,
+      "displayFileName": "page2.html",
+      "size": 16993,
+      "enabled": true,
+      "startPage": false,
+      "releaseDate": "2009-05-11T07:00:00",
+      "expiryDate": "9999-01-01T00:00:00",
+      "displayable": true,
+      "excludeFromSearch": false,
+      "livePageId": null,
+      "content": "Page2 content&quot;,
+      "redirect301": "",
+      "pageTitle": "Page2",
+      "seoMetadataDescription": "Sample metadata"
+    }
+],
+"totalItemsCount": 2,    
+"skip": 0,    
+"limit": 10
+}
+      </code></pre>
+</div>
+<hr>
+</div>
+<div id="details">
+<h2>Get a webpage's attributes</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports additional sort and filter mechanisms as well as retrieving only a sub-set of fields</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/pages/[page_ID]
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns the properties below for a single page:</p>
+<ul>
+  <li><code>id</code> - the page's ID</li>
+  <li><code>siteId</code> - the ID of the site the page is on</li>
+  <li><code>url</code> - the page's URL</li>
+  <li><code>name</code> - the page's NAME</li>
+  <li><code>deleted</code> - whether the page is deleted or not</li>
+  <li><code>categoryId</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned)</li>
+  <li><code>roleId</code> - the ID of the role responsible (-1 if not applicable)</li>
+  <li><code>templateId</code> - the ID of the template (-1 if no template is applied or 0 to use the default template)</li>
+  <li><code>parentId</code> - the ID of the parent folder (-1 if the page is placed in the site's root folder)</li>
+  <li><code>displayFileName</code> - the page's display name</li>
+  <li><code>size</code> - the page's size</li>
+  <li><code>enabled</code> - whether the page is enabled or not</li>
+  <li><code>startPage</code> - whether the page is set as start page</li>
+  <li><code>releaseDate</code> - the release date of the page</li>
+  <li><code>expiryDate</code> - the expiry date of the page</li>
+  <li><code>displayable</code> - whether the page is live or it is a draft page</li>
+  <li><code>excludeFromSearch</code> - whether to exclude the page from the site search</li>
+  <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
+  <li><code>content</code> - the content of the page</li>
+  <li><code>redirect301</code> - the URL this page should 301 redirect to</li>
+  <li><code>pageTitle</code> - the page's title</li>
+  <li><code>seoMetadataDescription</code> - the page's SEO meta description</li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+<hr>
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/admin/sites/current/pages/2411253",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+</div>
+<div class="sample">
+<h3>Sample response</h3>
+<pre class="language-javascript"><code>{
+      "id": 2411253,
+      "siteId": 38581,
+      "url": "/page1",
+      "name": "Page 1 name",
+      "deleted": false,
+      "categoryId": -1,
+      "roleId": -1,
+      "templateId": -1,
+      "parentId": -1,
+      "displayFileName": "page1.htm",
+      "size": 183,
+      "enabled": false,
+      "startPage": false,
+      "releaseDate": "2044-01-01T00:00:00",
+      "expiryDate": "9999-01-01T00:00:00",
+      "displayable": true,
+      "excludeFromSearch": true,
+      "livePageId": null,
+      "content": "Page1 content",
+      "redirect301": "",
+      "pageTitle": "Page1 title",
+      "seoMetadataDescription": "Sample metadata"
+}
+</code></pre>
+</div>
+<hr>
+</div>
+<div id="create">
+   <h2>Create a page and update its content</h2>
+<div class="description">
+
+<p>This section details the endpoints you can use to create and edit page's content and other attributes.</p>
+</div>
+<h2>Create a new page</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/pages
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+The response should be "201 created" if the page was successfully created.
+<p>Here are the parameters you can use when creating a page:</p>
+<ul>
+  <li><code>id</code> - the page's ID</li>
+  <li><code>siteId</code> - the ID of the site the page is on</li>
+  <li><code>url</code> - the page's URL</li>
+  <li><code>name</code> - the page's NAME</li>
+  <li><code>deleted</code> - whether the page is deleted or not</li>
+  <li><code>categoryId</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned)</li>
+  <li><code>roleId</code> - the ID of the role responsible (-1 if not applicable)</li>
+  <li><code>templateId</code> - the ID of the template (-1 if no template is applied or 0 to use the default template)</li>
+
+  <li><code>displayFileName</code> - the page's display name</li>
+  <li><code>size</code> - the page's size</li>
+  <li><code>enabled</code> - whether the page is enabled or not</li>
+  <li><code>startPage</code> - whether the page is set as start page</li>
+  <li><code>releaseDate</code> - the release date of the page</li>
+  <li><code>expiryDate</code> - the expiry date of the page</li>
+  <li><code>displayable</code> - whether the page is live or it is a draft page</li>
+  <li><code>excludeFromSearch</code> - whether to exclude the page from the site search</li>
+  <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
+  <li><code>content</code> - the content of the page HTML encoded</li>
+  <li><code>redirect301</code> - the URL this page should 301 redirect to</li>
+  <li><code>pageTitle</code> - the page's title</li>
+  <li><code>seoMetadataDescription</code> - the page's SEO meta description</li>
+</ul>
+</div>
+</div>
+<div id="edit">
+<h2>Edit an existing page</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/templates
+
+<ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The response should be "204 no content" if the secure zone was successfully modified.</p>
+<p>Here are the parameters you can use when updating a page:</p>
+<ul>
+  <li><code>id</code> - the page's ID</li>
+  <li><code>siteId</code> - the ID of the site the page is on</li>
+  <li><code>url</code> - the page's URL</li>
+  <li><code>name</code> - the page's NAME</li>
+  <li><code>deleted</code> - whether the page is deleted or not</li>
+  <li><code>categoryId</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned)</li>
+  <li><code>roleId</code> - the ID of the role responsible (-1 if not applicable)</li>
+  <li><code>templateId</code> - the ID of the template (-1 if no template is applied or 0 to use the default template)</li>
+  <li><code>displayFileName</code> - the page's display name</li>
+  <li><code>size</code> - the page's size</li>
+  <li><code>enabled</code> - whether the page is enabled or not</li>
+  <li><code>startPage</code> - whether the page is set as start page</li>
+  <li><code>releaseDate</code> - the release date of the page</li>
+  <li><code>expiryDate</code> - the expiry date of the page</li>
+  <li><code>displayable</code> - whether the page is live or it is a draft page</li>
+  <li><code>excludeFromSearch</code> - whether to exclude the page from the site search</li>
+  <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
+  <li><code>content</code> - the content of the page HTML encoded</li>
+  <li><code>redirect301</code> - the URL this page should 301 redirect to</li>
+  <li><code>pageTitle</code> - the page's title</li>
+  <li><code>seoMetadataDescription</code> - the page's SEO meta description</li>
+</ul>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+	url: "/webresources/api/v3/sites/current/pages/4518294",
+  data: JSON.stringify({
+        "name": "Card - modified",
+        "visiblity": {
+            "visibility": 1
+                },
+        "templateId" : "0"
+                }),
+         type: "PUT",
+         contentType: "application/json",
+         headers: {
+            "Authorization": $.cookie('access_token')
+          }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+</div>
+<hr>
+</div>
+<div id="delete">
+
+        <h2>Delete a webpage</h2>
+<div class="description">
+<p>This section details the endpoints you can use to delete a webpage.</p>
+</div>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/admin/sites/current/pages/[page_ID]
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The response should be &quot;204 no content&quot; if the page was successfully deleted.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/admin/sites/current/pages/2567169",
+    type: "DELETE",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+</div>
+<hr>
+</div>

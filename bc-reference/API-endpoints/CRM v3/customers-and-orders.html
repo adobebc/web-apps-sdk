@@ -1,9 +1,9 @@
-
-<h1>Get a customer's list of orders</h1>
+<h1>Customers and secure zones</h1>
+<ul id="toc"></ul>
+<div id="list">
+<h2>Get a customer's list of orders</h2>
 <div class="description">
 <p>Get a customer's list of orders.</p>
-
-
 </div>
 <div class="request">
 <h3>Request</h3>
@@ -116,18 +116,4 @@ request.fail(function (jqXHR) {
 })</code></pre>
 </div>
 <hr>
-<div class="error nocontent" style="display:none;">
-<h3>Error Codes</h3>
-
-<p>This method will return the following error codes:</p>
-<ul>
-<li><code>200</code> - success</li>
-<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token.
-<ul>
-<li><code>101000</code> sub-error code</li>
-</ul></li>
-<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
-</ul>
 </div>
-
-        

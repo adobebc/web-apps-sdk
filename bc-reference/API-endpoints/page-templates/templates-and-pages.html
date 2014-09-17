@@ -1,5 +1,8 @@
+<h1>Templates and pages</h1>
+<ul id="toc"></ul>
+<div id="list">
 
-<h1>Get the list of pages a template is assigned to</h1><div class="description">
+<h2>Get the list of pages a template is assigned to</h2><div class="description">
 <p>Using this method you can get the list of pages that have a specific template assigned.</p>
 </div>
 <div class="request">
@@ -8,9 +11,9 @@
 <li><strong>Method:</strong> GET</li>
 <li><strong>Version:</strong> v3, this API call supports additional sort and filter mechanisms as well as retrieving only a sub-set of fields</li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
-
-<ul>
-<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+  
+  <ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
 <li><strong>Path:</strong> /webresources/api/v3/sites/current/templates/[template_ID]/pages
 
@@ -167,3 +170,4 @@ console.log("Response text: " + jqXHR.responseText);
 </div>
 
         
+</div>

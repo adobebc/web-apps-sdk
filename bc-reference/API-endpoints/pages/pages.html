@@ -8,7 +8,7 @@
 
 <h2>List the webpages in a site</h2>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 <ul>
 <li><strong>Method:</strong> GET</li>
 
@@ -28,7 +28,7 @@
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 <p>An array of the first 500 web pages; each object has the following properties:</p>
 <ul>
   <li><code>id</code> - the page's ID</li>
@@ -58,7 +58,7 @@
 <hr>
 </div>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/admin/sites/current/pages",
     type: "GET",
@@ -141,7 +141,7 @@ request.fail(function (jqXHR) {
 <div id="details">
 <h2>Get a webpage's attributes</h2>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -161,7 +161,7 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>Returns the properties below for a single page:</p>
 <ul>
@@ -190,7 +190,7 @@ request.fail(function (jqXHR) {
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
 <hr>
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/admin/sites/current/pages/2411253",
     type: "GET",
@@ -243,7 +243,7 @@ request.fail(function (jqXHR) {
 <div id="create">
   <h2>Create a new page</h2>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -263,7 +263,7 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 The response should be "201 created" if the page was successfully created.
 <p>Here are the parameters you can use when creating a page:</p>
 <ul>
@@ -295,7 +295,7 @@ The response should be "201 created" if the page was successfully created.
 <div id="edit">
 <h2>Edit an existing page</h2>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -315,7 +315,7 @@ The response should be "201 created" if the page was successfully created.
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>The response should be "204 no content" if the secure zone was successfully modified.</p>
 <p>Here are the parameters you can use when updating a page:</p>
@@ -345,7 +345,7 @@ The response should be "201 created" if the page was successfully created.
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
 	url: "/webresources/api/v3/sites/current/pages/4518294",
   data: JSON.stringify({
@@ -381,7 +381,7 @@ request.fail(function (jqXHR) {
 </div>
 
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> DELETE</li>
@@ -401,13 +401,13 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>The response should be &quot;204 no content&quot; if the page was successfully deleted.</p>
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/admin/sites/current/pages/2567169",
     type: "DELETE",

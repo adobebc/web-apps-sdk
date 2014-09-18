@@ -3,7 +3,7 @@
 
 <p>Delete the specified web app.</p>
 
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> DELETE</li>
@@ -25,7 +25,7 @@
 
 <p>Use the name of the webapp as part of the URL (see <strong>Path</strong>)</p>
 
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>A <code>204 No Content</code> is returned if deletion is successful.</p>
 
@@ -45,7 +45,7 @@ Connection: keep-alive
 <pre class="language-javascript"><code>HTTP/1.1 204 No Content
 </code></pre>
 
-<hr><h3>Sample code</h3>
+<hr><h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/api/v2/admin/sites/current/webapps/test app",
     type: "DELETE",
@@ -66,7 +66,7 @@ request.fail(function (jqXHR) {
 
 </code></pre>
 
-<hr><h3>Error Codes</h3>
+<hr><h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 

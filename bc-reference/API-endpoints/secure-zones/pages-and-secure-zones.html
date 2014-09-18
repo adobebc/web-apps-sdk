@@ -3,7 +3,7 @@
 <div id="list">
 <h2>List the pages in a particular secure zone</h2>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -23,13 +23,13 @@
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>An array of the first 500 web pages contained by the secure zone.</p>
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: &quot;/webresources/api/v3/sites/current/securezones/3309/pages&quot;,
     type: "GET",
@@ -127,7 +127,7 @@ request.fail(function (jqXHR) {
 <div id="create">
 <h2>Add pages to a secure zone</h2>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> POST</li>
@@ -147,13 +147,13 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>The response should be "204 no content" if the page was successfully added to the secure zone.</p>
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
      url: "/webresources/api/v3/sites/current/securezones/3309/pages",
       data: JSON.stringify({
@@ -183,7 +183,7 @@ request.fail(function (jqXHR) {
 <div id="delete">
 <h2>Remove pages from a secure zone</h2>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> DELETE</li>
@@ -203,13 +203,13 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>The response should be "204 no content" if the pages were successfully removed from the the secure zone.</p>
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/securezones/3309/pages?items=[4518424]",
     type: "DELETE",

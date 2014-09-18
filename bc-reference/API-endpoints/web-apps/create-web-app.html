@@ -3,7 +3,7 @@
 
 <p>Create a new Web App</p>
 
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> POST</li>
@@ -41,7 +41,7 @@
 <li><code>validDays</code> - optional, defaults to -1 (never expire) <em>(integer)</em></li>
 </ul>
 
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>Returns an empty body and a location header containing the URI to retrieve category details.</p>
 
@@ -95,7 +95,7 @@ Content-Length: 0
 If you pass in values for itemSystemFields and / or itemFields they will be ignored.</li>
 </ul>
 
-<hr><h3>Sample code</h3>
+<hr><h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/api/v2/admin/sites/current/webapps",
     type: "POST",
@@ -117,7 +117,7 @@ request.fail(function (jqXHR) {
 })
 </code></pre>
 
-<hr><h3>Error Codes</h3>
+<hr><h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 

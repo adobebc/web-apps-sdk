@@ -3,7 +3,7 @@
 
 <p>Uploads a one or more files in a given folder through a multipart POST action (like an HTML form). The login token is sent as a query parameter in the URL (We'll then be able to query for progress, based on that token).</p>
 
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> POST</li>
@@ -21,7 +21,7 @@
 
 <p>File contents as binary</p>
 
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>Returns a status code</p>
 
@@ -58,7 +58,7 @@ Content-Type: application/json
 {"status": "success"}
 </code></pre>
 <hr>
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <p><strong>Upload a file from your system and log the progress</strong></p>
 <pre class="language-markup"><code>
 &lt;input type=&quot;file&quot; id=&quot;datafile&quot;&gt;
@@ -108,7 +108,7 @@ function _checkUploadStatus() {
 };
 </code></pre>
 <hr>
-<h3>Error Codes</h3>
+<h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 

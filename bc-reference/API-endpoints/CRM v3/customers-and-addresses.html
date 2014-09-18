@@ -6,7 +6,7 @@
 <p>This API endpoint is used to list a customer's addresses</p>
 </div>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 <ul>
 <li><strong>Method:</strong> GET</li>
 <li><strong>Version:</strong> v3, this API call supports additional sort and filter mechanisms as well as retrieving only a sub-set of fields</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -23,7 +23,7 @@
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>The list of addresses in JSON format.</p>
 
@@ -105,7 +105,7 @@ Content-Type: application/json
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/7051740/addresses",
     type: "GET",

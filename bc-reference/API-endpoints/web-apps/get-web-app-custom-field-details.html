@@ -3,7 +3,7 @@
 
 <p>Returns a field definition.</p>
 
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -17,7 +17,7 @@
 <li><strong>Required Permissions:</strong> View Web Apps</li>
 </ul>
 
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>An object, similar to the ones in the List API.</p>
 
@@ -50,7 +50,7 @@ Content-Length: 145
       "order"   : 1
 }
 </code></pre>
-<hr><h3>Sample code</h3>
+<hr><h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/api/v2/admin/sites/current/webapps/test app2/fields/12345",
     type: "GET",
@@ -70,7 +70,7 @@ request.fail(function (jqXHR) {
 })
 
 </code></pre>
-<hr><h3>Error Codes</h3>
+<hr><h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 

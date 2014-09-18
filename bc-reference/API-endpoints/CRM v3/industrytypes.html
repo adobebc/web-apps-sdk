@@ -6,7 +6,7 @@
 <p>Gets the list of industryType resources available.</p>
 </div>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 <ul>
 <li><strong>Method:</strong> GET</li>
 <li><strong>Version:</strong> v3, this API call supports additional sort and filter mechanisms as well as retrieving only a sub-set of fields</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -23,7 +23,7 @@
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>The details for the specified customer ID in JSON format.</p>
 
@@ -79,7 +79,7 @@ Content-Type: application/json
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <p><strong>Get the list of industryTypes</strong></p>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/industryTypes",
@@ -126,7 +126,7 @@ request.fail(function (jqXHR) {
 <h2>Create  a new industryType resource</h2>
 <div class="description">Using this method you can add an industryType's resource to your site.</div>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 <ul>
 <li><strong>Method:</strong> POST</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -148,7 +148,7 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -179,7 +179,7 @@ Content-Length: length</code></pre>
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
 url: "/webresources/api/v3/sites/current/industryTypes",
 type: "PUT",
@@ -210,7 +210,7 @@ console.log("Response text: " + jqXHR.responseText);
 <h2>Edit  an industryType resource</h2>
 <div class="description">Using this method you can edit an industryType's resource label and\or set its default value.</div>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 <ul>
 <li><strong>Method:</strong> PUT</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -232,7 +232,7 @@ console.log("Response text: " + jqXHR.responseText);
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -263,7 +263,7 @@ Content-Length: length</code></pre>
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
 url: "/webresources/api/v3/sites/current/industryTypes/28742",
 type: "PUT",
@@ -294,7 +294,7 @@ console.log("Response text: " + jqXHR.responseText);
 <h2>Delete  an industryType entity</h2>
 <div class="description">Delete an industryType entity.</div>
 <div class="request">
-<h3>Request</h3>
+<h2>Request</h2>
 <ul>
 <li><strong>Method:</strong> DELETE</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -311,7 +311,7 @@ console.log("Response text: " + jqXHR.responseText);
 </ul>
 </div>
 <div class="response">
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -337,7 +337,7 @@ Content-Length: length</code></pre>
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/industryTypes/9593213",
     type: "DELETE",

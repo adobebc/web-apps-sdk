@@ -3,7 +3,7 @@
 
 <p>Gets the details of a site.</p>
 
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -20,7 +20,7 @@
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
 </ul>
 
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>site object with the following properties:</p>
 
@@ -220,7 +220,7 @@ Content-Type: application/json
     "isPartnerSite": false
 }</code></pre>
 <hr>
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     "url": "/api/v2/admin/sites/current",
     "headers": {
@@ -240,7 +240,7 @@ request.fail(function (jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 <hr>
-<h3>Error Codes</h3>
+<h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 

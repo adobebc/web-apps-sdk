@@ -3,7 +3,7 @@
 
 <p>Get the details of a Web App item.</p>
 
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -21,7 +21,7 @@
 <li><strong>Required Permissions:</strong> View Web App Items</li>
 </ul>
 
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>Returns a WebAppItem object with the following properties:</p>
 
@@ -119,7 +119,7 @@ Content-Length: {length}
   }
 }
 </code></pre>
-<hr><h3>Sample code</h3>
+<hr><h2>Sample code</h2>
 <pre class="language-javascript"><code>
 var request = $.ajax({
     "url": "/api/v2/admin/sites/current/webapps/apicreated/items/7370535",
@@ -139,7 +139,7 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
-<hr><h3>Error Codes</h3>
+<hr><h2>Error codes</h2>
 <p>This method will return the following error codes:</p>
 
 <ul>

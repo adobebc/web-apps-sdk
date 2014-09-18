@@ -5,7 +5,7 @@
 
 <p class="alert alert-info"><strong>Note:</strong> A category at the root level is "Level 0". A child of a "Level 0" category is "Level 1". A child of a "Level 1" category is "Level 2", which is the maximum allowed.</p>
 
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> POST</li>
@@ -33,7 +33,7 @@
 <li><code>publicAccess</code> - whether or not the category is visible to front-end users. If not specified, defaults to true. <em>(boolean)</em></li>
 </ul>
 
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>Returns an empty body and a location header containing the URI to retrieve category details.</p>
 
@@ -83,7 +83,7 @@ Content-Type: application/json; charset=utf-8
 Content-Length: length
 </code></pre>
 <hr>
-<h3>Sample code</h3>
+<h2>Sample code</h2>
 
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/api/v2/admin/sites/current/categories",
@@ -104,7 +104,7 @@ Content-Length: length
 
 <p>Update and delete methods are not supported.</p>
 <hr>
-<h3>Error Codes</h3>
+<h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 

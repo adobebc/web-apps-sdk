@@ -3,7 +3,7 @@
 
 <p>Get the details for a specific Web App.</p>
 
-<h3>Request</h3>
+<h2>Request</h2>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -25,7 +25,7 @@
 
 <p>Use the name of the webapp as part of the URL (see <strong>Path</strong>)</p>
 
-<h3>Response</h3>
+<h2>Response</h2>
 
 <p>A webapp object with the following properties:</p>
 
@@ -215,7 +215,7 @@ Content-Type: application/json
     }]
 }
 </code></pre>
-<hr><h3>Sample code</h3>
+<hr><h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/api/v2/admin/sites/current/webapps/test app2",
     type: "get",
@@ -234,7 +234,7 @@ request.fail(function (jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 })
 </code></pre>
-<hr><h3>Error Codes</h3>
+<hr><h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 

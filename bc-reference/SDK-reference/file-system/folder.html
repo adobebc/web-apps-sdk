@@ -82,7 +82,7 @@ folder.destroy().done(function () {
 <li>BCAPI.Models.FileSystem.Root is the root folder in your site's file structure. You can also create a file object by specifying the file's full path.</li>
 <li>If you omit the <code>/</code> at the beginning of the file path, the system will add this.</li>
 <li>When creating a folder, only creating an instance of the folder class doesn't actually create the folder on the server. If the folder doesn't exist yet, a call to create is required.</li>
-</ul><h2>Methods</h2>
+</ul><h3>Methods</h3>
 
   
     <h3 id="create"> create() → {promise}</h2>
@@ -99,7 +99,7 @@ folder.destroy().done(function () {
         </ul>
       
     
-    <h2>Returns</h2>
+    <h3>Returns</h3>
     
       <p>A promised that will be resolved when the folder is created</p>
     
@@ -114,7 +114,7 @@ folder.destroy().done(function () {
     
       <p>Creates a file object with the specified name and that has as parent this folder.</p>
     
-    <h2>Parameters</h2>
+    <h3>Parameters</h3>
     <table>
       <thead>
         <tr>
@@ -149,6 +149,6 @@ folder.destroy().done(function () {
         </ul>
       
     
-    <h2>Returns</h2>
+    <h3>Returns</h3>
     
       <p>A file that is a child of this folder.</p>

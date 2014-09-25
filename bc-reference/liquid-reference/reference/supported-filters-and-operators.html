@@ -6,20 +6,20 @@
     <tbody>
         <tr>
             <td valign="top" class="cellrowborder"><code><span class="tagname">divided_by</span></code></td>
-            <td><span class="cellcontent">{{500 | divided_by: 20}} is 25</span></td>
+            <td><span class="cellcontent">{{<span>500 | divided_by: 20</span>}} is 25</span></td>
 
            
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code><span class="tagname">minus</span></code></td>
-            <td><span class="cellcontent">{{ 500 | minus: 20}} is 480</span></td>
+            <td><span class="cellcontent">{{<span>500 | minus: 20</span>}} is 480</span></td>
         </tr>
 		<tr>
             <td valign="top" class="cellrowborder"><code>plus</code></td>
-          <td><span class="cellcontent">{{ 500 | plus: 20}} is 520</span></td>
+          <td><span class="cellcontent">{{<span>500 | plus: 20</span>}} is 520</span></td>
         </tr>
 		<tr>
-            <td valign="top" class="cellrowborder"><code>times</code></td><td><span class="cellcontent">{{ 500 | times: 2}} is 1000</span></td>
+            <td valign="top" class="cellrowborder"><code>times</code></td><td><span class="cellcontent">{{<span>500 | times: 2</span>}} is 1000</span></td>
         </tr>
         
     </tbody>
@@ -33,41 +33,41 @@
     <tbody>
         <tr>
             <td valign="top" class="cellrowborder"><code><span class="tagname">append</span></code></td>
-            <td><span class="cellcontent">{{ &quot;This is the first part&quot; | append: &quot; appending the second part&quot;}} outputs &quot;This is the first part  appending the second part&quot;</span></td>
+            <td><span class="cellcontent">{{<span>&quot;This is the first part&quot; | append: &quot; appending the second part&quot;</span>}} outputs &quot;This is the first part  appending the second part&quot;</span></td>
 
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code><span class="tagname">prepend</span></code></td>
-            <td><span class="cellcontent">{{ &quot; this is the second part&quot; | append: &quot;This is the first part&quot;}} outputs &quot;This is the first part  this is thesecond part&quot;</span></td>
+            <td><span class="cellcontent">{{<span>&quot; this is the second part&quot; | append: &quot;This is the first part&quot;</span>}} outputs &quot;This is the first part  this is thesecond part&quot;</span></td>
 
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code><span class="tagname">capitalize</span></code></td>
-            <td>{{ 'Sample text' | capitalize}}outputs &quot;Sample Text&quot;</td>
+            <td>{{<span>'Sample text' | capitalize</span>}}outputs &quot;Sample Text&quot;</td>
         </tr>
 		<tr>
             <td valign="top" class="cellrowborder"><code>downcase</code></td>
-          <td>{{ 'Sample text' | capitalize}}outputs &quot;sample text&quot;</td>
+          <td>{{<span>'Sample text' | capitalize</span>}}outputs &quot;sample text&quot;</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>upcase</code></td>
-          <td>{{ 'Sample text' | capitalize}}outputs &quot;SAMPLE TEXT&quot;</td>
+          <td>{{<span>'Sample text' | capitalize</span>}}outputs &quot;SAMPLE TEXT&quot;</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>remove</code></td>
-          <td>{{ 'Sample text. All occurences of &quot;text&quot; will be removed.' | remove: &quot;text&quot;}}outputs 'Sample . All occurences of &quot;&quot; will be removed.'</td>
+          <td>{{<span>'Sample text. All occurences of &quot;text&quot; will be removed.' | remove: &quot;text&quot;</span>}}outputs 'Sample . All occurences of &quot;&quot; will be removed.'</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>removefirst</code></td>
-          <td>{{ 'Sample text. The first occurence of &quot;text&quot; will be removed.' | removefirst: &quot;text&quot;}}outputs 'Sample . The first occurence of &quot;text&quot; will be removed.'</td>
+          <td>{{<span>'Sample text. The first occurence of &quot;text&quot; will be removed.' | removefirst: &quot;text&quot;</span>}}outputs 'Sample . The first occurence of &quot;text&quot; will be removed.'</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>replace</code></td>
-          <td>{{ 'Sample text. All occurences of &quot;text&quot; will be replced.' | replace: &quot;text&quot;, &quot;string&quot;}}outputs 'Sample string. All occurences of &quot;string&quot; will be replaced.'</td>
+          <td>{{<span>'Sample text. All occurences of &quot;text&quot; will be replced.' | replace: &quot;text&quot;, &quot;string&quot;</span>}}outputs 'Sample string. All occurences of &quot;string&quot; will be replaced.'</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>replacefirst</code></td>
-          <td>{{ 'Sample text. The first occurence of &quot;text&quot; will be replaced.' | replacefirst: &quot;text&quot;, &quot;string&quot;}}outputs 'Sample string. The first occurence of &quot;text&quot; will be replaced.'</td>
+          <td>{{<span>'Sample text. The first occurence of &quot;text&quot; will be replaced.' | replacefirst: &quot;text&quot;, &quot;string&quot;</span>}}outputs 'Sample string. The first occurence of &quot;text&quot; will be replaced.'</td>
         </tr>
 		
         
@@ -81,7 +81,7 @@
 <tr>
             <td valign="top" class="cellrowborder"><code>json</code></td>
             <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using - 
-            <code>{{<span>webapp1.items[0] | json</span>}}</code> 
+            <code>{{<span>>webapp1.items[0] | json</span>}}</code> 
             looks like:
             
             <pre class="language-javascript"><code>{
@@ -153,14 +153,14 @@
     <tr>
       <td><code>contains</code></td>
       <td>You can use "contains" to check whether a string contains another string, for example:
-      <pre class="language-javascript"><code>{% if {{<span>webapp1.items[0].name</span>}} contains 'Jaguar' %}
+      <pre class="language-javascript"><code>{<span>% if {{<span>>webapp1.items[0].name</span>}} contains 'Jaguar' %</span>}
   This car is a Jaguar.
-{% endif %}
+{<span>% endif %</span>}
 </code></pre>
-or to check whether an array contains a value. Assuming <code>{{<span>cars_available_now</span>}} </code>is an array containing car makes:
-<pre class="language-javascript"><code>{% if {{<span>cars_available_now</span>}} contains 'Jaguar' %}
+or to check whether an array contains a value. Assuming <code>{{<span>>cars_available_now</span>}} </code>is an array containing car makes:
+<pre class="language-javascript"><code>{<span>% if {{<span>>cars_available_now</span>}} contains 'Jaguar' %</span>}
   A Jaguar is available now.
-{% endif %}
+{<span>% endif %</span>}
 </code></pre>
       </td>
     </tr>

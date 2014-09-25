@@ -13,14 +13,14 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_shoppingcartsummary,direction=“vertical”, </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_shoppingcartsummary direction=“vertical” </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>direction</strong> - values are <em>vertical</em> or <em>horizontal</em>. Default is that the output is displayed <strong>horizontally</strong>. </li>
-    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -58,10 +58,6 @@
                 <td valign="top" class="legacy tag"><code>{<span>tag_totalAmountWithCurrency</span>}</code></td>
                 <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>{tag_currency}</code><code>{<span>tag_totalAmount</span>}</code>)</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">countryCode</span>}}</code></td>
-                <td>&nbsp;</td>
-                <td class="description">the country code of the currency used</td>
-            </tr>
           <tr><td valign="top" class="liquid tag">&nbsp;</td>
                 <td valign="top" class="legacy tag"><code>{<span>tag_isEmpty</span>}</code></td>
                 <td class="description">renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
@@ -70,13 +66,90 @@
                 <td valign="top" class="legacy tag"><code>{<span>tag_countryCode</span>}</code></td>
                 <td class="description">renders the country code (of the site or of the order, if set)</td>
             </tr>
+            <tr>
+              <td valign="top" class="liquid tag"><code>{{<span class="tagname">items</span>}}</code></td>
+                <td valign="top" class="legacy tag">&nbsp;</td>
+                <td class="description">displays the array of items contained in the shopping cart. Each product item has the following properties:
+                <ul>
+                <li>id</li>
+<li>productId</li>
+<li>catalogId</li>
+<li>name</li>
+<li>code</li>
+<li>description</li>
+<li>price</li>
+<li>price_raw</li>
+<li>quantity</li>
+<li>totalPrice</li>
+<li>totalPrice_raw</li>
+<li>smallImage</li>
+<li>url</li>
+
+</ul></td>
+            </tr>
         </tbody>
     </table>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_shoppingcartsummary direction=&quot;vertical&quot;</span>}</code> - this module will display the output vertically.</li>
+    <li><code>{<span>module_shoppingcartsummary direction=&quot;vertical&quot;</span>}</code> - this module will display the output vertically.</li><li><code>{module_shoppingcartsummary<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.
+    <pre class="language-javascript"><code>
+    "collection1": {
+    "moduleName": "shoppingcartsummary",
+    "moduleDescriptor": {
+      "templatePath": "",
+      "parameters": "",
+      "apiEndpoint": "/api/v3/shoppingcartsummary",
+      "objectType": "-1",
+      "objectId": "-1",
+      "adminUrl": ""
+    },
+    "editableFieldTypes": {
+      "price": "Number",
+      "quantity": "Number",
+      "totalPrice": "Number"
+    },
+    "cartUrl": "/OrderRetrievev2.aspx?CatalogueID=0",
+    "itemCount": "5",
+    "totalAmount": "54.95",
+    "currencyFormat": "$",
+    "countryCode": "US",
+    "items": [
+      {
+        "id": 281509,
+        "productId": 9008560,
+        "catalogId": 176691,
+        "name": "Panda World T-Shirt",
+        "code": "SHDA9ZVVWY",
+        "description": "M",
+        "price": "10.99",
+        "price_raw": 10.990000,
+        "quantity": 3,
+        "totalPrice": "32.97",
+        "totalPrice_raw": 32.970000,
+        "smallImage": "/shop/tshirt2.jpg",
+        "url": "/mens-t-shirts/panda-world-t-shirt"
+      },
+      {
+        "id": 281511,
+        "productId": 9008559,
+        "catalogId": 176854,
+        "name": "Doomsday T-Shirt",
+        "code": "HOONI2M83X",
+        "description": "S",
+        "price": "10.99",
+        "price_raw": 10.990000,
+        "quantity": 2,
+        "totalPrice": "21.98",
+        "totalPrice_raw": 21.980000,
+        "smallImage": "/shop/tshirt3.jpg",
+        "url": "/womens-t-shirts/doomsday-t-shirt"
+      }
+    ]
+  }
+  </code></pre>
+    </li>
 </ul>
 </div>
 </div>

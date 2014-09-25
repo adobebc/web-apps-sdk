@@ -10,7 +10,7 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_booking filter=&quot;item&quot; itemid=&quot;neventId or classificationId&quot; rowCount=&quot;10&quot;</span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_booking filter=&quot;item&quot; itemid=&quot;neventId or classificationId&quot; rowCount=&quot;10&quot;</span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -35,7 +35,7 @@
     </li>
       <li><strong>rowCount</strong> - number of items per row</li>
       
-<li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+<li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
@@ -123,7 +123,7 @@
     <li><code>{<span>module_booking </span>filter=&quot;random&quot;}</code> - displays a single random item</li>
     <li><code>{<span>module_booking </span>filter=&quot;<span>classified&quot; </span>itemid=&quot;<span>14075</span>&quot;}</code> - displays all the items classified in the category with the ID 14075</li>
     <li><code>{<span>module_booking </span>filter=&quot;<span>randomclassified&quot; </span>itemid=&quot;<span>14075&quot;</span>}</code> - displays a random item classified in the category with the ID 14075</li>
-    <li><code>{<span>module_booking </span>filter=&quot;<span>item&quot; </span>itemid=&quot;<span>63522&quot;  template="/layouts/custom/bookings.tpl"</span>}</code> - displays an individual item using a <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{<span>module_booking </span>filter=&quot;<span>item&quot; </span>itemid=&quot;<span>63522&quot;  template="/layouts/custom/bookings.tpl"</span>}</code> - displays an individual item using a <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{<span>module_booking filter=&quot;all&quot;</span><span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

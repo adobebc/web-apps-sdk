@@ -12,7 +12,7 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_ratingfeedback sortType=&quot;datereverse|date&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span></span>module_ratingfeedback sortType=&quot;datereverse|date&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -61,7 +61,7 @@
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_rating</span>}</code></td><td class="description"><span>Rating in stars</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_usagedate</span>}</code></td>
             <td class="description"><span>Date when comment was given in this format - <em>27-Mar-2014 12:02</em></span></td>
         </tr>
@@ -76,7 +76,7 @@
 <h2>Examples</h2>
 <ul>
     <li><code>{<span>module_ratingfeedback sortType="date"</span>}</code> - displays the comments newest first</li>
-    <li><code>{<span>module_ratingfeedback template="/layouts/custom/comments.tpl"</span>}</code> - displays the comments using the comments.tpl custom template</li>
+    <li><code>{<span>module_ratingfeedback template="/layouts/custom/comments.tpl"</span>}</code> - displays the comments using the comments.tpl custom template</li><li><code>{module_captchav2<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

@@ -19,8 +19,8 @@
 <h2>Parameters</h2>
 <ul>
     <li><strong>id</strong> - the ID of the affiliate program</li>
-    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -39,6 +39,10 @@
 </tr>
 </thead>
     <tbody>
+     <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">affiliateLink</span>}}</code></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_affiliatelink</span>}</code></td><td class="description"><span>The link for this affiliate to use on his/her website or forward to friends for tracking purposes.</span></td>
+        </tr>
         <tr>
             <td valign="top" class="liquid tag">&nbsp;</td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_actiontotal,actionTypeId,days</span>}</code></td><td class="description"><span>Total number of actions for the last x days.  the Action type ID's are as follows:
@@ -61,10 +65,7 @@
             
             </span></td>
         </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">affiliateLink</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_affiliatelink</span>}</code></td><td class="description"><span>The link for this affiliate to use on his/her website or forward to friends for tracking purposes.</span></td>
-        </tr>
+       
         <tr>
             <td valign="top" class="liquid tag"><code>{{<span class="tagname">clickThrusTotal</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_clickthrustotal</span>}</code></td><td class="description"><span>Total click-thrus via the affiliate link</span></td>
@@ -94,7 +95,12 @@
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<pre class="language-markup"><code>{<span>module_affiliateprogram id=&quot;1429</span>&quot;}</code></pre>
+<ul>
+<li>
+<code>{<span>module_affiliateprogram id=&quot;1429&quot;</span>}</code>
+-this will list the details of the affiliate program with the ID 1429</li>
+<li><code>{<span>module_affiliateprogram id="335" collection="my_custom_collection_name" template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the affiliate program details will become available in the <strong>custom1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
+</ul>
 </div>
 </div>
   <div id="legacy">

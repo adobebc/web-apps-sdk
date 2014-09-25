@@ -13,7 +13,7 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_faq filter="item" itemid="faqId" noTemplate="false" effect="ajax" targetFrame="blank" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_faq filter="item" itemid="faqId" noTemplate="false" effect="ajax" targetFrame="blank" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -33,7 +33,7 @@
     <li><strong>id</strong> &ndash; system generated (do not change)</li>
     <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
     <li><strong>effect</strong> &ndash; enter <em>ajax</em> if you want to take advantage of the latest web technologies for a better customer experience</li>
-    <li><strong>targetFrame</strong> &ndash; the frame in which to open the item in</li><li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>targetFrame</strong> &ndash; the frame in which to open the item in</li><li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
@@ -93,7 +93,7 @@
     <li><code>{<span>module_faq filter=&quot;all&quot; targetFrame=&quot;_parent</span>&quot;}</code> - will display all FAQs and open them in parent frame.</li>
     <li><code>{<span>module_faq</span> filter=&quot;<span>all&quot;, template="/layouts/custom/faq.tpl"</span>}</code> - will display all FAQs using the faq.tpl custom template.</li>
     <li><code>{<span>module_faq</span> filter=&quot;<span>latest&quot; itemid=&quot;5</span>&quot;}</code> - will display the latest 5 FAQs.</li>
-    <li><code>{<span>module_faq</span> filter=&quot;<span>random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank</span>&quot;}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li>
+    <li><code>{<span>module_faq</span> filter=&quot;<span>random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank</span>&quot;}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li><li><code>{module_faq filter=&quot;all&quot;<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

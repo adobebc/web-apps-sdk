@@ -12,7 +12,7 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_forum filter="item(individual)/all/classified/lastclassified/random/latest/randomclassified" itemid="newsId or classificationId" noTemplate="true" targetFrame=&quot;_self&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_forum filter="item(individual)/all/classified/lastclassified/random/latest/randomclassified" itemid="newsId or classificationId" noTemplate="true" targetFrame=&quot;_self&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -31,7 +31,7 @@
     </li>
     <li><strong>itemid</strong> - system generated (do not change)</li>
     <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
-    <li><strong>targetFrame</strong> - the frame in which to open the item in</li><li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>targetFrame</strong> - the frame in which to open the item in</li><li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
@@ -96,7 +96,7 @@
 <h2>Examples</h2>
 <ul>
     <li><code>{<span>module_forum filter=&quot;item&quot; itemid=&quot;317&quot; targetFrame=&quot;_blank&quot;</span>}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
-    <li><code>{<span>module_forum filter=&quot;all&quot;  template="/layouts/custom/individual_forum.tpl"</span>}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{<span>module_forum filter=&quot;all&quot;  template="/layouts/custom/individual_forum.tpl"</span>}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{module_forum filter=&quot;item&quot; itemid=&quot;317&quot;<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

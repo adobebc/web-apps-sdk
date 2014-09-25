@@ -12,14 +12,14 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_blogsitepost rowCount=&quot;4&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span></span>module_blogsitepost rowCount=&quot;4&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>rowCount</strong> - limits the number of posts displayed by the module)</li>
-    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers#!/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers#!/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -74,7 +74,7 @@
       <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostmonthnumeric</span>}</code></td><td class="description"><span>Month part of the date the blog post was posted as a numeric value, e.g. 11-Dec-14 will render <em>12</em></span><em></span></em></td>
     </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{title<span class="tagname"></span>}}</code></td>
+      <td valign="top" class="liquid tag"><code>{{<span>title<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogposttitle</span>}</code></td><td class="description"><span>The title of the post as an anchor linked to the permalink</span></td>
         </tr>
     <tr>
@@ -82,7 +82,7 @@
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogposttitle_nolink</span>}</code></td><td class="description"><span>The title of the post</span></td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>year}}</code></td>
+      <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>year</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostyear</span>}</code></td><td class="description"><span>Year part of the date that the post was submitted, e.g. 11-Dec-14 will render as the year only, like this: <em>2014</em></span></td>
         </tr>
     <tr>
@@ -93,7 +93,7 @@
       <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_commentlist_(UNIQUE-ID-HERE)</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_commentlist</span>}</code></td>
          <td class="description"><span>List of comments associated with this post.<br/>
-         This list is fully customizable, take a look at the <a href="/dev-assets/reference/tag-reference/blogs/blog-comment-list-layout.html">Comment list layout</a> for the list of parameters you can use to render the comments. <br/>For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
+         This list is fully customizable, take a look at the <a href="/dev-assets/reference/tag-reference/blogs/blog-comment-list-layout.html">Comment list layout</a> for the list of parameters you can use to render the comments. <br/>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/beta/full-control-over-rendering#customtags">Full control over rendering</a> article.</span></td>
         </tr>
     <tr>
       <td valign="top" class="liquid tag">&nbsp;</td>
@@ -118,7 +118,7 @@
     <tr>
       <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_trackbacklist_(UNIQUE-ID-HERE)</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_trackbacklist</span>}</code></td>
-         <td class="description"><span>List of trackbacks associated with this post. <br/>For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
+         <td class="description"><span>List of trackbacks associated with this post. <br/>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/beta/full-control-over-rendering#customtags">Full control over rendering</a> article.</span></td>
         </tr>
     <tr>
       <td valign="top" class="liquid tag"><code>{{<span class="tagname">id</span>}}</code></td>
@@ -151,6 +151,10 @@
     <li>
     <code>{<span>module_blogsitepost rowCount="2"</span>}</code> - will display the most recent 2 posts on the site.
     </li>
+    <li>
+    <code>{<span>module_blogsitepost rowCount="2" template="/layouts/blogtemplate.tpl"</span>}</code> - will display the most recent 2 posts on the site using the blogtemplate.tpl template</li>
+    <li>
+    <code>{<span>module_blogsitepost collection=&quot;blog-posts&quot; template=""</span>}</code> - will not render anything. What will happen is the Liquid &quot;blog-posts&quot; collection will become available. Take a look at this article for <a href="/developers/beta/full-control-over-rendering#customtags">more information on collections</a>.</li>
 </ul>
 </div>
 </div>

@@ -24,8 +24,8 @@
     <li><strong>width/height</strong> - Set the width and height of the  						thumbnail images. The default value is 80 pixels wide by 80 pixels high.</li>
     <li><strong>useStandardMethod</strong> - Use the standard Thumbnail Generation.  Set to <strong>false</strong> for better thumbnail quality (with increased file size).</li>
 	 <li><strong>thumbnail</strong> - To avoid squashed images and control image proportion size. Use the following paramaters: <strong>proportional</strong>, <strong>fill</strong>, <strong>fill_proportional</strong>.</li>
-     <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+     <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - you can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 <p class="alert alert-info">
 Note: If an image is 640 pixels wide x 400 pixels high and you set the thumbnail size to 120 x 120 pixels, the thumbnail image will have a maximum width of 120 and a smaller height. Proportions are respected when creating the thumbnail image.
@@ -54,6 +54,7 @@ Alternatively if the image dimensions are 400 pixels wide x 640 pixels high, the
 <div class="examples">
 <h2>Examples</h2>
 <li><code>{<span>module_photogallery id=&quot;26800&quot; rowCount=&quot;4&quot; resultsPerPage=&quot;12&quot; width=&quot;120&quot; height=&quot;120&quot; useStandardMethod=&quot;true&quot;</span>}</code> - this displays 4 photos per line and a maximum of 12 photos per page. The thumbnail size has also been set to 120x120 pixels</li>
+<li><code>{module_photogallery<span> </span>id=&quot;26800&quot; <span>collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </div>
 </div>
   <div id="legacy">

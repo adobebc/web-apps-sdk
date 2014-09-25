@@ -78,7 +78,7 @@
       <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_addtofavorites_(UNIQUE-ID-HERE)</span>}}</code></td>
       <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addtofavorites,add_Image, remove_Image</span>}</code></td>
       <td class="description"><span>Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span class="tagname">tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}&lt;br/&gt;<br>
-        For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
+        For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/beta/full-control-over-rendering#customtags">Full control over rendering</a> article.</span></td>
     </tr>
     <tr>
       <td valign="top" class="liquid tag"><code>{{<span class="tagname">button</span>}}</code></td>
@@ -126,7 +126,7 @@
     </span></td>
   </tr>
   <tr>
-    <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>_raw}}</code></td>
+    <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>_raw</span>}}</code></td>
     <td valign="top" class="legacy tag">&nbsp;</td>
     <td class="description"><span>Expiry timestamp of item in this format -<em>1/1/9999 12:00:00 AM</em><br />
     </span></td>
@@ -185,20 +185,20 @@
     <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_tellafriend_(UNIQUE-ID-HERE)</span>}}</code></td>
     <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_tellafriend</span>}</code></td>
     <td class="description"><span>Tell a friend about this item. <br>
-      For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
+      For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/beta/full-control-over-rendering#customtags">Full control over rendering</a> article.</span></td>
   </tr>
   <tr>
-    <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image}}</code></td>
+    <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image</span>}}</code></td>
     <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image</span>}</code></td>
     <td class="description"><span>For &quot;Image&quot; type fields only - renders the image wrapped in a hyperlink</span></td>
   </tr>
   <tr>
-    <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image_value}}</code></td>
+    <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image_value</span>}}</code></td>
     <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image_value</span>}</code></td>
     <td class="description"><span>For &quot;Image&quot; type fields only - renders the image's src</span></td>
   </tr>
   <tr>
-    <td valign="top" class="liquid tag"><code>{{image_nolink<span class="tagname"></span>}}</code></td>
+    <td valign="top" class="liquid tag"><code>{{<span>image_nolink<span class="tagname"></span>}}</code></td>
     <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image_nolink</span>}</code></td>
     <td class="description"><span>For &quot;Image&quot; type fields only - renders only the image</span></td>
   </tr>
@@ -210,7 +210,7 @@
   <tr>
     <td valign="top" class="liquid tag"><code>{{<span class="tagname">datasource</span>}}</code></td>
     <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_datasource</span>}</code></td>
-    <td class="description"><span>Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{<span>tag_country</span>}</code></span></span></td>
+    <td class="description"><span>Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{<span>tag_country</span>}</code></td>
   </tr>
     </tbody>
   

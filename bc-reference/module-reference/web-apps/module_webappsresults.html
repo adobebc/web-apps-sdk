@@ -13,7 +13,7 @@
 <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_webappsresults targetFrame="_blank" useBackupTemplate="true" resultsPerPage="4" hideEmptyMessage="true" rowCount="2" sortType="DATE" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_webappsresults targetFrame="_blank" useBackupTemplate="true" resultsPerPage="4" hideEmptyMessage="true" rowCount="2" sortType="DATE" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -31,8 +31,8 @@
         <li>WEIGHTREVERSE - allows you to display the web apps by weight but in reverse, that is the item with the smallest weight is displayed first.</li>
     </ul>
     </li>
-    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -72,7 +72,7 @@
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addresscountry</span>}</code></td><td class="description"><span>Country</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addressglatlng</span>}</code></td><td class="description"><span>This tag provides a shortcut to generate GLatLng objects for use with the Google Maps API.</span></td>
         </tr>
         <tr>
@@ -95,7 +95,7 @@
             <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_addtofavorites_(UNIQUE-ID-HERE)</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_addtofavorites,add_Image, remove_Image</span>}</code></td>
             <td class="description"><span>Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span class="tagname">tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}&lt;br/&gt;<br>
-            For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
+            For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/beta/full-control-over-rendering#customtags">Full control over rendering</a> article.</span></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{{<span class="tagname">button</span>}}</code></td>
@@ -136,7 +136,7 @@
             </span></td>
         </tr>
          <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>_raw}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>_raw</span>}}</code></td>
          <td valign="top" class="legacy tag">&nbsp;</td>
          <td class="description"><span>Expiry timestamp of item in this format -<em>1/1/9999 12:00:00 AM</em><br />
             </span></td>
@@ -187,20 +187,20 @@
             <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_tellafriend_(UNIQUE-ID-HERE)</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_tellafriend</span>}</code></td>
          <td class="description"><span>Tell a friend about this item. <br>
-         For additional information on how to render the list of comments using Liquid take a look at this article</span></td>
+         For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/beta/full-control-over-rendering#customtags">Full control over rendering</a> article.</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image</span>}</code></td>
             <td class="description"><span>For &quot;Image&quot; type fields only - renders the image wrapped in a hyperlink</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image_value}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>image_value</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image_value</span>}</code></td>
             <td class="description"><span>For &quot;Image&quot; type fields only - renders the image's src</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{image_nolink<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span>image_nolink<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image_nolink</span>}</code></td>
             <td class="description"><span>For &quot;Image&quot; type fields only - renders only the image</span></td>
         </tr>
@@ -212,7 +212,7 @@
   <tr>
             <td valign="top" class="liquid tag"><code>{{<span class="tagname">datasource</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_datasource</span>}</code></td>
-            <td class="description"><span>Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{<span>tag_country</span>}</code></span></span></td>
+            <td class="description"><span>Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{<span>tag_country</span>}</code></td>
     </tr>
     </tbody>
 </table>
@@ -221,7 +221,7 @@
 <h2>Examples</h2>
 <ul>
     <li><code>{<span>module_webappsresults targetFrame=&quot;_blank&quot; useBackupTemplate=&quot;true&quot; resultsPerPage=&quot;16&quot; hideEmptyMessage=&quot;true&quot; rowCount=&quot;3&quot; sortType=&quot;REVERSEDATE</span>&quot;}</code> - This module will display the web app search results</li>
-    <li><code>{<span>module_webappsresults template="/layouts/custom/walist.html"</span>}</code> - This module will display the web app search results using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{<span>module_webappsresults template="/layouts/custom/walist.html"</span>}</code> - This module will display the web app search results using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{module_webappsresults<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

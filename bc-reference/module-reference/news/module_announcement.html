@@ -12,7 +12,7 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_announcement filter="item" itemid="newsId" noTemplate="true" effect="ajax" targetFrame="blank" sortType="alphabetical" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_announcement filter="item" itemid="newsId" noTemplate="true" effect="ajax" targetFrame="blank" sortType="alphabetical" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -42,7 +42,7 @@
     <li><strong>datereverse</strong> - will sort announcements in the reverse order, that is from the oldest to the latest</li>
     </ul>
     </li>
-        <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+        <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 
 </ul>
@@ -62,6 +62,7 @@
     <li><code>{<span>module_announcement filter=&quot;random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; sortType=&quot;datereverse</span>&quot;}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detail content opens right underneath the news name and all the news items will be displayed from the oldest to the latest </li>
     <li><code>{<span>module_announcement filter=&quot;lastclassified&quot; itemid=&quot;34392&quot; effect=&quot;ajax&quot; resultsPerPage=&quot;5&quot;</span>}</code> - will display the 5 latest news items in the category with the ID 34392</li>
     <li><code>{<span>module_announcement filter=&quot;all&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; template="/Layouts/Custom/news.tpl"</span>}</code> - will display all the news items using the "ajax" effect using the news.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> </li>
+    <li><code>{module_announcement<span> </span>filter=&quot;all&quot; <span>collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

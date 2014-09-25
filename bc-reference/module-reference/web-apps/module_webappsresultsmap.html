@@ -11,7 +11,7 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_webappsresultsmap googleKey=&quot;&quot; width=&quot;400&quot; height=&quot;400&quot; resultsPerPage=500&quot; sortType=&quot;Default” </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_webappsresultsmap googleKey=&quot;&quot; width=&quot;400&quot; height=&quot;400&quot; resultsPerPage=500&quot; sortType=&quot;Default” </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -28,8 +28,8 @@
         <li>WEIGHTREVERSE - allows you to display the web apps by weight but in reverse, that is the item with the smallest weight is displayed first.</li>
     </ul>
     </li>
-    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -99,6 +99,7 @@
 <h2>Examples</h2>
 <ul>
     <li><code>{<span>module_webappsresultsmap googleKey="ABCDEGHHIJKLMNOPQ" width=&quot;400&quot; height=&quot;400&quot; resultsPerPage=&quot;-1&quot; sortType=&quot;default</span>&quot;}</code> - displays all the search result webapp items ordered alphabetically on a 400px x 400px Google map</li>
+    <li><code>{module_webappsresultsmap<span> </span>googleKey="ABCDEGHHIJKLMNOPQ" <span>collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

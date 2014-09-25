@@ -56,19 +56,19 @@ This way, with one layout for every country defined you can vary the contents of
          <td class="description"><span>The javascript event to be assigned to the clear cart button</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{items.custom1<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span>items.custom1<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom1</span>}</code></td><td class="description"><span>Custom field #1. Use to display any information about a product</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{items.custom2<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span>items.custom2<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom2</span>}</code></td><td class="description"><span>Custom field #2. Use to display any information about a product</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{items.custom3}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span>items.custom3</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom3</span>}</code></td><td class="description"><span>Custom field #3. Use to display any information about a product</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{items.custom4<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>{{<span>items.custom4<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom4</span>}</code></td><td class="description"><span>Custom field #4. Use to display any information about a product</span></td>
         </tr>
         <tr>
@@ -110,7 +110,7 @@ This way, with one layout for every country defined you can vary the contents of
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicetotalextaxamount</span>}</code></td><td class="description"><span>Invoice total amount excluding tax (e.g. products ex tax + shipping ex tax)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{}}</code></td>
+            <td valign="top" class="liquid tag"></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicetotaltaxamount,state,state special tax rate,regular tax rate name,special tax rate name</span>}</code></td><td class="description"><span>Invoice total amount of tax (e.g. products tax + shipping tax).  The additional parameters allow a user to configure the system to break out part of the tax for a specific state into two parts. This is useful in some countries where by law you are required to show GST or similar tax on a separate line, for example:
             <ul>
                 <li>Tax code BC is configured as 12% (the sum of 7% PST and 5% GST)</li>
@@ -146,7 +146,7 @@ This way, with one layout for every country defined you can vary the contents of
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producteditorcontent</span>}</code></td><td class="description"><span>Product description as it appears in the WYSIWYG editor</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productextaxamount</span>}</code></td><td class="description"><span>Price of each product excluding tax in the cart</span></td>
         </tr>
         <tr>
@@ -212,11 +212,11 @@ This way, with one layout for every country defined you can vary the contents of
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_producttotalextax</span>}</code></td><td class="description"><span>Total amount for product excluding tax (Product x Quantity)</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingextaxamount</span>}</code></td><td class="description"><span>Price of shipping option chosen excluding tax</span></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>}}</code></td>
+            <td valign="top" class="liquid tag"><code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippingoptions</span>}</code></td>
             <td class="description"><span>List of shipping options. The full syntax is  <code>{<span>tag_shippingoptions, true, OnlyChargeCountryUsers, ShipToSingleCountry, ApplyTaxToShipping, ApplyTaxToGiftVouchers</span>}</code>
                 <p>Take a look at the <a href="/user-manual/e-Commerce/Shipping/displaying-shipping-options#tag_shippingoptions" title="Customizing the shipping options tag">Displaying shipping options</a> article for more details on each parameter.</p>

@@ -11,7 +11,7 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_product catalogId=&quot;14886&quot; productid=&quot;954557&quot; decoration=&quot;no&quot;</span> collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_product catalogId=&quot;14886&quot; </span>targetFrame<span>=&quot;_blank&quot; productid=&quot;954557&quot; decoration=&quot;no&quot;</span> collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -21,8 +21,8 @@
     <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
     <li><strong>useLi</strong> - wrap the module output in a list rather than a table</li>
     <li><strong>usebackupLayout</strong> - use the backup layout instead of the default one</li>
-    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -101,7 +101,7 @@ The {<span>module_product</span>} module is always rendered using either the <a 
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom4</span>}</code></td><td class="description"><span>Custom field #4. Use to display any information about a product</span></td>
         </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{description<span class="tagname"></span>}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span>description<span class="tagname"></span>}}</code></td>
   <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_description</span>}</code></td><td class="description"><span>Description of the product (Editor content)</span></td>
         </tr>
 <tr>
@@ -133,7 +133,7 @@ The {<span>module_product</span>} module is always rendered using either the <a 
   </span></td>
         </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{url<span class="tagname"></span>}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span>url<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_itemurl_nolink</span>}</code></td><td class="description"><span>URL to the item referred, without host</span></td>
         </tr>
 <tr>
@@ -153,7 +153,7 @@ The {<span>module_product</span>} module is always rendered using either the <a 
   <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_maxunits</span>}</code></td><td class="description"><span>Maximum units</span></td>
         </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{minUnits<span class="tagname"></span>}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span>minUnits<span class="tagname"></span>}}</code></td>
   <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_minunits</span>}</code></td><td class="description"><span>Minimum units</span></td>
         </tr>
 <tr>
@@ -161,7 +161,7 @@ The {<span>module_product</span>} module is always rendered using either the <a 
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name_nolink</span>}</code></td><td class="description"><span>Name of product (does not link to product details)</span></td>
         </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>name}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>name</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name</span>}</code></td><td class="description"><span>Name of product</span></td>
         </tr>
 <tr>
@@ -273,8 +273,9 @@ The {<span>module_product</span>} module is always rendered using either the <a 
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_product,591,166845,_blank </span>}</code> - will display a single product according to the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a>. If one clicks the product link the product detail window will open in a new tab.</li>
-    <li><code>{<span>module_product,63882,5450055,_top template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - this rendes an individual product a custom template.</li>
+  <li><code>{<span>module_product catalogId="591" productid="166845" targetFrame="_blank" </span>}</code> - will display a single product according to the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a>. If one clicks the product link the product detail window will open in a new tab.</li>
+    <li><code>{<span>module_product catalogId="63882" productid="5450055" targetFrame="_top" template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - this rendes an individual product a custom template.</li>
+    <li><code>{module_product catalogId="591" productid="166845"<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

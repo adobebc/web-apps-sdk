@@ -17,20 +17,28 @@
 <h2>Parameters</h2>
 <ul>
     <li><strong>param</strong> -this is the name of the query parameter, see the example below</li>
-    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - you can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div><div class="layouts">
 <h2>This module can be rendered:</h2>
 <ul>
     <li><strong>in plain text</strong></li>
-    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>my_custom_collection_name.title</code></li>
+    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>my_custom_collection_name.question</code> <code></li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_url param=&quot;question</span>&quot;}</code> - assuming the URL is mysite.com?question=how_are_you this module will display in plain text <em>How_are_you</em></li>
+    <li><code>{<span>module_url param=&quot;question</span>&quot;}</code> - assuming the URL is mysite.com?question=how_are_you this module will display in plain text <em>How_are_you</em></li><li><code>{module_url<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
+    <li>the query params are also contained in a Liquid global object. this means that for the URL <strong>http://mysite.businesscatalyst.com/test2.html?question=true&second=true&third=not-sure </strong><code>{{<span>globals.get</span>}}</code> will output:
+      <pre class="language-javascript"><code>{
+  "ID": "/test2.html",
+  "question": "true",
+  "second": "true",
+  "third": "not-sure"
+}</code></pre>
+    </li>
 </ul>
 </div>
 </div>

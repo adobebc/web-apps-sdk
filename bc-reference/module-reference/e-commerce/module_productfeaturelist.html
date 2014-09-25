@@ -11,7 +11,7 @@
   <div id="named-params" class="beta nocontent">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_productfeaturelist tag="featured" rowCount="4" sortType="Weight" useBackupLayout="false"</span> collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre>
+<pre class="language-markup"><code>{<span>module_productfeaturelist tag="featured" rowCount="4" sortType="Weight" useBackupLayout="false"</span> collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -21,8 +21,8 @@
     <li><strong>sortType</strong> can be <em>alphabetical</em>, <em>price</em>, <em>date</em>, <em>expirydate</em> or <em>weight</em></li>
     <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
     <li><strong>useBackupLayout</strong> can be <em>true</em> or <em>false</em></li>
-    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -101,7 +101,7 @@ The {<span>module_productfeaturelist</span>} module is always rendered using eit
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom4</span>}</code></td><td class="description"><span>Custom field #4. Use to display any information about a product</span></td>
       </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{description<span class="tagname"></span>}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span>description<span class="tagname"></span>}}</code></td>
   <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_description</span>}</code></td><td class="description"><span>Description of the product (Editor content)</span></td>
       </tr>
 <tr>
@@ -133,7 +133,7 @@ The {<span>module_productfeaturelist</span>} module is always rendered using eit
   </span></td>
       </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{url<span class="tagname"></span>}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span>url<span class="tagname"></span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_itemurl_nolink</span>}</code></td><td class="description"><span>URL to the item referred, without host</span></td>
       </tr>
 <tr>
@@ -153,7 +153,7 @@ The {<span>module_productfeaturelist</span>} module is always rendered using eit
   <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_maxunits</span>}</code></td><td class="description"><span>Maximum units</span></td>
       </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{minUnits<span class="tagname"></span>}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span>minUnits<span class="tagname"></span>}}</code></td>
   <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_minunits</span>}</code></td><td class="description"><span>Minimum units</span></td>
       </tr>
 <tr>
@@ -161,7 +161,7 @@ The {<span>module_productfeaturelist</span>} module is always rendered using eit
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name_nolink</span>}</code></td><td class="description"><span>Name of product (does not link to product details)</span></td>
       </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>name}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>name</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name</span>}</code></td><td class="description"><span>Name of product</span></td>
       </tr>
 <tr>
@@ -275,7 +275,7 @@ The {<span>module_productfeaturelist</span>} module is always rendered using eit
 <ul>
     <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot;}</code> - lists all the products that are tagged with the "special offer" tag</li>
     <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot;<span> sortType=&quot;price&quot; targetFrame=&quot;_blank&quot; useBackupLayout="true"</span>}</code> - lists the products that are tagged with the "special offer" tag using the backup template. The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
-    <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot; <span>rowCount=&quot;3&quot; </span>sortType=&quot;price&quot; targetFrame=&quot;_blank&quot; useBackupLayout="true"<span> template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists 3 products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot; <span>rowCount=&quot;3&quot; </span>sortType=&quot;price&quot; targetFrame=&quot;_blank&quot; useBackupLayout="true"<span> template="/layouts/custom/productfeaturelist.tpl"</span>}</code> - lists 3 products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li><li><code>{<span>module_productfeaturelist tag=&quot;special offer</span>&quot;<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

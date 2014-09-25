@@ -20,15 +20,37 @@
 	<p>or</p>
 <ul>
 	<li><strong>name</strong> - is this represents the contentholder's name</li>
-    <li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - you can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div><div class="layouts">
 <h2>This module can be rendered:</h2>
 <ul>
     <li><strong>in plain text</strong></li>
-    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>my_custom_collection_name.title</code></li>
-</ul>
+    <li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
+</ul><table width="100%" class="data-bordered">
+  <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+    <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">id</span>}}</code></td>
+         <td class="description">The content holder's ID</td>
+        </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{{<span class="tagname">name</span>}}</code></td>
+         <td class="description">The content holder's name</td>
+        </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{{<span class="tagname">content</span>}}</code></td>
+         <td class="description"><span>The content holder's content</span></td>
+        </tr>
+   
+  </tbody>
+</table>
 </div>
 <div class="examples">
 <h2>Examples</h2>
@@ -40,6 +62,7 @@
 	<code>{<span>module_contentholder,name="Example"</span>}</code> - renders the Content Holder with name "Example" Where the SFTP file is Example.html
 	</li>
 	<li><code>{<span>module_contentholder,name="{</span>system_visitordeviceclass<span>}"</span>}</code> - depending on the type of the device the site visitor is using it renders the content holder with the names <em>desktop</em>, <em>phone</em> or <em>tablet</em>. See the <a href="http://forums.adobe.com/docs/DOC-1874" target="_blank">Deploying your site across Mobile and Tablet devices</a> document for more details on this setup</li>
+    <li><code>module_contentholder name=&quot;Addresses&quot; <span>collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 </div>
 </div><div id="legacy">

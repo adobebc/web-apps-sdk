@@ -14,8 +14,8 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>collection</strong> - optional, use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, use this if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+<li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - you can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div><div class="layouts">
 <h2>This module can be rendered:</h2>
@@ -28,7 +28,7 @@
 <h2>Examples</h2>
 <ul>
     <li><code>{<span>module_pagename</span>}</code> - renders the name of the page in plain text</li>
-    <li>The way to set up a different image which loads on a per page basis is to use the {<span>module_pagename</span>} to render the name of the page, but add this module to the image link, i.e. <code>&lt;img src=&rdquo;/images/{<span>module_pagename</span>}.jpg&rdquo;&gt;</code>. This will then render the word <em>About</em> (if you are on a page named &lsquo;About&rsquo;) and the resulting image link would be <code>&lt;img src=&rdquo;/images/About.jpg&rdquo;&gt;</code>.</li>
+    <li>The way to set up a different image which loads on a per page basis is to use the {<span>module_pagename</span>} to render the name of the page, but add this module to the image link, i.e. <code>&lt;img src=&rdquo;/images/{<span>module_pagename</span>}.jpg&rdquo;&gt;</code>. This will then render the word <em>About</em> (if you are on a page named &lsquo;About&rsquo;) and the resulting image link would be <code>&lt;img src=&rdquo;/images/About.jpg&rdquo;&gt;</code>.</li><li><code>{module_pagename<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>
 <ul>
     <li>You can also use this module between the title tags to set the title</li>

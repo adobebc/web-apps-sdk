@@ -1,55 +1,55 @@
 <h1>Supported logic tags</h1>
 <h2 id="IF">IF</h2>
 <p>Simple if decision block.</p>
-<pre class="language-javascript"><code>  {% if item.Color == &#39;red&#39; %}
+<pre class="language-javascript"><code>  {<span>% if item.Color == &#39;red&#39; %</span>}
     &lt;p&gt;Red is the color&lt;/p&gt;
-  {% endif %}</code></pre>
+  {<span>% endif %</span>}</code></pre>
 <h2 id="IF-else">IF else</h2>
 <p>Just like a regular IF condition, the only difference is this adds another possible choice.</p>
-<pre class="language-javascript"><code>  {% if item.Color == &#39;red&#39; %}
+<pre class="language-javascript"><code>  {<span>% if item.Color == &#39;red&#39; %</span>}
     &lt;p&gt;Red is the color&lt;/p&gt;
-  {% elsif item.Color == 'blue' %}
+  {<span>% elsif item.Color == 'blue' %</span>}
     &lt;p&gt;Blue is the color&lt;/p&gt;
-  {% else %}
+  {<span>% else %</span>}
     &lt;p&gt;Neither red nor blue.&lt;/p&gt;
-  {% endif %}
+  {<span>% endif %</span>}
 </code></pre>
 <h2 id="Unless">UNLESS</h2>
 <p>Unless the condition is true the code is executed</p>
-<pre class="language-javascript"><code>  {% unless item.Color == &#39;red&#39; %}
+<pre class="language-javascript"><code>  {<span>% unless item.Color == &#39;red&#39; %</span>}
 		&lt;p&gt;The color is not red.&lt;/p&gt;
-  {% endunless %}</code></pre>
+  {<span>% endunless %</span>}</code></pre>
 <p>or</p>
-<pre class="language-javascript"><code>  {% unless item.Color == &#39;red&#39; or item.Color == &#39;blue&#39;%}
+<pre class="language-javascript"><code>  {<span>% unless item.Color == &#39;red&#39; or item.Color == &#39;blue&#39;%</span>}
 		&lt;p&gt;The color is not red nor blue.&lt;/p&gt;
-  {% endunless %}
+  {<span>% endunless %</span>}
 </code></pre>
 <h2 id="Case">CASE</h2>
 <p>Do something based on the possible values of a variable. If none of the "known" values are encountered the last &quot;else&quot; branch will be executed.</p>
 <pre class="language-javascript"><code>
- {% case item.country %}
-    {% when &#39;DE&#39; %}
+ {<span>% case item.country %</span>}
+    {<span>% when &#39;DE&#39; %</span>}
       Willkommen
-    {% when &#39;ES&#39; %}
+    {<span>% when &#39;ES&#39; %</span>}
       Bienvenido
-    {% when &#39;EN&#39; %}
+    {<span>% when &#39;EN&#39; %</span>}
 		Welcome
-    {% else %}
+    {<span>% else %</span>}
       Bine ai venit
-  {% endcase %}
+  {<span>% endcase %</span>}
 </code></pre>
 <h2 id="FOR">FOR</h2>
 <p>FOR is used to loop over a collection of items.</p>
-<pre class="language-markup"><code>{%<span> for item in webapp1.items </span>%}
+<pre class="language-markup"><code>{<span>%<span> for item in webapp1.items </span>%</span>}
 &lt;p&gt;
-    This item&#39;s name is: {{item.name}} 
+    This item&#39;s name is: {{<span>item.name</span>}} 
 &lt;/p&gt;
-{%<span> endfor </span>%}</code></pre>
+{<span>%<span> endfor </span>%</span>}</code></pre>
 <p>In FOR loops you can also access the key/value pairs, for example:</p>
 <pre class="language-markup"><code>&lt;ul&gt;
-{% for getParam in this.globals.visitor %} 
-  &lt;li&gt;{{getParam[0]}} = &#39;{{getParam[1]}}&#39;&lt;/li&gt;
-{% endfor %}
+{<span>% for getParam in this.globals.visitor %</span>} 
+  &lt;li&gt;{{<span>getParam[0]</span>}} = &#39;{{<span>getParam[1]</span>}}&#39;&lt;/li&gt;
+{<span>% endfor %</span>}
 &lt;/ul&gt;
 </code></pre>
 <p>will render the <code>this.globals.visitor</code> object like so:</p>
@@ -61,10 +61,10 @@
 &lt;/ul&gt;</code></pre>
 
 <h2 id="Cycle">CYCLE</h2>
-<p>Render one of a few possible items. For example:</p><pre class="language-javascript"><code>{% cycle 'red', 'green', 'blue' %}<br /> 
-{% cycle 'red', 'green', 'blue' %}<br /> 
-{% cycle 'red', 'green', 'blue' %}<br /> 
-{% cycle 'red', 'green', 'blue' %}<br /> </code></pre>
+<p>Render one of a few possible items. For example:</p><pre class="language-javascript"><code>{<span>% cycle 'red', 'green', 'blue' %</span>}<br /> 
+{<span>% cycle 'red', 'green', 'blue' %</span>}<br /> 
+{<span>% cycle 'red', 'green', 'blue' %</span>}<br /> 
+{<span>% cycle 'red', 'green', 'blue' %</span>}<br /> </code></pre>
 <p>renders:</p>
 <p>
 red<br /> 
@@ -74,65 +74,65 @@ red<br />
 </p>
 <h2 id="Assign">ASSIGN</h2>
 <p>This is used to create a new variable.</p>
-<pre class="language-javascript"><code>{% assign new_variable = &quot;this is my new value&quot; %}</code></pre>
+<pre class="language-javascript"><code>{<span>% assign new_variable = &quot;this is my new value&quot; %</span>}</code></pre>
 <p>Or update a variable's value:</p>
-<pre class="language-javascript"><code>{% assign new_variable = &quot;this is the new value&quot; %}</code></pre>
+<pre class="language-javascript"><code>{<span>% assign new_variable = &quot;this is the new value&quot; %</span>}</code></pre>
 <h2 id="Capture">CAPTURE</h2>
 <p>Assign a block of text, HTML code to a variable.</p>
-<pre class="language-javascript"><code>{% capture item_date %}&lt;span style=&quot;color:blue&quot;&gt;{{item.releaseDate}}&lt;/span&gt;{% endcapture %}
+<pre class="language-javascript"><code>{<span>% capture item_date %</span>}&lt;span style=&quot;color:blue&quot;&gt;{{<span>item.releaseDate</span>}}&lt;/span&gt;{<span>% endcapture %</span>}
 </code></pre>
-<p>You can then use <code>{{<span>item_date</span>}}</code> to output the release date of the item in blue. The HTML code or text between the capture tags does not render on the page.</p>
+<p>You can then use <code>{{<span>>item_date</span>}}</code> to output the release date of the item in blue. The HTML code or text between the capture tags does not render on the page.</p>
 <h2 id="Comment">COMMENT</h2>
 <p>Comments out a block of text. The text between the comment tags does not render in the front-end.</p>
-<pre class="language-javascript"><code>{%comment%}
+<pre class="language-javascript"><code>{<span>%comment%</span>}
 	Do not forget to remove comments
-{%endcomment%}
+{<span>%endcomment%</span>}
 </code></pre>
 <p>The comment will only be visible in the Admin Console.</p>
 <h2 id="Raw">RAW</h2>
 <p>Raw renders liquid markup in plain text. </p>
-<pre class="language-javascript"><code>{%raw%}
-	{{this | json}}
-{%endraw%}
+<pre class="language-javascript"><code>{<span>%raw%</span>}
+	{{<span>this | json</span>}}
+{<span>%endraw%</span>}
 </code></pre>
 <p>This will render the Liquid code in plain text.</p>
 <h2 id="Tablerow">TABLEROW</h2>
 <p>This will draw a table. You can specify how many columns the table will contain using the "cols:" value.</p>
 <pre class="language-javascript"><code>
 &lt;table&gt;
-{% tablerow item in webapp1.items cols:2 %}
-    {{ item.name }}{{item.counter}}
-{% endtablerow %}
+{<span>% tablerow item in webapp1.items cols:2 %</span>}
+    {{<span>item.name </span>}}{{<span>item.counter</span>}}
+{<span>% endtablerow %</span>}
 &lt;/table&gt;
 </code></pre>
 <h2 id="Examples">Examples</h2>
 <p>A more complex example that uses a FOR loop to go over the items of a webapp collection and make some additional decisions using the CASE statement:
 <pre class="language-javascript"><code>
-{% assign european_make = &quot;This vehicle is from Europe!&quot;%} //create a variable named european_make<br>
-{% for item in webapp1.items %} // looping the webapp1.items
-{% if item.Color == &quot;red&quot; and (item.Country contains &quot;U&quot; or item.Country == &quot;US&quot;) and item.name contains &quot;a&quot; and item.name contains &quot;e&quot;%}
+{<span>% assign european_make = &quot;This vehicle is from Europe!&quot;%</span>} //create a variable named european_make<br>
+{<span>% for item in webapp1.items %</span>} // looping the webapp1.items
+{<span>% if item.Color == &quot;red&quot; and (item.Country contains &quot;U&quot; or item.Country == &quot;US&quot;) and item.name contains &quot;a&quot; and item.name contains &quot;e&quot;%</span>}
 &lt;p&gt;
-    Item number {{item.counter}} name is: {{item.name}} and its color is &lt;span style=&quot;color:{{item.Color}}&quot;&gt;{{item.Color}}&lt;/span&gt; and country is {{item.Country}}
+    Item number {{<span>item.counter</span>}} name is: {{<span>item.name</span>}} and its color is &lt;span style=&quot;color:{{<span>item.Color</span>}}&quot;&gt;{{<span>item.Color</span>}}&lt;/span&gt; and country is {{<span>item.Country</span>}}
 &lt;/p&gt;
-{%unless item.country == &quot;US&quot; or item.country == &quot;AU&quot;%} // if the country is not US nor AU display the contents of the european_make variable
-{{european_make}}
+{<span>%unless item.country == &quot;US&quot; or item.country == &quot;AU&quot;%</span>} // if the country is not US nor AU display the contents of the european_make variable
+{{<span>european_make</span>}}
 &lt;br/&gt;
-{%endunless%}
-{%comment%}
+{<span>%endunless%</span>}
+{<span>%comment%</span>}
 	this is a comment - if you also have Japanese cars the &quot;unless&quot; statement above is not accurate - whoops...
-{%endcomment%}
-{% capture item_productionDate %}&lt;span style=&quot;color:blue&quot;&gt;{{item.releaseDate}}&lt;/span&gt;{% endcapture %}
- {% case item.country %}
-    {% when &#39;DE&#39; %}
+{<span>%endcomment%</span>}
+{<span>% capture item_productionDate %</span>}&lt;span style=&quot;color:blue&quot;&gt;{{<span>item.releaseDate</span>}}&lt;/span&gt;{<span>% endcapture %</span>}
+ {<span>% case item.country %</span>}
+    {<span>% when &#39;DE&#39; %</span>}
       Jahr der Wagen rollte vom Band auf
-    {% when &#39;EN&#39; %}
+    {<span>% when &#39;EN&#39; %</span>}
       Año el coche salió de la línea de montaje el
-    {% else %}
+    {<span>% else %</span>}
       Year the car rolled off the assembly line on 
-  {% endcase %}
-{{item_productionDate}}
+  {<span>% endcase %</span>}
+{{<span>item_productionDate</span>}}
 &lt;br/&gt;
 &lt;br/&gt;
-{% endif %}
-{% endfor %}
+{<span>% endif %</span>}
+{<span>% endfor %</span>}
 </code></pre>

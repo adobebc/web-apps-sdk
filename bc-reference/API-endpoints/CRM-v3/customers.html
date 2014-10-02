@@ -263,10 +263,11 @@ request.fail(function (jqXHR) {
   "skip": 0,
   "limit": 10
 }</code></pre>
+
 </div>
 <hr></div>
 <div id="details">
-<h2>Get a customer's details</h2>
+<h2 id="get-by-id">Get a customer's details</h2>
 <div class="description">
 <p>Get a particular customer by ID.</p>
 </div>
@@ -379,10 +380,91 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
+<p id="get-by-mail"><strong>Get a customer by email address</strong></p>
+<p>For this example we will add the email address field to the output and add a filtering condition. Take a look at this </p>
+<pre class="language-javascript"><code>var request = $.ajax({
+  url: '/webresources/api/v3/sites/current/customers?fields=email1,middleName,firstName,lastName&where={"email1.value":"mtest@mailinator.com"}',
+  type: "GET",
+  conenection: "keep-alive",
+  contentType: "application/json",
+  headers: {
+    "Authorization": $.cookie('access_token')
+  }
+});
+request.done(function(msg) {
+  $('.output pre').html(JSON.stringify(msg))
+  console.log(msg);
+})
+request.fail(function(jqXHR) {
+  console.log("Request failed.");
+  console.log("Error code: " + jqXHR.status);
+  console.log("Error text: " + jqXHR.statusText);
+  console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p>In this case the response is a single CRM entry and looks like this:</p>
+<pre class="language-javascript"><code>{
+  "items": [{
+    "email1": {
+      "id": 11520864,
+      "siteId": 146985,
+      "phoneNumberTypeId": 7,
+      "objectId": 9532870,
+      "objectType": 1001,
+      "value": "mtest@mailinator.com",
+      "default": true
+    },
+    "middleName": "Mtest C",
+    "firstName": "Mtest B",
+    "lastName": "Mtest A"
+  }],
+  "totalItemsCount": 1,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
+<p id="get-by-username"><strong>Get a customer by username</strong></p>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: '/webresources/api/v3/sites/current/customers?where={"username":"myUsername"}',
+  type: "GET",
+  conenection: "keep-alive",
+  contentType: "application/json",
+  headers: {
+    "Authorization": $.cookie('access_token')
+  }
+});
+request.done(function(msg) {
+  $('.output pre').html(JSON.stringify(msg))
+  console.log(msg);
+})
+request.fail(function(jqXHR) {
+  console.log("Request failed.");
+  console.log("Error code: " + jqXHR.status);
+  console.log("Error text: " + jqXHR.statusText);
+  console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p>In this case the response is a single CRM entry and looks like this:</p>
+<pre class="language-javascript"><code>{
+  "items": [{
+    "id": 9339548,
+    "siteId": 146985,
+    "customerTypeId": 420538,
+    "leadSourceTypeId": 465473,
+    "industryTypeId": 1090438,
+    "ratingTypeId": 126400,
+    "titleTypeId": 317597,
+    "firstName": "New_user",
+    "middleName": "",
+    "lastName": "New_user",
+    "company": null,
+    "username": "myUsername"
+  }],
+  "totalItemsCount": 1,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
 </div>
 <hr></div>
 <div id="create">
-<h2>Create a customer</h2>
+<h2 id="create">Create a customer</h2>
 <div class="description">
 <p>Create a new customer.</p>
 </div>
@@ -513,7 +595,7 @@ console.log("Response text: " + jqXHR.responseText);
 <hr>
 </div>
 <div id="edit">
-<h2>Edit  a customer's details</h2>
+<h2 id="edit-details">Edit  a customer's details</h2>
 <div class="description">Edit the details for an existing customer record.</div>
 <div class="request">
 <h2>Request</h2>
@@ -603,7 +685,7 @@ Content-Length: length</code></pre>
 <hr>
 <div class="sample">
 <h2>Sample code</h2>
-<p><strong>Edit a customer's name and e-mail address</strong></p>
+<p id="edit-by-id"><strong>Edit a customer's name and e-mail address</strong></p>
 <pre class="language-javascript"><code>var request = $.ajax({
 url: "/webresources/api/v3/sites/current/customers/9593213",
 type: "PUT",
@@ -631,6 +713,58 @@ console.log("Error code: " + jqXHR.status);
 console.log("Error text: " + jqXHR.statusText);
 console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
+
+<p id="edit-by-email"><strong>Get a customer by email address and edit its details</strong></p>
+<pre class="language-javascript"><code>var request = $.ajax({
+  url: '/webresources/api/v3/sites/current/customers?fields=email1&where={"email1.value":"mtest@mailinator.com"}',
+  type: "GET",
+  conenection: "keep-alive",
+  contentType: "application/json",
+  headers: {
+    "Authorization": $.cookie('access_token')
+  }
+});
+request.done(function(msg) {
+
+//now that we have the CRM ID that belongs to the user with the email address mtest@mailinator.com we can edit its properties:
+
+          var request = $.ajax({
+          url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].email1.value,
+          type: "PUT",
+          conenection: "keep-alive",
+          contentType: "application/json",
+          headers: {
+              "Authorization": $.cookie('access_token')
+          },
+          processData: false,
+          data: JSON.stringify({
+              "firstName": "Michael",
+              "lastName": "Smith",
+              "email1": {
+                  "value": "mdoe@mailinator.com",
+                  "default": true
+               }
+          })
+          });
+          request.done(function(msg) {
+          console.log(msg);
+          })
+          request.fail(function(jqXHR) {
+          console.log("Request failed.");
+          console.log("Error code: " + jqXHR.status);
+          console.log("Error text: " + jqXHR.statusText);
+          console.log("Response text: " + jqXHR.responseText);
+          })
+
+
+})
+request.fail(function(jqXHR) {
+  console.log("Request failed.");
+  console.log("Error code: " + jqXHR.status);
+  console.log("Error text: " + jqXHR.statusText);
+  console.log("Response text: " + jqXHR.responseText);
+})
+</code></pre>
 </div>
 <hr></div>
 <div id="delete">
@@ -681,6 +815,7 @@ Content-Length: length</code></pre>
 <hr>
 <div class="sample">
 <h2>Sample code</h2>
+<p>Delete a CRM address by ID</p>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/9593213",
     type: "DELETE",
@@ -698,6 +833,46 @@ request.fail(function(jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p id="delete-by-email"><strong>In this example we will first get a CRM entity by email address, get its ID and then delete it:</strong></p>
+<pre><code>var request = $.ajax({
+  url: '/webresources/api/v3/sites/current/customers?fields=id,email1,middleName,firstName,lastName&where={"email1.value":"new_user123123@mailinator.com"}',
+  type: "GET",
+  conenection: "keep-alive",
+  contentType: "application/json",
+  headers: {
+    "Authorization": $.cookie('access_token')
+  }
+});
+request.done(function(msg) {
+
+//now we have the CRM record we need to delete, bwlow we'll run a DELETE request and pass the CRM record's ID:
+
+          var request = $.ajax({
+            url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].id,
+            type: "DELETE",
+            conenection: "keep-alive",
+            contentType: "application/json",
+            headers: {
+              "Authorization": $.cookie('access_token')
+            }
+          });
+          request.done(function(msg) {
+            console.log(msg);
+          })
+          request.fail(function(jqXHR) {
+            console.log("Request failed.");
+            console.log("Error code: " + jqXHR.status);
+            console.log("Error text: " + jqXHR.statusText);
+            console.log("Response text: " + jqXHR.responseText);
+          })
+
+})
+request.fail(function(jqXHR) {
+  console.log("Request failed.");
+  console.log("Error code: " + jqXHR.status);
+  console.log("Error text: " + jqXHR.statusText);
+  console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 </div>
 <hr>

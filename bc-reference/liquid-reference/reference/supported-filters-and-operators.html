@@ -81,7 +81,7 @@
 <tr>
             <td valign="top" class="cellrowborder"><code>json</code></td>
             <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using - 
-            <code>{{<span>>webapp1.items[0] | json</span>}}</code> 
+            <code>{{<span>webapp1.items[0] | json</span>}}</code> 
             looks like:
             
             <pre class="language-javascript"><code>{
@@ -153,12 +153,12 @@
     <tr>
       <td><code>contains</code></td>
       <td>You can use "contains" to check whether a string contains another string, for example:
-      <pre class="language-javascript"><code>{<span>% if {{<span>>webapp1.items[0].name</span>}} contains 'Jaguar' %</span>}
+      <pre class="language-javascript"><code>{<span>% if {{<span>webapp1.items[0].name</span>}} contains 'Jaguar' %</span>}
   This car is a Jaguar.
 {<span>% endif %</span>}
 </code></pre>
-or to check whether an array contains a value. Assuming <code>{{<span>>cars_available_now</span>}} </code>is an array containing car makes:
-<pre class="language-javascript"><code>{<span>% if {{<span>>cars_available_now</span>}} contains 'Jaguar' %</span>}
+or to check whether an array contains a value. Assuming <code>{{<span>cars_available_now</span>}} </code>is an array containing car makes:
+<pre class="language-javascript"><code>{<span>% if {{<span>cars_available_now</span>}} contains 'Jaguar' %</span>}
   A Jaguar is available now.
 {<span>% endif %</span>}
 </code></pre>

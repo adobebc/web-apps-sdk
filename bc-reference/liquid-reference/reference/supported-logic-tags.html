@@ -81,7 +81,7 @@ red<br />
 <p>Assign a block of text, HTML code to a variable.</p>
 <pre class="language-javascript"><code>{<span>% capture item_date %</span>}&lt;span style=&quot;color:blue&quot;&gt;{{<span>item.releaseDate</span>}}&lt;/span&gt;{<span>% endcapture %</span>}
 </code></pre>
-<p>You can then use <code>{{<span>>item_date</span>}}</code> to output the release date of the item in blue. The HTML code or text between the capture tags does not render on the page.</p>
+<p>You can then use <code>{{<span>item_date</span>}}</code> to output the release date of the item in blue. The HTML code or text between the capture tags does not render on the page.</p>
 <h2 id="Comment">COMMENT</h2>
 <p>Comments out a block of text. The text between the comment tags does not render in the front-end.</p>
 <pre class="language-javascript"><code>{<span>%comment%</span>}

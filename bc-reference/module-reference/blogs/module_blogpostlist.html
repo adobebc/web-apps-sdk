@@ -27,8 +27,9 @@
 <ul>
     <li><strong>the blog list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use: <a href="/dev-assets/reference/tag-reference/blogs/blog-listing-layout.html"> Blog list's reference page</a></li>
     <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
-    <li><strong> Liquid collections</strong> - here are the Liquid output tags you can use:</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
+<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{{<span>cars1.items[0].["large image_value"]</span>}}</p>
 <table width="100%" class="data-bordered">
   <thead>
 <tr>
@@ -74,7 +75,7 @@
       <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostmonthnumeric</span>}</code></td><td class="description"><span>Month part of the date the blog post was posted as a numeric value, e.g. 11-Dec-14 will render <em>12</em></span><em></span></em></td>
     </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span>title<span class="tagname"></span>}}</code></td>
+      <td valign="top" class="liquid tag"><code>{{<span class="tagname">title</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogposttitle</span>}</code></td><td class="description"><span>The title of the post as an anchor linked to the permalink</span></td>
         </tr>
     <tr>
@@ -82,7 +83,7 @@
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogposttitle_nolink</span>}</code></td><td class="description"><span>The title of the post</span></td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname"></span>year</span>}}</code></td>
+      <td valign="top" class="liquid tag"><code>{{<span class="tagname">year</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostyear</span>}</code></td><td class="description"><span>Year part of the date that the post was submitted, e.g. 11-Dec-14 will render as the year only, like this: <em>2014</em></span></td>
         </tr>
     <tr>

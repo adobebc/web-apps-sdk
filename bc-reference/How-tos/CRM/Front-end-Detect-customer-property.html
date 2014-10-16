@@ -7,12 +7,12 @@
         
     </div>
     <div class="sample">
-        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '{{this.globals.user.email}}'\},\{'email2.value': '{{this.globals.user.email}}'\},\{'email3.value': '{{this.globals.user.email}}'\}\]\}&quot;}
-{%assign userInfo = customerInfo.items[0]%}<br>{{userInfo.wholesaler | json}}<br>&lt;p&gt;{% if userInfo.wholesaler %}This customer is a wholesaler{% else %}This customer is not a wholesaler{% endif %}&lt;/p&gt;</code></pre>
+        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '{{<span>this.globals.user.email</span>}}'\},\{'email2.value': '{{<span>this.globals.user.email</span>}}'\},\{'email3.value': '{{<span>this.globals.user.email</span>}}'\}\]\}&quot;}
+{%<span>assign userInfo = customerInfo.items[0]</span>%}<br>{{<span>userInfo.wholesaler | json</span>}}<br>&lt;p&gt;{%<span> if userInfo.wholesaler </span>%}This customer is a wholesaler{%<span> else </span>%}This customer is not a wholesaler{%<span> endif </span>%}&lt;/p&gt;</code></pre>
     </div>
     <div class="sample-details">
     <p>In this example we get the customer resource that matches the condition specified by the <em>where</em> parameter.</p>
-        <p>The condition <code>where=&quot;\{'$or':\[\{'email1.value': '{{this.globals.user.email}}'\},\{'email2.value': '{{this.globals.user.email}}'\},\{'email3.value': '{{this.globals.user.email}}'\}\]\}&quot;</code></p>
+        <p>The condition <code>where=&quot;\{'$or':\[\{'email1.value': '{{<span>this.globals.user.email</span>}}'\},\{'email2.value': '{{<span>this.globals.user.email</span>}}'\},\{'email3.value': '{{<span>this.globals.user.email</span>}}'\}\]\}&quot;</code></p>
         <p>basically means</p>
         <p><code>(email1.value == this.globals.user.email) || (email1.value == this.globals.user.email) || (email1.value == this.globals.user.email)</code></p>
         <p>By using the where condition above along with the <em>module_webresource resource=&quot;customers&quot;</em> module we are looking for a customer entity that has any of the email address (customer entities have 3 mail addresses) identical to the address of the logged in customer.</p>
@@ -28,10 +28,10 @@
         
   </div>
     <div class="sample">
-        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '{{this.globals.user.email}}'\},\{'email2.value': '{{this.globals.user.email}}'\},\{'email3.value': '{{this.globals.user.email}}'\}\]\}&quot;}
-{%assign userInfo = customerInfo.items[0]%}
-{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; resourceId=&quot;{{userInfo.id}}&quot; subresource=&quot;orders&quot; template=&quot;&quot; limit=&quot;1&quot; collection=&quot;customerOrders&quot; where=&quot;\{'totalPrice':\{'$gte': 50 \}\}&quot; fields=&quot;id,status,totalPrice&quot;}
-&lt;p&gt;{% if customerOrders.totalItemsCount &gt; 0 %}Customer has at least 1 order over $50{% else %}Customer does not have an order over $50{% endif %}&lt;/p&gt;</code></pre>
+        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '{{<span>this.globals.user.email</span>}}'\},\{'email2.value': '{{<span>this.globals.user.email</span>}}'\},\{'email3.value': '{{<span>this.globals.user.email</span>}}'\}\]\}&quot;}
+{%<span>assign userInfo = customerInfo.items[0]</span>%}
+{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; resourceId=&quot;{{<span>userInfo.id</span>}}&quot; subresource=&quot;orders&quot; template=&quot;&quot; limit=&quot;1&quot; collection=&quot;customerOrders&quot; where=&quot;\{'totalPrice':\{'$gte': 50 \}\}&quot; fields=&quot;id,status,totalPrice&quot;}
+&lt;p&gt;{%<span> if customerOrders.totalItemsCount &gt; 0 </span>%}Customer has at least 1 order over $50{%<span> else </span>%}Customer does not have an order over $50{%<span> endif </span>%}&lt;/p&gt;</code></pre>
     </div>
     <div class="sample-details">
     <p>In this example we first retrieve the customer details for the logged in user and then feed that data to the next instance of the <a href="/dev-assets/reference/module-reference/general/module_webresource.html">module_webresource</a> in the <em>resourceId</em> parameter.</p>
@@ -45,10 +45,10 @@
    
   </div>
     <div class="sample">
-        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '{{this.globals.user.email}}'\},\{'email2.value': '{{this.globals.user.email}}'\},\{'email3.value': '{{this.globals.user.email}}'\}\]\}&quot;}
-{%assign userInfo = customerInfo.items[0]%}
-{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; resourceId=&quot;{{userInfo.id}}&quot; subresource=&quot;orders&quot; template=&quot;&quot; collection=&quot;customerOrders&quot; limit=&quot;5&quot; fields=&quot;id,status,totalPrice&quot;}
-&lt;p&gt;{% if customerOrders.totalItemsCount &gt; 4 %}Customer has 5 or more orders{% else %}Customer has less than 5 orders{% endif %} -  ({{customerOrders.totalItemsCount}} to be exact)&lt;/p&gt;</code></pre>
+        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '{{<span>this.globals.user.email</span>}}'\},\{'email2.value': '{{<span>this.globals.user.email</span>}}'\},\{'email3.value': '{{<span>this.globals.user.email</span>}}'\}\]\}&quot;}
+{%<span>assign userInfo = customerInfo.items[0]</span>%}
+{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; resourceId=&quot;{{<span>userInfo.id</span>}}&quot; subresource=&quot;orders&quot; template=&quot;&quot; collection=&quot;customerOrders&quot; limit=&quot;5&quot; fields=&quot;id,status,totalPrice&quot;}
+&lt;p&gt;{%<span> if customerOrders.totalItemsCount &gt; 4 </span>%}Customer has 5 or more orders{%<span> else </span>%}Customer has less than 5 orders{%<span> endif </span>%} -  ({{<span>customerOrders.totalItemsCount</span>}} to be exact)&lt;/p&gt;</code></pre>
     </div>
     <div class="sample-details">
      <p>In this example we first retrieve the customer details for the logged in user and then feed that data to the next instance of the <a href="/dev-assets/reference/module-reference/general/module_webresource.html">module_webresource</a> in the <em>resourceId</em> parameter.</p>
@@ -62,33 +62,33 @@
 </div>
    
   <div class="sample">
-        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{&#39;$or&#39;:\[\{&#39;email1.value&#39;: &#39;{{this.globals.user.email}}&#39;\},\{&#39;email2.value&#39;: &#39;{{this.globals.user.email}}&#39;\},\{&#39;email3.value&#39;: &#39;{{this.globals.user.email}}&#39;\}\]\}&quot;}
+        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{&#39;$or&#39;:\[\{&#39;email1.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\},\{&#39;email2.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\},\{&#39;email3.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\}\]\}&quot;}
 //get the currently logged user information 
 
-{%assign userInfo = customerInfo.items[0]%} 
+{%<span>assign userInfo = customerInfo.items[0]</span>%} 
 //assign it to the userInfo variable for ease of use
 
-{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; resourceId=&quot;{{userInfo.id}}&quot; subresource=&quot;orders&quot; template=&quot;&quot; collection=&quot;customerOrders&quot; fields=&quot;id,status,totalPrice&quot;}
+{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; resourceId=&quot;{{<span>userInfo.id</span>}}&quot; subresource=&quot;orders&quot; template=&quot;&quot; collection=&quot;customerOrders&quot; fields=&quot;id,status,totalPrice&quot;}
 //get the list of orders for the customer
 
-{% for item in customerOrders.items %}
+{%<span> for item in customerOrders.items </span>%}
 //loop the orders in order to search for the product
 
-    {module_webresource resource=&quot;orders&quot; version=&quot;v3&quot; resourceId=&quot;{{item.id}}&quot; subresource=&quot;products&quot; template=&quot;&quot; collection=&quot;products&quot; where=&quot;\{&#39;product.id&#39;: &#39;9259226&#39;\}&quot;}
+    {module_webresource resource=&quot;orders&quot; version=&quot;v3&quot; resourceId=&quot;{{<span>item.id</span>}}&quot; subresource=&quot;products&quot; template=&quot;&quot; collection=&quot;products&quot; where=&quot;\{&#39;product.id&#39;: &#39;9259226&#39;\}&quot;}
 //get the individual product list for each order. It is at this time we need to pass the ID of the product we are filering by, in this case the ID is &#39;9259226&#39;
-    {% if {{products.items[0].itemId}} %}
+    {%<span> if {{<span>products.items[0].itemId</span>}} </span>%}
 //if we find the product in the current order assign the value 1 to the variable &quot;found&quot;
-        {%assign found = 1%}
-    {%endif%}
-{% endfor %}
+        {%<span>assign found = 1</span>%}
+    {%<span>endif</span>%}
+{%<span> endfor </span>%}
         
         
-{% if {{found}} == 1 %}
+{%<span> if {{<span>found</span>}} == 1 </span>%}
 //if the variable &quot;found&quot; has been assigned the value 1 we know at least one of the customer's orders contains the product with the ID we were looking for
     True
-{%else%}
+{%<span>else</span>%}
     Not found
-{%endif%}</code></pre>
+{%<span>endif</span>%}</code></pre>
     </div>
     <div class="sample-details">
     <p>In this example we first retrieve the customer details for the logged in user and then feed that data to the next instance of the <a href="/dev-assets/reference/module-reference/general/module_webresource.html">module_webresource</a> in the <em>resourceId</em> parameter.</p>
@@ -103,10 +103,10 @@
   </div>
     
     <div class="sample">
-        <pre class="language-javascript"><code>{module_webresource resource=&amp;quot;customers&amp;quot; version=&amp;quot;v3&amp;quot; template=&amp;quot;&amp;quot; collection=&amp;quot;customerInfo&amp;quot; fields=&amp;quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&amp;quot; where=&amp;quot;\{'$or':\[\{'email1.value': '{{this.globals.user.email}}'\},\{'email2.value': '{{this.globals.user.email}}'\},\{'email3.value': '{{this.globals.user.email}}'\}\]\}&amp;quot;}
-{%assign userInfo = customerInfo.items[0]%}
-{module_webresource resource=&quot;customers&quot; subresource=&quot;addresses&quot; version=&quot;v3&quot; resourceId=&quot;{{userInfo.id}}&quot; template=&quot;&quot; collection=&quot;customerCity&quot; limit=&quot;1&quot;}
-&lt;p&gt;{% if customerCity.items[0].city == &quot;NY&quot; or customerCity.items[0].city == &quot;New York&quot; %}Display the New York special offer.{% else %}Do not display the special offer{% endif %}&lt;/p&gt;</code></pre>
+        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '{{<span>this.globals.user.email</span>}}'\},\{'email2.value': '{{<span>this.globals.user.email</span>}}'\},\{'email3.value': '{{<span>this.globals.user.email</span>}}'\}\]\}&quot;}
+{%<span>assign userInfo = customerInfo.items[0]</span>%}
+{module_webresource resource=&quot;customers&quot; subresource=&quot;addresses&quot; version=&quot;v3&quot; resourceId=&quot;{{<span>userInfo.id</span>}}&quot; template=&quot;&quot; collection=&quot;customerCity&quot; limit=&quot;1&quot;}
+&lt;p&gt;{%<span> if customerCity.items[0].city == &quot;NY&quot; or customerCity.items[0].city == &quot;New York&quot; </span>%}Display the New York special offer.{%<span> else </span>%}Do not display the special offer{%<span> endif </span>%}&lt;/p&gt;</code></pre>
     </div>
 </div>
 

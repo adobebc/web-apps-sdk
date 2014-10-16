@@ -262,7 +262,21 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
-	  url: &quot;/webresources/api/v3/sites/current/securezones&quot;,<br>    data: JSON.stringify({<br>        &quot;landingPageId&quot;: 4518247,<br>        &quot;name&quot;: &quot;Secure Zone 4 (API)&quot;,<br>        &quot;sellAccess&quot;: true,<br>        &quot;costPerPeriod&quot;: 1,<br>        &quot;orderCountryCode&quot;: &quot;AU&quot;,<br>        &quot;cycleType&quot;: 1,<br>        &quot;deleted&quot;: false<br>    }),<br>    type: &quot;POST&quot;,<br>    contentType: &quot;application/json&quot;,<br>    headers: {<br>        &quot;Authorization&quot;: $.cookie('access_token')<br>    }
+	  url: "/webresources/api/v3/sites/current/securezones",
+    data: JSON.stringify({
+        "landingPageId": 4518247,
+        "name": "Secure Zone 4 (API)",
+        "sellAccess": true,
+        "costPerPeriod": 1,
+        "orderCountryCode": "AU",
+        "cycleType": 1,
+        "deleted": false
+    }),
+    type: "POST",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
 });
 request.done(function (msg) {
     console.log(msg);
@@ -333,7 +347,15 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: &quot;/webresources/api/v3/sites/current/securezones/3312&quot;,<br>    data: JSON.stringify({<br>         &quot;name&quot;: &quot;Secure Zone 4 (API - modified)&quot;,<br>          }),<br>    type: &quot;PUT&quot;,<br>    contentType: &quot;application/json&quot;,<br>    headers: {<br>              &quot;Authorization&quot;: $.cookie('access_token')<br>    }
+    url: "/webresources/api/v3/sites/current/securezones/3312",
+    data: JSON.stringify({
+         "name": "Secure Zone 4 (API - modified)",
+          }),
+    type: "PUT",
+    contentType: "application/json",
+    headers: {
+              "Authorization": $.cookie('access_token')
+    }
 });
 request.done(function (msg) {
     console.log(msg);

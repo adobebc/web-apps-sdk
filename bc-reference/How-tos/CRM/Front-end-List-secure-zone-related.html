@@ -2,41 +2,95 @@
 <div id="list-secure-zones">
     <h2>List the logged in urser's secure zones access</h2>
     <div class="description">
-    <p>List the list of secure zones the currently logged in username has access to.</p>
-        </p>
-    </div>
-    <hr/>
-    <div class="request">
-        <pre class="language-javascript"><code></code></pre>
-    </div>
-    <hr/>
-    <div class="response">
-        <pre class="language-javascript"><code></code></pre>
-    </div>
-    <hr/>
-    <div class="sample">
-        <pre class="language-javascript"><code></code></pre>
-    </div>
+    <p>List the list of secure zones the currently logged in username has access to:</p>
+    
 </div>
+    <div class="sample">
+        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{&#39;$or&#39;:\[\{&#39;email1.value&#39;: &#39;{{this.globals.user.email}}&#39;\},\{&#39;email2.value&#39;: &#39;{{this.globals.user.email}}&#39;\},\{&#39;email3.value&#39;: &#39;{{this.globals.user.email}}&#39;\}\]\}&quot;}
+{%assign userInfo = customerInfo.items[0]%}
+
+{module_webresource resource=&quot;customers&quot; subresource=&quot;securezones&quot; resourceId=&quot;{{userInfo.id}}&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerZones&quot;}
+
+{% if customerZones.totalItemsCount &gt; 0 %}
+	&lt;table&gt;
+		&lt;tbody&gt;
+		{% for item in customerZones.items %}
+			&lt;tr&gt;
+				&lt;td&gt;{{item.zoneId}}&lt;/td&gt;
+				&lt;td&gt;{{item.secureZone.name}}&lt;/td&gt;
+				&lt;td&gt;{%if {{item.secureZone.sellAccess}}  == false%}Paid access{%else%}Free access {%endif%}&lt;/td&gt;
+			&lt;/tr&gt;
+		{% endfor %}
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+{% endif %}</code></pre>
+    </div>
+    <div class="sample-details">
+    <p>In this example we first retrieve the customer details for the logged in user and then feed that data to the next instance of the <a href="/dev-assets/reference/module-reference/general/module_webresource.html">module_webresource</a> in the <em>resourceId</em> parameter.</p>
+    <p>We then check to see if there are any secure zones the customer is subscribed to using the <em>customerZones.totalItemsCount</em> value and if there are more than 1 we draw the table.</p>
+</div></div>
 
 <div id="check-specific-page">
     <h2>Check if the currently logged in user has access to a particular page</h2>    
     <div class="description">
-    <p>Check if the currently logged in user has access to a particular page URL.</p>
+   <p>In the example below we will create a table that lists the secure zones and the pages for each secure zone the currently logged in user has access to:</p>
+    
+    
     </div>
-    <hr/>
-    <div class="request">
-        <pre class="language-javascript"><code></code></pre>
-
-    </div>
-    <hr/>
-    <div class="response">
-        <pre class="language-javascript"><code></code></pre>
-
-    </div>
-    <hr/>
     <div class="sample">
-        <pre class="language-javascript"><code></code></pre>
+    <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{&#39;$or&#39;:\[\{&#39;email1.value&#39;: &#39;{{this.globals.user.email}}&#39;\},\{&#39;email2.value&#39;: &#39;{{this.globals.user.email}}&#39;\},\{&#39;email3.value&#39;: &#39;{{this.globals.user.email}}&#39;\}\]\}&quot;}
+//get the currently logged user information 
+
+{%assign userInfo = customerInfo.items[0]%}
+//assign it to the userInfo variable for ease of use
+
+{module_webresource resource=&quot;customers&quot; subresource=&quot;securezones&quot; resourceId=&quot;{{userInfo.id}}&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerZones&quot;}
+//get the list of secure zones this customer is subscribed to
+
+{% if customerZones.totalItemsCount &gt; 0 %}
+//if there is more than 1 secure zone go ahead
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;th&gt;Secure zone id&lt;/th&gt;
+      &lt;th&gt;Secure zone name&lt;/th&gt;
+      &lt;th&gt;Secure zone payment type&lt;/th&gt;
+      &lt;th&gt;Grants access to the pages&lt;/th&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      {% for item in customerZones.items %}
+//loop the secure zones the customer is subscribed to 
+      &lt;tr&gt;
+        &lt;td&gt;{{item.zoneId}}&lt;/td&gt;
+        &lt;td&gt;{{item.secureZone.name}}&lt;/td&gt;
+        &lt;td&gt;{%if item.secureZone.sellAccess  == true%}Paid access{%else%}Free access {%endif%}&lt;/td&gt;
+        
+        &lt;td&gt;{module_webresource resource=&quot;securezones&quot; subresource=&quot;pages&quot; resourceid=&quot;{{item.zoneId}}&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;szPages&quot;}
+//get the list of secured pages for the current secure zone. The item.zoneId is the ID of the current secure zone        
+        {% if {{szPages.totalItemsCount}} != 0 %}
+//check if there are any pages contained in the secure zone
+        &lt;ul&gt;
+            {%for pages in szPages.items%}
+//loop over the secured pages and render the page ID and the page name
+            &lt;li&gt;{{pages.page.id}} - {{pages.page.displayFileName}}&lt;/li&gt;
+            {%endfor%}
+        &lt;/ul&gt;
+        {%else%}
+//the secure zone does not contian any pages
+        &lt;p&gt;Empty secure zone.&lt;/p&gt;
+        {%endif%}
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      {% endfor %}
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+{%else%}
+//the currently logged in user is not subscribed to any secure zones
+&lt;p&gt;You ar enot subscribed to any secure zones yet.&lt;/p&gt;
+{% endif %} </code></pre>
 
     </div>
-</div>
+    <div class="sample-details">
+    <p>First we retrieve the customer details for the logged in user and then feed that data to the next instance of the <a href="/dev-assets/reference/module-reference/general/module_webresource.html">module_webresource</a> in the <em>resourceId</em> parameter.</p>
+    <p>Then we retrieve the customer's list of secure zones. If there are more than one secure zone this customer is subscribed to we draw the table and start looping them in order to list the pages the secure zones contain.</p>
+    <p>In order to list the pages in each secure zone we use another instance of module_webresource and pass <em>resource=&quot;securezones&quot;, subresource=&quot;pages&quot;</em> and <em>resourceid="{{item.zoneId}}"</em>. The latter, resourceId holds the current secure zone ID as the <a href="/dev-assets/reference/liquid-reference/reference/supported-logic-tags.html#for">FOR loop</a> goes over all of them. </p>
+</div></div>

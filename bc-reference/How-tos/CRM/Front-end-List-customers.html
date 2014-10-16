@@ -2,37 +2,44 @@
 <div class="as" id="list-customer-list">
   <h2>all the CRM records in the site</h2>
     <div class="description">
-        <p>List all the CRM records on the site.</p>
+        <p>List all the CRM records on the site:</p>
+        
     </div>
-    <hr/>
-    <div class="request">
-        <pre class="language-javascript"><code></code></pre>
-    </div>
-    <hr/>
-    <div class="response">
-        <pre class="language-javascript"><code></code></pre>
-    </div>
-    <hr/>
   <div class="sample">
-        <pre class="language-javascript"><code></code></pre>
+        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot;}
+&lt;table&gt;<br>&lt;tbody&gt;
+   {% for item in customerInfo.items %}<br>	&lt;tr&gt;<br>		 &lt;td&gt;{{item.id}}&lt;/td&gt;
+        &lt;td&gt;{%if {{item.firstName}} %}{{item.firstName}} {%endif%}&lt;/td&gt;
+        &lt;td&gt;{%if {{item.email1.value}} %}{{item.email1.value}} {%endif%}&lt;/td&gt;
+        &lt;td&gt;{%if {{item.email2.value}} %}{{item.email2.value}} {%endif%}&lt;/td&gt;
+        &lt;td&gt;{%if {{item.mobilePhone.value}} %}{{item.mobilePhone.value}}{%else%}Number unavailable{%endif%}&lt;/td&gt;
+   &lt;/tr&gt;
+   {% endfor %}
+&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
   </div>
-</div>
+  <div class="sample-details">
+  <p>This example is pretty straight forward - we get all the customers on the site and using a for loop dump them in a table structure.</p>
+</div></div>
 
 <div id="list-wholesalers-list">
   <h2>the "wholesale" type customers</h2>
     <div class="description">
-        <p>List all the customers marked as wholesalers.</p>
-    </div>
-    <hr/>
-    <div class="request">
-        <pre class="language-javascript"><code></code></pre>
-    </div>
-    <hr/>
-    <div class="response">
-        <pre class="language-javascript"><code></code></pre>
-    </div>
-    <hr/>
+        <p>List all the customers marked as wholesalers:</p>
+            </div>
   <div class="sample">
-        <pre class="language-javascript"><code></code></pre>
-  </div>
+        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'wholesaler':true\}&quot;}
+&lt;table&gt;<br>&lt;tbody&gt;
+   {% for item in customerInfo.items %}<br>	&lt;tr&gt;<br>		 &lt;td&gt;{{item.id}}&lt;/td&gt;
+        &lt;td&gt;{%if {{item.firstName}} %}{{item.firstName}} {%endif%}&lt;/td&gt;
+        &lt;td&gt;{%if {{item.email1.value}} %}{{item.email1.value}} {%endif%}&lt;/td&gt;
+        &lt;td&gt;{%if {{item.email2.value}} %}{{item.email2.value}} {%endif%}&lt;/td&gt;
+        &lt;td&gt;{%if {{item.mobilePhone.value}} %}{{item.mobilePhone.value}}{%else%}Number unavailable{%endif%}&lt;/td&gt;
+   &lt;/tr&gt;
+   {% endfor %}
+&lt;/tbody&gt;
+&lt;/table&gt;</code></pre></div>
+<div class="sample-details">
+<p>In this example we get the list of customers that have the <em>wholesaler</em> value set to <em>true</em>. Once we get the collection <em>customerInfo</em> we loop it using a for statement and draw the lines in a table with the informaiton we need.</p>
+</div>
 </div>

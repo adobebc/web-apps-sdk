@@ -40,7 +40,7 @@
     <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
-<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{{<span>cars1.items[0].["large image_value"]</span>}}</code></p><table width="100%" class="data-bordered">
+<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{{<span>cars1.items[0].["large image_value"]</span>}}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this particular example the tag that contains a space needs to be wrapped in square brackets and quotes.</p><table width="100%" class="data-bordered">
     <thead>
 <tr>
 <td class="liquid">Liquid tag</td>

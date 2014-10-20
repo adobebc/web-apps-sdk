@@ -21,50 +21,17 @@
 * DEALINGS IN THE SOFTWARE.
 * 
 */
+
 (function(app) {
 	/**
 	 * @constructor
 	 * @description
-	 * This class provides the main controller implementation which fetches the web resources registry and displays 
-	 * the main interface.
+	 * This controller provides help logic for BC Discovery app.
 	 */
-	function MainController($scope, configService) {
+	function InstructionsController($scope) {
 		this.$scope = $scope;
-		this._configService = configService;
-
-		this.$scope.appVersion = this._configService.appVersion;
-
-		this._init();
+		this.$scope.message = "Instructions controller initialized.";
 	};
 
-	/**
-	 * @private
-	 * @instance
-	 * @descriptor
-	 * This method provides the initialization logic for discovery application. It initializes the logic for tabs 
-	 * control.
-	 */
-	MainController.prototype._init = function() {
-		var currHash = window.location.hash,
-			navMenu = $("*[data-sid='navigation-menu']"),
-			activeMenuSelector = "a[data-sid='tabHome']";
-
-		if(currHash.length > 2) {
-			currHash = currHash.substr(2);
-
-			activeMenuSelector = "a[href='#" + currHash + "']";
-		}
-
-		console.log(activeMenuSelector);
-
-		navMenu.find("a").on('click', function (e) {
-			var newHash = "/" + e.target.hash;
-
-		    window.location.hash = newHash;
-		});
-
-		navMenu.find(activeMenuSelector).tab("show");
-	};
-
-	app.controller("MainController", ["$scope", "ConfigService", MainController])
+	app.controller("InstructionsController", ["$scope", InstructionsController]);
 })(DiscoveryApp);

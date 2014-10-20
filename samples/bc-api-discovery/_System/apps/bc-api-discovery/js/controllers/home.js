@@ -29,10 +29,39 @@
 	 * This controller provides the logic for correctly displaying the BC APIs discovery UI. It relies on
 	 * BC WebResources API registry in order to fecth accurate data.
 	 */
-	function HomeController($scope) {
+	function HomeController($scope, registryService) {
 		this.$scope = $scope;
-		this.$scope.message = "Home controller initialized";
+		this._registryService = registryService;
+
+        this.$scope.resourceSelection = {
+          	options: {
+            	valueField: 'id',
+            	labelField: 'name',
+            	searchField: ['name']
+          	}
+        };
+
+        this.$scope.resources = [];
+
+		this._displayResources();
 	};
 
-	app.controller("HomeController", ["$scope", HomeController]);
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method displays all available resources currently available in BC.
+	 */
+	HomeController.prototype._displayResources = function() {
+		var self = this;
+
+		this._registryService.getRegistry().then(function(data) {
+			for(var resourceName in data) {
+				self.$scope.resources.push({"id": resourceName, "name": resourceName});
+			}			
+		});
+	};
+
+	app.controller("HomeController", ["$scope", "BcRegistryService", HomeController]);
 })(DiscoveryApp);

@@ -55,8 +55,6 @@
 			activeMenuSelector = "a[href='#" + currHash + "']";
 		}
 
-		console.log(activeMenuSelector);
-
 		navMenu.find("a").on('click', function (e) {
 			var newHash = "/" + e.target.hash;
 

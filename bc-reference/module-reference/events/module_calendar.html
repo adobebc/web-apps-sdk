@@ -15,7 +15,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_calendar eventType="all/news/events" filter="all/classified" classificationid="classificationid" notemplate="false" targetframe="_blank"</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_calendar eventType="all/news/events" filter="all/classified" classificationId="classificationId" notemplate="false" targetFrame="_blank"</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -33,9 +33,9 @@
         <li><strong>classified</strong> - displays an item in a particular category</li>
     </ul>
     </li>
-    <li><strong>classificationid</strong> -if you choose to display the classified calendar items specify the classification ID here</li>
+    <li><strong>classificationId</strong> -if you choose to display the classified calendar items specify the classification ID here</li>
         <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
-            <li><strong>targetframe</strong> - specify the way the item opens when it is clicked. the possible values are:
+            <li><strong>targetFrame</strong> - specify the way the item opens when it is clicked. the possible values are:
             <ul>
             <li><strong>_blank</strong> - open the new item in a new window</li>
             <li><strong>_self</strong> - open the new item in the same window</li>
@@ -85,14 +85,14 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><pre class="language-markup"><code>{<span>module_calendar eventType="all" filter="all" notemplate="false" targetframe="_blank"</span>}</code></pre> - displays all the news and announcement items on the calendar view and opens the detail view in a new window when clicked</li>    <li><pre class="language-markup"><code>{<span>module_calendar eventType="news" filter="classified" classificationid="12345" notemplate="false" targetframe="_blank"</span>}</code></pre> - displays the news item classified in the category with the ID 12345 and opens the detail view in the same window when clicked</li>
+    <li><pre class="language-markup"><code>{<span>module_calendar eventType="all" filter="all" notemplate="false" targetFrame="_blank"</span>}</code></pre> - displays all the news and announcement items on the calendar view and opens the detail view in a new window when clicked</li>    <li><pre class="language-markup"><code>{<span>module_calendar eventType="news" filter="classified" classificationId="12345" notemplate="false" targetFrame="_blank"</span>}</code></pre> - displays the news item classified in the category with the ID 12345 and opens the detail view in the same window when clicked</li>
 </ul>
 </div>
 </div>
 <div id="legacy">
   <div class="syntax">
 <h2> Syntax</h2>
-<pre class="language-markup"><code>{<span>module_calendar,what,filter,</span>classificationid, notemplate, targetFrame}</code></pre>
+<pre class="language-markup"><code>{<span>module_calendar,what,filter,</span>classificationId, notemplate, targetFrame}</code></pre>
 </div>
 <div class="parameters">
 <h2> Parameters</h2>
@@ -110,9 +110,9 @@
   <li>c - displays an item in a particular category</li>
 </ul>
     </li>
-    <li><strong>classificationid</strong> -if you choose to display the classified calendar items specify the classification ID here</li>
+    <li><strong>classificationId</strong> -if you choose to display the classified calendar items specify the classification ID here</li>
     <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
-    <li><strong>targetframe</strong> - specify the way the item opens when it is clicked. the possible values are:
+    <li><strong>targetFrame</strong> - specify the way the item opens when it is clicked. the possible values are:
       <ul>
         <li><strong>_blank</strong> - open the new item in a new window</li>
         <li><strong>_self</strong> - open the new item in the same window</li>

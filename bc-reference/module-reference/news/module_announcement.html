@@ -23,10 +23,10 @@
         <li><strong>item</strong> - individual item</li>
         <li><strong>all</strong> - all items</li>
         <li><strong>latest</strong> - latest items</li>
-        <li><strong>lastclassified</strong> - latest items in a category</li>
+        <li><strong>latestClassified</strong> - latest items in a category</li>
         
         <li><strong>random</strong> - random item</li>
-        <li><strong>randomclassified</strong> - displays a random item in a particular category</li>
+        <li><strong>randomClassified</strong> - displays a random item in a particular category</li>
         <li><strong>classified</strong> - all the items in a category</li>
     </ul>
     </li>
@@ -61,7 +61,7 @@
     <li><code>{<span>module_announcement filter=&quot;all&quot; targetFrame=&quot;_parent</span>&quot;}</code> - will display all news items and open them in parent frame </li>
     <li><code>{<span>module_announcement filter=&quot;last&quot; itemID=&quot;5&quot;</span>}</code> - will display the latest 5 news</li>
     <li><code>{<span>module_announcement filter=&quot;random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; sortType=&quot;datereverse</span>&quot;}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detail content opens right underneath the news name and all the news items will be displayed from the oldest to the latest </li>
-    <li><code>{<span>module_announcement filter=&quot;lastclassified&quot; itemid=&quot;34392&quot; effect=&quot;ajax&quot; resultsPerPage=&quot;5&quot;</span>}</code> - will display the 5 latest news items in the category with the ID 34392</li>
+    <li><code>{<span>module_announcement filter=&quot;latestClassified&quot; itemid=&quot;34392&quot; effect=&quot;ajax&quot; resultsPerPage=&quot;5&quot;</span>}</code> - will display the 5 latest news items in the category with the ID 34392</li>
     <li><code>{<span>module_announcement filter=&quot;all&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; template="/Layouts/Custom/news.tpl"</span>}</code> - will display all the news items using the "ajax" effect using the news.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> </li>
     <li><code>{module_announcement<span> </span>filter=&quot;all&quot; <span>collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
 </ul>

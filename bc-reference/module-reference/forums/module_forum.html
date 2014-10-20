@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_forum filter="item(individual)/all/classified/lastclassified/random/latest/randomclassified" itemid="newsId or classificationId" noTemplate="true" targetFrame=&quot;_self&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_forum filter="item(individual)/all/classified/latestClassified/random/latest/randomClassified" itemid="newsId or classificationId" noTemplate="true" targetFrame=&quot;_self&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -23,10 +23,10 @@
         <li><strong>item</strong> - individual item</li>
         <li><strong>all</strong> - all items</li>
         <li><strong>latest</strong> - latest items</li>
-        <li><strong>lastclassified</strong> - latest items in a category</li>
+        <li><strong>latestClassified</strong> - latest items in a category</li>
         
         <li><strong>random</strong> - random item</li>
-        <li><strong>randomclassified</strong> - displays a random item in a particular category</li>
+        <li><strong>randomClassified</strong> - displays a random item in a particular category</li>
         <li><strong>classified</strong> - all the items in a category</li>
     </ul>
     </li>
@@ -116,7 +116,8 @@
         <li>a - all items</li>
         <li>l - latest items</li>
         <li>r - random item</li>
-        <li>cr - displays a random item in a particular category</li>
+        <li>cr - displays a random item in a particular category        
+        <li>cl - latest items in a particular category</li>
     </ul>
     </li>
     <li><strong>ID</strong> - system generated (do not change)</li>

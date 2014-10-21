@@ -1,9 +1,12 @@
 <h1>Supported logic tags</h1>
+<div type="cs-pod">
 <h2 id="IF">IF</h2>
 <p>Simple if decision block.</p>
 <pre class="language-javascript"><code>  {<span>% if item.Color == &#39;red&#39; %</span>}
     &lt;p&gt;Red is the color&lt;/p&gt;
   {<span>% endif %</span>}</code></pre>
+  </div>
+  <div type="cs-pod">
 <h2 id="IF-else">IF else</h2>
 <p>Just like a regular IF condition, the only difference is this adds another possible choice.</p>
 <pre class="language-javascript"><code>  {<span>% if item.Color == &#39;red&#39; %</span>}
@@ -14,6 +17,8 @@
     &lt;p&gt;Neither red nor blue.&lt;/p&gt;
   {<span>% endif %</span>}
 </code></pre>
+</div>
+<div type="cs-pod">
 <h2 id="Unless">UNLESS</h2>
 <p>Unless the condition is true the code is executed</p>
 <pre class="language-javascript"><code>  {<span>% unless item.Color == &#39;red&#39; %</span>}
@@ -24,6 +29,8 @@
 		&lt;p&gt;The color is not red nor blue.&lt;/p&gt;
   {<span>% endunless %</span>}
 </code></pre>
+</div>
+<div type="cs-pod">
 <h2 id="Case">CASE</h2>
 <p>Do something based on the possible values of a variable. If none of the "known" values are encountered the last &quot;else&quot; branch will be executed.</p>
 <pre class="language-javascript"><code>
@@ -38,6 +45,8 @@
       Bine ai venit
   {<span>% endcase %</span>}
 </code></pre>
+</div>
+<div type="cs-pod">
 <h2 id="FOR">FOR</h2>
 <p>FOR is used to loop over a collection of items.</p>
 <pre class="language-markup"><code>{<span>%<span> for item in webapp1.items </span>%</span>}
@@ -59,7 +68,8 @@
   &lt;li&gt;country = &#39;US&#39;&lt;/li&gt;
   &lt;li&gt;userAgent = &#39;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36&#39;&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-
+</div>
+<div type="cs-pod">
 <h2 id="Cycle">CYCLE</h2>
 <p>Render one of a few possible items. For example:</p><pre class="language-javascript"><code>{<span>% cycle 'red', 'green', 'blue' %</span>}<br /> 
 {<span>% cycle 'red', 'green', 'blue' %</span>}<br /> 
@@ -72,16 +82,22 @@ green<br />
 blue<br /> 
 red<br /> 
 </p>
+</div>
+<div type="cs-pod">
 <h2 id="Assign">ASSIGN</h2>
 <p>This is used to create a new variable.</p>
 <pre class="language-javascript"><code>{<span>% assign new_variable = &quot;this is my new value&quot; %</span>}</code></pre>
 <p>Or update a variable's value:</p>
 <pre class="language-javascript"><code>{<span>% assign new_variable = &quot;this is the new value&quot; %</span>}</code></pre>
+</div>
+<div type="cs-pod">
 <h2 id="Capture">CAPTURE</h2>
 <p>Assign a block of text, HTML code to a variable.</p>
 <pre class="language-javascript"><code>{<span>% capture item_date %</span>}&lt;span style=&quot;color:blue&quot;&gt;{{<span>item.releaseDate</span>}}&lt;/span&gt;{<span>% endcapture %</span>}
 </code></pre>
 <p>You can then use <code>{{<span>item_date</span>}}</code> to output the release date of the item in blue. The HTML code or text between the capture tags does not render on the page.</p>
+</div>
+<div type="cs-pod">
 <h2 id="Comment">COMMENT</h2>
 <p>Comments out a block of text. The text between the comment tags does not render in the front-end.</p>
 <pre class="language-javascript"><code>{<span>%comment%</span>}
@@ -89,6 +105,8 @@ red<br />
 {<span>%endcomment%</span>}
 </code></pre>
 <p>The comment will only be visible in the Admin Console.</p>
+</div>
+<div type="cs-pod">
 <h2 id="Raw">RAW</h2>
 <p>Raw renders liquid markup in plain text. </p>
 <pre class="language-javascript"><code>{<span>%raw%</span>}
@@ -96,6 +114,8 @@ red<br />
 {<span>%endraw%</span>}
 </code></pre>
 <p>This will render the Liquid code in plain text.</p>
+</div>
+<div type="cs-pod">
 <h2 id="Tablerow">TABLEROW</h2>
 <p>This will draw a table. You can specify how many columns the table will contain using the "cols:" value.</p>
 <pre class="language-javascript"><code>
@@ -105,8 +125,11 @@ red<br />
 {<span>% endtablerow %</span>}
 &lt;/table&gt;
 </code></pre>
+</div>
+
+<div type="cs-pod">
 <h2 id="Examples">Examples</h2>
-<p>A more complex example that uses a FOR loop to go over the items of a webapp collection and make some additional decisions using the CASE statement:
+<p>A more complex example that uses a FOR loop to go over the items of a webapp collection and make some additional decisions using the CASE statement:</p>
 <pre class="language-javascript"><code>
 {<span>% assign european_make = &quot;This vehicle is from Europe!&quot;%</span>} //create a variable named european_make<br>
 {<span>% for item in webapp1.items %</span>} // looping the webapp1.items
@@ -136,3 +159,4 @@ red<br />
 {<span>% endif %</span>}
 {<span>% endfor %</span>}
 </code></pre>
+</div>

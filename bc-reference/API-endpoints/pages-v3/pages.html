@@ -298,6 +298,7 @@ The response should be "201 created" if the page was successfully created.
     "name": "About-page",
     "url": "/about-page",
     "deleted": false,
+    &quot;displayable&quot;: true,
     "displayFileName": "About",
     "content": "&lt;h1&gt;This is my About page&lt;/h1&gt;&lt;p&gt;Some content here&lt;/p&gt;",
     "templateId": "0"
@@ -445,11 +446,12 @@ request.fail(function(jqXHR) {
 <hr>
 <div class="sample">
 <h2>Sample code</h2>
+<p>In this example let's remove the template for the page with the ID <em>4518294</em>. To do this we will assign the tempalte with the <em>ID -1</em>:</p>
 <pre class="language-javascript"><code>var request = $.ajax({
 	url: "/webresources/api/v3/sites/current/pages/4518294",
   data: JSON.stringify({
         "name": "Card - modified",
-        "templateId" : "0"
+        "templateId" : "-1"
                 }),
          type: "PUT",
          contentType: "application/json",

@@ -1,7 +1,7 @@
-<h1 apiType="restv3">Pages and secure zones</h1>
+<h1 apiType="restv3">Shipping options and catalogs</h1>
 <ul id="toc"></ul>
 <div id="list">
-<h2>List the pages in a particular secure zone</h2>
+<h2>List the catalogs a shipping option is applied to</h2>
 <div class="request">
 <h2>Request</h2>
 
@@ -13,8 +13,7 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones/[secure_zone_ID]/pages
-
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[shipping_options_ID]/catalogues
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
 </ul></li>
@@ -25,13 +24,13 @@
 <div class="response">
 <h2>Response</h2>
 
-<p>An array of the first 10 web pages contained by the secure zone.</p>
+<p>An array of the first 10 catalogs the shipping option is applied to.</p>
 </div>
 <hr>
 <div class="sample">
 <h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: &quot;/webresources/api/v3/sites/current/securezones/3309/pages&quot;,
+    url: &quot;/webresources/api/v3/sites/current/shippingoptions/3309/catalogues&quot;,
     type: "GET",
     conenection: "keep-alive",
     contentType: "application/json",
@@ -52,80 +51,76 @@ request.fail(function (jqXHR) {
 <pre class="language-javascript"><code>{
   "items": [
     {
-      "objectId": 2411253,
-      "zoneId": 3309,
-      "objectType": 1,
-      "displayable": 1,
-      "siteId": 38581,
-      "page": {
-        "id": 2411253,
-        "siteId": 38581,
-        "url": "/img/shipping/testurl123",
-        "name": "Page1",
-        "deleted": false,
-        "categoryId": -1,
-        "roleId": 10000,
-        "templateId": 0,
-        "parentId": 736557,
-        "displayFileName": "testurl123.htm",
-        "size": 202,
+      "discountCodeId": 17339,
+      "catalogueId": 591,
+      "siteId": 146985,
+      "catalogue": {
+        "catalogueId": 591,
+        "siteId": 146985,
+        "parentId": 88,
+        "templateId": -2,
+        "roleId": 14075,
+        "displayTypeId": 1,
+        "weight": null,
+        "name": "Biographies",
+        "title": "",
+        "description": "// Biography catalog description is here //",
+        "image": "/Images/productimages/books/biographies/mylife_small.jpg",
+        "releaseDate": "2005-08-24T00:00:00",
+        "expiryDate": "9998-12-31T15:00:00",
+        "notify": null,
+        "useFriendlyUrl": true,
+        "excludeFromFeed": false,
         "enabled": true,
-        "startPage": false,
-        "releaseDate": "2043-12-31T08:00:00",
-        "expiryDate": "9999-01-01T00:00:00",
-        "displayable": true,
-        "excludeFromSearch": false,
-        "livePageId": null,
-        "content": "\n\n    \n    \n        \n        \n    \n    \n    Page 1 content -\n\n\n\r\n",
-        "redirect301": "",
-        "pageTitle": null,
-        "seoMetadataDescription": null
+        "deleted": false,
+        "minPrice": 0,
+        "maxPrice": 1000,
+        "priceSlots": 5,
+        "productsStatsXml": "3000100000007000000200000030000110202100",
+        "reIndex": false
       }
     },
     {
-      "objectId": 4518424,
-      "zoneId": 3309,
-      "objectType": 1,
-      "displayable": 1,
-      "siteId": 38581,
-      "page": {
-        "id": 4518424,
-        "siteId": 38581,
-        "url": "/img/shipping/testurl123_copy",
-        "name": "Page2",
-        "deleted": false,
-        "categoryId": -1,
-        "roleId": 10000,
-        "templateId": 0,
-        "parentId": 736557,
-        "displayFileName": "testurl123_copy.htm",
-        "size": 203,
+      "discountCodeId": 17339,
+      "catalogueId": 593,
+      "siteId": 146985,
+      "catalogue": {
+        "catalogueId": 593,
+        "siteId": 146985,
+        "parentId": 88,
+        "templateId": -2,
+        "roleId": 14075,
+        "displayTypeId": 1,
+        "weight": null,
+        "name": "Business",
+        "title": null,
+        "description": "",
+        "image": "/Images/productimages/books/business/marketing_small.jpg",
+        "releaseDate": "2005-08-24T17:00:00",
+        "expiryDate": "9998-12-31T15:00:00",
+        "notify": null,
+        "useFriendlyUrl": true,
+        "excludeFromFeed": false,
         "enabled": true,
-        "startPage": false,
-        "pageStatusId": 1,
-        "releaseDate": "2043-12-31T08:00:00",
-        "expiryDate": "9999-01-01T00:00:00",
-        "displayable": true,
-        "excludeFromSearch": false,
-        "livePageId": null,
-        "content": "\n\n    \n    \n        \n        \n    \n    \n    Page 2 content -\n\n\n\n\r\n",
-        "redirect301": "",
-        "pageTitle": null,
-        "seoMetadataDescription": null
+        "deleted": false,
+        "minPrice": 0,
+        "maxPrice": 1000,
+        "priceSlots": 5,
+        "productsStatsXml": "280090000007000000200000030000110202100",
+        "reIndex": false
       }
     }
   ],
   "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}
-</code></pre>
+}</code></pre>
 </div>
 <hr>
 </div>
 
 <div id="create">
-<h2>Add pages to a secure zone</h2>
+<h2>Apply a shipping option to a catalog</h2>
 <div class="request">
 <h2>Request</h2>
 
@@ -137,7 +132,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/[secure_zone_ID]/pages
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/[discount_code_ID]/catalogues
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -145,43 +140,46 @@ request.fail(function (jqXHR) {
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
 
 </ul>
+<p class="alert alert-info"><strong>Note:</strong> If the shipping option type is 3 (Free shipping) it cannot be applied to a catalog.</p>
 </div>
 <div class="response">
 <h2>Response</h2>
 
-<p>The response should be "204 no content" if the page was successfully added to the secure zone.</p>
+<p>The response should be "204 no content" if the shipping option was successfully applied to the catalog.</p>
 </div>
 <hr>
 <div class="sample">
 <h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
-     url: "/webresources/api/v3/sites/current/securezones/3309/pages",
-      data: JSON.stringify({
-          "items": [{
-            "objectId": 4518424
-          }]
-        }),
-    type: "POST",
-    contentType: "application/json",
-    headers: {
-        "Authorization": $.cookie('access_token')
-    }
+  url: "/webresources/api/v3/sites/current/shippingoptions/3309/catalogues",
+  data: JSON.stringify({
+    "items": [{
+      "catalogueId": 88
+    }, {
+      "catalogueId": 590
+    }]
+  }),
+  type: "POST",
+  contentType: "application/json",
+  headers: {
+    "Authorization": $.cookie('access_token')
+  }
 });
-request.done(function (msg) {
-    console.log(msg);
+request.done(function(msg) {
+  console.log(msg);
 })
-request.fail(function (jqXHR) {
-    console.log("Request failed.");
-    console.log("Error code: " + jqXHR.status);
-    console.log("Error text: " + jqXHR.statusText);
-    console.log("Response text: " + jqXHR.responseText);
+request.fail(function(jqXHR) {
+  console.log("Request failed.");
+  console.log("Error code: " + jqXHR.status);
+  console.log("Error text: " + jqXHR.statusText);
+  console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 </div>
 <hr>
 </div>
 
 <div id="delete">
-<h2>Remove pages from a secure zone</h2>
+<h2>Remove the shipping option from a catalog</h2>
 <div class="request">
 <h2>Request</h2>
 
@@ -193,7 +191,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.a</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones/[secure_zone_ID]/pages?items=[page1_ID,page2_ID,page3_ID]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[secure_zone_ID]/catalogues?items=[page1_ID,page2_ID,page3_ID]
 
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
@@ -205,13 +203,13 @@ request.fail(function (jqXHR) {
 <div class="response">
 <h2>Response</h2>
 
-<p>The response should be "204 no content" if the pages were successfully removed from the the secure zone.</p>
+<p>The response should be "204 no content" if the catalogues were successfully removed from list of catalogues discounted with this particular shipping option.</p>
 </div>
 <hr>
 <div class="sample">
 <h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/securezones/3309/pages?items=[4518424]",
+    url: "/webresources/api/v3/sites/current/shippingoptions/3309/catalogues?items=[88,590]",
     type: "DELETE",
     contentType: "application/json",
     headers: {

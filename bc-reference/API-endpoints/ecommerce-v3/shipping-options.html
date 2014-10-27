@@ -1,0 +1,492 @@
+<h1 apiType="restv3">Shipping options</h1>
+<ul id="toc"></ul>
+<div id="list">
+<h2 id ="list-shippingoptions">List the shipping options in a site</h2>
+<div class="request">
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers#!/beta/introduction-to-liquid!enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h2>Response</h2>
+
+<p>An array of the first 10 shipping options; each object has the following properties:</p>
+
+<ul>
+  <li><code>id</code> - the id of the shipping option <em>(integer)</em></li>
+  <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
+<li><code>"description"</code> - the shipping option's description <em>(string)</em></li>
+<li><code>"price"</code> -  <em>(integer)</em></li>
+<li><code>"type"</code> - the type of shipping option <em>(integer)</em>
+<ul>
+<li><strong>1</strong> - User defined</li>
+<li><strong>2</strong> - Australia Post</li>
+<li><strong>3</strong> - FedEx</li>
+<li><strong>4</strong> - USPS</li>
+<li><strong>5</strong> - Free shipping</li>
+<li><strong>6</strong> - DHL</li>
+<li><strong>7</strong> - UPS</li>
+</ul>
+</li>
+<li><code>"packageType"</code> -  <em>(integer)</em></li>
+<li><code>"taxCodeId"</code> -  <em>(integer)</em></li>
+<li><code>"countryCode"</code> -  <em>(string)</em></li>
+<li><code>"state"</code> -  <em>(string)</em></li>
+<li><code>"postcode"</code> -  <em>(string)</em></li>
+<li><code>"productMinWeight"</code> -  <em>(integer)</em></li>
+<li><code>"productMinVolume"</code> -  <em>(integer)</em></li>
+<li><code>"productMinHeight"</code> -  <em>(integer)</em></li>
+<li><code>"productMinDepth"</code> -  <em>(integer)</em></li>
+<li><code>"productMaxWeight"</code> -  <em>(integer)</em></li>
+<li><code>"productMaxVolume"</code> -  <em>(integer)</em></li>
+<li><code>"productMaxHeight"</code> -  <em>(integer)</em></li>
+<li><code>"productMaxDepth"</code> -  <em>(integer)</em></li>
+<li><code>"totalOrderPriceMin"</code> -  <em>(integer)</em></li>
+<li><code>"totalOrderPriceMax"</code> -  <em>(integer)</em></li>
+<li><code>"handlingBaseCharge"</code> -  <em>(integer)</em></li>
+<li><code>"handlingPerItemCharge"</code> -  <em>(integer)</em></li>
+<li><code>"freeThreshold"</code> -  <em>(integer)</em></li>
+<li><code>"limitDeliveryTo"</code> -  <em>(string)</em></li>
+<li><code>"userAccountNumber"</code> -  <em>(string)</em></li>
+<li><code>"userAccountId"</code> -  <em>(string)</em></li>
+<li><code>"userAccountKey"</code> -  <em>(string)</em></li>
+<li><code>"userAccountPassword"</code> -  <em>(string)</em></li>
+<li><code>"upsAccountType"</code> -  <em>(integer)</em></li>
+<li><code>"upsPackageType"</code> -  <em>(integer)</em></li>
+<li><code>"upsConfirmationType"</code> -  <em>(integer)</em></li>
+
+</ul>
+
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/shippingoptions",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "id": 68460,
+      "siteId": 146985,
+      "description": "GB to TW",
+      "price": 5,
+      "type": 1,
+      "packageType": 1,
+      "taxCodeId": 0,
+      "countryCode": "GB",
+      "state": "  ",
+      "postcode": "",
+      "productMinWeight": -1,
+      "productMinVolume": -1,
+      "productMinHeight": -1,
+      "productMinDepth": -1,
+      "productMaxWeight": -1,
+      "productMaxVolume": -1,
+      "productMaxHeight": -1,
+      "productMaxDepth": -1,
+      "totalOrderPriceMin": -1,
+      "totalOrderPriceMax": -1,
+      "handlingBaseCharge": 0,
+      "handlingPerItemCharge": 0,
+      "freeThreshold": 0,
+      "limitDeliveryTo": "SE;CH;TW;TJ;TZ;",
+      "userAccountNumber": "",
+      "userAccountId": "",
+      "userAccountKey": "",
+      "userAccountPassword": "",
+      "upsAccountType": 0,
+      "upsPackageType": 0,
+      "upsConfirmationType": 0
+    },
+    {
+      "id": 155083,
+      "siteId": 146985,
+      "description": "FedEx 1 Day Freight",
+      "price": 0,
+      "type": 3,
+      "packageType": 2,
+      "taxCodeId": 826,
+      "countryCode": "US",
+      "state": "CA",
+      "postcode": "90210",
+      "productMinWeight": 42,
+      "productMinVolume": 2,
+      "productMinHeight": 12,
+      "productMinDepth": 123,
+      "productMaxWeight": 56,
+      "productMaxVolume": 5,
+      "productMaxHeight": 22,
+      "productMaxDepth": 345,
+      "totalOrderPriceMin": 224,
+      "totalOrderPriceMax": 578,
+      "handlingBaseCharge": 5,
+      "handlingPerItemCharge": 12,
+      "freeThreshold": 0,
+      "limitDeliveryTo": "US;",
+      "userAccountNumber": "FEDEX-ACCOUNT-NUMBER123123",
+      "userAccountId": "2",
+      "userAccountKey": "FEDEX-KEY123123",
+      "userAccountPassword": "FEDEX-SECURITY-CODE123123",
+      "upsAccountType": 1,
+      "upsPackageType": 0,
+      "upsConfirmationType": 1
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
+</div>
+<hr>
+</div>
+<div id="details">
+<h2>Get a shipping option's attributes</h2>
+<div class="request">
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers#!/beta/introduction-to-liquid!enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[shipping_option_ID]
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h2>Response</h2>
+
+<p>Displays the details for the shipping option as a JSON object</p>
+<ul>
+  <li><code>id</code> - the id of the shipping option <em>(integer)</em></li>
+  <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
+<li><code>"description"</code> - the shipping option's description <em>(string)</em></li>
+<li><code>"price"</code> -  <em>(integer)</em></li>
+<li><code>"type"</code> - the type of shipping option <em>(integer)</em>
+<ul>
+<li><strong>1</strong> - User defined</li>
+<li><strong>2</strong> - Australia Post</li>
+<li><strong>3</strong> - FedEx</li>
+<li><strong>4</strong> - USPS</li>
+<li><strong>5</strong> - Free shipping</li>
+<li><strong>6</strong> - DHL</li>
+<li><strong>7</strong> - UPS</li>
+</ul>
+</li><li><code>"packageType"</code> -  <em>(integer)</em></li>
+<li><code>"taxCodeId"</code> -  <em>(integer)</em></li>
+<li><code>"countryCode"</code> -  <em>(string)</em></li>
+<li><code>"state"</code> -  <em>(string)</em></li>
+<li><code>"postcode"</code> -  <em>(string)</em></li>
+<li><code>"productMinWeight"</code> -  <em>(integer)</em></li>
+<li><code>"productMinVolume"</code> -  <em>(integer)</em></li>
+<li><code>"productMinHeight"</code> -  <em>(integer)</em></li>
+<li><code>"productMinDepth"</code> -  <em>(integer)</em></li>
+<li><code>"productMaxWeight"</code> -  <em>(integer)</em></li>
+<li><code>"productMaxVolume"</code> -  <em>(integer)</em></li>
+<li><code>"productMaxHeight"</code> -  <em>(integer)</em></li>
+<li><code>"productMaxDepth"</code> -  <em>(integer)</em></li>
+<li><code>"totalOrderPriceMin"</code> -  <em>(integer)</em></li>
+<li><code>"totalOrderPriceMax"</code> -  <em>(integer)</em></li>
+<li><code>"handlingBaseCharge"</code> -  <em>(integer)</em></li>
+<li><code>"handlingPerItemCharge"</code> -  <em>(integer)</em></li>
+<li><code>"freeThreshold"</code> -  <em>(integer)</em></li>
+<li><code>"limitDeliveryTo"</code> -  <em>(string)</em></li>
+<li><code>"userAccountNumber"</code> -  <em>(string)</em></li>
+<li><code>"userAccountId"</code> -  <em>(string)</em></li>
+<li><code>"userAccountKey"</code> -  <em>(string)</em></li>
+<li><code>"userAccountPassword"</code> -  <em>(string)</em></li>
+<li><code>"upsAccountType"</code> -  <em>(integer)</em></li>
+<li><code>"upsPackageType"</code> -  <em>(integer)</em></li>
+<li><code>"upsConfirmationType"</code> -  <em>(integer)</em></li>
+
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/shippingoptions/155083",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "id": 155083,
+  "siteId": 146985,
+  "description": "FedEx 1 Day Freight",
+  "price": 0,
+  "type": 3,
+  "packageType": 2,
+  "taxCodeId": 826,
+  "countryCode": "US",
+  "state": "CA",
+  "postcode": "90210",
+  "productMinWeight": 42,
+  "productMinVolume": 2,
+  "productMinHeight": 12,
+  "productMinDepth": 123,
+  "productMaxWeight": 56,
+  "productMaxVolume": 5,
+  "productMaxHeight": 22,
+  "productMaxDepth": 345,
+  "totalOrderPriceMin": 224,
+  "totalOrderPriceMax": 578,
+  "handlingBaseCharge": 5,
+  "handlingPerItemCharge": 12,
+  "freeThreshold": 0,
+  "limitDeliveryTo": "US;",
+  "userAccountNumber": "FEDEX-ACCOUNT-NUMBER123123",
+  "userAccountId": "2",
+  "userAccountKey": "FEDEX-KEY123123",
+  "userAccountPassword": "FEDEX-SECURITY-CODE123123",
+  "upsAccountType": 1,
+  "upsPackageType": 0,
+  "upsConfirmationType": 1
+}</code></pre>
+</div>
+<hr>
+</div>
+<div id="create">
+<h2>Create a shipping option</h2>
+<div class="request">
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Version:</strong> v3</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions
+
+<ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+</ul>
+<p class="alert alert-info"><strong>Note:</strong> Only "user-defined" type shipping (&quot;type&quot;: 1) options can be added using this API endpoint.</p>
+</div>
+<div class="response">
+<h2>Response</h2>
+
+<p>The response should be &quot;201 created&quot; if the shipping option was successfully created.</p>
+<p>Here are the parameters you can use when creating a shipping option:</p>
+<ul>
+<li><code>"description"</code> - the shipping option's description <em>(string)</em></li>
+<li><code>"price"</code> -  <em>(integer)</em></li>
+<li><code>"type"</code> - the type of shipping option <em>(integer)</em>
+<ul>
+<li><strong>1</strong> - User defined</li>
+</ul>
+</li><li><code>"taxCodeId"</code> -  <em>(integer)</em></li>
+<li><code>"countryCode"</code> -  <em>(string)</em></li>
+<li><code>"postcode"</code> -  <em>(string)</em></li>
+
+</ul>
+</div>
+<hr>
+<div class="sample">
+<h2>Sample code</h2>
+<pre class="language-javascript"><code>var request = $.ajax({
+	  url: "/webresources/api/v3/sites/current/shippingoptions",
+    data: JSON.stringify({<br>    &quot;description&quot;: &quot;My custom shipping option&quot;,
+	  &quot;type&quot;: 1,<br>    &quot;price&quot;: 10,<br>    &quot;taxCodeId&quot;: 0,<br>    &quot;countryCode&quot;: &quot;US&quot;,<br>    &quot;postcode&quot;: &quot;01010&quot;,<br>    &quot;limitDeliveryTo&quot;: &quot;US;RO&quot;<br>}),
+    type: "POST",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<hr>
+</div>
+</div>
+<div id="edit">
+<h2>Update an existing shipping option</h2>
+<div class="request">
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> PUT</li>
+<li><strong>Version:</strong> v3</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[shipping_option_ID]
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+</ul>
+<p class="alert alert-info"><strong>Note:</strong> Only "user-defined" type shipping (&quot;type&quot;: 1) options can be added using this API endpoint.</p>
+</div>
+<div class="response">
+<h2>Response</h2>
+
+<p>The response should be &quot;204 no content&quot; if the shipping option was successfully modified.</p>
+
+
+
+<p>Here are the parameters you can use when updating a shipping option:</p>
+<ul>
+<li><code>"description"</code> - the shipping option's description <em>(string)</em></li>
+<li><code>"price"</code> -  <em>(integer)</em></li>
+<li><code>"type"</code> - the type of shipping option <em>(integer)</em>
+<ul>
+<li><strong>1</strong> - User defined</li>
+</ul>
+</li><li><code>"taxCodeId"</code> -  <em>(integer)</em></li>
+<li><code>"countryCode"</code> -  <em>(string)</em></li>
+<li><code>"postcode"</code> -  <em>(string)</em></li>
+
+</ul>
+</div>
+<hr>
+<div class="sample">
+<h2>Sample code</h2>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/shippingoptions/155085",
+    data: JSON.stringify({<br>    &quot;description&quot;: &quot;My custom shipping option1&quot;,<br>    &quot;type&quot;: 1,<br>    &quot;price&quot;: 100,<br>    &quot;taxCodeId&quot;: 0,<br>    &quot;countryCode&quot;: &quot;US&quot;,<br>    &quot;postcode&quot;: &quot;01010&quot;,<br>    &quot;limitDeliveryTo&quot;: &quot;US;RO;GB&quot;<br>	  }),
+    type: "PUT",
+    contentType: "application/json",
+    headers: {
+              "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+</div>
+<hr>
+</div>
+<div id="delete">
+
+        <h2>Delete a shipping option</h2>
+
+<p>This section details the endpoints you can use to delete a shipping option.</p>
+
+
+<div class="request">
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[shipping_options_ID]
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h2>Response</h2>
+
+<p>The response should be &quot;204 no content&quot; if the shipping option was successfully deleted.</p>
+</div>
+<hr>
+<div class="sample">
+<h2>Sample code</h2>
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/shippingoptions/155085",
+    type: "DELETE",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+</div>
+<hr>
+</div>

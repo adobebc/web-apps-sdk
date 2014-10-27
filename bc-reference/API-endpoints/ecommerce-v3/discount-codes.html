@@ -1,7 +1,7 @@
-<h1 apiType="restv3">Secure zones</h1>
+<h1 apiType="restv3">Discount codes</h1>
 <ul id="toc"></ul>
 <div id="list">
-<h2 id ="list-securezones">List the secure zones in a site</h2>
+<h2 id ="list-discountcodes">List the discount codes in a site</h2>
 <div class="request">
 <h2>Request</h2>
 
@@ -13,9 +13,9 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/discountcodes
 
-<ul>
+  <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/developer-documentation/authorize-your-api-calls">obtain the token</a>.</li>
@@ -25,30 +25,27 @@
 <div class="response">
 <h2>Response</h2>
 
-<p>An array of the first 10 secure zones; each object has the following properties:</p>
+<p>An array of the first 10 discount codes; each object has the following properties:</p>
 
 <ul>
-<li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
+<li><code>id</code> - the id of the discount code <em>(integer)</em></li>
 <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
-<li><code>name</code> - the name of the secure zone <em>(string)</em></li>
-<li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
-<li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
-<li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
-<li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
-<ul>
-	  <li> "1" Once</li>
-	  <li> "2" Daily</li>
-	  <li> "3" Weekly</li>
-	  <li> "4" Fortnightly</li>
-	  <li> "5" Monthly</li>
-	  <li>"6" Quarterly</li>
-	  <li> "7" Half Yearly</li>
-	  <li> "8" Yearly</li>
-
+<li><code>discountType</code> - the type of the discount code <em>(integer)</em>
+  <ul>
+<li><strong>1</strong> - Percentage of Order</li>
+<li><strong>2</strong> - Fixed Dollar Amount</li>
+<li><strong>3</strong> - Free Shipping</li>
 </ul>
 </li>
-<li><code>deleted</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
+<li><code>code</code> - the discount code's code<em>(string)</em></li>
+<li><code>description</code> - the discount code's description <em>(string)</em></li>
+<li><code>discountPercentageOrFixedAmount</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
+<li><code>discountThreshold</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
+<li><code>expireAfterXUses</code> - the number of uses the discount code expires after <em>(string)</em></li>
+<li><code>releaseDate</code> - the release date <em>(integer)</em>
+</li>
+<li><code>expiryDate</code> - the expiry date <em>(boolean)</em></li>
+<li><code>enabled</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 
 
@@ -59,7 +56,7 @@
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/securezones",
+    url: "/webresources/api/v3/sites/current/discountcodes",
     type: "GET",
     conenection: "keep-alive",
     contentType: "application/json",
@@ -80,49 +77,41 @@ request.fail(function (jqXHR) {
 <pre class="language-javascript"><code>{
   "items": [
     {
-      "id": 3309,
-      "siteId": 38581,
-      "landingPageId": 4518247,
-      "name": "Secure Zone 1",
-      "sellAccess": false,
-      "costPerPeriod": 0,
-      "orderCountryCode": null,
-      "cycleType": null,
-      "deleted": false
+      "id": 264,
+      "siteId": 146985,
+      "discountType": 1,
+      "code": "discount1",
+      "description": "discount1",
+      "discountPercentageOrFixedAmount": 0.25,
+      "discountThreshold": -1,
+      "expireAfterXUses": -1,
+      "releaseDate": "2011-01-11T23:00:00",
+      "expiryDate": "9998-12-31T15:00:00",
+      "enabled": true
     },
     {
-      "id": 3310,
-      "siteId": 38581,
-      "landingPageId": 2411253,
-      "name": "Secure Zone 2",
-      "sellAccess": false,
-      "costPerPeriod": 0,
-      "orderCountryCode": null,
-      "cycleType": null,
-      "deleted": false
-    },
-    {
-      "id": 3311,
-      "siteId": 38581,
-      "landingPageId": 2411253,
-      "name": "Secure zone 3",
-      "sellAccess": false,
-      "costPerPeriod": 0,
-      "orderCountryCode": null,
-      "cycleType": null,
-      "deleted": false
+      "id": 322,
+      "siteId": 146985,
+      "discountType": 2,
+      "code": "dsc12",
+      "description": "discount 12",
+      "discountPercentageOrFixedAmount": 12,
+      "discountThreshold": -1,
+      "expireAfterXUses": -1,
+      "releaseDate": "2011-03-03T23:00:00",
+      "expiryDate": "9998-12-31T15:00:00",
+      "enabled": true
     }
   ],
-  "totalItemsCount": 3,
+  "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}
-</code></pre>
+}</code></pre>
 </div>
 <hr>
 </div>
 <div id="details">
-<h2>Get a secure zone's attributes</h2>
+<h2>Get a discount code's attributes</h2>
 <div class="request">
 <h2>Request</h2>
 
@@ -134,7 +123,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones/[secure_zone_ID]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/discountcodes/[discount_code_ID]
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -146,28 +135,26 @@ request.fail(function (jqXHR) {
 <div class="response">
 <h2>Response</h2>
 
-<p>Displays the details for the secure zone as a JSON object</p>
+<p>Displays the details for the discount code as a JSON object</p>
 <ul>
-  <li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
-  <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-  <li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
-  <li><code>name</code> - the name of the secure zone <em>(string)</em></li>
-  <li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
-  <li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
-  <li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
-  <li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
-    <ul>
-      <li> "1" Once</li>
-      <li> "2" Daily</li>
-      <li> "3" Weekly</li>
-      <li> "4" Fortnightly</li>
-      <li> "5" Monthly</li>
-      <li> "6" Quarterly</li>
-      <li> "7" Half Yearly</li>
-      <li> "8" Yearly</li>
-    </ul>
-  </li>
-  <li><code>deleted</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
+<li><code>id</code> - the id of the discount code <em>(integer)</em></li>
+<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
+<li><code>discountType</code> - the type of the discount code <em>(integer)</em>
+  <ul>
+<li><strong>1</strong> - Percentage of Order</li>
+<li><strong>2</strong> - Fixed Dollar Amount</li>
+<li><strong>3</strong> - Free Shipping</li>
+</ul>
+</li>
+<li><code>code</code> - the discount code's code<em>(string)</em></li>
+<li><code>description</code> - the discount code's description <em>(string)</em></li>
+<li><code>discountPercentageOrFixedAmount</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
+<li><code>discountThreshold</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
+<li><code>expireAfterXUses</code> - the number of uses the discount code expires after <em>(string)</em></li>
+<li><code>releaseDate</code> - the release date <em>(integer)</em>
+</li>
+<li><code>expiryDate</code> - the expiry date <em>(boolean)</em></li>
+<li><code>enabled</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
@@ -175,7 +162,7 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/securezones/3309",
+    url: "/webresources/api/v3/sites/current/discountcodes/146985",
     type: "GET",
     conenection: "keep-alive",
     contentType: "application/json",
@@ -194,22 +181,23 @@ request.fail(function (jqXHR) {
 })</code></pre>
 <p><strong>Sample response</strong></p>
 <pre class="language-javascript"><code>{
-  "id": 3309,
-  "siteId": 38581,
-  "landingPageId": 4518247,
-  "name": "Secure Zone 1",
-  "sellAccess": true,
-  "costPerPeriod": 1,
-  "orderCountryCode": "AU",
-  "cycleType": 5,
-  "deleted": false
-}
-</code></pre>
+  "id": 322,
+  "siteId": 146985,
+  "discountType": 2,
+  "code": "dsc12",
+  "description": "discount 12",
+  "discountPercentageOrFixedAmount": 12,
+  "discountThreshold": -1,
+  "expireAfterXUses": -1,
+  "releaseDate": "2011-03-03T23:00:00",
+  "expiryDate": "9998-12-31T15:00:00",
+  "enabled": true
+}</code></pre>
 </div>
 <hr>
 </div>
 <div id="create">
-<h2>Create a secure zone</h2>
+<h2>Create a discount code</h2>
 <div class="request">
 <h2>Request</h2>
 
@@ -221,7 +209,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/discountcodes
 
 <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -233,45 +221,33 @@ request.fail(function (jqXHR) {
 <div class="response">
 <h2>Response</h2>
 
-<p>The response should be &quot;201 created&quot; if the secure zone was successfully created.</p>
-<p>Here are the parameters you can use when creating a secure zone:</p>
+<p>The response should be &quot;201 created&quot; if the discount code was successfully created.</p>
+<p>Here are the parameters you can use when creating a discount code:</p>
 <ul>
-<li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
-<li><code>name</code> - the name of the secure zone <em>(string)</em></li>
-<li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
-<li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
-<li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
-<li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
-<ul>
-	  <li> "1" Once</li>
-	  <li> "2" Daily</li>
-	  <li> "3" Weekly</li>
-	  <li> "4" Fortnightly</li>
-	  <li> "5" Monthly</li>
-	  <li> "6" Quarterly</li>
-	  <li> "7" Half Yearly</li>
-	  <li> "8" Yearly</li>
-
-</ul>
+<li><code>discountType</code> - the type of the discount code <em>(integer)</em>
+  <ul>
+  <li><strong>1</strong> - Percentage of Order</li>
+  <li><strong>2</strong> - Fixed Dollar Amount</li>
+  <li><strong>3</strong> - Free Shipping</li>
+  </ul>
 </li>
+<li><code>code</code> - the discount code's code<em>(string)</em></li>
+<li><code>description</code> - the discount code's description <em>(string)</em></li>
+<li><code>discountPercentageOrFixedAmount</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
+<li><code>discountThreshold</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
+<li><code>expireAfterXUses</code> - the number of uses the discount code expires after <em>(string)</em></li>
+<li><code>releaseDate</code> - the release date <em>(integer)</em>
+</li>
+<li><code>expiryDate</code> - the expiry date <em>(boolean)</em></li>
+<li><code>enabled</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 </div>
 <hr>
 <div class="sample">
 <h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
-	  url: "/webresources/api/v3/sites/current/securezones",
-    data: JSON.stringify({
-        "landingPageId": 4518247,
-        "name": "Secure Zone 4 (API)",
-        "sellAccess": true,
-        "costPerPeriod": 1,
-        "orderCountryCode": "AU",
-        "cycleType": 1,
-        "deleted": false
-    }),
+	  url: "/webresources/api/v3/sites/current/discountcodes",
+    data: JSON.stringify({<br>    &quot;discountType&quot;: 1,<br>    &quot;code&quot;: &quot;DC1093&quot;,<br>    &quot;description&quot;: &quot;Discount for Electronics&quot;,<br>    &quot;discountPercentageOrFixedAmount&quot;: 0.5<br>	  }),
     type: "POST",
     contentType: "application/json",
     headers: {
@@ -291,7 +267,7 @@ request.fail(function (jqXHR) {
 </div>
 </div>
 <div id="edit">
-<h2>Update an existing secure zone</h2>
+<h2>Update an existing discount code</h2>
 <div class="request">
 <h2>Request</h2>
 
@@ -303,7 +279,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones/[secure_zone_ID]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/discountcodes/[discount_code_ID]
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -315,42 +291,36 @@ request.fail(function (jqXHR) {
 <div class="response">
 <h2>Response</h2>
 
-<p>The response should be &quot;204 no content&quot; if the secure zone was successfully modified.</p>
+<p>The response should be &quot;204 no content&quot; if the discount code was successfully modified.</p>
 
 
 
-<p>Here are the parameters you can use when updating a secure zone:</p>
+<p>Here are the parameters you can use when updating a discount code:</p>
 <ul>
-<li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
-<li><code>name</code> - the name of the secure zone <em>(string)</em></li>
-<li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
-<li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
-<li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
-<li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
-<ul>
-	  <li> "1" Once</li>
-	  <li> "2" Daily</li>
-	  <li> "3" Weekly</li>
-	  <li> "4" Fortnightly</li>
-	  <li> "5" Monthly</li>
-	  <li> "6" Quarterly</li>
-	  <li> "7" Half Yearly</li>
-	  <li> "8" Yearly</li>
-
-</ul>
+<li><code>discountType</code> - the type of the discount code <em>(integer)</em>
+  <ul>
+  <li><strong>1</strong> - Percentage of Order</li>
+  <li><strong>2</strong> - Fixed Dollar Amount</li>
+  <li><strong>3</strong> - Free Shipping</li>
+  </ul>
 </li>
+<li><code>code</code> - the discount code's code<em>(string)</em></li>
+<li><code>description</code> - the discount code's description <em>(string)</em></li>
+<li><code>discountPercentageOrFixedAmount</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
+<li><code>discountThreshold</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
+<li><code>expireAfterXUses</code> - the number of uses the discount code expires after <em>(string)</em></li>
+<li><code>releaseDate</code> - the release date <em>(integer)</em>
+</li>
+<li><code>expiryDate</code> - the expiry date <em>(boolean)</em></li>
+<li><code>enabled</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 </div>
 <hr>
 <div class="sample">
 <h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/securezones/3312",
-    data: JSON.stringify({
-         "name": "Secure Zone 4 (API - modified)"
-          }),
+    url: "/webresources/api/v3/sites/current/discountcodes/17339",
+    data: JSON.stringify({<br>	  	&quot;code&quot;: &quot;DC1093-extended&quot;,<br> 	 	&quot;discountPercentageOrFixedAmount&quot;: 0.8,<br>  	&quot;expiryDate&quot;:&quot;2016-01-11T23:00:00&quot;<br>	}),
     type: "PUT",
     contentType: "application/json",
     headers: {
@@ -371,9 +341,9 @@ request.fail(function (jqXHR) {
 </div>
 <div id="delete">
 
-        <h2>Delete a secure zone</h2>
+        <h2>Delete a discount code</h2>
 
-<p>This section details the endpoints you can use to delete a secure zone.</p>
+<p>This section details the endpoints you can use to delete a discount code.</p>
 
 
 <div class="request">
@@ -387,7 +357,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones/[seucre_zone_ID]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/discountcodes/[discount_code_ID]
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -399,13 +369,13 @@ request.fail(function (jqXHR) {
 <div class="response">
 <h2>Response</h2>
 
-<p>The response should be &quot;204 no content&quot; if the secure zone was successfully deleted.</p>
+<p>The response should be &quot;204 no content&quot; if the discount code was successfully deleted.</p>
 </div>
 <hr>
 <div class="sample">
 <h2>Sample code</h2>
 <pre class="language-javascript"><code>var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/securezones/3312",
+    url: "/webresources/api/v3/sites/current/discountcodes/17339",
     type: "DELETE",
     contentType: "application/json",
     headers: {

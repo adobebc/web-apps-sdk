@@ -3,7 +3,7 @@
 <div id="list">
 <h2>List the catalogs a discount code is applied to</h2>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -22,13 +22,13 @@
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>An array of the first 10 catalogs the discount code is applied to.</p>
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: &quot;/webresources/api/v3/sites/current/discountcodes/3309/catalogues&quot;,
     type: "GET",
@@ -122,7 +122,7 @@ request.fail(function (jqXHR) {
 <div id="create">
 <h2>Apply a discount code to a catalog</h2>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> POST</li>
@@ -143,13 +143,13 @@ request.fail(function (jqXHR) {
 <p class="alert alert-info"><strong>Note:</strong> If the discount code type is 3 (Free shipping) it cannot be applied to a catalog.</p>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>The response should be "204 no content" if the discount code was successfully applied to the catalog.</p>
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
   url: "/webresources/api/v3/sites/current/discountcodes/3309/catalogues",
   data: JSON.stringify({
@@ -181,7 +181,7 @@ request.fail(function(jqXHR) {
 <div id="delete">
 <h2>Remove the discount code from a catalog</h2>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> DELETE</li>
@@ -201,13 +201,13 @@ request.fail(function(jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>The response should be "204 no content" if the catalogues were successfully removed from list of catalogues discounted with this particular discount code.</p>
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes/3309/catalogues?items=[88,590]",
     type: "DELETE",

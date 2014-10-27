@@ -6,7 +6,7 @@
 <p>Get the list of orders for the current site.</p>
 </div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
 <li><strong>Version:</strong> v3, this API call supports <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers#!/beta/introduction-to-liquid!enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -23,7 +23,7 @@
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>An array of the first 10 orders; each object has the following properties:</p>
 
@@ -197,7 +197,7 @@ Content-Type: application/json
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <p><strong>Get the list of orders on a site</strong></p>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders",
@@ -247,7 +247,7 @@ request.fail(function (jqXHR) {
 <p>Get the details for a particular order ID.</p>
 </div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
 <li><strong>Version:</strong> v3, this API call supports <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers#!/beta/introduction-to-liquid!enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -264,7 +264,7 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>The details for the specified customer ID in JSON format.</p>
 
@@ -392,7 +392,7 @@ Content-Type: application/json
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <p id="get-order-details"><strong>Get the details of an order</strong></p>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/7051740",
@@ -488,7 +488,7 @@ request.fail(function (jqXHR) {
 <p>Create a new order.</p>
 </div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> POST</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -557,7 +557,7 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -669,7 +669,7 @@ request.fail(function(jqXHR) {
 <h2>Edit  an order's details</h2>
 <div class="description">Edit the details for an existing order.</div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> PUT</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -753,7 +753,7 @@ request.fail(function(jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -785,7 +785,7 @@ Content-Length: length</code></pre>
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <p>The sample below modifies the order's status ID, the shipping Option and generates an invoice. Once the invoice is generated (&quot;invoiced&quot; is set to true) this cannot be un-done, once the invoice is generated for the current order an invoice number is also automatically generated (it can be overriden).</p>
 <p>Another thing to note - when the &quot;invoiced&quot; parameter is set to true the stock levels for the products in the order are updated (the products are substracted).</p>
 <p>If the new status  is configured to notify the customer an email will be sent by the system to the customer's primary email address.</p>
@@ -820,7 +820,7 @@ console.log("Response text: " + jqXHR.responseText);
 <h2>Delete  an order</h2>
 <div class="description">Delete an order.</div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> DELETE</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -837,7 +837,7 @@ console.log("Response text: " + jqXHR.responseText);
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -863,7 +863,7 @@ Content-Length: length</code></pre>
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/9593213",
     type: "DELETE",

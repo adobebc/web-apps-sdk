@@ -6,7 +6,7 @@
 <p>Using this method you can get the list of pages that have a specific template assigned.</p>
 </div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
 <li><strong>Version:</strong> v3, this API call supports <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers#!/beta/introduction-to-liquid!enable" target="_blank">enabled the new rendering engine</a>. </p></li>
@@ -25,7 +25,7 @@
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>An array of templates, each object has the following properties:</p>
 
@@ -131,7 +131,7 @@ Content-Type: application/json
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
 url: "/webresources/api/v3/sites/current/templates/1386374/pages",
 type: "GET",
@@ -152,22 +152,4 @@ console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 
 </div>
-<hr>
-<div class="error nocontent" style="display:none;">
-<h2>Error codes</h2>
-
-<p>This method will return the following error codes:</p>
-
-<ul>
-<li><code>200</code> - success</li>
-<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
-
-<ul>
-<li><code>101000</code> sub-error code</li>
-</ul></li>
-<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
-</ul>
-</div>
-
-        
-</div>
+<hr></div>

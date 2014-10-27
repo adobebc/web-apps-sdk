@@ -6,7 +6,7 @@
 <p>Gets the list of ratingType resources available.</p>
 </div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
 <li><strong>Version:</strong> v3, this API call supports <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers#!/beta/introduction-to-liquid!enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -23,7 +23,7 @@
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>The details for the specified customer ID in JSON format.</p>
 
@@ -79,7 +79,7 @@ Content-Type: application/json
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <p><strong>Get the list of ratingTypes</strong></p>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/ratingTypes",
@@ -126,7 +126,7 @@ request.fail(function (jqXHR) {
 <h2>Create  a new ratingType resource</h2>
 <div class="description">Using this method you can add a customerType's resource to your site.</div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> POST</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -148,7 +148,7 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -179,7 +179,7 @@ Content-Length: length</code></pre>
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
 url: "/webresources/api/v3/sites/current/ratingTypes",
 type: "PUT",
@@ -210,7 +210,7 @@ console.log("Response text: " + jqXHR.responseText);
 <h2>Edit  a ratingType resource</h2>
 <div class="description">Using this method you can edit a ratingType's resource label and\or set its default value.</div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> PUT</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -232,7 +232,7 @@ console.log("Response text: " + jqXHR.responseText);
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -263,7 +263,7 @@ Content-Length: length</code></pre>
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
 url: "/webresources/api/v3/sites/current/ratingTypes/28742",
 type: "PUT",
@@ -294,7 +294,7 @@ console.log("Response text: " + jqXHR.responseText);
 <h2>Delete  a ratingType entity</h2>
 <div class="description">Delete a customerType entity.</div>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> DELETE</li>
 <li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/developer-documentation/authorize-your-api-calls">OAuth in Business Catalyst</a> document for more info on how this URL is formed.
@@ -311,7 +311,7 @@ console.log("Response text: " + jqXHR.responseText);
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -337,7 +337,7 @@ Content-Length: length</code></pre>
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/ratingTypes/9593213",
     type: "DELETE",

@@ -3,7 +3,7 @@
 <div id="list">
 <h2 id ="list-shippingoptions">List the shipping options in a site</h2>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -23,7 +23,7 @@
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>An array of the first 10 shipping options; each object has the following properties:</p>
 
@@ -177,7 +177,7 @@ request.fail(function (jqXHR) {
 <div id="details">
 <h2>Get a shipping option's attributes</h2>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -197,7 +197,7 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>Displays the details for the shipping option as a JSON object</p>
 <ul>
@@ -306,7 +306,7 @@ request.fail(function (jqXHR) {
 <div id="create">
 <h2>Create a shipping option</h2>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> POST</li>
@@ -326,7 +326,7 @@ request.fail(function (jqXHR) {
 <p class="alert alert-info"><strong>Note:</strong> Only "user-defined" type shipping (&quot;type&quot;: 1) options can be added using this API endpoint.</p>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>The response should be &quot;201 created&quot; if the shipping option was successfully created.</p>
 <p>Here are the parameters you can use when creating a shipping option:</p>
@@ -345,7 +345,7 @@ request.fail(function (jqXHR) {
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
 	  url: "/webresources/api/v3/sites/current/shippingoptions",
     data: JSON.stringify({<br>    &quot;description&quot;: &quot;My custom shipping option&quot;,
@@ -371,7 +371,7 @@ request.fail(function (jqXHR) {
 <div id="edit">
 <h2>Update an existing shipping option</h2>
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> PUT</li>
@@ -391,7 +391,7 @@ request.fail(function (jqXHR) {
 <p class="alert alert-info"><strong>Note:</strong> Only "user-defined" type shipping (&quot;type&quot;: 1) options can be added using this API endpoint.</p>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>The response should be &quot;204 no content&quot; if the shipping option was successfully modified.</p>
 
@@ -413,7 +413,7 @@ request.fail(function (jqXHR) {
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/shippingoptions/155085",
     data: JSON.stringify({<br>    &quot;description&quot;: &quot;My custom shipping option1&quot;,<br>    &quot;type&quot;: 1,<br>    &quot;price&quot;: 100,<br>    &quot;taxCodeId&quot;: 0,<br>    &quot;countryCode&quot;: &quot;US&quot;,<br>    &quot;postcode&quot;: &quot;01010&quot;,<br>    &quot;limitDeliveryTo&quot;: &quot;US;RO;GB&quot;<br>	  }),
@@ -443,7 +443,7 @@ request.fail(function (jqXHR) {
 
 
 <div class="request">
-<h2>Request</h2>
+<h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> DELETE</li>
@@ -463,13 +463,13 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 <div class="response">
-<h2>Response</h2>
+<h3>Response</h3>
 
 <p>The response should be &quot;204 no content&quot; if the shipping option was successfully deleted.</p>
 </div>
 <hr>
 <div class="sample">
-<h2>Sample code</h2>
+<h3>Sample code</h3>
 <pre class="language-javascript"><code>var request = $.ajax({
     url: "/webresources/api/v3/sites/current/shippingoptions/155085",
     type: "DELETE",

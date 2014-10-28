@@ -57,7 +57,10 @@
 </div>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/pages",
     type: "GET",
     conenection: "keep-alive",
@@ -188,8 +191,13 @@ request.fail(function (jqXHR) {
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
 <hr>
+</div>
+<div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/pages/2411253",
     type: "GET",
     conenection: "keep-alive",
@@ -207,8 +215,7 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
-</div>
-<div class="sample">
+
 <h3>Sample response</h3>
 <pre class="language-javascript"><code>{
       "id": 2411253,
@@ -233,10 +240,10 @@ request.fail(function (jqXHR) {
       "redirect301": "",
       "pageTitle": "Page1 title",
       "seoMetadataDescription": "Sample metadata"
-}
-</code></pre>
+}</code></pre>
 </div>
 <hr>
+
 </div>
 <div id="create">
   <h2>Create new live and draft pages</h2>
@@ -292,7 +299,10 @@ The response should be "201 created" if the page was successfully created.
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>In the example below we create a brand new Live page:</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
   url: "/webresources/api/v3/sites/current/pages",
   data: JSON.stringify({
     "name": "About-page",
@@ -321,7 +331,10 @@ request.fail(function(jqXHR) {
 })</code></pre>
 <p id="sample-create-live"><strong>Create a Draft page for the page above</strong></p>
 <p>The draft will need to have a corresponsing Live page (it cannot exist as a stand alone draft). You will notice the call is almost identical but for a single parameter. <code>livePageId</code> serves two purposes - it  <strong>marks this page as draft </strong>and specifies <strong>what page this is the draft for</strong>:</p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
   url: "/webresources/api/v3/sites/current/pages",
   data: JSON.stringify({
     "name": "About-page2",
@@ -352,7 +365,10 @@ request.fail(function(jqXHR) {
 <p>Before we run the call that actually publishes the page there is an extra step we need to take into account. We know the ID of the live page, we specified it when creating the draft. What is the ID of the draft page itself? </p>
 <p class="alert alert-info"><strong>Note:</strong> the live and draft pages are treated as sepparated entities, each of them is a stand-alone page, with a different ID and optionally even a different URL.</p>
 <p id="sample-get-draft-url"><strong>Get the URL of the draft page</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
   url: '/webresources/api/v3/sites/current/pages?where={"livePageId":13752911}',
   type: "GET",
   contentType: "application/json",
@@ -372,7 +388,10 @@ request.fail(function(jqXHR) {
 })</code></pre>
 <p id="sample-publish-draft"><strong>Taking a draft page live (publishing it)</strong></p>
 <p>Now that we know the ID of the draft page (<em>13752930</em>) let's take it live:</p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
   url: "/webresources/api/v3/sites/current/pages/13752930?publish=true",
   type: "POST",
   contentType: "application/json",
@@ -447,7 +466,10 @@ request.fail(function(jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <p>In this example let's remove the template for the page with the ID <em>4518294</em>. To do this we will assign the tempalte with the <em>ID -1</em>:</p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 	url: "/webresources/api/v3/sites/current/pages/4518294",
   data: JSON.stringify({
         "name": "Card - modified",
@@ -506,7 +528,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/pages/2567169",
     type: "DELETE",
     conenection: "keep-alive",

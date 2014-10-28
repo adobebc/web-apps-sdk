@@ -51,7 +51,7 @@
 <li><code>state</code> <em>(string)</em><em></em></li>
 
 </ul>
-<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the API V3: sorting and filtering for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
@@ -106,7 +106,10 @@ Content-Type: application/json
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/7051740/addresses",
     type: "GET",
     conenection: "keep-alive",

@@ -58,7 +58,10 @@
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/securezones",
     type: "GET",
     conenection: "keep-alive",
@@ -174,7 +177,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/securezones/3309",
     type: "GET",
     conenection: "keep-alive",
@@ -261,7 +267,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 	  url: "/webresources/api/v3/sites/current/securezones",
     data: JSON.stringify({
         "landingPageId": 4518247,
@@ -346,7 +355,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/securezones/3312",
     data: JSON.stringify({
          "name": "Secure Zone 4 (API - modified)"
@@ -404,7 +416,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/securezones/3312",
     type: "DELETE",
     contentType: "application/json",

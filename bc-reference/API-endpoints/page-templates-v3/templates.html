@@ -139,7 +139,10 @@ Content-Type: application/json
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates",
     type: "GET",
     conenection: "keep-alive",
@@ -158,7 +161,10 @@ request.fail(function (jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 <p><strong>Get the list of templates - this only includes the specified fields:</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates?fields= desktopContent,tabletContent,mobileContent",
     type: "GET",
     conenection: "keep-alive",
@@ -316,7 +322,10 @@ Content-Type: application/json
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 url: "/webresources/api/v3/sites/current/templates/1386374",
 type: "GET",
 conenection: "keep-alive",
@@ -367,7 +376,10 @@ console.log("Response text: " + jqXHR.responseText);
       "noHeaders": false
     }</code></pre>
 <p><strong>Get the list of templates - this only includes the specified fields:</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates/1386374?fields= desktopContent,tabletContent,mobileContent",
     type: "GET",
     conenection: "keep-alive",
@@ -487,7 +499,10 @@ Content-Length: length</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Create a new template</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 url: "/webresources/api/v3/sites/current/templates",
 type: "POST",
 conenection: "keep-alive",
@@ -611,7 +626,10 @@ Content-Length: length</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Modify a template's name</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates/1386374",
     type: "PUT",
     conenection: "keep-alive",
@@ -689,7 +707,10 @@ Content-Length: length</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Delete a template</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates/1656548",
     type: "DELETE",
     conenection: "keep-alive",

@@ -42,7 +42,7 @@
 <li><code>username</code> <em>(string)</em></li>
 
 </ul>
-<p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the API V3: sorting and filtering for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
@@ -98,7 +98,10 @@ Content-Type: application/json
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Get the list of customers for a site</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers",
     type: "GET",
     conenection: "keep-alive",
@@ -118,7 +121,10 @@ request.fail(function (jqXHR) {s
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 <p><strong>Get the list of customers </strong><strong>- this only includes the specified fields:</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers?fields=email1,email2,email3,homeFax,mobilePhone,pager,webAddress,workFax,workPhone,anniversary,titleType,ratingType,leadSourceType,industryType,customerType",
     type: "GET",
     conenection: "keep-alive",
@@ -308,7 +314,7 @@ request.fail(function (jqXHR) {
 <li><code>username</code> <em>(string)</em></li>
 
 </ul>
-<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the API V3: sorting and filtering for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
@@ -343,7 +349,10 @@ Content-Type: application/json
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Get the details of customer</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/7051740",
     type: "GET",
     conenection: "keep-alive",
@@ -362,7 +371,10 @@ request.fail(function (jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 <p><strong>Get the details of a customer - this only includes the specified fields:</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/7051740?fields=email1,email2,email3,homeFax,mobilePhone,pager,webAddress,workFax,workPhone,anniversary,titleType,ratingType,leadSourceType,industryType,customerType",
     type: "GET",
     conenection: "keep-alive",
@@ -382,7 +394,10 @@ request.fail(function (jqXHR) {
 })</code></pre>
 <p id="get-by-mail"><strong>Get a customer by email address</strong></p>
 <p>For this example we will add the email address field to the output and add a filtering condition. Take a look at this </p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
   url: '/webresources/api/v3/sites/current/customers?fields=email1,middleName,firstName,lastName&where={"email1.value":"mtest@mailinator.com"}',
   type: "GET",
   conenection: "keep-alive",
@@ -422,7 +437,10 @@ request.fail(function(jqXHR) {
   "limit": 10
 }</code></pre>
 <p id="get-by-username"><strong>Get a customer by username</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: '/webresources/api/v3/sites/current/customers?where={"username":"myUsername"}',
   type: "GET",
   conenection: "keep-alive",
@@ -556,7 +574,10 @@ Content-Length: length</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Create a new customer</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 url: "/webresources/api/v3/sites/current/customers",
 type: "POST",
 conenection: "keep-alive",
@@ -686,7 +707,10 @@ Content-Length: length</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <p id="edit-by-id"><strong>Edit a customer's name and e-mail address</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 url: "/webresources/api/v3/sites/current/customers/9593213",
 type: "PUT",
 conenection: "keep-alive",
@@ -715,7 +739,10 @@ console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 
 <p id="edit-by-email"><strong>Get a customer by email address and edit its details</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
   url: '/webresources/api/v3/sites/current/customers?fields=email1&where={"email1.value":"mtest@mailinator.com"}',
   type: "GET",
   conenection: "keep-alive",
@@ -728,7 +755,10 @@ request.done(function(msg) {
 
 //now that we have the CRM ID that belongs to the user with the email address mtest@mailinator.com we can edit its properties:
 
-          var request = $.ajax({
+          var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
           url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].email1.value,
           type: "PUT",
           conenection: "keep-alive",
@@ -816,7 +846,10 @@ Content-Length: length</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <p>Delete a CRM address by ID</p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/9593213",
     type: "DELETE",
     conenection: "keep-alive",
@@ -835,7 +868,10 @@ request.fail(function(jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 <p id="delete-by-email"><strong>In this example we will first get a CRM entity by email address, get its ID and then delete it:</strong></p>
-<pre><code>var request = $.ajax({
+<pre><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
   url: '/webresources/api/v3/sites/current/customers?fields=id,email1,middleName,firstName,lastName&where={"email1.value":"new_user123123@mailinator.com"}',
   type: "GET",
   conenection: "keep-alive",
@@ -848,7 +884,10 @@ request.done(function(msg) {
 
 //now we have the CRM record we need to delete, bwlow we'll run a DELETE request and pass the CRM record's ID:
 
-          var request = $.ajax({
+          var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
             url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].id,
             type: "DELETE",
             conenection: "keep-alive",

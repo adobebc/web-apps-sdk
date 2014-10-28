@@ -42,7 +42,10 @@
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/taxcodes",
     type: "GET",
     conenection: "keep-alive",
@@ -124,7 +127,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/taxcodes/769",
     type: "GET",
     conenection: "keep-alive",
@@ -189,7 +195,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 	  url: "/webresources/api/v3/sites/current/taxcodes",
     data: JSON.stringify({
         "countryCode": RO,
@@ -253,7 +262,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/taxcodes/769",
     data: JSON.stringify({
          "rate": 0.11
@@ -311,7 +323,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/taxcodes/769",
     type: "DELETE",
     contentType: "application/json",

@@ -35,7 +35,7 @@
 <li><code>default</code> <em>(boolean)</em></li>
 
 </ul>
-<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the API V3: sorting and filtering for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/beta/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
@@ -81,7 +81,10 @@ Content-Type: application/json
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Get the list of customerTypes</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customertypes",
     type: "GET",
     conenection: "keep-alive",
@@ -100,7 +103,10 @@ request.fail(function (jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
 <p><strong>Get the details of a particular customerType</strong></p>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customertypes/287045",
     type: "GET",
     conenection: "keep-alive",
@@ -179,7 +185,10 @@ Content-Length: length</code></pre>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 url: "/webresources/api/v3/sites/current/customerTypes",
 type: "PUT",
 conenection: "keep-alive",
@@ -266,7 +275,10 @@ Content-Length: length</code></pre>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 url: "/webresources/api/v3/sites/current/customerTypes/28742",
 type: "PUT",
 conenection: "keep-alive",
@@ -340,7 +352,10 @@ Content-Length: length</code></pre>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customerTypes/9593213",
     type: "DELETE",
     conenection: "keep-alive",

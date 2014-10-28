@@ -55,7 +55,10 @@
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes",
     type: "GET",
     conenection: "keep-alive",
@@ -161,7 +164,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes/146985",
     type: "GET",
     conenection: "keep-alive",
@@ -245,7 +251,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
 	  url: "/webresources/api/v3/sites/current/discountcodes",
     data: JSON.stringify({<br>    &quot;discountType&quot;: 1,<br>    &quot;code&quot;: &quot;DC1093&quot;,<br>    &quot;description&quot;: &quot;Discount for Electronics&quot;,<br>    &quot;discountPercentageOrFixedAmount&quot;: 0.5<br>	  }),
     type: "POST",
@@ -318,7 +327,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes/17339",
     data: JSON.stringify({<br>	  	&quot;code&quot;: &quot;DC1093-extended&quot;,<br> 	 	&quot;discountPercentageOrFixedAmount&quot;: 0.8,<br>  	&quot;expiryDate&quot;:&quot;2016-01-11T23:00:00&quot;<br>	}),
     type: "PUT",
@@ -374,7 +386,10 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+
+var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes/17339",
     type: "DELETE",
     contentType: "application/json",

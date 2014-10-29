@@ -59,8 +59,7 @@
 {<span>% for getParam in this.globals.visitor %</span>} 
   &lt;li&gt;{{<span>getParam[0]</span>}} = &#39;{{<span>getParam[1]</span>}}&#39;&lt;/li&gt;
 {<span>% endfor %</span>}
-&lt;/ul&gt;
-</code></pre>
+&lt;/ul&gt;</code></pre>
 <p>will render the <code>this.globals.visitor</code> object like so:</p>
 <pre class="language-markup"><code>&lt;ul&gt;
   &lt;li&gt;deviceClass = &#39;desktop&#39;&lt;/li&gt;
@@ -68,6 +67,73 @@
   &lt;li&gt;country = &#39;US&#39;&lt;/li&gt;
   &lt;li&gt;userAgent = &#39;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36&#39;&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
+<p>In a  loop you can access these variables:</p>
+<ul>
+<li>{{<span><code>forloop.length</code></span>}} - length of the entire for loop <em>(integer)</em></li>
+<li>{{<span><code>forloop.index</code></span>}}  - index of the current iteration <em>(integer)</em></li>
+<li>{{<span><code>forloop.index0</code></span>}} - index of the current iteration (zero based) <em>(integer)</em></li>
+<li>{{<span><code>forloop.rindex</code></span>}} - how many items are still left? <em>(integer)</em></li>
+<li>{{<span><code>forloop.rindex0</code></span>}}     # => how many items are still left? (zero based) <em>(integer)</em></li>
+<li>{{<span><code>forloop.first</code></span>}}  - is this the first iteration? <em>(boolean)</em></li>
+<li>{{<span><code>forloop.last</code></span>}}   - is this the last iteration? <em>(boolean)</em></li>
+</ul>
+<div class="ncs">
+<p>The quickest way to see these variables in action is to iterate over the globals object. Paste this code in any page:</p>
+<pre class="language-javascript"><code>&lt;ul&gt;
+{% for item in globals %}
+    &lt;li&gt;{{ item[0] }}: {{ item[1] }}&lt;br/&gt;
+        &lt;p&gt;
+            forloop.length is {{forloop.length}} - length of the entire for loop&lt;br/&gt;
+            forloop.index is {{forloop.index}}  - index of the current iteration&lt;br/&gt;
+            forloop.index0 is {{forloop.index0}} - index of the current iteration (zero based)&lt;br/&gt;
+            forloop.rindex is {{forloop.rindex}} - how many items are still left?&lt;br/&gt;
+            forloop.rindex0 is  {{forloop.rindex0}} - how many items are still left? (zero based)&lt;br/&gt;
+            forloop.first is {{forloop.first}}  - is this the first iteration?&lt;br/&gt;
+            forloop.last is {{forloop.last}}   - is this the last iteration? &lt;br/&gt;
+        &lt;/p&gt;
+    &lt;/li&gt;
+{% endfor %}
+&lt;/ul&gt;</code></pre>
+</div>
+<p>You can only iterate over a part of a collection, for example if you have a large list of customers you can only iterate over 20 at a time using the <em><strong>limit</strong></em> and <em><strong>offset</strong></em> variables.</p>
+<div class="ncs">
+<pre class="language-javascript"><code>{module_webresource resource="customers" version="v3" template="" collection="customerInfo" order="firstName" fields="email1, firstName, lastName, id"}
+//this module creates a collection named customerInfo that contains the first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
+//let's display the data in the collection in a table:
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;th&gt;No.&lt;/th&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Email&lt;/th&gt;
+    &lt;/thead&gt;
+    {%for item in customerInfo.items limit:4 offset:0%}
+//looping the first 4 items of the collection
+    &lt;tr&gt;
+        &lt;td&gt;{{forloop.index}}&lt;/td&gt;
+//in the first td we output the row number using forloop.index
+        &lt;td&gt;{{item.firstName}} {{item.lastName}}&lt;/td&gt;
+        &lt;td&gt;{% if {{item.email1.value}}%}
+            {{item.email1.value}}
+            {%else%}
+            N/A
+            {%endif%}
+//in this if block we check that the current user has the email1 address filled in. Otherwise "N/A" will be displayed.
+        &lt;/td&gt;
+    &lt;/tr&gt;
+{%endfor%}
+&lt;/table&gt;</code></pre>
+</div>
+<p>The  loop can also iterate in reverse using the <em><strong>reversed</strong></em> parameter. </p>
+<div class="ncs">
+<p>For example, let's use the same customer collection from the previous example this time orders by <em>firstName</em> desc:</p>
+<pre class="language-javascript"><code>{module_webresource resource="customers" version="v3" template="" collection="customerInfo" order="-firstName" fields="email1, firstName, lastName, id"}
+//this module creates a collection named customerInfo that contains the first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
+{%for item in customerInfo.items reversed%}
+&lt;li&gt;{{item.firstName}}&lt;/li&gt;
+{%endfor%}
+//this loop will go over the items in the collection in reverse order
+</code></pre>
+</div>
 </div>
 <div type="cs-pod">
 <h2 id="Cycle">CYCLE</h2>

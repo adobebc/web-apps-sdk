@@ -146,7 +146,7 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p class="get-customer-orders"><strong>Get the list of orders for the customer with the ID <em>10428439</em></strong></p>
 <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/10428439/orders",
@@ -168,7 +168,7 @@ request.fail(function (jqXHR) {
 })</code></pre>
 <p><strong>Get the customer's orders with the total price over <em>40</em>:</strong></p>
 <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to passit in the "Authorization" header
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/10428439/orders?where={'totalPrice':{'$gt':'40'}}",

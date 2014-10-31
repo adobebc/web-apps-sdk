@@ -13,7 +13,7 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[shipping_options_ID]/catalogues
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[shipping_options_ID]/excludedCatalogs
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
 </ul></li>
@@ -33,7 +33,7 @@
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: &quot;/webresources/api/v3/sites/current/shippingoptions/3309/catalogues&quot;,
+    url: &quot;/webresources/api/v3/sites/current/shippingoptions/3309/excludedCatalogs&quot;,
     type: "GET",
     conenection: "keep-alive",
     contentType: "application/json",
@@ -54,7 +54,7 @@ request.fail(function (jqXHR) {
 <pre class="language-javascript"><code>{
   "items": [
     {
-      "discountCodeId": 17339,
+      "optionId": 155085,
       "catalogueId": 591,
       "siteId": 146985,
       "catalogue": {
@@ -84,7 +84,7 @@ request.fail(function (jqXHR) {
       }
     },
     {
-      "discountCodeId": 17339,
+      "optionId": 155085,
       "catalogueId": 593,
       "siteId": 146985,
       "catalogue": {
@@ -135,7 +135,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/[discount_code_ID]/catalogues
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/[shipping_option_ID]/excludedCatalogs
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -157,7 +157,7 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-  url: "/webresources/api/v3/sites/current/shippingoptions/3309/catalogues",
+  url: "/webresources/api/v3/sites/current/shippingoptions/155085/excludedCatalogs",
   data: JSON.stringify({
     "items": [{
       "catalogueId": 88
@@ -197,7 +197,7 @@ request.fail(function(jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.a</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[secure_zone_ID]/catalogues?items=[page1_ID,page2_ID,page3_ID]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[secure_zone_ID]/excludedCatalogs?items=[page1_ID,page2_ID,page3_ID]
 
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
@@ -218,7 +218,7 @@ request.fail(function(jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/shippingoptions/3309/catalogues?items=[88,590]",
+    url: "/webresources/api/v3/sites/current/shippingoptions/155085/excludedCatalogs?items=[88,590]",
     type: "DELETE",
     contentType: "application/json",
     headers: {

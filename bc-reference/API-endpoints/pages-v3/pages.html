@@ -49,7 +49,7 @@
   <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the corresponding live page.</li>
   <li><code>content</code> - the content of the page</li>
   <li><code>redirect301</code> - the URL this page should 301 redirect to</li>
-  <li><code>pageTitle</code> - the page's title</li>
+  <li><code>title</code> - the page's title</li>
   <li><code>seoMetadataDescription</code> - the page's SEO meta description</li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -103,7 +103,7 @@ request.fail(function (jqXHR) {
       "livePageId": null,
       "content": "Page1 content",
       "redirect301": "",
-      "pageTitle": "Page1 title",
+      "title": "Page1 title",
       "seoMetadataDescription": "Sample metadata"
     },
     {
@@ -127,7 +127,7 @@ request.fail(function (jqXHR) {
       "livePageId": null,
       "content": "Page2 content&quot;,
       "redirect301": "",
-      "pageTitle": "Page2",
+      "title": "Page2",
       "seoMetadataDescription": "Sample metadata"
     }
 ],
@@ -186,7 +186,7 @@ request.fail(function (jqXHR) {
   <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
   <li><code>content</code> - the content of the page</li>
   <li><code>redirect301</code> - the URL this page should 301 redirect to</li>
-  <li><code>pageTitle</code> - the page's title</li>
+  <li><code>title</code> - the page's title</li>
   <li><code>seoMetadataDescription</code> - the page's SEO meta description</li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -238,7 +238,7 @@ request.fail(function (jqXHR) {
       "livePageId": null,
       "content": "Page1 content",
       "redirect301": "",
-      "pageTitle": "Page1 title",
+      "title": "Page1 title",
       "seoMetadataDescription": "Sample metadata"
 }</code></pre>
 </div>
@@ -292,7 +292,7 @@ The response should be "201 created" if the page was successfully created.
   <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
   <li><code>content</code> - the content of the page HTML encoded</li>
   <li><code>redirect301</code> - the URL this page should 301 redirect to</li>
-  <li><code>pageTitle</code> - the page's title</li>
+  <li><code>title</code> - the page's title</li>
   <li><code>seoMetadataDescription</code> - the page's SEO meta description</li>
 </ul>
 </div>
@@ -458,7 +458,7 @@ request.fail(function(jqXHR) {
   <li><code>livePageId</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
   <li><code>content</code> - the content of the page HTML encoded</li>
   <li><code>redirect301</code> - the URL this page should 301 redirect to</li>
-  <li><code>pageTitle</code> - the page's title</li>
+  <li><code>title</code> - the page's title</li>
   <li><code>seoMetadataDescription</code> - the page's SEO meta description</li>
 </ul>
 </div>

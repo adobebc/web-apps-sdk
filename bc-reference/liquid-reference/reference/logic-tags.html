@@ -97,7 +97,7 @@
 </div>
 <p>You can only iterate over a part of a collection, for example if you have a large list of customers you can only iterate over 20 at a time using the <em><strong>limit</strong></em> and <em><strong>offset</strong></em> variables.</p>
 <div class="ncs">
-<pre class="language-javascript"><code>{module_webresource resource="customers" version="v3" template="" collection="customerInfo" order="firstName" fields="email1, firstName, lastName, id"}
+<pre class="language-javascript"><code>{module_data resource="customers" version="v3" template="" collection="customerInfo" order="firstName" fields="email1, firstName, lastName, id"}
 //this module creates a collection named customerInfo that contains the first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
 //let's display the data in the collection in a table:
 &lt;table&gt;
@@ -126,7 +126,7 @@
 <p>The  loop can also iterate in reverse using the <em><strong>reversed</strong></em> parameter. </p>
 <div class="ncs">
 <p>For example, let's use the same customer collection from the previous example this time orders by <em>firstName</em> desc:</p>
-<pre class="language-javascript"><code>{module_webresource resource="customers" version="v3" template="" collection="customerInfo" order="-firstName" fields="email1, firstName, lastName, id"}
+<pre class="language-javascript"><code>{module_data resource="customers" version="v3" template="" collection="customerInfo" order="-firstName" fields="email1, firstName, lastName, id"}
 //this module creates a collection named customerInfo that contains the first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
 {%for item in customerInfo.items reversed%}
 &lt;li&gt;{{item.firstName}}&lt;/li&gt;
@@ -148,6 +148,24 @@ green<br />
 blue<br /> 
 red<br /> 
 </p>
+</div>
+<div type="cs-pod">
+<h2 id="Assign">INCLUDE</h2>
+<p>Include is used to pull data from another page. </p>
+<p>You can think of it much like you would think of a content holder. The main difference is when you get a page's contents using include the Liquid  objects and collections will become available in your main page.</p>
+<p>For example, paste this code in a page, name it <em>to-be-included.html</em>:</p>
+<pre class="language-javascript"><code>&lt;html&gt;&lt;head&gt;&lt;head&gt;
+&lt;body&gt;
+{<span>module_data resource="customers" subresource="orders" resourceId="{{</span>globals.user.entityid<span>}}" version="v3" template="" collection="customerOrders"</span>} 
+//this gets the list of orders for the logged in customer
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>On another page (the main page) paste this code:</p>
+<pre class="language-javascript"><code>{<span>%include "/to-be-included.html"%</span>}
+&lt;pre&gt;{{<span>customerOrders | json</span>}}&lt;/pre&gt;
+//even though the collection customerOrders is not defined in the main page you will still see its contents</code></pre>
+<p>This feature is particularly useful in helping you keep the Liquid content organized, for example you can group pages that contains snippets of Liquid code (orders for the logged in customers, more complex code snippets that loop other objects or take into account more factors - is the user a wholesaler, does he have access to a particular page, does he have an order over $50 in the last week and so on) in a single folder and include them when needed.</p>
 </div>
 <div type="cs-pod">
 <h2 id="Assign">ASSIGN</h2>
@@ -189,25 +207,30 @@ red<br />
 &lt;/table&gt;</code></pre>
 </div>
 
-<div type="cs-pod">
 <h2 id="Examples">Examples</h2>
 <p>A more complex example that uses a FOR loop to go over the items of a webapp collection and make some additional decisions using the CASE statement:</p>
-<pre class="language-javascript"><code>
-{<span>% assign european_make = &quot;This vehicle is from Europe!&quot;%</span>} //create a variable named european_make<br>
-{<span>% for item in webapp1.items %</span>} // looping the webapp1.items
+<pre class="language-javascript"><code>{<span>% assign european_make = &quot;This vehicle is from Europe!&quot;%</span>} //create a variable named european_make<br>
+{<span>% for item in webapp1.items %</span>} 
+// looping the webapp1.items
+
 {<span>% if item.Color == &quot;red&quot; and (item.Country contains &quot;U&quot; or item.Country == &quot;US&quot;) and item.name contains &quot;a&quot; and item.name contains &quot;e&quot;%</span>}
+
 &lt;p&gt;
     Item number {{<span>item.counter</span>}} name is: {{<span>item.name</span>}} and its color is &lt;span style=&quot;color:{{<span>item.Color</span>}}&quot;&gt;{{<span>item.Color</span>}}&lt;/span&gt; and country is {{<span>item.Country</span>}}
 &lt;/p&gt;
+
 {<span>%unless item.country == &quot;US&quot; or item.country == &quot;AU&quot;%</span>} // if the country is not US nor AU display the contents of the european_make variable
 {{<span>european_make</span>}}
 &lt;br/&gt;
 {<span>%endunless%</span>}
+
 {<span>%comment%</span>}
 	this is a comment - if you also have Japanese cars the &quot;unless&quot; statement above is not accurate - whoops...
 {<span>%endcomment%</span>}
+
 {<span>% capture item_productionDate %</span>}&lt;span style=&quot;color:blue&quot;&gt;{{<span>item.releaseDate</span>}}&lt;/span&gt;{<span>% endcapture %</span>}
- {<span>% case item.country %</span>}
+ 
+  {<span>% case item.country %</span>}
     {<span>% when &#39;DE&#39; %</span>}
       Jahr der Wagen rollte vom Band auf
     {<span>% when &#39;EN&#39; %</span>}
@@ -215,10 +238,11 @@ red<br />
     {<span>% else %</span>}
       Year the car rolled off the assembly line on 
   {<span>% endcase %</span>}
+
 {{<span>item_productionDate</span>}}
+
 &lt;br/&gt;
 &lt;br/&gt;
+
 {<span>% endif %</span>}
-{<span>% endfor %</span>}
-</code></pre>
-</div>
+{<span>% endfor %</span>}</code></pre>

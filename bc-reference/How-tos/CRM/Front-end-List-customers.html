@@ -6,7 +6,7 @@
         
     </div>
   <div class="sample">
-        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot;}
+        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot;}
 &lt;table&gt;<br>&lt;tbody&gt;
    {%<span> for item in customerInfo.items </span>%}<br>	&lt;tr&gt;<br>		 &lt;td&gt;{{<span>item.id</span>}}&lt;/td&gt;
         &lt;td&gt;{%<span>if {{<span>item.firstName</span>}} </span>%}{{<span>item.firstName</span>}} {%<span>endif</span>%}&lt;/td&gt;
@@ -28,7 +28,7 @@
         <p>List all the customers marked as wholesalers:</p>
             </div>
   <div class="sample">
-        <pre class="language-javascript"><code>{module_webresource resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'wholesaler':true\}&quot;}
+        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'wholesaler':true\}&quot;}
 &lt;table&gt;<br>&lt;tbody&gt;
    {%<span> for item in customerInfo.items </span>%}<br>	&lt;tr&gt;<br>		 &lt;td&gt;{{<span>item.id</span>}}&lt;/td&gt;
         &lt;td&gt;{%<span>if {{<span>item.firstName</span>}} </span>%}{{<span>item.firstName</span>}} {%<span>endif</span>%}&lt;/td&gt;

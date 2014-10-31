@@ -3,12 +3,12 @@
 <h2>Description</h2>
 <p>Displays an individual product from a given catalogue on a web page according to the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a> layout.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/full-control-over-rendering" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
-<ul id="tabs" class="beta nocontent">
+<ul id="tabs" class="beta">
 
     <li><a href="#named-params">New named parameters documentation</a></li>
     <li><a href="#legacy">Legacy module documentation</a></li>
   </ul>
-  <div id="named-params" class="beta nocontent">
+  <div id="named-params" class="beta">
 
   <div class="syntax">
 <h2>Syntax</h2>
@@ -21,7 +21,7 @@
     <li><strong>productid</strong> - system generated product id (do not change)</li>
     <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
     <li><strong>useLi</strong> - wrap the module output in a list rather than a table</li>
-    <li><strong>usebackupLayout</strong> - use the backup layout instead of the default one</li>
+    <li><strong>usebackupLayout</strong> - use the backup layout instead of the default one. The value of this parameter is ignored if the <em>template </em>parameter is also present.</li>
     <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
@@ -293,7 +293,7 @@ The {<span>module_product</span>} module is always rendered using either the <a 
     <li><strong>prodID</strong> - system generated product id (do not change)</li>
     <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
     <li><strong>useLi</strong> - wrap the module output in a list rather than a table</li>
-    <li><strong>usebackupLayout</strong> - use the backup layout instead of the default one</li>
+    <li><strong>usebackupLayout</strong> - use the backup layout instead of the default one. The value of this parameter is ignored if the <em>template </em>parameter is also present.</li>
 </ul>
 </div>
 <div class="layouts">

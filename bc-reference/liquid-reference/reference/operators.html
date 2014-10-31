@@ -1,0 +1,57 @@
+<h1>Supported operators</h1>
+<div type="cs-pod">
+  <div class="filters other"></div>
+</div>
+<div type="cs-pod">
+<table>
+  <tbody>
+    <tr>
+      <td><code>==</code></td>
+      <td>equals</td>
+    </tr>
+    <tr>
+      <td><code>!=</code></td>
+      <td>does not equal</td>
+    </tr>
+    <tr>
+      <td><code>&gt;</code></td>
+      <td>greater than</td>
+    </tr>
+    <tr>
+      <td><code>&lt;</code></td>
+      <td>less than</td>
+    </tr>
+    <tr>
+      <td><code>&gt;=</code></td>
+      <td>greater than or equal to</td>    
+
+    </tr>
+    <tr>
+      <td><code>&lt;=</code></td>
+      <td>less than or equal to</td>
+    </tr>
+    <tr>
+      <td><code>or</code></td>
+      <td>this <strong>or</strong> that</td>
+    </tr>
+    <tr>
+      <td><code>and</code></td>
+      <td>this <strong>and</strong> that</td>
+    </tr>
+    <tr>
+      <td><code>contains</code></td>
+      <td>You can use "contains" to check whether a string contains another string, for example:
+      <pre class="language-javascript"><code>{<span>% if {{<span>webapp1.items[0].name</span>}} contains 'Jaguar' %</span>}
+  This car is a Jaguar.
+{<span>% endif %</span>}
+</code></pre>
+or to check whether an array contains a value. Assuming <code>{{<span>cars_available_now</span>}} </code>is an array containing car makes:
+<pre class="language-javascript"><code>{<span>% if {{<span>cars_available_now</span>}} contains 'Jaguar' %</span>}
+  A Jaguar is available now.
+{<span>% endif %</span>}
+</code></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

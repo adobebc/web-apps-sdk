@@ -24,6 +24,50 @@
   <li><strong>renderAsJson</strong> - Will render the secure zone information in Json format which can be manually parsed. Possible values are <strong>true</strong> or <strong>false</strong>.</li>
 </ul>
 </div>
+<div class="layouts">
+<h2>This module can be rendered using:</h2>
+<ul>
+<li><strong>an unordered list</strong> - see the examples below for details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
+</ul>
+<table width="100%" class="data-bordered">
+
+<thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+    <tr>
+         <td valign="top" class="liquid tag"><code>{{<span class="tagname">entityId</span>}}</code></td>
+         <td class="description"><span>The CRM record's ID</span></td></tr><tr>
+         <td valign="top" class="liquid tag"><code>{{<span class="tagname">zoneId</span>}}</code></td>
+         <td class="description"><span>The secure zone's ID</span></td></tr><tr>
+           <td valign="top" class="liquid tag"><code>{{<span class="tagname">zoneName</span>}}</code></td>
+         <td class="description"><span>The secure zone's name</span></td></tr><tr>
+           <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>}}</code></td>
+         <td class="description"><span>The date access expires</span></td></tr><tr>
+           <td valign="top" class="liquid tag"><code>{{<span class="tagname">sellAccess</span>}}</code></td>
+         <td class="description"><span>Whether this is a paid or free secure zone</span></td></tr><tr>
+           <td valign="top" class="liquid tag"><code>{{<span class="tagname">costPeriod</span>}}</code></td>
+         <td class="description"><span>The amount charged for the access</span></td></tr>
+         <tr>
+           <td valign="top" class="liquid tag"><code>{{<span class="tagname">cycleType</span>}}</code></td>
+         <td class="description"><span>The charge period. Possible values:<ul>
+           <li>Once</li>
+           <li>Daily</li>
+           <li>Weekly</li>
+           <li>Fortnightly</li>
+           <li>Monthly</li>
+           <li>Quarterly</li>
+           <li>Half yearly</li>
+           <li>Yearly</li>
+         </ul>
+         </span></td></tr>
+</tbody>
+</table>
+</div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>

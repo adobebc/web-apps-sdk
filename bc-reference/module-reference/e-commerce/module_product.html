@@ -12,11 +12,12 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_product catalogId=&quot;14886&quot; </span>targetFrame<span>=&quot;_blank&quot; productid=&quot;954557&quot; decoration=&quot;no&quot;</span> collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_product </span>render=&quot;items|collection&quot; <span>catalogId=&quot;14886&quot; </span>targetFrame<span>=&quot;_blank&quot; productid=&quot;954557&quot; decoration=&quot;no&quot;</span> collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
+<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/beta/adding-liquid-logic-to-layouts">Adding Liquid logic to layouts</a> article for more details on how to use this parameter</li>
     <li><strong>catalogId</strong> - system generated catalogue id (do not change)</li>
     <li><strong>productid</strong> - system generated product id (do not change)</li>
     <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
@@ -36,7 +37,7 @@ The {<span>module_product</span>} module is always rendered using either the <a 
     <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
-<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{{<span>cars1.items[0].["large image_value"]</span>}}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this particular example the tag that contains a space needs to be wrapped in square brackets and quotes.</p>
+
 <table width="100%" class="data-bordered">
 
 <thead>
@@ -92,15 +93,15 @@ The {<span>module_product</span>} module is always rendered using either the <a 
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom1</span>}</code></td><td class="description"><span>Custom field #1. Use to display any information about a product</span></td>
         </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_custom2</span>}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span class="tagname">custom2</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom2</span>}</code></td><td class="description"><span>Custom field #2. Use to display any information about a product</span></td>
         </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_custom3</span>}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span class="tagname">custom3</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom3</span>}</code></td><td class="description"><span>Custom field #3. Use to display any information about a product</span></td>
         </tr>
 <tr>
-  <td valign="top" class="liquid tag"><code>{{<span class="tagname">tag_custom4</span>}}</code></td>
+  <td valign="top" class="liquid tag"><code>{{<span class="tagname">custom4</span>}}</code></td>
          <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_custom4</span>}</code></td><td class="description"><span>Custom field #4. Use to display any information about a product</span></td>
         </tr>
 <tr>

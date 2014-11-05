@@ -14,11 +14,12 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_breadcrumbs separator=&quot;|&quot;</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_breadcrumbs render="items|collection" separator=&quot;|&quot;</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
+<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/beta/adding-liquid-logic-to-layouts">Adding Liquid logic to layouts</a> article for more details on how to use this parameter</li>
     <li><strong>separator</strong> - the separator which will be used between the links</li>
 </ul>
 </div>

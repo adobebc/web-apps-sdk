@@ -12,11 +12,12 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_literature filter="item" itemid="literature-item-Id or classificationId" targetFrame="blank" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_literature </span>render=&quot;items|collection&quot; <span>filter="item" itemid="literature-item-Id or classificationId" targetFrame="blank" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
+<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/beta/adding-liquid-logic-to-layouts">Adding Liquid logic to layouts</a> article for more details on how to use this parameter</li>
   <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
 <ul>
         <li><strong>item</strong> - individual item</li>
@@ -41,7 +42,7 @@
     <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
-<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{{<span>cars1.items[0].["large image_value"]</span>}}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this particular example the tag that contains a space needs to be wrapped in square brackets and quotes.</p><table width="100%" class="data-bordered">
+<table width="100%" class="data-bordered">
     <thead>
 <tr>
 <td class="liquid">Liquid tag</td>

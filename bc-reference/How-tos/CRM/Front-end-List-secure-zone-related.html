@@ -92,5 +92,5 @@
     <div class="sample-details">
     <p>First we retrieve the customer details for the logged in user and then feed that data to the next instance of the <a href="/dev-assets/reference/module-reference/general/module_data.html">module_data</a> in the <em>resourceId</em> parameter.</p>
     <p>Then we retrieve the customer's list of secure zones. If there are more than one secure zone this customer is subscribed to we draw the table and start looping them in order to list the pages the secure zones contain.</p>
-    <p>In order to list the pages in each secure zone we use another instance of module_data and pass <em>resource=&quot;securezones&quot;, subresource=&quot;pages&quot;</em> and <em>resourceid="{{<span>item.zoneId</span>}}"</em>. The latter, resourceId holds the current secure zone ID as the <a href="/dev-assets/reference/liquid-reference/reference/supported-logic-tags.html#for">FOR loop</a> goes over all of them. </p>
+    <p>In order to list the pages in each secure zone we use another instance of module_data and pass <em>resource=&quot;securezones&quot;, subresource=&quot;pages&quot;</em> and <em>resourceid="{{<span>item.zoneId</span>}}"</em>. The latter, resourceId holds the current secure zone ID as the <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#for">FOR loop</a> goes over all of them. </p>
 </div></div>

@@ -14,11 +14,12 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_webappsresults targetFrame="_blank" resultsPerPage="4" hideEmptyMessage="true" rowCount="2" sortType="DATE" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_webappsresults </span>render=&quot;items|collection&quot; <span>targetFrame="_blank" resultsPerPage="4" hideEmptyMessage="true" rowCount="2" sortType="DATE" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
+<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/beta/adding-liquid-logic-to-layouts">Adding Liquid logic to layouts</a> article for more details on how to use this parameter</li>
     <li><strong>targetFrame</strong> - e.g. <em>_blank</em>. Specify the frame you want the item to open in</li>
     <li><strong>useBackupTemplate </strong>- specify <strong>true</strong> if you want to use the backup list template or leave empty. The value of this parameter is ignored if the <em>template </em>parameter is also present.</li>
     <li><strong>resultsPerPage</strong> - total number of items per page before pagination is used</li>

@@ -2,9 +2,10 @@
 <div id="description">
 <h2>What are custom templates?</h2>
 <p>
-With very few exceptions (the products modules for example are an exception, they have 2 "Individual Product - Small" layouts) most modules had one of each, the  but the general rule is one module - a single set of layouts.</p>
-<p>Custom templates are basically an extension to regular layouts. Until they were introduced you could only use a limited number of layouts. </p>
-<h2>How to use them?</h2>
+With very few exceptions (the products modules for example are an exception, they have 2 list type layouts) most modules had one of each, the  but the general rule is one module - a single set of layouts.</p>
+<p>Custom templates are basically an extension to regular layouts. Now you can create as many custom layoutes for any module that supports this feature.</p>
+<p>Another usage for custom templates is to supress the output of modules. If you are using Liquid collections for example you might to supress a module's output and build your own rendering logic instead, see <a href="/developers/liquid/collection-parameter">The "collection" parameter</a> for more details on this approach.</p>
+<h2>Use custom layouts to render modules</h2>
 <p>
 The custom templates are actually plain  files however we usually  advise to change their extension to .tpl - that is to avoid having them indexed by search engine bots.
 </p>
@@ -34,6 +35,16 @@ Next, we need to populate it with some tags. The easiest way to get started is t
 <p>
 If you insert this on a webpage and preview that webpage you will notice it is using the custom layout instead of the default <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a>.
 </p>
+<h2>Use custom layouts to suppress a module's output</h2>
+<p>With the introduction of <em>collections</em> you might want a module not to output anything and use only its collection representation to render the data.</p>
+<p>
+To hide a module's output simply remove the path to the custom layout specified by the template parameter.</p>
+<p>For example this webapp module</p>
+<pre class="language-markup"><code>{<span>module_webapps collection="myWebapp" render="collection" template="/layouts/custom/car_collection.tpl" id="35209" filter="all"</span>}</code></pre>
+<p>Will do two things -  render the webapp items according to the <em>template="/layouts/custom/car_collection.tpl"</em> layout and will create the myWebapp collection in the background.</p>
+<p>This module on the other hand:</p>
+<pre class="language-markup"><code>{<span>module_webapps collection="myWebapp" template="" id="35209" filter="all"</span>}</code></pre>
+<p>will not render anything. In this scenario it will only create the collection and it's up to you how to display its contents.</p>
 </div>
 <div id="syntax">
 <h2>Syntax</h2>

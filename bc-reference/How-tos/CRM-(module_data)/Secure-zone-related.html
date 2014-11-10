@@ -6,7 +6,7 @@
     
 </div>
     <div class="sample">
-        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{&#39;$or&#39;:\[\{&#39;email1.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\},\{&#39;email2.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\},\{&#39;email3.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\}\]\}&quot;}
+        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; version=&quot;v3&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{&#39;$or&#39;:\[\{&#39;email1.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\},\{&#39;email2.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\},\{&#39;email3.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\}\]\}&quot;}
 {%<span>assign userInfo = customerInfo.items[0]</span>%}
 
 {module_data resource=&quot;customers&quot; subresource=&quot;securezones&quot; resourceId=&quot;{{<span>userInfo.id</span>}}&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerZones&quot;}
@@ -38,13 +38,8 @@
     
     </div>
     <div class="sample">
-    <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{&#39;$or&#39;:\[\{&#39;email1.value&#39;: &#39;{{<span>this.globals.user.email</</span>}}&#39;\},\{&#39;email2.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\},\{&#39;email3.value&#39;: &#39;{{<span>this.globals.user.email</span>}}&#39;\}\]\}&quot;}
-//get the currently logged user information 
-
-{%<span>assign userInfo = customerInfo.items[0]</span>%}
-//assign it to the userInfo variable for ease of use
-
-{module_data resource=&quot;customers&quot; subresource=&quot;securezones&quot; resourceId=&quot;{{<span>userInfo.id</span>}}&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerZones&quot;}
+    <pre class="language-javascript"><code>
+{module_data resource=&quot;customers&quot; subresource=&quot;securezones&quot; resourceId=&quot;{{<span>globals.user.entityId</span>}}&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerZones&quot;}
 //get the list of secure zones this customer is subscribed to
 
 {%<span> if customerZones.totalItemsCount &gt; 0 </span>%}
@@ -90,7 +85,6 @@
 
     </div>
     <div class="sample-details">
-    <p>First we retrieve the customer details for the logged in user and then feed that data to the next instance of the <a href="/dev-assets/reference/module-reference/general/module_data.html">module_data</a> in the <em>resourceId</em> parameter.</p>
-    <p>Then we retrieve the customer's list of secure zones. If there are more than one secure zone this customer is subscribed to we draw the table and start looping them in order to list the pages the secure zones contain.</p>
-    <p>In order to list the pages in each secure zone we use another instance of module_data and pass <em>resource=&quot;securezones&quot;, subresource=&quot;pages&quot;</em> and <em>resourceid="{{<span>item.zoneId</span>}}"</em>. The latter, resourceId holds the current secure zone ID as the <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#for">FOR loop</a> goes over all of them. </p>
+    First we retrieve the logged in customer's list of secure zones. If there are more than one secure zone this customer is subscribed to we draw the table and start looping them in order to list the pages the secure zones contain.
+      <p>In order to list the pages in each secure zone we use another instance of module_data and pass <em>resource=&quot;securezones&quot;, subresource=&quot;pages&quot;</em> and <em>resourceid="{{<span>item.zoneId</span>}}"</em>. The latter, resourceId holds the current secure zone ID as the <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#for">FOR loop</a> goes over all of them. </p>
 </div></div>

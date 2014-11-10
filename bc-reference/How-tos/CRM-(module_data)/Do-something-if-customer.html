@@ -1,0 +1,105 @@
+       <h1>Do something if...</h1>
+<div id="check-order-value">
+    <h2>the logged in customer has order over $100</h2>
+    <div class="description">
+        <p>Display something if the currently logged in user has at least one order with the value over $100:</p>
+        
+  </div>
+    <div class="sample">
+        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; resourceId=&quot;{{globals.user.entityId}}&quot; subresource=&quot;orders&quot; version=&quot;v3&quot; where=&quot;\{&#39;totalPrice&#39;:\{&#39;$gte&#39;:10\}\}&quot; collection=&quot;largeOrders&quot;}
+		  
+{% if {{largeOrders.totalItemsCount}} &gt; 0 %}
+	&lt;p&gt;Get your special discount&lt;/p&gt;
+{% else %}
+	&lt;p&gt;Order a Blue Tshirt for a special discount!&lt;/p&gt;
+{% endif %}</code></pre>
+    </div>
+    <div class="sample-details">
+    <p>In this example we feed the logged in customer's ID to <a href="/dev-assets/reference/module-reference/general/module_data.html">module_data</a> in the <em>resourceId</em> parameter.</p>
+        <p>We will then use the <code>limit=&quot;1&quot;</code> parameter because we don't need to know how many orders over $100 the customer has, we want to see if there is at least one order.</p></div>
+</div>
+
+<div id="check-orders-number">
+  <h2>the logged in customer has more than 5 orders</h2>
+  <div class="description">
+    <p>Display something if the currently logged in user has more than 5 orders placed on this site:</p>
+   
+  </div>
+    <div class="sample">
+        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; resourceId=&quot;{{globals.user.entityId}}&quot; subresource=&quot;orders&quot; version=&quot;v3&quot; limit=&quot;5&quot; collection=&quot;fiveOrders&quot;}
+{% if {{fiveOrders.totalItemsCount}} &gt;= 5 %}	
+	&lt;p&gt;Customer has 5 or more orders&lt;/p&gt;
+{% else %}
+  &lt;p&gt;Customer has less than 5 orders&lt;/p&gt;
+{% endif %}</code></pre>
+    </div>
+    <div class="sample-details">
+     <p>In this example we retrieve the orders for the logged in customer (the resource parameter). First we feed the logged in user's ID (the resourceId parameter) to module_data and retrieve its orders (the subresource parameter). Because we only need to determine the total number of orders and not the actual details of the order we can use the <em>limit=&quot;0&quot;</em> parameter.</p>
+    <p>We then compare the total numer of items retrieved with 5 and display different texts based on the outcome of the comparison.</p>
+</div></div>
+
+<div id="check-customer-product">
+  <h2>the logged in customer has ever ordered a particular product</h2>
+  <div class="description">
+        <p>Display something if the currently logged in user has ever placed an order that contains a specific product:</p>
+</div>
+   
+  <div class="sample">
+        <pre class="language-javascript"><code>
+{module_data resource=&quot;orders&quot; version=&quot;v3&quot; where=&quot;\{&#39;products.productId&#39;: 9259226, &#39;entityId&#39;: {{globals.user.entityId}}\}&quot; template=&quot;&quot; collection=&quot;ordersWithBlueTshirt&quot;}
+//get the orders that contain a product with the product ID and have been created by the currenly logged in user
+
+{% if {{ordersWithBlueTshirt.totalItemsCount}} &gt; 0 %}
+    &lt;p&gt;Get your special discount&lt;/p&gt;
+{% else %}
+    &lt;p&gt;Order a Blue Tshirt for a special discount!&lt;/p&gt;
+{% endif %}</code></pre>
+    </div>
+    <div class="sample-details">
+    <p>In this example  we use a different technique. We need to know if the currently logged in customer has ever ordered a product named BlueTshirt (with the productID 9259226).</p>
+    <p>To do this we basically retrieve all the orders that contain the productID 9259226 AND have the entityId value equal to the entityID of the currently logged in user. </p>
+    <p>We then check if the collection created by the module_data has any items. If it has at least one item we know the currently logged in user has ordered at least one unit of the BlueTshirt product.</p>
+  </div></div>
+
+<div id="check-customer-city">
+    <h2>the logged in customer lives in a specific city</h2>
+    <div class="description">
+        <p>In the example below we  retrieve the customer details for the logged in user and then feed that data to the next instance of the <a href="/dev-assets/reference/module-reference/general/module_data.html">module_data</a> in the <em>resourceId</em> parameter.</p>
+        <p>Then we retrieve the customer addresses sub resource and check if the <em>city</em> value is &quot;New York&quot; or &quot;NY&quot;.</p>
+  </div>
+    
+    <div class="sample">
+        <pre class="language-javascript"><code>{module_webresource where="\{ '$or' : \[\{'state': 'NY' \},\{'state': 'New York' \}\]\}" resource="customers" resourceid="{{globals.user.entityId}}" subresource="addresses"  version="v3" limit="30" collection="addressNYCity"}
+        
+{% if {{addressNYCity.totalItemsCount}} &gt; 0 %}
+    &lt;p&gt;Show NY special offer&lt;/p&gt;
+{% else %}
+    &lt;p&gt;Customer does not live in NY.&lt;/p&gt;
+{% endif %}</code></pre>
+    </div>
+</div>
+<div id="check-customer-wholesaler">
+    <h2>get the entityID of the customer with mail address</h2>
+    <div class="description">
+        <p>For this seetup we will use a slightly different approach. We will pass an email address as a wuery parameter in a page and get its details based on the email. Let's assume the URL of the page you pasted this example into is <em>/test.html?emailaddress=john_doe@mailinator.com</em></p>
+        <p>The first step is to get the email address from the URL:</p>
+        
+    </div>
+    <div class="sample">
+        <pre class="language-javascript"><code>
+{%assign userEmail = globals.get.emailaddress%}
+{module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '{{<span>userEmail</span>}}'\},\{'email2.value': '{{<span>userEmail</span>}}'\},\{'email3.value': '{{<span>userEmail</span>}}'\}\]\}&quot;}
+{%<span>assign userInfo = customerInfo.items[0]</span>%}<br>//at this point the data for the user with the email address john_doe@mailinator.com is stored into the userInfo collection
+{{<span>userInfo.wholesaler | json</span>}}
+//let's check if this user is a wholesaler:<br>&lt;p&gt;{%<span> if userInfo.wholesaler </span>%}This customer is a wholesaler{%<span> else </span>%}This customer is not a wholesaler{%<span> endif </span>%}&lt;/p&gt;</code></pre>
+    </div>
+    <div class="sample-details">
+    <p>In this example we get the customer resource that matches the condition specified by the <em>where</em> parameter.</p>
+        <p>The condition <code>where=&quot;\{'$or':\[\{'email1.value': '{{<span>userEmail</span>}}'\},\{'email2.value': '{{<span>userEmail</span>}}'\},\{'email3.value': '{{<span>userEmail</span>}}'\}\]\}&quot;</code></p>
+      <p>basically means</p>
+        <p><code>(email1.value == userEmail) || (email1.value == userEmail) || (email1.value == userEmail)</code></p>
+        <p>By using the where condition above along with the <em>module_data resource=&quot;customers&quot;</em> module we are looking for a customer entity that has any of the email address (customer entities have 3 mail addresses) identical to the address of the logged in customer.</p>
+        <p>Once we find that customer entity we return the custom fields specified by the <em>fields</em> parameter and for ease of use we create the <em>userInfo </em>liquid variable and assign it the properties of the customer.</p>
+        <p>We can now test against the <em>userInfo.wholesaler</em> property and check whether it returns <em>true</em> or <em>false</em></p>
+  </div>
+</div>

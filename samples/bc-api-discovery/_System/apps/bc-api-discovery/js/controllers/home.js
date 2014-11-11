@@ -43,6 +43,14 @@
           	}
         };
 
+        this.$scope.versionsSelection = {
+          	options: {
+            	valueField: 'id',
+            	labelField: 'name',
+            	searchField: ['name']
+          	}
+        };
+
         this.$scope.subresourceSelection = {
           	options: {
             	valueField: 'id',
@@ -52,9 +60,14 @@
         };
 
         this.$scope.resources = [];
+        this.$scope.versions = [];
         this.$scope.subresources = [];
         this.$scope.resourceFields = [];
         this.$scope.subresourceFields = [];
+
+        this.$scope.displayVersions = function() {
+        	return self._displayVersions();
+        };
 
         this.$scope.displaySubresources = function() {
         	return self._displaySubresources();
@@ -95,21 +108,65 @@
 	 * @instance
 	 * @method
 	 * @description
+	 * This method displays all available versions for the selected resource.
+	 */
+	HomeController.prototype._displayVersions = function() {
+		var resourceId = this.$scope.resourceSelection.value,
+			self = this;
+
+		self.$scope.versionsSelection.value = undefined;
+		self.$scope.subresourceSelection.value = undefined;
+
+		if(!resourceId) {
+			return;
+		}
+
+		this._registryService.getRegistry().then(function(data) {
+			self.$scope.versions = [];
+			var selectedVersion;
+
+			for(var version in data[resourceId]) {
+				self.$scope.versions.push({"id": version, "name": version});
+
+				selectedVersion = version;
+			}
+
+			self.$scope.versionsSelection.value = selectedVersion;
+		});
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
 	 * This method displays all available subresources for the selected resource.
 	 */
 	HomeController.prototype._displaySubresources = function() {
 		var resourceId = this.$scope.resourceSelection.value,
 			self = this;
 
+		if(!resourceId) {
+			return;
+		}
+
+		self.$scope.subresources = [];
+
 		this._registryService.getRegistry().then(function(data) {
 			self.$scope.subresourceSelection.value = undefined;
-			self.$scope.subresources = [];
 
-			var subresources = self._getSubresources(resourceId, "v3", data);
+			var subresources = self._getSubresources(resourceId, "v3", data),
+				selectedSubresource;
 
 			for(var subresourceName in subresources) {
 				self.$scope.subresources.push({"id": subresourceName, "name": subresourceName});
+
+				if(!selectedSubresource) {
+					selectedSubresource = subresourceName;
+				}				
 			}
+
+			self.$scope.subresourceSelection.value = subresourceName;
 		});
 	};
 
@@ -123,6 +180,12 @@
 	HomeController.prototype._displayResourceFields = function() {
 		var resourceId = this.$scope.resourceSelection.value,
 			self = this;
+
+		if(!resourceId) {
+			self.$scope.resourceFields = [];
+
+			return;
+		}
 
 		this._registryService.getRegistry().then(function(data) {
 			var resourceFields = data[resourceId]["v3"].fields,
@@ -161,6 +224,11 @@
 		var resourceId = this.$scope.resourceSelection.value,
 			subresourceId = this.$scope.subresourceSelection.value;
 			self = this;
+
+		if(!resourceId || !subresourceId) {
+			self.$scope.subresourceFields = [];
+			return;
+		}
 
 		this._registryService.getRegistry().then(function(data) {
 			subresourceId = data[resourceId]["v3"].fields.manyRelation[subresourceId].type;

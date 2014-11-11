@@ -1,5 +1,9 @@
 <div class="col-md-4">
-	<select class="form-control" selectize="resourceSelection.options" placeholder="Choose a resource ..." ng-model="resourceSelection.value" options="resources" ng-change="displaySubresources(); displayResourceFields();"></select>
+	<select class="form-control" selectize="resourceSelection.options" placeholder="Choose a resource ..." ng-model="resourceSelection.value" options="resources" ng-change="displayVersions();"></select>
+</div>
+
+<div class="col-md-2">
+	<select class="form-control" selectize="versionsSelection.options" placeholder="Choose a version ..." ng-model="versionsSelection.value" options="versions" ng-change="displaySubresources(); displayResourceFields();"></select>
 </div>
 
 <div class="col-md-4">
@@ -13,6 +17,8 @@
 		<li ng-repeat="field in resourceFields">{{field.name}} | {{field.type}}</li>
 	</ul>
 </div>
+
+<div class="col-md-2"></div>
 
 <div class="col-md-4">
 	<ul>

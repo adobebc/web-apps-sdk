@@ -34,7 +34,8 @@ OTHER DEALINGS IN THE SOFTWARE.
             require: 'ngModel',
             scope: {
                 selectize: '&',
-                options: '&'
+                options: '&',
+                ngChange: '&'
             },
             link: function(scope, element, attrs, ngModel) {            
                 var changing, options, selectize, invalidValues = [];
@@ -114,13 +115,20 @@ OTHER DEALINGS IN THE SOFTWARE.
                         selectize.setValue(values);
                         changing = false;
                         storeInvalidValues(values, parseValues(selectize.getValue()));
+                        scope.ngChange();
                     });
                 }
 
                 function setSelectizeOptions(newOptions) {
-                    var values = parseValues(ngModel.$viewValue);
+                    var values = parseValues(ngModel.$viewValue);                    
                     selectize.addOption(newOptions);
                     selectize.refreshOptions(false);
+
+                    if(!newOptions || newOptions.length == 0) {
+                        selectize.clearOptions();
+                        return;
+                    }
+
                     if (options.mode === 'multi' && newOptions) {
                         restoreInvalidValues(newOptions, values);
                     }

@@ -107,18 +107,30 @@
 	 */
 	function _activateTabs(scope, indexedModel, element) {
 		var currHash = window.location.hash,
-			navMenu = $(element),
-			activeMenuSelector;
+			currSelectedTab;
 
 		if(currHash.length > 2) {
 			currHash = currHash.substr(2);
 
-			activeMenuSelector = "a[href='#" + currHash + "']";
+			currSelectedTab = indexedModel["#" + currHash];
 		}
 
-		if(activeMenuSelector) {
-			navMenu.find(activeMenuSelector).tab("show");
-		}		
+		if(!currSelectedTab || !indexedModel[currSelectedTab.href]) {
+			for(var tabKey in indexedModel) {
+				if(!indexedModel[tabKey].selected) {
+					continue;
+				}
+
+				currSelectedTab = indexedModel[tabKey];
+				break;
+			}
+		}
+
+
+		_deselectAllTabs(indexedModel);
+		currSelectedTab.selected = true;
+
+		window.location.href = currSelectedTab.href;
 	};
 
 	/**

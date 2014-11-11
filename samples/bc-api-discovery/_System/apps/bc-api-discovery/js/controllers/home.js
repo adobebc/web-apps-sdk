@@ -173,6 +173,20 @@
 	 * @instance
 	 * @method
 	 * @description
+	 * This method obtains all available subresources for a given resource identifier and
+	 * a specified version.
+	 */
+	HomeController.prototype._getSubresources = function(resourceId, version, registry) {
+		var resourceDescriptor = registry[resourceId][version];
+
+		return resourceDescriptor.fields.manyRelation;
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
 	 * This method displays all resource fields identified from bc registry.
 	 */
 	HomeController.prototype._displayResourceFields = function() {
@@ -205,37 +219,27 @@
 	 * @instance
 	 * @method
 	 * @description
-	 * This method obtains all available subresources for a given resource identifier and
-	 * a specified version.
-	 */
-	HomeController.prototype._getSubresources = function(resourceId, version, registry) {
-		var resourceDescriptor = registry[resourceId][version];
-
-		return resourceDescriptor.fields.manyRelation;
-	};
-
-	/**
-	 * @private
-	 * @instance
-	 * @method
-	 * @description
 	 * This method displays all subresource fields in the currenly selected resource context.
 	 */
 	HomeController.prototype._displaySubresourceFields = function() {
 		var resourceId = this.$scope.resourceSelection.value,
+			versionId = this.$scope.versionsSelection.value,
 			subresourceId = this.$scope.subresourceSelection.value;
 			self = this;
 
 		this.$scope.allFieldsSelected = false;
 
-		if(!resourceId || !subresourceId) {
+		if(!resourceId || !subresourceId || !versionId) {
 			return;
 		}
 
 		this._registryService.getRegistry().then(function(data) {
-			subresourceId = data[resourceId]["v3"].fields.manyRelation[subresourceId].type;
+			var subresource = data[resourceId][versionId].fields.manyRelation[subresourceId],
+				subresourceVersion = subresource.version;
 
-			var resourceFields = data[subresourceId]["v3"].fields,
+			subresourceId = subresource.type;
+
+			var resourceFields = data[subresourceId][subresourceVersion].fields,
 				fields;
 
 			fields = self._getFieldsObject(resourceFields, "identifier");

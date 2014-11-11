@@ -17,7 +17,7 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th><input type="checkbox" />Include</th>
+				<th><input type="checkbox" ng-click="selectAllFields();" ng-checked="allFieldsSelected"/>Include</th>
 				<th>Field name</th>
 				<th>Field type</th>
 			</tr>
@@ -25,7 +25,7 @@
 
 		<tbody>
 			<tr ng-repeat="field in fields">
-				<td><input type="checkbox" ng-model="field.selected"/></td>
+				<td><input type="checkbox" ng-checked="field.selected"/></td>
 				<td>{{field.name}}</td>
 				<td>{{field.type}}</td>
 			</tr>

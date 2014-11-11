@@ -63,6 +63,7 @@
         this.$scope.versions = [];
         this.$scope.subresources = [];
         this.$scope.fields = [];
+        this.$scope.allFieldsSelected = false;
 
         this.$scope.displayVersions = function() {
         	return self._displayVersions();
@@ -78,7 +79,11 @@
 
         this.$scope.displaySubresourceFields = function() {
         	return self._displaySubresourceFields();
-        };        
+        };
+
+        this.$scope.selectAllFields = function() {
+        	return self._selectAllFields();
+        };
 
 		this._displayResources();
 	};
@@ -175,6 +180,8 @@
 			versionId = this.$scope.versionsSelection.value,
 			self = this;
 
+		this.$scope.allFieldsSelected = false;
+
 		if(!resourceId | !versionId) {
 			self.$scope.fields = [];
 
@@ -219,6 +226,8 @@
 			subresourceId = this.$scope.subresourceSelection.value;
 			self = this;
 
+		this.$scope.allFieldsSelected = false;
+
 		if(!resourceId || !subresourceId) {
 			return;
 		}
@@ -255,6 +264,21 @@
 		}
 
 		return fieldObjects;
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method select / unselect all fields currently displayed.
+	 */
+	HomeController.prototype._selectAllFields = function() {
+		this.$scope.allFieldsSelected = !this.$scope.allFieldsSelected;
+
+		for(var idx = 0; idx < this.$scope.fields.length; idx++) {
+			this.$scope.fields[idx].selected = this.$scope.allFieldsSelected;
+		}
 	};
 
 	app.controller("HomeController", ["$scope", "BcRegistryService", HomeController]);

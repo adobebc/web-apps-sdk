@@ -63,6 +63,10 @@
         	return self._displayResourceFields();
         };
 
+        this.$scope.displaySubresourceFields = function() {
+        	return self._displaySubresourceFields();
+        };        
+
 		this._displayResources();
 	};
 
@@ -76,7 +80,7 @@
 	HomeController.prototype._displayResources = function() {
 		var self = this;
 
-		this._registryService.getRegistry().then(function(data) {
+		this._registryService.getRegistry().then(function(data) {			
 			self.$scope.resources = [];
 
 			for(var resourceName in data) {
@@ -97,6 +101,7 @@
 			self = this;
 
 		this._registryService.getRegistry().then(function(data) {
+			self.$scope.subresourceSelection.value = undefined;
 			self.$scope.subresources = [];
 
 			var subresources = self._getSubresources(resourceId, "v3", data);
@@ -142,6 +147,32 @@
 		var resourceDescriptor = registry[resourceId][version];
 
 		return resourceDescriptor.fields.manyRelation;
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method displays all subresource fields in the currenly selected resource context.
+	 */
+	HomeController.prototype._displaySubresourceFields = function() {
+		var resourceId = this.$scope.resourceSelection.value,
+			subresourceId = this.$scope.subresourceSelection.value;
+			self = this;
+
+		this._registryService.getRegistry().then(function(data) {
+			subresourceId = data[resourceId]["v3"].fields.manyRelation[subresourceId].type;
+
+			var resourceFields = data[subresourceId]["v3"].fields,
+				fields;
+
+			fields = self._getFieldsObject(resourceFields, "identifier");
+			fields = fields.concat(self._getFieldsObject(resourceFields, "primary"));
+			fields = fields.concat(self._getFieldsObject(resourceFields, "singleRelation"));
+
+			self.$scope.fields = fields;
+		});
 	};
 
 	/**

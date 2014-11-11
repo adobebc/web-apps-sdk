@@ -1,0 +1,5 @@
+<ul ng-class="class">
+	<li ng-repeat="currTab in model" ng-class="currTab.selected ? 'active' : ''">
+		<a href="{{currTab.href}}" ng-click="showTab(this, indexedModel, currTab);">{{currTab.label}}</a>
+	</li>
+</ul>

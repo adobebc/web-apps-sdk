@@ -20,11 +20,7 @@
 	<body>
 		<div ng-controller="MainController">
 			<section id="menu">
-		        <ul class="nav nav-tabs nav-tabs-menu" data-sid="navigation-menu">
-			  		<li class="active"><a href="#home" data-toggle="tab" data-sid="tabHome">Home</a></li>
-			  		<li><a href="#whats-new" data-toggle="tab">What's new</a></li>
-			  		<li><a href="#instructions" data-toggle="tab">Instructions</a></li>
-				</ul>
+				<api-tabs class="nav nav-tabs nav-tabs-menu" model="tabs"></api-mytabs>
 			</section>
 
 			<section id="body">
@@ -52,5 +48,6 @@
 		<script type="text/javascript" src="js/services/bcregistry.js"></script>
 
 		<script type="text/javascript" src="js/directives/selectize.js"></script>
+		<script type="text/javascript" src="js/directives/tabs.js"></script>
 	</body>
 </html>

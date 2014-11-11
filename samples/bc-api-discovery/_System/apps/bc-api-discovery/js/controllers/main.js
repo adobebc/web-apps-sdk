@@ -33,35 +33,9 @@
 		this._configService = configService;
 
 		this.$scope.appVersion = this._configService.appVersion;
-
-		this._init();
-	};
-
-	/**
-	 * @private
-	 * @instance
-	 * @descriptor
-	 * This method provides the initialization logic for discovery application. It initializes the logic for tabs 
-	 * control.
-	 */
-	MainController.prototype._init = function() {
-		var currHash = window.location.hash,
-			navMenu = $("*[data-sid='navigation-menu']"),
-			activeMenuSelector = "a[data-sid='tabHome']";
-
-		if(currHash.length > 2) {
-			currHash = currHash.substr(2);
-
-			activeMenuSelector = "a[href='#" + currHash + "']";
-		}
-
-		navMenu.find("a").on('click', function (e) {
-			var newHash = "/" + e.target.hash;
-
-		    window.location.hash = newHash;
-		});
-
-		navMenu.find(activeMenuSelector).tab("show");
+		this.$scope.tabs = [{"label": "Home", "href": "#home", "selected": true},
+							{"label": "What's new", "href": "#whats-new"},
+							{"label": "Instructions", "href": "#instructions"}];
 	};
 
 	app.controller("MainController", ["$scope", "ConfigService", MainController])

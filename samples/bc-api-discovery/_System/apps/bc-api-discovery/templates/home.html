@@ -6,8 +6,16 @@
 	<select class="form-control" selectize="subresourceSelection.options" placeholder="Choose a subresource ..." ng-model="subresourceSelection.value" options="subresources" ng-change="displaySubresourceFields();"></select>
 </div>
 
-<div class="col-md-6">
+<br style="clear: both" />
+
+<div class="col-md-4">
 	<ul>
-		<li ng-repeat="field in fields">{{field.name}} | {{field.type}}</li>
+		<li ng-repeat="field in resourceFields">{{field.name}} | {{field.type}}</li>
+	</ul>
+</div>
+
+<div class="col-md-4">
+	<ul>
+		<li ng-repeat="field in subresourceFields">{{field.name}} | {{field.type}}</li>
 	</ul>
 </div>

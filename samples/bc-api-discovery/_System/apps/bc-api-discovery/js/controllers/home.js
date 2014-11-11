@@ -53,7 +53,8 @@
 
         this.$scope.resources = [];
         this.$scope.subresources = [];
-        this.$scope.fields = [];
+        this.$scope.resourceFields = [];
+        this.$scope.subresourceFields = [];
 
         this.$scope.displaySubresources = function() {
         	return self._displaySubresources();
@@ -131,7 +132,7 @@
 			fields = fields.concat(self._getFieldsObject(resourceFields, "primary"));
 			fields = fields.concat(self._getFieldsObject(resourceFields, "singleRelation"));
 
-			self.$scope.fields = fields;
+			self.$scope.resourceFields = fields;
 		});	
 	};
 
@@ -171,7 +172,7 @@
 			fields = fields.concat(self._getFieldsObject(resourceFields, "primary"));
 			fields = fields.concat(self._getFieldsObject(resourceFields, "singleRelation"));
 
-			self.$scope.fields = fields;
+			self.$scope.subresourceFields = fields;
 		});
 	};
 

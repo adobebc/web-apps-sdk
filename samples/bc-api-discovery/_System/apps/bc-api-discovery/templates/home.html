@@ -1,3 +1,13 @@
-<div>
-	<select class="form-control" selectize="resourceSelection.options" placeholder="Choose a resource ..." ng-model="resourceSelection.value" options="resources"></select>
+<div class="col-md-4">
+	<select class="form-control" selectize="resourceSelection.options" placeholder="Choose a resource ..." ng-model="resourceSelection.value" options="resources" ng-change="displaySubresources(); displayResourceFields();"></select>
+</div>
+
+<div class="col-md-4">
+	<select class="form-control" selectize="subresourceSelection.options" placeholder="Choose a subresource ..." ng-model="subresourceSelection.value" options="subresources" ng-change="displaySubresourceFields()"></select>
+</div>
+
+<div class="col-md-6">
+	<ul>
+		<li ng-repeat="field in fields">{{field.name}} | {{field.type}}</li>
+	</ul>
 </div>

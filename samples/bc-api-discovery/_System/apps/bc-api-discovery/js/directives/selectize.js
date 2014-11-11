@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
                 selectize: '&',
                 options: '&'
             },
-            link: function(scope, element, attrs, ngModel) {
+            link: function(scope, element, attrs, ngModel) {            
                 var changing, options, selectize, invalidValues = [];
                 // Default options
                 options = angular.extend({

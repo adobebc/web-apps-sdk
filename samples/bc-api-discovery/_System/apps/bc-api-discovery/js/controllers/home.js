@@ -30,6 +30,8 @@
 	 * BC WebResources API registry in order to fecth accurate data.
 	 */
 	function HomeController($scope, registryService) {
+		var self = this;
+
 		this.$scope = $scope;
 		this._registryService = registryService;
 
@@ -41,7 +43,25 @@
           	}
         };
 
+        this.$scope.subresourceSelection = {
+          	options: {
+            	valueField: 'id',
+            	labelField: 'name',
+            	searchField: ['name']
+          	}
+        };
+
         this.$scope.resources = [];
+        this.$scope.subresources = [];
+        this.$scope.fields = [];
+
+        this.$scope.displaySubresources = function() {
+        	return self._displaySubresources();
+        };
+
+        this.$scope.displayResourceFields = function() {
+        	return self._displayResourceFields();
+        };
 
 		this._displayResources();
 	};
@@ -57,10 +77,91 @@
 		var self = this;
 
 		this._registryService.getRegistry().then(function(data) {
+			self.$scope.resources = [];
+
 			for(var resourceName in data) {
 				self.$scope.resources.push({"id": resourceName, "name": resourceName});
-			}			
+			}
 		});
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method displays all available subresources for the selected resource.
+	 */
+	HomeController.prototype._displaySubresources = function() {
+		var resourceId = this.$scope.resourceSelection.value,
+			self = this;
+
+		this._registryService.getRegistry().then(function(data) {
+			self.$scope.subresources = [];
+
+			var subresources = self._getSubresources(resourceId, "v3", data);
+
+			for(var subresourceName in subresources) {
+				self.$scope.subresources.push({"id": subresourceName, "name": subresourceName});
+			}
+		});
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method displays all resource fields identified from bc registry.
+	 */
+	HomeController.prototype._displayResourceFields = function() {
+		var resourceId = this.$scope.resourceSelection.value,
+			self = this;
+
+		this._registryService.getRegistry().then(function(data) {
+			var resourceFields = data[resourceId]["v3"].fields,
+				fields;
+
+			fields = self._getFieldsObject(resourceFields, "identifier");
+			fields = fields.concat(self._getFieldsObject(resourceFields, "primary"));
+			fields = fields.concat(self._getFieldsObject(resourceFields, "singleRelation"));
+
+			self.$scope.fields = fields;
+		});	
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method obtains all available subresources for a given resource identifier and
+	 * a specified version.
+	 */
+	HomeController.prototype._getSubresources = function(resourceId, version, registry) {
+		var resourceDescriptor = registry[resourceId][version];
+
+		return resourceDescriptor.fields.manyRelation;
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method receives fields object as stored by bc registry and a fields role (identifier,
+	 * primary or singleRelation) and returns an of field objects for display.
+	 */
+	HomeController.prototype._getFieldsObject = function(fields, fieldsRole) {
+		var fieldObjects = [];
+
+		fields = fields[fieldsRole];
+
+		for(var fieldName in fields) {
+			fieldObjects.push({"name": fieldName, "type": fields[fieldName].type});
+		}
+
+		return fieldObjects;
 	};
 
 	app.controller("HomeController", ["$scope", "BcRegistryService", HomeController]);

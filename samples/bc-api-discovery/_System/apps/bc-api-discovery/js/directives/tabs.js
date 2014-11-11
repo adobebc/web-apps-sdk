@@ -59,7 +59,7 @@
 		scope.class = attrs.class;
 		scope.model = scope.$parent[attrs.model];
 
-		scope.indexedModel = _indexModelByHref(scope.model);
+		scope.indexedModel = _indexModel(scope.model);
 		_activateTabs(scope, scope.indexedModel, element);
 
 		scope.showTab = _showTab;
@@ -69,16 +69,17 @@
 	 * @private
 	 * @function
 	 * @description
-	 * This function receives a list of tab descriptor objects and index them by href.
+	 * This function receives a list of tab descriptor objects and index them by href or click attributes.
 	 */
-	function _indexModelByHref(tabs) {
+	function _indexModel(tabs) {
 		var indexedTabs = {};
 
 		tabs = tabs || [];
 
 		for(var tabIndex = 0; tabIndex < tabs.length; tabIndex++) {
-			var tab = tabs[tabIndex];
-			indexedTabs[tab.href] = tab;
+			var tab = tabs[tabIndex],
+				indexCriteria = tab.href ? tab.href : tab.click;
+			indexedTabs[indexCriteria] = tab;
 		}
 
 		return indexedTabs;
@@ -115,7 +116,7 @@
 			currSelectedTab = indexedModel["#" + currHash];
 		}
 
-		if(!currSelectedTab || !indexedModel[currSelectedTab.href]) {
+		if(!currSelectedTab || !indexedModel[currSelectedTab.href ? currSelectedTab.href : currSelectedTab.click]) {
 			for(var tabKey in indexedModel) {
 				if(!indexedModel[tabKey].selected) {
 					continue;
@@ -126,11 +127,16 @@
 			}
 		}
 
-
 		_deselectAllTabs(indexedModel);
 		currSelectedTab.selected = true;
 
-		window.location.href = currSelectedTab.href;
+		if(currSelectedTab.href) {
+			window.location.href = currSelectedTab.href;
+
+			return;
+		}
+
+		currSelectedTab.click();
 	};
 
 	/**
@@ -144,7 +150,13 @@
 
 		tab.selected = true;
 
-		window.location.hash = tab.href;
+		if(tab.href) {
+			window.location.hash = tab.href;
+
+			return;
+		};
+
+		tab.click(scope);
 	};
 
 	app.directive("apiTabs", function() {

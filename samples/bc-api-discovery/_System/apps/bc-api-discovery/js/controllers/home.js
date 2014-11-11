@@ -64,6 +64,28 @@
         this.$scope.subresources = [];
         this.$scope.fields = [];
         this.$scope.allFieldsSelected = false;
+        this.$scope.generatedRequest = undefined;
+
+        this.$scope.requestGeneratorTabs = [{"label": "module_data", 
+        									 "click": function() { 
+        									 	self.$scope.generatedRequest = "Generating module_data snippet.";
+											 },
+        									 "selected": true},
+        									{"label": "JQuery",
+        									 "click": function() {
+        									 	self.$scope.generatedRequest = "Generating jquery snippet.";
+        									 }
+        									},
+											{"label": "curl",
+        									 "click": function() {
+        									 	self.$scope.generatedRequest = "Generating curl snippet.";
+        									 }
+        									},
+        									{"label": "HTTP 1.1",
+        									 "click": function() {
+        									 	self.$scope.generatedRequest = "Generating http 1.1 snippet.";
+        									 }
+        									}];
 
         this.$scope.displayVersions = function() {
         	return self._displayVersions();
@@ -151,7 +173,7 @@
 			versionId = this.$scope.versionsSelection.value,
 			self = this;
 
-		if(!resourceId) {
+		if(!resourceId || !versionId) {
 			return;
 		}
 

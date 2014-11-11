@@ -62,8 +62,7 @@
         this.$scope.resources = [];
         this.$scope.versions = [];
         this.$scope.subresources = [];
-        this.$scope.resourceFields = [];
-        this.$scope.subresourceFields = [];
+        this.$scope.fields = [];
 
         this.$scope.displayVersions = function() {
         	return self._displayVersions();
@@ -144,6 +143,7 @@
 	 */
 	HomeController.prototype._displaySubresources = function() {
 		var resourceId = this.$scope.resourceSelection.value,
+			versionId = this.$scope.versionsSelection.value,
 			self = this;
 
 		if(!resourceId) {
@@ -155,18 +155,11 @@
 		this._registryService.getRegistry().then(function(data) {
 			self.$scope.subresourceSelection.value = undefined;
 
-			var subresources = self._getSubresources(resourceId, "v3", data),
-				selectedSubresource;
+			var subresources = self._getSubresources(resourceId, versionId, data);
 
 			for(var subresourceName in subresources) {
 				self.$scope.subresources.push({"id": subresourceName, "name": subresourceName});
-
-				if(!selectedSubresource) {
-					selectedSubresource = subresourceName;
-				}				
 			}
-
-			self.$scope.subresourceSelection.value = subresourceName;
 		});
 	};
 
@@ -179,23 +172,24 @@
 	 */
 	HomeController.prototype._displayResourceFields = function() {
 		var resourceId = this.$scope.resourceSelection.value,
+			versionId = this.$scope.versionsSelection.value,
 			self = this;
 
-		if(!resourceId) {
-			self.$scope.resourceFields = [];
+		if(!resourceId | !versionId) {
+			self.$scope.fields = [];
 
 			return;
 		}
 
 		this._registryService.getRegistry().then(function(data) {
-			var resourceFields = data[resourceId]["v3"].fields,
+			var resourceFields = data[resourceId][versionId].fields,
 				fields;
 
 			fields = self._getFieldsObject(resourceFields, "identifier");
 			fields = fields.concat(self._getFieldsObject(resourceFields, "primary"));
 			fields = fields.concat(self._getFieldsObject(resourceFields, "singleRelation"));
 
-			self.$scope.resourceFields = fields;
+			self.$scope.fields = fields;
 		});	
 	};
 
@@ -226,7 +220,6 @@
 			self = this;
 
 		if(!resourceId || !subresourceId) {
-			self.$scope.subresourceFields = [];
 			return;
 		}
 
@@ -240,7 +233,7 @@
 			fields = fields.concat(self._getFieldsObject(resourceFields, "primary"));
 			fields = fields.concat(self._getFieldsObject(resourceFields, "singleRelation"));
 
-			self.$scope.subresourceFields = fields;
+			self.$scope.fields = fields;
 		});
 	};
 

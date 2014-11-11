@@ -11,17 +11,24 @@
 </div>
 
 <br style="clear: both" />
+<br style="clear: both" />
 
-<div class="col-md-4">
-	<ul>
-		<li ng-repeat="field in resourceFields">{{field.name}} | {{field.type}}</li>
-	</ul>
-</div>
+<div class="col-md-4" ng-if="fields.length > 0">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th><input type="checkbox" />Include</th>
+				<th>Field name</th>
+				<th>Field type</th>
+			</tr>
+		</thead>
 
-<div class="col-md-2"></div>
-
-<div class="col-md-4">
-	<ul>
-		<li ng-repeat="field in subresourceFields">{{field.name}} | {{field.type}}</li>
-	</ul>
+		<tbody>
+			<tr ng-repeat="field in fields">
+				<td><input type="checkbox" ng-model="field.selected"/></td>
+				<td>{{field.name}}</td>
+				<td>{{field.type}}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>

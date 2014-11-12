@@ -77,7 +77,7 @@
 <li>{{<span><code>forloop.first</code></span>}}  - is this the first iteration? <em>(boolean)</em></li>
 <li>{{<span><code>forloop.last</code></span>}}   - is this the last iteration? <em>(boolean)</em></li>
 </ul>
-<div class="ncs">
+<div class="chx">
 <p>The quickest way to see these variables in action is to iterate over the globals object. Paste this code in any page:</p>
 <pre class="language-javascript"><code>&lt;ul&gt;
 {% for item in globals %}
@@ -96,7 +96,7 @@
 &lt;/ul&gt;</code></pre>
 </div>
 <p>You can only iterate over a part of a collection, for example if you have a large list of customers you can only iterate over 20 at a time using the <em><strong>limit</strong></em> and <em><strong>offset</strong></em> variables.</p>
-<div class="ncs">
+<div class="chx">
 <pre class="language-javascript"><code>{module_data resource="customers" version="v3" template="" collection="customerInfo" order="firstName" fields="email1, firstName, lastName, id"}
 //this module creates a collection named customerInfo that contains the first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
 //let's display the data in the collection in a table:
@@ -124,7 +124,7 @@
 &lt;/table&gt;</code></pre>
 </div>
 <p>The  loop can also iterate in reverse using the <em><strong>reversed</strong></em> parameter. </p>
-<div class="ncs">
+<div class="chx">
 <p>For example, let's use the same customer collection from the previous example this time orders by <em>firstName</em> desc:</p>
 <pre class="language-javascript"><code>{module_data resource="customers" version="v3" template="" collection="customerInfo" order="-firstName" fields="email1, firstName, lastName, id"}
 //this module creates a collection named customerInfo that contains the first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
@@ -141,8 +141,8 @@
 {<span>% cycle 'red', 'green', 'blue' %</span>}<br /> 
 {<span>% cycle 'red', 'green', 'blue' %</span>}<br /> 
 {<span>% cycle 'red', 'green', 'blue' %</span>}<br /> </code></pre>
-<p>renders:</p>
-<p>
+<p class="chx">renders:</p>
+<p class="chx">
 red<br /> 
 green<br /> 
 blue<br /> 
@@ -152,7 +152,7 @@ red<br />
 <div type="cs-pod">
 <h2 id="Include">INCLUDE</h2>
 <p>Include is used to pull data from another page. </p>
-<p>You can think of it much like you would think of a content holder. The main difference is when you get a page's contents using include the Liquid  objects and collections will become available in your main page.</p>
+<p class="chx">You can think of it much like you would think of a content holder. The main difference is when you get a page's contents using include the Liquid  objects and collections will become available in your main page.</p>
 <p>For example, paste this code in a page, name it <em>to-be-included.html</em>:</p>
 <pre class="language-javascript"><code>&lt;html&gt;&lt;head&gt;&lt;head&gt;
 &lt;body&gt;
@@ -165,14 +165,14 @@ red<br />
 <pre class="language-javascript"><code>{<span>%include "/to-be-included.html"%</span>}
 &lt;pre&gt;{{<span>customerOrders | json</span>}}&lt;/pre&gt;
 //even though the collection customerOrders is not defined in the main page you will still see its contents</code></pre>
-<p>This feature is particularly useful in helping you keep the Liquid content organized, for example you can group pages that contains snippets of Liquid code (orders for the logged in customers, more complex code snippets that loop other objects or take into account more factors - is the user a wholesaler, does he have access to a particular page, does he have an order over $50 in the last week and so on) in a single folder and include them when needed.</p>
+<p class="chx">This feature is particularly useful in helping you keep the Liquid content organized, for example you can group pages that contains snippets of Liquid code (orders for the logged in customers, more complex code snippets that loop other objects or take into account more factors - is the user a wholesaler, does he have access to a particular page, does he have an order over $50 in the last week and so on) in a single folder and include them when needed.</p>
 </div>
 <div type="cs-pod">
 <h2 id="Assign">ASSIGN</h2>
 <p>This is used to create a new variable.</p>
-<pre class="language-javascript"><code>{<span>% assign new_variable = &quot;this is my new value&quot; %</span>}</code></pre>
+<pre class="language-javascript"><code>{<span>% assign new_variable = &quot;my new value&quot; %</span>}</code></pre>
 <p>Or update a variable's value:</p>
-<pre class="language-javascript"><code>{<span>% assign new_variable = &quot;this is the new value&quot; %</span>}</code></pre>
+<pre class="language-javascript"><code>{<span>% assign new_variable = &quot;the new value&quot; %</span>}</code></pre>
 </div>
 <div type="cs-pod">
 <h2 id="Capture">CAPTURE</h2>
@@ -192,7 +192,7 @@ red<br />
 <h2 id="Raw">RAW</h2>
 <p>Raw renders liquid markup in plain text. </p>
 <pre class="language-javascript"><code>{<span>%raw%</span>}
-	{{<span>this | json</span>}}
+	{<span>{<span>this | json</span>}</span>}
 {<span>%endraw%</span>}</code></pre>
 <p>This will render the Liquid code in plain text.</p>
 </div>

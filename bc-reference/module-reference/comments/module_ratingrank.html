@@ -12,11 +12,12 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_ratingrank imageFolder=&quot;/ratingImages/&quot;</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_ratingrank </span>render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; <span>imageFolder=&quot;/ratingImages/&quot;</span> template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
+<li><strong>render</strong> - for this module this can only be <em>item</em>. For more information on how to use this parameter take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li><li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>imageFolder</strong> - the path to your directory of custom star images to be used. For instance,{<span>module_ratingrank, /images/stars</span>} would use images located inside the directory <em>/images/stars</em> instead of the default image files. When using this parameter, ensure that your custom images use these exact names:
       <ul>
         <li>1stars.gif </li>
@@ -30,6 +31,7 @@
         <li>5stars.gif </li>
     </ul>
     </li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div><div class="layouts">
 <h2>This module can be rendered using:</h2>
@@ -37,6 +39,7 @@
     <li>using the 5-star rating image:<br/>
       <a href="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-09-08_16.00.59.png" class="fancybox"><img alt="" src="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/5stars_rating.jpg?Action=thumbnail&amp;Width=100&amp;algorithm=fill"/></a> </li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
+    
 </ul>
 
 <table width="100%" class="data-bordered">

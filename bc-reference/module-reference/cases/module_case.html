@@ -3,7 +3,7 @@
 <div class="description">
 <h2>Description</h2>
 <p>Displays customer's case history within a secure zone, so, when customer logs in he/she is identified by the system and this module displays all their previous form submissions, according to the "case list layout" in Admin -&gt; More Customization Options. Customer can view each case and download files attached to the case.
-</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/full-control-over-rendering" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
 <ul id="tabs" class="beta">
 
@@ -14,12 +14,12 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_case render=&quot;items|collection&quot; filter=&quot;all&quot; workflowId=&quot;123&quot; sortType=&quot;Subject&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; templateID="1551614"</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_case render=&quot;item|collection&quot; filter=&quot;all&quot; workflowId=&quot;123&quot; sortType=&quot;Subject&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; templateID="1551614"</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/beta/adding-liquid-logic-to-layouts">Adding Liquid logic to layouts</a> article for more details on how to use this parameter</li>
+<li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
     <li><strong>filter</strong> - sets display criteria.
 <ul>
         <li>a - displays all items that belong to that customer</li>
@@ -33,7 +33,7 @@
     </ul>
     </li>
      <li><strong>workflowId</strong> - appears only when selecting "all items in a workflow" as a display criteria </li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
     <li><strong>templateID</strong> - optional, the ID of the template used to render the case details view</li>
 </ul>
@@ -107,7 +107,7 @@
     <li><code>{<span>module_case filter=&quot;a&quot; </span>sortType=&quot;<span>Subject</span>&quot;}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by subject which is the web form name if generated automatically and will be displayed alphabetically</li>
     <li><code>{<span>module_case filter=&quot;c&quot; workflowId=&quot;25261&quot; sortType=&quot;Default&quot; templateId=&quot;1440381</span>&quot;}</code> - This module will display all cases that have workflow 25261 assigned to them, sort them by date, and assign template id #1440381 to the detail list for each case opened from the generated list </li>
     <li><code>{<span>module_case filter=&quot;a&quot; sortType=&quot;Default</span>&quot; template=&quot;/layouts/template.tpl&quot;}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by date using a custom template</li>
-    <li><code>{module_case filter=&quot;a&quot;<span> collection=&quot;custom1&quot;</span> template=&quot;&quot;}</code> - in this case nothing will be displayed, however the case details will become available in the <strong>custom1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
+    <li><code>{module_case filter=&quot;a&quot;<span> collection=&quot;custom1&quot;</span> template=&quot;&quot;}</code> - in this case nothing will be displayed, however the case details will become available in the <strong>custom1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

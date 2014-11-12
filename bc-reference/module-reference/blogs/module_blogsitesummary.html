@@ -2,7 +2,7 @@
 
 <div class="description">
 <h2>Description</h2>
-<p>List of latest post names across all blogs (list format) or across the single blog.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/full-control-over-rendering" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+<p>List of latest post names across all blogs (list format) or across the single blog.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
 <ul id="tabs" class="beta">
 
@@ -13,16 +13,16 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_blogsitesumm	ary render="items|collection" blogId=&quot;24&quot; rowCount=&quot;6&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_blogsitesumm	ary render="items|collection" blogId=&quot;24&quot; rowCount=&quot;6&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/beta/adding-liquid-logic-to-layouts">Adding Liquid logic to layouts</a> article for more details on how to use this parameter</li>
+<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
     <li><strong>blogId</strong> - if you use <em>-1</em>, you will display the summary across the whole site. For a single blog you need to use the blog ID.</li>
     <li><strong>rowCount</strong> - limits the number of posts the module can display. Default is <em>5</em> posts.</li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter!supress">supress the module's output</a></li>
 </ul>
 </div>
 <div class="layouts">
@@ -160,7 +160,7 @@
 &lt;/ul&gt;
 </code></pre>
 </li>
-<li><code>{module_blogsitesummary<span> blogId=&quot;9216</span>&quot; <span>collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
+<li><code>{module_blogsitesummary<span> blogId=&quot;9216</span>&quot; <span>collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 <p>
 As you can see above, the module displays the post titles followed by the name of the author and the date.

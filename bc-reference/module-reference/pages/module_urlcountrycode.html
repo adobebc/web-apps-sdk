@@ -1,7 +1,7 @@
 <h1>{<span>module_urlcountrycode</span>}</h1>
 <div class="description">
 <h2>Description</h2>
-<p>This module outputs the 2 letter country code associated with the current domain.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/full-control-over-rendering" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+<p>This module outputs the 2 letter country code associated with the current domain.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
 <ul id="tabs" class="beta">
     <li><a href="#named-params">New named parameters documentation</a></li>
@@ -14,8 +14,8 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - you can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+<li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter!supress">supress the module's output</a></li>
 </ul>
 </div><div class="layouts">
 <h2>This module can be rendered:</h2>
@@ -27,7 +27,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_urlcountrycode</span>}</code> - This will output US assuming the country set for your domain is "UNITED STATES" like so: &nbsp;<img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-29_1640.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/></li><li><code>{module_urlcountrycode<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
+    <li><code>{<span>module_urlcountrycode</span>}</code> - This will output US assuming the country set for your domain is "UNITED STATES" like so: &nbsp;<img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-29_1640.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/></li><li><code>{<span>module_urlcountrycode collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
      <li>the country code is also contained in a <a href="/developers/beta/getting-started-with-liquid#globals">Liquid global</a> object. <code>{{<span>globals.site</span>}}</code> will output:
        <pre class="language-javascript"><code>{
   "id": 1576341,

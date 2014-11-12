@@ -1,7 +1,7 @@
 <h1>{<span>module_url</span>}</h1>
 <div class="description">
 <h2>Description</h2>
-<p>This module you can use in your web pages and it will allows you to capture information that you have appended to a URL. Please see <a href="/tutorials#!/site-design/passing-data-in-the-url-string-to-pre-populate-information">this article</a> for further details</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/full-control-over-rendering" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+<p>This module you can use in your web pages and it will allows you to capture information that you have appended to a URL. Please see <a href="/tutorials#!/site-design/passing-data-in-the-url-string-to-pre-populate-information">this article</a> for further details</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
 <ul id="tabs" class="beta">
 
@@ -18,8 +18,8 @@
 <h2>Parameters</h2>
 <ul>
     <li><strong>param</strong> -this is the name of the query parameter, see the example below</li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - you can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter!supress">supress the module's output</a></li>
 </ul>
 </div><div class="layouts">
 <h2>This module can be rendered:</h2>
@@ -31,7 +31,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_url param=&quot;question</span>&quot;}</code> - assuming the URL is mysite.com?question=how_are_you this module will display in plain text <em>How_are_you</em></li><li><code>{module_url<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
+    <li><code>{<span>module_url param=&quot;question</span>&quot;}</code> - assuming the URL is mysite.com?question=how_are_you this module will display in plain text <em>How_are_you</em></li><li><code>{<span>module_url collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
     <li>the query params are also contained in a Liquid global object. this means that for the URL <strong>http://mysite.businesscatalyst.com/test2.html?question=true&second=true&third=not-sure </strong><code>{{<span>globals.get</span>}}</code> will output:
       <pre class="language-javascript"><code>{
   "ID": "/test2.html",

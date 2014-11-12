@@ -1,5 +1,5 @@
 <h1>Liquid globals</h1>
-<div id="modules">
+<div id="modules" class="chx">
 <h2>Description</h2>
 <p>The Liquid globals object is available on every page and it contains useful information about the site, the current page, the logged in user, browser related information and much more.</p>
 </div>
@@ -15,9 +15,9 @@
     <tbody>
         <tr>
             <td valign="top" class="liquid tag"><code>{{<span class="tagname">globals.get</span>}}</code></td>
-         <td class="description">Contains the current relative path and the query parameters passed in the URL. For example, for the URL <em>http://mtica1.businesscatalyst.com/_information/global?a=1&b=2</em> the output of the module is:
-         <pre class="language-javascript"><code>{
-  "ID": "/_information/global",
+         <td class="description">The current relative path and the query parameters passed in the URL. For example, for the URL <em>http://mtica1.businesscatalyst.com/_s1/s2?a=1&b=2</em> the output of the module is:
+           <pre class="language-javascript"><code>{
+  "ID": "/_s1/s2",
   "a": "1",
   "b": "2"
 }</code></pre>

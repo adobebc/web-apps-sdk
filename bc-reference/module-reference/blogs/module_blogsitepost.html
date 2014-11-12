@@ -2,7 +2,7 @@
 
 <div class="description">
 <h2>Description</h2>
-<p>Displays latest posts across all blogs.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/full-control-over-rendering" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+<p>Displays latest posts across all blogs.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
 <ul id="tabs" class="beta">
 
@@ -19,7 +19,7 @@
 <h2>Parameters</h2>
 <ul>
     <li><strong>rowCount</strong> - limits the number of posts displayed by the module)</li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers#!/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
@@ -156,7 +156,7 @@
     <li>
     <code>{<span>module_blogsitepost rowCount="2" template="/layouts/blogtemplate.tpl"</span>}</code> - will display the most recent 2 posts on the site using the blogtemplate.tpl template</li>
     <li>
-    <code>{<span>module_blogsitepost collection=&quot;blog-posts&quot; template=""</span>}</code> - will not render anything. What will happen is the Liquid &quot;blog-posts&quot; collection will become available. Take a look at this article for <a href="/developers/beta/full-control-over-rendering#customtags">more information on collections</a>.</li>
+    <code>{<span>module_blogsitepost collection=&quot;blog-posts&quot; template=""</span>}</code> - will not render anything. What will happen is the Liquid &quot;blog-posts&quot; collection will become available. Take a look at this article for <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#customtags">more information on collections</a>.</li>
 </ul>
 </div>
 </div>

@@ -13,13 +13,15 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_ratingfeedback sortType=&quot;datereverse|date&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span></span>module_ratingfeedback render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; sortType=&quot;datereverse|date&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
+<li><strong>render</strong> - for this module this can only be <em>item</em>. For more information on how to use this parameter take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+<li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>sortType</strong> - if this parameter is present the comments are ordered newest first</li>
-     <li><strong>template</strong> - the path to the custom template you want this module to be rendered with</li>
+     <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -69,7 +71,7 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{{<span class="tagname">website</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_website</span>}</code></td><td class="description"><span>Website of the person who provided the comment. If the comment form was submitted with the "Website" field not filled in this tag will output "{<span class="tagname">tag_website</span>}</code>"</span></td>
+         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_website</span>}</code></td><td class="description"><span>Website of the person who provided the comment. If the comment form was submitted with the "Website" field not filled in this tag will output "<code>{<span class="tagname">tag_website</span>}</code>"</span></td>
         </tr>
     </tbody>
 </table>
@@ -78,7 +80,7 @@
 <h2>Examples</h2>
 <ul>
     <li><code>{<span>module_ratingfeedback sortType="date"</span>}</code> - displays the comments newest first</li>
-    <li><code>{<span>module_ratingfeedback template="/layouts/custom/comments.tpl"</span>}</code> - displays the comments using the comments.tpl custom template</li><li><code>{module_captchav2<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
+    <li><code>{<span>module_ratingfeedback template="/layouts/custom/comments.tpl"</span>}</code> - displays the comments using the comments.tpl custom template</li><li><code>{module_captchav2<span> collection=&quot;collection1&quot; template=&quot;/folder/template.tpl&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>

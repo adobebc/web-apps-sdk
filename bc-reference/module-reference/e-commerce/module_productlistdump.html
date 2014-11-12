@@ -1,7 +1,7 @@
 <h1>{<span>module_productlistdump</span>}</h1>
 <div class="description">
 <h2>Description</h2>
-<p>Displays a list of products (in a given catalog or all the products on the site). This module does not use a layout, its output is an unordered list.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/full-control-over-rendering" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+<p>Displays a list of products (in a given catalog or all the products on the site). This module does not use a layout, its output is an unordered list.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
 <ul id="tabs" class="beta">
 
@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_productlistdump catalogId=&quot;14886&quot; rowCount=&quot;2&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Weight&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span></span>module_productlistdump catalogId=&quot;14886&quot; rowCount=&quot;2&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Weight&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -26,8 +26,8 @@
         <li>Weight - sorts items by weight</li>
     </ul>
     </li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter!supress">supress the module's output</a></li>
 </ul>
 </div>
 <div class="layouts">
@@ -95,7 +95,7 @@
 <ul>
     <li><code>{<span>module_productlistdump catalogId=&quot;63858&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Alphabetical</span>&quot;}</code> - displays all the products in the catalog with the ID 63858 ordered alphabetically. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in a new tab.</li>
     <li><code>{<span>module_productlistdump </span>catalogId=&quot;<span>-1&quot; </span>targetFrame=&quot;<span>_self&quot; </span>sortType=&quot;<span>weight</span>&quot;}</code> - displays all the products regardless of the catalog they are in ordered by weight. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in the same tab.</li>
-    <li><code>{module_productlistdump<span> </span>catalogId=&quot;63858&quot; <span>collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
+    <li><code>{module_productlistdump<span> </span>catalogId=&quot;63858&quot; <span>collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 </div>
 </div>

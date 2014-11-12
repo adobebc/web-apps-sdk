@@ -2,7 +2,7 @@
 
 <div class="description">
 <h2>Description</h2>
-<p>When placed onto a web page or a template it displays the web app items.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/beta/full-control-over-rendering" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+<p>When placed onto a web page or a template it displays the web app items.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
 <ul id="tabs" class="beta">
 
@@ -13,12 +13,12 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_webapps </span>render=&quot;items|collection&quot; <span>id="webappId|webappName" filter="item" itemId="123" targetFrame="" resultsPerPage="" hideEmptyMessage="false" rowCount="" sortType="ALPHABETICAL"</span> collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_webapps </span>render=&quot;item|collection&quot; <span>id="webappId|webappName" filter="item" itemId="123" targetFrame="" resultsPerPage="" hideEmptyMessage="false" rowCount="" sortType="ALPHABETICAL"</span> collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/beta/adding-liquid-logic-to-layouts">Adding Liquid logic to layouts</a> article for more details on how to use this parameter</li>
+<li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
     <li><strong>id</strong> - the web app name or the web app's ID</li>
     <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
 <ul>
@@ -47,7 +47,7 @@
         <li>comments - display the items with the largest number of Comments first (can be used for a 'highest votes' type display).</li>
   </ul>
     </li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/beta/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
@@ -240,7 +240,7 @@
     <li><code>{<span>module_webapps id=&quot;56&quot; filter=&quot;all&quot; targetFrame=&quot;_blank&quot; useBackupTemplate=&quot;true&quot; resultsPerPage=&quot;12&quot; hideEmptyMessage=&quot;true&quot; rowCount=&quot;3&quot;</span> }</code> - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
     <li><code>{<span>module_webapps</span> id=&quot;<span>123&quot; filter=&quot;all&quot; </span>rowCount=&quot;12&quot; }</code> - will only display 12 items per page </li>
     <li><code>{<span>module_webapps</span> id=&quot;<span>123&quot; filter=&quot;latest&quot; </span>rowCount=&quot;5&quot;}</code> - will only display the latest 5 items (by date) on the page</li>
-    <li><code>{<span>module_webapps</span> id=&quot;<span>56&quot; filter=&quot;all&quot; resultsPerPage=&quot;10&quot; rowCount=&quot;1&quot; template="/layouts/custom/walist.html"</span> }</code> - will only display 10 items using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{<span>module_webapps</span> id=&quot;<span>123&quot;</span><span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/beta/full-control-over-rendering#collections">collection</a>.</li>
+    <li><code>{<span>module_webapps</span> id=&quot;<span>56&quot; filter=&quot;all&quot; resultsPerPage=&quot;10&quot; rowCount=&quot;1&quot; template="/layouts/custom/walist.html"</span> }</code> - will only display 10 items using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{<span>module_webapps</span> id=&quot;<span>123&quot;</span><span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 <p>The previous and next links can be customized using CSS. Each link has its own custom CSS class. To see the CSS class assigned to these links view the web page source where these links appear. The CSS class name format is: WebAppIDPrev and WebAppIDNext where ID is the internal ID assigned to your Web App. You can easily find the ID using Firebug once on the live page.</p>
 </div>

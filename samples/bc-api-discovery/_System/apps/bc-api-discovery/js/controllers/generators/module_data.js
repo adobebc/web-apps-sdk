@@ -23,6 +23,8 @@
 */
 
 (function(app) {
+	var SELECT_FIELDS = "Please select the fields you want to include.";
+
 	/**
 	 * @constructor
 	 * @public
@@ -37,13 +39,17 @@
 		this._generatorsService = generatorsService;
 
 		this.$scope.data = this._generatorsService.data;
-		this.$scope.snippet = "Please select the fields you want to include.";
+		this.$scope.snippet = SELECT_FIELDS;
+		this.$scope.existingResource = {
+			"id": undefined
+		};
 
 		this.$scope.$watch(
 			function() {
 				return self._generatorsService.data;
 			},
-			function(data) {				
+			function(data) {
+				self.$scope.data = data;
 				self._generateSnippet(data);
 			});
 
@@ -58,8 +64,67 @@
 	 * This method generates a snippet of code based on the newly selected data.
 	 */
 	ModuleDataController.prototype._generateSnippet = function(data) {
-		
+		if(!this._validateInputData(data, this.$scope)) {
+			return;
+		}
+
+		var snippet = ['{module_data resource="'],
+			fieldsParam = [];
+
+		for(var idx = 0; idx < data.fields.length; idx++) {
+			fieldsParam.push(data.fields[idx].name);
+		}
+
+		snippet.push(data.resourceId);
+		snippet.push('" ');
+
+		snippet.push('version="');
+		snippet.push(data.versionId);
+		snippet.push('" ');
+
+		snippet.push('fields="');
+		snippet.push(fieldsParam.join(","));
+		snippet.push('"');
+
+		if(data.subresourceId) {
+			snippet.push(' subresource="');
+			snippet.push(data.subresourceId)
+			snippet.push('"');
+		}
+
+		if(this.$scope.existingResource.id) {
+			snippet.push(' resourceId="');
+			snippet.push(this.$scope.existingResource.id);
+			snippet.push('"');
+		}
+
+		snippet.push("}");
+
+		this.$scope.snippet = snippet.join("");
 	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method validates the given input data and updates the code snippet if an error occurs.
+	 */
+	ModuleDataController.prototype._validateInputData = function(data, scope) {
+		if(!data.fields || data.fields.length == 0) {
+			this.$scope.snippet = SELECT_FIELDS;
+
+			return false;
+		}
+
+		if(data.subresourceId && !scope.existingResource.id) {
+			this.$scope.snippet = "";
+
+			return false;
+		}
+
+		return true;
+	}
 
 	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", ModuleDataController]);
 })(DiscoveryApp);

@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_blogsitepost rowCount=&quot;4&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span></span>module_blogsitepost rowCount=&quot;4&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -154,9 +154,7 @@
     <code>{<span>module_blogsitepost rowCount="2"</span>}</code> - will display the most recent 2 posts on the site.
     </li>
     <li>
-    <code>{<span>module_blogsitepost rowCount="2" template="/layouts/blogtemplate.tpl"</span>}</code> - will display the most recent 2 posts on the site using the blogtemplate.tpl template</li>
-    <li>
-    <code>{<span>module_blogsitepost collection=&quot;blog-posts&quot; template=""</span>}</code> - will not render anything. What will happen is the Liquid &quot;blog-posts&quot; collection will become available. Take a look at this article for <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#customtags">more information on collections</a>.</li>
+      <code>{<span>module_blogsitepost collection=&quot;blog-posts&quot; template=""</span>}</code> - will not render anything. What will happen is the Liquid &quot;blog-posts&quot; collection will become available. Take a look at this article for <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#customtags">more information on collections</a>.</li>
 </ul>
 </div>
 </div>

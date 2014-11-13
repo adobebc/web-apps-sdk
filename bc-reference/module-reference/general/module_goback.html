@@ -12,12 +12,14 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_goback,text=&quot;My custom label for the goback link&quot;</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_goback,text=&quot;My custom label for the goback link&quot;</span> collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>text</strong> - the text the link will render</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
 </ul>
 </div><div class="layouts">
 <h2>This module can be rendered:</h2>

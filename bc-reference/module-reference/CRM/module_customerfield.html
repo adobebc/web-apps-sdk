@@ -5,7 +5,7 @@
 </div>
 <div class="syntax">
 <h2>Syntax</h2>
-<p><code>{<span>module_customerfield,extended database id,custom field id</span>}</code></p>
+<pre class="language-markup"><code>{<span>module_customerfield,extended database id,custom field id collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -13,6 +13,8 @@
     <li><strong>extended database id</strong> - this is the ID of the extended database field collection
     </li>
     <li><strong>custom field id</strong> - this is the ID of the individual field you wish to render</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
 </ul>
 </div>
 <div class="examples">

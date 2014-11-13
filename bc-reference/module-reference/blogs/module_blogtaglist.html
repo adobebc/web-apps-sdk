@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_blogtaglist render="items|collection" blogId=&quot;24&quot; rowCount=&quot;2&quot;</span> collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_blogtaglist render="item|collection" blogId=&quot;24&quot; rowCount=&quot;2&quot;</span> collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -21,7 +21,7 @@
     <li><strong>blogId</strong> - ID of the targeted blog</li>
     <li><strong>rowCount</strong> - number of rows to be generated (each tag is listed on a separate row, so if the row count is limited to 2, only the first 2 tags will  be generated)</li>
     <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter!supress">supress the module's output</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
 </ul>
 </div>
 <div class="layouts">

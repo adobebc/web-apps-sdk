@@ -1,5 +1,6 @@
 <h1>e-Commerce related </h1>
-<h2>Shopping cart</h2>
+<h2>Shopping cart related</h2>
+<p>This section covers some common shopping cart related scenarios.</p>
 <div id="shopping-cart-quantity">
 <h3>Do something if the shopping cart value is over $25</h3>
 <p>In this scenario we want to reveal a paragraph (or any other HTML block) that might contain a discount or some other bonuses only for customer who have added more than $25 worth of items in their shopping cart. </p>
@@ -17,7 +18,7 @@
 </ul>
 <h4>The build:</h4>
 <p class="alert alert-warning">For simplicity we will paste all the javascript code on the template itself and assume all the additional pages are created on the site's root.</p>
-<p><strong>Step1</strong> - First of all create the cart.html page with this content:</p>
+<p><strong>Step1</strong> - First of all open the Develop mode editor, create the <em>cart.html</em> page and paste this content:</p>
 <pre class="language-javascript"><code>{<span>module_shoppingcartsummary collection=&quot;cart&quot;</span>}
 &lt;div class=&quot;content&quot;&gt;
 
@@ -46,7 +47,7 @@
       
       function readCart()
       {
-         $(&#39;.shop-alert&#39;).load(&#39;/dev-forum/cart.html .content&#39;)
+         $(&#39;.shop-alert&#39;).load(&#39;/cart.html .content&#39;)
           
       }
 &lt;/script&gt;</code></pre>

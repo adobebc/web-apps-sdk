@@ -34,6 +34,21 @@
 </div>
 
 <div class="col-md-8" ng-if="fields.length > 0">
-	<api-tabs class="nav nav-tabs nav-tabs-menu" model="requestGeneratorTabs"></api-tabs>
-	{{generatedRequest}}
+	<api-tabs>
+		<api-tab-pane title="module_data">
+			<h3>module data body</h3>
+		</api-tab-pane>
+
+		<api-tab-pane title="JQuery">
+			<h3>JQuery body</h3>
+		</api-tab-pane>
+
+		<api-tab-pane title="curl">
+			<h3>curl body</h3>
+		</api-tab-pane>		
+
+		<api-tab-pane title="HTTP 1.1">
+			<h3>HTTP 1.1 body</h3>
+		</api-tab-pane>		
+	</api-tabs>
 </div>

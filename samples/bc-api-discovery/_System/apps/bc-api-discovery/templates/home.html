@@ -36,19 +36,21 @@
 <div class="col-md-8" ng-if="fields.length > 0">
 	<api-tabs>
 		<api-tab-pane title="module_data">
-			<h3>module data body</h3>
+			<div ng-controller="ModuleDataController">
+				<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/module_data.html'"></div>
+			</div>
 		</api-tab-pane>
 
 		<api-tab-pane title="JQuery">
-			<h3>JQuery body</h3>
+			<div ng-controller="JqueryController">
+				<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/jquery.html'"></div>
+			</div>
 		</api-tab-pane>
 
-		<api-tab-pane title="curl">
-			<h3>curl body</h3>
-		</api-tab-pane>		
-
 		<api-tab-pane title="HTTP 1.1">
-			<h3>HTTP 1.1 body</h3>
-		</api-tab-pane>		
+			<div ng-controller="Http11Controller">
+				<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/http11.html'"></div>
+			</div>
+		</api-tab-pane>
 	</api-tabs>
 </div>

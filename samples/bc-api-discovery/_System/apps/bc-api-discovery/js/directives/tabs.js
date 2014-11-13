@@ -46,7 +46,7 @@
                 this.addPane = function(pane) {
                     var currHash = window.location.hash;
 
-                    if(!currHash && panes.length == 0) {
+                    if((!currHash || !pane.hash) && panes.length == 0) {
                         pane.selected = true;
                     };
 
@@ -61,7 +61,7 @@
                     }
 
                     angular.forEach(panes, function(pane) {
-                        if(!currHash) {
+                        if(!currHash || !pane.hash) {
                             return;
                         }
 

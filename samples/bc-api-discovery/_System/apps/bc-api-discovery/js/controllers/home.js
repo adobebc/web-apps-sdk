@@ -29,11 +29,12 @@
 	 * This controller provides the logic for correctly displaying the BC APIs discovery UI. It relies on
 	 * BC WebResources API registry in order to fecth accurate data.
 	 */
-	function HomeController($scope, registryService) {
+	function HomeController($scope, registryService, generatorsService) {
 		var self = this;
 
 		this.$scope = $scope;
 		this._registryService = registryService;
+		this._generatorsService = generatorsService;
 
         this.$scope.resourceSelection = {
           	options: {
@@ -84,6 +85,14 @@
 
         this.$scope.selectAllFields = function() {
         	return self._selectAllFields();
+        };
+
+        this.$scope.updateGeneratorsData = function() {
+        	return self._updateGeneratorsData();
+        };
+
+        this.$scope.getSelectedFields = function() {
+        	return self._getSelectedFields();
         };
 
 		this._displayResources();
@@ -195,8 +204,6 @@
 			versionId = this.$scope.versionsSelection.value,
 			self = this;
 
-		this.$scope.allFieldsSelected = false;
-
 		if(!resourceId | !versionId) {
 			self.$scope.fields = [];
 
@@ -212,6 +219,8 @@
 			fields = fields.concat(self._getFieldsObject(resourceFields, "singleRelation"));
 
 			self.$scope.fields = fields;
+
+			self._updateGeneratorsData();
 		});	
 	};
 
@@ -227,8 +236,6 @@
 			versionId = this.$scope.versionsSelection.value,
 			subresourceId = this.$scope.subresourceSelection.value;
 			self = this;
-
-		this.$scope.allFieldsSelected = false;
 
 		if(!resourceId || !subresourceId || !versionId) {
 			return;
@@ -248,6 +255,8 @@
 			fields = fields.concat(self._getFieldsObject(resourceFields, "singleRelation"));
 
 			self.$scope.fields = fields;
+
+			self._updateGeneratorsData();
 		});
 	};
 
@@ -276,6 +285,30 @@
 	 * @instance
 	 * @method
 	 * @description
+	 * This method is responsible to update all values from generators data service instance.
+	 */
+	HomeController.prototype._updateGeneratorsData = function() {
+		var resourceId = this.$scope.resourceSelection.value,
+			versionId = this.$scope.versionsSelection.value,
+			subresourceId = this.$scope.subresourceSelection.value;
+
+		var selectedFields = this._getSelectedFields();
+
+		this._generatorsService.data = {
+			"resourceId": resourceId,
+			"versionId": versionId,
+			"subresourceId": subresourceId,
+			"fields": selectedFields
+		};
+
+		this.$scope.allFieldsSelected = selectedFields.length == this.$scope.fields.length;
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
 	 * This method select / unselect all fields currently displayed.
 	 */
 	HomeController.prototype._selectAllFields = function() {
@@ -284,7 +317,31 @@
 		for(var idx = 0; idx < this.$scope.fields.length; idx++) {
 			this.$scope.fields[idx].selected = this.$scope.allFieldsSelected;
 		}
+
+		this._updateGeneratorsData();
 	};
 
-	app.controller("HomeController", ["$scope", "BcRegistryService", HomeController]);
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method returns all selected fields from the interface.
+	 */
+	HomeController.prototype._getSelectedFields = function() {
+		var allFields = this.$scope.fields,
+			selectedFields = [];
+
+		for(var idx = 0; idx < allFields.length; idx++) {
+			if(!allFields[idx].selected) {
+				continue;
+			}
+
+			selectedFields.push(allFields[idx]);
+		}
+
+		return selectedFields;
+	};
+
+	app.controller("HomeController", ["$scope", "BcRegistryService", "GeneratorsDataService", HomeController]);
 })(DiscoveryApp);

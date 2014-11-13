@@ -25,7 +25,7 @@
 
 		<tbody>
 			<tr ng-repeat="field in fields">
-				<td><input type="checkbox" ng-checked="field.selected"/></td>
+				<td><input type="checkbox" ng-model="field.selected" ng-checked="field.selected" ng-click="updateGeneratorsData()" /></td>
 				<td>{{field.name}}</td>
 				<td>{{field.type}}</td>
 			</tr>

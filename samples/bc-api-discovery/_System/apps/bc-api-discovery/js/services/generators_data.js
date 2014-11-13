@@ -24,42 +24,21 @@
 
 (function(app) {
 	/**
-	 * @constructor
 	 * @public
+	 * @constructor
 	 * @description
-	 * This class provides the module data generator which is responsible to generate queries based on the currently
-	 * selected fields.
+	 * This class provides a service which holds all required information for generators to correctly
+	 * generate snippets of code. It holds currently selected fields as well as resourceId, versionId,
+	 * subresourceId.
 	 */
-	function ModuleDataController($scope, generatorsService) {
-		var self = this;
-
-		this.$scope = $scope;
-		this._generatorsService = generatorsService;
-
-		this.$scope.data = this._generatorsService.data;
-		this.$scope.snippet = "Please select the fields you want to include.";
-
-		this.$scope.$watch(
-			function() {
-				return self._generatorsService.data;
-			},
-			function(data) {				
-				self._generateSnippet(data);
-			});
-
-		console.log("Module data controller instantiated.");
+	function GeneratorsDataService() {
+		this.data = {
+			resourceId: undefined,
+			versionId: undefined,
+			subresouceId: undefined,
+			fields: undefined
+		};
 	};
 
-	/**
-	 * @private
-	 * @method
-	 * @instance
-	 * @description
-	 * This method generates a snippet of code based on the newly selected data.
-	 */
-	ModuleDataController.prototype._generateSnippet = function(data) {
-		
-	};
-
-	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", ModuleDataController]);
+	app.service("GeneratorsDataService", [GeneratorsDataService]);
 })(DiscoveryApp);

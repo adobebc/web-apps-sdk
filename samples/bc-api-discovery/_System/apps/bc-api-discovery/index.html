@@ -19,12 +19,26 @@
 
 	<body>
 		<div ng-controller="MainController">
-			<section id="menu">
-				<api-tabs class="nav nav-tabs nav-tabs-menu" model="tabs"></api-tabs>
-			</section>
+			<section id="tabs-content">
+				<api-tabs>
+				  <api-tab-pane title="Home" hash="#/home">
+				  	<div ng-controller="HomeController">
+				  		<div ng-include="'/_System/apps/bc-api-discovery/templates/home.html'"></div>
+				  	</div>
+				  </api-tab-pane>
+				  
+				  <api-tab-pane title="What's new" hash="#/whats-new">
+				  	<div ng-controller="WhatsNewController">
+				  		<div ng-include="'/_System/apps/bc-api-discovery/templates/whats-new.html'"></div>
+				  	</div>
+				  </api-tab-pane>
 
-			<section id="body">
-				<div ng-view>Default content</div>
+				  <api-tab-pane title="Instructions" hash="#/instructions">
+				  	<div ng-controller="InstructionsController">
+				  		<div ng-include="'/_System/apps/bc-api-discovery/templates/instructions.html'"></div>
+				  	</div>
+				  </api-tab-pane>
+				</api-tabs>				
 			</section>
 		</div>
 

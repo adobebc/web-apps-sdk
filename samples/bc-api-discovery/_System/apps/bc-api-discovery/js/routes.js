@@ -25,20 +25,6 @@
 	window.DiscoveryApp = angular.module("BcDiscoveryApp", ["ngRoute"]);
 
 	DiscoveryApp.config(function($routeProvider, $locationProvider) {
-		$routeProvider
-			.when("/home", {
-				"templateUrl": "templates/home.html",
-				"controller": "HomeController"
-			})
-			.when("/whats-new", {
-				"templateUrl": "templates/whats-new.html",
-				"controller": "WhatsNewController"
-			})
-			.when("/instructions", {
-				"templateUrl": "templates/instructions.html",
-				"controller": "InstructionsController"
-			});
-
 	  	// configure html5 to get links working on jsfiddle
   		$locationProvider.html5Mode(false);
 	});		

@@ -33,9 +33,6 @@
 		this._configService = configService;
 
 		this.$scope.appVersion = this._configService.appVersion;
-		this.$scope.tabs = [{"label": "Home", "href": "#home", "selected": true},
-							{"label": "What's new", "href": "#whats-new"},
-							{"label": "Instructions", "href": "#instructions"}];
 	};
 
 	app.controller("MainController", ["$scope", "ConfigService", MainController])

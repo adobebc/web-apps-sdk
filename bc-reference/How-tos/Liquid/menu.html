@@ -92,24 +92,24 @@
   	&lt;li&gt;&lt;a href=&quot;{{i.url}}&quot;&gt;{{i.label}}&lt;/a&gt; 
 			{% if i.items %}
      		&lt;ul&gt;
-      	{% for j in i.items %}
-      		&lt;li&gt;&lt;a href=&quot;{{j.url}}&quot;&gt;{{j.label}}&lt;/a&gt; 
+			{% for j in i.items %}
+				&lt;li&gt;&lt;a href=&quot;{{j.url}}&quot;&gt;{{j.label}}&lt;/a&gt; 
 					{% if j.items %}
         			&lt;ul&gt;
-          		{% for k in j.items %}
-          			&lt;li&gt;
+					{% for k in j.items %}
+						&lt;li&gt;
             				&lt;a href=&quot;{{k.url}}&quot;&gt;{{k.label}}&lt;/a&gt;
-          			&lt;/li&gt;
-          		{% endfor %}
+						&lt;/li&gt;
+					{% endfor %}
         			&lt;/ul&gt;
         			{% endif %}
-      		&lt;/li&gt;
-      	{% endfor %}
+				&lt;/li&gt;
+			{% endfor %}
     		&lt;/ul&gt;
     		{% endif %}
   	&lt;/li&gt;
-  {% endfor %} 
-	{% endif %}
+   {% endfor %} 
+  {% endif %}
 &lt;/ul&gt;</code></pre>
 <p>Although the code above might look intimidating at first glace it is just a collection of nested <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#if">IF</a> and <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#for">FOR</a> loops that iterate over each menu item. We first need to check if the current menu item has choldren and if so iterate over all of them.</p>
 <p><strong>Note:</strong> If you need to have a deeper menu you need to add additional IF  and FOR blocks.</p>

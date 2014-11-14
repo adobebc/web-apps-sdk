@@ -1,5 +1,5 @@
 <h1>Liquid powered menu</h1>
-<p>In this article we will take a look at the simplest implementation of a Liquid powered menu rendered in a simple unordered list.</p>
+<p>In this article we will take a look at the most basic implementation of a Liquid powered menu rendered in a simple unordered list.</p>
 <p>When using the collection powered render method you can render the output in whetever structure you want (<em>table</em>, <em>list</em>, group of divs).</p>
 <h2>Create the menu</h2>
 <p>The first thing to do is to create the menu structure in the Admin console. Head over to the <em>Site Manager </em>-&gt; <em>Menu</em> panel and build your menu tree. For this example we'll use this 2 level deep structure below:</p>
@@ -111,7 +111,7 @@
    {% endfor %} 
   {% endif %}
 &lt;/ul&gt;</code></pre>
-<p>Although the code above might look intimidating at first glace it is just a collection of nested <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#if">IF</a> and <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#for">FOR</a> loops that iterate over each menu item. We first need to check if the current menu item has choldren and if so iterate over all of them.</p>
+<p>Although the code above might look intimidating at first glace it is just a collection of nested <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#if">IF</a> and <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#for">FOR</a> loops that iterate over each menu item. We first need to check if the current menu item has children and if so iterate over all of them.</p>
 <p><strong>Note:</strong> If you need to have a deeper menu you need to add additional IF  and FOR blocks.</p>
 <p>The menu will be represented like so:</p>
 <pre class="language-javascript"><code>&lt;ul id=&quot;main-menu&quot; class=&quot;sm sm-blue&quot;&gt;

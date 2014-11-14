@@ -1,0 +1,145 @@
+<h1>Liquid powered menu</h1>
+<p>In this article we will take a look at the simplest implementation of a Liquid powered menu rendered in a simple unordered list.</p>
+<p>When using the collection powered render method you can render the output in whetever structure you want (<em>table</em>, <em>list</em>, group of divs).</p>
+<h2>Create the menu</h2>
+<p>The first thing to do is to create the menu structure in the Admin console. Head over to the <em>Site Manager </em>-&gt; <em>Menu</em> panel and build your menu tree. For this example we'll use this 2 level deep structure below:</p>
+<ul id="main-menu" class="sm sm-blue">
+   
+    
+  <li><a href="/">Shop</a> 
+      
+    <ul>
+      
+      <li><a href="/classic-boutique">Classic</a> 
+          
+        <ul>
+          
+          <li>
+              <a href="/woody-parfumes">Woody</a>
+          </li>
+          
+          <li>
+              <a href="/spicy-perfumes">Spicy</a>
+          </li>
+          
+        </ul>
+         
+      </li>
+        
+      <li><a href="/designer-brands">Designer</a> 
+           
+      </li>
+        
+    </ul>
+    
+  </li>
+    
+  <li><a href="/BlogRetrieve.aspx?BlogID=4405">Blog</a> 
+      
+  </li>
+    
+  <li><a href="/ForumRetrieve.aspx?ForumID=691">Forum</a> 
+      
+    <ul>
+      
+      <li><a href="/ForumRetrieve.aspx?ForumID=691">Community</a> 
+           
+      </li>
+        
+      <li><a href="/ForumRetrieve.aspx?ForumID=677">Sample Forum 1</a> 
+           
+      </li>
+        
+    </ul>
+    
+  </li>
+    
+  <li><a href="/faqs">FAQ</a> 
+      
+  </li>
+    
+  <li><a href="/about-us">About Us</a> 
+      
+  </li>
+    
+  <li><a href="/contact">Contact Us</a> 
+      
+  </li>
+    
+  <li><a href="/signup">Sign-Up!</a> 
+      
+    <ul>
+      
+      <li><a href="/member/index">Member profile page</a> 
+           
+      </li>
+        
+    </ul>
+    
+  </li>
+     
+  
+</ul>
+<h2>Display  it on a page<em></em></h2>
+<p>Now that the menu is in place let's insert the menu on the page or template. Create a blank page and insert the menu module like so:</p>
+<pre class="language-javascript"><code>{<span>module_menu render="collection" menuId="2165233" template="" collection="menu1"</span>}
+</code></pre>
+<p>Because we are suppressing the module's output using template="" this module will not output anything. However we can use the <em>menu1</em> collection and Liquid to do the rendering. </p>
+<p>Paste the code below just below the menu.</p>
+<pre class="language-javascript"><code>&lt;ul id=&quot;main-menu&quot; class=&quot;sm sm-blue&quot;&gt;
+  {% if menu1.items %} 
+	{% for i in menu1.items %}
+  	&lt;li&gt;&lt;a href=&quot;{{i.url}}&quot;&gt;{{i.label}}&lt;/a&gt; 
+			{% if i.items %}
+     		&lt;ul&gt;
+      	{% for j in i.items %}
+      		&lt;li&gt;&lt;a href=&quot;{{j.url}}&quot;&gt;{{j.label}}&lt;/a&gt; 
+					{% if j.items %}
+        			&lt;ul&gt;
+          		{% for k in j.items %}
+          			&lt;li&gt;
+            				&lt;a href=&quot;{{k.url}}&quot;&gt;{{k.label}}&lt;/a&gt;
+          			&lt;/li&gt;
+          		{% endfor %}
+        			&lt;/ul&gt;
+        			{% endif %}
+      		&lt;/li&gt;
+      	{% endfor %}
+    		&lt;/ul&gt;
+    		{% endif %}
+  	&lt;/li&gt;
+  {% endfor %} 
+	{% endif %}
+&lt;/ul&gt;</code></pre>
+<p>Although the code above might look intimidating at first glace it is just a collection of nested <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#if">IF</a> and <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#for">FOR</a> loops that iterate over each menu item. We first need to check if the current menu item has choldren and if so iterate over all of them.</p>
+<p><strong>Note:</strong> If you need to have a deeper menu you need to add additional IF  and FOR blocks.</p>
+<p>The menu will be represented like so:</p>
+<pre class="language-javascript"><code>&lt;ul id=&quot;main-menu&quot; class=&quot;sm sm-blue&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Shop&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/classic-boutique&quot;&gt;Classic&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt; &lt;a href=&quot;/woody-parfumes&quot;&gt;Woody&lt;/a&gt; &lt;/li&gt;
+          &lt;li&gt; &lt;a href=&quot;/spicy-perfumes&quot;&gt;Spicy&lt;/a&gt; &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/designer-brands&quot;&gt;Designer&lt;/a&gt; &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/BlogRetrieve.aspx?BlogID=4405&quot;&gt;Blog&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/ForumRetrieve.aspx?ForumID=691&quot;&gt;Forum&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/ForumRetrieve.aspx?ForumID=691&quot;&gt;Community&lt;/a&gt; &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/ForumRetrieve.aspx?ForumID=677&quot;&gt;Sample Forum 1&lt;/a&gt; &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/faqs&quot;&gt;FAQ&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/about-us&quot;&gt;About Us&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/contact&quot;&gt;Contact Us&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/signup&quot;&gt;Sign-Up!&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/member/index&quot;&gt;Member profile page&lt;/a&gt; &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p>At this point we have the menu represented as an unordered list on the page. Moving on we can use a 3-rd party menu library to further style and animate it.</p>

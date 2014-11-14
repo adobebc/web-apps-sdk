@@ -1,54 +1,124 @@
 <h1>{<span>module_menu</span>}</h1>
 <div class="description">
 <h2>Description</h2>
-<p>Displays a single dynamic menu when placed on the page or a template. menuID is the ID of the particular dynamic menu and should not be changed. The ID is set by module manager when menu is inserted into the page.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+<p>Displays a single dynamic menu when placed on the page or a template. Take a look at this How to article for more a step-by-step implementation guide.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
 <ul id="tabs" class="beta">
     <li><a href="#named-params">New named parameters documentation</a></li>
     <li><a href="#legacy">Legacy module documentation</a></li>
-  </ul>  <div id="named-params" class="beta">
+  </ul>  
+  <div id="named-params" class="beta">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_menu menuID=&quot;ID&quot; </span>render=&quot;collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{<span>module_menu menuID=&quot;ID&quot; </span>version=&quot;1&quot; render=&quot;collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
+    <li><strong>version</strong> - <em>1</em> (do not change)</li>
+
 <li><strong>render</strong> - for this module this can only be <em>collection</em>. For more information on how to use this parameter take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
-    <li><strong>menuID</strong> - system generated menu id (do not change)</li><li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>menuId</strong> - system generated menu id (do not change)</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
 <h2>This module can be rendered:</h2>
 <ul>
-    <li><strong>in plain </strong> - The module is not rendered with a specific layout, it can be customized using either of the 2 methods below::
-    <ul>
-        <li>Site Manager &gt; Menus &gt; *YOURMENU* &gt; Menu look / Items look (see this <a href="http://kb.worldsecuresystems.com/kb/creating-dynamic-menu-using-default.html">article</a> for future reference)</li>
-        <li>Your own css styles applied to the classes and ids generated for the module<br/> <a href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/module_menu_std.png" class="fancybox"><img src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/module_menu_std.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/></a></li>
-    </ul>
-    </li>
-<li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>my_custom_collection_name.title</code></li>
+    <li><strong>fixed layout </strong> - by default the menu is rendered as a table nested in a <em>div</em> element</li>
+<li><strong>using a custom template</strong> - this module supports custom templates</li>
+<li><strong>using Liquid collections</strong> - this is the Liquid output tags you can use:</li>
 </ul>
-<br />
-<p>Enhanced usability and functionality is provided by <a href="/dev-assets/reference/module-reference/menus/module_menu_version2.html">module_menu v2</a>, which we strongly recommend using </p>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">id</span>}}</code></td>
+         <td class="description"><span>the menu item's Id</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">parentId</span>}}</code></td>
+         <td class="description"><span>the ID of its parent (or <em>-1</em> if this is a root menu entry)</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">label</span>}}</code></td>
+         <td class="description">&nbsp;</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">tooltip</span>}}</code></td>
+         <td class="description">&nbsp;</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">url</span>}}</code></td>
+         <td class="description">&nbsp;</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">targetFrame</span>}}</code></td>
+         <td class="description">&nbsp;</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">image</span>}}</code></td>
+         <td class="description">&nbsp;</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">imageOver</span>}}</code></td>
+         <td class="description">&nbsp;</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">imageSelected</span>}}</code></td>
+         <td class="description">&nbsp;</td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">css</span>}}</code></td>
+         <td class="description">the CSS class to be applied to this item</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">cssOver</span>}}</code></td>
+         <td class="description">the CSS class to be applied to this item when it is being hovered</td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">cssSelected</span>}}</code></td>
+         <td class="description">the CSS class to be applied to this item when selected</td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">width</span>}}</code></td>
+         <td class="description"><span>the width of the element</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">height</span>}}</code></td>
+         <td class="description"><span>the height of the element</span></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{{<span class="tagname">items</span>}}</code></td>
+         <td class="description"><span>This represents the children elements of this particular menu entry in JSON format</span></td>
+        </tr>
+    </tbody>
+</table>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_menu menuID=&quot;128392</span>&quot;}</code> - will generate the menu with the ID 128392</li><li><code>{<span>module_menu menuID=&quot;128392</span>&quot;<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{<span>module_menu menuId=&quot;128392</span>&quot;}</code> - will generate the menu with the ID 128392</li>
+    <li><code>{<span>module_menu menuId=&quot;128392</span>&quot; template=&quot;/layouts/custom/menu1.tpl&quot;}</code> - will render the menu according to the custom template</li>
+    <li><code>{<span>module_menu menuId=&quot;128392</span>&quot;<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
-</div><div id="legacy">
+</div>
+<div id="legacy">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_menu,menuID</span>}</code></pre>
+<pre class="language-markup"><code>{<span>module_menu,menuId</span>}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>menuID</strong> - system generated menu id (do not change)</li><li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>menuId</strong> - system generated menu id (do not change)</li>
 </ul>
 </div>
 <div class="layouts">
@@ -67,7 +137,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_menu,128392</span>}</code> - will generate the menu with the ID 128392</li>
+    <li><code>{<span>module_menu,128392</span>}</code> - will generate the menu with the Id 128392</li>
 </ul>
 </div>
 </div>

@@ -32,12 +32,14 @@
 	 * This class provides the module data generator which is responsible to generate queries based on the currently
 	 * selected fields.
 	 */
-	function ModuleDataController($scope, generatorsService, resourceLoader) {
+	function ModuleDataController($scope, generatorsService, resourceLoader, moduleDataHighlighter) {
 		var self = this;
 
-		this.$scope = $scope;
 		this._generatorsService = generatorsService;
 		this._resourceLoader = resourceLoader;
+
+		this.$scope = $scope;
+		this.$scope.moduleDataHighlighter = moduleDataHighlighter;
 
 		this.$scope.data = this._generatorsService.data;
 		this.$scope.snippet = SELECT_FIELDS;
@@ -163,5 +165,5 @@
 	};
 
 	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", "ResourceLoaderService",
-											ModuleDataController]);
+											"ModuleDataHighlighterService", ModuleDataController]);
 })(DiscoveryApp);

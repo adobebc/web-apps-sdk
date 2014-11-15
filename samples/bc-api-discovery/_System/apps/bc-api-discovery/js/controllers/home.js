@@ -32,9 +32,10 @@
 	function HomeController($scope, registryService, generatorsService) {
 		var self = this;
 
-		this.$scope = $scope;
 		this._registryService = registryService;
 		this._generatorsService = generatorsService;
+
+		this.$scope = $scope;
 
         this.$scope.resourceSelection = {
           	options: {

@@ -22,7 +22,7 @@
 * 
 */
 (function() {
-	window.DiscoveryApp = angular.module("BcDiscoveryApp", ["ngRoute"]);
+	window.DiscoveryApp = angular.module("BcDiscoveryApp", ["ngRoute", "ngSanitize"]);
 
 	DiscoveryApp.config(function($routeProvider, $locationProvider) {
 	  	// configure html5 to get links working on jsfiddle

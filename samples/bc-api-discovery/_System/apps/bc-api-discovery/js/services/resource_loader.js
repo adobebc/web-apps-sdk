@@ -1,0 +1,62 @@
+/* 
+* 
+* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"), 
+* to deal in the Software without restriction, including without limitation 
+* the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+* and/or sell copies of the Software, and to permit persons to whom the 
+* Software is furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+* DEALINGS IN THE SOFTWARE.
+* 
+*/
+
+(function(app) {
+	/**
+	 * @constructor
+	 * @description
+	 * This service provides helper method for loading resources or subresources from the current
+	 * site.
+	 */
+	function ResourceLoaderService($q) {
+		this._$q = $q;
+
+		console.log("Resource loader service instantiated.");
+	};
+
+	/**
+	 * @public
+	 * @instance
+	 * @method
+	 * @description
+	 * This method is responsible for loading existing sample resources. It relies on the given parameters in order
+	 * to fetch real data from the current site. Internally it generates a query which fetches resources which
+	 * have at least one given subresource name associated with it.
+	 */
+	ResourceLoaderService.prototype.loadSampleResources = function(resourceName, subresourceName) {
+		var response = this._$q.defer();
+
+		setTimeout(function() {
+			response.resolve([
+				{"id": 108252},
+				{"id": 108253},
+				{"id": 108257}
+			]);
+		});
+
+		return response.promise;
+	};
+
+	app.service("ResourceLoaderService", ["$q", ResourceLoaderService]);
+})(DiscoveryApp);

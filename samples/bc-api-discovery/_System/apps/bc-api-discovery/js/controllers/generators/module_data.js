@@ -32,17 +32,30 @@
 	 * This class provides the module data generator which is responsible to generate queries based on the currently
 	 * selected fields.
 	 */
-	function ModuleDataController($scope, generatorsService) {
+	function ModuleDataController($scope, generatorsService, resourceLoader) {
 		var self = this;
 
 		this.$scope = $scope;
 		this._generatorsService = generatorsService;
+		this._resourceLoader = resourceLoader;
 
 		this.$scope.data = this._generatorsService.data;
 		this.$scope.snippet = SELECT_FIELDS;
-		this.$scope.existingResource = {
-			"id": undefined
+		this.$scope.sampleResources = [];
+
+		this.$scope.generateSnippet = function(data) {
+			return self._generateSnippet(data);
+		}
+
+		this.$scope.sampleResourcesSelection = {
+			options: {
+				"labelField": "id",
+				"valueField": "id",
+				"searchField": ["id"]
+			},
+			value: undefined
 		};
+
 
 		this.$scope.$watch(
 			function() {
@@ -50,7 +63,12 @@
 			},
 			function(data) {
 				self.$scope.data = data;
+
 				self._generateSnippet(data);
+
+				if(data.subresourceId && !self.$scope.sampleResourcesSelection.value) {
+					self._loadSampleResources();
+				}				
 			});
 
 		console.log("Module data controller instantiated.");
@@ -92,9 +110,9 @@
 			snippet.push('"');
 		}
 
-		if(this.$scope.existingResource.id) {
+		if(this.$scope.sampleResourcesSelection.value) {
 			snippet.push(' resourceId="');
-			snippet.push(this.$scope.existingResource.id);
+			snippet.push(this.$scope.sampleResourcesSelection.value);
 			snippet.push('"');
 		}
 
@@ -117,14 +135,35 @@
 			return false;
 		}
 
-		if(data.subresourceId && !scope.existingResource.id) {
+		if(data.subresourceId && !scope.sampleResourcesSelection.value) {
 			this.$scope.snippet = "";
 
 			return false;
 		}
 
 		return true;
-	}
+	};
 
-	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", ModuleDataController]);
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method is used to load sample resources for the currently selected resource and subresource.
+	 */
+	ModuleDataController.prototype._loadSampleResources = function() {
+		var data = this.$scope.data,
+			resourceName = data.resourceId,
+			subresourceName = data.subresourceId,
+			self = this;
+
+		var response = this._resourceLoader.loadSampleResources(resourceName, subresourceName);
+
+		response.then(function(data) {
+			self.$scope.sampleResources = data;
+		});
+	};
+
+	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", "ResourceLoaderService",
+											ModuleDataController]);
 })(DiscoveryApp);

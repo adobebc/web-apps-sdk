@@ -1,4 +1,7 @@
-<input type="text" class="form-control" ng-model="existingResource.id" 
-	placeholder="Provide an existing resource id ...." ng-if="data.subresourceId && !existingResource.id" />
+<select class="form-control" selectize="sampleResourcesSelection.options" 
+		placeholder="Choose an existing resource id ..." 
+		ng-change="generateSnippet(data);"
+		ng-model="sampleResourcesSelection.value" options="sampleResources" 
+		ng-if="data.subresourceId && !sampleResourcesSelection.value"></select>
 
 <p style="word-wrap: break-word;">{{snippet}}</p>

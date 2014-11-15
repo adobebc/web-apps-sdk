@@ -66,7 +66,7 @@
 
 				self._generateSnippet(data);
 
-				if(data.subresourceId && !self.$scope.sampleResourcesSelection.value) {
+				if(data.subresourceName && !self.$scope.sampleResourcesSelection.value) {
 					self._loadSampleResources();
 				}				
 			});
@@ -93,7 +93,7 @@
 			fieldsParam.push(data.fields[idx].name);
 		}
 
-		snippet.push(data.resourceId);
+		snippet.push(data.resourceName);
 		snippet.push('" ');
 
 		snippet.push('version="');
@@ -104,9 +104,9 @@
 		snippet.push(fieldsParam.join(","));
 		snippet.push('"');
 
-		if(data.subresourceId) {
+		if(data.subresourceName) {
 			snippet.push(' subresource="');
-			snippet.push(data.subresourceId)
+			snippet.push(data.subresourceName)
 			snippet.push('"');
 		}
 
@@ -135,7 +135,7 @@
 			return false;
 		}
 
-		if(data.subresourceId && !scope.sampleResourcesSelection.value) {
+		if(data.subresourceName && !scope.sampleResourcesSelection.value) {
 			this.$scope.snippet = "";
 
 			return false;
@@ -153,11 +153,9 @@
 	 */
 	ModuleDataController.prototype._loadSampleResources = function() {
 		var data = this.$scope.data,
-			resourceName = data.resourceId,
-			subresourceName = data.subresourceId,
 			self = this;
 
-		var response = this._resourceLoader.loadSampleResources(resourceName, subresourceName);
+		var response = this._resourceLoader.loadSampleResources(data.resourceName, data.subresourceName);
 
 		response.then(function(data) {
 			self.$scope.sampleResources = data;

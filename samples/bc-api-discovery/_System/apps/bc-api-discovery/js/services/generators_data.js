@@ -33,9 +33,9 @@
 	 */
 	function GeneratorsDataService() {
 		this.data = {
-			resourceId: undefined,
-			versionId: undefined,
-			subresouceId: undefined,
+			resourceName: undefined,
+			version: undefined,
+			subresouceName: undefined,
 			fields: undefined
 		};
 	};

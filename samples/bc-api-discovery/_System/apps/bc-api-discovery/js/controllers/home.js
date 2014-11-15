@@ -295,9 +295,9 @@
 		var selectedFields = this._getSelectedFields();
 
 		this._generatorsService.data = {
-			"resourceId": resourceId,
-			"versionId": versionId,
-			"subresourceId": subresourceId,
+			"resourceName": resourceId,
+			"version": versionId,
+			"subresourceName": subresourceId,
 			"fields": selectedFields
 		};
 

@@ -31,6 +31,25 @@
 	function ModuleDataHighlighter() {};
 
 	/**
+	 * @private
+	 * @constant
+	 * @description
+	 * This constant holds the association between module_data reserved tokens and the css classes
+	 * used to represent the tokens in a friendly manner.
+	 */
+	ModuleDataHighlighter.prototype._TOKENS_CLASSES = {
+		"{": "module-data-curlybracket-highlight",
+		"}": "module-data-curlybracket-highlight",
+		"resource": "module-data-param-highlight",
+		"resourceId": "module-data-param-highlight",
+		"subresource": "module-data-param-highlight",
+		"version": "module-data-param-highlight",
+		"fields": "module-data-param-highlight",
+		"skip": "module-data-param-highlight",
+		"limit": "module-data-param-highlight"
+	};
+
+	/**
 	 * @public
 	 * @instance
 	 * @method
@@ -38,7 +57,19 @@
 	 * This method highlights the given snippet and colors all keywords for improving text readability.
 	 */
 	ModuleDataHighlighter.prototype.highlight = function(snippet) {
-		return ["<h3>", snippet, "</h3>"].join("")
+		if(snippet[0] != "{") {
+			return snippet;
+		}
+
+		for(var token in this._TOKENS_CLASSES) {
+			var cssClass = this._TOKENS_CLASSES[token];
+
+			var replacement = ["<span class='", cssClass, "'>", token, "</span>"].join("");
+
+			snippet = snippet.replace(token, replacement);
+		}
+
+		return snippet;
 	};
 
 	app.service("ModuleDataHighlighterService", [ModuleDataHighlighter]);

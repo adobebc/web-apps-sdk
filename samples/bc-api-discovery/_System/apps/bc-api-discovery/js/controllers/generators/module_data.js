@@ -32,11 +32,12 @@
 	 * This class provides the module data generator which is responsible to generate queries based on the currently
 	 * selected fields.
 	 */
-	function ModuleDataController($scope, generatorsService, resourceLoader, moduleDataHighlighter) {
+	function ModuleDataController($scope, generatorsService, resourceLoader, configService, moduleDataHighlighter) {
 		var self = this;
 
 		this._generatorsService = generatorsService;
 		this._resourceLoader = resourceLoader;
+		this._configService = configService;
 
 		this.$scope = $scope;
 		this.$scope.moduleDataHighlighter = moduleDataHighlighter;
@@ -89,7 +90,8 @@
 		}
 
 		var snippet = ['{module_data resource="'],
-			fieldsParam = [];
+			fieldsParam = [],
+			limits = this._configService.limits;
 
 		for(var idx = 0; idx < data.fields.length; idx++) {
 			fieldsParam.push(data.fields[idx].name);
@@ -99,7 +101,7 @@
 		snippet.push('" ');
 
 		snippet.push('version="');
-		snippet.push(data.versionId);
+		snippet.push(data.version);
 		snippet.push('" ');
 
 		snippet.push('fields="');
@@ -117,6 +119,14 @@
 			snippet.push(this.$scope.sampleResourcesSelection.value);
 			snippet.push('"');
 		}
+
+		snippet.push(' skip="');
+		snippet.push(limits.skip);
+		snippet.push("'");
+
+		snippet.push(' limit="');
+		snippet.push(limits.limit);
+		snippet.push("'");		
 
 		snippet.push("}");
 
@@ -165,5 +175,5 @@
 	};
 
 	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", "ResourceLoaderService",
-											"ModuleDataHighlighterService", ModuleDataController]);
+											"ConfigService", "ModuleDataHighlighterService", ModuleDataController]);
 })(DiscoveryApp);

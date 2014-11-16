@@ -29,8 +29,9 @@
 	 * This service provides helper method for loading resources or subresources from the current
 	 * site.
 	 */
-	function ResourceLoaderService($q) {
+	function ResourceLoaderService($q, apiFactory) {
 		this._$q = $q;
+		this._apiFactory = apiFactory;
 
 		console.log("Resource loader service instantiated.");
 	};
@@ -44,19 +45,53 @@
 	 * to fetch real data from the current site. Internally it generates a query which fetches resources which
 	 * have at least one given subresource name associated with it.
 	 */
-	ResourceLoaderService.prototype.loadSampleResources = function(resourceName, subresourceName) {
-		var response = this._$q.defer();
+	ResourceLoaderService.prototype.loadSampleResources = function(resourceName, version, subresourceName) {
+		var response = this._$q.defer(),
+			self = this;
 
-		setTimeout(function() {
-			response.resolve([
-				{"id": 108252},
-				{"id": 108253},
-				{"id": 108257}
-			]);
+		this._apiFactory.getProxy(resourceName, version).then(function(proxy) {
+			var where = self._buildResourceHasSubresourcesQuery(proxy, subresourceName);			
+
+			proxy.list(where).then(function(itemsResponse) {
+				var idFieldName = proxy.getResourceIdFieldName(),
+					sampleResources = [];
+
+				for(var idx = 0; idx < itemsResponse.data.items.length; idx++) {
+					var item = itemsResponse.data.items[idx];
+					sampleResources.push({"id": item[idFieldName]});
+				}
+
+				response.resolve(sampleResources);
+			});
 		});
 
 		return response.promise;
 	};
 
-	app.service("ResourceLoaderService", ["$q", ResourceLoaderService]);
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method builds a where condition which ensures that all included resources have at least one subresource
+	 * identified by the given subresource name. At the moment it makes a hard assumption that subresources contain
+	 * only numeric fields in their primary key.
+	 */
+	ResourceLoaderService.prototype._buildResourceHasSubresourcesQuery = function(proxy, subresourceName) {
+		var resourceDescriptor = proxy.resourceDescriptor,
+			subresourceDescriptor = proxy.getSubresourceDescriptor(subresourceName),
+			idName;
+
+		for(var key in subresourceDescriptor.fields.identifier) {
+			idName = key; 
+			break;
+		}
+
+		var where = {};
+		where[subresourceName + "." + idName] = {"$gt": 0};
+
+		return where;
+	};
+
+	app.service("ResourceLoaderService", ["$q", "BcApiFactory", ResourceLoaderService]);
 })(DiscoveryApp);

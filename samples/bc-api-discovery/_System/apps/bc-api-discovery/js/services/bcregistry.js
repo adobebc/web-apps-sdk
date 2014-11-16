@@ -39,14 +39,6 @@
 
 	/**
 	 * @public
-	 * @constant
-	 * @description
-	 * This constant holds the BC APIs registry url.
-	 */
-	BcRegistryService.prototype.REGISTRY_URL = "/webresources/api/v3/sites/current/registry";
-
-	/**
-	 * @public
 	 * @instance
 	 * @method
 	 * @description
@@ -81,7 +73,7 @@
 	 */
 	BcRegistryService.prototype._loadBcRegistry = function() {
 		var rootUrl = [this._configService.api.protocol, "://", this._configService.api.host, 
-					   this.REGISTRY_URL].join("");
+					   this._configService.bcRegistryUrl].join("");
 
 		return this._httpService({
 			"url": rootUrl,

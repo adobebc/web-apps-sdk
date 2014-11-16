@@ -69,7 +69,7 @@
 
 				self._generateSnippet(data);
 
-				if(data.subresourceName && !self.$scope.sampleResourcesSelection.value) {
+				if(data.subresourceName && !self.$scope.sampleResourcesSelection.value) {					
 					self._loadSampleResources();
 				}				
 			});
@@ -167,7 +167,7 @@
 		var data = this.$scope.data,
 			self = this;
 
-		var response = this._resourceLoader.loadSampleResources(data.resourceName, data.subresourceName);
+		var response = this._resourceLoader.loadSampleResources(data.resourceName, data.version, data.subresourceName);
 
 		response.then(function(data) {
 			self.$scope.sampleResources = data;

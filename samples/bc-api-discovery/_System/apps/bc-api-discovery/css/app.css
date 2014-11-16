@@ -30,3 +30,27 @@
 .module-data-param-highlight {
 	color: blue;
 }
+
+.absolute-center {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.loading {
+	position: relative;
+	background-image: url(/_System/apps/bc-api-discovery/assets/bg-loading.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 100px;
+	height: 100px;
+	top: 45%;
+	left: 45%;
+}
+
+.loading img {
+	position: absolute;
+	display: block;
+	top: 35px;
+	left: 35px;
+}

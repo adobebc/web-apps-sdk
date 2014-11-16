@@ -30,9 +30,10 @@
 	 * This class provides the data used for error handling. It is the main way for other components of the application
 	 * to send error message notifications.
 	 */
-	function ErrorHandlingDataService($timeout, configService) {
-		this._configService = configService;
+	function ErrorHandlingDataService($timeout, configService, globalLoadingService) {
 		this._$timeout = $timeout;
+		this._configService = configService;		
+		this._globalLoadingService = globalLoadingService;
 
 		this.errorData = {
 			"message": undefined,
@@ -55,6 +56,7 @@
 			"level": "error"
 		};
 
+		this._globalLoadingService.setLoading(false);
 		this._clearError();
 	};
 
@@ -73,6 +75,7 @@
 			"level": "warn"
 		};
 
+		this._globalLoadingService.setLoading(false);
 		this._clearError();		
 	};
 
@@ -104,5 +107,6 @@
 		}, delay);
 	};
 
-	app.service("ErrorHandlingDataService", ["$timeout", "ConfigService", ErrorHandlingDataService]);
+	app.service("ErrorHandlingDataService", ["$timeout", "ConfigService", "GlobalLoadingService", 
+											 ErrorHandlingDataService]);
 })(DiscoveryApp);

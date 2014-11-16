@@ -28,12 +28,25 @@
 	 * This class provides the main controller implementation which fetches the web resources registry and displays 
 	 * the main interface.
 	 */
-	function MainController($scope, configService) {
+	function MainController($scope, configService, globalLoadingService) {
+		var self = this;
+
 		this.$scope = $scope;
 		this._configService = configService;
+		this._globalLoadingService = globalLoadingService;
 
 		this.$scope.appVersion = this._configService.appVersion;
+		this.$scope.loading = false;
+
+		this.$scope.$watch(
+			function() {
+				return self._globalLoadingService.isLoading();
+			},
+			function(loadingStatus) {
+				self.$scope.loading = loadingStatus;
+			}
+		);
 	};
 
-	app.controller("MainController", ["$scope", "ConfigService", MainController])
+	app.controller("MainController", ["$scope", "ConfigService", "GlobalLoadingService", MainController]);
 })(DiscoveryApp);

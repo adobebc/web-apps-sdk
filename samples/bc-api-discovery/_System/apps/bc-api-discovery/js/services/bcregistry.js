@@ -29,10 +29,13 @@
 	 * This service implements the http client for loading all BC registered resources and providing them
 	 * to the application.
 	 */
-	function BcRegistryService($http, $q, configService, errorService) {
+	function BcRegistryService($http, $q, $timeout, configService, globalLoadingService, errorService) {
 		this._httpService = $http;
 		this._$q = $q;
+		this._$timeout = $timeout;
+
 		this._configService = configService;
+		this._globalLoadingService = globalLoadingService;
 		this._errorService = errorService;
 
 		this._cachedRegistry = undefined;
@@ -49,8 +52,11 @@
 		var result = this._$q.defer(),
 			self = this;
 
+		this._globalLoadingService.setLoading(true);
+
 		if(this._cachedRegistry) {
-			setTimeout(function() {
+			this._$timeout(function() {
+				self._globalLoadingService.setLoading(false);
 				result.resolve(self._cachedRegistry);
 			}, 0);
 		}
@@ -59,6 +65,7 @@
 				function(response) {
 					self._cachedRegistry = response.data;
 					result.resolve(self._cachedRegistry);
+					self._globalLoadingService.setLoading(false);
 				},
 				function(errorResponse) {
 					self._errorService.logError(errorResponse);
@@ -90,5 +97,6 @@
 		});
 	};
 
-	app.service("BcRegistryService", ["$http", "$q", "ConfigService", "ErrorHandlingDataService", BcRegistryService]);
+	app.service("BcRegistryService", ["$http", "$q", "$timeout", "ConfigService", "GlobalLoadingService",
+										"ErrorHandlingDataService", BcRegistryService]);
 })(DiscoveryApp);

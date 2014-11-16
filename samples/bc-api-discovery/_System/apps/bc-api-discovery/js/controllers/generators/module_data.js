@@ -70,10 +70,11 @@
 
 				self._generateSnippet(data);
 
-				if(data.subresourceName && !self.$scope.sampleResourcesSelection.value) {		
-					self.$scope.sampleResources = [];			
+				if(data.subresourceName) {
+					self.$scope.sampleResources = [];				
+
 					self._loadSampleResources();
-				}				
+				}
 			});
 
 		console.log("Module data controller instantiated.");

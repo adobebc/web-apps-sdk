@@ -36,11 +36,12 @@
 	 *	}
 	 * });
 	 */
-	function BcApiFactory($http, $q, registryService, configService, errorService) {
+	function BcApiFactory($http, $q, registryService, configService, globalLoadingService, errorService) {
 		this._$http = $http;
 		this._$q = $q;
 		this._registryService = registryService;
 		this._configService = configService;
+		this._globalLoadingService = globalLoadingService;
 		this._errorService = errorService;
 
 		console.log("BC Api Factory service initialized.");
@@ -69,7 +70,7 @@
 
 			var resourceDescriptor = registry[resourceName][version],
 				proxy = new BcApiProxy(self._$http, self._configService, resourceName, version, registry, 
-										resourceDescriptor);
+										resourceDescriptor, self._globalLoadingService, self._errorService);
 
 			response.resolve(proxy);
 		});
@@ -77,8 +78,8 @@
 		return response.promise;
 	};
 
-	app.service("BcApiFactory", ["$http", "$q", "BcRegistryService", "ConfigService", "ErrorHandlingDataService", 
-								BcApiFactory]);
+	app.service("BcApiFactory", ["$http", "$q", "BcRegistryService", "ConfigService", "GlobalLoadingService", 
+								"ErrorHandlingDataService", BcApiFactory]);
 
 	/**
 	 * @public
@@ -87,9 +88,12 @@
 	 * This class provide a proxy binded to a specific API which can be used to invoke various
 	 * supported operations.
 	 */
-	function BcApiProxy($http, configService, resourceName, version, registry, resourceDescriptor) {
+	function BcApiProxy($http, configService, resourceName, version, registry, resourceDescriptor,
+						globalLoadingService, errorService) {
 		this._$http = $http;
 		this._configService = configService;
+		this._globalLoadingService = globalLoadingService;
+		this._errorService = errorService;		
 		
 		this.resourceName = resourceName;
 		this.resourceVersion = version;
@@ -121,13 +125,16 @@
 	 * criteria.
 	 */
 	BcApiProxy.prototype.list = function(where, limits, order) {
-		var url = this._getApiUrl();
+		var url = this._getApiUrl(),
+			self = this;
 
 		where = where || {};
 		limits = this._getDefaultLimits(limits);
 		order = this._getDefaultOrder(order);
 
-		return this._$http({
+		this._globalLoadingService.setLoading(true);
+
+		var response = this._$http({
 			"url": url,
 			"method": "GET",
 			"params": {	
@@ -141,6 +148,12 @@
 				"Authorization": this._configService.api.accessToken
 			}
 		});
+
+		response.then(function() {
+			self._globalLoadingService.setLoading(false);
+		});
+
+		return response;
 	};
 
 	/**

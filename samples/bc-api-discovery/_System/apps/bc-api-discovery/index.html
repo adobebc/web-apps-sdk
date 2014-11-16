@@ -44,6 +44,10 @@
 			</section>
 		</div>
 
+		<div ng-controller="ErrorHandlingController">
+			<div ng-include="'/_System/apps/bc-api-discovery/templates/error_handling.html'"></div>
+		</div>
+
 		<script type="text/javascript" src="libs/jquery-2.0.0.js"></script>
 		<script type="text/javascript" src="libs/bootstrap-3.2.0.js"></script>
 		<script type="text/javascript" src="libs/selectize.js"></script>
@@ -57,10 +61,14 @@
 		<script type="text/javascript" src="js/routes.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>
 
-		<script type="text/javascript" src="js/services/resource_loader.js"></script>		
+		<script type="text/javascript" src="js/services/bcregistry.js"></script>
+		<script type="text/javascript" src="js/services/api_proxy.js"></script>
+		<script type="text/javascript" src="js/services/error_handler_data.js"></script>
+		<script type="text/javascript" src="js/services/resource_loader.js"></script>
 		<script type="text/javascript" src="js/services/generators_data.js"></script>
-		<script type="text/javascript" src="js/services/highlight_moduledata.js"></script>		
+		<script type="text/javascript" src="js/services/highlight_moduledata.js"></script>
 
+		<script type="text/javascript" src="js/controllers/error_handling.js"></script>
 		<script type="text/javascript" src="js/controllers/main.js"></script>
 		<script type="text/javascript" src="js/controllers/home.js"></script>
 		<script type="text/javascript" src="js/controllers/whatsnew.js"></script>
@@ -69,9 +77,6 @@
 		<script type="text/javascript" src="js/controllers/generators/module_data.js"></script>
 		<script type="text/javascript" src="js/controllers/generators/module_jquery.js"></script>
 		<script type="text/javascript" src="js/controllers/generators/module_http11.js"></script>
-
-		<script type="text/javascript" src="js/services/bcregistry.js"></script>
-		<script type="text/javascript" src="js/services/api_proxy.js"></script>
 
 		<script type="text/javascript" src="js/directives/code_panel.js"></script>
 		<script type="text/javascript" src="js/directives/selectize.js"></script>

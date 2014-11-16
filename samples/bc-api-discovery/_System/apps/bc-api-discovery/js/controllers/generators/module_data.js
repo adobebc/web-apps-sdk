@@ -69,7 +69,8 @@
 
 				self._generateSnippet(data);
 
-				if(data.subresourceName && !self.$scope.sampleResourcesSelection.value) {					
+				if(data.subresourceName && !self.$scope.sampleResourcesSelection.value) {		
+					self.$scope.sampleResources = [];			
 					self._loadSampleResources();
 				}				
 			});

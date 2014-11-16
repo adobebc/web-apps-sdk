@@ -36,11 +36,12 @@
 	 *	}
 	 * });
 	 */
-	function BcApiFactory($http, $q, registryService, configService) {
+	function BcApiFactory($http, $q, registryService, configService, errorService) {
 		this._$http = $http;
 		this._$q = $q;
 		this._registryService = registryService;
 		this._configService = configService;
+		this._errorService = errorService;
 
 		console.log("BC Api Factory service initialized.");
 	};
@@ -61,7 +62,9 @@
 			if(!registry[resourceName] || !registry[resourceName][version]) {
 				var msg = ["Resource ", resourceName, ", version ", version, " is not registered."].join("");
 				
-				throw new Error(msg);
+				self._errorService.logError(msg);
+
+				return;
 			}
 
 			var resourceDescriptor = registry[resourceName][version],
@@ -74,7 +77,8 @@
 		return response.promise;
 	};
 
-	app.service("BcApiFactory", ["$http", "$q", "BcRegistryService", "ConfigService", BcApiFactory]);
+	app.service("BcApiFactory", ["$http", "$q", "BcRegistryService", "ConfigService", "ErrorHandlingDataService", 
+								BcApiFactory]);
 
 	/**
 	 * @public

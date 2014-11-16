@@ -81,7 +81,7 @@
 					   this._configService.bcRegistryUrl].join("");
 
 		return this._httpService({
-			"url": rootUrl + "/a/b/c",
+			"url": rootUrl,
 			"method": "GET",
 			"headers": {
 				"Accept": "application/json",

@@ -24,6 +24,7 @@
 
 (function(app) {
 	var SELECT_FIELDS = "Please select the fields you want to include.";
+	var NO_SUBRESOURCES_FOUND = "No <b>{0}</b> contain <b>{1}</b> subresources. Please add one on your site.";
 
 	/**
 	 * @constructor
@@ -170,8 +171,13 @@
 
 		var response = this._resourceLoader.loadSampleResources(data.resourceName, data.version, data.subresourceName);
 
-		response.then(function(data) {
-			self.$scope.sampleResources = data;
+		response.then(function(sampleResources) {
+			self.$scope.sampleResources = sampleResources;
+
+			if(sampleResources.length == 0) {
+				self.$scope.snippet = NO_SUBRESOURCES_FOUND.replace("{1}", data.subresourceName)
+											.replace("{0}", data.resourceName);
+			}
 		});
 	};
 

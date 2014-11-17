@@ -34,17 +34,19 @@
 	 * This class provides the module data generator which is responsible to generate queries based on the currently
 	 * selected fields.
 	 */
-	function ModuleDataController($scope, generatorsService, configService, moduleDataHighlighter) {
+	function ModuleDataController($scope, generatorsService, configService, apiFactory, moduleDataHighlighter) {
 		var self = this;
 
 		this._generatorsService = generatorsService;
 		this._configService = configService;
+		this._apiFactory = apiFactory;
 
 		this.$scope = $scope;
 		this.$scope.moduleDataHighlighter = moduleDataHighlighter;
 
 		this.$scope.data = this._generatorsService.data;
 		this.$scope.snippet = SELECT_FIELDS;
+		this.$scope.resourceDescriptor = undefined;
 
 		this.$scope.generateSnippet = function(data) {
 			return self._generateSnippet(data);
@@ -73,9 +75,40 @@
 			return;
 		}
 
+		var self = this;
+
+		this._apiFactory.getProxy(data.resourceName, data.version).then(function(proxy) {
+			self.$scope.resourceDescriptor = proxy.resourceDescriptor;
+
+			if(data.subresourceName) {
+				self.$scope.resourceDescriptor = proxy.getSubresourceDescriptor(data.subresourceName);
+			}
+
+			self._generateSnippetRaw(data, self.$scope.resourceDescriptor);
+		});
+	};
+
+	/**
+	 * @private
+	 * @method
+	 * @instance
+	 * @description
+	 * This method generates the snippet string which must be displayed to developer.
+	 */
+	ModuleDataController.prototype._generateSnippetRaw = function(data, resourceDescriptor) {
 		var snippet = ['{module_data resource="'],
 			fieldsParam = [],
-			limits = this._configService.limits;
+			limits = this._configService.limits,
+			identifiers = resourceDescriptor.fields.identifier,
+			orderCriteria;
+
+		for(var pkName in identifiers) {
+			if(pkName == "siteId") {
+				continue;
+			}
+
+			orderCriteria = pkName;
+		}
 
 		for(var idx = 0; idx < data.fields.length; idx++) {
 			fieldsParam.push(data.fields[idx].name);
@@ -111,6 +144,10 @@
 		snippet.push(' limit="');
 		snippet.push(limits.limit);
 		snippet.push('"');
+
+		snippet.push(' order="');
+		snippet.push(orderCriteria);
+		snippet.push('"');		
 
 		snippet.push(' collection="myData"');
 
@@ -156,6 +193,6 @@
 		return true;
 	};
 
-	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", "ConfigService", 
+	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", "ConfigService", "BcApiFactory",
 											"ModuleDataHighlighterService", ModuleDataController]);
 })(DiscoveryApp);

@@ -56,9 +56,18 @@
 	 * @description
 	 * This method highlights the given snippet and colors all keywords for improving text readability.
 	 */
-	ModuleDataHighlighter.prototype.highlight = function(snippet) {
-		if(snippet[0] != "{") {
+	ModuleDataHighlighter.prototype.highlight = function(snippet, resourceDescriptor) {
+		if(!snippet || snippet[0] != "{" || !resourceDescriptor) {
 			return snippet;
+		}
+
+		var identifiers = resourceDescriptor.fields.identifier;
+
+		for(var pkName in identifiers) {
+			snippet = snippet.replace("\"" + pkName + "\"", '"<span class="module-data-attr-pk">' + pkName + "</span>\"");
+			snippet = snippet.replace("\"" + pkName + ",", '"<span class="module-data-attr-pk">' + pkName + "</span>,");
+			snippet = snippet.replace("," + pkName + ",", ',<span class="module-data-attr-pk">' + pkName + "</span>,");
+			snippet = snippet.replace("," + pkName + "\"", ',<span class="module-data-attr-pk">' + pkName + "</span>\"");
 		}
 
 		for(var token in this._TOKENS_CLASSES) {

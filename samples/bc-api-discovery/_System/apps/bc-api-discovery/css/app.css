@@ -44,6 +44,10 @@
 	color: blue;
 }
 
+.module-data-attr-pk {
+	font-weight: bold
+}
+
 .absolute-center {
 	position: absolute;
 	width: 100%;

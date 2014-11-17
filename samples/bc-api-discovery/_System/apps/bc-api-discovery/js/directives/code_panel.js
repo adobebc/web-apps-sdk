@@ -34,6 +34,7 @@
 		this.templateUrl = "/_System/apps/bc-api-discovery/templates/directives/code_panel.html";
 		this.scope = {
 			"snippet": "&",
+			"resourceDescriptor": "&",
 			"highlighter": "&"
 		};
 	};
@@ -47,12 +48,15 @@
 	 */
 	CodePanel.prototype.link = function(scope, element, attrs) {
 		scope.snippetFriendly = scope.snippet;
-		scope.highlight = function(snippet) {
-			return scope.highlighter().highlight(snippet);
+
+		scope.highlight = function(snippet, identifiers) {
+			return scope.highlighter().highlight(snippet, identifiers);
 		};
 
 		scope.$parent.$watch(attrs.snippet, function(value) {
-			scope.snippetFriendly = scope.highlight(value);
+			var resourceDescriptor = scope.resourceDescriptor();
+
+			scope.snippetFriendly = scope.highlight(value, resourceDescriptor);
 		});
 	};
 

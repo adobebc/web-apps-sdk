@@ -334,7 +334,6 @@
 	 * This method is responsible to update all values from generators data service instance.
 	 */
 	HomeController.prototype._updateGeneratorsData = function() {
-		debugger;
 		var resourceId = this.$scope.resourceSelection.value,
 			versionId = this.$scope.versionsSelection.value,
 			subresourceId = this.$scope.subresourceSelection.value,

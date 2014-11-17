@@ -109,6 +109,12 @@
 	HomeController.prototype._displayResources = function() {
 		var self = this;
 
+		this.$scope.subresourceSelection.value = undefined;
+		this.$scope.subresources = [];
+
+		this.$scope.versionsSelection.value = undefined;
+		this.$scope.versions = [];
+
 		this._registryService.getRegistry().then(function(data) {			
 			self.$scope.resources = [];
 
@@ -166,11 +172,10 @@
 			return;
 		}
 
-		self.$scope.subresources = [];
+		this.$scope.subresourceSelection.value = undefined;
+		this.$scope.subresources = [];
 
 		this._registryService.getRegistry().then(function(data) {
-			self.$scope.subresourceSelection.value = undefined;
-
 			var subresources = self._getSubresources(resourceId, versionId, data);
 
 			for(var subresourceName in subresources) {

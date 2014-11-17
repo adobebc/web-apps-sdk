@@ -120,14 +120,9 @@ OTHER DEALINGS IN THE SOFTWARE.
                 }
 
                 function setSelectizeOptions(newOptions) {
-                    var values = parseValues(ngModel.$viewValue);                    
+                    var values = parseValues(ngModel.$viewValue);
+                    selectize.clearOptions();
                     selectize.addOption(newOptions);
-                    selectize.refreshOptions(false);
-
-                    if(!newOptions || newOptions.length == 0) {
-                        selectize.clearOptions();
-                        return;
-                    }
 
                     if (options.mode === 'multi' && newOptions) {
                         restoreInvalidValues(newOptions, values);
@@ -135,9 +130,11 @@ OTHER DEALINGS IN THE SOFTWARE.
                     setSelectizeValue(values);
                 }
                 scope.$parent.$watch(attrs.ngModel, setSelectizeValue);
+                
                 if (attrs.options) {
-                    scope.$parent.$watchCollection(attrs.options, setSelectizeOptions);
+                    scope.$parent.$watch(attrs.options, setSelectizeOptions);
                 }
+
                 scope.$on('$destroy', function() {
                     selectize.destroy();
                 });

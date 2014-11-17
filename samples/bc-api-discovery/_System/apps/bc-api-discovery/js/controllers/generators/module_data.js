@@ -125,11 +125,11 @@
 
 		snippet.push(' skip="');
 		snippet.push(limits.skip);
-		snippet.push("'");
+		snippet.push('"');
 
 		snippet.push(' limit="');
 		snippet.push(limits.limit);
-		snippet.push("'");		
+		snippet.push('"');
 
 		snippet.push("}");
 

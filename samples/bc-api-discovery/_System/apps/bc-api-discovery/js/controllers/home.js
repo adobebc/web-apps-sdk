@@ -29,11 +29,12 @@
 	 * This controller provides the logic for correctly displaying the BC APIs discovery UI. It relies on
 	 * BC WebResources API registry in order to fecth accurate data.
 	 */
-	function HomeController($scope, registryService, generatorsService) {
+	function HomeController($scope, registryService, generatorsService, resourceLoader) {
 		var self = this;
 
 		this._registryService = registryService;
 		this._generatorsService = generatorsService;
+		this._resourceLoader = resourceLoader;
 
 		this.$scope = $scope;
 
@@ -61,9 +62,19 @@
           	}
         };
 
+        this.$scope.sampleResourcesSelection = {
+          	options: {
+            	valueField: 'id',
+            	labelField: 'id',
+            	searchField: ['id']
+          	}
+        };
+
         this.$scope.resources = [];
         this.$scope.versions = [];
         this.$scope.subresources = [];
+		this.$scope.sampleResources = [];
+
         this.$scope.fields = [];
         this.$scope.allFieldsSelected = false;
         this.$scope.generatedRequest = undefined;
@@ -94,6 +105,10 @@
 
         this.$scope.getSelectedFields = function() {
         	return self._getSelectedFields();
+        };
+
+        this.$scope.loadSampleResources = function() {
+        	return self._loadSampleResources();
         };
 
 		this._displayResources();
@@ -203,6 +218,31 @@
 	 * @instance
 	 * @method
 	 * @description
+	 * This method is used to load sample resources for the currently selected resource, resource version 
+	 * and subresource.
+	 */
+	HomeController.prototype._loadSampleResources = function() {
+		var data = this._generatorsService.data,
+			self = this;
+
+		if(!data || !data.resourceName || !data.version || !data.subresourceName) {
+			return;
+		}
+
+		var response = this._resourceLoader.loadSampleResources(data.resourceName, data.version, 
+																data.subresourceName);
+
+		response.then(function(sampleResources) {
+			self.$scope.sampleResources = sampleResources;
+			data.sampleResources = sampleResources;
+		});
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
 	 * This method displays all resource fields identified from bc registry.
 	 */
 	HomeController.prototype._displayResourceFields = function() {
@@ -294,9 +334,12 @@
 	 * This method is responsible to update all values from generators data service instance.
 	 */
 	HomeController.prototype._updateGeneratorsData = function() {
+		debugger;
 		var resourceId = this.$scope.resourceSelection.value,
 			versionId = this.$scope.versionsSelection.value,
-			subresourceId = this.$scope.subresourceSelection.value;
+			subresourceId = this.$scope.subresourceSelection.value,
+			sampleResources = this.$scope.sampleResources,
+			existingResourceId = this.$scope.sampleResourcesSelection.value;
 
 		var selectedFields = this._getSelectedFields();
 
@@ -304,6 +347,8 @@
 			"resourceName": resourceId,
 			"version": versionId,
 			"subresourceName": subresourceId,
+			"sampleResources": sampleResources,
+			"existingResourceId": existingResourceId,
 			"fields": selectedFields
 		};
 
@@ -349,5 +394,6 @@
 		return selectedFields;
 	};
 
-	app.controller("HomeController", ["$scope", "BcRegistryService", "GeneratorsDataService", HomeController]);
+	app.controller("HomeController", ["$scope", "BcRegistryService", "GeneratorsDataService", 
+									"ResourceLoaderService", HomeController]);
 })(DiscoveryApp);

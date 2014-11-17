@@ -25,6 +25,7 @@
 (function(app) {
 	var SELECT_FIELDS = "Please select the fields you want to include.";
 	var NO_SUBRESOURCES_FOUND = "No <b>{0}</b> contain <b>{1}</b> subresources. Please add one on your site.";
+	var NO_EXISTING_RESOURCE_SELECTED = "No <b>{0}</b> resource selected. Please select one from your site.";
 
 	/**
 	 * @constructor
@@ -33,11 +34,10 @@
 	 * This class provides the module data generator which is responsible to generate queries based on the currently
 	 * selected fields.
 	 */
-	function ModuleDataController($scope, generatorsService, resourceLoader, configService, moduleDataHighlighter) {
+	function ModuleDataController($scope, generatorsService, configService, moduleDataHighlighter) {
 		var self = this;
 
 		this._generatorsService = generatorsService;
-		this._resourceLoader = resourceLoader;
 		this._configService = configService;
 
 		this.$scope = $scope;
@@ -45,36 +45,17 @@
 
 		this.$scope.data = this._generatorsService.data;
 		this.$scope.snippet = SELECT_FIELDS;
-		this.$scope.sampleResources = [];
 
 		this.$scope.generateSnippet = function(data) {
 			return self._generateSnippet(data);
-		}
-
-		this.$scope.sampleResourcesSelection = {
-			options: {
-				"labelField": "id",
-				"valueField": "id",
-				"searchField": ["id"]
-			},
-			value: undefined
 		};
-
 
 		this.$scope.$watch(
 			function() {
 				return self._generatorsService.data;
 			},
 			function(data) {
-				self.$scope.data = data;
-
-				self._generateSnippet(data);
-
-				if(data.subresourceName) {
-					self.$scope.sampleResources = [];				
-
-					self._loadSampleResources();
-				}
+				self.$scope.generateSnippet(data);
 			});
 
 		console.log("Module data controller instantiated.");
@@ -144,14 +125,23 @@
 	 * This method validates the given input data and updates the code snippet if an error occurs.
 	 */
 	ModuleDataController.prototype._validateInputData = function(data, scope) {
+		this.$scope.snippet = undefined;
+
 		if(!data.fields || data.fields.length == 0) {
 			this.$scope.snippet = SELECT_FIELDS;
 
 			return false;
 		}
 
-		if(data.subresourceName && !scope.sampleResourcesSelection.value) {
-			this.$scope.snippet = "";
+		if(data.subresourceName && (!data.sampleResources || data.sampleResources.length == 0)) {
+			this.$scope.snippet = NO_SUBRESOURCES_FOUND.replace("{0}", data.resourceName)
+									.replace("{1}", data.subresourceName);
+
+			return false;
+		}
+
+		if(data.subresourceName && !data.existingResourceId) {
+			this.$scope.snippet = NO_EXISTING_RESOURCE_SELECTED.replace("{0}", data.resourceName);
 
 			return false;
 		}
@@ -159,29 +149,6 @@
 		return true;
 	};
 
-	/**
-	 * @private
-	 * @instance
-	 * @method
-	 * @description
-	 * This method is used to load sample resources for the currently selected resource and subresource.
-	 */
-	ModuleDataController.prototype._loadSampleResources = function() {
-		var data = this.$scope.data,
-			self = this;
-
-		var response = this._resourceLoader.loadSampleResources(data.resourceName, data.version, data.subresourceName);
-
-		response.then(function(sampleResources) {
-			self.$scope.sampleResources = sampleResources;
-
-			if(sampleResources.length == 0) {
-				self.$scope.snippet = NO_SUBRESOURCES_FOUND.replace("{1}", data.subresourceName)
-											.replace("{0}", data.resourceName);
-			}
-		});
-	};
-
-	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", "ResourceLoaderService",
-											"ConfigService", "ModuleDataHighlighterService", ModuleDataController]);
+	app.controller("ModuleDataController", ["$scope", "GeneratorsDataService", "ConfigService", 
+											"ModuleDataHighlighterService", ModuleDataController]);
 })(DiscoveryApp);

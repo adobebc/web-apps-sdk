@@ -22,6 +22,19 @@
 * 
 */
 
+.clear-both {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.clear-before: {
+	margin-top: 10px;
+}
+
+.clear-after {
+	margin-bottom: 10px;
+}
+
 .module-data-curlybracket-highlight {
 	color: green;
 	font-weight: bold;

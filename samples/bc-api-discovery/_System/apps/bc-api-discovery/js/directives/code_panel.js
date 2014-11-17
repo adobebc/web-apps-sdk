@@ -51,7 +51,7 @@
 			return scope.highlighter().highlight(snippet);
 		};
 
-		scope.$parent.$watch(scope.snippet, function(value) {
+		scope.$parent.$watch(attrs.snippet, function(value) {
 			scope.snippetFriendly = scope.highlight(value);
 		});
 	};

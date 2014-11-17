@@ -112,7 +112,14 @@
 		snippet.push(limits.limit);
 		snippet.push('"');
 
+		snippet.push(' collection="myData"');
+
 		snippet.push("}");
+
+		snippet.push("<br/>");
+		snippet.push("<br/>");
+
+		snippet.push("&lt;pre&gt;{{myData|json}}&lt;/pre&gt;");
 
 		this.$scope.snippet = snippet.join("");
 	};

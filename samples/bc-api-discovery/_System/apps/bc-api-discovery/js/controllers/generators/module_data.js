@@ -65,6 +65,21 @@
 
 	/**
 	 * @private
+	 * @instance
+	 * @constant
+	 * @description
+	 * This constant holds all characters and their escaping sequence which will be used for safely representing
+	 * where condition.
+	 */
+	ModuleDataController.prototype._WHERE_ESCAPE_CHARS = {
+		"{": "\\{",
+		"}": "\\}",
+		"[": "\\[",
+		"]": "\\]"
+	};
+
+	/**
+	 * @private
 	 * @method
 	 * @instance
 	 * @description
@@ -183,19 +198,13 @@
 			return;
 		}
 
-		var escapedResult = [],
-			whereEscapeChars = {
-				"{": "\\{",
-				"}": "\\}",
-				"[": "\\[",
-				"]": "\\]"
-			};
+		var escapedResult = [];
 
 		for(var idx = 0; idx < where.length; idx++) {
 			var chr = where[idx];
 
-			if(whereEscapeChars[chr]) {
-				escapedResult.push(whereEscapeChars[chr]);
+			if(this._WHERE_ESCAPE_CHARS[chr]) {
+				escapedResult.push(this._WHERE_ESCAPE_CHARS[chr]);
 
 				continue;
 			}

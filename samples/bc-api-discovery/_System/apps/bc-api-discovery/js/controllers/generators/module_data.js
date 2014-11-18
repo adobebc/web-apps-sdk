@@ -145,6 +145,17 @@
 		snippet.push(limits.limit);
 		snippet.push('"');
 
+		if(data.where) {
+			var where = JSON.stringify(data.where);
+
+			if(where != "\{\}") {
+				where = where.replace('{', '\\{').replace("}", "\\}").replace("[", "\\[").replace("]", "\\]");
+				snippet.push(' where="');
+				snippet.push(where);
+				snippet.push('"');
+			}
+		}
+
 		snippet.push(' order="');
 		snippet.push(orderCriteria);
 		snippet.push('"');		

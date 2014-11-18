@@ -340,7 +340,8 @@
 			sampleResources = this.$scope.sampleResources,
 			existingResourceId = this.$scope.sampleResourcesSelection.value;
 
-		var selectedFields = this._getSelectedFields();
+		var selectedFields = this._getSelectedFields(),
+			existingWhere = this._generatorsService.data ? this._generatorsService.data.where : undefined;
 
 		this._generatorsService.data = {
 			"resourceName": resourceId,
@@ -348,7 +349,8 @@
 			"subresourceName": subresourceId,
 			"sampleResources": sampleResources,
 			"existingResourceId": existingResourceId,
-			"fields": selectedFields
+			"fields": selectedFields,
+			"where": existingWhere
 		};
 
 		this.$scope.allFieldsSelected = selectedFields.length == this.$scope.fields.length;

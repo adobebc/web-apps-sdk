@@ -20,6 +20,12 @@
 	</div>
 </div>
 
+<div class="col-md-8" ng-hide="!resourceSelection.value">
+	<div ng-controller="QueryBuilderController">
+		<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/query_builder.html'"></div>		
+	</div>
+</div>
+
 <br style="clear: both" />
 <br style="clear: both" />
 

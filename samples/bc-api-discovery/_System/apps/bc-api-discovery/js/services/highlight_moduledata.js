@@ -38,15 +38,18 @@
 	 * used to represent the tokens in a friendly manner.
 	 */
 	ModuleDataHighlighter.prototype._TOKENS_CLASSES = {
-		"{": "module-data-curlybracket-highlight",
-		"}": "module-data-curlybracket-highlight",
+		/*"{": "module-data-curlybracket-highlight",
+		"}": "module-data-curlybracket-highlight",*/
 		"resource": "module-data-param-highlight",
 		"resourceId": "module-data-param-highlight",
 		"subresource": "module-data-param-highlight",
 		"version": "module-data-param-highlight",
 		"fields": "module-data-param-highlight",
 		"skip": "module-data-param-highlight",
-		"limit": "module-data-param-highlight"
+		"limit": "module-data-param-highlight",
+		"order": "module-data-param-highlight",
+		"collection": "module-data-param-highlight",
+		"where": "module-data-param-highlight"
 	};
 
 	/**

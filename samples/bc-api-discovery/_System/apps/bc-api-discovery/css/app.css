@@ -77,3 +77,14 @@
 	font-size: 1.5em;
 	word-wrap: break-word;
 }
+
+.querybuilder { }
+
+.querybuilder .title {
+	font-size: 1.7em;
+	font-weight: bold;
+}
+
+.querybuilder .content {
+	font-size: 1.3em;
+}

@@ -33,12 +33,13 @@
 	 */
 	function GeneratorsDataService() {
 		this.data = {
-			resourceName: undefined,
-			version: undefined,
-			subresouceName: undefined,
-			sampleResources: undefined,
-			existingResourceId: undefined,
-			fields: undefined
+			"resourceName": undefined,
+			"version": undefined,
+			"subresouceName": undefined,
+			"sampleResources": undefined,
+			"existingResourceId": undefined,
+			"fields": undefined,
+			"where": undefined
 		};
 	};
 

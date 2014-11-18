@@ -153,7 +153,7 @@
 			return;
 		}
 
-		var title = [BUILDER_TITLE, " resource", data.resourceName];
+		var title = [BUILDER_TITLE, " resource ", data.resourceName];
 
 		if(data.version) {
 			title.push(", version ");

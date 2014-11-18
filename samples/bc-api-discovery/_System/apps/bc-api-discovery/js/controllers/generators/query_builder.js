@@ -92,7 +92,7 @@
 		{
 			"name": "==",
 			"requiresEnum": false,
-			"operator": "$eq"
+			"operator": undefined
 		},
 		{
 			"name": "<>",
@@ -348,8 +348,13 @@
 
 			fieldName = fieldName.join("");
 
-			condition[fieldName] = {};
-			condition[fieldName][rule.operator.operator] = fieldValue;
+			if(rule.operator.operator) {
+				condition[fieldName] = {};
+				condition[fieldName][rule.operator.operator] = fieldValue;
+			}
+			else {
+				condition[fieldName] = fieldValue;
+			}
 		}
 
 		var newGeneratorData = {},

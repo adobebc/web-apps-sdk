@@ -68,7 +68,8 @@
 			function() { return self._generatorsDataService.data; },
 			function(data, oldData) {
 				if(oldData != undefined && data.resourceName == oldData.resourceName && 
-					data.version == oldData.version && data.subresourceName == oldData.subresourceName) {
+					data.version == oldData.version && data.subresourceName == oldData.subresourceName &&
+					data.existingResourceId == oldData.existingResourceId) {
 					return;
 				}
 
@@ -178,14 +179,15 @@
 	QueryBuilderController.prototype._generateOptions = function(data) {
 		var self = this;
 
-		if(!data || !data.resourceName || !data.version) {
-			return;
-		}
-
 		this.$scope.rules = [];
 		this.$scope.subresources = [];
 		this.$scope.resourceFields = [];
 		this.$scope.generatorsData = data;
+		data.where = {};
+
+		if(!data || !data.resourceName || !data.version) {
+			return;
+		}
 
 		this._apiFactory.getProxy(data.resourceName, data.version).then(function(proxy) {
 			var resourceDescriptor = proxy.resourceDescriptor,

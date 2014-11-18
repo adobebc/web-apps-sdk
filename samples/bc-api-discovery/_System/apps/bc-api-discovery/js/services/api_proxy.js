@@ -292,9 +292,19 @@
 	 * This method builds an api url where requests can be done.
 	 */
 	BcApiProxy.prototype._getApiUrl = function(resourceId, subresourceName) {
-		var url = [this._configService.api.protocol, "://", this._configService.api.host, 
-					this._configService.bcWebResourcesApp, "/api/", this.resourceVersion,
-					"/sites/current/", this.resourceName];
+		var url = [];
+
+		if(this._configService.api.protocol && this._configService.api.host) {
+			url.push(this._configService.api.protocol);
+			url.push("://")
+			url.push(this._configService.api.host);
+		}
+
+		url.push(this._configService.bcWebResourcesApp);
+		url.push("/api/");
+		url.push(this.resourceVersion);
+		url.push("/sites/current/");
+		url.push(this.resourceName);
 
 		if(resourceId) {
 			url.push("/" + resourceId);

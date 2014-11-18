@@ -84,8 +84,17 @@
 	 * This method fetches bc registry and stores it locally for future use.
 	 */
 	BcRegistryService.prototype._loadBcRegistry = function() {
-		var rootUrl = [this._configService.api.protocol, "://", this._configService.api.host, 
-					   this._configService.bcRegistryUrl].join("");
+		var rootUrl = [];
+
+		if(this._configService.api.protocol && this._configService.api.host) {
+			rootUrl.push(this._configService.api.protocol);
+			rootUrl.push("://")
+			rootUrl.push(this._configService.api.host);
+		}
+
+		rootUrl.push(this._configService.bcRegistryUrl);
+
+		rootUrl = rootUrl.join("");
 
 		return this._httpService({
 			"url": rootUrl,

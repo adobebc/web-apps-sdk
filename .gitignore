@@ -17,3 +17,5 @@ sdk/lib/*
 */.idea
 */*sublime*
 */karma*
+
+*.log

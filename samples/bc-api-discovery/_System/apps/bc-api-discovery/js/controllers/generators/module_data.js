@@ -146,10 +146,9 @@
 		snippet.push('"');
 
 		if(data.where) {
-			var where = JSON.stringify(data.where);
+			var where = this._escapeWhere(JSON.stringify(data.where));
 
-			if(where != "\{\}") {
-				where = where.replace('{', '\\{').replace("}", "\\}").replace("[", "\\[").replace("]", "\\]");
+			if(where) {				
 				snippet.push(' where="');
 				snippet.push(where);
 				snippet.push('"');
@@ -170,6 +169,41 @@
 		snippet.push("&lt;pre&gt;{{myData|json}}&lt;/pre&gt;");
 
 		this.$scope.snippet = snippet.join("");
+	};
+
+	/**
+	 * @private
+	 * @instance
+	 * @method
+	 * @description
+	 * This method is responsible for escaping all reserved characters from the given where clause.
+	 */
+	ModuleDataController.prototype._escapeWhere = function(where) {
+		if(!where || where == "{}") {
+			return;
+		}
+
+		var escapedResult = [],
+			whereEscapeChars = {
+				"{": "\\{",
+				"}": "\\}",
+				"[": "\\[",
+				"]": "\\]"
+			};
+
+		for(var idx = 0; idx < where.length; idx++) {
+			var chr = where[idx];
+
+			if(whereEscapeChars[chr]) {
+				escapedResult.push(whereEscapeChars[chr]);
+
+				continue;
+			}
+
+			escapedResult.push(chr);
+		}
+
+		return escapedResult.join("");
 	};
 
 	/**

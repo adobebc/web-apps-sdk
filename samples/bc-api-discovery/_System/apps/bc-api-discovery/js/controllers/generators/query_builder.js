@@ -197,6 +197,10 @@
 			}
 						
 			for(var fieldName in resourceDescriptor.fields.identifier) {
+				if(fieldName == "siteId") {
+					continue;
+				}
+
 				var field = resourceDescriptor.fields.identifier[fieldName];
 				field.name = fieldName;
 

@@ -54,7 +54,8 @@
                 };
 
                 this.restoreActive = function() {
-                    var currHash = window.location.hash;
+                    var currHash = window.location.hash,
+                        selected = false;;
 
                     if(!currHash) {
                         return;
@@ -62,11 +63,16 @@
 
                     angular.forEach(panes, function(pane) {
                         if(!currHash || !pane.hash) {
+                            pane.selected = false;
                             return;
                         }
 
-                        pane.selected = pane.hash == currHash;
+                        pane.selected = currHash.indexOf(pane.hash) == 0;
                     });
+
+                    if(selected == false && panes && panes.length > 0) {
+                        panes[0].selected = true;
+                    }
                 }
             },
             templateUrl: "/_System/apps/bc-api-discovery/templates/directives/tabs.html"

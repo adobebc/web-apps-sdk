@@ -150,8 +150,9 @@
 		var resourceId = this.$scope.resourceSelection.value,
 			self = this;
 
-		self.$scope.versionsSelection.value = undefined;
-		self.$scope.subresourceSelection.value = undefined;
+		this.$scope.versionsSelection.value = undefined;
+		this.$scope.subresourceSelection.value = undefined;
+		this.$scope.sampleResourcesSelection.value = undefined;
 
 		if(!resourceId) {
 			return;

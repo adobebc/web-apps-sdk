@@ -9,7 +9,7 @@
 <li><strong>engine layout</strong> - (string)</li>
 <li><strong>performance</strong> - (string)</li>
 </ul>
-<p class="alert alert-warning"><strong>Remember:</strong> if you need to access a liquid tag that has a space in its name, for example <em>engine size</em> use this syntax: <code>{{<span>cars1.items[0].["engine size"]</span>}}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this particular example the tag that contains a space needs to be wrapped in square brackets&nbsp;and quotes.</p>
+<p class="alert alert-warning"><strong>Remember:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{{<span>cars1.items[0].["large image_value"]</span>}}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by the name of the collection (in this case <em>cars1</em>).</p>
 <div id="webapp-list">
 <h2>List all the webapp items</h2>
 <p>First of all let's render all the webapp items. We won't add any conditions just yet, let's loop all the items available. Create a blank page and paste this code:</p>

@@ -16,7 +16,7 @@ Site visitors get to it only after clicking the links outputted by the tag {<spa
 </div>
 <div id="tags">
 <h2>Renders these tags</h2>
-<br />
+<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{{<span>this.items[0].["large image_value"]</span>}}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by &quot;<em>this.</em>&quot;.</p>
 <table width="100%" class="data-bordered">
     <thead>
 <tr>

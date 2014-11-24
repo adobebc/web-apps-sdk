@@ -1,0 +1,187 @@
+<h1 apiType="restv3">Product variations</h1>
+<ul id="toc"></ul>
+<div id="list">
+<h2 id ="list-products">List all the variations  on a site</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/variations
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of the first 10 variations; each object has the following properties:</p>
+
+<ul>
+<li><strong>id</strong> - product ID <em>(number)</em></li>
+<li><strong>siteId</strong> - site ID <em>(number)</em></li>
+<li><strong>productId</strong> - corresponding product's id <em>(string)</em></li>
+<li><strong>sku</strong> - variations' SKU <em>(string)</em></li>
+<li><strong>inStock</strong> - items in stock <em>(number)</em></li>
+<li><strong>onOrder</strong> - items on order <em>(number)</em></li>
+<li><strong>enabled</strong> - variation is enabled<em>(string)</em></li>
+</ul>
+
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/variations",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "id": 32265,
+      "siteId": 246884,
+      "productId": 3909346,
+      "sku": "X5I0YA888Y-Type1",
+      "inStock": 1,
+      "onOrder": 0,
+      "enabled": true
+    },
+    {
+      "id": 32266,
+      "siteId": 246884,
+      "productId": 3909346,
+      "sku": "X5I0YA888Y-Type2",
+      "inStock": 2,
+      "onOrder": 0,
+      "enabled": true
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
+</div>
+<hr>
+</div>
+<div id="details">
+<h2>Get a product's variations</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/products/[product_ID]/variations
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Displays the details for the discount code as a JSON object</p>
+<ul>
+<li><strong>id</strong> - product ID <em>(number)</em></li>
+<li><strong>siteId</strong> - site ID <em>(number)</em></li>
+<li><strong>productId</strong> - corresponding product's id <em>(string)</em></li>
+<li><strong>sku</strong> - variations' SKU <em>(string)</em></li>
+<li><strong>inStock</strong> - items in stock <em>(number)</em></li>
+<li><strong>onOrder</strong> - items on order <em>(number)</em></li>
+<li><strong>enabled</strong> - variation is enabled<em>(string)</em></li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/products/3909340/variations",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "id": 160947,
+      "siteId": 246884,
+      "productId": 3909340,
+      "sku": "EYE2FQZUGZ-red",
+      "inStock": 4,
+      "onOrder": 0,
+      "enabled": true
+    },
+    {
+      "id": 160948,
+      "siteId": 246884,
+      "productId": 3909340,
+      "sku": "EYE2FQZUGZ-blue",
+      "inStock": 2,
+      "onOrder": 0,
+      "enabled": true
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
+</div>
+<hr>
+</div>
+

@@ -152,6 +152,7 @@
 
 		self.$scope.versionsSelection.value = undefined;
 		self.$scope.subresourceSelection.value = undefined;
+		self.$scope.sampleResourcesSelection.value = undefined;
 
 		if(!resourceId) {
 			return;

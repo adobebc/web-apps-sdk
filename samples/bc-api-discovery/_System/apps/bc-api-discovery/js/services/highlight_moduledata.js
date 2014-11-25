@@ -80,7 +80,6 @@
 
 			snippet = snippet.replace(token, replacement);
 		}
-
 		return snippet;
 	};
 

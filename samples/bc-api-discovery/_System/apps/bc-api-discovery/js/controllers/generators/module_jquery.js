@@ -107,7 +107,7 @@
 	JqueryController.prototype._getJquerySnippetTemplate = function(){
 		var self = this;
 		this._$http({
-			"url": "/_System/apps/bc-api-discovery/templates/generators/jquery_snippet.html",
+			"url": "/_System/apps/bc-api-discovery/templates/generators/jquery_snippet.tpl",
 			"type": "GET",
 			"headers": {
 				"Authorization": self._configService.api.accessToken

@@ -22,7 +22,7 @@
 
 <div class="col-md-8" ng-hide="!resourceSelection.value">
 	<div ng-controller="QueryBuilderController">
-		<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/query_builder.html'"></div>		
+		<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/query_builder.tpl'"></div>
 	</div>
 </div>
 
@@ -53,19 +53,19 @@
 	<api-tabs>
 		<api-tab-pane title="module_data">
 			<div ng-controller="ModuleDataController">
-				<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/module_data.html'"></div>
+				<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/module_data.tpl'"></div>
 			</div>
 		</api-tab-pane>
 
 		<api-tab-pane title="JQuery">
 			<div ng-controller="JqueryController">
-				<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/jquery.html'"></div>
+				<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/jquery.tpl'"></div>
 			</div>
 		</api-tab-pane>
 
 		<api-tab-pane title="HTTP 1.1">
 			<div ng-controller="Http11Controller">
-				<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/http11.html'"></div>
+				<div ng-include="'/_System/apps/bc-api-discovery/templates/generators/http11.tpl'"></div>
 			</div>
 		</api-tab-pane>
 	</api-tabs>

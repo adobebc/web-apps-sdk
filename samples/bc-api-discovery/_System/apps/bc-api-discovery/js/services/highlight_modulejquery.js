@@ -40,7 +40,7 @@
      * @description
      * This method highlights the given snippet and colors all keywords for improving text readability.
      */
-    ModuleJQueryHighlighter.prototype.highlight = function(snippet, resourceDescriptor) {
+    ModuleJQueryHighlighter.prototype.highlight = function(snippet) {
         if(!snippet) {
             return;
         }

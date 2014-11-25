@@ -1,7 +1,8 @@
 <h1>Liquid powered menu</h1>
-<p>In this article we will take a look at the most basic implementation of a Liquid powered menu rendered in a simple unordered list.</p>
+<h2>Basic implementation</h2>
+<p>In this section we will take a look at the most basic implementation of a Liquid powered menu rendered in a simple unordered list.</p>
 <p>When using the collection powered render method you can render the output in whetever structure you want (<em>table</em>, <em>list</em>, group of divs).</p>
-<h2>Create the menu</h2>
+<h3>Create the menu</h3>
 <p>The first thing to do is to create the menu structure in the Admin console. Head over to the <em>Site Manager </em>-&gt; <em>Menu</em> panel and build your menu tree. For this example we'll use this 2 level deep structure below:</p>
 <ul id="main-menu" class="sm sm-blue">
    
@@ -80,7 +81,7 @@
      
   
 </ul>
-<h2>Display  it on a page<em></em></h2>
+<h3>Display  it on a page<em></em></h3>
 <p>Now that the menu is in place let's insert the menu on the page or template. Create a blank page and insert the menu module like so:</p>
 <pre class="language-javascript"><code>{<span>module_menu render="collection" menuId="2165233" template="" collection="menu1"</span>}
 </code></pre>
@@ -143,3 +144,96 @@
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 <p>At this point we have the menu represented as an unordered list on the page. Moving on we can use a 3-rd party menu library to further style and animate it.</p>
+<h2>Other menu customizations</h2>
+<h3>Show menu for specific country code</h3>
+<h4>The logic</h4>
+<p>You seen in a previous tutorial how to actully <a href="http://docs.businesscatalyst.com/dev-assets/reference/how-tos/liquid/menu.html" title="Generate your menu using Liquid">generate your menu using Liquid</a>. Let's pick up from there and see how to show it only to users from a specific country. The logic behind is simple. Take a look at the <a href="http://docs.businesscatalyst.com/developers#!/liquid/getting-started-with-liquid!globals" title="Jquery Global Variables">Jquery Global</a>: </p>
+
+<pre>{<span>{globals | json}</span>}  <a  onclick='$("#jsonglobal").toggle(); event.preventDefault()' href="#">Click to see live output</a></pre>
+ 
+<div id="jsonglobal" style="display: none">
+ <pre>{{globals | json}} </pre>
+</div>
+
+
+
+
+<p>You can see that <strong>visitor country</strong> will  be one of the variables outputted by the module. So what we need to do is just apply an <a href="http://docs.businesscatalyst.com/dev-assets/reference/liquid-reference/reference/logic-tags.html#if" title="If Logic Tag (Liquid)">IF condition</a> to the Liquid code that generates the menu markup, so that it carries out the action only <strong>if</strong> the visitor country is XX
+<h4>The build</h4>
+
+<p>To enable this scenario, simply wrap your Liquid menu generation markup with your If condition: </p>
+  <p class="alert alert-info">
+  <span><strong><span>{%</span> if <span>{{</span>globals.site.countryCode<span>}}</span> contains 'XZ' %}</strong></span> <br>
+  - Liquid Code - <br>
+  <span><strong><span>{%</span> else %}</strong></span>  <br>
+  -Custom message- <br>
+  <span><strong>{% endif %}</strong></span></p>
+<p></p>
+  <p>Here's the markup in its basic implementation, with no specific menu plugin used</span>:</p>
+ <pre class="language-javascript"><code>{<span>% if {</span>{clobals.site.countryCode}<span>} contains &quot;XX&quot; %</span>}
+&lt;ul&gt;
+  {<span>% if menu1.items %</span>} 
+	{<span>% for i in menu1.items %</span>}
+  	&lt;li&gt;&lt;a href=&quot;{<span>{i.url}</span>}&quot;&gt;{<span>{i.label}</span>}&lt;/a&gt; 
+			{<span>% if i.items %</span>}
+     		&lt;ul&gt;
+			{<span>% for j in i.items %</span>}
+				&lt;li&gt;&lt;a href=&quot;{<span>{j.url}</span>}&quot;&gt;{<span>{j.label}</span>}&lt;/a&gt; 
+					{<span>% if j.items %</span>}
+        			&lt;ul&gt;
+					{<span>% for k in j.items %</span>}
+						&lt;li&gt;
+            				&lt;a href=&quot;{<span>{k.url}</span>}&quot;&gt;{<span>{k.label}</span>}&lt;/a&gt;
+						&lt;/li&gt;
+					{<span>% endfor %</span>}
+        			&lt;/ul&gt;
+        			{<span>% endif %</span>}
+				&lt;/li&gt;
+			{<span>% endfor %</span>}
+    		&lt;/ul&gt;
+    		{<span>% endif %</span>}
+  	&lt;/li&gt;
+   {<span>% endfor %</span>} 
+  {<span>% endif %</span>}
+&lt;/ul&gt;
+{<span>% else %</span>}
+&lt;p&gt;Some message, maybe&lt;/p&gt;
+{<span>% endif %</span>}</code></pre>
+<p>Here's how this will output on an actual page:</p> 
+<p class="alert alert-warning"><a href="http://liquidexamples.worldsecuresystems.com/general-show-menu-if-country-code-is-XX">http://liquidexamples.worldsecuresystems.com/general-show-menu-if-country-code-is-XX</a></p>
+<h4>Bootstrap implementation</h4>
+<p>The following is  a specific example, using the <strong>Bootstrap</strong> menu plugin:</p> <p class="alert alert-warning"> <a href="http://liquidexamples.worldsecuresystems.com/bootstrap-show-menu-if-country-code-is-XX">http://liquidexamples.worldsecuresystems.com/bootstrap-show-menu-if-country-code-is-XX</a></p>
+<img alt="" src="/kb_resources/screenshots/liquid_if_bootstrap.jpg?Action=thumbnail&amp;Width=500&amp;algorithm=fill" />
+<pre class=" language-javascript"><code>&lt;ul class=&quot;nav navbar-nav&quot;&gt;
+  {<span>% if menu1.items %</span>} 
+	{<span>% for i in menu1.items %</span>}	
+{<span>% if i.items %</span>}
+&lt;li class=&quot;dropdown&quot;&gt;&lt;a class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-expanded=&quot;false&quot; href=&quot;{<span>{i.url}</span>}&quot;&gt;{<span>{i.label}</span>}&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt; 
+{<span>% else %</span>}
+&lt;li&gt;&lt;a href=&quot;{<span>{i.url}</span>}&quot;&gt;{<span>{i.label}</span>}&lt;/a&gt; 
+			
+{<span>% endif %</span>}
+{<span>% if i.items %</span>}
+     		&lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;
+			{<span>% for j in i.items %</span>}
+				&lt;li&gt;&lt;a href=&quot;{<span>{j.url}</span>}&quot;&gt;{<span>{j.label}</span>}&lt;/a&gt; 
+					{<span>% if j.items %</span>}
+        			&lt;ul&gt;
+					{<span>% for k in j.items %</span>}
+						&lt;li&gt;
+            				&lt;a href=&quot;{<span>{k.url}</span>}&quot;&gt;{<span>{k.label}</span>}&lt;/a&gt;
+						&lt;/li&gt;
+					{<span>% endfor %</span>}
+        			&lt;/ul&gt;
+        			{<span>% endif %</span>}
+				&lt;/li&gt;
+			{<span>% endfor %</span>}
+    		&lt;/ul&gt;
+    		{<span>% endif %</span>}
+  	&lt;/li&gt;
+   {<span>% endfor %</span>} 
+  {<span>% endif %</span>}
+&lt;/ul&gt;</code></pre>
+
+<h4>Conclusion</h4>
+<p>Before the introduction of <strong>Liquid</strong>, this would have only been possible with custom java script implementations. You would load the menu in a hidden container, and display it if the visitor was logged in. Still the menu <strong>was</strong> there. </p><p>Using Liquid, you're acutally rendering (or <strong>not</strong>) the content on the server, performing operations and conditions <strong>before</strong> render time, so the output is clean, fast and secure.</p>

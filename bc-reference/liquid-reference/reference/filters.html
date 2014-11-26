@@ -99,12 +99,15 @@
         </tr>
          <tr>
             <td valign="top" class="cellrowborder"><code>date</code></td>
-          <td><span class="cellcontent">For this example let's use 2014-06-18. Here are the available switches:<br/>
+          <td><span class="cellcontent">
+          Here are the available switches:<br/>
           <ul>
           <li><code>%d</code> - outputs the day of the month - 18</li>
           <li><code>%M</code> - outputs the month of the year - 6</li>
           <li><code>%y</code> - outputs the year - 14</li>
           </ul>
+          <br/>
+          To output 14-06-18 use {<span>{dateVariable | date: "%y-%M-%d"}</span>} (mind the double quotes).
           </span></td>
         </tr>
         <tr>

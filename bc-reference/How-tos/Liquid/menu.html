@@ -145,6 +145,58 @@
 &lt;/ul&gt;</code></pre>
 <p>At this point we have the menu represented as an unordered list on the page. Moving on we can use a 3-rd party menu library to further style and animate it.</p>
 <h2>Other menu customizations</h2>
+<h3>Show the menu only if the user is logged in</h3>
+<h4>The logic</h4>
+<p>You seen in a previous section how <a href="#basic-implementation">generate a basic menu using Liquid</a>. Let's pick up from there and see how to show it only to users that have logged in. The logic behind is simple. Take a look at yout visitor details in the <a href="/developers/liquid/getting-started-with-liquid#globals" title="Liquid Global object">Liquid global object</a>: </p>
+<code>{{globals.user | json}}</code>
+<p>What we need to do is just apply an <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#if" title="If Logic Tag (Liquid)">IF condition</a> to the Liquid code that generates the menu markup, so that it carries out the action only <strong>if</strong> the isLoggedIn condition is true
+<h4>The build</h4>
+
+<p>To enable this scenario, simply wrap your Liquid menu generation markup with your If condition: </p>
+  <p class="alert alert-info">
+  <span><strong><span>{%</span> if <span>{{</span>globals.user.isLoggedIn<span>}}</span> contains &quot;true&quot; %}</strong></span> <br>
+  - Liquid Code - <br>
+  <span><strong><span>{%</span> else %}</strong></span>  <br>
+  -Custom message- <br>
+  <span><strong>{% endif %}</strong></span></p>
+<p></p>
+  <p>Here's the markup in its basic implementation, with no specific menu plugin used</span>:</p>
+ <pre class="language-javascript"><code>{<span>% if {</span>{clobals.user.isLoggedIn}<span>} contains &quot;true&quot; %</span>}
+&lt;ul&gt;
+  {<span>% if menu1.items %</span>} 
+	{<span>% for i in menu1.items %</span>}
+  	&lt;li&gt;&lt;a href=&quot;{<span>{i.url}</span>}&quot;&gt;{<span>{i.label}</span>}&lt;/a&gt; 
+			{<span>% if i.items %</span>}
+     		&lt;ul&gt;
+			{<span>% for j in i.items %</span>}
+				&lt;li&gt;&lt;a href=&quot;{<span>{j.url}</span>}&quot;&gt;{<span>{j.label}</span>}&lt;/a&gt; 
+					{<span>% if j.items %</span>}
+        			&lt;ul&gt;
+					{<span>% for k in j.items %</span>}
+						&lt;li&gt;
+            				&lt;a href=&quot;{<span>{k.url}</span>}&quot;&gt;{<span>{k.label}</span>}&lt;/a&gt;
+						&lt;/li&gt;
+					{<span>% endfor %</span>}
+        			&lt;/ul&gt;
+        			{<span>% endif %</span>}
+				&lt;/li&gt;
+			{<span>% endfor %</span>}
+    		&lt;/ul&gt;
+    		{<span>% endif %</span>}
+  	&lt;/li&gt;
+   {<span>% endfor %</span>} 
+  {<span>% endif %</span>}
+&lt;/ul&gt;
+{<span>% else %</span>}
+&lt;p&gt;Some message, maybe&lt;/p&gt;
+{<span>% endif %</span>}</code></pre>
+<p>Here's how this will output on an actual page:</p> 
+<p class="alert alert-warning"><a href="http://liquidexamples.worldsecuresystems.com/general-show-menu-if-logged-in">http://liquidexamples.worldsecuresystems.com/general-show-menu-if-logged-in</a></p>
+
+
+<h4>Conclusion</h4>
+<p>Before the introduction of <strong>Liquid</strong>, this would have only been possible with custom java script implementations. You would load the menu in a hidden container, and display it if the visitor was logged in. Still the menu <strong>was</strong> there. </p><p>Using Liquid, you're acutally enabling (or <strong>not</strong>) the content on the server-side, performing operations and conditions <strong>before</strong> render time, so the output is clean, fast and secure.</p>
+
 <h3>Show the menu only for a specific country code</h3>
 <h4>The logic</h4>
 <p>You seen in a previous section how <a href="#basic-implementation">generate a basic menu using Liquid</a>. Let's pick up from there and see how to show it only to users from a specific country. The logic behind is simple. Take a look at yout visitor details in the <a href="/developers/liquid/getting-started-with-liquid#globals" title="Liquid Global object">Liquid global object</a>: </p>
@@ -227,4 +279,5 @@
 &lt;/ul&gt;</code></pre>
 
 <h4>Conclusion</h4>
-<p>Before the introduction of <strong>Liquid</strong>, this would have only been possible with custom java script implementations. You would load the menu in a hidden container, and display it if the visitor was logged in. Still the menu <strong>was</strong> there. </p><p>Using Liquid, you're acutally rendering (or <strong>not</strong>) the content on the server, performing operations and conditions <strong>before</strong> render time, so the output is clean, fast and secure.</p>
+<p>Before the introduction of <strong>Liquid</strong>, this would have only been possible with custom java script implementations. You would load the menu in a hidden container, and display it if the visitor country was a specific value, as rendered by <span><strong>{</strong></span><strong>module_visitorcountrycode<span>}</span></strong>. Still the menu <strong>was</strong> there. </p>
+<p>Using Liquid, you're acutally enabling (or <strong>not</strong>) the content on the server-side, performing operations and conditions <strong>before</strong> render time, so the output is clean, fast and secure.</p>

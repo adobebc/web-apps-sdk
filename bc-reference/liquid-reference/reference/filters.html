@@ -45,23 +45,47 @@
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code><span class="tagname">capitalize</span></code></td>
-            <td>{{<span>'Sample text' | capitalize</span>}}outputs &quot;Sample Text&quot;</td>
+            <td>{{<span>'Sample text' | capitalize</span>}} outputs &quot;Sample Text&quot;</td>
         </tr>
 		<tr>
             <td valign="top" class="cellrowborder"><code>downcase</code></td>
-          <td>{{<span>'Sample text' | capitalize</span>}}outputs &quot;sample text&quot;</td>
+          <td>{{<span>'Sample text' | capitalize</span>}} outputs &quot;sample text&quot;</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>upcase</code></td>
-          <td>{{<span>'Sample text' | capitalize</span>}}outputs &quot;SAMPLE TEXT&quot;</td>
+          <td>{{<span>'Sample text' | capitalize</span>}} outputs &quot;SAMPLE TEXT&quot;</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>remove</code></td>
-          <td>{{<span>'Sample text. All occurences of &quot;text&quot; will be removed.' | remove: &quot;text&quot;</span>}}outputs 'Sample . All occurences of &quot;&quot; will be removed.'</td>
+          <td>{{<span>'Sample text. All occurences of &quot;text&quot; will be removed.' | remove: &quot;text&quot;</span>}} outputs 'Sample . All occurences of &quot;&quot; will be removed.'</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>replace</code></td>
-          <td>{{<span>'Sample text. All occurences of &quot;text&quot; will be replced.' | replace: &quot;text&quot;, &quot;string&quot;</span>}}outputs 'Sample string. All occurences of &quot;string&quot; will be replaced.'</td>
+          <td>{{<span>'Sample text. All occurences of &quot;text&quot; will be replced.' | replace: &quot;text&quot;, &quot;string&quot;</span>}} outputs 'Sample string. All occurences of &quot;string&quot; will be replaced.'</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>replacefirst</code></td>
+          <td>{{<span>'Sample text text.' | replacefirst: &quot;text&quot;, &quot;string&quot;</span>}} outputs 'Sample string text''</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>truncate</code></td>
+          <td>{{'<span>Sample text ' | truncate: 9, &quot;...&quot;</span>}} outputs 'Sample... '</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>split</code></td>
+          <td>{{<span>'1,2,3,4,5<span> ' | split: &quot;,&quot;</span>}} splits the text and creates an array [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>join</code></td>
+          <td>{{<span>myArray<span> | join: &quot;///&quot;</span>}} assuming myArray is an array joins the elements and puts the separator between each element</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>sort</code></td>
+          <td>{{<span>myArray<span> | sort</span>}} assuming myArray is an array [&quot;5&quot;,&quot;4&quot;,&quot;3&quot;] ]the sort filter outputs [&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>strip_html</code></td>
+          <td>{{<span>"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html</span>}} strips the HTML code from the string, this outputs &quot;My paragraph&quot;</td>
         </tr>
 		
         

@@ -1,0 +1,26 @@
+<h1>Product list layout customizations</h1>
+<p>In this article we will take a look at how we can replace the product list layout using module_data. The main advantage of this setup is you are not limited to the list of tags available on the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-small-layout.html">Product List layout</a>.</p>
+<h2>Description</h2>
+<p>To implement this setup we will need to go in the <a href="/dev-assets/reference/tag-reference/e-commerce/online-shop-overall-layout.html">Overall shop layout</a> and replace the product listing outputted by {<span><em>tag_productlist</em></span>} with module_data.</p>
+<p>Once module_data is in palce we will use a custom layout to list the products.</p>
+<h2>The build</h2>
+<p><strong>Step 1 -</strong> go in the Overall shop layout and replace <em>tag_productlist</em> with <em>module_data</em> like so:</p>
+<pre class="language-javascript"><code>{<span>module_data resource="catalogs" version="v3" subresource="products" resourceId="{</span>{this.globals.get.CatalogueID}<span>}" template="/demo/product-list.tpl"</span>}</code></pre>
+<p>This instance of <em>module_data</em> lists all the products in the current catalog (just like <em>tag_productlist</em>) and renders the products using the <em>product-list.tpl</em> custom template</p>
+<p><strong>Step 2 -</strong> create the <em>tag_productlist</em> template and paste the code below:</p>
+<pre class="language-javascript"><code>{% for item in items %}
+	{module_data resource=&quot;products&quot; version=&quot;v3&quot; subresource=&quot;prices&quot; resourceId=&quot;{{item.product.id}}&quot; collection=&quot;prices&quot;}
+	&lt;div class=&quot;product-item&quot;&gt;
+		{% assign ppl = item.product.poplets | split: &quot;;&quot; %}
+		&lt;ul&gt;
+			&lt;li&gt;&lt;img src=&quot;{{ppl[0]}}?Action=thumbnail&amp;amp;Width=600&amp;amp;Height=900&amp;amp;algorithm=fill_proportional&quot; alt=&quot;{{item.product.name}} {{item.product.name}}&quot;/&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;img src=&quot;{{ppl[1]}}?Action=thumbnail&amp;amp;Width=600&amp;amp;Height=900&amp;amp;algorithm=fill_proportional&quot; alt=&quot;{{item.product.name}} {{item.product.name}}&quot;/&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+		&lt;h4&gt;{{item.product.name}}&lt;/h4&gt;
+		&lt;p&gt;€{{prices.items[0].salePrice}}&lt;/p&gt;
+	&lt;/div&gt;
+{% endfor %}</code></pre> 
+<p class="alert alert-info"><strong>Good practise</strong> when using module_data is to always use {{this | json}} to <a href="/developers/liquid/getting-started-with-liquid#available_tags">explore the objects and see whay they contain</a>.</p>
+<p>By default when using this implementation the product prices will not be available in our custom template, we will need to explicitly add them to the layout so we can access them. To do this we are using the <em>module_data</em> at line 2 of the custom template. </p>
+<p>Because the module_data that brings prices to the module is placed inside the FOR loop it is executed for each product in the list and places the price object in the <code>prices</code> collection. We can now render the price for each product using <code>prices.items[0].salePrice</code></p>
+<h2>The build</h2>

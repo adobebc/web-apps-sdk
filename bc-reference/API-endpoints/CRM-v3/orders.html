@@ -214,7 +214,7 @@ var request = $.ajax({
 request.done(function (msg) {
     console.log(msg);
 })
-request.fail(function (jqXHR) {s
+request.fail(function (jqXHR) {
     console.log("Request failed.");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);

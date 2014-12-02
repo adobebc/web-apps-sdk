@@ -1,4 +1,4 @@
-<h1>{<span>module_searchresults</span>}</h1>
+<h1>&#123;module_searchresults&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Displays site-wide search results. This module can be placed on the same web page/template as the search box or on a different page. In the second case the action URL of the search box needs to be altered so that it redirects the visitor to the page this module is inserted on.</p>
@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_searchresults </span>render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;<span> targetFrame=“_blank" resultsPerPage=“20" characterLimit="440" emptySearchResultString=“No results found"</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_searchresults render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; targetFrame=“_blank" resultsPerPage=“20" characterLimit="440" emptySearchResultString=“No results found"&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -43,42 +43,42 @@
 </thead>
   <tbody>
     <tr>
-         <td valign="top" class="liquid tag"><code>{{<span class="tagname">counter</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_counter</span>}</code></td><td class="description"><span>Incremental count of the items on the page</span></td>
+         <td valign="top" class="liquid tag"><code>&#123;&#123;counter&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_counter&#125;</code></td><td class="description">Incremental count of the items on the page</td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>{{<span class="tagname">description</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_description</span>}</code></td><td class="description"><span>Short description of the item</span></td>
+         <td valign="top" class="liquid tag"><code>&#123;&#123;description&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_description&#125;</code></td><td class="description">Short description of the item</td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>{{<span class="tagname">image_url</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image</span>}</code></td><td class="description"><span>An image reflective of the type of the item; for example, <em>Web Page</em> or <em>News</em></span></td>
+         <td valign="top" class="liquid tag"><code>&#123;&#123;image_url&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_image&#125;</code></td><td class="description">An image reflective of the type of the item; for example, <em>Web Page</em> or <em>News</em></td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>{{<span class="tagname">id</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_itemid</span>}</code></td><td class="description"><span>Internal ID of the item</span></td>
+         <td valign="top" class="liquid tag"><code>&#123;&#123;id&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_itemid&#125;</code></td><td class="description">Internal ID of the item</td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>{{<span class="tagname">type</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_itemtype</span>}</code></td><td class="description"><span>Type of the item; for example, <em>Web Page</em>, <em>News</em>, <em>Web App</em>, or <em>FAQ</em></span></td>
+         <td valign="top" class="liquid tag"><code>&#123;&#123;type&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_itemtype&#125;</code></td><td class="description">Type of the item; for example, <em>Web Page</em>, <em>News</em>, <em>Web App</em>, or <em>FAQ</em></td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>{{<span class="tagname">name</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name_nolink</span>}</code></td><td class="description"><span>Item name without a hyperlink to the item</span></td>
+         <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_name_nolink&#125;</code></td><td class="description">Item name without a hyperlink to the item</td>
         </tr>
     <tr>
          <td valign="top" class="liquid tag">&nbsp;</td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name</span>}</code></td><td class="description"><span>Item name with a hyperlink to the item</span></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_name&#125;</code></td><td class="description">Item name with a hyperlink to the item</td>
         </tr>
          <tr>
-         <td valign="top" class="liquid tag"><code>{{<span class="tagname">pagination</span>}}</code></td>
+         <td valign="top" class="liquid tag"><code>&#123;&#123;pagination&#125;&#125;</code></td>
             <td valign="top" class="legacy tag">&nbsp;</td>
-            <td class="description"><span>Pagination controls:<ul><li>currentPage</li>
+            <td class="description">Pagination controls:<ul><li>currentPage</li>
               <li>numberOfPages</li>
               <li>previousPageUrl</li>
               <li>nextPageUrl</li>
             </ul>
-            </span></td>
+            </td>
         </tr>
   </tbody>
 </table>
@@ -86,14 +86,14 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_searchresults targetFrame="_blank" resultsPerPage="12"</span>}</code> - This module will display 12 results per page in the new window.</li>
+    <li><code>&#123;module_searchresults targetFrame="_blank" resultsPerPage="12"&#125;</code> - This module will display 12 results per page in the new window.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_searchresults,targetFrame,resultsPerPage,hightlightType,characterLimit,hidePageNumbers,paginationLinks,No results found</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_searchresults,targetFrame,resultsPerPage,hightlightType,characterLimit,hidePageNumbers,paginationLinks,No results found&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -114,7 +114,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_searchresults,_blank,12,,50,,Sorry, found no results</span>,,}</code> - This module will display 12 results per page in the new window. The results body will be truncated to 50 characters.</li>
+    <li><code>&#123;module_searchresults,_blank,12,,50,,Sorry, found no results,,>&#125;</code> - This module will display 12 results per page in the new window. The results body will be truncated to 50 characters.</li>
 </ul>
 </div>
 </div>

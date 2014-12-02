@@ -1,4 +1,4 @@
-<h1>{<span>module_referreraddress</span>}</h1>
+<h1>&#123;module_referreraddress&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Displays a hyperlink that points to the referring page.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_referreraddress target="_blank" text="CustomText" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_referreraddress target="_blank" text="CustomText" collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -32,14 +32,14 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_referreraddress target=&quot;_top&quot; text=&quot;Previous link</span>&quot;}</code> - this will output a hyperlink that points to the previous page the site visitor was visiting. For example if one goes to the mysite.com/page1 and on that page clicks a link and navigates to mysite.com/page2 the module will output this link - &lt;a href="http://mysite.com/page1" target="_top"&gt;Previous link&lt;/a&gt;</li><li><code>{<span>module_referreraddress collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+    <li><code>&#123;module_referreraddress target=&quot;_top&quot; text=&quot;Previous link&quot;&#125;</code> - this will output a hyperlink that points to the previous page the site visitor was visiting. For example if one goes to the mysite.com/page1 and on that page clicks a link and navigates to mysite.com/page2 the module will output this link - &lt;a href="http://mysite.com/page1" target="_top"&gt;Previous link&lt;/a&gt;</li><li><code>&#123;module_referreraddress collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_referreraddress,target,text</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_referreraddress,target,text&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -51,7 +51,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_referreraddress,_top,Previous link</span>}</code> - this will output a hyperlink that points to the previous page the site visitor was visiting. For example if one goes to the mysite.com/page1 and on that page clicks a link and navigates to mysite.com/page2 the module will output this link - &lt;a href="http://mysite.com/page1" target="_top"&gt;Previous link&lt;/a&gt;</li>
+    <li><code>&#123;module_referreraddress,_top,Previous link&#125;</code> - this will output a hyperlink that points to the previous page the site visitor was visiting. For example if one goes to the mysite.com/page1 and on that page clicks a link and navigates to mysite.com/page2 the module will output this link - &lt;a href="http://mysite.com/page1" target="_top"&gt;Previous link&lt;/a&gt;</li>
 </ul>
 </div>
 </div>

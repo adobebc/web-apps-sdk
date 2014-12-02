@@ -1,4 +1,4 @@
-<h1>{<span>module_webformresults</span>}</h1>
+<h1>&#123;module_webformresults&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Displays the summary of the webform submission. This module is usually found on the <a href="/user-manual/site-design/system-pages/web-forms-related">Web Forms Confirmation Page</a> system page.</p>
@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_webformresults render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_webformresults render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -37,12 +37,12 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">eid</span>}}</code></td>
-         <td class="description"><span>The HTML representation of the form results (the HTML code of the legacu table)</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;eid&#125;&#125;</code></td>
+         <td class="description">The HTML representation of the form results (the HTML code of the legacu table)</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">results</span>}}</code></td>
-         <td class="description"><span>a JSON object containing the individual values of the form's fields:
+            <td valign="top" class="liquid tag"><code>&#123;&#123;results&#125;&#125;</code></td>
+         <td class="description">a JSON object containing the individual values of the form's fields:
          <ul>
          <li><strong>firstName</strong></li>
          <li><strong>lastName</strong></li>
@@ -50,7 +50,7 @@
          <li><strong>caseId</strong></li>
          <li>any other custom fields you have added to the form</li>
          </ul>
-         </span></td>
+         </td>
         </tr>
     </tbody>
 </table>
@@ -58,20 +58,20 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_webformresults</span>}</code> - displays the form's results using the fixed table layout</li>
-    <li><code>{<span>module_webformresults collection="formResults" template=""</span>}</code> - does not display anything, it creates the <em>formResults</em> collection you can use to create your own custom layout</li>
+    <li><code>&#123;module_webformresults&#125;</code> - displays the form's results using the fixed table layout</li>
+    <li><code>&#123;module_webformresults collection="formResults" template=""&#125;</code> - does not display anything, it creates the <em>formResults</em> collection you can use to create your own custom layout</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_webformresults</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_webformresults&#125;</code></pre>
 </div>
   <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_webformresults</span>}</code> - displays the form's results using the fixed table layout</li>
+    <li><code>&#123;module_webformresults&#125;</code> - displays the form's results using the fixed table layout</li>
 </ul>
 </div>
 </div>

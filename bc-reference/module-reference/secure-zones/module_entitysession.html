@@ -1,4 +1,4 @@
-<h1>{<span>module_entitysession</span>}</h1>
+<h1>&#123;module_entitysession&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Outputs the logged in user's session ID. This session ID is also stored in the cookie VSV[SiteID] that is created as an user logs into the front-end of the site.</p>
@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_entitysession </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_entitysession collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -32,21 +32,21 @@
 <h2>Examples</h2>
 <ul>
 <li>
-<code>{<span>module_entitysession</span>}</code> - outputs the session ID in plain text, for example "<em>fagfh1jmq5fhx5rj2c3drh3b7UsD_QP7XEYcoxf15E7ONbPmSOU</em>%3d"
-</li><li><code>{<span>module_entitysession collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+<code>&#123;module_entitysession&#125;</code> - outputs the session ID in plain text, for example "<em>fagfh1jmq5fhx5rj2c3drh3b7UsD_QP7XEYcoxf15E7ONbPmSOU</em>%3d"
+</li><li><code>&#123;module_entitysession collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_whosloggedin,loginUrl,logoutRedirUrl</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_whosloggedin,loginUrl,logoutRedirUrl&#125;</code></pre>
 </div>
   <div class="examples">
   <h2>Examples</h2>
 <ul>
 <li>
-<code>{<span>module_entitysession</span>}</code> - outputs the session ID in plain text, for example "<em>fagfh1jmq5fhx5rj2c3drh3b7UsD_QP7XEYcoxf15E7ONbPmSOU</em>%3d"
+<code>&#123;module_entitysession&#125;</code> - outputs the session ID in plain text, for example "<em>fagfh1jmq5fhx5rj2c3drh3b7UsD_QP7XEYcoxf15E7ONbPmSOU</em>%3d"
 </li>
 </ul>
 </div>

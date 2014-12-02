@@ -38,14 +38,14 @@
     <tr>
       <td><code>contains</code></td>
       <td>You can use "contains" to check whether a string contains another string, for example:
-      <pre class="language-javascript"><code>{<span>% if {{<span>webapp1.items[0].name</span>}} contains 'Jaguar' %</span>}
+      <pre class="language-javascript"><code>&#123;&#37; if &#123;&#123;webapp1.items[0].name&#125;&#125; contains 'Jaguar' &#37;&#125;
   This car is a Jaguar.
-{<span>% endif %</span>}
+&#123;&#37; endif &#37;&#125;
 </code></pre>
-or to check whether an array contains a value. Assuming <code>{{<span>cars_available_now</span>}} </code>is an array containing car makes:
-<pre class="language-javascript"><code>{<span>% if {{<span>cars_available_now</span>}} contains 'Jaguar' %</span>}
+or to check whether an array contains a value. Assuming <code>&#123;&#123;cars_available_now&#125;&#125; </code>is an array containing car makes:
+<pre class="language-javascript"><code>&#123;&#37; if &#123;&#123;cars_available_now&#125;&#125; contains 'Jaguar' &#37;&#125;
   A Jaguar is available now.
-{<span>% endif %</span>}
+&#123;&#37; endif &#37;&#125;
 </code></pre>
       </td>
     </tr>

@@ -83,34 +83,34 @@
 </ul>
 <h3>Display  it on a page<em></em></h3>
 <p>Now that the menu is in place let's insert the menu on the page or template. Create a blank page and insert the menu module like so:</p>
-<pre class="language-javascript"><code>{<span>module_menu render="collection" menuId="2165233" template="" collection="menu1"</span>}
+<pre class="language-javascript"><code>&#123;module_menu render="collection" menuId="2165233" template="" collection="menu1"&#125;
 </code></pre>
 <p>Because we are suppressing the module's output using template="" this module will not output anything. However we can use the <em>menu1</em> collection and Liquid to do the rendering. </p>
 <p>Paste the code below just below the menu.</p>
 <pre class="language-javascript"><code>&lt;ul id=&quot;main-menu&quot; class=&quot;sm sm-blue&quot;&gt;
-  {% if menu1.items %} 
-	{% for i in menu1.items %}
-  	&lt;li&gt;&lt;a href=&quot;{{i.url}}&quot;&gt;{{i.label}}&lt;/a&gt; 
-			{% if i.items %}
+  &#123;&#37; if menu1.items &#37;&#125; 
+	&#123;&#37; for i in menu1.items &#37;&#125;
+  	&lt;li&gt;&lt;a href=&quot;&#123;&#123;i.url&#125;&#125;&quot;&gt;&#123;&#123;i.label&#125;&#125;&lt;/a&gt; 
+			&#123;&#37; if i.items &#37;&#125;
      		&lt;ul&gt;
-			{% for j in i.items %}
-				&lt;li&gt;&lt;a href=&quot;{{j.url}}&quot;&gt;{{j.label}}&lt;/a&gt; 
-					{% if j.items %}
+			&#123;&#37; for j in i.items &#37;&#125;
+				&lt;li&gt;&lt;a href=&quot;&#123;&#123;j.url&#125;&#125;&quot;&gt;&#123;&#123;j.label&#125;&#125;&lt;/a&gt; 
+					&#123;&#37; if j.items &#37;&#125;
         			&lt;ul&gt;
-					{% for k in j.items %}
+					&#123;&#37; for k in j.items &#37;&#125;
 						&lt;li&gt;
-            				&lt;a href=&quot;{{k.url}}&quot;&gt;{{k.label}}&lt;/a&gt;
+            				&lt;a href=&quot;&#123;&#123;k.url&#125;&#125;&quot;&gt;&#123;&#123;k.label&#125;&#125;&lt;/a&gt;
 						&lt;/li&gt;
-					{% endfor %}
+					&#123;&#37; endfor &#37;&#125;
         			&lt;/ul&gt;
-        			{% endif %}
+        			&#123;&#37; endif &#37;&#125;
 				&lt;/li&gt;
-			{% endfor %}
+			&#123;&#37; endfor &#37;&#125;
     		&lt;/ul&gt;
-    		{% endif %}
+    		&#123;&#37; endif &#37;&#125;
   	&lt;/li&gt;
-   {% endfor %} 
-  {% endif %}
+   &#123;&#37; endfor &#37;&#125; 
+  &#123;&#37; endif &#37;&#125;
 &lt;/ul&gt;</code></pre>
 <p>Although the code above might look intimidating at first glace it is just a collection of nested <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#if">IF</a> and <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#for">FOR</a> loops that iterate over each menu item. We first need to check if the current menu item has children and if so iterate over all of them.</p>
 <p><strong>Note:</strong> If you need to have a deeper menu you need to add additional IF  and FOR blocks.</p>
@@ -148,48 +148,48 @@
 <h3>Show the menu only if the user is logged in</h3>
 <h4>The logic</h4>
 <p>You seen in a previous section how <a href="#basic-implementation">generate a basic menu using Liquid</a>. Let's pick up from there and see how to show it only to users that have logged in. The logic behind is simple. Take a look at yout visitor details in the <a href="/developers/liquid/getting-started-with-liquid#globals" title="Liquid Global object">Liquid global object</a>: </p>
-<code>{{globals.user | json}}</code>
+<code>&#123;&#123;globals.user | json&#125;&#125;</code>
 <p>What we need to do is just apply an <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#if" title="If Logic Tag (Liquid)">IF condition</a> to the Liquid code that generates the menu markup, so that it carries out the action only <strong>if</strong> the isLoggedIn condition is true
 <h4>The build</h4>
 
 <p>To enable this scenario, simply wrap your Liquid menu generation markup with your If condition: </p>
   <p class="alert alert-info">
-  <span><strong><span>{%</span> if <span>{{</span>globals.user.isLoggedIn<span>}}</span> contains &quot;true&quot; %}</strong></span> <br>
+  <strong>&#123;&#37; if &#123;&#123;globals.user.isLoggedIn&#125;&#125; contains &quot;true&quot; &#37;&#125;</strong> <br>
   - Liquid Code - <br>
-  <span><strong><span>{%</span> else %}</strong></span>  <br>
+  <strong>&#123;&#37; else &#37;&#125;</strong>  <br>
   -Custom message- <br>
-  <span><strong>{% endif %}</strong></span></p>
+  <strong>&#123;&#37; endif &#37;&#125;</strong></p>
 <p></p>
-  <p>Here's the markup in its basic implementation, with no specific menu plugin used</span>:</p>
- <pre class="language-javascript"><code>{<span>% if {</span>{clobals.user.isLoggedIn}<span>} contains &quot;true&quot; %</span>}
+  <p>Here's the markup in its basic implementation, with no specific menu plugin used&#37;&#125;:</p>
+ <pre class="language-javascript"><code>&#123;&#37; if &#123;&#123;clobals.user.isLoggedIn&#125;&#125; contains &quot;true&quot; &#37;&#125;
 &lt;ul&gt;
-  {<span>% if menu1.items %</span>} 
-	{<span>% for i in menu1.items %</span>}
-  	&lt;li&gt;&lt;a href=&quot;{<span>{i.url}</span>}&quot;&gt;{<span>{i.label}</span>}&lt;/a&gt; 
-			{<span>% if i.items %</span>}
+  &#123;&#37; if menu1.items &#37;&#125; 
+	&#123;&#37; for i in menu1.items &#37;&#125;
+  	&lt;li&gt;&lt;a href=&quot;&#123;&#123;i.url&#125;&#125;&quot;&gt;&#123;&#123;i.label&#125;&#125;&lt;/a&gt; 
+			&#123;&#37; if i.items &#37;&#125;
      		&lt;ul&gt;
-			{<span>% for j in i.items %</span>}
-				&lt;li&gt;&lt;a href=&quot;{<span>{j.url}</span>}&quot;&gt;{<span>{j.label}</span>}&lt;/a&gt; 
-					{<span>% if j.items %</span>}
+			&#123;&#37; for j in i.items &#37;&#125;
+				&lt;li&gt;&lt;a href=&quot;&#123;&#123;j.url&#125;&#125;&quot;&gt;&#123;&#123;j.label&#125;&#125;&lt;/a&gt; 
+					&#123;&#37; if j.items &#37;&#125;
         			&lt;ul&gt;
-					{<span>% for k in j.items %</span>}
+					&#123;&#37; for k in j.items &#37;&#125;
 						&lt;li&gt;
-            				&lt;a href=&quot;{<span>{k.url}</span>}&quot;&gt;{<span>{k.label}</span>}&lt;/a&gt;
+            				&lt;a href=&quot;&#123;&#123;k.url&#125;&#125;&quot;&gt;&#123;&#123;k.label&#125;&#125;&lt;/a&gt;
 						&lt;/li&gt;
-					{<span>% endfor %</span>}
+					&#123;&#37; endfor &#37;&#125;
         			&lt;/ul&gt;
-        			{<span>% endif %</span>}
+        			&#123;&#37; endif &#37;&#125;
 				&lt;/li&gt;
-			{<span>% endfor %</span>}
+			&#123;&#37; endfor &#37;&#125;
     		&lt;/ul&gt;
-    		{<span>% endif %</span>}
+    		&#123;&#37; endif &#37;&#125;
   	&lt;/li&gt;
-   {<span>% endfor %</span>} 
-  {<span>% endif %</span>}
+   &#123;&#37; endfor &#37;&#125; 
+  &#123;&#37; endif &#37;&#125;
 &lt;/ul&gt;
-{<span>% else %</span>}
+&#123;&#37; else &#37;&#125;
 &lt;p&gt;Some message, maybe&lt;/p&gt;
-{<span>% endif %</span>}</code></pre>
+&#123;&#37; endif &#37;&#125;</code></pre>
 <p>Here's how this will output on an actual page:</p> 
 <p class="alert alert-warning"><a href="http://liquidexamples.worldsecuresystems.com/general-show-menu-if-logged-in">http://liquidexamples.worldsecuresystems.com/general-show-menu-if-logged-in</a></p>
 
@@ -200,84 +200,84 @@
 <h3>Show the menu only for a specific country code</h3>
 <h4>The logic</h4>
 <p>You seen in a previous section how <a href="#basic-implementation">generate a basic menu using Liquid</a>. Let's pick up from there and see how to show it only to users from a specific country. The logic behind is simple. Take a look at yout visitor details in the <a href="/developers/liquid/getting-started-with-liquid#globals" title="Liquid Global object">Liquid global object</a>: </p>
-<code>{{globals.visitor | json}}</code>
-<p>What we need to do is just apply an <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#if" title="If Logic Tag (Liquid)">IF condition</a> to the Liquid code that generates the menu markup, so that it carries out the action only <strong>if</strong> the visitor country is {{globals.visitor.country}}
+<code>&#123;&#123;globals.visitor | json&#125;&#125;</code>
+<p>What we need to do is just apply an <a href="/dev-assets/reference/liquid-reference/reference/logic-tags.html#if" title="If Logic Tag (Liquid)">IF condition</a> to the Liquid code that generates the menu markup, so that it carries out the action only <strong>if</strong> the visitor country is &#123;&#123;globals.visitor.country&#125;&#125;
 <h4>The build</h4>
 
 <p>To enable this scenario, simply wrap your Liquid menu generation markup with your If condition: </p>
   <p class="alert alert-info">
-  <span><strong><span>{%</span> if <span>{{</span>globals.site.countryCode<span>}}</span> contains &quot;{{globals.visitor.country}}&quot; %}</strong></span> <br>
+  <strong>&#123;&#37; if &#123;&#123;globals.site.countryCode&#125;&#125; contains &quot;&#123;&#123;globals.visitor.country&#125;&#125;&quot; &#37;&#125;</strong> <br>
   - Liquid Code - <br>
-  <span><strong><span>{%</span> else %}</strong></span>  <br>
+  <strong>&#123;&#37; else &#37;&#125;</strong>  <br>
   -Custom message- <br>
-  <span><strong>{% endif %}</strong></span></p>
+  <strong>&#123;&#37; endif &#37;&#125;</strong></p>
 <p></p>
-  <p>Here's the markup in its basic implementation, with no specific menu plugin used</span>:</p>
- <pre class="language-javascript"><code>{<span>% if {</span>{clobals.site.countryCode}<span>} contains &quot;XX&quot; %</span>}
+  <p>Here's the markup in its basic implementation, with no specific menu plugin used&#37;&#125;:</p>
+ <pre class="language-javascript"><code>&#123;&#37; if &#123;&#123;clobals.site.countryCode&#125;&#125; contains &quot;XX&quot; &#37;&#125;
 &lt;ul&gt;
-  {<span>% if menu1.items %</span>} 
-	{<span>% for i in menu1.items %</span>}
-  	&lt;li&gt;&lt;a href=&quot;{<span>{i.url}</span>}&quot;&gt;{<span>{i.label}</span>}&lt;/a&gt; 
-			{<span>% if i.items %</span>}
+  &#123;&#37; if menu1.items &#37;&#125; 
+	&#123;&#37; for i in menu1.items &#37;&#125;
+  	&lt;li&gt;&lt;a href=&quot;&#123;&#123;i.url&#125;&#125;&quot;&gt;&#123;&#123;i.label&#125;&#125;&lt;/a&gt; 
+			&#123;&#37; if i.items &#37;&#125;
      		&lt;ul&gt;
-			{<span>% for j in i.items %</span>}
-				&lt;li&gt;&lt;a href=&quot;{<span>{j.url}</span>}&quot;&gt;{<span>{j.label}</span>}&lt;/a&gt; 
-					{<span>% if j.items %</span>}
+			&#123;&#37; for j in i.items &#37;&#125;
+				&lt;li&gt;&lt;a href=&quot;&#123;&#123;j.url&#125;&#125;&quot;&gt;&#123;&#123;j.label&#125;&#125;&lt;/a&gt; 
+					&#123;&#37; if j.items &#37;&#125;
         			&lt;ul&gt;
-					{<span>% for k in j.items %</span>}
+					&#123;&#37; for k in j.items &#37;&#125;
 						&lt;li&gt;
-            				&lt;a href=&quot;{<span>{k.url}</span>}&quot;&gt;{<span>{k.label}</span>}&lt;/a&gt;
+            				&lt;a href=&quot;&#123;&#123;k.url&#125;&#125;&quot;&gt;&#123;&#123;k.label&#125;&#125;&lt;/a&gt;
 						&lt;/li&gt;
-					{<span>% endfor %</span>}
+					&#123;&#37; endfor &#37;&#125;
         			&lt;/ul&gt;
-        			{<span>% endif %</span>}
+        			&#123;&#37; endif &#37;&#125;
 				&lt;/li&gt;
-			{<span>% endfor %</span>}
+			&#123;&#37; endfor &#37;&#125;
     		&lt;/ul&gt;
-    		{<span>% endif %</span>}
+    		&#123;&#37; endif &#37;&#125;
   	&lt;/li&gt;
-   {<span>% endfor %</span>} 
-  {<span>% endif %</span>}
+   &#123;&#37; endfor &#37;&#125; 
+  &#123;&#37; endif &#37;&#125;
 &lt;/ul&gt;
-{<span>% else %</span>}
+&#123;&#37; else &#37;&#125;
 &lt;p&gt;Some message, maybe&lt;/p&gt;
-{<span>% endif %</span>}</code></pre>
+&#123;&#37; endif &#37;&#125;</code></pre>
 <p>Here's how this will output on an actual page:</p> 
 <p class="alert alert-warning"><a href="http://liquidexamples.worldsecuresystems.com/general-show-menu-if-country-code-is-XX">http://liquidexamples.worldsecuresystems.com/general-show-menu-if-country-code-is-XX</a></p>
 <h4>Bootstrap implementation</h4>
 <p>The following is  a specific example, using the <strong>Bootstrap</strong> menu plugin:</p> <p class="alert alert-warning"> <a href="http://liquidexamples.worldsecuresystems.com/bootstrap-show-menu-if-country-code-is-XX">http://liquidexamples.worldsecuresystems.com/bootstrap-show-menu-if-country-code-is-XX</a></p><a class="fancybox" href="/kb_resources/screenshots/liquid_if_bootstrap.jpg">
 <img alt="" src="/kb_resources/screenshots/liquid_if_bootstrap.jpg?Action=thumbnail&amp;Width=500&amp;algorithm=fill" /></a>
 <pre class=" language-javascript"><code>&lt;ul class=&quot;nav navbar-nav&quot;&gt;
-  {<span>% if menu1.items %</span>} 
-	{<span>% for i in menu1.items %</span>}	
-{<span>% if i.items %</span>}
-&lt;li class=&quot;dropdown&quot;&gt;&lt;a class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-expanded=&quot;false&quot; href=&quot;{<span>{i.url}</span>}&quot;&gt;{<span>{i.label}</span>}&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt; 
-{<span>% else %</span>}
-&lt;li&gt;&lt;a href=&quot;{<span>{i.url}</span>}&quot;&gt;{<span>{i.label}</span>}&lt;/a&gt; 
+  &#123;&#37; if menu1.items &#37;&#125; 
+	&#123;&#37; for i in menu1.items &#37;&#125;	
+&#123;&#37; if i.items &#37;&#125;
+&lt;li class=&quot;dropdown&quot;&gt;&lt;a class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-expanded=&quot;false&quot; href=&quot;&#123;&#123;i.url&#125;&#125;&quot;&gt;&#123;&#123;i.label&#125;&#125;&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt; 
+&#123;&#37; else &#37;&#125;
+&lt;li&gt;&lt;a href=&quot;&#123;&#123;i.url&#125;&#125;&quot;&gt;&#123;&#123;i.label&#125;&#125;&lt;/a&gt; 
 			
-{<span>% endif %</span>}
-{<span>% if i.items %</span>}
+&#123;&#37; endif &#37;&#125;
+&#123;&#37; if i.items &#37;&#125;
      		&lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;
-			{<span>% for j in i.items %</span>}
-				&lt;li&gt;&lt;a href=&quot;{<span>{j.url}</span>}&quot;&gt;{<span>{j.label}</span>}&lt;/a&gt; 
-					{<span>% if j.items %</span>}
+			&#123;&#37; for j in i.items &#37;&#125;
+				&lt;li&gt;&lt;a href=&quot;&#123;&#123;j.url&#125;&#125;&quot;&gt;&#123;&#123;j.label&#125;&#125;&lt;/a&gt; 
+					&#123;&#37; if j.items &#37;&#125;
         			&lt;ul&gt;
-					{<span>% for k in j.items %</span>}
+					&#123;&#37; for k in j.items &#37;&#125;
 						&lt;li&gt;
-            				&lt;a href=&quot;{<span>{k.url}</span>}&quot;&gt;{<span>{k.label}</span>}&lt;/a&gt;
+            				&lt;a href=&quot;&#123;&#123;k.url&#125;&#125;&quot;&gt;&#123;&#123;k.label&#125;&#125;&lt;/a&gt;
 						&lt;/li&gt;
-					{<span>% endfor %</span>}
+					&#123;&#37; endfor &#37;&#125;
         			&lt;/ul&gt;
-        			{<span>% endif %</span>}
+        			&#123;&#37; endif &#37;&#125;
 				&lt;/li&gt;
-			{<span>% endfor %</span>}
+			&#123;&#37; endfor &#37;&#125;
     		&lt;/ul&gt;
-    		{<span>% endif %</span>}
+    		&#123;&#37; endif &#37;&#125;
   	&lt;/li&gt;
-   {<span>% endfor %</span>} 
-  {<span>% endif %</span>}
+   &#123;&#37; endfor &#37;&#125; 
+  &#123;&#37; endif &#37;&#125;
 &lt;/ul&gt;</code></pre>
 
 <h4>Conclusion</h4>
-<p>Before the introduction of <strong>Liquid</strong>, this would have only been possible with custom java script implementations. You would load the menu in a hidden container, and display it if the visitor country was a specific value, as rendered by <span><strong>{</strong></span><strong>module_visitorcountrycode<span>}</span></strong>. Still the menu <strong>was</strong> there. </p>
+<p>Before the introduction of <strong>Liquid</strong>, this would have only been possible with custom java script implementations. You would load the menu in a hidden container, and display it if the visitor country was a specific value, as rendered by <strong>{</strong><strong>module_visitorcountrycode&#125;</strong>. Still the menu <strong>was</strong> there. </p>
 <p>Using Liquid, you're acutally enabling (or <strong>not</strong>) the content on the server-side, performing operations and conditions <strong>before</strong> render time, so the output is clean, fast and secure.</p>

@@ -1,4 +1,4 @@
-<h1>{<span>module_whosloggedin</span>}</h1>
+<h1>&#123;module_whosloggedin&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Displays the name of the contact that's currently logged in and it also displays the Log Out link. If the contact is not logged in the module will display "No one logged in. [Log in]"</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_whosloggedin loginUrl=&quot;/module_render/module_case&quot; logoutRedirUrl=&quot;/home&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_whosloggedin loginUrl=&quot;/module_render/module_case&quot; logoutRedirUrl=&quot;/home&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -34,25 +34,25 @@
 <h2>Examples</h2>
 <ul>
 <li>
-<pre class="language-markup"><code>{<span>module_whosloggedin loginUrl="/loginpage.htm"</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_whosloggedin loginUrl="/loginpage.htm"&#125;</code></pre>
 <ul>
     <li>when customer logged in - <code>&quot;John Smith logged in. &lt;a href=&quot;/LogOutProcess.aspx&quot;&gt;Log out&lt;/a&gt;&quot;</code></li>
     <li>when customer not logged in - <code>&quot;No one logged in. &lt;a href=&quot;/loginpage.html&quot;&gt;Log in&lt;/a&gt;&quot;</code></li>
 </ul>
-<pre class="language-markup"><code>{<span>module_whosloggedin</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_whosloggedin&#125;</code></pre>
 <ul>
     <li>when customer logged in - <code>&quot;John Smith logged in. &lt;a href=&quot;/LogOutProcess.aspx&quot;&gt;Log out&lt;/a&gt;&quot;</code></li>
     <li>when customer not logged in - <code>"No one logged in."</code></li>
 </ul>
 </li>
-<li><code>{<span>module_whosloggedin loginUrl=&quot;/cases&quot; logoutRedirUrl=&quot;/home&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+<li><code>&#123;module_whosloggedin loginUrl=&quot;/cases&quot; logoutRedirUrl=&quot;/home&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_whosloggedin,loginUrl,logoutRedirUrl</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_whosloggedin,loginUrl,logoutRedirUrl&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -65,12 +65,12 @@
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<pre class="language-markup"><code>{<span>module_whosloggedin,/loginpage.htm</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_whosloggedin,/loginpage.htm&#125;</code></pre>
 <ul>
     <li>when customer logged in - <code>&quot;John Smith logged in. &lt;a href=&quot;/LogOutProcess.aspx&quot;&gt;Log out&lt;/a&gt;&quot;</code></li>
     <li>when customer not logged in - <code>&quot;No one logged in. &lt;a href=&quot;/loginpage.html&quot;&gt;Log in&lt;/a&gt;&quot;</code></li>
 </ul>
-<pre class="language-markup"><code>{<span>module_whosloggedin</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_whosloggedin&#125;</code></pre>
 <ul>
     <li>when customer logged in - <code>&quot;John Smith logged in. &lt;a href=&quot;/LogOutProcess.aspx&quot;&gt;Log out&lt;/a&gt;&quot;</code></li>
     <li>when customer not logged in - <code>"No one logged in."</code></li>

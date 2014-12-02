@@ -1,9 +1,9 @@
-<h1>{<span>module_calendar</span>}</h1>
+<h1>&#123;module_calendar&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>This module renders either the News or the Events modules on a calendar.
 </p>
-<p class="beta">{<span>module_calendar</span>} also supports named parameters.</p>
+<p class="beta">&#123;module_calendar&#125; also supports named parameters.</p>
 </div>
 <ul id="tabs" class="beta">
 
@@ -15,7 +15,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_calendar </span>render="collection"<span> </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; <span>eventType="all/news/events" filter="all/classified" classificationId="classificationId" notemplate="false" targetFrame="_blank"</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_calendar render="collection" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; eventType="all/news/events" filter="all/classified" classificationId="classificationId" notemplate="false" targetFrame="_blank"&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -86,14 +86,14 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><pre class="language-markup"><code>{<span>module_calendar eventType="all" filter="all" notemplate="false" targetFrame="_blank"</span>}</code></pre> - displays all the news and announcement items on the calendar view and opens the detail view in a new window when clicked</li>    <li><pre class="language-markup"><code>{<span>module_calendar eventType="news" filter="classified" classificationId="12345" notemplate="false" targetFrame="_blank"</span>}</code></pre> - displays the news item classified in the category with the ID 12345 and opens the detail view in the same window when clicked</li>
+    <li><pre class="language-markup"><code>&#123;module_calendar eventType="all" filter="all" notemplate="false" targetFrame="_blank"&#125;</code></pre> - displays all the news and announcement items on the calendar view and opens the detail view in a new window when clicked</li>    <li><pre class="language-markup"><code>&#123;module_calendar eventType="news" filter="classified" classificationId="12345" notemplate="false" targetFrame="_blank"&#125;</code></pre> - displays the news item classified in the category with the ID 12345 and opens the detail view in the same window when clicked</li>
 </ul>
 </div>
 </div>
 <div id="legacy">
   <div class="syntax">
 <h2> Syntax</h2>
-<pre class="language-markup"><code>{<span>module_calendar,what,filter,</span>classificationId, notemplate, targetFrame}</code></pre>
+<pre class="language-markup"><code>&#123;module_calendar,what,filter,classificationId, notemplate, targetFrame&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2> Parameters</h2>
@@ -132,9 +132,9 @@
 <div class="examples">
 <h2> Examples</h2>
 <ul>
-    <li><code>{<span>module_calendar,7,a,</span>}</code> - displays all the news items on the calendar view</li>
-    <li><code>{<span>module_calendar,48,a,</span>}</code> - displays all the event (booking) items on the calendar view</li>
-    <li><code>{<span>module_calendar,0,a,</span>}</code> - displays both events and news items on the calendar view</li>
+    <li><code>&#123;module_calendar,7,a,&#125;</code> - displays all the news items on the calendar view</li>
+    <li><code>&#123;module_calendar,48,a,&#125;</code> - displays all the event (booking) items on the calendar view</li>
+    <li><code>&#123;module_calendar,0,a,&#125;</code> - displays both events and news items on the calendar view</li>
 </ul>
 </div>
 </div>

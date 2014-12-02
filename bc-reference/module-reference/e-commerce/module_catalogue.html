@@ -1,4 +1,4 @@
-<h1>{<span>module_catalogue</span>}</h1>
+<h1>&#123;module_catalogue&#125;</h1>
 
 <div class="description">
 <h2>Description</h2>
@@ -14,7 +14,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_catalogue render=&quot;items&quot; catalogId=&quot;14886&quot; rowCount=&quot;2&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_catalogue render=&quot;items&quot; catalogId=&quot;14886&quot; rowCount=&quot;2&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -46,39 +46,39 @@
 </thead>
     <tbody>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">id</span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;id&#125;&#125;</code></td>
          <td valign="top" class="legacy tag">&nbsp;</td>
-         <td class="description"><span>Catalogue's ID</span></td>
+         <td class="description">Catalogue's ID</td>
       </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">description</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_description</span>}</code></td><td class="description"><span>Catalogue description</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;description&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_description&#125;</code></td><td class="description">Catalogue description</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_expirydate</span>}</code></td><td class="description"><span>Expiry date of catalogue</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_expirydate&#125;</code></td><td class="description">Expiry date of catalogue</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">imageUrl</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_image</span>}</code></td><td class="description"><span>Image for catalogue</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;imageUrl&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_image&#125;</code></td><td class="description">Image for catalogue</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">name</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_name</span>}</code></td><td class="description"><span>Catalogue name</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_name&#125;</code></td><td class="description">Catalogue name</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">releaseDate</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_releasedate</span>}</code></td><td class="description"><span>Release date of catalogue</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;releaseDate&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_releasedate&#125;</code></td><td class="description">Release date of catalogue</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">url</span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;url&#125;&#125;</code></td>
          <td valign="top" class="legacy tag">&nbsp;</td>
-         <td class="description"><span>The catalog's relative URL</span></td>
+         <td class="description">The catalog's relative URL</td>
         </tr>
          <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">urlWithHost</span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;urlWithHost&#125;&#125;</code></td>
          <td valign="top" class="legacy tag">&nbsp;</td>
-         <td class="description"><span>The catalog's complete URL</span></td>
+         <td class="description">The catalog's complete URL</td>
         </tr>
     </tbody>
 </table>
@@ -86,14 +86,14 @@
 <div id="Examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_catalogue catalogId=&quot;591&quot; targetFrame=&quot;_blank</span>&quot;}</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li><li><code>{module_catalogue catalogId=&quot;591&quot;<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>&#123;module_catalogue catalogId=&quot;591&quot; targetFrame=&quot;_blank&#37;&#125;&quot;&#125;</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li><li><code> &#123;module_catalogue catalogId=&quot;591&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_catalogue,catID,targetFrame</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_catalogue,catID,targetFrame&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -112,7 +112,7 @@
 <div id="Examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_catalogue,591,_blank</span>}</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li>
+    <li><code>&#123;module_catalogue,591,_blank&#125;</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li>
 </ul>
 </div>
 </div>

@@ -6,21 +6,21 @@
 <table width="100%" class="data-bordered">
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><code><span class="tagname">divided_by</span></code></td>
-            <td><span class="cellcontent">{{<span>500 | divided_by: 20</span>}} is 25</span></td>
+            <td valign="top" class="cellrowborder"><code>divided_by&#37;&#125;</code></td>
+            <td><span class="cellcontent">&#123;&#123;500 | divided_by: 20&#125;&#125; is 25</td>
 
            
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code><span class="tagname">minus</span></code></td>
-            <td><span class="cellcontent">{{<span>500 | minus: 20</span>}} is 480</span></td>
+            <td valign="top" class="cellrowborder"><code>minus&#37;&#125;</code></td>
+            <td><span class="cellcontent">&#123;&#123;500 | minus: 20&#125;&#125; is 480</td>
         </tr>
 		<tr>
             <td valign="top" class="cellrowborder"><code>plus</code></td>
-          <td><span class="cellcontent">{{<span>500 | plus: 20</span>}} is 520</span></td>
+          <td><span class="cellcontent">&#123;&#123;500 | plus: 20&#125;&#125; is 520</td>
         </tr>
 		<tr>
-            <td valign="top" class="cellrowborder"><code>times</code></td><td><span class="cellcontent">{{<span>500 | times: 2</span>}} is 1000</span></td>
+            <td valign="top" class="cellrowborder"><code>times</code></td><td><span class="cellcontent">&#123;&#123;500 | times: 2&#125;&#125; is 1000</td>
         </tr>
         
     </tbody>
@@ -34,58 +34,58 @@
 <table width="100%" class="data-bordered">
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><code><span class="tagname">append</span></code></td>
-            <td><span class="cellcontent">{{<span>&quot;This is the first part&quot; | append: &quot; appending the second part&quot;</span>}} outputs &quot;This is the first part  appending the second part&quot;</span></td>
+            <td valign="top" class="cellrowborder"><code>append&#37;&#125;</code></td>
+            <td><span class="cellcontent">&#123;&#123;&quot;This is the first part&quot; | append: &quot; appending the second part&quot;&#125;&#125; outputs &quot;This is the first part  appending the second part&quot;</td>
 
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code><span class="tagname">prepend</span></code></td>
-            <td><span class="cellcontent">{{<span>&quot; this is the second part&quot; | append: &quot;This is the first part&quot;</span>}} outputs &quot;This is the first part  this is thesecond part&quot;</span></td>
+            <td valign="top" class="cellrowborder"><code>prepend&#37;&#125;</code></td>
+            <td><span class="cellcontent">&#123;&#123;&quot; this is the second part&quot; | append: &quot;This is the first part&quot;&#125;&#125; outputs &quot;This is the first part  this is thesecond part&quot;</td>
 
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code><span class="tagname">capitalize</span></code></td>
-            <td>{{<span>'Sample text' | capitalize</span>}} outputs &quot;Sample Text&quot;</td>
+            <td valign="top" class="cellrowborder"><code>capitalize&#37;&#125;</code></td>
+            <td>&#123;&#123;'Sample text' | capitalize&#125;&#125; outputs &quot;Sample Text&quot;</td>
         </tr>
 		<tr>
             <td valign="top" class="cellrowborder"><code>downcase</code></td>
-          <td>{{<span>'Sample text' | capitalize</span>}} outputs &quot;sample text&quot;</td>
+          <td>&#123;&#123;'Sample text' | capitalize&#125;&#125; outputs &quot;sample text&quot;</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>upcase</code></td>
-          <td>{{<span>'Sample text' | capitalize</span>}} outputs &quot;SAMPLE TEXT&quot;</td>
+          <td>&#123;&#123;'Sample text' | capitalize&#125;&#125; outputs &quot;SAMPLE TEXT&quot;</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>remove</code></td>
-          <td>{{<span>'Sample text. All occurences of &quot;text&quot; will be removed.' | remove: &quot;text&quot;</span>}} outputs 'Sample . All occurences of &quot;&quot; will be removed.'</td>
+          <td>&#123;&#123;'Sample text. All occurences of &quot;text&quot; will be removed.' | remove: &quot;text&quot;&#125;&#125; outputs 'Sample . All occurences of &quot;&quot; will be removed.'</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>replace</code></td>
-          <td>{{<span>'Sample text. All occurences of &quot;text&quot; will be replced.' | replace: &quot;text&quot;, &quot;string&quot;</span>}} outputs 'Sample string. All occurences of &quot;string&quot; will be replaced.'</td>
+          <td>&#123;&#123;'Sample text. All occurences of &quot;text&quot; will be replced.' | replace: &quot;text&quot;, &quot;string&quot;&#125;&#125; outputs 'Sample string. All occurences of &quot;string&quot; will be replaced.'</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>replacefirst</code></td>
-          <td>{{<span>'Sample text text.' | replacefirst: &quot;text&quot;, &quot;string&quot;</span>}} outputs 'Sample string text''</td>
+          <td>&#123;&#123;'Sample text text.' | replacefirst: &quot;text&quot;, &quot;string&quot;&#125;&#125; outputs 'Sample string text''</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>truncate</code></td>
-          <td>{{'<span>Sample text ' | truncate: 9, &quot;...&quot;</span>}} outputs 'Sample... '</td>
+          <td>&#123;&#123;'Sample text ' | truncate: 9, &quot;...&quot;&#125;&#125; outputs 'Sample... '</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>split</code></td>
-          <td>{{<span>'1,2,3,4,5<span> ' | split: &quot;,&quot;</span>}} splits the text and creates an array [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</td>
+          <td>&#123;&#123;'1,2,3,4,5 ' | split: &quot;,&quot;&#125;&#125; splits the text and creates an array [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>join</code></td>
-          <td>{{<span>myArray<span> | join: &quot;///&quot;</span>}} assuming myArray is an array joins the elements and puts the separator between each element</td>
+          <td>&#123;&#123;myArray | join: &quot;///&quot;&#125;&#125; assuming myArray is an array joins the elements and puts the separator between each element</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>sort</code></td>
-          <td>{{<span>myArray<span> | sort</span>}} assuming myArray is an array [&quot;5&quot;,&quot;4&quot;,&quot;3&quot;] ]the sort filter outputs [&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</td>
+          <td>&#123;&#123;myArray | sort&#125;&#125; assuming myArray is an array [&quot;5&quot;,&quot;4&quot;,&quot;3&quot;] ]the sort filter outputs [&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>strip_html</code></td>
-          <td>{{<span>"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html</span>}} strips the HTML code from the string, this outputs &quot;My paragraph&quot;</td>
+          <td>&#123;&#123;"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html&#125;&#125; strips the HTML code from the string, this outputs &quot;My paragraph&quot;</td>
         </tr>
 		
         
@@ -101,7 +101,7 @@
 <tr>
             <td valign="top" class="cellrowborder"><code>json</code></td>
             <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using - 
-            <code>{{<span>webapp1.items[0] | json</span>}}</code> 
+            <code>&#123;&#123;webapp1.items[0] | json&#125;&#125;</code> 
             looks like:
             
             <pre class="language-javascript"><code>{
@@ -119,7 +119,7 @@
  "Country":"",
  "Review":"no review just yet"
 }</code></pre>
-            <p class="chx">Do note you need to make the webapp listing available in a collection before you can access the items in JSON format.</p></span></td>
+            <p class="chx">Do note you need to make the webapp listing available in a collection before you can access the items in JSON format.</p></td>
         </tr>
          <tr>
             <td valign="top" class="cellrowborder"><code>date</code></td>
@@ -131,12 +131,12 @@
           <li><code>%y</code> - outputs the year - 14</li>
           </ul>
           <br/>
-          To output 14-06-18 use {<span>{dateVariable | date: "%y-%M-%d"}</span>} (mind the double quotes).
-          </span></td>
+          To output 14-06-18 use &#123;&#123;dateVariable | date: "%y-%M-%d"&#125;&#125; (mind the double quotes).
+          </td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>size</code></td>
-          <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</span></td>
+          <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</td>
         </tr>
         </tbody></table>
         </div>

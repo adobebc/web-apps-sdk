@@ -19,24 +19,24 @@
 <h4>The build:</h4>
 <p class="alert alert-warning">For simplicity we will paste all the javascript code on the template itself and assume all the additional pages are created on the site's root.</p>
 <p><strong>Step1</strong> - First of all open the Develop mode editor, create the <em>cart.html</em> page and paste this content:</p>
-<pre class="language-javascript"><code>{<span>module_shoppingcartsummary collection=&quot;cart&quot;</span>}
+<pre class="language-javascript"><code>&#123;module_shoppingcartsummary collection=&quot;cart&quot;&#125;
 &lt;div class=&quot;content&quot;&gt;
 
-{% assign totalPrice = 0 %}
+&#123;&#37; assign totalPrice = 0 &#37;&#125;
 
-{%for item in cart.items%}
-{% assign totalPrice = totalPrice | plus:item.totalPrice_raw %}
-{%endfor%}
+&#123;&#37;for item in cart.items&#37;&#125;
+&#123;&#37; assign totalPrice = totalPrice | plus:item.totalPrice_raw &#37;&#125;
+&#123;&#37;endfor&#37;&#125;
     
-    {%if totalPrice &gt;= 25%}
+    &#123;&#37;if totalPrice &gt;= 25&#37;&#125;
     &lt;p&gt;Total value is 25 or larger&lt;/p&gt;
-    {%else%}
+    &#123;&#37;else&#37;&#125;
     &lt;p&gt;Total value is below 25&lt;/p&gt;
-    {%endif%}
+    &#123;&#37;endif&#37;&#125;
 &lt;/div&gt;</code></pre>
 <p>The shoppingcartsummary module above dumps its information in the <em>cart</em> collection. Using a for loop we go over the collection and sum up all the products' prices. We then compare the grand total kept in the <code>totalPrice</code> variable with 25 and display the appropriate message.</p>
 <p><strong>Step2 </strong>- the container the paragraph above (which can be a div, a banner or whatever HTML ccode you need) will be pushed to. </p>
-<p>Edit your template and insert a div with the class <em>shop-alert</em>. In this example I've inserted this just above the {<span>tag_pagecontent</span>} tag:</p>
+<p>Edit your template and insert a div with the class <em>shop-alert</em>. In this example I've inserted this just above the &#123;tag_pagecontent&#125; tag:</p>
 <img src="http://screencasteu.worldsecuresystems.com/Mihai/2014-11-13_15.55.16.png" />
 <p><strong>Step3 </strong>- add the javascript that brings everything together. Paste the code below at the end of your template, just above the closing &lt;/body&gt; tag:</p>
 <pre class="language-javascript"><code>&lt;script&gt;

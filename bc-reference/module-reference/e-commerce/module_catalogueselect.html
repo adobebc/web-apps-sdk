@@ -1,4 +1,4 @@
-<h1>{<span>module_catalogueselect</span>}</h1>
+<h1>&#123;module_catalogueselect&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Renders an option list of catalogs to be used in a catalog list dropdown.</p>
@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_catalogueselect parentId=&quot;-1&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_catalogueselect parentId=&quot;-1&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -27,7 +27,7 @@
 <h2>This module can be rendered:</h2>
 <ul>
     <li><strong>as aregular drop down</strong> - the module outputs the <em>option</em> tags, to use it wrap it into a <em>select</em> like this:
-      <pre><code>&lt;select&gt;{<span>module_catalogueselect</span>}&lt;/select</code>&gt;</pre></li>
+      <pre><code>&lt;select&gt;&#123;module_catalogueselect&#125;&lt;/select</code>&gt;</pre></li>
     <li><strong>using Liquid collections</strong> - you can create an object representation of your catalog tree like this:
       <pre class="language-javascript">
     <code>
@@ -75,7 +75,7 @@
 <p>When using this module always wrap it in a select tag like so:</p>
 <pre class="language-markup"><code>
 &lt;select&gt;<br>
-{<span>module_catalogueselect</span>}<br>
+&#123;module_catalogueselect&#125;<br>
 &lt;/select&gt;
 </code>
 </pre>
@@ -94,7 +94,7 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_catalogueselect</span>,parent}</code></pre>
+<pre class="language-markup"><code>&#123;module_catalogueselect,parent&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -111,7 +111,7 @@
 <p>When using this module always wrap it in a select tag like so:</p>
 <pre class="language-markup"><code>
 &lt;select&gt;<br>
-{<span>module_catalogueselect</span>}<br>
+&#123;module_catalogueselect&#125;<br>
 &lt;/select&gt;
 </code>
 </pre>

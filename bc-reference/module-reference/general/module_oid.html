@@ -1,7 +1,7 @@
-<h1>{<span>module_oid</span>}</h1>
+<h1>&#123;module_oid&#125;</h1>
 <div class="description">
 <h2>Description</h2>
-<p><code>{<span>module_oid</span>}</code> will output in plain text the current item's object ID.</p>
+<p><code>&#123;module_oid&#125;</code> will output in plain text the current item's object ID.</p>
 <p>For example if I isnert this module on a page that has this URL in the Admin console - <em>http://mtica1.businesscatalyst.com/Admin/WebPages_Detail.aspx?PageID=<strong>15663711</strong></em> it will output &quot;15663711&quot;. The same is valid for other entities as well (products, webapp items, blogs and so on).</p>
 <p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
 </div>
@@ -11,7 +11,7 @@
   </ul>  <div id="named-params" class="beta">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_oid </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_oid collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="layouts">
 <h2>This module can be rendered:</h2>
@@ -23,7 +23,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_oid</span>}</code> - if this is inserted on a page it will output the page's system ID, for example &quot;15663711&quot;</li><li><code>{module_oid<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>&#123;module_oid&#125;</code> - if this is inserted on a page it will output the page's system ID, for example &quot;15663711&quot;</li><li><code> &#123;module_oid collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 
 </div>
@@ -31,12 +31,12 @@
 <div id="legacy">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_oid</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_oid&#125;</code></pre>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_oid</span>}</code> - if this is inserted on a page it will output the page's system ID, for example &quot;15663711&quot;</li>
+    <li><code>&#123;module_oid&#125;</code> - if this is inserted on a page it will output the page's system ID, for example &quot;15663711&quot;</li>
 </ul>
 
 </div>

@@ -1,4 +1,4 @@
-<h1>{<span>module_ratingrank</span>}</h1>
+<h1>&#123;module_ratingrank&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Displays rank of an item (number of stars).</p>
@@ -12,13 +12,13 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_ratingrank </span>render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; <span>imageFolder=&quot;/ratingImages/&quot;</span> template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_ratingrank render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; imageFolder=&quot;/ratingImages/&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
 <li><strong>render</strong> - for this module this can only be <em>item</em>. For more information on how to use this parameter take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li><li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>imageFolder</strong> - the path to your directory of custom star images to be used. For instance,{<span>module_ratingrank, /images/stars</span>} would use images located inside the directory <em>/images/stars</em> instead of the default image files. When using this parameter, ensure that your custom images use these exact names:
+    <li><strong>imageFolder</strong> - the path to your directory of custom star images to be used. For instance,&#123;module_ratingrank, /images/stars&#125; would use images located inside the directory <em>/images/stars</em> instead of the default image files. When using this parameter, ensure that your custom images use these exact names:
       <ul>
         <li>1stars.gif </li>
         <li>15stars.gif </li>
@@ -52,8 +52,8 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">rating</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_rating</span>}</code></td><td class="description"><span>Rating in stars</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;rating&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_rating&#125;</code></td><td class="description">Rating in stars</td>
         </tr>
     </tbody>
 </table>
@@ -61,19 +61,19 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_ratingrank imageFolder=&quot;/images/stars</span>&quot;}</code> - displays the rating for the current item using the custom images from the /images</li>
+    <li><code>&#123;module_ratingrank imageFolder=&quot;/images/stars&quot;&#125;</code> - displays the rating for the current item using the custom images from the /images</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_ratingrank, YourFolderPath</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_ratingrank, YourFolderPath&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>YourFolderPath</strong> - the path to your directory of custom star images to be used. For instance,{<span>module_ratingrank, /images/stars</span>} would use images located inside the directory <em>/images/stars</em> instead of the default image files. When using this parameter, ensure that your custom images use these exact names:
+    <li><strong>YourFolderPath</strong> - the path to your directory of custom star images to be used. For instance,&#123;module_ratingrank, /images/stars&#125; would use images located inside the directory <em>/images/stars</em> instead of the default image files. When using this parameter, ensure that your custom images use these exact names:
 <ul>
         <li>1stars.gif </li>
         <li>15stars.gif </li>
@@ -91,7 +91,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_ratingrank,/images/stars</span>}</code> - displays the rating for the current item using the custom images from the /images</li>
+    <li><code>&#123;module_ratingrank,/images/stars&#125;</code> - displays the rating for the current item using the custom images from the /images</li>
 </ul>
 </div>
 </div>

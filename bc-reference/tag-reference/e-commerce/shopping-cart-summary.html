@@ -1,7 +1,7 @@
 <h1>Shopping cart</h1>
 <div id="description">
 <h2>Description</h2>
-<p>The shopping cart summary is displayed in the overall layout of your online shop using <a href="/dev-assets/reference/module-reference/e-commerce/module_shoppingcartsummary.html" title="module_shoppingcartsummary">{<span>module_shoppingcartsummary</span>}</a>. The summary is displayed when a customer adds an item to the cart. The default layout of this module is shown below:<br />
+<p>The shopping cart summary is displayed in the overall layout of your online shop using <a href="/dev-assets/reference/module-reference/e-commerce/module_shoppingcartsummary.html" title="module_shoppingcartsummary">&#123;module_shoppingcartsummary&#125;</a>. The summary is displayed when a customer adds an item to the cart. The default layout of this module is shown below:<br />
 <img alt="" src="http://helpx.adobe.com/business-catalyst/partner/customize-your-online-shop-look/_jcr_content/main-pars/image_7.img.png/shopping-cart-summary.png" /></p>
 </div>
 <div id="accessible">
@@ -21,32 +21,32 @@
 </tr>
 </thead>
     <tbody>
-            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">cartUrl</span>}}</code></td>
-                <td valign="top" class="legacy tag"><code>{<span>tag_cartUrl</span>}</code></td>
+            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;cartUrl&#125;&#125;</code></td>
+                <td valign="top" class="legacy tag"><code>&#123;tag_cartUrl&#125;</code></td>
                 <td class="description">renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">itemCount</span>}}</code></td>
-                <td><code>{<span>tag_itemCount</span>}</code></td>
+            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;itemCount&#125;&#125;</code></td>
+                <td><code>&#123;tag_itemCount&#125;</code></td>
                 <td class="description">renders the number of the items in the cart or 0 if none.</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">totalAmount</span>}}</code></td>
-                <td valign="top" class="legacy tag"><code>{<span>tag_totalAmount</span>}</code></td>
+            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;totalAmount&#125;&#125;</code></td>
+                <td valign="top" class="legacy tag"><code>&#123;tag_totalAmount&#125;</code></td>
                 <td class="description">renders the total money amount of the items (with two decimals) or 0.00 if the items don't have prices or there are no items in the cart</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">currencyFormat</span>}}</code></td>
-                <td valign="top" class="legacy tag"><code>{<span>tag_currency</span>}</code></td>
+            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;currencyFormat&#125;&#125;</code></td>
+                <td valign="top" class="legacy tag"><code>&#123;tag_currency&#125;</code></td>
                 <td class="description">renders the coin of the current country, which is either the site country or the country of the order (if set)</td>
             </tr>
             <tr><td valign="top" class="liquid tag">&nbsp;</td>
-                <td valign="top" class="legacy tag"><code>{<span>tag_totalAmountWithCurrency</span>}</code></td>
-                <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>{tag_currency}</code><code>{<span>tag_totalAmount</span>}</code>)</td>
+                <td valign="top" class="legacy tag"><code>&#123;tag_totalAmountWithCurrency&#125;</code></td>
+                <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>&#123;tag_currency&#125;</code><code>&#123;tag_totalAmount&#125;</code>)</td>
             </tr>
           <tr><td valign="top" class="liquid tag">&nbsp;</td>
-                <td valign="top" class="legacy tag"><code>{<span>tag_isEmpty</span>}</code></td>
+                <td valign="top" class="legacy tag"><code>&#123;tag_isEmpty&#125;</code></td>
                 <td class="description">renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>{{<span class="tagname">countryCode</span>}}</code></td>
-                <td valign="top" class="legacy tag"><code>{<span>tag_countryCode</span>}</code></td>
+            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;countryCode&#125;&#125;</code></td>
+                <td valign="top" class="legacy tag"><code>&#123;tag_countryCode&#125;</code></td>
                 <td class="description">the country code of the currency used</td>
             </tr>
         </tbody>
@@ -72,11 +72,11 @@
 <h4 id="Assigning the template">Assigning the template</h4>
 <ol>
     <li>
-    Locate the {module_shoppingcartsummary} module on your site. By default this can be found in&nbsp;<strong>Site Manager &gt; Module Templates &gt; Online Shop Layouts &gt; Overall Layout.</strong>
+    Locate the  &#123;module_shoppingcartsummary} module on your site. By default this can be found in&nbsp;<strong>Site Manager &gt; Module Templates &gt; Online Shop Layouts &gt; Overall Layout.</strong>
     </li>
     <li>
-    Replace this module with: <code>{<span>module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"</span>}</code><br /> - for example 
-    <code>{<span>module_shoppingcartsummary template="/cartsummary.tpl"</span>}</code>
+    Replace this module with: <code>&#123;module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"&#125;</code><br /> - for example 
+    <code>&#123;module_shoppingcartsummary template="/cartsummary.tpl"&#125;</code>
     </li>
     <li>
     Save the layout.

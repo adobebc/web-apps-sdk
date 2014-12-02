@@ -1,4 +1,4 @@
-<h1>{<span>module_order</span>}</h1>
+<h1>&#123;module_order&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Displays Customer's Order History (must be logged in to secure zone).</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_order </span>render=&quot;item|collection&quot; <span>filter=&quot;all&quot; workflowId=&quot;123&quot; sortType=&quot;Alphabetical&quot; </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_order render=&quot;item|collection&quot; filter=&quot;all&quot; workflowId=&quot;123&quot; sortType=&quot;Alphabetical&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -45,16 +45,16 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_order filter=&quot;c&quot; workflowID=&quot;10044&quot; sortType=&quot;Default</span>&quot;}</code> - will display all orders that belong to workflow with ID of 10044, sorting them by date</li>
-    <li><code>{<span>module_order </span>filter=&quot;<span>a&quot; </span>sortType=&quot;<span>Alphabetically</span>&quot;}</code> - will display all orders, alphabetically</li>
-    <li><code>{module_order filter=&quot;c&quot; workflowID=&quot;10044&quot;<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>&#123;module_order filter=&quot;c&quot; workflowID=&quot;10044&quot; sortType=&quot;Default&#37;&#125;&quot;&#125;</code> - will display all orders that belong to workflow with ID of 10044, sorting them by date</li>
+    <li><code>&#123;module_order filter=&quot;a&quot; sortType=&quot;Alphabetically&#37;&#125;&quot;&#125;</code> - will display all orders, alphabetically</li>
+    <li><code> &#123;module_order filter=&quot;c&quot; workflowID=&quot;10044&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_order,filter,workflowID,SortType</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_order,filter,workflowID,SortType&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -93,112 +93,112 @@
 </thead>
     <tbody>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">amountOutstanding</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amountoutstanding</span>}</code></td><td class="description"><span>Amount outstanding on invoice</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;amountOutstanding&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_amountoutstanding&#125;</code></td><td class="description">Amount outstanding on invoice</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">amountOutstandingActual</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amountoutstandingactual</span>}</code></td><td class="description"><span>Amount of invoice outstanding, only taking into account successful payments (pending payments excluded)</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;amountOutstandingActual&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_amountoutstandingactual&#125;</code></td><td class="description">Amount of invoice outstanding, only taking into account successful payments (pending payments excluded)</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">amountPaid</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amountpaid</span>}</code></td><td class="description"><span>Amount already paid on invoice</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;amountPaid&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_amountpaid&#125;</code></td><td class="description">Amount already paid on invoice</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">amountPaidActual</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_amountpaidactual</span>}</code></td><td class="description"><span>Amount of invoice paid with a successful payment (pending payments excluded)</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;amountPaidActual&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_amountpaidactual&#125;</code></td><td class="description">Amount of invoice paid with a successful payment (pending payments excluded)</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">assignedTo</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_assignedto</span>}</code></td><td class="description"><span>Name of the person whom the order is assigned to</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;assignedTo&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_assignedto&#125;</code></td><td class="description">Name of the person whom the order is assigned to</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">awbNumber</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_awbnumber</span>}</code></td><td class="description"><span>Tracking number from shipping provider(also known as AWB number). You can edit this information for each order</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;awbNumber&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_awbnumber&#125;</code></td><td class="description">Tracking number from shipping provider(also known as AWB number). You can edit this information for each order</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">createdate</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_createdate</span>}</code></td>
-         <td class="description"><span>Create date of the order, e.g. <em>"2014-09-05</em>"</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;createdate&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_createdate&#125;</code></td>
+         <td class="description">Create date of the order, e.g. <em>"2014-09-05</em>"</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">createdate_raw</span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;createdate_raw&#125;&#125;</code></td>
          <td valign="top" class="legacy tag">&nbsp;</td>
-         <td class="description"><span>Create timestamp of the order, e.g. <em>"9/5/2014 9:33:44 PM"</em></span></td>
+         <td class="description">Create timestamp of the order, e.g. <em>"9/5/2014 9:33:44 PM"</em></td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">invoiceDate</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicedate</span>}</code></td><td class="description"><span>Date of Invoice, e.g. <em>"2014-09-05</em>"</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;invoiceDate&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_invoicedate&#125;</code></td><td class="description">Date of Invoice, e.g. <em>"2014-09-05</em>"</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">invoiceDate_raw</span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;invoiceDate_raw&#125;&#125;</code></td>
          <td valign="top" class="legacy tag">&nbsp;</td>
-         <td class="description"><span>Timestamp of invoice, e.g. <em>"9/5/2014 9:33:44 PM"</em></span></td>
+         <td class="description">Timestamp of invoice, e.g. <em>"9/5/2014 9:33:44 PM"</em></td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">invoiceNumber</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicenumber</span>}</code></td><td class="description"><span>Invoice number</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;invoiceNumber&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_invoicenumber&#125;</code></td><td class="description">Invoice number</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">invoiceTotal</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicetotal</span>}</code></td><td class="description"><span>Total invoice amount</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;invoiceTotal&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_invoicetotal&#125;</code></td><td class="description">Total invoice amount</td>
         </tr>
     <tr>
             <td valign="top" class="liquid tag"><code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_invoicetotaltaxamount</span>}</code></td><td class="description"><span>Total tax associated with order (product tax + shipping tax)</span></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_invoicetotaltaxamount&#125;</code></td><td class="description">Total tax associated with order (product tax + shipping tax)</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">lastUpdateDate</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_lastupdatedate</span>}</code></td><td class="description"><span>Last update date of the order, e.g. <em>"2014-09-05</em>"</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_lastupdatedate&#125;</code></td><td class="description">Last update date of the order, e.g. <em>"2014-09-05</em>"</td>
         </tr>
          <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">lastUpdateDate_raw</span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate_raw&#125;&#125;</code></td>
          <td valign="top" class="legacy tag">&nbsp;</td>
-         <td class="description"><span>Timestamp of last date, e.g. <em>"9/5/2014 9:33:44 PM"</em></span></td>
+         <td class="description">Timestamp of last date, e.g. <em>"9/5/2014 9:33:44 PM"</em></td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">id</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_orderid</span>}</code></td><td class="description"><span>Order ID (you can use this value to search for the order in the CRM &gt; Search panel)</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;id&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_orderid&#125;</code></td><td class="description">Order ID (you can use this value to search for the order in the CRM &gt; Search panel)</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">orderName</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_ordername</span>}</code></td><td class="description"><span>Name of order</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;orderName&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_ordername&#125;</code></td><td class="description">Name of order</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">orderType</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_ordertype</span>}</code></td><td class="description"><span>Type of the order; for example, Invoice or Quote</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;orderType&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_ordertype&#125;</code></td><td class="description">Type of the order; for example, Invoice or Quote</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">ownerName</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_ownername</span>}</code></td><td class="description"><span>Name of the person who owns the order</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;ownerName&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_ownername&#125;</code></td><td class="description">Name of the person who owns the order</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productExtension</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productextension</span>}</code></td><td class="description"><span>Three-letter extension of the file if an e-Product; for example, PDF. Use to render out relevant icon for e-Product (applies to flat listing only; for example, <span>{module_order,a,,flat</span>})</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;productExtension&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_productextension&#125;</code></td><td class="description">Three-letter extension of the file if an e-Product; for example, PDF. Use to render out relevant icon for e-Product (applies to flat listing only; for example, &#123;module_order,a,,flat&#125;)</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productID</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productid</span>}</code></td><td class="description"><span>Displays the internal ID of the product in the order (applies to flat listing only; for example, {<span>module_order,a,,flat</span>})</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;productID&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_productid&#125;</code></td><td class="description">Displays the internal ID of the product in the order (applies to flat listing only; for example, &#123;module_order,a,,flat&#125;)</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">productName</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_productname</span>}</code></td><td class="description"><span>Displays the name of the product in the order (applies to flat listing only; for example,{<span>module_order,a,,flat</span>}). Provides a link to download product if e-Product.</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;productName&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_productname&#125;</code></td><td class="description">Displays the name of the product in the order (applies to flat listing only; for example,&#123;module_order,a,,flat&#125;). Provides a link to download product if e-Product.</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">shippingInstructions</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_shippinginstructions</span>}</code></td><td class="description"><span>Any specific shipping instructions that accompany the order</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;shippingInstructions&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_shippinginstructions&#125;</code></td><td class="description">Any specific shipping instructions that accompany the order</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">status</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_status</span>}</code></td><td class="description"><span>Stats of the order</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;status&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_status&#125;</code></td><td class="description">Stats of the order</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">trackingUrl</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_trackingurl,Your Text</span>}</code></td><td class="description"><span>URL of the shipper to track shipments. You can edit this information for each order</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;trackingUrl&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_trackingurl,Your Text&#125;</code></td><td class="description">URL of the shipper to track shipments. You can edit this information for each order</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">workflow</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_workflow</span>}</code></td><td class="description"><span>Workflow name assigned to order</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;workflow&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_workflow&#125;</code></td><td class="description">Workflow name assigned to order</td>
         </tr>
   </tbody>
 </table>
@@ -206,8 +206,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_order,c,10044,Default</span>}</code> - will display all orders that belong to workflow with ID of 10044, sorting them by date</li>
-    <li><code>{<span>module_order,a,,Alphabetically</span>}</code> - will display all orders, alphabetically, also displaying every product within each order</li>
+    <li><code>&#123;module_order,c,10044,Default&#125;</code> - will display all orders that belong to workflow with ID of 10044, sorting them by date</li>
+    <li><code>&#123;module_order,a,,Alphabetically&#125;</code> - will display all orders, alphabetically, also displaying every product within each order</li>
 </ul>
 </div>
 </div>

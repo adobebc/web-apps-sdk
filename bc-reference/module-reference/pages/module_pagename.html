@@ -1,4 +1,4 @@
-<h1>{<span>module_pagename</span>}</h1>
+<h1>&#123;module_pagename&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>This module  renders the current web page's name.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
@@ -9,7 +9,7 @@
   </ul>  <div id="named-params" class="beta">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_pagename </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_pagename collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -27,8 +27,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_pagename</span>}</code> - renders the name of the page in plain text</li>
-    <li>The way to set up a different image which loads on a per page basis is to use the {<span>module_pagename</span>} to render the name of the page, but add this module to the image link, i.e. <code>&lt;img src=&rdquo;/images/{<span>module_pagename</span>}.jpg&rdquo;&gt;</code>. This will then render the word <em>About</em> (if you are on a page named &lsquo;About&rsquo;) and the resulting image link would be <code>&lt;img src=&rdquo;/images/About.jpg&rdquo;&gt;</code>.</li><li><code>{<span>module_pagename collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+    <li><code>&#123;module_pagename&#125;</code> - renders the name of the page in plain text</li>
+    <li>The way to set up a different image which loads on a per page basis is to use the &#123;module_pagename&#125; to render the name of the page, but add this module to the image link, i.e. <code>&lt;img src=&rdquo;/images/&#123;module_pagename&#125;.jpg&rdquo;&gt;</code>. This will then render the word <em>About</em> (if you are on a page named &lsquo;About&rsquo;) and the resulting image link would be <code>&lt;img src=&rdquo;/images/About.jpg&rdquo;&gt;</code>.</li><li><code>&#123;module_pagename collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 <ul>
     <li>You can also use this module between the title tags to set the title</li>
@@ -37,13 +37,13 @@
 <div id="legacy">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_pagename</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_pagename&#125;</code></pre>
 </div>
 <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_pagename</span>}</code> - renders the name of the page in plain text</li>
-    <li>The way to set up a different image which loads on a per page basis is to use the {<span>module_pagename</span>} to render the name of the page, but add this module to the image link, i.e. <code>&lt;img src=&rdquo;/images/{<span>module_pagename</span>}.jpg&rdquo;&gt;</code>. This will then render the word <em>About</em> (if you are on a page named &lsquo;About&rsquo;) and the resulting image link would be <code>&lt;img src=&rdquo;/images/About.jpg&rdquo;&gt;</code>.</li>
+    <li><code>&#123;module_pagename&#125;</code> - renders the name of the page in plain text</li>
+    <li>The way to set up a different image which loads on a per page basis is to use the &#123;module_pagename&#125; to render the name of the page, but add this module to the image link, i.e. <code>&lt;img src=&rdquo;/images/&#123;module_pagename&#125;.jpg&rdquo;&gt;</code>. This will then render the word <em>About</em> (if you are on a page named &lsquo;About&rsquo;) and the resulting image link would be <code>&lt;img src=&rdquo;/images/About.jpg&rdquo;&gt;</code>.</li>
 </ul>
 <ul>
     <li>You can also use this module between the title tags to set the title</li>

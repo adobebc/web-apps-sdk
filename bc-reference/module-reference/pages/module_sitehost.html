@@ -1,4 +1,4 @@
-<h1>{<span>module_sitehost</span>}</h1>
+<h1>&#123;module_sitehost&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Displays the host section of the URL.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
@@ -9,7 +9,7 @@
   </ul>  <div id="named-params" class="beta">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_sitehost </span>collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_sitehost collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -27,8 +27,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_sitehost</span>}</code> - if this module is used on the URL of http://mysite.com/_blog/my_blog then this module will output <em>http://mysite.com</em></li><li><code>{<span>module_sitehost collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
-    <li>the site hostname is also contained in a <a href="/developers/beta/getting-started-with-liquid#globals">Liquid global</a> object. <code>{{<span>globals.site</span>}}</code> will output:
+    <li><code>&#123;module_sitehost&#125;</code> - if this module is used on the URL of http://mysite.com/_blog/my_blog then this module will output <em>http://mysite.com</em></li><li><code>&#123;module_sitehost collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+    <li>the site hostname is also contained in a <a href="/developers/beta/getting-started-with-liquid#globals">Liquid global</a> object. <code>&#123;&#123;globals.site&#125;&#125;</code> will output:
        <pre class="language-javascript"><code>{
   "id": 1576341,
   "name": "mtica4",
@@ -47,12 +47,12 @@ If the user started on the secure URL (i.e did not navigate from a non-secure UR
 <div id="legacy">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_sitehost</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_sitehost&#125;</code></pre>
 </div>
 <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_sitehost</span>}</code> - if this module is used on the URL of http://mysite.com/_blog/my_blog then this module will output <em>http://mysite.com</em></li>
+    <li><code>&#123;module_sitehost&#125;</code> - if this module is used on the URL of http://mysite.com/_blog/my_blog then this module will output <em>http://mysite.com</em></li>
 </ul>
 <p>
 If this module is used on a secure URL, then the module will output the host of the non-secure URL the user navigated from. For example, if this module is used on https://mysite.worldsecuresystems.com and the customer navigated to this URL from http://mysite.com then this module will output http://mysite.com.

@@ -1,4 +1,4 @@
-<h1>{<span>module_subscriptions</span>}</h1>
+<h1>&#123;module_subscriptions&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p><em>Visitor must be logged in to a Secure Zone.</em></p>
@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_subscriptions </span>render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; <span>showExpiry="true|false" showPrice="true|false" allowCancel="false|true" renderAsJson="false|true"</span>}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_subscriptions render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; showExpiry="true|false" showPrice="true|false" allowCancel="false|true" renderAsJson="false|true"&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -43,21 +43,21 @@
 </thead>
     <tbody>
     <tr>
-         <td valign="top" class="liquid tag"><code>{{<span class="tagname">entityId</span>}}</code></td>
-         <td class="description"><span>The CRM record's ID</span></td></tr><tr>
-         <td valign="top" class="liquid tag"><code>{{<span class="tagname">zoneId</span>}}</code></td>
-         <td class="description"><span>The secure zone's ID</span></td></tr><tr>
-           <td valign="top" class="liquid tag"><code>{{<span class="tagname">zoneName</span>}}</code></td>
-         <td class="description"><span>The secure zone's name</span></td></tr><tr>
-           <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>}}</code></td>
-         <td class="description"><span>The date access expires</span></td></tr><tr>
-           <td valign="top" class="liquid tag"><code>{{<span class="tagname">sellAccess</span>}}</code></td>
-         <td class="description"><span>Whether this is a paid or free secure zone</span></td></tr><tr>
-           <td valign="top" class="liquid tag"><code>{{<span class="tagname">costPeriod</span>}}</code></td>
-         <td class="description"><span>The amount charged for the access</span></td></tr>
+         <td valign="top" class="liquid tag"><code>&#123;&#123;entityId&#125;&#125;</code></td>
+         <td class="description">The CRM record's ID</td></tr><tr>
+         <td valign="top" class="liquid tag"><code>&#123;&#123;zoneId&#125;&#125;</code></td>
+         <td class="description">The secure zone's ID</td></tr><tr>
+           <td valign="top" class="liquid tag"><code>&#123;&#123;zoneName&#125;&#125;</code></td>
+         <td class="description">The secure zone's name</td></tr><tr>
+           <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
+         <td class="description">The date access expires</td></tr><tr>
+           <td valign="top" class="liquid tag"><code>&#123;&#123;sellAccess&#125;&#125;</code></td>
+         <td class="description">Whether this is a paid or free secure zone</td></tr><tr>
+           <td valign="top" class="liquid tag"><code>&#123;&#123;costPeriod&#125;&#125;</code></td>
+         <td class="description">The amount charged for the access</td></tr>
          <tr>
-           <td valign="top" class="liquid tag"><code>{{<span class="tagname">cycleType</span>}}</code></td>
-         <td class="description"><span>The charge period. Possible values:<ul>
+           <td valign="top" class="liquid tag"><code>&#123;&#123;cycleType&#125;&#125;</code></td>
+         <td class="description">The charge period. Possible values:<ul>
            <li>Once</li>
            <li>Daily</li>
            <li>Weekly</li>
@@ -67,7 +67,7 @@
            <li>Half yearly</li>
            <li>Yearly</li>
          </ul>
-         </span></td></tr>
+         </td></tr>
 </tbody>
 </table>
 </div>
@@ -75,7 +75,7 @@
 <h2>Examples</h2>
 <ul>
 <li>
-{<span>module_subscriptions</span>} - renders
+&#123;module_subscriptions&#125; - renders
 <br/>
 <pre class="language-markup">
 <code>&lt;ul class=&quot;zoneSubscriptions&quot;&gt;
@@ -109,7 +109,7 @@
 </li>
 </li>
 <li>
-{<span>module_subscriptions showExpiry="true" showPrice="true" renderAsJson="true"</span>} - renders
+&#123;module_subscriptions showExpiry="true" showPrice="true" renderAsJson="true"&#125; - renders
 <br/>
 <pre class="language-javascript">
 <code>
@@ -165,7 +165,7 @@
 </pre>
 </li>
 <li>
-{<span>module_subscriptions showExpiry="true" showPrice="true" allowCancel="true"</span>} - renders
+&#123;module_subscriptions showExpiry="true" showPrice="true" allowCancel="true"&#125; - renders
 <br/>
 <pre class="language-markup">
 <code>
@@ -209,7 +209,7 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_subscriptions,show_expiry,show_prices,show_cancel_link,render_json</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_subscriptions,show_expiry,show_prices,show_cancel_link,render_json&#125;</code></pre>
 </div>
 <h2>Parameters</h2>
 <ul>
@@ -222,7 +222,7 @@
 <h2>Examples</h2>
 <ul>
 <li>
-{<span>module_subscriptions</span>} - renders
+&#123;module_subscriptions&#125; - renders
 <br/>
 <pre class="language-markup">
 <code>&lt;ul class=&quot;zoneSubscriptions&quot;&gt;
@@ -256,7 +256,7 @@
 </li>
 </li>
 <li>
-{<span>module_subscriptions,true,true,,true</span>} - renders
+&#123;module_subscriptions,true,true,,true&#125; - renders
 <br/>
 <pre class="language-javascript">
 <code>
@@ -293,7 +293,7 @@
 </pre>
 </li>
 <li>
-{<span>module_subscriptions,true,true,true</span>} - renders
+&#123;module_subscriptions,true,true,true&#125; - renders
 <br/>
 <pre class="language-markup">
 <code>

@@ -6,13 +6,13 @@
         
   </div>
     <div class="sample">
-        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; resourceId=&quot;{{globals.user.entityId}}&quot; subresource=&quot;orders&quot; version=&quot;v3&quot; where=&quot;\{&#39;totalPrice&#39;:\{&#39;$gte&#39;:10\}\}&quot; collection=&quot;largeOrders&quot;}
+        <pre class="language-javascript"><code> &#123;module_data resource=&quot;customers&quot; resourceId=&quot;&#123;&#123;globals.user.entityId&#125;&#125;&quot; subresource=&quot;orders&quot; version=&quot;v3&quot; where=&quot;\{&#39;totalPrice&#39;:\{&#39;$gte&#39;:10\}\}&quot; collection=&quot;largeOrders&quot;}
 		  
-{% if {{largeOrders.totalItemsCount}} &gt; 0 %}
+&#123;&#37; if &#123;&#123;largeOrders.totalItemsCount&#125;&#125; &gt; 0 &#37;&#125;
 	&lt;p&gt;Get your special discount&lt;/p&gt;
-{% else %}
+&#123;&#37; else &#37;&#125;
 	&lt;p&gt;Order a Blue Tshirt for a special discount!&lt;/p&gt;
-{% endif %}</code></pre>
+&#123;&#37; endif &#37;&#125;</code></pre>
     </div>
     <div class="sample-details">
     <p>In this example we feed the logged in customer's ID to <a href="/dev-assets/reference/module-reference/general/module_data.html">module_data</a> in the <em>resourceId</em> parameter.</p>
@@ -26,12 +26,12 @@
    
   </div>
     <div class="sample">
-        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; resourceId=&quot;{{globals.user.entityId}}&quot; subresource=&quot;orders&quot; version=&quot;v3&quot; limit=&quot;5&quot; collection=&quot;fiveOrders&quot;}
-{% if {{fiveOrders.totalItemsCount}} &gt;= 5 %}	
+        <pre class="language-javascript"><code> &#123;module_data resource=&quot;customers&quot; resourceId=&quot;&#123;&#123;globals.user.entityId&#125;&#125;&quot; subresource=&quot;orders&quot; version=&quot;v3&quot; limit=&quot;5&quot; collection=&quot;fiveOrders&quot;}
+&#123;&#37; if &#123;&#123;fiveOrders.totalItemsCount&#125;&#125; &gt;= 5 &#37;&#125;	
 	&lt;p&gt;Customer has 5 or more orders&lt;/p&gt;
-{% else %}
+&#123;&#37; else &#37;&#125;
   &lt;p&gt;Customer has less than 5 orders&lt;/p&gt;
-{% endif %}</code></pre>
+&#123;&#37; endif &#37;&#125;</code></pre>
     </div>
     <div class="sample-details">
      <p>In this example we retrieve the orders for the logged in customer (the resource parameter). First we feed the logged in user's ID (the resourceId parameter) to module_data and retrieve its orders (the subresource parameter). Because we only need to determine the total number of orders and not the actual details of the order we can use the <em>limit=&quot;0&quot;</em> parameter.</p>
@@ -46,14 +46,14 @@
    
   <div class="sample">
         <pre class="language-javascript"><code>
-{module_data resource=&quot;orders&quot; version=&quot;v3&quot; where=&quot;\{&#39;products.productId&#39;: 9259226, &#39;entityId&#39;: {{globals.user.entityId}}\}&quot; template=&quot;&quot; collection=&quot;ordersWithBlueTshirt&quot;}
+ &#123;module_data resource=&quot;orders&quot; version=&quot;v3&quot; where=&quot;\{&#39;products.productId&#39;: 9259226, &#39;entityId&#39;: &#123;&#123;globals.user.entityId&#125;&#125;\}&quot; template=&quot;&quot; collection=&quot;ordersWithBlueTshirt&quot;}
 //get the orders that contain a product with the product ID and have been created by the currenly logged in user
 
-{% if {{ordersWithBlueTshirt.totalItemsCount}} &gt; 0 %}
+&#123;&#37; if &#123;&#123;ordersWithBlueTshirt.totalItemsCount&#125;&#125; &gt; 0 &#37;&#125;
     &lt;p&gt;Get your special discount&lt;/p&gt;
-{% else %}
+&#123;&#37; else &#37;&#125;
     &lt;p&gt;Order a Blue Tshirt for a special discount!&lt;/p&gt;
-{% endif %}</code></pre>
+&#123;&#37; endif &#37;&#125;</code></pre>
     </div>
     <div class="sample-details">
     <p>In this example  we use a different technique. We need to know if the currently logged in customer has ever ordered a product named BlueTshirt (with the productID 9259226).</p>
@@ -69,13 +69,13 @@
   </div>
     
     <div class="sample">
-        <pre class="language-javascript"><code>{module_webresource where="\{ '$or' : \[\{'state': 'NY' \},\{'state': 'New York' \}\]\}" resource="customers" resourceid="{{globals.user.entityId}}" subresource="addresses"  version="v3" limit="30" collection="addressNYCity"}
+        <pre class="language-javascript"><code> &#123;module_webresource where="\{ '$or' : \[\{'state': 'NY' \},\{'state': 'New York' \}\]\}" resource="customers" resourceid="&#123;&#123;globals.user.entityId&#125;&#125;" subresource="addresses"  version="v3" limit="30" collection="addressNYCity"}
         
-{% if {{addressNYCity.totalItemsCount}} &gt; 0 %}
+&#123;&#37; if &#123;&#123;addressNYCity.totalItemsCount&#125;&#125; &gt; 0 &#37;&#125;
     &lt;p&gt;Show NY special offer&lt;/p&gt;
-{% else %}
+&#123;&#37; else &#37;&#125;
     &lt;p&gt;Customer does not live in NY.&lt;/p&gt;
-{% endif %}</code></pre>
+&#123;&#37; endif &#37;&#125;</code></pre>
     </div>
 </div>
 <div id="check-customer-wholesaler">
@@ -87,15 +87,15 @@
     </div>
     <div class="sample">
         <pre class="language-javascript"><code>
-{%assign userEmail = globals.get.emailaddress%}
-{module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '{{<span>userEmail</span>}}'\},\{'email2.value': '{{<span>userEmail</span>}}'\},\{'email3.value': '{{<span>userEmail</span>}}'\}\]\}&quot;}
-{%<span>assign userInfo = customerInfo.items[0]</span>%}<br>//at this point the data for the user with the email address john_doe@mailinator.com is stored into the userInfo collection
-{{<span>userInfo.wholesaler | json</span>}}
-//let's check if this user is a wholesaler:<br>&lt;p&gt;{%<span> if userInfo.wholesaler </span>%}This customer is a wholesaler{%<span> else </span>%}This customer is not a wholesaler{%<span> endif </span>%}&lt;/p&gt;</code></pre>
+&#123;&#37;assign userEmail = globals.get.emailaddress&#37;&#125;
+ &#123;module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'$or':\[\{'email1.value': '&#123;&#123;userEmail&#125;&#125;'\},\{'email2.value': '&#123;&#123;userEmail&#125;&#125;'\},\{'email3.value': '&#123;&#123;userEmail&#125;&#125;'\}\]\}&quot;}
+&#123;&#37;assign userInfo = customerInfo.items[0]&#37;&#125;<br>//at this point the data for the user with the email address john_doe@mailinator.com is stored into the userInfo collection
+&#123;&#123;userInfo.wholesaler | json&#125;&#125;
+//let's check if this user is a wholesaler:<br>&lt;p&gt;&#123;&#37; if userInfo.wholesaler &#37;&#125;This customer is a wholesaler&#123;&#37; else &#37;&#125;This customer is not a wholesaler&#123;&#37; endif &#37;&#125;&lt;/p&gt;</code></pre>
     </div>
     <div class="sample-details">
     <p>In this example we get the customer resource that matches the condition specified by the <em>where</em> parameter.</p>
-        <p>The condition <code>where=&quot;\{'$or':\[\{'email1.value': '{{<span>userEmail</span>}}'\},\{'email2.value': '{{<span>userEmail</span>}}'\},\{'email3.value': '{{<span>userEmail</span>}}'\}\]\}&quot;</code></p>
+        <p>The condition <code>where=&quot;\{'$or':\[\{'email1.value': '&#123;&#123;userEmail&#125;&#125;'\},\{'email2.value': '&#123;&#123;userEmail&#125;&#125;'\},\{'email3.value': '&#123;&#123;userEmail&#125;&#125;'\}\]\}&quot;</code></p>
       <p>basically means</p>
         <p><code>(email1.value == userEmail) || (email1.value == userEmail) || (email1.value == userEmail)</code></p>
         <p>By using the where condition above along with the <em>module_data resource=&quot;customers&quot;</em> module we are looking for a customer entity that has any of the email address (customer entities have 3 mail addresses) identical to the address of the logged in customer.</p>

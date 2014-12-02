@@ -9,7 +9,7 @@
 <li><strong>engine layout</strong> - (string)</li>
 <li><strong>performance</strong> - (string)</li>
 </ul>
-<p class="alert alert-warning"><strong>Remember:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{{<span>cars1.items[0].["large image_value"]</span>}}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by the name of the collection (in this case <em>cars1</em>).</p>
+<p class="alert alert-warning"><strong>Remember:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>&#123;&#123;cars1.items[0].["large image_value"]&#125;&#125;</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by the name of the collection (in this case <em>cars1</em>).</p>
 <div id="webapp-list">
 <h2>List all the webapp items</h2>
 <p>First of all let's render all the webapp items. We won't add any conditions just yet, let's loop all the items available. Create a blank page and paste this code:</p>
@@ -20,7 +20,7 @@
         &lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        {<span>module_webapps render=&quot;collection&quot; template=&quot;/layouts/custom/car_collection.tpl&quot; id=&quot;35209&quot; filter=&quot;all&quot;</span>}
+        &#123;module_webapps render=&quot;collection&quot; template=&quot;/layouts/custom/car_collection.tpl&quot; id=&quot;35209&quot; filter=&quot;all&quot;&#125;
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
@@ -32,13 +32,13 @@
         &lt;th&gt;Engine layout&lt;/th&gt;
         &lt;th&gt;Performance&lt;/th&gt;
     &lt;/thead&gt;
-    &lt;tbody&gt;{<span>% for item in items %</span>}
+    &lt;tbody&gt;&#123;&#37; for item in items &#37;&#125;
         &lt;tr&gt;
-            &lt;td&gt;{<span>{item.name}</span>}&lt;/td&gt;
-            &lt;td&gt;{<span>{item.[&#39;engine size&#39;]}</span>}&lt;/td&gt;
-            &lt;td&gt;{<span>{item.[&#39;engine layout&#39;]}</span>}&lt;/td&gt;
-            &lt;td&gt;{<span>{item.performance}</span>}&lt;/td&gt;
-        &lt;/tr&gt;{<span>%endfor%</span>}&lt;/tbody&gt;
+            &lt;td&gt;&#123;&#123;item.name&#125;&#125;&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.[&#39;engine size&#39;]&#125;&#125;&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.[&#39;engine layout&#39;]&#125;&#125;&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.performance&#125;&#125;&lt;/td&gt;
+        &lt;/tr&gt;&#123;&#37;endfor&#37;&#125;&lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
 <p>In this scenario all the items will be listed, the front-end will end up looking like this:</p>
 <img src="//screencasteu.worldsecuresystems.com/Mihai/2014-11-04_16.36.37.png"/>
@@ -54,7 +54,7 @@
         &lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        {<span>module_webapps render=&quot;collection&quot; template=&quot;/layouts/custom/car_collection.tpl&quot; id=&quot;35209&quot; filter=&quot;all&quot;</span>}
+        &#123;module_webapps render=&quot;collection&quot; template=&quot;/layouts/custom/car_collection.tpl&quot; id=&quot;35209&quot; filter=&quot;all&quot;&#125;
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>On the <em>/layouts/custom/car_collection.tpl</em> layout insert this code:</p>
@@ -67,16 +67,16 @@
     &lt;/thead&gt;
     &lt;tbody&gt;
 	
-	{% for item in items %} 
-		{%if {{item.[&#39;engine size&#39;]}} &lt; 4800 %} 
+	&#123;&#37; for item in items &#37;&#125; 
+		&#123;&#37;if &#123;&#123;item.[&#39;engine size&#39;]&#125;&#125; &lt; 4800 &#37;&#125; 
 		  &lt;tr&gt;
-            &lt;td&gt;{{item.name}}&lt;/td&gt;
-            &lt;td&gt;{{item.[&#39;engine size&#39;]}}&lt;/td&gt;
-            &lt;td&gt;{{item.[&#39;engine layout&#39;]}}&lt;/td&gt;
-            &lt;td&gt;{{item.performance}}&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.name&#125;&#125;&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.[&#39;engine size&#39;]&#125;&#125;&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.[&#39;engine layout&#39;]&#125;&#125;&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.performance&#125;&#125;&lt;/td&gt;
         &lt;/tr&gt;
-		{%endif %} 
-	{%endfor%}
+		&#123;&#37;endif &#37;&#125; 
+	&#123;&#37;endfor&#37;&#125;
 
 &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
@@ -93,7 +93,7 @@
         &lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        {<span>module_webapps render=&quot;collection&quot; template=&quot;/layouts/custom/car_collection.tpl&quot; id=&quot;35209&quot; filter=&quot;all&quot;</span>}
+        &#123;module_webapps render=&quot;collection&quot; template=&quot;/layouts/custom/car_collection.tpl&quot; id=&quot;35209&quot; filter=&quot;all&quot;&#125;
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>On the <em>/layouts/custom/car_collection.tpl</em> layout insert this code:</p>
@@ -104,12 +104,12 @@
         &lt;th&gt;Engine layout&lt;/th&gt;
         &lt;th&gt;Performance&lt;/th&gt;
     &lt;/thead&gt;
-    &lt;tbody&gt;{% for item in items %} {% unless {{item.[&#39;engine layout&#39;]}} contains &quot;4&quot; %}
+    &lt;tbody&gt;&#123;&#37; for item in items &#37;&#125; &#123;&#37; unless &#123;&#123;item.[&#39;engine layout&#39;]&#125;&#125; contains &quot;4&quot; &#37;&#125;
         &lt;tr&gt;
-            &lt;td&gt;{{item.name}}&lt;/td&gt;
-            &lt;td&gt;{{item.[&#39;engine size&#39;]}}&lt;/td&gt;
-            &lt;td&gt;{{item.[&#39;engine layout&#39;]}}&lt;/td&gt;
-            &lt;td&gt;{{item.performance}}&lt;/td&gt;
-        &lt;/tr&gt;{%endunless %} {%endfor%}&lt;/tbody&gt;
+            &lt;td&gt;&#123;&#123;item.name&#125;&#125;&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.[&#39;engine size&#39;]&#125;&#125;&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.[&#39;engine layout&#39;]&#125;&#125;&lt;/td&gt;
+            &lt;td&gt;&#123;&#123;item.performance&#125;&#125;&lt;/td&gt;
+        &lt;/tr&gt;&#123;&#37;endunless &#37;&#125; &#123;&#37;endfor&#37;&#125;&lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
 </div>

@@ -6,15 +6,15 @@
         
     </div>
   <div class="sample">
-        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot;}
+        <pre class="language-javascript"><code> &#123;module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot;}
 &lt;table&gt;<br>&lt;tbody&gt;
-   {%<span> for item in customerInfo.items </span>%}<br>	&lt;tr&gt;<br>		 &lt;td&gt;{{<span>item.id</span>}}&lt;/td&gt;
-        &lt;td&gt;{%<span>if {{<span>item.firstName</span>}} </span>%}{{<span>item.firstName</span>}} {%<span>endif</span>%}&lt;/td&gt;
-        &lt;td&gt;{%<span>if {{<span>item.email1.value</span>}} </span>%}{{<span>item.email1.value</span>}} {%<span>endif</span>%}&lt;/td&gt;
-        &lt;td&gt;{%<span>if {{<span>item.email2.value</span>}} </span>%}{{<span>item.email2.value</span>}} {%<span>endif</span>%}&lt;/td&gt;
-        &lt;td&gt;{%<span>if {{<span>item.mobilePhone.value</span>}} </span>%}{{<span>item.mobilePhone.value</span>}}{%<span>else</span>%}Number unavailable{%<span>endif</span>%}&lt;/td&gt;
+   &#123;&#37; for item in customerInfo.items &#37;&#125;<br>	&lt;tr&gt;<br>		 &lt;td&gt;&#123;&#123;item.id&#125;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#37;if &#123;&#123;item.firstName&#125;&#125; &#37;&#125;&#123;&#123;item.firstName&#125;&#125; &#123;&#37;endif&#37;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#37;if &#123;&#123;item.email1.value&#125;&#125; &#37;&#125;&#123;&#123;item.email1.value&#125;&#125; &#123;&#37;endif&#37;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#37;if &#123;&#123;item.email2.value&#125;&#125; &#37;&#125;&#123;&#123;item.email2.value&#125;&#125; &#123;&#37;endif&#37;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#37;if &#123;&#123;item.mobilePhone.value&#125;&#125; &#37;&#125;&#123;&#123;item.mobilePhone.value&#125;&#125;&#123;&#37;else&#37;&#125;Number unavailable&#123;&#37;endif&#37;&#125;&lt;/td&gt;
    &lt;/tr&gt;
-   {%<span> endfor </span>%}
+   &#123;&#37; endfor &#37;&#125;
 &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
   </div>
@@ -28,15 +28,15 @@
         <p>List all the customers marked as wholesalers:</p>
             </div>
   <div class="sample">
-        <pre class="language-javascript"><code>{module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'wholesaler':true\}&quot;}
+        <pre class="language-javascript"><code> &#123;module_data resource=&quot;customers&quot; version=&quot;v3&quot; template=&quot;&quot; collection=&quot;customerInfo&quot; fields=&quot;id,firstName,middleName,lastName,email1,email2,email3,username,mobilePhone,wholesaler&quot; where=&quot;\{'wholesaler':true\}&quot;}
 &lt;table&gt;<br>&lt;tbody&gt;
-   {%<span> for item in customerInfo.items </span>%}<br>	&lt;tr&gt;<br>		 &lt;td&gt;{{<span>item.id</span>}}&lt;/td&gt;
-        &lt;td&gt;{%<span>if {{<span>item.firstName</span>}} </span>%}{{<span>item.firstName</span>}} {%<span>endif</span>%}&lt;/td&gt;
-        &lt;td&gt;{%<span>if {{<span>item.email1.value</span>}} </span>%}{{<span>item.email1.value</span>}} {%<span>endif</span>%}&lt;/td&gt;
-        &lt;td&gt;{%<span>if {{<span>item.email2.value</span>}} </span>%}{{<span>item.email2.value</span>}} {%<span>endif</span>%}&lt;/td&gt;
-        &lt;td&gt;{%<span>if {{<span>item.mobilePhone.value</span>}} </span>%}{{<span>item.mobilePhone.value</span>}}{%<span>else</span>%}Number unavailable{%<span>endif</span>%}&lt;/td&gt;
+   &#123;&#37; for item in customerInfo.items &#37;&#125;<br>	&lt;tr&gt;<br>		 &lt;td&gt;&#123;&#123;item.id&#125;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#37;if &#123;&#123;item.firstName&#125;&#125; &#37;&#125;&#123;&#123;item.firstName&#125;&#125; &#123;&#37;endif&#37;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#37;if &#123;&#123;item.email1.value&#125;&#125; &#37;&#125;&#123;&#123;item.email1.value&#125;&#125; &#123;&#37;endif&#37;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#37;if &#123;&#123;item.email2.value&#125;&#125; &#37;&#125;&#123;&#123;item.email2.value&#125;&#125; &#123;&#37;endif&#37;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#37;if &#123;&#123;item.mobilePhone.value&#125;&#125; &#37;&#125;&#123;&#123;item.mobilePhone.value&#125;&#125;&#123;&#37;else&#37;&#125;Number unavailable&#123;&#37;endif&#37;&#125;&lt;/td&gt;
    &lt;/tr&gt;
-   {%<span> endfor </span>%}
+   &#123;&#37; endfor &#37;&#125;
 &lt;/tbody&gt;
 &lt;/table&gt;</code></pre></div>
 <div class="sample-details">

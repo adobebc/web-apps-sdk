@@ -1,4 +1,4 @@
-<h1>{<span>module_blogtaglist</span>}</h1>
+<h1>&#123;module_blogtaglist&#125;</h1>
 <div class="description">
 <h2>Description</h2>
 <p>Display all tags for specific blog</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_blogtaglist render="item|collection" blogId=&quot;24&quot; rowCount=&quot;2&quot;</span> collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_blogtaglist render="item|collection" blogId=&quot;24&quot; rowCount=&quot;2&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -41,16 +41,16 @@
 </thead>
     <tbody>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">id</span>}}</code></td>
-         <td class="description"><span>The ID of the tag</span></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;id&#125;&#125;</code></td>
+         <td class="description">The ID of the tag</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">name</span>}}</code></td>
-         <td class="description"><span>The name of the tag</span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
+         <td class="description">The name of the tag</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">count</span>}}</code></td>
-         <td class="description"><span>The number of posts that have been associated with this particular tag</span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;count&#125;&#125;</code></td>
+         <td class="description">The number of posts that have been associated with this particular tag</td>
         </tr>
   </tbody>
 </table>
@@ -59,7 +59,7 @@
 <h2>Examples</h2>
 <ul>
 <li>
-<code>{<span>module_blogtaglist blogId="4168" rowCount="3"</span>}</code> will output:
+<code>&#123;module_blogtaglist blogId="4168" rowCount="3"&#125;</code> will output:
 <pre class="language-markup"><code>
 &lt;ul&gt;<br>
 &lt;li&gt; Tag 1 (1)&lt;/li&gt;<br>
@@ -69,14 +69,14 @@
 </code>
 </pre>
 </li>
-<li><code>{module_blogtaglist<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+<li><code> &#123;module_blogtaglist collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_blogtaglist</span>,blogId,rowCount}</code></pre>
+<pre class="language-markup"><code>&#123;module_blogtaglist,blogId,rowCount&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -91,7 +91,7 @@
 </a></div>
 <div class="examples">
 <h2>Examples</h2>
-<code>{<span>module_blogtaglist,4168,3</span>}</code> will output:
+<code>&#123;module_blogtaglist,4168,3&#125;</code> will output:
 <pre class="language-markup"><code>
 &lt;ul&gt;<br>
 &lt;li&gt; Tag 1 (1)&lt;/li&gt;<br>

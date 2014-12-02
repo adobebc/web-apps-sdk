@@ -2,8 +2,8 @@
 <div id="modules">
 <h2>Is used by these modules:</h2>
 <ul>
-    <li>This is actually called through {<span>tag_commentspaged</span>}</code>, which can be found in the <a href="/dev-assets/reference/tag-reference/blogs/blog-post-details-layout.html">Detail Layout</a></li>
-    <li>If you use Liquid, the properties below are nested under <code><span class="tagname">tag_commentspaged_(UNIQUE-ID-HERE)</span></code>. For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</li>
+    <li>This is actually called through &#123;tag_commentspaged&#125;</code>, which can be found in the <a href="/dev-assets/reference/tag-reference/blogs/blog-post-details-layout.html">Detail Layout</a></li>
+    <li>If you use Liquid, the properties below are nested under <code>tag_commentspaged_(UNIQUE-ID-HERE)&#37;&#125;</code>. For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</li>
 </ul>
 </div>
 <div id="accessible">
@@ -25,49 +25,49 @@
 </thead>
     <tbody>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">body</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_feedback</span>}</code></td><td class="description"><span>Customer comment</span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;body&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_feedback&#125;</code></td><td class="description">Customer comment</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">fullName</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_fullname</span>}</code></td><td class="description"><span>Full name of the person who submitted the comment (anonymous if not available)</span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;fullName&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_fullname&#125;</code></td><td class="description">Full name of the person who submitted the comment (anonymous if not available)</td>
         </tr>
         <tr>
           <td valign="top" class="liquid tag">&nbsp;</td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_fullname_nolink</span>}</code></td><td class="description"><span>Full name of the person who&nbsp;submitted the comment&nbsp;without a link&nbsp;(anonymous if not available)</span></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_fullname_nolink&#125;</code></td><td class="description">Full name of the person who&nbsp;submitted the comment&nbsp;without a link&nbsp;(anonymous if not available)</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">rating</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_rating</span>}</code></td>
-            <td class="description"><span>Rating in stars, the Liquid tag represents the numeric value of the rating </span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;rating&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_rating&#125;</code></td>
+            <td class="description">Rating in stars, the Liquid tag represents the numeric value of the rating </td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">date</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_usagedate</span>}</code></td><td class="description"><span>Date when comment was given</span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;date&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_usagedate&#125;</code></td><td class="description">Date when comment was given</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">pendingComment</span>}}</code></td>
-            <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_pendingcomments</span>}</code></td><td class="description"><span>Checks if status of the comment is set to "pending" from admin, in whic case outputs the following message: <em>Your comment is awaiting moderation!</em></span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;pendingComment&#125;&#125;</code></td>
+            <td valign="top" class="legacy tag"><code>&#123;tag_pendingcomments&#125;</code></td><td class="description">Checks if status of the comment is set to "pending" from admin, in whic case outputs the following message: <em>Your comment is awaiting moderation!</em></td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">country</span>}}</code></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;country&#125;&#125;</code></td>
             <td valign="top" class="legacy tag">&nbsp;</td>
-            <td class="description"><span>The country of the site visitor who posted the comment.<em></em></span></td>
+            <td class="description">The country of the site visitor who posted the comment.<em></em></td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">flagUrl</span>}}</code></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;flagUrl&#125;&#125;</code></td>
             <td valign="top" class="legacy tag">&nbsp;</td>
-            <td class="description"><span>The URL of the flag associated with the site visitor's country</span></td>
+            <td class="description">The URL of the flag associated with the site visitor's country</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">website</span>}}</code></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;website&#125;&#125;</code></td>
             <td valign="top" class="legacy tag">&nbsp;</td>
-            <td class="description"><span>The value of the &quot;website&quot; field.<em></em></span></td>
+            <td class="description">The value of the &quot;website&quot; field.<em></em></td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">postUrlWithHost</span>}}</code></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;postUrlWithHost&#125;&#125;</code></td>
             <td valign="top" class="legacy tag">&nbsp;</td>
-            <td class="description"><span>The URL of the post this comment is associated with.<em></em></span></td>
+            <td class="description">The URL of the post this comment is associated with.<em></em></td>
         </tr>
     </tbody>
 </table>

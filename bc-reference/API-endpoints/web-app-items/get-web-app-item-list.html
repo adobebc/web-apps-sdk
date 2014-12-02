@@ -273,43 +273,43 @@ items.fetch({
 <tr>
   <td class="tag">$ne</td>
   <td class="tag">not equal (!=)</td>
-  <td class="tag"><code>where={"id": {"$ne": 42}}</code></td>
+  <td class="tag"><code>where={"id": {"$ne": 42&#125;&#125;</code></td>
   <td class="tag">all</td>
 </tr>
 <tr>
   <td class="tag">$lt</td>
   <td class="tag">less than (&lt;)</td>
-  <td class="tag"><code>where={"weight" : {"$lt": 3}}</code></td>
+  <td class="tag"><code>where={"weight" : {"$lt": 3&#125;&#125;</code></td>
   <td class="tag">all</td>
 </tr>
 <tr>
   <td class="tag">$lte</td>
   <td class="tag">less than or equal (&lt;=)</td>
-  <td class="tag"><code>where={"name" : {"$lte": "omega"}}</code></td>
+  <td class="tag"><code>where={"name" : {"$lte": "omega"&#125;&#125;</code></td>
   <td class="tag">all</td>
 </tr>
 <tr>
   <td class="tag">$gt</td>
   <td class="tag">greater than (&gt;)</td>
-  <td class="tag"><code>where={"releaseDate" : {"$gt": "jun 10 2012"}}</code></td>
+  <td class="tag"><code>where={"releaseDate" : {"$gt": "jun 10 2012"&#125;&#125;</code></td>
   <td class="tag">all</td>
 </tr>
 <tr>
   <td class="tag">$gte</td>
   <td class="tag">greater than or equal (&gt;=)</td>
-  <td class="tag"><code>where={"name" : {"$gte": "alpha"}}</code></td>
+  <td class="tag"><code>where={"name" : {"$gte": "alpha"&#125;&#125;</code></td>
   <td class="tag">all</td>
 </tr>
 <tr>
   <td class="tag">$contains</td>
   <td class="tag">contains</td>
-  <td class="tag"><code>where={"name": {"$contains": "delta"}}</code></td>
+  <td class="tag"><code>where={"name": {"$contains": "delta"&#125;&#125;</code></td>
   <td class="tag">string-only</td>
 </tr>
 <tr>
   <td class="tag">$beginsWith</td>
   <td class="tag">begins with</td>
-  <td class="tag"><code>where={"name": {"$beginsWith": "prefix"}}</code></td>
+  <td class="tag"><code>where={"name": {"$beginsWith": "prefix"&#125;&#125;</code></td>
   <td class="tag">string-only</td>
 </tr>
 </tbody>
@@ -320,7 +320,7 @@ items.fetch({
 <ul>
 <li><p>Multiple constraints can be chained, and the chaining operator is AND. We do not support OR-queries</p>
 
-<p><code>where={"name": {"$gt": "alpha", "$lt": "omega", "$contains":"foo"}}</code></p></li>
+<p><code>where={"name": {"$gt": "alpha", "$lt": "omega", "$contains":"foo"&#125;&#125;</code></p></li>
 <li><p>Equality has no dedicated operator and it cannot be chained together with other constraints. The only way to specify that something must equal a value is like so:</p>
 
 <p><code>where={"name": "epsilon"}</code></p></li>
@@ -334,7 +334,7 @@ items.fetch({
 <li><p>null-values will returns false for every comparison except equality and <code>$ne</code> operator. These two operators can be used to filter out the items that have missing values for certain fields</p>
 
 <p><code>where={"weight": null}
-where={"weight": {"$ne": null}}</code></p></li>
+where={"weight": {"$ne": null&#125;&#125;</code></p></li>
 </ul>
 
 <h4>Examples</h4>
@@ -342,10 +342,10 @@ where={"weight": {"$ne": null}}</code></p></li>
 <ul>
 <li><p>Filtering by name</p>
 
-<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"name": {"$contains": "item"}}</code></p></li>
+<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"name": {"$contains": "item"&#125;&#125;</code></p></li>
 <li><p>Filtering by date</p>
 
-<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"createDate": {"$gte": "2001-01-01", "$lte": "2013-01-01"}}</code></p></li>
+<p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"createDate": {"$gte": "2001-01-01", "$lte": "2013-01-01"&#125;&#125;</code></p></li>
 <li><p>Filtering by category id</p>
 
 <p><code>GET /api/v2/admin/sites/current/webapps/TestWebapp1/items?where={"category": 123}</code></p></li>

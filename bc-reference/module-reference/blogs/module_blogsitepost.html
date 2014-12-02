@@ -1,4 +1,4 @@
-<h1>{<span>module_blogsitepost</span>}</h1>
+<h1>&#123;module_blogsitepost&#125;</h1>
 
 <div class="description">
 <h2>Description</h2>
@@ -13,14 +13,14 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span></span>module_blogsitepost rowCount=&quot;4&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_blogsitepost rowCount=&quot;4&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>rowCount</strong> - limits the number of posts displayed by the module)</li>
     <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers#!/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid!template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -41,108 +41,108 @@
 </thead>
     <tbody>
     <tr>
-            <td valign="top" class="liquid tag"><code>{{<span class="tagname">type</span>}}</code></td>
+            <td valign="top" class="liquid tag"><code>&#123;&#123;type&#125;&#125;</code></td>
          <td valign="top" class="legacy tag">&nbsp;</td>
-         <td class="description"><span>The Blog type ID (56)</span></td>
+         <td class="description">The Blog type ID (56)</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">author</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostauthor</span>}</code></td><td class="description"><span>Author of the post</span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;author&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_blogpostauthor&#125;</code></td><td class="description">Author of the post</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">body</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostbody</span>}</code></td><td class="description"><span>Details of the post</span></td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag">&nbsp;</td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostbodypreview,Text</span>}</code></td><td class="description"><span>Display a preview of the first paragraph of your blog post. Replace "Text" with the relevant words to link to see the entire post.</span></td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">date</span>}}</code></td>
-      <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostdate</span>}</code></td><td class="description"><span>Date of the post</span></td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">day</span>}}</code></td>
-      <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostday</span>}</code></td>
-      <td class="description"><span>Day of the post</span></td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">month</span>}}</code></td>
-      <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostmonth</span>}</code></td>
-      <td class="description"><span>Month of the post</span></td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">monthNumeric</span>}}</code></td>
-      <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostmonthnumeric</span>}</code></td><td class="description"><span>Month part of the date the blog post was posted as a numeric value, e.g. 11-Dec-14 will render <em>12</em></span><em></span></em></td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">title</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogposttitle</span>}</code></td><td class="description"><span>The title of the post as an anchor linked to the permalink</span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;body&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_blogpostbody&#125;</code></td><td class="description">Details of the post</td>
         </tr>
     <tr>
       <td valign="top" class="liquid tag">&nbsp;</td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogposttitle_nolink</span>}</code></td><td class="description"><span>The title of the post</span></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_blogpostbodypreview,Text&#125;</code></td><td class="description">Display a preview of the first paragraph of your blog post. Replace "Text" with the relevant words to link to see the entire post.</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">year</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostyear</span>}</code></td><td class="description"><span>Year part of the date that the post was submitted, e.g. 11-Dec-14 will render as the year only, like this: <em>2014</em></span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;date&#125;&#125;</code></td>
+      <td valign="top" class="legacy tag"><code>&#123;tag_blogpostdate&#125;</code></td><td class="description">Date of the post</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;day&#125;&#125;</code></td>
+      <td valign="top" class="legacy tag"><code>&#123;tag_blogpostday&#125;</code></td>
+      <td class="description">Day of the post</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;month&#125;&#125;</code></td>
+      <td valign="top" class="legacy tag"><code>&#123;tag_blogpostmonth&#125;</code></td>
+      <td class="description">Month of the post</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;monthNumeric&#125;&#125;</code></td>
+      <td valign="top" class="legacy tag"><code>&#123;tag_blogpostmonthnumeric&#125;</code></td><td class="description">Month part of the date the blog post was posted as a numeric value, e.g. 11-Dec-14 will render <em>12</em></td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;title&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_blogposttitle&#125;</code></td><td class="description">The title of the post as an anchor linked to the permalink</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">commentsCount</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_commentcount</span>}</code></td><td class="description"><span>Number of comments for current post</span></td>
+      <td valign="top" class="liquid tag">&nbsp;</td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_blogposttitle_nolink&#125;</code></td><td class="description">The title of the post</td>
+        </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;year&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_blogpostyear&#125;</code></td><td class="description">Year part of the date that the post was submitted, e.g. 11-Dec-14 will render as the year only, like this: <em>2014</em></td>
+        </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;commentsCount&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_commentcount&#125;</code></td><td class="description">Number of comments for current post</td>
         </tr>
     <tr>
       <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_commentlist</span>}</code></td>
-         <td class="description"><span>List of comments associated with this post.<br/>
-         This list is fully customizable, take a look at the <a href="/dev-assets/reference/tag-reference/blogs/blog-comment-list-layout.html">Comment list layout</a> for the list of parameters you can use to render the comments. <br/>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</span></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_commentlist&#125;</code></td>
+         <td class="description">List of comments associated with this post.<br/>
+         This list is fully customizable, take a look at the <a href="/dev-assets/reference/tag-reference/blogs/blog-comment-list-layout.html">Comment list layout</a> for the list of parameters you can use to render the comments. <br/>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
         </tr>
     <tr>
       <td valign="top" class="liquid tag">&nbsp;</td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_commentrank</span>}</code></td><td class="description"><span>Rank of comments associated with this post</span></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_commentrank&#125;</code></td><td class="description">Rank of comments associated with this post</td>
         </tr>
     <tr>
       <td valign="top" class="liquid tag">&nbsp;</td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_permalink</span>}</code></td><td class="description"><span>Link for Permalink with anchor</span></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_permalink&#125;</code></td><td class="description">Link for Permalink with anchor</td>
         </tr>
     <tr>
       <td valign="top" class="liquid tag">&nbsp;</td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_permalinkonly</span>}</code></td><td class="description"><span>Link for Permalink without anchor</span></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_permalinkonly&#125;</code></td><td class="description">Link for Permalink without anchor</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">trackbacksCount</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_trackbackcount</span>}</code></td><td class="description"><span>Number of trackbacks for current post</span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;trackbacksCount&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_trackbackcount&#125;</code></td><td class="description">Number of trackbacks for current post</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">trackbackUrl</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_trackbacklink</span>}</code></td><td class="description"><span>Link for trackback</span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;trackbackUrl&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_trackbacklink&#125;</code></td><td class="description">Link for trackback</td>
         </tr>
     <tr>
       <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_trackbacklist</span>}</code></td>
-         <td class="description"><span>List of trackbacks associated with this post. <br/>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</span></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_trackbacklist&#125;</code></td>
+         <td class="description">List of trackbacks associated with this post. <br/>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">id</span>}}</code></td>
-      <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostid</span>}</code></td>
-      <td class="description"><span>Displays the blog post's ID</span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;id&#125;&#125;</code></td>
+      <td valign="top" class="legacy tag"><code>&#123;tag_blogpostid&#125;</code></td>
+      <td class="description">Displays the blog post's ID</td>
     </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">authorPictureUrl</span>}}</code></td>
-      <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostauthorpictureurl</span>}</code></td>
-      <td class="description"><span>Will render the picture url (relative to site root). e.g. <em>/images/profile.jpg</em></span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;authorPictureUrl&#125;&#125;</code></td>
+      <td valign="top" class="legacy tag"><code>&#123;tag_blogpostauthorpictureurl&#125;</code></td>
+      <td class="description">Will render the picture url (relative to site root). e.g. <em>/images/profile.jpg</em></td>
     </tr>
     <tr>
       <td valign="top" class="liquid tag">&nbsp;</td>
-      <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_blogpostauthorpicture</span>}</code></td><td class="description"><span>Will render the full HTML image tag of the authors profile picture.</span></td>
+      <td valign="top" class="legacy tag"><code>&#123;tag_blogpostauthorpicture&#125;</code></td><td class="description">Will render the full HTML image tag of the authors profile picture.</td>
     </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{{<span class="tagname">url</span>}}</code></td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_itemurl_nolink</span>}</code></td><td class="description"><span>URL to the item being referred, without host</span></td>
+      <td valign="top" class="liquid tag"><code>&#123;&#123;url&#125;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_itemurl_nolink&#125;</code></td><td class="description">URL to the item being referred, without host</td>
         </tr>
     <tr>
       <td valign="top" class="liquid tag">&nbsp;</td>
-         <td valign="top" class="legacy tag"><code>{<span class="tagname">tag_itemurl_withhost</span>}</code></td><td class="description"><span>URL to the item being referred, with host</span></td>
+         <td valign="top" class="legacy tag"><code>&#123;tag_itemurl_withhost&#125;</code></td><td class="description">URL to the item being referred, with host</td>
         </tr>
   </tbody>
 </table>
@@ -151,17 +151,17 @@
 <h2>Examples</h2>
 <ul>
     <li>
-    <code>{<span>module_blogsitepost rowCount="2"</span>}</code> - will display the most recent 2 posts on the site.
+    <code>&#123;module_blogsitepost rowCount="2"&#125;</code> - will display the most recent 2 posts on the site.
     </li>
     <li>
-      <code>{<span>module_blogsitepost collection=&quot;blog-posts&quot; template=""</span>}</code> - will not render anything. What will happen is the Liquid &quot;blog-posts&quot; collection will become available. Take a look at this article for <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#customtags">more information on collections</a>.</li>
+      <code>&#123;module_blogsitepost collection=&quot;blog-posts&quot; template=""&#125;</code> - will not render anything. What will happen is the Liquid &quot;blog-posts&quot; collection will become available. Take a look at this article for <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#customtags">more information on collections</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_blogsitepost,numberOfPosts</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_blogsitepost,numberOfPosts&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -180,7 +180,7 @@
 <h2>Examples</h2>
 <ul>
     <li>
-    <code>{<span>module_blogsitepost,2</span>}</code> - will display the most recent 2 posts on the site.
+    <code>&#123;module_blogsitepost,2&#125;</code> - will display the most recent 2 posts on the site.
     </li>
 </ul>
 </div>

@@ -1,4 +1,4 @@
-<h1>{<span>module_faq</span>}</h1>
+<h1>&#123;module_faq&#125;</h1>
 
 <div class="description">
 <h2>Description</h2>
@@ -14,7 +14,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_faq </span>render=&quot;item|collection&quot; <span>filter="item" itemid="faqId" noTemplate="false" effect="ajax" targetFrame="blank" </span>collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_faq render=&quot;item|collection&quot; filter="item" itemid="faqId" noTemplate="false" effect="ajax" targetFrame="blank" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -42,7 +42,7 @@
 <div class="layouts">
 <h2>This module can be rendered using:</h2>
 <ul>
-    <li><strong>the list layout</strong>. On this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use: <a href="/dev-assets/reference#!/tag-reference/faqs/faq-list-layout.html">FAQ layout's reference page</a></li>
+    <li><strong>the list layout</strong>. On this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use: <a href="/dev-assets/reference/tag-reference/faqs/faq-list-layout.html">FAQ layout's reference page</a></li>
     <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong>  - here are the Liquid  output tags you can use:</li>
 </ul>
@@ -57,35 +57,35 @@
     <tbody>
         <tr>
           <td valign="top" class="liquid tag"></td>
-          <td class="description"><span>Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - {<span>tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;</span>}</code></code></span></td>
+          <td class="description">Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - &#123;tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;&#125;</code></code></td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">answer</span>}}</code></td>
-          <td class="description"><span>Answer for frequently asked question  (editor content). This outputs the text of the FAQ.</span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;answer&#125;&#125;</code></td>
+          <td class="description">Answer for frequently asked question  (editor content). This outputs the text of the FAQ.</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">counter</span>}}</code></td>
-          <td class="description"><span>Incremental count of the FAQ on the page.</span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;counter&#125;&#125;</code></td>
+          <td class="description">Incremental count of the FAQ on the page.</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">expiryDate</span>}}</code></td>
-          <td class="description"><span>Expiry date of FAQ for example <em>16-Apr-2014 03:48 AM</em></span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
+          <td class="description">Expiry date of FAQ for example <em>16-Apr-2014 03:48 AM</em></td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">lastUpdateDate</span>}}</code></td>
-          <td class="description"><span>Last update date of FAQ for example <em>16-Apr-2014 03:48 AM</em></span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
+          <td class="description">Last update date of FAQ for example <em>16-Apr-2014 03:48 AM</em></td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">question</span>}}</code></td>
-          <td class="description"><span>Frequently asked question (will not have hyperlink). This outputs the FAQ's title in plain text.</span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;question&#125;&#125;</code></td>
+          <td class="description">Frequently asked question (will not have hyperlink). This outputs the FAQ's title in plain text.</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>{{<span class="tagname">releaseDate</span>}}</code></td>
-          <td class="description"><span>Release date of FAQ in this format - <em>16-Sep-2014</em></span></td>
+          <td valign="top" class="liquid tag"><code>&#123;&#123;releaseDate&#125;&#125;</code></td>
+          <td class="description">Release date of FAQ in this format - <em>16-Sep-2014</em></td>
         </tr>
         <tr>
           <td valign="top" class="liquid tag"></td>
-          <td class="description"><span>Tell a friend about this FAQ. This outputs a link that when clicks opens up a popup that contains the "Tell a Friend" form.</span></td>
+          <td class="description">Tell a friend about this FAQ. This outputs a link that when clicks opens up a popup that contains the "Tell a Friend" form.</td>
         </tr>
     </tbody>
 </table>
@@ -93,17 +93,17 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_faq filter=&quot;all&quot; targetFrame=&quot;_parent</span>&quot;}</code> - will display all FAQs and open them in parent frame.</li>
-    <li><code>{<span>module_faq</span> filter=&quot;<span>all&quot;, template="/layouts/custom/faq.tpl"</span>}</code> - will display all FAQs using the faq.tpl custom template.</li>
-    <li><code>{<span>module_faq</span> filter=&quot;<span>latest&quot; itemid=&quot;5</span>&quot;}</code> - will display the latest 5 FAQs.</li>
-    <li><code>{<span>module_faq</span> filter=&quot;<span>random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank</span>&quot;}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li><li><code>{module_faq filter=&quot;all&quot;<span> collection=&quot;collection1&quot; template=&quot;&quot;</span>}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>&#123;module_faq filter=&quot;all&quot; targetFrame=&quot;_parent&#37;&#125;&quot;&#125;</code> - will display all FAQs and open them in parent frame.</li>
+    <li><code>&#123;module_faq filter=&quot;all&quot;, template="/layouts/custom/faq.tpl"&#125;</code> - will display all FAQs using the faq.tpl custom template.</li>
+    <li><code>&#123;module_faq filter=&quot;latest&quot; itemid=&quot;5&#37;&#125;&quot;&#125;</code> - will display the latest 5 FAQs.</li>
+    <li><code>&#123;module_faq filter=&quot;random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&#37;&#125;&quot;&#125;</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li><li><code> &#123;module_faq filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{<span>module_faq,filter,id,noTemplate,effect,targetFrame</span>}</code></pre>
+<pre class="language-markup"><code>&#123;module_faq,filter,id,noTemplate,effect,targetFrame&#125;</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -135,10 +135,10 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{<span>module_faq,a,,,,_parent</span>}</code> - will display all FAQs and open them in parent frame.</li>
-    <li><code>{<span>module_faq,a, template="/layouts/custom/faq.tpl"</span>}</code> - will display all FAQs using the faq.tpl custom template.</li>
-    <li><code>{<span>module_faq,l,5</span>}</code> - will display the latest 5 FAQs.</li>
-    <li><code>{<span>module_faq,r,,true,ajax,_blank</span>}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li>
+    <li><code>&#123;module_faq,a,,,,_parent&#125;</code> - will display all FAQs and open them in parent frame.</li>
+    <li><code>&#123;module_faq,a, template="/layouts/custom/faq.tpl"&#125;</code> - will display all FAQs using the faq.tpl custom template.</li>
+    <li><code>&#123;module_faq,l,5&#125;</code> - will display the latest 5 FAQs.</li>
+    <li><code>&#123;module_faq,r,,true,ajax,_blank&#125;</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li>
 </ul>
 </div>
 </div>

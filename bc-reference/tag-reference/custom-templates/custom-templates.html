@@ -59,10 +59,10 @@ To hide a module's output simply remove the path to the custom layout specified 
 <h2>Examples</h2>
 <ul>
     <li><code>&#123;module_productfeaturelist,special offer,3,price,_blank,true template="/custom-layouts/prod.tpl"&#125;</code> - this rendes a list of products using this custom template</li>
-    <li><code>&#123;module_booking,i,63522 template="&#37;&#125;/custom-layouts/booking.tpl&#125;</code> - this rendes an individual event a custom template</li>
-    <li><code>&#123;module_product,63882,5450055,_top template="&#37;&#125;/custom-layouts/prod.tpl"&#125;</code> - this rendes an individual product a custom template</li>
-    <li><code>&#123;module_productfeaturelist,special offer,3,price,_blank,true template="&#37;&#125;/custom-layouts/prod.tpl"&#125;</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
-    <li><code>&#123;module_productresults,2,_self,2,,,true  template="&#37;&#125;/custom-layouts/prod.tpl"&#125;</code> - displays the products that match the search criteria 2 per page and renders <em>No products found matching your query</em>. if no products are found.
+    <li><code>&#123;module_booking,i,63522 template="/custom-layouts/booking.tpl"&#125;</code> - this rendes an individual event a custom template</li>
+    <li><code>&#123;module_product,63882,5450055,_top template="/custom-layouts/prod.tpl"&#125;</code> - this rendes an individual product a custom template</li>
+    <li><code>&#123;module_productfeaturelist,special offer,3,price,_blank,true template="/custom-layouts/prod.tpl"&#125;</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li><code>&#123;module_productresults,2,_self,2,,,true  template="/custom-layouts/prod.tpl"&#125;</code> - displays the products that match the search criteria 2 per page and renders <em>No products found matching your query</em>. if no products are found.
     The structure is no longer an unordered list as the <em>true </em>parameter would suggest, the custom template is used instead.</li>
 </ul>
 </div>

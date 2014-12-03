@@ -98,7 +98,7 @@
 <p>You can only iterate over a part of a collection, for example if you have a large list of customers you can only iterate over 20 at a time using the <em><strong>limit</strong></em> and <em><strong>offset</strong></em> variables.</p>
 <div class="chx">
 <pre class="language-javascript"><code> &#123;module_data resource="customers" version="v3" template="" collection="customerInfo" order="firstName" fields="email1, firstName, lastName, id"}
-//this module creates a collection named customerInfo that contains the first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
+//this module creates a collection named customerInfo that first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
 //let's display the data in the collection in a table:
 &lt;table&gt;
     &lt;thead&gt;
@@ -127,7 +127,7 @@
 <div class="chx">
 <p>For example, let's use the same customer collection from the previous example this time orders by <em>firstName</em> desc:</p>
 <pre class="language-javascript"><code> &#123;module_data resource="customers" version="v3" template="" collection="customerInfo" order="-firstName" fields="email1, firstName, lastName, id"}
-//this module creates a collection named customerInfo that contains the first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
+//this module creates a collection named customerInfo that first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
 &#123;&#37;for item in customerInfo.items reversed&#37;&#125;
 &lt;li&gt;&#123;&#123;item.firstName&#125;&#125;&lt;/li&gt;
 &#123;&#37;endfor&#37;&#125;

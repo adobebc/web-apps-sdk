@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Customer API Demo</title>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    
+    <!-- Default jQuery theme -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script type="text/javascript" src="https://cdn.worldsecuresystems.com/bcapi/bcapi-0.1.0.min.js"></script>
+
+    <script type="text/javascript" src="js/order-rendering.js"></script>
+
+
+
+</head>
+
+<body>
+    <!-- Page Content -->
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+            <div class="panel panel-default" style="margin-bottom: 0px">
+
+                <div class="panel-heading" id="panelHeadingToAddAlert">
+                    <div class="row">
+
+                        <div class="col-xs-2">
+                            <select class="form-control" id="datePeriod" onchange="changeDate()">
+                                <option value = "0">Date Period</option>
+                                <option value = "Today">Today</option>
+                                <option value = "Yesterday">Yesterday</option>
+                                <option value = "Last Week">Last Week</option>
+                                <option value = "Last Month">Last Month</option>
+                                <option value = "Last 3 Months">Last 3 Months</option>
+                                <option value = "Last 6 Months">Last 6 Months</option>
+                                <option value = "Last Year">Last Year</option>
+                            
+                            </select>
+                   		</div>
+                        
+                        <div class="col-xs-9">
+                            <form class="form-inline pull-right">
+
+                                <div class="form-group pull-right">
+
+                                    <label for="datepickerStart">Date Range:</label>
+
+                                    <div class="input-group">
+                                        <input id="datepickerStart" type="text" class="date-picker form-control" />
+                                        <label for="datepickerStart" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+                                        </label>
+                                    </div>
+
+                                    <label for="datepickerEnd">to</label>
+
+                                    <div class="input-group">
+                                        <input id="datepickerEnd" type="text" class="date-picker form-control" />
+                                        <label for="datepickerEnd" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </form>
+
+
+
+                        </div>
+
+                        <div class="col-xs-1">
+                            <button type="button" class="btn btn-primary pull-right" onclick="generateList()">Update</button>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </nav>
+
+
+        <div class="row" style="height: 60px"></div>
+
+        <div class="panel panel-default">
+            <div class="panel-body" id="mainContentPanelBody">
+                <table id="main_content_table" class="table table-bordred table-striped" style="border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Total Orders</th>
+                            <th>Subtotal</th>
+                            <th>Total Shipping</th>
+                            <th>Total Tax</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                    </tbody>
+                </table>
+                <div class="row" style="text-align:center" id="searchLoader">
+                    <img src="images/719.gif">
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>

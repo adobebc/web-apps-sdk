@@ -29,18 +29,19 @@
 
 <ul>
 <li><code>id</code> - the id of the customer<em> (integer)</em></li>
-
 <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
 <li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
 <li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
 <li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
 <li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
 <li><code>firstName</code> <em>(string)</em></li>
 <li><code>middleName</code> <em>(string)</em></li>
 <li><code>lastName</code> <em>(string)</em></li>
 <li><code>company</code> <em>(string)</em></li>
+<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00</em> <em>(string)</em></li>
 <li><code>username</code> <em>(string)</em></li>
-
+<li><code>wholesaler</code> <em>(boolean)</em></li>
 </ul>
 <p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -61,7 +62,7 @@ Content-Type: application/json
 <pre class="language-javascript"><code>{
   "items": [
     {
-      "customerId": 7051740,
+      "id": 7051740,
       "siteId": 38581,
       "customerTypeId": 287044,
       "leadSourceTypeId": 318173,
@@ -71,11 +72,13 @@ Content-Type: application/json
       "firstName": "Doe",
       "middleName": "Manny",
       "lastName": "John",
-      "company": null,
-      "username": "johndoe1990",
+      "company": "",
+      "dateOfBirth": "1982-12-06T23:00:00",
+      "username": "",
+      "wholesaler": false
     },
     {
-      "customerId": 7051757,
+      "id": 7051757,
       "siteId": 38581,
       "customerTypeId": 287049,
       "leadSourceTypeId": 318175,
@@ -85,8 +88,10 @@ Content-Type: application/json
       "firstName": "Usernov",
       "middleName": "Paolonov",
       "lastName": "Mihaiel",
-      "company": null,
-      "username": "mbo1",
+      "company": "",
+      "dateOfBirth": "",
+      "username": "mbol",
+      "wholesaler": false
     }
   ],
   "totalItemsCount": 2,
@@ -300,20 +305,22 @@ request.fail(function (jqXHR) {
 <p>The details for the specified customer ID in JSON format.</p>
 
 <ul>
-<li><code>id</code> - the id of the customer<em>(integer)</em></li>
-
+<li><code>id</code> - the id of the customer<em> (integer)</em></li>
 <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
 <li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
 <li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
 <li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
 <li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
 <li><code>firstName</code> <em>(string)</em></li>
 <li><code>middleName</code> <em>(string)</em></li>
 <li><code>lastName</code> <em>(string)</em></li>
 <li><code>company</code> <em>(string)</em></li>
+<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00</em> <em>(string)</em></li>
 <li><code>username</code> <em>(string)</em></li>
-
+<li><code>wholesaler</code> <em>(boolean)</em></li>
 </ul>
+
 <p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
@@ -341,8 +348,10 @@ Content-Type: application/json
     "firstName": "Doe",
     "middleName": "Manny",
     "lastName": "John",
-    "company": null,
-    "username": "johndoe1990",
+    "company": "",
+    "dateOfBirth": "1982-12-06T23:00:00",
+    "username": "",
+    "wholesaler": false
 }</code></pre>
 </div>
 <hr>
@@ -472,7 +481,7 @@ request.fail(function(jqXHR) {
     "firstName": "New_user",
     "middleName": "",
     "lastName": "New_user",
-    "company": null,
+    &quot;company&quot;: &quot;&quot;,
     "username": "myUsername"
   }],
   "totalItemsCount": 1,
@@ -482,7 +491,7 @@ request.fail(function(jqXHR) {
 </div>
 <hr></div>
 <div id="create">
-<h2 id="create">Create a customer</h2>
+<h2 id="create-cust">Create a customer</h2>
 <div class="description">
 <p>Create a new customer.</p>
 </div>
@@ -504,15 +513,20 @@ request.fail(function(jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
+<li><code>id</code> - the id of the customer<em> (integer)</em></li>
+<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
 <li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
 <li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
 <li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
 <li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
 <li><code>firstName</code> <em>(string)</em></li>
 <li><code>middleName</code> <em>(string)</em></li>
 <li><code>lastName</code> <em>(string)</em></li>
 <li><code>company</code> <em>(string)</em></li>
+<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00</em> <em>(string)</em></li>
 <li><code>username</code> <em>(string)</em></li>
+<li><code>wholesaler</code> <em>(boolean)</em></li>
 </ul>
 </div>
 <div class="response">
@@ -636,15 +650,20 @@ console.log("Response text: " + jqXHR.responseText);
 </ul>
 <h4>Parameters</h4>
 <ul>
+<li><code>id</code> - the id of the customer<em> (integer)</em></li>
+<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
 <li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
 <li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
 <li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
 <li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
 <li><code>firstName</code> <em>(string)</em></li>
 <li><code>middleName</code> <em>(string)</em></li>
 <li><code>lastName</code> <em>(string)</em></li>
 <li><code>company</code> <em>(string)</em></li>
+<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00</em> <em>(string)</em></li>
 <li><code>username</code> <em>(string)</em></li>
+<li><code>wholesaler</code> <em>(boolean)</em></li>
 </ul>
 </div>
 <div class="response">

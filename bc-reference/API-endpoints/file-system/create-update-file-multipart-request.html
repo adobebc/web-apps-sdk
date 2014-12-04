@@ -61,51 +61,55 @@ Content-Type: application/json
 <h2>Sample code</h2>
 <p><strong>Upload a file from your system and log the progress</strong></p>
 <pre class="language-markup"><code>
-&lt;input type=&quot;file&quot; id=&quot;datafile&quot;&gt;
-&lt;input type=&quot;button&quot; onclick = &quot;attachmentMultipart()&quot; value=&quot;Send&quot;&gt;
+&lt;form id=&quot;myForm&quot; enctype=&quot;multipart/form-data&quot; method=&quot;POST&quot;&gt;
+    &lt;input type=&quot;file&quot; id=&quot;datafile&quot;&gt;
+&lt;/form&gt;
+&lt;input type=&quot;button&quot; onclick=&quot;attachmentMultipart()&quot; value=&quot;Send&quot;&gt;
 </code></pre>
-<pre class="language-javascript"><code>function attachmentMultipart() {
-            
-	var fileContent = $("#datafile").get(0).files[0],
-        formData = new FormData();
-    
-    formData.append("file-0", fileContent);
-            
-	var request = $.ajax({
-	    url: "/api/v2/admin/sites/current/storage/my/large_video.avi", //replace this with the actual file name
-	    type: "POST",
-	    headers: {
-	        "Authorization": $.cookie('access_token')
-	    },
-		cache: false,
-    	contentType: false,
-        processData: false,
-        data: formData}); 
+<pre class="language-javascript"><code>&lt;script&gt;
+function attachmentMultipart() {
+var fileData = document.getElementById("datafile").files[0];
 
-    var progressChecker = window.setInterval(function() {
-    	_checkUploadStatus();
-    }, 500);    
-    
-    request.done(function() {
-        window.clearInterval(progressChecker);
-    });
+formData = new FormData();
+formData.append("file", fileData);
+
+var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/my", //replace this with the folder to upload to
+    type: "POST",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: formData
+});
+
+var progressChecker = window.setInterval(function() {
+    _checkUploadStatus();
+}, 500);
+
+request.done(function() {
+    window.clearInterval(progressChecker);
+});
 };
 
-        
+
 function _checkUploadStatus() {
-    var response = $.ajax({
-        "url": "/api/v2/admin/sites/current/storage?status",
-        "type": "GET",
-        "headers": {
-	        "Authorization": $.cookie('access_token')
-	    },
-        "contentType": "application/json"        
-    });
-    
-    response.done(function(data) {
-        console.log("Progress: " + data.percent); 
-    });
+var response = $.ajax({
+    "url": "/api/v2/admin/sites/current/storage?status",
+    "type": "GET",
+    "headers": {
+        "Authorization": $.cookie('access_token')
+    },
+    "contentType": "application/json"
+});
+
+response.done(function(data) {
+    console.log("Progress: " + data.percent);
+});
 };
+&lt;/script&gt;
 </code></pre>
 <hr>
 <h2>Error codes</h2>

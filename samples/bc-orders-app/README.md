@@ -1,13 +1,36 @@
 # bc-orders-app
 
+Simple total order report
+
+BC Orders app is a free sample application provided by Adobe Business Catalyst to showcase the capabilities of the Business Catalyst APIs and Web Apps SDK. The app leverages the CRM APIs platform capabilities to deliver a custom order report.
+
 ## Getting the app
+
+In order to deploy "BC Orders App" on a Business Catalyst site do the following:
+
++ git clone https://github.com/adobebc/web-apps-sdk.git
++ cd samples/bc-orders-app/
++ copy the Layouts folder on your site using sftp.
++ copy the bc-orders-app folder on your site using sftp.
++ copy the \_System folder on your site using sftp.
 
 ## What’s included
 
+The application will install on your site the following components:
+
++ the bc-orders-app back-end files, saved under _System/Apps/bc-orders-app/ which contains the pages and scripts to power up the report admin interface
++ a new admin menu entry named Orders.app; this will load the orders report;
+
 ## Working with the app
+
+Once the app is installed, you need to click on the Orders.app menu entry and authorize the app to run on the site. Following authorization, the app will load a custom orders report showing order status, total value, shipping value and tax. You will be able to filter orders by date.
 
 ## Requirements
 
++ Website should be on the eCommerce plan
++ User needs to have web apps and FTP and Administer system permissions
++ JavaScript must be enabled
+
 ## License & Support
 
-+	This is a sample application provided by Adobe® Business Catalyst under MIT license without any warranty or support.
++	This is a sample application provided by Adobe® Business Catalyst under MIT license without any warranty or support

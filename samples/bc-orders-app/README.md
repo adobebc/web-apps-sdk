@@ -10,8 +10,6 @@ In order to deploy "BC Orders App" on a Business Catalyst site do the following:
 
 + git clone `https://github.com/adobebc/web-apps-sdk.git`
 + cd `samples/bc-orders-app/`
-+ copy the `Layouts` folder on your site using sftp.
-+ copy the `bc-orders-app` folder on your site using sftp.
 + copy the `\_System` folder on your site using sftp.
 
 ## What’s included

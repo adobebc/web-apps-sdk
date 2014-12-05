@@ -7,8 +7,8 @@
       <p>This class provides support for custom fields.</p>
       
       <h2>List a webapp's custom fields</h2>
-      <pre class="language-javascript"><code>var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("apicreated"),
-    response = fieldsCollection.fetch();
+      <pre class="language-javascript"><code>var fieldsCollection = new BCAPI.Models.WebApp.CustomFieldCollection("WEBAPP-NAME"),
+response = fieldsCollection.fetch();
 
 response.done(function () {
     fieldsCollection.each(function (field) {
@@ -79,124 +79,4 @@ customField.save({
 <ul>
 <li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
 <li><code>210001</code> - The custom field was not found (the fieldId from the URL do not match)</li>
-</ul></li>
-</ul>
-  
-<hr><h3>Methods</h3>
-
-  
-    <h3 id="endpoint"> endpoint()</h2>
-  
-  
-    
-      <p>This method returns the endpoint for custom fields api.</p>
-    
-    
-      <p><strong>Source:</strong></p>
-      
-        <ul>
-          <li><a href="https://github.com/adobebc/web-apps-sdk/tree/master/sdk/src/webapp_customfield.js">src/webapp_customfield.js</a></li>
-        </ul>
-      
-    
-  
-  
-    <h3 id="parse"> parse(response)</h2>
-  
-  
-    
-      <p>We override this method in order to transform each returned item into a strong typed <a href="https://github.com/adobebc/web-apps-sdk/tree/master/sdk/src/BCAPI.Models.WebApp.CustomField.html">BCAPI.Models.WebApp.CustomField</a> models.</p>
-    
-    <h3>Parameters</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>response</td>
-          <td>Object</td>
-          <td><p>The JSON response received from CustomField api.</p></td>
-        </tr>
-      </tbody>
-    </table>
-    
-      <p><strong>Source:</strong></p>
-      
-        <ul>
-          <li><a href="https://github.com/adobebc/web-apps-sdk/tree/master/sdk/src/webapp_customfield.js">src/webapp_customfield.js</a></li>
-        </ul>
-      
-    
-    <h3>Returns</h3>
-    
-      <p>A list of web app custom fields.</p>
-    
-  
-  
-    <h3 id="toJSON"> toJSON()</h2>
-  
-  
-    
-      <p>This method is overriden in order to remove <em>webapp</em> field from API request. Webapp it's a pseudo attribute used internally by an item collection.</p>
-    
-    
-      <p><strong>Source:</strong></p>
-      
-        <ul>
-          <li><a href="https://github.com/adobebc/web-apps-sdk/tree/master/sdk/src/webapp_customfield.js">src/webapp_customfield.js</a></li>
-        </ul>
-      
-    
-  
-  
-    <h3 id="urlRoot"> urlRoot() → {string}</h2>
-  
-  
-    
-      <p>This method is overriden because we need access to members in order to create the endpoint.</p>
-    
-    
-      <p><strong>Source:</strong></p>
-      
-        <ul>
-          <li><a href="https://github.com/adobebc/web-apps-sdk/tree/master/sdk/src/webapp_customfield.js">src/webapp_customfield.js</a></li>
-        </ul>
-      
-    
-    <h3>Returns</h3>
-    
-      <p>An absolute entry point API.</p>
-    
-    
-      <p><strong>Type:</strong> string</p>
-    
-  
-  
-    <h3 id="urlRoot"> urlRoot() → {string}</h2>
-  
-  
-    
-      <p>This method is overriden because we need access to members in order to create the endpoint.</p>
-    
-    
-      <p><strong>Source:</strong></p>
-      
-        <ul>
-          <li><a href="https://github.com/adobebc/web-apps-sdk/tree/master/sdk/src/webapp_item.js">src/webapp_item.js</a></li>
-        </ul>
-      
-    
-    <h3>Returns</h3>
-    
-      <p>An absolute entry point API.</p>
-    
-    
-      <p><strong>Type:</strong> string</p>
-    
-  
-
+</ul></li></ul>

@@ -4,10 +4,11 @@
   
   
     
-      <p>This class provides a methof of listing a webapp's list of assigned countries. </p>
+      <p>This class provides a methd of listing a webapp's list of assigned countries. </p>
       
       <h2>List the countries assigned to a web app</h2>
-      <pre class="language-javascript"><code>var response = webappCountries.fetch();
+      <pre class="language-javascript"><code>var webappCountries = new BCAPI.Models.WebApp.Country(&quot;WEBAPP-NAME&quot;);
+var response = webappCountries.fetch();
 response.done(function () {
     _.each(webappCountries.get("items"), function (countryCode) {
         console.log(countryCode);

@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_searchresults render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; targetFrame=“_blank" resultsPerPage=“20" characterLimit="440" emptySearchResultString=“No results found"&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>&#123;module_searchresults render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; hightlightType=&quot;span|bold&quot; targetFrame=“_blank" resultsPerPage=“20" characterLimit="440" emptySearchResultString=“No results found"&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -21,6 +21,12 @@
     <li><strong>targetFrame</strong> - specifies in which frame the the results need to be opened</li>
     <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page. Default is <em>10</em> results per page.</li>
     <li><strong>characterLimit</strong> - the number of characters to be rendered in each search result</li>
+        <li><strong>hightlightType</strong> - specifies the element type used to wrap the search keywords. Possible values are:
+    <ul>
+    <li><strong>bold</strong></li>
+    <li><strong>span</strong></li>
+    </ul>
+    </li>
     <li><strong>emptySearchResultString</strong> - specify the message to be displayed when no results are found</li>
         <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
@@ -100,6 +106,12 @@
 <ul>
     <li><strong>targetFrame</strong> - specifies in which frame the the results need to be opened</li>
     <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page. Default is <em>10</em> results per page.</li>
+    <li><strong>hightlightType</strong> - specifies the element type used to wrap the search keywords. Possible values are:
+    <ul>
+    <li><strong>bold</strong></li>
+    <li><strong>span</strong></li>
+    </ul>
+    </li>
     <li><strong>characterLimit</strong> - the number of characters to be rendered in each search result</li>
     <li><strong>emptySearchResultString</strong> - specify the message to be displayed when no results are found</li>
 </ul>
@@ -113,7 +125,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_searchresults,_blank,12,,50,,Sorry, found no results,,>&#125;</code> - This module will display 12 results per page in the new window. The results body will be truncated to 50 characters.</li>
+    <li><code>&#123;module_searchresults,_blank,12,span,50,,Sorry, found no results,,>&#125;</code> - This module will display 12 results per page in the new window. The results body will be truncated to 50 characters. The keywords in the search results will be wrapped in a &quot;span&quot; element</li>
 </ul>
 </div>
 </div>

@@ -126,12 +126,34 @@
           <td><span class="cellcontent">
           Here are the available switches:<br/>
           <ul>
-          <li><code>%d</code> - outputs the day of the month - 18</li>
-          <li><code>%M</code> - outputs the month of the year - 6</li>
-          <li><code>%y</code> - outputs the year - 14</li>
+          <li><code>%d</code> - Outputs the day of the month - 18</li>
+          <li><code>dd</code> -  The day of the month. Single-digit days will have a leading zero - 03</li>
+          <li><code>ddd</code> - The hour in a 12-hour clock. Single-digit hours will not have a leading zero - 12</li>
+          <li><code>ddd</code> - outputs the year - 14</li>
+          <li><code>%h</code> - outputs the year - 14</li>
+          <li><code>hh</code> - The hour in a 12-hour clock. Single-digit hours will have a leading zero - 12</li>
+          
+          <li><code>%H</code> - The hour in a 24-hour clock. Single-digit hours will not have a leading zero - 0</li>
+          <li><code>HH</code> - The hour in a 24-hour clock. Single-digit hours will have a leading zero - 0</li>
+          <li><code> %m </code> - The minute. Single-digit minutes will not have a leading zero - 0</li>
+          <li><code> mm  </code> - The minute. Single-digit minutes will have a leading zero - 00</li>
+          <li><code> %M  </code> - The numeric month. Single-digit months will not have a leading zero - 9</li>
+          <li><code> MM  </code> - The numeric month. Single-digit months will have a leading zero - 09</li>
+          <li><code> MMM  </code> - The abbreviated name of the month, as defined in AbbreviatedMonthNames - sep.</li>
+          <li><code> MMMM </code> - The full name of the month, as defined in MonthNames - september</li>
+          <li><code> %s</code> - The second. Single-digit seconds will not have a leading zeroThe second. Single-digit seconds will not have a leading zero - 0</li>
+          <li><code> ss  </code> - The second. Single-digit seconds will have a leading zero - 00</li>
+          <li><code> %t </code> - The first character in the AM/PM designator, if any - a</li>
+          <li><code> tt  </code> - The AM/PM designator, if any - a.m.</li>
+          <li><code> %y  </code> - The year without the century. If the year without the century is less than 10, the year is displayed with no leading zero - 14</li>
+          <li><code> yy </code> - The year without the century. If the year without the century is less than 10, the year is displayed with a leading zero - 14</li>
+          <li><code> yyy  </code> - The year in three digits. If the year is less than 100, the year is displayed with a leading zero - 1914</li>
+          <li><code> yyyy  </code> - The year in four or five digits (depending on the calendar used), including the century. Will pad with leading zeroes to get four digits. Thai Buddhist and Korean calendars both have five digit years; users selecting the "yyyy" pattern will see all five digits without leading zeros for calendars that have five digits. Exception: the Japanese and Taiwan calendars always behave as if "yy" was selected - 1914</li>
+          <li><code> \c </code> - Where c is any character. Displays the character literally. To display the backslash character, use "\\" - 14</li>
+          
           </ul>
           <br/>
-          To output 14-06-18 use &#123;&#123;dateVariable | date: "%y-%M-%d"&#125;&#125; (mind the double quotes).
+          To output 14-06-18\ use &#123;&#123;dateVariable | date: "%y-%M-%d\\"&#125;&#125; (mind the double quotes).
           </td>
         </tr>
         <tr>

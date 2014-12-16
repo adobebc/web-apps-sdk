@@ -153,10 +153,10 @@
           
           </ul>
           <br/>
-          To output 14-6-18 use &#123;&#123;dateVariable | date: "%y-%M-%d"&#125;&#125; (mind the double quotes).
+          To output <strong>14-6-18 use</strong> &#123;&#123;dateVariable | date: "%y-%M-%d"&#125;&#125; (mind the double quotes).
           <br />
-          To output 1914\09\03 @ 12:00:00 a.m. use {{dateVariable | date:"yyyy\\MM\\dd @ hh:mm:ss tt"}}
-          </td>
+          To output <strong>Element date: 1914\09\03 @ 12:00:00 a.m.</strong> use {{Ele\men\t \Da\te: dateVariable | date:"yyyy\\MM\\dd @ hh:mm:ss tt"}}
+          (to use &quot;\&quot;as separator for date elements we basically need to escape the backslash in the liquid tag. using &quot;\\&quot; renders &quot;\&quot; in the front-end. Spaces and any other characters that are not usable switches are rendered without the need for escaping</td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>size</code></td>

@@ -94,6 +94,23 @@
 </div>
 </div>
 <div type="cs-pod">
+<h2>the Date switches</h2><table width="100%" class="data-bordered">
+<tbody>
+         <tr>
+            <td valign="top" class="cellrowborder"><code>date</code></td>
+          <td><span class="cellcontent">Assuming the value of the <code>dateTime</code> field is <em>2014-12-09T23:00:00</em> here are the available switches you can use to format the date:<br/>
+          <ul>
+          <li><code>%d</code> - outputs the day of the month - 18</li>
+          <li><code>%M</code> - outputs the month of the year - 6</li>
+          <li><code>%y</code> - outputs the year - 14</li>
+          </ul>
+          <br/>
+          To output 14-06-18 use &#123;&#123;dateVariable | date: "%y-%M-%d"&#125;&#125; (mind the double quotes).
+          </td>
+        </tr>
+        </tbody></table>
+</div>
+<div type="cs-pod">
 <h2>Other filters</h2>
 <div class="filters other">
 <table width="100%" class="data-bordered">

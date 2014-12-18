@@ -37,11 +37,11 @@
                 <td valign="top" class="legacy tag"><code>&#123;tag_currency&#125;</code></td>
                 <td class="description">renders the coin of the current country, which is either the site country or the country of the order (if set)</td>
             </tr>
-            <tr><td valign="top" class="liquid tag">&nbsp;</td>
+            <tr><td valign="top" class="liquid tag"></td>
                 <td valign="top" class="legacy tag"><code>&#123;tag_totalAmountWithCurrency&#125;</code></td>
                 <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>&#123;tag_currency&#125;</code><code>&#123;tag_totalAmount&#125;</code>)</td>
             </tr>
-          <tr><td valign="top" class="liquid tag">&nbsp;</td>
+          <tr><td valign="top" class="liquid tag"></td>
                 <td valign="top" class="legacy tag"><code>&#123;tag_isEmpty&#125;</code></td>
                 <td class="description">renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
             </tr>
@@ -53,12 +53,12 @@
     </table>
     <p>Below is a example of a custom template using the above tags:</p>
     <pre class="language-markup"><code>
-    &lt;div class="cartSummary empty{tag_isEmpty}"&gt;<br/>
+    &lt;div class="cartSummary empty&#123;tag_isEmpty}"&gt;<br/>
     &lt;div class="cartSummaryItem"&gt;Shopping cart is empty&lt;/div&gt;<br/>
     &lt;/div&gt;<br/>
-    &lt;div class="cartSummary notEmpty{tag_isEmpty}"&gt;<br/>
-    &lt;div class="cartSummaryItem"&gt;{tag_itemCount} item(s), Total {tag_currency}{tag_totalAmount}&lt;/div&gt;<br/>
-    &lt;div&gt;&lt;a class="cartSummaryLink" href="{tag_cartUrl}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
+    &lt;div class="cartSummary notEmpty&#123;tag_isEmpty}"&gt;<br/>
+    &lt;div class="cartSummaryItem"&gt;&#123;tag_itemCount} item(s), Total &#123;tag_currency}&#123;tag_totalAmount}&lt;/div&gt;<br/>
+    &lt;div&gt;&lt;a class="cartSummaryLink" href="&#123;tag_cartUrl}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
     &lt;/div&gt;<br/>
     </code></pre>
     <p class="alert alert-info"><strong>Note:</strong> If you are using the above example, ensure that you add the below to your CSS to change the table class based on whether an item is added to the cart or not.</p>

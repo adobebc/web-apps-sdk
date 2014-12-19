@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Customer API Demo</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script type="text/javascript" src="https://cdn.worldsecuresystems.com/bcapi/bcapi-0.1.0.min.js"></script>
+
+    <script type="text/javascript" src="js/customer-rendering.js"></script>
+
+</head>
+
+<body>
+<!-- Page Content -->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="panel panel-default" style="margin-bottom: 0px">
+            <div class="panel-heading" id = "panelHeadingToAddAlert">
+                <div class="row">
+                    <div class="col-xs-3" style="width: 3.333333%;">
+                        <button type="button" class="btn btn-primary"  onclick="searchWithLimit(0,50)"><span class="glyphicon glyphicon-search"></span></button>
+
+                    </div>
+
+                    <div class="col-xs-4">
+                        <input type="text" class="form-control col-xs-6" placeholder="Search" id="simpleSearchField" onKeyUp="searchWithLimit(0,50)" onchange="searchWithLimit(0,50)"/>
+                    </div>
+
+                    <div class="col-xs-2">
+                        <select class="form-control" id="orderBy" onchange="searchWithLimit(0,50)">
+                            <option value = "0">Order by</option>
+                            <option value = "id">Customer Id</option>
+                            <option value = "firstName">First Name</option>
+                            <option value = "middleName">Middle Name</option>
+                            <option value = "lastName">Last Name</option>
+                            <option value = "username">Username</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-3 pull-right" style="width: 6.333333%;">
+                        <button type="button" class="btn btn-primary pull-right" onclick="$('#showFilter').fadeToggle(500);"><span class="glyphicon glyphicon-list"></span> Filter</button>
+
+                    </div>
+
+                    <div class="col-xs-3 pull-right" style="width: 15.333333%%;">
+                        <button type="button" class="btn btn-warning pull-right" style="display: none" id ="refreshButton" onclick="refresh()"><span class="glyphicon glyphicon-repeat"></span> Reset</button>
+
+                    </div>
+
+                    <div class="col-xs-3 pull-right" style="width: 3.333333%;">
+                        <button type="button" class="btn btn-success " style="display: none" id ="searchButton" onclick="searchWithLimit(0,50)"><span class="glyphicon glyphicon-ok-sign"></span> Start search</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="showFilter" style="display: none">
+                <div class="panel panel-default">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Search by</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <label for="orders">Orders</label>
+                                    <select class="form-control disableSelect" id="orders" onchange="disableSelects();">
+                                        <option value="0">-</option>
+                                        <option value = "orders.name">Name</option>
+                                        <option value = "orders.countryCode">Country code</option>
+                                        <option value = "orders.totalPrice">Total Price</option>
+                                        <option value = "orders.shippingPrice">Shipping Price</option>
+                                        <option value = "orders.invoiced">Invoiced</option>
+                                        <option value = "orders.invoiceDate">Invoice date</option>
+                                        <option value = "orders.discountCodeId">Discount code id</option>
+                                        <option value = "orders.taxCodeId">Tax code id</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <label for="addresses">Addresses</label>
+                                    <select class="form-control disableSelect" id="addresses" onchange="disableSelects();">
+                                        <option value="0">-</option>
+                                        <option value="addresses.addressType">Address type</option>
+                                        <option value="addresses.address1">Address1</option>
+                                        <option value="addresses.address2">Address2</option>
+                                        <option value="addresses.postcode">Postcode</option>
+                                        <option value="addresses.city">City</option>
+                                        <option value="addresses.state">State</option>
+                                        <option value="addresses.countryCode">Country</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <label for="secureZones">SecureZones</label>
+                                    <select class="form-control disableSelect" id="secureZones" onchange="disableSelects();">
+                                        <option value="0">-</option>
+                                        <option value="securezones.zoneId">Id</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default" id="valuesFilter" style="display: none">
+                        <div class="panel-heading">Value:</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <label for="greaterThan">Lower than:</label>
+                                    <input type="text" class="form-control disableInputs" id ="lowerThan" onchange="disableInputsAndStartSearch();">
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <label for="greaterThan">Greater than:</label>
+                                    <input type="text" class="form-control disableInputs" id ="greaterThan" onchange="disableInputsAndStartSearch();">
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <label for="equals">Not equals:</label>
+                                    <input type="text" class="form-control disableInputs" id="notEquals" onchange="disableInputsAndStartSearch();">
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <label for="equals">Equals:</label>
+                                    <input type="text" class="form-control disableInputs" id="equals" onchange="disableInputsAndStartSearch();">
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <label for="contains">Contains:</label>
+                                    <input type="text" class="form-control disableInputs" id="contains" onchange="disableInputsAndStartSearch();">
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <label for="contains">Begins with:</label>
+                                    <input type="text" class="form-control disableInputs" id="beginsWith" onchange="disableInputsAndStartSearch();">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+    <div class="row" style="height: 60px"></div>
+
+    <div class="panel panel-default">
+        <div class="panel-body" id="mainContentPanelBody">
+            <table id = "main_content_table" class="table table-condensed" style="border-collapse:collapse;">
+                <thead>
+                <tr>
+                    <th>Customer id</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class = "row" style= "text-align:center" id="searchLoader">
+                <img src = "images/loading.gif">
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+
+
+    <div id="confirm" class="modal hide fade">
+        <div class="modal-body">
+            Are you sure?
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete" onclick="">Delete</button>
+            <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+        </div>
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>

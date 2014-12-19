@@ -1,0 +1,9 @@
+{
+  "menu-bc-crm-nex1": {
+    "weight": 100000,
+    "title": "CRM.next",
+    "attr": {
+      "href": "/customers.html"
+    }
+  }
+}

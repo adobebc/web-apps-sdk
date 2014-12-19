@@ -277,8 +277,8 @@ function generateList() {
         var deferreds = [];
 
         // make the ajax calls for orders
-        for (var i = 0; i < orderResult.totalItemsCount; i += 2) {
-            var query = "skip=" + i + "&limit=2" + "&fields=id,status,taxCode,taxCodeId,shippingPrice,shippingTaxRate,totalPrice";
+        for (var i = 0; i < orderResult.totalItemsCount; i += 500) {
+            var query = "skip=" + i + "&limit=500" + "&fields=id,status,taxCode,taxCodeId,shippingPrice,shippingTaxRate,totalPrice";
             var request = orderW.queryOrders(query, access_token);
             deferreds.push(request);
         }
@@ -321,25 +321,27 @@ function generateList() {
                 }
             } else // for only one ajax result there is no tuple, just the 3 elements that would be in a tuple
             {
-                var item = arguments[0];
+                var orderResult = arguments[0];
 
-                if (!(item.status.label in resultRows)) {
-                    resultRows[item.status.label] = new RowResult();
-                }
+                orderResult.items.forEach(function(item) {
 
-                resultRows[item.status.label].TotalShipping += item.shippingPrice;
-                resultRows[item.status.label].TotalTax += item.shippingPrice * item.shippingTaxRate;
-                resultRows[item.status.label].TotalOrders++;
-                resultRows[item.status.label].TotalAmount += item.totalPrice;
+                        if (!(item.status.label in resultRows)) {
+                            resultRows[item.status.label] = new RowResult();
+                        }
 
-                if (item.taxCodeId != null) {
-                    var preTax = item.totalPrice / (1 + item.taxCode.rate);
-                    resultRows[item.status.label].Subtotal += preTax;
-                    resultRows[item.status.label].TotalTax += item.totalPrice - preTax;
-                }
+                        resultRows[item.status.label].TotalShipping += item.shippingPrice;
+                        resultRows[item.status.label].TotalTax += item.shippingPrice * item.shippingTaxRate;
+                        resultRows[item.status.label].TotalOrders++;
+                        resultRows[item.status.label].TotalAmount += item.totalPrice;
 
+                        if (item.taxCodeId != null) {
+                            var preTax = item.totalPrice / (1 + item.taxCode.rate);
+                            resultRows[item.status.label].Subtotal += preTax;
+                            resultRows[item.status.label].TotalTax += item.totalPrice - preTax;
+                        }
 
-                orders[item.id] = item;
+                        orders[item.id] = item;
+                    });
             }
 
             // make the ajax calls for the products of the products
@@ -349,8 +351,8 @@ function generateList() {
             var defferedProductRequests = [];
 
             orderItemRequest.done(function(orderItemsResult) {
-                for (var i = 0; i < orderItemsResult.totalItemsCount; i += 2) {
-                    var query = "skip=" + i + "&limit=2";
+                for (var i = 0; i < orderItemsResult.totalItemsCount; i += 500) {
+                    var query = "skip=" + i + "&limit=500";
                     var request = orderW.queryOrderItems(query, access_token);
                     defferedProductRequests.push(request)
                 }
@@ -377,12 +379,16 @@ function generateList() {
                         }
                     } else // for only one ajax result there is no tuple, just the 3 elements that would be in a tuple
                     {
-                        var item = arguments[0];
+                        var orderItemResult = arguments[0];
 
-                        if (orders[item.orderId].taxCodeId == null) {
-                            resultRows[orders[item.orderId].status.label].Subtotal += item.units * item.unitPrice;
-                            resultRows[orders[item.orderId].status.label].TotalTax += item.units * item.unitPrice * item.unitTaxRate;
-                        }
+                        orderItemResult.items.forEach(function(item) {
+
+                                if (orders[item.orderId].taxCodeId == null) {
+                                    resultRows[orders[item.orderId].status.label].Subtotal += item.units * item.unitPrice;
+                                    resultRows[orders[item.orderId].status.label].TotalTax += item.units * item.unitPrice * item.unitTaxRate;
+                                }
+
+                        });
                     }
 
                     var id = 0;

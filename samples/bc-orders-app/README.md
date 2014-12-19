@@ -8,18 +8,16 @@ BC Orders app is a free sample application provided by Adobe Business Catalyst t
 
 In order to deploy "BC Orders App" on a Business Catalyst site do the following:
 
-+ git clone https://github.com/adobebc/web-apps-sdk.git
-+ cd samples/bc-orders-app/
-+ copy the Layouts folder on your site using sftp.
-+ copy the bc-orders-app folder on your site using sftp.
-+ copy the \_System folder on your site using sftp.
++ git clone `https://github.com/adobebc/web-apps-sdk.git`
++ cd `samples/bc-orders-app/`
++ copy the `\_System` folder on your site using sftp.
 
 ## What’s included
 
 The application will install on your site the following components:
 
-+ the bc-orders-app back-end files, saved under _System/Apps/bc-orders-app/ which contains the pages and scripts to power up the report admin interface
-+ a new admin menu entry named Orders.app; this will load the orders report;
++ the `bc-orders-app` back-end files, saved under `_System/Apps/bc-orders-app/` which contains the pages and scripts to power up the report admin interface
++ a new admin menu entry named `Orders.app`; this will load the orders report;
 
 ## Working with the app
 

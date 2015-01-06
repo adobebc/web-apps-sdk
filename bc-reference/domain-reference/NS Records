@@ -1,0 +1,10 @@
+<h1>Redelegate domain to Business Catalyst DNS</h1>
+
+<p>To redelegate a domain, visit your registrar's website and log in to their control panel. After you log in to your registrar, go to the domain management section. Update DNS servers for your domain.</p>
+<h2>It's necessary to apply the following DNS server addresses:</h2>
+
+<ul>
+<li>ns1.worldsecuresystems.com (54.236.190.129)</li>
+<li>ns2.worldsecuresystems.com (54.246.209.121)</li>
+<li>ns3.worldsecuresystems.com (54.252.148.151)</li>
+</ul>

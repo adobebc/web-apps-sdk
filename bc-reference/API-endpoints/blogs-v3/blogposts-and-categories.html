@@ -1,7 +1,7 @@
 <h1 apiType="restv3">Blog posts and categories</h1>
 <ul id="toc"></ul>
 <div id="add">
-<h2 id ="category-blogpost">Add a blog post to a category</h2>
+<h2 id ="category-blogpost">Add a category to a blog post</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -25,29 +25,7 @@
 <div class="response">
 <h3>Response</h3>
 
-<p>An array of the first 10 blog posts; each object has the following properties:</p>
-
-<ul>
-<li><strong>id</strong> - the blog's ID <em>(numeric)</em></li>
-<li><strong>siteId</strong> - the site's ID <em>(numeric)</em></li>
-<li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
-<li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
-<li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
-<li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(dateTime)</em></li>
-<li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
-<li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
-<li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
-<li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
-<li><strong>postUrl</strong> - the blog's friendly URL <em>(string)</em></li>
-<li><strong>metaBlogPostTitle</strong> - the blog's meta title <em>(string)</em></li>
-<li><strong>metaBlogPostDescription</strong> - the blog's meta description <em>(string)</em></li>
-</ul>
-
-
-
+<p>Returns an empty body if successful or a detailed error message.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
@@ -57,7 +35,7 @@
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/blogposts",
+    url: "/webresources/api/v3/sites/current/blogposts/1383385/categories",
     type: "GET",
     conenection: "keep-alive",
     contentType: "application/json",
@@ -78,45 +56,28 @@ request.fail(function (jqXHR) {
 <pre class="language-javascript"><code>{
   "items": [
     {
-      "id": 303870,
+      "objectId": 1383385,
+      "categoryId": 155310,
+      "objectType": 56,
+      "displayable": 1,
       "siteId": 246884,
-      "blogId": 4405,
-      "postTitle": "Some philosophical questions...",
-      "postBody": "CONTENT HERE",
-      "createBy": 1087314,
-      "releaseDate": "2014-12-09T23:00:00",
-      "createDate": "2011-09-20T16:04:56.887",
-      "lastUpdateDate": "2014-12-11T14:08:19.76",
-      "enabled": true,
-      "deleted": false,
-      "reIndex": false,
-      "disableComments": false,
-      "slug": "some-philosophical-questions",
-      "postUrl": "/blog/some-philosophical-questions",
-      "metaBlogPostTitle": "Some philosophical questions...",
-      "metaBlogPostDescription": "Food for thought"
-    },
-    {
-      "id": 303871,
-      "siteId": 246884,
-      "blogId": 4405,
-      "postTitle": "Welcome to my Blog!",
-      "postBody": "CONTENT HERE",
-      "createBy": 1087314,
-      "releaseDate": "2014-12-07T23:00:00",
-      "createDate": "2011-09-20T16:04:56.923",
-      "lastUpdateDate": "2014-12-11T14:08:14.213",
-      "enabled": true,
-      "deleted": false,
-      "reIndex": false,
-      "disableComments": false,
-      "slug": "welcome-to-my-blog",
-      "postUrl": "/blog/welcome-to-my-blog",
-      "metaBlogPostTitle": "",
-      "metaBlogPostDescription": ""
+      "category": {
+        "id": 155310,
+        "siteId": 246884,
+        "categoryTypeId": 43,
+        "parentId": 14606,
+        "category": "Company Private",
+        "categoryIdAcl": 155310,
+        "categoryIdWorkflow": 155310,
+        "CategoryIdMetaData": 155310,
+        "publicAccess": false,
+        "Default": false,
+        "Orders": false,
+        "Deleted": false
+      }
     }
   ],
-  "totalItemsCount": 2,
+  "totalItemsCount": 1,
   "skip": 0,
   "limit": 10
 }</code></pre>
@@ -124,12 +85,12 @@ request.fail(function (jqXHR) {
 <hr>
 </div>
 <div id="remove">
-<h2 id ="remove-category">Remove a blog post from a category</h2>
+<h2 id ="remove-category">Remove a category from a blog post</h2>
 <div class="request">
 <h3>Request</h3>
 
 <ul>
-<li><strong>Method:</strong> GET</li>
+<li><strong>Method:</strong> DELETE</li>
 <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
@@ -145,34 +106,6 @@ request.fail(function (jqXHR) {
 
 </ul>
 </div>
-<div class="response">
-<h3>Response</h3>
-
-<p>An array of the first 10 blog posts; each object has the following properties:</p>
-
-<ul>
-<li><strong>id</strong> - the blog's ID <em>(numeric)</em></li>
-<li><strong>siteId</strong> - the site's ID <em>(numeric)</em></li>
-<li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
-<li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
-<li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
-<li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(dateTime)</em></li>
-<li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
-<li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
-<li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
-<li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
-<li><strong>postUrl</strong> - the blog's friendly URL <em>(string)</em></li>
-<li><strong>metaBlogPostTitle</strong> - the blog's meta title <em>(string)</em></li>
-<li><strong>metaBlogPostDescription</strong> - the blog's meta description <em>(string)</em></li>
-</ul>
-
-
-
-<p>Accepts and returns JSON as Content-Type.</p>
-</div>
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
@@ -180,8 +113,8 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/blogposts",
-    type: "GET",
+    url: "/webresources/api/v3/sites/current/blogposts/1383385/categories?items=[155310]",
+    type: "DELETE",
     conenection: "keep-alive",
     contentType: "application/json",
     headers: {
@@ -197,52 +130,12 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 })</code></pre>
-<p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{
-  "items": [
-    {
-      "id": 303870,
-      "siteId": 246884,
-      "blogId": 4405,
-      "postTitle": "Some philosophical questions...",
-      "postBody": "CONTENT HERE",
-      "createBy": 1087314,
-      "releaseDate": "2014-12-09T23:00:00",
-      "createDate": "2011-09-20T16:04:56.887",
-      "lastUpdateDate": "2014-12-11T14:08:19.76",
-      "enabled": true,
-      "deleted": false,
-      "reIndex": false,
-      "disableComments": false,
-      "slug": "some-philosophical-questions",
-      "postUrl": "/blog/some-philosophical-questions",
-      "metaBlogPostTitle": "Some philosophical questions...",
-      "metaBlogPostDescription": "Food for thought"
-    },
-    {
-      "id": 303871,
-      "siteId": 246884,
-      "blogId": 4405,
-      "postTitle": "Welcome to my Blog!",
-      "postBody": "CONTENT HERE",
-      "createBy": 1087314,
-      "releaseDate": "2014-12-07T23:00:00",
-      "createDate": "2011-09-20T16:04:56.923",
-      "lastUpdateDate": "2014-12-11T14:08:14.213",
-      "enabled": true,
-      "deleted": false,
-      "reIndex": false,
-      "disableComments": false,
-      "slug": "welcome-to-my-blog",
-      "postUrl": "/blog/welcome-to-my-blog",
-      "metaBlogPostTitle": "",
-      "metaBlogPostDescription": ""
-    }
-  ],
-  "totalItemsCount": 2,
-  "skip": 0,
-  "limit": 10
-}</code></pre>
 </div>
 <hr>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
 </div>

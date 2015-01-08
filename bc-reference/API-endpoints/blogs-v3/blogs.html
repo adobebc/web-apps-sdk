@@ -237,20 +237,25 @@ request.fail(function (jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>id</code> - the id of the customer<em> (integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
-<li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
-<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
-<li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
-<li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
-<li><code>firstName</code> <em>(string)</em></li>
-<li><code>middleName</code> <em>(string)</em></li>
-<li><code>lastName</code> <em>(string)</em></li>
-<li><code>company</code> <em>(string)</em></li>
-<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00 (dateTime)</em><em></em></li>
-<li><code>username</code> <em>(string)</em></li>
-<li><code>wholesaler</code> <em>(boolean)</em></li>
+<li><strong>roleId</strong> - the ID of the user role assigned to the blog <em>(numeric)</em></li>
+<li><strong>templateId</strong> - the ID of the template assigned to this blog <em>(numeric)</em></li>
+<li><strong>blogName</strong> - the blog's name <em>(string)</em></li>
+<li><strong>blogDescription</strong> - the blog's description <em>(string)</em></li>
+<li><strong>title</strong> - the blog's title <em>(string)</em></li>
+<li><strong>allowRSS</strong> - whether this blog is syndicated via a RSS feed or not <em>(boolean)</em></li>
+<li><strong>rssChannelId</strong> - the RSS feed's ID <em>(numeric)</em></li>
+<li><strong>allowTrackbacks</strong> - whether to allow trackbacks on the blog <em>(boolean)</em></li>
+<li><strong>lastPostDate</strong> - the date of the newest post <em>(dateTime)</em></li>
+<li><strong>postCount</strong> - the total number of posts <em>(numeric)</em></li>
+<li><strong>weight</strong> - the blog's weight <em>(numeric)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
+<li><strong>expiryDate</strong> - the blog's expiry date <em>(dateTime)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
+<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(dateTime)</em></li>
+<li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
+<li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
+<li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
+<li><strong>blogUrl</strong> - the blog's friendly URL <em>(string)</em></li>
 </ul>
 </div>
 </div>
@@ -274,13 +279,16 @@ Content-Length: length</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/blogs/4405",
-    type: "GET",
+    url: "/webresources/api/v3/sites/current/blogs",
+    type: "POST",
     conenection: "keep-alive",
     contentType: "application/json",
     headers: {
         "Authorization": $.cookie('access_token')
-    }
+    },
+    data: JSON.stringify({
+        "blogName": "API created blog"
+    })
 });
 request.done(function (msg) {
     console.log(msg);
@@ -315,20 +323,25 @@ request.fail(function (jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>id</code> - the id of the customer<em> (integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
-<li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
-<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
-<li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
-<li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
-<li><code>firstName</code> <em>(string)</em></li>
-<li><code>middleName</code> <em>(string)</em></li>
-<li><code>lastName</code> <em>(string)</em></li>
-<li><code>company</code> <em>(string)</em></li>
-<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00 (dateTime)</em><em></em></li>
-<li><code>username</code> <em>(string)</em></li>
-<li><code>wholesaler</code> <em>(boolean)</em></li>
+<li><strong>roleId</strong> - the ID of the user role assigned to the blog <em>(numeric)</em></li>
+<li><strong>templateId</strong> - the ID of the template assigned to this blog <em>(numeric)</em></li>
+<li><strong>blogName</strong> - the blog's name <em>(string)</em></li>
+<li><strong>blogDescription</strong> - the blog's description <em>(string)</em></li>
+<li><strong>title</strong> - the blog's title <em>(string)</em></li>
+<li><strong>allowRSS</strong> - whether this blog is syndicated via a RSS feed or not <em>(boolean)</em></li>
+<li><strong>rssChannelId</strong> - the RSS feed's ID <em>(numeric)</em></li>
+<li><strong>allowTrackbacks</strong> - whether to allow trackbacks on the blog <em>(boolean)</em></li>
+<li><strong>lastPostDate</strong> - the date of the newest post <em>(dateTime)</em></li>
+<li><strong>postCount</strong> - the total number of posts <em>(numeric)</em></li>
+<li><strong>weight</strong> - the blog's weight <em>(numeric)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
+<li><strong>expiryDate</strong> - the blog's expiry date <em>(dateTime)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
+<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(dateTime)</em></li>
+<li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
+<li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
+<li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
+<li><strong>blogUrl</strong> - the blog's friendly URL <em>(string)</em></li>
 </ul>
 </div>
 <div class="response">
@@ -344,13 +357,17 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/blogs/4405",
-    type: "GET",
+    url: "/webresources/api/v3/sites/current/blogs/18029",
+    type: "PUT",
     conenection: "keep-alive",
     contentType: "application/json",
     headers: {
         "Authorization": $.cookie('access_token')
-    }
+    },
+  data: JSON.stringify({
+        "blogDescription": "This blog was created using API",
+        "expiryDate": "1-Jan-2016"
+    })
 });
 request.done(function (msg) {
     console.log(msg);
@@ -396,7 +413,7 @@ request.fail(function (jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>DELETE /webresources/api/v3/sites/current/customers/9593213 HTTPS/1.1
+<pre class="language-javascript"><code>DELETE /webresources/api/v3/sites/current/blogs/18029 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -407,7 +424,7 @@ Content-Type: application/json
 
 <pre class="language-javascript"><code>
 HTTP/1.1 204 NO CONTENT
-Location: /webresources/api/v3/sites/current/customers/[customer_ID]
+Location: /webresources/api/v3/sites/current/blogs/[blog_ID]
 Content-Type: application/json; charset=utf-8
 Content-Length: length</code></pre>
 </div>

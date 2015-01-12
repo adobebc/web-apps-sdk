@@ -93,6 +93,38 @@
 </table>
 </div>
 </div>
+
+<div type="cs-pod">
+  <h2>Array manipulation filters</h2>
+
+<div class="filters string">
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>limit</code></td>
+            <td><span class="cellcontent">
+            # array = [1,2,3,4,5,6]
+            <br/>
+            &#123;&#37; for item in array limit:2 &#37;&#125;<br/>
+            This will limit the number of items returned from the array. In this case 1 and 2 will be returned
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>prepend</code></td>
+            <td><span class="cellcontent">
+            # array = [1,2,3,4,5,6]
+            <br/>
+             &#123;&#37; for item in array offset:2 &#37;&#125;<br/>
+             This will offset the items from the array. In this case items 3 and 4 will be returned.<br/>
+             You can combine both offset and limit.
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+
+
 <div type="cs-pod">
 <h2>the Date switches</h2><table width="100%" class="data-bordered">
 <tbody>

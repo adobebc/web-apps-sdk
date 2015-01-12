@@ -126,6 +126,27 @@
 
 
 <div type="cs-pod">
+<div class="filters date">
+<h2>Date filters</h2>
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>site_date</code></td>
+            <td><span class="cellcontent">&#123;&#123;globals.site.dateNow | site_date_time&#125;&#125; outputs &quot;09-Jan-2015&quot;</td>
+
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>site_date_time</code></td>
+            <td><span class="cellcontent">&#123;&#123;globals.site.dateNow | site_date_time&#125;&#125; outputs &quot;09-Jan-2015 02:46 PM&quot;</td>
+
+        </tr>
+		
+        
+    </tbody>
+</table>
+</div>
+</div>
+<div type="cs-pod">
 <h2>the Date switches</h2><table width="100%" class="data-bordered">
 <tbody>
          <tr>
@@ -172,6 +193,18 @@
 <div class="filters other">
 <table width="100%" class="data-bordered">
 <tbody>
+<tr>
+            <td valign="top" class="cellrowborder"><code>convert</code></td>
+          <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:
+          <ul>
+          <li><strong>string</strong> - &#123;&#123; 3 | convert: &quot;string&quot; | json &#125;&#125; outputs &quot;3&quot;</li>
+          <li><strong>numeric</strong> - &#123;&#123; &quot;3&quot; | convert: &quot;numeric&quot; | json &#125;&#125; outputs 3 (this can now be used with the mathematical filters)</li>
+          <li><strong>boolean</strong> - &#123;&#123; &quot;false&quot; | convert: &quot;string&quot; | json &#125;&#125;outputs &quot;false&quot; (it is treated as a boolean variable)</li>
+          <li><strong>date</strong> - &#123;&#123; &quot;2015-01-07&quot; | convert: &quot;date&quot; &#125;&#125; outputs <em>2015-01-07T00:00:00</em> in dateTime format<br>
+          </li>
+          <li><strong>money</strong> &#123;&#123; 100 | money &#125;&#125; outputs &quot;100 USD&quot; assuming the site's &quot;Country code&quot; is set to US.</li>
+          </ul></span></td>
+        </tr>
 <tr>
             <td valign="top" class="cellrowborder"><code>json</code></td>
             <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using - 

@@ -22,52 +22,37 @@
  *
  */
 
-(function(app) {
-	/**
-	 * @public
-	 * @constructor
-	 * @description
-	 * This service is responsible for handling loading status of the application.
-	 */
-	function GlobalLoadingService(configService) {
-		this._loading = false;
-		this._loadingPending = false;
-		this._configService = configService;
+(function(app, hljs, $) {
+    /**
+     * @constructor
+     * @description
+     * This class provides the algorithm for highlighting module_jquery snippets syntax.
+     */
+    function ModuleJQueryHighlighter() {
+        hljs.initHighlightingOnLoad();
+        hljs.configure({useBR: true});
+    }
 
-		console.log("Global loading service initialized correctly.");
-	};
+    /**
+     * @public
+     * @instance
+     * @method
+     * @description
+     * This method highlights the given snippet and colors all keywords for improving text readability.
+     */
+    ModuleJQueryHighlighter.prototype.highlight = function(snippet) {
+        if(!snippet) {
+            return;
+        }
 
+        var element = document.createElement("code");
+        $(element).attr("class", "javascript");
+        element.innerHTML = snippet;
 
-	/**
-	 * @public
-	 * @instance
-	 * @method
-	 * @description
-	 * This method sets the current loading status for the application.
-	 */
-	GlobalLoadingService.prototype.setLoading = function(loadingStatus) {
-		var self = this;
-		this._loadingPending = loadingStatus;
+        hljs.highlightBlock(element);
 
-		setTimeout(function() {
-			if(self._loadingStatus != loadingStatus) {
-				return;
-			}
+        return element.innerHTML;
+    };
 
-			self._loading = self._loadingPending;
-		}, 10);
-	};
-
-	/**
-	 * @public
-	 * @instance
-	 * @method
-	 * @description
-	 * This method gets the current loading status for the application.
-	 */
-	GlobalLoadingService.prototype.isLoading = function() {
-		return this._loading;
-	};
-
-	app.service("GlobalLoadingService", ["ConfigService", GlobalLoadingService]);
-})(DiscoveryApp);
+    app.service("ModuleJQueryHighlighterService", [ModuleJQueryHighlighter]);
+})(DiscoveryApp, hljs, $);

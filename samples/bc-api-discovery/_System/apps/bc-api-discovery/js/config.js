@@ -1,6 +1,6 @@
 (function(app, BCAPI) {
-	var defaultAccessToken = "Bearer _bc_Q2xpZW50SWQ9YmMtbWVldC10aGUtdGVhbTtHckx3a0hpOWFqZWJtcklReVYrOEdITUlIQVYyTlZoc3h1TkVqVHpyakhxVk9mZ0pnam9hQUVDODVBL05Sb096TFY5UmdlRnpMamhVbkZPTlQ4bGVqdjJ1SUVHcGJjWmFQSGZPRE9yZXNTQithQ2xHWlNLaVBFSmZYNkhYaWZYZzN5RWZIWlNOTVJGS1BhU1MvRlhGY1RsRWR3eUNkbkRHY0FteEh1ZjJxcVdXa3Z3QkZKUTBtV1MvY3BxeGxpMG8zUkxNRVlWbC9Ydm8xeVpmRWN6WEtPc2VMSkJlUVYraSthZnlTSFIxbGZqWDIwQklRNXNPeW1kWHhmODdZUkZkc1FEVnhQaXZyTytHMG5RWDA2Mmx5SGw5bjlSV0h1OS85S3MyQkx5eFVVbXhpOWFZdnkvTWVnRDlMcUs3eSs4NEt5QlkvTXpxenpJb3JvNGtnN3lQSkE9PQ==",
-		defaultHost = "bc-meet-the-team-38581-apps.rcosnita-bc.worldsecuresystems.com";
+	var defaultAccessToken = "Bearer _bc_Q2xpZW50SWQ9YmMtbWVldC10aGUtdGVhbTtHckx3a0hpOWFqZWJtcklReVYrOEdJbnFCeU9yOVhFb0g0VURuNmZJUHVDcXRzUldValFjYlZXZjRiWEtOemgvTVlTaEk1ZkNrWGx6dnVCdE9wNFhENW01UUhFcm5ZcEIxUklKQVNKWnQ3RmMySXVWWFBMK0M0ZHNBVUpLcWUwbXhRb2txbWsydlIrU2N2NjV6b3RXY0s0bXpjeVBSR3BBZGVSWlFHcDE0ZWdodFdaQzJVYzNiWVFpQnpiUFAxejJacTg3bGFJTGwzZkdmYzkvdnlKU09FRFppUGk5NnJSb2dLQlBYa0c5c3dSS2JiaGNaYmlKM2xwV2lEcTRkK2hQNGRUM1NrblFUYTNNdjQ2eG4zQmlER0lEK0lmKzJNSkczejJGM3VWeld0cGQvcFlTUCtNdXEzZ0F0eGkrSmo5dkZYakdkQ0xXZzhDS0h2ZEY5N0JrUUE9PQ==",
+		defaultHost = "openadmin123.rcosnita-bc.worldsecuresystems.com";
 		defaultProtocol = "https";
 
 	/**
@@ -13,6 +13,7 @@
 		this.appVersion = "1.0-snapshot",
 		this.bcWebResourcesApp = "/webresources",
 		this.bcRegistryUrl = this.bcWebResourcesApp + "/api/v3/sites/current/registry";
+		this.loaderDisplayDelay = 10;
 
 		this.limits = {
 			skip: 0,

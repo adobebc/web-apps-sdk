@@ -46,16 +46,7 @@
 	 * This method sets the current loading status for the application.
 	 */
 	GlobalLoadingService.prototype.setLoading = function(loadingStatus) {
-		var self = this;
-		this._loadingPending = loadingStatus;
-
-		setTimeout(function() {
-			if(self._loadingStatus != loadingStatus) {
-				return;
-			}
-
-			self._loading = self._loadingPending;
-		}, 10);
+		this._loading = loadingStatus;
 	};
 
 	/**

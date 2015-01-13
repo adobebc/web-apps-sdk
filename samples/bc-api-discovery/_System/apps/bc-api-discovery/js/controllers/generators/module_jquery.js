@@ -36,7 +36,7 @@
 	 * selected fields.
 	 */
 	function JqueryController($scope, $http, generatorsService, registryService, configService, apiFactory, moduleJQueryHighlighter,
-							  handlebars) {
+							  handlebars, globalLoadingService) {
 
 		var self = this;
 
@@ -46,6 +46,7 @@
 		this._configService = configService;
 		this._apiFactory = apiFactory;
 		this._registryService = registryService;
+		this._globalLoadingService = globalLoadingService;
 
 		this._template = this._getJquerySnippetTemplate();
 
@@ -59,12 +60,12 @@
 			function(data) {
 				self.$scope.requestTypes = [
 					{method:'GET', label:'GET'},
-					{method:'POST', label:'POST'}
+					{method:'POST', label:'POST'},
+					{method:'DELETE', label:'DELETE'}
 				];
 
 				if(!data.subresourceName) {
 					self.$scope.requestTypes.push({method:'PUT', label:'PUT'});
-					self.$scope.requestTypes.push({method:'DELETE', label:'DELETE'});
 				}
 
 				self.$scope.selectedRequestType = self.$scope.requestTypes[0];
@@ -80,7 +81,7 @@
 		this.$scope.resourceDescriptor = undefined;
 
 		this.$scope.generateSnippet = function(data) {
-			return self._generateSelectFieldAndSnippet(data);
+			return self._generateSelectFieldAndSnippet(data, self._globalLoadingService);
 		};
 
 		this.$scope.$watch(
@@ -124,7 +125,7 @@
 	 * @description
 	 * This method generates a snippet of code based on the newly selected data.
 	 */
-	JqueryController.prototype._generateSelectFieldAndSnippet = function(data) {
+	JqueryController.prototype._generateSelectFieldAndSnippet = function(data, globalLoadingService) {
 
 		var self = this;
 
@@ -149,7 +150,7 @@
 					self.$scope.resourceDescriptor = proxy.getSubresourceDescriptor(data.subresourceName);
 				}
 
-				self._generateSnippetRaw(data, self.$scope.resourceDescriptor);
+				self._generateSnippetRaw(data, self.$scope.resourceDescriptor, globalLoadingService);
 			});
 
 		}else{
@@ -164,7 +165,7 @@
 	 * @description
 	 * This method generates the snippet string which must be displayed to developer.
 	 */
-	JqueryController.prototype._generateSnippetRaw = function(data, resourceDescriptor) {
+	JqueryController.prototype._generateSnippetRaw = function(data, resourceDescriptor, globalLoadingService) {
 
 		var self = this;
 		var templateUrl = "";
@@ -206,9 +207,14 @@
 
 			queryObject["order"] = orderCriteria;
 
+			var fullUrl = templateUrl +"?fields=" + queryObject['fields'] + "&skip=" + queryObject['skip'] + "&limit="+queryObject['limit']+"&order="+queryObject['order'];
+			if(!this._isEmpty(data.where)) {
+				fullUrl += "&where=" + JSON.stringify(queryObject["where"]);
+			}
+
 			var templateData = {
-				url: '"' + templateUrl + '"',
-				dataFields: "data:" + JSON.stringify(queryObject),
+				url: '"' + fullUrl + '"',
+			//	dataFields: "data:" + JSON.stringify(queryObject),
 				methodType: '"' + this.$scope.selectedRequestType.method + '"'
 			}
 
@@ -222,7 +228,11 @@
 			var identifierFields = Object.keys(resourceDescriptor.fields.identifier).join(",");
 			var getUrl = this._buildUrl(data.resourceName,data.version,data.existingResourceId,data.subresourceName,true);
 
-			if(this.$scope.selectedRequestType.method == "POST" || this.$scope.selectedRequestType.method == "PUT") {
+			if(this.$scope.selectedRequestType.method == "POST" || this.$scope.selectedRequestType.method == "PUT"
+				||  (this.$scope.selectedRequestType.method == "DELETE" && data.subresourceName != undefined ) ) {
+
+				globalLoadingService.setLoading(true);
+
 				//prepopulate fields for post/put
 				//simple resource
 				if (this.$scope.selectedRequestType.method == "POST" && data.subresourceName == undefined && primaryFields!="") {
@@ -230,7 +240,8 @@
 				}
 
 				//subresource
-				if (this.$scope.selectedRequestType.method == "POST" && data.subresourceName != undefined && identifierFields != "") {
+				if ((this.$scope.selectedRequestType.method == "POST" || this.$scope.selectedRequestType.method == "DELETE")
+					&& data.subresourceName != undefined && identifierFields != "") {
 					getUrl += "?fields=" + identifierFields ;
 
 					if(primaryFields != ""){
@@ -259,6 +270,8 @@
 					}
 				}).success(function (response) {
 
+					globalLoadingService.setLoading(false);
+
 					if (response.items != undefined && response.items.length > 0) {
 						self.templatePrepopulatedData = response.items[0];
 
@@ -271,6 +284,13 @@
 							self.templatePrepopulatedData = self._filterResult(self.templatePrepopulatedData,identifierFields);
 						}
 
+
+						//add items array to result for post and delete requests
+						if ((self.$scope.selectedRequestType.method == "POST" || self.$scope.selectedRequestType.method == "DELETE")
+							&& data.subresourceName != undefined && identifierFields != "") {
+							 self.templatePrepopulatedData = {"items":[self.templatePrepopulatedData]};
+						}
+
 						var templateData = {
 							url: '"' + templateUrl + '"',
 							dataFields: "data:" + JSON.stringify(self.templatePrepopulatedData),
@@ -280,6 +300,9 @@
 						self.$scope.snippet = self._template(templateData);
 					}
 				}).error(function (response) {
+
+					globalLoadingService.setLoading(false);
+
 					var templateData = {
 						url: '"' + templateUrl + '"',
 						methodType: '"' + self.$scope.selectedRequestType.method + '"'
@@ -288,7 +311,7 @@
 				});
 			}
 
-			if(this.$scope.selectedRequestType.method == "DELETE"){
+			if(this.$scope.selectedRequestType.method == "DELETE" && data.subresourceName == undefined){
 
 				if(data.subresourceName == undefined) {
 					templateUrl += "/id";
@@ -425,5 +448,5 @@
 
 
 	app.controller("JqueryController", ["$scope", "$http", "GeneratorsDataService","BcRegistryService", "ConfigService", "BcApiFactory",
-		"ModuleJQueryHighlighterService", "HandlebarsService", JqueryController]);
+		"ModuleJQueryHighlighterService", "HandlebarsService","GlobalLoadingService", JqueryController]);
 })(DiscoveryApp);

@@ -36,6 +36,7 @@
 		this._globalLoadingService = globalLoadingService;
 
 		this.$scope.appVersion = this._configService.appVersion;
+
 		this.$scope.loading = false;
 
 		this.$scope.$watch(

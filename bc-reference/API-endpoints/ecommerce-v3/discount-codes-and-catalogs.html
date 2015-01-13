@@ -158,6 +158,7 @@ request.fail(function (jqXHR) {
 
 var request = $.ajax({
   url: "/webresources/api/v3/sites/current/discountcodes/3309/catalogues",
+  processData: false,
   data: JSON.stringify({
     "items": [{
       "catalogueId": 88

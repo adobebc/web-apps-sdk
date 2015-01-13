@@ -29,7 +29,7 @@
 
 <ul>
 <li><code>name</code> - the name of the category you wish to create <em>(string)</em></li>
-<li><code>parent</code> - the ID of the parent category. If not specified, the category will be created at the root level <em>(integer, optional)</em></li>
+<li><code>parentid</code> - the ID of the parent category. If not specified, the category will be created at the root level <em>(integer, optional)</em></li>
 <li><code>publicAccess</code> - whether or not the category is visible to front-end users. If not specified, defaults to true. <em>(boolean)</em></li>
 </ul>
 
@@ -70,7 +70,7 @@ Content-Length: 120
 
 {
   "name": "My category",
-  "parent": "2222",
+  "parentid": "2222",
   "publicAccess" : false
 }
 </code></pre>
@@ -95,7 +95,7 @@ Content-Length: length
     contentType: "application/json",
     data: JSON.stringify({
         "name": "My category4",
-        "parent": "123456",
+        "parentid": "123456",
         "publicAccess": true
     })
 });

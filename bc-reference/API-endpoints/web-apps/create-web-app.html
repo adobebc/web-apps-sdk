@@ -104,6 +104,7 @@ If you pass in values for itemSystemFields and / or itemFields they will be igno
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify({"name": "APIcreated", "requiresApproval": true, "trmplateid": -1})
 });
 request.done(function (msg) {

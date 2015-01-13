@@ -271,7 +271,8 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-	  url: "/webresources/api/v3/sites/current/securezones",
+	url: "/webresources/api/v3/sites/current/securezones",
+    processData: false,
     data: JSON.stringify({
         "landingPageId": 4518247,
         "name": "Secure Zone 4 (API)",
@@ -360,6 +361,7 @@ request.fail(function (jqXHR) {
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/securezones/3312",
+    processData: false,
     data: JSON.stringify({
          "name": "Secure Zone 4 (API - modified)"
           }),

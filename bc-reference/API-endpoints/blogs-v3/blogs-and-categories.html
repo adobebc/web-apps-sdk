@@ -154,6 +154,7 @@ var request = $.ajax({
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify({
         "items": [{
             "categoryId": 14606

@@ -304,6 +304,7 @@ The response should be "201 created" if the page was successfully created.
 
 var request = $.ajax({
   url: "/webresources/api/v3/sites/current/pages",
+  processData: false,
   data: JSON.stringify({
     "name": "About-page",
     "pageUrl": "/about-page",
@@ -336,6 +337,7 @@ request.fail(function(jqXHR) {
 
 var request = $.ajax({
   url: "/webresources/api/v3/sites/current/pages",
+  processData: false,
   data: JSON.stringify({
     "name": "About-page2",
     "pageUrl": "/about-page2",
@@ -470,7 +472,8 @@ request.fail(function(jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-	url: "/webresources/api/v3/sites/current/pages/4518294",
+  url: "/webresources/api/v3/sites/current/pages/4518294",
+  processData: false,
   data: JSON.stringify({
         "name": "Card - modified",
         "templateId" : "-1"

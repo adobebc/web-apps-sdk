@@ -199,7 +199,8 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-	  url: "/webresources/api/v3/sites/current/taxcodes",
+	url: "/webresources/api/v3/sites/current/taxcodes",
+    processData: false,
     data: JSON.stringify({
         "countryCode": RO,
         "code": "TVA2 - API",
@@ -267,6 +268,7 @@ request.fail(function (jqXHR) {
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/taxcodes/769",
+    processData: false,
     data: JSON.stringify({
          "rate": 0.11
           }),

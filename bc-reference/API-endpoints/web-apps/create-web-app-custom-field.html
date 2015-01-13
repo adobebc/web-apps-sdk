@@ -93,6 +93,7 @@ Location: /api/v2/admin/sites/current/webapps/Cars/fields/123
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify({"name": "Customfield1", "type": "String","required": true, "order": 1})
 });
 request.done(function (msg) {

@@ -38,13 +38,13 @@
 <li><strong>allowRSS</strong> - whether this blog is syndicated via a RSS feed or not <em>(boolean)</em></li>
 <li><strong>rssChannelId</strong> - the RSS feed's ID <em>(numeric)</em></li>
 <li><strong>allowTrackbacks</strong> - whether to allow trackbacks on the blog <em>(boolean)</em></li>
-<li><strong>lastPostDate</strong> - the date of the newest post <em>(dateTime)</em></li>
+<li><strong>lastPostDate</strong> - the date of the newest post <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>postCount</strong> - the total number of posts <em>(numeric)</em></li>
 <li><strong>weight</strong> - the blog's weight <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>expiryDate</strong> - the blog's expiry date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(dateTime)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>expiryDate</strong> - the blog's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
 <li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
@@ -150,13 +150,13 @@ request.fail(function (jqXHR) {
 <li><strong>allowRSS</strong> - whether this blog is syndicated via a RSS feed or not <em>(boolean)</em></li>
 <li><strong>rssChannelId</strong> - the RSS feed's ID <em>(numeric)</em></li>
 <li><strong>allowTrackbacks</strong> - whether to allow trackbacks on the blog <em>(boolean)</em></li>
-<li><strong>lastPostDate</strong> - the date of the newest post <em>(dateTime)</em></li>
+<li><strong>lastPostDate</strong> - the date of the newest post <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>postCount</strong> - the total number of posts <em>(numeric)</em></li>
 <li><strong>weight</strong> - the blog's weight <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>expiryDate</strong> - the blog's expiry date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(dateTime)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>expiryDate</strong> - the blog's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
 <li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
@@ -245,13 +245,13 @@ request.fail(function (jqXHR) {
 <li><strong>allowRSS</strong> - whether this blog is syndicated via a RSS feed or not <em>(boolean)</em></li>
 <li><strong>rssChannelId</strong> - the RSS feed's ID <em>(numeric)</em></li>
 <li><strong>allowTrackbacks</strong> - whether to allow trackbacks on the blog <em>(boolean)</em></li>
-<li><strong>lastPostDate</strong> - the date of the newest post <em>(dateTime)</em></li>
+<li><strong>lastPostDate</strong> - the date of the newest post <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>postCount</strong> - the total number of posts <em>(numeric)</em></li>
 <li><strong>weight</strong> - the blog's weight <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>expiryDate</strong> - the blog's expiry date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(dateTime)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>expiryDate</strong> - the blog's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
 <li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
@@ -286,6 +286,7 @@ var request = $.ajax({
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify({
         "blogName": "API created blog"
     })
@@ -331,13 +332,13 @@ request.fail(function (jqXHR) {
 <li><strong>allowRSS</strong> - whether this blog is syndicated via a RSS feed or not <em>(boolean)</em></li>
 <li><strong>rssChannelId</strong> - the RSS feed's ID <em>(numeric)</em></li>
 <li><strong>allowTrackbacks</strong> - whether to allow trackbacks on the blog <em>(boolean)</em></li>
-<li><strong>lastPostDate</strong> - the date of the newest post <em>(dateTime)</em></li>
+<li><strong>lastPostDate</strong> - the date of the newest post <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>postCount</strong> - the total number of posts <em>(numeric)</em></li>
 <li><strong>weight</strong> - the blog's weight <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>expiryDate</strong> - the blog's expiry date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(dateTime)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>expiryDate</strong> - the blog's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - the blog's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
 <li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
@@ -364,7 +365,8 @@ var request = $.ajax({
     headers: {
         "Authorization": $.cookie('access_token')
     },
-  data: JSON.stringify({
+    processData: false,
+	data: JSON.stringify({
         "blogDescription": "This blog was created using API",
         "expiryDate": "1-Jan-2016"
     })

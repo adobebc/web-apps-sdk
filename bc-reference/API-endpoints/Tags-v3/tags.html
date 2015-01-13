@@ -141,6 +141,7 @@ var request = $.ajax({
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify({
         "tagName": "API tag"
     })
@@ -201,7 +202,8 @@ var request = $.ajax({
     headers: {
         "Authorization": $.cookie('access_token')
     },
-  data: JSON.stringify({
+    processData: false,
+    data: JSON.stringify({
         "tagName": "my-new-tag-renamed"
     })
 });

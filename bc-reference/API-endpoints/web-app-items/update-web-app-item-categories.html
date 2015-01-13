@@ -59,6 +59,7 @@ Content-Type: application/json
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify(["155320"])
 });
 request.done(function (msg) {

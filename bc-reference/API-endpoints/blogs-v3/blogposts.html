@@ -34,9 +34,9 @@
 <li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
 <li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
 <li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(dateTime)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
 <li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
@@ -156,9 +156,9 @@ request.fail(function (jqXHR) {
 <li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
 <li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
 <li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(dateTime)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
 <li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
@@ -242,9 +242,9 @@ request.fail(function (jqXHR) {
 <li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
 <li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
 <li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(dateTime)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
 <li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
@@ -282,6 +282,7 @@ var request = $.ajax({
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify({
         "blogId": 18029,
         "postTitle": "First post",
@@ -325,9 +326,9 @@ request.fail(function (jqXHR) {
 <li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
 <li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
 <li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(dateTime)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(dateTime)</em></li>
-<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(dateTime)</em></li>
+<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
 <li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
@@ -357,6 +358,7 @@ var request = $.ajax({
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify({
         "blogId": 18029,
         "postTitle": "First post - edited",

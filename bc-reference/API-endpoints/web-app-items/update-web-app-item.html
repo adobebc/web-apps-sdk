@@ -107,25 +107,26 @@ Content-Type: application/json; charset=utf-8
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify({
-    "name": "Item 8",
-    "weight": 7,
-    "releaseDate": "2013-01-30T00:00:00",
-    "expiryDate": "9999-01-01",
-    "enabled": true,
-    "slug": "item7",
-    "description": "&lt;p&gt;item7 description&lt;\/p&gt;",
-    "roleId": null,
-    "address": "item7_address",
-    "city": "item7_city",
-    "state": "item7_state",
-    "zipCode": "000007",
-    "country": "US",
-    "fields": {
-        "Customfield1": "some value here",
-        "Customfield2": "some other value here"
-    }
-})
+        "name": "Item 8",
+        "weight": 7,
+        "releaseDate": "2013-01-30T00:00:00",
+        "expiryDate": "9999-01-01",
+        "enabled": true,
+        "slug": "item7",
+        "description": "&lt;p&gt;item7 description&lt;\/p&gt;",
+        "roleId": null,
+        "address": "item7_address",
+        "city": "item7_city",
+        "state": "item7_state",
+        "zipCode": "000007",
+        "country": "US",
+        "fields": {
+            "Customfield1": "some value here",
+            "Customfield2": "some other value here"
+        }
+    })
 });
 request.done(function (msg) {
     console.log("Update successful");

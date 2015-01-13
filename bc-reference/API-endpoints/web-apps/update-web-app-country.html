@@ -63,6 +63,7 @@ Content-Type: application/json
     headers: {
         "Authorization": $.cookie('access_token')
     },
+    processData: false,
     data: JSON.stringify(['RO'])
 });
 request.done(function (msg) {

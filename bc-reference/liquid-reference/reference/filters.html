@@ -145,11 +145,13 @@
 </div>
 </div>
 <div type="cs-pod">
-<h2 id="date-switches">the Date switches</h2><table width="100%" class="data-bordered">
+<h2 id="date-switches">the Date switches</h2>
+<p>Assuming the value of the <code>dateTime</code> field is <em>2014-12-09T23:00:00</em> here are the available switches you can use to format the date:<p/>
+<table width="100%" class="data-bordered">
 <tbody>
          <tr>
             <td valign="top" class="cellrowborder"><code>date</code></td>
-          <td><span class="cellcontent">Assuming the value of the <code>dateTime</code> field is <em>2014-12-09T23:00:00</em> here are the available switches you can use to format the date:<br/>
+          <td><span class="cellcontent">
           <ul>
           <li><code>%d</code> - Outputs the day of the month - 18</li>
           <li><code>dd</code> -  The day of the month. Single-digit days will have a leading zero - 03</li>
@@ -185,6 +187,53 @@
           </td>
         </tr>
         </tbody></table>
+</div>
+<div type="cs-pod">
+<h2>timeSpan switches</h2>
+<p>Assuming we've assigned a variable the difference between two date-type items:</p>
+          <pre> &#123;&#37; assign dateDiff = globals.site.dateNow| minus: myDate &#37;&#125;</pre>
+            <p>Taking a presumed value of <em>dateDiff</em> being <strong>5.02:39:41.6441728</strong>, we can format the date value of &#123;&#123; dateDiff &#125;&#125; with the following switches:</p>
+<table width="100%" class="data-bordered">
+<tbody>
+         <tr>
+            <td valign="top" class="cellrowborder"><code>variable name</code></td>
+          <td><span class="cellcontent">
+            
+            <ul>
+              <li>%d - Outputs the number of whole days in the time interval - 5</li>
+          <li><code>dd</code> -  The number of whole days in the time interval, padded with leading zeros as needed - 05</li>
+          <li>%h - The number of whole hours in the time interval that are not counted as part of days. Single-digit hours do not have a leading zero - 2</li>
+          <li>hh - The number of whole hours in the time interval that are not counted as part of days. Single-digit hours have a leading zero - 02</li>
+          <li>%m - The number of whole minutes in the time interval that are not included as part of hours or days. Single-digit minutes do not have a leading zero - 41</li>
+          <li>mm - The number of whole minutes in the time interval that are not included as part of hours or days. Single-digit minutes have a leading zero - 41</li>
+          
+          <li>%s<code> </code>- The number of whole seconds in the time interval that are not included as part of hours, days, or minutes. Single-digit seconds do not have a leading zero - 14</li>
+          <li>ss- The number of whole seconds in the time interval that are not included as part of hours, days, or minutes. Single-digit seconds have a leading zero - 14</li>
+          <li>%f- The tenths of a second in a time interval - 0</li>
+          <li>ff- The /hundredths of a second in a time interval - 09</li>
+          <li><code>fff</code> - The milliseconds in a time interval - 097</li>
+          <li><code>ffff</code> - The ten-thousandths of a second in a time interval - 0973</li>
+          <li><code>fffff</code> - The hundred-thousandths of a second in a time interval - 09734</li>
+          <li>ffffff- The millionths of a second in a time interval - 097343</li>
+          <li>fffffff- The ten-millionths of a second (or the fractional ticks) in a time interval - 0973435</li>
+          <li>%F- The tenths of a second in a time interval. Nothing is displayed if the digit is zero - </li>
+          <li>FF- The hundredths of a second in a time interval. Any fractional trailing zeros or two zero digits are not included - 09</li>
+          <li>FFF- The milliseconds in a time interval. Any fractional trailing zeros are not included - 097</li>
+          <li>FFFF- The ten-thousandths of a second in a time interval. Any fractional trailing zeros are not included - 0973</li>
+          <li>FFFFF- The hundred-thousandths of a second in a time interval. Any fractional trailing zeros are not included - 09734</li>
+       
+          <li>FFFFFF- The millionths of a second in a time interval. Any fractional trailing zeros are not displayed - 097343</li>
+          <li>FFFFFFF- The ten-millions of a second in a time interval. Any fractional trailing zeros or seven zeros are not displayed - 0973435</li>
+          <li>string- Literal string delimiter - date:&quot;'Result : 'dd'&quot;'' will output - Result : 05</li>
+          <li>\- The escape character. If you want to display a cahracter that would be normally interpreted as a switch, for example /ddd will output - d05</li>
+          
+        </ul>
+          <br/>
+          To output <strong>5-3-13 use</strong> &#123;&#123;dateDiff | date: &quot;%d'-'%h'-'%m&quot;&#125;&#125; (mind the double quotes).
+          <br />
+          To outputResult : d05-h03-m18use {{ dateDiff | date:&quot;'Result : '\ddd'-'\hhh'-'\mmm&quot; }}</td>
+        </tr>
+    </tbody></table>
 </div>
 <div type="cs-pod">
 <h2 id="other-filters">Other Filters</h2>

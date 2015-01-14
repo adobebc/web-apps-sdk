@@ -1,7 +1,7 @@
 <h1>Supported filters
 </h1>
 <div type="cs-pod">
-  <h2>Mathematical Filters</h2>
+  <h2 id="math-filters">Mathematical Filters</h2>
 <div class="filters math">
 <table width="100%" class="data-bordered">
     <tbody>
@@ -28,7 +28,7 @@
 </div>
 </div>
 <div type="cs-pod">
-  <h2>String manipulation filters</h2>
+  <h2 id="string-filters">String manipulation filters</h2>
 
 <div class="filters string">
 <table width="100%" class="data-bordered">
@@ -95,7 +95,7 @@
 </div>
 
 <div type="cs-pod">
-  <h2>Array manipulation filters</h2>
+  <h2 id="array-filters">Array manipulation filters</h2>
 
 <div class="filters string">
 <table width="100%" class="data-bordered">
@@ -127,7 +127,7 @@
 
 <div type="cs-pod">
 <div class="filters date">
-<h2>Date filters</h2>
+<h2 id="date-filters">Date filters</h2>
 <table width="100%" class="data-bordered">
     <tbody>
         <tr>
@@ -136,8 +136,8 @@
 
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>site_date_time</code></td>
-            <td><span class="cellcontent">&#123;&#123;globals.site.dateNow | date_time&#125;&#125; outputs &quot;09-Jan-2015 02:46 PM&quot;</td>
+            <td valign="top" class="cellrowborder"><code>site_datetime</code></td>
+            <td><span class="cellcontent">&#123;&#123;globals.site.dateNow | datetime&#125;&#125; outputs &quot;09-Jan-2015 02:46 PM&quot;</td>
 
         </tr>
 		
@@ -147,7 +147,7 @@
 </div>
 </div>
 <div type="cs-pod">
-<h2>the Date switches</h2><table width="100%" class="data-bordered">
+<h2 id="date-switches">the Date switches</h2><table width="100%" class="data-bordered">
 <tbody>
          <tr>
             <td valign="top" class="cellrowborder"><code>date</code></td>
@@ -189,7 +189,7 @@
         </tbody></table>
 </div>
 <div type="cs-pod">
-<h2>Other Filters</h2>
+<h2 id="other-filters">Other Filters</h2>
 <div class="filters other">
 <table width="100%" class="data-bordered">
 <tbody>
@@ -202,7 +202,7 @@
           <li><strong>boolean</strong> - &#123;&#123; &quot;false&quot; | convert: &quot;string&quot; | json &#125;&#125;outputs &quot;false&quot; (it is treated as a boolean variable)</li>
           <li><strong>date</strong> - &#123;&#123; &quot;2015-01-07&quot; | convert: &quot;date&quot; &#125;&#125; outputs <em>2015-01-07T00:00:00</em> in dateTime format<br>
           </li>
-          <li><strong>money</strong> &#123;&#123; 100 | convert: "currency" &#125;&#125; outputs &quot;100 USD&quot; assuming the site's &quot;Country code&quot; is set to US.</li>
+          <li><strong>currency</strong> &#123;&#123; 100 | convert: "currency" &#125;&#125; outputs &quot;100 USD&quot; assuming the site's &quot;Country code&quot; is set to US.</li>
           </ul></span></td>
         </tr>
 <tr>

@@ -1,3 +1,4 @@
+<h1>Comparisons in Liquid</h1>
 <h2>How to compare</h2>
 <p>When comparing variables always make sure you are using the correct data types. If the operand types are mismatched the system tries to make the operation work by converting one of the operands like this:</p>
 <ul>
@@ -15,8 +16,9 @@
 </li>
 </ul>
 <p> To convert variables take a look at the <em>convert</em> filter in the <a href="/dev-assets/reference/liquid-reference/reference/filters.html">Supported filters</a> article.</p>
-<h3>Numeric variables</h3>
-<p>Comparing numeric values is pretty straight forward. You can use any of the operators detailed in the -<a href="/dev-assets/reference/liquid-reference/reference/operators.html">Supported operators</a> article, for example:</p>
+<h3>Number variables</h3>
+<p>Comparing numeric values is pretty straight forward. You can use any of the operators detailed in the - <a href="/dev-assets/reference/liquid-reference/reference/operators.html">Supported operators</a> article, for example:</p>
+<p class="alert alert-info"><strong>Do note</strong> the decimal sepparator is a single dot.</p>
 <pre class="language-javascript"><code>  &#123;&#37; assign var1 = 5.123 &#37;&#125;
   &#123;&#37; assign var2 = 2 &#37;&#125;
 
@@ -59,8 +61,7 @@
   &#123;&#37; endif &#37;&#125;</code></pre>
  <p>In this example we are comparing a string variable with a numeric one. The string variable however cannot be converted to a string so the comparison will be between two string variables - &quot;524a1&quot; and &quot;3&quot;. In this case <em>524a1</em> is considered larger.</p>
 <h3>Date variables</h3>
-<p>Comparing date type variables </p>
-<h2>Using multiple conditions</h2>
+<p>Comparing date type variables is straight forward. Provided at least one of the operands is properly formatted as <em>dateTime </em>and the other operand is either <em>dateTime</em> or <em>string</em> any of the operators detailed in the <a href="/dev-assets/reference/liquid-reference/reference/operators.html">Supported operators</a> article can be used.</p>
 <h2>IF - ELSIF</h2>
 <p>IF is one of the simplest decision making logic blocks. It can be used either to check if a variable exists and do something if it is (or it is not) or check if a statement is true or false.</p>
 <p>In this example let's check if the logged in user's firstName exists and if so use it. Otherwise, if the site visitor is not logged in or if the site visitor has not filled in his or her's firstname we will only show &quot;Hello,&quot;:</p>

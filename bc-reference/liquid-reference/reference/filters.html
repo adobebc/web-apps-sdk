@@ -41,75 +41,68 @@
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}append{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">{{"This is the first part" | append: " appending the second part"}} outputs "This is the first part  appending the second part"</span>
+                    <td><span class="cellcontent"><code>{% raw %}{{"This is the first part" | append: " appending the second part"}}{% endraw %}</code> outputs "This is the first part  appending the second part"</span>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}prepend{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">{{" this is the second part" | prepend: "This is the first part"}} outputs "This is the first part  this is thesecond part"</span>
+                    <td><span class="cellcontent"><code>{% raw %}{{" this is the second part" | prepend: "This is the first part"}}{% endraw %}</code> outputs "This is the first part  this is thesecond part"</span>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}capitalize{% endraw %}</code>
                     </td>
-                    <td>{{'Sample text' | capitalize}} outputs "Sample Text"</td>
+                    <td><code>{% raw %}{{'Sample text' | capitalize}}{% endraw %}</code> outputs "Sample Text"</td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}downcase{% endraw %}</code>
                     </td>
-                    <td>{{'Sample text' | downcase}} outputs "sample text"</td>
+                    <td><code>{% raw %}{{'Sample text' | downcase}}{% endraw %}</code> outputs "sample text"</td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}upcase{% endraw %}</code>
                     </td>
-                    <td>{{'Sample text' | upcase}} outputs "SAMPLE TEXT"</td>
+                    <td><code>{% raw %}{{'Sample text' | upcase}}{% endraw %}</code> outputs "SAMPLE TEXT"</td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}remove{% endraw %}</code>
                     </td>
-                    <td>{{'Sample text. All occurences of "text" will be removed.' | remove: "text"}}
-                        outputs 'Sample . All occurences of "" will be removed.'</td>
+                    <td><code>{% raw %}{{'Sample text. All occurences of "text" will be removed.' | remove: "text"}}{% endraw %}</code> outputs 'Sample . All occurences of "" will be removed.'</td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}replace{% endraw %}</code>
                     </td>
-                    <td>{{'Sample text. All occurences of "text" will be replced.' | replace: "text",
-                        "string"}} outputs 'Sample string. All occurences of "string" will be replaced.'</td>
+                    <td><code>{% raw %}{{'Sample text. All occurences of "text" will be replced.' | replace: "text", "string"}}{% endraw %}</code> outputs 'Sample string. All occurences of "string" will be replaced.'</td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}replacefirst{% endraw %}</code>
                     </td>
-                    <td>{{'Sample text text.' | replacefirst: "text", "string"}} outputs 'Sample string
-                        text''</td>
+                    <td><code>{% raw %}{{'Sample text text.' | replacefirst: "text", "string"}}{% endraw %}</code> outputs 'Sample string text''</td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}truncate{% endraw %}</code>
                     </td>
-                    <td>{{'Sample text ' | truncate: 9, "..."}} outputs 'Sample... '</td>
+                    <td><code>{% raw %}{{'Sample text ' | truncate: 9, "..."}}{% endraw %}</code> outputs 'Sample... '</td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}split{% endraw %}</code>
                     </td>
-                    <td>{{'1,2,3,4,5 ' | split: ","}} splits the text and creates an array ["1","2","3","4","5"]</td>
+                    <td><code>{% raw %}{{'1,2,3,4,5 ' | split: ","}}{% endraw %}</code> splits the text and creates an array ["1","2","3","4","5"]</td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}join{% endraw %}</code>
                     </td>
-                    <td>{{myArray | join: "///"}} assuming myArray is an array joins the elements and
-                        puts the separator between each element</td>
+                    <td><code>{% raw %}{{myArray | join: "///"}}{% endraw %}</code> assuming myArray is an array joins the elements and puts the separator between each element</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}sort{% endraw %}</code>
-                    </td>
-                    <td>{{myArray | sort}} assuming myArray is an array ["5","4","3"] ]the sort filter
-                        outputs ["3","4","5"]</td>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}sort{% endraw %}</code></td>
+                    <td><code>{% raw %}{{myArray | sort}}{% endraw %}</code> assuming myArray is an array ["5","4","3"] ]the sort filter outputs ["3","4","5"]</td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}strip_html{% endraw %}</code>
                     </td>
-                    <td>{{"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html}} strips the HTML code from the
-                        string, this outputs "My paragraph"</td>
+                    <td><code>{% raw %}{{"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html}}{% endraw %}</code> strips the HTML code from the string, this outputs "My paragraph"</td>
                 </tr>
             </tbody>
         </table>
@@ -123,13 +116,13 @@
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}limit{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">             # array = [1,2,3,4,5,6]             <br>             {% for item in array limit:2 %}<br>             This will limit the number of items returned from the array. In this case 1 and 2 will be returned             </span>
+                    <td><span class="cellcontent">array = [1,2,3,4,5,6]             <br>            <code>{% raw %}{% for item in array limit:2 %}{% endraw %}</code><br>             This will limit the number of items returned from the array. In this case 1 and 2 will be returned             </span>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}prepend{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">             # array = [1,2,3,4,5,6]             <br>              {% for item in array offset:2 %}<br>              This will offset the items from the array. In this case items 3 and 4 will be returned.<br>              You can combine both offset and limit.             </span>
+                    <td><span class="cellcontent">array = [1,2,3,4,5,6]             <br>              <code>{% raw %}{% for item in array offset:2 %}{% endraw %}</code><br>              This will offset the items from the array. In this case items 3 and 4 will be returned.<br>              You can combine both offset and limit.             </span>
                     </td>
                 </tr>
             </tbody>
@@ -144,13 +137,13 @@
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}site_date{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">{{globals.site.dateNow | date}} outputs "09-Jan-2015"</span>
+                    <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | date}}{% endraw %}</code> outputs "09-Jan-2015"</span>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}site_datetime{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">{{globals.site.dateNow | datetime}} outputs "09-Jan-2015 02:46 PM"</span>
+                    <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | datetime}}{% endraw %}</code> outputs "09-Jan-2015 02:46 PM"</span>
                     </td>
                 </tr>
             </tbody>
@@ -285,10 +278,10 @@
             </tr>
         </tbody>
     </table>
-    <p>To output <strong>14-6-18 use</strong> {{dateVariable | date: "%y-%M-%d"}} (mind
-        the double quotes).</p>
-    <p>To output <strong>Element date: 1914\09\03 @ 12:00:00 a.m.</strong> use {{dateVariable
-        | date: "yyyy\\MM\\dd @ hh:mm:ss tt"}}</p>
+    <p>To output <strong>14-6-18 </strong>use <code>{% raw %}{{dateVariable | date: "%y-%M-%d"}}{% endraw %}</code> (mind
+  the double quotes).</p>
+    <p>To output <strong> 1914\09\03 @ 12:00:00 a.m.</strong> use <code>{% raw %}{{dateVariable
+        | date: "yyyy\\MM\\dd @ hh:mm:ss tt"}}{% endraw %}</code></p>
     <p class="alert alert-warning">To use "\" (the backslash character) as separator for date elements you need to
         escape the it in the liquid tag. Using "\\" renders "\" in the front-end.</p>
     <p>Spaces and any other characters that are not usable switches are rendered without
@@ -297,9 +290,9 @@
 <div type="cs-pod">
      <h2 id="timespan">timeSpan switches</h2> 
     <p>Let's assume we have created a
-        <a href="/developers/liquid/datatypes#timespan">timeSpan variable</a>by substracting one date from another:</p> <pre> &amp;#123;&amp;#37; assign dateDiff = globals.site.dateNow| minus: myDate &amp;#37;&amp;#125;</pre> 
+        <a href="/developers/liquid/datatypes#timespan">timeSpan variable</a> by substracting one date from another:</p> <pre> &#123;&#37; assign dateDiff = globals.site.dateNow | minus: myDate &#37;&#125;</pre> 
     <p>Taking a presumed value of <em>dateDiff</em> being <strong>5.02:39:20.2500250</strong>,
-        we can format the date value of {{dateDiff}} with the following switches:</p>
+        we can format the date value of <code>{% raw %}{{dateDiff}}{% endraw %}</code> with the following switches:</p>
     <table
     width="100%" class="data-bordered">
         <tbody>
@@ -444,7 +437,7 @@
   </table>
         <p>To output <strong>5-3-13</strong> use <strong>{{dateDiff | date: "%d'-'%h'-'%m"}}</strong> (mind
             the double quotes).</p>
-        <p>To output <strong>Result : d05-h03-m18</strong> use <strong>{{dateDiff | date:"'Result : '\ddd'-'\hhh'-'\mmm"}}</strong>
+        <p>To output <strong>Result : d05-h03-m18 use <code>{% raw %}{{dateDiff | date:"'Result : '\ddd'-'\hhh'-'\mmm"}}{% endraw %}</code>
         </p>
 </div>
 <div type="cs-pod">
@@ -455,13 +448,13 @@
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}convert{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - {{3 | convert: "string" | json}} outputs "3"</li> <li><strong>number</strong> - {{"3" | convert: "number" | json}} outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - {{"false" | convert: "string" | json}}outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - {{"2015-01-07" | convert: "date"}} outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> <li><strong>currency</strong> {{100 | convert: "currency"}} outputs "100 USD" assuming the site's "Country code" is set to US.</li> </ul></span>
+                    <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{3 | convert: "string" | json}}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{"3" | convert: "number" | json}}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{"false" | convert: "string" | json}}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{"2015-01-07" | convert: "date"}}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> <li><strong>currency</strong> <code>{% raw %}{{100 | convert: "currency"}}{% endraw %}</code> outputs "100 USD" assuming the site's "Country code" is set to US.</li> </ul></span>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}json{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>{% raw %}&amp;#123;&amp;#123;webapp1.items[0] | json&amp;#125;&amp;#125;{% endraw %}</code>              looks like:                          <pre class="language-javascript">&lt;code&gt;{
+                    <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>{% raw %}&#123;&#123;webapp1.items[0] | json&#125;&#125;{% endraw %}</code>              looks like:                          <pre class="language-javascript"><code>{
  "itemid":"4646524",
  "name":"ABA",
  "urlWithHost":"http://abcd.com/car/ABA",
@@ -475,7 +468,7 @@
  "Color":"red",
  "Country":"",
  "Review":"no review just yet"
-}</pre> <p class="chx">Do note you need to make the webapp listing available in a collection before you can access the items in JSON format.</p></span>
+}</code></pre> <p class="chx">Do note you need to make the webapp listing available in a collection before you can access the items in JSON format.</p></span>
                     </td>
                 </tr>
                 <tr>

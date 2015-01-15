@@ -32,8 +32,8 @@ Layouts are simple HTML files contained in the file system of your site. The def
 
 
 <pre class="language-markup"><code>{% raw %}&lt;div class=&quot;announcement-list&quot;&gt;   
-	&lt;h1&gt;&amp;#123;tag_subject&amp;#125;&amp;#123;tag_eventfromdate&amp;#125;&amp;#37;&amp;#125;&lt;/h1&gt;      
-	&lt;p&gt;&amp;#123;tag_body, 100&amp;#125;&lt;/p&gt;  
+	&lt;h1&gt;&#123;tag_subject&#125;&#123;tag_eventfromdate&#125;&#37;&#125;&lt;/h1&gt;      
+	&lt;p&gt;&#123;tag_body, 100&#125;&lt;/p&gt;  
 &lt;/div&gt;{% endraw %}</code></pre>
 
 As you can see, Tags render specific data for each item. For example, `&#123;tag_subject` outputs the subject of the current New items. This list template would be looped through for each News item that exists. 

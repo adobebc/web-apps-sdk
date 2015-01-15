@@ -129,12 +129,12 @@
 <table width="100%" class="data-bordered">
     <tbody>
         <tr>
-            <td valign="top" class="cellrowborder"><code>site_date</code></td>
+            <td valign="top" class="cellrowborder"><code>date</code></td>
             <td><span class="cellcontent">&#123;&#123;globals.site.dateNow | date&#125;&#125; outputs &quot;09-Jan-2015&quot;</td>
 
         </tr>
         <tr>
-            <td valign="top" class="cellrowborder"><code>site_datetime</code></td>
+            <td valign="top" class="cellrowborder"><code>datetime</code></td>
             <td><span class="cellcontent">&#123;&#123;globals.site.dateNow | datetime&#125;&#125; outputs &quot;09-Jan-2015 02:46 PM&quot;</td>
 
         </tr>
@@ -222,7 +222,7 @@
 
 </div>
 <div type="cs-pod">
-<h2 id="other-filters">Other Filters</h2>
+<h2 id="other-filters">Converting from one dataType to another</h2>
 <div class="filters other">
 <table width="100%" class="data-bordered">
 <tbody>
@@ -235,9 +235,16 @@
           <li><strong>boolean</strong> - &#123;&#123;&quot;false&quot; | convert: &quot;string&quot; | json&#125;&#125;outputs &quot;false&quot; (it is treated as a boolean variable)</li>
           <li><strong>date</strong> - &#123;&#123;&quot;2015-01-07&quot; | convert: &quot;date&quot;&#125;&#125; outputs <em>2015-01-07T00:00:00</em> in dateTime format<br>
           </li>
-          <li><strong>currency</strong> &#123;&#123;100 | convert: "currency"&#125;&#125; outputs &quot;100 USD&quot; assuming the site's &quot;Country code&quot; is set to US.</li>
           </ul></span></td>
         </tr>
+        </tbody></table>
+        </div>
+</div>
+<div type="cs-pod">
+<h2 id="other-filters">Other Filters</h2>
+<div class="filters other">
+<table width="100%" class="data-bordered">
+<tbody>
 <tr>
             <td valign="top" class="cellrowborder"><code>json</code></td>
             <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using - 
@@ -264,6 +271,13 @@
         <tr>
             <td valign="top" class="cellrowborder"><code>size</code></td>
           <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>currency</code></td>
+          <td><span class="cellcontent">This data type is used to add the site's currency to an ammount.<br/><br/>A site may have different currencies, one for each domain added into the Site
+            Domains panel. For example your site may have two domains, one for US and one for
+            UK. In this case on the US domain <code>&#123;&#123;salePrice | currency&#125;&#125;</code> will output <em>$100.00</em> and on the UK domain will output <em>£100.00</em>.<br/><br/>Similarly any number assigned the convert filter will add the site's Country currency: <code>&#123;&#123;2 | currency&#125;&#125;</code> will
+            output $2.00 on the US domain.</td>
         </tr>
         </tbody></table>
         </div>

@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_favorites render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; filter=&quot;item(individual)|all&quot; itemType=&quot;7&quot; itemId=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_favorites render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; filter=&quot;item(individual)|all&quot; itemType=&quot;7&quot; itemId=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -42,15 +42,15 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_favorites< itemType=&quot;35&quot; itemID=&quot;24325&quot;&#123;</code> - displays the webapp items contained by the webapp with the ID 24325 that have been added as "favorites" by the currently logged in user. The items are displayed using their "List" layout.</li>
-    <li><code>&#123;module_favorites filter=&quot;all&quot;&#123;</code> - displays all the items (regardless of the item type) added marked as favorite by the logged in user. The items are displayed using their "List" layout.</li>
+    <li><code>{% raw %}&#123;module_favorites< itemType=&quot;35&quot; itemID=&quot;24325&quot;&#123;{% endraw %}</code> - displays the webapp items contained by the webapp with the ID 24325 that have been added as "favorites" by the currently logged in user. The items are displayed using their "List" layout.</li>
+    <li><code>{% raw %}&#123;module_favorites filter=&quot;all&quot;&#123;{% endraw %}</code> - displays all the items (regardless of the item type) added marked as favorite by the logged in user. The items are displayed using their "List" layout.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_favorites,filter,itemType,itemId&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_favorites,filter,itemType,itemId&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -79,8 +79,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_favorites,35,24325&#125;</code> - displays the webapp items contained by the webapp with the ID <code>24325</code>that have been added as "favorites" by the currently logged in user. The items are displayed using their "List" layout.</li>
-    <li><code>&#123;module_favorites,a&#125;</code> - displays all the items (regardless of the item type) added marked as favorite by the logged in user. The items are displayed using their "List" layout.</li>
+    <li><code>{% raw %}&#123;module_favorites,35,24325&#125;{% endraw %}</code> - displays the webapp items contained by the webapp with the ID <code>{% raw %}24325{% endraw %}</code>that have been added as "favorites" by the currently logged in user. The items are displayed using their "List" layout.</li>
+    <li><code>{% raw %}&#123;module_favorites,a&#125;{% endraw %}</code> - displays all the items (regardless of the item type) added marked as favorite by the logged in user. The items are displayed using their "List" layout.</li>
 </ul>
 </div>
 </div>

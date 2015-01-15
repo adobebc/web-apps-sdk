@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_literature render=&quot;item|collection&quot; filter="item" itemid="literature-item-Id or classificationId" targetFrame="blank" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_literature render=&quot;item|collection&quot; filter="item" itemid="literature-item-Id or classificationId" targetFrame="blank" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -57,34 +57,34 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td class="description">&#123;<code>tag_button,Your Text&#125;</code> replace Your Text with your own text, e.g. <em>Click for more information</em></td>
+         <td class="description">&#123;<code>{% raw %}tag_button,Your Text&#125;{% endraw %}</code> replace Your Text with your own text, e.g. <em>Click for more information</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;counter&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;counter&#125;&#125;{% endraw %}</code></td>
          <td class="description">Incremental count of the literature on the page</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;description&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
          <td class="description">Description of literature</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
          <td class="description">Expiry date of literature</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;fileSize&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;fileSize&#125;&#125;{% endraw %}</code></td>
          <td class="description">File size of the literature in KB</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;iconUrl&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;iconUrl&#125;&#125;{% endraw %}</code></td>
          <td class="description">Icon representing the file type of the literature (16x16 pixels)</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
          <td class="description">Last update date of literature</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
          <td class="description">Literature name (will not have hyperlink)</td>
         </tr>
         <tr>
@@ -92,7 +92,7 @@
          <td class="description">Literature name (will have hyperlink)</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;releaseDate&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
          <td class="description">Release date of literature</td>
         </tr>
         <tr>
@@ -105,18 +105,18 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_literature filter=&quot;item&quot; itemid=&quot;823&quot; targetFrame=&quot;_blank&quot;&#125;</code> - This will display the link to individual literature item which when clicked will open in the new window</li>
-    <li><code>&#123;module_literature filter=&quot;a&quot; targetFrame=&quot;_blank&quot;&#125;</code> - This module will display links to all literature items which when clicked will open in the new window</li>
-    <li><code>&#123;module_literature filter=&quot;latest&quot;&#125;</code> - This module will display the latest items (default is 10 items)</li>
-    <li><code>&#123;module_literature filter=&quot;random&quot;&#125;</code> - This module will display 1 random literature item</li>
-    <li><code>&#123;module_literature filter=&quot;cr&quot; itemid=&quot;14606&quot;&#125;</code> - This module will display 1 random literature item, from the category called "Company", identified through id 14606</li><li><code>&#123;module_literature filter=&quot;item&quot; itemid=&quot;823&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_literature filter=&quot;item&quot; itemid=&quot;823&quot; targetFrame=&quot;_blank&quot;&#125;{% endraw %}</code> - This will display the link to individual literature item which when clicked will open in the new window</li>
+    <li><code>{% raw %}&#123;module_literature filter=&quot;a&quot; targetFrame=&quot;_blank&quot;&#125;{% endraw %}</code> - This module will display links to all literature items which when clicked will open in the new window</li>
+    <li><code>{% raw %}&#123;module_literature filter=&quot;latest&quot;&#125;{% endraw %}</code> - This module will display the latest items (default is 10 items)</li>
+    <li><code>{% raw %}&#123;module_literature filter=&quot;random&quot;&#125;{% endraw %}</code> - This module will display 1 random literature item</li>
+    <li><code>{% raw %}&#123;module_literature filter=&quot;cr&quot; itemid=&quot;14606&quot;&#125;{% endraw %}</code> - This module will display 1 random literature item, from the category called "Company", identified through id 14606</li><li><code>{% raw %}&#123;module_literature filter=&quot;item&quot; itemid=&quot;823&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_literature,filter,id,targetFrame&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_literature,filter,id,targetFrame&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -146,11 +146,11 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_literature,i,823,_blank&#125;</code> - This will display the link to individual literature item which when clicked will open in the new window</li>
-    <li><code>&#123;module_literature,a,,_blank&#125;</code> - This module will display links to all literature items which when clicked will open in the new window</li>
-    <li><code>&#123;module_literature,l,&#125;</code> - This module will display the latest items (default is 10 items)</li>
-    <li><code>&#123;module_literature,r,&#125;</code> - This module will display 1 random literature item</li>
-    <li><code>&#123;module_literature,cr,14606,&#125;</code> - This module will display 1 random literature item, from the category called "Company", identified through id 14606</li>
+    <li><code>{% raw %}&#123;module_literature,i,823,_blank&#125;{% endraw %}</code> - This will display the link to individual literature item which when clicked will open in the new window</li>
+    <li><code>{% raw %}&#123;module_literature,a,,_blank&#125;{% endraw %}</code> - This module will display links to all literature items which when clicked will open in the new window</li>
+    <li><code>{% raw %}&#123;module_literature,l,&#125;{% endraw %}</code> - This module will display the latest items (default is 10 items)</li>
+    <li><code>{% raw %}&#123;module_literature,r,&#125;{% endraw %}</code> - This module will display 1 random literature item</li>
+    <li><code>{% raw %}&#123;module_literature,cr,14606,&#125;{% endraw %}</code> - This module will display 1 random literature item, from the category called "Company", identified through id 14606</li>
 </ul>
 </div>
 </div>

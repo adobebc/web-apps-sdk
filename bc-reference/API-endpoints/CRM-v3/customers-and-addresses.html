@@ -9,7 +9,7 @@
 <h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
@@ -28,12 +28,12 @@
 <p>The list of addresses in JSON format.</p>
 
 <ul>
-<li><code>addressId</code> - the id of the address <em>(integer)</em></li>
+<li><code>{% raw %}addressId{% endraw %}</code> - the id of the address <em>(integer)</em></li>
 
 
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>customerId</code> - the id of the CRM record<em> (integer)</em></li>
-<li><code>addressTypeId</code> -the ID of the address type <em>(integer)</em>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerId{% endraw %}</code> - the id of the CRM record<em> (integer)</em></li>
+<li><code>{% raw %}addressTypeId{% endraw %}</code> -the ID of the address type <em>(integer)</em>
 <ul>
 <li><strong>1</strong> - Home address</li>
 <li><strong>2</strong> - Work address</li>
@@ -42,32 +42,32 @@
 
 </ul>
 </li>
-<li><code>default</code> - whether this is the record's default address <em>(boolean)</em></li>
-<li><code>address1</code> <em>(string)</em></li>
-<li><code>address2 </code><em>(string)</em></li>
-<li><code>zipCode </code><em>(string)</em></li>
-<li><code>suburb </code><em>(string)</em></li>
-<li><code>countryCode</code> <em>(string)</em><em></em></li>
-<li><code>state</code> <em>(string)</em><em></em></li>
+<li><code>{% raw %}default{% endraw %}</code> - whether this is the record's default address <em>(boolean)</em></li>
+<li><code>{% raw %}address1{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}address2 {% endraw %}</code><em>(string)</em></li>
+<li><code>{% raw %}zipCode {% endraw %}</code><em>(string)</em></li>
+<li><code>{% raw %}suburb {% endraw %}</code><em>(string)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> <em>(string)</em><em></em></li>
+<li><code>{% raw %}state{% endraw %}</code> <em>(string)</em><em></em></li>
 
 </ul>
-<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /webresources/api/v3/sites/current/customers/7051740/addresses HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/customers/7051740/addresses HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
       "id": 2466330,
@@ -101,12 +101,12 @@ Content-Type: application/json
   "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -126,6 +126,6 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre></div>
+}){% endraw %}</code></pre></div>
 <hr>
 </div>

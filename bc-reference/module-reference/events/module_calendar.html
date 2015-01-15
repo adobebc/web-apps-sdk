@@ -15,7 +15,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_calendar render="collection" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; eventType="all/news/events" filter="all/classified" classificationId="classificationId" notemplate="false" targetFrame="_blank"&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_calendar render="collection" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; eventType="all/news/events" filter="all/classified" classificationId="classificationId" notemplate="false" targetFrame="_blank"&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -53,7 +53,7 @@
     </li>
     <li><strong>using Liquid collections</strong> - the output is a Liquid collection containing the days :    <br>
       <br>
-      <pre class="language-javascript"><code>"my_custom_collection_name": {
+      <pre class="language-javascript"><code>{% raw %}"my_custom_collection_name": {
       "moduleName": "calendar",
       "moduleDescriptor": {
  	      "templatePath": "",
@@ -80,20 +80,20 @@
 	    	  "url": "/BookingRetrieve.aspx?ID=20460"
     	  }
       ]
-}</code></pre></li>
+}{% endraw %}</code></pre></li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><pre class="language-markup"><code>&#123;module_calendar eventType="all" filter="all" notemplate="false" targetFrame="_blank"&#125;</code></pre> - displays all the news and announcement items on the calendar view and opens the detail view in a new window when clicked</li>    <li><pre class="language-markup"><code>&#123;module_calendar eventType="news" filter="classified" classificationId="12345" notemplate="false" targetFrame="_blank"&#125;</code></pre> - displays the news item classified in the category with the ID 12345 and opens the detail view in the same window when clicked</li>
+    <li><pre class="language-markup"><code>{% raw %}&#123;module_calendar eventType="all" filter="all" notemplate="false" targetFrame="_blank"&#125;{% endraw %}</code></pre> - displays all the news and announcement items on the calendar view and opens the detail view in a new window when clicked</li>    <li><pre class="language-markup"><code>{% raw %}&#123;module_calendar eventType="news" filter="classified" classificationId="12345" notemplate="false" targetFrame="_blank"&#125;{% endraw %}</code></pre> - displays the news item classified in the category with the ID 12345 and opens the detail view in the same window when clicked</li>
 </ul>
 </div>
 </div>
 <div id="legacy">
   <div class="syntax">
 <h2> Syntax</h2>
-<pre class="language-markup"><code>&#123;module_calendar,what,filter,classificationId, notemplate, targetFrame&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_calendar,what,filter,classificationId, notemplate, targetFrame&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2> Parameters</h2>
@@ -132,9 +132,9 @@
 <div class="examples">
 <h2> Examples</h2>
 <ul>
-    <li><code>&#123;module_calendar,7,a,&#125;</code> - displays all the news items on the calendar view</li>
-    <li><code>&#123;module_calendar,48,a,&#125;</code> - displays all the event (booking) items on the calendar view</li>
-    <li><code>&#123;module_calendar,0,a,&#125;</code> - displays both events and news items on the calendar view</li>
+    <li><code>{% raw %}&#123;module_calendar,7,a,&#125;{% endraw %}</code> - displays all the news items on the calendar view</li>
+    <li><code>{% raw %}&#123;module_calendar,48,a,&#125;{% endraw %}</code> - displays all the event (booking) items on the calendar view</li>
+    <li><code>{% raw %}&#123;module_calendar,0,a,&#125;{% endraw %}</code> - displays both events and news items on the calendar view</li>
 </ul>
 </div>
 </div>

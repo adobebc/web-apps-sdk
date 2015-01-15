@@ -26,8 +26,8 @@
 <p>Returns a list of site role objects, with the below fields:</p>
 
 <ul>
-<li><code>id</code> - the role id in the database <em>(integer)</em></li>
-<li><code>name</code> - the user friendly name, to be used as label <em>(string)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - the role id in the database <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the user friendly name, to be used as label <em>(string)</em></li>
 </ul>
 
 
@@ -37,15 +37,15 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/roles HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /api/v2/admin/sites/current/roles HTTPS/1.1
 Connection: keep-alive
 Content-Type: application/json
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>HTTP/1.1 200 OK
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Content-Length: length
 
@@ -71,10 +71,10 @@ Content-Length: length
     "itemsPerPageCount": 1000,
     "currentPage": 1
 }
-</code></pre>
+{% endraw %}</code></pre>
 <hr>
 <h2>Sample code</h2>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites/current/roles",
     type: "GET",
     contentType: "application/json",
@@ -90,15 +90,15 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre><hr>
+}){% endraw %}</code></pre><hr>
 <h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 
 <ul>
-<li><code>200</code> - success</li>
-<li><code>401</code> - when authentication token is incorrect</li>
-<li><code>403</code> - when the user attempting the call does not have the proper permissions</li>
+<li><code>{% raw %}200{% endraw %}</code> - success</li>
+<li><code>{% raw %}401{% endraw %}</code> - when authentication token is incorrect</li>
+<li><code>{% raw %}403{% endraw %}</code> - when the user attempting the call does not have the proper permissions</li>
 </ul>
 
         

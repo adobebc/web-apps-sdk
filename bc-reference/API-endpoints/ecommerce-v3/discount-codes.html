@@ -7,7 +7,7 @@
 
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
@@ -28,24 +28,24 @@
 <p>An array of the first 10 discount codes; each object has the following properties:</p>
 
 <ul>
-<li><code>id</code> - the id of the discount code <em>(integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>discountType</code> - the type of the discount code <em>(integer)</em>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the discount code <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}discountType{% endraw %}</code> - the type of the discount code <em>(integer)</em>
   <ul>
 <li><strong>1</strong> - Percentage of Order</li>
 <li><strong>2</strong> - Fixed Dollar Amount</li>
 <li><strong>3</strong> - Free Shipping</li>
 </ul>
 </li>
-<li><code>code</code> - the discount code's code<em>(string)</em></li>
-<li><code>description</code> - the discount code's description <em>(string)</em></li>
-<li><code>discountPercentageOrFixedAmount</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
-<li><code>discountThreshold</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
-<li><code>expireAfterXUses</code> - the number of uses the discount code expires after <em>(string)</em></li>
-<li><code>releaseDate</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
+<li><code>{% raw %}code{% endraw %}</code> - the discount code's code<em>(string)</em></li>
+<li><code>{% raw %}description{% endraw %}</code> - the discount code's description <em>(string)</em></li>
+<li><code>{% raw %}discountPercentageOrFixedAmount{% endraw %}</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
+<li><code>{% raw %}discountThreshold{% endraw %}</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
+<li><code>{% raw %}expireAfterXUses{% endraw %}</code> - the number of uses the discount code expires after <em>(string)</em></li>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
 </li>
-<li><code>expiryDate</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>enabled</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 
 
@@ -55,7 +55,7 @@
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -75,9 +75,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
       "id": 264,
@@ -109,7 +109,7 @@ request.fail(function (jqXHR) {
   "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -120,7 +120,7 @@ request.fail(function (jqXHR) {
 
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
@@ -140,31 +140,31 @@ request.fail(function (jqXHR) {
 
 <p>Displays the details for the discount code as a JSON object</p>
 <ul>
-<li><code>id</code> - the id of the discount code <em>(integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>discountType</code> - the type of the discount code <em>(integer)</em>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the discount code <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}discountType{% endraw %}</code> - the type of the discount code <em>(integer)</em>
   <ul>
 <li><strong>1</strong> - Percentage of Order</li>
 <li><strong>2</strong> - Fixed Dollar Amount</li>
 <li><strong>3</strong> - Free Shipping</li>
 </ul>
 </li>
-<li><code>code</code> - the discount code's code<em>(string)</em></li>
-<li><code>description</code> - the discount code's description <em>(string)</em></li>
-<li><code>discountPercentageOrFixedAmount</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
-<li><code>discountThreshold</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
-<li><code>expireAfterXUses</code> - the number of uses the discount code expires after <em>(string)</em></li>
-<li><code>releaseDate</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
+<li><code>{% raw %}code{% endraw %}</code> - the discount code's code<em>(string)</em></li>
+<li><code>{% raw %}description{% endraw %}</code> - the discount code's description <em>(string)</em></li>
+<li><code>{% raw %}discountPercentageOrFixedAmount{% endraw %}</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
+<li><code>{% raw %}discountThreshold{% endraw %}</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
+<li><code>{% raw %}expireAfterXUses{% endraw %}</code> - the number of uses the discount code expires after <em>(string)</em></li>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
 </li>
-<li><code>expiryDate</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>enabled</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -184,9 +184,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "id": 322,
   "siteId": 146985,
   "discountType": 2,
@@ -198,7 +198,7 @@ request.fail(function (jqXHR) {
   "releaseDate": "2011-03-03T23:00:00",
   "expiryDate": "9998-12-31T15:00:00",
   "enabled": true
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -230,28 +230,28 @@ request.fail(function (jqXHR) {
 <p>The response should be &quot;201 created&quot; if the discount code was successfully created.</p>
 <p>Here are the parameters you can use when creating a discount code:</p>
 <ul>
-<li><code>discountType</code> - the type of the discount code <em>(integer)</em>
+<li><code>{% raw %}discountType{% endraw %}</code> - the type of the discount code <em>(integer)</em>
   <ul>
   <li><strong>1</strong> - Percentage of Order</li>
   <li><strong>2</strong> - Fixed Dollar Amount</li>
   <li><strong>3</strong> - Free Shipping</li>
   </ul>
 </li>
-<li><code>code</code> - the discount code's code<em>(string)</em></li>
-<li><code>description</code> - the discount code's description <em>(string)</em></li>
-<li><code>discountPercentageOrFixedAmount</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
-<li><code>discountThreshold</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
-<li><code>expireAfterXUses</code> - the number of uses the discount code expires after <em>(string)</em></li>
-<li><code>releaseDate</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
+<li><code>{% raw %}code{% endraw %}</code> - the discount code's code<em>(string)</em></li>
+<li><code>{% raw %}description{% endraw %}</code> - the discount code's description <em>(string)</em></li>
+<li><code>{% raw %}discountPercentageOrFixedAmount{% endraw %}</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
+<li><code>{% raw %}discountThreshold{% endraw %}</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
+<li><code>{% raw %}expireAfterXUses{% endraw %}</code> - the number of uses the discount code expires after <em>(string)</em></li>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
 </li>
-<li><code>expiryDate</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>enabled</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -272,7 +272,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <hr>
 </div>
 </div>
@@ -307,28 +307,28 @@ request.fail(function (jqXHR) {
 
 <p>Here are the parameters you can use when updating a discount code:</p>
 <ul>
-<li><code>discountType</code> - the type of the discount code <em>(integer)</em>
+<li><code>{% raw %}discountType{% endraw %}</code> - the type of the discount code <em>(integer)</em>
   <ul>
   <li><strong>1</strong> - Percentage of Order</li>
   <li><strong>2</strong> - Fixed Dollar Amount</li>
   <li><strong>3</strong> - Free Shipping</li>
   </ul>
 </li>
-<li><code>code</code> - the discount code's code<em>(string)</em></li>
-<li><code>description</code> - the discount code's description <em>(string)</em></li>
-<li><code>discountPercentageOrFixedAmount</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
-<li><code>discountThreshold</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
-<li><code>expireAfterXUses</code> - the number of uses the discount code expires after <em>(string)</em></li>
-<li><code>releaseDate</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
+<li><code>{% raw %}code{% endraw %}</code> - the discount code's code<em>(string)</em></li>
+<li><code>{% raw %}description{% endraw %}</code> - the discount code's description <em>(string)</em></li>
+<li><code>{% raw %}discountPercentageOrFixedAmount{% endraw %}</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
+<li><code>{% raw %}discountThreshold{% endraw %}</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
+<li><code>{% raw %}expireAfterXUses{% endraw %}</code> - the number of uses the discount code expires after <em>(string)</em></li>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
 </li>
-<li><code>expiryDate</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>enabled</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -349,7 +349,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -388,7 +388,7 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -407,7 +407,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>

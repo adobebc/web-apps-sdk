@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_subscriptions render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; showExpiry="true|false" showPrice="true|false" allowCancel="false|true" renderAsJson="false|true"&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_subscriptions render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; showExpiry="true|false" showPrice="true|false" allowCancel="false|true" renderAsJson="false|true"&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -43,20 +43,20 @@
 </thead>
     <tbody>
     <tr>
-         <td valign="top" class="liquid tag"><code>&#123;&#123;entityId&#125;&#125;</code></td>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;entityId&#125;&#125;{% endraw %}</code></td>
          <td class="description">The CRM record's ID</td></tr><tr>
-         <td valign="top" class="liquid tag"><code>&#123;&#123;zoneId&#125;&#125;</code></td>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;zoneId&#125;&#125;{% endraw %}</code></td>
          <td class="description">The secure zone's ID</td></tr><tr>
-           <td valign="top" class="liquid tag"><code>&#123;&#123;zoneName&#125;&#125;</code></td>
+           <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;zoneName&#125;&#125;{% endraw %}</code></td>
          <td class="description">The secure zone's name</td></tr><tr>
-           <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
+           <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
          <td class="description">The date access expires</td></tr><tr>
-           <td valign="top" class="liquid tag"><code>&#123;&#123;sellAccess&#125;&#125;</code></td>
+           <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;sellAccess&#125;&#125;{% endraw %}</code></td>
          <td class="description">Whether this is a paid or free secure zone</td></tr><tr>
-           <td valign="top" class="liquid tag"><code>&#123;&#123;costPeriod&#125;&#125;</code></td>
+           <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;costPeriod&#125;&#125;{% endraw %}</code></td>
          <td class="description">The amount charged for the access</td></tr>
          <tr>
-           <td valign="top" class="liquid tag"><code>&#123;&#123;cycleType&#125;&#125;</code></td>
+           <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;cycleType&#125;&#125;{% endraw %}</code></td>
          <td class="description">The charge period. Possible values:<ul>
            <li>Once</li>
            <li>Daily</li>
@@ -78,7 +78,7 @@
 &#123;module_subscriptions&#125; - renders
 <br/>
 <pre class="language-markup">
-<code>&lt;ul class=&quot;zoneSubscriptions&quot;&gt;
+<code>{% raw %}&lt;ul class=&quot;zoneSubscriptions&quot;&gt;
     &lt;li&gt;
         &lt;ul&gt;
             &lt;li class=&quot;zoneName&quot;&gt;
@@ -104,7 +104,7 @@
         &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
-</code>
+{% endraw %}</code>
 </pre>
 </li>
 </li>
@@ -112,7 +112,7 @@
 &#123;module_subscriptions showExpiry="true" showPrice="true" renderAsJson="true"&#125; - renders
 <br/>
 <pre class="language-javascript">
-<code>
+<code>{% raw %}
 "{  
    "SecureZoneSubscriptionList":{  
       "EntityId":9532870,
@@ -161,14 +161,14 @@
       ]
    }
 }
-</code>
+{% endraw %}</code>
 </pre>
 </li>
 <li>
 &#123;module_subscriptions showExpiry="true" showPrice="true" allowCancel="true"&#125; - renders
 <br/>
 <pre class="language-markup">
-<code>
+<code>{% raw %}
 &lt;ul class=&quot;zoneSubscriptions&quot;&gt;
     &lt;li&gt;
         &lt;ul&gt;
@@ -200,7 +200,7 @@
         &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
-</code>
+{% endraw %}</code>
 </pre>
 </li>
 </ul>
@@ -209,7 +209,7 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_subscriptions,show_expiry,show_prices,show_cancel_link,render_json&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_subscriptions,show_expiry,show_prices,show_cancel_link,render_json&#125;{% endraw %}</code></pre>
 </div>
 <h2>Parameters</h2>
 <ul>
@@ -225,7 +225,7 @@
 &#123;module_subscriptions&#125; - renders
 <br/>
 <pre class="language-markup">
-<code>&lt;ul class=&quot;zoneSubscriptions&quot;&gt;
+<code>{% raw %}&lt;ul class=&quot;zoneSubscriptions&quot;&gt;
     &lt;li&gt;
         &lt;ul&gt;
             &lt;li class=&quot;zoneName&quot;&gt;
@@ -251,7 +251,7 @@
         &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
-</code>
+{% endraw %}</code>
 </pre>
 </li>
 </li>
@@ -259,7 +259,7 @@
 &#123;module_subscriptions,true,true,,true&#125; - renders
 <br/>
 <pre class="language-javascript">
-<code>
+<code>{% raw %}
 "SecureZoneSubscriptionList": {
     "EntityId": 11723915,
     "Subscriptions": [{
@@ -289,14 +289,14 @@
             4871 ", "
             ZoneName " : "
             test secure zone 2 " } ] } }
-</code>
+{% endraw %}</code>
 </pre>
 </li>
 <li>
 &#123;module_subscriptions,true,true,true&#125; - renders
 <br/>
 <pre class="language-markup">
-<code>
+<code>{% raw %}
 &lt;ul class=&quot;zoneSubscriptions&quot;&gt;
     &lt;li&gt;
         &lt;ul&gt;
@@ -328,7 +328,7 @@
         &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
-</code>
+{% endraw %}</code>
 </pre>
 </li>
 </ul>

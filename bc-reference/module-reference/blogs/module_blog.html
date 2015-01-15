@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_blog render="item|collection" filter=&quot;item&quot; itemId=&quot;1&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_blog render="item|collection" filter=&quot;item&quot; itemId=&quot;1&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -54,49 +54,49 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;title&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_blogtitle&#125;</code></td><td class="description">Name of the blog (with a link to the blog)</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;title&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogtitle&#125;{% endraw %}</code></td><td class="description">Name of the blog (with a link to the blog)</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_blogtitle_nolink&#125;</code></td><td class="description">Name of the blog (without a link)</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogtitle_nolink&#125;{% endraw %}</code></td><td class="description">Name of the blog (without a link)</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;counter&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_counter&#125;</code></td><td class="description">Incremental count of the item on the page</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;counter&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_counter&#125;{% endraw %}</code></td><td class="description">Incremental count of the item on the page</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;description&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_description&#125;</code></td><td class="description">Description of the blog</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_description&#125;{% endraw %}</code></td><td class="description">Description of the blog</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_expirydate&#125;</code></td><td class="description">Expiry date of blog in this format: "9999-01-01"</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_expirydate&#125;{% endraw %}</code></td><td class="description">Expiry date of blog in this format: "9999-01-01"</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastPostDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_lastpostdate&#125;</code></td><td class="description">Last post date of blog</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastPostDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastpostdate&#125;{% endraw %}</code></td><td class="description">Last post date of blog</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_lastupdatedate&#125;</code></td><td class="description">Last update date of blog</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td><td class="description">Last update date of blog</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;releaseDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_releasedate&#125;</code></td><td class="description">Release date of blog in this format - "2014-08-02"</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_releasedate&#125;{% endraw %}</code></td><td class="description">Release date of blog in this format - "2014-08-02"</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;totalPosts&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_totalposts&#125;</code></td><td class="description">Total number of the posts in blog</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalPosts&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalposts&#125;{% endraw %}</code></td><td class="description">Total number of the posts in blog</td>
         </tr>
          <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;url_withhost&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_itemurl_withhost&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;url_withhost&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemurl_withhost&#125;{% endraw %}</code></td>
             <td class="description">URL to the item referred, with host</td>
         </tr>
          <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_itemurl_nolink&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemurl_nolink&#125;{% endraw %}</code></td>
             <td class="description">URL to the item referred, without host</td>
         </tr>
     </tbody>
@@ -106,19 +106,19 @@
 <h2>Examples</h2>
 <ul>
     <li>
-    <code>&#123;module_blog filter=&quot;item&quot; itemId=&quot;419&quot;&#125;</code> - will display the individual blog with ID of 419
+    <code>{% raw %}&#123;module_blog filter=&quot;item&quot; itemId=&quot;419&quot;&#125;{% endraw %}</code> - will display the individual blog with ID of 419
     </li>
      <li>
-    <code>&#123;module_blog filter=&quot;item&quot; itemId=&quot;419&quot; template=&quot;/layouts/template.tpl&quot;&#125;</code> - will display the individual blog with ID of 419
+    <code>{% raw %}&#123;module_blog filter=&quot;item&quot; itemId=&quot;419&quot; template=&quot;/layouts/template.tpl&quot;&#125;{% endraw %}</code> - will display the individual blog with ID of 419
     using the template.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
-    <li><code> &#123;module_blog itemId=&quot;419&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %} &#123;module_blog itemId=&quot;419&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_blog,filter,ID&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_blog,filter,ID&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -148,7 +148,7 @@
 <h2>Examples</h2>
 <ul>
     <li>
-    <code>&#123;module_blog,i,419&#125;</code> - will display the individual blog with ID of 419
+    <code>{% raw %}&#123;module_blog,i,419&#125;{% endraw %}</code> - will display the individual blog with ID of 419
     </li>
 </ul>
 </div>

@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_forumsitesummary render=&quot;items|collection&quot; rowCount=&quot;5&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_forumsitesummary render=&quot;items|collection&quot; rowCount=&quot;5&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -29,7 +29,7 @@
     <li>a generic un-ordered list format, as this module does not use a layout. See the example below.</li><br>
 <a class="fancybox" href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1458.png"><img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/forum_sitesummary.jpg?Action=thumbnail&amp;Width=300&amp;algorithm=fill"/></a>
 <li><strong> Liquid collections</strong> - the output is a Liquid collection containing the entries:</li>
-</ul><pre class="language-javascript"><code> "my_custom_collection_name": {
+</ul><pre class="language-javascript"><code>{% raw %} "my_custom_collection_name": {
     "moduleName": "forumsitesummary",
     "moduleDescriptor": {
       "templatePath": "",
@@ -61,12 +61,12 @@
         "alias": "john smith",
         "date": "09-Sep-2014 04:05 PM"
       }
-    ]</code></pre>
+    ]{% endraw %}</code></pre>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_forumsitesummary rowCount=&quot;10&quot;&#125;</code> - displays the latest 10 posts across all forums in this format: <br />
+    <li><code>{% raw %}&#123;module_forumsitesummary rowCount=&quot;10&quot;&#125;{% endraw %}</code> - displays the latest 10 posts across all forums in this format: <br />
     <img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1120.png"/></li>
 </ul>
 </div>
@@ -74,7 +74,7 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_forumsitesummary,numberOfPosts&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_forumsitesummary,numberOfPosts&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -91,7 +91,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_forumsitesummary,10&#125;</code> - displays the latest 10 posts across all forums in this format: <br />
+    <li><code>{% raw %}&#123;module_forumsitesummary,10&#125;{% endraw %}</code> - displays the latest 10 posts across all forums in this format: <br />
     <img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1120.png"/></li>
 </ul>
 </div>

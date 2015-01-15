@@ -15,54 +15,54 @@
 <h4>Parameters</h4>
 
 <ul>
-<li><code>siteId</code> - ID of the site <em>(integer)</em></li>
-<li><code>username</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
-<li><code>password</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
-<li><code>caseId</code> - <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - ID of the site <em>(integer)</em></li>
+<li><code>{% raw %}username{% endraw %}</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
+<li><code>{% raw %}password{% endraw %}</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
+<li><code>{% raw %}caseId{% endraw %}</code> - <em>(integer)</em></li>
 </ul>
 
-<p>To use a site token instead of username/password, send an empty <code>username</code> field and the site token as the <code>password</code>. See example below.</p>
+<p>To use a site token instead of username/password, send an empty <code>{% raw %}username{% endraw %}</code> field and the site token as the <code>{% raw %}password{% endraw %}</code>. See example below.</p>
 
 <h2>Response</h2>
 
 <p>A Case_RetrieveResponse object with the following properties:</p>
 
 <ul>
-<li><code>Case_RetrieveResult</code> - <em>(object)</em>
+<li><code>{% raw %}Case_RetrieveResult{% endraw %}</code> - <em>(object)</em>
 
 <ul>
-<li><code>entityId</code> - <em>(integer)</em></li>
-<li><code>caseId</code> - <em>(integer)</em></li>
-<li><code>assignedTo</code> - <em>(integer)</em></li>
-<li><code>caseSubject</code> - <em>(string)</em></li>
-<li><code>createDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
-<li><code>lastUpdateDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
-<li><code>messageThreads</code>- <em>(object)</em>
+<li><code>{% raw %}entityId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}caseId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}assignedTo{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}caseSubject{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
+<li><code>{% raw %}messageThreads{% endraw %}</code>- <em>(object)</em>
 
 <ul>
-<li><code>message</code> - <em>(string)</em></li>
-<li><code>createDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
-<li><code>objectId</code> - <em>(integer)</em></li>
-<li><code>objectType</code> - <em>(integer)</em></li>
-<li><code>isInternal</code> - <em>(boolean)</em></li>
-<li><code>entityId</code> - <em>(integer)</em></li>
+<li><code>{% raw %}message{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
+<li><code>{% raw %}objectId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}objectType{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}isInternal{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}entityId{% endraw %}</code> - <em>(integer)</em></li>
 </ul></li>
-<li><code>crmForms</code> - <em>(object)</em>
+<li><code>{% raw %}crmForms{% endraw %}</code> - <em>(object)</em>
 
 <ul>
-<li><code>formId</code> - <em>(integer)</em></li>
-<li><code>formName</code> - <em>(string)</em></li>
-<li><code>crmFormFields</code></li>
+<li><code>{% raw %}formId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}formName{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}crmFormFields{% endraw %}</code></li>
 </ul></li>
-<li><code>fileList</code> - <em>(object)</em>
+<li><code>{% raw %}fileList{% endraw %}</code> - <em>(object)</em>
 
 <ul>
-<li><code>Files</code> - <em>(object)</em>
+<li><code>{% raw %}Files{% endraw %}</code> - <em>(object)</em>
 
 <ul>
-<li><code>fileId</code> - <em>(integer)</em></li>
-<li><code>fileName</code> - <em>(string)</em></li>
-<li><code>fileSize</code> - <em>(long)</em>    </li>
+<li><code>{% raw %}fileId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}fileName{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}fileSize{% endraw %}</code> - <em>(long)</em>    </li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -76,7 +76,7 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-markup"><code>POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
+<pre class="language-markup"><code>{% raw %}POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
 Host: worldsecuresystems.com
 Content-Type: application/soap+xml; charset=utf-8
 Content-Length: length
@@ -92,11 +92,11 @@ Content-Length: length
     &lt;/Case_Retrieve&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-markup"><code>HTTP/1.1 200 OK
+<pre class="language-markup"><code>{% raw %}HTTP/1.1 200 OK
 Content-Type: application/soap+xml; charset=utf-8
 Content-Length: length
 
@@ -182,6 +182,6 @@ Content-Length: length
     &lt;/Case_RetrieveResponse&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
-</code></pre>
+{% endraw %}</code></pre>
 
         

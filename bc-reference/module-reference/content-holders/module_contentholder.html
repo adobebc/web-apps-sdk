@@ -10,7 +10,7 @@
   </ul>  <div id="named-params" class="beta">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_contentholder,name="contentholder_name" collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_contentholder,name="contentholder_name" collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -38,15 +38,15 @@
 </thead>
     <tbody>
     <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;id&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;id&#125;&#125;{% endraw %}</code></td>
          <td class="description">The content holder's ID</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
          <td class="description">The content holder's name</td>
         </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>&#123;&#123;content&#125;&#125;</code></td>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;content&#125;&#125;{% endraw %}</code></td>
          <td class="description">The content holder's content</td>
         </tr>
    
@@ -57,21 +57,21 @@
 <h2>Examples</h2>
 <ul>
     <li>
-    <code>&#123;module_contentholder,34234&#125;</code>
+    <code>{% raw %}&#123;module_contentholder,34234&#125;{% endraw %}</code>
     - will display the content holder with the ID 34234</li>
 	<li>
-	<code>&#123;module_contentholder,name="Example"&#125;</code> - renders the Content Holder with name "Example" Where the SFTP file is Example.html
+	<code>{% raw %}&#123;module_contentholder,name="Example"&#125;{% endraw %}</code> - renders the Content Holder with name "Example" Where the SFTP file is Example.html
 	</li>
-	<li><code>&#123;module_contentholder,name="&#123;system_visitordeviceclass&#125;"</code> - depending on the type of the device the site visitor is using it renders the content holder with the names <em>desktop</em>, <em>phone</em> or <em>tablet</em>. See the <a href="http://forums.adobe.com/docs/DOC-1874" target="_blank">Deploying your site across Mobile and Tablet devices</a> document for more details on this setup</li>
-    <li><code>module_contentholder name=&quot;Addresses&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+	<li><code>{% raw %}&#123;module_contentholder,name="&#123;system_visitordeviceclass&#125;"{% endraw %}</code> - depending on the type of the device the site visitor is using it renders the content holder with the names <em>desktop</em>, <em>phone</em> or <em>tablet</em>. See the <a href="http://forums.adobe.com/docs/DOC-1874" target="_blank">Deploying your site across Mobile and Tablet devices</a> document for more details on this setup</li>
+    <li><code>{% raw %}module_contentholder name=&quot;Addresses&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 </div>
 </div><div id="legacy">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_contentholder,ID&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_contentholder,ID&#125;{% endraw %}</code></pre>
 <p>or </p>
-<pre class="language-markup"><code>&#123;module_contentholder,name="contentholder_name"&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_contentholder,name="contentholder_name"&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -87,12 +87,12 @@
 <h2>Examples</h2>
 <ul>
     <li>
-    <code>&#123;module_contentholder,34234&#125;</code>
+    <code>{% raw %}&#123;module_contentholder,34234&#125;{% endraw %}</code>
     - will display the content holder with the ID 34234</li>
 	<li>
-	<code>&#123;module_contentholder,name="Example"&#125;</code> - renders the Content Holder with name "Example" Where the SFTP file is Example.html
+	<code>{% raw %}&#123;module_contentholder,name="Example"&#125;{% endraw %}</code> - renders the Content Holder with name "Example" Where the SFTP file is Example.html
 	</li>
-	<li><code>&#123;module_contentholder,name="&#123;system_visitordeviceclass&#125;"</code> - depending on the type of the device the site visitor is using it renders the content holder with the names <em>desktop</em>, <em>phone</em> or <em>tablet</em>. See the <a href="http://forums.adobe.com/docs/DOC-1874" target="_blank">Deploying your site across Mobile and Tablet devices</a> document for more details on this setup</li>
+	<li><code>{% raw %}&#123;module_contentholder,name="&#123;system_visitordeviceclass&#125;"{% endraw %}</code> - depending on the type of the device the site visitor is using it renders the content holder with the names <em>desktop</em>, <em>phone</em> or <em>tablet</em>. See the <a href="http://forums.adobe.com/docs/DOC-1874" target="_blank">Deploying your site across Mobile and Tablet devices</a> document for more details on this setup</li>
 </ul>
 </div>
 </div>

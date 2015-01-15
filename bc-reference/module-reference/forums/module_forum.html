@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_forum render=&quot;item|collection&quot; filter="item(individual)/all/classified/latestClassified/random/latest/randomClassified" itemid="newsId or classificationId" noTemplate="true" targetFrame=&quot;_self&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_forum render=&quot;item|collection&quot; filter="item(individual)/all/classified/latestClassified/random/latest/randomClassified" itemid="newsId or classificationId" noTemplate="true" targetFrame=&quot;_self&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -53,43 +53,43 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
          <td class="description">Expiry date of the forum</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;description&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
          <td class="description">Description of  the forum</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastPostAuthor&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastPostAuthor&#125;&#125;{% endraw %}</code></td>
          <td class="description">Name (alias) of the person who last posted to the forum</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastPostDate&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastPostDate&#125;&#125;{% endraw %}</code></td>
          <td class="description">Date and time of the last post in the forum</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
          <td class="description">Name of  forum in plain text.</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;totalPosts&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalPosts&#125;&#125;{% endraw %}</code></td>
          <td class="description">Total number of the posts in forum</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;totalTopics&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalTopics&#125;&#125;{% endraw %}</code></td>
          <td class="description">Total number of topics in forum</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;totalViews&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalViews&#125;&#125;{% endraw %}</code></td>
          <td class="description">Total number of times topics of the forum have been viewed</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
          <td class="description">Last update date of the forum by an administrator. The date is in this format - <em>27-Mar-2013</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;releaseDate&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
          <td class="description">Release date of  the forum</td>
         </tr>
     </tbody>
@@ -98,15 +98,15 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_forum filter=&quot;item&quot; itemid=&quot;317&quot; targetFrame=&quot;_blank&quot;&#125;</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
-    <li><code>&#123;module_forum filter=&quot;all&quot;  template="/layouts/custom/individual_forum.tpl"&#125;</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code> &#123;module_forum filter=&quot;item&quot; itemid=&quot;317&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_forum filter=&quot;item&quot; itemid=&quot;317&quot; targetFrame=&quot;_blank&quot;&#125;{% endraw %}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
+    <li><code>{% raw %}&#123;module_forum filter=&quot;all&quot;  template="/layouts/custom/individual_forum.tpl"&#125;{% endraw %}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %} &#123;module_forum filter=&quot;item&quot; itemid=&quot;317&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_forum,filter,ID,targetFrame&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_forum,filter,ID,targetFrame&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -135,8 +135,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_forum,i,317,_blank&#125;</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
-    <li><code>&#123;module_forum,a, template="/layouts/custom/individual_forum.tpl"&#125;</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{% raw %}&#123;module_forum,i,317,_blank&#125;{% endraw %}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
+    <li><code>{% raw %}&#123;module_forum,a, template="/layouts/custom/individual_forum.tpl"&#125;{% endraw %}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 </div>
 </div>

@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_ratingrank render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; imageFolder=&quot;/ratingImages/&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_ratingrank render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; imageFolder=&quot;/ratingImages/&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -52,8 +52,8 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;rating&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_rating&#125;</code></td><td class="description">Rating in stars</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;rating&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_rating&#125;{% endraw %}</code></td><td class="description">Rating in stars</td>
         </tr>
     </tbody>
 </table>
@@ -61,14 +61,14 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_ratingrank imageFolder=&quot;/images/stars&quot;&#125;</code> - displays the rating for the current item using the custom images from the /images</li>
+    <li><code>{% raw %}&#123;module_ratingrank imageFolder=&quot;/images/stars&quot;&#125;{% endraw %}</code> - displays the rating for the current item using the custom images from the /images</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_ratingrank, YourFolderPath&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_ratingrank, YourFolderPath&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -91,7 +91,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_ratingrank,/images/stars&#125;</code> - displays the rating for the current item using the custom images from the /images</li>
+    <li><code>{% raw %}&#123;module_ratingrank,/images/stars&#125;{% endraw %}</code> - displays the rating for the current item using the custom images from the /images</li>
 </ul>
 </div>
 </div>

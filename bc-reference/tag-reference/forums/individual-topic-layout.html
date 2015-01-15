@@ -2,7 +2,7 @@
 <div id="modules">
 <h2>Is used by these modules</h2>
 <p>
-This layout is not used by any modules, instead it is outputted by the <code>&#123;tag_topiclist&#125;</code> tag. For more info on this tag see the <a href="/dev-assets/reference/tag-reference/forums/topics-page.html">topics page layout</a> layout.
+This layout is not used by any modules, instead it is outputted by the <code>{% raw %}&#123;tag_topiclist&#125;{% endraw %}</code> tag. For more info on this tag see the <a href="/dev-assets/reference/tag-reference/forums/topics-page.html">topics page layout</a> layout.
 </p>
 </div>
 <div id="accessible">
@@ -25,43 +25,43 @@ This layout is not used by any modules, instead it is outputted by the <code>&#1
     <tbody>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addtofavorites,add_Image, remove_Image&#125;</code></td><td class="description">Add forum to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - <code>&#123;tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtofavorites,add_Image, remove_Image&#125;{% endraw %}</code></td><td class="description">Add forum to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - <code>{% raw %}&#123;tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;&#125;{% endraw %}</code></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_avatar,placeholderimage,width,height&#125;</code></td><td class="description">Display avatar image used by forum members. Optionally define placeholder image (e.g. <em>/img/avatar.png</em>) and maximum width/height for avatar.</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_avatar,placeholderimage,width,height&#125;{% endraw %}</code></td><td class="description">Display avatar image used by forum members. Optionally define placeholder image (e.g. <em>/img/avatar.png</em>) and maximum width/height for avatar.</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_counter&#125;</code></td><td class="description">Incremental count of the topics on the page</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_counter&#125;{% endraw %}</code></td><td class="description">Incremental count of the topics on the page</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_readstatus&#125;</code></td><td class="description">An icon showing whether the user has previously read the post or not (must be logged in) for example <code>&#123;tag_readstatus,&lt;img src="/img/read.png" /&gt;,&lt;img src="/img/unread.png" /&gt;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_readstatus&#125;{% endraw %}</code></td><td class="description">An icon showing whether the user has previously read the post or not (must be logged in) for example <code>{% raw %}&#123;tag_readstatus,&lt;img src="/img/read.png" /&gt;,&lt;img src="/img/unread.png" /&gt;&#125;{% endraw %}</code></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_topiclastpostauthor&#125;</code></td><td class="description">Name (alias) of the person who last added a comment to the topic</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_topiclastpostauthor&#125;{% endraw %}</code></td><td class="description">Name (alias) of the person who last added a comment to the topic</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_topiclastpostdate&#125;</code></td><td class="description">Date and time of the last post in the topic in <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_topiclastpostdate&#125;{% endraw %}</code></td><td class="description">Date and time of the last post in the topic in <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_topicname&#125;</code></td><td class="description">Name of  topic</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_topicname&#125;{% endraw %}</code></td><td class="description">Name of  topic</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_topicposts&#125;</code></td><td class="description">Total number of the posts in topic</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_topicposts&#125;{% endraw %}</code></td><td class="description">Total number of the posts in topic</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_topicviews&#125;</code></td><td class="description">Total number of times this topic has been viewed</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_topicviews&#125;{% endraw %}</code></td><td class="description">Total number of times this topic has been viewed</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_sticky,stickyImage&#125;</code></td><td class="description">Image indicating the forum topic is sticky. Optionally customize with own image, for example <code>&#123;tag_sticky,&lt;img alt=&quot; src=&quot;/img/sticky.png&quot; /&gt;&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_sticky,stickyImage&#125;{% endraw %}</code></td><td class="description">Image indicating the forum topic is sticky. Optionally customize with own image, for example <code>{% raw %}&#123;tag_sticky,&lt;img alt=&quot; src=&quot;/img/sticky.png&quot; /&gt;&#125;{% endraw %}</code></td>
         </tr>
     </tbody>
 </table>

@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_searchresults render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; hidePageNumbers=true|false hightlightType=&quot;span|bold&quot; targetFrame=“_blank" resultsPerPage=“20" characterLimit="440" emptySearchResultString=“No results found"&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_searchresults render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; hidePageNumbers=true|false hightlightType=&quot;span|bold&quot; targetFrame=“_blank" resultsPerPage=“20" characterLimit="440" emptySearchResultString=“No results found"&#125;{% endraw %}</code></pre>
 <p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
@@ -51,35 +51,35 @@
 </thead>
   <tbody>
     <tr>
-         <td valign="top" class="liquid tag"><code>&#123;&#123;counter&#125;&#125;</code></td>
-            <td valign="top" class="legacy tag"><code>&#123;tag_counter&#125;</code></td><td class="description">Incremental count of the items on the page</td>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;counter&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_counter&#125;{% endraw %}</code></td><td class="description">Incremental count of the items on the page</td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>&#123;&#123;description&#125;&#125;</code></td>
-            <td valign="top" class="legacy tag"><code>&#123;tag_description&#125;</code></td><td class="description">Short description of the item</td>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_description&#125;{% endraw %}</code></td><td class="description">Short description of the item</td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>&#123;&#123;image_url&#125;&#125;</code></td>
-            <td valign="top" class="legacy tag"><code>&#123;tag_image&#125;</code></td><td class="description">An image reflective of the type of the item; for example, <em>Web Page</em> or <em>News</em></td>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;image_url&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_image&#125;{% endraw %}</code></td><td class="description">An image reflective of the type of the item; for example, <em>Web Page</em> or <em>News</em></td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>&#123;&#123;id&#125;&#125;</code></td>
-            <td valign="top" class="legacy tag"><code>&#123;tag_itemid&#125;</code></td><td class="description">Internal ID of the item</td>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;id&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemid&#125;{% endraw %}</code></td><td class="description">Internal ID of the item</td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>&#123;&#123;type&#125;&#125;</code></td>
-            <td valign="top" class="legacy tag"><code>&#123;tag_itemtype&#125;</code></td><td class="description">Type of the item; for example, <em>Web Page</em>, <em>News</em>, <em>Web App</em>, or <em>FAQ</em></td>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;type&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemtype&#125;{% endraw %}</code></td><td class="description">Type of the item; for example, <em>Web Page</em>, <em>News</em>, <em>Web App</em>, or <em>FAQ</em></td>
         </tr>
     <tr>
-         <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
-            <td valign="top" class="legacy tag"><code>&#123;tag_name_nolink&#125;</code></td><td class="description">Item name without a hyperlink to the item</td>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name_nolink&#125;{% endraw %}</code></td><td class="description">Item name without a hyperlink to the item</td>
         </tr>
     <tr>
          <td valign="top" class="liquid tag"></td>
-            <td valign="top" class="legacy tag"><code>&#123;tag_name&#125;</code></td><td class="description">Item name with a hyperlink to the item</td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Item name with a hyperlink to the item</td>
         </tr>
          <tr>
-         <td valign="top" class="liquid tag"><code>&#123;&#123;pagination&#125;&#125;</code></td>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination&#125;&#125;{% endraw %}</code></td>
             <td valign="top" class="legacy tag"></td>
             <td class="description">Pagination controls:<ul><li>currentPage</li>
               <li>numberOfPages</li>
@@ -94,14 +94,14 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_searchresults targetFrame="_blank" resultsPerPage="12"&#125;</code> - This module will display 12 results per page in the new window.</li>
+    <li><code>{% raw %}&#123;module_searchresults targetFrame="_blank" resultsPerPage="12"&#125;{% endraw %}</code> - This module will display 12 results per page in the new window.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_searchresults,targetFrame,resultsPerPage,hightlightType,characterLimit,hidePageNumbers,paginationLinks,No results found&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_searchresults,targetFrame,resultsPerPage,hightlightType,characterLimit,hidePageNumbers,paginationLinks,No results found&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -128,7 +128,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_searchresults,_blank,12,span,50,,Sorry, found no results,,>&#125;</code> - This module will display 12 results per page in the new window. The results body will be truncated to 50 characters. The keywords in the search results will be wrapped in a &quot;span&quot; element</li>
+    <li><code>{% raw %}&#123;module_searchresults,_blank,12,span,50,,Sorry, found no results,,>&#125;{% endraw %}</code> - This module will display 12 results per page in the new window. The results body will be truncated to 50 characters. The keywords in the search results will be wrapped in a &quot;span&quot; element</li>
 </ul>
 </div>
 </div>

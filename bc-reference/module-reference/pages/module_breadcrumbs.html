@@ -14,7 +14,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_breadcrumbs render="item|collection" collection=&quot;my_custom_collection_name&quot; separator=&quot;|&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_breadcrumbs render="item|collection" collection=&quot;my_custom_collection_name&quot; separator=&quot;|&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -28,13 +28,13 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_breadcrumbs separator=&quot;|&quot;&#125;</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
+    <li><code>{% raw %}&#123;module_breadcrumbs separator=&quot;|&quot;&#125;{% endraw %}</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
       <pre class="language-markup">
-<code>
+<code>{% raw %}
     &lt;a href="/parentpage.htm"&gt;Parentpage&lt;/a&gt;
     " | "
     &lt;a href="/childpage.htm"&gt;Childpage&lt;/a&gt;
-</code>	</pre>
+{% endraw %}</code>	</pre>
 	</li>
 </ul>
 </div>
@@ -42,7 +42,7 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_breadcrumbs, separator&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_breadcrumbs, separator&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -53,13 +53,13 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_breadcrumbs, |&#125;</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
+    <li><code>{% raw %}&#123;module_breadcrumbs, |&#125;{% endraw %}</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
 <pre class="language-markup">
-<code>
+<code>{% raw %}
     &lt;a href="/parentpage.htm"&gt;Parentpage&lt;/a&gt;
     " | "
     &lt;a href="/childpage.htm"&gt;Childpage&lt;/a&gt;
-</code>	</pre>
+{% endraw %}</code>	</pre>
 	</li>
 </ul>
 </div>

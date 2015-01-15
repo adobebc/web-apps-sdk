@@ -15,79 +15,79 @@
 <h4>Parameters</h4>
 
 <ul>
-<li><code>siteId</code> - ID of the site <em>(integer)</em></li>
-<li><code>username</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
-<li><code>password</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
-<li><code>emailaddress</code> - <em>(string)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - ID of the site <em>(integer)</em></li>
+<li><code>{% raw %}username{% endraw %}</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
+<li><code>{% raw %}password{% endraw %}</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
+<li><code>{% raw %}emailaddress{% endraw %}</code> - <em>(string)</em></li>
 </ul>
 
-<p>To use a site token instead of username/password, send an empty <code>username</code> field and the site token as the <code>password</code>. See example below.</p>
+<p>To use a site token instead of username/password, send an empty <code>{% raw %}username{% endraw %}</code> field and the site token as the <code>{% raw %}password{% endraw %}</code>. See example below.</p>
 
 <h2>Response</h2>
 
 <p>A Contact_RetrieveByEmailAddressResponse object with the following properties:</p>
 
 <ul>
-<li><code>Contact_RetrieveByEmailAddressResult</code> - <em>(object)</em>
+<li><code>{% raw %}Contact_RetrieveByEmailAddressResult{% endraw %}</code> - <em>(object)</em>
 
 <ul>
-<li><code>entityId</code> - <em>(integer)</em></li>
-<li><code>externalId</code> - <em>(string)</em></li>
-<li><code>emailAddress</code> - <em>(string)</em></li>
-<li><code>contactTitle</code> - <em>(string)</em></li>
-<li><code>deleted</code> - <em>(boolean)</em></li>
-<li><code>fullName</code> - <em>(string)</em></li>
-<li><code>firstName</code> - <em>(string)</em></li>
-<li><code>lastName</code> - <em>(string)</em></li>
-<li><code>username</code> - <em>(string)</em></li>
-<li><code>password</code> - this field has been deprecated, it always returns a blank value</li>
-<li><code>dateOfBirth</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
-<li><code>createDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
-<li><code>lastUpdateDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
-<li><code>customerType</code> - <em>(string)</em></li>
-<li><code>industryType</code> - <em>(string)</em></li>
-<li><code>leadSourceType</code> - <em>(string)</em></li>
-<li><code>ratingType</code> - <em>(string)</em></li>
-<li><code>relationships</code> - <em>(object)</em>
+<li><code>{% raw %}entityId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}externalId{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}emailAddress{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}contactTitle{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}fullName{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}firstName{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}username{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}password{% endraw %}</code> - this field has been deprecated, it always returns a blank value</li>
+<li><code>{% raw %}dateOfBirth{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - e.g. <em>2014-09-9T10:24:00</em></li>
+<li><code>{% raw %}customerType{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}industryType{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}leadSourceType{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}ratingType{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}relationships{% endraw %}</code> - <em>(object)</em>
 
 <ul>
-<li><code>entityId</code> - <em>(integer)</em></li>
-<li><code>entityType</code> - <em>(integer)</em></li>
-<li><code>name</code> - <em>(string)</em></li>
+<li><code>{% raw %}entityId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}entityType{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - <em>(string)</em></li>
 </ul></li>
-<li><code>addresses</code>
+<li><code>{% raw %}addresses{% endraw %}</code>
 
 <ul>
-<li><code>Address</code> - <em>(object)</em>
+<li><code>{% raw %}Address{% endraw %}</code> - <em>(object)</em>
 
 <ul>
-<li><code>addressTypeID</code> - <em>(integer)</em></li>
-<li><code>addressLine1</code> - <em>(string)</em></li>
-<li><code>addressLine2</code> - <em>(string)</em></li>
-<li><code>city</code> - <em>(string)</em></li>
-<li><code>zipcode</code> - <em>(string)</em></li>
-<li><code>state</code> - <em>(string)</em></li>
-<li><code>countryCode</code> - <em>(string)</em></li>
-</ul></li>
-</ul></li>
-<li><code>phoneNos</code>
-
-<ul>
-<li><code>phoneNos</code> - <em>(object)</em>
-
-<ul>
-<li><code>phoneNoTypeID</code> - <em>(integer)</em></li>
-<li><code>phoneNo</code> - <em>(string)</em>   </li>
+<li><code>{% raw %}addressTypeID{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}addressLine1{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}addressLine2{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}city{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}zipcode{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}state{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> - <em>(string)</em></li>
 </ul></li>
 </ul></li>
-<li><code>crmForms</code> - <em>(object)</em>
+<li><code>{% raw %}phoneNos{% endraw %}</code>
 
 <ul>
-<li><code>formId</code> - <em>(integer)</em> </li>
-<li><code>formName</code> - <em>(string)</em> </li>
-<li><code>crmFormFields</code> - <em>(array)</em>   </li>
+<li><code>{% raw %}phoneNos{% endraw %}</code> - <em>(object)</em>
+
+<ul>
+<li><code>{% raw %}phoneNoTypeID{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}phoneNo{% endraw %}</code> - <em>(string)</em>   </li>
 </ul></li>
-<li><code>MasterOptIn</code> - <em>(boolean)</em> </li>
+</ul></li>
+<li><code>{% raw %}crmForms{% endraw %}</code> - <em>(object)</em>
+
+<ul>
+<li><code>{% raw %}formId{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}formName{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}crmFormFields{% endraw %}</code> - <em>(array)</em>   </li>
+</ul></li>
+<li><code>{% raw %}MasterOptIn{% endraw %}</code> - <em>(boolean)</em> </li>
 </ul></li>
 </ul>
 
@@ -99,7 +99,7 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-markup"><code>POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
+<pre class="language-markup"><code>{% raw %}POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
 Host: worldsecuresystems.com
 Content-Type: application/soap+xml; charset=utf-8
 Content-Length: length
@@ -115,11 +115,11 @@ Content-Length: length
     &lt;/Contact_RetrieveByEmailAddress&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-markup"><code>POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
+<pre class="language-markup"><code>{% raw %}POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
 Host: worldsecuresystems.com
 Content-Type: application/soap+xml; charset=utf-8
 Content-Length: length
@@ -213,6 +213,6 @@ Content-Length: length
     &lt;/Contact_RetrieveByEmailAddressResponse&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
-</code></pre>
+{% endraw %}</code></pre>
 
         

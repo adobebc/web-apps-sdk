@@ -15,86 +15,86 @@
 <h4>Parameters</h4>
 
 <ul>
-<li><code>siteId</code> - ID of the site <em>(integer)</em></li>
-<li><code>username</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
-<li><code>password</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
-<li><code>productCode</code> - <em>(string)</em>    </li>
+<li><code>{% raw %}siteId{% endraw %}</code> - ID of the site <em>(integer)</em></li>
+<li><code>{% raw %}username{% endraw %}</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
+<li><code>{% raw %}password{% endraw %}</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
+<li><code>{% raw %}productCode{% endraw %}</code> - <em>(string)</em>    </li>
 </ul>
 
-<p>To use a site token instead of username/password, send an empty <code>username</code> field and the site token as the <code>password</code>. See example below.</p>
+<p>To use a site token instead of username/password, send an empty <code>{% raw %}username{% endraw %}</code> field and the site token as the <code>{% raw %}password{% endraw %}</code>. See example below.</p>
 
 <h2>Response</h2>
 
 <p>A Product_RetrieveResponse object with the following properties:</p>
 
 <ul>
-<li><code>Product_RetrieveResult</code> - <em>(object)</em><br>
+<li><code>{% raw %}Product_RetrieveResult{% endraw %}</code> - <em>(object)</em><br>
 
 <ul>
-<li><code>productId</code> - <em>(integer)</em> </li>
-<li><code>productCode</code> - <em>(string)</em> </li>
-<li><code>productName</code> - <em>(string)</em> </li>
-<li><code>description</code> - <em>(string)</em> </li>
-<li><code>smallImage</code> - <em>(string)</em> </li>
-<li><code>largeImage</code> - <em>(string)</em> </li>
-<li><code>cataloguesArray</code> - <em>(array)</em> </li>
-<li><code>pricesSaleArray</code> - <em>(array)</em> </li>
-<li><code>pricesRetailArray</code> - <em>(array)</em> </li>
-<li><code>pricesWholesaleArray</code> - <em>(array)</em> </li>
-<li><code>wholesaleTaxCodeArray</code> - <em>(array)</em> </li>
-<li><code>taxCodeArray</code> - <em>(array)</em> </li>
-<li><code>groupProducts</code> - <em>(array)</em> </li>
-<li><code>groupProductsDescriptions</code> - <em>(array)</em> </li>
-<li><code>supplierEntityId</code> - <em>(integer)</em> </li>
-<li><code>supplierCommission</code> - <em>(double)</em> </li>
-<li><code>weight</code> - <em>(integer)</em> </li>
-<li><code>relatedProducts</code> - <em>(array)</em> </li>
-<li><code>tags</code> - <em>(string)</em> </li>
-<li><code>unitType</code> - <em>(string)</em> </li>
-<li><code>minUnits</code> - <em>(integer)</em> </li>
-<li><code>maxUnits</code> - <em>(integer)</em> </li>
-<li><code>inStock</code> - <em>(integer)</em> </li>
-<li><code>onOrder</code> - <em>(integer)</em> </li>
-<li><code>reOrder</code> - <em>(integer)</em> </li>
-<li><code>inventoryControl</code> - <em>(boolean)</em> </li>
-<li><code>canPreOrder</code> - <em>(boolean)</em> </li>
-<li><code>custom1</code> - <em>(string)</em> </li>
-<li><code>custom2</code> - <em>(string)</em> </li>
-<li><code>custom3</code> - <em>(string)</em> </li>
-<li><code>custom4</code> - <em>(string)</em> </li>
-<li><code>popletImages</code> - <em>(string)</em> </li>
-<li><code>enabled</code> - <em>(boolean)</em> </li>
-<li><code>deleted</code> - <em>(boolean)</em> </li>
-<li><code>captureDetails</code> - <em>(boolean)</em> </li>
-<li><code>downloadLimitCount</code> - <em>(integer)</em> </li>
-<li><code>limitDownloadsToIP</code> - <em>(integer)</em> </li>
-<li><code>isOnSale</code> - <em>(boolean)</em> </li>
-<li><code>hideIfNoStock</code> - <em>(boolean)</em> </li>
-<li><code>productAttributes</code> - <em>(string)</em> </li>
-<li><code>isGiftVoucher</code> - <em>(boolean)</em> </li>
-<li><code>enableDropShipping</code> - <em>(boolean)</em> </li>
-<li><code>productWeight</code> - <em>(double)</em> </li>
-<li><code>productWidth</code> - <em>(double)</em> </li>
-<li><code>productHeight</code> - <em>(double)</em> </li>
-<li><code>productDepth</code> - <em>(double)</em></li>
-<li><code>excludeFromSearch</code> - <em>(boolean)</em></li>
-<li><code>productTitle</code> - <em>(string)</em></li>
-<li><code>cycletypeId</code> - <em>(integer)</em></li>
-<li><code>cycletypeCount</code> - <em>(integer)</em></li>
-<li><code>slug</code> - <em>(string)</em></li>
-<li><code>hasVariations</code> - <em>(boolean)</em></li>
-<li><code>variations</code> - <em>(array)</em>
+<li><code>{% raw %}productId{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}productCode{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}productName{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}description{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}smallImage{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}largeImage{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}cataloguesArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}pricesSaleArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}pricesRetailArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}pricesWholesaleArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}wholesaleTaxCodeArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}taxCodeArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}groupProducts{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}groupProductsDescriptions{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}supplierEntityId{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}supplierCommission{% endraw %}</code> - <em>(double)</em> </li>
+<li><code>{% raw %}weight{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}relatedProducts{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}tags{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}unitType{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}minUnits{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}maxUnits{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}inStock{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}onOrder{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}reOrder{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}inventoryControl{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}canPreOrder{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}custom1{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}custom2{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}custom3{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}custom4{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}popletImages{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}enabled{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}captureDetails{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}downloadLimitCount{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}limitDownloadsToIP{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}isOnSale{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}hideIfNoStock{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}productAttributes{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}isGiftVoucher{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}enableDropShipping{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}productWeight{% endraw %}</code> - <em>(double)</em> </li>
+<li><code>{% raw %}productWidth{% endraw %}</code> - <em>(double)</em> </li>
+<li><code>{% raw %}productHeight{% endraw %}</code> - <em>(double)</em> </li>
+<li><code>{% raw %}productDepth{% endraw %}</code> - <em>(double)</em></li>
+<li><code>{% raw %}excludeFromSearch{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}productTitle{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}cycletypeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}cycletypeCount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}slug{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}hasVariations{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}variations{% endraw %}</code> - <em>(array)</em>
 
 <ul>
-<li><code>ProductVariation</code> - <em>(object)</em>
+<li><code>{% raw %}ProductVariation{% endraw %}</code> - <em>(object)</em>
 
 <ul>
-<li><code>id</code> - <em>(integer)</em></li>
-<li><code>options</code> - <em>(string)</em></li>
-<li><code>code</code> - <em>(string)</em></li>
-<li><code>enabled</code> - <em>(boolean)</em></li>
-<li><code>inStock</code> - <em>(integer)</em></li>
-<li><code>onOrder</code> - <em>(integer)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}options{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}code{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}inStock{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}onOrder{% endraw %}</code> - <em>(integer)</em></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -108,7 +108,7 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-markup"><code>POST /catalystwebservice/catalystecommercewebservice.asmx HTTP/1.1
+<pre class="language-markup"><code>{% raw %}POST /catalystwebservice/catalystecommercewebservice.asmx HTTP/1.1
 Host: www.businesscatalyst.com.au
 Content-Type: application/soap+xml; charset=utf-8
 Content-Length: length
@@ -124,11 +124,11 @@ Content-Length: length
     &lt;/Product_Retrieve&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-markup"><code>HTTP/1.1 200 OK
+<pre class="language-markup"><code>{% raw %}HTTP/1.1 200 OK
 Content-Type: application/soap+xml; charset=utf-8
 Content-Length: length
 
@@ -238,6 +238,6 @@ Content-Length: length
     &lt;/Product_RetrieveResponse&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
-</code></pre>
+{% endraw %}</code></pre>
 
         

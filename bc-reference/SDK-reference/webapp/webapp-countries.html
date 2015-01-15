@@ -7,7 +7,7 @@
       <p>This class provides a methd of listing a webapp's list of assigned countries. </p>
       
       <h2>List the countries assigned to a web app</h2>
-      <pre class="language-javascript"><code>var webappCountries = new BCAPI.Models.WebApp.Country(&quot;WEBAPP-NAME&quot;);
+      <pre class="language-javascript"><code>{% raw %}var webappCountries = new BCAPI.Models.WebApp.Country(&quot;WEBAPP-NAME&quot;);
 var response = webappCountries.fetch();
 response.done(function () {
     _.each(webappCountries.get("items"), function (countryCode) {
@@ -20,4 +20,4 @@ response.done(function () {
     console.log("Response text: " + jqXHR.responseText);
 });
 
-</code></pre>
+{% endraw %}</code></pre>

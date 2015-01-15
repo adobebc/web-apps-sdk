@@ -14,7 +14,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_affiliateprogram id=&quot;&quot; render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_affiliateprogram id=&quot;&quot; render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -43,12 +43,12 @@
 </thead>
     <tbody>
      <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;affiliateLink&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_affiliatelink&#125;</code></td><td class="description">The link for this affiliate to use on his/her website or forward to friends for tracking purposes.</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;affiliateLink&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_affiliatelink&#125;{% endraw %}</code></td><td class="description">The link for this affiliate to use on his/her website or forward to friends for tracking purposes.</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_actiontotal,actionTypeId,days&#125;</code></td><td class="description">Total number of actions for the last x days.  the Action type ID's are as follows:
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_actiontotal,actionTypeId,days&#125;{% endraw %}</code></td><td class="description">Total number of actions for the last x days.  the Action type ID's are as follows:
             <ul>
             <li>(Inquiries) WebForm = 2 </li>
             <li>Purchase = 3 </li>
@@ -70,28 +70,28 @@
         </tr>
        
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;clickThrusTotal&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_clickthrustotal&#125;</code></td><td class="description">Total click-thrus via the affiliate link</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;clickThrusTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_clickthrustotal&#125;{% endraw %}</code></td><td class="description">Total click-thrus via the affiliate link</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;commissionOwing&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_commissionowing&#125;</code></td><td class="description">Commission owing to the affiliate logged into the secure zone</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;commissionOwing&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commissionowing&#125;{% endraw %}</code></td><td class="description">Commission owing to the affiliate logged into the secure zone</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;referralsLastMonth&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_referralslastmonth&#125;</code></td><td class="description">Referrals made last month by the affiliate logged into the secure zone</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;referralsLastMonth&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_referralslastmonth&#125;{% endraw %}</code></td><td class="description">Referrals made last month by the affiliate logged into the secure zone</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;referralsLastWeek&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_referralslastweek&#125;</code></td><td class="description">Referrals made last week by the affiliate logged into the secure zone</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;referralsLastWeek&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_referralslastweek&#125;{% endraw %}</code></td><td class="description">Referrals made last week by the affiliate logged into the secure zone</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;referralsToday&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_referralstoday&#125;</code></td><td class="description">Referrals made today by the affiliate logged into the secure zone</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;referralsToday&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_referralstoday&#125;{% endraw %}</code></td><td class="description">Referrals made today by the affiliate logged into the secure zone</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;referralsTotal&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_referralstotal&#125;</code></td><td class="description">Total number of referrals made by the affiliate logged into the secure zone</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;referralsTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_referralstotal&#125;{% endraw %}</code></td><td class="description">Total number of referrals made by the affiliate logged into the secure zone</td>
         </tr>
     </tbody>
 </table>
@@ -100,16 +100,16 @@
 <h2>Examples</h2>
 <ul>
 <li>
-<code>&#123;module_affiliateprogram id=&quot;1429&quot;&#125;</code>
+<code>{% raw %}&#123;module_affiliateprogram id=&quot;1429&quot;&#125;{% endraw %}</code>
 -this will list the details of the affiliate program with the ID 1429</li>
-<li><code>&#123;module_affiliateprogram id="335" collection="my_custom_collection_name" template=&quot;/folder/template.tpl&quot;&#125;</code> - in this case nothing will be displayed, however the affiliate program details will become available in the <strong>custom1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+<li><code>{% raw %}&#123;module_affiliateprogram id="335" collection="my_custom_collection_name" template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the affiliate program details will become available in the <strong>custom1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_affiliateprogram,id&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_affiliateprogram,id&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -126,6 +126,6 @@
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<pre class="language-markup"><code>&#123; module_affiliateprogram,1429&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123; module_affiliateprogram,1429&#125;{% endraw %}</code></pre>
 </div>
 </div>

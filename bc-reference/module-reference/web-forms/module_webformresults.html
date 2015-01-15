@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_webformresults render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_webformresults render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -37,11 +37,11 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;eid&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;eid&#125;&#125;{% endraw %}</code></td>
          <td class="description">The HTML representation of the form results (the HTML code of the legacu table)</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;results&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;results&#125;&#125;{% endraw %}</code></td>
          <td class="description">a JSON object containing the individual values of the form's fields:
          <ul>
          <li><strong>firstName</strong></li>
@@ -58,20 +58,20 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_webformresults&#125;</code> - displays the form's results using the fixed table layout</li>
-    <li><code>&#123;module_webformresults collection="formResults" template=""&#125;</code> - does not display anything, it creates the <em>formResults</em> collection you can use to create your own custom layout</li>
+    <li><code>{% raw %}&#123;module_webformresults&#125;{% endraw %}</code> - displays the form's results using the fixed table layout</li>
+    <li><code>{% raw %}&#123;module_webformresults collection="formResults" template=""&#125;{% endraw %}</code> - does not display anything, it creates the <em>formResults</em> collection you can use to create your own custom layout</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_webformresults&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_webformresults&#125;{% endraw %}</code></pre>
 </div>
   <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_webformresults&#125;</code> - displays the form's results using the fixed table layout</li>
+    <li><code>{% raw %}&#123;module_webformresults&#125;{% endraw %}</code> - displays the form's results using the fixed table layout</li>
 </ul>
 </div>
 </div>

@@ -14,29 +14,29 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;globals.get&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;globals.get&#125;&#125;{% endraw %}</code></td>
          <td class="description">The current relative path and the query parameters passed in the URL. For example, for the URL <em>http://mtica1.businesscatalyst.com/_s1/s2?a=1&b=2</em> the output of the module is:
-           <pre class="language-javascript"><code>{
+           <pre class="language-javascript"><code>{% raw %}{
   "ID": "/_s1/s2",
   "a": "1",
   "b": "2"
-}</code></pre>
+}{% endraw %}</code></pre>
          </td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;globals.site&#125;&#125;</code></td>
-         <td class="description">Site related information:<pre class="language-javascript"><code> "site": {
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;globals.site&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Site related information:<pre class="language-javascript"><code>{% raw %} "site": {
     "id": 12345,
     "name": "mtica1",
     "host": "mtica1.businesscatalyst.com",
     "countryCode": "RO",
     "language": "GB",
     "dateNow": "2015-01-09T15:11:33.0878202"
-  }</code></pre></td>
+  }{% endraw %}</code></pre></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;globals.user&#125;&#125;</code></td>
-         <td class="description">User related information (assuming somebody is logged in):<pre class="language-javascript"><code>"user": {
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;globals.user&#125;&#125;{% endraw %}</code></td>
+         <td class="description">User related information (assuming somebody is logged in):<pre class="language-javascript"><code>{% raw %}"user": {
     "entityId": 10524619,
     "firstname": "John",
     "lastname": "Doe",
@@ -44,36 +44,36 @@
     "username": "jdoe",
     "email": "john_doe@mailinator.com",
     "isLoggedIn": true
-  }</code></pre></td>
+  }{% endraw %}</code></pre></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;globals.visitor&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;globals.visitor&#125;&#125;{% endraw %}</code></td>
          <td class="description">Visitor related information:
-          <pre class="language-javascript"><code>"visitor": {
+          <pre class="language-javascript"><code>{% raw %}"visitor": {
     "deviceClass": "desktop",
     "ip": "123.123.123.123",
     "country": "RO",
     "city": "BUCHAREST",
     "userAgent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36"
-  }</code></pre></td>
+  }{% endraw %}</code></pre></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;globals.cart&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;globals.cart&#125;&#125;{% endraw %}</code></td>
          <td class="description">The shopping cart URL
-          <pre class="language-javascript"><code>"cart": {
+          <pre class="language-javascript"><code>{% raw %}"cart": {
     "cartUrl": "/OrderRetrievev2.aspx?CatalogueID=0"
-  }</code></pre></td>
+  }{% endraw %}</code></pre></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;globals.cookie&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;globals.cookie&#125;&#125;{% endraw %}</code></td>
          <td class="description">The cookies stored on the current domain (including cookies you might create using javascript). For a site visitor that is not logged in the Admin Console the cookie object looks something like this:
-           <pre class="language-javascript"><code>"cookie": {
+           <pre class="language-javascript"><code>{% raw %}"cookie": {
     "visitorDeviceClass": "desktop",
     "ASP.NET_SessionId": "x54fgiweu1zwhoisjetfsv5r",
     "ANONID_FS1576341": "24.09.2014 12:21:51.298",
     "ANONID1576341": "e626ac8b-45ff-4801-9808-ec9ad51d847a",
     "VISID1576341": "877790b5-3feb-499d-8227-a12cb6a5f388#mtica4.businesscatalyst.com#24.09.2014 12:21:51.298"
-  }</code></pre></td>
+  }{% endraw %}</code></pre></td>
         </tr>
     </tbody>
 </table>

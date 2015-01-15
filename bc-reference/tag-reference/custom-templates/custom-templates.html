@@ -40,10 +40,10 @@ If you insert this on a webpage and preview that webpage you will notice it is u
 <p>
 To hide a module's output simply remove the path to the custom layout specified by the template parameter.</p>
 <p>For example this webapp module</p>
-<pre class="language-markup"><code>&#123;module_webapps collection="myWebapp" render="collection" template="/layouts/custom/car_collection.tpl" id="35209" filter="all"&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_webapps collection="myWebapp" render="collection" template="/layouts/custom/car_collection.tpl" id="35209" filter="all"&#125;{% endraw %}</code></pre>
 <p>Will do two things -  render the webapp items according to the <em>template="/layouts/custom/car_collection.tpl"</em> layout and will create the myWebapp collection in the background.</p>
 <p>This module on the other hand:</p>
-<pre class="language-markup"><code>&#123;module_webapps collection="myWebapp" template="" id="35209" filter="all"&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_webapps collection="myWebapp" template="" id="35209" filter="all"&#125;{% endraw %}</code></pre>
 <p>will not render anything. In this scenarioit will only create the collection and it's up to you how to display its contents.</p>
 </div>
 <div id="syntax">
@@ -58,11 +58,11 @@ To hide a module's output simply remove the path to the custom layout specified 
 <div id="Examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_productfeaturelist,special offer,3,price,_blank,true template="/custom-layouts/prod.tpl"&#125;</code> - this rendes a list of products using this custom template</li>
-    <li><code>&#123;module_booking,i,63522 template="/custom-layouts/booking.tpl"&#125;</code> - this rendes an individual event a custom template</li>
-    <li><code>&#123;module_product,63882,5450055,_top template="/custom-layouts/prod.tpl"&#125;</code> - this rendes an individual product a custom template</li>
-    <li><code>&#123;module_productfeaturelist,special offer,3,price,_blank,true template="/custom-layouts/prod.tpl"&#125;</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
-    <li><code>&#123;module_productresults,2,_self,2,,,true  template="/custom-layouts/prod.tpl"&#125;</code> - displays the products that match the search criteria 2 per page and renders <em>No products found matching your query</em>. if no products are found.
+    <li><code>{% raw %}&#123;module_productfeaturelist,special offer,3,price,_blank,true template="/custom-layouts/prod.tpl"&#125;{% endraw %}</code> - this rendes a list of products using this custom template</li>
+    <li><code>{% raw %}&#123;module_booking,i,63522 template="/custom-layouts/booking.tpl"&#125;{% endraw %}</code> - this rendes an individual event a custom template</li>
+    <li><code>{% raw %}&#123;module_product,63882,5450055,_top template="/custom-layouts/prod.tpl"&#125;{% endraw %}</code> - this rendes an individual product a custom template</li>
+    <li><code>{% raw %}&#123;module_productfeaturelist,special offer,3,price,_blank,true template="/custom-layouts/prod.tpl"&#125;{% endraw %}</code> - lists the products that are tagged with the "special offer" tag using a custom template (the "true" parameter that states the backup template should be used is ignored). The products are sorted by price (cheapest first) and when clicking the product's name the detail view opens in a new window</li>
+    <li><code>{% raw %}&#123;module_productresults,2,_self,2,,,true  template="/custom-layouts/prod.tpl"&#125;{% endraw %}</code> - displays the products that match the search criteria 2 per page and renders <em>No products found matching your query</em>. if no products are found.
     The structure is no longer an unordered list as the <em>true </em>parameter would suggest, the custom template is used instead.</li>
 </ul>
 </div>
@@ -70,24 +70,24 @@ To hide a module's output simply remove the path to the custom layout specified 
 <h2>Supported Modules</h2>
 <p> Here is the list of modules where you can apply your own templates as attributes:</p>
 <ul>
-    <li><code>&#123;module_literature&#125;</code></li>
-    <li><code>&#123;module_announcement&#125;</code></li>
-    <li><code>&#123;module_faq&#125;</code></li>
-    <li><code>&#123;module_forum&#125;</code></li>
-    <li><code>&#123;module_blog&#125;</code></li>
-    <li><code>&#123;module_case&#125;</code></li>
-    <li><code>&#123;module_order&#125;</code></li>
-    <li><code>&#123;module_webappscustomer&#125;</code></li>
-    <li><code>&#123;module_affiliateprogram&#125;</code></li>
-    <li><code>&#123;module_webappsresults&#125;</code></li>
-    <li><code>&#123;module_booking&#125;</code></li>
-    <li><code>&#123;module_catalogue&#125;</code></li>
-    <li><code>&#123;module_product&#125;</code></li>
-    <li><code>&#123;module_productresults&#125;</code></li>
-    <li><code>&#123;module_ratingfeedback&#125;</code></li>
-    <li><code>&#123;module_caseresults&#125;</code></li>
-    <li><code>&#123;module_webapp&#125;</code></li>
-    <li><code>&#123;module_blogsitepost&#125;</code></li>
-    <li><code>&#123;module_blogpostlist&#125;</code></li>
+    <li><code>{% raw %}&#123;module_literature&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_announcement&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_faq&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_forum&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_blog&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_case&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_order&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_webappscustomer&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_affiliateprogram&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_webappsresults&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_booking&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_catalogue&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_product&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_productresults&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_ratingfeedback&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_caseresults&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_webapp&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_blogsitepost&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_blogpostlist&#125;{% endraw %}</code></li>
 </ul>
 </div>

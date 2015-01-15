@@ -9,7 +9,7 @@
 <h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
@@ -28,38 +28,38 @@
 <p>An array of the first 10 customers; each object has the following properties:</p>
 
 <ul>
-<li><code>id</code> - the id of the customer<em> (integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
-<li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
-<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
-<li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
-<li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
-<li><code>firstName</code> <em>(string)</em></li>
-<li><code>middleName</code> <em>(string)</em></li>
-<li><code>lastName</code> <em>(string)</em></li>
-<li><code>company</code> <em>(string)</em></li>
-<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
-<li><code>username</code> <em>(string)</em></li>
-<li><code>wholesaler</code> <em>(boolean)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerTypeId{% endraw %}</code> - the ID of the customer type assigned <em>(integer)</em></li>
+<li><code>{% raw %}leadSourceTypeId{% endraw %}</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>{% raw %}industryTypeId{% endraw %}</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
+<li><code>{% raw %}ratingTypeId{% endraw %}</code> - the ID of the rating type assigned <em>(integer)</em></li>
+<li><code>{% raw %}titleTypeId{% endraw %}</code> - the ID of the title type assigned <em>(integer)</em></li>
+<li><code>{% raw %}firstName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}middleName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
+<li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
-<p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /webresources/api/v3/sites/current/customers HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/customers HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
       "id": 7051740,
@@ -97,13 +97,13 @@ Content-Type: application/json
   "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Get the list of customers for a site</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -124,9 +124,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Get the list of customers </strong><strong>- this only includes the specified fields:</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -146,10 +146,10 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p>In this case the response looks like this:</p>
 
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
       "email1": {
@@ -273,7 +273,7 @@ request.fail(function (jqXHR) {
   "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 
 </div>
 <hr></div>
@@ -286,7 +286,7 @@ request.fail(function (jqXHR) {
 <h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
@@ -305,39 +305,39 @@ request.fail(function (jqXHR) {
 <p>The details for the specified customer ID in JSON format.</p>
 
 <ul>
-<li><code>id</code> - the id of the customer<em> (integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
-<li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
-<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
-<li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
-<li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
-<li><code>firstName</code> <em>(string)</em></li>
-<li><code>middleName</code> <em>(string)</em></li>
-<li><code>lastName</code> <em>(string)</em></li>
-<li><code>company</code> <em>(string)</em></li>
-<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
-<li><code>username</code> <em>(string)</em></li>
-<li><code>wholesaler</code> <em>(boolean)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerTypeId{% endraw %}</code> - the ID of the customer type assigned <em>(integer)</em></li>
+<li><code>{% raw %}leadSourceTypeId{% endraw %}</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>{% raw %}industryTypeId{% endraw %}</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
+<li><code>{% raw %}ratingTypeId{% endraw %}</code> - the ID of the rating type assigned <em>(integer)</em></li>
+<li><code>{% raw %}titleTypeId{% endraw %}</code> - the ID of the title type assigned <em>(integer)</em></li>
+<li><code>{% raw %}firstName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}middleName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
+<li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 
-<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /webresources/api/v3/sites/current/customers/7051740 HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/customers/7051740 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
     "customerId": 7051740,
     "siteId": 38581,
     "customerTypeId": 287044,
@@ -352,13 +352,13 @@ Content-Type: application/json
     "dateOfBirth": "1982-12-06T23:00:00",
     "username": "",
     "wholesaler": false
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Get the details of customer</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -378,9 +378,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Get the details of a customer - this only includes the specified fields:</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -400,10 +400,10 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p id="get-by-mail"><strong>Get a customer by email address</strong></p>
 <p>For this example we will add the email address field to the output and add a filtering condition. Take a look at this </p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -424,9 +424,9 @@ request.fail(function(jqXHR) {
   console.log("Error code: " + jqXHR.status);
   console.log("Error text: " + jqXHR.statusText);
   console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p>In this case the response is a single CRM entry and looks like this:</p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [{
     "email1": {
       "id": 11520864,
@@ -444,9 +444,9 @@ request.fail(function(jqXHR) {
   "totalItemsCount": 1,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 <p id="get-by-username"><strong>Get a customer by username</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -467,9 +467,9 @@ request.fail(function(jqXHR) {
   console.log("Error code: " + jqXHR.status);
   console.log("Error text: " + jqXHR.statusText);
   console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p>In this case the response is a single CRM entry and looks like this:</p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [{
     "id": 9339548,
     "siteId": 146985,
@@ -487,7 +487,7 @@ request.fail(function(jqXHR) {
   "totalItemsCount": 1,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr></div>
 <div id="create">
@@ -513,20 +513,20 @@ request.fail(function(jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>id</code> - the id of the customer<em> (integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
-<li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
-<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
-<li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
-<li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
-<li><code>firstName</code> <em>(string)</em></li>
-<li><code>middleName</code> <em>(string)</em></li>
-<li><code>lastName</code> <em>(string)</em></li>
-<li><code>company</code> <em>(string)</em></li>
-<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
-<li><code>username</code> <em>(string)</em></li>
-<li><code>wholesaler</code> <em>(boolean)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerTypeId{% endraw %}</code> - the ID of the customer type assigned <em>(integer)</em></li>
+<li><code>{% raw %}leadSourceTypeId{% endraw %}</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>{% raw %}industryTypeId{% endraw %}</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
+<li><code>{% raw %}ratingTypeId{% endraw %}</code> - the ID of the rating type assigned <em>(integer)</em></li>
+<li><code>{% raw %}titleTypeId{% endraw %}</code> - the ID of the title type assigned <em>(integer)</em></li>
+<li><code>{% raw %}firstName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}middleName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
+<li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 </div>
 <div class="response">
@@ -539,7 +539,7 @@ request.fail(function(jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /webresources/api/v3/sites/current/customers HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/customers HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -575,20 +575,20 @@ Content-Type: application/json
     "default": false
   }
 }
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
-<pre class="language-javascript"><code>HTTP/1.1 201 CREATED
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 CREATED
 Location: /webresources/api/v3/sites/current/customers
 Content-Type: application/json; charset=utf-8
-Content-Length: length</code></pre>
+Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Create a new customer</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -625,7 +625,7 @@ console.log("Request failed.");
 console.log("Error code: " + jqXHR.status);
 console.log("Error text: " + jqXHR.statusText);
 console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -650,20 +650,20 @@ console.log("Response text: " + jqXHR.responseText);
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>id</code> - the id of the customer<em> (integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>customerTypeId</code> - the ID of the customer type assigned <em>(integer)</em></li>
-<li><code>leadSourceTypeId</code> - the ID of the lead source type assigned <em>(integer)</em></li>
-<li><code>industryTypeId</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
-<li><code>ratingTypeId</code> - the ID of the rating type assigned <em>(integer)</em></li>
-<li><code>titleTypeId</code> - the ID of the title type assigned <em>(integer)</em></li>
-<li><code>firstName</code> <em>(string)</em></li>
-<li><code>middleName</code> <em>(string)</em></li>
-<li><code>lastName</code> <em>(string)</em></li>
-<li><code>company</code> <em>(string)</em></li>
-<li><code>dateOfBirth</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
-<li><code>username</code> <em>(string)</em></li>
-<li><code>wholesaler</code> <em>(boolean)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerTypeId{% endraw %}</code> - the ID of the customer type assigned <em>(integer)</em></li>
+<li><code>{% raw %}leadSourceTypeId{% endraw %}</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>{% raw %}industryTypeId{% endraw %}</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
+<li><code>{% raw %}ratingTypeId{% endraw %}</code> - the ID of the rating type assigned <em>(integer)</em></li>
+<li><code>{% raw %}titleTypeId{% endraw %}</code> - the ID of the title type assigned <em>(integer)</em></li>
+<li><code>{% raw %}firstName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}middleName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
+<li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 </div>
 <div class="response">
@@ -676,7 +676,7 @@ console.log("Response text: " + jqXHR.responseText);
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>PUT /webresources/api/v3/sites/current/customers HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/customers HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -711,22 +711,22 @@ Content-Type: application/json
     "value": "john.doe13@mailinator.com",
     "default": false
   }
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>
+<pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
 Location: /webresources/api/v3/sites/current/customers/[customer_ID]
 Content-Type: application/json; charset=utf-8
-Content-Length: length</code></pre>
+Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
 <p id="edit-by-id"><strong>Edit a customer's name and e-mail address</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -755,10 +755,10 @@ console.log("Request failed.");
 console.log("Error code: " + jqXHR.status);
 console.log("Error text: " + jqXHR.statusText);
 console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 
 <p id="edit-by-email"><strong>Get a customer by email address and edit its details</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -813,7 +813,7 @@ request.fail(function(jqXHR) {
   console.log("Error text: " + jqXHR.statusText);
   console.log("Response text: " + jqXHR.responseText);
 })
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <hr></div>
 <div id="delete">
@@ -846,26 +846,26 @@ request.fail(function(jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>DELETE /webresources/api/v3/sites/current/customers/9593213 HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/customers/9593213 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>
+<pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
 Location: /webresources/api/v3/sites/current/customers/[customer_ID]
 Content-Type: application/json; charset=utf-8
-Content-Length: length</code></pre>
+Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
 <p>Delete a CRM address by ID</p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -885,9 +885,9 @@ request.fail(function(jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p id="delete-by-email"><strong>In this example we will first get a CRM entity by email address, get its ID and then delete it:</strong></p>
-<pre><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -931,7 +931,7 @@ request.fail(function(jqXHR) {
   console.log("Error code: " + jqXHR.status);
   console.log("Error text: " + jqXHR.statusText);
   console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>

@@ -14,7 +14,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_shoppingcartsummary render=&quot;collection&quot; direction=“vertical” collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_shoppingcartsummary render=&quot;collection&quot; direction=“vertical” collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -41,36 +41,36 @@
 </tr>
 </thead>
     <tbody>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;cartUrl&#125;&#125;</code></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_cartUrl&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;cartUrl&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_cartUrl&#125;{% endraw %}</code></td>
                 <td class="description">renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;itemCount&#125;&#125;</code></td>
-                <td><code>&#123;tag_itemCount&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemCount&#125;&#125;{% endraw %}</code></td>
+                <td><code>{% raw %}&#123;tag_itemCount&#125;{% endraw %}</code></td>
                 <td class="description">renders the number of the items in the cart or 0 if none.</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;totalAmount&#125;&#125;</code></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_totalAmount&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalAmount&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalAmount&#125;{% endraw %}</code></td>
                 <td class="description">renders the total money amount of the items (with two decimals) or 0.00 if the items don't have prices or there are no items in the cart</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;currencyFormat&#125;&#125;</code></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_currency&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;currencyFormat&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_currency&#125;{% endraw %}</code></td>
                 <td class="description">renders the coin of the current country, which is either the site country or the country of the order (if set)</td>
             </tr>
             <tr><td valign="top" class="liquid tag"></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_totalAmountWithCurrency&#125;</code></td>
-                <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>&#123;tag_currency&#125;</code><code>&#123;tag_totalAmount&#125;</code>)</td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalAmountWithCurrency&#125;{% endraw %}</code></td>
+                <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>{% raw %}&#123;tag_currency&#125;{% endraw %}</code><code>{% raw %}&#123;tag_totalAmount&#125;{% endraw %}</code>)</td>
             </tr>
           <tr><td valign="top" class="liquid tag"></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_isEmpty&#125;</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_isEmpty&#125;{% endraw %}</code></td>
                 <td class="description">renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;countryCode&#125;&#125;</code></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_countryCode&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;countryCode&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_countryCode&#125;{% endraw %}</code></td>
                 <td class="description">renders the country code (of the site or of the order, if set)</td>
             </tr>
             <tr>
-              <td valign="top" class="liquid tag"><code>&#123;&#123;items&#125;&#125;</code></td>
+              <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;items&#125;&#125;{% endraw %}</code></td>
                 <td valign="top" class="legacy tag"></td>
                 <td class="description">displays the array of items contained in the shopping cart. Each product item has the following properties:
                 <ul>
@@ -94,8 +94,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_shoppingcartsummary direction=&quot;vertical&quot;&#125;</code> - this module will display the output vertically.</li><li><code> &#123;module_shoppingcartsummary collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.
-    <pre class="language-javascript"><code>
+    <li><code>{% raw %}&#123;module_shoppingcartsummary direction=&quot;vertical&quot;&#125;{% endraw %}</code> - this module will display the output vertically.</li><li><code>{% raw %} &#123;module_shoppingcartsummary collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.
+    <pre class="language-javascript"><code>{% raw %}
     "collection1": {
     "moduleName": "shoppingcartsummary",
     "moduleDescriptor": {
@@ -145,7 +145,7 @@
       }
     ]
   }
-  </code></pre>
+  {% endraw %}</code></pre>
     </li>
 </ul>
 </div>
@@ -153,7 +153,7 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_shoppingcartsummary,Vertical&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_shoppingcartsummary,Vertical&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -168,7 +168,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_shoppingcartsummary,vertical&#125;</code> - this module will display the output vertically.</li>
+    <li><code>{% raw %}&#123;module_shoppingcartsummary,vertical&#125;{% endraw %}</code> - this module will display the output vertically.</li>
 </ul>
 </div>
 </div>

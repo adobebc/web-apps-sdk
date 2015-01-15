@@ -3,50 +3,50 @@
 <table>
   <tbody>
     <tr>
-      <td><code>==</code></td>
+      <td><code>{% raw %}=={% endraw %}</code></td>
       <td>equals</td>
     </tr>
     <tr>
-      <td><code>!=</code></td>
+      <td><code>{% raw %}!={% endraw %}</code></td>
       <td>does not equal</td>
     </tr>
     <tr>
-      <td><code>&gt;</code></td>
+      <td><code>{% raw %}&gt;{% endraw %}</code></td>
       <td>greater than</td>
     </tr>
     <tr>
-      <td><code>&lt;</code></td>
+      <td><code>{% raw %}&lt;{% endraw %}</code></td>
       <td>less than</td>
     </tr>
     <tr>
-      <td><code>&gt;=</code></td>
+      <td><code>{% raw %}&gt;={% endraw %}</code></td>
       <td>greater than or equal to</td>    
 
     </tr>
     <tr>
-      <td><code>&lt;=</code></td>
+      <td><code>{% raw %}&lt;={% endraw %}</code></td>
       <td>less than or equal to</td>
     </tr>
     <tr>
-      <td><code>or</code></td>
+      <td><code>{% raw %}or{% endraw %}</code></td>
       <td>this <strong>or</strong> that</td>
     </tr>
     <tr>
-      <td><code>and</code></td>
+      <td><code>{% raw %}and{% endraw %}</code></td>
       <td>this <strong>and</strong> that</td>
     </tr>
     <tr>
-      <td><code>contains</code></td>
+      <td><code>{% raw %}contains{% endraw %}</code></td>
       <td>You can use "contains" to check whether a string contains another string, for example:
-      <pre class="language-javascript"><code>&#123;&#37; if &#123;&#123;webapp1.items[0].name&#125;&#125; contains 'Jaguar' &#37;&#125;
+      <pre class="language-javascript"><code>{% raw %}&#123;&#37; if &#123;&#123;webapp1.items[0].name&#125;&#125; contains 'Jaguar' &#37;&#125;
   This car is a Jaguar.
 &#123;&#37; endif &#37;&#125;
-</code></pre>
-or to check whether an array contains a value. Assuming <code>&#123;&#123;cars_available_now&#125;&#125; </code>is an array containing car makes:
-<pre class="language-javascript"><code>&#123;&#37; if &#123;&#123;cars_available_now&#125;&#125; contains 'Jaguar' &#37;&#125;
+{% endraw %}</code></pre>
+or to check whether an array contains a value. Assuming <code>{% raw %}&#123;&#123;cars_available_now&#125;&#125; {% endraw %}</code>is an array containing car makes:
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; if &#123;&#123;cars_available_now&#125;&#125; contains 'Jaguar' &#37;&#125;
   A Jaguar is available now.
 &#123;&#37; endif &#37;&#125;
-</code></pre>
+{% endraw %}</code></pre>
       </td>
     </tr>
   </tbody>

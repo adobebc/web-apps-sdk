@@ -10,7 +10,7 @@
   </ul>  <div id="named-params" class="beta">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_urlculture collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_urlculture collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -22,21 +22,21 @@
 <h2>This module can be rendered:</h2>
 <ul>
     <li><strong>in plain text</strong></li>
-    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>my_custom_collection_name.culture</code></li>
+    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>{% raw %}my_custom_collection_name.culture{% endraw %}</code></li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_urlculture&#125;</code> - This will output US assuming the country set for your domain is "UNITED STATES". &nbsp;</li><li><code>&#123;module_urlculture collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
-    <li>the culture country code is also contained in a <a href="/developers/beta/getting-started-with-liquid#globals">Liquid global</a> object. <code>&#123;&#123;globals.site&#125;&#125;</code> will output:
-       <pre class="language-javascript"><code>{
+    <li><code>{% raw %}&#123;module_urlculture&#125;{% endraw %}</code> - This will output US assuming the country set for your domain is "UNITED STATES". &nbsp;</li><li><code>{% raw %}&#123;module_urlculture collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+    <li>the culture country code is also contained in a <a href="/developers/beta/getting-started-with-liquid#globals">Liquid global</a> object. <code>{% raw %}&#123;&#123;globals.site&#125;&#125;{% endraw %}</code> will output:
+       <pre class="language-javascript"><code>{% raw %}{
   "id": 1576341,
   "name": "mtica4",
   "host": "mtica4.businesscatalyst.com",
   "countryCode": "US",
   "language": "US"
-}</code></pre>
+}{% endraw %}</code></pre>
     </li>
 </ul>
 </div>
@@ -44,12 +44,12 @@
 <div id="legacy">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_urlculture&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_urlculture&#125;{% endraw %}</code></pre>
 </div>
 <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_urlculture&#125;</code> - This will output US assuming the country set for your domain is "UNITED STATES". &nbsp;</li>
+    <li><code>{% raw %}&#123;module_urlculture&#125;{% endraw %}</code> - This will output US assuming the country set for your domain is "UNITED STATES". &nbsp;</li>
 </ul>
 </div>
 </div>

@@ -6,25 +6,25 @@
         <table width="100%" class="data-bordered">
             <tbody>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>divided_by</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}divided_by{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">{{500 | divided_by: 20}} is 25</span>
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>minus</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}minus{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">{{500 | minus: 20}} is 480</span>
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>plus</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}plus{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">{{500 | plus: 20}} is 520</span>
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>times</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}times{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">{{500 | times: 2}} is 1000</span>
                     </td>
@@ -39,74 +39,74 @@
         <table width="100%" class="data-bordered">
             <tbody>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>append</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}append{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">{{"This is the first part" | append: " appending the second part"}} outputs "This is the first part  appending the second part"</span>
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>prepend</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}prepend{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">{{" this is the second part" | prepend: "This is the first part"}} outputs "This is the first part  this is thesecond part"</span>
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>capitalize</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}capitalize{% endraw %}</code>
                     </td>
                     <td>{{'Sample text' | capitalize}} outputs "Sample Text"</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>downcase</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}downcase{% endraw %}</code>
                     </td>
                     <td>{{'Sample text' | downcase}} outputs "sample text"</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>upcase</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}upcase{% endraw %}</code>
                     </td>
                     <td>{{'Sample text' | upcase}} outputs "SAMPLE TEXT"</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>remove</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}remove{% endraw %}</code>
                     </td>
                     <td>{{'Sample text. All occurences of "text" will be removed.' | remove: "text"}}
                         outputs 'Sample . All occurences of "" will be removed.'</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>replace</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}replace{% endraw %}</code>
                     </td>
                     <td>{{'Sample text. All occurences of "text" will be replced.' | replace: "text",
                         "string"}} outputs 'Sample string. All occurences of "string" will be replaced.'</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>replacefirst</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}replacefirst{% endraw %}</code>
                     </td>
                     <td>{{'Sample text text.' | replacefirst: "text", "string"}} outputs 'Sample string
                         text''</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>truncate</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}truncate{% endraw %}</code>
                     </td>
                     <td>{{'Sample text ' | truncate: 9, "..."}} outputs 'Sample... '</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>split</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}split{% endraw %}</code>
                     </td>
                     <td>{{'1,2,3,4,5 ' | split: ","}} splits the text and creates an array ["1","2","3","4","5"]</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>join</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}join{% endraw %}</code>
                     </td>
                     <td>{{myArray | join: "///"}} assuming myArray is an array joins the elements and
                         puts the separator between each element</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>sort</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}sort{% endraw %}</code>
                     </td>
                     <td>{{myArray | sort}} assuming myArray is an array ["5","4","3"] ]the sort filter
                         outputs ["3","4","5"]</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>strip_html</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}strip_html{% endraw %}</code>
                     </td>
                     <td>{{"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html}} strips the HTML code from the
                         string, this outputs "My paragraph"</td>
@@ -121,13 +121,13 @@
         <table width="100%" class="data-bordered">
             <tbody>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>limit</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}limit{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">             # array = [1,2,3,4,5,6]             <br>             {% for item in array limit:2 %}<br>             This will limit the number of items returned from the array. In this case 1 and 2 will be returned             </span>
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>prepend</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}prepend{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">             # array = [1,2,3,4,5,6]             <br>              {% for item in array offset:2 %}<br>              This will offset the items from the array. In this case items 3 and 4 will be returned.<br>              You can combine both offset and limit.             </span>
                     </td>
@@ -142,13 +142,13 @@
         <table width="100%" class="data-bordered">
             <tbody>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>site_date</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}site_date{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">{{globals.site.dateNow | date}} outputs "09-Jan-2015"</span>
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>site_datetime</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}site_datetime{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">{{globals.site.dateNow | datetime}} outputs "09-Jan-2015 02:46 PM"</span>
                     </td>
@@ -159,116 +159,116 @@
 </div>
 <div type="cs-pod">
      <h2 id="date-switches">the Date switches</h2> 
-    <p>Assuming the value of the <code>dateTime</code> field is <em>2014-12-09T23:00:00</em> here
+    <p>Assuming the value of the <code>{% raw %}dateTime{% endraw %}</code> field is <em>2014-12-09T23:00:00</em> here
         are the available switches you can use to format the date:</p>
     <table width="100%"
     class="data-bordered">
         <tbody>
             <tr>
-                <td><code>%d</code>
+                <td><code>{% raw %}%d{% endraw %}</code>
                 </td>
                 <td>Outputs the day of the month - 18</td>
             </tr>
             <tr>
-                <td><code>dd</code>
+                <td><code>{% raw %}dd{% endraw %}</code>
                 </td>
                 <td>The day of the month. Single-digit days will have a leading zero - 03</td>
             </tr>
             <tr>
-                <td><code>ddd</code>
+                <td><code>{% raw %}ddd{% endraw %}</code>
                 </td>
                 <td>The abbreviated name of the day of the week. - Tue</td>
             </tr>
             <tr>
-                 <td><code>dddd</code></td>
+                 <td><code>{% raw %}dddd{% endraw %}</code></td>
                 <td>The full name of the day of the week. - Tuesday</td>
             </tr>
             <tr>
-                <td><code>%h</code>
+                <td><code>{% raw %}%h{% endraw %}</code>
                 </td>
                 <td>The hour in a 12-hour clock. Single-digit hours will not have a leading zero - 12</td>
             </tr>
             <tr>
-                <td><code>hh</code>
+                <td><code>{% raw %}hh{% endraw %}</code>
                 </td>
                 <td>The hour in a 12-hour clock. Single-digit hours will have a leading zero - 12</td>
             </tr>
             <tr>
-                <td><code>%H</code>
+                <td><code>{% raw %}%H{% endraw %}</code>
                 </td>
                 <td>The hour in a 24-hour clock. Single-digit hours will not have a leading zero -
                     0</td>
             </tr>
             <tr>
-                <td><code>HH</code>
+                <td><code>{% raw %}HH{% endraw %}</code>
                 </td>
                 <td>The hour in a 24-hour clock. Single-digit hours will have a leading zero - 0</td>
             </tr>
             <tr>
-                <td><code>%m</code>
+                <td><code>{% raw %}%m{% endraw %}</code>
                 </td>
                 <td>The minute. Single-digit minutes will not have a leading zero - 0</td>
             </tr>
             <tr>
-                <td><code>mm</code>
+                <td><code>{% raw %}mm{% endraw %}</code>
                 </td>
                 <td>The minute. Single-digit minutes will have a leading zero - 00</td>
             </tr>
             <tr>
-                <td><code>%M</code>
+                <td><code>{% raw %}%M{% endraw %}</code>
                 </td>
                 <td>The numeric month. Single-digit months will not have a leading zero - 9</td>
             </tr>
             <tr>
-                <td><code>MM</code>
+                <td><code>{% raw %}MM{% endraw %}</code>
                 </td>
                 <td>The numeric month. Single-digit months will have a leading zero - 09</td>
             </tr>
             <tr>
-                <td><code>MMM</code>
+                <td><code>{% raw %}MMM{% endraw %}</code>
                 </td>
                 <td>The abbreviated name of the month, as defined in AbbreviatedMonthNames - sep.</td>
             </tr>
             <tr>
-                <td><code>MMMM</code>
+                <td><code>{% raw %}MMMM{% endraw %}</code>
                 </td>
                 <td>The full name of the month, as defined in MonthNames - september</td>
             </tr>
             <tr>
-                <td><code>%s</code>
+                <td><code>{% raw %}%s{% endraw %}</code>
                 </td>
                 <td>The second. Single-digit seconds will not have a leading zeroThe second. Single-digit
                     seconds will not have a leading zero - 0</td>
             </tr>
             <tr>
-                <td><code>ss</code>
+                <td><code>{% raw %}ss{% endraw %}</code>
                 </td>
                 <td>The second. Single-digit seconds will have a leading zero - 00</td>
             </tr>
             <tr>
-                <td><code>%t</code>
+                <td><code>{% raw %}%t{% endraw %}</code>
                 </td>
                 <td>The first character in the AM/PM designator, if any - a</td>
             </tr>
             <tr>
-                <td><code>tt</code>
+                <td><code>{% raw %}tt{% endraw %}</code>
                 </td>
                 <td>The AM/PM designator, if any - a.m.</td>
             </tr>
             <tr>
-                <td><code>%y</code>
+                <td><code>{% raw %}%y{% endraw %}</code>
                 </td>
                 <td>The year without the century. If the year without the century is less than 10,
                     the year is displayed with no leading zero - 14</td>
             </tr>
             <tr>
-                <td><code>yy</code>
+                <td><code>{% raw %}yy{% endraw %}</code>
                 </td>
                 <td>The year without the century. If the year without the century is less than 10,
                     the year is displayed with a leading zero - 14</td>
             </tr>
             <tr>
-                <td><code>yyyy</code>
+                <td><code>{% raw %}yyyy{% endraw %}</code>
                 </td>
                 <td>The year in four or five digits (depending on the calendar used), including the
                     century. Will pad with leading zeroes to get four digits. Thai Buddhist and Korean
@@ -277,7 +277,7 @@
                     the Japanese and Taiwan calendars always behave as if "yy" was selected - 1914</td>
             </tr>
             <tr>
-                <td><code>\c</code>
+                <td><code>{% raw %}\c{% endraw %}</code>
                 </td>
                 <td>Where c is any character. Displays the character literally. Useful for escaping
                     characters that are usually rendered as switches (m, h, s, etc.) To display the
@@ -304,138 +304,138 @@
     width="100%" class="data-bordered">
         <tbody>
             <tr>
-                <td><code>%d</code>
+                <td><code>{% raw %}%d{% endraw %}</code>
                 </td>
                 <td>Outputs the number of whole days in the time interval - 5</td>
             </tr>
             <tr>
-                <td><code>dd</code>
+                <td><code>{% raw %}dd{% endraw %}</code>
                 </td>
                 <td>The number of whole days in the time interval, padded with leading zeros as needed
                     - 05</td>
             </tr>
             <tr>
-                <td><code>%h</code>
+                <td><code>{% raw %}%h{% endraw %}</code>
                 </td>
                 <td>The number of whole hours in the time interval that are not counted as part of
                     days. Single-digit hours do not have a leading zero - 2</td>
             </tr>
             <tr>
-                <td><code>hh</code>
+                <td><code>{% raw %}hh{% endraw %}</code>
                 </td>
                 <td>The number of whole hours in the time interval that are not counted as part of
                     days. Single-digit hours have a leading zero - 02</td>
             </tr>
             <tr>
-                <td><code>%m</code>
+                <td><code>{% raw %}%m{% endraw %}</code>
                 </td>
                 <td>The number of whole minutes in the time interval that are not included as part
                     of hours or days. Single-digit minutes do not have a leading zero - 39</td>
             </tr>
             <tr>
-                <td><code>mm</code>
+                <td><code>{% raw %}mm{% endraw %}</code>
                 </td>
                 <td>The number of whole minutes in the time interval that are not included as part
                     of hours or days. Single-digit minutes have a leading zero - 39</td>
             </tr>
             <tr>
-                <td><code>%s</code>
+                <td><code>{% raw %}%s{% endraw %}</code>
                 </td>
                 <td>The number of whole seconds in the time interval that are not included as part
                     of hours, days, or minutes. Single-digit seconds do not have a leading zero - 20</td>
             </tr>
             <tr>
-                <td><code>ss</code>
+                <td><code>{% raw %}ss{% endraw %}</code>
                 </td>
                 <td>The number of whole seconds in the time interval that are not included as part
                     of hours, days, or minutes. Single-digit seconds have a leading zero - 20</td>
             </tr>
             <tr>
-                <td><code>%f</code>
+                <td><code>{% raw %}%f{% endraw %}</code>
                 </td>
                 <td>The tenths of a second in a time interval - 2</td>
 
             </tr>
             <tr>
-                <td><code>ff</code>
+                <td><code>{% raw %}ff{% endraw %}</code>
                 </td>
                 <td>The /hundredths of a second in a time interval - 25</td>
             </tr>
             <tr>
-                <td><code>fff</code>
+                <td><code>{% raw %}fff{% endraw %}</code>
                 </td>
                 <td>The milliseconds in a time interval - 250</td>
             </tr>
             <tr>
-                <td><code>ffff</code>
+                <td><code>{% raw %}ffff{% endraw %}</code>
                 </td>
                 <td>The ten-thousandths of a second in a time interval - 2500</td>
             </tr>
             <tr>
-                <td><code>fffff</code>
+                <td><code>{% raw %}fffff{% endraw %}</code>
                 </td>
                 <td>The hundred-thousandths of a second in a time interval - 25002</td>
             </tr>
             <tr>
-                <td><code>ffffff</code>
+                <td><code>{% raw %}ffffff{% endraw %}</code>
                 </td>
                 <td>The millionths of a second in a time interval - 250025</td>
             </tr>
             <tr>
-                <td><code>fffffff</code>
+                <td><code>{% raw %}fffffff{% endraw %}</code>
                 </td>
                 <td>The ten-millionths of a second (or the fractional ticks) in a time interval -
                     2500250</td>
             </tr>
             <tr>
-                <td><code>%F</code>
+                <td><code>{% raw %}%F{% endraw %}</code>
                 </td>
                 <td>The tenths of a second in a time interval. Nothing is displayed if the digit is
                     zero -2</td>
             </tr>
             <tr>
-                <td><code>FF</code>
+                <td><code>{% raw %}FF{% endraw %}</code>
                 </td>
                 <td>The hundredths of a second in a time interval. Any fractional trailing zeros or
                     two zero digits are not included - 25</td>
             </tr>
             <tr>
-                <td><code>FFF</code>
+                <td><code>{% raw %}FFF{% endraw %}</code>
                 </td>
                 <td>The milliseconds in a time interval. Any fractional trailing zeros are not included
                     - 25</td>
             </tr>
             <tr>
-                <td><code>FFFF</code>
+                <td><code>{% raw %}FFFF{% endraw %}</code>
                 </td>
                 <td>The ten-thousandths of a second in a time interval. Any fractional trailing zeros
                     are not included - 25</td>
             </tr>
             <tr>
-                <td><code>FFFFF</code>
+                <td><code>{% raw %}FFFFF{% endraw %}</code>
                 </td>
                 <td>The hundred-thousandths of a second in a time interval. Any fractional trailing
                     zeros are not included - 25002</td>
             </tr>
             <tr>
-                <td><code>FFFFFF</code>
+                <td><code>{% raw %}FFFFFF{% endraw %}</code>
                 </td>
                 <td>The millionths of a second in a time interval. Any fractional trailing zeros are
                     not displayed - 250025</td>
             </tr>
             <tr>
-                <td><code>FFFFFFF</code>
+                <td><code>{% raw %}FFFFFFF{% endraw %}</code>
                 </td>
                 <td>The ten-millions of a second in a time interval. Any fractional trailing zeros
                     or seven zeros are not displayed - 250025</td>
             </tr>
             <tr>
-                <td><code>string</code>
+                <td><code>{% raw %}string{% endraw %}</code>
                 </td>
                 <td>Literal string delimiter - date:"'Result : 'dd'"'' will output - Result : 05</td>
             </tr>
             <tr>
-                <td><code>\</code>
+                <td><code>{% raw %}\{% endraw %}</code>
                 </td>
                 <td>The escape character. If you want to display a cahracter that would be normally
                     interpreted as a switch, for example /ddd will output - d05</td>
@@ -453,15 +453,15 @@
         <table width="100%" class="data-bordered">
             <tbody>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>convert</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}convert{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - {{3 | convert: "string" | json}} outputs "3"</li> <li><strong>number</strong> - {{"3" | convert: "number" | json}} outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - {{"false" | convert: "string" | json}}outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - {{"2015-01-07" | convert: "date"}} outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> <li><strong>currency</strong> {{100 | convert: "currency"}} outputs "100 USD" assuming the site's "Country code" is set to US.</li> </ul></span>
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>json</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}json{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>&amp;#123;&amp;#123;webapp1.items[0] | json&amp;#125;&amp;#125;</code>              looks like:                          <pre class="language-javascript">&lt;code&gt;{
+                    <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>{% raw %}&amp;#123;&amp;#123;webapp1.items[0] | json&amp;#125;&amp;#125;{% endraw %}</code>              looks like:                          <pre class="language-javascript">&lt;code&gt;{
  "itemid":"4646524",
  "name":"ABA",
  "urlWithHost":"http://abcd.com/car/ABA",
@@ -479,7 +479,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>size</code>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}size{% endraw %}</code>
                     </td>
                     <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</span>
                     </td>

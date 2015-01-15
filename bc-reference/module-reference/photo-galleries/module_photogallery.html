@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_photogallery render=&quot;item|collection&quot; id="12345" rowCount="2" targetFrame="_blank" resultsPerPage="4" width="400" height="400" useStandardMethod="true|false" thumbnail="proportional|fill_proportional|fill" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_photogallery render=&quot;item|collection&quot; id="12345" rowCount="2" targetFrame="_blank" resultsPerPage="4" width="400" height="400" useStandardMethod="true|false" thumbnail="proportional|fill_proportional|fill" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -50,19 +50,19 @@ Alternatively if the image dimensions are 400 pixels wide x 640 pixels high, the
 <h2>This module can be rendered:</h2>
 <ul>
     <li><strong>in plain text</strong></li>
-    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>my_custom_collection_name.title</code></li>
+    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>{% raw %}my_custom_collection_name.title{% endraw %}</code></li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<li><code>&#123;module_photogallery id=&quot;26800&quot; rowCount=&quot;4&quot; resultsPerPage=&quot;12&quot; width=&quot;120&quot; height=&quot;120&quot; useStandardMethod=&quot;true&quot;&#125;</code> - this displays 4 photos per line and a maximum of 12 photos per page. The thumbnail size has also been set to 120x120 pixels</li>
-<li><code> &#123;module_photogallery id=&quot;26800&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+<li><code>{% raw %}&#123;module_photogallery id=&quot;26800&quot; rowCount=&quot;4&quot; resultsPerPage=&quot;12&quot; width=&quot;120&quot; height=&quot;120&quot; useStandardMethod=&quot;true&quot;&#125;{% endraw %}</code> - this displays 4 photos per line and a maximum of 12 photos per page. The thumbnail size has also been set to 120x120 pixels</li>
+<li><code>{% raw %} &#123;module_photogallery id=&quot;26800&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_photogallery,ID,rowLength,targetFrame,resultsPerPage,Width,Height,UseStandardMethod,thumbnailAlgorithm&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_photogallery,ID,rowLength,targetFrame,resultsPerPage,Width,Height,UseStandardMethod,thumbnailAlgorithm&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -95,6 +95,6 @@ Alternatively if the image dimensions are 400 pixels wide x 640 pixels high, the
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<li><code>&#123;module_photogallery,26800,4,,12,120,120,true&#125;</code> - this displays 4 photos per line and a maximum of 12 photos per page. The thumbnail size has also been set to 120x120 pixels</li>
+<li><code>{% raw %}&#123;module_photogallery,26800,4,,12,120,120,true&#125;{% endraw %}</code> - this displays 4 photos per line and a maximum of 12 photos per page. The thumbnail size has also been set to 120x120 pixels</li>
 </div>
 </div>

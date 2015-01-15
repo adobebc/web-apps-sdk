@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_webappsresultsmap render=&quot;items|collection&quot; googleKey=&quot;&quot; width=&quot;400&quot; height=&quot;400&quot; resultsPerPage=500&quot; sortType=&quot;Default” collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_webappsresultsmap render=&quot;items|collection&quot; googleKey=&quot;&quot; width=&quot;400&quot; height=&quot;400&quot; resultsPerPage=500&quot; sortType=&quot;Default” collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -40,7 +40,7 @@
     <li>using a Google map - the webapp items are plotted as pins on a Google map, for example:<br/><a href="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-09-08_16.00.59.png" class="fancybox"><img alt="" src="http://screencasteu.worldsecuresystems.com/Mihai_screenshots/2014-09-08_16.00.59.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/></a> </li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
-<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>&#123;&#123;cars1.items[0].["large image_value"]&#125;&#125;</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by the name of the collection (in this case <em>cars1</em>).</p>
+<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{% raw %}&#123;&#123;cars1.items[0].["large image_value"]&#125;&#125;{% endraw %}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by the name of the collection (in this case <em>cars1</em>).</p>
 <table width="100%" class="data-bordered">
     <thead>
 <tr>
@@ -50,40 +50,40 @@
 </thead>
     <tbody>
          <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;address1&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;address1&#125;&#125;{% endraw %}</code></td>
          <td class="description">Address1</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;address2&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;address2&#125;&#125;{% endraw %}</code></td>
          <td class="description">Address2</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;city&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;city&#125;&#125;{% endraw %}</code></td>
          <td class="description">City</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;country&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;country&#125;&#125;{% endraw %}</code></td>
          <td class="description">Country</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;latitude&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;latitude&#125;&#125;{% endraw %}</code></td>
          <td class="description">Latitutde of web app item address</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;longitude&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;longitude&#125;&#125;{% endraw %}</code></td>
          <td class="description">Longitude of web app item address</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;state&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;state&#125;&#125;{% endraw %}</code></td>
          <td class="description">State</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;postalCode&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;postalCode&#125;&#125;{% endraw %}</code></td>
          <td class="description">ZIP code</td>
         </tr>
           
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;counter&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;counter&#125;&#125;{% endraw %}</code></td>
          <td class="description">Incremental count of the item on the page</td>
         </tr>
         <tr>
@@ -92,8 +92,8 @@
          <td class="description">Creates a link that allows current customer to delete a web app item they have previously submitted (only available if customer logged in to a secure zone)</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;description&#125;&#125;</code></td>
-         <td class="description">Description of item (editor content). On the "List Layout  (Backup)" you can use <code>&#123;tag_description,10&#125;</code> to display the first 10 characters of the webapp item's description.</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Description of item (editor content). On the "List Layout  (Backup)" you can use <code>{% raw %}&#123;tag_description,10&#125;{% endraw %}</code> to display the first 10 characters of the webapp item's description.</td>
         </tr>
     </tbody>
 </table>
@@ -101,15 +101,15 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_webappsresultsmap googleKey="ABCDEGHHIJKLMNOPQ" width=&quot;400&quot; height=&quot;400&quot; resultsPerPage=&quot;-1&quot; sortType=&quot;default&quot;&#125;</code> - displays all the search result webapp items ordered alphabetically on a 400px x 400px Google map</li>
-    <li><code>&#123;module_webappsresultsmap googleKey="ABCDEGHHIJKLMNOPQ" collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_webappsresultsmap googleKey="ABCDEGHHIJKLMNOPQ" width=&quot;400&quot; height=&quot;400&quot; resultsPerPage=&quot;-1&quot; sortType=&quot;default&quot;&#125;{% endraw %}</code> - displays all the search result webapp items ordered alphabetically on a 400px x 400px Google map</li>
+    <li><code>{% raw %}&#123;module_webappsresultsmap googleKey="ABCDEGHHIJKLMNOPQ" collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_webappsresultsmap,Google key,width,height,resultsPerPage,sortType&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_webappsresultsmap,Google key,width,height,resultsPerPage,sortType&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -137,7 +137,7 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_webappsresultsmap,MY_GOOGLE_MAPS_KEY,400,400,-1,default&#125;</code> - displays all the search result webapp items ordered alphabetically on a 400px x 400px Google map</li>
+    <li><code>{% raw %}&#123;module_webappsresultsmap,MY_GOOGLE_MAPS_KEY,400,400,-1,default&#125;{% endraw %}</code> - displays all the search result webapp items ordered alphabetically on a 400px x 400px Google map</li>
 </ul>
 </div>
 </div>

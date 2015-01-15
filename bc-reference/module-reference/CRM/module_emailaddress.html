@@ -9,7 +9,7 @@
   </ul>  <div id="named-params" class="beta">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_emailaddress collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_emailaddress collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -21,27 +21,27 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_emailaddress&#125;</code> - displays the email address in plain text</li>
-    <li><code> &#123;module_emailaddress collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a></li>    <li>the logged in user's email address is also contained in a <a href="/developers/beta/getting-started-with-liquid#globals">Liquid global</a> object. <code>&#123;&#123;globals.user&#125;&#125;</code> will output:
-       <pre class="language-javascript"><code>{
+    <li><code>{% raw %}&#123;module_emailaddress&#125;{% endraw %}</code> - displays the email address in plain text</li>
+    <li><code>{% raw %} &#123;module_emailaddress collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a></li>    <li>the logged in user's email address is also contained in a <a href="/developers/beta/getting-started-with-liquid#globals">Liquid global</a> object. <code>{% raw %}&#123;&#123;globals.user&#125;&#125;{% endraw %}</code> will output:
+       <pre class="language-javascript"><code>{% raw %}{
   "firstname": "Michael",
   "lastname": "Smith",
   "fullname": "Michael Smith",
   "email": "Michael.Boston@gmail.com",
   "isLoggedIn": true
-&#125;</code></pre>
+&#125;{% endraw %}</code></pre>
     </li>
 </ul>
 </div>
 </div><div id="legacy">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_emailaddress collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_emailaddress collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre>
 </div>
 <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_emailaddress&#125;</code> - displays the email address in plain text</li>
+    <li><code>{% raw %}&#123;module_emailaddress&#125;{% endraw %}</code> - displays the email address in plain text</li>
 </ul>
 </div>
 </div>

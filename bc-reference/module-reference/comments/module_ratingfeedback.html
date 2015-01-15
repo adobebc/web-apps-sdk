@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_ratingfeedback render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; sortType=&quot;datereverse|date&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_ratingfeedback render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; sortType=&quot;datereverse|date&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -41,37 +41,37 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;country&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_country&#125;</code></td><td class="description">Country of the person who provided the comment</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;country&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_country&#125;{% endraw %}</code></td><td class="description">Country of the person who provided the comment</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;body&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_feedback&#125;</code></td><td class="description">Customer comment</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_feedback&#125;{% endraw %}</code></td><td class="description">Customer comment</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;flagUrl&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_flag&#125;</code></td><td class="description">Image of the flag of the country of the person who provided the comment</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_fullname&#125;</code></td><td class="description">Displays the full name of the person who provided the comment.If the  "Website" field was not blank when the comment form was submitted the name is rendered as an anchor. If the "Website" field was blank at the time the comment form was submitted the output is in plain text. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;fullName&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_fullname_nolink&#125;</code></td><td class="description">Full name in plain text of the person who provided the comment. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;rating&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_rating&#125;</code></td><td class="description">Rating in stars</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;flagUrl&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_flag&#125;{% endraw %}</code></td><td class="description">Image of the flag of the country of the person who provided the comment</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_usagedate&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_fullname&#125;{% endraw %}</code></td><td class="description">Displays the full name of the person who provided the comment.If the  "Website" field was not blank when the comment form was submitted the name is rendered as an anchor. If the "Website" field was blank at the time the comment form was submitted the output is in plain text. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;fullName&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_fullname_nolink&#125;{% endraw %}</code></td><td class="description">Full name in plain text of the person who provided the comment. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;rating&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_rating&#125;{% endraw %}</code></td><td class="description">Rating in stars</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_usagedate&#125;{% endraw %}</code></td>
             <td class="description">Date when comment was given in this format - <em>27-Mar-2014 12:02</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;website&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_website&#125;</code></td><td class="description">Website of the person who provided the comment. If the comment form was submitted with the "Website" field not filled in this tag will output "<code>&#123;tag_website&#125;</code>"</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;website&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_website&#125;{% endraw %}</code></td><td class="description">Website of the person who provided the comment. If the comment form was submitted with the "Website" field not filled in this tag will output "<code>{% raw %}&#123;tag_website&#125;{% endraw %}</code>"</td>
         </tr>
     </tbody>
 </table>
@@ -79,15 +79,15 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_ratingfeedback sortType="date"&#125;</code> - displays the comments newest first</li>
-    <li><code>&#123;module_ratingfeedback template="/layouts/custom/comments.tpl"&#125;</code> - displays the comments using the comments.tpl custom template</li><li><code> &#123;module_captchav2 collection=&quot;collection1&quot; template=&quot;/folder/template.tpl&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_ratingfeedback sortType="date"&#125;{% endraw %}</code> - displays the comments newest first</li>
+    <li><code>{% raw %}&#123;module_ratingfeedback template="/layouts/custom/comments.tpl"&#125;{% endraw %}</code> - displays the comments using the comments.tpl custom template</li><li><code>{% raw %} &#123;module_captchav2 collection=&quot;collection1&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_ratingfeedback,date template=&quot;/customtemplate.tpl&quot;&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_ratingfeedback,date template=&quot;/customtemplate.tpl&quot;&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -106,8 +106,8 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_ratingfeedback,date&#125;</code> - displays the comments newest first</li>
-    <li><code>&#123;module_ratingfeedback template="/layouts/custom/comments.tpl"&#125;</code> - displays the comments using the comments.tpl custom template</li>
+    <li><code>{% raw %}&#123;module_ratingfeedback,date&#125;{% endraw %}</code> - displays the comments newest first</li>
+    <li><code>{% raw %}&#123;module_ratingfeedback template="/layouts/custom/comments.tpl"&#125;{% endraw %}</code> - displays the comments using the comments.tpl custom template</li>
 </ul>
 </div>
 </div>

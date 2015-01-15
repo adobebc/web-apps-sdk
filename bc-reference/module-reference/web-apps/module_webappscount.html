@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_webappscount id="webappId|webappName" filter="all" itemId="categoryId|categoryName" collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_webappscount id="webappId|webappName" filter="all" itemId="categoryId|categoryName" collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -33,15 +33,15 @@
 <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_webappscount id=&quot;56&quot;&#125;</code> - assuming there are 4 webapp items in the webapp with the ID 56 this module will render "4" </li>
-    <li><code>&#123;module_webappscount id=&quot;56&quot; collection="counter" template=""&#125;</code> - assuming there are 4 webapp items in the webapp with the ID 56 the Liquid code <code>&#123;&#123;this.counter.count | json&#125;&#125;</code> will render "4"</li>
+    <li><code>{% raw %}&#123;module_webappscount id=&quot;56&quot;&#125;{% endraw %}</code> - assuming there are 4 webapp items in the webapp with the ID 56 this module will render "4" </li>
+    <li><code>{% raw %}&#123;module_webappscount id=&quot;56&quot; collection="counter" template=""&#125;{% endraw %}</code> - assuming there are 4 webapp items in the webapp with the ID 56 the Liquid code <code>{% raw %}&#123;&#123;this.counter.count | json&#125;&#125;{% endraw %}</code> will render "4"</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_webappscount,ID&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_webappscount,ID&#125;{% endraw %}</code></pre>
 
 <ul>
     <li>ID - system generated web app id (do not change)</li>
@@ -51,7 +51,7 @@
 <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_webappscount,56&#125;</code> - assuming there are 4 webapp items in the webapp with the ID 56 this module will render "4" </li>
+    <li><code>{% raw %}&#123;module_webappscount,56&#125;{% endraw %}</code> - assuming there are 4 webapp items in the webapp with the ID 56 this module will render "4" </li>
 </ul>
 </div>
 </div>

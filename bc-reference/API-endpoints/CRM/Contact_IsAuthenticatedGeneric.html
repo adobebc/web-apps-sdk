@@ -15,9 +15,9 @@
 <h4>Parameters</h4>
 
 <ul>
-<li><code>siteId</code> - ID of the site <em>(integer)</em></li>
-<li><code>customerUsername</code> - <em>(string)</em></li>
-<li><code>customerPassword</code> - <em>(string)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - ID of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerUsername{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}customerPassword{% endraw %}</code> - <em>(string)</em></li>
 </ul>
 
 <h2>Response</h2>
@@ -25,7 +25,7 @@
 <p>A Contact_IsAuthenticatedGenericResponse object with the following properties:</p>
 
 <ul>
-<li><code>Contact_IsAuthenticatedGenericResult</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}Contact_IsAuthenticatedGenericResult{% endraw %}</code> - <em>(boolean)</em> </li>
 </ul>
 
 <h2>Examples</h2>
@@ -36,7 +36,7 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-markup"><code>POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
+<pre class="language-markup"><code>{% raw %}POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
 Host: worldsecuresystems.com
 Content-Type: application/soap+xml; charset=utf-8
 Content-Length: length
@@ -51,11 +51,11 @@ Content-Length: length
     &lt;/Contact_IsAuthenticatedGeneric&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-markup"><code>HTTP/1.1 200 OK
+<pre class="language-markup"><code>{% raw %}HTTP/1.1 200 OK
 Content-Type: application/soap+xml; charset=utf-8
 Content-Length: length
 
@@ -67,6 +67,6 @@ Content-Length: length
     &lt;/Contact_IsAuthenticatedGenericResponse&gt;
   &lt;/soap12:Body&gt;
 &lt;/soap12:Envelope&gt;
-</code></pre>
+{% endraw %}</code></pre>
 
         

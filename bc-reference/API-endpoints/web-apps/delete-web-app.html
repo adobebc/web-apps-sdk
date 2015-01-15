@@ -27,7 +27,7 @@
 
 <h2>Response</h2>
 
-<p>A <code>204 No Content</code> is returned if deletion is successful.</p>
+<p>A <code>{% raw %}204 No Content{% endraw %}</code> is returned if deletion is successful.</p>
 
 <h3>Examples</h3>
 
@@ -35,18 +35,18 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>DELETE /api/v2/admin/sites/current/webapps/WEBAPP NAME HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}DELETE /api/v2/admin/sites/current/webapps/WEBAPP NAME HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>HTTP/1.1 204 No Content
-</code></pre>
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 204 No Content
+{% endraw %}</code></pre>
 
 <hr><h2>Sample code</h2>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites/current/webapps/test app",
     type: "DELETE",
     contentType: "application/json",
@@ -64,24 +64,24 @@ request.fail(function (jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 })
 
-</code></pre>
+{% endraw %}</code></pre>
 
 <hr><h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 
 <ul>
-<li><code>204</code> - No content, on success</li>
-<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+<li><code>{% raw %}204{% endraw %}</code> - No content, on success</li>
+<li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
 
 <ul>
-<li><code>101000</code> - sub-error code</li>
+<li><code>{% raw %}101000{% endraw %}</code> - sub-error code</li>
 </ul></li>
-<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
-<li><code>404</code> - if trying to access a webapp that does not exist
+<li><code>{% raw %}403{% endraw %}</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+<li><code>{% raw %}404{% endraw %}</code> - if trying to access a webapp that does not exist
 
 <ul>
-<li><code>190001</code> - sub-error code</li>
+<li><code>{% raw %}190001{% endraw %}</code> - sub-error code</li>
 </ul></li>
 </ul>
 

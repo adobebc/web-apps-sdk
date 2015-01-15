@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_productlistdump catalogId=&quot;14886&quot; rowCount=&quot;2&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Weight&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_productlistdump catalogId=&quot;14886&quot; rowCount=&quot;2&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Weight&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre>
 <p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
@@ -36,13 +36,13 @@
 <ul>
   <li><strong>a generic unordered list:</strong>
   <pre class="language-markup">
-<code>&lt;ul class=&quot;catalogueitemdump&quot;&gt;<br/>
+<code>{% raw %}&lt;ul class=&quot;catalogueitemdump&quot;&gt;<br/>
 &lt;li&gt;&lt;a href=&quot;/catalog1/product1&quot;&gt;This is my first product&lt;/a&gt;&lt;/li&gt;<br/>
 &lt;li&gt;&lt;a href=&quot;/catalog1/product2&quot;&gt;This is my secondproduct&lt;/a&gt;&lt;/li&gt;<br/>
-&lt;/ul&gt;</code>
+&lt;/ul&gt;{% endraw %}</code>
 </pre></li>
   <li><strong> Liquid collections</strong> - the output is a Liquid collection containing the products:</li>
-</ul><pre class="language-javascript"><code>
+</ul><pre class="language-javascript"><code>{% raw %}
 "dump": {
     "moduleName": "productlistdump",
     "moduleDescriptor": {
@@ -87,23 +87,23 @@
         "url": "/classic-boutique/sample-product-8"
       }
     ]
-  &#125;</code>
+  &#125;{% endraw %}</code>
 </pre>
 
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_productlistdump catalogId=&quot;63858&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Alphabetical&quot;&#125;</code> - displays all the products in the catalog with the ID 63858 ordered alphabetically. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in a new tab.</li>
-    <li><code>&#123;module_productlistdump catalogId=&quot;-1&quot; targetFrame=&quot;_self&quot; sortType=&quot;weight&quot;&#125;</code> - displays all the products regardless of the catalog they are in ordered by weight. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in the same tab.</li>
-    <li><code> &#123;module_productlistdump catalogId=&quot;63858&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_productlistdump catalogId=&quot;63858&quot; targetFrame=&quot;_blank&quot; sortType=&quot;Alphabetical&quot;&#125;{% endraw %}</code> - displays all the products in the catalog with the ID 63858 ordered alphabetically. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in a new tab.</li>
+    <li><code>{% raw %}&#123;module_productlistdump catalogId=&quot;-1&quot; targetFrame=&quot;_self&quot; sortType=&quot;weight&quot;&#125;{% endraw %}</code> - displays all the products regardless of the catalog they are in ordered by weight. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in the same tab.</li>
+    <li><code>{% raw %} &#123;module_productlistdump catalogId=&quot;63858&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_productlistdump,catID,rowLength,targetFrame,sortBy&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_productlistdump,catID,rowLength,targetFrame,sortBy&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -122,16 +122,16 @@
 <div class="layouts">
 <h2>This module is not rendered using a layout.</h2>
 <p>The list of catalogs is ordered as an unordered list:</p>
-<pre class="language-markup"><code>&lt;ul class=&quot;catalogueitemdump&quot;&gt;<br/>
+<pre class="language-markup"><code>{% raw %}&lt;ul class=&quot;catalogueitemdump&quot;&gt;<br/>
 &lt;li&gt;&lt;a href=&quot;/catalog1/product1&quot;&gt;This is my first product&lt;/a&gt;&lt;/li&gt;<br/>
 &lt;li&gt;&lt;a href=&quot;/catalog1/product2&quot;&gt;This is my secondproduct&lt;/a&gt;&lt;/li&gt;<br/>
-&lt;/ul&gt;</code></pre>
+&lt;/ul&gt;{% endraw %}</code></pre>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_productlistdump,63858,,_blank,Alphabetical&#125;</code> - displays all the products in the catalog with the ID 63858 ordered alphabetically. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in a new tab.</li>
-    <li><code>&#123;module_productlistdump,-1,,_self,weight&#125;</code> - displays all the products regardless of the catalog they are in ordered by weight. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in the same tab.</li>
+    <li><code>{% raw %}&#123;module_productlistdump,63858,,_blank,Alphabetical&#125;{% endraw %}</code> - displays all the products in the catalog with the ID 63858 ordered alphabetically. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in a new tab.</li>
+    <li><code>{% raw %}&#123;module_productlistdump,-1,,_self,weight&#125;{% endraw %}</code> - displays all the products regardless of the catalog they are in ordered by weight. Clicking a product will open its detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) in the same tab.</li>
 </ul>
 </div>
 </div>

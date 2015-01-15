@@ -25,42 +25,42 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;assignedTo&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_assignedto&#125;</code></td><td class="description">Customer service representative the case is assigned to e.g. <em>John Smith</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;assignedTo&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_assignedto&#125;{% endraw %}</code></td><td class="description">Customer service representative the case is assigned to e.g. <em>John Smith</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;caseNumber&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_casenumber&#125;</code></td><td class="description">Case number</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;caseNumber&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_casenumber&#125;{% endraw %}</code></td><td class="description">Case number</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;counter&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_counter&#125;</code></td><td class="description">Incremental count of the item on the page. For several cases attached to a contact in the CRM,&nbsp; when using &#123;module_case,a,,Default&#125; (sorted by create date), the case created most recently is listed with counter "1". All that follow display a counter with an increment of 1.<br />
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;counter&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_counter&#125;{% endraw %}</code></td><td class="description">Incremental count of the item on the page. For several cases attached to a contact in the CRM,&nbsp; when using &#123;module_case,a,,Default&#125; (sorted by create date), the case created most recently is listed with counter "1". All that follow display a counter with an increment of 1.<br />
             </td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;createdate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_createdate&#125;</code></td><td class="description">Date and time the case was first created e.g. <em>25-Mar-2013 12:13 PM</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;createdate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_createdate&#125;{% endraw %}</code></td><td class="description">Date and time the case was first created e.g. <em>25-Mar-2013 12:13 PM</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;status&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_status&#125;</code></td><td class="description">Status of the case, possible values are <em>New</em>, <em>Open</em>, <em>Escalated</em>, <em>Closed</em>, <em>Re-Opened</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;status&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_status&#125;{% endraw %}</code></td><td class="description">Status of the case, possible values are <em>New</em>, <em>Open</em>, <em>Escalated</em>, <em>Closed</em>, <em>Re-Opened</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;subject&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_subject&#125;</code></td><td class="description">Subject of the case - formatted as a link, pointing to the <a title="detail layout" href="/dev-assets/reference/tag-reference/cases/case-detail-layout.html">detail layout</a></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;subject&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_subject&#125;{% endraw %}</code></td><td class="description">Subject of the case - formatted as a link, pointing to the <a title="detail layout" href="/dev-assets/reference/tag-reference/cases/case-detail-layout.html">detail layout</a></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;ownerName&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_ownername&#125;</code></td><td class="description">Full name of the owner of the case e.g. <em>John Smith</em><br />
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;ownerName&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_ownername&#125;{% endraw %}</code></td><td class="description">Full name of the owner of the case e.g. <em>John Smith</em><br />
             </td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_lastupdatedate&#125;</code></td><td class="description">Date and time the last message was received (Ex. <em>25-Mar-2013 12:13 PM</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td><td class="description">Date and time the last message was received (Ex. <em>25-Mar-2013 12:13 PM</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;workflow&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_workflow&#125;</code></td><td class="description">Workflow being used by the case. It will not output anything if no workflow is present  </td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;workflow&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_workflow&#125;{% endraw %}</code></td><td class="description">Workflow being used by the case. It will not output anything if no workflow is present  </td>
         </tr>
     </tbody>
 </table>

@@ -22,32 +22,32 @@
 <p>Object:</p>
 
 <ul>
-<li><code>id</code> - unique - field id, if left empty, will be auto-generated <em>(int)</em></li>
-<li><code>name</code> - unique, required - the name of the field (it must be unique amongst the custom &amp; system fields) <em>(string)</em></li>
-<li><code>type</code> - required, one of the below: <em>(string)</em>
+<li><code>{% raw %}id{% endraw %}</code> - unique - field id, if left empty, will be auto-generated <em>(int)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - unique, required - the name of the field (it must be unique amongst the custom &amp; system fields) <em>(string)</em></li>
+<li><code>{% raw %}type{% endraw %}</code> - required, one of the below: <em>(string)</em>
 
 <ul>
-<li><code>String</code></li>
-<li><code>Number</code></li>
-<li><code>Boolean</code></li>
-<li><code>DateTime</code></li>
-<li><code>DropDown_List</code></li>
-<li><code>CheckBox_List</code></li>
-<li><code>Radio_List</code></li>
-<li><code>Image</code></li>
-<li><code>String_MultiLine</code></li>
-<li><code>ListBox_List</code></li>
-<li><code>String_Hyperlink</code></li>
-<li><code>DataSource</code></li>
+<li><code>{% raw %}String{% endraw %}</code></li>
+<li><code>{% raw %}Number{% endraw %}</code></li>
+<li><code>{% raw %}Boolean{% endraw %}</code></li>
+<li><code>{% raw %}DateTime{% endraw %}</code></li>
+<li><code>{% raw %}DropDown_List{% endraw %}</code></li>
+<li><code>{% raw %}CheckBox_List{% endraw %}</code></li>
+<li><code>{% raw %}Radio_List{% endraw %}</code></li>
+<li><code>{% raw %}Image{% endraw %}</code></li>
+<li><code>{% raw %}String_MultiLine{% endraw %}</code></li>
+<li><code>{% raw %}ListBox_List{% endraw %}</code></li>
+<li><code>{% raw %}String_Hyperlink{% endraw %}</code></li>
+<li><code>{% raw %}DataSource{% endraw %}</code></li>
 </ul></li>
-<li><code>required</code> - true if the field is required (not required) <em>(boolean)</em></li>
-<li><p><code>order</code> - unique - the position of the field when listed starting with 1.</p>
+<li><code>{% raw %}required{% endraw %}</code> - true if the field is required (not required) <em>(boolean)</em></li>
+<li><p><code>{% raw %}order{% endraw %}</code> - unique - the position of the field when listed starting with 1.</p>
 
 <p>If a field with the same order value already exists, its order value (and order value for any other fields "bellow") will be incremented by 1.</p>
 
 <p>If not specified, the field is added as the last one. <em>(integer)</em></p></li>
-<li><p><code>dataSource</code>: for DataSource fields should be a valid webapp name <em>(string)</em></p></li>
-<li><code>listItems</code> - used only by DropDown_List, CheckBox_List, Radio_List, ListBox_List fields <em>(array)</em></li>
+<li><p><code>{% raw %}dataSource{% endraw %}</code>: for DataSource fields should be a valid webapp name <em>(string)</em></p></li>
+<li><code>{% raw %}listItems{% endraw %}</code> - used only by DropDown_List, CheckBox_List, Radio_List, ListBox_List fields <em>(array)</em></li>
 </ul>
 
 <h2>Response</h2>
@@ -62,7 +62,7 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE/fields HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}POST /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE/fields HTTPS/1.1
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Length: 157
 Connection: keep-alive
@@ -75,17 +75,17 @@ Content-Type: application/json
    "required": false,
    "order"   : 3
 }
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>HTTP/1.1 201 OK
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 OK
 Content-Type: application/json; charset=utf-8
 Location: /api/v2/admin/sites/current/webapps/Cars/fields/123
-</code></pre>
+{% endraw %}</code></pre>
 
 <hr><h2>Sample code</h2>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites/current/webapps/test app2/fields",
     type: "POST",
     connection: "keep-alive",
@@ -105,36 +105,36 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 })
-</code></pre>
+{% endraw %}</code></pre>
 
 <hr><h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 
 <ul>
-<li><code>201</code> - created</li>
-<li><code>400</code> - bad request; sub-error codes:
+<li><code>{% raw %}201{% endraw %}</code> - created</li>
+<li><code>{% raw %}400{% endraw %}</code> - bad request; sub-error codes:
 
 <ul>
-<li><code>210000</code> - An unspecified error has occurred</li>
-<li><code>210002</code> - Invalid field id specified</li>
-<li><code>210003</code> - Invalid name (name is not syntactically correct or there is already a system or custom field with the same name)</li>
-<li><code>210004</code> - Invalid listItems</li>
-<li><code>210005</code> - Invalid dataSourceName</li>
-<li><code>210006</code> - Invalid order value (must be between 1 and max existing order value + 1)</li>
-<li><code>210007</code> - Invalid type</li>
+<li><code>{% raw %}210000{% endraw %}</code> - An unspecified error has occurred</li>
+<li><code>{% raw %}210002{% endraw %}</code> - Invalid field id specified</li>
+<li><code>{% raw %}210003{% endraw %}</code> - Invalid name (name is not syntactically correct or there is already a system or custom field with the same name)</li>
+<li><code>{% raw %}210004{% endraw %}</code> - Invalid listItems</li>
+<li><code>{% raw %}210005{% endraw %}</code> - Invalid dataSourceName</li>
+<li><code>{% raw %}210006{% endraw %}</code> - Invalid order value (must be between 1 and max existing order value + 1)</li>
+<li><code>{% raw %}210007{% endraw %}</code> - Invalid type</li>
 </ul></li>
-<li><code>401</code> - unauthorized - when the authentication token is incorrect
+<li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the authentication token is incorrect
 
 <ul>
-<li><code>101000</code> - sub-error code</li>
+<li><code>{% raw %}101000{% endraw %}</code> - sub-error code</li>
 </ul></li>
-<li><code>403</code> - forbidden - when the user does not have Edit WebApp Permission</li>
-<li><code>404</code> - not found
+<li><code>{% raw %}403{% endraw %}</code> - forbidden - when the user does not have Edit WebApp Permission</li>
+<li><code>{% raw %}404{% endraw %}</code> - not found
 
 <ul>
-<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
-<li><code>210001</code> - The custom field was not found (the fieldId from the URL do not match)</li>
+<li><code>{% raw %}190001{% endraw %}</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+<li><code>{% raw %}210001{% endraw %}</code> - The custom field was not found (the fieldId from the URL do not match)</li>
 </ul></li>
 </ul>
 

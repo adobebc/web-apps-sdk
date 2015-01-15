@@ -2,7 +2,7 @@
 <div id="modules">
 <h2>This layout is not used by any module per se.</h2>
 <p>
-Site visitors get to it only after clicking the links outputted by any of these tags &#123;tag_button,Your Text&#125;</code>&nbsp;or &#123;tag_question&#125;</code>.
+Site visitors get to it only after clicking the links outputted by any of these tags &#123;tag_button,Your Text&#125;{% endraw %}</code>&nbsp;or &#123;tag_question&#125;{% endraw %}</code>.
 </p>
 </div>
 <div id="accessible">
@@ -24,74 +24,74 @@ Site visitors get to it only after clicking the links outputted by any of these 
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;id&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_id&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;id&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_id&#125;{% endraw %}</code></td>
          <td class="description">Booking Id</a></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_name&#125;</code></td><td class="description">Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">detail layout</a></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">detail layout</a></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;body&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_body&#125;</code></td><td class="description">Details of booking (editor content) e.g. <em>Something about the event goes here.</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_body&#125;{% endraw %}</code></td><td class="description">Details of booking (editor content) e.g. <em>Something about the event goes here.</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;capacity&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_capacity&#125;</code></td><td class="description">Total number of seats for booking e.g. <em>130</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;capacity&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_capacity&#125;{% endraw %}</code></td><td class="description">Total number of seats for booking e.g. <em>130</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;percentfull&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_percentfull&#125;</code></td><td class="description">Percentage of booking seats already booked e.g. <em>40%</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;percentfull&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_percentfull&#125;{% endraw %}</code></td><td class="description">Percentage of booking seats already booked e.g. <em>40%</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;date&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_date&#125;</code></td><td class="description">Date of booking e.g. <em>24-Aug-2014</em>. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_date&#125;{% endraw %}</code></td><td class="description">Date of booking e.g. <em>24-Aug-2014</em>. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
         </tr>
 
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addtofavorites,add_Image, remove_Image&#125;</code></td><td class="description">Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - &#123;tag_addtofavorites,&lt;img alt="" src="/images/plus_icon" /&gt;,&lt;img alt="" src="/images/minus_icon" /&gt;&#125;</code> </td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtofavorites,add_Image, remove_Image&#125;{% endraw %}</code></td><td class="description">Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - &#123;tag_addtofavorites,&lt;img alt="" src="/images/plus_icon" /&gt;,&lt;img alt="" src="/images/minus_icon" /&gt;&#125;{% endraw %}</code> </td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;day&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_bookingday&#125;</code></td><td class="description">Day of Booking e.g. <em>24</em> if the booking date is 24-Aug-2014</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;day&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_bookingday&#125;{% endraw %}</code></td><td class="description">Day of Booking e.g. <em>24</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;monthName&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_bookingmonth&#125;</code></td><td class="description">Month of Booking e.g. <em>Aug</em> if the booking date is 24-Aug-2014</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;monthName&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_bookingmonth&#125;{% endraw %}</code></td><td class="description">Month of Booking e.g. <em>Aug</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;year&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_bookingyear&#125;</code></td><td class="description">Year of Booking e.g. <em>2014</em> if the booking date is 24-Aug-2014</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_button,Your Text&#125;</code></td><td class="description">creates a link that enables the user to navigate to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">detail layout</a> (replace Your Text with your own text) </td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;year&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_bookingyear&#125;{% endraw %}</code></td><td class="description">Year of Booking e.g. <em>2014</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_capacitydescription&#125;</code></td><td class="description">Description for number of seats available. The possible values are: <em>Available</em>, <em>Filling Up</em>, <em>Almost Full</em> and <em>Full</em></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;capacityEmpty&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_capacityempty&#125;</code></td><td class="description">Number of available seats left for booking e.g. <em>79</em></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;weekday&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_day&#125;</code></td><td class="description">Day of booking e.g. <em>Saturday </em>if the booking date is 24-Aug-2013</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_lastupdatedate&#125;</code></td><td class="description">Date and time the booking was last updated e.g. <em>29-Jan-2013 08:57 PM</em></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code></td><td class="description">creates a link that enables the user to navigate to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">detail layout</a> (replace Your Text with your own text) </td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_tellafriend&#125;</code></td><td class="description">Tell a friend about this booking</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_capacitydescription&#125;{% endraw %}</code></td><td class="description">Description for number of seats available. The possible values are: <em>Available</em>, <em>Filling Up</em>, <em>Almost Full</em> and <em>Full</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;classifications&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_classifications&#125;</code></td><td class="description">List of categories that this booking is classified under e.g. <em>Company, Solutions</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;capacityEmpty&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_capacityempty&#125;{% endraw %}</code></td><td class="description">Number of available seats left for booking e.g. <em>79</em></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;weekday&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_day&#125;{% endraw %}</code></td><td class="description">Day of booking e.g. <em>Saturday </em>if the booking date is 24-Aug-2013</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td><td class="description">Date and time the booking was last updated e.g. <em>29-Jan-2013 08:57 PM</em></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_tellafriend&#125;{% endraw %}</code></td><td class="description">Tell a friend about this booking</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;classifications&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_classifications&#125;{% endraw %}</code></td><td class="description">List of categories that this booking is classified under e.g. <em>Company, Solutions</em></td>
         </tr>
     </tbody>
 </table>

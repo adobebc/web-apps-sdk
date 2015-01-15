@@ -26,16 +26,16 @@
 <p>A category object with the following properties:</p>
 
 <ul>
-<li><code>links</code> - a collection of links <em>(array)</em>
+<li><code>{% raw %}links{% endraw %}</code> - a collection of links <em>(array)</em>
 
 <ul>
-<li><code>parent</code> - the API URL for the parent category, if it's not under the root <em>(string)</em></li>
+<li><code>{% raw %}parent{% endraw %}</code> - the API URL for the parent category, if it's not under the root <em>(string)</em></li>
 </ul></li>
-<li><code>id</code> - the ID of the category for the current site <em>(integer)</em></li>
-<li><code>name</code> - the name of the category <em>(string)</em></li>
-<li><code>parent</code> - the ID of the parent category, if this is a sub-category <em>(integer, nullable)</em></li>
-<li><code>publicAccess</code> - whether or not the category is visible to front-end users <em>(boolean)</em></li>
-<li><code>fullPath</code> - the full hierarchy for the current category <em>(string)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - the ID of the category for the current site <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the category <em>(string)</em></li>
+<li><code>{% raw %}parent{% endraw %}</code> - the ID of the parent category, if this is a sub-category <em>(integer, nullable)</em></li>
+<li><code>{% raw %}publicAccess{% endraw %}</code> - whether or not the category is visible to front-end users <em>(boolean)</em></li>
+<li><code>{% raw %}fullPath{% endraw %}</code> - the full hierarchy for the current category <em>(string)</em></li>
 </ul>
 
 
@@ -46,14 +46,14 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/categories/123456
+<pre class="language-javascript"><code>{% raw %}GET /api/v2/admin/sites/current/categories/123456
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>HTTP/1.1 200 OK
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Content-Length: {length}
 
@@ -68,11 +68,11 @@ Content-Length: {length}
     "publicAccess": false,
     "fullPath": "/Company/Company1 Private"
 }
-</code></pre>
+{% endraw %}</code></pre>
 <hr>
 <h2>Sample code</h2>
 
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites/current/categories/123456",
     type: "GET",
     headers: {
@@ -87,26 +87,26 @@ request.done(function (msg) {
 request.fail(function (jqXHR) {
     console.log("Request failed. Error code: " + jqXHR.status);
 })
-</code></pre>
+{% endraw %}</code></pre>
 <hr>
 <h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 
 <ul>
-<li><code>200</code> - success</li>
-<li><code>400</code> - bad request
+<li><code>{% raw %}200{% endraw %}</code> - success</li>
+<li><code>{% raw %}400{% endraw %}</code> - bad request
 
 <ul>
-<li><code>220000</code> - unknown error</li>
+<li><code>{% raw %}220000{% endraw %}</code> - unknown error</li>
 </ul></li>
-<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+<li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
 
 <ul>
-<li><code>101000</code> - sub-error code</li>
+<li><code>{% raw %}101000{% endraw %}</code> - sub-error code</li>
 </ul></li>
-<li><code>403</code> - forbidden - this is returned when the user trying to access the API does not have the proper permissions</li>
-<li><code>404</code> - not found - this is returned when the given category does not exist</li>
+<li><code>{% raw %}403{% endraw %}</code> - forbidden - this is returned when the user trying to access the API does not have the proper permissions</li>
+<li><code>{% raw %}404{% endraw %}</code> - not found - this is returned when the given category does not exist</li>
 </ul>
 
         

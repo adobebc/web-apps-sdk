@@ -14,7 +14,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_faq render=&quot;item|collection&quot; filter="item" itemid="faqId" noTemplate="false" effect="ajax" targetFrame="blank" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_faq render=&quot;item|collection&quot; filter="item" itemid="faqId" noTemplate="false" effect="ajax" targetFrame="blank" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -57,30 +57,30 @@
     <tbody>
         <tr>
           <td valign="top" class="liquid tag"></td>
-          <td class="description">Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - <code>&#123;tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;&#125;</code></td>
+          <td class="description">Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - <code>{% raw %}&#123;tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;&#125;{% endraw %}</code></td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>&#123;&#123;answer&#125;&#125;</code></td>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;answer&#125;&#125;{% endraw %}</code></td>
           <td class="description">Answer for frequently asked question  (editor content). This outputs the text of the FAQ.</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>&#123;&#123;counter&#125;&#125;</code></td>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;counter&#125;&#125;{% endraw %}</code></td>
           <td class="description">Incremental count of the FAQ on the page.</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
           <td class="description">Expiry date of FAQ for example <em>16-Apr-2014 03:48 AM</em></td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
           <td class="description">Last update date of FAQ for example <em>16-Apr-2014 03:48 AM</em></td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>&#123;&#123;question&#125;&#125;</code></td>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;question&#125;&#125;{% endraw %}</code></td>
           <td class="description">Frequently asked question (will not have hyperlink). This outputs the FAQ's title in plain text.</td>
         </tr>
         <tr>
-          <td valign="top" class="liquid tag"><code>&#123;&#123;releaseDate&#125;&#125;</code></td>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
           <td class="description">Release date of FAQ in this format - <em>16-Sep-2014</em></td>
         </tr>
         <tr>
@@ -93,17 +93,17 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_faq filter=&quot;all&quot; targetFrame=&quot;_parent&quot;&#125;</code> - will display all FAQs and open them in parent frame.</li>
-    <li><code>&#123;module_faq filter=&quot;all&quot;, template="/layouts/custom/faq.tpl"&#125;</code> - will display all FAQs using the faq.tpl custom template.</li>
-    <li><code>&#123;module_faq filter=&quot;latest&quot; itemid=&quot;5&quot;&#125;</code> - will display the latest 5 FAQs.</li>
-    <li><code>&#123;module_faq filter=&quot;random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot;&#125;</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li><li><code> &#123;module_faq filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_faq filter=&quot;all&quot; targetFrame=&quot;_parent&quot;&#125;{% endraw %}</code> - will display all FAQs and open them in parent frame.</li>
+    <li><code>{% raw %}&#123;module_faq filter=&quot;all&quot;, template="/layouts/custom/faq.tpl"&#125;{% endraw %}</code> - will display all FAQs using the faq.tpl custom template.</li>
+    <li><code>{% raw %}&#123;module_faq filter=&quot;latest&quot; itemid=&quot;5&quot;&#125;{% endraw %}</code> - will display the latest 5 FAQs.</li>
+    <li><code>{% raw %}&#123;module_faq filter=&quot;random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot;&#125;{% endraw %}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li><li><code>{% raw %} &#123;module_faq filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_faq,filter,id,noTemplate,effect,targetFrame&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_faq,filter,id,noTemplate,effect,targetFrame&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -135,10 +135,10 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_faq,a,,,,_parent&#125;</code> - will display all FAQs and open them in parent frame.</li>
-    <li><code>&#123;module_faq,a, template="/layouts/custom/faq.tpl"&#125;</code> - will display all FAQs using the faq.tpl custom template.</li>
-    <li><code>&#123;module_faq,l,5&#125;</code> - will display the latest 5 FAQs.</li>
-    <li><code>&#123;module_faq,r,,true,ajax,_blank&#125;</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li>
+    <li><code>{% raw %}&#123;module_faq,a,,,,_parent&#125;{% endraw %}</code> - will display all FAQs and open them in parent frame.</li>
+    <li><code>{% raw %}&#123;module_faq,a, template="/layouts/custom/faq.tpl"&#125;{% endraw %}</code> - will display all FAQs using the faq.tpl custom template.</li>
+    <li><code>{% raw %}&#123;module_faq,l,5&#125;{% endraw %}</code> - will display the latest 5 FAQs.</li>
+    <li><code>{% raw %}&#123;module_faq,r,,true,ajax,_blank&#125;{% endraw %}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detailed content opens right underneath the FAQ name.</li>
 </ul>
 </div>
 </div>

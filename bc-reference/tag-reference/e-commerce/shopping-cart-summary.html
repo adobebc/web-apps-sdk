@@ -21,38 +21,38 @@
 </tr>
 </thead>
     <tbody>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;cartUrl&#125;&#125;</code></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_cartUrl&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;cartUrl&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_cartUrl&#125;{% endraw %}</code></td>
                 <td class="description">renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;itemCount&#125;&#125;</code></td>
-                <td><code>&#123;tag_itemCount&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemCount&#125;&#125;{% endraw %}</code></td>
+                <td><code>{% raw %}&#123;tag_itemCount&#125;{% endraw %}</code></td>
                 <td class="description">renders the number of the items in the cart or 0 if none.</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;totalAmount&#125;&#125;</code></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_totalAmount&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalAmount&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalAmount&#125;{% endraw %}</code></td>
                 <td class="description">renders the total money amount of the items (with two decimals) or 0.00 if the items don't have prices or there are no items in the cart</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;currencyFormat&#125;&#125;</code></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_currency&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;currencyFormat&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_currency&#125;{% endraw %}</code></td>
                 <td class="description">renders the coin of the current country, which is either the site country or the country of the order (if set)</td>
             </tr>
             <tr><td valign="top" class="liquid tag"></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_totalAmountWithCurrency&#125;</code></td>
-                <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>&#123;tag_currency&#125;</code><code>&#123;tag_totalAmount&#125;</code>)</td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalAmountWithCurrency&#125;{% endraw %}</code></td>
+                <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>{% raw %}&#123;tag_currency&#125;{% endraw %}</code><code>{% raw %}&#123;tag_totalAmount&#125;{% endraw %}</code>)</td>
             </tr>
           <tr><td valign="top" class="liquid tag"></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_isEmpty&#125;</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_isEmpty&#125;{% endraw %}</code></td>
                 <td class="description">renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
             </tr>
-            <tr><td valign="top" class="liquid tag"><code>&#123;&#123;countryCode&#125;&#125;</code></td>
-                <td valign="top" class="legacy tag"><code>&#123;tag_countryCode&#125;</code></td>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;countryCode&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_countryCode&#125;{% endraw %}</code></td>
                 <td class="description">the country code of the currency used</td>
             </tr>
         </tbody>
     </table>
     <p>Below is a example of a custom template using the above tags:</p>
-    <pre class="language-markup"><code>
+    <pre class="language-markup"><code>{% raw %}
     &lt;div class="cartSummary empty&#123;tag_isEmpty}"&gt;<br/>
     &lt;div class="cartSummaryItem"&gt;Shopping cart is empty&lt;/div&gt;<br/>
     &lt;/div&gt;<br/>
@@ -60,7 +60,7 @@
     &lt;div class="cartSummaryItem"&gt;&#123;tag_itemCount} item(s), Total &#123;tag_currency}&#123;tag_totalAmount}&lt;/div&gt;<br/>
     &lt;div&gt;&lt;a class="cartSummaryLink" href="&#123;tag_cartUrl}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
     &lt;/div&gt;<br/>
-    </code></pre>
+    {% endraw %}</code></pre>
     <p class="alert alert-info"><strong>Note:</strong> If you are using the above example, ensure that you add the below to your CSS to change the table class based on whether an item is added to the cart or not.</p>
     <p><em>&nbsp;&nbsp;.empty0 { display:none; }</em></p>
     <p><em>&nbsp;&nbsp;.notEmpty1 { display:none; }</em></p>
@@ -75,8 +75,8 @@
     Locate the  &#123;module_shoppingcartsummary} module on your site. By default this can be found in&nbsp;<strong>Site Manager &gt; Module Templates &gt; Online Shop Layouts &gt; Overall Layout.</strong>
     </li>
     <li>
-    Replace this module with: <code>&#123;module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"&#125;</code><br /> - for example 
-    <code>&#123;module_shoppingcartsummary template="/cartsummary.tpl"&#125;</code>
+    Replace this module with: <code>{% raw %}&#123;module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"&#125;{% endraw %}</code><br /> - for example 
+    <code>{% raw %}&#123;module_shoppingcartsummary template="/cartsummary.tpl"&#125;{% endraw %}</code>
     </li>
     <li>
     Save the layout.

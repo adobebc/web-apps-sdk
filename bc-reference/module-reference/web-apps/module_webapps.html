@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_webapps render=&quot;item|collection&quot; id="webappId|webappName" filter="item" itemId="123" targetFrame="" resultsPerPage="" hideEmptyMessage="false" rowCount="" sortType="ALPHABETICAL" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_webapps render=&quot;item|collection&quot; id="webappId|webappName" filter="item" itemId="123" targetFrame="" resultsPerPage="" hideEmptyMessage="false" rowCount="" sortType="ALPHABETICAL" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -58,7 +58,7 @@
     <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
-<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>&#123;&#123;cars1.items[0].["large image_value"]&#125;&#125;</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by the name of the collection (in this case <em>cars1</em>).</p>
+<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{% raw %}&#123;&#123;cars1.items[0].["large image_value"]&#125;&#125;{% endraw %}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by the name of the collection (in this case <em>cars1</em>).</p>
 <table width="100%" class="data-bordered">
     <thead>
 <tr>
@@ -69,151 +69,151 @@
 </thead>
     <tbody>
 	<tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;itemid&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_itemid&#125;</code></td><td class="description">Item's system ID</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemid&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemid&#125;{% endraw %}</code></td><td class="description">Item's system ID</td>
         </tr>
          <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;address1&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_address1&#125;</code></td><td class="description">Address1</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;address1&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_address1&#125;{% endraw %}</code></td><td class="description">Address1</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;address2&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_address2&#125;</code></td><td class="description">Address2</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;address2&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_address2&#125;{% endraw %}</code></td><td class="description">Address2</td>
         </tr>
     <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;city&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addresscity&#125;</code></td><td class="description">City</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;city&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addresscity&#125;{% endraw %}</code></td><td class="description">City</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;country&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addresscountry&#125;</code></td><td class="description">Country</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addressglatlng&#125;</code></td><td class="description">This tag provides a shortcut to generate GLatLng objects for use with the Google Maps API.</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;latitude&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addresslatitude&#125;</code></td><td class="description">Latitutde of web app item address</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;longitude&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addresslongitude&#125;</code></td><td class="description">Longitude of web app item address</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;state&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addressstate&#125;</code></td><td class="description">State</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;zipcode&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addresszipcode&#125;</code></td><td class="description">ZIP code</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;country&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addresscountry&#125;{% endraw %}</code></td><td class="description">Country</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_addtofavorites,add_Image, remove_Image&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addressglatlng&#125;{% endraw %}</code></td><td class="description">This tag provides a shortcut to generate GLatLng objects for use with the Google Maps API.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;latitude&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addresslatitude&#125;{% endraw %}</code></td><td class="description">Latitutde of web app item address</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;longitude&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addresslongitude&#125;{% endraw %}</code></td><td class="description">Longitude of web app item address</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;state&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addressstate&#125;{% endraw %}</code></td><td class="description">State</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;zipcode&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addresszipcode&#125;{% endraw %}</code></td><td class="description">ZIP code</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtofavorites,add_Image, remove_Image&#125;{% endraw %}</code></td>
             <td class="description">Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - &#123;tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;&#125;&lt;br/&gt;<br>
             For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;button&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_button,Your Text&#125;</code></td><td class="description">will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="/dev-assets/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;button&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code></td><td class="description">will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="/dev-assets/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></td>
         </tr>
-          <td valign="top" class="liquid tag"><code>&#123;&#123;commentCount&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_commentcount&#125;</code></td><td class="description">Number of comments for current post</td>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;commentCount&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commentcount&#125;{% endraw %}</code></td><td class="description">Number of comments for current post</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;counter&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_counter&#125;</code></td><td class="description">Incremental count of the item on the page</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;counter&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_counter&#125;{% endraw %}</code></td><td class="description">Incremental count of the item on the page</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_delete&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_delete&#125;{% endraw %}</code></td>
          <td class="description">Creates a link that allows current customer to delete a web app item they have previously submitted (only available if customer logged in to a secure zone)</td>
         </tr>
             <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;deleteUrl&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;deleteUrl&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"></td>
          <td class="description">The URL that allows current customer to delete a web app item they have previously submitted (only available if customer logged in to a secure zone)</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;description&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_description,number of characters&#125;</code></td><td class="description">Description of item (editor content). On the "List Layout  (Backup)" you can use <code>&#123;tag_description,10&#125;</code> to display the first 10 characters of the webapp item's description.</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_description,number of characters&#125;{% endraw %}</code></td><td class="description">Description of item (editor content). On the "List Layout  (Backup)" you can use <code>{% raw %}&#123;tag_description,10&#125;{% endraw %}</code> to display the first 10 characters of the webapp item's description.</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_edit&#125;</code></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/dev-assets/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_edit&#125;{% endraw %}</code></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/dev-assets/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;editUrl&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;editUrl&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/dev-assets/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_expirydate&#125;</code></td><td class="description">Expiry date of item in this format - <em>01-Jan-9999</em><br />
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_expirydate&#125;{% endraw %}</code></td><td class="description">Expiry date of item in this format - <em>01-Jan-9999</em><br />
             </td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_lastupdatedate&#125;</code></td><td class="description">Last update date of item in this format -<em>01-Jan-9999</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td><td class="description">Last update date of item in this format -<em>01-Jan-9999</em></td>
         </tr>
           <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_name_nolink&#125;</code></td><td class="description">Name of item (without hyperlink)</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name_nolink&#125;{% endraw %}</code></td><td class="description">Name of item (without hyperlink)</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_name&#125;</code></td><td class="description">Name of the item - will have hyperlink that points to the item's <a href="/dev-assets/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Name of the item - will have hyperlink that points to the item's <a href="/dev-assets/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;releaseDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_releasedate&#125;</code></td><td class="description">Release date of item in this format - <em>08-Sep-2014</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_releasedate&#125;{% endraw %}</code></td><td class="description">Release date of item in this format - <em>08-Sep-2014</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;weight&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_weight&#125;</code></td><td class="description">Weighting of item</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;weight&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_weight&#125;{% endraw %}</code></td><td class="description">Weighting of item</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;urlWithHost&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_itemurl_withhost&#125;</code></td><td class="description">Full URL of the web app item including host for example <em>http://mysamplesite.com/car-catalogue/ford-explorer</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;urlWithHost&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemurl_withhost&#125;{% endraw %}</code></td><td class="description">Full URL of the web app item including host for example <em>http://mysamplesite.com/car-catalogue/ford-explorer</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;url&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_itemurl_nolink&#125;</code></td><td class="description">Relative URL of the web app item for example <em>/car-catalogue/ford-explorer</em></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;url&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemurl_nolink&#125;{% endraw %}</code></td><td class="description">Relative URL of the web app item for example <em>/car-catalogue/ford-explorer</em></td>
         </tr>
           <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;rowcss&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_rowcss,myclass&#125;</code></td><td class="description">Replate myclass with your own CSS class. Alternates between classes, such as "myclass" and "myclass_alternate"</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;rowcss&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_rowcss,myclass&#125;{% endraw %}</code></td><td class="description">Replate myclass with your own CSS class. Alternates between classes, such as "myclass" and "myclass_alternate"</td>
         </tr>
           <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_tellafriend&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_tellafriend&#125;{% endraw %}</code></td>
          <td class="description">Tell a friend about this item. <br>
          For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;image&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_image&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;image&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_image&#125;{% endraw %}</code></td>
             <td class="description">For &quot;Image&quot; type fields only - renders the image wrapped in a hyperlink</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;image_value&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_image_value&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;image_value&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_image_value&#125;{% endraw %}</code></td>
             <td class="description">For &quot;Image&quot; type fields only - renders the image's src</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;image_nolink&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_image_nolink&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;image_nolink&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_image_nolink&#125;{% endraw %}</code></td>
             <td class="description">For &quot;Image&quot; type fields only - renders only the image</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;datasource_id&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_datasource_id&#125;</code></td>
-            <td class="description">Renders the ID of the datasource field e.g. - if my datasource field is named <em>country,</em> the tag will be <code>&#123;tag_country_id&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;datasource_id&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_datasource_id&#125;{% endraw %}</code></td>
+            <td class="description">Renders the ID of the datasource field e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{% raw %}&#123;tag_country_id&#125;{% endraw %}</code></td>
         </tr>
   <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;datasource&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_datasource&#125;</code></td>
-            <td class="description">Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>&#123;tag_country&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;datasource&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_datasource&#125;{% endraw %}</code></td>
+            <td class="description">Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{% raw %}&#123;tag_country&#125;{% endraw %}</code></td>
     </tr>
     </tbody>
 </table>
@@ -221,10 +221,10 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_webapps id=&quot;56&quot; filter=&quot;all&quot; targetFrame=&quot;_blank&quot; useBackupTemplate=&quot;true&quot; resultsPerPage=&quot;12&quot; hideEmptyMessage=&quot;true&quot; rowCount=&quot;3&quot;&#125;</code> - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
-    <li><code>&#123;module_webapps id=&quot;123&quot; filter=&quot;all&quot; rowCount=&quot;12&quot; &#125;</code> - will only display 12 items per page </li>
-    <li><code>&#123;module_webapps id=&quot;123&quot; filter=&quot;latest&quot; rowCount=&quot;5&quot;&#125;</code> - will only display the latest 5 items (by date) on the page</li>
-    <li><code>&#123;module_webapps id=&quot;56&quot; filter=&quot;all&quot; resultsPerPage=&quot;10&quot; rowCount=&quot;1&quot; template="/layouts/custom/walist.html"&#125;</code> - will only display 10 items using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>&#123;module_webapps id=&quot;123&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_webapps id=&quot;56&quot; filter=&quot;all&quot; targetFrame=&quot;_blank&quot; useBackupTemplate=&quot;true&quot; resultsPerPage=&quot;12&quot; hideEmptyMessage=&quot;true&quot; rowCount=&quot;3&quot;&#125;{% endraw %}</code> - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
+    <li><code>{% raw %}&#123;module_webapps id=&quot;123&quot; filter=&quot;all&quot; rowCount=&quot;12&quot; &#125;{% endraw %}</code> - will only display 12 items per page </li>
+    <li><code>{% raw %}&#123;module_webapps id=&quot;123&quot; filter=&quot;latest&quot; rowCount=&quot;5&quot;&#125;{% endraw %}</code> - will only display the latest 5 items (by date) on the page</li>
+    <li><code>{% raw %}&#123;module_webapps id=&quot;56&quot; filter=&quot;all&quot; resultsPerPage=&quot;10&quot; rowCount=&quot;1&quot; template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will only display 10 items using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %}&#123;module_webapps id=&quot;123&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 <p>The previous and next links can be customized using CSS. Each link has its own custom CSS class. To see the CSS class assigned to these links view the web page source where these links appear. The CSS class name format is: WebAppIDPrev and WebAppIDNext where ID is the internal ID assigned to your Web App. You can easily find the ID using Firebug once on the live page.</p>
 </div>
@@ -232,7 +232,7 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_webapps,ID,filter,itemID,notUsed,target,bkp,results,hideEmpty,rowLength,Sort&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_webapps,ID,filter,itemID,notUsed,target,bkp,results,hideEmpty,rowLength,Sort&#125;{% endraw %}</code></pre>
 </div>
 <ul>
     <li><strong>ID</strong> or <strong>Name</strong> - system generated web app id or replace with the web app name</li>
@@ -274,10 +274,10 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_webapps,56,a,,,_blank,true,12,true,3&#125;</code> - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
-    <li><code>&#123;module_webapps,123,a,,,,,12&#125;</code> - will only display 12 items per page </li>
-    <li><code>&#123;module_webapps,123,l,5&#125;</code> - will only display the latest 5 items (by date) on the page</li>
-    <li><code>&#123;module_webapps,56,a,,,,,10,,1 template="/layouts/custom/walist.html"&#125;</code> - will only display 10 items using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{% raw %}&#123;module_webapps,56,a,,,_blank,true,12,true,3&#125;{% endraw %}</code> - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
+    <li><code>{% raw %}&#123;module_webapps,123,a,,,,,12&#125;{% endraw %}</code> - will only display 12 items per page </li>
+    <li><code>{% raw %}&#123;module_webapps,123,l,5&#125;{% endraw %}</code> - will only display the latest 5 items (by date) on the page</li>
+    <li><code>{% raw %}&#123;module_webapps,56,a,,,,,10,,1 template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will only display 10 items using the walist.html <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 <p>The previous and next links can be customized using CSS. Each link has its own custom CSS class. To see the CSS class assigned to these links view the web page source where these links appear. The CSS class name format is: WebAppIDPrev and WebAppIDNext where ID is the internal ID assigned to your Web App. You can easily find the ID using Firebug once on the live page.</p>
 </div>

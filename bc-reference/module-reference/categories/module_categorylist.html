@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_categorylist id=&quot;123&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_categorylist id=&quot;123&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -28,20 +28,20 @@
 <div class="examples">
 <h2>Examples</h2>
 <p>When using this module always wrap it in a select tag like so:</p>
-<pre class="language-markup"><code>&lt;select&gt;<br>
+<pre class="language-markup"><code>{% raw %}&lt;select&gt;<br>
 &#123;module_categorylist&#125;<br>
-&lt;/select&gt;</code>
+&lt;/select&gt;{% endraw %}</code>
 </pre>
 
 <p>It will output a drop down containing the categories on your site</p>
-<pre class="language-markup"><code>
-&lt;select&gt;<br><br>&lt;option value=&quot;-1&quot;&gt;-- All Categories --&lt;/option&gt;<br><br>&lt;option  value=&quot;32142&quot;&gt;Category1&lt;/option&gt;<br><br>&lt;option  value=&quot;28940&quot;&gt;---Category1A&lt;/option&gt;<br><br>&lt;option  value=&quot;43243&quot;&gt;Category2&lt;/option&gt;<br><br>&lt;option  value=&quot;29324&quot;&gt;---Category1&lt;/option&gt;<br><br>&lt;/select&gt;</code></pre>
+<pre class="language-markup"><code>{% raw %}
+&lt;select&gt;<br><br>&lt;option value=&quot;-1&quot;&gt;-- All Categories --&lt;/option&gt;<br><br>&lt;option  value=&quot;32142&quot;&gt;Category1&lt;/option&gt;<br><br>&lt;option  value=&quot;28940&quot;&gt;---Category1A&lt;/option&gt;<br><br>&lt;option  value=&quot;43243&quot;&gt;Category2&lt;/option&gt;<br><br>&lt;option  value=&quot;29324&quot;&gt;---Category1&lt;/option&gt;<br><br>&lt;/select&gt;{% endraw %}</code></pre>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_categorylist, id&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_categorylist, id&#125;{% endraw %}</code></pre>
 </div>
 
 <div class="layouts">
@@ -57,16 +57,16 @@
 <div class="examples">
 <h2>Examples</h2>
 <p>When using this module always wrap it in a select tag like so:</p>
-<pre class="language-markup"><code>
+<pre class="language-markup"><code>{% raw %}
 &lt;select&gt;<br>
 &#123;module_categorylist&#125;<br>
 &lt;/select&gt;
-</code>
+{% endraw %}</code>
 </pre>
 
 <p>It will output a drop down containing the categories on your site</p>
-<pre class="language-markup"><code>
+<pre class="language-markup"><code>{% raw %}
 &lt;select&gt;<br><br>&lt;option value=&quot;-1&quot;&gt;-- All Categories --&lt;/option&gt;<br><br>&lt;option  value=&quot;32142&quot;&gt;Category1&lt;/option&gt;<br><br>&lt;option  value=&quot;28940&quot;&gt;---Category1A&lt;/option&gt;<br><br>&lt;option  value=&quot;43243&quot;&gt;Category2&lt;/option&gt;<br><br>&lt;option  value=&quot;29324&quot;&gt;---Category1&lt;/option&gt;<br><br>&lt;/select&gt;
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 </div>

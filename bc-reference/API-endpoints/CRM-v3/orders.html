@@ -9,7 +9,7 @@
 <h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
@@ -28,16 +28,16 @@
 <p>An array of the first 10 orders; each object has the following properties:</p>
 
 <ul>
-<li><code>id</code> - <em>(integer)</em></li>
-<li><code>siteId</code> - <em>(integer)</em></li>
-<li><code>entityId</code> - <em>(integer)</em></li>
-<li><code>categoryId</code> - <em>(integer)</em></li>
-<li><code>statusTypeId</code> - <em>(integer)</em></li>
-<li><code>discountCodeId</code> - <em>(integer)</em></li>
-<li><code>name</code> - <em>(string)</em></li>
-<li><code>userIdAssignedTo</code> - <em>(integer)</em></li>
-<li><code>countryCode</code> - <em>(string)</em></li>
-<li><code>paymentMethodTypeId</code> - <em>(integer)</em>
+<li><code>{% raw %}id{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}entityId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}categoryId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}statusTypeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}discountCodeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}userIdAssignedTo{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}paymentMethodTypeId{% endraw %}</code> - <em>(integer)</em>
 <ul>
 <li><strong>1</strong> - Credit card</li>
 <li><strong>2</strong> - Check</li>
@@ -45,25 +45,25 @@
 <li><strong>4</strong> - EFT</li>
 </ul>
 </li>
-<li><code>shippingPrice</code> - <em>(integer)</em></li>
-<li><code>shippingTaxRate</code> - <em>(integer)</em></li>
-<li><code>discountRate</code> - <em>(integer)</em></li>
-<li><code>taxCodeId</code> - <em>(integer)</em></li>
-<li><code>giftVoucherId</code> - <em>(integer)</em></li>
-<li><code>giftVoucherAmount</code> - <em>(integer)</em></li>
-<li><code>totalPrice</code> - <em>(integer)</em></li>
-<li><code>shippingDescription</code> - <em>(string)</em></li>
-<li><code>shippingOption</code> - <em>(integer)</em></li>
-<li><code>shippingAttention</code> - <em>(string)</em></li>
-<li><code>shippingInstructions</code> - <em>(string)</em></li>
-<li><code>quote</code> - <em>(boolean)</em></li>
-<li><code>invoiced</code> - <em>(boolean)</em></li>
-<li><code>invoiceNumber</code> - <em>(string)</em></li>
-<li><code>invoiceDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>recur</code> - <em>(boolean)</em></li>
-<li><code>nextInvoiceDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>endRecurDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>  - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>cycleTypeID</code> - <em>(integer)</em>
+<li><code>{% raw %}shippingPrice{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingTaxRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}discountRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}taxCodeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}giftVoucherId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}giftVoucherAmount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}totalPrice{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingDescription{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}shippingOption{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingAttention{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}shippingInstructions{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}quote{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}invoiced{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}invoiceNumber{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}invoiceDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}recur{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}nextInvoiceDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}endRecurDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>  - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}cycleTypeID{% endraw %}</code> - <em>(integer)</em>
 <ul>
 	<li><strong>1</strong> - Once</li>
 	<li><strong>2</strong> - Daily</li>
@@ -75,41 +75,41 @@
 	<li><strong>8</strong> - Yearly</li>
 </ul>
 </li>
-<li><code>directDebitTypeId</code> - <em>(integer)</em>
+<li><code>{% raw %}directDebitTypeId{% endraw %}</code> - <em>(integer)</em>
 <ul>
 	<li><strong>1</strong> - Credit card</li>
 	<li><strong>2</strong> - Direct debit</li>
 </ul>
 </li>
-<li><code>directDebitDays</code> - <em>(integer)</em></li>
-<li><code>directDebitProcessed</code> - <em>(boolean)</em></li>
-<li><code>ownBy</code> - <em>(integer)</em></li>
-<li><code>ownByDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>deleted</code> - <em>(boolean)</em></li>
-<li><code>integrationId</code> - <em>(integer)</em></li>
-<li><code>parentId</code> - <em>(integer)</em></li>
-<li><code>destinationAddressIsResidential</code> - <em>(boolean)</em></li>
-<li><code>isIntermediate</code> - <em>(boolean)</em></li>
-<li><code>shippingRateKey</code> - <em>(string)</em></li>
+<li><code>{% raw %}directDebitDays{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}directDebitProcessed{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}ownBy{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}ownByDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}integrationId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}parentId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}destinationAddressIsResidential{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}isIntermediate{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}shippingRateKey{% endraw %}</code> - <em>(string)</em></li>
 
 </ul>
-<p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /webresources/api/v3/sites/current/orders HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/orders HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
       "id": 108250,
@@ -193,13 +193,13 @@ Content-Type: application/json
   "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Get the list of orders on a site</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -219,9 +219,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p id="orders-created-after"><strong>Get the list of orders created after (&quot;$gt&quot;</strong><strong> stands for &quot;greater  than&quot;) a specific date</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -242,8 +242,8 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
-<p class="alert alert-info"><strong>Note:</strong> for more details on the methods you can use to filter the output of API calls take a look at the <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">API v3: Sorting, filtering and partial representation methods</a> article</p>
+}){% endraw %}</code></pre>
+<p class="alert alert-info"><strong>Note:</strong> for more details on the methods you can use to filter the output of API calls take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API v3: Sorting, filtering and partial representation methods</a> article</p>
 </div>
 <hr>
 </div>
@@ -256,7 +256,7 @@ request.fail(function (jqXHR) {
 <h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
@@ -275,16 +275,16 @@ request.fail(function (jqXHR) {
 <p>The details for the specified customer ID in JSON format.</p>
 
 <ul>
-<li><code>id</code> - <em>(integer)</em></li>
-<li><code>siteId</code> - <em>(integer)</em></li>
-<li><code>entityId</code> - <em>(integer)</em></li>
-<li><code>categoryId</code> - <em>(integer)</em></li>
-<li><code>statusTypeId</code> - <em>(integer)</em></li>
-<li><code>discountCodeId</code> - <em>(integer)</em></li>
-<li><code>name</code> - <em>(string)</em></li>
-<li><code>userIdAssignedTo</code> - <em>(integer)</em></li>
-<li><code>countryCode</code> - <em>(string)</em></li>
-<li><code>paymentMethodTypeId</code> - <em>(integer)</em>
+<li><code>{% raw %}id{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}entityId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}categoryId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}statusTypeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}discountCodeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}userIdAssignedTo{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}paymentMethodTypeId{% endraw %}</code> - <em>(integer)</em>
 <ul>
 <li><strong>1</strong> - Credit card</li>
 <li><strong>2</strong> - Check</li>
@@ -292,25 +292,25 @@ request.fail(function (jqXHR) {
 <li><strong>4</strong> - EFT</li>
 </ul>
 </li>
-<li><code>shippingPrice</code> - <em>(integer)</em></li>
-<li><code>shippingTaxRate</code> - <em>(integer)</em></li>
-<li><code>discountRate</code> - <em>(integer)</em></li>
-<li><code>taxCodeId</code> - <em>(integer)</em></li>
-<li><code>giftVoucherId</code> - <em>(integer)</em></li>
-<li><code>giftVoucherAmount</code> - <em>(integer)</em></li>
-<li><code>totalPrice</code> - <em>(integer)</em></li>
-<li><code>shippingDescription</code> - <em>(string)</em></li>
-<li><code>shippingOption</code> - <em>(integer)</em></li>
-<li><code>shippingAttention</code> - <em>(string)</em></li>
-<li><code>shippingInstructions</code> - <em>(string)</em></li>
-<li><code>quote</code> - <em>(boolean)</em></li>
-<li><code>invoiced</code> - <em>(boolean)</em></li>
-<li><code>invoiceNumber</code> - <em>(string)</em></li>
-<li><code>invoiceDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>recur</code> - <em>(boolean)</em></li>
-<li><code>nextInvoiceDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>endRecurDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>cycleTypeID</code> - <em>(integer)</em>
+<li><code>{% raw %}shippingPrice{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingTaxRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}discountRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}taxCodeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}giftVoucherId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}giftVoucherAmount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}totalPrice{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingDescription{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}shippingOption{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingAttention{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}shippingInstructions{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}quote{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}invoiced{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}invoiceNumber{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}invoiceDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}recur{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}nextInvoiceDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}endRecurDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}cycleTypeID{% endraw %}</code> - <em>(integer)</em>
 <ul>
 	<li><strong>1</strong> - Once</li>
 	<li><strong>2</strong> - Daily</li>
@@ -322,41 +322,41 @@ request.fail(function (jqXHR) {
 	<li><strong>8</strong> - Yearly</li>
 </ul>
 </li>
-<li><code>directDebitTypeId</code> - <em>(integer)</em>
+<li><code>{% raw %}directDebitTypeId{% endraw %}</code> - <em>(integer)</em>
 <ul>
 	<li><strong>1</strong> - Credit card</li>
 	<li><strong>2</strong> - Direct debit</li>
 </ul>
 </li>
-<li><code>directDebitDays</code> - <em>(integer)</em></li>
-<li><code>directDebitProcessed</code> - <em>(boolean)</em></li>
-<li><code>ownBy</code> - <em>(integer)</em></li>
-<li><code>ownByDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>deleted</code> - <em>(boolean)</em></li>
-<li><code>integrationId</code> - <em>(integer)</em></li>
-<li><code>parentId</code> - <em>(integer)</em></li>
-<li><code>destinationAddressIsResidential</code> - <em>(boolean)</em></li>
-<li><code>isIntermediate</code> - <em>(boolean)</em></li>
-<li><code>shippingRateKey</code> - <em>(string)</em></li>
+<li><code>{% raw %}directDebitDays{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}directDebitProcessed{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}ownBy{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}ownByDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}integrationId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}parentId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}destinationAddressIsResidential{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}isIntermediate{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}shippingRateKey{% endraw %}</code> - <em>(string)</em></li>
 
 </ul>
-<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /webresources/api/v3/sites/current/orders/108250 HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/orders/108250 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "id": 108250,
   "siteId": 38581,
   "name": "john's order",
@@ -394,13 +394,13 @@ Content-Type: application/json
   "destinationAddressIsResidential": null,
   "isIntermediate": null,
   "shippingRateKey": null
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
 <p id="get-order-details"><strong>Get the details of an order</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -420,9 +420,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Get the details of an order - this only includes the specified fields:</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -442,9 +442,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p>In this case the response looks like this:</p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "status": {
     "id": 26,
     "siteId": 38581,
@@ -490,7 +490,7 @@ request.fail(function (jqXHR) {
     "taxCode": "XYZ",
     "rate": 0.5
   }
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -516,13 +516,13 @@ request.fail(function (jqXHR) {
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 </ul>
 <h4>Parameters</h4>
-<ul><li><code>name</code> - <em>(string)</em></li>
-<li><code>entityId</code> - <em>(integer)</em></li>
-<li><code>categoryId</code> - <em>(integer)</em></li>
-<li><code>userIdAssignedTo</code> - <em>(integer)</em></li>
-<li><code>statusTypeId</code> - <em>(integer)</em></li>
-<li><code>countryCode</code> - <em>(string)</em></li>
-<li><code>paymentMethodTypeId</code> - <em>(integer)</em>
+<ul><li><code>{% raw %}name{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}entityId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}categoryId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}userIdAssignedTo{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}statusTypeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}paymentMethodTypeId{% endraw %}</code> - <em>(integer)</em>
 <ul>
 <li><strong>1</strong> - Credit card</li>
 <li><strong>2</strong> - Check</li>
@@ -530,19 +530,19 @@ request.fail(function (jqXHR) {
 <li><strong>4</strong> - EFT</li>
 </ul>
 </li>
-<li><code>shippingPrice</code> - <em>(integer)</em></li>
-<li><code>shippingTaxRate</code> - <em>(integer)</em></li>
-<li><code>discountCodeId</code> - <em>(integer)</em></li>
-<li><code>discountRate</code> - <em>(integer)</em></li>
-<li><code>taxCodeId</code> - <em>(integer)</em></li>
-<li><code>giftVoucherId</code> - <em>(integer)</em></li>
-<li><code>giftVoucherAmount</code> - <em>(integer)</em></li>
-<li><code>shippingDescription</code> - <em>(string)</em></li>
-<li><code>shippingOption</code> - <em>(integer)</em></li>
-<li><code>shippingAttention</code> - <em>(string)</em></li>
-<li><code>shippingInstructions</code> - <em>(string)</em></li>
-<li><code>invoiced</code> - <em>(boolean)</em></li>
-<li><code>cycleTypeID</code> - <em>(integer)</em>
+<li><code>{% raw %}shippingPrice{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingTaxRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}discountCodeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}discountRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}taxCodeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}giftVoucherId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}giftVoucherAmount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingDescription{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}shippingOption{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingAttention{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}shippingInstructions{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}invoiced{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}cycleTypeID{% endraw %}</code> - <em>(integer)</em>
 <ul>
 	<li><strong>1</strong> - Once</li>
 	<li><strong>2</strong> - Daily</li>
@@ -554,17 +554,17 @@ request.fail(function (jqXHR) {
 	<li><strong>8</strong> - Yearly</li>
 </ul>
 </li>
-<li><code>directDebitTypeId</code> - <em>(integer)</em>
+<li><code>{% raw %}directDebitTypeId{% endraw %}</code> - <em>(integer)</em>
 <ul>
 	<li><strong>1</strong> - Credit card</li>
 	<li><strong>2</strong> - Direct debit</li>
 </ul>
 </li>
-<li><code>directDebitDays</code> - <em>(integer)</em></li>
-<li><code>integrationId</code> - <em>(integer)</em></li>
-<li><code>destinationAddressIsResidential</code> - <em>(boolean)</em></li>
-<li><code>isIntermediate</code> - <em>(boolean)</em></li>
-<li><code>shippingRateKey</code> - <em>(string)</em></li>
+<li><code>{% raw %}directDebitDays{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}integrationId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}destinationAddressIsResidential{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}isIntermediate{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}shippingRateKey{% endraw %}</code> - <em>(string)</em></li>
 
 </ul>
 </div>
@@ -578,7 +578,7 @@ request.fail(function (jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /webresources/api/v3/sites/current/orders HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/orders HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -611,14 +611,14 @@ Content-Type: application/json
   "destinationAddressIsResidential": null,
   "isIntermediate": null,
   "shippingRateKey": null
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
-<pre class="language-javascript"><code>HTTP/1.1 201 CREATED
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 CREATED
 Location: /webresources/api/v3/sites/current/orders
 Content-Type: application/json; charset=utf-8
-Content-Length: length</code></pre>
+Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
@@ -626,7 +626,7 @@ Content-Length: length</code></pre>
 <p>The ID of the order is automatically generated. If a shipping option is chosen the shipping related fields are filled in on the settings of that shipping option and cannot be overriden (are read-only).</p>
 <p>Another thing to note - when the &quot;invoiced&quot; parameter is set to true the stock levels for the products in the order are updated (the products are substracted).</p>
 <p>The total price is computerd based on the shipping options, discount codes, item prices, taxes and so on.</p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -676,7 +676,7 @@ request.fail(function(jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -701,16 +701,16 @@ request.fail(function(jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>id</code> - <em>(integer)</em></li>
-<li><code>siteId</code> - <em>(integer)</em></li>
-<li><code>entityId</code> - <em>(integer)</em></li>
-<li><code>categoryId</code> - <em>(integer)</em></li>
-<li><code>statusTypeId</code> - <em>(integer)</em></li>
-<li><code>discountCodeId</code> - <em>(integer)</em></li>
-<li><code>name</code> - <em>(string)</em></li>
-<li><code>userIdAssignedTo</code> - <em>(integer)</em></li>
-<li><code>countryCode</code> - <em>(string)</em></li>
-<li><code>paymentMethodTypeId</code> - <em>(integer)</em>
+<li><code>{% raw %}id{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}entityId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}categoryId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}statusTypeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}discountCodeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}userIdAssignedTo{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}paymentMethodTypeId{% endraw %}</code> - <em>(integer)</em>
 <ul>
 <li><strong>1</strong> - Credit card</li>
 <li><strong>2</strong> - Check</li>
@@ -718,25 +718,25 @@ request.fail(function(jqXHR) {
 <li><strong>4</strong> - EFT</li>
 </ul>
 </li>
-<li><code>shippingPrice</code> - <em>(integer)</em></li>
-<li><code>shippingTaxRate</code> - <em>(integer)</em></li>
-<li><code>discountRate</code> - <em>(integer)</em></li>
-<li><code>taxCodeId</code> - <em>(integer)</em></li>
-<li><code>giftVoucherId</code> - <em>(integer)</em></li>
-<li><code>giftVoucherAmount</code> - <em>(integer)</em></li>
-<li><code>totalPrice</code> - <em>(integer)</em></li>
-<li><code>shippingDescription</code> - <em>(string)</em></li>
-<li><code>shippingOption</code> - <em>(integer)</em></li>
-<li><code>shippingAttention</code> - <em>(string)</em></li>
-<li><code>shippingInstructions</code> - <em>(string)</em></li>
-<li><code>quote</code> - <em>(boolean)</em></li>
-<li><code>invoiced</code> - <em>(boolean)</em></li>
-<li><code>invoiceNumber</code> - <em>(string)</em></li>
-<li><code>invoiceDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>recur</code> - <em>(boolean)</em></li>
-<li><code>nextInvoiceDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>endRecurDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>cycleTypeID</code> - <em>(integer)</em>
+<li><code>{% raw %}shippingPrice{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingTaxRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}discountRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}taxCodeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}giftVoucherId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}giftVoucherAmount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}totalPrice{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingDescription{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}shippingOption{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}shippingAttention{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}shippingInstructions{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}quote{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}invoiced{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}invoiceNumber{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}invoiceDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}recur{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}nextInvoiceDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}endRecurDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}cycleTypeID{% endraw %}</code> - <em>(integer)</em>
 <ul>
 	<li><strong>1</strong> - Once</li>
 	<li><strong>2</strong> - Daily</li>
@@ -748,22 +748,22 @@ request.fail(function(jqXHR) {
 	<li><strong>8</strong> - Yearly</li>
 </ul>
 </li>
-<li><code>directDebitTypeId</code> - <em>(integer)</em>
+<li><code>{% raw %}directDebitTypeId{% endraw %}</code> - <em>(integer)</em>
 <ul>
 	<li><strong>1</strong> - Credit card</li>
 	<li><strong>2</strong> - Direct debit</li>
 </ul>
 </li>
-<li><code>directDebitDays</code> - <em>(integer)</em></li>
-<li><code>directDebitProcessed</code> - <em>(boolean)</em></li>
-<li><code>ownBy</code> - <em>(integer)</em></li>
-<li><code>ownByDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>deleted</code> - <em>(boolean)</em></li>
-<li><code>integrationId</code> - <em>(integer)</em></li>
-<li><code>parentId</code> - <em>(integer)</em></li>
-<li><code>destinationAddressIsResidential</code> - <em>(boolean)</em></li>
-<li><code>isIntermediate</code> - <em>(boolean)</em></li>
-<li><code>shippingRateKey</code> - <em>(string)</em></li>
+<li><code>{% raw %}directDebitDays{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}directDebitProcessed{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}ownBy{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}ownByDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}integrationId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}parentId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}destinationAddressIsResidential{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}isIntermediate{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}shippingRateKey{% endraw %}</code> - <em>(string)</em></li>
 
 </ul>
 </div>
@@ -777,7 +777,7 @@ request.fail(function(jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>PUT /webresources/api/v3/sites/current/orders HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/orders HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -787,16 +787,16 @@ Content-Type: application/json
   "statusTypeId": 28,
   "shippingOption": 46997,
   "invoiced": true
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>
+<pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
 Location: /webresources/api/v3/sites/current/orders
 Content-Type: application/json; charset=utf-8
-Content-Length: length</code></pre>
+Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
@@ -804,7 +804,7 @@ Content-Length: length</code></pre>
 <p>The sample below modifies the order's status ID, the shipping Option and generates an invoice. Once the invoice is generated (&quot;invoiced&quot; is set to true) this cannot be un-done, once the invoice is generated for the current order an invoice number is also automatically generated (it can be overriden).</p>
 <p>Another thing to note - when the &quot;invoiced&quot; parameter is set to true the stock levels for the products in the order are updated (the products are substracted).</p>
 <p>If the new status  is configured to notify the customer an email will be sent by the system to the customer's primary email address.</p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -830,7 +830,7 @@ console.log("Request failed.");
 console.log("Error code: " + jqXHR.status);
 console.log("Error text: " + jqXHR.statusText);
 console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -864,25 +864,25 @@ console.log("Response text: " + jqXHR.responseText);
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>DELETE /webresources/api/v3/sites/current/orders/9593213 HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/orders/9593213 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>
+<pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
 Location: /webresources/api/v3/sites/current/orders
 Content-Type: application/json; charset=utf-8
-Content-Length: length</code></pre>
+Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -902,7 +902,7 @@ request.fail(function(jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>

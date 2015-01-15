@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_booking render="item|collection" filter=&quot;item&quot; itemid=&quot;neventId or classificationId&quot; rowCount=&quot;10&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_booking render="item|collection" filter=&quot;item&quot; itemid=&quot;neventId or classificationId&quot; rowCount=&quot;10&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -61,52 +61,52 @@
     <tbody>
         
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
          <td class="description">Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">detail layout</a></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;body&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
          <td class="description">Details of booking (editor content) e.g. <em>Something about the event goes here.</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;capacity&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;capacity&#125;&#125;{% endraw %}</code></td>
          <td class="description">Total number of seats for booking e.g. <em>130</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;percentfull&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;percentfull&#125;&#125;{% endraw %}</code></td>
          <td class="description">Percentage of booking seats already booked e.g. <em>40%</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;date&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date&#125;&#125;{% endraw %}</code></td>
          <td class="description">Date of booking e.g. <em>24-Aug-2014</em></td>
         </tr>
 
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td class="description">Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - &#123;tag_addtofavorites,&lt;img alt="" src="/images/plus_icon" /&gt;,&lt;img alt="" src="/images/minus_icon" /&gt;&#125;</code> </td>
+         <td class="description">Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - &#123;tag_addtofavorites,&lt;img alt="" src="/images/plus_icon" /&gt;,&lt;img alt="" src="/images/minus_icon" /&gt;&#125;{% endraw %}</code> </td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;day&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;day&#125;&#125;{% endraw %}</code></td>
          <td class="description">Day of Booking e.g. <em>24</em> if the booking date is 24-Aug-2014 </td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;monthName&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;monthName&#125;&#125;{% endraw %}</code></td>
          <td class="description">Month of Booking e.g. <em>Aug</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;year&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;year&#125;&#125;{% endraw %}</code></td>
          <td class="description">Year of Booking e.g. <em>2014</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;capacityEmpty&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;capacityEmpty&#125;&#125;{% endraw %}</code></td>
          <td class="description">Number of available seats left for booking e.g. <em>79</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;weekday&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;weekday&#125;&#125;{% endraw %}</code></td>
          <td class="description">Day of booking e.g. <em>Saturday </em>if the booking date is 24-Aug-2013</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;lastUpdateDate&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
          <td class="description">Date and time the booking was last updated e.g. <em>29-Jan-2013 08:57 PM</em></td>
         </tr>
         <tr>
@@ -114,7 +114,7 @@
          <td class="description">Tell a friend about this booking</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;classifications&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;classifications&#125;&#125;{% endraw %}</code></td>
          <td class="description">List of categories that this booking is classified under e.g. <em>Company, Solutions</em></td>
         </tr>
     </tbody>
@@ -123,20 +123,20 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_booking filter=&quot;all&quot;&#125;</code> - displays all the bookings</li>
-    <li><code>&#123;module_booking filter=&quot;item&quot; itemid=&quot;24407&quot;&#125;</code> - displays an individual event item with the ID 24407</li>
-    <li><code>&#123;module_booking filter=&quot;l&quot; itemid=&quot;5&quot;&#125;</code> - displays 5 latest events</li>
-    <li><code>&#123;module_booking filter=&quot;random&quot;&#125;</code> - displays a single random item</li>
-    <li><code>&#123;module_booking filter=&quot;classified&quot; itemid=&quot;14075&quot;&#125;</code> - displays all the items classified in the category with the ID 14075</li>
-    <li><code>&#123;module_booking filter=&quot;randomClassified&quot; itemid=&quot;14075&quot;&#125;</code> - displays a random item classified in the category with the ID 14075</li>
-    <li><code>&#123;module_booking filter=&quot;item&quot; itemid=&quot;63522&quot;  template="/layouts/custom/bookings.tpl"&#125;</code> - displays an individual item using a <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>&#123;module_booking filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_booking filter=&quot;all&quot;&#125;{% endraw %}</code> - displays all the bookings</li>
+    <li><code>{% raw %}&#123;module_booking filter=&quot;item&quot; itemid=&quot;24407&quot;&#125;{% endraw %}</code> - displays an individual event item with the ID 24407</li>
+    <li><code>{% raw %}&#123;module_booking filter=&quot;l&quot; itemid=&quot;5&quot;&#125;{% endraw %}</code> - displays 5 latest events</li>
+    <li><code>{% raw %}&#123;module_booking filter=&quot;random&quot;&#125;{% endraw %}</code> - displays a single random item</li>
+    <li><code>{% raw %}&#123;module_booking filter=&quot;classified&quot; itemid=&quot;14075&quot;&#125;{% endraw %}</code> - displays all the items classified in the category with the ID 14075</li>
+    <li><code>{% raw %}&#123;module_booking filter=&quot;randomClassified&quot; itemid=&quot;14075&quot;&#125;{% endraw %}</code> - displays a random item classified in the category with the ID 14075</li>
+    <li><code>{% raw %}&#123;module_booking filter=&quot;item&quot; itemid=&quot;63522&quot;  template="/layouts/custom/bookings.tpl"&#125;{% endraw %}</code> - displays an individual item using a <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %}&#123;module_booking filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_booking,filter,ID or numberOfBookings&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_booking,filter,ID or numberOfBookings&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -170,13 +170,13 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_booking,a&#125;</code> - displays all the bookings</li>
-    <li><code>&#123;module_booking,i,24407&#125;</code> - displays an individual event item with the ID 24407</li>
-    <li><code>&#123;module_booking,l,5&#125;</code> - displays 5 latest events</li>
-    <li><code>&#123;module_booking,r&#125;</code> - displays a single random item</li>
-    <li><code>&#123;module_booking,c,14075&#125;</code> - displays all the items classified in the category with the ID 14075</li>
-    <li><code>&#123;module_booking,cr,14075&#125;</code> - displays a random item classified in the category with the ID 14075</li>
-    <li><code>&#123;module_booking,i,63522  template="/layouts/custom/bookings.tpl"&#125;</code> - displays an individual item using a <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{% raw %}&#123;module_booking,a&#125;{% endraw %}</code> - displays all the bookings</li>
+    <li><code>{% raw %}&#123;module_booking,i,24407&#125;{% endraw %}</code> - displays an individual event item with the ID 24407</li>
+    <li><code>{% raw %}&#123;module_booking,l,5&#125;{% endraw %}</code> - displays 5 latest events</li>
+    <li><code>{% raw %}&#123;module_booking,r&#125;{% endraw %}</code> - displays a single random item</li>
+    <li><code>{% raw %}&#123;module_booking,c,14075&#125;{% endraw %}</code> - displays all the items classified in the category with the ID 14075</li>
+    <li><code>{% raw %}&#123;module_booking,cr,14075&#125;{% endraw %}</code> - displays a random item classified in the category with the ID 14075</li>
+    <li><code>{% raw %}&#123;module_booking,i,63522  template="/layouts/custom/bookings.tpl"&#125;{% endraw %}</code> - displays an individual item using a <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 </div>
 </div>

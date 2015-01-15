@@ -9,7 +9,7 @@
   </ul>  <div id="named-params" class="beta">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_pagetitle collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_pagetitle collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -22,24 +22,24 @@
 <h2>This module can be rendered:</h2>
 <ul>
     <li><strong>in plain text</strong></li>
-    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>my_custom_collection_name.title</code></li>
+    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>{% raw %}my_custom_collection_name.title{% endraw %}</code></li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_pagetitle&#125;</code> - renders the title of the page in plain text</li><li><code>&#123;module_pagetitle collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_pagetitle&#125;{% endraw %}</code> - renders the title of the page in plain text</li><li><code>{% raw %}&#123;module_pagetitle collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
 </div></div>
 <div id="legacy">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_pagetitle&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_pagetitle&#125;{% endraw %}</code></pre>
 </div>
 <div class="examples">
   <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_pagetitle&#125;</code> - renders the title of the page in plain text</li>
+    <li><code>{% raw %}&#123;module_pagetitle&#125;{% endraw %}</code> - renders the title of the page in plain text</li>
 </ul>
 
 </div></div>

@@ -30,54 +30,54 @@
 <p>A webapp object with the following properties:</p>
 
 <ul>
-<li><code>id</code> - the id of the webapp in the current site <em>(integer)</em></li>
-<li><code>name</code> - the name of the webapp <em>(string)</em></li>
-<li><code>slug</code> -  the SEO friendly slug generated for the webapp <em>(string)</em></li>
-<li><code>allowFileUpload</code> - permits or denies file uploads to take place when saving a webapp item <em>(boolean)</em></li>
-<li><code>createBy</code> -  the ID of the user that created the webapp. Details can be retrieved using the Admin Users API <em>(integer)</em></li>
-<li><code>createDate</code> - the date when the web app was created; uses the format yyyy-mm-dd <em>(string)</em></li>
-<li><code>lastUpdateBy</code> - the ID of the user that created the webapp. Details can be retrieved using the Admin Users API <em>(integer)</em></li>
-<li><code>lastUpdateDate</code> - the date when the web app item was created; uses the format yyyy-mm-dd <em>(string)</em></li>
-<li><code>disableDetailPages</code> - if True the Web App items detail page will not be accessible. The detail page will also be excluded from the site search feature built into this system as well as from the sitemap.xml file submitted to the major search engines such as Google, Yahoo and Live. <em>(boolean)</em></li>
-<li><code>locationEnabled</code> - use location for items <em>(boolean)</em></li>
-<li><code>anyoneCanEdit</code> - allow anyone to edit the items, not only the owner <em>(boolean)</em></li>
-<li><code>customerCanAdd</code> - users can add items in front-end <em>(boolean)</em></li>
-<li><code>customerCanEdit</code> - users can edit their own items <em>(boolean)</em></li>
-<li><code>customerCanDelete</code> - users can delete their own items <em>(boolean)</em></li>
-<li><code>requiresPayment</code> - users must pay to view this item <em>(boolean)</em></li>
-<li><code>requiresApproval</code> - items must be approved prior to becoming visible in the frontend <em>(boolean)</em></li>
-<li><code>roleId</code> -  the id of the role assigned to the webapp <em>(integer)</em></li>
-<li><code>templateId</code> -  the id of the template for the webapp <em>(integer)</em></li>
-<li><code>validDays</code> -  how many days will the item remain visible. Default value is -1, which means never expire <em>(integer)</em></li>
-<li><code>uploadFolder</code> - path to the folder where files associated with items get uploaded to <em>(string)</em></li>
-<li><code>systemFields</code> -  <em>(array)</em>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the webapp in the current site <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the webapp <em>(string)</em></li>
+<li><code>{% raw %}slug{% endraw %}</code> -  the SEO friendly slug generated for the webapp <em>(string)</em></li>
+<li><code>{% raw %}allowFileUpload{% endraw %}</code> - permits or denies file uploads to take place when saving a webapp item <em>(boolean)</em></li>
+<li><code>{% raw %}createBy{% endraw %}</code> -  the ID of the user that created the webapp. Details can be retrieved using the Admin Users API <em>(integer)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - the date when the web app was created; uses the format yyyy-mm-dd <em>(string)</em></li>
+<li><code>{% raw %}lastUpdateBy{% endraw %}</code> - the ID of the user that created the webapp. Details can be retrieved using the Admin Users API <em>(integer)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - the date when the web app item was created; uses the format yyyy-mm-dd <em>(string)</em></li>
+<li><code>{% raw %}disableDetailPages{% endraw %}</code> - if True the Web App items detail page will not be accessible. The detail page will also be excluded from the site search feature built into this system as well as from the sitemap.xml file submitted to the major search engines such as Google, Yahoo and Live. <em>(boolean)</em></li>
+<li><code>{% raw %}locationEnabled{% endraw %}</code> - use location for items <em>(boolean)</em></li>
+<li><code>{% raw %}anyoneCanEdit{% endraw %}</code> - allow anyone to edit the items, not only the owner <em>(boolean)</em></li>
+<li><code>{% raw %}customerCanAdd{% endraw %}</code> - users can add items in front-end <em>(boolean)</em></li>
+<li><code>{% raw %}customerCanEdit{% endraw %}</code> - users can edit their own items <em>(boolean)</em></li>
+<li><code>{% raw %}customerCanDelete{% endraw %}</code> - users can delete their own items <em>(boolean)</em></li>
+<li><code>{% raw %}requiresPayment{% endraw %}</code> - users must pay to view this item <em>(boolean)</em></li>
+<li><code>{% raw %}requiresApproval{% endraw %}</code> - items must be approved prior to becoming visible in the frontend <em>(boolean)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> -  the id of the role assigned to the webapp <em>(integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> -  the id of the template for the webapp <em>(integer)</em></li>
+<li><code>{% raw %}validDays{% endraw %}</code> -  how many days will the item remain visible. Default value is -1, which means never expire <em>(integer)</em></li>
+<li><code>{% raw %}uploadFolder{% endraw %}</code> - path to the folder where files associated with items get uploaded to <em>(string)</em></li>
+<li><code>{% raw %}systemFields{% endraw %}</code> -  <em>(array)</em>
 
 <ul>
-<li><code>name</code> - name of the webapp item <em>(string)</em></li>
-<li><code>description</code> - the content in the webapp item <em>(string)</em></li>
-<li><code>weight</code> - the weight of the item; determines order of display <em>(integer)</em></li>
-<li><code>releaseDate</code> - the release date of the web app item; uses the format yyyy-mm-dd <em>(string)</em></li>
-<li><code>expiryDate</code> - the date when the web app item will expire; uses the format yyyy-mm-dd <em>(string)</em></li>
-<li><code>createDate</code> - the date when the web app item was created; uses the format yyyy-mm-dd <em>(string)</em></li>
-<li><code>lastUpdateDate</code> - the date when the webapp item was last updated; uses the format yyyy-mm-dd <em>(string)</em></li>
-<li><code>enabled</code> - indicates whether this web app item is enabled or disabled <em>(boolean)</em></li>
-<li><code>roleId</code> - id of the role assigned; inherits from the webapp <em>(integer)</em></li>
-<li><code>createBy</code> - id of the user that created the webapp item <em>(integer)</em></li>
-<li><code>submittedBy</code> -  id of the user that submitted the webapp item (can be different, but the default is to equal the createBy) <em>(integer)</em></li>
-<li><code>address</code> - optional, only when enableLocation is True, stores the address associated with the item <em>(string)</em></li>
-<li><code>city</code> - optional, only when enableLocation is True, stores the city associated with the item <em>(string)</em></li>
-<li><code>state</code> - optional, only when enableLocation is True, stores the state associated with the item <em>(string)</em></li>
-<li><code>zipcode</code> - optional, only when enableLocation is True, stores the zipcode associated with the item; client-side validation for the zipcode format is recommended <em>(string)</em></li>
-<li><code>country</code> - optional, only when enableLocation is True, stores the country associated with the item <em>(string)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - name of the webapp item <em>(string)</em></li>
+<li><code>{% raw %}description{% endraw %}</code> - the content in the webapp item <em>(string)</em></li>
+<li><code>{% raw %}weight{% endraw %}</code> - the weight of the item; determines order of display <em>(integer)</em></li>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date of the web app item; uses the format yyyy-mm-dd <em>(string)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - the date when the web app item will expire; uses the format yyyy-mm-dd <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - the date when the web app item was created; uses the format yyyy-mm-dd <em>(string)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - the date when the webapp item was last updated; uses the format yyyy-mm-dd <em>(string)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - indicates whether this web app item is enabled or disabled <em>(boolean)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - id of the role assigned; inherits from the webapp <em>(integer)</em></li>
+<li><code>{% raw %}createBy{% endraw %}</code> - id of the user that created the webapp item <em>(integer)</em></li>
+<li><code>{% raw %}submittedBy{% endraw %}</code> -  id of the user that submitted the webapp item (can be different, but the default is to equal the createBy) <em>(integer)</em></li>
+<li><code>{% raw %}address{% endraw %}</code> - optional, only when enableLocation is True, stores the address associated with the item <em>(string)</em></li>
+<li><code>{% raw %}city{% endraw %}</code> - optional, only when enableLocation is True, stores the city associated with the item <em>(string)</em></li>
+<li><code>{% raw %}state{% endraw %}</code> - optional, only when enableLocation is True, stores the state associated with the item <em>(string)</em></li>
+<li><code>{% raw %}zipcode{% endraw %}</code> - optional, only when enableLocation is True, stores the zipcode associated with the item; client-side validation for the zipcode format is recommended <em>(string)</em></li>
+<li><code>{% raw %}country{% endraw %}</code> - optional, only when enableLocation is True, stores the country associated with the item <em>(string)</em></li>
 </ul></li>
-<li><code>fields</code> - a collection of all custom fields associated with the webapp. Added to the webapp object as shorthand for following the rel='fields' link mentioned below <em>(array)</em></li>
-<li><code>links</code> - a collection of uris are provided for discoverability. Each object contains links to: <em>(array)</em>
+<li><code>{% raw %}fields{% endraw %}</code> - a collection of all custom fields associated with the webapp. Added to the webapp object as shorthand for following the rel='fields' link mentioned below <em>(array)</em></li>
+<li><code>{% raw %}links{% endraw %}</code> - a collection of uris are provided for discoverability. Each object contains links to: <em>(array)</em>
 
 <ul>
-<li><code>items</code>- points to the sub-api that lists all webapp items for a webapp</li>
-<li><code>fields</code>- points to the api that allows management of the custom fields</li>
-<li><code>previewUrl</code> - link to see the webapp in the site front-end. Composed from the site default domain and the slug</li>
-<li><code>countries</code> - link to get the list of countries allowed for location, if location is enabled for the webapp</li>
+<li><code>{% raw %}items{% endraw %}</code>- points to the sub-api that lists all webapp items for a webapp</li>
+<li><code>{% raw %}fields{% endraw %}</code>- points to the api that allows management of the custom fields</li>
+<li><code>{% raw %}previewUrl{% endraw %}</code> - link to see the webapp in the site front-end. Composed from the site default domain and the slug</li>
+<li><code>{% raw %}countries{% endraw %}</code> - link to get the list of countries allowed for location, if location is enabled for the webapp</li>
 </ul></li>
 </ul>
 
@@ -89,15 +89,15 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
     "links": [{
         "rel": "items",
         "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webapps/Test%20app2/items"
@@ -214,9 +214,9 @@ Content-Type: application/json
         "dataSource": null
     }]
 }
-</code></pre>
+{% endraw %}</code></pre>
 <hr><h2>Sample code</h2>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites/current/webapps/test app2",
     type: "get",
     contentType: "application/json",
@@ -233,20 +233,20 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 })
-</code></pre>
+{% endraw %}</code></pre>
 <hr><h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 
 <ul>
-<li><code>200</code> - success</li>
-<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+<li><code>{% raw %}200{% endraw %}</code> - success</li>
+<li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
 
 <ul>
-<li><code>101000</code> - sub-error code</li>
+<li><code>{% raw %}101000{% endraw %}</code> - sub-error code</li>
 </ul></li>
-<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
-<li><code>404</code> - if trying to access a webapp that does not exist</li>
+<li><code>{% raw %}403{% endraw %}</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+<li><code>{% raw %}404{% endraw %}</code> - if trying to access a webapp that does not exist</li>
 </ul>
 
         

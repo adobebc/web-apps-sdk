@@ -7,7 +7,7 @@
 
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
@@ -28,14 +28,14 @@
 <p>An array of the first 10 secure zones; each object has the following properties:</p>
 
 <ul>
-<li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
-<li><code>name</code> - the name of the secure zone <em>(string)</em></li>
-<li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
-<li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
-<li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
-<li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}landingPageId{% endraw %}</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the secure zone <em>(string)</em></li>
+<li><code>{% raw %}sellAccess{% endraw %}</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+<li><code>{% raw %}costPerPeriod{% endraw %}</code> - the membership cost amount <em>(integer)</em></li>
+<li><code>{% raw %}orderCountryCode{% endraw %}</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+<li><code>{% raw %}cycleType{% endraw %}</code> - the frequency of membership renewal <em>(integer)</em>
 <ul>
 	  <li> "1" Once</li>
 	  <li> "2" Daily</li>
@@ -48,7 +48,7 @@
 
 </ul>
 </li>
-<li><code>deleted</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
+<li><code>{% raw %}deleted{% endraw %}</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
 </ul>
 
 
@@ -58,7 +58,7 @@
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -78,9 +78,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
       "id": 3309,
@@ -120,7 +120,7 @@ request.fail(function (jqXHR) {
   "skip": 0,
   "limit": 10
 }
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -131,7 +131,7 @@ request.fail(function (jqXHR) {
 
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
@@ -151,14 +151,14 @@ request.fail(function (jqXHR) {
 
 <p>Displays the details for the secure zone as a JSON object</p>
 <ul>
-  <li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
-  <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-  <li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
-  <li><code>name</code> - the name of the secure zone <em>(string)</em></li>
-  <li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
-  <li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
-  <li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
-  <li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
+  <li><code>{% raw %}id{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+  <li><code>{% raw %}landingPageId{% endraw %}</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+  <li><code>{% raw %}name{% endraw %}</code> - the name of the secure zone <em>(string)</em></li>
+  <li><code>{% raw %}sellAccess{% endraw %}</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+  <li><code>{% raw %}costPerPeriod{% endraw %}</code> - the membership cost amount <em>(integer)</em></li>
+  <li><code>{% raw %}orderCountryCode{% endraw %}</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+  <li><code>{% raw %}cycleType{% endraw %}</code> - the frequency of membership renewal <em>(integer)</em>
     <ul>
       <li> "1" Once</li>
       <li> "2" Daily</li>
@@ -170,14 +170,14 @@ request.fail(function (jqXHR) {
       <li> "8" Yearly</li>
     </ul>
   </li>
-  <li><code>deleted</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
+  <li><code>{% raw %}deleted{% endraw %}</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -197,9 +197,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "id": 3309,
   "siteId": 38581,
   "landingPageId": 4518247,
@@ -210,7 +210,7 @@ request.fail(function (jqXHR) {
   "cycleType": 5,
   "deleted": false
 }
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -242,14 +242,14 @@ request.fail(function (jqXHR) {
 <p>The response should be &quot;201 created&quot; if the secure zone was successfully created.</p>
 <p>Here are the parameters you can use when creating a secure zone:</p>
 <ul>
-<li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
-<li><code>name</code> - the name of the secure zone <em>(string)</em></li>
-<li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
-<li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
-<li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
-<li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}landingPageId{% endraw %}</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the secure zone <em>(string)</em></li>
+<li><code>{% raw %}sellAccess{% endraw %}</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+<li><code>{% raw %}costPerPeriod{% endraw %}</code> - the membership cost amount <em>(integer)</em></li>
+<li><code>{% raw %}orderCountryCode{% endraw %}</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+<li><code>{% raw %}cycleType{% endraw %}</code> - the frequency of membership renewal <em>(integer)</em>
 <ul>
 	  <li> "1" Once</li>
 	  <li> "2" Daily</li>
@@ -267,7 +267,7 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -296,7 +296,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <hr>
 </div>
 </div>
@@ -331,14 +331,14 @@ request.fail(function (jqXHR) {
 
 <p>Here are the parameters you can use when updating a secure zone:</p>
 <ul>
-<li><code>id</code> - the id of the secure zone <em>(integer)</em></li>
-<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>landingPageId</code> - the ID of the secure zone's landing page <em>(string)</em></li>
-<li><code>name</code> - the name of the secure zone <em>(string)</em></li>
-<li><code>sellAccess</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
-<li><code>costPerPeriod</code> - the membership cost amount <em>(integer)</em></li>
-<li><code>orderCountryCode</code> - the currency to use when charging the customers for access<em>(string)</em></li>
-<li><code>cycleType</code> - the frequency of membership renewal <em>(integer)</em>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}landingPageId{% endraw %}</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the secure zone <em>(string)</em></li>
+<li><code>{% raw %}sellAccess{% endraw %}</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+<li><code>{% raw %}costPerPeriod{% endraw %}</code> - the membership cost amount <em>(integer)</em></li>
+<li><code>{% raw %}orderCountryCode{% endraw %}</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+<li><code>{% raw %}cycleType{% endraw %}</code> - the frequency of membership renewal <em>(integer)</em>
 <ul>
 	  <li> "1" Once</li>
 	  <li> "2" Daily</li>
@@ -356,7 +356,7 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -379,7 +379,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -418,7 +418,7 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -437,7 +437,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>

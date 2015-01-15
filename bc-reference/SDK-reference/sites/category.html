@@ -16,12 +16,12 @@
     <hr>
     <h2>Sample code</h2>
     <h4>Create a category</h4>
-    <pre class="language-javascript"><code>var category = new BCAPI.Models.Category({name: 'Test Category6', parentId: 123456});
+    <pre class="language-javascript"><code>{% raw %}var category = new BCAPI.Models.Category({name: 'Test Category6', parentId: 123456});
 category.save()
-    </code></pre>
+    {% endraw %}</code></pre>
 <h4>Get a category's details</h4>
 
-    <pre class="language-javascript"><code>var category = new BCAPI.Models.Category({
+    <pre class="language-javascript"><code>{% raw %}var category = new BCAPI.Models.Category({
     id: 123456
 });
 category.fetch({
@@ -35,12 +35,12 @@ category.fetch({
     error: function (data) {
         console.log('Encountered an error.')
     }
-})</code></pre>
+}){% endraw %}</code></pre>
 <p>Update and delete operations are not supported
 </p>
   
 <h4>List all the categories</h4>
-    <pre class="language-javascript"><code>var categories = new BCAPI.Models.CategoryCollection();
+    <pre class="language-javascript"><code>{% raw %}var categories = new BCAPI.Models.CategoryCollection();
 categories.fetch({
     success: function (data) {
         data.each(function (category) {
@@ -55,10 +55,10 @@ categories.fetch({
     error: function (data) {
         console.log('Encountered an error.')
     }
-})</code></pre>
+}){% endraw %}</code></pre>
   
 <strong>Response</strong>
-<pre class="language-javascript"><code>Name: Root ID: 14075 parentId: -1 links: [{
+<pre class="language-javascript"><code>{% raw %}Name: Root ID: 14075 parentId: -1 links: [{
     "rel": "self",
     "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/14075"
 }]
@@ -101,7 +101,7 @@ Name: My category3 ID: 155314 parentId: -1 links: [{
 Name: My category4 ID: 155315 parentId: -1 links: [{
     "rel": "self",
     "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories/155315"
-}]</code></pre>
+}]{% endraw %}</code></pre>
 
 <h2>Extends</h2>
 <ul>
@@ -131,13 +131,13 @@ Name: My category4 ID: 155315 parentId: -1 links: [{
       
     
     <h2>Example</h2>
-    <pre class="language-javascript"><code>var model = new PersonModel({id: 1});
+    <pre class="language-javascript"><code>{% raw %}var model = new PersonModel({id: 1});
 model.destroy({
 	success: function() {
 		// do something when delete is successful.
 	}
 });
-</code></pre>
+{% endraw %}</code></pre>
   
   
     <h3 id="endpoint"> endpoint()</h2>
@@ -207,13 +207,13 @@ model.destroy({
       
     
     <h2>Example</h2>
-    <pre class="language-javascript"><code>var model = new PersonModel();
+    <pre class="language-javascript"><code>{% raw %}var model = new PersonModel();
 model.save({
 	success: function(model, response) {
 		// handle success logic in here
 	}
 });
-</code></pre>
+{% endraw %}</code></pre>
   
   
     <h3 id="sync"> sync(method, model, options) → {Promise}</h2>

@@ -15,7 +15,7 @@
       
     
     <h2>Sample code</h2>
-    <pre class="language-javascript"><code>var itemCollection = new BCAPI.Models.CountryCollection();
+    <pre class="language-javascript"><code>{% raw %}var itemCollection = new BCAPI.Models.CountryCollection();
 itemCollection.fetch({
     success: function (Country) {
         itemCollection.each(function (Country) {
@@ -29,6 +29,6 @@ itemCollection.fetch({
         console.log("Response text: " + jqXHR.responseText)
     }
 });
-</code></pre>
+{% endraw %}</code></pre>
   
 

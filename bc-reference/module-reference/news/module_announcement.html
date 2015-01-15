@@ -13,7 +13,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_announcement render=&quot;item|collection&quot; filter="item" itemid="newsId" noTemplate="true" effect="ajax" targetFrame="blank" sortType="alphabetical" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_announcement render=&quot;item|collection&quot; filter="item" itemid="newsId" noTemplate="true" effect="ajax" targetFrame="blank" sortType="alphabetical" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -59,19 +59,19 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_announcement filter=&quot;all&quot; targetFrame=&quot;_parent&quot;&#125;</code> - will display all news items and open them in parent frame </li>
-    <li><code>&#123;module_announcement filter=&quot;last&quot; itemID=&quot;5&quot;&#125;</code> - will display the latest 5 news</li>
-    <li><code>&#123;module_announcement filter=&quot;random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; sortType=&quot;datereverse&quot;&#125;</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detail content opens right underneath the news name and all the news items will be displayed from the oldest to the latest </li>
-    <li><code>&#123;module_announcement filter=&quot;latestClassified&quot; itemid=&quot;34392&quot; effect=&quot;ajax&quot; resultsPerPage=&quot;5&quot;&#125;</code> - will display the 5 latest news items in the category with the ID 34392</li>
-    <li><code>&#123;module_announcement filter=&quot;all&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; template="/Layouts/Custom/news.tpl"&#125;</code> - will display all the news items using the "ajax" effect using the news.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> </li>
-    <li><code> &#123;module_announcement filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;all&quot; targetFrame=&quot;_parent&quot;&#125;{% endraw %}</code> - will display all news items and open them in parent frame </li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;last&quot; itemID=&quot;5&quot;&#125;{% endraw %}</code> - will display the latest 5 news</li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; sortType=&quot;datereverse&quot;&#125;{% endraw %}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detail content opens right underneath the news name and all the news items will be displayed from the oldest to the latest </li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;latestClassified&quot; itemid=&quot;34392&quot; effect=&quot;ajax&quot; resultsPerPage=&quot;5&quot;&#125;{% endraw %}</code> - will display the 5 latest news items in the category with the ID 34392</li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;all&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; template="/Layouts/Custom/news.tpl"&#125;{% endraw %}</code> - will display all the news items using the "ajax" effect using the news.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> </li>
+    <li><code>{% raw %} &#123;module_announcement filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_announcement, filter, id, noTemplate, effect, target, reserved, resultsPerPage, reserved, length, sort&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_announcement, filter, id, noTemplate, effect, target, reserved, resultsPerPage, reserved, length, sort&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -112,11 +112,11 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_announcement,a,,,,_parent&#125;</code> - will display all news items and open them in parent frame </li>
-    <li><code>&#123;module_announcement,l,5&#125;</code> - will display the latest 5 news</li>
-    <li><code>&#123;module_announcement,r,,true,ajax,_blank,,,,,datereverse&#125;</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detail content opens right underneath the news name and all the news items will be displayed from the oldest to the latest </li>
-    <li><code>&#123;module_announcement,cl,34392,,ajax,,,,,5&#125;</code> - will display the 5 latest news items in the category with the ID 34392</li>
-    <li><code>&#123;module_announcement,a,,,ajax,_blank template="/Layouts/Custom/news.tpl"&#125;</code> - will display all the news items using the "ajax" effect using the news.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> </li>
+    <li><code>{% raw %}&#123;module_announcement,a,,,,_parent&#125;{% endraw %}</code> - will display all news items and open them in parent frame </li>
+    <li><code>{% raw %}&#123;module_announcement,l,5&#125;{% endraw %}</code> - will display the latest 5 news</li>
+    <li><code>{% raw %}&#123;module_announcement,r,,true,ajax,_blank,,,,,datereverse&#125;{% endraw %}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detail content opens right underneath the news name and all the news items will be displayed from the oldest to the latest </li>
+    <li><code>{% raw %}&#123;module_announcement,cl,34392,,ajax,,,,,5&#125;{% endraw %}</code> - will display the 5 latest news items in the category with the ID 34392</li>
+    <li><code>{% raw %}&#123;module_announcement,a,,,ajax,_blank template="/Layouts/Custom/news.tpl"&#125;{% endraw %}</code> - will display all the news items using the "ajax" effect using the news.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> </li>
 </ul>
 </div>
 </div>

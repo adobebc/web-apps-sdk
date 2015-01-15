@@ -14,7 +14,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_catalogue render=&quot;items&quot; catalogId=&quot;14886&quot; rowCount=&quot;2&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_catalogue render=&quot;items&quot; catalogId=&quot;14886&quot; rowCount=&quot;2&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -46,37 +46,37 @@
 </thead>
     <tbody>
     <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;id&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;id&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"></td>
          <td class="description">Catalogue's ID</td>
       </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;description&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_description&#125;</code></td><td class="description">Catalogue description</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_description&#125;{% endraw %}</code></td><td class="description">Catalogue description</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;expiryDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_expirydate&#125;</code></td><td class="description">Expiry date of catalogue</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_expirydate&#125;{% endraw %}</code></td><td class="description">Expiry date of catalogue</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;imageUrl&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_image&#125;</code></td><td class="description">Image for catalogue</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;imageUrl&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_image&#125;{% endraw %}</code></td><td class="description">Image for catalogue</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;name&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_name&#125;</code></td><td class="description">Catalogue name</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Catalogue name</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;releaseDate&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_releasedate&#125;</code></td><td class="description">Release date of catalogue</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_releasedate&#125;{% endraw %}</code></td><td class="description">Release date of catalogue</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;url&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;url&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"></td>
          <td class="description">The catalog's relative URL</td>
         </tr>
          <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;urlWithHost&#125;&#125;</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;urlWithHost&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"></td>
          <td class="description">The catalog's complete URL</td>
         </tr>
@@ -86,14 +86,14 @@
 <div id="Examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_catalogue catalogId=&quot;591&quot; targetFrame=&quot;_blank&quot;&#125;</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li><li><code> &#123;module_catalogue catalogId=&quot;591&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_catalogue catalogId=&quot;591&quot; targetFrame=&quot;_blank&quot;&#125;{% endraw %}</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li><li><code>{% raw %} &#123;module_catalogue catalogId=&quot;591&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>&#123;module_catalogue,catID,targetFrame&#125;</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_catalogue,catID,targetFrame&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -112,7 +112,7 @@
 <div id="Examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>&#123;module_catalogue,591,_blank&#125;</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li>
+    <li><code>{% raw %}&#123;module_catalogue,591,_blank&#125;{% endraw %}</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li>
 </ul>
 </div>
 </div>

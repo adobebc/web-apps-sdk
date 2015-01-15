@@ -9,7 +9,7 @@
 <h3>Request</h3>
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
@@ -28,104 +28,104 @@
 <p>The details for the specified customer ID in JSON format.</p>
 
 <ul>
-<li><code>itemId</code> - the address ID <em>(integer)</em></li>
-<li><code>orderId</code> - the order's ID <em>(integer)</em></li>
+<li><code>{% raw %}itemId{% endraw %}</code> - the address ID <em>(integer)</em></li>
+<li><code>{% raw %}orderId{% endraw %}</code> - the order's ID <em>(integer)</em></li>
 
-<li><code>productId</code> - the address ID <em>(integer)</em></li>
+<li><code>{% raw %}productId{% endraw %}</code> - the address ID <em>(integer)</em></li>
 
-<li><code>siteId</code> - <em>the site's ID (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - <em>the site's ID (integer)</em></li>
 
-<li><code>catalogueId</code> - the product's catalog ID<em>(integer)</em>
+<li><code>{% raw %}catalogueId{% endraw %}</code> - the product's catalog ID<em>(integer)</em>
 </li>
-<li><code>units</code> - the number of units added to the order <em>(integer)</em></li>
-<li><code>unitPrice</code> - price per unit<em> (integer)</em></li>
-<li><code>unitTaxRate</code> - the tax per unit <em>(integer)</em></li>
-<li><code>discountRate</code> - <em>(integer)</em></li>
-<li><code>totalPrice</code> - <em>(integer)</em></li>
-<li><code>description</code> - <em>(string)</em></li>
-<li><code>supplierCommission</code>- <em>(integer)</em></li>
-<li><code>deleted</code> - <em>(boolean)</em></li>
-<li><code>attributeExtras</code> - <em>(integer)</em></li>
-<li><code>variationId</code> - <em>(integer)</em></li>
-<li><code>product</code> - <em>(JSON)</em>
+<li><code>{% raw %}units{% endraw %}</code> - the number of units added to the order <em>(integer)</em></li>
+<li><code>{% raw %}unitPrice{% endraw %}</code> - price per unit<em> (integer)</em></li>
+<li><code>{% raw %}unitTaxRate{% endraw %}</code> - the tax per unit <em>(integer)</em></li>
+<li><code>{% raw %}discountRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}totalPrice{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}description{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}supplierCommission{% endraw %}</code>- <em>(integer)</em></li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}attributeExtras{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}variationId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}product{% endraw %}</code> - <em>(JSON)</em>
 <ul>
-<li><code>id</code> - <em>(integer)</em></li>
-<li><code>siteId</code> - <em>(integer)</em></li>
-<li><code>name</code> - <em>(string)</em></li>
-<li><code>roleId</code> - <em>(integer)</em></li>
-<li><code>weight</code> - <em>(integer)</em></li>
-<li><code>productCode</code> - <em>(string)</em></li>
-<li><code>tags</code> - <em>(string)</em></li>
-<li><code>unitType</code> - <em>(string)</em></li>
-<li><code>smallImage</code> - <em>(string)</em></li>
-<li><code>largeImage</code> - <em>(string)</em></li>
-<li><code>description</code> - <em>(string)</em></li>
-<li><code>inventoryControl</code> - <em>(boolean)</em></li>
-<li><code>canPreorder</code> - <em>(boolean)</em></li>
-<li><code>minUnits</code> - <em>(integer)</em></li>
-<li><code>maxUnits</code> - <em>(integer)</em></li>
-<li><code>inStock</code> - <em>(integer)</em></li>
-<li><code>onOrder</code> - <em>(integer)</em></li>
-<li><code>reOrder</code> - <em>(integer)</em></li>
-<li><code>reOrderNotified</code> - <em>(boolean)</em></li>
-<li><code>variablePerCycle</code> - <em>(boolean)</em></li>
-<li><code>groupingID</code> - <em>(integer)</em></li>
-<li><code>GroupingDefault</code> - <em>(boolean)</em></li>
-<li><code>electronicProduct</code> - <em>(boolean)</em></li>
-<li><code>displayFileName</code> - <em>(string)</em></li>
-<li><code>size</code> - <em>(integer)</em></li>
-<li><code>downloadLimitCount</code> - <em>(integer)</em></li>
-<li><code>downloadLimitIp</code> - <em>(integer)</em></li>
-<li><code>productWeight</code> - <em>(integer)</em></li>
-<li><code>productVolume</code> - <em>(integer)</em></li>
-<li><code>productHeight</code> - <em>(integer)</em></li>
-<li><code>productDepth</code> - <em>(integer)</em></li>
-<li><code>supplierEntityId</code> - <em>(integer)</em></li>
-<li><code>supplierCommission</code> - <em>(integer)</em></li>
-<li><code>isGiftVoucher</code> - <em>(boolean)</em></li>
-<li><code>poplets</code> - <em>()</em></li>
-<li><code>attributes</code> - <em>()</em></li>
-<li><code>custom1</code> - <em>(string)</em></li>
-<li><code>custom2</code> - <em>(string)</em></li>
-<li><code>custom3</code> - <em>(string)</em></li>
-<li><code>custom4</code> - <em>(string)</em></li>
-<li><code>releaseDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>expiryDate</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
-<li><code>captureDetails</code> - <em>(boolean)</em></li>
-<li><code>isOnSale</code> - <em>(boolean)</em></li>
-<li><code>hideIfNoStock</code> - <em>(boolean)</em></li>
-<li><code>enableDropShipping</code> - <em>(boolean)</em></li>
-<li><code>excludeFromSearch</code> - <em>(boolean)</em></li>
-<li><code>enabled</code> - <em>(boolean)</em></li>
-<li><code>deleted</code> - <em>(boolean)</em></li>
-<li><code>title</code> - <em>(string)</em></li>
-<li><code>reIndex</code> - <em>(boolean)</em></li>
-<li><code>hasAttributes</code> - <em>(boolean)</em></li>
-<li><code>cycleTypeCount</code> - <em>(integer)</em></li>
-<li><code>hasVariations</code> - <em>(boolean)</em></li>
-<li><code>slug</code> - <em>(string)</em></li>
-<li><code>metaProductDescription</code> - <em>(string)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}weight{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productCode{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}tags{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}unitType{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}smallImage{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}largeImage{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}description{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}inventoryControl{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}canPreorder{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}minUnits{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}maxUnits{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}inStock{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}onOrder{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}reOrder{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}reOrderNotified{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}variablePerCycle{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}groupingID{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}GroupingDefault{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}electronicProduct{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}displayFileName{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}size{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}downloadLimitCount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}downloadLimitIp{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productWeight{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productVolume{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productHeight{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productDepth{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}supplierEntityId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}supplierCommission{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}isGiftVoucher{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}poplets{% endraw %}</code> - <em>()</em></li>
+<li><code>{% raw %}attributes{% endraw %}</code> - <em>()</em></li>
+<li><code>{% raw %}custom1{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}custom2{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}custom3{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}custom4{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}captureDetails{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}isOnSale{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}hideIfNoStock{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}enableDropShipping{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}excludeFromSearch{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}title{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}reIndex{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}hasAttributes{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}cycleTypeCount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}hasVariations{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}slug{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}metaProductDescription{% endraw %}</code> - <em>(string)</em></li>
 
 </ul>
 </li>
 </ul>
-<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /webresources/api/v3/sites/current/orders/108293/products HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/orders/108293/products HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
       "itemId": 450,
@@ -283,13 +283,13 @@ Content-Type: application/json
   "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
 <p><strong>Get the addresses for a specific order</strong></p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -309,7 +309,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -336,21 +336,21 @@ request.fail(function (jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-  <li><code>itemId</code> - the item's ID, this is used to identify this particular order item. For example if you need to delete an element from an order you would reffer it using this ID<em>(integer)</em></li>
-  <li><code>orderId</code> - the order's ID <em>(integer)</em></li>
-  <li><code>productId</code> - the address ID <em>(integer)</em></li>
-  <li><code>siteId</code> - <em>the site's ID (integer)</em></li>
-  <li><code>catalogueId</code> - the product's catalog ID <em>(integer)</em> </li>
-  <li><code>units</code> - the number of units added to the order <em>(integer)</em></li>
-  <li><code>unitPrice</code> - price per unit<em> (integer)</em></li>
-  <li><code>unitTaxRate</code> - the tax per unit <em>(integer)</em></li>
-  <li><code>discountRate</code> - <em>(integer)</em></li>
-  <li><code>totalPrice</code> - <em>(integer)</em></li>
-  <li><code>description</code> - <em>(string)</em></li>
-  <li><code>supplierCommission</code>- <em>(integer)</em></li>
-  <li><code>deleted</code> - <em>(boolean)</em></li>
-  <li><code>attributeExtras</code> - <em>(integer)</em></li>
-  <li><code>variationId</code> - <em>(integer)</em></li>
+  <li><code>{% raw %}itemId{% endraw %}</code> - the item's ID, this is used to identify this particular order item. For example if you need to delete an element from an order you would reffer it using this ID<em>(integer)</em></li>
+  <li><code>{% raw %}orderId{% endraw %}</code> - the order's ID <em>(integer)</em></li>
+  <li><code>{% raw %}productId{% endraw %}</code> - the address ID <em>(integer)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - <em>the site's ID (integer)</em></li>
+  <li><code>{% raw %}catalogueId{% endraw %}</code> - the product's catalog ID <em>(integer)</em> </li>
+  <li><code>{% raw %}units{% endraw %}</code> - the number of units added to the order <em>(integer)</em></li>
+  <li><code>{% raw %}unitPrice{% endraw %}</code> - price per unit<em> (integer)</em></li>
+  <li><code>{% raw %}unitTaxRate{% endraw %}</code> - the tax per unit <em>(integer)</em></li>
+  <li><code>{% raw %}discountRate{% endraw %}</code> - <em>(integer)</em></li>
+  <li><code>{% raw %}totalPrice{% endraw %}</code> - <em>(integer)</em></li>
+  <li><code>{% raw %}description{% endraw %}</code> - <em>(string)</em></li>
+  <li><code>{% raw %}supplierCommission{% endraw %}</code>- <em>(integer)</em></li>
+  <li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+  <li><code>{% raw %}attributeExtras{% endraw %}</code> - <em>(integer)</em></li>
+  <li><code>{% raw %}variationId{% endraw %}</code> - <em>(integer)</em></li>
 
 </ul>
 </div>
@@ -364,7 +364,7 @@ request.fail(function (jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /webresources/api/v3/sites/current/orders/108293/products HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/orders/108293/products HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -379,22 +379,22 @@ Content-Type: application/json
       "description": "Tailored for you!"
     }
   ]
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>
+<pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
 Location: /webresources/api/v3/sites/current/orders
 Content-Type: application/json; charset=utf-8
-Content-Length: length</code></pre>
+Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample codes</h3>
 <p>Add a product to an existing order. If the &quot;units&quot; field is not present only 1 item will be added.</p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -422,9 +422,9 @@ console.log("Request failed.");
 console.log("Error code: " + jqXHR.status);
 console.log("Error text: " + jqXHR.statusText);
 console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p>In this example we will add 3 units of the product with the ID 951917 and variation code 9 to the order:</p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -455,7 +455,7 @@ console.log("Request failed.");
 console.log("Error code: " + jqXHR.status);
 console.log("Error text: " + jqXHR.statusText);
 console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -489,26 +489,26 @@ console.log("Response text: " + jqXHR.responseText);
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>DELETE /webresources/api/v3/sites/current/orders/108293/products?items=[450] HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/orders/108293/products?items=[450] HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>
+<pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
 Location: /webresources/api/v3/sites/current/orders/108293/products
 Content-Type: application/json; charset=utf-8
-Content-Length: length</code></pre>
+Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample codes</h3>
 <p>Add a product to an existing order. If the &quot;units&quot; field is not present only 1 item will be added.</p>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -528,7 +528,7 @@ console.log("Request failed.");
 console.log("Error code: " + jqXHR.status);
 console.log("Error text: " + jqXHR.statusText);
 console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>

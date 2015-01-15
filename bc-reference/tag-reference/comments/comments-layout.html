@@ -24,37 +24,37 @@
 </thead>
     <tbody>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;country&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_country&#125;</code></td><td class="description">Country of the person who provided the comment</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;country&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_country&#125;{% endraw %}</code></td><td class="description">Country of the person who provided the comment</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;body&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_feedback&#125;</code></td><td class="description">Customer comment</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_feedback&#125;{% endraw %}</code></td><td class="description">Customer comment</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;flagUrl&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_flag&#125;</code></td><td class="description">Image of the flag of the country of the person who provided the comment</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_fullname&#125;</code></td><td class="description">Displays the full name of the person who provided the comment.If the  "Website" field was not blank when the comment form was submitted the name is rendered as an anchor. If the "Website" field was blank at the time the comment form was submitted the output is in plain text. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;fullName&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_fullname_nolink&#125;</code></td><td class="description">Full name in plain text of the person who provided the comment. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;rating&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_rating&#125;</code></td><td class="description">Rating in stars</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;flagUrl&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_flag&#125;{% endraw %}</code></td><td class="description">Image of the flag of the country of the person who provided the comment</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_usagedate&#125;</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_fullname&#125;{% endraw %}</code></td><td class="description">Displays the full name of the person who provided the comment.If the  "Website" field was not blank when the comment form was submitted the name is rendered as an anchor. If the "Website" field was blank at the time the comment form was submitted the output is in plain text. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;fullName&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_fullname_nolink&#125;{% endraw %}</code></td><td class="description">Full name in plain text of the person who provided the comment. If the comment was submitted without having the "Name" field filled in "Anonymous" is displayed.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;rating&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_rating&#125;{% endraw %}</code></td><td class="description">Rating in stars</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_usagedate&#125;{% endraw %}</code></td>
             <td class="description">Date when comment was given in <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>&#123;&#123;website&#125;&#125;</code></td>
-         <td valign="top" class="legacy tag"><code>&#123;tag_website&#125;</code></td><td class="description">Website of the person who provided the comment. If the comment form was submitted with the "Website" field not filled in this tag will output "&#123;tag_website&#125;</code>"</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;website&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_website&#125;{% endraw %}</code></td><td class="description">Website of the person who provided the comment. If the comment form was submitted with the "Website" field not filled in this tag will output "&#123;tag_website&#125;{% endraw %}</code>"</td>
         </tr>
     </tbody>
 </table>

@@ -28,9 +28,9 @@
 <p>A Category object with the following properties:</p>
 
 <ul>
-<li><code>name</code> - the name of the category you wish to create <em>(string)</em></li>
-<li><code>parentid</code> - the ID of the parent category. If not specified, the category will be created at the root level <em>(integer, optional)</em></li>
-<li><code>publicAccess</code> - whether or not the category is visible to front-end users. If not specified, defaults to true. <em>(boolean)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the category you wish to create <em>(string)</em></li>
+<li><code>{% raw %}parentid{% endraw %}</code> - the ID of the parent category. If not specified, the category will be created at the root level <em>(integer, optional)</em></li>
+<li><code>{% raw %}publicAccess{% endraw %}</code> - whether or not the category is visible to front-end users. If not specified, defaults to true. <em>(boolean)</em></li>
 </ul>
 
 <h2>Response</h2>
@@ -43,27 +43,27 @@
 <hr>
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /api/v2/admin/sites/current/categories
+<pre class="language-javascript"><code>{% raw %}POST /api/v2/admin/sites/current/categories
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
 Content-Length: 20
 
 {"name": "My category"}
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>HTTP/1.1 201 OK
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 OK
 Location: /api/v2/admin/sites/current/categories/232323
 Content-Type: application/json; charset=utf-8
 Content-Length: length
-</code></pre>
+{% endraw %}</code></pre>
 
 <hr>
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>POST /api/v2/admin/sites/current/categories
+<pre class="language-javascript"><code>{% raw %}POST /api/v2/admin/sites/current/categories
 Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
 Content-Type: application/json
 Content-Length: 120
@@ -73,19 +73,19 @@ Content-Length: 120
   "parentid": "2222",
   "publicAccess" : false
 }
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>HTTP/1.1 201 OK
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 OK
 Location: /api/v2/admin/sites/current/categories/123456
 Content-Type: application/json; charset=utf-8
 Content-Length: length
-</code></pre>
+{% endraw %}</code></pre>
 <hr>
 <h2>Sample code</h2>
 
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites/current/categories",
     type: "POST",
     processData: false,
@@ -99,7 +99,7 @@ Content-Length: length
         "publicAccess": true
     })
 });
-</code></pre>
+{% endraw %}</code></pre>
 
 
 <p>Update and delete methods are not supported.</p>
@@ -109,22 +109,22 @@ Content-Length: length
 <p>This method will return the following error codes:</p>
 
 <ul>
-<li><code>201</code> - success</li>
-<li><code>400</code> - bad request
+<li><code>{% raw %}201{% endraw %}</code> - success</li>
+<li><code>{% raw %}400{% endraw %}</code> - bad request
 
 <ul>
-<li><code>220000</code> - unknown error</li>
-<li><code>220002</code> - category with the given parent ID does not exist</li>
-<li><code>220003</code> - category name already exists under given parent ID</li>
-<li><code>220004</code> - category with given parent ID is Level 2</li>
-<li><code>220005</code> - category name is invalid (either null/empty or contains ",/ or \ characters)</li>
+<li><code>{% raw %}220000{% endraw %}</code> - unknown error</li>
+<li><code>{% raw %}220002{% endraw %}</code> - category with the given parent ID does not exist</li>
+<li><code>{% raw %}220003{% endraw %}</code> - category name already exists under given parent ID</li>
+<li><code>{% raw %}220004{% endraw %}</code> - category with given parent ID is Level 2</li>
+<li><code>{% raw %}220005{% endraw %}</code> - category name is invalid (either null/empty or contains ",/ or \ characters)</li>
 </ul></li>
-<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+<li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
 
 <ul>
-<li><code>101000</code> - sub-error code</li>
+<li><code>{% raw %}101000{% endraw %}</code> - sub-error code</li>
 </ul></li>
-<li><code>403</code> - forbidden - this is returned when the user trying to access the API does not have the proper permissions</li>
+<li><code>{% raw %}403{% endraw %}</code> - forbidden - this is returned when the user trying to access the API does not have the proper permissions</li>
 </ul>
 
         

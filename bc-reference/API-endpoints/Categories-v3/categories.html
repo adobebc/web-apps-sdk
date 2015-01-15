@@ -7,7 +7,7 @@
 
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
@@ -32,12 +32,8 @@
 <li><strong>siteId</strong> - the site's ID <em>(numeric)</em></li>
 <li><strong>parentId</strong> - the ID of the parent <em>(numeric)</em></li>
 <li><strong>category</strong> - the category's name  <em>(string)</em></li>
-<li><strong>categoryIdAcl</strong> - ????????????????? <em>(numeric)</em></li>
-<li><strong>categoryIdWorkflow </strong>- ????????????????? <em>(numeric)</em></li>
-<li><strong>CategoryIdMetaData</strong> - ????????????????? <em>(numeric)</em></li>
 <li><strong>publicAccess</strong> - whether this category is visible in the site's front-end or not <em>(boolean)</em></li>
 <li><strong>Default</strong> - whether this category is to be marked as default or not <em>(boolean)</em></li>
-<li><strong>Orders</strong> - ????????????????? <em>(numeric)</em></li>
 <li><strong>deleted</strong> - whether this category is enabled or not <em>(boolean)</em></li>
 </ul>
 
@@ -48,7 +44,7 @@
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -68,9 +64,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
       "id": 14075,
@@ -78,12 +74,8 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 42,
       "parentId": -1,
       "category": "Root",
-      "categoryIdAcl": 14075,
-      "categoryIdWorkflow": 14075,
-      "CategoryIdMetaData": 14075,
       "publicAccess": false,
       "Default": true,
-      "Orders": false,
       "Deleted": false
     },
     {
@@ -92,12 +84,8 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 42,
       "parentId": -1,
       "category": "Company",
-      "categoryIdAcl": 14606,
-      "categoryIdWorkflow": 14606,
-      "CategoryIdMetaData": 14606,
       "publicAccess": true,
       "Default": false,
-      "Orders": false,
       "Deleted": false
     },
     {
@@ -106,12 +94,8 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 42,
       "parentId": -1,
       "category": "Products",
-      "categoryIdAcl": 14609,
-      "categoryIdWorkflow": 14609,
-      "CategoryIdMetaData": 14609,
       "publicAccess": true,
       "Default": false,
-      "Orders": false,
       "Deleted": false
     },
     {
@@ -120,12 +104,8 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 42,
       "parentId": -1,
       "category": "Solutions",
-      "categoryIdAcl": 14610,
-      "categoryIdWorkflow": 14610,
-      "CategoryIdMetaData": 14610,
       "publicAccess": true,
       "Default": false,
-      "Orders": false,
       "Deleted": false
     },
     {
@@ -134,12 +114,8 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 42,
       "parentId": -1,
       "category": "Customers",
-      "categoryIdAcl": 14744,
-      "categoryIdWorkflow": 14744,
-      "CategoryIdMetaData": 14744,
       "publicAccess": true,
       "Default": false,
-      "Orders": true,
       "Deleted": false
     },
     {
@@ -148,12 +124,8 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 43,
       "parentId": 14606,
       "category": "Company1 Private",
-      "categoryIdAcl": 155310,
-      "categoryIdWorkflow": 155310,
-      "CategoryIdMetaData": 155310,
       "publicAccess": false,
       "Default": false,
-      "Orders": false,
       "Deleted": false
     },
     {
@@ -162,12 +134,8 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 43,
       "parentId": 14606,
       "category": "Company2 Public",
-      "categoryIdAcl": 155311,
-      "categoryIdWorkflow": 155311,
-      "CategoryIdMetaData": 155311,
       "publicAccess": true,
       "Default": false,
-      "Orders": false,
       "Deleted": false
     },
     {
@@ -176,12 +144,8 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 42,
       "parentId": -1,
       "category": "My category",
-      "categoryIdAcl": 155312,
-      "categoryIdWorkflow": 155312,
-      "CategoryIdMetaData": 155312,
       "publicAccess": false,
       "Default": false,
-      "Orders": false,
       "Deleted": false
     },
     {
@@ -190,12 +154,8 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 42,
       "parentId": -1,
       "category": "My category2",
-      "categoryIdAcl": 155313,
-      "categoryIdWorkflow": 155313,
-      "CategoryIdMetaData": 155313,
       "publicAccess": false,
       "Default": false,
-      "Orders": false,
       "Deleted": false
     },
     {
@@ -204,19 +164,15 @@ request.fail(function (jqXHR) {
       "categoryTypeId": 42,
       "parentId": -1,
       "category": "My category3",
-      "categoryIdAcl": 155314,
-      "categoryIdWorkflow": 155314,
-      "CategoryIdMetaData": 155314,
       "publicAccess": false,
       "Default": false,
-      "Orders": false,
       "Deleted": false
     }
   ],
   "totalItemsCount": 19,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -227,7 +183,7 @@ request.fail(function (jqXHR) {
 
 <ul>
 <li><strong>Method:</strong> POST</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
@@ -246,12 +202,8 @@ request.fail(function (jqXHR) {
 <li><strong>siteId</strong> - the site's ID <em>(numeric)</em></li>
 <li><strong>parentId</strong> - the ID of the parent <em>(numeric)</em></li>
 <li><strong>category</strong> - the category's name  <em>(string)</em></li>
-<li><strong>categoryIdAcl</strong> - ????????????????? <em>(numeric)</em></li>
-<li><strong>categoryIdWorkflow </strong>- ????????????????? <em>(numeric)</em></li>
-<li><strong>CategoryIdMetaData</strong> - ????????????????? <em>(numeric)</em></li>
 <li><strong>publicAccess</strong> - whether this category is visible in the site's front-end or not <em>(boolean)</em></li>
 <li><strong>Default</strong> - whether this category is to be marked as default or not <em>(boolean)</em></li>
-<li><strong>Orders</strong> - ????????????????? <em>(numeric)</em></li>
 <li><strong>deleted</strong> - whether this category is enabled or not <em>(boolean)</em></li>
 </ul>
 </div>
@@ -264,15 +216,15 @@ request.fail(function (jqXHR) {
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
-<pre class="language-javascript"><code>HTTP/1.1 201 CREATED
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 CREATED
 Location: /webresources/api/v3/sites/current/categories
 Content-Type: application/json; charset=utf-8
-Content-Length: length</code></pre>
+Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -296,5 +248,5 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>

@@ -1,23 +1,23 @@
 <h1>Date related operations</h1>
 <p>Here are a few coperations you can perform using dateTime variables.</p>
 <h2>Convert string variables to dateTime</h2>
-<pre class="language-javascript"><code>&#123;&#37; assign myDate = &quot;2015-01-07&quot; | convert: &quot;date&quot; &#37;&#125;</code></pre>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; assign myDate = &quot;2015-01-07&quot; | convert: &quot;date&quot; &#37;&#125;{% endraw %}</code></pre>
 <p>This code will create the myDate variable as dateTime.</p>
-<pre class="language-javascript"><code>&#123;&#123;myDate&#125;&#125;</code></pre>
+<pre class="language-javascript"><code>{% raw %}&#123;&#123;myDate&#125;&#125;{% endraw %}</code></pre>
 <p>will render <em>2015-01-07T00:00:00</em></p>
 <h2>Compare dates with the current date</h2>
 <p>To compare two dates simply treat them like regular numeric variables:</p>
-<pre class="language-javascript"><code>&#123;&#37; if globals.site.dateNow < myDate &#37;&#125;
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; if globals.site.dateNow < myDate &#37;&#125;
 &lt;p&gt;The date is in the future&lt;/p&gt;
 {%else %}
-&lt;p&gt;The date is in the past&lt;/p&gt; &#123;&#37; endif &#37;&#125;</code></pre>
+&lt;p&gt;The date is in the past&lt;/p&gt; &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
 
 
 
 <h2>Get the  difference between dates</h2>
 <p>To get the difference between the current date and any given date you can simply substract your custom date from the <em>globals.site.dateNow</em> global variable.</p>
 <p>For this example let's assume we need to create our custom date variable:</p>
-<pre class="language-javascript"><code>&#123;&#37; assign myVar = "2015-01-07T15:52:30" | convert: "date" &#37;&#125;</code></pre>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; assign myVar = "2015-01-07T15:52:30" | convert: "date" &#37;&#125;{% endraw %}</code></pre>
 <p>This will create the <em>myVar</em> variable and properly format it as a <a href="/developers/liquid/datatypes#timespan">timeSpan</a> type variable. Now to get the difference in days between this date and the current date:</p>
-<pre class="language-javascript"><code>&#123;&#37; assign diffDays = globals.site.dateNow | minus: myVar | date: &quot;%d&quot; &#37;&#125;</code></pre>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; assign diffDays = globals.site.dateNow | minus: myVar | date: &quot;%d&quot; &#37;&#125;{% endraw %}</code></pre>
 <p>The <em>diffDays</em> timeSpan variable will hold the number of days between the two dates.</p>

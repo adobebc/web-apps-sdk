@@ -21,7 +21,7 @@
 <li>Query:
 
 <ul>
-<li><code>ip</code> - the IP for which you require the appropriate country, or "current" for the current request IP. If not supplied, the entire list of countries supported by Business Catalyst is returned <em>(string, optional)</em></li>
+<li><code>{% raw %}ip{% endraw %}</code> - the IP for which you require the appropriate country, or "current" for the current request IP. If not supplied, the entire list of countries supported by Business Catalyst is returned <em>(string, optional)</em></li>
 </ul></li>
 </ul>
 
@@ -30,11 +30,11 @@
 <p>countryList object with the following properties:</p>
 
 <ul>
-<li><code>items</code> - an array of country objects which have the following properties:
+<li><code>{% raw %}items{% endraw %}</code> - an array of country objects which have the following properties:
 
 <ul>
-<li><code>countryCode</code></li>
-<li><code>displayName</code></li>
+<li><code>{% raw %}countryCode{% endraw %}</code></li>
+<li><code>{% raw %}displayName{% endraw %}</code></li>
 </ul></li>
 </ul>
 
@@ -44,14 +44,14 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /api/v2/admin/countries HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /api/v2/admin/countries HTTPS/1.1
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code><br>HTTP/1.1 200 OK
+<pre class="language-javascript"><code>{% raw %}<br>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
 {
@@ -82,27 +82,27 @@ Content-Type: application/json; charset=utf-8
   ],
   "totalItemsCount":240
 }
-</code></pre>
+{% endraw %}</code></pre>
 <hr>
 <h2>Sample code</h2>
 
 <p>Below is some sample code using the bcapi.js SDK. For more information, see <a href="https://github.com/adobebc/web-apps-sdk/tree/master/sdk/src/">Interacting with APIs using the bcapi.js SDK</a></p>
 
-<pre class="language-javascript"><code>var itemCollection = new BCAPI.Models.CountryCollection();
-</code></pre>
+<pre class="language-javascript"><code>{% raw %}var itemCollection = new BCAPI.Models.CountryCollection();
+{% endraw %}</code></pre>
 <hr>
 <h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 
 <ul>
-<li><code>200</code> - success</li>
-<li><code>401</code>
+<li><code>{% raw %}200{% endraw %}</code> - success</li>
+<li><code>{% raw %}401{% endraw %}</code>
 
 <ul>
-<li><code>105000</code> sub-code - invalid IP passed to "ip" argument</li>
+<li><code>{% raw %}105000{% endraw %}</code> sub-code - invalid IP passed to "ip" argument</li>
 </ul></li>
-<li><code>500</code> - internal server error</li>
+<li><code>{% raw %}500{% endraw %}</code> - internal server error</li>
 </ul>
 
         

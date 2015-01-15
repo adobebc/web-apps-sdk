@@ -35,15 +35,15 @@
 
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>GET /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE/countries HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}GET /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE/countries HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-</code></pre>
+{% endraw %}</code></pre>
 
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
     "links": [{
         "rel": "self",
         "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webapps/test app2/countries?skip=0&limit=10"
@@ -56,9 +56,9 @@ Content-Type: application/json
     "skip": 0,
     "limit": 10
 }
-</code></pre>
+{% endraw %}</code></pre>
 <hr><h2>Sample code</h2>
-<pre class="language-javascript"><code>var request = $.ajax({
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites/current/webapps/test app2/countries",
     type: "GET",
     contentType: "application/json",
@@ -76,23 +76,23 @@ request.fail(function (jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 })
 
-</code></pre>
+{% endraw %}</code></pre>
 <hr><h2>Error codes</h2>
 
 <p>This method will return the following error codes:</p>
 
 <ul>
-<li><code>200</code> - success</li>
-<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+<li><code>{% raw %}200{% endraw %}</code> - success</li>
+<li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
 
 <ul>
-<li><code>10100</code> - (not authenticated) sub-error code</li>
+<li><code>{% raw %}10100{% endraw %}</code> - (not authenticated) sub-error code</li>
 </ul></li>
-<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the web app view permission</li>
-<li><code>404</code> - not found
+<li><code>{% raw %}403{% endraw %}</code> - forbidden : this is returned when the user trying to access the API does not have the web app view permission</li>
+<li><code>{% raw %}404{% endraw %}</code> - not found
 
 <ul>
-<li><code>190001</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+<li><code>{% raw %}190001{% endraw %}</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
 </ul></li>
 </ul>
 

@@ -7,7 +7,7 @@
 
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
@@ -28,11 +28,11 @@
 <p>An array of the first 10 shipping options; each object has the following properties:</p>
 
 <ul>
-  <li><code>id</code> - the id of the shipping option <em>(integer)</em></li>
-  <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>"description"</code> - the shipping option's description <em>(string)</em></li>
-<li><code>"price"</code> -  <em>(integer)</em></li>
-<li><code>"type"</code> - the type of shipping option <em>(integer)</em>
+  <li><code>{% raw %}id{% endraw %}</code> - the id of the shipping option <em>(integer)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}"description"{% endraw %}</code> - the shipping option's description <em>(string)</em></li>
+<li><code>{% raw %}"price"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"type"{% endraw %}</code> - the type of shipping option <em>(integer)</em>
 <ul>
 <li><strong>1</strong> - User defined</li>
 <li><strong>2</strong> - Australia Post</li>
@@ -43,32 +43,32 @@
 <li><strong>7</strong> - UPS</li>
 </ul>
 </li>
-<li><code>"packageType"</code> -  <em>(integer)</em></li>
-<li><code>"taxCodeId"</code> -  <em>(integer)</em></li>
-<li><code>"countryCode"</code> -  <em>(string)</em></li>
-<li><code>"state"</code> -  <em>(string)</em></li>
-<li><code>"postcode"</code> -  <em>(string)</em></li>
-<li><code>"productMinWeight"</code> -  <em>(integer)</em></li>
-<li><code>"productMinVolume"</code> -  <em>(integer)</em></li>
-<li><code>"productMinHeight"</code> -  <em>(integer)</em></li>
-<li><code>"productMinDepth"</code> -  <em>(integer)</em></li>
-<li><code>"productMaxWeight"</code> -  <em>(integer)</em></li>
-<li><code>"productMaxVolume"</code> -  <em>(integer)</em></li>
-<li><code>"productMaxHeight"</code> -  <em>(integer)</em></li>
-<li><code>"productMaxDepth"</code> -  <em>(integer)</em></li>
-<li><code>"totalOrderPriceMin"</code> -  <em>(integer)</em></li>
-<li><code>"totalOrderPriceMax"</code> -  <em>(integer)</em></li>
-<li><code>"handlingBaseCharge"</code> -  <em>(integer)</em></li>
-<li><code>"handlingPerItemCharge"</code> -  <em>(integer)</em></li>
-<li><code>"freeThreshold"</code> -  <em>(integer)</em></li>
-<li><code>"limitDeliveryTo"</code> -  <em>(string)</em></li>
-<li><code>"userAccountNumber"</code> -  <em>(string)</em></li>
-<li><code>"userAccountId"</code> -  <em>(string)</em></li>
-<li><code>"userAccountKey"</code> -  <em>(string)</em></li>
-<li><code>"userAccountPassword"</code> -  <em>(string)</em></li>
-<li><code>"upsAccountType"</code> -  <em>(integer)</em></li>
-<li><code>"upsPackageType"</code> -  <em>(integer)</em></li>
-<li><code>"upsConfirmationType"</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"packageType"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"taxCodeId"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"countryCode"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"state"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"postcode"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"productMinWeight"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMinVolume"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMinHeight"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMinDepth"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMaxWeight"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMaxVolume"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMaxHeight"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMaxDepth"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"totalOrderPriceMin"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"totalOrderPriceMax"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"handlingBaseCharge"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"handlingPerItemCharge"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"freeThreshold"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"limitDeliveryTo"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"userAccountNumber"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"userAccountId"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"userAccountKey"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"userAccountPassword"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"upsAccountType"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"upsPackageType"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"upsConfirmationType"{% endraw %}</code> -  <em>(integer)</em></li>
 
 </ul>
 
@@ -79,7 +79,7 @@
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -99,9 +99,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
       "id": 68460,
@@ -173,7 +173,7 @@ request.fail(function (jqXHR) {
   "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -184,7 +184,7 @@ request.fail(function (jqXHR) {
 
 <ul>
 <li><strong>Method:</strong> GET</li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/api-v3-sorting-filtering-and-partial-representation-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
@@ -204,11 +204,11 @@ request.fail(function (jqXHR) {
 
 <p>Displays the details for the shipping option as a JSON object</p>
 <ul>
-  <li><code>id</code> - the id of the shipping option <em>(integer)</em></li>
-  <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
-<li><code>"description"</code> - the shipping option's description <em>(string)</em></li>
-<li><code>"price"</code> -  <em>(integer)</em></li>
-<li><code>"type"</code> - the type of shipping option <em>(integer)</em>
+  <li><code>{% raw %}id{% endraw %}</code> - the id of the shipping option <em>(integer)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}"description"{% endraw %}</code> - the shipping option's description <em>(string)</em></li>
+<li><code>{% raw %}"price"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"type"{% endraw %}</code> - the type of shipping option <em>(integer)</em>
 <ul>
 <li><strong>1</strong> - User defined</li>
 <li><strong>2</strong> - Australia Post</li>
@@ -218,32 +218,32 @@ request.fail(function (jqXHR) {
 <li><strong>6</strong> - DHL</li>
 <li><strong>7</strong> - UPS</li>
 </ul>
-</li><li><code>"packageType"</code> -  <em>(integer)</em></li>
-<li><code>"taxCodeId"</code> -  <em>(integer)</em></li>
-<li><code>"countryCode"</code> -  <em>(string)</em></li>
-<li><code>"state"</code> -  <em>(string)</em></li>
-<li><code>"postcode"</code> -  <em>(string)</em></li>
-<li><code>"productMinWeight"</code> -  <em>(integer)</em></li>
-<li><code>"productMinVolume"</code> -  <em>(integer)</em></li>
-<li><code>"productMinHeight"</code> -  <em>(integer)</em></li>
-<li><code>"productMinDepth"</code> -  <em>(integer)</em></li>
-<li><code>"productMaxWeight"</code> -  <em>(integer)</em></li>
-<li><code>"productMaxVolume"</code> -  <em>(integer)</em></li>
-<li><code>"productMaxHeight"</code> -  <em>(integer)</em></li>
-<li><code>"productMaxDepth"</code> -  <em>(integer)</em></li>
-<li><code>"totalOrderPriceMin"</code> -  <em>(integer)</em></li>
-<li><code>"totalOrderPriceMax"</code> -  <em>(integer)</em></li>
-<li><code>"handlingBaseCharge"</code> -  <em>(integer)</em></li>
-<li><code>"handlingPerItemCharge"</code> -  <em>(integer)</em></li>
-<li><code>"freeThreshold"</code> -  <em>(integer)</em></li>
-<li><code>"limitDeliveryTo"</code> -  <em>(string)</em></li>
-<li><code>"userAccountNumber"</code> -  <em>(string)</em></li>
-<li><code>"userAccountId"</code> -  <em>(string)</em></li>
-<li><code>"userAccountKey"</code> -  <em>(string)</em></li>
-<li><code>"userAccountPassword"</code> -  <em>(string)</em></li>
-<li><code>"upsAccountType"</code> -  <em>(integer)</em></li>
-<li><code>"upsPackageType"</code> -  <em>(integer)</em></li>
-<li><code>"upsConfirmationType"</code> -  <em>(integer)</em></li>
+</li><li><code>{% raw %}"packageType"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"taxCodeId"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"countryCode"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"state"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"postcode"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"productMinWeight"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMinVolume"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMinHeight"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMinDepth"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMaxWeight"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMaxVolume"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMaxHeight"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"productMaxDepth"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"totalOrderPriceMin"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"totalOrderPriceMax"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"handlingBaseCharge"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"handlingPerItemCharge"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"freeThreshold"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"limitDeliveryTo"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"userAccountNumber"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"userAccountId"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"userAccountKey"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"userAccountPassword"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"upsAccountType"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"upsPackageType"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"upsConfirmationType"{% endraw %}</code> -  <em>(integer)</em></li>
 
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -251,7 +251,7 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -271,9 +271,9 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "id": 155083,
   "siteId": 146985,
   "description": "FedEx 1 Day Freight",
@@ -305,7 +305,7 @@ request.fail(function (jqXHR) {
   "upsAccountType": 1,
   "upsPackageType": 0,
   "upsConfirmationType": 1
-}</code></pre>
+}{% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -337,22 +337,22 @@ request.fail(function (jqXHR) {
 <p>The response should be &quot;201 created&quot; if the shipping option was successfully created.</p>
 <p>Here are the parameters you can use when creating a shipping option:</p>
 <ul>
-<li><code>"description"</code> - the shipping option's description <em>(string)</em></li>
-<li><code>"price"</code> -  <em>(integer)</em></li>
-<li><code>"type"</code> - the type of shipping option <em>(integer)</em>
+<li><code>{% raw %}"description"{% endraw %}</code> - the shipping option's description <em>(string)</em></li>
+<li><code>{% raw %}"price"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"type"{% endraw %}</code> - the type of shipping option <em>(integer)</em>
 <ul>
 <li><strong>1</strong> - User defined</li>
 </ul>
-</li><li><code>"taxCodeId"</code> -  <em>(integer)</em></li>
-<li><code>"countryCode"</code> -  <em>(string)</em></li>
-<li><code>"postcode"</code> -  <em>(string)</em></li>
+</li><li><code>{% raw %}"taxCodeId"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"countryCode"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"postcode"{% endraw %}</code> -  <em>(string)</em></li>
 
 </ul>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -374,7 +374,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 <hr>
 </div>
 </div>
@@ -409,22 +409,22 @@ request.fail(function (jqXHR) {
 
 <p>Here are the parameters you can use when updating a shipping option:</p>
 <ul>
-<li><code>"description"</code> - the shipping option's description <em>(string)</em></li>
-<li><code>"price"</code> -  <em>(integer)</em></li>
-<li><code>"type"</code> - the type of shipping option <em>(integer)</em>
+<li><code>{% raw %}"description"{% endraw %}</code> - the shipping option's description <em>(string)</em></li>
+<li><code>{% raw %}"price"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"type"{% endraw %}</code> - the type of shipping option <em>(integer)</em>
 <ul>
 <li><strong>1</strong> - User defined</li>
 </ul>
-</li><li><code>"taxCodeId"</code> -  <em>(integer)</em></li>
-<li><code>"countryCode"</code> -  <em>(string)</em></li>
-<li><code>"postcode"</code> -  <em>(string)</em></li>
+</li><li><code>{% raw %}"taxCodeId"{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}"countryCode"{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}"postcode"{% endraw %}</code> -  <em>(string)</em></li>
 
 </ul>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -445,7 +445,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -484,7 +484,7 @@ request.fail(function (jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
@@ -503,7 +503,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>

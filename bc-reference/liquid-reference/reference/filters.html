@@ -1,250 +1,467 @@
-<h1>Supported filters
-</h1>
+<title>Filters</title>
+<h1>Supported filters </h1> 
 <div type="cs-pod">
-  <h2 id="math-filters">Mathematical Filters</h2>
-<div class="filters math">
-<table width="100%" class="data-bordered">
-    <tbody>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>divided_by</code></td>
-            <td><span class="cellcontent">&#123;&#123;500 | divided_by: 20&#125;&#125; is 25</td>          
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>minus</code></td>
-            <td><span class="cellcontent">&#123;&#123;500 | minus: 20&#125;&#125; is 480</td>
-        </tr>
-		<tr>
-            <td valign="top" class="cellrowborder"><code>plus</code></td>
-          <td><span class="cellcontent">&#123;&#123;500 | plus: 20&#125;&#125; is 520</td>
-        </tr>
-		<tr>
-            <td valign="top" class="cellrowborder"><code>times</code></td><td><span class="cellcontent">&#123;&#123;500 | times: 2&#125;&#125; is 1000</td>
-        </tr>
-        
-    </tbody>
-</table>
-</div>
-</div>
-<div type="cs-pod">
-  <h2 id="string-filters">String manipulation filters</h2>
-
-<div class="filters string">
-<table width="100%" class="data-bordered">
-    <tbody>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>append</code></td>
-            <td><span class="cellcontent">&#123;&#123;&quot;This is the first part&quot; | append: &quot; appending the second part&quot;&#125;&#125; outputs &quot;This is the first part  appending the second part&quot;</td>
-
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>prepend</code></td>
-            <td><span class="cellcontent">&#123;&#123;&quot; this is the second part&quot; | prepend: &quot;This is the first part&quot;&#125;&#125; outputs &quot;This is the first part  this is thesecond part&quot;</td>
-
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>capitalize</code></td>
-            <td>&#123;&#123;'Sample text' | capitalize&#125;&#125; outputs &quot;Sample Text&quot;</td>
-        </tr>
-		<tr>
-            <td valign="top" class="cellrowborder"><code>downcase</code></td>
-          <td>&#123;&#123;'Sample text' | downcase&#125;&#125; outputs &quot;sample text&quot;</td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>upcase</code></td>
-          <td>&#123;&#123;'Sample text' | upcase&#125;&#125; outputs &quot;SAMPLE TEXT&quot;</td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>remove</code></td>
-          <td>&#123;&#123;'Sample text. All occurences of &quot;text&quot; will be removed.' | remove: &quot;text&quot;&#125;&#125; outputs 'Sample . All occurences of &quot;&quot; will be removed.'</td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>replace</code></td>
-          <td>&#123;&#123;'Sample text. All occurences of &quot;text&quot; will be replced.' | replace: &quot;text&quot;, &quot;string&quot;&#125;&#125; outputs 'Sample string. All occurences of &quot;string&quot; will be replaced.'</td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>replacefirst</code></td>
-          <td>&#123;&#123;'Sample text text.' | replacefirst: &quot;text&quot;, &quot;string&quot;&#125;&#125; outputs 'Sample string text''</td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>truncate</code></td>
-          <td>&#123;&#123;'Sample text ' | truncate: 9, &quot;...&quot;&#125;&#125; outputs 'Sample... '</td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>split</code></td>
-          <td>&#123;&#123;'1,2,3,4,5 ' | split: &quot;,&quot;&#125;&#125; splits the text and creates an array [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>join</code></td>
-          <td>&#123;&#123;myArray | join: &quot;///&quot;&#125;&#125; assuming myArray is an array joins the elements and puts the separator between each element</td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>sort</code></td>
-          <td>&#123;&#123;myArray | sort&#125;&#125; assuming myArray is an array [&quot;5&quot;,&quot;4&quot;,&quot;3&quot;] ]the sort filter outputs [&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>strip_html</code></td>
-          <td>&#123;&#123;"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html&#125;&#125; strips the HTML code from the string, this outputs &quot;My paragraph&quot;</td>
-        </tr>
-		
-        
-    </tbody>
-</table>
-</div>
-</div>
-
-<div type="cs-pod">
-  <h2 id="array-filters">Array manipulation filters</h2>
-
-<div class="filters string">
-<table width="100%" class="data-bordered">
-    <tbody>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>limit</code></td>
-            <td><span class="cellcontent">
-            # array = [1,2,3,4,5,6]
-            <br/>
-            &#123;&#37; for item in array limit:2 &#37;&#125;<br/>
-            This will limit the number of items returned from the array. In this case 1 and 2 will be returned
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>prepend</code></td>
-            <td><span class="cellcontent">
-            # array = [1,2,3,4,5,6]
-            <br/>
-             &#123;&#37; for item in array offset:2 &#37;&#125;<br/>
-             This will offset the items from the array. In this case items 3 and 4 will be returned.<br/>
-             You can combine both offset and limit.
-            </td>
-        </tr>
-    </tbody>
-</table>
-</div>
-</div>
-
-
-<div type="cs-pod">
-<div class="filters date">
-<h2 id="date-filters">Date filters</h2>
-<table width="100%" class="data-bordered">
-    <tbody>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>site_date</code></td>
-            <td><span class="cellcontent">&#123;&#123;globals.site.dateNow | date&#125;&#125; outputs &quot;09-Jan-2015&quot;</td>
-
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>site_datetime</code></td>
-            <td><span class="cellcontent">&#123;&#123;globals.site.dateNow | datetime&#125;&#125; outputs &quot;09-Jan-2015 02:46 PM&quot;</td>
-
-        </tr>
-		
-        
-    </tbody>
-</table>
-</div>
+     <h2 id="math-filters">Mathematical Filters</h2> 
+    <div class="filters math">
+        <table width="100%" class="data-bordered">
+            <tbody>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>divided_by</code>
+                    </td>
+                    <td><span class="cellcontent">{{500 | divided_by: 20}} is 25</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>minus</code>
+                    </td>
+                    <td><span class="cellcontent">{{500 | minus: 20}} is 480</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>plus</code>
+                    </td>
+                    <td><span class="cellcontent">{{500 | plus: 20}} is 520</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>times</code>
+                    </td>
+                    <td><span class="cellcontent">{{500 | times: 2}} is 1000</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div type="cs-pod">
-<h2 id="date-switches">the Date switches</h2>
-<p>Assuming the value of the <code>dateTime</code> field is <em>2014-12-09T23:00:00</em> here are the available switches you can use to format the date:<p/>
-<table width="100%" class="data-bordered">
-<tbody>
-  <tr><td><code>%d</code></td><td>Outputs the day of the month - 18</td></tr>
-          <tr><td><code>dd</code></td><td> The day of the month. Single-digit days will have a leading zero - 03</td></tr>
-          <tr><td><code>ddd</code></td><td>The hour in a 12-hour clock. Single-digit hours will not have a leading zero - 12</td></tr>
-          <tr><td><code>ddd</code></td><td>outputs the year - 14</td></tr>
-          <tr><td><code>%h</code></td><td>outputs the year - 14</td></tr>
-          <tr><td><code>hh</code></td><td>The hour in a 12-hour clock. Single-digit hours will have a leading zero - 12</td></tr>
-          
-          <tr><td><code>%H</code></td><td>The hour in a 24-hour clock. Single-digit hours will not have a leading zero - 0</td></tr>
-          <tr><td><code>HH</code></td><td>The hour in a 24-hour clock. Single-digit hours will have a leading zero - 0</td></tr>
-          <tr><td><code>%m</code></td><td>The minute. Single-digit minutes will not have a leading zero - 0</td></tr>
-          <tr><td><code>mm</code></td><td>The minute. Single-digit minutes will have a leading zero - 00</td></tr>
-          <tr><td><code>%M</code></td><td>The numeric month. Single-digit months will not have a leading zero - 9</td></tr>
-          <tr><td><code>MM</code></td><td>The numeric month. Single-digit months will have a leading zero - 09</td></tr>
-          <tr><td><code>MMM</code></td><td>The abbreviated name of the month, as defined in AbbreviatedMonthNames - sep.</td></tr>
-          <tr><td><code>MMMM</code></td><td>The full name of the month, as defined in MonthNames - september</td></tr>
-          <tr><td><code>%s</code></td><td>The second. Single-digit seconds will not have a leading zeroThe second. Single-digit seconds will not have a leading zero - 0</td></tr>
-          <tr><td><code>ss</code></td><td>The second. Single-digit seconds will have a leading zero - 00</td></tr>
-          <tr><td><code>%t</code></td><td>The first character in the AM/PM designator, if any - a</td></tr>
-          <tr><td><code>tt</code></td><td>The AM/PM designator, if any - a.m.</td></tr>
-          <tr><td><code>%y</code></td><td>The year without the century. If the year without the century is less than 10, the year is displayed with no leading zero - 14</td></tr>
-          <tr><td><code>yy</code></td><td>The year without the century. If the year without the century is less than 10, the year is displayed with a leading zero - 14</td></tr>
-       
-          <tr><td><code>yyyy</code></td><td>The year in four or five digits (depending on the calendar used), including the century. Will pad with leading zeroes to get four digits. Thai Buddhist and Korean calendars both have five digit years; users selecting the "yyyy" pattern will see all five digits without leading zeros for calendars that have five digits. Exception: the Japanese and Taiwan calendars always behave as if "yy" was selected - 1914</td></tr>
-          <tr><td><code>\c</code></td><td>Where c is any character. Displays the character literally. Useful for escaping characters that are usually rendered as switches (m, h, s, etc.) To display the backslash character, use "\\" - 14</td></tr>
-          </tbody></table>
-          <p>To output <strong>14-6-18 use</strong> &#123;&#123;dateVariable | date: "%y-%M-%d"&#125;&#125; (mind the double quotes).</p>
-          <p>
-          To output <strong>Element date: 1914\09\03 @ 12:00:00 a.m.</strong> use &#123;&#123;dateVariable | date: "yyyy\\MM\\dd @ hh:mm:ss tt"&#125;&#125;</p>
-          <p class="alert alert-warning">To use &quot;\&quot; (the backslash character) as separator for date elements you  need to escape the it in the liquid tag. Using &quot;\\&quot; renders &quot;\&quot; in the front-end.</p>
-          <p>Spaces and any other characters that are not usable switches are rendered without the need for escaping.</p>
-        
+     <h2 id="string-filters">String manipulation filters</h2> 
+    <div class="filters string">
+        <table width="100%" class="data-bordered">
+            <tbody>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>append</code>
+                    </td>
+                    <td><span class="cellcontent">{{"This is the first part" | append: " appending the second part"}} outputs "This is the first part  appending the second part"</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>prepend</code>
+                    </td>
+                    <td><span class="cellcontent">{{" this is the second part" | prepend: "This is the first part"}} outputs "This is the first part  this is thesecond part"</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>capitalize</code>
+                    </td>
+                    <td>{{'Sample text' | capitalize}} outputs "Sample Text"</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>downcase</code>
+                    </td>
+                    <td>{{'Sample text' | downcase}} outputs "sample text"</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>upcase</code>
+                    </td>
+                    <td>{{'Sample text' | upcase}} outputs "SAMPLE TEXT"</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>remove</code>
+                    </td>
+                    <td>{{'Sample text. All occurences of "text" will be removed.' | remove: "text"}}
+                        outputs 'Sample . All occurences of "" will be removed.'</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>replace</code>
+                    </td>
+                    <td>{{'Sample text. All occurences of "text" will be replced.' | replace: "text",
+                        "string"}} outputs 'Sample string. All occurences of "string" will be replaced.'</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>replacefirst</code>
+                    </td>
+                    <td>{{'Sample text text.' | replacefirst: "text", "string"}} outputs 'Sample string
+                        text''</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>truncate</code>
+                    </td>
+                    <td>{{'Sample text ' | truncate: 9, "..."}} outputs 'Sample... '</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>split</code>
+                    </td>
+                    <td>{{'1,2,3,4,5 ' | split: ","}} splits the text and creates an array ["1","2","3","4","5"]</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>join</code>
+                    </td>
+                    <td>{{myArray | join: "///"}} assuming myArray is an array joins the elements and
+                        puts the separator between each element</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>sort</code>
+                    </td>
+                    <td>{{myArray | sort}} assuming myArray is an array ["5","4","3"] ]the sort filter
+                        outputs ["3","4","5"]</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>strip_html</code>
+                    </td>
+                    <td>{{"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html}} strips the HTML code from the
+                        string, this outputs "My paragraph"</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div type="cs-pod">
-<h2 id="timespan">timeSpan switches</h2>
-<p>Let's assume we have created a <a href="/developers/liquid/datatypes#timespan">timeSpan variable</a> by substracting one date from another:</p>
-          <pre> &#123;&#37; assign dateDiff = globals.site.dateNow| minus: myDate &#37;&#125;</pre>
-  <p>Taking a presumed value of <em>dateDiff</em> being <strong>5.02:39:41.6441728</strong>, we can format the date value of &#123;&#123;dateDiff&#125;&#125; with the following switches:</p>
-<table width="100%" class="data-bordered">
-<tbody>
-          <tr><td><code>%d</code></td><td> Outputs the number of whole days in the time interval - 5</td></tr>
-          <tr><td><code>dd</code></td><td>  The number of whole days in the time interval, padded with leading zeros as needed - 05</td></tr>
-          <tr><td><code>%h</code></td><td>The number of whole hours in the time interval that are not counted as part of days. Single-digit hours do not have a leading zero - 2</td></tr>
-          <tr><td><code></code></td><td>The number of whole hours in the time interval that are not counted as part of days. Single-digit hours have a leading zero - 02</td></tr>
-          <tr><td><code>%m</code></td><td>The number of whole minutes in the time interval that are not included as part of hours or days. Single-digit minutes do not have a leading zero - 41</td></tr>
-          <tr><td><code>mm</code></td><td>The number of whole minutes in the time interval that are not included as part of hours or days. Single-digit minutes have a leading zero - 41</td></tr>
-          
-          <tr><td><code>%s</code></td><td>The number of whole seconds in the time interval that are not included as part of hours, days, or minutes. Single-digit seconds do not have a leading zero - 14</td></tr>
-          <tr><td><code>ss</code></td><td>The number of whole seconds in the time interval that are not included as part of hours, days, or minutes. Single-digit seconds have a leading zero - 14</td></tr>
-          <tr><td><code>%f</code></td><td>The tenths of a second in a time interval - 0</td></tr>
-          <tr><td><code>ff</code></td><td>The /hundredths of a second in a time interval - 09</td></tr>
-          <tr><td><code>fff</code></td><td> The milliseconds in a time interval - 097</td></tr>
-          <tr><td><code>ffff</code></td><td> The ten-thousandths of a second in a time interval - 0973</td></tr>
-          <tr><td><code>fffff</code></td><td> The hundred-thousandths of a second in a time interval - 09734</td></tr>
-          <tr><td><code>ffffff</code></td><td> The millionths of a second in a time interval - 097343</td></tr>
-          <tr><td><code>fffffff</code></td><td> The ten-millionths of a second (or the fractional ticks) in a time interval - 0973435</td></tr>
-          <tr><td><code>%F</code></td><td> The tenths of a second in a time interval. Nothing is displayed if the digit is zero - </td></tr>
-          <tr><td><code>FF</code></td><td> The hundredths of a second in a time interval. Any fractional trailing zeros or two zero digits are not included - 09</td></tr>
-          <tr><td><code>FFF</code></td><td> The milliseconds in a time interval. Any fractional trailing zeros are not included - 097</td></tr>
-          <tr><td><code>FFFF</code></td><td> The ten-thousandths of a second in a time interval. Any fractional trailing zeros are not included - 0973</td></tr>
-          <tr><td><code>FFFFF</code></td><td> The hundred-thousandths of a second in a time interval. Any fractional trailing zeros are not included - 09734</td></tr>
-       
-          <tr><td><code>FFFFFF</code></td><td> The millionths of a second in a time interval. Any fractional trailing zeros are not displayed - 097343</td></tr>
-          <tr><td><code>FFFFFFF</code></td><td> The ten-millions of a second in a time interval. Any fractional trailing zeros or seven zeros are not displayed - 0973435</td></tr>
-          <tr><td><code>string</code></td><td> Literal string delimiter - date:&quot;'Result : 'dd'&quot;'' will output - Result : 05</td></tr>
-          <tr><td><code>\</code></td><td> The escape character. If you want to display a cahracter that would be normally interpreted as a switch, for example /ddd will output - d05</td></tr>
-    </tbody></table>
-    <p>
-          To output <strong>5-3-13</strong> use <strong>&#123;&#123;dateDiff | date: &quot;%d'-'%h'-'%m&quot;&#125;&#125;</strong> (mind the double quotes).</p>
-          <p>
-          To output <strong>Result : d05-h03-m18</strong> use <strong>&#123;&#123;dateDiff | date:&quot;'Result : '\ddd'-'\hhh'-'\mmm&quot;&#125;&#125;</strong></p>
+     <h2 id="array-filters">Array manipulation filters</h2> 
+    <div class="filters string">
+        <table width="100%" class="data-bordered">
+            <tbody>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>limit</code>
+                    </td>
+                    <td><span class="cellcontent">             # array = [1,2,3,4,5,6]             <br>             {% for item in array limit:2 %}<br>             This will limit the number of items returned from the array. In this case 1 and 2 will be returned             </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>prepend</code>
+                    </td>
+                    <td><span class="cellcontent">             # array = [1,2,3,4,5,6]             <br>              {% for item in array offset:2 %}<br>              This will offset the items from the array. In this case items 3 and 4 will be returned.<br>              You can combine both offset and limit.             </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div type="cs-pod">
+    <div class="filters date">
+         <h2 id="date-filters">Date filters</h2> 
+        <table width="100%" class="data-bordered">
+            <tbody>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>site_date</code>
+                    </td>
+                    <td><span class="cellcontent">{{globals.site.dateNow | date}} outputs "09-Jan-2015"</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>site_datetime</code>
+                    </td>
+                    <td><span class="cellcontent">{{globals.site.dateNow | datetime}} outputs "09-Jan-2015 02:46 PM"</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div type="cs-pod">
+     <h2 id="date-switches">the Date switches</h2> 
+    <p>Assuming the value of the <code>dateTime</code> field is <em>2014-12-09T23:00:00</em> here
+        are the available switches you can use to format the date:</p>
+    <table width="100%"
+    class="data-bordered">
+        <tbody>
+            <tr>
+                <td><code>%d</code>
+                </td>
+                <td>Outputs the day of the month - 18</td>
+            </tr>
+            <tr>
+                <td><code>dd</code>
+                </td>
+                <td>The day of the month. Single-digit days will have a leading zero - 03</td>
+            </tr>
+            <tr>
+                <td><code>ddd</code>
+                </td>
+                <td>The abbreviated name of the day of the week. - Tue</td>
+            </tr>
+            <tr>
+                 <td><code>dddd</code></td>
+                <td>The full name of the day of the week. - Tuesday</td>
+            </tr>
+            <tr>
+                <td><code>%h</code>
+                </td>
+                <td>The hour in a 12-hour clock. Single-digit hours will not have a leading zero - 12</td>
+            </tr>
+            <tr>
+                <td><code>hh</code>
+                </td>
+                <td>The hour in a 12-hour clock. Single-digit hours will have a leading zero - 12</td>
+            </tr>
+            <tr>
+                <td><code>%H</code>
+                </td>
+                <td>The hour in a 24-hour clock. Single-digit hours will not have a leading zero -
+                    0</td>
+            </tr>
+            <tr>
+                <td><code>HH</code>
+                </td>
+                <td>The hour in a 24-hour clock. Single-digit hours will have a leading zero - 0</td>
+            </tr>
+            <tr>
+                <td><code>%m</code>
+                </td>
+                <td>The minute. Single-digit minutes will not have a leading zero - 0</td>
+            </tr>
+            <tr>
+                <td><code>mm</code>
+                </td>
+                <td>The minute. Single-digit minutes will have a leading zero - 00</td>
+            </tr>
+            <tr>
+                <td><code>%M</code>
+                </td>
+                <td>The numeric month. Single-digit months will not have a leading zero - 9</td>
+            </tr>
+            <tr>
+                <td><code>MM</code>
+                </td>
+                <td>The numeric month. Single-digit months will have a leading zero - 09</td>
+            </tr>
+            <tr>
+                <td><code>MMM</code>
+                </td>
+                <td>The abbreviated name of the month, as defined in AbbreviatedMonthNames - sep.</td>
+            </tr>
+            <tr>
+                <td><code>MMMM</code>
+                </td>
+                <td>The full name of the month, as defined in MonthNames - september</td>
+            </tr>
+            <tr>
+                <td><code>%s</code>
+                </td>
+                <td>The second. Single-digit seconds will not have a leading zeroThe second. Single-digit
+                    seconds will not have a leading zero - 0</td>
+            </tr>
+            <tr>
+                <td><code>ss</code>
+                </td>
+                <td>The second. Single-digit seconds will have a leading zero - 00</td>
+            </tr>
+            <tr>
+                <td><code>%t</code>
+                </td>
+                <td>The first character in the AM/PM designator, if any - a</td>
+            </tr>
+            <tr>
+                <td><code>tt</code>
+                </td>
+                <td>The AM/PM designator, if any - a.m.</td>
+            </tr>
+            <tr>
+                <td><code>%y</code>
+                </td>
+                <td>The year without the century. If the year without the century is less than 10,
+                    the year is displayed with no leading zero - 14</td>
+            </tr>
+            <tr>
+                <td><code>yy</code>
+                </td>
+                <td>The year without the century. If the year without the century is less than 10,
+                    the year is displayed with a leading zero - 14</td>
+            </tr>
+            <tr>
+                <td><code>yyyy</code>
+                </td>
+                <td>The year in four or five digits (depending on the calendar used), including the
+                    century. Will pad with leading zeroes to get four digits. Thai Buddhist and Korean
+                    calendars both have five digit years; users selecting the "yyyy" pattern will see
+                    all five digits without leading zeros for calendars that have five digits. Exception:
+                    the Japanese and Taiwan calendars always behave as if "yy" was selected - 1914</td>
+            </tr>
+            <tr>
+                <td><code>\c</code>
+                </td>
+                <td>Where c is any character. Displays the character literally. Useful for escaping
+                    characters that are usually rendered as switches (m, h, s, etc.) To display the
+                    backslash character, use "\\" - 14</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>To output <strong>14-6-18 use</strong> {{dateVariable | date: "%y-%M-%d"}} (mind
+        the double quotes).</p>
+    <p>To output <strong>Element date: 1914\09\03 @ 12:00:00 a.m.</strong> use {{dateVariable
+        | date: "yyyy\\MM\\dd @ hh:mm:ss tt"}}</p>
+    <p class="alert alert-warning">To use "\" (the backslash character) as separator for date elements you need to
+        escape the it in the liquid tag. Using "\\" renders "\" in the front-end.</p>
+    <p>Spaces and any other characters that are not usable switches are rendered without
+        the need for escaping.</p>
+</div>
+<div type="cs-pod">
+     <h2 id="timespan">timeSpan switches</h2> 
+    <p>Let's assume we have created a
+        <a href="/developers/liquid/datatypes#timespan">timeSpan variable</a>by substracting one date from another:</p> <pre> &amp;#123;&amp;#37; assign dateDiff = globals.site.dateNow| minus: myDate &amp;#37;&amp;#125;</pre> 
+    <p>Taking a presumed value of <em>dateDiff</em> being <strong>5.02:39:20.2500250</strong>,
+        we can format the date value of {{dateDiff}} with the following switches:</p>
+    <table
+    width="100%" class="data-bordered">
+        <tbody>
+            <tr>
+                <td><code>%d</code>
+                </td>
+                <td>Outputs the number of whole days in the time interval - 5</td>
+            </tr>
+            <tr>
+                <td><code>dd</code>
+                </td>
+                <td>The number of whole days in the time interval, padded with leading zeros as needed
+                    - 05</td>
+            </tr>
+            <tr>
+                <td><code>%h</code>
+                </td>
+                <td>The number of whole hours in the time interval that are not counted as part of
+                    days. Single-digit hours do not have a leading zero - 2</td>
+            </tr>
+            <tr>
+                <td><code>hh</code>
+                </td>
+                <td>The number of whole hours in the time interval that are not counted as part of
+                    days. Single-digit hours have a leading zero - 02</td>
+            </tr>
+            <tr>
+                <td><code>%m</code>
+                </td>
+                <td>The number of whole minutes in the time interval that are not included as part
+                    of hours or days. Single-digit minutes do not have a leading zero - 39</td>
+            </tr>
+            <tr>
+                <td><code>mm</code>
+                </td>
+                <td>The number of whole minutes in the time interval that are not included as part
+                    of hours or days. Single-digit minutes have a leading zero - 39</td>
+            </tr>
+            <tr>
+                <td><code>%s</code>
+                </td>
+                <td>The number of whole seconds in the time interval that are not included as part
+                    of hours, days, or minutes. Single-digit seconds do not have a leading zero - 20</td>
+            </tr>
+            <tr>
+                <td><code>ss</code>
+                </td>
+                <td>The number of whole seconds in the time interval that are not included as part
+                    of hours, days, or minutes. Single-digit seconds have a leading zero - 20</td>
+            </tr>
+            <tr>
+                <td><code>%f</code>
+                </td>
+                <td>The tenths of a second in a time interval - 2</td>
 
+            </tr>
+            <tr>
+                <td><code>ff</code>
+                </td>
+                <td>The /hundredths of a second in a time interval - 25</td>
+            </tr>
+            <tr>
+                <td><code>fff</code>
+                </td>
+                <td>The milliseconds in a time interval - 250</td>
+            </tr>
+            <tr>
+                <td><code>ffff</code>
+                </td>
+                <td>The ten-thousandths of a second in a time interval - 2500</td>
+            </tr>
+            <tr>
+                <td><code>fffff</code>
+                </td>
+                <td>The hundred-thousandths of a second in a time interval - 25002</td>
+            </tr>
+            <tr>
+                <td><code>ffffff</code>
+                </td>
+                <td>The millionths of a second in a time interval - 250025</td>
+            </tr>
+            <tr>
+                <td><code>fffffff</code>
+                </td>
+                <td>The ten-millionths of a second (or the fractional ticks) in a time interval -
+                    2500250</td>
+            </tr>
+            <tr>
+                <td><code>%F</code>
+                </td>
+                <td>The tenths of a second in a time interval. Nothing is displayed if the digit is
+                    zero -2</td>
+            </tr>
+            <tr>
+                <td><code>FF</code>
+                </td>
+                <td>The hundredths of a second in a time interval. Any fractional trailing zeros or
+                    two zero digits are not included - 25</td>
+            </tr>
+            <tr>
+                <td><code>FFF</code>
+                </td>
+                <td>The milliseconds in a time interval. Any fractional trailing zeros are not included
+                    - 25</td>
+            </tr>
+            <tr>
+                <td><code>FFFF</code>
+                </td>
+                <td>The ten-thousandths of a second in a time interval. Any fractional trailing zeros
+                    are not included - 25</td>
+            </tr>
+            <tr>
+                <td><code>FFFFF</code>
+                </td>
+                <td>The hundred-thousandths of a second in a time interval. Any fractional trailing
+                    zeros are not included - 25002</td>
+            </tr>
+            <tr>
+                <td><code>FFFFFF</code>
+                </td>
+                <td>The millionths of a second in a time interval. Any fractional trailing zeros are
+                    not displayed - 250025</td>
+            </tr>
+            <tr>
+                <td><code>FFFFFFF</code>
+                </td>
+                <td>The ten-millions of a second in a time interval. Any fractional trailing zeros
+                    or seven zeros are not displayed - 250025</td>
+            </tr>
+            <tr>
+                <td><code>string</code>
+                </td>
+                <td>Literal string delimiter - date:"'Result : 'dd'"'' will output - Result : 05</td>
+            </tr>
+            <tr>
+                <td><code>\</code>
+                </td>
+                <td>The escape character. If you want to display a cahracter that would be normally
+                    interpreted as a switch, for example /ddd will output - d05</td>
+            </tr>
+      </tbody>
+  </table>
+        <p>To output <strong>5-3-13</strong> use <strong>{{dateDiff | date: "%d'-'%h'-'%m"}}</strong> (mind
+            the double quotes).</p>
+        <p>To output <strong>Result : d05-h03-m18</strong> use <strong>{{dateDiff | date:"'Result : '\ddd'-'\hhh'-'\mmm"}}</strong>
+        </p>
 </div>
 <div type="cs-pod">
-<h2 id="other-filters">Other Filters</h2>
-<div class="filters other">
-<table width="100%" class="data-bordered">
-<tbody>
-<tr>
-            <td valign="top" class="cellrowborder"><code>convert</code></td>
-          <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:
-          <ul>
-          <li><strong>string</strong> - &#123;&#123;3 | convert: &quot;string&quot; | json&#125;&#125; outputs &quot;3&quot;</li>
-          <li><strong>number</strong> - &#123;&#123;&quot;3&quot; | convert: &quot;number&quot; | json&#125;&#125; outputs 3 (this can now be used with the mathematical filters)</li>
-          <li><strong>boolean</strong> - &#123;&#123;&quot;false&quot; | convert: &quot;string&quot; | json&#125;&#125;outputs &quot;false&quot; (it is treated as a boolean variable)</li>
-          <li><strong>date</strong> - &#123;&#123;&quot;2015-01-07&quot; | convert: &quot;date&quot;&#125;&#125; outputs <em>2015-01-07T00:00:00</em> in dateTime format<br>
-          </li>
-          <li><strong>currency</strong> &#123;&#123;100 | convert: "currency"&#125;&#125; outputs &quot;100 USD&quot; assuming the site's &quot;Country code&quot; is set to US.</li>
-          </ul></span></td>
-        </tr>
-<tr>
-            <td valign="top" class="cellrowborder"><code>json</code></td>
-            <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using - 
-            <code>&#123;&#123;webapp1.items[0] | json&#125;&#125;</code> 
-            looks like:
-            
-            <pre class="language-javascript"><code>{
+     <h2 id="other-filters">Other Filters</h2> 
+    <div class="filters other">
+        <table width="100%" class="data-bordered">
+            <tbody>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>convert</code>
+                    </td>
+                    <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - {{3 | convert: "string" | json}} outputs "3"</li> <li><strong>number</strong> - {{"3" | convert: "number" | json}} outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - {{"false" | convert: "string" | json}}outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - {{"2015-01-07" | convert: "date"}} outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> <li><strong>currency</strong> {{100 | convert: "currency"}} outputs "100 USD" assuming the site's "Country code" is set to US.</li> </ul></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>json</code>
+                    </td>
+                    <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>&amp;#123;&amp;#123;webapp1.items[0] | json&amp;#125;&amp;#125;</code>              looks like:                          <pre class="language-javascript">&lt;code&gt;{
  "itemid":"4646524",
  "name":"ABA",
  "urlWithHost":"http://abcd.com/car/ABA",
@@ -258,13 +475,16 @@
  "Color":"red",
  "Country":"",
  "Review":"no review just yet"
-}</code></pre>
-            <p class="chx">Do note you need to make the webapp listing available in a collection before you can access the items in JSON format.</p></td>
-        </tr>
-        <tr>
-            <td valign="top" class="cellrowborder"><code>size</code></td>
-          <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</td>
-        </tr>
-        </tbody></table>
-        </div>
+}</pre> <p class="chx">Do note you need to make the webapp listing available in a collection before you can access the items in JSON format.</p></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>size</code>
+                    </td>
+                    <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

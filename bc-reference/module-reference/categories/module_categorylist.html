@@ -47,13 +47,12 @@
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{% raw %}&#123;module_categorylist, id, maxLevel&#125;{% endraw %}</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_categorylist, id&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><strong>id</strong> - the ID of the category, <em>-1</em> is the Root level</li>
-    <li><strong>maxLevel</strong> - the level depth to display categories</li>
     <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
 </ul>
@@ -82,10 +81,5 @@
 <pre class="language-markup"><code>{% raw %}
 &lt;select&gt;<br><br>&lt;option value=&quot;-1&quot;&gt;-- All Categories --&lt;/option&gt;<br><br>&lt;option  value=&quot;32142&quot;&gt;Category1&lt;/option&gt;<br><br>&lt;option  value=&quot;28940&quot;&gt;---Category1A&lt;/option&gt;<br><br>&lt;option  value=&quot;43243&quot;&gt;Category2&lt;/option&gt;<br><br>&lt;option  value=&quot;29324&quot;&gt;---Category1&lt;/option&gt;<br><br>&lt;/select&gt;
 {% endraw %}</code></pre>
-
-<pre class="language-markup"><code>{% raw %}
-&#123;module_categorylist,-1,1&#125;
-{% endraw %}</code></pre>
-<p> Will display only the top level categories (root categories one level deep).</p>
 </div>
 </div>

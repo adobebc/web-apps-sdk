@@ -39,7 +39,7 @@
 <pre class="language-markup"><code>{% raw %}
 &lt;select&gt;<br><br>&lt;option value=&quot;-1&quot;&gt;-- All Categories --&lt;/option&gt;<br><br>&lt;option  value=&quot;32142&quot;&gt;Category1&lt;/option&gt;<br><br>&lt;option  value=&quot;28940&quot;&gt;---Category1A&lt;/option&gt;<br><br>&lt;option  value=&quot;43243&quot;&gt;Category2&lt;/option&gt;<br><br>&lt;option  value=&quot;29324&quot;&gt;---Category1&lt;/option&gt;<br><br>&lt;/select&gt;{% endraw %}</code></pre>
 <pre class="language-markup"><code>{% raw %}
-&#123;module_categorylist,-1,1&#125;
+&#123;module_categorylist id=&quot;-1&quot; maxLevel = &quot;1&quot;&#125;
 {% endraw %}</code></pre>
 <p>Will display only the top level categories (root categories one level deep).</p>
 </div>

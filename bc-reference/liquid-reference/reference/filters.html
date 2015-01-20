@@ -91,15 +91,6 @@
                     <td><code>{% raw %}{{'1,2,3,4,5 ' | split: ","}}{% endraw %}</code> splits the text and creates an array ["1","2","3","4","5"]</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}join{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{myArray | join: "///"}}{% endraw %}</code> assuming myArray is an array joins the elements and puts the separator between each element</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}sort{% endraw %}</code></td>
-                    <td><code>{% raw %}{{myArray | sort}}{% endraw %}</code> assuming myArray is an array ["5","4","3"] ]the sort filter outputs ["3","4","5"]</td>
-                </tr>
-                <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}strip_html{% endraw %}</code>
                     </td>
                     <td><code>{% raw %}{{"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html}}{% endraw %}</code> strips the HTML code from the string, this outputs "My paragraph"</td>
@@ -124,6 +115,15 @@
                     </td>
                     <td><span class="cellcontent">array = [1,2,3,4,5,6]             <br>              <code>{% raw %}{% for item in array offset:2 %}{% endraw %}</code><br>              This will offset the items from the array. In this case items 3 and 4 will be returned.<br>              You can combine both offset and limit.             </span>
                     </td>
+                </tr>
+                 <tr>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}join{% endraw %}</code>
+                    </td>
+                    <td><code>{% raw %}{{myArray | join: "///"}}{% endraw %}</code> assuming myArray is an array joins the elements and puts the separator between each element</td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}sort{% endraw %}</code></td>
+                    <td><code>{% raw %}{{myArray | sort}}{% endraw %}</code> assuming myArray is an array ["5","4","3"] ]the sort filter outputs ["3","4","5"]</td>
                 </tr>
             </tbody>
         </table>

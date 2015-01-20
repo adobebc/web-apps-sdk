@@ -8,26 +8,31 @@
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}divided_by{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">{{500 | divided_by: 20}} is 25</span>
+                    <td><span class="cellcontent">division - <code>{% raw %}{{500 | divided_by: 20}}{% endraw %}</code> is 25</span>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}minus{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">{{500 | minus: 20}} is 480</span>
+                    <td><span class="cellcontent">substraction - <code>{% raw %}{{500 | minus: 20}}{% endraw %}</code> is 480</span>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}plus{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">{{500 | plus: 20}} is 520</span>
+                    <td><span class="cellcontent">addition - <code>{% raw %}{{500 | plus: 20}}{% endraw %}</code> is 520</span>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}times{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">{{500 | times: 2}} is 1000</span>
+                    <td><span class="cellcontent">multiplication - <code>{% raw %}{{500 | times: 2}}{% endraw %}</code> is 1000</span>
                     </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="cellrowborder"><code>{% raw %}modulo{% endraw %}</code>
+                    </td>
+                    <td><span class="cellcontent">the remainder - <code>{% raw %}{{3 | modulo: 2}}{% endraw %}</code> is 1, <code>{% raw %}{{6 | modulo: 2}}{% endraw %}</code> is 0</span></td>
                 </tr>
             </tbody>
         </table>

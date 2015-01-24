@@ -1,0 +1,9 @@
+{
+  "menu-first-raducos-googleprofile-demo": {
+      "weight": 100000,
+      "title": "Google Profile Demo",
+      "attr": {
+          "href": "/Admin/AppLoader.aspx?client_id=bc-googleprofile-demo"
+      }
+  }
+}

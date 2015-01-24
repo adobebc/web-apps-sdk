@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>Backend start page.</title>
+
+        <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+
+        <script type="text/javascript">
+            function GoogleOAuthApp() { 
+                this._token = undefined;
+            };
+
+            GoogleOAuthApp.prototype._GOOGLE_URL = "https://accounts.google.com/o/oauth2/auth";
+            GoogleOAuthApp.prototype._CLIENT_ID = "place your client id in here";
+            GoogleOAuthApp.prototype._REDIRECT_URI = "http://<place your site url in here>/oauth/callback.html";
+            GoogleOAuthApp.prototype._USER_PROFILE_API = "https://www.googleapis.com/plus/v1/people";
+
+            /**
+             * @public
+             * @instance
+             * @method
+             * @returns {Window} The google window launched for oauth.
+             * @description
+             * This method launches the oauth 2 google implicit grant flow.
+             */
+            GoogleOAuthApp.prototype.launchImplicitFlow = function() {
+                var url = [this._GOOGLE_URL, "?response_type=token&client_id=", encodeURIComponent(this._CLIENT_ID), 
+                           "&redirect_uri=", encodeURIComponent(this._REDIRECT_URI), 
+                           "&scope=profile",
+                           "&state=", encodeURIComponent(window.location.href),
+                           "&approval_prompt=auto"];
+
+                url = url.join("");
+
+                console.log("Google url is: " + url);
+
+                return window.open(url, "_blank", "height=800,width=600");
+            };
+
+            /**
+             * @public
+             * @instance
+             * @method
+             * @description
+             * This method simply saves access token information into the current application.
+             */
+            GoogleOAuthApp.prototype.handleCallbackMessage = function(callbackEvt, wnd) {
+                wnd.close();
+
+                this._token = callbackEvt.data.access_token;
+            };
+
+            /**
+             * @public
+             * @instance
+             * @method
+             * @description
+             * This method loads the current user profile. It uses the token obtained during OAuth2 implicit flow.
+             */
+            GoogleOAuthApp.prototype.getCurrentUserProfile = function() {
+                var url = [this._USER_PROFILE_API, "/me"];
+
+                var response = $.ajax({
+                    "url": url.join(""),
+                    "headers": {
+                        "Accept": "application/json",
+                        "Authorization": "Bearer " + this._token
+                    }
+                });
+
+                response.done(function(data) {
+                    alert("Your google display name is: " + data.displayName);
+                    alert("For more information look into console.");
+
+                    console.log(data);
+                });
+            };
+
+            $(document).ready(function() {
+                var app = new GoogleOAuthApp(),
+                    wnd = app.launchImplicitFlow(),
+                    self = this;
+
+                if(wnd.addEventListener) {
+                    addEventListener("message", function(evt) {
+                        app.handleCallbackMessage(evt, wnd);
+
+                        app.getCurrentUserProfile();
+                    }, false);
+                }
+                else {
+                    attachEvent("onmessage",function(evt) {
+                        app.handleCallbackMessage(evt, wnd);
+                    });
+                }
+            });
+        </script>
+    </head>
+</html>

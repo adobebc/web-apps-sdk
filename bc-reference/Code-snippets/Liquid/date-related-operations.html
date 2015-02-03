@@ -7,7 +7,7 @@
 <p>will render <em>2015-01-07T00:00:00</em></p>
 <h2>Compare dates with the current date</h2>
 <p>To compare two dates simply treat them like regular numeric variables:</p>
-<pre class="language-javascript"><code>{% raw %}&#123;&#37; if globals.site.dateNow < myDate &#37;&#125;
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; if globals.site.dateNow &lt; myDate &#37;&#125;
 &lt;p&gt;The date is in the future&lt;/p&gt;
 {%else %}
 &lt;p&gt;The date is in the past&lt;/p&gt; &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>

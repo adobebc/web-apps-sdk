@@ -77,16 +77,16 @@
   &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
 <p>You can optionally use <code>{% raw %}elsif{% endraw %}</code> or <code>{% raw %}else{% endraw %}</code>:</p>
     <pre class="language-javascript"><code>{% raw %}  &#123;&#37; if myUserData.type == &quot;partner&quot; &#37;&#125;
-    &lt;p&gt;&lt;a href=&quot;/partner-login.html&quot;&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;/partner-login.html&quot;&gt;&lt;/p&gt;
     &#123;&#37; elsif myUserData.type == &quot;regular&quot; &#37;&#125;
-    &lt;p&gt;&lt;a href=&quot;/login.html&quot;&lt;/p&gt;    
+    &lt;p&gt;&lt;a href=&quot;/login.html&quot;&gt;&lt;/p&gt;    
   &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
   <p>or:</p>
       <pre class="language-javascript"><code>{% raw %}  &#123;&#37; if myUserData.type == &quot;partner&quot; &#37;&#125;
-    &lt;p&gt;&lt;a href=&quot;/partner-login.html&quot;&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;/partner-login.html&quot;&gt;&lt;/p&gt;
   &#123;&#37; else &#37;&#125;
     &#123;&#37; if myUserData.type == &quot;regular&quot; &#37;&#125;
-    &lt;p&gt;&lt;a href=&quot;/login.html&quot;&lt;/p&gt;    
+    &lt;p&gt;&lt;a href=&quot;/login.html&quot;&gt;&lt;/p&gt;    
   &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
 <h2>CASE</h2>
 <p>Simmilar to multiple nested IF statements, CASE allows you to take different actions based on the value of an evalueated output tag or variable.</p>

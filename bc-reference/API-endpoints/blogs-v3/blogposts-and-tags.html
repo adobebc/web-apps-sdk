@@ -1,10 +1,86 @@
 <h1 apiType="restv3">Blog posts and tags</h1>
 <ul id="toc"></ul>
+<div id="list">
+<h2 id ="tag-blogpost">List the tags assigned to a blog post</h2>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/blogs/[blogs_ID]/tags
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<hr>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of the first 10 blogs; each object has the following properties:</p>
+
+<ul>
+<li><strong>objectId</strong> - the blog post's ID <em>(numeric)</em></li>
+<li><strong>tagId</strong> - the tag's ID <em>(numeric)</em></li>
+<li><strong>objectType</strong> - the current item's object type - for blogposts this is <em>56</em> <em>(numeric)</em></li>
+<li><strong>siteId</strong> -the site's ID <em>(numeric)</em></li>
+<li><strong>tag</strong> - an object containing the tag's properties <em>(object)</em>
+<ul>
+<li><strong>id</strong> - the tag's ID <em>(numeric)</em></li>
+<li><strong>siteId</strong> -the site's ID <em>(numeric)</em></li>
+<li><strong>tagname</strong> - the tag's name <em>(string)</em></li>
+</ul>
+</li>
+</ul>
+
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr/>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/blogposts/303870/tags",
+    type: "GET",
+    conenection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code>
+</pre>
+</div>
+<hr>
+</div>
+
+
 <div id="add">
 <h2 id ="tag-blogpost">Tag a blog post</h2>
 <div class="request">
 <h3>Request</h3>
-
 <ul>
 <li><strong>Method:</strong> POST</li>
 <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>

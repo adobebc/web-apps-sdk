@@ -41,8 +41,7 @@ orderWrapper.prototype.queryOrders = function(queryString, access_token) {
         cache: false,
         timeout: 10000,
         headers: {
-            "Authorization": access_token,
-            "X-Adobe-SSL": true
+            "Authorization": access_token
         }
     });
 
@@ -67,8 +66,7 @@ orderWrapper.prototype.queryOrderItems = function(queryString, access_token) {
         cache: false,
         timeout: 10000,
         headers: {
-            "Authorization": access_token,
-            "X-Adobe-SSL": true
+            "Authorization": access_token
         }
     });
 
@@ -96,22 +94,22 @@ function renderRow(orderStatus, id, row) {
     $totalOrdersData.appendTo($orderTableRow);
 
     var $subtotalData = $("<td/>").append($("<span/>", {
-        text: row.Subtotal
+        text: row.Subtotal.toFixed(4)
     }).css('white-space', 'pre'));
     $subtotalData.appendTo($orderTableRow);
 
     var $totalShippingData = $("<td/>").append($("<span/>", {
-        text: row.TotalShipping
+        text: row.TotalShipping.toFixed(4)
     }).css('white-space', 'pre'));
     $totalShippingData.appendTo($orderTableRow);
 
     var $totalTaxData = $("<td/>").append($("<span/>", {
-        text: row.TotalTax
+        text: row.TotalTax.toFixed(4)
     }).css('white-space', 'pre'));
     $totalTaxData.appendTo($orderTableRow);
 
     var $totalAmountData = $("<td/>").append($("<span/>", {
-        text: row.TotalAmount
+        text: row.TotalAmount.toFixed(4)
     }).css('white-space', 'pre'));
     $totalAmountData.appendTo($orderTableRow);
 
@@ -156,22 +154,22 @@ function renderRowTotals(id, resultRows)
     $totalOrdersData.appendTo($orderTableRow);
 
     var $subtotalData = $("<td/>").append($("<b/>", {
-        text: row.Subtotal
+        text: row.Subtotal.toFixed(4)
     }).css('white-space', 'pre'));
     $subtotalData.appendTo($orderTableRow);
 
     var $totalShippingData = $("<td/>").append($("<b/>", {
-        text: row.TotalShipping
+        text: row.TotalShipping.toFixed(4)
     }).css('white-space', 'pre'));
     $totalShippingData.appendTo($orderTableRow);
 
     var $totalTaxData = $("<td/>").append($("<b/>", {
-        text: row.TotalTax
+        text: row.TotalTax.toFixed(4)
     }).css('white-space', 'pre'));
     $totalTaxData.appendTo($orderTableRow);
 
     var $totalAmountData = $("<td/>").append($("<b/>", {
-        text: row.TotalAmount
+        text: row.TotalAmount.toFixed(4)
     }).css('white-space', 'pre'));
     $totalAmountData.appendTo($orderTableRow);
 
@@ -182,8 +180,8 @@ function renderRowTotals(id, resultRows)
 
 
 $(function() {
-     $("#searchLoader").hide();
-    //generateList();
+    $("#searchLoader").hide();
+
     $(".date-picker").datepicker({
         beforeShow: function() {
             setTimeout(function() {
@@ -191,13 +189,10 @@ $(function() {
             }, 10);
         }
     })
-});
 
-$(".date-picker").on("change", function() {
-    var id = $(this).attr("id");
-    var val = $("label[for='" + id + "']").text();
-    $("#msg").text(val + " changed");
-    $("#datePeriod").val("0");
+    $(".date-picker").on("change", function() {
+        $("#datePeriod").val("0");
+    });
 });
 
 function changeDate()
@@ -247,7 +242,13 @@ function changeDate()
     }
 }
 
+var doneGeneratingPreviousList = true;
 function generateList() {
+    if(!doneGeneratingPreviousList) {
+        return;
+    }
+    doneGeneratingPreviousList = false;
+
     $('#main_content_table tbody').html("");
 
     $("#searchLoader").show();
@@ -255,22 +256,31 @@ function generateList() {
     var startDate = $("#datepickerStart").datepicker("getDate");
     var endDate = $("#datepickerEnd").datepicker("getDate");
 
-    var nowDate = new Date();
-    var stringNowDate = nowDate.toISOString();
+    if(endDate != null) {
+        endDate = new Date(endDate.getFullYear(),
+                           endDate.getMonth(),
+                           endDate.getDate(),
+                           23,59,59);
+    }
+    else {
+        var nowDate = new Date();
+        endDate = new Date(nowDate.getFullYear(),
+                           nowDate.getMonth(),
+                           nowDate.getDate(),
+                           23,59,59); 
+    }
 
-    var startOfTimeDate = new Date(1971, 2, 2);
-    var stringstartOfTimeDate = startOfTimeDate.toISOString();
+    if(startDate == null) {
+        var beginningOfTimeDate = new Date(1971, 2, 2);
+        startDate = beginningOfTimeDate;
+    }
 
+    var whereQuery = encodeURI('{ "$and": [ {  "createDate": { "$gte": ' + '"' + startDate.toISOString() + '"' + '} }, \
+                                            { "createDate": { ' + '"$lt":' + '"' + endDate.toISOString() + '"' + '} } ] }');
 
-    var whereQuery = encodeURI('{ "$and": [ {  "createDate": { "$gte": ' + '"' + (startDate == null ? stringstartOfTimeDate : endDate) + '"' + '} }, { "createDate": { ' + '"$lt":' + '"' + (endDate == null ? stringNowDate : endDate) + '"' + '} } ] }');
-
-    var query = "";
+    var query = "where=" + whereQuery;
 
     var request = orderW.queryOrders(query, access_token);
-
-    request.always(function() {
-        $("#searchLoader").hide();
-    })
 
     request.done(function(orderResult) {
         // array that will contain all deferred objects
@@ -278,7 +288,7 @@ function generateList() {
 
         // make the ajax calls for orders
         for (var i = 0; i < orderResult.totalItemsCount; i += 500) {
-            var query = "skip=" + i + "&limit=500" + "&fields=id,status,taxCode,taxCodeId,shippingPrice,shippingTaxRate,totalPrice";
+            var query = "skip=" + i + "&limit=500" + "&fields=id,status,taxCode,taxCodeId,shippingPrice,shippingTaxRate,totalPrice" + "&where=" + whereQuery;
             var request = orderW.queryOrders(query, access_token);
             deferreds.push(request);
         }
@@ -300,7 +310,15 @@ function generateList() {
 
                     var orderResult = arguments[i][0];
                     orderResult.items.forEach(function(item) {
+                        
+                        if(typeof item == 'undefined') {
+                            return;   
+                        }
 
+                        if(typeof item != 'undefined' && item.status == null) {
+                            item.status = { label: "Undefined status"};
+                        }
+                        
                         if (!(item.status.label in resultRows)) {
                             resultRows[item.status.label] = new RowResult();
                         }
@@ -310,7 +328,7 @@ function generateList() {
                         resultRows[item.status.label].TotalOrders++;
                         resultRows[item.status.label].TotalAmount += item.totalPrice;
 
-                        if (item.taxCodeId != null) {
+                        if (item.taxCodeId != null && item.taxCodeId != -1) {
                             var preTax = item.totalPrice / (1 + item.taxCode.rate);
                             resultRows[item.status.label].Subtotal += preTax;
                             resultRows[item.status.label].TotalTax += item.totalPrice - preTax;
@@ -319,11 +337,19 @@ function generateList() {
                         orders[item.id] = item;
                     });
                 }
-            } else // for only one ajax result there is no tuple, just the 3 elements that would be in a tuple
+            } else if(arguments.length != 0)// for only one ajax result there is no tuple, just the 3 elements that would be in a tuple
             {
                 var orderResult = arguments[0];
 
                 orderResult.items.forEach(function(item) {
+
+                        if(typeof item == 'undefined') {
+                            return;   
+                        }
+
+                        if(typeof item != 'undefined' && item.status == null) {
+                            item.status = { label: "Undefined status"};
+                        }
 
                         if (!(item.status.label in resultRows)) {
                             resultRows[item.status.label] = new RowResult();
@@ -334,7 +360,7 @@ function generateList() {
                         resultRows[item.status.label].TotalOrders++;
                         resultRows[item.status.label].TotalAmount += item.totalPrice;
 
-                        if (item.taxCodeId != null) {
+                        if (item.taxCodeId != null && item.taxCodeId != -1) {
                             var preTax = item.totalPrice / (1 + item.taxCode.rate);
                             resultRows[item.status.label].Subtotal += preTax;
                             resultRows[item.status.label].TotalTax += item.totalPrice - preTax;
@@ -344,7 +370,7 @@ function generateList() {
                     });
             }
 
-            // make the ajax calls for the products of the products
+            // make the ajax calls for the products of the orders
 
             var orderItemRequest = orderW.queryOrderItems("", access_token);
 
@@ -370,7 +396,7 @@ function generateList() {
                             var orderItemResult = arguments[i][0];
                             orderItemResult.items.forEach(function(item) {
 
-                                if (orders[item.orderId].taxCodeId == null) {
+                                if (typeof orders[item.orderId] != 'undefined' && orders[item.orderId].taxCodeId == null) {
                                     resultRows[orders[item.orderId].status.label].Subtotal += item.units * item.unitPrice;
                                     resultRows[orders[item.orderId].status.label].TotalTax += item.units * item.unitPrice * item.unitTaxRate;
                                 }
@@ -383,44 +409,55 @@ function generateList() {
 
                         orderItemResult.items.forEach(function(item) {
 
-                                if (orders[item.orderId].taxCodeId == null) {
-                                    resultRows[orders[item.orderId].status.label].Subtotal += item.units * item.unitPrice;
-                                    resultRows[orders[item.orderId].status.label].TotalTax += item.units * item.unitPrice * item.unitTaxRate;
-                                }
+                            if (typeof orders[item.orderId] != 'undefined' && orders[item.orderId].taxCodeId == null) {
+                                resultRows[orders[item.orderId].status.label].Subtotal += item.units * item.unitPrice;
+                                resultRows[orders[item.orderId].status.label].TotalTax += item.units * item.unitPrice * item.unitTaxRate;
+                            }
 
                         });
                     }
 
+                     $("#searchLoader").hide();
+
                     var id = 0;
+ 
                     for (var statusType in resultRows) {
                         if (resultRows.hasOwnProperty(statusType)) {
-                            renderRow(statusType, id++, resultRows[statusType]);
+                            if(statusType != "Undefined status") {
+                                renderRow(statusType, id++, resultRows[statusType]);
+                            }
+    
                         }
                     }
 
+                    if("Undefined status" in resultRows && resultRows.hasOwnProperty("Undefined status")) {
+                        renderRow("Undefined status", id++, resultRows["Undefined status"]);
+                    }
+
                     renderRowTotals(id, resultRows);
+                    doneGeneratingPreviousList = true;
                 });
 
                 defferedOrderItemPromises.fail(function() {
+                    $("#searchLoader").hide();
+                    doneGeneratingPreviousList = true;
                     ajaxFailed();
                 });
-
-                defferedOrderItemPromises.always(function() {
-                    $("#searchLoader").hide();
-                })
-
             });
 
         });
 
         defferedPromises.fail(function() {
+            $("#searchLoader").hide();
+            doneGeneratingPreviousList = true;
             ajaxFailed();
         });
+    });
 
-        defferedPromises.always(function() {
-            $("#searchLoader").hide();
-        })
-
+    request.fail(function() {
+        $("#searchLoader").hide();
+        doneGeneratingPreviousList = true;
+        ajaxFailed();
     });
 }
 
@@ -444,7 +481,11 @@ function ajaxSuccess() {
     }, 1000);
 }
 
-function ajaxFailed() {
+function ajaxFailed(message) {
+
+    if(typeof message == 'undefined') {
+        message = "An error occurred."
+    }
 
     $("#panelHeadingToAddAlert").
     append($("<div/>", {
@@ -455,7 +496,7 @@ function ajaxFailed() {
         class: "alert alert-danger",
         role: "alert",
         style: "margin-bottom:0px"
-    }).append("<strong>An error occurred.")))
+    }).append("<strong>" + message)))
 
     window.setTimeout(function() {
         $("#removeFailedMessage").fadeTo(500, 0).slideUp(500, function() {

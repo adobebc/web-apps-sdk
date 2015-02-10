@@ -46,7 +46,7 @@ request.fail(function (jqXHR) {
     console.log("Request failed. Error code: " + jqXHR.status);
 });{% endraw %}</code></pre>
 
-<p>You'll notice that this time we've specified the type as POST and sent some JSON data through to BC that defines our new Web App's properties.</p><p>You can expand upon this JSON string to set a range of other Web App properties. <a href="/dev-assets/reference/api-endpoints/web-apps/create-web-app.html">See the parameters here</a> for a complete list of what's supported.</p><h3>3. Add a new Web App item</h3><p>Now that we have an empty Web App, let's add an item. Paste the following code in the Console and hit enter to run:</p><div class="alert alert-info">
+<p>You'll notice that this time we've specified the type as POST and sent some JSON data through to BC that defines our new Web App's properties.</p><p>You can expand upon this JSON string to set a range of other Web App properties. <a href="/dev-assets/reference/api-endpoints/web-apps/create-web-app.html">See the parameters here</a> for a complete list of what's supported.</p><h3>3. Add a new Web App item</h3><p>Now that we have an empty Web App, let's add an item. Paste the following code in the Console and hit enter to run:</p><div class="alert alert-info">
   <p><strong>Note:</strong> You'll need to replace <em>MyWebApp</em> with the name of your actual Web App for this to work.</p></div>
 <pre class="language-javascript"><code>{% raw %}// Perform the AJAX request (make sure you've set the access token  
 var request = $.ajax({
@@ -67,4 +67,4 @@ request.fail(function (jqXHR) {
 });{% endraw %}</code></pre>
 
 <p>We're using the Create Web App Item API method and an AJAX POST request to send BC the details of our new Web App item.</p><p>Just like our previous example, we've defined the Web App Item name here using JSON data sent during the request. You can find a <a href="/dev-assets/reference/api-endpoints/web-app-items/create-web-app-item.html">full list of item supported parameters here.</a></p>
-<p>To update an existing Web App item, you use the PUT HTTP method instead of POST. <a href="/dev-assets/reference/api-endpoints/web-app-items/update-web-app-item.html">See the Update webapp item reference article.</a></p>
+<p>To update an existing Web App item, you use the PUT HTTP method instead of POST. <a href="/dev-assets/reference/api-endpoints/web-app-items/update-web-app-item.html">See the Update webapp item reference article.</a></p>

@@ -304,7 +304,7 @@
 <div type="cs-pod">
      <h2 id="timespan">timeSpan switches</h2> 
     <p>Let's assume we have created a
-        <a href="/developers/liquid/datatypes#timespan">timeSpan variable</a> by substracting one date from another:</p> <pre> &#123;&#37; assign dateDiff = globals.site.dateNow | minus: myDate &#37;&#125;</pre> 
+        <a href="/developers/liquid/datatypes#timespan">timeSpan variable</a> by substracting one date from another:</p> <pre> {% raw %}&#123;&#37; assign dateDiff = globals.site.dateNow | minus: myDate &#37;&#125;{% endraw %}</pre> 
     <p>Taking a presumed value of <em>dateDiff</em> being <strong>5.02:39:20.2500250</strong>,
         we can format the date value of <code>{% raw %}{{dateDiff}}{% endraw %}</code> with the following switches:</p>
     <table

@@ -22,7 +22,7 @@
  *
  */
 
-(function(app, hljs, $) {
+(function (app, hljs, $) {
     /**
      * @constructor
      * @description
@@ -40,13 +40,22 @@
      * @description
      * This method highlights the given snippet and colors all keywords for improving text readability.
      */
-    ModuleJQueryHighlighter.prototype.highlight = function(snippet) {
-        if(!snippet) {
+    ModuleJQueryHighlighter.prototype.highlight = function (snippet, resourceDescriptor) {
+        if (!snippet) {
             return;
         }
 
         var element = document.createElement("code");
         $(element).attr("class", "javascript");
+
+        var identifiers = resourceDescriptor.fields.identifier;
+
+        for (var pkName in identifiers) {
+            snippet = snippet.replace(pkName + ",", '<span class="module-data-attr-pk">' + pkName + "</span>,");
+            snippet = snippet.replace(pkName + "\"", '<span class="module-data-attr-pk">' + pkName + "</span>\"");
+            snippet = snippet.replace(pkName + "&", '<span class="module-data-attr-pk">' + pkName + "</span>&");
+        }
+
         element.innerHTML = snippet;
 
         hljs.highlightBlock(element);

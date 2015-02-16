@@ -61,13 +61,27 @@
             },
             function (data) {
                 self.$scope.requestTypes = [
-                    {method: 'GET', label: 'GET'},
-                    {method: 'POST', label: 'POST'},
-                    {method: 'DELETE', label: 'DELETE'}
+                    {method: 'GET', label: 'GET'}
                 ];
 
-                if (!data.subresourceName) {
-                    self.$scope.requestTypes.push({method: 'PUT', label: 'PUT'});
+                if (data.resourceName && !data.existingResourceId && !data.subresourceName) {
+                    self.$scope.requestTypes.push(
+                        {method: 'POST', label: 'POST'}
+                    );
+                }
+
+                if (data.resourceName && data.existingResourceId && !data.subresourceName) {
+                    self.$scope.requestTypes.push(
+                        {method: 'PUT', label: 'PUT'},
+                        {method: 'DELETE', label: 'DELETE'}
+                    );
+                }
+
+                if (data.resourceName && data.existingResourceId && data.subresourceName) {
+                    self.$scope.requestTypes.push(
+                        {method: 'POST', label: 'POST'},
+                        {method: 'DELETE', label: 'DELETE'}
+                    );
                 }
 
                 self.$scope.selectedRequestType = self.$scope.requestTypes[0];
@@ -290,6 +304,11 @@
 
                 var identifierFields = Object.keys(resourceDescriptor.fields.identifier).join(",");
 
+                var templatePrepopulatedDataTypes = {};
+                $.each(resourceDescriptor.fields.identifier, function (key, value) {
+                    templatePrepopulatedDataTypes[key] = value.type;
+                })
+
                 var getUrl = this._generateUrlForPrepopulateRequest(data, resourceDescriptor);
 
                 this._$http({
@@ -302,12 +321,17 @@
 
                     globalLoadingService.setLoading(false);
 
+                    self.templatePrepopulatedData = response;
+
                     if (response.items != undefined && response.items.length > 0) {
                         self.templatePrepopulatedData = response.items[0];
-
-                        if (self.$scope.selectedRequestType.method == "PUT" && data.subresourceName == undefined) {
-                            templateUrl += "/id"
+                    } else {
+                        if (response.items != undefined && response.items.length == 0) {
+                            self.templatePrepopulatedData = templatePrepopulatedDataTypes;
                         }
+                    }
+
+                    if (self.templatePrepopulatedData) {
 
                         //for subresources we need to keep only the requested fields
                         if (data.subresourceName != undefined) {
@@ -351,9 +375,6 @@
 
             if (this.$scope.selectedRequestType.method == "DELETE" && data.subresourceName == undefined) {
 
-                if (data.subresourceName == undefined) {
-                    templateUrl += "/id";
-                }
                 var templateData = {
                     url: '"' + templateUrl + '"',
                     methodType: '"' + this.$scope.selectedRequestType.method + '"'

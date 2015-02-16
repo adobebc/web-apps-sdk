@@ -1,23 +1,22 @@
 <div class="col-md-4">
-	<select class="form-control clear-after" selectize="resourceSelection.options" placeholder="Choose a resource ..." 
-		ng-model="resourceSelection.value" options="resources" ng-change="displayVersions();"></select>
 
-	<select class="form-control clear-both" selectize="versionsSelection.options" placeholder="Choose a version ..." 
-		ng-model="versionsSelection.value" options="versions" 
-		ng-change="displaySubresources(); displayResourceFields();"></select>
+	<select class="form-control clear-after" selectize="resourceSelection.options" placeholder="Choose a resource ..."
+		ng-model="resourceSelection.value" options="resources" ></select>
 
-	<div class="clear-both" ng-hide="subresources.length == 0">
-		<select class="form-control" selectize="subresourceSelection.options" placeholder="Choose a subresource ..." 
-			ng-model="subresourceSelection.value" options="subresources"
-			ng-change="displaySubresourceFields(); loadSampleResources();"></select>
-	</div>
+		 <select class="form-control clear-both" selectize="versionsSelection.options" placeholder="Choose a version ..."
+        		ng-model="versionsSelection.value" options="versions"></select>
 
-	<div class="clear-both" ng-if="subresourceSelection.value">
-		<select class="form-control" selectize="sampleResourcesSelection.options" 
-				placeholder="Choose an existing resource id ..."
-				ng-model="sampleResourcesSelection.value" options="sampleResources" 				
-				ng-change="updateGeneratorsData();"></select>
-	</div>
+		<div class="clear-both" ng-if="resourceSelection.value && versionsSelection.value && sampleResources.length > 0">
+            		<select class="form-control" selectize="sampleResourcesSelection.options"
+            				placeholder="Choose an existing resource id ..."
+            				ng-model="sampleResourcesSelection.value" options="sampleResources"
+            				ng-change="displaySubresources();"></select>
+            	</div>
+
+		 <div class="clear-both" ng-if = "subresources.length > 0 && resourceSelection.value && versionsSelection.value && sampleResourcesSelection.value">
+                 		<select class="form-control" selectize="subresourceSelection.options" placeholder="Choose a subresource ..."
+                 			ng-model="subresourceSelection.value" options="subresources"></select>
+                 	</div>
 </div>
 
 <div class="col-md-8" ng-hide="!resourceSelection.value">

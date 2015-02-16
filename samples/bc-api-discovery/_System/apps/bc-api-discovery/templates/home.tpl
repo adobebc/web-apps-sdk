@@ -9,8 +9,8 @@
 		<div class="clear-both" ng-if="resourceSelection.value && versionsSelection.value && sampleResources.length > 0">
             		<select class="form-control" selectize="sampleResourcesSelection.options"
             				placeholder="Choose an existing resource id ..."
-            				ng-model="sampleResourcesSelection.value" options="sampleResources"
-            				ng-change="displaySubresources();"></select>
+            				ng-model="sampleResourcesSelection.value" options="sampleResources">
+            		</select>
             	</div>
 
 		 <div class="clear-both" ng-if = "subresources.length > 0 && resourceSelection.value && versionsSelection.value && sampleResourcesSelection.value">

@@ -30,13 +30,6 @@
 				  		<div ng-include="'/_System/apps/bc-api-discovery/templates/home.tpl'"></div>
 				  	</div>
 				  </api-tab-pane>
-				  
-				  <api-tab-pane title="What's new" hash="#/whats-new">
-				  	<div ng-controller="WhatsNewController">
-				  		<br/>
-				  		<div ng-include="'/_System/apps/bc-api-discovery/templates/whats-new.tpl'"></div>
-				  	</div>
-				  </api-tab-pane>
 
 				  <api-tab-pane title="Instructions" hash="#/instructions">
 				  	<div ng-controller="InstructionsController">
@@ -44,14 +37,14 @@
 				  		<div ng-include="'/_System/apps/bc-api-discovery/templates/instructions.tpl'"></div>
 				  	</div>
 				  </api-tab-pane>
-				</api-tabs>				
+				</api-tabs>
 			</section>
 
 			<section id="loading-panel" class="absolute-center" ng-show="loading">
 				<div class="loading">
 					<img src="/_System/apps/bc-api-discovery/assets/loading.gif" />
 				</div>
-			</section>			
+			</section>
 		</div>
 
 		<section id="error-handler">

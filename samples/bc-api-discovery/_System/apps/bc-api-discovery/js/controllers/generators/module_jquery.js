@@ -61,13 +61,27 @@
             },
             function (data) {
                 self.$scope.requestTypes = [
-                    {method: 'GET', label: 'GET'},
-                    {method: 'POST', label: 'POST'},
-                    {method: 'DELETE', label: 'DELETE'}
+                    {method: 'GET', label: 'GET'}
                 ];
 
-                if (!data.subresourceName) {
-                    self.$scope.requestTypes.push({method: 'PUT', label: 'PUT'});
+                if (data.resourceName && !data.existingResourceId && !data.subresourceName) {
+                    self.$scope.requestTypes.push(
+                        {method: 'POST', label: 'POST'}
+                    );
+                }
+
+                if (data.resourceName && data.existingResourceId && !data.subresourceName) {
+                    self.$scope.requestTypes.push(
+                        {method: 'PUT', label: 'PUT'},
+                        {method: 'DELETE', label: 'DELETE'}
+                    );
+                }
+
+                if (data.resourceName && data.existingResourceId && data.subresourceName) {
+                    self.$scope.requestTypes.push(
+                        {method: 'POST', label: 'POST'},
+                        {method: 'DELETE', label: 'DELETE'}
+                    );
                 }
 
                 self.$scope.selectedRequestType = self.$scope.requestTypes[0];
@@ -95,12 +109,12 @@
             });
 
         this.$scope.generateSnippetFromJQueryTab = function (pSelReq) {
-            self.$scope.selectedRequestType = pSelReq
+            self.$scope.selectedRequestType = pSelReq;
             self.$scope.generateSnippet(self._generatorsService.data);
         };
 
         console.log("Module jquery controller instantiated.");
-    };
+    }
 
     /**
      * This method gets the handlebars jquery template that will be populated
@@ -118,7 +132,7 @@
         }).then(function (response) {
             self._template = self._handlebars.compile(response.data);
         });
-    }
+    };
 
     /**
      * @private
@@ -161,6 +175,106 @@
     };
 
     /**
+     * This method returns the template object used in handlebars to render the snippet for GET requests.
+     * @param data
+     * @param resourceDescriptor
+     * @returns {{url: string, methodType: string}}
+     * @private
+     */
+    JqueryController.prototype._generateSnippetForGetRequest = function (data, resourceDescriptor) {
+
+        var templateUrl = this._buildUrl(data.resourceName, data.version, data.existingResourceId, data.subresourceName);
+
+        var queryObject = {};
+        var fields = "";
+        //add fields, where, limit, skip and order parameters.
+        if (data.fields.length != 0) {
+
+            //add field names separated by a comma.
+            for (var idx = 0; idx < data.fields.length - 1; idx++) {
+                fields += data.fields[idx].name + ",";
+            }
+            fields += data.fields[data.fields.length - 1].name;
+
+            queryObject["fields"] = fields;
+        }
+
+        if (!this._isEmpty(data.where)) {
+            queryObject["where"] = data.where;
+        }
+
+        queryObject["skip"] = this._configService.limits.skip;
+        queryObject["limit"] = this._configService.limits.limit;
+
+        var orderCriteria;
+
+        for (var pkName in resourceDescriptor.fields.identifier) {
+            if (pkName == "siteId") {
+                continue;
+            }
+            orderCriteria = pkName;
+        }
+
+        queryObject["order"] = orderCriteria;
+
+        var fullUrl = templateUrl + "?fields=" + queryObject['fields'] + "&skip=" + queryObject['skip'] + "&limit=" + queryObject['limit'] + "&order=" + queryObject['order'];
+        if (!this._isEmpty(data.where)) {
+            fullUrl += "&where=" + JSON.stringify(queryObject["where"]);
+        }
+
+        return {
+            url: '"' + fullUrl + '"',
+            methodType: '"' + this.$scope.selectedRequestType.method + '"'
+        };
+
+    };
+
+
+    /**
+     * This function generates the query url needed for pre-populating post and put requests examples.
+     * @param data
+     * @param resourceDescriptor
+     * @returns {string}
+     * @private
+     */
+    JqueryController.prototype._generateUrlForPrepopulateRequest = function (data, resourceDescriptor) {
+
+        //simple resource
+        var primaryFields = Object.keys(resourceDescriptor.fields.primary).join(",");
+        var identifierFields = Object.keys(resourceDescriptor.fields.identifier).join(",");
+        var getUrl = this._buildUrl(data.resourceName, data.version, data.existingResourceId, data.subresourceName, true);
+
+        if (this.$scope.selectedRequestType.method == "POST" && data.subresourceName == undefined && primaryFields != "") {
+            getUrl += "?fields=" + primaryFields;
+        }
+
+        //subresource
+        if ((this.$scope.selectedRequestType.method == "POST" || this.$scope.selectedRequestType.method == "DELETE")
+            && data.subresourceName != undefined && identifierFields != "") {
+            getUrl += "?fields=" + identifierFields;
+
+            if (primaryFields != "") {
+                getUrl += "," + primaryFields;
+            }
+        }
+
+        //PUT fields (fields selected)
+        if (this.$scope.selectedRequestType.method == "PUT") {
+            if (data.fields.length != 0) {
+                getUrl += "?fields=";
+
+                //add field names separated by a comma.
+                for (var idx = 0; idx < data.fields.length - 1; idx++) {
+                    getUrl += data.fields[idx].name + ",";
+                }
+                getUrl += data.fields[data.fields.length - 1].name;
+            }
+        }
+
+        return getUrl;
+    };
+
+    /**
      * @private
      * @method
      * @instance
@@ -174,50 +288,8 @@
 
         //For GET form the url using selected fields and query builder
         if (this.$scope.selectedRequestType.method == "GET") {
-            //build url param
-            templateUrl = this._buildUrl(data.resourceName, data.version, data.existingResourceId, data.subresourceName);
 
-            var queryObject = {};
-            var fields = "";
-            //add fields, where, limit, skip and order parameters.
-            if (data.fields.length != 0) {
-
-                //add field names separated by a comma.
-                for (var idx = 0; idx < data.fields.length - 1; idx++) {
-                    fields += data.fields[idx].name + ",";
-                }
-                fields += data.fields[data.fields.length - 1].name;
-
-                queryObject["fields"] = fields;
-            }
-
-            if (!this._isEmpty(data.where)) {
-                queryObject["where"] = data.where;
-            }
-
-            queryObject["skip"] = this._configService.limits.skip;
-            queryObject["limit"] = this._configService.limits.limit;
-
-            var orderCriteria;
-
-            for (var pkName in resourceDescriptor.fields.identifier) {
-                if (pkName == "siteId") {
-                    continue;
-                }
-                orderCriteria = pkName;
-            }
-
-            queryObject["order"] = orderCriteria;
-
-            var fullUrl = templateUrl + "?fields=" + queryObject['fields'] + "&skip=" + queryObject['skip'] + "&limit=" + queryObject['limit'] + "&order=" + queryObject['order'];
-            if (!this._isEmpty(data.where)) {
-                fullUrl += "&where=" + JSON.stringify(queryObject["where"]);
-            }
-
-            var templateData = {
-                url: '"' + fullUrl + '"',
-                methodType: '"' + this.$scope.selectedRequestType.method + '"'
-            }
+            templateData = this._generateSnippetForGetRequest(data, resourceDescriptor);
 
             this.$scope.snippet = this._template(templateData);
 
@@ -225,43 +297,19 @@
 
             templateUrl = this._buildUrl(data.resourceName, data.version, data.existingResourceId, data.subresourceName);
 
-            var primaryFields = Object.keys(resourceDescriptor.fields.primary).join(",");
-            var identifierFields = Object.keys(resourceDescriptor.fields.identifier).join(",");
-            var getUrl = this._buildUrl(data.resourceName, data.version, data.existingResourceId, data.subresourceName, true);
-
             if (this.$scope.selectedRequestType.method == "POST" || this.$scope.selectedRequestType.method == "PUT"
                 || (this.$scope.selectedRequestType.method == "DELETE" && data.subresourceName != undefined )) {
 
                 globalLoadingService.setLoading(true);
 
-                //prepopulate fields for post/put
-                //simple resource
-                if (this.$scope.selectedRequestType.method == "POST" && data.subresourceName == undefined && primaryFields != "") {
-                    getUrl += "?fields=" + primaryFields;
-                }
+                var identifierFields = Object.keys(resourceDescriptor.fields.identifier).join(",");
 
-                //subresource
-                if ((this.$scope.selectedRequestType.method == "POST" || this.$scope.selectedRequestType.method == "DELETE")
-                    && data.subresourceName != undefined && identifierFields != "") {
-                    getUrl += "?fields=" + identifierFields;
+                var templatePrepopulatedDataTypes = {};
+                $.each(resourceDescriptor.fields.identifier, function (key, value) {
+                    templatePrepopulatedDataTypes[key] = value.type;
+                })
 
-                    if (primaryFields != "") {
-                        getUrl += "," + primaryFields;
-                    }
-                }
-
-                //PUT fields (fields selected)
-                if (this.$scope.selectedRequestType.method == "PUT") {
-                    if (data.fields.length != 0) {
-                        getUrl += "?fields=";
-
-                        //add field names separated by a comma.
-                        for (var idx = 0; idx < data.fields.length - 1; idx++) {
-                            getUrl += data.fields[idx].name + ",";
-                        }
-                        getUrl += data.fields[data.fields.length - 1].name;
-                    }
-                }
+                var getUrl = this._generateUrlForPrepopulateRequest(data, resourceDescriptor);
 
                 this._$http({
                     "url": getUrl,
@@ -273,18 +321,22 @@
 
                     globalLoadingService.setLoading(false);
 
+                    self.templatePrepopulatedData = response;
+
                     if (response.items != undefined && response.items.length > 0) {
                         self.templatePrepopulatedData = response.items[0];
-
-                        if (self.$scope.selectedRequestType.method == "PUT" && data.subresourceName == undefined) {
-                            templateUrl += "/id"
+                    } else {
+                        if (response.items != undefined && response.items.length == 0) {
+                            self.templatePrepopulatedData = templatePrepopulatedDataTypes;
                         }
+                    }
+
+                    if (self.templatePrepopulatedData) {
 
                         //for subresources we need to keep only the requested fields
                         if (data.subresourceName != undefined) {
                             self.templatePrepopulatedData = self._filterResult(self.templatePrepopulatedData, identifierFields);
                         }
-
 
                         //add items array to result for post and delete requests
                         if ((self.$scope.selectedRequestType.method == "POST" || self.$scope.selectedRequestType.method == "DELETE")
@@ -292,10 +344,19 @@
                             self.templatePrepopulatedData = {"items": [self.templatePrepopulatedData]};
                         }
 
-                        var templateData = {
-                            url: '"' + templateUrl + '"',
-                            dataFields: "data:" + JSON.stringify(self.templatePrepopulatedData),
-                            methodType: '"' + self.$scope.selectedRequestType.method + '"'
+                        //for delete the data fields are sent as query params.
+                        if (self.$scope.selectedRequestType.method == "DELETE") {
+                            templateUrl += "?items=" + JSON.stringify(self.templatePrepopulatedData.items);
+                            templateData = {
+                                url: '"' + templateUrl + '"',
+                                methodType: '"' + self.$scope.selectedRequestType.method + '"'
+                            }
+                        } else {
+                            templateData = {
+                                url: '"' + templateUrl + '"',
+                                dataFields: "data:" + JSON.stringify(self.templatePrepopulatedData),
+                                methodType: '"' + self.$scope.selectedRequestType.method + '"'
+                            }
                         }
 
                         self.$scope.snippet = self._template(templateData);
@@ -307,20 +368,17 @@
                     var templateData = {
                         url: '"' + templateUrl + '"',
                         methodType: '"' + self.$scope.selectedRequestType.method + '"'
-                    }
+                    };
                     self.$scope.snippet = self._template(templateData);
                 });
             }
 
             if (this.$scope.selectedRequestType.method == "DELETE" && data.subresourceName == undefined) {
 
-                if (data.subresourceName == undefined) {
-                    templateUrl += "/id";
-                }
                 var templateData = {
                     url: '"' + templateUrl + '"',
                     methodType: '"' + this.$scope.selectedRequestType.method + '"'
-                }
+                };
                 this.$scope.snippet = this._template(templateData);
             }
         }
@@ -346,10 +404,10 @@
         }
 
         return true;
-    }
+    };
 
     JqueryController.prototype._filterResult = function (actualResult, wantedFields) {
-        var result = new Object();
+        var result = {};
 
         var fieldsArray = wantedFields.split(",");
 
@@ -361,13 +419,13 @@
         }
 
         return result;
-    }
+    };
 
     JqueryController.prototype._replacer = function (key, value) {
         if (key == "privateProperty1") return undefined;
         else if (key == "privateProperty2") return undefined;
         else return value;
-    }
+    };
 
     /**
      * @private
@@ -421,7 +479,7 @@
 
         if (this._configService.api.protocol && this._configService.api.host && absoluteUrl) {
             url.push(this._configService.api.protocol);
-            url.push("://")
+            url.push("://");
             url.push(this._configService.api.host);
         }
 

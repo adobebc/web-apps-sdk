@@ -39,7 +39,7 @@ orderWrapper.prototype.queryOrders = function(queryString, access_token) {
         data: queryString,
         processData: false,
         cache: false,
-        timeout: 10000,
+        timeout: 20000,
         headers: {
             "Authorization": access_token
         }
@@ -64,7 +64,7 @@ orderWrapper.prototype.queryOrderItems = function(queryString, access_token) {
         processData: false,
         data: queryString,
         cache: false,
-        timeout: 10000,
+        timeout: 20000,
         headers: {
             "Authorization": access_token
         }

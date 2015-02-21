@@ -2,7 +2,6 @@
 <h1>Supported filters </h1>  
 <div type="cs-pod">
      <h2 id="math-filters">Mathematical Filters</h2> 
-    <div class="filters math">
         <table width="100%" class="data-bordered">
             <tbody>
                 <tr>
@@ -36,111 +35,106 @@
                 </tr>
             </tbody>
         </table>
-    </div>
 </div>
 <div type="cs-pod">
-     <h2 id="string-filters">String manipulation filters</h2> 
-    <div class="filters string">
-        <table width="100%" class="data-bordered">
-            <tbody>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}append{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent"><code>{% raw %}{{"This is the first part" | append: " appending the second part"}}{% endraw %}</code> outputs "This is the first part  appending the second part"</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}prepend{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent"><code>{% raw %}{{" this is the second part" | prepend: "This is the first part"}}{% endraw %}</code> outputs "This is the first part  this is thesecond part"</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}capitalize{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{'Sample text' | capitalize}}{% endraw %}</code> outputs "Sample Text"</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}downcase{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{'Sample text' | downcase}}{% endraw %}</code> outputs "sample text"</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}upcase{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{'Sample text' | upcase}}{% endraw %}</code> outputs "SAMPLE TEXT"</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}remove{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{'Sample text. All occurences of "text" will be removed.' | remove: "text"}}{% endraw %}</code> outputs 'Sample . All occurences of "" will be removed.'</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}replace{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{'Sample text. All occurences of "text" will be replced.' | replace: "text", "string"}}{% endraw %}</code> outputs 'Sample string. All occurences of "string" will be replaced.'</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}replacefirst{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{'Sample text text.' | replacefirst: "text", "string"}}{% endraw %}</code> outputs 'Sample string text''</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}truncate{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{'Sample text ' | truncate: 9, "..."}}{% endraw %}</code> outputs 'Sample... '</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}split{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{'1,2,3,4,5 ' | split: ","}}{% endraw %}</code> splits the text and creates an array ["1","2","3","4","5"]</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}strip_html{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html}}{% endraw %}</code> strips the HTML code from the string, this outputs "My paragraph"</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+     <h2 id="string-filters">String manipulation filters</h2>
+<table width="100%" class="data-bordered">
+      <tbody>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}append{% endraw %}</code>
+              </td>
+              <td><span class="cellcontent"><code>{% raw %}{{"This is the first part" | append: " appending the second part"}}{% endraw %}</code> outputs "This is the first part  appending the second part"</span>
+              </td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}prepend{% endraw %}</code>
+              </td>
+              <td><span class="cellcontent"><code>{% raw %}{{" this is the second part" | prepend: "This is the first part"}}{% endraw %}</code> outputs "This is the first part  this is thesecond part"</span>
+              </td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}capitalize{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{'Sample text' | capitalize}}{% endraw %}</code> outputs "Sample Text"</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}downcase{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{'Sample text' | downcase}}{% endraw %}</code> outputs "sample text"</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}upcase{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{'Sample text' | upcase}}{% endraw %}</code> outputs "SAMPLE TEXT"</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}remove{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{'Sample text. All occurences of "text" will be removed.' | remove: "text"}}{% endraw %}</code> outputs 'Sample . All occurences of "" will be removed.'</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}replace{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{'Sample text. All occurences of "text" will be replced.' | replace: "text", "string"}}{% endraw %}</code> outputs 'Sample string. All occurences of "string" will be replaced.'</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}replacefirst{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{'Sample text text.' | replacefirst: "text", "string"}}{% endraw %}</code> outputs 'Sample string text''</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}truncate{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{'Sample text ' | truncate: 9, "..."}}{% endraw %}</code> outputs 'Sample... '</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}split{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{'1,2,3,4,5 ' | split: ","}}{% endraw %}</code> splits the text and creates an array ["1","2","3","4","5"]</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}strip_html{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html}}{% endraw %}</code> strips the HTML code from the string, this outputs "My paragraph"</td>
+          </tr>
+      </tbody>
+    </table>
 </div>
 <div type="cs-pod">
-     <h2 id="array-filters">Array manipulation filters</h2> 
-    <div class="filters string">
-        <table width="100%" class="data-bordered">
-            <tbody>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}limit{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">array = [1,2,3,4,5,6]             <br>            <code>{% raw %}{% for item in array limit:2 %}{% endraw %}</code><br>             This will limit the number of items returned from the array. In this case 1 and 2 will be returned             </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}offset{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">array = [1,2,3,4,5,6]             <br>              <code>{% raw %}{% for item in array offset:2 %}{% endraw %}</code><br>              This will offset the items from the array. In this case items 3 and 4 will be returned.<br>              You can combine both offset and limit.             </span>
-                    </td>
-                </tr>
-                 <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}join{% endraw %}</code>
-                    </td>
-                    <td><code>{% raw %}{{myArray | join: "///"}}{% endraw %}</code> assuming myArray is an array joins the elements and puts the separator between each element</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}sort{% endraw %}</code></td>
-                    <td><code>{% raw %}{{myArray | sort}}{% endraw %}</code> assuming myArray is an array ["5","4","3"] ]the sort filter outputs ["3","4","5"]</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}first{% endraw %}</code></td>
-                    <td><code>{% raw %}{{myArray | first}}{% endraw %}</code> Will output the first item in an array</td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}last{% endraw %}</code></td>
-                    <td><code>{% raw %}{{myArray | last}}{% endraw %}</code> Will output the last item in an array</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <h2 id="array-filters">Array manipulation filters</h2>
+<table width="100%" class="data-bordered">
+      <tbody>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}limit{% endraw %}</code>
+              </td>
+              <td><span class="cellcontent">array = [1,2,3,4,5,6]             <br>            <code>{% raw %}{% for item in array limit:2 %}{% endraw %}</code><br>             This will limit the number of items returned from the array. In this case 1 and 2 will be returned             </span>
+              </td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}offset{% endraw %}</code>
+              </td>
+              <td><span class="cellcontent">array = [1,2,3,4,5,6]             <br>              <code>{% raw %}{% for item in array offset:2 %}{% endraw %}</code><br>              This will offset the items from the array. In this case items 3 and 4 will be returned.<br>              You can combine both offset and limit.             </span>
+              </td>
+          </tr>
+           <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}join{% endraw %}</code>
+              </td>
+              <td><code>{% raw %}{{myArray | join: "///"}}{% endraw %}</code> assuming myArray is an array joins the elements and puts the separator between each element</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}sort{% endraw %}</code></td>
+              <td><code>{% raw %}{{myArray | sort}}{% endraw %}</code> assuming myArray is an array ["5","4","3"] ]the sort filter outputs ["3","4","5"]</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}first{% endraw %}</code></td>
+              <td><code>{% raw %}{{myArray | first}}{% endraw %}</code> Will output the first item in an array</td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}last{% endraw %}</code></td>
+              <td><code>{% raw %}{{myArray | last}}{% endraw %}</code> Will output the last item in an array</td>
+          </tr>
+      </tbody>
+    </table>
 </div>
 <div type="cs-pod">
     <div class="filters date">
@@ -456,20 +450,19 @@
         </p>
 </div>
 <div type="cs-pod">
-     <h2 id="other-filters">Other Filters</h2> 
-    <div class="filters other">
-        <table width="100%" class="data-bordered">
-            <tbody>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}convert{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{3 | convert: "string" | json}}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{"3" | convert: "number" | json}}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{"false" | convert: "boolean" | json}}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{"2015-01-07" | convert: "date"}}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> <li><strong>currency</strong> <code>{% raw %}{{100 | convert: "currency"}}{% endraw %}</code> outputs "100 USD" assuming the site's "Country code" is set to US.</li> </ul></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}json{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>{% raw %}&#123;&#123;webapp1.items[0] | json&#125;&#125;{% endraw %}</code>              looks like:                          <pre class="language-javascript"><code>{
+     <h2 id="other-filters">Other Filters</h2>
+<table width="100%" class="data-bordered">
+      <tbody>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}convert{% endraw %}</code>
+              </td>
+              <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{3 | convert: "string" | json}}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{"3" | convert: "number" | json}}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{"false" | convert: "boolean" | json}}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{"2015-01-07" | convert: "date"}}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> <li><strong>currency</strong> <code>{% raw %}{{100 | convert: "currency"}}{% endraw %}</code> outputs "100 USD" assuming the site's "Country code" is set to US.</li> </ul></span>
+              </td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}json{% endraw %}</code>
+              </td>
+              <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>{% raw %}&#123;&#123;webapp1.items[0] | json&#125;&#125;{% endraw %}</code>              looks like:                          <pre class="language-javascript"><code>{
  "itemid":"4646524",
  "name":"ABA",
  "urlWithHost":"http://abcd.com/car/ABA",
@@ -484,15 +477,14 @@
  "Country":"",
  "Review":"no review just yet"
 }</code></pre> <p class="chx">Do note you need to make the webapp listing available in a collection before you can access the items in JSON format.</p></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}size{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+              </td>
+          </tr>
+          <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}size{% endraw %}</code>
+              </td>
+              <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</span>
+              </td>
+          </tr>
+      </tbody>
+    </table>
 </div>

@@ -133,7 +133,7 @@
 <p>For example, let's use the same customer collection from the previous example this time orders by <em>firstName</em> desc:</p>
 <pre class="language-javascript"><code>{% raw %} &#123;module_data resource="customers" version="v3" template="" collection="customerInfo" order="-firstName" fields="email1, firstName, lastName, id"}
 //this module creates a collection named customerInfo that first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
-&#123;&#37;for item in customerInfo.items reversed&#37;&#125;
+&#123;&#37;for item in customerInfo.items reversed &#37;&#125;
 &lt;li&gt;&#123;&#123;item.firstName&#125;&#125;&lt;/li&gt;
 &#123;&#37;endfor&#37;&#125;
 //this loop will go over the items in the collection in reverse order

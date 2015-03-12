@@ -34,7 +34,8 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td>Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">Detail Layout</a><</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td>
+         <td>Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/dev-assets/reference/tag-reference/events/event-detail-layout.html">Detail Layout</a></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
@@ -50,7 +51,8 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_date&#125;{% endraw %}</code></td><td>Date of booking e.g. "24-Aug-2013"</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_date&#125;{% endraw %}</code></td>
+         <td>Date of booking e.g. "2015-04-16T00:00:00"<span class="description"> The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a></span></td>
         </tr>
 
         <tr>
@@ -91,7 +93,8 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td><td>Date and time the booking was last updated e.g. <em>29-Jan-2013 08:57 PM</em> </td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td>
+         <td>Date and time the booking was last updated e.g. <em>29-Jan-2013 08:57 PM</em> or <em>2015-04-16T00:00:00</em> in the case of the Liquid tag <span class="description">which uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a></span></td>
         </tr>
     </tbody>
 </table>

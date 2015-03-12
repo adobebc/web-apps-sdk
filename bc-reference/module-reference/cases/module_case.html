@@ -22,8 +22,8 @@
 <li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
     <li><strong>filter</strong> - sets display criteria.
 <ul>
-        <li>a - displays all items that belong to that customer</li>
-        <li>c - display all cases that have a particular workflow assigned to them. Please note that only if this filter is used is the workflowID used as a next parameter. The best way to set the ID is to use module manager.</li>
+        <li><strong>all</strong> - displays all items that belong to that customer</li>
+        <li><strong>workflow</strong> - display all cases that have a particular workflow assigned to them. Please note that only if this filter is used is the workflowID used as a next parameter. The best way to set the ID is to use module manager.</li>
     </ul>
     </li>
     <li><strong>sortBy</strong> - allows you to select the order in which you want to sort the items.
@@ -103,10 +103,10 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{% raw %}&#123;module_case filter=&quot;a&quot; sortType=&quot;Default&quot;&#125;{% endraw %}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by date</li>
-    <li><code>{% raw %}&#123;module_case filter=&quot;a&quot; sortType=&quot;Subject&quot;&#125;{% endraw %}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by subject which is the web form name if generated automatically and will be displayed alphabetically</li>
-    <li><code>{% raw %}&#123;module_case filter=&quot;c&quot; workflowId=&quot;25261&quot; sortType=&quot;Default&quot; templateId=&quot;1440381&quot;&#125;{% endraw %}</code> - This module will display all cases that have workflow 25261 assigned to them, sort them by date, and assign template id #1440381 to the detail list for each case opened from the generated list </li>
-    <li><code>{% raw %}&#123;module_case filter=&quot;a&quot; sortType=&quot;Default&quot; template=&quot;/layouts/template.tpl&quot;&#125;{% endraw %}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by date using a custom template</li>
+    <li><code>{% raw %}&#123;module_case filter=&quot;all&quot; sortType=&quot;Default&quot;&#125;{% endraw %}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by date</li>
+    <li><code>{% raw %}&#123;module_case filter=&quot;all&quot; sortType=&quot;Subject&quot;&#125;{% endraw %}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by subject which is the web form name if generated automatically and will be displayed alphabetically</li>
+    <li><code>{% raw %}&#123;module_case filter=&quot;workflow&quot; workflowId=&quot;25261&quot; sortType=&quot;Default&quot; templateId=&quot;1440381&quot;&#125;{% endraw %}</code> - This module will display all cases that have workflow 25261 assigned to them, sort them by date, and assign template id #1440381 to the detail list for each case opened from the generated list </li>
+    <li><code>{% raw %}&#123;module_case filter=&quot;all&quot; sortType=&quot;Default&quot; template=&quot;/layouts/template.tpl&quot;&#125;{% endraw %}</code> - This module will display all the cases that belong to a particular customer and those will be sorted by date using a custom template</li>
     <li><code>{% raw %} &#123;module_case filter=&quot;a&quot; collection=&quot;custom1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the case details will become available in the <strong>custom1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>

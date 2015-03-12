@@ -54,16 +54,20 @@ Site visitors get to it only after clicking the links outputted by any of these 
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtofavorites,add_Image, remove_Image&#125;{% endraw %}</code></td><td class="description">Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - &#123;tag_addtofavorites,&lt;img alt="" src="/images/plus_icon" /&gt;,&lt;img alt="" src="/images/minus_icon" /&gt;&#125;{% endraw %}</code> </td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;day&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date | date: "dd"&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_bookingday&#125;{% endraw %}</code></td><td class="description">Day of Booking e.g. <em>24</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;monthName&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date | date: "MMM"&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_bookingmonth&#125;{% endraw %}</code></td><td class="description">Month of Booking e.g. <em>Aug</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;year&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date | date: &quot;yyyy&quot;&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_bookingyear&#125;{% endraw %}</code></td><td class="description">Year of Booking e.g. <em>2014</em> if the booking date is 24-Aug-2014</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date | date: "dddd"&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_day&#125;{% endraw %}</code></td><td class="description">Day of booking e.g. <em>Saturday </em>if the booking date is 24-Aug-2013</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
@@ -77,10 +81,7 @@ Site visitors get to it only after clicking the links outputted by any of these 
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;capacityEmpty&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_capacityempty&#125;{% endraw %}</code></td><td class="description">Number of available seats left for booking e.g. <em>79</em></td>
         </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;weekday&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_day&#125;{% endraw %}</code></td><td class="description">Day of booking e.g. <em>Saturday </em>if the booking date is 24-Aug-2013</td>
-        </tr>
+        
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td><td class="description">Date and time the booking was last updated e.g. <em>29-Jan-2013 08:57 PM</em></td>

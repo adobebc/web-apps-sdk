@@ -346,7 +346,7 @@
 
                         //for delete the data fields are sent as query params.
                         if (self.$scope.selectedRequestType.method == "DELETE") {
-                            templateUrl += "?items=" + JSON.stringify(self.templatePrepopulatedData.items);
+                            templateUrl += "?items=" + JSON.stringify(self.templatePrepopulatedData.items).replace(/\"/g , "'");
                             templateData = {
                                 url: '"' + templateUrl + '"',
                                 methodType: '"' + self.$scope.selectedRequestType.method + '"'
@@ -354,7 +354,7 @@
                         } else {
                             templateData = {
                                 url: '"' + templateUrl + '"',
-                                dataFields: "data:" + JSON.stringify(self.templatePrepopulatedData),
+                                dataFields: "data:" + " JSON.stringify(" + JSON.stringify(self.templatePrepopulatedData) + ")",
                                 methodType: '"' + self.$scope.selectedRequestType.method + '"'
                             }
                         }

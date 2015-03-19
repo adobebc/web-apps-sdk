@@ -1,7 +1,7 @@
-<h1 apiType="restv3">customerTypes</h1> 
+<h1 apiType="restv3">customer Types</h1> 
 <ul id="toc"></ul>
 <div id="list">
-<h2>Get customerTypes</h2>
+<h2>Get customer Types</h2>
 <div class="description">
 <p>Gets the list of customerType resources available.</p>
 </div>
@@ -14,7 +14,7 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/customerTypes
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/customertypes
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
 </ul>
@@ -28,7 +28,7 @@
 <p>The details for the specified customer ID in JSON format.</p>
 
 <ul>
-<li><code>{% raw %}id{% endraw %}</code> - the id of the customerType <em>(integer)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the customer Type <em>(integer)</em></li>
 
 <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
 <li><code>{% raw %}label{% endraw %}</code> - the name of the customer Type <em>(string)</em></li>
@@ -80,7 +80,7 @@ Content-Type: application/json
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<p><strong>Get the list of customerTypes</strong></p>
+<p><strong>Get the list of customer Types</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
@@ -102,7 +102,7 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 }){% endraw %}</code></pre>
-<p><strong>Get the details of a particular customerType</strong></p>
+<p><strong>Get the details of a particular customer Type</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
@@ -128,7 +128,7 @@ request.fail(function (jqXHR) {
 <hr>
 </div>
 <div id="create">
-<h2>Create  a new customerType resource</h2>
+<h2>Create  a new customer Type resource</h2>
 <div class="description">Using this method you can add a customerType's resource to your site.</div>
 <div class="request">
 <h3>Request</h3>
@@ -139,7 +139,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/customerTypes
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/customertypes
   <ul>
     <li>Alternatively, use use siteID instead of 'current'</li>
 </ul>
@@ -162,7 +162,7 @@ request.fail(function (jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/customerTypes HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/customertypes HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -178,7 +178,7 @@ Content-Type: application/json
 
 <pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 201 CREATED
-Location: /webresources/api/v3/sites/current/customerTypes/28742
+Location: /webresources/api/v3/sites/current/customertypes/28742
 Content-Type: application/json; charset=utf-8
 Content-Length: length{% endraw %}</code></pre>
 </div>
@@ -189,7 +189,7 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-url: "/webresources/api/v3/sites/current/customerTypes",
+url: "/webresources/api/v3/sites/current/customertypes",
 type: "PUT",
 conenection: "keep-alive",
 contentType: "application/json",
@@ -218,7 +218,7 @@ console.log("Response text: " + jqXHR.responseText);
         
         </div>
 <div id="edit">
-<h2>Edit  a customerType resource</h2>
+<h2>Edit  a customer Type resource</h2>
 <div class="description">Using this method you can edit a customerType's resource label and\or set its default value.</div>
 <div class="request">
 <h3>Request</h3>
@@ -229,7 +229,7 @@ console.log("Response text: " + jqXHR.responseText);
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/customerTypes/[customerType_ID]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/customertypes/[customerType_ID]
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
 </ul>
@@ -252,7 +252,7 @@ console.log("Response text: " + jqXHR.responseText);
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/customerTypes/28742 HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/customertypes/28742 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -268,7 +268,7 @@ Content-Type: application/json
 
 <pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
-Location: /webresources/api/v3/sites/current/customerTypes/28742
+Location: /webresources/api/v3/sites/current/customertypes/28742
 Content-Type: application/json; charset=utf-8
 Content-Length: length{% endraw %}</code></pre>
 </div>
@@ -279,7 +279,7 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-url: "/webresources/api/v3/sites/current/customerTypes/28742",
+url: "/webresources/api/v3/sites/current/customertypes/28742",
 type: "PUT",
 conenection: "keep-alive",
 contentType: "application/json",
@@ -305,7 +305,7 @@ console.log("Response text: " + jqXHR.responseText);
 <hr>
 </div>
 <div id="delete">
-<h2>Delete  a customerType entity</h2>
+<h2>Delete  a customer Type entity</h2>
 <div class="description">Delete a customerType entity.</div>
 <div class="request">
 <h3>Request</h3>
@@ -316,7 +316,7 @@ console.log("Response text: " + jqXHR.responseText);
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/customerTypes/[customerType_ID]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/customertypes/[customerType_ID]
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
 </ul>
@@ -334,7 +334,7 @@ console.log("Response text: " + jqXHR.responseText);
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/customerTypes/9593213 HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/customertypes/9593213 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -345,7 +345,7 @@ Content-Type: application/json
 
 <pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
-Location: /webresources/api/v3/sites/current/customerTypes
+Location: /webresources/api/v3/sites/current/customertypes
 Content-Type: application/json; charset=utf-8
 Content-Length: length{% endraw %}</code></pre>
 </div>
@@ -356,7 +356,7 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/customerTypes/9593213",
+    url: "/webresources/api/v3/sites/current/customertypes/9593213",
     type: "DELETE",
     conenection: "keep-alive",
     contentType: "application/json",

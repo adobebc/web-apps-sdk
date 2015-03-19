@@ -28,7 +28,7 @@
 <p>The list of secure zones in JSON format.</p>
 
 <ul>
-<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em>(integer)</em></li>
+<li><code>{% raw %}customerid{% endraw %}</code> - the id of the customer<em>(integer)</em></li>
 <li><code>{% raw %}zoneId{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
 
 <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
@@ -167,7 +167,8 @@ headers: {
 data: JSON.stringify({
   "items": [
     {
-      "zoneId": 51
+      "customerId":7051775,
+		"zoneId": 51
     }
   ]
 })
@@ -238,7 +239,7 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/customers/7051775/securezones?items=51",
+    url: "/webresources/api/v3/sites/current/customers/7051775/securezones?items=[{'customerId':7051775,'zoneId':51}]",
     type: "DELETE",
     conenection: "keep-alive",
     contentType: "application/json",

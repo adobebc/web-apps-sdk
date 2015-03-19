@@ -255,12 +255,7 @@ request.fail(function (jqXHR) {
 </ul>
 </div>
 </div>
-<div class="response">
-<h3>Response</h3>
 
-<p>Returns an empty body if successful or a detailed error message.</p>
-<p>Accepts and returns JSON as Content-Type.</p>
-</div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 <pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 CREATED
@@ -298,6 +293,12 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 }){% endraw %}</code></pre>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div id="edit">
@@ -399,12 +400,6 @@ request.fail(function (jqXHR) {
 
 </ul>
 </div>
-<div class="response">
-<h3>Response</h3>
-
-<p>Returns an empty body if successful or a detailed error message.</p>
-<p>Accepts and returns JSON as Content-Type.</p>
-</div>
 <hr>
 <div class="request-sample">
 <p><strong>Request:</strong></p>
@@ -425,4 +420,19 @@ Content-Type: application/json; charset=utf-8
 Content-Length: length{% endraw %}</code></pre>
 </div>
 <hr>
+
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/blogposts/[id]",<br>    type: "DELETE",
+    conenection: "keep-alive",<br>    contentType: "application/json",<br>    headers: {<br>       	"Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
 </div>

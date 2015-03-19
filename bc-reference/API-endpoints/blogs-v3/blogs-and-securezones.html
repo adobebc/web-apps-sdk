@@ -175,7 +175,7 @@ request.fail(function (jqXHR) {
 <h3>Request</h3>
 
 <ul>
-<li><strong>Method:</strong> GET</li>
+<li><strong>Method:</strong> DELETE</li>
 <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
@@ -197,23 +197,13 @@ request.fail(function (jqXHR) {
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/blogs/18029/securezones?items=[51]",
-    type: "DELETE",
-    conenection: "keep-alive",
-    contentType: "application/json",
-    headers: {
-        "Authorization": $.cookie('access_token')
-    }
-});
-request.done(function (msg) {
-    console.log(msg);
-})
-request.fail(function (jqXHR) {
-    console.log("Request failed.");
-    console.log("Error code: " + jqXHR.status);
-    console.log("Error text: " + jqXHR.statusText);
-    console.log("Response text: " + jqXHR.responseText);
-}){% endraw %}</code></pre>
+var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/blogs/[blogid]/securezones?items=[{'objectId':18029,'zoneId':51,'objectType':55,'displayable':1}]",<br>    type: "DELETE",
+	  conenection: "keep-alive",<br>    contentType: "application/json",<br>    headers: {<br>       	"Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br><br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
 <hr>
 </div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div></div>

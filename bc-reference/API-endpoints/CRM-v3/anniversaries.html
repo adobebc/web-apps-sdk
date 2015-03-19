@@ -407,7 +407,7 @@ var request = $.ajax({
     type: "DELETE",
     contentType: "application/json",
     headers: {
-         "Authorization": BCAPI.Helper.Site.getAccessToken()
+        "Authorization": $.cookie('access_token')
     }
 });
 request.done(function(data) {

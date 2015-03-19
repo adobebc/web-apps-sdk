@@ -1,4 +1,4 @@
-<h1 apiType="restv3">Catalogs and shipping options</h1> 
+<h1 apiType="restv3">Catalogs and excluded shipping options</h1> 
 <ul id="toc"></ul>
 <div id="list">
 <h2 id ="list-catalogs">List the shipping options marked to exclude catalog</h2>
@@ -13,7 +13,7 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/catalogs/[catalog_ID]/shippingoptions
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/catalogs/[catalog_ID]/excludedShippingOptions
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -83,7 +83,7 @@
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/catalogs/25479/shippingoptions",
+    url: "/webresources/api/v3/sites/current/catalogs/25481/excludedShippingOptions",
     type: "GET",
     conenection: "keep-alive",
     contentType: "application/json",

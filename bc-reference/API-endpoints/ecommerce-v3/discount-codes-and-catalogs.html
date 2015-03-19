@@ -157,16 +157,8 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-  url: "/webresources/api/v3/sites/current/discountcodes/3309/catalogues",
-  processData: false,
-  data: JSON.stringify({
-    "items": [{
-      "catalogueId": 88
-    }, {
-      "catalogueId": 590
-    }]
-  }),
-  type: "POST",
+  url: "/webresources/api/v3/sites/current/discountcodes/65460/catalogues",
+  data:JSON.stringify({"items":[{"discountCodeId":65460,"catalogueId":25481}]}),<br>    type: "POST",
   contentType: "application/json",
   headers: {
     "Authorization": $.cookie('access_token')
@@ -198,9 +190,8 @@ request.fail(function(jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.a</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/discountcodes/[discount_code_ID]/catalogues?items=[page1_ID,page2_ID,page3_ID]
-
-  <ul>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/discountcodes/[discount_code_ID]/catalogues?items=[{"discountCodeId":<em>discountCodeId</em>,"catalogueId":<em>catalogueId</em>}]"
+<ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
@@ -218,9 +209,7 @@ request.fail(function(jqXHR) {
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/discountcodes/3309/catalogues?items=[88,590]",
-    type: "DELETE",
+var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/discountcodes/65460/catalogs?items=[{"discountCodeId":65460,"catalogueId":25481}]",<br>    type: "DELETE",
     contentType: "application/json",
     headers: {
         "Authorization": $.cookie('access_token')

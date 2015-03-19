@@ -1,8 +1,7 @@
-<h1 apiType="restv3">Shipping options and catalogs</h1> 
+<h1 apiType="restv3">Shipping options and excluded catalogs</h1> 
 <ul id="toc"></ul>
 <div id="list">
-<h2>List the catalogs a shipping option is applied to</h2>
-<div class="request">
+<h2>List the catalogs a shipping option is excluded from</h2><div class="request">
 <h3>Request</h3>
 
 <ul>
@@ -13,9 +12,9 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[shipping_options_ID]/excludedCatalogs
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[shippingOptionId]/excludedCatalogs
   <ul>
-<li>Alternatively, use use siteID instead of 'current'</li>
+  <li>Alternatively, use use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 
@@ -33,7 +32,7 @@
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: &quot;/webresources/api/v3/sites/current/shippingoptions/3309/excludedCatalogs&quot;,
+    url: &quot;/webresources/api/v3/sites/current/shippingoptions/304222/excludedCatalogs&quot;,
     type: "GET",
     conenection: "keep-alive",
     contentType: "application/json",
@@ -57,7 +56,7 @@ request.fail(function (jqXHR) {
       "optionId": 155085,
       "catalogueId": 591,
       "siteId": 146985,
-      "catalogue": {
+      "catalog": {
         "catalogueId": 591,
         "siteId": 146985,
         "parentId": 88,
@@ -87,7 +86,7 @@ request.fail(function (jqXHR) {
       "optionId": 155085,
       "catalogueId": 593,
       "siteId": 146985,
-      "catalogue": {
+      "catalog": {
         "catalogueId": 593,
         "siteId": 146985,
         "parentId": 88,
@@ -123,7 +122,7 @@ request.fail(function (jqXHR) {
 </div>
 
 <div id="create">
-<h2>Apply a shipping option to a catalog</h2>
+<h2>Exclude a catalog from a shipping option</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -135,7 +134,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/[shipping_option_ID]/excludedCatalogs
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptionscatalogues
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -156,17 +155,7 @@ request.fail(function (jqXHR) {
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({
-  url: "/webresources/api/v3/sites/current/shippingoptions/155085/excludedCatalogs",
-  processData: false,
-  data: JSON.stringify({
-    "items": [{
-      "catalogueId": 88
-    }, {
-      "catalogueId": 590
-    }]
-  }),
-  type: "POST",
+var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/shippingoptions/304222/excludedCatalogs",<br>    data:JSON.stringify({"items":[{"optionId":304222,"catalogueId":25481}]}),<br>    type: "POST",
   contentType: "application/json",
   headers: {
     "Authorization": $.cookie('access_token')
@@ -186,7 +175,7 @@ request.fail(function(jqXHR) {
 </div>
 
 <div id="delete">
-<h2>Remove the shipping option from a catalog</h2>
+<h2>Remove an 'excluded catalog' entry from a shipping option</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -198,8 +187,7 @@ request.fail(function(jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.a</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[secure_zone_ID]/excludedCatalogs?items=[page1_ID,page2_ID,page3_ID]
-
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/shippingoptions/[shippingOptionId]/excludedCatalogs?items=[{'optionId':<strong>option_Id_1</strong>,'catalogueId':<strong>catalogue_Id_1</strong>}]"
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
 </ul></li>
@@ -218,9 +206,7 @@ request.fail(function(jqXHR) {
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/shippingoptions/155085/excludedCatalogs?items=[88,590]",
-    type: "DELETE",
+var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/shippingoptions/304222/excludedCatalogs?items=[{'optionId':304222,'catalogueId':25481}]",<br>    type: "DELETE",
     contentType: "application/json",
     headers: {
         "Authorization": $.cookie('access_token')

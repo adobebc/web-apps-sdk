@@ -252,7 +252,7 @@ console.log("Response text: " + jqXHR.responseText);
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/variations/28742 HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/variations/[variation_id] HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -268,7 +268,7 @@ Content-Type: application/json
 
 <pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
-Location: /webresources/api/v3/sites/current/variations/28742
+Location: /webresources/api/v3/sites/current/variations/[variation_id]
 Content-Type: application/json; charset=utf-8
 Content-Length: length{% endraw %}</code></pre>
 </div>
@@ -334,7 +334,7 @@ console.log("Response text: " + jqXHR.responseText);
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/variations/9593213 HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/variations/[variation_id] HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json

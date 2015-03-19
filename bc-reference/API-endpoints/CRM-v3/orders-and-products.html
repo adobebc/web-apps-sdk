@@ -512,7 +512,7 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-url: "/webresources/api/v3/sites/current/orders/108293/products?items=[450]",
+url: "/webresources/api/v3/sites/current/orders/108293/products?items=[{"itemId":12586375,"orderId":108293,"productId":3909340}]",
 type: "DELETE",
 conenection: "keep-alive",
 contentType: "application/json",

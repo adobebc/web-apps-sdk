@@ -254,7 +254,7 @@ request.done(function(data) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 }){% endraw %}</code></pre>
-<p class="alert warning-alert"><strong>Important!</strong> This call creates the media download entity, but doesn't actually upload any content into the physical file(document.txt). To do this, you'll need to generate a second call, <strong>type: &quot;PUT&quot;</strong>, with <strong>contentType: &quot;application/octet-stream&quot;</strong>, and send the file in its binary form:</p>
+<p class="alert alert-warning"><strong>Important!</strong> This call creates the media download entity, but doesn't actually upload any content into the physical file(document.txt). To do this, you'll need to generate a second call, <strong>type: &quot;PUT&quot;</strong>, with <strong>contentType: &quot;application/octet-stream&quot;</strong>, and send the file in its binary form:</p>
 <pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 201 CREATED
 Location: /webresources/api/v3/sites/current/mediadownloads

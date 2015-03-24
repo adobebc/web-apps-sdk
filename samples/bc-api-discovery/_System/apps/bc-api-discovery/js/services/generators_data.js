@@ -36,6 +36,7 @@
 			"resourceName": undefined,
 			"version": undefined,
 			"subresouceName": undefined,
+			"isOneToManyRelation": undefined,
 			"sampleResources": undefined,
 			"existingResourceId": undefined,
 			"fields": undefined,

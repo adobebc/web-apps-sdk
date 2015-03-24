@@ -48,7 +48,6 @@
 
             redirected = false;
 
-        debugger;
         var backendFolder = new BCAPI.Models.FileSystem.Folder(backendFolderPath);
         var webapp = new BCAPI.Models.WebApp.App({"name": this._configService.webAppName});
 

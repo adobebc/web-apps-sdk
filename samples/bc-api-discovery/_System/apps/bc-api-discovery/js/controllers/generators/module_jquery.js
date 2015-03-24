@@ -77,10 +77,16 @@
                     );
                 }
 
-                if (data.resourceName && data.existingResourceId && data.subresourceName) {
+                if (data.resourceName && data.existingResourceId && data.subresourceName && !data.isOneToManyRelation) {
                     self.$scope.requestTypes.push(
                         {method: 'POST', label: 'POST'},
                         {method: 'DELETE', label: 'DELETE'}
+                    );
+                }
+
+                if (data.resourceName && data.existingResourceId && data.subresourceName && data.isOneToManyRelation) {
+                    self.$scope.requestTypes.push(
+                        {method: 'POST', label: 'POST'}
                     );
                 }
 

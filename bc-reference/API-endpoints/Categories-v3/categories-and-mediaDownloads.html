@@ -1,7 +1,7 @@
-<h1 apiType="restv3">Categories and blog posts</h1> 
+<h1 apiType="restv3">Categories and media downloads</h1> 
 <ul id="toc"></ul>
 <div id="list">
-<h2 id ="list-blogs">List all blogposts associated with a specific category</h2>
+<h2 id ="list-blogs">List all media downloads associated with a specific category</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -13,7 +13,7 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/categories/[categoryID]/posts
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/categories/[categoryID]/mediadownloads
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -33,7 +33,7 @@
   <li><code>{% raw %}objectType{% endraw %}</code>- object associated type value <em>(integer)</em></li>
   <li><code>{% raw %}displayable{% endraw %}</code>- 1 or 0 <em>(integer)</em></li>
   <li><code>{% raw %}siteId{% endraw %}</code>- the site's ID <em>(numeric)</em></li>
-  <li><code>{% raw %}post{% endraw %}-</code> json object, displaying <a href="/dev-assets/reference/api-endpoints/blogs-v3/blogposts.html" title="BLOGPOST specific fields" target="_blank">BLOGPOST specific fields</a> <em>(numeric)</em></li>
+  <li><code>{% raw %}mediaDownload{% endraw %}-</code> json object, displaying <a href="/dev-assets/reference/api-endpoints/media-downloads-v3/media-downloads.html" title="Media Download specific fields" target="_blank">Media Download specific fields</a> <em>(numeric)</em></li>
 
 </ul>
 <p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
@@ -48,7 +48,7 @@
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/categories/[categoryID]/posts",
+    url: "/webresources/api/v3/sites/current/categories/[categoryID]/mediadownloads",
     type: "GET",
     conenection: "keep-alive",
     contentType: "application/json",
@@ -68,30 +68,36 @@ request.fail(function (jqXHR) {
 <p><strong>Sample response</strong></p>
 <pre class="language-javascript"><code>{% raw %}{
   "items": [
-    {
-      "objectId": 7528,
+       {
+      "objectId": 133624,
       "categoryId": 14606,
-      "objectType": 55,
+      "objectType": 6,
       "displayable": 1,
       "siteId": 1211552,
-      "post": {
-       "id": 303870,
-       "siteId": 246884,
-       "blogId": 4405,
-       "postTitle": "Some philosophical questions...",
-       "postBody": "CONTENT HERE",
-       "createBy": 1087314,
-       "releaseDate": "2014-12-09T23:00:00",
-       "createDate": "2011-09-20T16:04:56.887",
-       "lastUpdateDate": "2014-12-11T14:08:19.76",
-       "enabled": true,
-       "deleted": false,
-       "reIndex": false,
-       "disableComments": false,
-       "slug": "some-philosophical-questions",
-       "postUrl": "/blog/some-philosophical-questions",
-       "metaBlogPostTitle": "Some philosophical questions...",
-       "metaBlogPostDescription": "Food for thought"
+      "mediaDownload": {
+        "id": 133624,
+        "siteId": 1211552,
+        "roleId": -1,
+        "name": "TEST DWNLD1",
+        "literatureTypeId": 19,
+        "description": null,
+        "displayFileName": "standard.txt",
+        "size": 11,
+        "weight": null,
+        "enabled": true,
+        "deleted": false,
+        "createBy": 473933,
+        "createDate": "2015-03-20T08:35:59.057",
+        "lastUpdateBy": 473933,
+        "lastUpdateDate": "2015-03-20T08:35:59.057",
+        "releaseDate": "2015-03-20T08:35:59.057",
+        "expiryDate": "9998-12-31T15:00:00",
+        "literatureIdShadow": null,
+        "displayable": true,
+        "reIndex": false,
+        "excludeFromSearch": false,
+        "uploadedContentType": "text/plain",
+        "downloadUrl": "www.autest.tk/_literature_133624/TEST_DWNLD1"
       }
     }
   ],
@@ -103,7 +109,7 @@ request.fail(function (jqXHR) {
 <hr>
 </div>
 <div id="create" style="display:none">
-<h2>Add a category to a blog</h2><div class="request">
+<h2>Add a category to a media download</h2><div class="request">
 <h3>Request</h3>
 
 <ul>
@@ -114,7 +120,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/categories/[categoryID]/posts
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/categories/[categoryID]/mediadownloads
 
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
@@ -137,7 +143,7 @@ request.fail(function (jqXHR) {
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 <pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 CREATED
-Location: /webresources/api/v3/sites/current/categories/[categoryID]/posts
+Location: /webresources/api/v3/sites/current/categories/[categoryID]/mediadownloads
 Content-Type: application/json; charset=utf-8
 Content-Length: length{% endraw %}</code></pre>
 </div>
@@ -148,8 +154,8 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/categories/14610/posts",
-    data:JSON.stringify({"items":[{"objectId":519733}]}),
+    url: "/webresources/api/v3/sites/current/categories/14610/mediadownloads",
+    data:JSON.stringify({"items":[{"objectId":133624}]}),
     type: "POST",
     conenection: "keep-alive",
     contentType: "application/json",
@@ -172,8 +178,8 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 </div>
 <div id="delete">
-  <h2>Delete  a category from a blog item</h2>
-<div class="description">Using this method you can delete a category entity.</div>
+  <h2>Delete  a category from a media download item</h2>
+<div class="description">Using this method you can delete a media download entity.</div>
 <div class="request">
 <h3>Request</h3>
 <ul>
@@ -183,7 +189,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/categories/[category_ID]/posts
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/categories/[category_ID]/mediadownloads
   <ul>
   <li>Alternatively, use use siteID instead of 'current'</li>
 </ul>
@@ -201,7 +207,7 @@ request.fail(function (jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/categories/[category_ID]/posts HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/categories/[category_ID]/mediadownloads HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -212,7 +218,7 @@ Content-Type: application/json
 
 <pre class="language-javascript"><code>{% raw %}
 HTTP/1.1 204 NO CONTENT
-Location: /webresources/api/v3/sites/current/categories/[category_ID]/posts
+Location: /webresources/api/v3/sites/current/categories/[category_ID]/mediadownloads
 Content-Type: application/json; charset=utf-8
 Content-Length: length{% endraw %}</code></pre>
 </div>
@@ -222,8 +228,8 @@ Content-Length: length{% endraw %}</code></pre>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/46148/posts",
-    data:JSON.stringify({"items":[{"objectId":519733}]}),<br>    type: "DELETE",
+var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/46148/mediadownloads",
+    data:JSON.stringify({"items":[{"objectId":133624}]}),<br>    type: "DELETE",
     contentType: "application/json",
     headers: {
         "Authorization": $.cookie('access_token')

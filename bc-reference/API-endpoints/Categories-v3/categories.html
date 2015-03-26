@@ -1,7 +1,7 @@
 <h1 apiType="restv3">Categories </h1> 
 <ul id="toc"></ul>
 <div id="list">
-<h2 id ="list-blogs">List all the categories of a site</h2>
+<h2 id ="list-categories">List all the categories of a site</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -97,7 +97,7 @@ request.fail(function (jqXHR) {
 </div>
 <hr>
 </div>
-<div id="create" style="display:none">
+<div id="create">
 <h2>Create a category</h2>
 <div class="request">
 <h3>Request</h3>
@@ -126,7 +126,6 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}Default{% endraw %}</code> - whether this category is to be marked as default or not <em>(boolean)</em></li>
 <li><code>{% raw %}deleted{% endraw %}</code> - whether this category is enabled or not <em>(boolean)</em></li>
 </ul>
-</div>
 </div>
 <div class="response">
 <h3>Response</h3>
@@ -169,6 +168,7 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 }){% endraw %}</code></pre>
+</div>
 </div>
 <div id="edit">
   <h2>Edit  a category</h2>

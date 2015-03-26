@@ -33,7 +33,7 @@
 <li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
 <li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
 <li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
-<li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
+<li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
 <li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
@@ -155,7 +155,7 @@ request.fail(function (jqXHR) {
 <li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
 <li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
 <li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
-<li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
+<li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
 <li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
@@ -241,7 +241,7 @@ request.fail(function (jqXHR) {
 <li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
 <li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
 <li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
-<li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
+<li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
 <li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
@@ -281,7 +281,7 @@ var request = $.ajax({
     data: JSON.stringify({
         "blogId": 18029,
         "postTitle": "First post",
-        "createdBy": 468869
+        "createBy": 468869
     })
 });
 request.done(function (msg) {
@@ -326,7 +326,7 @@ request.fail(function (jqXHR) {
 <li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
 <li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
 <li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
-<li><strong>createdBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
+<li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
 <li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
@@ -363,7 +363,7 @@ var request = $.ajax({
     data: JSON.stringify({
         "blogId": 18029,
         "postTitle": "First post - edited",
-        "createdBy": 468869
+        "createBy": 468869
     })
 });
 request.done(function (msg) {

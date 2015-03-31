@@ -1,8 +1,8 @@
 # bc-orders-app
 
-Simple total order report
+Sample orders report
 
-BC Orders app is a free sample application provided by Adobe Business Catalyst to showcase the capabilities of the Business Catalyst APIs and Web Apps SDK. The app leverages the CRM APIs platform capabilities to deliver a custom order report.
+BC Orders app is a free sample application provided by Adobe Business Catalyst to showcase the capabilities of the Business Catalyst APIs and Web Apps SDK. The app leverages the CRM APIs platform capabilities to deliver a custom orders report that includes shipping costs and total taxes.
 
 ## Getting the app
 

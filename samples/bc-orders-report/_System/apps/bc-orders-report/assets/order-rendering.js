@@ -1,32 +1,32 @@
 /* 
-* 
-* Copyright (c) 2012-2015 Adobe Systems Incorporated. All rights reserved.
+ *
+ * Copyright (c) 2012-2015 Adobe Systems Incorporated. All rights reserved.
 
-* Permission is hereby granted, free of charge, to any person obtaining a
-* copy of this software and associated documentation files (the "Software"), 
-* to deal in the Software without restriction, including without limitation 
-* the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-* and/or sell copies of the Software, and to permit persons to whom the 
-* Software is furnished to do so, subject to the following conditions:
-* 
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-* 
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
-* DEALINGS IN THE SOFTWARE.
-* 
-*/
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ *
+ */
 
 function orderWrapper() {
     this._rootPath = "/";
 }
 
-orderWrapper.prototype.queryOrders = function(queryString, access_token) {
+orderWrapper.prototype.queryOrders = function (queryString, access_token) {
 
 
     console.log(access_token);
@@ -48,7 +48,7 @@ orderWrapper.prototype.queryOrders = function(queryString, access_token) {
     return requestBase;
 }
 
-orderWrapper.prototype.queryOrderItems = function(queryString, access_token) {
+orderWrapper.prototype.queryOrderItems = function (queryString, access_token) {
 
 
     var url = this._rootPath + "webresources/api/v3/sites/current/orderitems";
@@ -76,12 +76,19 @@ orderWrapper.prototype.queryOrderItems = function(queryString, access_token) {
 var orderW = new orderWrapper();
 var access_token = BCAPI.Helper.Site.getAccessToken();
 
+$( document ).ready(function() {
+    $("#datePeriod").val('Today');
+    changeDate();
+    generateList();
+});
 
 //This function it is used to render each order row and append it to main table content.
 function renderRow(orderStatus, id, row) {
     var $orderTableRow = $("<tr/>", {
         class: "resultRow" + id
     });
+
+    var precision = 2;
 
     var $statusTypeData = $("<td/>").append($("<span/>", {
         text: orderStatus
@@ -94,22 +101,22 @@ function renderRow(orderStatus, id, row) {
     $totalOrdersData.appendTo($orderTableRow);
 
     var $subtotalData = $("<td/>").append($("<span/>", {
-        text: row.Subtotal.toFixed(4)
+        text: numberWithCommas(row.Subtotal.toFixed(precision))
     }).css('white-space', 'pre'));
     $subtotalData.appendTo($orderTableRow);
 
     var $totalShippingData = $("<td/>").append($("<span/>", {
-        text: row.TotalShipping.toFixed(4)
+        text:  numberWithCommas(row.Subtotal.toFixed(precision))
     }).css('white-space', 'pre'));
     $totalShippingData.appendTo($orderTableRow);
 
     var $totalTaxData = $("<td/>").append($("<span/>", {
-        text: row.TotalTax.toFixed(4)
+        text: numberWithCommas(row.Subtotal.toFixed(precision))
     }).css('white-space', 'pre'));
     $totalTaxData.appendTo($orderTableRow);
 
     var $totalAmountData = $("<td/>").append($("<span/>", {
-        text: row.TotalAmount.toFixed(4)
+        text:  numberWithCommas(row.Subtotal.toFixed(precision))
     }).css('white-space', 'pre'));
     $totalAmountData.appendTo($orderTableRow);
 
@@ -125,8 +132,7 @@ function RowResult() {
     this.Subtotal = 0;
 }
 
-function renderRowTotals(id, resultRows)
-{
+function renderRowTotals(id, resultRows) {
     var row = new RowResult();
 
     for (var statusType in resultRows) {
@@ -139,6 +145,8 @@ function renderRowTotals(id, resultRows)
         }
     }
 
+    var precision = 2;
+
     var $orderTableRow = $("<tr/>", {
         class: "resultRow" + id
     });
@@ -149,27 +157,27 @@ function renderRowTotals(id, resultRows)
     $statusTypeData.appendTo($orderTableRow);
 
     var $totalOrdersData = $("<td/>").append($("<b/>", {
-        text: row.TotalOrders
+        text: numberWithCommas(row.TotalOrders)
     }).css('white-space', 'pre'));
     $totalOrdersData.appendTo($orderTableRow);
 
     var $subtotalData = $("<td/>").append($("<b/>", {
-        text: row.Subtotal.toFixed(4)
+        text: numberWithCommas(row.Subtotal.toFixed(precision))
     }).css('white-space', 'pre'));
     $subtotalData.appendTo($orderTableRow);
 
     var $totalShippingData = $("<td/>").append($("<b/>", {
-        text: row.TotalShipping.toFixed(4)
+        text: numberWithCommas(row.TotalShipping.toFixed(precision))
     }).css('white-space', 'pre'));
     $totalShippingData.appendTo($orderTableRow);
 
     var $totalTaxData = $("<td/>").append($("<b/>", {
-        text: row.TotalTax.toFixed(4)
+        text: numberWithCommas(row.TotalTax.toFixed(precision))
     }).css('white-space', 'pre'));
     $totalTaxData.appendTo($orderTableRow);
 
     var $totalAmountData = $("<td/>").append($("<b/>", {
-        text: row.TotalAmount.toFixed(4)
+        text: numberWithCommas(row.TotalAmount.toFixed(precision))
     }).css('white-space', 'pre'));
     $totalAmountData.appendTo($orderTableRow);
 
@@ -178,63 +186,61 @@ function renderRowTotals(id, resultRows)
 }
 
 
-
-$(function() {
+$(function () {
     $("#searchLoader").hide();
 
     $(".date-picker").datepicker({
-        beforeShow: function() {
-            setTimeout(function() {
+        beforeShow: function () {
+            setTimeout(function () {
                 $(".ui-datepicker").css("z-index", 9999999);
             }, 10);
         }
     })
 
-    $(".date-picker").on("change", function() {
+    $(".date-picker").on("change", function () {
         $("#datePeriod").val("0");
     });
 });
 
-function changeDate()
-{
+function changeDate() {
     var period = $("#datePeriod").val();
-    if(period != "0") {
-       var nowDate = new Date();
-       var startDate = undefined; 
-        if(period == "Today") {
+    if (period != "0") {
+        var nowDate = new Date();
+        var startDate = undefined;
+        if (period == "Today") {
             startDate = new Date();
             startDate.setDate(nowDate.getDate());
-            startDate.setHours(0,0,0,0);
+            startDate.setHours(0, 0, 0, 0);
         }
-        else if(period == "Yesterday") {
+        else if (period == "Yesterday") {
             startDate = new Date();
             startDate.setDate(nowDate.getDate() - 1);
-            startDate.setHours(0,0,0,0);
+            startDate.setHours(0, 0, 0, 0);
         }
-        else if(period == "Last Week") {
+        else if (period == "Last Week") {
             startDate = new Date();
             startDate.setDate(nowDate.getDate() - 7);
-            startDate.setHours(0,0,0,0);
+            startDate.setHours(0, 0, 0, 0);
         }
-        else if(period == "Last Month") {
+        else if (period == "Last Month") {
             startDate = new Date();
             startDate.setFullYear(startDate.getFullYear(), startDate.getMonth() - 1, startDate.getDay());
-            startDate.setHours(0,0,0,0);
+            startDate.setHours(0, 0, 0, 0);
         }
-        else if(period == "Last 3 Months") {
+        else if (period == "Last 3 Months") {
             startDate = new Date();
             startDate.setFullYear(startDate.getFullYear(), startDate.getMonth() - 3, startDate.getDay());
-            startDate.setHours(0,0,0,0);
+            startDate.setHours(0, 0, 0, 0);
         }
-        else if(period == "Last 6 Months") {
+        else if (period == "Last 6 Months") {
             startDate = new Date();
             startDate.setFullYear(startDate.getFullYear(), startDate.getMonth() - 6, startDate.getDay());
-            startDate.setHours(0,0,0,0);
+            startDate.setHours(0, 0, 0, 0);
         }
-        else if(period == "Last Year") {
+        else if (period == "Last Year") {
             startDate = new Date();
             startDate.setFullYear(startDate.getFullYear() - 1, startDate.getMonth(), startDate.getDay());
-            startDate.setHours(0,0,0,0);
+            startDate.setHours(0, 0, 0, 0);
         }
 
         $('#datepickerStart').datepicker("setDate", startDate);
@@ -244,7 +250,7 @@ function changeDate()
 
 var doneGeneratingPreviousList = true;
 function generateList() {
-    if(!doneGeneratingPreviousList) {
+    if (!doneGeneratingPreviousList) {
         return;
     }
     doneGeneratingPreviousList = false;
@@ -256,21 +262,21 @@ function generateList() {
     var startDate = $("#datepickerStart").datepicker("getDate");
     var endDate = $("#datepickerEnd").datepicker("getDate");
 
-    if(endDate != null) {
+    if (endDate != null) {
         endDate = new Date(endDate.getFullYear(),
-                           endDate.getMonth(),
-                           endDate.getDate(),
-                           23,59,59);
+            endDate.getMonth(),
+            endDate.getDate(),
+            23, 59, 59);
     }
     else {
         var nowDate = new Date();
         endDate = new Date(nowDate.getFullYear(),
-                           nowDate.getMonth(),
-                           nowDate.getDate(),
-                           23,59,59); 
+            nowDate.getMonth(),
+            nowDate.getDate(),
+            23, 59, 59);
     }
 
-    if(startDate == null) {
+    if (startDate == null) {
         var beginningOfTimeDate = new Date(1971, 2, 2);
         startDate = beginningOfTimeDate;
     }
@@ -282,7 +288,7 @@ function generateList() {
 
     var request = orderW.queryOrders(query, access_token);
 
-    request.done(function(orderResult) {
+    request.done(function (orderResult) {
         // array that will contain all deferred objects
         var deferreds = [];
 
@@ -296,7 +302,7 @@ function generateList() {
         // check if all ajax calls have finished
         var defferedPromises = $.when.apply($, deferreds);
 
-        defferedPromises.done(function() {
+        defferedPromises.done(function () {
 
             var orders = {};
 
@@ -309,16 +315,16 @@ function generateList() {
                 for (var i = 0; i < arguments.length; i++) {
 
                     var orderResult = arguments[i][0];
-                    orderResult.items.forEach(function(item) {
-                        
-                        if(typeof item == 'undefined') {
-                            return;   
+                    orderResult.items.forEach(function (item) {
+
+                        if (typeof item == 'undefined') {
+                            return;
                         }
 
-                        if(typeof item != 'undefined' && item.status == null) {
-                            item.status = { label: "Undefined status"};
+                        if (typeof item != 'undefined' && item.status == null) {
+                            item.status = {label: "Undefined status"};
                         }
-                        
+
                         if (!(item.status.label in resultRows)) {
                             resultRows[item.status.label] = new RowResult();
                         }
@@ -337,37 +343,37 @@ function generateList() {
                         orders[item.id] = item;
                     });
                 }
-            } else if(arguments.length != 0)// for only one ajax result there is no tuple, just the 3 elements that would be in a tuple
+            } else if (arguments.length != 0)// for only one ajax result there is no tuple, just the 3 elements that would be in a tuple
             {
                 var orderResult = arguments[0];
 
-                orderResult.items.forEach(function(item) {
+                orderResult.items.forEach(function (item) {
 
-                        if(typeof item == 'undefined') {
-                            return;   
-                        }
+                    if (typeof item == 'undefined') {
+                        return;
+                    }
 
-                        if(typeof item != 'undefined' && item.status == null) {
-                            item.status = { label: "Undefined status"};
-                        }
+                    if (typeof item != 'undefined' && item.status == null) {
+                        item.status = {label: "Undefined status"};
+                    }
 
-                        if (!(item.status.label in resultRows)) {
-                            resultRows[item.status.label] = new RowResult();
-                        }
+                    if (!(item.status.label in resultRows)) {
+                        resultRows[item.status.label] = new RowResult();
+                    }
 
-                        resultRows[item.status.label].TotalShipping += item.shippingPrice;
-                        resultRows[item.status.label].TotalTax += item.shippingPrice * item.shippingTaxRate;
-                        resultRows[item.status.label].TotalOrders++;
-                        resultRows[item.status.label].TotalAmount += item.totalPrice;
+                    resultRows[item.status.label].TotalShipping += item.shippingPrice;
+                    resultRows[item.status.label].TotalTax += item.shippingPrice * item.shippingTaxRate;
+                    resultRows[item.status.label].TotalOrders++;
+                    resultRows[item.status.label].TotalAmount += item.totalPrice;
 
-                        if (item.taxCodeId != null && item.taxCodeId != -1) {
-                            var preTax = item.totalPrice / (1 + item.taxCode.rate);
-                            resultRows[item.status.label].Subtotal += preTax;
-                            resultRows[item.status.label].TotalTax += item.totalPrice - preTax;
-                        }
+                    if (item.taxCodeId != null && item.taxCodeId != -1) {
+                        var preTax = item.totalPrice / (1 + item.taxCode.rate);
+                        resultRows[item.status.label].Subtotal += preTax;
+                        resultRows[item.status.label].TotalTax += item.totalPrice - preTax;
+                    }
 
-                        orders[item.id] = item;
-                    });
+                    orders[item.id] = item;
+                });
             }
 
             // make the ajax calls for the products of the orders
@@ -376,7 +382,7 @@ function generateList() {
 
             var defferedProductRequests = [];
 
-            orderItemRequest.done(function(orderItemsResult) {
+            orderItemRequest.done(function (orderItemsResult) {
                 for (var i = 0; i < orderItemsResult.totalItemsCount; i += 500) {
                     var query = "skip=" + i + "&limit=500";
                     var request = orderW.queryOrderItems(query, access_token);
@@ -385,7 +391,7 @@ function generateList() {
 
                 var defferedOrderItemPromises = $.when.apply($, defferedProductRequests);
 
-                defferedOrderItemPromises.done(function() {
+                defferedOrderItemPromises.done(function () {
                     if (!($.isArray(arguments)) && $.isArray(arguments[0]))
                     // arguments contain tuples (array[3]) (data, state, jXHR) for each callback that would be passed to each ajax done function.
                     // Also, in this case, arguments is an object, not an array, even though it behaves like an array.
@@ -394,7 +400,7 @@ function generateList() {
                         for (var i = 0; i < arguments.length; i++) {
 
                             var orderItemResult = arguments[i][0];
-                            orderItemResult.items.forEach(function(item) {
+                            orderItemResult.items.forEach(function (item) {
 
                                 if (typeof orders[item.orderId] != 'undefined' && orders[item.orderId].taxCodeId == null) {
                                     resultRows[orders[item.orderId].status.label].Subtotal += item.units * item.unitPrice;
@@ -407,7 +413,7 @@ function generateList() {
                     {
                         var orderItemResult = arguments[0];
 
-                        orderItemResult.items.forEach(function(item) {
+                        orderItemResult.items.forEach(function (item) {
 
                             if (typeof orders[item.orderId] != 'undefined' && orders[item.orderId].taxCodeId == null) {
                                 resultRows[orders[item.orderId].status.label].Subtotal += item.units * item.unitPrice;
@@ -417,20 +423,20 @@ function generateList() {
                         });
                     }
 
-                     $("#searchLoader").hide();
+                    $("#searchLoader").hide();
 
                     var id = 0;
- 
+
                     for (var statusType in resultRows) {
                         if (resultRows.hasOwnProperty(statusType)) {
-                            if(statusType != "Undefined status") {
+                            if (statusType != "Undefined status") {
                                 renderRow(statusType, id++, resultRows[statusType]);
                             }
-    
+
                         }
                     }
 
-                    if("Undefined status" in resultRows && resultRows.hasOwnProperty("Undefined status")) {
+                    if ("Undefined status" in resultRows && resultRows.hasOwnProperty("Undefined status")) {
                         renderRow("Undefined status", id++, resultRows["Undefined status"]);
                     }
 
@@ -438,7 +444,7 @@ function generateList() {
                     doneGeneratingPreviousList = true;
                 });
 
-                defferedOrderItemPromises.fail(function() {
+                defferedOrderItemPromises.fail(function () {
                     $("#searchLoader").hide();
                     doneGeneratingPreviousList = true;
                     ajaxFailed();
@@ -447,60 +453,31 @@ function generateList() {
 
         });
 
-        defferedPromises.fail(function() {
+        defferedPromises.fail(function () {
             $("#searchLoader").hide();
             doneGeneratingPreviousList = true;
             ajaxFailed();
         });
     });
 
-    request.fail(function() {
+    request.fail(function () {
         $("#searchLoader").hide();
         doneGeneratingPreviousList = true;
         ajaxFailed();
     });
 }
 
-
-function ajaxSuccess() {
-    $("#panelHeadingToAddAlert").
-    append($("<div/>", {
-        class: "row",
-        id: "removeSuccessMessage",
-        style: "margin-top:10px;margin-bottom:10px;text-align:center"
-    }).append($("<div/>", {
-        class: "alert alert-success",
-        role: "alert",
-        style: "margin-bottom:0px"
-    }).append("<strong>Operation succesfull.")))
-
-    window.setTimeout(function() {
-        $("#removeSuccessMessage").fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
-        });
-    }, 1000);
-}
-
 function ajaxFailed(message) {
 
-    if(typeof message == 'undefined') {
+    if (typeof message == 'undefined') {
         message = "An error occurred."
     }
 
-    $("#panelHeadingToAddAlert").
-    append($("<div/>", {
-        class: "row",
-        id: "removeFailedMessage",
-        style: "margin-top:10px;margin-bottom:10px;text-align:center"
-    }).append($("<div/>", {
-        class: "alert alert-danger",
-        role: "alert",
-        style: "margin-bottom:0px"
-    }).append("<strong>" + message)))
+    systemNotifications.showError(message);
+}
 
-    window.setTimeout(function() {
-        $("#removeFailedMessage").fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
-        });
-    }, 1000);
+function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
 }

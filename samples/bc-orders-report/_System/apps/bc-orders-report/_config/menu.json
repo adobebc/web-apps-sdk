@@ -1,0 +1,15 @@
+{
+  "menu-bcam-apps": {
+    "icon": "/_System/apps/bc-orders-report/assets/images/apps_icon.png",
+    "weight": 600000,
+    "title": "Apps"
+  },
+  "menu-bc-orders-report": {
+    "parent": "menu-bcam-apps",
+    "weight": 100000,
+    "title": "Orders report",
+    "attr": {
+      "href": "/orders.html"
+    }
+  }
+}

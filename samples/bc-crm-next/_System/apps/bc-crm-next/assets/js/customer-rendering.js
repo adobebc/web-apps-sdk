@@ -35,7 +35,7 @@ function customerWrapper() {
     this._rootPath = "/";
 }
 
-customerWrapper.prototype.queryCustomers = function(resource, queryString, access_token, abortLastRequest) {
+customerWrapper.prototype.queryCustomers = function (resource, queryString, access_token, abortLastRequest) {
 
     if (typeof this._lastCustomersHttpRequest !== "undefined" && this._lastCustomersHttpRequest != null && abortLastRequest) {
         this._lastCustomersHttpRequest.abort();
@@ -62,7 +62,7 @@ customerWrapper.prototype.queryCustomers = function(resource, queryString, acces
     return requestBase;
 }
 
-customerWrapper.prototype.queryCustomer = function(customerId, queryString, access_token, abortLastRequest) {
+customerWrapper.prototype.queryCustomer = function (customerId, queryString, access_token, abortLastRequest) {
 
     if (typeof this._lastGetCustomerHttpRequest !== "undefined" && this._lastGetCustomerHttpRequest != null && abortLastRequest) {
         this._lastGetCustomerHttpRequest.abort();
@@ -93,7 +93,7 @@ customerWrapper.prototype.queryCustomer = function(customerId, queryString, acce
     return requestBase;
 }
 
-customerWrapper.prototype.updateCustomer = function(customerId, jsonData, access_token, abortLastRequest) {
+customerWrapper.prototype.updateCustomer = function (customerId, jsonData, access_token, abortLastRequest) {
     if (typeof this._lastUpdateCustomerRequest !== "undefined" && this._lastUpdateCustomerRequest != null && abortLastRequest) {
         this._lastUpdateCustomerRequest.abort();
     }
@@ -117,7 +117,7 @@ customerWrapper.prototype.updateCustomer = function(customerId, jsonData, access
     return requestBase;
 }
 
-customerWrapper.prototype.deleteCustomer = function(customerId, access_token, abortLastRequest) {
+customerWrapper.prototype.deleteCustomer = function (customerId, access_token, abortLastRequest) {
 
     if (typeof this._lastDeleteCustomerRequest !== "undefined" && this._lastDeleteCustomerRequest != null && abortLastRequest) {
         this._lastUpdateCustomerRequest.abort();
@@ -142,7 +142,7 @@ customerWrapper.prototype.deleteCustomer = function(customerId, access_token, ab
 }
 
 
-customerWrapper.prototype.getLastRequest = function(operationType) {
+customerWrapper.prototype.getLastRequest = function (operationType) {
     if (!(operationType in operations)) {
         return;
     }
@@ -177,7 +177,8 @@ function renderCustomersFromObject(jsonObject) {
     for (var i = 0; i < jsonObject.items.length; i++) {
         var customer = jsonObject.items[i];
         renderCustomerFromObject(customer);
-    };
+    }
+    ;
 
     var nrPages = totalItems / 50;
 
@@ -262,6 +263,7 @@ function renderCustomerFromObject(jsonObject) {
     });
     $customerShowDetailsButton.attr("data-target", "#" + jsonObject.id.toString());
     $customerShowDetailsButton.attr("data-toggle", "collapse");
+    $customerShowDetailsButton.attr('alt', 'Customer details');
     $customerShowDetailsButton.appendTo($customerShowDetailsTableData);
     var $customerShowDetailsSpan = $("<span/>", {
         class: "glyphicon glyphicon-chevron-down",
@@ -279,6 +281,7 @@ function renderCustomerFromObject(jsonObject) {
     });
     $customerShowDetailsButton.attr("data-target", "#" + jsonObject.id.toString());
     $customerShowDetailsButton.attr("data-toggle", "collapse");
+    $customerShowDetailsButton.attr("alt", "Customer orders");
     $customerShowDetailsButton.appendTo($customerShowDetailsTableData);
     var $customerShowDetailsSpan = $("<span/>", {
         class: "glyphicon glyphicon-list-alt",
@@ -293,6 +296,8 @@ function renderCustomerFromObject(jsonObject) {
         class: "btn btn-default",
         onClick: "deleteCustomerWrap(" + jsonObject.id + ")"
     });
+
+    $customerDeleteButton.attr("alt", "Delete customer");
     $customerDeleteButton.appendTo($customerDeleteColumn);
     var $customerDeleteSpan = $("<span/>", {
         class: "glyphicon glyphicon-remove"
@@ -330,7 +335,7 @@ function renderCustomerFromObject(jsonObject) {
 function extractCustomerData(customerId, access_token) {
 
     values = new Object;
-    $(".form_" + customerId).each(function(index) {
+    $(".form_" + customerId).each(function (index) {
         if ($(this).val() != 0) {
             propertyName = $(this).attr('id');
 
@@ -361,20 +366,20 @@ function extractCustomerData(customerId, access_token) {
         style: "text-align:center",
         id: "loaderCustomer" + customerId
     }).append($("<img/>", {
-        src: "images/loading.gif"
+        src: "../images/loading.gif"
     })));
 
 
     var request = customerW.updateCustomer(customerId, values, access_token, true);
 
-    request.done(function() {
+    request.done(function () {
         $("#" + customerId).html("");
         $("#" + customerId).removeClass("in");
         changeExpandButtonIcon(customerId);
         ajaxSuccess();
     });
 
-    request.fail(function() {
+    request.fail(function () {
         $("#" + customerId).html("");
         $("#" + customerId).removeClass("in");
         changeExpandButtonIcon(customerId);
@@ -409,7 +414,7 @@ function createQuery(searchTerm) {
 }
 
 
-$(function() {
+$(function () {
     searchWithLimit(0, 50);
 });
 
@@ -445,7 +450,7 @@ function disableInputsAndStartSearch() {
 function startSearch() {
 
     var property;
-    $(".disableSelect").each(function(index) {
+    $(".disableSelect").each(function (index) {
         if ($(this).val() != 0) {
             property = $(this).val();
         }
@@ -454,7 +459,7 @@ function startSearch() {
     var operator;
     var propertyValue;
 
-    $(".disableInputs").each(function(index) {
+    $(".disableInputs").each(function (index) {
         if ($(this).val() != "") {
             propertyValue = $(this).val();
             operator = $(this).attr('id');
@@ -513,7 +518,7 @@ function startSearch() {
     refresh();
     $('#showFilter').fadeToggle(500);
 
-    customerW.queryCustomers("customers", "where=" + serializedQuery + "&fields= id, username, middleName,  lastName, firstName, email1", access_token, true).done(function(data) {
+    customerW.queryCustomers("customers", "where=" + serializedQuery + "&fields= id, username, middleName,  lastName, firstName, email1", access_token, true).done(function (data) {
         renderCustomersFromObject(data);
     });
 
@@ -524,9 +529,9 @@ var queryTimeoutSet = false;
 function simpleSearch() {
     if (!queryTimeoutSet) {
         queryTimeoutSet = true;
-        setTimeout(function() {
+        setTimeout(function () {
             queryString = $('#simpleSearchField').val();
-            customerW.queryCustomers("customers", "where=" + createQuery(queryString) + "&fields= id, username, middleName,  lastName, firstName, email1", access_token, true).done(function(data) {
+            customerW.queryCustomers("customers", "where=" + createQuery(queryString) + "&fields= id, username, middleName,  lastName, firstName, email1", access_token, true).done(function (data) {
                 renderCustomersFromObject(data);
                 queryTimeoutSet = false;
             })
@@ -553,14 +558,14 @@ function showOrders(customerId) {
         style: "text-align:center",
         id: "loaderCustomer" + customerId
     }).append($("<img/>", {
-        src: "images/loading.gif"
+        src: "../images/loading.gif"
     })));
 
     var request = customerW.queryCustomers("orders", "where={\"entityId\":" + customerId + "}", access_token, true)
 
     console.log(request);
 
-    request.done(function(data) {
+    request.done(function (data) {
 
         $('#' + customerId).html("");
 
@@ -571,14 +576,14 @@ function showOrders(customerId) {
 
         var $tableBody = $("<tbody/>");
 
-        $.each(data.items, function(index, order) {
+        $.each(data.items, function (index, order) {
             var $orderData = $("<tr/>").
                 append($("<th/>").append(order.id)).
                 append($("<th/>").append(order.name)).
                 append($("<th/>").append(order.totalPrice)).
                 append($("<th/>").append(order.invoiced)).
                 append($("<th/>").append($("<a/>", {
-                    href: "/webresources/api/v3/sites/current/orders/" + order.id + "?access_token=" + access_token+"&format=application/vnd.bc.ecommerce.invoice-pdf",
+                    href: "/webresources/api/v3/sites/current/orders/" + order.id + "?access_token=" + access_token + "&format=application/vnd.bc.ecommerce.invoice-pdf",
                     target: "_blank"
                 }).append("Print invoice")))
             $orderData.appendTo($tableBody);
@@ -591,7 +596,7 @@ function showOrders(customerId) {
         $detailsTable.appendTo($expandableDiv);
     })
 
-    request.fail(function() {
+    request.fail(function () {
         $('#' + customerId).html("");
         ajaxFailed();
         $("#" + customerId).removeClass("in");
@@ -607,7 +612,7 @@ function advancedSearch(customerId) {
         style: "text-align:center",
         id: "loaderCustomer" + customerId
     }).append($("<img/>", {
-        src: "images/loading.gif"
+        src: "../images/loading.gif"
     })));
 
     var addressTypeNames = {
@@ -620,20 +625,19 @@ function advancedSearch(customerId) {
 
     var request = customerW.queryCustomer(customerId, "fields=" + fields, access_token, true);
 
-    request.done(function(data) {
+    request.done(function (data) {
         customer = data;
 
         $('#' + customer.id).html("");
 
         var request2 = customerW.queryCustomers("titletypes", "", access_token, true);
 
-        request2.done(function(titleTypes) {
+        request2.done(function (titleTypes) {
 
             var $detailsTable = $("<table/>", {
                 class: "table"
             }).
                 append($("<thead/>").append($("<tr/>").append($("<th/>").append("Contact details")).append($("<th/>").append("Anniversaries")).append($("<th/>").append("Other details"))));
-
 
 
             var $firstName = $("<div/>", {
@@ -680,7 +684,6 @@ function advancedSearch(customerId) {
                 }));
 
 
-
             var $homePhone = $("<div/>", {
                 class: "form-group"
             }).
@@ -692,7 +695,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "homePhone.value",
                     placeholder: "Home Phone",
-                    value: customer.homePhone.value
+                    value: getValue(customer.homephone)
                 }));
 
             var $homeFax = $("<div/>", {
@@ -706,7 +709,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "homeFax.value",
                     placeholder: "Home Fax",
-                    value: customer.homeFax.value
+                    value: getValue(customer.homeFax)
                 }));
 
 
@@ -721,7 +724,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "workPhone.value",
                     placeholder: "Work Phone",
-                    value: customer.workPhone.value
+                    value: getValue(customer.workPhone)
                 }));
 
 
@@ -736,7 +739,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "workFax.value",
                     placeholder: "Work Fax",
-                    value: customer.workFax.value
+                    value: getValue(customer.workFax)
                 }));
 
 
@@ -751,7 +754,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "mobilePhone.value",
                     placeholder: "Mobile Phone",
-                    value: customer.mobilePhone.value
+                    value: getValue(customer.mobilePhone)
                 }));
 
 
@@ -766,7 +769,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "pager.value",
                     placeholder: "Pager",
-                    value: customer.pager.value
+                    value: getValue(customer.page)
                 }));
 
 
@@ -781,7 +784,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "email1.value",
                     placeholder: "Email",
-                    value: customer.email1.value
+                    value: getValue(customer.email1)
                 }));
 
 
@@ -796,7 +799,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "email2.value",
                     placeholder: "Email 2",
-                    value: customer.email2.value
+                    value: getValue(customer.email2)
                 }));
 
 
@@ -811,7 +814,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "email3.value",
                     placeholder: "Email 3",
-                    value: customer.email3.value
+                    value: getValue(customer.email3)
                 }));
 
 
@@ -826,7 +829,7 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "webAddress.value",
                     placeholder: "Webaddress",
-                    value: customer.webAddress.value
+                    value: getValue(customer.webAddress)
                 }));
 
 
@@ -841,7 +844,11 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "anniversary.anniversary1Title",
                     placeholder: "Anniversary 1 Title",
-                    value: customer.anniversary.anniversary1Title
+                    value: function () {
+                        if (customer.anniversary !== null && customer.anniversary !== undefined)
+                            return customer.anniversary.anniversary1Title
+                        else return ""
+                    }
                 }));
 
             var $anniversary1Title = $("<div/>", {
@@ -855,120 +862,11 @@ function advancedSearch(customerId) {
                     class: "form-control form_" + customer.id,
                     id: "anniversary.anniversary1Date",
                     placeholder: "Anniversary 1 Date",
-                    value: customer.anniversary.anniversary1Date
-                }));
-
-
-
-            var $anniversary2Date = $("<div/>", {
-                class: "form-group"
-            }).
-                append($("<label/>", {
-                    for: "anniversary.anniversary2Title"
-                }).append("Anniversary 2 Date")).
-                append($("<input/>", {
-                    type: "text",
-                    class: "form-control form_" + customer.id,
-                    id: "anniversary.anniversary2Title",
-                    placeholder: "Anniversary 2 Title",
-                    value: customer.anniversary.anniversary2Title
-                }));
-
-
-            var $anniversary2Title = $("<div/>", {
-                class: "form-group"
-            }).
-                append($("<label/>", {
-                    for: "anniversary.anniversary2Date"
-                }).append("Anniversary 2 Title")).
-                append($("<input/>", {
-                    type: "text",
-                    class: "form-control form_" + customer.id,
-                    id: "anniversary.anniversary2Date",
-                    placeholder: "Anniversary 2 Date",
-                    value: customer.anniversary.anniversary2Date
-                }));
-
-
-
-            var $anniversary3Date = $("<div/>", {
-                class: "form-group"
-            }).
-                append($("<label/>", {
-                    for: "anniversary.anniversary3Date"
-                }).append("Anniversary 3 Date")).
-                append($("<input/>", {
-                    type: "text",
-                    class: "form-control",
-                    id: "anniversary.anniversary3Date",
-                    placeholder: "Home Phone"
-                }));
-
-            var $anniversary3Title = $("<div/>", {
-                class: "form-group"
-            }).
-                append($("<label/>", {
-                    for: "anniversary.anniversary3Date"
-                }).append("Anniversary 3 Title")).
-                append($("<input/>", {
-                    type: "text",
-                    class: "form-control",
-                    id: "anniversary.anniversary3Date",
-                    placeholder: "Home Phone"
-                }));
-
-
-            var $anniversary4Date = $("<div/>", {
-                class: "form-group"
-            }).
-                append($("<label/>", {
-                    for: "anniversary.anniversary4Date"
-                }).append("Anniversary 4 Date")).
-                append($("<input/>", {
-                    type: "text",
-                    class: "form-control",
-                    id: "anniversary.anniversary4Date",
-                    placeholder: "Home Phone"
-                }));
-
-            var $anniversary4Title = $("<div/>", {
-                class: "form-group"
-            }).
-                append($("<label/>", {
-                    for: "anniversary.anniversary4Date"
-                }).append("Anniversary 4 Title")).
-                append($("<input/>", {
-                    type: "text",
-                    class: "form-control",
-                    id: "anniversary.anniversary4Date",
-                    placeholder: "Home Phone"
-                }));
-
-
-            var $anniversary5Date = $("<div/>", {
-                class: "form-group"
-            }).
-                append($("<label/>", {
-                    for: "anniversary.anniversary5Date"
-                }).append("Anniversary 5 Date")).
-                append($("<input/>", {
-                    type: "text",
-                    class: "form-control",
-                    id: "anniversary.anniversary5Date",
-                    placeholder: "Home Phone"
-                }));
-
-            var $anniversary5Title = $("<div/>", {
-                class: "form-group"
-            }).
-                append($("<label/>", {
-                    for: "anniversary.anniversary5Date"
-                }).append("Anniversary 5 Title")).
-                append($("<input/>", {
-                    type: "text",
-                    class: "form-control",
-                    id: "anniversary.anniversary5Date",
-                    placeholder: "Home Phone"
+                    value: function () {
+                        if (customer.anniversary !== null && customer.anniversary !== undefined)
+                            return customer.anniversary.anniversary1Date
+                        else return ""
+                    }
                 }));
 
             var $ratingType = $("<div/>", {
@@ -1037,7 +935,7 @@ function advancedSearch(customerId) {
             });
 
 
-            $.each(titleTypes.items, function(index, value) {
+            $.each(titleTypes.items, function (index, value) {
                 console.log(value);
                 if (value.id == customer.titleTypeId) {
                     $titleTypeSelect.append($("<option/>", {
@@ -1081,34 +979,13 @@ function advancedSearch(customerId) {
 
             var $tableBody = $("<tbody/>").
                 append($("<tr/>").append($("<td/>").append($firstName).append($middleName).append($lastName).
-                        //  append($homePhone).
-                        // append($homeFax).
-                        // append($workPhone).
-                        // append($workFax).
                         append($mobilePhone).
-                        // append($pager).
                         append($email1).
-                        //append($email2).
-                        // append($email3).
                         append($webaddress)
                 ).append($("<td/>").append($anniversary1Date).append($anniversary1Title)
-                    /*append($anniversary2Date).
-                     append($anniversary2Title).
-                     append($anniversary3Date).
-                     append($anniversary3Title).
-                     append($anniversary4Date).
-                     append($anniversary4Title).
-                     append($anniversary5Date).
-                     append($anniversary5Title)*/
                 ).append($("<td/>").
-                        /* append($ratingType).
-                         append($industryType).
-                         append($customerType).
-                         append($leadSourcetye).*/
                         append($titleDiv)
                 )).append($("<tr/>").append($("<td/>")).append($("<td/>")).append($("<td/>").append($saveButton).append($cancelButton)));
-
-
 
 
             $tableBody.appendTo($detailsTable);
@@ -1123,13 +1000,22 @@ function advancedSearch(customerId) {
 
     });
 
-    request.fail(function() {
+    request.fail(function () {
         $('#' + customerId).html("");
         $("#" + customerId).removeClass("in");
         changeExpandButtonIcon(customerId);
         ajaxFailed();
     })
 
+}
+
+function getValue(object) {
+    if (object !== null && object !== undefined) {
+        return object.value
+    }
+    else {
+        return "";
+    }
 }
 
 function enableForEdit(customerId) {
@@ -1150,8 +1036,8 @@ function ajaxSuccess() {
             style: "margin-bottom:0px"
         }).append("<strong>Operation succesfull.")))
 
-    window.setTimeout(function() {
-        $("#removeSuccessMessage").fadeTo(500, 0).slideUp(500, function() {
+    window.setTimeout(function () {
+        $("#removeSuccessMessage").fadeTo(500, 0).slideUp(500, function () {
             $(this).remove();
         });
     }, 1000);
@@ -1159,24 +1045,13 @@ function ajaxSuccess() {
 
 function ajaxFailed() {
 
-    $("#panelHeadingToAddAlert").
-        append($("<div/>", {
-            class: "row",
-            id: "removeFailedMessage",
-            style: "margin-top:10px;margin-bottom:10px;text-align:center"
-        }).append($("<div/>", {
-            class: "alert alert-danger",
-            role: "alert",
-            style: "margin-bottom:0px"
-        }).append("<strong>An error occurred.")))
+    if (typeof message == 'undefined') {
+        message = "An error occurred."
+    }
 
-    window.setTimeout(function() {
-        $("#removeFailedMessage").fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
-        });
-    }, 1000);
+    systemNotifications.showError(message);
+
 }
-
 
 
 function searchWithLimit(skip, limit) {
@@ -1192,7 +1067,7 @@ function searchWithLimit(skip, limit) {
 
     var operator = 'default';
     //big filter check
-    $(".disableInputs").each(function(index) {
+    $(".disableInputs").each(function (index) {
         if ($(this).val() != "") {
             propertyValue = $(this).val();
             operator = $(this).attr('id');
@@ -1209,33 +1084,35 @@ function searchWithLimit(skip, limit) {
         //simple search check
         if (!queryTimeoutSet) {
             queryTimeoutSet = true;
-            setTimeout(function() {
+            setTimeout(function () {
 
                 queryString = $('#simpleSearchField').val();
 
-                query = "where=" + createQuery(queryString) + "&fields= id, username, middleName,  lastName, firstName, email1&skip=" + skip + "&limit=" + limit + orderBy;;
+                query = "where=" + createQuery(queryString) + "&fields= id, username, middleName,  lastName, firstName, email1&skip=" + skip + "&limit=" + limit + orderBy;
+                ;
 
                 var request = customerW.queryCustomers("customers", query, access_token, true);
 
-                request.always(function() {
+                request.always(function () {
                     $("#searchLoader").hide();
                     queryTimeoutSet = false;
                 })
 
-                request.done(function(data) {
+                request.done(function (data) {
                     renderCustomersFromObject(data);
 
                 })
 
-                request.fail(function() {
+                request.fail(function () {
                     ajaxFailed();
                 })
 
             }, 300)
-        };
+        }
+        ;
     } else {
         var property;
-        $(".disableSelect").each(function(index) {
+        $(".disableSelect").each(function (index) {
             if ($(this).val() != 0) {
                 property = $(this).val();
             }
@@ -1295,12 +1172,12 @@ function searchWithLimit(skip, limit) {
 
         var filterRequest = customerW.queryCustomers("customers", skipQuery, access_token, true);
 
-        filterRequest.done(function(data) {
+        filterRequest.done(function (data) {
             $("#searchLoader").hide();
             renderCustomersFromObject(data);
         });
 
-        filterRequest.fail(function() {
+        filterRequest.fail(function () {
             $("#searchLoader").hide();
             ajaxFailed();
         })
@@ -1313,11 +1190,11 @@ function deleteCustomerWrap(customerId) {
 
     if (x) {
         request = customerW.deleteCustomer(customerId, access_token);
-        request.done(function() {
+        request.done(function () {
             ajaxSuccess();
             $(".customer" + customerId).remove();
         })
-        request.fail(function() {
+        request.fail(function () {
             ajaxFailed();
         })
     }

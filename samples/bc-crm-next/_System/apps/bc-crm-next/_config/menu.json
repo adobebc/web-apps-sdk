@@ -1,5 +1,11 @@
 {
+  "menu-bcam-apps": {
+    "icon": "/_System/apps/bc-crm-next/assets/images/apps_icon.png",
+    "weight": 600000,
+    "title": "Apps"
+  },
   "menu-bc-crm-nex1": {
+    "parent": "menu-bcam-apps",
     "weight": 100000,
     "title": "CRM.next",
     "attr": {

@@ -229,7 +229,7 @@ function renderCustomerFromObject(jsonObject) {
 
     var $customerHomePhoneTableData = $("<td/>").append($("<input/>", {
         class: "form-control firstFieldsDisabled",
-        value: jsonObject.homePhone.value,
+        value: getValue(jsonObject.homePhone),
         type: "text",
         id: "homePhone"
     }));
@@ -237,7 +237,7 @@ function renderCustomerFromObject(jsonObject) {
 
     var $customerEmailTableData = $("<td/>").append($("<input/>", {
         class: "form-control firstFieldsDisabled",
-        value: jsonObject.email1.value,
+        value: getValue(jsonObject.email1),
         type: "text",
         id: "email1"
     }));

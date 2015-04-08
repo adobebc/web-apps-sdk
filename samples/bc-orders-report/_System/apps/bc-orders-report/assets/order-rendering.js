@@ -445,7 +445,7 @@ function generateList() {
                 defferedOrderItemPromises.fail(function () {
                     $("#searchLoader").hide();
                     doneGeneratingPreviousList = true;
-                    ajaxFailed();
+                    ajaxFailed("Could not retrieve all products");
                 });
             });
 
@@ -454,14 +454,14 @@ function generateList() {
         defferedPromises.fail(function () {
             $("#searchLoader").hide();
             doneGeneratingPreviousList = true;
-            ajaxFailed();
+            ajaxFailed("Could not retrieve all orders");
         });
     });
 
     request.fail(function () {
         $("#searchLoader").hide();
         doneGeneratingPreviousList = true;
-        ajaxFailed();
+        ajaxFailed("Could not query number of order items");
     });
 }
 

@@ -38,15 +38,16 @@
     <tr>
       <td><code>{% raw %}contains{% endraw %}</code></td>
       <td>You can use "contains" to check whether a string contains another string, for example:
-      <pre class="language-javascript"><code>{% raw %}&#123;&#37; if webapp1.items[0].name contains 'Jaguar' &#37;&#125;
+      <pre class="language-javascript"><code>{% raw %}&#123;&#37; if webapp1.items[0].name contains 'Jaguar' -&#37;&#125;
   This car is a Jaguar.
-&#123;&#37; endif &#37;&#125;
-{% endraw %}</code></pre>
+&#123;&#37; endif -&#37;&#125;
+{% endraw -%}</code></pre>
 or to check whether an array contains a value. Assuming <code>{% raw %}&#123;&#123;cars_available_now&#125;&#125; {% endraw %}</code>is an array containing car makes:
-<pre class="language-javascript"><code>{% raw %}&#123;&#37; if cars_available_now contains 'Jaguar' &#37;&#125;
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; if cars_available_now contains 'Jaguar' -&#37;&#125;
   A Jaguar is available now.
-&#123;&#37; endif &#37;&#125;
-{% endraw %}</code></pre>
+&#123;&#37; endif -&#37;&#125;
+{% endraw -%}</code></pre>
+<p class="alert alert-info"><strong>Tip:</strong> What's the difference between <code>{% raw %}&#37;&#125;{%endraw%}</code> and <code>{% raw %}-&#37;&#125;{%endraw%}</code>? Here's how to handle <a href="/developers/how-tos/liquid/cleaning-liquid-generated-whitespace">Liquid generated whitespace</a>.</p>
       </td>
     </tr>
   </tbody>

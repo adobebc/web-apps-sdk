@@ -227,13 +227,13 @@ function renderCustomerFromObject(jsonObject) {
     }));
     $customerName.appendTo($customerTableRow);
 
-    var $customerUsernameTableData = $("<td/>").append($("<input/>", {
+    var $customerHomePhoneTableData = $("<td/>").append($("<input/>", {
         class: "form-control firstFieldsDisabled",
-        value: jsonObject.username,
+        value: jsonObject.homePhone.value,
         type: "text",
-        id: "username"
+        id: "homePhone"
     }));
-    $customerUsernameTableData.appendTo($customerTableRow);
+    $customerHomePhoneTableData.appendTo($customerTableRow);
 
     var $customerEmailTableData = $("<td/>").append($("<input/>", {
         class: "form-control firstFieldsDisabled",
@@ -376,14 +376,14 @@ function extractCustomerData(customerId, access_token) {
         $("#" + customerId).html("");
         $("#" + customerId).removeClass("in");
         changeExpandButtonIcon(customerId);
-        ajaxSuccess();
+        ajaxSuccess("Customer data updated successfully");
     });
 
     request.fail(function () {
         $("#" + customerId).html("");
         $("#" + customerId).removeClass("in");
         changeExpandButtonIcon(customerId);
-        ajaxFailed();
+        ajaxFailed("Could not update customer");
     })
 
 }
@@ -404,7 +404,7 @@ function createQuery(searchTerm) {
                 '$contains': searchTerm
             }
         }, {
-            'username': {
+            'homePhone.value': {
                 '$contains': searchTerm
             }
         }]
@@ -518,7 +518,7 @@ function startSearch() {
     refresh();
     $('#showFilter').fadeToggle(500);
 
-    customerW.queryCustomers("customers", "where=" + serializedQuery + "&fields= id, username, middleName,  lastName, firstName, email1", access_token, true).done(function (data) {
+    customerW.queryCustomers("customers", "where=" + serializedQuery + "&fields= id, homePhone, middleName,  lastName, firstName, email1", access_token, true).done(function (data) {
         renderCustomersFromObject(data);
     });
 
@@ -531,7 +531,7 @@ function simpleSearch() {
         queryTimeoutSet = true;
         setTimeout(function () {
             queryString = $('#simpleSearchField').val();
-            customerW.queryCustomers("customers", "where=" + createQuery(queryString) + "&fields= id, username, middleName,  lastName, firstName, email1", access_token, true).done(function (data) {
+            customerW.queryCustomers("customers", "where=" + createQuery(queryString) + "&fields= id, homePhone, middleName,  lastName, firstName, email1", access_token, true).done(function (data) {
                 renderCustomersFromObject(data);
                 queryTimeoutSet = false;
             })
@@ -598,7 +598,7 @@ function showOrders(customerId) {
 
     request.fail(function () {
         $('#' + customerId).html("");
-        ajaxFailed();
+        ajaxFailed("Could not retrieve orders");
         $("#" + customerId).removeClass("in");
         changeExpandButtonIcon(customerId);
     })
@@ -1004,7 +1004,7 @@ function advancedSearch(customerId) {
         $('#' + customerId).html("");
         $("#" + customerId).removeClass("in");
         changeExpandButtonIcon(customerId);
-        ajaxFailed();
+        ajaxFailed("Could not retrieve extra data for customer with id " + customerId);
     })
 
 }
@@ -1024,33 +1024,17 @@ function enableForEdit(customerId) {
     $('#saveBtn_' + customerId).show();
 }
 
-function ajaxSuccess() {
-    $("#panelHeadingToAddAlert").
-        append($("<div/>", {
-            class: "row",
-            id: "removeSuccessMessage",
-            style: "margin-top:10px;margin-bottom:10px;text-align:center"
-        }).append($("<div/>", {
-            class: "alert alert-success",
-            role: "alert",
-            style: "margin-bottom:0px"
-        }).append("<strong>Operation succesfull.")))
-
-    window.setTimeout(function () {
-        $("#removeSuccessMessage").fadeTo(500, 0).slideUp(500, function () {
-            $(this).remove();
-        });
-    }, 1000);
+function ajaxSuccess(message) {
+    systemNotifications.showSuccess("Operation succesfull", message);
 }
 
-function ajaxFailed() {
+function ajaxFailed(message) {
 
     if (typeof message == 'undefined') {
         message = "An error occurred."
     }
 
     systemNotifications.showError(message);
-
 }
 
 
@@ -1088,7 +1072,7 @@ function searchWithLimit(skip, limit) {
 
                 queryString = $('#simpleSearchField').val();
 
-                query = "where=" + createQuery(queryString) + "&fields= id, username, middleName,  lastName, firstName, email1&skip=" + skip + "&limit=" + limit + orderBy;
+                query = "where=" + createQuery(queryString) + "&fields= id, homePhone, middleName,  lastName, firstName, email1&skip=" + skip + "&limit=" + limit + orderBy;
                 ;
 
                 var request = customerW.queryCustomers("customers", query, access_token, true);
@@ -1104,7 +1088,7 @@ function searchWithLimit(skip, limit) {
                 })
 
                 request.fail(function () {
-                    ajaxFailed();
+                    ajaxFailed("Could not retrieve customers");
                 })
 
             }, 300)
@@ -1168,7 +1152,7 @@ function searchWithLimit(skip, limit) {
         refresh();
         $('#showFilter').fadeToggle(500);
 
-        skipQuery = "where=" + serializedQuery + "&fields= id, username, middleName,  lastName, firstName, email1&skip=" + skip + "&limit=" + limit;
+        skipQuery = "where=" + serializedQuery + "&fields= id, homePhone, middleName,  lastName, firstName, email1&skip=" + skip + "&limit=" + limit;
 
         var filterRequest = customerW.queryCustomers("customers", skipQuery, access_token, true);
 
@@ -1179,7 +1163,7 @@ function searchWithLimit(skip, limit) {
 
         filterRequest.fail(function () {
             $("#searchLoader").hide();
-            ajaxFailed();
+            ajaxFailed("Could not retrieve customers");
         })
     }
 }
@@ -1191,11 +1175,11 @@ function deleteCustomerWrap(customerId) {
     if (x) {
         request = customerW.deleteCustomer(customerId, access_token);
         request.done(function () {
-            ajaxSuccess();
+            ajaxSuccess("Customer deleted successfully");
             $(".customer" + customerId).remove();
         })
         request.fail(function () {
-            ajaxFailed();
+            ajaxFailed("Could not delete customer");
         })
     }
 }

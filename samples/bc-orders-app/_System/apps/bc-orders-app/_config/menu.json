@@ -1,9 +1,0 @@
-{
-    "menu-bc-orders-app": {
-        "weight": 1000000,
-            "title": "Orders.app",
-                "attr": {
-                    "href": "/orders.html"
-                }
-    }
-}

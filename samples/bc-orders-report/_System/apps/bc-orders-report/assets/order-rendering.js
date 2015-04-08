@@ -76,12 +76,6 @@ orderWrapper.prototype.queryOrderItems = function (queryString, access_token) {
 var orderW = new orderWrapper();
 var access_token = BCAPI.Helper.Site.getAccessToken();
 
-$( document ).ready(function() {
-    $("#datePeriod").val('Today');
-    changeDate();
-    generateList();
-});
-
 //This function it is used to render each order row and append it to main table content.
 function renderRow(orderStatus, id, row) {
     var $orderTableRow = $("<tr/>", {
@@ -195,11 +189,15 @@ $(function () {
                 $(".ui-datepicker").css("z-index", 9999999);
             }, 10);
         }
-    })
+    });
 
     $(".date-picker").on("change", function () {
         $("#datePeriod").val("0");
     });
+
+    $("#datePeriod").val('Today');
+    changeDate();
+    generateList();
 });
 
 function changeDate() {

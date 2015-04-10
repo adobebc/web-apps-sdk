@@ -12,18 +12,27 @@
 
 <script type="text/javascript" src="bcapiregistry.js"></script>
 
+    <script type="text/javascript" src="bcapiproxy.js"></script>
+
     <script type="text/javascript">
 
         var test = BCAPI.Registry.getRegistry();
         test.done(function(response){
-            alert("test");
+
             console.log(response);
         });
 
         test.fail(function(response){
-            alert("fail");
+
             console.log(response);
         })
+
+
+        var test2 = BCAPI.ApiFactory.getProxy("pages", "v3").then(function(result) {
+            result.fetch(2411254, "").then(function(result2) {
+                console.log(result2);
+            });
+        });
 
     </script>
 

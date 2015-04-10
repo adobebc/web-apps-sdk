@@ -54,6 +54,34 @@
 	 * @memberOf BCAPI.Config
 	 */
 	Config.ACCESS_TOKEN_DEFAULT_EXPIRATION = 14400;
+
+
+	/**
+	 * bc api v3 config
+	 * @type {string}
+	 */
+	Config.defaultAccessToken = "Bearer _bc_Q2xpZW50SWQ9YmMtbWVldC10aGUtdGVhbTtHckx3a0hpOWFqZWJtcklReVYrOEdJbnFCeU9yOVhFb0g0VURuNmZJUHVDcXRzUldValFjYlZXZjRiWEtOemgvTVlTaEk1ZkNrWGx6dnVCdE9wNFhENW01UUhFcm5ZcEIxUklKQVNKWnQ3RmMySXVWWFBMK0M0ZHNBVUpLcWUwbXhRb2txbWsydlIrU2N2NjV6b3RXY0s0bXpjeVBSR3BBZGVSWlFHcDE0ZWdodFdaQzJVYzNiWVFpQnpiUFAxejJacTg3bGFJTGwzZkdmYzkvdnlKU09FRFppUGk5NnJSb2dLQlBYa0c5c3dSS2JiaGNaYmlKM2xwV2lEcTRkK2hQNGRUM1NrblFUYTNNdjQ2eG4zQmlER0lEK0lmKzJNSkczejJGM3VWeld0cGQvcFlTUCtNdXEzZ0F0eGkrSmo5dkZYakdkQ0xXZzhDS0h2ZEY5N0JrUUE9PQ==";
+	Config.defaultHost = "openadmin123.rcosnita-bc.worldsecuresystems.com";
+	Config.defaultProtocol = "https";
+
+	Config.bcWebResourcesApp = "/webresources";
+	Config.bcRegistryUrl = Config.bcWebResourcesApp + "/api/v3/sites/current/registry";
+
+	Config.limits = {
+		skip: 0,
+		limit: 10
+	};
+
+	Config.api = {
+		accessToken: BCAPI.Helper.Site.getAccessToken() || Config.defaultAccessToken,
+		host: Config.defaultHost /*defaultHost*/,
+		protocol: Config.defaultProtocol /*defaultProtocol*/
+	};
+
+	Config.errors = {
+		"displayTimeout": 4000
+	};
+
 	
 	BCAPI.Config = Config;
 })(jQuery);

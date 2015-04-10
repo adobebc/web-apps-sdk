@@ -24,6 +24,7 @@
 (function($) {
     'use strict';
 
+
     /**
      * This disables jQuery ajax internal cache.
      */

@@ -39,11 +39,30 @@
             result.create(
                     {
                 "code": "dfadfas",
-                "discountPercentageOrFixedAmount": 1
+                "discountPercentageOrFixedAmount": 1,
+                "description" : "from the factory"
             }
             ).then(function(result2) {
                 console.log(result2);
             });
+        });
+
+        var test4 = BCAPI.ApiFactory.getProxy("discountcodes", "v3").then(function(result) {
+            result.update(18,
+                    {
+                        "code": "dfadfas",
+                        "discountPercentageOrFixedAmount": 1,
+                        "description" : "from the factory 2"
+                    }
+            ).then(function(result2) {
+                        console.log(result2);
+                    });
+        });
+
+        var test5 = BCAPI.ApiFactory.getProxy("discountcodes", "v3").then(function(result) {
+            result.delete(18).then(function(result2) {
+                        console.log(result2);
+                    });
         });
 
     </script>

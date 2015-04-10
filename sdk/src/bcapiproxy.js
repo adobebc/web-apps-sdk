@@ -209,6 +209,21 @@
      * with the given resource data.
      */
     BcApiProxy.prototype.update = function(resourceId, resourceData) {
+        var url = this._getApiUrl() + "/" + resourceId,
+            self = this;
+
+        return $.ajax({
+            url: url,
+            type: "PUT",
+            connection: "keep-alive",
+            contentType: "application/json",
+            data: JSON.stringify(resourceData),
+            headers: {
+                "Accept": "application/json",
+                "Authorization": this._configService.api.accessToken,
+                "X-Adobe-SSL": true
+            }
+        });
     };
 
     /**
@@ -219,6 +234,20 @@
      * This method is used to delete an existing resource.
      */
     BcApiProxy.prototype.delete = function(resourceId) {
+        var url = this._getApiUrl() + "/" + resourceId,
+            self = this;
+
+        return $.ajax({
+            url: url,
+            type: "DELETE",
+            connection: "keep-alive",
+            contentType: "application/json",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": this._configService.api.accessToken,
+                "X-Adobe-SSL": true
+            }
+        });
     };
 
     /**

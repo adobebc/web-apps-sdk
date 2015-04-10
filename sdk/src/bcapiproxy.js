@@ -184,8 +184,7 @@
      * This method is used to create a new resource with the given resource data.
      */
     BcApiProxy.prototype.create = function(resourceData) {
-        var url = this._getApiUrl(),
-            self = this;
+        var url = this._getApiUrl();
 
         return $.ajax({
             url: url,
@@ -231,6 +230,30 @@
      * resource identifier.
      */
     BcApiProxy.prototype.getSubresources = function(resourceId, subresourceName, where, limits, order) {
+        var url = this._getApiUrl(resourceId,subresourceName),
+
+        where = where || {};
+        limits = this._getDefaultLimits(limits);
+        order = this._getDefaultOrder(order);
+
+        return $.ajax({
+            url: url,
+            type: "GET",
+            connection: "keep-alive",
+            contentType: "application/json",
+            data:
+            {
+                "where": where,
+                "skip": limits.skip,
+                "limit": limits.limit,
+                "order": order
+            },
+            headers: {
+                "Accept": "application/json",
+                "Authorization": this._configService.api.accessToken,
+                "X-Adobe-SSL": true
+            }
+        });
     };
 
     /**
@@ -242,6 +265,20 @@
      * resource identifier.
      */
     BcApiProxy.prototype.createSubresources = function(resourceid, subresourceName, subresourcesBody) {
+        var url = this._getApiUrl(resourceid,subresourceName);
+
+        return $.ajax({
+            url: url,
+            type: "POST",
+            connection: "keep-alive",
+            contentType: "application/json",
+            data: JSON.stringify(subresourcesBody),
+            headers: {
+                "Accept": "application/json",
+                "Authorization": this._configService.api.accessToken,
+                "X-Adobe-SSL": true
+            }
+        });
     };
 
 
@@ -254,6 +291,23 @@
      * resource identifier. Items is an array of unique identifiers for the given subresource name.
      */
     BcApiProxy.prototype.deleteSubresources = function(resourceId, subresourceName, items) {
+        var url = this._getApiUrl(resourceid,subresourceName);
+
+        return $.ajax({
+            url: url,
+            type: "DELETE",
+            connection: "keep-alive",
+            contentType: "application/json",
+            data:
+            {
+                "items": items
+            },
+            headers: {
+                "Accept": "application/json",
+                "Authorization": this._configService.api.accessToken,
+                "X-Adobe-SSL": true
+            }
+        });
     };
 
     /**

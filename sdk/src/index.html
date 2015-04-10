@@ -34,6 +34,18 @@
             });
         });
 
+
+        var test3 = BCAPI.ApiFactory.getProxy("discountcodes", "v3").then(function(result) {
+            result.create(
+                    {
+                "code": "dfadfas",
+                "discountPercentageOrFixedAmount": 1
+            }
+            ).then(function(result2) {
+                console.log(result2);
+            });
+        });
+
     </script>
 
 </head>

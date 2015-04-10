@@ -184,7 +184,21 @@
      * This method is used to create a new resource with the given resource data.
      */
     BcApiProxy.prototype.create = function(resourceData) {
+        var url = this._getApiUrl(),
+            self = this;
 
+        return $.ajax({
+            url: url,
+            type: "POST",
+            connection: "keep-alive",
+            contentType: "application/json",
+            data: JSON.stringify(resourceData),
+            headers: {
+                "Accept": "application/json",
+                "Authorization": this._configService.api.accessToken,
+                "X-Adobe-SSL": true
+            }
+        });
     };
 
     /**

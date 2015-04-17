@@ -536,7 +536,7 @@ Three
           <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}convert{% endraw %}</code>
               </td>
-              <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{3 | convert: "string" | json}}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{"3" | convert: "number" | json}}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{"false" | convert: "boolean" | json}}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{"2015-01-07" | convert: "date"}}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> <li><strong>currency(money)</strong> <code>{% raw %}{{100 | convert: "money"}}{% endraw %}</code> outputs "100 USD" assuming the site's "Country code" is set to US.</li> </ul></span>
+              <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{3 | convert: "string" | json}}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{"3" | convert: "number" | json}}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{"false" | convert: "boolean" | json}}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{"2015-01-07" | convert: "date"}}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br></li> </ul></span>
               </td>
           </tr>
           <tr>
@@ -578,6 +578,12 @@ Three
               </td>
           </tr>
              <tr>
+             <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}currency{% endraw %}</code>
+              </td>
+              <td><span class="cellcontent"><code>{% raw %}  {{ 145.9 | currency }} {% endraw %}</code> Formats the price based on the associated currency.</span>
+              (USD145.9)</td>
+          </tr>
                <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}money{% endraw %}</code>
               </td>

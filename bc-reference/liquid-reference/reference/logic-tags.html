@@ -3,32 +3,32 @@
 <div type="cs-pod">
 <h2 id="IF">IF</h2>
 <p>Simple if decision block.</p>
-<pre class="language-javascript"><code>{% raw %}  &#123;&#37; if item.Color == &#39;red&#39; --&#37;&#125;
+<pre class="language-javascript"><code>{% raw %}  &#123;&#37; if item.Color == &#39;red&#39; -&#37;&#125;
     &lt;p&gt;Red is the color&lt;/p&gt;
-  &#123;&#37; endif --&#37;&#125;{% endraw %}</code></pre>
+  &#123;&#37; endif -&#37;&#125;{% endraw %}</code></pre>
   </div>
   <div type="cs-pod">
 <h2 id="IF-else">IF else</h2>
 <p>Just like a regular IF condition, the only difference is this adds another possible choice.</p>
-<pre class="language-javascript"><code>{% raw %}&#123;&#37; if item.Color == &#39;red&#39; --&#37;&#125;
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; if item.Color == &#39;red&#39; -&#37;&#125;
 &lt;p&gt;Red is the color&lt;/p&gt;
-&#123;&#37; elsif item.Color == 'blue' --&#37;&#125;
+&#123;&#37; elsif item.Color == 'blue' -&#37;&#125;
   &lt;p&gt;Blue is the color&lt;/p&gt;
-&#123;&#37; else --&#37;&#125;
+&#123;&#37; else -&#37;&#125;
   &lt;p&gt;Neither red nor blue.&lt;/p&gt;
-&#123;&#37; endif --&#37;&#125;
+&#123;&#37; endif -&#37;&#125;
 {% endraw %}</code></pre>
 </div>
 <div type="cs-pod">
 <h2 id="Unless">UNLESS</h2>
 <p>Unless the condition is true the code is executed</p>
-<pre class="language-javascript"><code>{% raw %}&#123;&#37; unless item.Color == &#39;red&#39; --&#37;&#125;
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; unless item.Color == &#39;red&#39; -&#37;&#125;
  &lt;p&gt;The color is not red.&lt;/p&gt;
-&#123;&#37; endunless --&#37;&#125;{% endraw %}</code></pre>
+&#123;&#37; endunless -&#37;&#125;{% endraw %}</code></pre>
 <p>or</p>
-<pre class="language-javascript"><code>{% raw %}&#123;&#37; unless item.Color == &#39;red&#39; or item.Color == &#39;blue&#39;--&#37;&#125;
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; unless item.Color == &#39;red&#39; or item.Color == &#39;blue&#39;-&#37;&#125;
 	&lt;p&gt;The color is not red nor blue.&lt;/p&gt;
-&#123;&#37; endunless --&#37;&#125;
+&#123;&#37; endunless -&#37;&#125;
 {% endraw %}</code></pre>
 </div>
 <div type="cs-pod">

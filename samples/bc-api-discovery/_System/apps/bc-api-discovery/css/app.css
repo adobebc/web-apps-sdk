@@ -27,7 +27,7 @@
 	margin-bottom: 10px;
 }
 
-.clear-before: {
+.clear-before {
 	margin-top: 10px;
 }
 
@@ -87,4 +87,20 @@
 
 .querybuilder .content {
 	font-size: 1.3em;
+}
+
+.querybuilder .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+input, button, select, textarea {
+    /* For IE */
+    font-size: medium;
+    font-family: normal;
+    line-height: normal;
+
+    /* For other browsers */
+    font-size: initial;
+    font-family: initial;
+    line-height: initial;
 }

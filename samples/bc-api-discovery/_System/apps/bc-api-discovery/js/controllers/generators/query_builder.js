@@ -44,17 +44,26 @@
 		this.$scope.rules = [];
 		this.$scope.generatorsData = generatorsDataService.data;
 		this.$scope.supportedOperators = this._SUPPORTED_OPERATORS;
+        this.$scope.supportedGroupOperators = this._SUPPORTED_GROUP_OPERATORS;
 
 		this.$scope.resourceFields = [];
 		this.$scope.subresources = [];		
 
-		this.$scope.addNewRule = function() {
-			self._addNewRule();
+		this.$scope.addNewRule = function(parent) {
+			self._addNewRule(parent, false);
 		};
+
+        this.$scope.addNewGroupRule = function(parent) {
+            self._addNewRule(parent, true);
+        };
 
 		this.$scope.updateRelationFields = function(rule) {
 			self._updateRelationFields(rule);
 		};
+
+        this.$scope.updateSelectedGroupOperator = function(event, rule, groupOperator) {
+            self._updateSelectedGroupOperator(event, rule, groupOperator);
+        };
 
 		this.$scope.updateQuery = function() {
 			self._updateQuery();
@@ -141,6 +150,19 @@
 		}
 	];
 
+    QueryBuilderController.prototype._SUPPORTED_GROUP_OPERATORS = [
+        {
+            "name": "And",
+            "requiresEnum": false,
+            "operator": "$and"
+        },
+        {
+            "name": "Or",
+            "requiresEnum": false,
+            "operator": "$or"
+        }
+    ];
+
 	/**
 	 * @private
 	 * @instance
@@ -191,7 +213,7 @@
 
 		this._apiFactory.getProxy(data.resourceName, data.version).then(function(proxy) {
 			var resourceDescriptor = proxy.resourceDescriptor,
-				isSubresource = false;;
+				isSubresource = false;
 
 			if(data.subresourceName) {
 				resourceDescriptor = proxy.getSubresourceDescriptor(data.subresourceName);
@@ -245,17 +267,61 @@
 	 * @description
 	 * This method adds a new filtering rule to the current query builder.
 	 */
-	QueryBuilderController.prototype._addNewRule = function() {
-		var defaultOperator = this._SUPPORTED_OPERATORS[0].name;
+	QueryBuilderController.prototype._addNewRule = function(parent, isGroupRule) {
+        var defaultOperator;
+        if(isGroupRule) {
+            defaultOperator = this._SUPPORTED_GROUP_OPERATORS[0].name;
+        }
+        else {
+            defaultOperator = this._SUPPORTED_OPERATORS[0].name;
+        }
 
-		this.$scope.rules.push({
-			"subresource": undefined,
-			"field": undefined,
-			"operator": defaultOperator,
-			"value": undefined,
-			"subresourceFields": []
-		});
+        parent = typeof parent == "undefined"? null : parent;
+
+        var rule = {
+            "isGroupRule": isGroupRule,
+            "subresource": undefined,
+            "field": undefined,
+            "operator": defaultOperator,
+            "value": undefined,
+            "subresourceFields": [],
+            "parentRule": parent,
+            "childRules": []
+        };
+
+        // By default, there are 2 simple rules;
+        if(isGroupRule) {
+            rule.childRules.push({
+                "isGroupRule": false,
+                "subresource": undefined,
+                "field": undefined,
+                "operator": defaultOperator,
+                "value": undefined,
+                "subresourceFields": [],
+                "parentRule": rule,
+                "childRules": []
+            });
+
+            rule.childRules.push({
+                "isGroupRule": false,
+                "subresource": undefined,
+                "field": undefined,
+                "operator": defaultOperator,
+                "value": undefined,
+                "subresourceFields": [],
+                "parentRule": rule,
+                "childRules": []
+            });
+        }
+
+        if(parent) {
+            parent.childRules.push(rule);
+        }
+        else {
+            this.$scope.rules.push(rule);
+        }
 	};
+
 
 	/**
 	 * @private
@@ -300,18 +366,119 @@
 	 * This method removes the specified rule from ui.
 	 */
 	QueryBuilderController.prototype._removeRule = function(rule) {
+        var self = this;
+
 		for(var idx = 0; idx < this.$scope.rules.length; idx++) {
 			var existingRule = this.$scope.rules[idx];
 
-			if(existingRule != rule) {
-				continue;
-			}
+            if(existingRule == rule) {
+                this.$scope.rules.splice(idx, 1);
+                break;
+            }
 
-			this.$scope.rules.splice(idx, 1);
-
-			break;
+            if(self._removeChildRule(existingRule, rule)) {
+                break;
+            }
 		}
 	};
+
+    /**
+     * @private
+     * @instance
+     * @method
+     * @description
+     * This method removes the specified child rule from ui.
+     */
+    QueryBuilderController.prototype._removeChildRule = function(parentRule, childRule) {
+        var self = this;
+
+        for(var idx = 0; idx < parentRule.childRules.length; idx++) {
+            var existingRule = parentRule.childRules[idx];
+
+            if(existingRule == childRule) {
+                parentRule.childRules.splice(idx, 1);
+                return true;
+            }
+
+            if(self._removeChildRule(existingRule, childRule)) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+
+    /**
+     * @private
+     * @instance
+     * @method
+     * @description
+     * This method removes the specified child rule from ui.
+     */
+    QueryBuilderController.prototype._updateSelectedGroupOperator = function(event, rule, groupOperator) {
+        rule.operator = groupOperator.name;
+
+        $(event.target).addClass("active").siblings().removeClass("active");
+    };
+
+    /**
+     * @private
+     * @instance
+     * @method
+     * @description
+     * This method is used to generate a query for a child rule.
+     * to developers.
+     */
+    QueryBuilderController.prototype._updateChildRuleQuery = function(rule) {
+        var condition = {};
+
+        if(rule.isGroupRule) {
+            var operator = null;
+            for(var idOp = 0; idOp < this._SUPPORTED_GROUP_OPERATORS.length; idOp++) {
+                if(this._SUPPORTED_GROUP_OPERATORS[idOp].name == rule.operator) {
+                    operator = this._SUPPORTED_GROUP_OPERATORS[idOp].operator;
+                    break;
+                }
+            }
+
+            condition[operator] = [];
+
+            for(var idx = 0; idx < rule.childRules.length; idx++) {
+                var childRule = rule.childRules[idx];
+
+                condition[operator].push(this._updateChildRuleQuery(childRule));
+            }
+        }
+        else if(rule.field && rule.operator && rule.value) {
+            var fieldName = [],
+                fieldValue;
+
+            if(rule.subresource) {
+                fieldName.push(rule.subresource.name);
+                fieldName.push(".");
+            }
+
+            if(rule.field) {
+                fieldName.push(rule.field.name);
+            }
+
+            if(rule.field && rule.value && rule.operator) {
+                fieldValue = rule.operator.requiresEnum ? rule.value.split(",") : rule.value;
+            }
+
+            fieldName = fieldName.join("");
+
+            if(rule.operator.operator) {
+                condition[fieldName] = {};
+                condition[fieldName][rule.operator.operator] = fieldValue;
+            }
+            else {
+                condition[fieldName] = fieldValue;
+            }
+        }
+
+        return condition;
+    };
 
 	/**
 	 * @private
@@ -325,36 +492,12 @@
 		var condition = {};
 
 		for(var idx = 0; idx < this.$scope.rules.length; idx++) {
-			var rule = this.$scope.rules[idx],
-				fieldName = [],
-				fieldValue;
+            var rule = this.$scope.rules[idx];
+            var childCondition = this._updateChildRuleQuery(rule);
 
-			if(!rule.field || !rule.operator || !rule.value) {
-				continue;
-			}
-
-			if(rule.subresource) {
-				fieldName.push(rule.subresource.name);
-				fieldName.push(".");
-			}
-
-			if(rule.field) {
-				fieldName.push(rule.field.name);
-			}
-
-			if(rule.field && rule.value && rule.operator) {
-				fieldValue = rule.operator.requiresEnum ? rule.value.split(",") : rule.value;
-			}
-
-			fieldName = fieldName.join("");
-
-			if(rule.operator.operator) {
-				condition[fieldName] = {};
-				condition[fieldName][rule.operator.operator] = fieldValue;
-			}
-			else {
-				condition[fieldName] = fieldValue;
-			}
+            for(var key in childCondition) {
+                condition[key] = childCondition[key];
+            }
 		}
 
 		var newGeneratorData = {},

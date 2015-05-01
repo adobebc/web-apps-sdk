@@ -164,12 +164,12 @@ Three
               <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}lstrip{% endraw %}</code>
               </td>
-              <td><code>{% raw %}{{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | strip }}{% endraw %}</code> Strips tabs, spaces, and newlines (all whitespace) from the left side of a string. Output: 'too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</td>
+              <td><code>{% raw %}{{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | lstrip }}{% endraw %}</code> Strips tabs, spaces, and newlines (all whitespace) from the left side of a string. Output: 'too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</td>
           </tr>
               <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}rstrip{% endraw %}</code>
               </td>
-              <td><code>{% raw %}{{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | strip }}{% endraw %}</code> stripsStrips tabs, spaces, and newlines (all whitespace) from the right side of a string. Output: '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces'</td>
+              <td><code>{% raw %}{{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | rstrip }}{% endraw %}</code> stripsStrips tabs, spaces, and newlines (all whitespace) from the right side of a string. Output: '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces'</td>
           </tr>
       </tbody>
     </table>
@@ -574,7 +574,7 @@ Three
           <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}url_param_escape/ url_param_unescape {% endraw %}</code>
               </td>
-              <td><span class="cellcontent">Encodes/decodes a parameter than can be appended to an URL.<code>{% raw %} {{"&lt;hello&gt; &amp; &lt;shopify&gt;" | url_param_escape}}{% endraw %} / {% raw %} {{&quot;&amp;lt;hello&amp;gt; &amp;amp; &amp;lt;shopify&amp;gt;&quot; | url_param_unescape}}{% endraw %}</code></span>
+              <td><span class="cellcontent">Encodes/decodes a parameter than can be appended to an URL.<code>{% raw %} {{"&lt;div&gt; &amp; &lt;span&gt;" | url_param_escape}}{% endraw %} / {% raw %} {{&quot;&amp;lt;hello&amp;gt; &amp;amp; &amp;lt;shopify&amp;gt;&quot; | url_param_unescape}}{% endraw %}</code></span>
               </td>
           </tr>
                <tr>

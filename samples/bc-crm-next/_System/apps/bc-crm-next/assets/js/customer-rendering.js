@@ -366,7 +366,7 @@ function extractCustomerData(customerId, access_token) {
         style: "text-align:center",
         id: "loaderCustomer" + customerId
     }).append($("<img/>", {
-        src: "../images/loading.gif"
+        src: "assets/images/loading.gif"
     })));
 
 
@@ -555,10 +555,10 @@ function showOrders(customerId) {
     $('#' + customerId).html("");
 
     $("#" + customerId).append($("<div/>", {
-        style: "text-align:center",
+        style: "text-align:center;background-image",
         id: "loaderCustomer" + customerId
     }).append($("<img/>", {
-        src: "../images/loading.gif"
+        src: "assets/images/loading.gif"
     })));
 
     var request = customerW.queryCustomers("orders", "where={\"entityId\":" + customerId + "}", access_token, true)
@@ -612,7 +612,7 @@ function advancedSearch(customerId) {
         style: "text-align:center",
         id: "loaderCustomer" + customerId
     }).append($("<img/>", {
-        src: "../images/loading.gif"
+        src: "assets/images/loading.gif"
     })));
 
     var addressTypeNames = {

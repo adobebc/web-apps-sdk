@@ -1,7 +1,7 @@
 <h1 apiType="restv3">Blogs and securezones</h1> 
 <ul id="toc"></ul>
 <div id="list">
-<h2 id ="list-products">List a the secure zones a blog is added into</h2>
+<h2 id ="list-products">List the secure zones a blog is added into</h2>
 <div class="request">
   <h3>Request</h3>
 
@@ -64,7 +64,7 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/18029/securezones",
     type: "GET",
-    conenection: "keep-alive",
+    connection: "keep-alive",
     contentType: "application/json",
     headers: {
         "Authorization": $.cookie('access_token')
@@ -139,7 +139,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/18029/securezones",
     type: "POST",
-    conenection: "keep-alive",
+    connection: "keep-alive",
     contentType: "application/json",
     headers: {
         "Authorization": $.cookie('access_token')
@@ -197,8 +197,25 @@ request.fail(function (jqXHR) {
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/blogs/[blogid]/securezones?items=[{'objectId':18029,'zoneId':51,'objectType':55,'displayable':1}]",<br>    type: "DELETE",
-	  conenection: "keep-alive",<br>    contentType: "application/json",<br>    headers: {<br>       	"Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br><br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
+var request = $.ajax({
+    url:"/webresources/api/v3/sites/current/blogs/[blogid]/securezones?items=[{'objectId':18029,'zoneId':51,'objectType':55,'displayable':1}]",
+    type: "DELETE",
+	  connection: "keep-alive",
+    contentType: "application/json",
+    headers: { "Authorization": $.cookie('access_token') }
+  });
+
+  request.done(function (msg) {
+    $('.output pre').html(JSON.stringify(msg, null, 2));
+    console.log(msg);
+  })
+
+  request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+  }){% endraw %}</code></pre>
 <hr>
 </div>
 <div class="response">

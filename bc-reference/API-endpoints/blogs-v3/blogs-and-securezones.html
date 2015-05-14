@@ -200,7 +200,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url:"/webresources/api/v3/sites/current/blogs/[blogid]/securezones?items=[{'objectId':18029,'zoneId':51,'objectType':55,'displayable':1}]",
     type: "DELETE",
-	  connection: "keep-alive",
+    connection: "keep-alive",
     contentType: "application/json",
     headers: { "Authorization": $.cookie('access_token') }
   });

@@ -81,30 +81,30 @@
   <h3>Sample request</h3>
   <pre class="language-javascript"><code>{% raw %}&lt;pre&gt;&lt;/pre&gt;
         
-        &lt;script&gt;
-            $(document).ready(function() {
-              var access_token = BCAPI.Helper.Site.getAccessToken();
-                    
-                var request = $.ajax({
-                    url: "/webresources/api/v3/sites/current/pages/9113941/securezones",
-                    type: "GET",
-                    conenection: "keep-alive",
-                    contentType: "application/json",
-                    headers: {
-                        "Authorization": $.cookie('access_token')
-                    }
-                });
-                request.done(function (msg) {
-                    console.log(msg);
-                    $('pre').html(JSON.stringify(msg,null,2));
-                })
-                request.fail(function (jqXHR) {
-                    console.log("Request failed.");
-                    console.log("Error code: " + jqXHR.status);
-                    console.log("Error text: " + jqXHR.statusText);
-                    console.log("Response text: " + jqXHR.responseText);
-                })
-        &lt;/script&gt;{% endraw %}</code></pre>
+    &lt;script&gt;
+        $(document).ready(function() {
+          var access_token = BCAPI.Helper.Site.getAccessToken();
+                
+            var request = $.ajax({
+                url: "/webresources/api/v3/sites/current/pages/9113941/securezones",
+                type: "GET",
+                conenection: "keep-alive",
+                contentType: "application/json",
+                headers: {
+                    "Authorization": $.cookie('access_token')
+                }
+            });
+            request.done(function (msg) {
+                console.log(msg);
+                $('pre').html(JSON.stringify(msg,null,2));
+            })
+            request.fail(function (jqXHR) {
+                console.log("Request failed.");
+                console.log("Error code: " + jqXHR.status);
+                console.log("Error text: " + jqXHR.statusText);
+                console.log("Response text: " + jqXHR.responseText);
+            })
+    &lt;/script&gt;{% endraw %}</code></pre>
   <p><strong>Sample response</strong></p>
   <pre class="language-javascript"><code>{% raw %}"items": [
     {

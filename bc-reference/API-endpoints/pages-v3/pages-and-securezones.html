@@ -148,3 +148,127 @@
   ]{% endraw %}</code></pre>
   </div>
 </div>
+
+<div id="add">
+  <h2 id ="secure-blog">Add a page to a secure zone</h2>
+  <div class="request">
+  <h3>Request</h3>
+
+  <ul>
+  <li><strong>Method:</strong> POST</li>
+  <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+  <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+  <ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+  </ul></li>
+  <li><strong>Path:</strong> /webresources/api/v3/sites/current/pages/[page_ID]/securezones
+
+    <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+  </ul></li>
+  <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+  </ul>
+  </div>
+
+  <hr>
+  <div class="sample">
+  <h3>Sample request</h3>
+  <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+  //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+  var request = $.ajax({
+      url: "/webresources/api/v3/sites/current/pages/9113941/securezones",
+      type: "POST",
+      mimeType: "application/json", 
+      connection: "keep-alive",
+      contentType: "application/json",
+      headers: {
+          "Authorization": $.cookie('access_token')
+      },
+      processData: false,
+      dataType: "html",
+      data: JSON.stringify({
+          "items": [{
+              "zoneId": 51
+          }]                    
+      })
+  });
+  
+  request.done(function (msg) {
+      console.log(msg);
+  })
+  
+  request.fail(function (jqXHR) {
+      console.log("Request failed.");
+      console.log("Error code: " + jqXHR.status);
+      console.log("Error text: " + jqXHR.statusText);
+      console.log("Response text: " + jqXHR.responseText);
+  }){% endraw %}</code></pre>
+  </div>
+  <hr>
+  <div class="response">
+  <h3>Response</h3>
+
+  <p>Returns an empty body if successful or a detailed error message.</p>
+  <p>Accepts and returns JSON as Content-Type.</p>
+  </div>
+</div>
+<div id="remove">
+  <h2 id ="remove-blog">Remove a page from a secure zone</h2>
+  <div class="request">
+  <h3>Request</h3>
+
+  <ul>
+  <li><strong>Method:</strong> DELETE</li>
+  <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+  <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+  <ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+  </ul></li>
+  <li><strong>Path:</strong> /webresources/api/v3/sites/current/pages/[page_ID]/securezones
+
+    <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+  </ul></li>
+  <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+  </ul>
+  </div>
+  <hr>
+  <div class="sample">
+  <h3>Sample request</h3>
+  <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+  //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+  var request = $.ajax({
+      url:"/webresources/api/v3/sites/current/pages/9113941/securezones?items=[{'objectId':9050929,'zoneId':51,'objectType':55,'displayable':1}]",
+      type: "DELETE",
+      mimeType: "application/json", 
+      connection: "keep-alive",
+      contentType: "application/json",
+      headers: { "Authorization": $.cookie('access_token') }
+  });
+  
+  request.done(function (msg) {
+      $('pre').html(JSON.stringify(msg, null, 2));
+      console.log(msg);
+  })
+  
+  request.fail(function(jqXHR) {
+      console.log("Request failed.");
+      console.log("Error code: " + jqXHR.status);
+      console.log("Error text: " + jqXHR.statusText);
+      console.log("Response text: " + jqXHR.responseText);
+  }){% endraw %}</code></pre>
+  <hr>
+  </div>
+  <div class="response">
+  <h3>Response</h3>
+
+  <p>Returns an empty body if successful or a detailed error message.</p>
+  <p>Accepts and returns JSON as Content-Type.</p>
+  </div>
+</div>

@@ -1,7 +1,7 @@
-<h1 apiType="restv3">Blogs and securezones</h1> 
+<h1 apiType="restv3">News and securezones</h1> 
 <ul id="toc"></ul>
 <div id="list">
-<h2 id ="list-blogs">List the secure zones a blog is added into</h2>
+<h2 id ="list-news">List the secure zones a news item is added into</h2>
 <div class="request">
   <h3>Request</h3>
 
@@ -13,7 +13,7 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/blogs/[blog_ID]/securezones
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/news/[news_ID]/securezones
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -25,7 +25,7 @@
 <div class="response">
 <h3>Response</h3>
 
-<p>An array of the first 10 securezones assigned to the blog; each object has the following properties:</p>
+<p>An array of the first 10 securezones assigned to the news item; each object has the following properties:</p>
 
 <ul>
 <li><code>{% raw %}id{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
@@ -48,7 +48,8 @@
 
 </ul>
 </li>
-<li><code>{% raw %}deleted{% endraw %}</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - the date the secure zone was created <em>(string)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code>  - the date the secure zone was last updated <em>(string)</em></li>
 </ul>
 
 <p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
@@ -58,50 +59,78 @@
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
-
-var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/blogs/18029/securezones",
-    type: "GET",
-    connection: "keep-alive",    
-    contentType: "application/json",
-    mimeType: "applicaiton/json ",
-    headers: {
-        "Authorization": $.cookie('access_token')
-    }
-});
-request.done(function (msg) {
-    console.log(msg);
-})
-request.fail(function (jqXHR) {
-    console.log("Request failed.");
-    console.log("Error code: " + jqXHR.status);
-    console.log("Error text: " + jqXHR.statusText);
-    console.log("Response text: " + jqXHR.responseText);
-}){% endraw %}</code></pre>
+<pre class="language-javascript"><code>{% raw %}
+  &lt;pre&gt;&lt;/pre&gt;
+        
+  &lt;script&gt;
+      $(document).ready(function() {
+        var access_token = BCAPI.Helper.Site.getAccessToken();
+        //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+              
+        var request = $.ajax({
+            url: "/webresources/api/v3/sites/current/pages/9113941/securezones",
+            type: "GET",
+            conenection: "keep-alive",    contentType: "application/json",
+mimeType: "applicaiton/json ",
+            headers: {
+                "Authorization": $.cookie('access_token')
+            }
+        });
+        request.done(function (msg) {
+            console.log(msg);
+            $('pre').html(JSON.stringify(msg,null,2));
+        })
+        request.fail(function (jqXHR) {
+            console.log("Request failed.");
+            console.log("Error code: " + jqXHR.status);
+            console.log("Error text: " + jqXHR.statusText);
+            console.log("Response text: " + jqXHR.responseText);
+        })
+  &lt;/script&gt;{% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{% raw %}{
+<pre class="language-javascript"><code>{% raw %}
+{
   "items": [
     {
-      "objectId": 18029,
+      "objectId": 87261,
       "zoneId": 51,
-      "objectType": 55,
+      "objectType": 7,
       "displayable": 1,
-      "siteId": 246884,
+      "siteId": 2073364,
       "secureZone": {
         "id": 51,
-        "siteId": 246884,
-        "landingPageId": 5463960,
+        "siteId": 2073364,
+        "landingPageId": 0,
         "name": "Member Only Area",
         "sellAccess": false,
         "costPerPeriod": 0,
         "orderCountryCode": null,
-        "cycleType": null
+        "cycleType": null,
+        "createDate": "2015-05-12T01:28:40.117",
+        "lastUpdateDate": "2015-05-12T01:28:40.117"
+      }
+    },
+    {
+      "objectId": 87261,
+      "zoneId": 9128,
+      "objectType": 7,
+      "displayable": 1,
+      "siteId": 2073364,
+      "secureZone": {
+        "id": 9128,
+        "siteId": 2073364,
+        "landingPageId": 9017917,
+        "name": "premium users",
+        "sellAccess": false,
+        "costPerPeriod": 0,
+        "orderCountryCode": null,
+        "cycleType": null,
+        "createDate": "2015-05-12T17:00:01.843",
+        "lastUpdateDate": "2015-05-12T17:00:01.843"
       }
     }
   ],
-  "totalItemsCount": 1,
+  "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
 }{% endraw %}</code></pre>
@@ -109,7 +138,7 @@ request.fail(function (jqXHR) {
 <hr>
 </div>
 <div id="add">
-<h2 id ="secure-blog">Add a blog to a secure zone</h2>
+<h2 id ="secure-news">Add a news item to a secure zone</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -121,12 +150,13 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/blogs/[blog_ID]/securezones
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/news/[news_ID]/securezones
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Data:</strong> This should contain a stringified, valid json object containing an array of objects with key "zoneId" and value of a valid secure zone id</li>
 
 </ul>
 </div>
@@ -138,24 +168,27 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/blogs/18029/securezones",
+    url: "/webresources/api/v3/sites/current/news/87261/securezones",
     type: "POST",
-    connection: "keep-alive",    
+    mimeType: "application/json", 
+    connection: "keep-alive",
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
     processData: false,
+    dataType: "html",
     data: JSON.stringify({
         "items": [{
             "zoneId": 51
         }]                    
     })
 });
+
 request.done(function (msg) {
     console.log(msg);
 })
+
 request.fail(function (jqXHR) {
     console.log("Request failed.");
     console.log("Error code: " + jqXHR.status);
@@ -172,7 +205,7 @@ request.fail(function (jqXHR) {
 </div>
 </div>
 <div id="remove">
-<h2 id ="remove-blog">Remove  a blog from a secure zone</h2>
+<h2 id ="remove-news">Remove a news item from a secure zone</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -184,7 +217,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/blogs/[blog_ID]/securezones
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/news/[news_ID]/securezones
 
   <ul>
 <li>Alternatively, use use siteID instead of 'current'</li>
@@ -199,26 +232,26 @@ request.fail(function (jqXHR) {
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({
-    url:"/webresources/api/v3/sites/current/blogs/[blogid]/securezones?items=[{'objectId':18029,'zoneId':51,'objectType':55,'displayable':1}]",
-    type: "DELETE",
-    connection: "keep-alive",    
+var request = $.ajax({
+    url:"/webresources/api/v3/sites/current/news/87261/securezones?items=[{'objectId':87261,'zoneId':51,'objectType':55,'displayable':1}]",
+    type: "DELETE",
+    connection: "keep-alive",
+    mimeType: "application/json",
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
     headers: { "Authorization": $.cookie('access_token') }
-  });
+});
 
-  request.done(function (msg) {
-    $('.output pre').html(JSON.stringify(msg, null, 2));
+request.done(function (msg) {
+    $('pre').html(JSON.stringify(msg, null, 2));
     console.log(msg);
-  })
+})
 
-  request.fail(function(jqXHR) {
+request.fail(function(jqXHR) {
     console.log("Request failed.");
-    console.log("Error code: " + jqXHR.status);
-    console.log("Error text: " + jqXHR.statusText);
-    console.log("Response text: " + jqXHR.responseText);
-  }){% endraw %}</code></pre>
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
 <hr>
 </div>
 <div class="response">

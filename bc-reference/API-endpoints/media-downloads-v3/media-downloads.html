@@ -112,8 +112,9 @@ Content-Type: application/json
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/mediadownloads&quot;,<br>    type: &quot;GET&quot;,
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -239,8 +240,9 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/mediadownloads&quot;,<br>     data:JSON.stringify(<br>         {<br>          &quot;id&quot;: 13359991,<br>      &quot;siteId&quot;: 1211552,<br>      &quot;name&quot;: &quot;TEST DWNLD2&quot;,
-		&quot;displayFileName&quot;:&quot;document.txt&quot;<br>         }),<br>    type: &quot;POST&quot;,
+		&quot;displayFileName&quot;:&quot;document.txt&quot;<br>         }),<br>    type: &quot;POST&quot;,    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -369,8 +371,9 @@ Content-Length: length{% endraw %}</code></pre>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/mediadownloads/133591&quot;,<br>     data:JSON.stringify(<br>         {<br>          &quot;id&quot;: 133591,<br>      &quot;siteId&quot;: 1211552,<br>      &quot;name&quot;: &quot;TEST DWNLD&quot;,<br>         <br>         }),<br>    type: &quot;PUT&quot;,
+var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/mediadownloads/133591&quot;,<br>     data:JSON.stringify(<br>         {<br>          &quot;id&quot;: 133591,<br>      &quot;siteId&quot;: 1211552,<br>      &quot;name&quot;: &quot;TEST DWNLD&quot;,<br>         <br>         }),<br>    type: &quot;PUT&quot;,    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -438,8 +441,9 @@ Content-Length: length{% endraw %}</code></pre>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/mediadownloads/57625",<br>    type: "DELETE",
+var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/mediadownloads/57625",<br>    type: "DELETE",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

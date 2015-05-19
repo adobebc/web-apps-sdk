@@ -63,8 +63,9 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -172,8 +173,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/4405",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -280,8 +282,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs",
     type: "POST",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -360,8 +363,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/18029",
     type: "PUT",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },

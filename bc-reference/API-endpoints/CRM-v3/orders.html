@@ -206,8 +206,9 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -228,8 +229,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders?where={'creationDate':{'$gt':'2013-06-10'&#125;&#125;",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -407,8 +409,9 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/[orderId]",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -429,8 +432,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/7051740?fields=status,discountCode,workflow,customer,taxCode",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -633,8 +637,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orders",
 type: "POST",
-conenection: "keep-alive",
-contentType: "application/json",
+conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
 processData: false,
 headers: {
     "Authorization": $.cookie('access_token'),
@@ -811,8 +816,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orders/9593213",
 type: "PUT",
-conenection: "keep-alive",
-contentType: "application/json",
+conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
 headers: {
     "Authorization": $.cookie('access_token')
 },
@@ -889,8 +895,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/9593213",
     type: "DELETE",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

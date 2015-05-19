@@ -88,8 +88,9 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/ratingTypes",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -110,8 +111,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/ratingTypes/287045",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -193,8 +195,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/ratingTypes",
 type: "PUT",
-conenection: "keep-alive",
-contentType: "application/json",
+conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
 headers: {
     "Authorization": $.cookie('access_token')
 },
@@ -280,8 +283,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/ratingTypes/28742",
 type: "PUT",
-conenection: "keep-alive",
-contentType: "application/json",
+conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
 headers: {
     "Authorization": $.cookie('access_token')
 },
@@ -357,8 +361,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/ratingTypes/9593213",
     type: "DELETE",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

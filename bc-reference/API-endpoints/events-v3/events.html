@@ -164,8 +164,9 @@ Amount *
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -186,8 +187,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings/194481",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -289,8 +291,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings",
     data:{"name":"Store opening","body":"&lt;p&gt;Our store is opening today!&lt;/p&gt;","date":"2014-01-05T23:00:00","capacity":50,"hideWhenFull":false,"disabled":false,"deleted":false,"requiresPayment":false,"CreateDate":"2013-12-16T10:50:11.2","lastUpdateDate":"2013-12-16T12:39:05.253"},
-    type: "POST",
+    type: "POST",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -391,8 +394,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings/194481",
     data:{"capacity":50},
-    type: "PUT",
+    type: "PUT",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -462,8 +466,9 @@ Content-Length: length{% endraw %}</code></pre>
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings/194481",
-    type: "DELETE",
+    type: "DELETE",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }

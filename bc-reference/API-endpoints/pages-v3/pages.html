@@ -63,8 +63,9 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/pages",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -200,8 +201,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/pages/2411253",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -314,8 +316,9 @@ var request = $.ajax({
     "content": "&lt;h1&gt;This is my About page&lt;/h1&gt;&lt;p&gt;Some content here&lt;/p&gt;",
     "templateId": "0"
   }),
-  type: "POST",
-  contentType: "application/json",
+  type: "POST",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -347,8 +350,9 @@ var request = $.ajax({
     "content": "&lt;h1&gt;This is my About page&lt;/h1&gt;&lt;p&gt;Some newer content here&lt;/p&gt;",
     "templateId": "0"
   }),
-  type: "POST",
-  contentType: "application/json",
+  type: "POST",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -372,8 +376,9 @@ request.fail(function(jqXHR) {
 
 var request = $.ajax({
   url: '/webresources/api/v3/sites/current/pages?where={"livePageId":13752911}',
-  type: "GET",
-  contentType: "application/json",
+  type: "GET",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -395,8 +400,9 @@ request.fail(function(jqXHR) {
 
 var request = $.ajax({
   url: "/webresources/api/v3/sites/current/pages/13752930?publish=true",
-  type: "POST",
-  contentType: "application/json",
+  type: "POST",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -478,8 +484,9 @@ var request = $.ajax({
         "name": "Card - modified",
         "templateId" : "-1"
                 }),
-         type: "PUT",
-         contentType: "application/json",
+         type: "PUT",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
          headers: {
             "Authorization": $.cookie('access_token')
           }
@@ -537,8 +544,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/pages/2567169",
     type: "DELETE",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

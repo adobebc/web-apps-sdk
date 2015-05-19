@@ -37,8 +37,9 @@
 var request = $.ajax({
     url: &quot;/webresources/api/v3/sites/current/securezones/3309/pages&quot;,
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -169,8 +170,9 @@ var request = $.ajax({
             "objectId": 4518424
           }]
         }),
-    type: "POST",
+    type: "POST",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -223,8 +225,9 @@ request.fail(function (jqXHR) {
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/securezones/3309/pages?items=[{'objectId':5463960,'zoneId':51,'objectType':1,'displayable':1}]]",
-    type: "DELETE",
+    type: "DELETE",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

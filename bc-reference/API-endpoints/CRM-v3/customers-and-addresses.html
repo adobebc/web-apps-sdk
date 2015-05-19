@@ -113,8 +113,9 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/7051740/addresses",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

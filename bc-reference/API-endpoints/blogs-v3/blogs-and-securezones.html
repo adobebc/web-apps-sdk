@@ -64,8 +64,9 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/18029/securezones",
     type: "GET",
-    connection: "keep-alive",
+    connection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -139,8 +140,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/18029/securezones",
     type: "POST",
-    connection: "keep-alive",
+    connection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -200,8 +202,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url:"/webresources/api/v3/sites/current/blogs/[blogid]/securezones?items=[{'objectId':18029,'zoneId':51,'objectType':55,'displayable':1}]",
     type: "DELETE",
-    connection: "keep-alive",
-    contentType: "application/json",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: { "Authorization": $.cookie('access_token') }
   });
 

@@ -117,8 +117,9 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -139,8 +140,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses/13999241",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -251,8 +253,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses",
     data:{"addressType":1,"objectId":60465861,"objectType":1001,"createDate":"2013-12-05T16:50:53.057","lastUpdateDate":"2013-12-06T08:39:08.18","default":true,"address1":"","address2":null,"zipCode":"","city":"","countryCode":"RO","state":""},
-    type: "POST",
+    type: "POST",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -343,8 +346,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses/28742",
 	  data:{"default":true},
-    type: "PUT",
+    type: "PUT",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     data:{"countryCode":"US","state":"NY"},
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
@@ -415,8 +419,9 @@ Content-Length: length{% endraw %}</code></pre>
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses/9593213",
-    type: "DELETE",
+    type: "DELETE",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

@@ -52,8 +52,9 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/categories",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -150,8 +151,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/categories",
     type: "POST",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -238,8 +240,9 @@ Content-Length: length{% endraw %}</code></pre>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/categories/46148&quot;,<br>    data:JSON.stringify({&quot;id&quot;:46148, &quot;category&quot;:&quot;bctestAPIupdated&quot;}),<br>    type: &quot;PUT&quot;,
+var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/categories/46148&quot;,<br>    data:JSON.stringify({&quot;id&quot;:46148, &quot;category&quot;:&quot;bctestAPIupdated&quot;}),<br>    type: &quot;PUT&quot;,    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -307,8 +310,9 @@ Content-Length: length{% endraw %}</code></pre>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/46148",<br>    type: "DELETE",
+var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/46148",<br>    type: "DELETE",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

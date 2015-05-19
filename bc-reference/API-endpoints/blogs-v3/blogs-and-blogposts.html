@@ -59,8 +59,9 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/4405/posts",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

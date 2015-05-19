@@ -110,8 +110,9 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
 
@@ -133,8 +134,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers?fields=email1,email2,email3,homeFax,mobilePhone,pager,webAddress,workFax,workPhone,anniversary,titleType,ratingType,leadSourceType,industryType,customerType",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -365,8 +367,9 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/7051740",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -387,8 +390,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/7051740?fields=email1,email2,email3,homeFax,mobilePhone,pager,webAddress,workFax,workPhone,anniversary,titleType,ratingType,leadSourceType,industryType,customerType",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -410,8 +414,9 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
   url: '/webresources/api/v3/sites/current/customers?fields=email1,middleName,firstName,lastName&where={"email1.value":"mtest@mailinator.com"}',
   type: "GET",
-  conenection: "keep-alive",
-  contentType: "application/json",
+  conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -453,8 +458,9 @@ request.fail(function(jqXHR) {
 var request = $.ajax({
     url: '/webresources/api/v3/sites/current/customers?where={"username":"myUsername"}',
   type: "GET",
-  conenection: "keep-alive",
-  contentType: "application/json",
+  conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -595,8 +601,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/customers",
 type: "POST",
-conenection: "keep-alive",
-contentType: "application/json",
+conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
 processData: false,
 headers: {
     "Authorization": $.cookie('access_token'),
@@ -733,8 +740,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/customers/9593213",
 type: "PUT",
-conenection: "keep-alive",
-contentType: "application/json",
+conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
 headers: {
     "Authorization": $.cookie('access_token')
 },
@@ -765,8 +773,9 @@ console.log("Response text: " + jqXHR.responseText);
 var request = $.ajax({
   url: '/webresources/api/v3/sites/current/customers?fields=email1&where={"email1.value":"mtest@mailinator.com"}',
   type: "GET",
-  conenection: "keep-alive",
-  contentType: "application/json",
+  conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -781,8 +790,9 @@ request.done(function(msg) {
 var request = $.ajax({
           url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].email1.value,
           type: "PUT",
-          conenection: "keep-alive",
-          contentType: "application/json",
+          conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
           headers: {
               "Authorization": $.cookie('access_token')
           },
@@ -872,8 +882,9 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/9593213",
     type: "DELETE",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -894,8 +905,9 @@ request.fail(function(jqXHR) {
 var request = $.ajax({
   url: '/webresources/api/v3/sites/current/customers?fields=id,email1,middleName,firstName,lastName&where={"email1.value":"new_user123123@mailinator.com"}',
   type: "GET",
-  conenection: "keep-alive",
-  contentType: "application/json",
+  conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -910,8 +922,9 @@ request.done(function(msg) {
 var request = $.ajax({
             url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].id,
             type: "DELETE",
-            conenection: "keep-alive",
-            contentType: "application/json",
+            conenection: "keep-alive",    
+   	      contentType: "application/json",
+  		  mimeType: "applicaiton/json ",
             headers: {
               "Authorization": $.cookie('access_token')
             }

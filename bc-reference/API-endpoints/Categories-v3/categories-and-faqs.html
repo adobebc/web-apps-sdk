@@ -51,8 +51,9 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/categories/[categoryID]",
     type: "GET",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -152,8 +153,9 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/14610/faqs",<br>    data:JSON.stringify({"items":[{"objectId":44772}]}),<br>    type: "POST",
-    conenection: "keep-alive",
+    conenection: "keep-alive",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -223,8 +225,9 @@ Content-Length: length{% endraw %}</code></pre>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/14610/faqs",<br>    data:JSON.stringify({"items":[{"objectId":44772}]}),<br>    type: "DELETE",
+var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/14610/faqs",<br>    data:JSON.stringify({"items":[{"objectId":44772}]}),<br>    type: "DELETE",    
     contentType: "application/json",
+    mimeType: "applicaiton/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

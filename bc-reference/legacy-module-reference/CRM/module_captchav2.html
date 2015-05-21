@@ -1,0 +1,47 @@
+<h1>&#123;module_captchav2&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>Displays the CAPTCHA verification image and the input text box. This module can be added from the webform detail panel like so: <a href="http://helpx.adobe.com/business-catalyst/using/create-insert-form.html#id_33012" target="_blank">http://helpx.adobe.com/business-catalyst/using/create-insert-form.html#id_33012</a></p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta">
+
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_captchav2 backgroundColor="DimGray" foregroundColor="White" width="160" height="36&quot; collection="my_custom_collection_name" template=""&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+<p>For background and text color, you can use named colors or hexadecimal color values. See  <a href="http://www.w3schools.com/tags/ref_colorpicker.asp" target="_blank">HTML Color Picker</a> on www.w3schools.com
+</p>
+</div>
+  <div class="examples">
+  <h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_captchav2 backgroundColor="LightBlue" foregroundColor="#FF3300" width="100" height=&quot;36&quot; &#125;{% endraw %}</code></li>
+</ul>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_captchav2,[background color],[text color],[width in pixels]&#125;{% endraw %}</code></pre>
+<p>For background and text color, you can use named colors or hexadecimal color values. See  <a href="http://www.w3schools.com/tags/ref_colorpicker.asp" target="_blank">HTML Color Picker</a> on www.w3schools.com
+</p>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_captchav2,LightBlue,#FF3300,220,36&#125;{% endraw %}</code></li>
+</ul>
+</div>
+</div>

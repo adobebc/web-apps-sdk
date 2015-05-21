@@ -1,0 +1,33 @@
+<h1>New post email alert for a forum subscriber</h1> 
+<div id="accessible">
+<h2>Accessible from</h2>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; System E-mails &gt; Forums Subscriber Alert for New Posts</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/OutboundEmails/ForumPostSubscriberAlert.html
+</li>
+</ul></div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_postauthor&#125;{% endraw %}</code></td><td class="description">Name (alias) of the person who made the last post</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_postdate&#125;{% endraw %}</code></td><td class="description">Date and time of the last post</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientname&#125;{% endraw %}</code></td><td class="description">Full name of the recipient</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_topicname&#125;{% endraw %}</code></td><td class="description">Name of the topic with new posting</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_topicurl&#125;{% endraw %}</code></td><td class="description">Hyperlink to view the topic and its posts</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_unsubscribe&#125;{% endraw %}</code></td><td class="description">Hyperlink to unsubscribe from the topic</td>
+        </tr>
+    </tbody>
+</table>
+</div>

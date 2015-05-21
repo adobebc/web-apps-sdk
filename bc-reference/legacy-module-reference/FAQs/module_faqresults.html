@@ -1,0 +1,52 @@
+<h1>&#123;module_faqresults&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>Displays a list of FAQs. Can be placed on the same page as the search form or a different page.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</div>
+<ul id="tabs" class="beta">
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>  <div id="named-params" class="beta">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_faqresults collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+</ul>
+</div>
+<div class="layouts">
+<h2>This module can be rendered using:</h2>
+<ul>
+    <li>This module is not rendered by any layouts. See the example below for the format of the output.</li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_faqresults&#125;{% endraw %}</code> - This outputs a list similar to this one: &nbsp;
+    <a class="fancybox" href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-26_1349.png"><img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-26_1349.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/></a></li>
+</ul>
+</div>
+</div><div id="legacy">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_faqresults&#125;{% endraw %}</code></pre>
+</div>
+<div class="layouts">
+  <h2>This module is rendered with these layouts</h2>
+<ul>
+    <li>This module is not rendered by any layouts. See the example below for the format of the output.</li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_faqresults&#125;{% endraw %}</code> - This outputs a list similar to this one: &nbsp;
+    <a class="fancybox" href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-26_1349.png"><img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-26_1349.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/></a></li>
+</ul>
+</div>
+</div>

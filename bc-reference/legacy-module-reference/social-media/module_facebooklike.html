@@ -1,0 +1,78 @@
+<h1>&#123;module_facebooklike&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>This module will display the Facebook like button.</p>
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+    <div id="named-params" class="beta">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_facebooklike moduleTemplateGroup="" language="en_US" url="" layout="" showFaces="true" width="450" verb="like" font="" colorScheme="" collection="my_custom_collection_name" template=""&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>moduleTemplateGroup</strong> - This will specify a module template group, which is a folder located in FTP under <strong>/ModuleTemplates/SocialMedia/FacebookLike/</strong></li>
+    <li><strong>language</strong> &ndash; Can be any <a href="https://www.facebook.com/translations/FacebookLocales.xml">Facebook locales</a> ISO language and country codes combined by an underscore (e.g en_US). If the parameter is not present, this will default to <em>en_US</em></li>
+    <li><strong>url</strong> &ndash;  If the parameter is not present, this will default to the current page URL. This must be a valid URL otherwise the Facebook plugin returns error when the button is pressed</li>
+    <li><strong>layout</strong> &ndash; standard, button_count, box_count. If the parameter is not present, the default value will be standard.</li>
+    <li><strong>show faces</strong> &ndash; <em>true</em>, <em>false</em>. If the parameter is not present, the default value will be <em>true</em></li>
+    <li><strong>width</strong> &ndash; Any positive integers. If the parameter is not present, the default value will be 450</li>
+    <li><strong>verb</strong> &ndash; like, recommend. If the parameter is not present, the default value will be like</li>
+    <li><strong>font</strong> &ndash; 	<em>arial</em>, <em>lucida</em> <em>grande</em>, <em>segoe ui</em>, <em>tahoma</em>, <em>trebuchet ms</em>, <em>verdana</em></li>
+    <li><strong>color</strong> scheme &ndash; <em>light</em>, <em>dark</em>. If the parameter is not present, the default value will be <em>light</em></li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+<li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+</ul>
+</div>
+<div class="layouts">
+<h2>This module is rendered with these layouts</h2>
+<ul>
+    <li>Module templates &gt; SocialMedia &gt; FacebookLike  &gt; Default  &gt; container.html </li>
+    <li> See this article for activation steps: <a href="/user-manual/crm/social-media/facebook-like">Facebook Integration</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_facebooklike, url="&#123;tag_itemurl_withhost&#125;"&#125;{% endraw %}</code> - this generates the Facebook Like button, using the full URL of the module item, for example <em>http://mysite.com/module-url</em>.</li>
+</ul>
+</div>
+  </div>
+    <div id="legacy">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_facebooklike, moduleTemplateGroup="", language="en_US", url="", layout="", showFaces="true", width="450", verb="like", font="", colorScheme=""&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>moduleTemplateGroup</strong> - This will specify a module template group, which is a folder located in FTP under <strong>/ModuleTemplates/SocialMedia/FacebookLike/</strong></li>
+    <li><strong>language</strong> &ndash; Can be any <a href="https://www.facebook.com/translations/FacebookLocales.xml">Facebook locales</a> ISO language and country codes combined by an underscore (e.g en_US). If the parameter is not present, this will default to <em>en_US</em></li>
+    <li><strong>url</strong> &ndash;  If the parameter is not present, this will default to the current page URL. This must be a valid URL otherwise the Facebook plugin returns error when the button is pressed</li>
+    <li><strong>layout</strong> &ndash; standard, button_count, box_count. If the parameter is not present, the default value will be standard.</li>
+    <li><strong>show faces</strong> &ndash; <em>true</em>, <em>false</em>. If the parameter is not present, the default value will be <em>true</em></li>
+    <li><strong>width</strong> &ndash; Any positive integers. If the parameter is not present, the default value will be 450</li>
+    <li><strong>verb</strong> &ndash; like, recommend. If the parameter is not present, the default value will be like</li>
+    <li><strong>font</strong> &ndash; 	<em>arial</em>, <em>lucida</em> <em>grande</em>, <em>segoe ui</em>, <em>tahoma</em>, <em>trebuchet ms</em>, <em>verdana</em></li>
+    <li><strong>color</strong> scheme &ndash; <em>light</em>, <em>dark</em>. If the parameter is not present, the default value will be <em>light</em></li>
+</ul>
+</div>
+<div class="layouts">
+<h2>This module is rendered with these layouts</h2>
+<ul>
+    <li>Module templates &gt; SocialMedia &gt; FacebookLike  &gt; Default  &gt; container.html </li>
+    <li> See this article for activation steps: <a href="/user-manual/crm/social-media/facebook-like">Facebook Integration</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_facebooklike, url="&#123;tag_itemurl_withhost&#125;"&#125;{% endraw %}</code> - this generates the Facebook Like button, using the full URL of the module item, for example <em>http://mysite.com/module-url</em>.</li>
+</ul>
+</div>
+</div>

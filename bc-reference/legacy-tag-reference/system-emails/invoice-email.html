@@ -1,0 +1,191 @@
+<h1>Invoice email layout</h1> 
+<div id="accessible">
+<h2>Accessible from</h2>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; System E-mails &gt; Invoice</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/OutboundEmails/invoice.html
+</li>
+</ul></div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicedate&#125;{% endraw %}</code></td><td class="description">Date of Invoice</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicenumber&#125;{% endraw %}</code></td><td class="description">Invoice number</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientname&#125;{% endraw %}</code></td><td class="description">Fullname of contact or company</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addressdefault&#125;{% endraw %}</code></td><td class="description">Default address for contact/company</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productcode&#125;{% endraw %}</code></td><td class="description">Product code</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productname&#125;{% endraw %}</code></td><td class="description">Name of product</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productdescription&#125;{% endraw %}</code></td><td class="description">Product description entered by you when generating order</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttaxamount&#125;{% endraw %}</code></td><td class="description">Amount of tax for one product ($)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productquantity&#125;{% endraw %}</code></td><td class="description">Product quantity</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttotal&#125;{% endraw %}</code></td><td class="description">Total amount for product (Product x Quantity + Tax Rate)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingextaxamount&#125;{% endraw %}</code></td><td class="description">Shipping cost exclusive of tax</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingtaxamount&#125;{% endraw %}</code></td><td class="description">Amount of tax for shipping</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicetotal&#125;{% endraw %}</code></td><td class="description">Total invoice amount</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_amountpaid&#125;{% endraw %}</code></td><td class="description">Amount already paid on invoice</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_amountoutstanding&#125;{% endraw %}</code></td><td class="description">Amount outstanding on invoice</td>
+        </tr>
+
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addressbilling&#125;{% endraw %}</code></td><td class="description">Billing address for order</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addresshome&#125;{% endraw %}</code></td><td class="description">Home address of the customer</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addressshipping&#125;{% endraw %}</code></td><td class="description">Shipping address for order</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addresswork&#125;{% endraw %}</code></td><td class="description">Work address of the customer</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_amountoutstandingactual&#125;{% endraw %}</code></td><td class="description">Amount of invoice actually outstanding only taking into account successful payments (pending payments excluded)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_amountpaidactual&#125;{% endraw %}</code></td><td class="description">Total successful payments received for an order. Excludes pending payments such as Check and COD.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_company&#125;{% endraw %}</code></td><td class="description">Company name the contact is associated to.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_countrycode&#125;{% endraw %}</code></td><td class="description">2-Letter Country Code, use it to indicate currency on invoice</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom1&#125;{% endraw %}</code></td><td class="description">Information stored in imported Custom 1 field</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom2&#125;{% endraw %}</code></td><td class="description">Information stored in imported Custom 2 field</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom3&#125;{% endraw %}</code></td><td class="description">Information stored in imported Custom 3 field</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom4&#125;{% endraw %}</code></td><td class="description">Information stored in imported Custom 4 field</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_customform&#125;{% endraw %}</code></td><td class="description">Displays all custom fields collected on the registration step of the checkout. (Please note that this tag does not accept any parameters)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_directdebitdate&#125;{% endraw %}</code></td><td class="description">The date automatic debit is processed for invoice</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_directdebitdays&#125;{% endraw %}</code></td><td class="description">Number of days before automatic debit is processed for invoice</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_directdebitinfo&#125;{% endraw %}</code></td><td class="description">Direct debit information relating to order. Only shown if order generated via recurring engine rather than by customer or Admin.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_directdebittype&#125;{% endraw %}</code></td><td class="description">Type of automatic debit for invoice, e.g. <em>Credit Card</em> or <em>Direct Debit</em></td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicediscountamount&#125;{% endraw %}</code></td><td class="description">Total discounted amount of invoice excluding shipping charges</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicetime&#125;{% endraw %}</code></td><td class="description">Time of Invoice</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicetotaltaxamount&#125;{% endraw %}</code></td><td class="description">Total tax associated with order (product tax + shipping tax)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicetotalextaxamount&#125;{% endraw %}</code></td><td class="description">Invoice total amount excluding tax (e.g. products ex tax + shipping ex tax)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_orderid&#125;{% endraw %}</code></td><td class="description">Order ID normally assigned to quotes. You can also use this value to search for the order in the Admin console's CRM &gt; Search panel</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_ordername&#125;{% endraw %}</code></td><td class="description">Name of order</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_phonecell&#125;{% endraw %}</code></td><td class="description">Cell phone number for contact/company</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_phonehome&#125;{% endraw %}</code></td><td class="description">Home phone number for contact/company</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_phonework&#125;{% endraw %}</code></td><td class="description">Work phone number for contact/company</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producteditorcontent&#125;{% endraw %}</code></td><td class="description">Product description as it appears in the WYSIWYG editor</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productextaxamount&#125;{% endraw %}</code></td><td class="description">Product price exclusive of tax</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productgrandtotal&#125;{% endraw %}</code></td><td class="description">Total cost of products (Total Product cost + Total Tax for Products)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productimage&#125;{% endraw %}</code></td><td class="description">Small image of the product</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productinctaxamount&#125;{% endraw %}</code></td><td class="description">Product price inclusive of tax</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productsubtotal&#125;{% endraw %}</code></td><td class="description">Total cost of all products exclusive of tax</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttaxrate&#125;{% endraw %}</code></td><td class="description">Tax rate applied to product (%)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttaxtotal&#125;{% endraw %}</code></td><td class="description">Total amount of tax payable for products</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttotalextax&#125;{% endraw %}</code></td><td class="description">Total amount for product excluding tax (Product x Quantity)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientaddress&#125;{% endraw %}</code></td><td class="description">Email address of the recipient</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientrelated&#125;{% endraw %}</code></td><td class="description">Displays the first contact/company related to the invoicee</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingdescription&#125;{% endraw %}</code></td><td class="description">Description of shipping product</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippinginstructions&#125;{% endraw %}</code></td><td class="description">Any specific shipping instructions that accompany the order</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingtaxrate&#125;{% endraw %}</code></td><td class="description">Tax rate applied to shipping (%)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingtotal&#125;{% endraw %}</code></td><td class="description">Total amount for shipping (Shipping cost + Tax Rate)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttaxpercentage,percentage&#125;{% endraw %}</code></td>
+            <td class="description">To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the product price will be paid as a sales tax, use the <code>{% raw %}&#123;tag_producttaxpercentage, 12.5&#125;{% endraw %}</code> tag where <em>12.5</em> is the percentage of tax to be paid.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totaltaxpercentage,percentage&#125;{% endraw %}</code></td><td class="description">To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the total price will be paid as a sales tax , use <code>{% raw %}&#123;tag_producttaxpercentage, 12.5&#125;{% endraw %}</code> tag where <em>12.5</em> is the percentage of tax to be paid.</td>
+        </tr>
+    </tbody>
+</table>
+</div>

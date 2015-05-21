@@ -1,0 +1,75 @@
+<h1>Blog comment list layout</h1> 
+<div id="modules">
+<h2>Is used by these modules:</h2>
+<ul>
+    <li>This is actually called through {% endraw %}&#123;tag_commentspaged&#125;{% endraw %}</code>, which can be found in the <a href="/dev-assets/reference/tag-reference/blogs/blog-post-details-layout.html">Detail Layout</a></li>
+    <li>If you use Liquid, the properties below are nested under <code>{% raw %}tag_commentspaged_(UNIQUE-ID-HERE){% endraw %}</code>.<!-- For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article. --></li>
+</ul>
+</div>
+<div id="accessible">
+<h2>Accessible from</h2>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; Blog Layouts</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/Blog/comment.html
+</li>
+</ul></div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_feedback&#125;{% endraw %}</code></td><td class="description">Customer comment</td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;fullName&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_fullname&#125;{% endraw %}</code></td><td class="description">Full name of the person who submitted the comment (anonymous if not available)</td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_fullname_nolink&#125;{% endraw %}</code></td><td class="description">Full name of the person who&nbsp;submitted the comment&nbsp;without a link&nbsp;(anonymous if not available)</td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;rating&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_rating&#125;{% endraw %}</code></td>
+            <td class="description">Rating in stars, the Liquid tag represents the numeric value of the rating </td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_usagedate&#125;{% endraw %}</code></td><td class="description">Date when comment was given</td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pendingComment&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_pendingcomments&#125;{% endraw %}</code></td><td class="description">Checks if status of the comment is set to "pending" from admin, in whic case outputs the following message: <em>Your comment is awaiting moderation!</em></td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;country&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"></td>
+            <td class="description">The country of the site visitor who posted the comment.<em></em></td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;flagUrl&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"></td>
+            <td class="description">The URL of the flag associated with the site visitor's country</td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;website&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"></td>
+            <td class="description">The value of the &quot;website&quot; field.<em></em></td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;postUrlWithHost&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"></td>
+            <td class="description">The URL of the post this comment is associated with.<em></em></td>
+        </tr>
+    </tbody>
+</table>
+<br />
+</div>

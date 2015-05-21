@@ -1,0 +1,67 @@
+<h1>Webapp edit layout</h1> 
+<div class="description" id="modules">
+<h2>Is used by these modules</h2>
+<p>
+Site visitors get to it only after clicking the links outputted by the tag {% raw %}&#123;tag_edit&#125;{% endraw %}</code> which can be found on the <a href="/dev-assets/reference/tag-reference/web-apps/web-app-list-layout.html">list layout</a>.
+</p>
+</div>
+<div id="accessible">
+<h2>Accessible from</h2>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; System Emails &gt; Web App Layouts &gt; WEBAPP_NAME</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong> /Layouts/WebApps/WEBAPP_NAME/edit.html (for example&nbsp;/Layouts/WebApps/Car Catalogue/edit.html)</li>
+  </ul>
+</li>
+</ul>
+</div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{% raw %}&#123;&#123;this.items[0].["large image_value"]&#125;&#125;{% endraw %}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by &quot;<em>this.</em>&quot;.</p>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+    <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemid&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemid&#125;{% endraw %}</code></td><td class="description">Item's system ID</td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag">&nbsp;</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_image&#125;{% endraw %}</code></td>
+            <td class="description">For &quot;Image&quot; type fields only - renders the image wrapped in a hyperlink</td>
+        </tr>
+        <tr>
+    <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;image&#125;&#125;{% endraw %}</code></td>
+    <td valign="top" class="legacy tag">&nbsp;</td>
+    <td class="description">For &quot;Image&quot; type fields only - renders the image's src, for example <em>/images/dog.jpeg</em></td>
+  </tr>
+        <tr>
+            <td valign="top" class="liquid tag">&nbsp;</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_image_value&#125;{% endraw %}</code></td>
+            <td class="description">For &quot;Image&quot; type fields only - renders the image's src</td>
+        </tr>
+        
+        <tr>
+            <td valign="top" class="liquid tag">&nbsp;</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_image_nolink&#125;{% endraw %}</code></td>
+            <td class="description">For &quot;Image&quot; type fields only - renders only the image</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;datasource_id&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_datasource_id&#125;{% endraw %}</code></td>
+            <td class="description">Renders the ID of the datasource field e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{% raw %}&#123;tag_country_id&#125;{% endraw %}</code></td>
+        </tr>
+  <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;datasource&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_datasource&#125;{% endraw %}</code></td>
+            <td class="description">Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{% raw %}&#123;tag_country&#125;{% endraw %}</code></td>
+    </tr>
+    </tbody>
+</table>
+<br />
+</div>

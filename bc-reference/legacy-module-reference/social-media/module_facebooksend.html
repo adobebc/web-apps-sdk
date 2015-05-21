@@ -1,0 +1,71 @@
+<h1>&#123;module_facebooksend&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>This module will display a Facebook Send button.</p>
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_facebooksend moduleTemplateGroup="" locale="en_US" url="" font="" colorScheme="light" collection="my_custom_collection_name" template=""&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>moduleTemplateGroup</strong> - This will specify a module template group, which is a folder located in FTP under <strong>/ModuleTemplates/SocialMedia/FacebookSend/</strong></li>
+    <li><strong>locale</strong> &ndash; Can be any <a href="https://www.facebook.com/translations/FacebookLocales.xml">Facebook locales</a> ISO language and country codes combined by an underscore (e.g <em>en_US</em>). If the parameter is not present, this will default to <em>en_US</em></li>
+    <li><strong>url</strong> &ndash;  If the parameter is not present, this will default to the current page URL. This must be a valid URL otherwise the Facebook plugin returns error when the button is pressed</li>
+    <li><strong>color scheme</strong> &ndash; <em>light</em>, <em>dark</em>. If the parameter is not present, the default value will be <em>light</em></li>
+    <li><strong>font</strong> &ndash; <em>arial</em>, <em>lucida grande</em>, <em>segoe ui</em>, <em>tahoma</em>, <em>trebuchet ms</em>, <em>verdana</em></li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+<li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+</ul>
+</div>
+<div class="layouts">
+<h2>This module is rendered with these layouts</h2>
+<ul>
+    <li>Module templates &gt; SocialMedia &gt; FacebookSend  &gt; Default  &gt; container.html </li>
+    <li>See this article for activation steps: <a href="/user-manual/crm/social-media/facebook-send">Facebook Integration</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_facebooksend, moduleTemplateGroup="", locale="en_US", url="", font="", colorScheme="light"&#125;{% endraw %}</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li>
+</ul>
+</div>
+
+  </div>
+    <div id="legacy">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_facebooksend, moduleTemplateGroup="", locale="en_US", url="", font="", colorScheme="light"&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>moduleTemplateGroup</strong> - This will specify a module template group, which is a folder located in FTP under <strong>/ModuleTemplates/SocialMedia/FacebookSend/</strong></li>
+    <li><strong>locale</strong> &ndash; Can be any <a href="https://www.facebook.com/translations/FacebookLocales.xml">Facebook locales</a> ISO language and country codes combined by an underscore (e.g <em>en_US</em>). If the parameter is not present, this will default to <em>en_US</em></li>
+    <li><strong>url</strong> &ndash;  If the parameter is not present, this will default to the current page URL. This must be a valid URL otherwise the Facebook plugin returns error when the button is pressed</li>
+    <li><strong>color scheme</strong> &ndash; <em>light</em>, <em>dark</em>. If the parameter is not present, the default value will be <em>light</em></li>
+    <li><strong>font</strong> &ndash; <em>arial</em>, <em>lucida grande</em>, <em>segoe ui</em>, <em>tahoma</em>, <em>trebuchet ms</em>, <em>verdana</em></li>
+</ul>
+</div>
+<div class="layouts">
+<h2>This module is rendered with these layouts</h2>
+<ul>
+    <li>Module templates &gt; SocialMedia &gt; FacebookSend  &gt; Default  &gt; container.html </li>
+    <li>See this article for activation steps: <a href="/user-manual/crm/social-media/facebook-send">Facebook Integration</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_facebooksend, moduleTemplateGroup="", locale="en_US", url="", font="", colorScheme="light"&#125;{% endraw %}</code> - will display a content of a single catalogue according to the Individual Catalogue Layout inside a new window</li>
+</ul>
+</div>
+</div>

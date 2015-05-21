@@ -1,0 +1,45 @@
+<h1>&#123;module_workzip&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>Displays Customer's Work Zipcode (must be logged in to secure zone).</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</div>
+<ul id="tabs" class="beta">
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>  <div id="named-params" class="beta">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_workzip collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+</ul>
+</div><div class="layouts">
+<h2>This module can be rendered:</h2>
+<ul>
+    <li><strong>in plain text</strong></li>
+    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>{% raw %}my_custom_collection_name.zipCode{% endraw %}</code></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_workzip&#125;{% endraw %}</code> - displays the ZIP code in plain text</li><li><code>{% raw %} &#123;module_workzip collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
+</ul>
+</div>
+</div>
+<div id="legacy">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_workzip&#125;{% endraw %}</code></pre>
+</div>
+<div class="examples">
+  <h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_workzip&#125;{% endraw %}</code> - displays the ZIP code in plain text</li>
+</ul>
+</div>
+</div>

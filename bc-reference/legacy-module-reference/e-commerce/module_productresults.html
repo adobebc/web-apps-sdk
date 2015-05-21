@@ -1,0 +1,319 @@
+<h1>&#123;module_productresults&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>This module can only be used in conjuction with a product search form. Whenever you insert a product search form into a page the system also adds the &#123;module_productresults&#125; module right after the form. When viewed in the front end this module does not render anything until the form's "Search" button is presed and a search is triggered.  This module and the product search form can also be placed on different pages, take a look at <a target="new" href="http://forums.adobe.com/docs/DOC-1775">this article</a> for more details on this particular setup.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta">
+
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_productresults render=&quot;items&quot; rowCount=&quot;3&quot; targetFrame=&quot;_blank&quot; resultPerPage=&quot;6&quot; sortType=&quot;Weight&quot; hideEmptyMessage=&quot;true&quot; useLi=&quot;false&quot; emptySearchResultString=&quot;not found&quot; hideSecuredItems=&quot;true&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>render</strong> - for this module this can only be <em>item</em>. For more information on how to use this parameter take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+    <li><strong>rowCount</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+    <li><strong>targetFrame</strong> - possible values are  <em>_blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
+    <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page.</li>
+    <li><strong>sortType</strong> - sortType can be alphabetical, price, date, or weight. Do note the sortType is ignored if the "Sort By" field is present in the product search form.</li>
+    <li><strong>hideEmptyMessage</strong> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed</li>
+    <li><strong>useLi</strong> - specify <strong>true</strong> to render the output in Li's instead of tables</li>
+    <li><strong>hideSecuredItems</strong> - do not show items that are in a secure zone</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<ul>
+    <li><strong>the individual product layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use: <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small reference page</a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
+</ul>
+
+<table width="100%" class="data-bordered">
+
+<thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+    <tr>
+    <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;title&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"></td>
+         <td class="description">The product's title</td></tr>
+<tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtocart&#125;{% endraw %}</code></td><td class="description">Ability to add products to the shopping cart (vertical layout)</td>
+    </tr>
+<tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtocartinputfield&#125;{% endraw %}</code></td><td class="description">Input field to enter product quantity</td>
+    </tr>
+<tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtofavorites,add_Image, remove_Image&#125;{% endraw %}</code></td><td class="description">Add product to favorites list. Optionally customize to display your own custom image for adding and removing.</td>
+    </tr>
+<tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;attributes&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_attributes&#125;{% endraw %}</code></td><td class="description">Renders attribute dropdowns for a given product</td>
+    </tr>
+<tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code></td><td class="description">Replace Your Text with your own text; for example, <em>Click for more information</em></td>
+    </tr>
+<tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_buynow&#125;{% endraw %}</code></td><td class="description">Add to cart and redirects to check out</td>
+    </tr>
+<tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;countryCode&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_countrycode&#125;{% endraw %}</code></td><td class="description">Display the country code; for example, <em>AU</em></td>
+    </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;countryCurrencyFormat&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_countrycurrencyformat&#125;{% endraw %}</code></td><td class="description">Display the country currency code; for example, <em>AUD</em></td>
+      </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;currencyFormat&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_currencyformat&#125;{% endraw %}</code></td><td class="description">Display the currency format; for example, <em>$</em></td>
+      </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;custom1&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom1&#125;{% endraw %}</code></td><td class="description">Custom field #1. Use to display any information about a product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;custom2&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom2&#125;{% endraw %}</code></td><td class="description">Custom field #2. Use to display any information about a product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;custom3&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom3&#125;{% endraw %}</code></td><td class="description">Custom field #3. Use to display any information about a product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;custom4&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom4&#125;{% endraw %}</code></td><td class="description">Custom field #4. Use to display any information about a product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_description&#125;{% endraw %}</code></td><td class="description">Description of the product (Editor content)</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;discountPrice&#125;&#125;{% endraw %}</code></td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_discountprice&#125;{% endraw %}</code></td><td class="description">The price if a discount applies to the current customer otherwise the normal sale price.</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_expirydate&#125;{% endraw %}</code></td><td class="description">Expiration date of product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"></td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_grouping&#125;{% endraw %}</code></td><td class="description">Pop-up menu of product attributes used to select a product to add to cart</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;groupingList&#125;&#125;{% endraw %}</code></td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_groupinglist&#125;{% endraw %}</code></td><td class="description">List of product attributes used to switch between products</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;inStock&#125;&#125;{% endraw %}</code></td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_instock, syncWithAttributes, noSelectionMessage, disabledSelectionMessage&#125;{% endraw %}</code></td>
+  <td class="description">Number of units in stock.
+    <p>Parameters: </p>
+    <ul>
+      <li><em>syncWithAttributes</em> – true or false</li>
+      <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
+      <li><em>disabledSelectionMessage</em> – specify the message displayed when site customer has selected a variation that is disabled</li>
+    </ul>
+  </td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;url&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemurl_nolink&#125;{% endraw %}</code></td><td class="description">URL to the item referred, without host</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;urlWithHost&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemurl_withhost&#125;{% endraw %}</code></td><td class="description">URL to the item referred, with host</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_largeimage&#125;{% endraw %}</code></td><td class="description">Large image for product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;largeImageUrl&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_largeimage_path&#125;{% endraw %}</code></td><td class="description">Outputs the file path of the image; for example <em>/images/imagename.jpg</em></td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;maxUnits&#125;&#125;{% endraw %}</code></td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_maxunits&#125;{% endraw %}</code></td><td class="description">Maximum units</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;minUnits&#125;&#125;{% endraw %}</code></td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_minunits&#125;{% endraw %}</code></td><td class="description">Minimum units</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name_nolink&#125;{% endraw %}</code></td><td class="description">Name of product (does not link to product details)</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Name of product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;onOrder&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_onorder&#125;{% endraw %}</code></td><td class="description">Number of units on order</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;isOnSale&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_onsale&#125;{% endraw %}</code></td><td class="description">Renders <em>1</em> if product on sale, otherwise <em>0</em>. If page elements need to be altered for products on sale, then embed tag in relevant javascript.</td>
+        </tr>
+<tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productCode&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productcode&#125;{% endraw %}</code></td><td class="description">Product code</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_releasedate&#125;{% endraw %}</code></td><td class="description">Release date of item</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;reorder&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_reorder&#125;{% endraw %}</code></td><td class="description">Number of units to reorder threshold</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;retailPrice&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_retailprice&#125;{% endraw %}</code></td><td class="description">Retail price of the product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;salePrice&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_saleprice&#125;{% endraw %}</code></td><td class="description">Sale price of the product (the amount that customers are charged)</td>
+        </tr>
+        <tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;wholesalerPrice&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_wholesalerprice&#125;{% endraw %}</code></td>
+         <td class="description">Wholesaler  price of the product (the amount &quot;wholesale&quot; type customers are charged)</td>
+        </tr>
+
+<tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;smallImage&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_smallimage_nolink&#125;{% endraw %}</code></td><td class="description">Small image for product (does not link to product details)</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_smallimage&#125;{% endraw %}</code></td><td class="description">Small image for product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;smallImageUrl&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_smallimage_path&#125;{% endraw %}</code></td><td class="description">Outputs the file path of the image; for example <em>/images/imagename.jpg</em></td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;tags&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_tags&#125;{% endraw %}</code></td><td class="description">Product tags (you can use field for anything)</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;tax&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_tax&#125;{% endraw %}</code></td><td class="description">Tax amount for the product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;taxCode&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_taxcode&#125;{% endraw %}</code></td><td class="description">Tax code name used for item</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;taxRate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_taxrate&#125;{% endraw %}</code></td><td class="description">Tax rate used for item (%)</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalDiscountPrice&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totaldiscountprice&#125;{% endraw %}</code></td><td class="description">Total discounted price of the product: Discount Price + Tax.</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalPrice&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalprice&#125;{% endraw %}</code></td><td class="description">Total price of the productT: Sale Price + Tax</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalRetailPrice&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalretailprice&#125;{% endraw %}</code></td><td class="description">Total retail price of the product: Retail Price + Tax</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;unitType&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_unittype&#125;{% endraw %}</code></td><td class="description">Product unit type: Single, by the dozen</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_volumeprices&#125;{% endraw %}</code></td><td class="description">Displays volume pricing for product</td>
+        </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;id&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productid&#125;{% endraw %}</code></td><td class="description">Displays product system id</td>
+        </tr>
+<tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;catalogId&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_catalogueid&#125;{% endraw %}</code></td><td class="description">Displays catalog system id the product is currently displayed in</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;inventoryByAttributes&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"></td>
+         <td class="description">Renders a JSON object that containsthe following parameters:
+         <ul>
+         <li>id</li>
+         <li>sku</li>
+         <li>inStock</li>
+         <li>onOrder</li>
+         <li>enabled</li>
+         <li>attributeString</li>
+         <li>attributes</li>
+         </ul></td>
+      </tr>
+</tbody>
+</table>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_productresults rowCount=&quot;4&quot; targetFrame=&quot;_blank&quot; resultsPerPage=&quot;10&quot; hideEmptyMessage=&quot;true&quot;&#125;{% endraw %}</code> - displays the products that match the search criteria 4 per rotw, 10 per page and hides the "No products found matching your query." if no products are found. The structure rendered is a table. When clicking the product name the detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in a new tab.</li>
+    <li><code>{% raw %}&#123;module_productresults targetFrame=&quot;_self&quot; resultsPerPage=&quot;2&quot; hideEmptyMessage=&quot;true&quot;&#125;{% endraw %}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure rendered is an unordered list. When clicking the product name the detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in the same tab.</li>
+    <li><code>{% raw %}&#123;module_productresults rowCount=&quot;2&quot; targetFrame=&quot;_self&quot; resultsPerPage=&quot;2&quot; hideEmptyMessage=&quot;true&quot;  template="/layouts/custom/moduleproductresults.tpl"&#125;{% endraw %}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure is no longer an unordered list as it is in the example above, the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> is used instead.</li><li><code>{% raw %} &#123;module_productresults collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_productresults, rowLength, targetFrame, resultsPerPage, sortType, hideEmptyMessage, useLi&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
+    <li><strong>targetFrame</strong> - possible values are  <em>_blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
+    <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page.</li>
+    <li><strong>sortType</strong> - sortType can be alphabetical, price, date, or weight. Do note the sortType is ignored if the "Sort By" field is present in the product search form.</li>
+    <li><strong>hideEmptyMessage</strong> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed</li>
+    <li><strong>UseLi</strong> - specify <strong>true</strong> to render the output in Li's instead of tables</li>
+    <li><strong>hideSecuredItems</strong> - do not show items that are in a secure zone</li>
+    <li><strong>template</strong> - specify the custom template you want to render this module with</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<ul>
+    <li>Online Shop Layouts &gt; <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_productresults,4,_blank,10,,true&#125;{% endraw %}</code> - displays the products that match the search criteria 4 per rotw, 10 per page and hides the "No products found matching your query." if no products are found. The structure rendered is a table. When clicking the product name the detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in a new tab.</li>
+    <li><code>{% raw %}&#123;module_productresults,,_self,2,,,true&#125;{% endraw %}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure rendered is an unordered list. When clicking the product name the detail view (rendered using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in the same tab.</li>
+    <li><code>{% raw %}&#123;module_productresults,2,_self,2,,,true  template="/layouts/custom/moduleproductresults.tpl"&#125;{% endraw %}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure is no longer an unordered list as it is in the example above, the <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> is used instead.</li>
+</ul>
+</div>
+</div>

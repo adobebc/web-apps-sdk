@@ -1,0 +1,70 @@
+<h1>Email campaign layout</h1> 
+<div id="tags">
+<table width="100%" class="data-bordered">
+    <tbody>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtofavorites,add_Image, remove_Image&#125;{% endraw %}</code></td><td class="description">Add item to favorites list. Optionally customize to display your own custom image for adding and removing.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_anniversarytitle&#125;{% endraw %}</code></td><td class="description">Title of anniversary date relevant to each recipient (use with Anniversary 1-5campaigns only)</td>
+        </tr>
+		<tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_deliverydate&#125;{% endraw %}</code></td><td class="description">Outputs the date on which the campaign will be sent. Can be used in the campaign subject</td>
+        </tr>
+		<tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientPasswordResetLink&#125;{% endraw %}</code></td><td class="description">Hyperlinks to the password reset form.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientemail&#125;{% endraw %}</code></td><td class="description">Email address of the recipient</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientFirstName&#125;{% endraw %}</code></td><td class="description">First name of the recipient (replaces with 'Friend' if first name is empty)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientLastName&#125;{% endraw %}</code></td><td class="description">Last name of the recipient</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientname&#125;{% endraw %}</code></td><td class="description">Full name of the recipient (replaces with 'Friend' if full name is empty)</td>
+        </tr>
+
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientpassword&#125;{% endraw %}</code></td><td class="description">Password of the recipient. Use to login to a Secure Zone - <span style="color: red;">DEPRECATED - For security purposes, passwords are no longer sent</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientPasswordResetLink&#125;{% endraw %}</code></td><td class="description">Link for user to reset/update existing password</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientusername&#125;{% endraw %}</code></td><td class="description">Username of the recipient. Use to login to a Secure Zone</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientExternalID&#125;{% endraw %}</code></td><td class="description">ExternalID of the recipient (specified when importing contacts only).</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_siteurl&#125;{% endraw %}</code></td><td class="description">URL to your public website</td>
+        </tr>
+		 <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_siteUrlEncoded&#125;{% endraw %}</code></td><td class="description">encoded URL to your public website</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_unsubscribe&#125;{% endraw %}</code></td><td class="description">Hyperlink to enable recipients to opt-out of all future newsletters. This tag is mandatory. <em>NOTE: you can customise the link text that tag renders using this method </em>&#123;tag_unsubscribe,YourCustomText&#125;{% endraw %}</code></td>
+        </tr>
+         <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_unsubscribeurl&#125;{% endraw %}</code></td><td class="description">URL to the opt-out all newsletters page
+</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_unsubscribelist&#125;{% endraw %}</code></td><td class="description">Hyperlink to enable recipients to unsubscribe from the list associated withthiscampaign. The customer will continue to receive other newsletters.<em> NOTE: you can customise the link text that tag renders using this method </em>&#123;tag_unsubscribelist,YourCustomText&#125;{% endraw %}</code></td>
+        </tr>
+   		<tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_unsubscribelisturl&#125;{% endraw %}</code></td><td class="description">URL to unsubscribe from the list associated with this campaign page</td>
+        </tr>
+        <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_viewinbrowser&#125;{% endraw %}</code></td><td class="description">View this email in browser hyperlink.<em> NOTE: you can customise the link text that tag renders using this method </em>&#123;tag_viewinbrowser,YourCustomText&#125;{% endraw %}</code> Also note, if you customize the text from "Unsubscribe" to something else, the "Unsubscribe" link will automatically be appended to the bottom of your newsletter</td>
+        </tr>
+		<tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_viewinbrowserurl&#125;{% endraw %}</code></td><td class="description">View this email in browser URL</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<ul id="tabs"></ul>

@@ -1,0 +1,75 @@
+<h1>Online shop overall layout</h1> 
+<div id="accessible">
+<h2>Accessible from</h2>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Online Shop Layouts </li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/OnlineShop/page_content.html
+</li>
+</ul></div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_browsepanel&#125;{% endraw %}</code></td><td class="description">Displays the browse panel for current catalogue. The fyll syntax is &#123;tag_browsepanel, hideOnSale, hidePriceBrackets, hideSubCatalogues&#125; Example of use: &#123;tag_browsepanel,true,false,true&#125;<br/>
+        <!-- For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article. --></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_cataloguebreadcrumbs&#125;{% endraw %}</code></td><td class="description">Catalogue breadcrumbs help customers easily navigate between related catalogues.<br/>
+        <!-- For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article. --></td>
+        </tr>
+        <tr> <td valign="top" class="liquid tag"></td>
+            <td valign="top" class="legacy tag"><p><code>{% raw %}&#123;tag_cataloguelist&#125;{% endraw %}</code>
+              </td><td class="description">Lists the sub-catalogues in the current catalogue, for example &#123;tag_cataloguelist,x&#125; where <em>x</em> is the number of catalogues per row).</p>
+              <p><span class="cellcontent">The full syntax is &#123;tag_cataloguelist, rowLength, targetFrame, notUsed, sortType, hideEmptyMessage, list/table&#125;
+              </p>
+              <p><span class="cellcontent">Change: &#123;tag_cataloguelist,4&#125; to &#123;tag_cataloguelist,4,,,,,true&#125; to display in an unordered list structure.<br />
+              
+        <!-- For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article. -->
+            </p></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_description&#125;{% endraw %}</code></td><td class="description">Catalogue description</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Catalogue name</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_nextpage&#125;{% endraw %}</code></td><td class="description">Next page link to traverse products in current catalogue (can be customized to use image)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_pagination&#125;{% endraw %}</code></td><td class="description">Enhanced pagination e.g. <em>1 .. 2 3 4 5 .. 10</em> to provide fast access to adjacentpages</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_previouspage&#125;{% endraw %}</code></td><td class="description">Previous page link to traverse products in current catalogue (can be customized to useimage)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productlist, perRow, target, perPage, sort, hideEmptyMessage, listType&#125;{% endraw %}</code></td><td class="description">Lists the products in the current catalogue. Use &#123;tag_productlist,u,v,w,x,y,z&#125; where:
+            <ul>
+            <li> <em>u</em> is the number of products per row</li>
+            <li><em>v</em> is the target frame, e.g. <em>_blank</em> or leave empty</li>
+            <li><em>w</em> is the number of products per page (limit of 500 products per page)</li>
+            <li><em>x</em> is the sort type, e.g. <em>Price</em> or <em>Alphabetical</em></li>
+            <li><em>y</em> allows you to hide empty message, e.g. <em>This catalog has no products</em></li>
+            <li><em>z </em>is list type, for example change {% raw %}&#123;tag_productlist,4&#125;{% endraw %} to {% raw %}&#123;tag_productlist,4,,,,,true&#125;{% endraw %} to display in an unordered list structure.
+            </li></ul>
+        <!-- For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article. --></td>
+        </tr>
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,55 @@
+<h1>&#123;module_facebooklogin&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>This module alows site visitors to log into your site using their Facebook accounts. In order to integrate Facebook login with your site, you will first need to setup a Facebook application</p>
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+    <div id="named-params" class="beta">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;&#123;module_facebooklogin buttonImage="/buttons/fb.png" buttonText="FB Login" zoneId="51" autoSubscribeNewUsers="true" redirectToPage="true" pageId="13543359" collection="my_custom_collection_name" template=""&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>buttonImage</strong> - Image used to display the Facebook login button</li>
+    <li><strong>buttonText</strong> - Text used in the Facebook login button</li>
+    <li><strong>zoneId</strong> - The ID of the secure zone to log user into (Default value <em>-1</em>)</li>
+    <li>autoSubscribeNewUsers - automatically subscribe this user to the secure zone</li>
+    <li><strong>redirectToPage</strong> - can be either true or false - indicates whether to redirect the user to a particular page after logging in</li>
+    <li><strong>pageId</strong> - the pageID to redirect the user after logging in</li>
+    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+<li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li>Please refer to this <a href="/user-manual/crm/social-media/facebook-login"> article</a> for a complete reference</li>
+</ul>
+</div>
+  </div>
+    <div id="legacy">
+<div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_facebooklogin,LoginImage,LoginText,ZoneId&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>LoginImage</strong> - Image used to display the Facebook login button</li>
+    <li><strong>LoginText</strong> - Text used in the Facebook login button</li>
+    <li><strong>ZoneId</strong> - The ID of the secure zone to log user into (Default value <em>-1</em>)</li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li>Please refer to this <a href="/user-manual/crm/social-media/facebook-login"> article</a> for a complete reference</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,27 @@
+<h1>&#123;module_json&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p><code>{% raw %}&#123;module_json&#125;{% endraw %}</code>  renders the contents of a JSON file you specify according to a custom template. </p>
+<p>To learn more about the &#123;module_json&#125; file please take a look at the <a href="/developers/beta/render-your-own-json-files-using-module_json">Render your own JSON files using module_json</a> article</p>
+</div><div id="named-params" class="beta">
+
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_json json=&quot;the-json-file&quot; template=&quot;/the-template-to-use&quot;&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>json</strong> - the path to the JSON file (the data source file)</li>
+    <li><strong>template</strong> - the template file you want to use to represent the data set with</li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %} &#123;module_json, json="/module_json/data.json" template="/module_json/template.tpl"&#125;{% endraw %}</code> - this will use the <em>data.json</em> file and render it using the <em>template.tpl</em> template</li>
+</ul>
+
+</div>
+</div>
+<ul id="tabs"></ul>

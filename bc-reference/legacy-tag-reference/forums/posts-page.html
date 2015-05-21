@@ -1,0 +1,57 @@
+<h1>Forum post page layout</h1> 
+<div id="modules">
+<h2>Is used by these modules</h2>
+<p>
+This layout is not used by any modules. The site visitor gets to see it after clicking on a topic's link.
+</p>
+</div>
+<div id="accessible">
+<h2>Accessible from</h2>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Forum Layouts &gt; Posts Page</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/Forum/posts_page.html
+</li>
+</ul></div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_editor&#125;{% endraw %}</code></td><td class="description">Placeholder for the WYSIWYG editor after the new/reply post link is selected</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_forumdescription&#125;{% endraw %}</code></td><td class="description">Description of  forum</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_forumname&#125;{% endraw %}</code></td><td class="description">Name of the forum</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_newpostlink&#125;{% endraw %}</code></td><td class="description">Hyperlink to make a new entry for the current topic</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_postlist,date&#125;{% endraw %}</code></td><td class="description">Normally when viewing a forum thread, the posts are displayed from oldest to newest. However it is possible to sort posts in reverse date order, i.e. newest to oldest. To utilize this feature simply go to Admin-&gt; More Customization Options -&gt; Forum Layouts -&gt; Post Page and change {% raw %}&#123;tag_postlist&#125;{% endraw %}</code> to {% raw %}&#123;tag_postlist,date&#125;{% endraw %}</code>. This tag is rendered using the <a href="/dev-assets/reference/tag-reference/forums/individual-post-layout.html">individual post layout</a></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_topicname&#125;{% endraw %}</code></td><td class="description">Name of topic</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_topicsubscribe&#125;{% endraw %}</code></td><td class="description">Hyperlink allowing the user to subscribe to the current topic</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+</div>

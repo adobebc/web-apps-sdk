@@ -1,0 +1,122 @@
+<h1>&#123;module_announcement&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>This module displays a list of news items to a page.
+</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta">
+
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_announcement render=&quot;item|collection&quot; filter="item" itemid="newsId" noTemplate="true" effect="ajax" targetFrame="blank" sortType="alphabetical" collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li><strong>item</strong> - individual item</li>
+        <li><strong>all</strong> - all items</li>
+        <li><strong>latest</strong> - latest items</li>
+        <li><strong>latestClassified</strong> - latest items in a category</li>
+        
+        <li><strong>random</strong> - random item</li>
+        <li><strong>randomClassified</strong> - displays a random item in a particular category</li>
+        <li><strong>classified</strong> - all the items in a category</li>
+    </ul>
+    </li>
+    <li><strong>itemid</strong> &ndash; the itemID or the categoryID, depending on the filter type can be hoe many items to display</li>
+    <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty or you can also pass <strong>false</strong></li>
+    <li><strong>effect</strong> &ndash; enter <em>ajax</em> (see the examples below) if you want to take advantage of the latest web technologies for a better customer experience</li>
+    <li><strong>targetFrame</strong> &ndash; the frame in which to open the item in</li>
+    <li><strong>rowLength</strong> - this parameter is only used when the filter is either "l" or "cl" and dictates how many items are rendered per row</li>
+    <li><strong>resultsPerPage </strong>- number of items per page</li>
+    <li><strong>hideEmptyMessages </strong>- hide the default text rendered when no announcements are found</li>
+    <li><strong>sortType</strong> - if you leave this parameter blank, by default announcements will be sorted from the latest to the oldest where the latest is displayed first
+  <ul>
+    <li><strong>alphabetical</strong> - will sort announcements alphabetically</li>
+    <li><strong>datereverse</strong> - will sort announcements in the reverse order, that is from the oldest to the latest</li>
+    </ul>
+    </li>
+        <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<ul>
+    <li>News Layouts &gt;&nbsp;<a href="/dev-assets/reference/tag-reference/news/news-list-layout.html" title="News List Layout">News List Layout</a></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;all&quot; targetFrame=&quot;_parent&quot;&#125;{% endraw %}</code> - will display all news items and open them in parent frame </li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;last&quot; itemID=&quot;5&quot;&#125;{% endraw %}</code> - will display the latest 5 news</li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; sortType=&quot;datereverse&quot;&#125;{% endraw %}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detail content opens right underneath the news name and all the news items will be displayed from the oldest to the latest </li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;latestClassified&quot; itemid=&quot;34392&quot; effect=&quot;ajax&quot; resultsPerPage=&quot;5&quot;&#125;{% endraw %}</code> - will display the 5 latest news items in the category with the ID 34392</li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;all&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; template="/Layouts/Custom/news.tpl"&#125;{% endraw %}</code> - will display all the news items using the "ajax" effect using the news.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> </li>
+    <li><code>{% raw %} &#123;module_announcement filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_announcement, filter, id, noTemplate, effect, target, reserved, resultsPerPage, reserved, length, sort&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li>i - individual item</li>
+        <li>a - all items</li>
+        <li>c - all items in some category</li>
+        <li>cl - latest items in some category</li>
+        <li>l - latest items</li>
+        <li>r - random item</li>
+        <li>cr - displays a random item in a particular category</li>
+    </ul>
+    </li>
+    <li><strong>id</strong> &ndash; system generated (do not change)</li>
+    <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in true, otherwise leave empty</li>
+    <li><strong>effect</strong> &ndash; enter <em>ajax</em> (see the examples below) if you want to take advantage of the latest web technologies for a better customer experience</li>
+    <li><strong>target</strong> &ndash; the frame in which to open the item in</li>
+    <li><strong>reserved</strong> - for use in a future release</li>
+    <li><strong>resultsPerPage </strong>- number of items per page</li>
+    <li><strong>length</strong> - this parameter is only used when the filter is either "l" or "cl" and dictates how many items are rendered per row</li>
+    <li><strong>sort</strong> - if you leave this parameter blank, by default announcements will be sorted from the latest to the oldest where the latest is displayed first
+<ul>
+        <li><strong>alphabetical</strong> - will sort announcements alphabetically</li>
+        <li><strong>datereverse</strong> - will sort announcements in the reverse order, that is from the oldest to the latest</li>
+    </ul>
+    </li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<ul>
+    <li>News Layouts &gt;&nbsp;<a href="/dev-assets/reference/tag-reference/news/news-list-layout.html" title="News List Layout">News List Layout</a></li>
+    <li>This module also supports <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_announcement,a,,,,_parent&#125;{% endraw %}</code> - will display all news items and open them in parent frame </li>
+    <li><code>{% raw %}&#123;module_announcement,l,5&#125;{% endraw %}</code> - will display the latest 5 news</li>
+    <li><code>{% raw %}&#123;module_announcement,r,,true,ajax,_blank,,,,,datereverse&#125;{% endraw %}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detail content opens right underneath the news name and all the news items will be displayed from the oldest to the latest </li>
+    <li><code>{% raw %}&#123;module_announcement,cl,34392,,ajax,,,,,5&#125;{% endraw %}</code> - will display the 5 latest news items in the category with the ID 34392</li>
+    <li><code>{% raw %}&#123;module_announcement,a,,,ajax,_blank template="/Layouts/Custom/news.tpl"&#125;{% endraw %}</code> - will display all the news items using the "ajax" effect using the news.tpl <a href="/dev-assets/reference/tag-reference/custom-templates/custom-templates.html">custom template</a> </li>
+</ul>
+</div>
+</div>

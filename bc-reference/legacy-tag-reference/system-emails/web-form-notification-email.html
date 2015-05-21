@@ -1,0 +1,32 @@
+<h1>Web form notification email</h1> 
+<div id="accessible">
+<h2>Accessible from</h2>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Web Forms &gt; [Select Web Form] &gt; Autoresponder E-mail</li>
+</ul></div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
+  
+  <tbody>
+    <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_emailaddress&#125;{% endraw %}</code></td><td class="description">Email address of the recipient (the email address must be present on form)</td>
+        </tr>
+    <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientFirstName&#125;{% endraw %}</code></td><td class="description">First name of the recipient (the first name must be present on the form)</td>
+        </tr>
+    <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientLastName&#125;{% endraw %}</code></td><td class="description">Last name of the recipient (the last name must be present on the form)</td>
+        </tr>
+    <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientname&#125;{% endraw %}</code></td><td class="description">Full name of the recipient (the first name and last name must be present on form)</td>
+        </tr>
+    <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_verificationurl&#125;{% endraw %}</code></td><td class="description">The verification url for customer to select and opt-in to your newsletter</td>
+        </tr>
+    <tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_webformresults&#125;{% endraw %}</code></td><td class="description">Summary of the form that was filled out</td>
+        </tr>
+  </tbody>
+</table>
+</div>

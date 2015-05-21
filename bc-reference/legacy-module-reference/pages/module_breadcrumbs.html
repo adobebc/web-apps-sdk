@@ -1,0 +1,66 @@
+<h1>&#123;module_breadcrumbs&#125;</h1> 
+
+<div id="description">
+<h2>Description</h2>
+<p>Displays the breadcrumbs for pages according to the hierarchy defined in the site Site Map (Site Settings -&gt; Site Map)</p>
+<p class="alert alert-info"><strong>Note:</strong> This module only works for pages. To control the hierarchy of pages see the <a href="/user-manual/site-design/Pages/using-the-sitemap-to-keep-your-pages-organized" title="Using the sitemap to keep your pages organized">Using the sitemap to keep your pages organized</a> article.</p>
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta">
+
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_breadcrumbs render="item|collection" collection=&quot;my_custom_collection_name&quot; separator=&quot;|&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+<li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>separator</strong> - the separator which will be used between the links</li>
+    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_breadcrumbs separator=&quot;|&quot;&#125;{% endraw %}</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
+      <pre class="language-markup">
+<code>{% raw %}
+    &lt;a href="/parentpage.htm"&gt;Parentpage&lt;/a&gt;
+    " | "
+    &lt;a href="/childpage.htm"&gt;Childpage&lt;/a&gt;
+{% endraw %}</code>	</pre>
+	</li>
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_breadcrumbs, separator&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>separator</strong> - the separator which will be used between the links</li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_breadcrumbs, |&#125;{% endraw %}</code> - assuming the page "Childpage" is a child item of "Parentpage" this module will render this HTML code:
+<pre class="language-markup">
+<code>{% raw %}
+    &lt;a href="/parentpage.htm"&gt;Parentpage&lt;/a&gt;
+    " | "
+    &lt;a href="/childpage.htm"&gt;Childpage&lt;/a&gt;
+{% endraw %}</code>	</pre>
+	</li>
+</ul>
+</div>
+</div>

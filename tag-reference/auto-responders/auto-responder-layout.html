@@ -1,39 +1,106 @@
-<h1>Auto responders</h1> 
-<div id="description">
-<p>Applies to all auto responders</p>
+<html hola_ext_inject="disabled">
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Auto Responders</h1>
+
+<div id="modules">
+<p>Used in web form email auto responders.</p>
 </div>
-<div id="tags">
-<h2>Renders these tags</h2>
-<table width="100%" class="data-bordered">
-  
-  <thead>
-<tr>
-<td class="liquid">Liquid tag</td>
-<td class="legacy">Legacy tag</td>
-<td class="description">Description</td>
-</tr>
-</thead>
-    <tbody>
-    <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_emailaddress&#125;{% endraw %}</code></td><td class="description">Email address of the recipient (email address must be present on form)</td>
-        </tr>
-    <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientFirstName&#125;{% endraw %}</code></td><td class="description">First name of the recipient (first name must be present on the form)</td>
-        </tr>
-    <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientLastName&#125;{% endraw %}</code></td><td class="description">Last name of the recipient (last name must be present on the form)</td>
-        </tr>
-    <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_recipientname&#125;{% endraw %}</code></td><td class="description">Full name of the recipient (first name and last name must be present on form)</td>
-        </tr>
-    <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_verificationurl&#125;{% endraw %}</code></td><td class="description">The verification url for customer to select and opt-in to your newsletter</td>
-        </tr>
-  </tbody>
+
+<div id="accessible">
+<h2>Accessible From</h2>
+
+<ul>
+	<li><strong>Admin Console:</strong>&nbsp;Site Manager &gt; Web Forms&nbsp;&gt; Auto Responder</li>
+	<li><strong>SFTP &amp; Develop Mode:</strong> Not availible.</li>
+</ul>
+</div>
+
+<p>{%- if globals.cookie.liquid == false %}</p>
+
+<div id="legacy-tags">
+<h2>Legacy Tags</h2>
+
+<table class="data-bordered" width="100%">
+	<thead>
+		<tr>
+			<td class="tag">Tag</td>
+			<td class="description">Description</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{% endraw %}</td>
+			<td>Outputs the results from the web form submission.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_recipientfirstname}{% endraw %}</td>
+			<td>Will Render the CRM Customer&#39;s first name.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_recipientlastname}{% endraw %}</td>
+			<td>Will Render the CRM Customer&#39;s last name.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_recipientname}{% endraw %}</td>
+			<td>Will Render the CRM Customer&#39;s full name.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_siteurl}{% endraw %}</td>
+			<td>Will Rneder the website url.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_casetag}{% endraw %}</td>
+			<td>Will render the case indentifier created by the web form submission.</td>
+		</tr>
+	</tbody>
 </table>
 </div>
+
+<p>{%- else %}</p>
+
+<div id="liquid-tags">
+<h2>Liquid Tags</h2>
+Emails currently do not support Liquid Markup.<br />
+&nbsp;
+<table class="data-bordered" width="100%">
+	<thead>
+		<tr>
+			<td class="tag">Tag</td>
+			<td class="description">Description</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{% endraw %}</td>
+			<td>Outputs the results from the web form submission.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_recipientfirstname}{% endraw %}</td>
+			<td>Will Render the CRM Customer&#39;s first name.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_recipientlastname}{% endraw %}</td>
+			<td>Will Render the CRM Customer&#39;s last name.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_recipientname}{% endraw %}</td>
+			<td>Will Render the CRM Customer&#39;s full name.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_siteurl}{% endraw %}</td>
+			<td>Will Rneder the website url.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_webformresults}{tag_casetag}{% endraw %}</td>
+			<td>Will render the case indentifier created by the web form submission.</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p>{%- endif %}</p>
+</body>
+</html>

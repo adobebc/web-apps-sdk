@@ -1,55 +1,192 @@
-<h1>FAQ detail layout</h1> 
+<html hola_ext_inject="disabled">
+<head>
+	<title></title>
+</head>
+<body>
+<h1>FAQ Detail Layout</h1>
+
 <div id="modules">
-<h2>This layout is not used by any module per se.</h2>
-<p>
-Site visitors get to it only after clicking the links outputted by any of these tags <code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code> or <code>{% raw %}&#123;tag_question&#125;{% endraw %}</code>.
-</p>
+<p>Not rendered by a module</p>
 </div>
+
 <div id="accessible">
-<h2>Accessible from</h2>
+<h2>Accessible From</h2>
+
 <ul>
-  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; FAQ Layouts</li>
-  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/FAQ/detail.html
-</li>
-</ul></div>
-<div id="tags">
-<h2>Renders these tags</h2>
-<table width="100%" class="data-bordered">
-    <thead>
-<tr>
-<td class="liquid">Liquid tag</td>
-<td class="description">Description</td>
-</tr>
-</thead>
-    <tbody>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;answer&#125;&#125;{% endraw %}</code></td>
-         <td class="description">Answer for frequently asked question  (editor content). This outputs the text of the FAQ.</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;classifications&#125;&#125;{% endraw %}</code></td>
-         <td class="description">List of categories that this FAQ is classified under. The categories are in plain text and are sepparated by commas for example <em>Company, Products</em></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
-         <td class="description">Expiry date of FAQ for example <em>16-Apr-2014 03:48 AM</em>. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;internalNotes&#125;&#125;{% endraw %}</code></td>
-         <td class="description">Outputs the text entered in the "Internal FAQ Information" textbox.</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
-         <td class="description">Last update date of FAQ for example <em>16-Apr-2014 03:48 AM</em>. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;question&#125;&#125;{% endraw %}</code></td>
-         <td class="description">Frequently asked question (will have hyperlink). This outputs the FAQ's title as an anchor. When clicked the site visitor is taken to the detail view. The text of the anchor is the FAQ's title.</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
-         <td class="description">Release date of FAQ in <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
-        </tr>
-    </tbody>
+	<li><strong>Admin Console:</strong>&nbsp;Site Manager &gt; Module Templates &gt; FAQ Layouts</li>
+	<li><strong>SFTP &amp; Develop Mode:</strong> /Layouts/Faq/detail.html</li>
+</ul>
+</div>
+
+<p>{%- if globals.cookie.liquid == false %}</p>
+
+<div id="legacy-tags">
+<h2>Legacy Tags</h2>
+
+<table class="data-bordered" width="100%">
+	<thead>
+		<tr>
+			<td class="tag">Tag</td>
+			<td class="tag">&nbsp;</td>
+			<td class="description">Description</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{% raw %}{tag_releasedate}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Release date of the FAQ<br />
+			Example: 16-Apr-2014</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_lastupdatedate}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Last update date of the FAQ<br />
+			Example: 16-Apr-2014</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_expirydate}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Expiry date of the FAQ<br />
+			Example: 17-Apr-2014</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_question}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Frequently asked question title that outputs the FAQ&#39;s title as an anchor. When clicked the site visitor is taken to the detail view. The text of the anchor is the FAQ&#39;s title.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_answer}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td><span style="color: rgb(51, 51, 51); font-family: Adobe-Clean, myriad-pro, Helvetica, sans-serif; font-size: 14px; line-height: 21px; background-color: rgb(255, 255, 255);">Answer for frequently asked question (editor content). This outputs the text and html of the FAQ.</span></td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_internalnotes}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Outputs the text entered in the &quot;Internal FAQ Information&quot; textbox.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_classifications}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>List of categories that this FAQ is classified under. The categories are in plain text and are sepparated by commas.<br />
+			Example: Company, Products</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_addtofavorites,Add_Image_Path, Remove_Image_Path}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing.<br />
+			Example: {tag_addtofavorites,&lt;img alt=&quot;&quot; src=&quot;/images/add.png&quot; /&gt;,&lt;img alt=&quot;&quot; src=&quot;/images/remove.png&quot; /&gt;}</td>
+		</tr>
+	</tbody>
 </table>
 </div>
+
+<p>{%- else %}</p>
+
+<div id="liquid-tags">
+<h2>Liquid Tags</h2>
+
+<table class="data-bordered" width="100%">
+	<thead>
+		<tr>
+			<td class="tag">Tag</td>
+			<td class="tag">&nbsp;</td>
+			<td class="description">Description</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{% raw %}{{id}}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Renders the system ID of the FAQ.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{{releaseDate}}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Release date of the FAQ<br />
+			Example: 2013-09-20T16:29:52.453 (Supports the <a href="http://docs.businesscatalyst.com/dev-assets/reference#!/liquid-reference/reference/filters.html!date-switches">Date Filter</a>)</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{{lastUpdateDate}}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Last update date of the FAQ<br />
+			Example: 2013-09-20T16:29:52.453 (Supports the&nbsp;<a href="http://docs.businesscatalyst.com/dev-assets/reference#!/liquid-reference/reference/filters.html!date-switches">Date Filter</a>)</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{{expiryDate}}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Expiry date of the FAQ<br />
+			Example: 2013-09-20T16:29:52.453 (Supports the&nbsp;<a href="http://docs.businesscatalyst.com/dev-assets/reference#!/liquid-reference/reference/filters.html!date-switches">Date Filter</a>)</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{{question}}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Frequently asked question title that outputs the FAQ&#39;s title as an anchor. When clicked the site visitor is taken to the detail view. The text of the anchor is the FAQ&#39;s title.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{{answer}}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td><span style="color: rgb(51, 51, 51); font-family: Adobe-Clean, myriad-pro, Helvetica, sans-serif; font-size: 14px; line-height: 21px; background-color: rgb(255, 255, 255);">Answer for frequently asked question (editor content). This outputs the text and html of the FAQ.</span></td>
+		</tr>
+		<tr>
+			<td>{% raw %}{{internalNotes}}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Outputs the text entered in the &quot;Internal FAQ Information&quot; textbox.</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{{classifications}}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>List of categories that this FAQ is classified under. The categories are in plain text and are sepparated by commas.<br />
+			Example: Company, Products</td>
+		</tr>
+		<tr>
+			<td>{% raw %}{tag_addtofavorites,Add_Image_Path, Remove_Image_Path}{% endraw %}</td>
+			<td>&nbsp;</td>
+			<td>Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing.<br />
+			Example: {tag_addtofavorites,&lt;img alt=&quot;&quot; src=&quot;/images/add.png&quot; /&gt;,&lt;img alt=&quot;&quot; src=&quot;/images/remove.png&quot; /&gt;}</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<h4>Example Output through {% raw %}{{this|json}}{% endraw %}</h4>
+
+<div class="liquid-object-data">
+<table align="left" border="0" cellpadding="1" cellspacing="1" class="data-borded">
+	<tbody>
+		<tr>
+			<td>answer</td>
+			<td>{%raw%}&lt;p&gt;Donec eu commodo elit...nceptos himenaeos&lt;/p&gt;{%endraw%}</td>
+		</tr>
+		<tr>
+			<td>
+			<div class="memberLabel userLabel "><span>internalNotes</span></div>
+			</td>
+			<td>This is some text</td>
+		</tr>
+		<tr>
+			<td>expiryDate</td>
+			<td>9999-01-01T00:00:00</td>
+		</tr>
+		<tr>
+			<td>id</td>
+			<td>48948</td>
+		</tr>
+		<tr>
+			<td>lastUpdateDate</td>
+			<td>2013-09-20T16:29:52.453</td>
+		</tr>
+		<tr>
+			<td>question</td>
+			<td>Second FAQ</td>
+		</tr>
+		<tr>
+			<td>releaseDate</td>
+			<td>2012-09-13T22:00:00</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+{%- endif %}
+</body>
+</html>

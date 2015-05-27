@@ -235,145 +235,143 @@ Three
     </table>
 </div>
 <div type="cs-pod">
-<div class="switches date">
-     <h2 id="date-switches">Date switches</h2> 
-    <p>Assuming the value of the <code>{% raw %}dateTime{% endraw %}</code> field is <em>2014-12-09T23:00:00</em> here
-        are the available switches you can use to format the date:</p>
-    <table width="100%"
+<h2 id="date-switches">Date switches</h2> 
+  <p>Assuming the value of the <code>{% raw %}dateTime{% endraw %}</code> field is <em>2014-12-09T23:00:00</em> here
+      are the available switches you can use to format the date:</p>
+  <table width="100%"
     class="data-bordered">
-        <tbody>
-            <tr>
-                <td><code>{% raw %}%d{% endraw %}</code>
-                </td>
-                <td>Outputs the day of the month - 18</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}dd{% endraw %}</code>
-                </td>
-                <td>The day of the month. Single-digit days will have a leading zero - 03</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}ddd{% endraw %}</code>
-                </td>
-                <td>The abbreviated name of the day of the week. - Tue</td>
-            </tr>
-            <tr>
-                 <td><code>{% raw %}dddd{% endraw %}</code></td>
-                <td>The full name of the day of the week. - Tuesday</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}%h{% endraw %}</code>
-                </td>
-                <td>The hour in a 12-hour clock. Single-digit hours will not have a leading zero - 12</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}hh{% endraw %}</code>
-                </td>
-                <td>The hour in a 12-hour clock. Single-digit hours will have a leading zero - 12</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}%H{% endraw %}</code>
-                </td>
-                <td>The hour in a 24-hour clock. Single-digit hours will not have a leading zero -
-                    0</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}HH{% endraw %}</code>
-                </td>
-                <td>The hour in a 24-hour clock. Single-digit hours will have a leading zero - 0</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}%m{% endraw %}</code>
-                </td>
-                <td>The minute. Single-digit minutes will not have a leading zero - 0</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}mm{% endraw %}</code>
-                </td>
-                <td>The minute. Single-digit minutes will have a leading zero - 00</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}%M{% endraw %}</code>
-                </td>
-                <td>The numeric month. Single-digit months will not have a leading zero - 9</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}MM{% endraw %}</code>
-                </td>
-                <td>The numeric month. Single-digit months will have a leading zero - 09</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}MMM{% endraw %}</code>
-                </td>
-                <td>The abbreviated name of the month, as defined in AbbreviatedMonthNames - sep.</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}MMMM{% endraw %}</code>
-                </td>
-                <td>The full name of the month, as defined in MonthNames - september</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}%s{% endraw %}</code>
-                </td>
-                <td>The second. Single-digit seconds will not have a leading zeroThe second. Single-digit
-                    seconds will not have a leading zero - 0</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}ss{% endraw %}</code>
-                </td>
-                <td>The second. Single-digit seconds will have a leading zero - 00</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}%t{% endraw %}</code>
-                </td>
-                <td>The first character in the AM/PM designator, if any - a</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}tt{% endraw %}</code>
-                </td>
-                <td>The AM/PM designator, if any - a.m.</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}%y{% endraw %}</code>
-                </td>
-                <td>The year without the century. If the year without the century is less than 10,
-                    the year is displayed with no leading zero - 14</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}yy{% endraw %}</code>
-                </td>
-                <td>The year without the century. If the year without the century is less than 10,
-                    the year is displayed with a leading zero - 14</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}yyyy{% endraw %}</code>
-                </td>
-                <td>The year in four or five digits (depending on the calendar used), including the
+      <tbody>
+          <tr>
+              <td><code>{% raw %}%d{% endraw %}</code>
+              </td>
+              <td>Outputs the day of the month - 18</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}dd{% endraw %}</code>
+              </td>
+              <td>The day of the month. Single-digit days will have a leading zero - 03</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}ddd{% endraw %}</code>
+              </td>
+              <td>The abbreviated name of the day of the week. - Tue</td>
+          </tr>
+          <tr>
+               <td><code>{% raw %}dddd{% endraw %}</code></td>
+              <td>The full name of the day of the week. - Tuesday</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}%h{% endraw %}</code>
+              </td>
+              <td>The hour in a 12-hour clock. Single-digit hours will not have a leading zero - 12</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}hh{% endraw %}</code>
+              </td>
+              <td>The hour in a 12-hour clock. Single-digit hours will have a leading zero - 12</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}%H{% endraw %}</code>
+              </td>
+              <td>The hour in a 24-hour clock. Single-digit hours will not have a leading zero -
+                  0</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}HH{% endraw %}</code>
+              </td>
+              <td>The hour in a 24-hour clock. Single-digit hours will have a leading zero - 0</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}%m{% endraw %}</code>
+              </td>
+              <td>The minute. Single-digit minutes will not have a leading zero - 0</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}mm{% endraw %}</code>
+              </td>
+              <td>The minute. Single-digit minutes will have a leading zero - 00</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}%M{% endraw %}</code>
+              </td>
+              <td>The numeric month. Single-digit months will not have a leading zero - 9</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}MM{% endraw %}</code>
+              </td>
+              <td>The numeric month. Single-digit months will have a leading zero - 09</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}MMM{% endraw %}</code>
+              </td>
+              <td>The abbreviated name of the month, as defined in AbbreviatedMonthNames - sep.</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}MMMM{% endraw %}</code>
+              </td>
+              <td>The full name of the month, as defined in MonthNames - september</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}%s{% endraw %}</code>
+              </td>
+              <td>The second. Single-digit seconds will not have a leading zeroThe second. Single-digit
+                  seconds will not have a leading zero - 0</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}ss{% endraw %}</code>
+              </td>
+              <td>The second. Single-digit seconds will have a leading zero - 00</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}%t{% endraw %}</code>
+              </td>
+              <td>The first character in the AM/PM designator, if any - a</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}tt{% endraw %}</code>
+              </td>
+              <td>The AM/PM designator, if any - a.m.</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}%y{% endraw %}</code>
+              </td>
+              <td>The year without the century. If the year without the century is less than 10,
+                  the year is displayed with no leading zero - 14</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}yy{% endraw %}</code>
+              </td>
+              <td>The year without the century. If the year without the century is less than 10,
+                  the year is displayed with a leading zero - 14</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}yyyy{% endraw %}</code>
+              </td>
+              <td>The year in four or five digits (depending on the calendar used), including the
                     century. Will pad with leading zeroes to get four digits. Thai Buddhist and Korean
                     calendars both have five digit years; users selecting the "yyyy" pattern will see
                     all five digits without leading zeros for calendars that have five digits. Exception:
-                    the Japanese and Taiwan calendars always behave as if "yy" was selected - 1914</td>
-            </tr>
-            <tr>
-                <td><code>{% raw %}\c{% endraw %}</code>
-                </td>
-                <td>Where c is any character. Displays the character literally. Useful for escaping
+                  the Japanese and Taiwan calendars always behave as if "yy" was selected - 1914</td>
+          </tr>
+          <tr>
+              <td><code>{% raw %}\c{% endraw %}</code>
+              </td>
+              <td>Where c is any character. Displays the character literally. Useful for escaping
                     characters that are usually rendered as switches (m, h, s, etc.) To display the
-                    backslash character, use "\\" - 14</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="chx">
+                  backslash character, use "\\" - 14</td>
+          </tr>
+      </tbody>
+  </table>
+  <div class="chx">
     <hr>
     <p>To output <strong>14-6-18 </strong>use <code>{% raw %}{{dateVariable | date: "%y-%M-%d"}}{% endraw %}</code> (mind
   the double quotes).</p>
     <p>To output <strong> 1914\09\03 @ 12:00:00 a.m.</strong> use <code>{% raw %}{{dateVariable
-        | date: "yyyy\\MM\\dd @ hh:mm:ss tt"}}{% endraw %}</code></p>
+      | date: "yyyy\\MM\\dd @ hh:mm:ss tt"}}{% endraw %}</code></p>
     <p class="alert alert-warning">To use "\" (the backslash character) as separator for date elements you need to
-        escape the it in the liquid tag. Using "\\" renders "\" in the front-end.</p>
+      escape the it in the liquid tag. Using "\\" renders "\" in the front-end.</p>
     <p>Spaces and any other characters that are not usable switches are rendered without
-        the need for escaping.</p>
-</div>
+      the need for escaping.</p>
 </div>
 </div>
 <div type="cs-pod">

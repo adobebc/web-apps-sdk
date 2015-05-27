@@ -238,6 +238,7 @@ Three
     </div>
 </div>
 <div type="cs-pod">
+<div class="switches date">
      <h2 id="date-switches">Date switches</h2> 
     <p>Assuming the value of the <code>{% raw %}dateTime{% endraw %}</code> field is <em>2014-12-09T23:00:00</em> here
         are the available switches you can use to format the date:</p>
@@ -365,6 +366,7 @@ Three
             </tr>
         </tbody>
     </table>
+    <div class="chx">
     <hr>
     <p>To output <strong>14-6-18 </strong>use <code>{% raw %}{{dateVariable | date: "%y-%M-%d"}}{% endraw %}</code> (mind
   the double quotes).</p>
@@ -375,12 +377,16 @@ Three
     <p>Spaces and any other characters that are not usable switches are rendered without
         the need for escaping.</p>
 </div>
+</div>
+</div>
 <div type="cs-pod">
      <h2 id="timespan">timeSpan switches</h2> 
+     <div class="chx">
     <p>Let's assume we have created a
         <a href="/developers/liquid/datatypes#timespan">timeSpan variable</a> by substracting one date from another:</p> <pre> {% raw %}&#123;&#37; assign dateDiff = globals.site.dateNow | minus: myDate &#37;&#125;{% endraw %}</pre> 
     <p>Taking a presumed value of <em>dateDiff</em> being <strong>5.02:39:20.2500250</strong>,
         we can format the date value of <code>{% raw %}{{dateDiff}}{% endraw %}</code> with the following switches:</p>
+        </div>
     <table
     width="100%" class="data-bordered">
         <tbody>
@@ -523,13 +529,16 @@ Three
             </tr>
       </tbody>
   </table>
+  <div class="chx">
   <hr>
         <p>To output <strong>5-3-13</strong> use <strong>{{dateDiff | date: "%d'-'%h'-'%m"}}</strong> (mind
             the double quotes).</p>
         <p>To output <strong>Result : d05-h03-m18</strong> use <code>{% raw %}{{dateDiff | date:"'Result : '\ddd'-'\hhh'-'\mmm"}}{% endraw %}</code>
         </p>
+        </div>
 </div>
 <div type="cs-pod">
+<div class="other"> 
      <h2 id="other-filters">Other Filters</h2>
 <table width="100%" class="data-bordered">
       <tbody>
@@ -590,4 +599,5 @@ Three
           </tr>
       </tbody>
     </table>
+</div>
 </div>

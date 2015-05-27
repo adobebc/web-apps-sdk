@@ -136,7 +136,6 @@ Three
         
 {{ var | newline_to_br }}{% endraw %}</code> creates a line break for each new line encountered</td>
           </tr>
-                    </tr>
           <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}strip_newlines{% endraw %}</code>
               </td>
@@ -211,31 +210,29 @@ Three
     </table>
 </div>
 <div type="cs-pod">
-    <div class="filters date">
-         <h2 id="date-filters">Date filters</h2> 
-        <table width="100%" class="data-bordered">
-            <tbody>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}site_date{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | date}}{% endraw %}</code> outputs "09-Jan-2015"</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}site_datetime{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | datetime}}{% endraw %}</code> outputs "09-Jan-2015 02:46 PM"</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}date_utc{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | date_utc}}{% endraw %}</code> converts a date to UTC (assuming that the date is always given in the site’s timezone)</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<h2 id="date-filters">Date filters</h2> 
+    <table width="100%" class="data-bordered">
+        <tbody>
+            <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}site_date{% endraw %}</code>
+                </td>
+                <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | date}}{% endraw %}</code> outputs "09-Jan-2015"</span>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}site_datetime{% endraw %}</code>
+                </td>
+                <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | datetime}}{% endraw %}</code> outputs "09-Jan-2015 02:46 PM"</span>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}date_utc{% endraw %}</code>
+                </td>
+                <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | date_utc}}{% endraw %}</code> converts a date to UTC (assuming that the date is always given in the site’s timezone)</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <div type="cs-pod">
 <div class="switches date">
@@ -535,23 +532,22 @@ Three
             the double quotes).</p>
         <p>To output <strong>Result : d05-h03-m18</strong> use <code>{% raw %}{{dateDiff | date:"'Result : '\ddd'-'\hhh'-'\mmm"}}{% endraw %}</code>
         </p>
-        </div>
+  </div>
 </div>
 <div type="cs-pod">
-<div class="other"> 
-     <h2 id="other-filters">Other Filters</h2>
+<h2 id="other-filters">Other Filters</h2>
 <table width="100%" class="data-bordered">
-      <tbody>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}convert{% endraw %}</code>
-              </td>
-              <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{3 | convert: "string" | json}}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{"3" | convert: "number" | json}}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{"false" | convert: "boolean" | json}}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{"2015-01-07" | convert: "date"}}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> <li><strong>currency(money)</strong> <code>{% raw %}{{100 | convert: "money"}}{% endraw %}</code> outputs "100 USD" assuming the site's "Country code" is set to US.</li> </ul></span>
-              </td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}json{% endraw %}</code>
-              </td>
-              <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>{% raw %}&#123;&#123;webapp1.items[0] | json&#125;&#125;{% endraw %}</code>              looks like:                          <pre class="language-javascript"><code>{
+    <tbody>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}convert{% endraw %}</code>
+            </td>
+            <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{3 | convert: "string" | json}}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{"3" | convert: "number" | json}}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{"false" | convert: "boolean" | json}}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{"2015-01-07" | convert: "date"}}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> <li><strong>currency(money)</strong> <code>{% raw %}{{100 | convert: "money"}}{% endraw %}</code> outputs "100 USD" assuming the site's "Country code" is set to US.</li> </ul></span>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}json{% endraw %}</code>
+            </td>
+            <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>{% raw %}&#123;&#123;webapp1.items[0] | json&#125;&#125;{% endraw %}</code>              looks like:                          <pre class="language-javascript"><code>{
  "itemid":"4646524",
  "name":"ABA",
  "urlWithHost":"http://abcd.com/car/ABA",
@@ -566,38 +562,37 @@ Three
  "Country":"",
  "Review":"no review just yet"
 }</code></pre> <p class="chx">Do note you need to make the webapp listing available in a collection before you can access the items in JSON format.</p></span>
-              </td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}size{% endraw %}</code>
-              </td>
-              <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</span>
-              </td>
-          </tr>
-           <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}unescape{% endraw %}</code>
-              </td>
-              <td><span class="cellcontent">Opposite of escape, basically HTML decode.<code>{% raw %}  {{"&lt;div style=&#39;color:red&#39;&gt;&lt;h1&gt;header&lt;/h1&gt;&lt;p&gt;this is a paragraph&lt;/p&gt;&lt;/div&gt;" | unescape}}{% endraw %}</code></span>
-              </td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}url_param_escape/ url_param_unescape {% endraw %}</code>
-              </td>
-              <td><span class="cellcontent">Encodes/decodes a parameter than can be appended to an URL.<code>{% raw %} {{"&lt;div&gt; &amp; &lt;span&gt;" | url_param_escape}}{% endraw %} / {% raw %} {{&quot;&amp;lt;hello&amp;gt; &amp;amp; &amp;lt;shopify&amp;gt;&quot; | url_param_unescape}}{% endraw %}</code></span>
-              </td>
-          </tr>
-               <tr>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}size{% endraw %}</code>
+            </td>
+            <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</span>
+            </td>
+        </tr>
+         <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}unescape{% endraw %}</code>
+            </td>
+            <td><span class="cellcontent">Opposite of escape, basically HTML decode.<code>{% raw %}  {{"&lt;div style=&#39;color:red&#39;&gt;&lt;h1&gt;header&lt;/h1&gt;&lt;p&gt;this is a paragraph&lt;/p&gt;&lt;/div&gt;" | unescape}}{% endraw %}</code></span>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}url_param_escape/ url_param_unescape {% endraw %}</code>
+            </td>
+            <td><span class="cellcontent">Encodes/decodes a parameter than can be appended to an URL.<code>{% raw %} {{"&lt;div&gt; &amp; &lt;span&gt;" | url_param_escape}}{% endraw %} / {% raw %} {{&quot;&amp;lt;hello&amp;gt; &amp;amp; &amp;lt;shopify&amp;gt;&quot; | url_param_unescape}}{% endraw %}</code></span>
+            </td>
+        </tr>
+             <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}money{% endraw %}</code>
               </td>
               <td><span class="cellcontent"><code>{% raw %}  {{ 145.9 | money }} {% endraw %}</code> Formats the price based on the associated currency.</span>
               (USD145.9)</td>
-          </tr>
-             <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}default{% endraw %}</code>
-              </td>
-              <td><code>{% raw %} Dear {{ customer.name | default: "customer" }} {% endraw %}</code> Sets a default value for any variable with no assigned value. Can be used with strings, arrays, and hashes</td>
-          </tr>
-      </tbody>
-    </table>
-</div>
+        </tr>
+           <tr>
+             <td valign="top" class="cellrowborder"><code>{% raw %}default{% endraw %}</code>
+             </td>
+             <td><code>{% raw %} Dear {{ customer.name | default: "customer" }} {% endraw %}</code> Sets a default value for any variable with no assigned value. Can be used with strings, arrays, and hashes</td>
+        </tr>
+    </tbody>
+  </table>
 </div>

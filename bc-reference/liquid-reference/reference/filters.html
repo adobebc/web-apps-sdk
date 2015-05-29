@@ -7,8 +7,11 @@
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}divided_by{% endraw %}</code>
                     </td>
-                    <td><span class="cellcontent">division - <code>{% raw %}{{500 | divided_by: 20}}{% endraw %}</code> is 25</span>
-                    </td>
+                    <td><p><span class="cellcontent">division - <code>{% raw %}{{500 | divided_by: 20}}{% endraw %}</code> is 25
+                    <br>
+                    Note: when you divide a number by another number which  has one decimal the result will also have an output:<br>
+                    <code>{% raw %}{{399 | divided_by: 2.0}} {% endraw %}</code> will output <strong>199.5</strong> </span></p>
+                    <p>&nbsp;</p></td>
                 </tr>
                 <tr>
                     <td valign="top" class="cellrowborder"><code>{% raw %}minus{% endraw %}</code>

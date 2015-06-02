@@ -1,78 +1,152 @@
-<h1>Case detail layout</h1> 
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Case detail layout</h1>
+
 <div id="modules">
 <h2>Is used by these modules</h2>
+
 <ul>
-    <li><a title=" module_case" href="/dev-assets/reference/module-reference/cases/module_case.html">&#123;module_case&#125;</a></li>
-    <li><a title=" module_caseresults" href="/dev-assets/reference/module-reference/cases/module_caseresults.html">&#123;module_caseresults&#125;</a></li>
+	<li><a href="/dev-assets/reference/module-reference/cases/module_case.html" title=" module_case">{module_case}</a></li>
+	<li><a href="/dev-assets/reference/module-reference/cases/module_caseresults.html" title=" module_caseresults">{module_caseresults}</a></li>
 </ul>
 </div>
+
 <div id="accessible">
-<h2>Accessible from</h2>
+<h2>Accessible From</h2>
+
 <ul>
-  <li><strong>Admin Console:</strong> Site Manager &gt;Customer Cases Layouts &gt; Detail Layout</li>
-  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/CustomerCases/detail.html
-</li>
-</ul></div>
-<div id="tags">
-<h2>Renders these tags</h2>
-<table width="100%" class="data-bordered">
-    <thead>
-<tr>
-<td class="liquid">Liquid tag</td>
-<td class="legacy">Legacy tag</td>
-<td class="description">Description</td>
-</tr>
-</thead>
-    <tbody>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;assignedto&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_assignedto&#125;{% endraw %}</code></td><td class="description">Customer service representatives the case is assigned to e.g. <em>John Smith</em></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;casenumber&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_casenumber&#125;{% endraw %}</code></td><td class="description">Case number</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;createdate&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_createdate&#125;{% endraw %}</code></td><td class="description">Date and time the case was first created e.g. <em>25-Mar-2013 01:46 PM</em></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastupdatedate&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td><td class="description">Date and time the last message was received e.g. <em>25-Mar-2013 01:46 PM)</em></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;ownernam&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_ownername&#125;{% endraw %}</code></td><td class="description">Fullname of the owner of the case e.g. <em>John Smith</em></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_crmform&#125;{% endraw %}</code></td><td class="description">The data from all CRM forms attached to a case e.g. In the case where a user submits a standard contact form, this tag will output the following <a title="code" href="http://alexpavelescu.businesscatalyst.com/jing/tag_crmform.png">code</a></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_description&#125;{% endraw %}</code></td><td class="description">Description of the case</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;filelist&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_filelist&#125;{% endraw %}</code></td><td class="description">List of files attached to a case (can be downloaded)</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;status&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_status&#125;{% endraw %}</code></td><td class="description">Status of the case, possible values are: <em>New</em>, <em>Open</em>, <em>Escalated</em>, <em>Closed</em>, <em>Re-Opened</em></td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;subject&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_subject&#125;{% endraw %}</code></td><td class="description">Subject of the case</td>
-        </tr>
-        <!-- <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_threads&#125;{% endraw %}</code></td><td class="description">The case thread</td>
-        </tr>
-        <tr>
-            <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_workflow&#125;{% endraw %}</code></td><td class="description">Workflow being used by the case</td>
-        </tr> -->
-    </tbody>
-</table>
-<br />
+	<li><strong>Admin Console:</strong>&nbsp;Site Manager &gt;Customer Cases Layouts &gt; Detail Layout</li>
+	<li><strong>SFTP &amp; Develop Mode:</strong>&nbsp;/Layouts/CustomerCases/detail.html</li>
+</ul>
 </div>
+
+<p>{%- if globals.cookie.liquid == false %}</p>
+
+<div id="legacy-tags">
+<h2>Legacy Tags</h2>
+
+<table class="data-bordered" width="100%">
+	<thead>
+		<tr>
+			<td class="tag">Tag</td>
+			<td class="description">Description</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{% raw %}<span style="font-family: monospace;">{tag_assignedto}</span>{% endraw %}</td>
+			<td>Customer service representatives the case is assigned to.<br />
+			e.g.&nbsp;<em>John Smith</em></td>
+		</tr>
+		<tr>
+			<td>{% raw %}<span style="font-family: monospace;">{tag_casenumber}</span>{% endraw %}</td>
+			<td>Case number</td>
+		</tr>
+		<tr>
+			<td>{% raw %}<span style="font-family: monospace;">{tag_createdate}</span>{% endraw %}</td>
+			<td>Date and time the case was first created.<br />
+			e.g.&nbsp;<em>25-Mar-2013</em></td>
+		</tr>
+		<tr>
+			<td>{% raw %}<span style="font-family: monospace;">{tag_lastupdatedate}</span>{% endraw %}</td>
+			<td>Date and time the last message was received.<br />
+			e.g.&nbsp;<em>25-Mar-2013</em></td>
+		</tr>
+		<tr>
+			<td>{% raw %}<span style="font-family: monospace;">{tag_ownername}</span>{% endraw %}</td>
+			<td>Fullname of the owner of the case.<br />
+			e.g.&nbsp;<em>John Smith</em></td>
+		</tr>
+		<tr>
+			<td>{% raw %}<span style="font-family: monospace;">{tag_crmform}</span>{% endraw %}</td>
+			<td>The data from all CRM forms attached to a case e.g. In the case where a user submits a standard contact form, this tag will output the following&nbsp;<a href="http://alexpavelescu.businesscatalyst.com/jing/tag_crmform.png" title="code">code</a></td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{tag_description}{% endraw %}</span></td>
+			<td>Description of the case</td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{tag_filelist}{% endraw %}</span></td>
+			<td>List of files attached to a case (can be downloaded)</td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{tag_status}{% endraw %}</span></td>
+			<td>Status of the case, possible values are:<br />
+			<em>New</em>,&nbsp;<em>Open</em>,&nbsp;<em>Escalated</em>,&nbsp;<em>Closed</em>,&nbsp;<em>Re-Opened</em></td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{tag_subject}{% endraw %}</span></td>
+			<td>Subject of the case</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p>{%- else %}</p>
+
+<div id="liquid-tags">
+<h2>Liquid Tags</h2>
+
+<table class="data-bordered" width="100%">
+	<thead>
+		<tr>
+			<td class="tag">Tag</td>
+			<td class="description">Description</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{{assignedto}}{% endraw %}</span></td>
+			<td>Customer service representatives the case is assigned to.<br />
+			e.g.&nbsp;<em>John Smith</em></td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{{casenumber}}{% endraw %}</span></td>
+			<td>Case number</td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{{createdate}}{% endraw %}</span></td>
+			<td>Date and time the case was first created.<br />
+			e.g.&nbsp;<em>25-Mar-2013 01:46 PM (Can be manipulated with <a href="http://docs.businesscatalyst.com/dev-assets/reference#!/liquid-reference/reference/filters.html!date-switches">Date Switches</a>)</em></td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{{lastupdatedate}}{% endraw %}</span></td>
+			<td>Date and time the last message was received.<br />
+			e.g.&nbsp;<em>25-Mar-2013 01:46 PM&nbsp;(Can be manipulated with&nbsp;<a href="http://docs.businesscatalyst.com/dev-assets/reference#!/liquid-reference/reference/filters.html!date-switches">Date Switches</a>)</em></td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{{ownernam}}{% endraw %}</span></td>
+			<td>Fullname of the owner of the case.<br />
+			e.g.&nbsp;<em>John Smith</em></td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{tag_crmform}{% endraw %}</span></td>
+			<td>The data from all CRM forms attached to a case e.g. In the case where a user submits a standard contact form, this tag will output the following&nbsp;<a href="http://alexpavelescu.businesscatalyst.com/jing/tag_crmform.png" title="code">code</a></td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{{description}}{% endraw %}</span></td>
+			<td>Description of the case</td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{{filelist}}{% endraw %}</span></td>
+			<td>List of files attached to a case (can be downloaded)</td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{{status}}{% endraw %}</span></td>
+			<td>Status of the case, possible values are:<br />
+			<em>New</em>,&nbsp;<em>Open</em>,&nbsp;<em>Escalated</em>,&nbsp;<em>Closed</em>,&nbsp;<em>Re-Opened</em></td>
+		</tr>
+		<tr>
+			<td><span style="font-family: monospace;">{% raw %}{{subject}}{% endraw %}</span></td>
+			<td>Subject of the case</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p>{%- endif %}</p>
+</body>
+</html>

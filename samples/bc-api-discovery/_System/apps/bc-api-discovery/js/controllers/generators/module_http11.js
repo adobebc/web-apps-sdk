@@ -1,6 +1,6 @@
 /* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright (c) 2012-2015 Adobe Systems Incorporated. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -33,7 +33,7 @@
 	function Http11Controller($scope) {
 		this.$scope = $scope;
 
-		this.$scope.msg = "HTTP 1.1 requests generator.";
+		this.$scope.msg = "HTTP 1.1 requests generator. Not implemented!";
 
 		console.log("HTTP 1.1 controller instantiated.");
 	};

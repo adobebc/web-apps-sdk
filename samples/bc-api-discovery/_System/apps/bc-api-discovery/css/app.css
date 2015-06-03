@@ -101,6 +101,14 @@ body {
     margin-right: 0px;
 }
 
+.deleteWarning {
+    background: url("/CatalystImages/ra_exclamation_a.png") no-repeat scroll 0 0 transparent;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-left: 27px;
+    padding-top: 3px;
+}
+
 input, button, select, textarea {
     /* For IE */
     font-size: medium;

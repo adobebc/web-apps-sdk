@@ -22,6 +22,13 @@
 * 
 */
 
+body {
+    font-family: Myriad-Pro, myriad-pro-1, myriad-pro-2, Arial, Helvetica, sans-serif;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    padding: 0;
+}
+
 .clear-both {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -93,6 +100,7 @@
     margin-left: 0px;
     margin-right: 0px;
 }
+
 input, button, select, textarea {
     /* For IE */
     font-size: medium;

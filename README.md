@@ -3,7 +3,7 @@
 Web Apps SDK for Adobe Business Catalyst allows web developers to create custom client-side applications that leverage the Business Catalyst system APIs. Used inside any of your Business Catalyst site, these applications can enhance the standard functionality and experience of your site.
 
 
-## Using Web Apps SDK for Adobe Adobe Business Catalyt
+## Using Web Apps SDK for Adobe Adobe Business Catalyst
 
 **Want to learn more about it?**
 * For SDK and API documentation, go through the [developer documentation](http://docs.businesscatalyst.com/developers)

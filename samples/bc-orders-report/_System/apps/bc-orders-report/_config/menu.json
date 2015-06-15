@@ -6,7 +6,7 @@
   },
   "menu-bc-orders-report": {
     "parent": "menu-bcam-apps",
-    "weight": 100000,
+    "weight": 27000,
     "title": "Orders report",
     "attr": {
       "href": "/orders.html"

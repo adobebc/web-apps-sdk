@@ -245,7 +245,7 @@
   //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
   var request = $.ajax({
-      url:"/webresources/api/v3/sites/current/pages/9113941/securezones?items=[{'objectId':9050929,'zoneId':51,'objectType':1,'displayable':1}]",
+      url:"/webresources/api/v3/sites/current/pages/9113941/securezones?items=[{'zoneId':51}]",
       type: "DELETE",
       mimeType: "application/json", 
       connection: "keep-alive",    <br>	    contentType: "application/json",

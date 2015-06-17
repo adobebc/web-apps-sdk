@@ -233,7 +233,7 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url:"/webresources/api/v3/sites/current/news/87261/securezones?items=[{'objectId':87261,'zoneId':51,'objectType':7,'displayable':1}]",
+    url:"/webresources/api/v3/sites/current/news/87261/securezones?items=[{'zoneId':51}]",
     type: "DELETE",
     connection: "keep-alive",
     mimeType: "application/json",

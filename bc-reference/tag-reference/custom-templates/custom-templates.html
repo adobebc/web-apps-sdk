@@ -35,7 +35,7 @@ Next, we need to populate it with some tags. The easiest way to get started is t
 <p>
 If you insert this on a webpage and preview that webpage you will notice it is using the custom layout instead of the default <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a>.
 </p>
-<h2>Use custom layouts to suppress a module's output</h2>
+<h2 id="supress-output">Use custom layouts to suppress a module's output</h2>
 <p>With the introduction of <em>collections</em> you might want a module not to output anything and use only its collection representation to render the data.</p>
 <p>
 To hide a module's output simply remove the path to the custom layout specified by the template parameter.</p>
@@ -54,6 +54,7 @@ To hide a module's output simply remove the path to the custom layout specified 
 <div id="parameters">
 <h2>Parameters</h2>
 <p>The custom template declaration has only one parameter, that is the path to the file itself. If the file does not exist or it cannot be found for any reason the module will render with its default layout instead. So for example if the custom template file "/layouts/onlineshop/custom/productfeaturelist.tpl" does not exist or we have a typo in its path the &#123;<a href="/dev-assets/reference/module-reference/e-commerce/module_productfeaturelist.html">module_productfeaturelist</a>&#125; module will render using the <a href="/dev-assets/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a> layout instead.</p>
+<p class="alert alert-info"><strong>Note:</strong> if the value of template parameter is empty <em>template=””</em> you will end up having an empty output - see <a href="#supress-output">related section</a> above.</p>
 </div>
 <div id="Examples">
 <h2>Examples</h2>

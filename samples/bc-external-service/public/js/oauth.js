@@ -1,3 +1,11 @@
+var isNodeJs = false;
+
+try {
+    if (module && module.exports) {
+        isNodeJs = true;
+    }
+} catch(e) { }
+
 var OAuth = (function(OAuthConfig) {
     /**
      * This class provides the two leg oauth sample implementation. It does not protect against CSRF and does not correctly
@@ -23,5 +31,84 @@ var OAuth = (function(OAuthConfig) {
         window.location.href = authorizeUrl;
     };
 
+    /**
+     * This method uses all query parameters received and exchanges the authorization code for an access token.
+     */
+    OAuthTwoLeg.prototype.handleAuthorizationCode = function(req, done) {
+        var https = require("https"),
+            url = require("url");
+        var urlParts = url.parse(req.url, true);
+
+        process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+
+        var requestBody = ["grant_type=authorization_code", 
+                "&client_id=", encodeURIComponent(this._config.clientId),
+                "&redirect_uri=", encodeURI(this._config.redirectUri), 
+                "&client_secret=", encodeURIComponent(this._config.clientSecret),
+                "&code=", encodeURIComponent(urlParts.query.code)].join("");
+
+        console.log("Invoking token url with body %s", requestBody);
+
+        var requestOptions = {
+            host: this._config.bcSecureHost,
+            port: 443,
+            path: this._config.bcTokenEndpoint,
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Length": requestBody.length
+            }
+        };
+
+        var req = https.request(requestOptions, function(res) {
+            var body = "";
+            res.setEncoding("utf8");
+
+            res.on("data", function(chunk) {
+                body += chunk;
+            });
+
+            res.on("end", function() {
+                var tokenResponse = JSON.parse(body),
+                    secureUrls = [];
+
+                console.log("---------------- Backend accessible data ----------------");
+
+                for (var idx = 0; idx < tokenResponse.additional_info.sites.length; idx++) {
+                    var siteInfo = tokenResponse.additional_info.sites[idx];
+
+                    if (siteInfo.site_id == -2) {
+                        continue;
+                    }
+
+                    secureUrls.push(siteInfo.secure_url);
+                }
+
+                console.log("---------------- Frontend accessible data ----------------");
+                console.log(tokenResponse);
+
+                done({
+                    "accessToken": tokenResponse.access_token,
+                    "expiresIn": tokenResponse.expires_in,
+                    "secureUrls": secureUrls
+                });
+            });
+
+            req.on('error', function(e) {
+              console.log('problem with request: ' + e.message);
+            });
+        });
+
+        req.write(requestBody);
+        req.end();
+
+        process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1';
+    };
+
     return new OAuthTwoLeg(OAuthConfig);
-})(OAuthConfig);
+})(!isNodeJs ? OAuthConfig : require("./oauth_config"));
+
+if (isNodeJs) {
+    module.exports = OAuth;
+}

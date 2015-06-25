@@ -19,3 +19,5 @@ sdk/lib/*
 */karma*
 
 *.log
+
+**/node_modules

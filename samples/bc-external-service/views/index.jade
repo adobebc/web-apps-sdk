@@ -1,0 +1,7 @@
+html
+  head
+    title!= title
+    script(src="/public/js/oauth_config.js")
+    script(src="/public/js/oauth.js")
+  body
+    input(type="button",value="Initiate server to server authorization",onclick="OAuth.initiateAuthorize()")

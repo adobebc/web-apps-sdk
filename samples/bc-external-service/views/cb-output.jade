@@ -5,7 +5,7 @@ html
       (function () {
         window.sessionStorage.BCAccessToken = "#{accessToken}"
         window.sessionStorage.SiteUrls = "#{secureUrls}"
-        window.location = "https://oauth-api-discovery:3000/_System/apps/bc-api-discovery/index.html"
+        window.location = "#{appIndexPage}";
       })();
   body
     p!= accessToken

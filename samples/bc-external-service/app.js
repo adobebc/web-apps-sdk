@@ -6,7 +6,7 @@ var app = express();
 
 var oauthConfig = require("./public/js/oauth_config");
 
-oauthConfig.clientSecret = "lTOJZ55Icnn+/J8QoBig9Q==";
+oauthConfig.clientSecret = "/WTcJ26xYt2Xgp51039CwQ==";
 
 app.set("view engine", "jade");
 
@@ -18,7 +18,10 @@ app.get("/", function(req, res) {
 
 app.get("/oauth/cb", function(req, res) {
     oauth.handleAuthorizationCode(req, function(securityCtx) {
+        securityCtx.appIndexPage = oauthConfig.appIndexPage;
+        
         console.log(securityCtx);
+
         res.render("cb-output", securityCtx);
     });
 });
@@ -34,4 +37,4 @@ var server = app.listen(8080, function() {
 https.createServer({
   key: fs.readFileSync("certificates/key.pem"),
   cert: fs.readFileSync("certificates/cert.pem")
-}, app).listen(3000);
+}, app).listen(443);

@@ -5,7 +5,8 @@ var express = require("express"),
 var app = express();
 
 var oauthConfig = require("./public/js/oauth_config");
-oauthConfig.clientSecret = "tB4dFTIoa0r0a8wdi7KFTQ==";
+
+oauthConfig.clientSecret = "lTOJZ55Icnn+/J8QoBig9Q==";
 
 app.set("view engine", "jade");
 
@@ -18,10 +19,11 @@ app.get("/", function(req, res) {
 app.get("/oauth/cb", function(req, res) {
     oauth.handleAuthorizationCode(req, function(securityCtx) {
         console.log(securityCtx);
-
         res.render("cb-output", securityCtx);
     });
 });
+
+app.use("/_System", express.static("public/_System"));
 
 var server = app.listen(8080, function() {
     console.log("bc-external-service started ...");
@@ -32,4 +34,4 @@ var server = app.listen(8080, function() {
 https.createServer({
   key: fs.readFileSync("certificates/key.pem"),
   cert: fs.readFileSync("certificates/cert.pem")
-}, app).listen(443);
+}, app).listen(3000);

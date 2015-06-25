@@ -1,0 +1,14 @@
+{
+	"menu-bcam-apps": {
+	    "weight": 600000,
+	    "title": "Apps"
+	  },
+    "menu-bc-api-discovery": {
+    	"parent": "menu-bcam-apps",
+        "weight": 200,
+        "title": "BC API Discovery",
+        "attr" : {
+            "href" : "index.html"
+        }
+    }
+}

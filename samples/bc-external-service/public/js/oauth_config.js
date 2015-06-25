@@ -6,9 +6,9 @@ var OAuthConfig = (function() {
         bcSecureUrl: "https://" + _bcSecureHost,
         bcAuthorizeEndpoint: "/api/oauth/authorize",
         bcTokenEndpoint: "/api/oauth/token",
-        clientId: "radudev-test-service-5",
+        clientId: "daniel-oauth-api-discovery",
         version: "0.1",
-        redirectUri: "https://simpletest.com/oauth/cb"
+        redirectUri: "https://oauth-api-discovery:3000/oauth/cb"
     };
 })();
 

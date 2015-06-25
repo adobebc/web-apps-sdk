@@ -1,0 +1,129 @@
+<!--
+*
+*
+* Copyright (c) 2012-2015 Adobe Systems Incorporated. All rights reserved.
+
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"),
+* to deal in the Software without restriction, including without limitation
+* the rights to use, copy, modify, merge, publish, distribute, sublicense,
+* and/or sell copies of the Software, and to permit persons to whom the
+* Software is furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+* DEALINGS IN THE SOFTWARE.
+*
+*
+-->
+
+<!DOCTYPE html>
+
+<html ng-app="BcDiscoveryApp">
+	<head>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>BC APIs discovery</title>
+
+		<link rel="stylesheet" href="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/css/bootstrap-3.2.0.css">
+		<link rel="stylesheet" href="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/css/bootstrap-theme-3.2.0.css">
+
+		<link rel="stylesheet" href="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/css/selectize.css">
+		<link rel="stylesheet" href="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/css/selectize.default.css">
+		<link rel="stylesheet" href="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/css/selectize.legacy.css">
+		<link rel="stylesheet" href="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/css/selectize.bootstrap3.css">
+		<link rel="stylesheet" href="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/highlight-8.4/styles/github.css">
+
+		<link rel="stylesheet" href="css/app.css"></head>
+	</head>
+
+	<body>
+		<div ng-controller="MainController">
+			<section id="tabs-content" ng-show="!loading">
+				<api-tabs>
+				  <api-tab-pane title="Home" hash="#/home">
+				  	<div ng-controller="HomeController">
+				  		<br/>
+				  		<div ng-include="'/_System/apps/bc-api-discovery/templates/home.tpl'"></div>
+				  	</div>
+				  </api-tab-pane>
+
+				  <api-tab-pane title="Instructions" hash="#/instructions">
+				  	<div ng-controller="InstructionsController">
+				  		<br/>
+				  		<div ng-include="'/_System/apps/bc-api-discovery/templates/instructions.tpl'"></div>
+				  	</div>
+				  </api-tab-pane>
+				</api-tabs>
+			</section>
+
+			<section id="loading-panel" class="absolute-center" ng-show="loading">
+				<div class="loading">
+					<img src="/_System/apps/bc-api-discovery/assets/loading.gif" />
+				</div>
+			</section>
+		</div>
+
+		<section id="error-handler">
+			<div ng-controller="ErrorHandlingController">
+				<div ng-include="'/_System/apps/bc-api-discovery/templates/error_handling.tpl'"></div>
+			</div>
+		</section>
+
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/handlebars-2.0.0.js"></script>
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/jquery-2.0.0.js"></script>
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/bootstrap-3.2.0.js"></script>
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/selectize.js"></script>
+
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/angularjs-1.3.0/angular.js"></script>
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/angularjs-1.3.0/angular-loader.js"></script>
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/angularjs-1.3.0/angular-route.js"></script>
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/angularjs-1.3.0/angular-sanitize.js"></script>
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/angularjs-1.3.0/angular-cookies.js"></script>
+
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+    	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/bcapi/bcapi-0.1.0.min.js"></script>
+
+		<script type="text/javascript" src="//cdn.worldsecuresystems.com/resources/bc-api-discovery/_System/apps/bc-api-discovery/libs/highlight-8.4/highlight.pack.js"></script>
+
+		<script type="text/javascript" src="js/routes.js"></script>
+		<script type="text/javascript" src="js/config.js"></script>
+
+		<script type="text/javascript" src="js/services/bcregistry.js"></script>
+		<script type="text/javascript" src="js/services/api_proxy.js"></script>
+		<script type="text/javascript" src="js/services/handlebars.js"></script>
+		<script type="text/javascript" src="js/services/error_handler_data.js"></script>
+		<script type="text/javascript" src="js/services/global_loading.js"></script>
+		<script type="text/javascript" src="js/services/resource_loader.js"></script>
+		<script type="text/javascript" src="js/services/generators_data.js"></script>
+		<script type="text/javascript" src="js/services/highlight_moduledata.js"></script>
+		<script type="text/javascript" src="js/services/highlight_modulejquery.js"></script>
+
+
+		<script type="text/javascript" src="js/controllers/error_handling.js"></script>
+		<script type="text/javascript" src="js/controllers/main.js"></script>
+		<script type="text/javascript" src="js/controllers/home.js"></script>
+		<script type="text/javascript" src="js/controllers/whatsnew.js"></script>
+		<script type="text/javascript" src="js/controllers/instructions.js"></script>
+
+		<script type="text/javascript" src="js/controllers/generators/module_data.js"></script>
+		<script type="text/javascript" src="js/controllers/generators/module_jquery.js"></script>
+		<script type="text/javascript" src="js/controllers/generators/module_http11.js"></script>
+		<script type="text/javascript" src="js/controllers/generators/query_builder.js"></script>
+
+		<script type="text/javascript" src="js/directives/code_panel.js"></script>
+		<script type="text/javascript" src="js/directives/selectize.js"></script>
+		<script type="text/javascript" src="js/directives/tabs.js"></script>
+	</body>
+</html>

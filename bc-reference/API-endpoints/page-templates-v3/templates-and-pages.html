@@ -1,0 +1,220 @@
+<h1 apiType="restv3">Templates and pages</h1> 
+<ul id="toc"></ul>
+<div id="list">
+
+<h2>Get the list of pages a template is assigned to</h2><div class="description">
+<p>Using this method you can get the list of pages that have a specific template assigned.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+  
+  <ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/templates/[template_ID]/pages
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> View Template</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of templates, each object has the following properties:</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the template in the current site <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code>- the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}url{% endraw %}</code>- the id of the site <em>(string)</em></li>
+<li><code>{% raw %}name{% endraw %}</code>- the id of the site <em>(string)</em></li>
+<li><code>{% raw %}categoryId{% endraw %}</code> - the ID of the workflow assigned <em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> -the ID of the role assigned to the page<em>(integer)</em></li>
+
+
+<li><code>{% raw %}templateId{% endraw %}</code> - the  ID of the template<em>(integer)</em></li>
+
+<li><code>{% raw %}parentId{% endraw %}</code> - the ID of the parent element<em> (integer)</em></li>
+
+<li><code>{% raw %}displayFileName{% endraw %}</code> - the  name of the file on the filesystem <em>(string)</em></li>
+
+<li><code>{% raw %}size{% endraw %}</code> -  <em>(integer)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - <em>(boolean)</em></li>
+
+<li><code>{% raw %}startPage{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}releaseDate {% endraw %}</code>- <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}excludeFromSearch{% endraw %}</code> -  <em>(boolean)</em></li>
+<li><code>{% raw %}livePageId{% endraw %}</code>- if the page is in draft mode this is the ID of the live page it corresponds to <em>(integer)</em>. 
+<p class="alert alert-info">
+In the Admin Console the the live and draft versions of a page appear to be one entity. The system however, saves two different pages. One represents the draft version and a completely different page that represents the live version. This parameter is used to &quot;connect&quot; the two pages that basically represent the two states - live and draft.</p>
+</li><li><code>{% raw %}content{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}redirect301{% endraw %}</code>-  <em>(string)</em></li>
+<li><code>{% raw %}title{% endraw %}</code> -  <em>(string)</em></li>
+<li><code>{% raw %}seoMetadataDescription{% endraw %}</code> -  <em>(string)</em></li>
+
+</ul>
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/templates/1386374/pages HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [
+    {
+      "id": 2567107,
+      "siteId": 38581,
+      "pageUrl": "/secure-client-portal",
+      "name": "Secure Client Portal",
+      "categoryId": -1,
+      "roleId": -1,
+      "templateId": 475487,
+      "parentId": -1,
+      "displayFileName": "Secure Client Portal.htm",
+      "size": 762,
+      "enabled": true,
+      "startPage": false,
+      "releaseDate": "2009-06-05T14:58:16.95",
+      "expiryDate": "9999-01-01T00:00:00",
+      "displayable": true,
+      "excludeFromSearch": false,
+      "livePageId": null,
+      "content": "&lt;html&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Web page has no content&lt;/body&gt;&lt;/html&gt;",
+      "redirect301": null,
+      "title": "Client portal",
+      "seoMetadataDescription": ""
+    },
+    {
+      "id": 4518276,
+      "siteId": 38581,
+      "pageUrl": "/Maker1",
+      "name": "Maker1",
+      "categoryId": -1,
+      "roleId": -1,
+      "templateId": 475487,
+      "parentId": -1,
+      "displayFileName": "Homes.htm",
+      "size": 5327,
+      "enabled": false,
+      "startPage": false,
+      "releaseDate": "2014-07-10T11:53:01.13",
+      "expiryDate": "9999-01-01T00:00:00",
+      "displayable": false,
+      "excludeFromSearch": false,
+      "livePageId": null,
+      "content": "&lt;html&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Web page has no content&lt;/body&gt;&lt;/html&gt;",
+      "redirect301": null,
+      "title": "",
+      "seoMetadataDescription": ""
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+url: "/webresources/api/v3/sites/current/templates/1386374/pages",
+type: "GET",
+conenection: "keep-alive",    
+contentType: "application/json",<br>mimeType: "applicaiton/json ",
+headers: {
+"Authorization": $.cookie('access_token')
+}
+});
+request.done(function(msg) {
+console.log(msg);
+})
+request.fail(function(jqXHR) {
+console.log("Request failed.");
+console.log("Error code: " + jqXHR.status);
+console.log("Error text: " + jqXHR.statusText);
+console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+
+</div>
+<hr></div>
+<div id="create">
+<h2>Add   a template to a page</h2>
+<div class="description">Using this method you can assign a template to a webpage on your site.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/templates/[templateID]/pages
+  <ul>
+    <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/templates/[templateID]/pages HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+
+
+{
+  "items": 5299853
+}{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 201 CREATED
+Location: /webresources/api/v3/sites/current/templates/[templateID]/pages
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/templates/592040/pages",<br>    data:{"items":[{"id":5299853}]},<br>    type: "POST",<br>    contentType: "application/json",
+mimeType: "applicaiton/json ",<br>    headers: {
+        "Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br><br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
+</div>
+<p class="alert alert-warning"><strong>Important!</strong> To remove a template from a page you can make a PUT through the Pages api and modify the template Assigned value to either -1 (no template) or 0(default template).</p>
+</div>

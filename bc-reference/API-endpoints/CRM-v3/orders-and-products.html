@@ -1,0 +1,539 @@
+<h1 apiType="restv3">Orders and products</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2>Get an order's products</h2>
+<div class="description">
+<p>Get the products added to an order.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/orders/[order_ID]/products
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+  </ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The details for the specified customer ID in JSON format.</p>
+
+<ul>
+<li><code>{% raw %}itemId{% endraw %}</code> - the address ID <em>(integer)</em></li>
+<li><code>{% raw %}orderId{% endraw %}</code> - the order's ID <em>(integer)</em></li>
+
+<li><code>{% raw %}productId{% endraw %}</code> - the address ID <em>(integer)</em></li>
+
+<li><code>{% raw %}siteId{% endraw %}</code> - <em>the site's ID (integer)</em></li>
+
+<li><code>{% raw %}catalogueId{% endraw %}</code> - the product's catalog ID<em>(integer)</em>
+</li>
+<li><code>{% raw %}units{% endraw %}</code> - the number of units added to the order <em>(integer)</em></li>
+<li><code>{% raw %}unitPrice{% endraw %}</code> - price per unit<em> (integer)</em></li>
+<li><code>{% raw %}unitTaxRate{% endraw %}</code> - the tax per unit <em>(integer)</em></li>
+<li><code>{% raw %}discountRate{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}totalPrice{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}description{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}supplierCommission{% endraw %}</code>- <em>(integer)</em></li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}attributeExtras{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}variationId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}product{% endraw %}</code> - <em>(JSON)</em>
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}weight{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productCode{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}tags{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}unitType{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}smallImage{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}largeImage{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}description{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}inventoryControl{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}canPreorder{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}minUnits{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}maxUnits{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}inStock{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}onOrder{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}reOrder{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}reOrderNotified{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}variablePerCycle{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}groupingID{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}GroupingDefault{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}electronicProduct{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}displayFileName{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}size{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}downloadLimitCount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}downloadLimitIp{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productWeight{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productVolume{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productHeight{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}productDepth{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}supplierEntityId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}supplierCommission{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}isGiftVoucher{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}poplets{% endraw %}</code> - <em>()</em></li>
+<li><code>{% raw %}attributes{% endraw %}</code> - <em>()</em></li>
+<li><code>{% raw %}custom1{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}custom2{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}custom3{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}custom4{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+<li><code>{% raw %}captureDetails{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}isOnSale{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}hideIfNoStock{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}enableDropShipping{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}excludeFromSearch{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}title{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}reIndex{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}hasAttributes{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}cycleTypeCount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}hasVariations{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}slug{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}metaProductDescription{% endraw %}</code> - <em>(string)</em></li>
+
+</ul>
+</li>
+</ul>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/orders/108293/products HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [
+    {
+      "itemId": 450,
+      "orderId": 108293,
+      "productId": 951917,
+      "siteId": 38581,
+      "catalogueId": null,
+      "units": 3,
+      "unitPrice": 30,
+      "unitTaxRate": 0.5,
+      "discountRate": 0,
+      "totalPrice": 99,
+      "description": "1",
+      "supplierCommission": 0,
+      "deleted": false,
+      "attributeExtras": 0,
+      "variationId": 9,
+      "deletedByTaskOrAdmin": true,
+      "product": {
+        "id": 951917,
+        "siteId": 38581,
+        "name": "T-Shirt",
+        "roleId": -1,
+        "weight": null,
+        "productCode": "D12LSM9Q4F",
+        "tags": "",
+        "unitType": "",
+        "smallImage": "",
+        "largeImage": "",
+        "description": "\r\n",
+        "inventoryControl": true,
+        "canPreorder": false,
+        "minUnits": 1,
+        "maxUnits": -1,
+        "inStock": 528,
+        "onOrder": 0,
+        "reOrder": -1,
+        "reOrderNotified": false,
+        "variablePerCycle": false,
+        "groupingID": null,
+        "GroupingDefault": false,
+        "electronicProduct": false,
+        "displayFileName": null,
+        "size": 0,
+        "downloadLimitCount": -1,
+        "downloadLimitIp": -1,
+        "productWeight": -1,
+        "productVolume": -1,
+        "productHeight": -1,
+        "productDepth": -1,
+        "supplierEntityId": null,
+        "supplierCommission": 0,
+        "isGiftVoucher": false,
+        "poplets": null,
+        "attributes": null,
+        "custom1": "",
+        "custom2": "",
+        "custom3": "",
+        "custom4": "",
+        "releaseDate": "2014-09-03T07:00:00",
+        "expiryDate": "9999-01-01T00:00:00",
+        "captureDetails": false,
+        "isOnSale": false,
+        "hideIfNoStock": false,
+        "enableDropShipping": false,
+        "excludeFromSearch": false,
+        "enabled": true,
+        "deleted": false,
+        "title": "T-Shirt",
+        "reIndex": true,
+        "hasAttributes": true,
+        "cycleTypeCount": -1,
+        "hasVariations": true,
+		"slug": "t-shirt",
+        "metaProductDescription": ""
+      }
+    },
+    {
+      "itemId": 452,
+      "orderId": 108293,
+      "productId": 951917,
+      "siteId": 38581,
+      "catalogueId": null,
+      "units": 10,
+      "unitPrice": 25,
+      "unitTaxRate": 0.5,
+      "discountRate": 0,
+      "totalPrice": 275,
+      "description": "111",
+      "supplierCommission": 0,
+      "deleted": false,
+      "attributeExtras": 0,
+      "variationId": 9,
+      "deletedByTaskOrAdmin": true,
+      "product": {
+        "id": 951917,
+        "siteId": 38581,
+        "name": "T-Shirt",
+        "roleId": -1,
+        "weight": null,
+        "productCode": "D12LSM9Q4F",
+        "tags": "",
+        "unitType": "",
+        "smallImage": "",
+        "largeImage": "",
+        "description": "\r\n",
+        "inventoryControl": true,
+        "canPreorder": false,
+        "minUnits": 1,
+        "maxUnits": -1,
+        "inStock": 528,
+        "onOrder": 0,
+        "reOrder": -1,
+        "reOrderNotified": false,
+        "variablePerCycle": false,
+        "groupingID": null,
+        "GroupingDefault": false,
+        "electronicProduct": false,
+        "displayFileName": null,
+        "size": 0,
+        "downloadLimitCount": -1,
+        "downloadLimitIp": -1,
+        "productWeight": -1,
+        "productVolume": -1,
+        "productHeight": -1,
+        "productDepth": -1,
+        "supplierEntityId": null,
+        "supplierCommission": 0,
+        "isGiftVoucher": false,
+        "poplets": null,
+        "attributes": null,
+        "custom1": "",
+        "custom2": "",
+        "custom3": "",
+        "custom4": "",
+        "releaseDate": "2014-09-03T07:00:00",
+        "expiryDate": "9999-01-01T00:00:00",
+        "captureDetails": false,
+        "isOnSale": false,
+        "hideIfNoStock": false,
+        "enableDropShipping": false,
+        "excludeFromSearch": false,
+        "enabled": true,
+        "deleted": false,
+        "title": "T-Shirt",
+        "reIndex": true,
+        "hasAttributes": true,
+        "cycleTypeCount": -1,
+        "hasVariations": true,
+        "slug": "t-shirt",
+        "metaProductDescription": ""
+      }
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>Get the addresses for a specific order</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/orders/7051740/products",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+
+
+<div id="edit">
+<h2>Add products to an order</h2>
+<div class="description">Add new products to an order or updates the number of units.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/orders/[ORDER_ID]/products
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+  <li><code>{% raw %}itemId{% endraw %}</code> - the item's ID, this is used to identify this particular order item. For example if you need to delete an element from an order you would reffer it using this ID<em>(integer)</em></li>
+  <li><code>{% raw %}orderId{% endraw %}</code> - the order's ID <em>(integer)</em></li>
+  <li><code>{% raw %}productId{% endraw %}</code> - the address ID <em>(integer)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - <em>the site's ID (integer)</em></li>
+  <li><code>{% raw %}catalogueId{% endraw %}</code> - the product's catalog ID <em>(integer)</em> </li>
+  <li><code>{% raw %}units{% endraw %}</code> - the number of units added to the order <em>(integer)</em></li>
+  <li><code>{% raw %}unitPrice{% endraw %}</code> - price per unit<em> (integer)</em></li>
+  <li><code>{% raw %}unitTaxRate{% endraw %}</code> - the tax per unit <em>(integer)</em></li>
+  <li><code>{% raw %}discountRate{% endraw %}</code> - <em>(integer)</em></li>
+  <li><code>{% raw %}totalPrice{% endraw %}</code> - <em>(integer)</em></li>
+  <li><code>{% raw %}description{% endraw %}</code> - <em>(string)</em></li>
+  <li><code>{% raw %}supplierCommission{% endraw %}</code>- <em>(integer)</em></li>
+  <li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em></li>
+  <li><code>{% raw %}attributeExtras{% endraw %}</code> - <em>(integer)</em></li>
+  <li><code>{% raw %}variationId{% endraw %}</code> - <em>(integer)</em></li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/orders/108293/products HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+
+
+{
+  "items": [
+    {
+      "productId": 951917,
+      "variationId": 9,
+      "units": 3,
+      "description": "Tailored for you!"
+    }
+  ]
+}{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/orders
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample codes</h3>
+<p>Add a product to an existing order. If the &quot;units&quot; field is not present only 1 item will be added.</p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+url: "/webresources/api/v3/sites/current/orders/108293/products",
+type: "PUT",
+conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+headers: {
+    "Authorization": $.cookie('access_token')
+},
+processData: false,
+data: JSON.stringify({
+   "items": [
+    {
+      "productId": 951890
+    }
+  ]
+  })
+});
+request.done(function(msg) {
+console.log(msg);
+})
+request.fail(function(jqXHR) {
+console.log("Request failed.");
+console.log("Error code: " + jqXHR.status);
+console.log("Error text: " + jqXHR.statusText);
+console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p>In this example we will add 3 units of the product with the ID 951917 and variation code 9 to the order:</p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+url: "/webresources/api/v3/sites/current/orders/108293/products",
+type: "PUT",
+conenection: "keep-alive",    
+contentType: "application/json",
+mimeType: "applicaiton/json ",
+headers: {
+    "Authorization": $.cookie('access_token')
+},
+processData: false,
+data: JSON.stringify({
+   "items": [
+    {
+      "productId": 951917,
+      "variationId": 9,
+      "units": 3,
+      "description": "Tailored for you!"
+    }
+  ]
+  })
+});
+request.done(function(msg) {
+console.log(msg);
+})
+request.fail(function(jqXHR) {
+console.log("Request failed.");
+console.log("Error code: " + jqXHR.status);
+console.log("Error text: " + jqXHR.statusText);
+console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="delete">
+<h2>Remove products from an order</h2>
+<div class="description">Remove a product from an order.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/orders/[ORDER_ID]/products?items=[ITEM_ID]
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/orders/108293/products?items=[450] HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/orders/108293/products
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample codes</h3>
+<p>Add a product to an existing order. If the &quot;units&quot; field is not present only 1 item will be added.</p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+url: "/webresources/api/v3/sites/current/orders/108293/products?items=[{"itemId":12586375,"orderId":108293,"productId":3909340}]",
+type: "DELETE",
+conenection: "keep-alive",    
+contentType: "application/json",
+mimeType: "applicaiton/json ",
+headers: {
+    "Authorization": $.cookie('access_token')
+}
+});
+request.done(function(msg) {
+console.log(msg);
+})
+request.fail(function(jqXHR) {
+console.log("Request failed.");
+console.log("Error code: " + jqXHR.status);
+console.log("Error text: " + jqXHR.statusText);
+console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>

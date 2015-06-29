@@ -1,0 +1,96 @@
+
+        <h1 apiType="soap">Contact_SecureZoneListUpdateInsert</h1> 
+
+<p>Updates Contact subscription to one or more Secure Zones.</p>
+<p class="alert alert-warning"><strong>Warning:</strong> This API endpoint will eventually be deprecated (existing implementations will still continue to work). We strongly advise to use the <a href="/dev-assets/reference/api-endpoints/crm-v3/customers-and-securezones.html">new CRM and secure zones v3</a> REST API endpoints. Here is an example on <a href="/dev-assets/reference/api-endpoints/crm-v3/customers.html#create">how to subscribe a contact to a secure zone</a> using the new endpoints.</p>
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> SOAP</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.  </li>
+<li><strong>Path:</strong> /catalystwebservice/catalystcrmwebservice.asmx</li>
+<li><strong>The username and password fields:</strong>You can make SOAP API calls can be authorized either by using the actual username or password of an Admin username or, if you are making the calls from an app leave the username field empty and use the <a href="/developers/developer-documentation/authorize-your-api-calls">authorization token</a> as the password.</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<ul>
+<li><code>{% raw %}siteId{% endraw %}</code> - ID of the site <em>(integer)</em></li>
+<li><code>{% raw %}username{% endraw %}</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
+<li><code>{% raw %}password{% endraw %}</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
+<li><code>{% raw %}emailaddress{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}securezoneList{% endraw %}</code> - <em>(object)</em>
+
+<ul>
+<li><code>{% raw %}SecureZone{% endraw %}</code> - <em>(object)</em>
+
+<ul>
+<li><code>{% raw %}secureZoneID{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}secureZoneName{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}secureZoneExpiryDate{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}secureZoneUnsubscribe{% endraw %}</code> - <em>(boolean)</em></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>To use a site token instead of username/password, send an empty <code>{% raw %}username{% endraw %}</code> field and the site token as the <code>{% raw %}password{% endraw %}</code>. See example below.</p>
+
+<h2>Response</h2>
+
+<p>An empty SecureZoneListUpdateInsertResponse object with a header response code.</p>
+
+<h2>Examples</h2>
+
+<p>Accepts and returns XML as Content-Type.</p>
+
+<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values, please note the data in the request and response is only for explanatory purposes.</p>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-markup"><code>{% raw %}POST /catalystwebservice/catalystcrmwebservice.asmx HTTP/1.1
+Host: worldsecuresystems.com
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: length
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
+  &lt;soap12:Body&gt;
+    &lt;Contact_SecureZoneListUpdateInsert xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice"&gt;
+      &lt;username&gt;jdoe@yourdomain.com&lt;/username&gt;
+      &lt;password&gt;Y0urP@ssw0rdH3re&lt;/password&gt;
+      &lt;siteId&gt;12345&lt;/siteId&gt;
+      &lt;emailAddress&gt;jdoe@yourdomain.com&lt;/emailAddress&gt;
+      &lt;securezoneList&gt;
+        &lt;SecureZone&gt;
+          &lt;secureZoneID&gt;1234&lt;/secureZoneID&gt;
+          &lt;secureZoneName&gt;Premium customers&lt;/secureZoneName&gt;
+          &lt;secureZoneExpiryDate&gt;string&lt;/secureZoneExpiryDate&gt;
+          &lt;secureZoneUnsubscribe&gt;true&lt;/secureZoneUnsubscribe&gt;
+        &lt;/SecureZone&gt;
+        &lt;SecureZone&gt;
+          &lt;secureZoneID&gt;1234&lt;/secureZoneID&gt;
+          &lt;secureZoneName&gt;Premium customers&lt;/secureZoneName&gt;
+          &lt;secureZoneExpiryDate&gt;string&lt;/secureZoneExpiryDate&gt;
+          &lt;secureZoneUnsubscribe&gt;true&lt;/secureZoneUnsubscribe&gt;
+        &lt;/SecureZone&gt;
+      &lt;/securezoneList&gt;
+    &lt;/Contact_SecureZoneListUpdateInsert&gt;
+  &lt;/soap12:Body&gt;
+&lt;/soap12:Envelope&gt;
+{% endraw %}</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-markup"><code>{% raw %}HTTP/1.1 200 OK
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: length
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
+  &lt;soap12:Body&gt;
+    &lt;Contact_SecureZoneListUpdateInsertResponse xmlns="http://tempuri.org/CatalystDeveloperService/CatalystCRMWebservice" /&gt;
+  &lt;/soap12:Body&gt;
+&lt;/soap12:Envelope&gt;
+{% endraw %}</code></pre>
+
+        

@@ -1,0 +1,104 @@
+
+        <h1 apiType="restv2">Get Roles</h1> 
+
+<p>Gets a list of roles available on a specified site.</p>
+
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/roles
+
+<ul>
+<li>Alternatively, use 'current' instead of siteId</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Administer System</li>
+</ul>
+
+<h2>Response</h2>
+
+<p>Returns a list of site role objects, with the below fields:</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the role id in the database <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the user friendly name, to be used as label <em>(string)</em></li>
+</ul>
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<hr>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /api/v2/admin/sites/current/roles HTTPS/1.1
+Connection: keep-alive
+Content-Type: application/json
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+{% endraw %}</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: length
+
+{
+    "links": [{
+        "rel": "self",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/%7BsiteId%7D/roles"
+    }, {
+        "rel": "previous",
+        "uri": null
+    }, {
+        "rel": "next",
+        "uri": null
+    }],
+    "items": [{
+        "id": 10000,
+        "name": "Administrators"
+    }, {
+        "id": 10013,
+        "name": "Users"
+    }],
+    "totalItemsCount": 2,
+    "itemsPerPageCount": 1000,
+    "currentPage": 1
+}
+{% endraw %}</code></pre>
+<hr>
+<h2>Sample code</h2>
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
+    url: "/api/v2/admin/sites/current/roles",
+    type: "GET",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre><hr>
+<h2>Error codes</h2>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>{% raw %}200{% endraw %}</code> - success</li>
+<li><code>{% raw %}401{% endraw %}</code> - when authentication token is incorrect</li>
+<li><code>{% raw %}403{% endraw %}</code> - when the user attempting the call does not have the proper permissions</li>
+</ul>
+
+        

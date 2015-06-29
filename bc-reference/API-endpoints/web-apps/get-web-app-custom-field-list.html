@@ -1,0 +1,170 @@
+
+        <h1 apiType="restv2">Get Web App Custom Field List</h1> 
+
+<p>Returns a list of fields in ascending order.</p>
+
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/current/webapps/[webappName]/fields</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> View Web Apps</li>
+</ul>
+
+<h2>Response</h2>
+
+<p>Returns a list of objects with the following properties:</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the field <em>(string)</em></li>
+<li><code>{% raw %}type{% endraw %}</code> -  string Possible values:
+
+<ul>
+<li>String </li>
+<li>Number</li>
+<li>Boolean</li>
+<li>DateTime</li>
+<li>DropDown_List</li>
+<li>CheckBox_List</li>
+<li>Radio_List</li>
+<li>Image</li>
+<li>String_MultiLine</li>
+<li>ListBox_List</li>
+<li>String_Hyperlink</li>
+<li>DataSource</li>
+</ul></li>
+<li><code>{% raw %}required{% endraw %}</code> - true if the field is required <em>(boolean)</em></li>
+<li><code>{% raw %}order{% endraw %}</code> - unique, the position of the field when listed starting with 1 <em>(integer)</em></li>
+<li><code>{% raw %}dataSource{% endraw %}</code> - for DataSource fields should be a valid webapp name <em>(string)</em></li>
+<li><code>{% raw %}listItems{% endraw %}</code> - used only when type is {nl:DropDown_List, CheckBox_List, Radio_List, ListBox_List fields <em>(array)</em></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<hr>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /api/v2/admin/sites/current/webapps/WEBAPP_NAME_HERE/fields HTTPS/1.1
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json
+{% endraw %}</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: length
+
+{
+   "totalItemsCount": 3,
+   "skip": 0,
+   "limit": 100,
+   "links": [
+      {
+        "rel":"self",
+        "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields?limit=100&amp;skip=0"
+      }
+   ],
+   "items": [{
+      "links": [
+         {
+           "rel":"self",
+           "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields\/418191"
+         }
+      ],
+      "id"      : 1,
+      "name"    : "Part code",
+      "type"    : "DataSource",
+      "listItems": null,
+      "dataSource": 324232,
+      "required": false,
+      "order"   : 1
+   },{
+      "links": [
+         {
+           "rel":"self",
+           "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields\/418193"
+         }
+      ],
+      "id"      : 2,
+      "name"    : "Part type",
+      "type"    : "CheckBox_List",
+      "listItems": ["Engine", "Body", "Electronics"],
+      "dataSource": null,
+      "required": false,
+      "order"   : 2
+   },{
+      "links": [
+         {
+           "rel":"self",
+           "uri":"https:\/\/bc-local.worldsecuresystems.com\/api\/v2\/admin\/sites\/325435\/webapps\/Cars\/fields\/418192"
+         }
+      ],
+      "id"      : 3,
+      "name"    : "Photo",
+      "type"    : "Picture",
+      "listItems": null,
+      "dataSource": null,
+      "required": true,
+      "order"  : 3
+   }]
+}
+{% endraw %}</code></pre>
+
+<hr><h2>Sample code</h2>
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps/test app2/fields",
+    type: "get",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})
+{% endraw %}</code></pre>
+
+<hr><h2>Error codes</h2>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>{% raw %}200{% endraw %}</code> - success</li>
+<li><code>{% raw %}400{% endraw %}</code> - bad request; sub-error codes:
+
+<ul>
+<li><code>{% raw %}210000{% endraw %}</code> - An unspecified error has occured</li>
+</ul></li>
+<li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the authentication token is incorrect
+
+<ul>
+<li><code>{% raw %}101000{% endraw %}</code> sub-error code</li>
+</ul></li>
+<li><code>{% raw %}403{% endraw %}</code> - forbidden - when the user does not have View WebApps Permission</li>
+<li><code>{% raw %}404{% endraw %}</code> - not found
+
+<ul>
+<li><code>{% raw %}190001{% endraw %}</code> - The web app could not be found (the webAppName param from the URL does not match)</li>
+</ul></li>
+</ul>
+
+        

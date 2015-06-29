@@ -1,0 +1,454 @@
+<h1 apiType="restv3">News</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2>Get News</h2>
+<div class="description">
+<p>Gets the list of news items available.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/news
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The details for the specified customer ID in JSON format.</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the news item<em>(integer)</em></li>
+
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site<em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - id of the role responsible<em>(integer)</em></li>
+<li><code>{% raw %}subject{% endraw %}</code> - question body<em>(string)</em></li>
+<li><code>{% raw %}body{% endraw %}</code> - answer body<em>(string)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - template assigned to news<em>(integer)</em></li>
+<li><code>{% raw %}weight{% endraw %}</code> - weight value<em>(integer)</em></li>
+<li><code>{% raw %}createBy{% endraw %}</code> - admin user id<em>(integer)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - date of news item creation<em>(datetime)</em>  </li>
+<li><code>{% raw %}latUpdateBy{% endraw %}</code> - admin user that performed latest update<em>(integer)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - most recent update date<em>(datetime)</em></li>
+<li><code>{% raw %}eventFromDate{% endraw %}</code> - associated start date<em>(datetime)</em></li>
+<li><code>{% raw %}eventToDate{% endraw %}</code> - associated end date<em>(datetime)</em></li>
+<li><code>{% raw %}releaseDate{% endraw %}</code> release date<em>(datetime)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - date of item expiry<em>(datetime)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> - active state, true or false<em>(boolean)</em></li>
+<li><code>{% raw %}deleted{% endraw %}</code> deleted state, true or false<em>(boolean)</em></li>
+<li><code>{% raw %}displayable{% endraw %}</code> display state, true or false<em>(boolean)</em></li>
+<li><code>{% raw %}parentId{% endraw %}</code> id of parent node<em>(integer)</em></li>
+<li><code>{% raw %}urlPrefix{% endraw %}</code> URL prefix<em>(string)</em></li>
+<li><code>{% raw %}slug{% endraw %}</code> item slug<em>(string)</em></li>
+<li><code>{% raw %}url{% endraw %}</code> full item url<em>(string)</em></li>
+
+</ul>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p><p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/news HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+   "items": [
+     {
+      "id": 57625,
+      "siteId": 1211552,
+      "roleId": -1,
+      "subject": "Company Announces Record Profits",
+      "body": "
+You can now write about your latest news, announcements and much\nmore. When a customer clicks the link to the Announcement this page is\ndisplayed to them. It's now much easier to manage and maintain.
+
+\n
+This Announcement was created to provide you with an example. Update it to suit your needs or delete if not required.
+
+\r\n",
+      "templateId": 0,
+      "weight": null,
+      "createBy": 267621,
+      "createDate": "2013-11-25T09:13:03.45",
+      "lastUpdateBy": 267621,
+      "lastUpdateDate": "2013-11-25T09:13:03.45",
+      "eventFromDate": "2011-05-31T10:00:00",
+      "eventToDate": "2011-05-31T10:00:00",
+      "releaseDate": "2011-05-31T10:00:00",
+      "expiryDate": "9998-12-31T15:00:00",
+      "enabled": true,
+      "deleted": false,
+      "displayable": true,
+      "parentId": 7,
+      "urlPrefix": "announcements",
+      "slug": "company-announces-record-profits",
+      "url": "/announcements/company-announces-record-profits"
+    },
+    {
+      "id": 57627,
+      "siteId": 1211552,
+      "roleId": -1,
+      "subject": "Important Notice to Shareholders",
+      "body": "
+You can now write about your latest news, announcements and much\nmore. When a customer clicks the link to the Announcement this page is\ndisplayed to them. It's now much easier to manage and maintain.
+
+\n
+This Announcement was created to provide you with an example. Update it to suit your needs or delete if not required.
+
+\r\n",
+      "templateId": 0,
+      "weight": null,
+      "createBy": 267621,
+      "createDate": "2013-11-25T09:13:03.45",
+      "lastUpdateBy": 267621,
+      "lastUpdateDate": "2013-11-25T09:13:03.45",
+      "eventFromDate": "2011-05-31T10:00:00",
+      "eventToDate": "2011-05-31T10:00:00",
+      "releaseDate": "2011-05-31T10:00:00",
+      "expiryDate": "9998-12-31T15:00:00",
+      "enabled": true,
+      "deleted": false,
+      "displayable": true,
+      "parentId": 7,
+      "urlPrefix": "announcements",
+      "slug": "important-notice-to-shareholders",
+      "url": "/announcements/important-notice-to-shareholders"
+    }
+ ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>List all the news items on the site</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/news&quot;,<br>    type: &quot;GET&quot;,
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+
+</div>
+<hr>
+</div>
+
+<div id="create">
+<h2>Create  a new News item</h2>
+<div class="description">Using this method you can add a news item to your site.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/faqs
+  <ul>
+    <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+  <li><code>{% raw %}id{% endraw %}</code> - the id of the news item<em>(integer)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site<em>(integer)</em></li>
+  <li><code>{% raw %}roleId{% endraw %}</code> - id of the role responsible<em>(integer)</em></li>
+  <li><code>{% raw %}subject{% endraw %}</code> - question body<em>(string)</em></li>
+  <li><code>{% raw %}body{% endraw %}</code> - answer body<em>(string)</em></li>
+  <li><code>{% raw %}templateId{% endraw %}</code> - template assigned to news<em>(integer)</em></li>
+  <li><code>{% raw %}weight{% endraw %}</code> - weight value<em>(integer)</em></li>
+  <li><code>{% raw %}createBy{% endraw %}</code> - admin user id<em>(integer)</em></li>
+  <li><code>{% raw %}createDate{% endraw %}</code> - date of news item creation<em>(datetime)</em></li>
+  <li><code>{% raw %}latUpdateBy{% endraw %}</code> - admin user that performed latest update<em>(integer)</em></li>
+  <li><code>{% raw %}lastUpdateDate{% endraw %}</code> - most recent update date<em>(datetime)</em></li>
+  <li><code>{% raw %}eventFromDate{% endraw %}</code> - associated start date<em>(datetime)</em></li>
+  <li><code>{% raw %}eventToDate{% endraw %}</code> - associated end date<em>(datetime)</em></li>
+  <li><code>{% raw %}releaseDate{% endraw %}</code> release date<em>(datetime)</em></li>
+  <li><code>{% raw %}expiryDate{% endraw %}</code> - date of item expiry<em>(datetime)</em></li>
+  <li><code>{% raw %}enabled{% endraw %}</code> - active state, true or false<em>(boolean)</em></li>
+  <li><code>{% raw %}deleted{% endraw %}</code> deleted state, true or false<em>(boolean)</em></li>
+  <li><code>{% raw %}displayable{% endraw %}</code> display state, true or false<em>(boolean)</em></li>
+  <li><code>{% raw %}parentId{% endraw %}</code> id of parent node<em>(integer)</em></li>
+  <li><code>{% raw %}urlPrefix{% endraw %}</code> URL prefix<em>(string)</em></li>
+  <li><code>{% raw %}slug{% endraw %}</code> item slug<em>(string)</em></li>
+  <li><code>{% raw %}url{% endraw %}</code> full item url<em>(string)</em></li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/news HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+
+
+{
+      "id": 57625,
+      "siteId": 1211552,
+      "roleId": -1,
+      "subject": "Company Announces Record Profits",
+      "body": "You can now write about your latest news&quot;
+		&quot;templateId&quot;: 0,<br>      &quot;weight&quot;: null,<br>      &quot;createBy&quot;: 267621,<br>      &quot;createDate&quot;: &quot;2013-11-25T09:13:03.45&quot;,<br>      &quot;lastUpdateBy&quot;: 267621,<br>      &quot;lastUpdateDate&quot;: &quot;2013-11-25T09:13:03.45&quot;,<br>      &quot;eventFromDate&quot;: &quot;2011-05-31T10:00:00&quot;,<br>      &quot;eventToDate&quot;: &quot;2011-05-31T10:00:00&quot;,<br>      &quot;releaseDate&quot;: &quot;2011-05-31T10:00:00&quot;,<br>      &quot;expiryDate&quot;: &quot;9998-12-31T15:00:00&quot;,<br>      &quot;enabled&quot;: true,<br>      &quot;deleted&quot;: false,<br>      &quot;displayable&quot;: true,<br>      &quot;parentId&quot;: 7,<br>      &quot;urlPrefix&quot;: &quot;announcements&quot;,<br>      &quot;slug&quot;: &quot;company-announces-record-profits&quot;,<br>      &quot;url&quot;: &quot;/announcements/company-announces-record-profits&quot;
+}
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 201 CREATED
+Location: /webresources/api/v3/sites/current/news
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/news&quot;,<br>    data:JSON.stringify({<br>    &quot;roleId&quot;: -1,<br>    &quot;subject&quot;: &quot;Company Announces Record Profits&quot;,<br>    &quot;body&quot;: &quot;&lt;p&gt;You can now write about your latest news, announcements and much nmore.&quot;,<br>    &quot;templateId&quot;: 0,<br>    &quot;weight&quot;: null,<br>    &quot;createBy&quot;: 267621,<br>    &quot;createDate&quot;: &quot;2013-11-25T09:13:03.45&quot;,<br>    &quot;lastUpdateBy&quot;: 267621,<br>    &quot;lastUpdateDate&quot;: &quot;2013-11-25T09:13:03.45&quot;,<br>    &quot;eventFromDate&quot;: &quot;2011-05-31T10:00:00&quot;,<br>    &quot;eventToDate&quot;: &quot;2011-05-31T10:00:00&quot;,<br>    &quot;releaseDate&quot;: &quot;2011-05-31T10:00:00&quot;,<br>    &quot;expiryDate&quot;: &quot;9998-12-31T15:00:00&quot;,<br>    &quot;enabled&quot;: true,<br>    &quot;deleted&quot;: false,<br>    &quot;displayable&quot;: true,<br>    &quot;parentId&quot;: 7,<br>    &quot;urlPrefix&quot;: &quot;announcements&quot;,<br>    &quot;slug&quot;: &quot;company-announces-record-profits&quot;,<br>    &quot;url&quot;: &quot;/announcements/company-announces-record-profits&quot;<br>}),<br>    type: &quot;POST&quot;,    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+         "Authorization": BCAPI.Helper.Site.getAccessToken()
+    }
+});
+request.done(function(data) {
+    console.log(data);
+})
+    request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="edit">
+<h2>Edit  a news resource</h2>
+<div class="description">Using this method you can edit a news item.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> PUT</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/news/[newsId]
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+
+  <li><code>{% raw %}id{% endraw %}</code> - the id of the news item<em>(integer)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site<em>(integer)</em></li>
+  <li><code>{% raw %}roleId{% endraw %}</code> - id of the role responsible<em>(integer)</em></li>
+  <li><code>{% raw %}subject{% endraw %}</code> - question body<em>(string)</em></li>
+  <li><code>{% raw %}body{% endraw %}</code> - answer body<em>(string)</em></li>
+  <li><code>{% raw %}templateId{% endraw %}</code> - template assigned to news<em>(integer)</em></li>
+  <li><code>{% raw %}weight{% endraw %}</code> - weight value<em>(integer)</em></li>
+  <li><code>{% raw %}createBy{% endraw %}</code> - admin user id<em>(integer)</em></li>
+  <li><code>{% raw %}createDate{% endraw %}</code> - date of news item creation<em>(datetime)</em></li>
+  <li><code>{% raw %}latUpdateBy{% endraw %}</code> - admin user that performed latest update<em>(integer)</em></li>
+  <li><code>{% raw %}lastUpdateDate{% endraw %}</code> - most recent update date<em>(datetime)</em></li>
+  <li><code>{% raw %}eventFromDate{% endraw %}</code> - associated start date<em>(datetime)</em></li>
+  <li><code>{% raw %}eventToDate{% endraw %}</code> - associated end date<em>(datetime)</em></li>
+  <li><code>{% raw %}releaseDate{% endraw %}</code> release date<em>(datetime)</em></li>
+  <li><code>{% raw %}expiryDate{% endraw %}</code> - date of item expiry<em>(datetime)</em></li>
+  <li><code>{% raw %}enabled{% endraw %}</code> - active state, true or false<em>(boolean)</em></li>
+  <li><code>{% raw %}deleted{% endraw %}</code> deleted state, true or false<em>(boolean)</em></li>
+  <li><code>{% raw %}displayable{% endraw %}</code> display state, true or false<em>(boolean)</em></li>
+  <li><code>{% raw %}parentId{% endraw %}</code> id of parent node<em>(integer)</em></li>
+  <li><code>{% raw %}urlPrefix{% endraw %}</code> URL prefix<em>(string)</em></li>
+  <li><code>{% raw %}slug{% endraw %}</code> item slug<em>(string)</em></li>
+  <li><code>{% raw %}url{% endraw %}</code> full item url<em>(string)</em></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/faqs/[faqId] HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+
+
+{
+      "id": 57625,
+      "siteId": 1211552,
+      "roleId": -1,
+      "subject": "Company Announces New Record Profits"
+}{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/faqs/[faqId]
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/news/57625",<br>    data:JOSN.stringify(
+{
+      "id": 57625,
+      "siteId": 1211552,
+      "roleId": -1,
+      "subject": "Company Announces New Record Profits"
+}
+),<br>    type: "PUT",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+         "Authorization": BCAPI.Helper.Site.getAccessToken()
+    }
+});
+request.done(function(data) {
+    console.log(data);
+})
+    request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="delete">
+<h2>Delete  an FAQ item</h2>
+<div class="description">Delete a Frequently Asked Question.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path: </strong>/webresources/api/v3/sites/current/news/[faqId]
+  <ul>
+    <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/news/[newsId] HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/news/[newsId]
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/news/57625",<br>    type: "DELETE",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function(data) {
+    console.log(data);
+})
+    request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>

@@ -1,0 +1,307 @@
+
+        <h1 apiType="soap">Product_ListRetrieve</h1> 
+<h2>Get a list of products</h2>
+<p>This SOAP API endpoint is used to retrieve the list of products contained in a given catalog (or all products if <code>{% raw %}CatalogId{% endraw %}</code> = -1).</p>
+
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> SOAP</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.  </li>
+<li><strong>Path:</strong> /catalystwebservice/catalystcrmwebservice.asmx</li>
+<li><strong>The username and password fields:</strong>You can make SOAP API calls can be authorized either by using the actual username or password of an Admin username or, if you are making the calls from an app leave the username field empty and use the <a href="/developers/developer-documentation/authorize-your-api-calls">authorization token</a> as the password.</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<ul>
+<li><code>{% raw %}SiteId{% endraw %}</code> - ID of the site <em>(integer)</em></li>
+<li><code>{% raw %}Username{% endraw %}</code> - email address of user account, leave empty if using site token <em>(string)</em></li>
+<li><code>{% raw %}Password{% endraw %}</code> - password of user account, or site authentication token for specified site <em>(string)</em></li>
+<li><code>{% raw %}CatalogId{% endraw %}</code> - <em>(string)</em>  </li>
+</ul>
+
+<p>To use a site token instead of username/password, send an empty <code>{% raw %}username{% endraw %}</code> field and the site token as the <code>{% raw %}password{% endraw %}</code>. See example below.</p>
+
+<h2>Response</h2>
+
+<p>A Product_ListRetrieveResponse object with the following properties:</p>
+
+<ul>
+<li><code>{% raw %}Product_ListRetrieveResult{% endraw %}</code> - <em>(object)</em> 
+
+<ul>
+<li><code>{% raw %}Products{% endraw %}</code> - <em>(object)</em><br>
+
+<ul>
+<li><code>{% raw %}productId{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}productCode{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}productName{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}description{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}smallImage{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}largeImage{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}cataloguesArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}pricesSaleArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}pricesRetailArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}pricesWholesaleArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}wholesaleTaxCodeArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}taxCodeArray{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}groupProducts{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}groupProductsDescriptions{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}supplierEntityId{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}supplierCommission{% endraw %}</code> - <em>(double)</em> </li>
+<li><code>{% raw %}weight{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}relatedProducts{% endraw %}</code> - <em>(array)</em> </li>
+<li><code>{% raw %}tags{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}unitType{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}minUnits{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}maxUnits{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}inStock{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}onOrder{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}reOrder{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}inventoryControl{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}canPreOrder{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}custom1{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}custom2{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}custom3{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}custom4{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}popletImages{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}enabled{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}deleted{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}captureDetails{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}downloadLimitCount{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}limitDownloadsToIP{% endraw %}</code> - <em>(integer)</em> </li>
+<li><code>{% raw %}isOnSale{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}hideIfNoStock{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}productAttributes{% endraw %}</code> - <em>(string)</em> </li>
+<li><code>{% raw %}isGiftVoucher{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}enableDropShipping{% endraw %}</code> - <em>(boolean)</em> </li>
+<li><code>{% raw %}productWeight{% endraw %}</code> - <em>(double)</em> </li>
+<li><code>{% raw %}productWidth{% endraw %}</code> - <em>(double)</em> </li>
+<li><code>{% raw %}productHeight{% endraw %}</code> - <em>(double)</em> </li>
+<li><code>{% raw %}productDepth{% endraw %}</code> - <em>(double)</em></li>
+<li><code>{% raw %}excludeFromSearch{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}productTitle{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}cycletypeId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}cycletypeCount{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}slug{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}hasVariations{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}variations{% endraw %}</code> - <em>(array)</em></li>
+<li><code>{% raw %}roleResponsible{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}metaDescription{% endraw %}</code> - <em>(string)</em></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2>Examples</h2>
+
+<p>Accepts and returns XML as Content-Type.</p>
+
+<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values, please note the data in the request and response is only for explanatory purposes.</p>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-markup"><code>{% raw %}POST /catalystwebservice/catalystecommercewebservice.asmx HTTP/1.1
+Host: www.businesscatalyst.com.au
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: length
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
+  &lt;soap12:Body&gt;
+    &lt;Product_ListRetrieve xmlns="http://tempuri.org/CatalystDeveloperService/CatalystEcommerceWebservice"&gt;
+      &lt;Username&gt;jdoe@yourdomain.com&lt;/Username&gt;
+      &lt;Password&gt;Y0urP@ssw0rdH3re&lt;/Password&gt;
+      &lt;SiteId&gt;12345&lt;/SiteId&gt;
+      &lt;CatalogId&gt;12345&lt;/CatalogId&gt;
+    &lt;/Product_ListRetrieve&gt;
+  &lt;/soap12:Body&gt;
+&lt;/soap12:Envelope&gt;
+{% endraw %}</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-markup"><code>{% raw %}HTTP/1.1 200 OK
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: length
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"&gt;
+  &lt;soap12:Body&gt;
+    &lt;Product_ListRetrieveResponse xmlns="http://tempuri.org/CatalystDeveloperService/CatalystEcommerceWebservice"&gt;
+      &lt;Product_ListRetrieveResult&gt;
+        &lt;Products&gt;
+          &lt;productId&gt;12345&lt;/productId&gt;
+          &lt;productCode&gt;ZJAWEN&lt;/productCode&gt;
+          &lt;productName&gt;My test product&lt;/productName&gt;
+          &lt;description&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/description&gt;
+          &lt;smallImage&gt;/images/product1/small.jpg&lt;/smallImage&gt;
+          &lt;largeImage&gt;/images/product1/large.jpg&lt;/largeImage&gt;
+         &lt;cataloguesArray&gt;
+             &lt;string&gt;/Books/&lt;/string&gt;
+             &lt;string&gt;/Books/Computers/&lt;/string&gt;
+             &lt;string&gt;/Books/Business/&lt;/string&gt;
+          &lt;/cataloguesArray&gt;
+          &lt;pricesSaleArray&gt;
+            &lt;string&gt;US/19.95,3/17.96,7/16.96&lt;/string&gt;
+          &lt;/pricesSaleArray&gt;
+          &lt;pricesRetailArray&gt;
+            &lt;string&gt;US/20,5/19,8/20&lt;/string&gt;
+          &lt;/pricesRetailArray&gt;
+          &lt;pricesWholesaleArray&gt;
+            &lt;string&gt;US/20,5/19,8/20&lt;/string&gt;
+          &lt;/pricesWholesaleArray&gt;
+          &lt;wholesaleTaxCodeArray&gt;
+            &lt;string&gt;US/0.00&lt;/string&gt;
+          &lt;/wholesaleTaxCodeArray&gt;
+          &lt;taxCodeArray&gt;
+            &lt;string&gt;GB/VAT&lt;/string&gt;
+          &lt;/taxCodeArray&gt;
+          &lt;groupProducts&gt;
+            &lt;string&gt;580H0036BL&lt;/string&gt;
+            &lt;string&gt;ACAI60&lt;/string&gt;
+            &lt;string&gt;ABC-123&lt;/string&gt;
+          &lt;/groupProducts&gt;
+          &lt;groupProductsDescriptions&gt;
+            &lt;string&gt;Lorem ipsum dolor sit amet&lt;/string&gt;
+            &lt;string&gt;consectetur adipisicing elit&lt;/string&gt;
+          &lt;/groupProductsDescriptions&gt;
+          &lt;supplierEntityId&gt;1234&lt;/supplierEntityId&gt;
+          &lt;supplierCommission&gt;0&lt;/supplierCommission&gt;
+          &lt;weight&gt;30&lt;/weight&gt;
+          &lt;relatedProducts&gt;
+            &lt;string&gt;62NNEC836K&lt;/string&gt;
+            &lt;string&gt;FSLJQIMW08&lt;/string&gt;
+            &lt;string&gt;38CK6XO8MH&lt;/string&gt;
+          &lt;/relatedProducts&gt;
+          &lt;tags&gt;NEW!&lt;/tags&gt;
+          &lt;unitType&gt;string&lt;/unitType&gt;
+          &lt;minUnits&gt;0&lt;/minUnits&gt;
+          &lt;maxUnits&gt;2&lt;/maxUnits&gt;
+          &lt;inStock&gt;43&lt;/inStock&gt;
+          &lt;onOrder&gt;3&lt;/onOrder&gt;
+          &lt;reOrder&gt;2&lt;/reOrder&gt;
+          &lt;inventoryControl&gt;true&lt;/inventoryControl&gt;
+          &lt;canPreOrder&gt;true&lt;/canPreOrder&gt;
+          &lt;custom1&gt;Text in custom field 1&lt;/custom1&gt;
+          &lt;custom2&gt;Text in custom field 2&lt;/custom2&gt;
+          &lt;custom3&gt;Text in custom field 3&lt;/custom3&gt;
+          &lt;custom4&gt;Text in custom field 4&lt;/custom4&gt;
+          &lt;popletImages&gt;/images/image1.jpg;/images/image2.jpg;&lt;/popletImages&gt;
+          &lt;enabled&gt;true&lt;/enabled&gt;
+          &lt;deleted&gt;false&lt;/deleted&gt;
+          &lt;captureDetails&gt;true&lt;/captureDetails&gt;
+          &lt;downloadLimitCount&gt;20&lt;/downloadLimitCount&gt;
+          &lt;limitDownloadsToIP&gt;0&lt;/limitDownloadsToIP&gt;
+          &lt;isOnSale&gt;true&lt;/isOnSale&gt;
+          &lt;hideIfNoStock&gt;true&lt;/hideIfNoStock&gt;
+          &lt;productAttributes&gt;Size*|5|Y:L||UK/2|US/20,S||UK/1|US/10&lt;/productAttributes&gt;
+          &lt;isGiftVoucher&gt;false&lt;/isGiftVoucher&gt;
+          &lt;enableDropShipping&gt;true&lt;/enableDropShipping&gt;
+          &lt;productWeight&gt;0&lt;/productWeight&gt;
+          &lt;productWidth&gt;0&lt;/productWidth&gt;
+          &lt;productHeight&gt;0&lt;/productHeight&gt;
+          &lt;productDepth&gt;0&lt;/productDepth&gt;
+          &lt;excludeFromSearch&gt;false&lt;/excludeFromSearch&gt;
+          &lt;productTitle&gt;My product title&lt;/productTitle&gt;
+          &lt;cycletypeId&gt;3&lt;/cycletypeId&gt;
+          &lt;cycletypeCount&gt;-1&lt;/cycletypeCount&gt;
+          &lt;slug&gt;my-product&lt;/slug&gt;
+          &lt;hasVariations&gt;true&lt;/hasVariations&gt;
+          &lt;variations&gt;
+            &lt;ProductVariation xsi:nil="true" /&gt;
+            &lt;ProductVariation xsi:nil="true" /&gt;
+          &lt;/variations&gt;
+        &lt;/Products&gt;
+        &lt;Products&gt;
+          &lt;productId&gt;12345&lt;/productId&gt;
+          &lt;productCode&gt;ZJAWEN&lt;/productCode&gt;
+          &lt;productName&gt;My test product&lt;/productName&gt;
+          &lt;description&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/description&gt;
+          &lt;smallImage&gt;/images/product1/small.jpg&lt;/smallImage&gt;
+          &lt;largeImage&gt;/images/product1/large.jpg&lt;/largeImage&gt;
+         &lt;cataloguesArray&gt;
+             &lt;string&gt;/Books/&lt;/string&gt;
+             &lt;string&gt;/Books/Computers/&lt;/string&gt;
+             &lt;string&gt;/Books/Business/&lt;/string&gt;
+          &lt;/cataloguesArray&gt;
+          &lt;pricesSaleArray&gt;
+            &lt;string&gt;US/19.95,3/17.96,7/16.96&lt;/string&gt;
+          &lt;/pricesSaleArray&gt;
+          &lt;pricesRetailArray&gt;
+            &lt;string&gt;US/20,5/19,8/20&lt;/string&gt;
+          &lt;/pricesRetailArray&gt;
+          &lt;pricesWholesaleArray&gt;
+            &lt;string&gt;US/20,5/19,8/20&lt;/string&gt;
+          &lt;/pricesWholesaleArray&gt;
+          &lt;wholesaleTaxCodeArray&gt;
+            &lt;string&gt;US/0.00&lt;/string&gt;
+          &lt;/wholesaleTaxCodeArray&gt;
+          &lt;taxCodeArray&gt;
+            &lt;string&gt;GB/VAT&lt;/string&gt;
+          &lt;/taxCodeArray&gt;
+          &lt;groupProducts&gt;
+            &lt;string&gt;580H0036BL&lt;/string&gt;
+            &lt;string&gt;ACAI60&lt;/string&gt;
+            &lt;string&gt;ABC-123&lt;/string&gt;
+          &lt;/groupProducts&gt;
+          &lt;groupProductsDescriptions&gt;
+            &lt;string&gt;Lorem ipsum dolor sit amet&lt;/string&gt;
+            &lt;string&gt;consectetur adipisicing elit&lt;/string&gt;
+          &lt;/groupProductsDescriptions&gt;
+          &lt;supplierEntityId&gt;1234&lt;/supplierEntityId&gt;
+          &lt;supplierCommission&gt;0&lt;/supplierCommission&gt;
+          &lt;weight&gt;30&lt;/weight&gt;
+          &lt;relatedProducts&gt;
+            &lt;string&gt;62NNEC836K&lt;/string&gt;
+            &lt;string&gt;FSLJQIMW08&lt;/string&gt;
+            &lt;string&gt;38CK6XO8MH&lt;/string&gt;
+          &lt;/relatedProducts&gt;
+          &lt;tags&gt;NEW!&lt;/tags&gt;
+          &lt;unitType&gt;string&lt;/unitType&gt;
+          &lt;minUnits&gt;0&lt;/minUnits&gt;
+          &lt;maxUnits&gt;2&lt;/maxUnits&gt;
+          &lt;inStock&gt;43&lt;/inStock&gt;
+          &lt;onOrder&gt;3&lt;/onOrder&gt;
+          &lt;reOrder&gt;2&lt;/reOrder&gt;
+          &lt;inventoryControl&gt;true&lt;/inventoryControl&gt;
+          &lt;canPreOrder&gt;true&lt;/canPreOrder&gt;
+          &lt;custom1&gt;Text in custom field 1&lt;/custom1&gt;
+          &lt;custom2&gt;Text in custom field 2&lt;/custom2&gt;
+          &lt;custom3&gt;Text in custom field 3&lt;/custom3&gt;
+          &lt;custom4&gt;Text in custom field 4&lt;/custom4&gt;
+          &lt;popletImages&gt;/images/image1.jpg;/images/image2.jpg;&lt;/popletImages&gt;
+          &lt;enabled&gt;true&lt;/enabled&gt;
+          &lt;deleted&gt;false&lt;/deleted&gt;
+          &lt;captureDetails&gt;true&lt;/captureDetails&gt;
+          &lt;downloadLimitCount&gt;20&lt;/downloadLimitCount&gt;
+          &lt;limitDownloadsToIP&gt;0&lt;/limitDownloadsToIP&gt;
+          &lt;isOnSale&gt;true&lt;/isOnSale&gt;
+          &lt;hideIfNoStock&gt;true&lt;/hideIfNoStock&gt;
+          &lt;productAttributes&gt;Size*|5|Y:L||UK/2|US/20,S||UK/1|US/10&lt;/productAttributes&gt;
+          &lt;isGiftVoucher&gt;false&lt;/isGiftVoucher&gt;
+          &lt;enableDropShipping&gt;true&lt;/enableDropShipping&gt;
+          &lt;productWeight&gt;0&lt;/productWeight&gt;
+          &lt;productWidth&gt;0&lt;/productWidth&gt;
+          &lt;productHeight&gt;0&lt;/productHeight&gt;
+          &lt;productDepth&gt;0&lt;/productDepth&gt;
+          &lt;excludeFromSearch&gt;false&lt;/excludeFromSearch&gt;
+          &lt;productTitle&gt;My product title&lt;/productTitle&gt;
+          &lt;cycletypeId&gt;3&lt;/cycletypeId&gt;
+          &lt;cycletypeCount&gt;-1&lt;/cycletypeCount&gt;
+          &lt;slug&gt;my-product&lt;/slug&gt;
+          &lt;roleResponsible&gt;role_name&lt;/roleResponsible&gt;
+          &lt;metaDescription&gt;This is the meta description&lt;/metaDescription&gt;
+          &lt;hasVariations&gt;true&lt;/hasVariations&gt;
+          &lt;variations&gt;
+            &lt;ProductVariation xsi:nil="true" /&gt;
+            &lt;ProductVariation xsi:nil="true" /&gt;
+          &lt;/variations&gt;
+        &lt;/Products&gt;
+      &lt;/Product_ListRetrieveResult&gt;
+    &lt;/Product_ListRetrieveResponse&gt;
+  &lt;/soap12:Body&gt;
+&lt;/soap12:Envelope&gt;
+{% endraw %}</code></pre>
+
+        

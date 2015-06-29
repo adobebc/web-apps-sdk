@@ -1,0 +1,151 @@
+
+        <h1 apiType="restv2">Create Web App</h1> 
+
+<p>Create a new Web App</p>
+
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/current/webapps 
+
+<ul>
+<li>Alternatively use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Create Web Apps</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<ul>
+<li><code>{% raw %}name{% endraw %}</code> - required <em>(string)</em></li>
+<li><code>{% raw %}slug{% endraw %}</code> - <em>(string, optional)</em> - it defaults to the name of the web app, or a variation on the name, if a slug with the name already exists</li>
+<li><code>{% raw %}allowFileUpload{% endraw %}</code> - . Defaults to false <em>(boolean, optional)</em></li>
+<li><code>{% raw %}uploadFolder{% endraw %}</code> - required only if allowFileUpload is True. Must be a valid absolute path in the site, created in advance <em>(string)</em></li>
+<li><code>{% raw %}disableDetailPages{% endraw %}</code>- <em>(boolean, optional)</em></li>
+<li><code>{% raw %}locationEnabled{% endraw %}</code> - <em>(boolean, optional)</em></li>
+<li><code>{% raw %}anyoneCanEdit{% endraw %}</code> - <em>(boolean, optional)</em></li>
+<li><code>{% raw %}customerCanAdd{% endraw %}</code> - <em>(boolean, optional)</em></li>
+<li><code>{% raw %}customerCanEdit{% endraw %}</code> - <em>(boolean, optional)</em></li>
+<li><code>{% raw %}customerCanDelete{% endraw %}</code> - <em>(boolean, optional)</em></li>
+<li><code>{% raw %}requiresPayment{% endraw %}</code> - <em>(boolean, optional)</em></li>
+<li><code>{% raw %}requiresApproval{% endraw %}</code> - <em>(boolean, optional)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - optional, defaults to -1 <em>(integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - optional, defaults to -1 <em>(integer)</em></li>
+<li><code>{% raw %}validDays{% endraw %}</code> - optional, defaults to -1 (never expire) <em>(integer)</em></li>
+</ul>
+
+<h2>Response</h2>
+
+<p>Returns an empty body and a location header containing the URI to retrieve category details.</p>
+
+<h3>Examples</h3>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<hr>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}POST /api/v2/admin/sites/current/webapps HTTPS/1.1
+Content-Length: 57
+Connection: keep-alive
+Content-Type: application/json
+
+{"name": "FirstWebAppFromApi"}
+
+{% endraw %}</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 OK
+Location: /v2/admin/sites/current/webapps/FirstWebAppFromApi
+Content-Type: application/json; charset=utf-8
+Content-Length: 0
+{% endraw %}</code></pre>
+
+<h3>Notes</h3>
+
+<ul>
+<li>Creating a Web App does not allow passing in the custom fields. To add custom fields, use the Custom Fields API endpoint. Creating a Web App will create (or preserve) the default layouts (list, alternate, detail, edit)</li>
+<li>if passing a value for the uploadFolder parameter that does not exist on the file system, the system will attempt to create the folder, and its entire path. It reuses the mechanism used in the FileSystem APIs to create a folder, so the same exceptions get thrown.</li>
+<li>Only the webapp Name parameter is mandatory. The rest have defaults, as follows:
+
+<ul>
+<li>templateId - -1</li>
+<li>uploadFolder - -1</li>
+<li>slug - the name of the web app or a variation of the name</li>
+<li>requiresApproval - true</li>
+<li>allowFileUpload - false</li>
+<li>customerCanAdd, customerCanDelete, customerCanEdit, anyoneCanEdit - false</li>
+<li>requiresPayment - false</li>
+<li>validDays - -1 (never expire)</li>
+<li>roleId - 0</li>
+<li>hasAddress - false</li>
+<li>disableDetailPages - false</li>
+<li>locationEnabled - false</li>
+</ul></li>
+<li>The webapp name must not be empty and can only contain valid characters, that can be later used on the file system and the API uris. The invalid characters are: / ? # % &amp; * + \ | : ; . “ &gt; &lt;
+If you pass in values for itemSystemFields and / or itemFields they will be ignored.</li>
+</ul>
+
+<hr><h2>Sample code</h2>
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
+    url: "/api/v2/admin/sites/current/webapps",
+    type: "POST",
+    connection: "keep-alive",
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    processData: false,
+    data: JSON.stringify({"name": "APIcreated", "requiresApproval": true, "trmplateid": -1})
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})
+{% endraw %}</code></pre>
+
+<hr><h2>Error codes</h2>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>{% raw %}201/Created{% endraw %}</code> - Web App successfully created</li>
+<li><code>{% raw %}400/Bad request{% endraw %}</code> - Invalid request. Sub-codes are:
+
+<ul>
+<li><code>{% raw %}190000{% endraw %}</code> - Generic error</li>
+<li><code>{% raw %}190002{% endraw %}</code> - Invalid slug</li>
+<li><code>{% raw %}190003{% endraw %}</code> - Slug URL too long</li>
+<li><code>{% raw %}190004{% endraw %}</code> - slug already exists</li>
+<li><code>{% raw %}190005{% endraw %}</code> - webapp with same name already exists</li>
+<li><code>{% raw %}190009{% endraw %}</code> - invalid webapp name; see notes section below for list of invalid characters</li>
+<li><code>{% raw %}190010{% endraw %}</code> - invalid template id</li>
+</ul></li>
+<li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+
+<ul>
+<li><code>{% raw %}101000{% endraw %}</code> - sub-error code</li>
+</ul></li>
+<li><code>{% raw %}403{% endraw %}</code> - Forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+<li><code>{% raw %}404{% endraw %}</code> - Not Found
+
+<ul>
+<li><code>{% raw %}190001{% endraw %}</code> - Not Found</li>
+</ul></li>
+</ul>
+
+        

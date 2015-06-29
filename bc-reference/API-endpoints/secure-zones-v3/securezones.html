@@ -1,0 +1,448 @@
+<h1 apiType="restv3">Secure zones</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2 id ="list-securezones">List the secure zones in a site</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones
+
+<ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of the first 10 secure zones; each object has the following properties:</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}landingPageId{% endraw %}</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the secure zone <em>(string)</em></li>
+<li><code>{% raw %}sellAccess{% endraw %}</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+<li><code>{% raw %}costPerPeriod{% endraw %}</code> - the membership cost amount <em>(integer)</em></li>
+<li><code>{% raw %}orderCountryCode{% endraw %}</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+<li><code>{% raw %}cycleType{% endraw %}</code> - the frequency of membership renewal <em>(integer)</em>
+<ul>
+	  <li> "1" Once</li>
+	  <li> "2" Daily</li>
+	  <li> "3" Weekly</li>
+	  <li> "4" Fortnightly</li>
+	  <li> "5" Monthly</li>
+	  <li>"6" Quarterly</li>
+	  <li> "7" Half Yearly</li>
+	  <li> "8" Yearly</li>
+
+</ul>
+</li>
+<li><code>{% raw %}deleted{% endraw %}</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
+</ul>
+
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/securezones",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [
+    {
+      "id": 3309,
+      "siteId": 38581,
+      "landingPageId": 4518247,
+      "name": "Secure Zone 1",
+      "sellAccess": false,
+      "costPerPeriod": 0,
+      "orderCountryCode": null,
+      "cycleType": null,
+      "deleted": false
+    },
+    {
+      "id": 3310,
+      "siteId": 38581,
+      "landingPageId": 2411253,
+      "name": "Secure Zone 2",
+      "sellAccess": false,
+      "costPerPeriod": 0,
+      "orderCountryCode": null,
+      "cycleType": null,
+      "deleted": false
+    },
+    {
+      "id": 3311,
+      "siteId": 38581,
+      "landingPageId": 2411253,
+      "name": "Secure zone 3",
+      "sellAccess": false,
+      "costPerPeriod": 0,
+      "orderCountryCode": null,
+      "cycleType": null,
+      "deleted": false
+    }
+  ],
+  "totalItemsCount": 3,
+  "skip": 0,
+  "limit": 10
+}
+{% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="details">
+<h2>Get a secure zone's attributes</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones/[secure_zone_ID]
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Displays the details for the secure zone as a JSON object</p>
+<ul>
+  <li><code>{% raw %}id{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+  <li><code>{% raw %}landingPageId{% endraw %}</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+  <li><code>{% raw %}name{% endraw %}</code> - the name of the secure zone <em>(string)</em></li>
+  <li><code>{% raw %}sellAccess{% endraw %}</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+  <li><code>{% raw %}costPerPeriod{% endraw %}</code> - the membership cost amount <em>(integer)</em></li>
+  <li><code>{% raw %}orderCountryCode{% endraw %}</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+  <li><code>{% raw %}cycleType{% endraw %}</code> - the frequency of membership renewal <em>(integer)</em>
+    <ul>
+      <li> "1" Once</li>
+      <li> "2" Daily</li>
+      <li> "3" Weekly</li>
+      <li> "4" Fortnightly</li>
+      <li> "5" Monthly</li>
+      <li> "6" Quarterly</li>
+      <li> "7" Half Yearly</li>
+      <li> "8" Yearly</li>
+    </ul>
+  </li>
+  <li><code>{% raw %}deleted{% endraw %}</code> - whether the secure zone is deleted or active <em>(boolean)</em></li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/securezones/3309",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{% raw %}{
+  "id": 3309,
+  "siteId": 38581,
+  "landingPageId": 4518247,
+  "name": "Secure Zone 1",
+  "sellAccess": true,
+  "costPerPeriod": 1,
+  "orderCountryCode": "AU",
+  "cycleType": 5,
+  "deleted": false
+}
+{% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="create">
+<h2>Create a secure zone</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Version:</strong> v3</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones
+
+<ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The response should be &quot;201 created&quot; if the secure zone was successfully created.</p>
+<p>Here are the parameters you can use when creating a secure zone:</p>
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}landingPageId{% endraw %}</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the secure zone <em>(string)</em></li>
+<li><code>{% raw %}sellAccess{% endraw %}</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+<li><code>{% raw %}costPerPeriod{% endraw %}</code> - the membership cost amount <em>(integer)</em></li>
+<li><code>{% raw %}orderCountryCode{% endraw %}</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+<li><code>{% raw %}cycleType{% endraw %}</code> - the frequency of membership renewal <em>(integer)</em>
+<ul>
+	  <li> "1" Once</li>
+	  <li> "2" Daily</li>
+	  <li> "3" Weekly</li>
+	  <li> "4" Fortnightly</li>
+	  <li> "5" Monthly</li>
+	  <li> "6" Quarterly</li>
+	  <li> "7" Half Yearly</li>
+	  <li> "8" Yearly</li>
+
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+	url: "/webresources/api/v3/sites/current/securezones",
+    processData: false,
+    data: JSON.stringify({
+        "landingPageId": 4518247,
+        "name": "Secure Zone 4 (API)",
+        "sellAccess": true,
+        "costPerPeriod": 1,
+        "orderCountryCode": "AU",
+        "cycleType": 1,
+        "deleted": false
+    }),
+    type: "POST",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<hr>
+</div>
+</div>
+<div id="edit">
+<h2>Update an existing secure zone</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> PUT</li>
+<li><strong>Version:</strong> v3</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones/[secure_zone_ID]
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The response should be &quot;204 no content&quot; if the secure zone was successfully modified.</p>
+
+
+
+<p>Here are the parameters you can use when updating a secure zone:</p>
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the secure zone <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}landingPageId{% endraw %}</code> - the ID of the secure zone's landing page <em>(string)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the name of the secure zone <em>(string)</em></li>
+<li><code>{% raw %}sellAccess{% endraw %}</code> - whether you charge the customers who get access to the secure zone or not <em>(boolean)</em></li>
+<li><code>{% raw %}costPerPeriod{% endraw %}</code> - the membership cost amount <em>(integer)</em></li>
+<li><code>{% raw %}orderCountryCode{% endraw %}</code> - the currency to use when charging the customers for access<em>(string)</em></li>
+<li><code>{% raw %}cycleType{% endraw %}</code> - the frequency of membership renewal <em>(integer)</em>
+<ul>
+	  <li> "1" Once</li>
+	  <li> "2" Daily</li>
+	  <li> "3" Weekly</li>
+	  <li> "4" Fortnightly</li>
+	  <li> "5" Monthly</li>
+	  <li> "6" Quarterly</li>
+	  <li> "7" Half Yearly</li>
+	  <li> "8" Yearly</li>
+
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/securezones/3312",
+    processData: false,
+    data: JSON.stringify({
+         "name": "Secure Zone 4 (API - modified)"
+          }),
+    type: "PUT",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+              "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="delete">
+
+        <h2>Delete a secure zone</h2>
+
+<p>This section details the endpoints you can use to delete a secure zone.</p>
+
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/securezones/[seucre_zone_ID]
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The response should be &quot;204 no content&quot; if the secure zone was successfully deleted.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/securezones/3312",
+    type: "DELETE",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>

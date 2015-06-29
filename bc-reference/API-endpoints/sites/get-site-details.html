@@ -1,0 +1,261 @@
+
+        <h1 apiType="restv2">Get Site Details</h1> 
+
+<p>Gets the details of a site.</p>
+
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]
+
+<ul>
+<li>Alternatively, use 'current' instead of siteId</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+
+<h2>Response</h2>
+
+<p>site object with the following properties:</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}links{% endraw %}</code>
+
+<ul>
+<li>rel "self" - this link was designed to be used only for retrieving detailed information about the site, and should not be used to manually build other links from it. This is because, as the BC system is designed right now, the site detailed info available at "self" link is stored only on Master DC, and therefore you’ll always get a link to http://api-apac.worldsecuresystems.com in the self link for all sites in BC. This may change in the future though, so do not build any logic around the fact that self always pints to master, or http://api-apac.worldsecuresystems.com</li>
+<li>rel "photogalleries" - this link provides the URL where photogalleries-specific operations should be made, for the current site</li>
+<li>rel "siteLogin" - this link provides the URL where site authentication should be made, for the current site</li>
+<li>rel "create" - link to be used in case a new Site entity needs to be created</li>
+<li>rel "storage" - this link provides the URL where storage-specific operations should be made (file upload, remove files, etc), for the current site</li>
+<li>rel "siteUsers" - this link provides the URL where user-specific operations should be made; this is only used to manage users for the current site</li>
+</ul></li>
+<li><code>{% raw %}siteLinks{% endraw %}</code>
+
+<ul>
+<li>rel "systemUrl" - denotes the system url of this site, like http://mysite.businesscatalyst.com</li>
+<li>rel "secureUrl" - denotes the secure url of this site, like https://mysite.worldsecuresystems.com</li>
+</ul></li>
+<li><code>{% raw %}dataCenterId{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}daysToExpiry{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}displayExpiryWarning{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}pathWithTags{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}pathWithoutTags{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}siteStatus{% endraw %}</code> - <em>(integer)</em></li>
+<li><code>{% raw %}siteStatusDescription{% endraw %}</code> - <em>(string)</em></li>
+<li><code>{% raw %}canExtendExpiryDate{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}readyToGoLive{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}isPartnerSite{% endraw %}</code> - <em>(boolean)</em></li>
+<li><code>{% raw %}useAdvancedModuleDataEdit{% endraw %}</code> - Flag used to turn off any client (Dreamweaver) functionality to pass current selection as query param to /Utilities/EditModuleData.aspx. If set to false, client should send only module token (i.e. module_product) without any other parameters.</li>
+</ul>
+
+<h4>Available Site Status codes</h4>
+
+<table>
+<thead>
+<tr>
+  <th>Status</th>
+  <th align="center">Code (hexa)</th>
+  <th align="right">Code (decimal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Unknown</td>
+  <td align="center">0x00</td>
+  <td align="right">0</td>
+</tr>
+<tr>
+  <td>TrialInProgress</td>
+  <td align="center">0x01</td>
+  <td align="right">1</td>
+</tr>
+<tr>
+  <td>TrialExpired</td>
+  <td align="center">0x02</td>
+  <td align="right">2</td>
+</tr>
+<tr>
+  <td>GracePeriod</td>
+  <td align="center">0x04</td>
+  <td align="right">4</td>
+</tr>
+<tr>
+  <td>Deleted</td>
+  <td align="center">0x08</td>
+  <td align="right">8</td>
+</tr>
+<tr>
+  <td>Disabled</td>
+  <td align="center">0x10</td>
+  <td align="right">16</td>
+</tr>
+<tr>
+  <td>Paid</td>
+  <td align="center">0x20</td>
+  <td align="right">32</td>
+</tr>
+<tr>
+  <td>Free</td>
+  <td align="center">0x40</td>
+  <td align="right">64</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+<hr>
+
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /api/v2/admin/sites/current HTTPS/1.1
+Content-Type: application/json
+{% endraw %}</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+    "id": 246884,
+    "name": "perfume",
+    "links": [{
+        "rel": "self",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884"
+    }, {
+        "rel": "photogalleries",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/photogalleries"
+    }, {
+        "rel": "siteLogin",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/tokens"
+    }, {
+        "rel": "oneTimeToken",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/tokens/onetime"
+    }, {
+        "rel": "create",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/pp/sites"
+    }, {
+        "rel": "storage",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/storage"
+    }, {
+        "rel": "siteUsers",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/users"
+    }, {
+        "rel": "dreamweaverSiteDefinition",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/dreamweaver/definition"
+    }, {
+        "rel": "modules",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/rendering/modules"
+    }, {
+        "rel": "publicTypes",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/rendering/types"
+    }, {
+        "rel": "bindingRules",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/rendering/bindings/rules"
+    }, {
+        "rel": "webforms",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webforms"
+    }, {
+        "rel": "customFieldTypes",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webformfieldtypes/custom"
+    }, {
+        "rel": "systemFieldTypes",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webformfieldtypes/system"
+    }, {
+        "rel": "workflows",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/workflows"
+    }, {
+        "rel": "features",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/features"
+    }, {
+        "rel": "deviceRedirects",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/redirects/devices"
+    }, {
+        "rel": "webapps",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/webapps"
+    }, {
+        "rel": "categories",
+        "uri": "https://api-ava.worldsecuresystems.com/api/v2/admin/sites/246884/categories"
+    }],
+    "siteLinks": [{
+        "rel": "systemUrl",
+        "uri": "http://perfume10.bcrb.tk/"
+    }, {
+        "rel": "siteThumbUrl",
+        "uri": "http://perfume10.bcrb.tk/CatalystImages/SitePreview/sitepreview-118x100.png"
+    }, {
+        "rel": "secureUrl",
+        "uri": "https://perfume10.worldsecuresystems.com/"
+    }, {
+        "rel": "toolboxPanelUrl",
+        "uri": "http://perfume10.bcrb.tk/Admin/Index2.aspx?A=DW&SiteAuthToken=@@siteAuthTok…rsion%40%40%26AppColor%3d%40%40dwColor%40%40%26Language%3d%40%40lang%40%40"
+    }, {
+        "rel": "adminUrl",
+        "uri": "http://perfume10.bcrb.tk/Admin/Index2.aspx?A=DW&SiteAuthToken=@@siteAuthToken@@&URL=%2fAdminConsole%2f"
+    }, {
+        "rel": "publicUrl",
+        "uri": "http://perfume10.bcrb.tk/"
+    }, {
+        "rel": "manageUrl",
+        "uri": "https://ava.worldsecuresystems.com/Admin/GoSite.aspx?SiteGuid=3548c582-a7be-4801-a42a-8c2b8a05d7b0"
+    }],
+    "useAdvancedModuleDataEdit": true,
+    "siteStatus": 1,
+    "billingMethodTypeId": 0,
+    "createDate": "2011-09-20T23:04:54",
+    "dataCenterId": 7,
+    "daysToExpiry": 2052,
+    "displayExpiryWarning": false,
+    "pathWithTags": ["/Layouts/"],
+    "pathWithoutTags": ["/Layouts/SystemMessages/"],
+    "siteStatusDescription": "TrialInProgress",
+    "canExtendExpiryDate": false,
+    "readyToGoLive": false,
+    "isPartnerSite": false
+}{% endraw %}</code></pre>
+<hr>
+<h2>Sample code</h2>
+<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
+    "url": "/api/v2/admin/sites/current",
+    "headers": {
+        "Authorization": $.cookie('access_token')
+    },
+    "contentType": "application/json"
+})
+
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+})
+
+request.fail(function (jqXHR) {
+    console.log("Get site list failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<hr>
+<h2>Error codes</h2>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>{% raw %}200{% endraw %}</code> - success</li>
+<li><code>{% raw %}400{% endraw %}</code> - bad request
+
+<ul>
+<li><code>{% raw %}100002{% endraw %}</code> sub error code - the site id is not found. It either doesn't exist in the system, or the current user doesn't belong it that site.</li>
+<li><code>{% raw %}109001{% endraw %}</code> sub error code - not enough privileges (user is not a partner/partner of the site when he attempts to set ReadyToGoLive)</li>
+<li><code>{% raw %}103001{% endraw %}</code> sub error code - cannot extend trial site validity</li>
+<li><code>{% raw %}103004{% endraw %}</code> sub error code - invalid extension period</li>
+</ul></li>
+<li><code>{% raw %}401{% endraw %}</code> - when authentication token is incorrect or missing</li>
+<li><code>{% raw %}500{% endraw %}</code> - Internal server error</li>
+</ul>
+
+        

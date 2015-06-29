@@ -1,0 +1,174 @@
+<h1 apiType="restv3">Prices</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2>Get prices</h2>
+<div class="description">
+<p>Gets the list of price resources available.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/prices
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The details for the specified customer ID in JSON format.</p>
+
+<ul>
+<li><code>{% raw %}productId{% endraw %}</code> - the id of the price <em>(numeric)</em></li>
+
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(numeric)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}taxCodeId{% endraw %}</code> - the ID of the tax code applied <em>(numeric)</em></li>
+<li><code>{% raw %}wTaxCodeId{% endraw %}</code> - the ID of the tax code applied for wholesalers <em>(numeric)</em></li>
+
+<li><code>{% raw %}retailPrice{% endraw %}</code> - the retail price <em>(numeric)</em></li>
+
+<li><code>{% raw %}salePrice{% endraw %} </code>- the sale price <em>(numeric)</em></li>
+
+<li><code>{% raw %}salePrice2{% endraw %}</code> <em>(numeric)</em></li>
+
+<li><code>{% raw %}salePrice3{% endraw %}</code> <em>(numeric)</em></li>
+
+<li><code>{% raw %}quantity2{% endraw %}</code> - the 2-nd quantity threshold (if the volume discounts is enabled) <em>(numeric)</em></li>
+
+<li><code>{% raw %}quantity3{% endraw %}</code> - the 3-rd quantity threshold (if the volume discounts is enabled)<em>(numeric)</em></li>
+
+<li><code>{% raw %}wSalePrice2{% endraw %}</code> - the wholesaler sale price for the 2-nd threshold<em>(numeric)</em></li>
+
+<li><code>{% raw %}wSalePrice3{% endraw %}</code> - the wholesaler sale price for the 3-rd threshold<em>(numeric)</em></li>
+
+<li><code>{% raw %}wQuantity2{% endraw %}</code> - the 2-nd quantity threshold for wholesalers (if the volume discounts is enabled) <em>(numeric)<em>(numeric)</em></li>
+
+<li><code>{% raw %}wQuantity3{% endraw %}</code> - the 3-nd quantity threshold for wholesalers (if the volume discounts is enabled) <em>(numeric)<em>(numeric)</em></li>
+
+
+</ul>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/prices HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [
+    {
+      "productId": 3909340,
+      "siteId": 246884,
+      "countryCode": "AD",
+      "taxCodeId": -1,
+      "wTaxCodeId": -1,
+      "retailPrice": 25,
+      "salePrice": 25,
+      "salePrice2": null,
+      "salePrice3": null,
+      "quantity2": null,
+      "quantity3": null,
+      "wSalePrice": 0,
+      "wSalePrice2": null,
+      "wSalePrice3": null,
+      "wQuantity2": null,
+      "wQuantity3": null
+    },
+    {
+      "productId": 3909340,
+      "siteId": 246884,
+      "countryCode": "AE",
+      "taxCodeId": -1,
+      "wTaxCodeId": -1,
+      "retailPrice": 25,
+      "salePrice": 25,
+      "salePrice2": null,
+      "salePrice3": null,
+      "quantity2": null,
+      "quantity3": null,
+      "wSalePrice": 0,
+      "wSalePrice2": null,
+      "wSalePrice3": null,
+      "wQuantity2": null,
+      "wQuantity3": null
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>Get the list of prices for all the products on your site</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/prices",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+
+
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p><strong>Get the prices for a particular product</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/prices/3909340",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>

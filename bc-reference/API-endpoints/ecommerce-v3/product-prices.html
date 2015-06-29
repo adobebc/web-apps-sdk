@@ -1,0 +1,125 @@
+<h1 apiType="restv3">Product prices</h1> 
+<ul id="toc"></ul>
+<div id="details">
+  <h2>Get a product's prices</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/products/[product_ID]/prices
+
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of the first 10 prices; each object has the following properties:</p>
+<ul>
+<li><strong>productId</strong> - product's ID <em>(numeric)</em></li>	
+<li><strong>siteId</strong> - current siteID <em>(numeric)</em></li>	
+<li><strong>countryCode</strong> - country code the priduct applies for <em>(string)</em></li>	
+<li><strong>taxCodeId</strong> - tax code ID associated <em>(numeric)</em></li>	
+<li><strong>wTaxCodeId</strong> - wholesaler tax code<em>(numeric)</em></li>	
+<li><strong>retailPrice</strong> - retail price <em>(numeric)</em></li>	
+<li><strong>salePrice</strong> - sale price <em>(numeric)</em></li>	
+<li><strong>wholesalerPrice</strong> - wholesaler price <em>(numeric)</em></li>	
+<li><strong>salePrice2</strong> - sale price2 <em>(numeric)</em></li>	
+<li><strong>salePrice3</strong> - sale price3 <em>(numeric)</em></li>	
+<li><strong>quantity2</strong> - quantity threshold 2 <em>(numeric)</em></li>	
+<li><strong>quantity3</strong> - quantity threshold 3<em>(numeric)</em></li>	
+<li><strong>wSalePrice</strong> - wholesaler sale price <em>(numeric)</em></li>	
+<li><strong>wSalePrice2</strong> -  wholesaler sale price 2 <em>(numeric)</em></li>	
+<li><strong>wSalePrice3</strong> -  wholesaler sale price 3 <em>(numeric)</em></li>	
+<li><strong>wQuantity2</strong> - wholesaler quantity threshold 2 <em>(numeric)</em></li>	
+<li><strong>wQuantity3</strong> - wholesaler quantity threshold 3 <em>(numeric)</em></li>	
+
+</ul>
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/products/3909340/prices",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [
+    {
+      "productId": 3909340,
+      "siteId": 246884,
+      "countryCode": "AD",
+      "taxCodeId": -1,
+      "wTaxCodeId": -1,
+      "retailPrice": 25,
+      "salePrice": 25,
+      "salePrice2": null,
+      "salePrice3": null,
+      "quantity2": null,
+      "quantity3": null,
+      "wholesalerPrice": 2.00,
+      "wSalePrice": 0,
+      "wSalePrice2": null,
+      "wSalePrice3": null,
+      "wQuantity2": null,
+      "wQuantity3": null
+    },
+    {
+      "productId": 3909340,
+      "siteId": 246884,
+      "countryCode": "AE",
+      "taxCodeId": -1,
+      "wTaxCodeId": -1,
+      "retailPrice": 25,
+      "salePrice": 25,
+      "salePrice2": null,
+      "salePrice3": null,
+      "quantity2": null,
+      "quantity3": null,
+      "wSalePrice": 0,
+      "wSalePrice2": null,
+      "wSalePrice3": null,
+      "wQuantity2": null,
+      "wQuantity3": null
+    }
+  ]
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+

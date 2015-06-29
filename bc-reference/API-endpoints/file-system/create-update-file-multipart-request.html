@@ -1,0 +1,147 @@
+
+        <h1 apiType="restv2">Create / Update files through multipart request</h1> 
+
+<p>Uploads a one or more files in a given folder through a multipart POST action (like an HTML form). The login token is sent as a query parameter in the URL (We'll then be able to query for progress, based on that token).</p>
+
+<h2>Request</h2>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /api/v2/admin/sites/[siteId]/storage/[filePath]</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Required Permissions:</strong> Can use SFTP &amp; File Manager</li>
+</ul>
+
+<h4>Parameters</h4>
+
+<p>File contents as binary</p>
+
+<h2>Response</h2>
+
+<p>Returns a status code</p>
+
+<h3>Notes</h3>
+
+<p>Mandatory header: <code>{% raw %}Content-Type: application/octet-stream{% endraw %}</code></p>
+
+<p><strong>Datacenter location</strong></p>
+
+<p>If the url for the POST request does not correspond to the datacenter where the site is located, a 301 response will be returned that will redirect the request to the correct location.</p>
+
+<p><strong>Nested folders</strong></p>
+
+<p>If you use a path with nested folders, the API will automatically create the nested folder structure.</p>
+
+<p>The depth of the nested folder structure is limited only by the URL length.</p>
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+
+<hr>
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}PUT /api/v2/admin/sites/current/storage/images HTTPS/1.1
+Accept: application/json
+Authorization: 73370c2c02db48a6a6494c955f13abe48e4d11342fcc4f288eb1dfc79827e777
+...(multipart request)...
+{% endraw %}</code></pre>
+
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 200 OK
+Content-Type: application/json
+{"status": "success"}
+{% endraw %}</code></pre>
+<hr>
+<h2>Sample code</h2>
+<p><strong>Upload a file from your system and log the progress</strong></p>
+<pre class="language-markup"><code>{% raw %}
+&lt;form id=&quot;myForm&quot; enctype=&quot;multipart/form-data&quot; method=&quot;POST&quot;&gt;
+    &lt;input type=&quot;file&quot; id=&quot;datafile&quot;&gt;
+&lt;/form&gt;
+&lt;input type=&quot;button&quot; onclick=&quot;attachmentMultipart()&quot; value=&quot;Send&quot;&gt;
+{% endraw %}</code></pre>
+<pre class="language-javascript"><code>{% raw %}&lt;script&gt;
+function attachmentMultipart() {
+var fileData = document.getElementById("datafile").files[0];
+
+formData = new FormData();
+formData.append("file", fileData);
+
+var request = $.ajax({
+    url: "/api/v2/admin/sites/current/storage/my", //replace this with the folder to upload to
+    type: "POST",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: formData
+});
+
+var progressChecker = window.setInterval(function() {
+    _checkUploadStatus();
+}, 500);
+
+request.done(function() {
+    window.clearInterval(progressChecker);
+});
+};
+
+
+function _checkUploadStatus() {
+var response = $.ajax({
+    "url": "/api/v2/admin/sites/current/storage?status",
+    "type": "GET",
+    "headers": {
+        "Authorization": $.cookie('access_token')
+    },
+    "contentType": "application/json"
+});
+
+response.done(function(data) {
+    console.log("Progress: " + data.percent);
+});
+};
+&lt;/script&gt;
+{% endraw %}</code></pre>
+<hr>
+<h2>Error codes</h2>
+
+<p>This method will return the following error codes:</p>
+
+<ul>
+<li><code>{% raw %}200{% endraw %}</code> - OK</li>
+<li><code>{% raw %}301{% endraw %}</code> - Redirect to correct data center url</li>
+<li><code>{% raw %}400{% endraw %}</code> - Bad request:
+
+<ul>
+<li><code>{% raw %}104000{% endraw %}</code> - Generic FileAPI error</li>
+<li><code>{% raw %}104002{% endraw %}</code> - Not a file</li>
+<li><code>{% raw %}104003{% endraw %}</code> - Not enough privileges </li>
+<li><code>{% raw %}104004{% endraw %}</code> - Invalid login multiple sites </li>
+<li><code>{% raw %}104005{% endraw %}</code> - Exceeded maximum file size </li>
+<li><code>{% raw %}104006{% endraw %}</code> - Invalid editable region name, if a template </li>
+<li><code>{% raw %}104007{% endraw %}</code> - Can't find tag {pagecontent} in editable region, if a template </li>
+<li><code>{% raw %}104008{% endraw %}</code> - Can't find tag {pagecontent}, if a template </li>
+<li><code>{% raw %}104009{% endraw %}</code> - Path not found</li>
+<li><code>{% raw %}104010{% endraw %}</code> - Destination path not found </li>
+<li><code>{% raw %}104012{% endraw %}</code> - Web page in workflow updated, if trying to update a page in a workflow </li>
+<li><code>{% raw %}104014{% endraw %}</code> - Name required</li>
+<li><code>{% raw %}104015{% endraw %}</code> - Invalid URL </li>
+<li><code>{% raw %}104016{% endraw %}</code> - Name not unique </li>
+<li><code>{% raw %}104019{% endraw %}</code> - Can't find folder </li>
+<li><code>{% raw %}104022{% endraw %}</code> - Destination exists </li>
+<li><code>{% raw %}104023{% endraw %}</code> - Unauthorized access </li>
+<li><code>{% raw %}104028{% endraw %}</code> - File or folder name too long </li>
+</ul></li>
+<li><code>{% raw %}401{% endraw %}</code>- when authentication token is incorrect</li>
+</ul>
+
+        

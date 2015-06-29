@@ -1,0 +1,951 @@
+<h1 apiType="restv3">Customers</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2>Get the customer list</h2>
+<div class="description">
+<p>Get the list of customers for the current site.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/customers
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+  </ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of the first 10 customers; each object has the following properties:</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerTypeId{% endraw %}</code> - the ID of the customer type assigned <em>(integer)</em></li>
+<li><code>{% raw %}leadSourceTypeId{% endraw %}</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>{% raw %}industryTypeId{% endraw %}</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
+<li><code>{% raw %}ratingTypeId{% endraw %}</code> - the ID of the rating type assigned <em>(integer)</em></li>
+<li><code>{% raw %}titleTypeId{% endraw %}</code> - the ID of the title type assigned <em>(integer)</em></li>
+<li><code>{% raw %}firstName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}middleName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
+<li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
+</ul>
+<p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/customers HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [
+    {
+      "id": 7051740,
+      "siteId": 38581,
+      "customerTypeId": 287044,
+      "leadSourceTypeId": 318173,
+      "industryTypeId": 743915,
+      "ratingTypeId": 85977,
+      "titleTypeId": 249385,
+      "firstName": "Doe",
+      "middleName": "Manny",
+      "lastName": "John",
+      "company": "",
+      "dateOfBirth": "1982-12-06T23:00:00",
+      "username": "",
+      "wholesaler": false
+    },
+    {
+      "id": 7051757,
+      "siteId": 38581,
+      "customerTypeId": 287049,
+      "leadSourceTypeId": 318175,
+      "industryTypeId": 743939,
+      "ratingTypeId": 85979,
+      "titleTypeId": 249385,
+      "firstName": "Usernov",
+      "middleName": "Paolonov",
+      "lastName": "Mihaiel",
+      "company": "",
+      "dateOfBirth": "",
+      "username": "mbol",
+      "wholesaler": false
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>Get the list of customers for a site</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/customers",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p><strong>Get the list of customers </strong><strong>- this only includes the specified fields:</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/customers?fields=email1,email2,email3,homeFax,mobilePhone,pager,webAddress,workFax,workPhone,anniversary,titleType,ratingType,leadSourceType,industryType,customerType",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p>In this case the response looks like this:</p>
+
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [
+    {
+      "email1": {
+        "id": 8489222,
+        "siteId": 38581,
+        "value": "john.doe.1@mail.com",
+        "deleted": false,
+        "customerId": 7051740,
+        "default": true
+      },
+      "email2": {},
+      "email3": {},
+      "homeFax": {},
+      "mobilePhone": {},
+      "pager": {},
+      "webAddress": {
+        "id": 8489224,
+        "siteId": 38581,
+        "value": "johndoerepairs.com",
+        "deleted": false,
+        "customerId": 7051740,
+        "default": false
+      },
+      "workFax": {},
+      "workPhone": {},
+      "anniversary": {
+        "customerId": 7051740,
+        "siteId": 38581,
+        "anniversary1": "1993-09-01T07:00:00",
+        "anniversary1Title": "Birth",
+        "anniversary2": "2013-12-31T08:00:00",
+        "anniversary2Title": "New year!",
+        "anniversary3": "2014-08-01T07:00:00",
+        "anniversary3Title": "Mom's birthday",
+        "anniversary4": null,
+        "anniversary4Title": "",
+        "anniversary5": null,
+        "anniversary5Title": ""
+      },
+      "titleType": {
+        "id": 249385,
+        "siteId": 38581,
+        "titleType": "MR",
+        "default": true
+      },
+      "ratingType": {
+        "id": 85977,
+        "siteId": 38581,
+        "ratingType": "Hot",
+        "default": false
+      },
+      "leadSourceType": {
+        "id": 318173,
+        "siteId": 38581,
+        "leadSourceType": "Web",
+        "default": false
+      },
+      "industryType": {
+        "id": 743915,
+        "siteId": 38581,
+        "industryType": "Aerospace & Defence",
+        "default": true
+      },
+      "customerType": {
+        "id": 287044,
+        "siteId": 38581,
+        "customerType": "Analyst",
+        "default": false
+      }
+    },
+    {
+      "email1": {},
+      "email2": {},
+      "email3": {},
+      "homeFax": {},
+      "mobilePhone": {
+        "id": 8489223,
+        "siteId": 38581,
+        "value": "0244154154",
+        "deleted": false,
+        "customerId": 7051757,
+        "default": true
+      },
+      "pager": {},
+      "webAddress": {},
+      "workFax": {},
+      "workPhone": {},
+      "anniversary": {},
+      "titleType": {
+        "id": 249385,
+        "siteId": 38581,
+        "titleType": "MR",
+        "default": true
+      },
+      "ratingType": {
+        "id": 85979,
+        "siteId": 38581,
+        "ratingType": "Cold",
+        "default": false
+      },
+      "leadSourceType": {
+        "id": 318175,
+        "siteId": 38581,
+        "leadSourceType": "Other",
+        "default": true
+      },
+      "industryType": {
+        "id": 743939,
+        "siteId": 38581,
+        "industryType": "Other",
+        "default": false
+      },
+      "customerType": {
+        "id": 287049,
+        "siteId": 38581,
+        "customerType": "Other",
+        "default": true
+      }
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+
+</div>
+<hr></div>
+<div id="details">
+<h2 id="get-by-id">Get a customer's details</h2>
+<div class="description">
+<p>Get a particular customer by ID.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/customers/[customer_ID]
+  <ul>
+<li>Alternatively, use use siteID instead of 'current'</li>
+  </ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The details for the specified customer ID in JSON format.</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerTypeId{% endraw %}</code> - the ID of the customer type assigned <em>(integer)</em></li>
+<li><code>{% raw %}leadSourceTypeId{% endraw %}</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>{% raw %}industryTypeId{% endraw %}</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
+<li><code>{% raw %}ratingTypeId{% endraw %}</code> - the ID of the rating type assigned <em>(integer)</em></li>
+<li><code>{% raw %}titleTypeId{% endraw %}</code> - the ID of the title type assigned <em>(integer)</em></li>
+<li><code>{% raw %}firstName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}middleName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
+<li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
+</ul>
+
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/customers/7051740 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+    "customerId": 7051740,
+    "siteId": 38581,
+    "customerTypeId": 287044,
+    "leadSourceTypeId": 318173,
+    "industryTypeId": 743915,
+    "ratingTypeId": 85977,
+    "titleTypeId": 249385,
+    "firstName": "Doe",
+    "middleName": "Manny",
+    "lastName": "John",
+    "company": "",
+    "dateOfBirth": "1982-12-06T23:00:00",
+    "username": "",
+    "wholesaler": false
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>Get the details of customer</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/customers/7051740",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p><strong>Get the details of a customer - this only includes the specified fields:</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/customers/7051740?fields=email1,email2,email3,homeFax,mobilePhone,pager,webAddress,workFax,workPhone,anniversary,titleType,ratingType,leadSourceType,industryType,customerType",
+    type: "GET",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p id="get-by-mail"><strong>Get a customer by email address</strong></p>
+<p>For this example we will add the email address field to the output and add a filtering condition. Take a look at this </p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+  url: '/webresources/api/v3/sites/current/customers?fields=email1,middleName,firstName,lastName&where={"email1.value":"mtest@mailinator.com"}',
+  type: "GET",
+  conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+  headers: {
+    "Authorization": $.cookie('access_token')
+  }
+});
+request.done(function(msg) {
+  $('.output pre').html(JSON.stringify(msg))
+  console.log(msg);
+})
+request.fail(function(jqXHR) {
+  console.log("Request failed.");
+  console.log("Error code: " + jqXHR.status);
+  console.log("Error text: " + jqXHR.statusText);
+  console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p>In this case the response is a single CRM entry and looks like this:</p>
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [{
+    "email1": {
+      "id": 11520864,
+      "siteId": 146985,
+      "phoneNumberTypeId": 7,
+      "objectId": 9532870,
+      "objectType": 1001,
+      "value": "mtest@mailinator.com",
+      "default": true
+    },
+    "middleName": "Mtest C",
+    "firstName": "Mtest B",
+    "lastName": "Mtest A"
+  }],
+  "totalItemsCount": 1,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+<p id="get-by-username"><strong>Get a customer by username</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: '/webresources/api/v3/sites/current/customers?where={"username":"myUsername"}',
+  type: "GET",
+  conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+  headers: {
+    "Authorization": $.cookie('access_token')
+  }
+});
+request.done(function(msg) {
+  $('.output pre').html(JSON.stringify(msg))
+  console.log(msg);
+})
+request.fail(function(jqXHR) {
+  console.log("Request failed.");
+  console.log("Error code: " + jqXHR.status);
+  console.log("Error text: " + jqXHR.statusText);
+  console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p>In this case the response is a single CRM entry and looks like this:</p>
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [{
+    "id": 9339548,
+    "siteId": 146985,
+    "customerTypeId": 420538,
+    "leadSourceTypeId": 465473,
+    "industryTypeId": 1090438,
+    "ratingTypeId": 126400,
+    "titleTypeId": 317597,
+    "firstName": "New_user",
+    "middleName": "",
+    "lastName": "New_user",
+    &quot;company&quot;: &quot;&quot;,
+    "username": "myUsername"
+  }],
+  "totalItemsCount": 1,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr></div>
+<div id="create">
+<h2 id="create-cust">Create a customer</h2>
+<div class="description">
+<p>Create a new customer.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/customers/
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerTypeId{% endraw %}</code> - the ID of the customer type assigned <em>(integer)</em></li>
+<li><code>{% raw %}leadSourceTypeId{% endraw %}</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>{% raw %}industryTypeId{% endraw %}</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
+<li><code>{% raw %}ratingTypeId{% endraw %}</code> - the ID of the rating type assigned <em>(integer)</em></li>
+<li><code>{% raw %}titleTypeId{% endraw %}</code> - the ID of the title type assigned <em>(integer)</em></li>
+<li><code>{% raw %}firstName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}middleName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
+<li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/customers HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+
+
+{
+  "customerTypeId": 287049,
+  "leadSourceTypeId": 318175,
+  "industryTypeId": 743939,
+  "ratingTypeId": 85979,
+  "titleTypeId": 249385,
+  "firstName": "Michael",
+  "middleName": "Jennar",
+  "lastName": "Boston",
+  "username": "mbo1",
+  "homeFax": "123",
+  "workFax": "123",
+  "workPhone": "123",
+  "anniversary": {
+    "anniversary1Title": "Birthday",
+    "anniversary1": "2014-02-03T23:00:00"
+  },
+  "email1": {
+    "value": "john.doe1@mailinator.com",
+    "default": true
+  },
+  "email2": {
+    "value": "john.doe2@mailinator.com",
+    "default": false
+  },
+  "email3": {
+    "value": "john.doe13@mailinator.com",
+    "default": false
+  }
+}
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 CREATED
+Location: /webresources/api/v3/sites/current/customers
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>Create a new customer</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+url: "/webresources/api/v3/sites/current/customers",
+type: "POST",
+conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+processData: false,
+headers: {
+    "Authorization": $.cookie('access_token'),
+  
+},
+  data: JSON.stringify({
+        "titleTypeId": 3054302,
+        "firstName": "Michael",
+        "middleName": "John",
+        "lastName": "Doe",
+        "username": "MichaelD",
+        "anniversary": {
+            "anniversary1Title": "Birthday",
+            "anniversary1": "1980-02-03"
+        },
+        "email1": {
+            "value": "mdoe@mailinator.com",
+            "default": true
+        }
+    })
+});
+request.done(function(msg) {
+console.log(msg);
+})
+request.fail(function(jqXHR) {
+console.log("Request failed.");
+console.log("Error code: " + jqXHR.status);
+console.log("Error text: " + jqXHR.statusText);
+console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="edit">
+<h2 id="edit-details">Edit  a customer's details</h2>
+<div class="description">Edit the details for an existing customer record.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> PUT</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/customers/[customer_ID]
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}customerTypeId{% endraw %}</code> - the ID of the customer type assigned <em>(integer)</em></li>
+<li><code>{% raw %}leadSourceTypeId{% endraw %}</code> - the ID of the lead source type assigned <em>(integer)</em></li>
+<li><code>{% raw %}industryTypeId{% endraw %}</code> - the ID of the lead industry type assigned <em>(integer)</em></li>
+<li><code>{% raw %}ratingTypeId{% endraw %}</code> - the ID of the rating type assigned <em>(integer)</em></li>
+<li><code>{% raw %}titleTypeId{% endraw %}</code> - the ID of the title type assigned <em>(integer)</em></li>
+<li><code>{% raw %}firstName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}middleName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
+<li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/customers HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+
+
+{
+  "customerTypeId": 287049,
+  "leadSourceTypeId": 318175,
+  "industryTypeId": 743939,
+  "ratingTypeId": 85979,
+  "titleTypeId": 249385,
+  "firstName": "Michael",
+  "middleName": "Jennar",
+  "lastName": "Boston",
+  "username": "mbo1",
+  "homeFax": "123",
+  "workFax": "123",
+  "workPhone": "123",
+  "anniversary": {
+    "anniversary1Title": "Birthday",
+    "anniversary1": "1980-02-03"
+  },
+  "email1": {
+    "value": "john.doe1@mailinator.com",
+    "default": true
+  },
+  "email2": {
+    "value": "john.doe2@mailinator.com",
+    "default": false
+  },
+  "email3": {
+    "value": "john.doe13@mailinator.com",
+    "default": false
+  }
+}{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/customers/[customer_ID]
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p id="edit-by-id"><strong>Edit a customer's name and e-mail address</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+url: "/webresources/api/v3/sites/current/customers/9593213",
+type: "PUT",
+conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+headers: {
+    "Authorization": $.cookie('access_token')
+},
+processData: false,
+data: JSON.stringify({
+    "firstName": "Michael",
+    "lastName": "Smith",
+    "email1": {
+        "value": "mdoe@mailinator.com",
+        "default": true
+     }
+})
+});
+request.done(function(msg) {
+console.log(msg);
+})
+request.fail(function(jqXHR) {
+console.log("Request failed.");
+console.log("Error code: " + jqXHR.status);
+console.log("Error text: " + jqXHR.statusText);
+console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+
+<p id="edit-by-email"><strong>Get a customer by email address and edit its details</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+  url: '/webresources/api/v3/sites/current/customers?fields=email1&where={"email1.value":"mtest@mailinator.com"}',
+  type: "GET",
+  conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+  headers: {
+    "Authorization": $.cookie('access_token')
+  }
+});
+request.done(function(msg) {
+
+//now that we have the CRM ID that belongs to the user with the email address mtest@mailinator.com we can edit its properties:
+
+          var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+          url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].email1.value,
+          type: "PUT",
+          conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+          headers: {
+              "Authorization": $.cookie('access_token')
+          },
+          processData: false,
+          data: JSON.stringify({
+              "firstName": "Michael",
+              "lastName": "Smith",
+              "email1": {
+                  "value": "mdoe@mailinator.com",
+                  "default": true
+               }
+          })
+          });
+          request.done(function(msg) {
+          console.log(msg);
+          })
+          request.fail(function(jqXHR) {
+          console.log("Request failed.");
+          console.log("Error code: " + jqXHR.status);
+          console.log("Error text: " + jqXHR.statusText);
+          console.log("Response text: " + jqXHR.responseText);
+          })
+
+
+})
+request.fail(function(jqXHR) {
+  console.log("Request failed.");
+  console.log("Error code: " + jqXHR.status);
+  console.log("Error text: " + jqXHR.statusText);
+  console.log("Response text: " + jqXHR.responseText);
+})
+{% endraw %}</code></pre>
+</div>
+<hr></div>
+<div id="delete">
+<h2>Delete  a customer record</h2>
+<div class="description">Delete a CRM record.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/customers/[customer_ID]
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/customers/9593213 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/customers/[customer_ID]
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p>Delete a CRM address by ID</p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/customers/9593213",
+    type: "DELETE",
+    conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function(msg) {
+    console.log(msg);
+})
+request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p id="delete-by-email"><strong>In this example we will first get a CRM entity by email address, get its ID and then delete it:</strong></p>
+<pre><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+  url: '/webresources/api/v3/sites/current/customers?fields=id,email1,middleName,firstName,lastName&where={"email1.value":"new_user123123@mailinator.com"}',
+  type: "GET",
+  conenection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "applicaiton/json ",
+  headers: {
+    "Authorization": $.cookie('access_token')
+  }
+});
+request.done(function(msg) {
+
+//now we have the CRM record we need to delete, bwlow we'll run a DELETE request and pass the CRM record's ID:
+
+          var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+            url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].id,
+            type: "DELETE",
+            conenection: "keep-alive",    
+   	      contentType: "application/json",
+  		  mimeType: "applicaiton/json ",
+            headers: {
+              "Authorization": $.cookie('access_token')
+            }
+          });
+          request.done(function(msg) {
+            console.log(msg);
+          })
+          request.fail(function(jqXHR) {
+            console.log("Request failed.");
+            console.log("Error code: " + jqXHR.status);
+            console.log("Error text: " + jqXHR.statusText);
+            console.log("Response text: " + jqXHR.responseText);
+          })
+
+})
+request.fail(function(jqXHR) {
+  console.log("Request failed.");
+  console.log("Error code: " + jqXHR.status);
+  console.log("Error text: " + jqXHR.statusText);
+  console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>

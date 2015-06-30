@@ -39,6 +39,7 @@
 <li><code>{% raw %}ListBox_List{% endraw %}</code></li>
 <li><code>{% raw %}String_Hyperlink{% endraw %}</code></li>
 <li><code>{% raw %}DataSource{% endraw %}</code></li>
+
 </ul></li>
 <li><code>{% raw %}required{% endraw %}</code> - true if the field is required (not required) <em>(boolean)</em></li>
 <li><p><code>{% raw %}order{% endraw %}</code> - unique - the position of the field when listed starting with 1.</p>
@@ -48,6 +49,7 @@
 <p>If not specified, the field is added as the last one. <em>(integer)</em></p></li>
 <li><p><code>{% raw %}dataSource{% endraw %}</code>: for DataSource fields should be a valid webapp name <em>(string)</em></p></li>
 <li><code>{% raw %}listItems{% endraw %}</code> - used only by DropDown_List, CheckBox_List, Radio_List, ListBox_List fields <em>(array)</em></li>
+<li><code>{% raw %}addEmptyOption{% endraw %}</code> - false if empty items are not to be allowed<em> (boolean)</em></li>
 </ul>
 
 <h2>Response</h2>
@@ -94,7 +96,7 @@ Location: /api/v2/admin/sites/current/webapps/Cars/fields/123
         "Authorization": $.cookie('access_token')
     },
     processData: false,
-    data: JSON.stringify({"name": "Customfield1", "type": "String","required": true, "order": 1})
+    data: JSON.stringify({"name": "Customfield1", "type": "String","required": true, "order": 1,"listItems": ["First option", "Second one"], "addEmptyOption": true})
 });
 request.done(function (msg) {
     console.log(msg);

@@ -10,5 +10,7 @@ This document provides all functional and non functional requirements which must
 1. The ui sdk must provide a very fast way to create forms. It would be awesome for developers to not manually write the submit logic of the form.
 1. The ui sdk should be minifiable into one single file which can be referenced by developers in their applications.
 1. The ui sdk must provide an easy way to create new components which can be reused by developers.
+1. Each component must provide a standard api which developers can use to provide their own custom logic. (e.g: **validation**).
+1. Each component must be easily configurable from application html (databinding / event binding).
 
 # Non functional requirements

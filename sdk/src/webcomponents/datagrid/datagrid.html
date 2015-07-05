@@ -1,0 +1,37 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<dom-module id="bc-datagrid">
+    <template>
+    <div class="panel panel-default">
+        <p>Listing data from api: <span>[[apiName]]</span> - <span>[[apiVersion]]</span></p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                <template is="dom-repeat" items="{{columns}}">
+                    <td>{{item.name}}</td>
+                </template>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    </template>
+
+    <script>
+    var polymerObj = {
+        is: "bc-datagrid",
+        properties: {
+            columns: Array,
+            apiName: String,
+            apiVersion: String
+        },
+        configure: function(opts) {
+            this.columns = opts.columns || this.columns;
+        }
+    };
+
+    window.MicroEvent.mixin(polymerObj);
+
+    Polymer(polymerObj);
+    </script>
+</dom-module>

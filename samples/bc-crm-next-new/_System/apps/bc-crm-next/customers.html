@@ -33,35 +33,65 @@
 
         <title>Customers API Demo + UI SDK</title>
 
-        <script src="/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
-        <link rel="import" href="/src/webcomponents/inputfield/inputfield.html">
-        <link rel="import" href="/src/webcomponents/datagrid/datagrid.html">
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+        <script src="/dist/bcapi-0.2.0.js"></script>
+
+        <script src="/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="import" href="/src/webcomponents/textfield/textfield.html">
+        <link rel="import" href="/src/webcomponents/datagrid/datagrid.html">
+        <link rel="import" href="/src/webcomponents/dropdown/dropdown.html">
     </head>
 
     <body>
-        <bc-input id="tfQuickSearch"></bc-input>
+        <div class="container-fluid">
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="panel panel-default" style="margin-bottom: 0px">
+                    <div class="panel-heading" id="panelHeadingToAddAlert">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <bc-textfield class="col-xl-6" placeholder="Type your search text ..." has-search-button="true"></bc-textfield>
+                            </div>
 
-        <bc-datagrid id="gridCustomers" api-name="customers" api-version="v3"></bc-datagrid>
+                            <div class="col-xs-2">
+                                <bc-select id="orderBy">
+                                    <option value="0">Order by</option>
+                                    <option value="id">Customer Id</option>
+                                    <option value="firstName">First Name</option>
+                                    <option value="middleName">Middle Name</option>
+                                    <option value="lastName">Last Name</option>
+                                    <option value="homePhone">Phone Number</option>
+                                </bc-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
 
-        <script type="text/javascript">
-            var quickSearch = document.getElementById("tfQuickSearch"),
-                grid = document.getElementById("gridCustomers");
-
-            quickSearch.on("btn:clicked", function(data) {
-                console.log(data);
-            });
-
-            grid.configure({
-                columns: [
-                    {id: "firstName", name: "First name"},
-                    {id: "lastName", name: "Last name"}
-                ]
-            });
-        </script>
+        <div class="container-fluid" style="margin-top: 100px;">
+            <bc-datagrid id="gridCustomers" api-name="customers" api-version="v3"></bc-datagrid>
+        </div>
     </body>
+
+    <script type="text/javascript">
+        var grid = document.getElementById("gridCustomers");
+
+        grid.configure({
+            columns: [
+                {"id": "firstName", "name": "First name"},
+                {"id": "lastName", "name": "Last name"}
+            ]
+        });
+    </script>
 </html>

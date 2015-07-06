@@ -17,6 +17,9 @@
     </div>
     </template>
 
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+
     <script>
     var polymerObj = {
         is: "bc-datagrid",
@@ -30,7 +33,7 @@
         }
     };
 
-    window.MicroEvent.mixin(polymerObj);
+    polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
 
     Polymer(polymerObj);
     </script>

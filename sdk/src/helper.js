@@ -39,6 +39,76 @@
     BCAPI.Helper.Site =  {};
 
     /**
+     * MicroEvent class provides and event emitter minimalist implementation which can be
+     * used to add on / off / trigger methods to existing classes and literal objects.
+     *
+     * @public
+     * @constructor
+     * @memberof BCAPI.Helper
+     */
+    BCAPI.Helper.MicroEvent = function() { };
+
+    BCAPI.Helper.MicroEvent.prototype = {
+        /**
+         * This method registers a callback function which is going to be invoked once the specified event is triggered.
+         * 
+         * @public
+         * @method
+         * @param  {String} event the event name on which the given callback will be invoked.
+         * @param  {Function} fct The callback function which is going to be executed once the event will be triggered.
+         */
+        on: function(event, fct) {
+            this._events = this._events || {};
+            this._events[event] = this._events[event]   || [];
+            this._events[event].push(fct);
+        },
+        
+        /**
+         * This method is used in order to unregister the specified function from being executed once the given event is triggered.
+         * @param  {String} event The event name from which we want to unregister the callback.
+         * @param  {Function} fct The function we want to unregister from event.
+         */
+        off: function(event, fct) {
+            this._events = this._events || {};
+            if( event in this._events === false  )  return;
+            this._events[event].splice(this._events[event].indexOf(fct), 1);
+        },
+
+        /**
+         * This method is used in order to trigger an event with a variable set of arguments.
+         * @param  {String} event the event name we want to trigger.
+         */
+        trigger: function(event) {
+            this._events = this._events || {};
+            if( event in this._events === false  )  return;
+            for(var i = 0; i < this._events[event].length; i++){
+                this._events[event][i].apply(this, Array.prototype.slice.call(arguments, 1));
+            }
+        }
+    };
+
+    /**
+     * mixin will delegate all MicroEvent.js function in the destination object
+     *
+     * - require('MicroEvent').mixin(Foobar) will make Foobar able to use MicroEvent
+     *
+     * @param {Object} the object which will support MicroEvent
+    */
+    BCAPI.Helper.MicroEvent.mixin    = function(destObject){
+        var props   = ['on', 'off', 'trigger'];
+        for(var i = 0; i < props.length; i ++){
+            if( typeof destObject === 'function' ){
+                destObject.prototype[props[i]]  = MicroEvent.prototype[props[i]];
+            } else{
+                destObject[props[i]] = BCAPI.Helper.MicroEvent.prototype[props[i]];
+            }
+        }
+        
+        return destObject;
+    };
+
+
+    /**
      * Returns the access_token from either the URL fragment or a session cookie (if it was read from URL and set before in cookie for short term reference)
      * 
      * @returns {string} The access_token

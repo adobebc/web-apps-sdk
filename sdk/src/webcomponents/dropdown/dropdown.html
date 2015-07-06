@@ -1,0 +1,50 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<dom-module id="bc-select">
+    <style type="text/css">
+        .select-model {
+            display: none;
+        }
+    </style>
+
+    <template>
+        <div class="select-model">
+            <content></content>
+        </div>
+
+        <select class="form-control" id="orderBy">
+            <template is="dom-repeat" items="{{items}}">
+                <option value="{{item.value}}" text="{{item.text}}"></option>
+            </template>
+        </select>
+    </template>
+
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+
+    <script>
+    polymerObj = {
+        is: "bc-select",
+        properties: {
+            items: Array
+        },
+        ready: function() {
+            var options = $(".select-model").find("option"),
+                items = [];
+
+            for (var idx = 0; idx < options.length; idx++) {
+                var option = options[idx],
+                    item = {"value": option.value, "text": option.text};
+
+                items.push(item);
+            };
+
+            this.items = items;
+        }
+    };
+
+    polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
+
+    Polymer(polymerObj);
+    </script>
+</dom-module>

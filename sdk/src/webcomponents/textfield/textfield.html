@@ -1,0 +1,63 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<dom-module id="bc-textfield">
+    <style type="text/css">
+        button {
+            float: left;
+            width: 5%;
+            min-width: 40px;
+        }
+
+        input[type="text"] {
+            float: left;
+            width: 85%;
+        }
+    </style>
+
+    <template>
+        <template is="dom-if" if="{{hasSearchButton}}">
+            <button type="button" class="btn btn-primary" on-click="handleSearch" disabled>
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </template>
+
+        <input type="text" class="form-control" on-keyup="handleChange" placeholder="{{placeholder}}" style="float: left;" />
+    </template>
+
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+
+    <script>
+    polymerObj = {
+        is: "bc-textfield",
+        properties: {
+            placeholder: {
+                type: String,
+                value: "Type your text here ..."
+            },
+            hasSearchButton: {
+                type: Boolean,
+                value: false,
+                readOnly: false,
+                reflectToAttribute: true
+            }
+        },
+        handleChange: function(evt) {
+            var newValue = evt.target.value.trim(),
+                disabled = !(newValue && newValue.length > 0);
+
+            $(this).find("button").prop("disabled", disabled);
+
+            this.trigger("textfield:change", {"value": newValue});
+        },
+        handleSearch: function(evt) {
+            this.trigger("textfield:search", {"value": evt.target.value});
+        }
+    };
+
+    polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
+
+    Polymer(polymerObj);
+    </script>
+
+</dom-module>

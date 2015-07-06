@@ -52,40 +52,31 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 
 <pre class="language-javascript"><code>{% raw %}HTTP/1.1 200 OK
 
-{
-    "type": "folder",
-    "name": "images",
-    "size": 0,
-    "lastModified": null,
-    "links": [
-        {
-            "rel": "storage",
-            "uri": "/api/v2/admin/sites/current/storage/images/"
-        }
-    ],
-    "contents": [
-        {
-            "type": "folder",
-            "name": "animals",
-            "links": [
-                {
-                    "rel": "storage",
-                    "uri": "/api/v2/admin/sites/current/storage/images/animals/"
-                }
-            ]
-        },
-        {
-            "type": "file",
-            "name": "cat.jpg",
-            "links": [
-                {
-                    "rel": "storage",
-                    "uri": "/api/v2/admin/sites/current/storage/images/cat.jpg"
-                }
-            ]
-        }
-    ]
-}
+&lt;storageEntity xmlns=&quot;http://ns.adobe.com/bc/api/v1&quot; xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+    &lt;type&gt;folder&lt;/type&gt;
+    &lt;name&gt;images&lt;/name&gt;
+    &lt;lastModified&gt;Mon, 25 Nov 2013 08:13:04 GMT&lt;/lastModified&gt;
+    &lt;links&gt;
+        &lt;link&gt;
+            &lt;rel&gt;storage&lt;/rel&gt;
+            &lt;uri&gt;https://api-asyd.worldsecuresystems.com/api/v2/admin/sites/1211552/storage/images&lt;/uri&gt;
+        &lt;/link&gt;
+    &lt;/links&gt;
+    &lt;size&gt;59&lt;/size&gt;
+    &lt;contents&gt;
+        &lt;storageEntitySummary&gt;
+            &lt;type&gt;file&lt;/type&gt;
+            &lt;name&gt;arrow.gif&lt;/name&gt;
+            &lt;lastModified&gt;Mon, 25 Nov 2013 08:13:06 GMT&lt;/lastModified&gt;
+            &lt;links&gt;
+                &lt;link&gt;
+                    &lt;rel&gt;storage&lt;/rel&gt;
+                    &lt;uri&gt;https://api-asyd.worldsecuresystems.com/api/v2/admin/sites/1211552/storage/images/arrow.gif&lt;/uri&gt;
+                &lt;/link&gt;
+            &lt;/links&gt;
+        &lt;/storageEntitySummary&gt;
+    &lt;/contents&gt;
+&lt;/storageEntity&gt;
 {% endraw %}</code></pre>
 
 <hr>

@@ -40,6 +40,10 @@
                 value: false,
                 readOnly: false,
                 reflectToAttribute: true
+            },
+            value: {
+                type: String,
+                readonly: true
             }
         },
         handleChange: function(evt) {
@@ -48,10 +52,11 @@
 
             $(this).find("button").prop("disabled", disabled);
 
+            this.value = newValue;
             this.trigger("textfield:change", {"value": newValue});
         },
         handleSearch: function(evt) {
-            this.trigger("textfield:search", {"value": evt.target.value});
+            this.trigger("textfield:search", {"value": this.value});
         }
     };
 

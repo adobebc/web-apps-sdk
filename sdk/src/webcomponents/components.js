@@ -31,6 +31,40 @@
     BCAPI.Components = {};
 
     /**
+     * This class provides the all common methods inherited by every component.
+     * 
+     * @public
+     * @constructor
+     */
+    function Component() { }
+
+    BCAPI.Helper.MicroEvent.mixin(Component.prototype);
+
+    /**
+     * This method provides a shortcut approach for wiring callbacks to component emitted events.
+     *
+     * @example
+     * function onTextFieldChange(evtData) {
+     *     console.log(evtData);
+     * }
+     *
+     * function onTextFieldSearch(evtData) {
+     *     console.log(evtData);
+     * }
+     * 
+     * var component = new BCAPI.Components.TextField();
+     * component.wireEvents({
+     *     "textfield:change": onTextFieldChange,
+     *     "textfield:search": onTextFieldSearch 
+     * });
+     */
+    Component.prototype.wireEvents = function(evts) {
+        for (var evtName in evts) {
+            this.on(evtName, evts[evtName]);
+        }
+    };
+
+    /**
      * This class provides the core class from BC SDK used to support components creation.
      * It enforces each component descriptor to inherit several classes in order to create a uniform contract
      * across all web components we provide.
@@ -49,10 +83,10 @@
      * @return {Object} The component instance with all methods in place.
      */
     ComponentsFactory.prototype.get = function(component) {
-        BCAPI.Helper.MicroEvent.mixin(component);
+        $.extend(component, Component.prototype);
 
         return component;
-    }
+    };
 
     BCAPI.Components.ComponentsFactory = new ComponentsFactory();
 })($);

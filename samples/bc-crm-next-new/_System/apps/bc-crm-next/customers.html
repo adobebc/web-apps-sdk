@@ -60,11 +60,11 @@
                     <div class="panel-heading" id="panelHeadingToAddAlert">
                         <div class="row">
                             <div class="col-xs-4">
-                                <bc-textfield class="col-xl-6" placeholder="Type your search text ..." has-search-button="true"></bc-textfield>
+                                <bc-textfield class="col-xl-6" id="tfQuickSearch" placeholder="Type your search text ..." has-search-button="true"></bc-textfield>
                             </div>
 
                             <div class="col-xs-2">
-                                <bc-select id="orderBy">
+                                <bc-select id="ddOrderBy">
                                     <option value="0">Order by</option>
                                     <option value="id">Customer Id</option>
                                     <option value="firstName">First Name</option>
@@ -84,14 +84,5 @@
         </div>
     </body>
 
-    <script type="text/javascript">
-        var grid = document.getElementById("gridCustomers");
-
-        grid.configure({
-            columns: [
-                {"id": "firstName", "name": "First name"},
-                {"id": "lastName", "name": "Last name"}
-            ]
-        });
-    </script>
+    <script type="text/javascript" src="/_System/apps/bc-crm-next/assets/js/app.js"></script>
 </html>

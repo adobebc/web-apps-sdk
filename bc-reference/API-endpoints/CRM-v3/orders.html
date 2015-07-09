@@ -227,7 +227,7 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/orders?where={'creationDate':{'$gt':'2013-06-10'&#125;&#125;",
+    url: "/webresources/api/v3/sites/current/orders?where={'createDate':{'$gt':'2013-06-10'&#125;&#125;",
     type: "GET",
     conenection: "keep-alive",    
     contentType: "application/json",

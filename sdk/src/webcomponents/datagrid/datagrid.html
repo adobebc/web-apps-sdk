@@ -70,9 +70,12 @@
         renderCustomTemplate: function(ctx) {
             console.log(ctx);
         },
-        searchFullText: function(filterValue, orderCriteria) {
+        searchFullText: function(filterValue, limit, orderCriteria) {
             if (!filterValue || filterValue.trim().length == 0) {
-                this._loadItems({"order": orderCriteria});
+                this._loadItems({
+                    "limit": limit,
+                    "order": orderCriteria
+                });
 
                 return;
             }
@@ -94,6 +97,7 @@
             }
 
             this._loadItems({
+                "limit": limit,
                 "order": orderCriteria,
                 "where": filter
             });
@@ -137,6 +141,10 @@
 
             if (opts.where) {
                 fetchOptions.where = opts.where;
+            }
+
+            if (opts.limit) {
+                fetchOptions.limit = opts.limit;
             }
 
             this._dataSource.fetchData(fetchOptions).done(function(data) {

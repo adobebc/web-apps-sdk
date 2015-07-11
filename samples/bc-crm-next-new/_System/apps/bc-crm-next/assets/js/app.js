@@ -5,6 +5,7 @@
             this._quickSearch = document.getElementById("tfQuickSearch");
             this._orderByDd = document.getElementById("ddOrderBy");
             // this._orderByDdDynamic = document.getElementById("ddOrderByDynamic");
+            this._limitDd = document.getElementById("ddItemsPerPage");
             this._filterValue = "";
             this._orderBy = "0";
 
@@ -47,9 +48,20 @@
                     self.onChangeOrderBy(evtData);
                 }
             });
+
+            this._limitDd.wireEvents({
+                "dd:change": function(evtData) {
+                    self.onChangeLimit(evtData);
+                }
+            });
         },
         onChangeOrderBy: function(selectedItem) {
             this._orderBy = selectedItem.value;
+
+            this.onSearch(this._filterValue);
+        },
+        onChangeLimit: function(selectedLimit) {
+            this._limit = parseInt(selectedLimit.value);
 
             this.onSearch(this._filterValue);
         },
@@ -61,7 +73,7 @@
             }
         },
         onSearch: function(filterValue) {
-            this._dataGrid.searchFullText(filterValue, this._orderBy);
+            this._dataGrid.searchFullText(filterValue, this._limit, this._orderBy);
         }
     };
 

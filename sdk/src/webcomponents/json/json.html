@@ -10,7 +10,8 @@
             properties: {
                 url: String
             },
-            fetchData: function() {
+            configure: function(opts) { },
+            fetchData: function(opts) {
                 var loader = $.Deferred();
 
                 var response = $.ajax({

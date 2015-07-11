@@ -53,6 +53,13 @@
             $(this).find("button").prop("disabled", disabled);
 
             this.value = newValue;
+
+            if (!disabled && evt.keyCode === 13) {
+                this.handleSearch();
+
+                return;
+            }
+
             this.trigger("textfield:change", {"value": newValue});
         },
         handleSearch: function(evt) {

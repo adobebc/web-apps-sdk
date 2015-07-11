@@ -65,6 +65,17 @@
     };
 
     /**
+     * This method standardizes the way components can be configured / altered. Each concrete component must provide an
+     * implementation for this method.
+     *
+     * @public
+     * @method
+     * @instance
+     * @abstract
+     */
+    Component.configure = function(opts) { }
+
+    /**
      * This class provides the core class from BC SDK used to support components creation.
      * It enforces each component descriptor to inherit several classes in order to create a uniform contract
      * across all web components we provide.

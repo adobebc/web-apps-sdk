@@ -39,13 +39,16 @@
                 items.push(item);
             };
 
-            this.items = items;
+            this.configure({"items": items});
         },
         handleChange: function(evt) {
             var element = evt.target,
                 selectedItem = this.items[element.selectedIndex];
 
             this.trigger("dd:change", selectedItem);
+        },
+        configure: function(opts) {
+            this.items = opts.items || items;
         }
     };
 

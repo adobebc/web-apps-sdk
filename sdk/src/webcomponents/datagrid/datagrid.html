@@ -3,8 +3,7 @@
 <dom-module id="bc-datagrid">
     <template>
     <div class="panel panel-default">
-        <p>Listing data from api: <span>[[apiName]]</span> - <span>[[apiVersion]]</span></p>
-
+        <content></content>
         <table class="table">
             <thead>
                 <tr>
@@ -13,6 +12,16 @@
                 </template>
                 </tr>
             </thead>
+
+            <tbody>
+                <template is="dom-repeat" items="{{rows}}" as="itemRow">
+                <tr>
+                    <template is="dom-repeat" items="{{columns}}" as="col">
+                    <td>{{_getItemValue(itemRow, col.id)}}</td>
+                    </template>
+                </tr>
+                </template>
+            </tbody>
         </table>
     </div>
     </template>
@@ -25,11 +34,26 @@
         is: "bc-datagrid",
         properties: {
             columns: Array,
+            rows: Array,
             apiName: String,
             apiVersion: String
         },
         configure: function(opts) {
+            opts = opts || {};
+
             this.columns = opts.columns || this.columns;
+            this.rows = opts.rows || this._getRowsFromMarkup() || this.rows;
+        },
+        _getRowsFromMarkup: function() {
+            var dataSource = Polymer.dom(this).querySelector("*[rel='datasource']"),
+                self = this;
+
+            dataSource.fetchData().done(function(data) {
+                self.configure({rows: data.items});
+            });
+        },
+        _getItemValue: function(item, itemProperty) {
+            return item[itemProperty];
         }
     };
 

@@ -4,6 +4,7 @@
             this._dataGrid = document.getElementById("gridCustomers");
             this._quickSearch = document.getElementById("tfQuickSearch");
             this._orderByDd = document.getElementById("ddOrderBy");
+            this._orderByDdDynamic = document.getElementById("ddOrderByDynamic");
             this._filterValue = "";
             this._orderBy = "0";
 
@@ -15,6 +16,17 @@
                 columns: [
                     {"id": "firstName", "name": "First name"},
                     {"id": "lastName", "name": "Last name"}
+                ]
+            });
+
+            this._orderByDdDynamic.configure({
+                items: [
+                    {"value": "0", "text": "Order by"},
+                    {"value": "id", "text": "Customer Id"},
+                    {"value": "firstName", "text": "Order by"},
+                    {"value": "middleName", "text": "Middle name"},
+                    {"value": "lastName", "text": "Last name"},
+                    {"value": "homePhone", "text": "Phone number"}
                 ]
             });
         },

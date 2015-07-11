@@ -1,0 +1,34 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<dom-module id="bc-json">
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+
+    <script>
+        var webComponent = {
+            is: "bc-json",
+            properties: {
+                url: String
+            },
+            fetchData: function() {
+                var loader = $.Deferred();
+
+                var response = $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: this.url
+                });
+
+                response.done(function(data) {
+                    loader.resolve(data);
+                });
+
+                return loader.promise();
+            }
+        };
+
+        webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+        Polymer(webComponent);
+    </script>
+</dom-module>

@@ -1,0 +1,7 @@
+{
+    "items": [
+        {"firstName": "Radu Viorel", "lastName": "Cosnita"},
+        {"firstName": "John", "lastName": "Doe"}
+    ],
+    "totalItemsCount": 3
+}

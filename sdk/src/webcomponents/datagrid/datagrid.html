@@ -20,7 +20,15 @@
                 <template is="dom-repeat" items="{{rows}}" as="itemRow">
                 <tr>
                     <template is="dom-repeat" items="{{columns}}" as="col">
-                    <td>{{_getItemValue(itemRow, col.id)}}</td>
+                        <td>
+                            <template is="dom-if" if="{{!col.template}}">
+                            <span>{{_getItemValue(itemRow, col.id)}}</span>
+                            </template>
+
+                            <template is="dom-if" if="{{col.template}}">
+                                <bc-datagrid-customtpl item="{{itemRow}}" col="{{col}}"></bc-datagrid-customtpl>
+                            </template>
+                        </td>
                     </template>
                 </tr>
                 </template>
@@ -59,6 +67,9 @@
             this.columns = opts.columns || this._getColsFromMarkup() || this.columns;
             this.rows = opts.rows || this._loadItems() || this.rows;
         },
+        renderCustomTemplate: function(ctx) {
+            console.log(ctx);
+        },
         searchFullText: function(filterValue, orderCriteria) {
             if (!filterValue || filterValue.trim().length == 0) {
                 this._loadItems({"order": orderCriteria});
@@ -72,6 +83,10 @@
             for (var idx = 0; idx < this.columns.length; idx++) {
                 var col = this.columns[idx],
                     clause = {};
+
+                if (col.template) {
+                    continue;
+                }
 
                 clause[col.id] = {"$contains": filterValue};
 
@@ -88,10 +103,22 @@
                 self = this,
                 cols = [];
 
-            $(colElement).find("p").each(function(idx, item) {
+            $(colElement).find("div").each(function(idx, item) {
                 item = $(item);
 
-                cols.push({"id": item.attr("data-id"), "name": item.text()});
+                var itemId = item.attr("data-id"),
+                    itemName = item.attr("title"),
+                    itemRel = item.attr("rel");
+
+                if (itemId) {
+                    cols.push({"id": itemId, "name": itemName});
+
+                    return;
+                }
+
+                if (itemRel == "custom") {
+                    cols.push({"template": item.html(), "name": itemName});
+                }
             });
 
             colElement.remove();
@@ -116,6 +143,7 @@
                 self._updateCurrentData(data);
             });
         },
+
         _getItemValue: function(item, itemProperty) {
             var propertyParts = itemProperty.split(".");
 

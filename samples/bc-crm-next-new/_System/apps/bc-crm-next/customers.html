@@ -45,11 +45,15 @@
         <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
 
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+
         <script src="/dist/bcapi-0.2.0.js"></script>
 
         <script src="/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
         <link rel="import" href="/src/webcomponents/textfield/textfield.html">
         <link rel="import" href="/src/webcomponents/datagrid/datagrid.html">
+        <link rel="import" href="/src/webcomponents/datagrid/datagrid-customtpl.html">
         <link rel="import" href="/src/webcomponents/dropdown/dropdown.html">
         <link rel="import" href="/src/webcomponents/json/json.html">
         <link rel="import" href="/src/webcomponents/json/api.html">
@@ -73,12 +77,19 @@
                                     <option value="middleName">Middle Name</option>
                                     <option value="lastName">Last Name</option>
                                     <option value="homePhone">Phone Number</option>
-                                    <option value="email1.value">Email 1</option>
                                 </bc-select>
                             </div>
 
-                            <div class="col-xs-2">
+                            <!--<div class="col-xs-2">
                                 <bc-select id="ddOrderByDynamic"></bc-select>
+                            </div>-->
+
+                            <div class="col-xs-2">
+                                <bc-select id="ddItemsPerPage">
+                                    <option value="10">10</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </bc-select>
                             </div>
                         </div>
                     </div>
@@ -91,12 +102,22 @@
                 <!--<bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" rel="datasource"></bc-json>-->
                 <bc-api api-name="customers" api-version="v3" fields="firstName,middleName,lastName,workPhone,email1,email2,email3" rel="datasource"></bc-api>
 
-                <bc-columns>
-                    <p data-id="firstName">First name</p>
-                    <p data-id="lastName">Last name</p>
-                    <p data-id="username">Username</p>
-                    <p data-id="workPhone.value">Work phone</p>
-                    <p data-id="email1.value">Email 1</p>
+                <bc-columns style="display: none;">
+                    <div data-id="firstName" title="First name"></div>
+                    <div data-id="middleName" title="Middle name"></div>
+                    <div data-id="lastName" title="Middle name"></div>
+                    <div data-id="username" title="Username"></div>
+                    <div data-id="email1.value" title="Email 1"></div>
+
+                    <div rel="custom" title="Custom column 1">
+                        <button class="btn btn-default accordion-toggle" alt="Customer orders" title="Customer orders">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                        </button>
+
+                        <button class="btn btn-default" alt="Delete customer" title="Delete customer">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
                 </bc-columns>
             </bc-datagrid>
         </div>

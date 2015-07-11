@@ -4,7 +4,7 @@
             this._dataGrid = document.getElementById("gridCustomers");
             this._quickSearch = document.getElementById("tfQuickSearch");
             this._orderByDd = document.getElementById("ddOrderBy");
-            this._orderByDdDynamic = document.getElementById("ddOrderByDynamic");
+            // this._orderByDdDynamic = document.getElementById("ddOrderByDynamic");
             this._filterValue = "";
             this._orderBy = "0";
 
@@ -14,12 +14,12 @@
         _configureComponents: function() {
             this._dataGrid.configure({
                 bcConfig: {
-                    "siteUrl": "https://raducosnita-openplatform.worldsecuresystems.com",
-                    "accessToken": "Bearer _bc_Q2xpZW50SWQ9dGhyLWdhLW1hbmFnZXI7NVRIYlNnZ2t6K3V5Tzk5eHVIcTBvMG16R3V5bC9aL1o1WUppRmZRS3lmeE9SckJiVVY5UkxsVjhnd1d0ZnM1UzhJd21QT0YzSkM3MExsRG5Eelo3Y2QyNG95VXB0Z0VXaHorYWtuaGVORk5HMzZkeHpGcjVxMy9yU2lXVHhYQzQ3eFRpNktCeUVDY0ZoQzRkc2xPTmkyY1NqYWFKc1dScWM1ZVNEdVFKT2FoOXZ2ZStHWEVFcmZCMzRsYWY4QmdNaDlOQkFhMDVxUDhscFVtcUFzQktEeWNkK0xUeS9veDU1NS9sVFZIZFJ2Ymd2TDlZeWFlSVhMS1BtdllsS3V3bXFzeFBJeFZUbm85LzhiTjRkKzZQcFJuV1IwVXF2SHBaSk5lL3JEeTFHS2tJMlE2Q3dDQm9Jc0JadHdaMjhtdlE="
+                    "siteUrl": "https://devs-next.worldsecuresystems.com",
+                    "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84cENlaEJaNUJQVzZjazdTZWZUN3BUdVYrMWtRdW03QW96cXhqMXhpaWh6bTlwbW1FczI5NkNZVmttVGE3aUhUaGNJRnJCMmk3NUpMYjA2YTl2ZkQvcmRReVhMV2ViVmY4azdGVzhQbG1ENnZZYlhDNUhDR3AzZmlmbG12dWxhQTJLNjBRbVBhVkJRZ2FXVUJ2UW1qNjNKd2dvYlcrMUxudzFwTjFnV1VCMTNiQi9QMXkwSkpnRkNXcXV3ZWxwdzgvSEFWbnNLelJwQWk3MWFuZnF4K2ZkbXNJQmRVdk1PVHZDWXBmYW9RT3o1d21zWFhLdFVLR2hoUUFzVFBSOUMxWS9lTXhqWHQ2MHVlcjB2Ti9kQ3E3RHlqcE8zZjBTUmxPclp0S0Zlamd2THA= "
                 }
             });
 
-            this._orderByDdDynamic.configure({
+            /*this._orderByDdDynamic.configure({
                 items: [
                     {"value": "0", "text": "Order by"},
                     {"value": "id", "text": "Customer Id"},
@@ -28,7 +28,7 @@
                     {"value": "lastName", "text": "Last name"},
                     {"value": "homePhone", "text": "Phone number"}
                 ]
-            });
+            });*/
         },
         _wireEvents: function() {
             var self = this;

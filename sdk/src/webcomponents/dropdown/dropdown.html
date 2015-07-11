@@ -8,7 +8,7 @@
     </style>
 
     <template>
-        <div class="select-model">
+        <div id="selectModel" class="select-model">
             <content></content>
         </div>
 
@@ -29,8 +29,10 @@
             items: Array
         },
         ready: function() {
-            var options = $(".select-model").find("option"),
+            var options = this.$.selectModel.querySelectorAll("option"),
                 items = [];
+
+            console.log(options);
 
             for (var idx = 0; idx < options.length; idx++) {
                 var option = options[idx],

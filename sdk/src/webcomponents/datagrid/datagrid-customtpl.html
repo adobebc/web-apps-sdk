@@ -1,0 +1,22 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<dom-module i="bc-datagrid-customtpl">
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+
+    <script>
+        var webComponent = {
+            "is": "bc-datagrid-customtpl",
+            "properties": {
+                item: Object,
+                col: Object,
+            },
+            "ready": function() {
+                var tpl = Handlebars.compile(this.col.template);
+                this.innerHTML = tpl({"item": this.item, "col": this.col});
+            }
+        };
+
+        Polymer(webComponent);
+    </script>
+</dom-module>

@@ -13,10 +13,10 @@
         },
         _configureComponents: function() {
             this._dataGrid.configure({
-                columns: [
-                    {"id": "firstName", "name": "First name"},
-                    {"id": "lastName", "name": "Last name"}
-                ]
+                bcConfig: {
+                    "siteUrl": "https://raducosnita-openplatform.worldsecuresystems.com",
+                    "accessToken": "Bearer _bc_Q2xpZW50SWQ9dGhyLWdhLW1hbmFnZXI7NVRIYlNnZ2t6K3V5Tzk5eHVIcTBvMG16R3V5bC9aL1o1WUppRmZRS3lmeE9SckJiVVY5UkxsVjhnd1d0ZnM1UzhJd21QT0YzSkM3MExsRG5Eelo3Y2QyNG95VXB0Z0VXaHorYWtuaGVORk5HMzZkeHpGcjVxMy9yU2lXVHhYQzQ3eFRpNktCeUVDY0ZoQzRkc2xPTmkyY1NqYWFKc1dScWM1ZVNEdVFKT2FoOXZ2ZStHWEVFcmZCMzRsYWY4QmdNaDlOQkFhMDVxUDhscFVtcUFzQktEeWNkK0xUeS9veDU1NS9sVFZIZFJ2Ymd2TDlZeWFlSVhMS1BtdllsS3V3bXFzeFBJeFZUbm85LzhiTjRkKzZQcFJuV1IwVXF2SHBaSk5lL3JEeTFHS2tJMlE2Q3dDQm9Jc0JadHdaMjhtdlE="
+                }
             });
 
             this._orderByDdDynamic.configure({
@@ -50,12 +50,18 @@
         },
         onChangeOrderBy: function(selectedItem) {
             this._orderBy = selectedItem.value;
+
+            this.onSearch(this._filterValue);
         },
         onChangeSearch: function(newFilterValue) {
             this._filterValue = newFilterValue;
+
+            if (this._filterValue == "") {
+                this.onSearch(this._filterValue);
+            }
         },
         onSearch: function(filterValue) {
-            console.log(this._filterValue + " ---> Ordering by: " + this._orderBy);
+            this._dataGrid.searchFullText(filterValue, this._orderBy);
         }
     };
 

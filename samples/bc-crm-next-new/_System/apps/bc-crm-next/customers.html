@@ -76,7 +76,7 @@
                                     <option value="firstName">First Name</option>
                                     <option value="middleName">Middle Name</option>
                                     <option value="lastName">Last Name</option>
-                                    <option value="homePhone">Phone Number</option>
+                                    <!--<option value="homePhone.value">Home phone number</option>-->
                                 </bc-select>
                             </div>
 
@@ -100,22 +100,23 @@
         <div class="container-fluid" style="margin-top: 100px;">
             <bc-datagrid id="gridCustomers">
                 <!--<bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" rel="datasource"></bc-json>-->
-                <bc-api api-name="customers" api-version="v3" fields="firstName,middleName,lastName,workPhone,email1,email2,email3" rel="datasource"></bc-api>
+                <bc-api api-name="customers" api-version="v3" fields="firstName,middleName,lastName,workPhone,homePhone,email1,email2,email3" rel="datasource"></bc-api>
 
                 <bc-columns style="display: none;">
                     <div data-id="firstName" title="First name"></div>
                     <div data-id="middleName" title="Middle name"></div>
                     <div data-id="lastName" title="Middle name"></div>
-                    <div data-id="username" title="Username"></div>
+                    <div data-id="homePhone.value" title="Home phone"></div>
                     <div data-id="email1.value" title="Email 1"></div>
 
                     <div rel="custom" title="Custom column 1">
                         <button class="btn btn-default accordion-toggle" alt="Customer details" title="Customer details" 
-                                onclick="MyApp.onClickTblButton(this, {{itemSerialized}});">
+                                onclick="MyApp.showCustomerDetails(this, {{itemSerialized}});">
                             <span class="glyphicon glyphicon-chevron-down"></span>
                         </button>
 
-                        <button class="btn btn-default accordion-toggle" alt="Customer orders" title="Customer orders">
+                        <button class="btn btn-default accordion-toggle" alt="Customer orders" title="Customer orders"
+                                onclick="MyApp.showCustomerOrders(this, {{itemSerialized}});">
                             <span class="glyphicon glyphicon-list-alt"></span>
                         </button>
 

@@ -75,9 +75,13 @@ window.MyApp = (function($) {
         onSearch: function(filterValue) {
             this._dataGrid.searchFullText(filterValue, this._limit, this._orderBy);
         },
-        onClickTblButton: function(srcElement, item) {
-            console.log("Selected item from grid");
-            console.log(item);
+        showCustomerDetails: function(srcElement, customer) {
+            console.log("Show selected customer details ...");
+            console.log(customer.firstName);
+        },
+        showCustomerOrders: function(srcElement, customer) {
+            console.log("Show orders belonging to selected customer ...");
+            console.log(customer.firstName);
         }
     };
 

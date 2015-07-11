@@ -13,7 +13,7 @@
             },
             "ready": function() {
                 var tpl = Handlebars.compile(this.col.template);
-                this.innerHTML = tpl({"item": this.item, "col": this.col});
+                this.innerHTML = tpl({"item": this.item, "col": this.col, "itemSerialized": JSON.stringify(this.item)});
             }
         };
 

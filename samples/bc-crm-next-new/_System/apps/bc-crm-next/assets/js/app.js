@@ -1,4 +1,4 @@
-(function($) {
+window.MyApp = (function($) {
     var app = {
         init: function() {
             this._dataGrid = document.getElementById("gridCustomers");
@@ -74,8 +74,14 @@
         },
         onSearch: function(filterValue) {
             this._dataGrid.searchFullText(filterValue, this._limit, this._orderBy);
+        },
+        onClickTblButton: function(srcElement, item) {
+            console.log("Selected item from grid");
+            console.log(item);
         }
     };
 
     app.init();
+
+    return app;
 })($);

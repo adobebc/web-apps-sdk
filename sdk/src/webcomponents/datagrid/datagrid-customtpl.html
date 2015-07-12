@@ -1,6 +1,6 @@
 <link rel="import" href="/lib/polymer/polymer.html">
 
-<dom-module i="bc-datagrid-customtpl">
+<dom-module id="bc-datagrid-customtpl">
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/webcomponents/components.js"></script>
 
@@ -9,13 +9,24 @@
             "is": "bc-datagrid-customtpl",
             "properties": {
                 item: Object,
-                col: Object,
+                col: Object
             },
-            "ready": function() {
-                var tpl = Handlebars.compile(this.col.template);
-                this.innerHTML = tpl({"item": this.item, "col": this.col, "itemSerialized": JSON.stringify(this.item)});
+            ready: function() {
+                var content = document.createElement("div");
+                content.innerHTML = this.col.template;
+
+                var domBind = document.createElement('template', 'dom-bind');
+                domBind.item = this.item;
+                domBind.col = this.col;
+                domBind.id = "dynamic-dom";
+
+                domBind.content.appendChild(content);
+
+                Polymer.dom(this).appendChild(domBind);
             }
         };
+
+        webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
 
         Polymer(webComponent);
     </script>

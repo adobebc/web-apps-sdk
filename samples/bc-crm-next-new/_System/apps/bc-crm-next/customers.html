@@ -45,9 +45,6 @@
         <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
 
-        <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
-
         <script src="/dist/bcapi-0.2.0.js"></script>
 
         <script src="/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
@@ -55,6 +52,7 @@
         <link rel="import" href="/src/webcomponents/datagrid/datagrid.html">
         <link rel="import" href="/src/webcomponents/datagrid/datagrid-customtpl.html">
         <link rel="import" href="/src/webcomponents/dropdown/dropdown.html">
+        <link rel="import" href="/src/webcomponents/buttons/button.html">
         <link rel="import" href="/src/webcomponents/json/json.html">
         <link rel="import" href="/src/webcomponents/json/api.html">
     </head>
@@ -110,15 +108,13 @@
                     <div data-id="email1.value" title="Email 1"></div>
 
                     <div rel="custom" title="Custom column 1">
-                        <button class="btn btn-default accordion-toggle" alt="Customer details" title="Customer details" 
-                                onclick="MyApp.showCustomerDetails(this, {{itemSerialized}});">
+                        <bc-button class="btn btn-default accordion-toggle" alt="Customer details" title="Customer details" onclick="MyApp.showCustomerDetails(this)" data="{{item}}">
                             <span class="glyphicon glyphicon-chevron-down"></span>
-                        </button>
+                        </bc-button>
 
-                        <button class="btn btn-default accordion-toggle" alt="Customer orders" title="Customer orders"
-                                onclick="MyApp.showCustomerOrders(this, {{itemSerialized}});">
+                        <bc-button class="btn btn-default accordion-toggle" alt="Customer orders" title="Customer orders" onclick="MyApp.showCustomerOrders(this)" data="{{item}}">
                             <span class="glyphicon glyphicon-list-alt"></span>
-                        </button>
+                        </bc-button>
 
                         <button class="btn btn-default" alt="Delete customer" title="Delete customer">
                             <span class="glyphicon glyphicon-remove"></span>

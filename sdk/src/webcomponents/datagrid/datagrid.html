@@ -4,7 +4,7 @@
     <template>
     <div class="panel panel-default">
         <content></content>
-        <table class="table">
+        <table class="table" id="dataTable">
             <thead>
                 <tr>
                     <td colspan="{{columns.length}}">Displaying <span>{{rows.length}}</span> out of <span>{{currData.totalItemsCount}}</span> records.</td>
@@ -149,9 +149,9 @@
 
             this._dataSource.fetchData(fetchOptions).done(function(data) {
                 self._updateCurrentData(data);
+
             });
         },
-
         _getItemValue: function(item, itemProperty) {
             var propertyParts = itemProperty.split(".");
 

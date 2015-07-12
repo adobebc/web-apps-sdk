@@ -16,7 +16,7 @@ window.MyApp = (function($) {
             this._dataGrid.configure({
                 bcConfig: {
                     "siteUrl": "https://devs-next.worldsecuresystems.com",
-                    "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84cmc5Nnk2d3ZkdjdTb3YzR0FzdDRZc1BNRC9XNmVXUi96akl0Y2VPSWE2aXA3Y0Z6eHpZWTJ5K3JhS1pSREFFNE5PMnBLRXgzYStlOUZ1WGlOWXk0NHRPOEtnV0k5b2pRbGJ3cng3Q2FEazJFejBoczBRQ3lpWGZrb0wveHV4RnZYK0RDV0R6K3pXd0dTRUFpWFZXTndvWWNBN2VGRmt6TEV0SlV2NWQzM1VIdiswaHdGWWFheTl3bnA5eVk4MjYyYm96UmRJbEU2Z0d0cExhN05taC9TeEhPYjJOVkhMQk4reDdVb2F6emZObk1CT3pOWlY0SmlFcndFWXZ0a2k1ZUttOFFSNzh1ME9QZjJTdlMzVjh6di9NbTRuekFtdkhKVUVtbE4zN3Jmbk8="
+                    "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84cnRMZWx0bDdRQVpOMTFBK1EzQnZnRGFNdHBiNFBPOUVSbXk0T25MMXIwdFliNjB0ME12OTZudzlxS0ZBSjd5dG52enFPQmJaQWVDUUlaMzk5cDJiR0lVSUhYSEZpYnlLOW9YRWZhQS9vV3J1RzU3S29GenljTDJNdkk1dEtWMG9qZit6dmpYV1I4SVIycDE5QnBBanhlSEFjWWsvNUU1dHp3aUxSRVgvczArWXl3SjdKOFZRQmgwUW51eWE3bHV0dkdiaWVzOWtxVmxteEI3cUtCc1Z6TWtwcUduV1J5STJJMG9wc1dnaHdub25GZC85VEFRc1JERytUTXZhbmZ3aXBTTU0xSTJhRzI0Ny92eHNlSFozVzdKcHArbGtMeDVjZlBBcHIybUFuNUg="
                 }
             });
 
@@ -75,13 +75,17 @@ window.MyApp = (function($) {
         onSearch: function(filterValue) {
             this._dataGrid.searchFullText(filterValue, this._limit, this._orderBy);
         },
-        showCustomerDetails: function(srcElement, customer) {
-            console.log("Show selected customer details ...");
-            console.log(customer.firstName);
+        showCustomerDetails: function(srcElement) {
+            var selectedCustomer = srcElement.data;
+
+            console.log("Show information about customer ...");
+            console.log(selectedCustomer);
         },
-        showCustomerOrders: function(srcElement, customer) {
+        showCustomerOrders: function(srcElement) {
+            var selectedCustomer = srcElement.data;
+
             console.log("Show orders belonging to selected customer ...");
-            console.log(customer.firstName);
+            console.log(selectedCustomer);
         }
     };
 

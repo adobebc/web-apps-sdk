@@ -54,13 +54,15 @@
 
             this.value = newValue;
 
+            if (evt.keyCode !== 13) {
+                this.trigger("textfield:change", {"value": newValue});
+            }
+
             if (!disabled && evt.keyCode === 13) {
                 this.handleSearch();
 
                 return;
             }
-
-            this.trigger("textfield:change", {"value": newValue});
         },
         handleSearch: function(evt) {
             this.trigger("textfield:search", {"value": this.value});

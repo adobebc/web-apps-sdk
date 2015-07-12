@@ -66,6 +66,10 @@ window.MyApp = (function($) {
             this.onSearch(this._filterValue);
         },
         onChangeSearch: function(newFilterValue) {
+            if (newFilterValue == this._filterValue) {
+                return;
+            }
+
             this._filterValue = newFilterValue;
 
             if (this._filterValue == "") {

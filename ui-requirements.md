@@ -14,3 +14,11 @@ This document provides all functional and non functional requirements which must
 1. Each component must be easily configurable from the application html (databinding / event binding).
 
 # Non functional requirements
+
+# Terminology
+
+| Term      | Definition |
+|-----------|------------|
+| Component | Code which combines html / css / javascript in order to provide custom dom elements (e.g: bc-button, bc-datagrid). |
+| Component aggregation | Code which compines multiple components together in order to create complex User Interfaces. |
+| BC APIs integration | Possibility to wire external data sources (bc rest apis) in components without manually writing ajax calls: e.g (list customers in a datagrid.) |

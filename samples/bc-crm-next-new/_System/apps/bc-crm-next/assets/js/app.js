@@ -77,6 +77,7 @@ window.MyApp = (function($) {
             }
         },
         onSearch: function(filterValue) {
+            console.log(filterValue);
             this._dataGrid.searchFullText(filterValue, this._limit, this._orderBy);
         },
         showCustomerDetails: function(srcElement) {

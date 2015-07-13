@@ -61,9 +61,6 @@
             this.columns = opts.columns || this._getColsFromMarkup() || this.columns;
             this.rows = opts.rows || this._loadItems() || this.rows;
         },
-        renderCustomTemplate: function(ctx) {
-            console.log(ctx);
-        },
         searchFullText: function(filterValue, limit, orderCriteria) {
             if (!filterValue || filterValue.trim().length == 0) {
                 this._loadItems({
@@ -81,7 +78,7 @@
                 var col = this.columns[idx],
                     clause = {};
 
-                if (col.template) {
+                if (col.rel != "property") {
                     continue;
                 }
 
@@ -108,8 +105,9 @@
                     itemName = item.attr("title"),
                     itemRel = item.attr("rel");
 
-                if (itemId) {
-                    cols.push({"id": itemId, "name": itemName, "template": "<span>{{getItemValue(item, col.id)}}</span>"});
+                if (itemRel == "property") {
+                    cols.push({"id": itemId, "name": itemName, "template": "<span>{{getItemValue(item, col.id)}}</span>",
+                                "rel": "property"});
 
                     return;
                 }

@@ -12,17 +12,34 @@
                 col: Object
             },
             ready: function() {
-                var content = document.createElement("div");
+                var content = document.createElement("div"),
+                    self = this;
                 content.innerHTML = this.col.template;
 
                 var domBind = document.createElement('template', 'dom-bind');
                 domBind.item = this.item;
                 domBind.col = this.col;
-                domBind.id = "dynamic-dom";
+                domBind.getItemValue = function(item, property) {
+                    console.log(property);
+                    return self.getItemValue(item, property);
+                }
 
                 domBind.content.appendChild(content);
 
                 Polymer.dom(this).appendChild(domBind);
+            },
+            getItemValue: function(item, itemProperty) {
+                var propertyParts = itemProperty.split(".");
+
+                for (var idx = 0; idx < propertyParts.length; idx++) {
+                    item = item[propertyParts[idx]];
+
+                    if (!item) {
+                        return;
+                    }
+                }
+
+                return item;
             }
         };
 

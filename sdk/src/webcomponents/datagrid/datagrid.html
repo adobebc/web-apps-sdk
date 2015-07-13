@@ -21,13 +21,7 @@
                 <tr>
                     <template is="dom-repeat" items="{{columns}}" as="col">
                         <td>
-                            <template is="dom-if" if="{{!col.template}}">
-                            <span>{{_getItemValue(itemRow, col.id)}}</span>
-                            </template>
-
-                            <template is="dom-if" if="{{col.template}}">
-                                <bc-datagrid-customtpl item="{{itemRow}}" col="{{col}}"></bc-datagrid-customtpl>
-                            </template>
+                            <bc-datagrid-customtpl item="{{itemRow}}" col="{{col}}"></bc-datagrid-customtpl>
                         </td>
                     </template>
                 </tr>
@@ -115,7 +109,7 @@
                     itemRel = item.attr("rel");
 
                 if (itemId) {
-                    cols.push({"id": itemId, "name": itemName});
+                    cols.push({"id": itemId, "name": itemName, "template": "<span>{{getItemValue(item, col.id)}}</span>"});
 
                     return;
                 }
@@ -151,19 +145,6 @@
                 self._updateCurrentData(data);
 
             });
-        },
-        _getItemValue: function(item, itemProperty) {
-            var propertyParts = itemProperty.split(".");
-
-            for (var idx = 0; idx < propertyParts.length; idx++) {
-                item = item[propertyParts[idx]];
-
-                if (!item) {
-                    return;
-                }
-            }
-
-            return item;
         },
         _updateCurrentData: function(data) {
             this.currData = data;

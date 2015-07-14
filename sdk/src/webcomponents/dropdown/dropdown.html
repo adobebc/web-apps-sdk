@@ -23,7 +23,7 @@
     <script type="text/javascript" src="/src/webcomponents/components.js"></script>
 
     <script>
-    polymerObj = {
+    var webComponent = {
         is: "bc-select",
         properties: {
             items: Array
@@ -41,9 +41,11 @@
 
             this.configure({"items": items});
         },
+        getValue: function() {
+            return this.items[this.$.orderBy.selectedIndex];
+        },
         handleChange: function(evt) {
-            var element = evt.target,
-                selectedItem = this.items[element.selectedIndex];
+            var selectedItem = this.getValue();
 
             this.trigger("dd:change", selectedItem);
         },
@@ -52,8 +54,8 @@
         }
     };
 
-    polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
+    webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
 
-    Polymer(polymerObj);
+    BCAPI.Components.DropDown = Polymer(webComponent);
     </script>
 </dom-module>

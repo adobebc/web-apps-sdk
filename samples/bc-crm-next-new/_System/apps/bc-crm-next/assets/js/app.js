@@ -79,6 +79,9 @@ window.MyApp = (function($) {
             }
         },
         onSearch: function(filterValue) {
+            this._limit = this._limit || this._limitDd.getValue().value;
+            this._orderBy = this._orderBy || this._orderByDd.getValue().value;
+
             this._dataGrid.searchFullText(filterValue, this._limit, this._orderBy);
         },
         showCustomerDetails: function(srcElement) {

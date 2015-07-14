@@ -2,46 +2,61 @@
 
 <dom-module id="bc-datagrid">
     <template>
-    <div class="panel panel-default">
         <content></content>
-        <table class="table" id="dataTable">
-            <thead>
-                <tr>
-                    <td colspan="{{columns.length}}">Displaying <span>{{rows.length}}</span> out of <span>{{currData.totalItemsCount}}</span> records.</td>
-                </tr>
-                <tr>
-                <template is="dom-repeat" items="{{columns}}">
-                    <td>{{item.name}}</td>
-                </template>
-                </tr>
-            </thead>
 
-            <tbody>
-                <template is="dom-repeat" items="{{rows}}" as="itemRow">
-                <tr>
-                    <template is="dom-repeat" items="{{columns}}" as="col">
-                        <td>
-                            <bc-datagrid-customtpl item="{{itemRow}}" col="{{col}}"></bc-datagrid-customtpl>
-                        </td>
+        <template is="dom-if" if="{{visible}}">
+        <div class="panel panel-default">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td colspan="{{columns.length}}">Displaying <span>{{rows.length}}</span> out of <span>{{currData.totalItemsCount}}</span> records.</td>
+                    </tr>
+                    <tr>
+                    <template is="dom-repeat" items="{{columns}}" as="colItem">
+                        <td>{{colItem.name}}</td>
                     </template>
-                </tr>
-                </template>
-            </tbody>
-        </table>
-    </div>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <template is="dom-repeat" items="{{rows}}" as="{{dataVarname}}" index-as="itemIndex">
+                        <tr>
+                            <template is="dom-repeat" items="{{columns}}" as="col">
+                                <td>
+                                    <bc-datagrid-customtpl item="{{getItem(itemIndex)}}" col="{{col}}" template="{{col.template}}" varname="{{dataVarname}}" contains-bindings></bc-datagrid-customtpl>
+                                </td>
+                            </template>
+                        </tr>
+
+                        <template is="dom-if" if="{{repeatedRow}}">
+                            <tr>
+                                <td colspan$="{{columns.length}}">
+                                    <bc-datagrid-customtpl item$="{{getItem(itemIndex)}}" template$="{{repeatedRow}}" varname$="{{dataVarname}}" contains-bindings$></bc-datagrid-customtpl>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+        </template>
     </template>
 
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/webcomponents/components.js"></script>
 
     <script>
-    var polymerObj = {
+    var webComponent = {
         is: "bc-datagrid",
         properties: {
             columns: Array,
             rows: Array,
+            repeatedRow: String,
             apiName: String,
             apiVersion: String,
+            visible: Boolean,
+            dataSource: Object,
+            dataVarname: String,
             bcConfig: Object,
             currData: {
                 type: Object,
@@ -49,17 +64,30 @@
             }
         },
         ready: function() {
-            this._dataSource = Polymer.dom(this).querySelector("*[rel='datasource']");
+            this._dataSource = Polymer.dom(this).querySelectorAll("*[rel='datasource']")[0];
         },
         configure: function(opts) {
             opts = opts || {};
 
+            this.dataVarname = opts.dataVarname || this.dataVarname; 
             this.bcConfig = opts.bcConfig || this.bcConfig || {};
+            this._dataSource = opts.dataSource || this._dataSource;
 
-            this._dataSource.configure({"bcConfig": this.bcConfig});
+            if (this._dataSource) {
+                this._dataSource.configure({"bcConfig": this.bcConfig});
+            }
 
             this.columns = opts.columns || this._getColsFromMarkup() || this.columns;
             this.rows = opts.rows || this._loadItems() || this.rows;
+        },
+        display: function(visible) {
+            this.visible = visible || false;
+        },
+        getItem: function(idx) {
+            return this.rows[idx];
+        },
+        getItemProperty: function(idx, propertyName) {
+            return this.rows[idx][propertyName];
         },
         searchFullText: function(filterValue, limit, orderCriteria) {
             if (!filterValue || filterValue.trim().length == 0) {
@@ -98,26 +126,40 @@
                 self = this,
                 cols = [];
 
-            $(colElement).find("div").each(function(idx, item) {
+            $(colElement).find("> div").each(function(idx, item) {
                 item = $(item);
 
                 var itemId = item.attr("data-id"),
                     itemName = item.attr("title"),
-                    itemRel = item.attr("rel");
+                    itemRel = item.attr("rel"),
+                    itemTemplate = item.html().trim();
 
                 if (itemRel == "property") {
-                    cols.push({"id": itemId, "name": itemName, "template": "<span>{{getItemValue(item, col.id)}}</span>",
+                    if (!itemTemplate) {
+                        itemTemplate = "<span>{{getItemValue(col.id)}}</span>";
+                    }
+
+                    cols.push({"id": itemId, "name": itemName, "template": itemTemplate,
                                 "rel": "property"});
 
                     return;
                 }
 
-                if (itemRel == "custom") {
-                    cols.push({"template": item.html(), "name": itemName});
+                if (itemRel == "custom-column") {
+                    cols.push({"template": itemTemplate, "name": itemName});
+                    
+                    return;
+                }
+
+                if (itemRel == "custom-repeated-row") {
+                    self.repeatedRow = itemTemplate;
+                    return;
                 }
             });
 
-            colElement.remove();
+            /*if (colElement) {
+                colElement.remove();
+            }*/
 
             return cols;
         },
@@ -146,12 +188,12 @@
         },
         _updateCurrentData: function(data) {
             this.currData = data;
-            this.configure({rows: data.items});            
+            this.configure({rows: data.items});
         }
     };
 
-    polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
+    webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
 
-    Polymer(polymerObj);
+    BCAPI.Components.DataGrid = Polymer(webComponent);
     </script>
 </dom-module>

@@ -31,6 +31,13 @@
     BCAPI.Components = {};
 
     /**
+     * This namespace holds all available data sources which can be plugged into UI components.
+     * 
+     * @namespace BCAPI.Components.DataSources
+     */
+    BCAPI.Components.DataSources = {};
+
+    /**
      * This class provides the all common methods inherited by every component.
      * 
      * @public

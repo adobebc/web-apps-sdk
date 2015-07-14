@@ -13,11 +13,13 @@ window.MyApp = (function($) {
             this._wireEvents();
         },
         _configureComponents: function() {
+            this._bcConfig = {
+                "siteUrl": "https://devs-next.worldsecuresystems.com",
+                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84bnVVcFh6U2JBSEsxb0NZbDFXdFlacGJkVzlwZm9PQldVcGcrYU9zTDFzVFFTUHM2VWtnMHg5NklockVPbUtBMmUvSmlZVVBDQ0lPQXgrUFNReGtDZXN5eXBSR2ZBVW5KUWNuUVVGRmt2cFEyVkR4ejJpVEYxUFNlcWVZUU1tQVkyTnpVRjl2dnk5OHRZMzN0S3IxdG1kc0tBYmgwQzhXK0s0MVB4eExSN2JrZDlDOW0va2lPS1BqVE5qTEQrcDJyZVFPYjE2dG1WRERQbVlhL0hmK0FQUjA5SExVL0ZYUzEwcWtTNWFNK1VWck5MSVJCUWhTSW4wbFkyVkdNWmNRazc3S2ZQUXZRK2QwbkthWi80MURPaXhMYkJnaVBrdnh2V29iQnJuQ0tZc2M="
+            };
+
             this._dataGrid.configure({
-                bcConfig: {
-                    "siteUrl": "https://devs-next.worldsecuresystems.com",
-                    "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84b21Wc0c0T3BoUWQ2ZEdvc09nOStWbGZmcC8rTGpSano1YjBESTdydzdDdzRkTWdwWEtYY0huWFNveExwQm1XK0JsbmUzL21tRWxBQm9FSVVWVGl1QURadEFiMnU1SXRzV3NsdHkxOU1RQnZHSmZiRWtPbHgya2VmbDZNSFc5ZFpFalc3QUdJUjlMRE82L050ZjNMTjU2d0xOK202MmU1MlpTSUJ6UnZPMjVrRGVxcXJyR2V1M2RtNmpnNU5CbTIwR1Vac0daa1o0dTVKb0xudlQybjVxbGFkZDhqTit2cmQ3S3dybXZYV1lmVEV6d3FUVHg3RHFtZUpEbTRkS2twSUg1WGxNM3JVVDdhb2tCTEprV2s5Vm1KVXRhUnZpNW5LcDlRMnFnbW9vZnQ="
-                }
+                "bcConfig": this._bcConfig
             });
 
             /*this._orderByDdDynamic.configure({
@@ -77,7 +79,6 @@ window.MyApp = (function($) {
             }
         },
         onSearch: function(filterValue) {
-            console.log(filterValue);
             this._dataGrid.searchFullText(filterValue, this._limit, this._orderBy);
         },
         showCustomerDetails: function(srcElement) {
@@ -87,10 +88,26 @@ window.MyApp = (function($) {
             console.log(selectedCustomer);
         },
         showCustomerOrders: function(srcElement) {
-            var selectedCustomer = srcElement.data;
+            var selectedCustomer = srcElement.data,
+                ordersGridSelector = "bc-datagrid[data-orders-sid='" + selectedCustomer.id + "']",
+                ordersGrid = $(ordersGridSelector)[0],
+                visible = !ordersGrid.visible;
 
-            console.log("Show orders belonging to selected customer ...");
-            console.log(selectedCustomer);
+            ordersGrid._dataSource.configure({
+                "where": {"entityId": selectedCustomer.id}
+            });
+            ordersGrid.configure({
+                "bcConfig": this._bcConfig
+            });
+
+            ordersGrid.display(visible);
+        },
+        printInvoice: function(srcElement) {
+            console.log(srcElement);
+
+            var order = srcElement.data;
+
+            console.log(order);
         }
     };
 

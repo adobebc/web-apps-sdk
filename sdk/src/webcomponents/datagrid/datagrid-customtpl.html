@@ -13,34 +13,44 @@
                     notify: true,
                     observer: "changedItem"
                 },
-                col: {
-                    type: Object/*,
-                    observer: "changedCol"*/
+                col: Object,
+                template: {
+                    type: String,
+                    notify: false
+                },
+                varname: {
+                    type: String,
+                    notify: true
+                },
+                containsBindings: {
+                    type: Boolean,
+                    notify: true,
+                    observer: "changedContainsBindings"
                 }
             },
             ready: function() {
-                var content = document.createElement("div"),
+                var content = this._getContentElement(),
                     self = this;
-                content.innerHTML = this.col.template;
 
                 this.domBind = document.createElement('template', 'dom-bind');
-                this.domBind.item = this.item;
+                this.domBind[this.varname] = this.item;
                 this.domBind.col = this.col;
-                this.domBind.getItemValue = function(item, property) {
-                    return self.getItemValue(item, property);
+                this.domBind.getItemValue = function(property) {
+                    return self.getItemValue(property);
                 }
 
-                this.domBind.content.appendChild(content);
+                this._refreshDom(content);
 
                 Polymer.dom(this).appendChild(this.domBind);
             },
-            getItemValue: function(item, itemProperty) {
-                var propertyParts = itemProperty.split(".");
+            getItemValue: function(itemProperty) {
+                var propertyParts = itemProperty.split("."),
+                    item = this.domBind[this.varname];
 
                 for (var idx = 0; idx < propertyParts.length; idx++) {
                     item = item[propertyParts[idx]];
 
-                    if (!item) {
+                    if (item === undefined || item === null) {
                         return;
                     }
                 }
@@ -52,10 +62,42 @@
                     return;
                 }
 
-                this.domBind.item = newItem;
+                this.domBind[this.varname] = newItem;
             },
-            changedCol: function(newCol) {
-                this.domBind.col = newCol;
+            changedContainsBindings: function(containsBindings) {
+                var content = this._getContentElement();
+
+                this._refreshDom(content);
+            },
+            _getContentElement: function() {
+                if (!this.template) {
+                    return;
+                }
+
+                var content = document.createElement("div"),
+                    template = this.template,
+                    self = this;
+
+                if (this.containsBindings) {
+                    template = template.replace("\\{\\{", "{{").replace("\\}\\}", "}}");
+                }
+
+                content.innerHTML = template;
+
+                return content;
+            },
+            _refreshDom: function(content) {
+                if (!this.domBind) {
+                    return;
+                }
+
+                if (this._formerContent) {
+                    this.domBind.content.removeChild(this._formerContent);
+                }
+
+                this.domBind.content.appendChild(content);
+
+                this._formerContent = content;
             }
         };
 

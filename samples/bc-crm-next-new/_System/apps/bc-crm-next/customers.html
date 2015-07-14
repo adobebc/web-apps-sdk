@@ -132,6 +132,10 @@
                                 <div rel="property" data-id="name" title="Name"></div>
 
                                 <div rel="property" data-id="totalPrice" title="Total price"></div>
+
+                                <div rel="custom-column" title="Actions">
+                                    <bc-button data="\{\{item2\}\}" onclick="MyApp.printInvoice(this)">Print invoice</bc-button>
+                                </div>
                             </bc-columns>
                         </bc-datagrid>
                     </div>

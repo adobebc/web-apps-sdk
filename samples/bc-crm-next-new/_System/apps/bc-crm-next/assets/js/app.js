@@ -103,11 +103,13 @@ window.MyApp = (function($) {
             ordersGrid.display(visible);
         },
         printInvoice: function(srcElement) {
-            console.log(srcElement);
+            var order = srcElement.data,
+                invoiceUrl = [this._bcConfig.siteUrl, "/webresources/api/v3/sites/current/orders/", order.id, "?",
+                                "format=application/vnd.bc.ecommerce.invoice-pdf"];
 
-            var order = srcElement.data;
+            invoiceUrl.push("&access_token=" + encodeURIComponent(this._bcConfig.accessToken));
 
-            console.log(order);
+            window.open(invoiceUrl.join(""));
         }
     };
 

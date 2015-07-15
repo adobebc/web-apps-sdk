@@ -4,7 +4,7 @@ This page proposes several use cases which showcase how fast and convenient is t
 
 ## Create a dropdown
 
-### Static data
+### Static data (webapps_dd_static)
 
 ```html
 <bc-select id="ddOrderBy">
@@ -16,10 +16,10 @@ This page proposes several use cases which showcase how fast and convenient is t
 </bc-select>
 ```
 
-### Dynamic data (json)
+### Dynamic data (json) (webapps_dd_json)
 
 ```html
-<bc-select id="ddOrderBy">
+<bc-select id="ddOrderBy" value-prop="id" text-prop="firstName">
     <bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" rel="datasource"></bc-json>
 </bc-select>
 ```

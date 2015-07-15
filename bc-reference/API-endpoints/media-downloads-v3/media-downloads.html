@@ -114,7 +114,7 @@ Content-Type: application/json
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/mediadownloads&quot;,<br>    type: &quot;GET&quot;,
     conenection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -242,7 +242,7 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/mediadownloads&quot;,<br>     data:JSON.stringify(<br>         {<br>          &quot;id&quot;: 13359991,<br>      &quot;siteId&quot;: 1211552,<br>      &quot;name&quot;: &quot;TEST DWNLD2&quot;,
 		&quot;displayFileName&quot;:&quot;document.txt&quot;<br>         }),<br>    type: &quot;POST&quot;,    
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -373,7 +373,7 @@ Content-Length: length{% endraw %}</code></pre>
 
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/mediadownloads/133591&quot;,<br>     data:JSON.stringify(<br>         {<br>          &quot;id&quot;: 133591,<br>      &quot;siteId&quot;: 1211552,<br>      &quot;name&quot;: &quot;TEST DWNLD&quot;,<br>         <br>         }),<br>    type: &quot;PUT&quot;,    
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -443,7 +443,7 @@ Content-Length: length{% endraw %}</code></pre>
 
 var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/mediadownloads/57625",<br>    type: "DELETE",    
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

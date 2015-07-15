@@ -37,7 +37,7 @@ var request = $.ajax({
     type: "GET",
     conenection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -161,7 +161,7 @@ var request = $.ajax({
   url: "/webresources/api/v3/sites/current/discountcodes/65460/catalogues",
   data:JSON.stringify({"items":[{"discountCodeId":65460,"catalogueId":25481}]}),<br>    type: "POST",    
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -213,7 +213,7 @@ request.fail(function(jqXHR) {
 
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/discountcodes/65460/catalogs?items=[{"discountCodeId":65460,"catalogueId":25481}]",<br>    type: "DELETE",    
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

@@ -124,7 +124,7 @@ Content-Type: application/json
 
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/faqs&quot;,<br>    type: &quot;GET&quot;,
     conenection: "keep-alive",    contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -238,7 +238,7 @@ Content-Length: length{% endraw %}</code></pre>
 
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/faqs&quot;,<br>    data:JSON.stringify({&quot;roleId&quot;:-1,&quot;question&quot;:&quot;How many years have you been in business&quot;,&quot;answer&quot;:&quot;You can now publish a comprehensive FAQ (Frequently Asked Questions) knowledgebase that allows your customers to find answers to questions about your products and services and much more.&quot;,&quot;internalNotes&quot;:&quot;&quot;,&quot;templateId&quot;:0,&quot;weight&quot;:null,&quot;createBy&quot;:267621,&quot;createDate&quot;:&quot;2013-11-25T09:13:03.45&quot;,&quot;lastUpdateBy&quot;:267621,&quot;lastUpdateDate&quot;:&quot;2013-11-25T09:13:03.45&quot;,&quot;releaseDate&quot;:&quot;2011-05-29T10:00:00&quot;,&quot;expiryDate&quot;:&quot;9998-12-31T15:00:00&quot;,&quot;enabled&quot;:true,&quot;deleted&quot;:false,&quot;faqIdShadow&quot;:null,&quot;displayable&quot;:true,&quot;reIndex&quot;:false}),
     type: &quot;POST&quot;,    contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -338,7 +338,7 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/faqs/54216&quot;,<br>    data:JSON.stringify({&quot;id&quot;:54216,&quot;siteId&quot;:1211552,&quot;roleId&quot;:-1,&quot;question&quot;:&quot;TEST business&quot;}),<br>    type: &quot;PUT&quot;,    contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -407,7 +407,7 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/faqs/44767",<br>    type: "DELETE",    <br>	  contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

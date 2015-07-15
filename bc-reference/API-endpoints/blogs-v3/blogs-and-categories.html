@@ -52,7 +52,7 @@ var request = $.ajax({
     type: "GET",
     conenection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -143,7 +143,7 @@ var request = $.ajax({
     type: "GET",
     conenection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "applicaiton/json ",
+    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -202,7 +202,7 @@ request.fail(function (jqXHR) {
 
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/blogs/[blogId]/categories?items=[{'objectId':[blogID],'categoryId':14606,'objectType':55,'displayable':1}]",<br>    type: "DELETE",
 	  conenection: "keep-alive",<br>    contentType: "application/json",
-mimeType: "applicaiton/json ",<br>    headers: {<br>       	"Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br><br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
+mimeType: "application/json ",<br>    headers: {<br>       	"Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br><br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>

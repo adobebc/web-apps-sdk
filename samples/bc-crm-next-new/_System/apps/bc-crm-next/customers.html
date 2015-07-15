@@ -95,7 +95,7 @@
         </div>
 
         <div class="container-fluid" style="margin-top: 100px;">
-            <bc-datagrid id="gridCustomers" visible="true" data-varname="item">
+            <bc-datagrid id="gridCustomers" visible="true">
                 <!--<bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" rel="datasource"></bc-json>-->
                 <bc-api api-name="customers" api-version="v3" fields="id,firstName,middleName,lastName,workPhone,homePhone,email1,email2,email3" rel="datasource"></bc-api>
 
@@ -121,7 +121,7 @@
                     </div>
 
                     <div rel="custom-repeated-row">
-                        <bc-datagrid data-orders-sid$="{{item.id}}" data-varname="item2">
+                        <bc-datagrid data-orders-sid$="{{item.id}}" >
                             <bc-api api-name="orders" api-version="v3" rel="datasource"></bc-api>
 
                             <bc-columns style="display: none;">
@@ -132,7 +132,7 @@
                                 <div rel="property" data-id="totalPrice" title="Total price"></div>
 
                                 <div rel="custom-column" title="Actions">
-                                    <bc-button data="\{\{item2\}\}" onclick="MyApp.printInvoice(this)">Print invoice</bc-button>
+                                    <bc-button data="\{\{item\}\}" onclick="MyApp.printInvoice(this)">Print invoice</bc-button>
                                 </div>
                             </bc-columns>
                         </bc-datagrid>

@@ -16,10 +16,6 @@
                 col: Object,
                 template: {
                     type: String,
-                    notify: false
-                },
-                varname: {
-                    type: String,
                     notify: true
                 },
                 containsBindings: {
@@ -33,19 +29,18 @@
                     self = this;
 
                 this.domBind = document.createElement('template', 'dom-bind');
-                this.domBind[this.varname] = this.item;
-                this.domBind.col = this.col;
-                this.domBind.getItemValue = function(property) {
-                    return self.getItemValue(property);
+                this.domBind.set("item", this.item);
+                this.domBind.set("col", this.col);
+                this.domBind.getItemValue = function(item, property) {
+                    return self.getItemValue(item, property);
                 }
 
                 this._refreshDom(content);
 
                 Polymer.dom(this).appendChild(this.domBind);
             },
-            getItemValue: function(itemProperty) {
-                var propertyParts = itemProperty.split("."),
-                    item = this.domBind[this.varname];
+            getItemValue: function(item, itemProperty) {
+                var propertyParts = itemProperty.split(".");
 
                 for (var idx = 0; idx < propertyParts.length; idx++) {
                     item = item[propertyParts[idx]];
@@ -62,7 +57,7 @@
                     return;
                 }
 
-                this.domBind[this.varname] = newItem;
+                this.domBind.set("item", newItem);
             },
             changedContainsBindings: function(containsBindings) {
                 var content = this._getContentElement();

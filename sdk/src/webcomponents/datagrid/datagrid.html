@@ -19,11 +19,11 @@
                 </thead>
 
                 <tbody>
-                    <template is="dom-repeat" items="{{rows}}" as="{{dataVarname}}" index-as="itemIndex">
+                    <template is="dom-repeat" items="{{rows}}" as="itemRow" index-as="itemIndex">
                         <tr>
                             <template is="dom-repeat" items="{{columns}}" as="col">
                                 <td>
-                                    <bc-datagrid-customtpl item="{{getItem(itemIndex)}}" col="{{col}}" template="{{col.template}}" varname="{{dataVarname}}" contains-bindings></bc-datagrid-customtpl>
+                                    <bc-datagrid-customtpl item$="{{itemRow}}" col$="{{col}}" template$="{{col.template}}" contains-bindings></bc-datagrid-customtpl>
                                 </td>
                             </template>
                         </tr>
@@ -31,7 +31,7 @@
                         <template is="dom-if" if="{{repeatedRow}}">
                             <tr>
                                 <td colspan$="{{columns.length}}">
-                                    <bc-datagrid-customtpl item$="{{getItem(itemIndex)}}" template$="{{repeatedRow}}" varname$="{{dataVarname}}" contains-bindings$></bc-datagrid-customtpl>
+                                    <bc-datagrid-customtpl item$="{{itemRow}}" template$="{{repeatedRow}}" contains-bindings$></bc-datagrid-customtpl>
                                 </td>
                             </tr>
                         </template>
@@ -83,11 +83,8 @@
         display: function(visible) {
             this.visible = visible || false;
         },
-        getItem: function(idx) {
+        getItemAt: function(idx) {
             return this.rows[idx];
-        },
-        getItemProperty: function(idx, propertyName) {
-            return this.rows[idx][propertyName];
         },
         searchFullText: function(filterValue, limit, orderCriteria) {
             if (!filterValue || filterValue.trim().length == 0) {
@@ -136,7 +133,7 @@
 
                 if (itemRel == "property") {
                     if (!itemTemplate) {
-                        itemTemplate = "<span>{{getItemValue(col.id)}}</span>";
+                        itemTemplate = "<span>{{getItemValue(item,col.id)}}</span>";
                     }
 
                     cols.push({"id": itemId, "name": itemName, "template": itemTemplate,
@@ -156,10 +153,6 @@
                     return;
                 }
             });
-
-            /*if (colElement) {
-                colElement.remove();
-            }*/
 
             return cols;
         },
@@ -183,7 +176,6 @@
 
             this._dataSource.fetchData(fetchOptions).done(function(data) {
                 self._updateCurrentData(data);
-
             });
         },
         _updateCurrentData: function(data) {

@@ -27,9 +27,20 @@ This page proposes several use cases which showcase how fast and convenient is t
 ### Dynamic data (BC api)
 
 ```html
-<bc-select id="ddOrderBy" value-field="id" text-field="firstName">
+<bc-select id="ddCustomers" value-field="id" text-field="firstName">
     <bc-api api-name="customers" api-version="v3" rel="datasource"></bc-json>
 </bc-select>
+
+<script type="text/javascript">
+    var customersDd = document.getElementById("ddCustomers");
+    
+    customersDd.configure({
+        "bcConfig": {
+            "siteUrl": "...",
+            "accessToken": "..."
+        }
+    });
+</script>
 ```
 
 ### Dropdown dynamically configured

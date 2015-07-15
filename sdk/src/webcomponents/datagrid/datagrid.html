@@ -55,16 +55,26 @@
             apiName: String,
             apiVersion: String,
             visible: Boolean,
-            dataSource: Object,
             dataVarname: String,
             bcConfig: Object,
             currData: {
                 type: Object,
                 readonly: true
+            },
+            _dataSource: {
+                type: Object,
+                notify: true
+            },
+            _expectsDataSource: {
+                type: Boolean
             }
         },
         ready: function() {
-            this._dataSource = Polymer.dom(this).querySelectorAll("*[rel='datasource']")[0];
+            this._dataSource = Polymer.dom(this).querySelector("*[rel='datasource']");
+
+            if (this._dataSource) {
+                this._expectsDataSource = true;
+            }
         },
         configure: function(opts) {
             opts = opts || {};

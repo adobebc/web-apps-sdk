@@ -1,7 +1,8 @@
 {
     "items": [
-        {"firstName": "Radu Viorel", "lastName": "Cosnita"},
-        {"firstName": "John", "lastName": "Doe"}
+        {"id": 1, "firstName": "Radu Viorel", "lastName": "Cosnita"},
+        {"id": 2, "firstName": "John", "lastName": "Doe"},
+        {"id": 3, "firstName": "BC", "lastName": "Cool"}
     ],
     "totalItemsCount": 3
 }

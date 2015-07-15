@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Customers API Demo + UI SDK</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+        <script src="/dist/bcapi-0.2.0.js"></script>
+
+        <script src="/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="import" href="/src/webcomponents/textfield/textfield.html">
+        <link rel="import" href="/src/webcomponents/datagrid/datagrid.html">
+        <link rel="import" href="/src/webcomponents/datagrid/datagrid-customtpl.html">
+        <link rel="import" href="/src/webcomponents/dropdown/dropdown.html">
+        <link rel="import" href="/src/webcomponents/buttons/button.html">
+        <link rel="import" href="/src/webcomponents/json/json.html">
+        <link rel="import" href="/src/webcomponents/json/api.html">
+    </head>
+
+    <body>
+        <bc-select id="ddOrderBy"></bc-select>
+
+        <script type="text/javascript">
+        var orderByDd = document.getElementById("ddOrderBy");
+        orderByDd.configure({
+            items: [
+                {"value": "0", "text": "Order by"},
+                {"value": "id", "text": "Customer Id"},
+                {"value": "firstName", "text": "Order by"},
+                {"value": "middleName", "text": "Middle name"},
+                {"value": "lastName", "text": "Last name"},
+                {"value": "homePhone", "text": "Phone number"}
+            ]
+        });
+        </script>
+    </body>
+</html>

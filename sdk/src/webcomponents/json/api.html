@@ -14,6 +14,17 @@
                 fields: String,
                 where: String
             },
+            ready: function() {
+                var parentNode = this.parentNode;
+
+                while (parentNode && !parentNode._supportsDataSource) {
+                    parentNode = parentNode.parentNode;
+                }
+
+                if (parentNode && parentNode._supportsDataSource) {
+                    parentNode._dataSource = this;
+                }
+            },            
             configure: function(opts) {
                 this.bcConfig = opts.bcConfig || this.bcConfig;
                 this.apiName = opts.apiName || this.apiName;
@@ -25,8 +36,14 @@
                 var data = [],
                     loader = $.Deferred();
 
+                opts = opts || {};
+
                 opts.fields = opts.fields || this.fields;
                 opts.where = opts.where || this.where;
+
+                if (!this.bcConfig) {
+                    return;
+                }
 
                 for (var key in opts) {
                     var optData = opts[key];

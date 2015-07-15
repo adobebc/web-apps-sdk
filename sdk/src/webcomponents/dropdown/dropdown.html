@@ -26,20 +26,38 @@
     var webComponent = {
         is: "bc-select",
         properties: {
-            items: Array
+            items: Array,
+            valueProp: {
+                type: String,
+                default: "value"
+            },
+            textProp: {
+                type: String,
+                default: "value"
+            },
+            _dataSource: {
+                type: Object,
+                notify: true,
+                observer: "_buildFromDataSource"
+            },
+            _expectsDataSource: {
+                type: Boolean
+            }
         },
         ready: function() {
             var options = this.$.selectModel.querySelectorAll("option"),
-                items = [];
+                dataSource = this.$.selectModel.querySelector("*[rel='datasource']"),
+                items;
 
-            for (var idx = 0; idx < options.length; idx++) {
-                var option = options[idx],
-                    item = {"value": option.value, "text": option.text};
+            if (options.length > 0) {
+                items = this._buildFromMarkup(options);
 
-                items.push(item);
-            };
+                this.configure({"items": items});
+            }
 
-            this.configure({"items": items});
+            if (dataSource) {
+                this._supportsDataSource = true;
+            }
         },
         getValue: function() {
             return this.items[this.$.orderBy.selectedIndex];
@@ -50,7 +68,54 @@
             this.trigger("dd:change", selectedItem);
         },
         configure: function(opts) {
-            this.items = opts.items || items;
+            this.items = opts.items || this.items;
+            this._dataSource = opts.dataSource || this._dataSource;
+            this._bcConfig = opts.bcConfig || this._bcConfig;
+
+            if (this._bcConfig && this._dataSource) {
+                this._dataSource.configure({"bcConfig": this._bcConfig});
+                this._buildFromDataSource(this._dataSource);
+            }
+        },
+        _buildFromMarkup: function(options) {
+            var items = [];
+
+            for (var idx = 0; idx < options.length; idx++) {
+                var option = options[idx],
+                    item = {"value": option.value, "text": option.text};
+
+                items.push(item);
+            }
+
+            return items;
+        },
+        _buildFromDataSource: function(dataSource) {
+            var loader = dataSource.fetchData(),
+                self = this;
+
+            if (!loader) {
+                return;
+            }
+
+            loader.done(function(data) {
+                self._updateData(data);
+            });
+        },
+        _updateData: function(data) {
+            var items = data.items,
+                rows = [];
+
+            for (var idx = 0; items && idx < items.length; idx++) {
+                var row = {},
+                    item = items[idx];
+
+                row["value"] = item[this.valueProp];
+                row["text"] = item[this.textProp];
+
+                rows.push(row);
+            }
+
+            this.configure({"items": rows});
         }
     };
 

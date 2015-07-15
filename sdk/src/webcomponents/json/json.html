@@ -11,6 +11,17 @@
                 url: String
             },
             configure: function(opts) { },
+            ready: function() {
+                var parentNode = this.parentNode;
+
+                while (parentNode && !parentNode._supportsDataSource) {
+                    parentNode = parentNode.parentNode;
+                }
+
+                if (parentNode && parentNode._supportsDataSource) {
+                    parentNode._dataSource = this;
+                }
+            },
             fetchData: function(opts) {
                 var loader = $.Deferred();
 

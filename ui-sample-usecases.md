@@ -16,34 +16,7 @@ This page proposes several use cases which showcase how fast and convenient is t
 </bc-select>
 ```
 
-### Dynamic data (json) (webapps_dd_json)
-
-```html
-<bc-select id="ddOrderBy" value-prop="id" text-prop="firstName">
-    <bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" rel="datasource"></bc-json>
-</bc-select>
-```
-
-### Dynamic data (BC api)
-
-```html
-<bc-select id="ddCustomers" value-field="id" text-field="firstName">
-    <bc-api api-name="customers" api-version="v3" rel="datasource"></bc-json>
-</bc-select>
-
-<script type="text/javascript">
-    var customersDd = document.getElementById("ddCustomers");
-    
-    customersDd.configure({
-        "bcConfig": {
-            "siteUrl": "...",
-            "accessToken": "..."
-        }
-    });
-</script>
-```
-
-### Dropdown dynamically configured
+### Dropdown dynamic configuration (webapps_dd_dynamic)
 
 ```html
 <bc-select id="ddOrderBy"></bc-select>
@@ -60,5 +33,32 @@ orderByDd.configure({
         {"value": "homePhone", "text": "Phone number"}
     ]
 });
+</script>
+```
+
+### Dynamic data (json) (webapps_dd_json)
+
+```html
+<bc-select id="ddOrderBy" value-prop="id" text-prop="firstName">
+    <bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" rel="datasource"></bc-json>
+</bc-select>
+```
+
+### Dynamic data (BC api) (webapps_dd_api)
+
+```html
+<bc-select id="ddCustomers" value-field="id" text-field="firstName">
+    <bc-api api-name="customers" api-version="v3" rel="datasource"></bc-json>
+</bc-select>
+
+<script type="text/javascript">
+    var customersDd = document.getElementById("ddCustomers");
+    
+    customersDd.configure({
+        "bcConfig": {
+            "siteUrl": "...",
+            "accessToken": "..."
+        }
+    });
 </script>
 ```

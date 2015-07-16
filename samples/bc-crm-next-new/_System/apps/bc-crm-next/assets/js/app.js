@@ -4,7 +4,6 @@ window.MyApp = (function($) {
             this._dataGrid = document.getElementById("gridCustomers");
             this._quickSearch = document.getElementById("tfQuickSearch");
             this._orderByDd = document.getElementById("ddOrderBy");
-            // this._orderByDdDynamic = document.getElementById("ddOrderByDynamic");
             this._limitDd = document.getElementById("ddItemsPerPage");
             this._filterValue = "";
             this._orderBy = "0";
@@ -15,23 +14,12 @@ window.MyApp = (function($) {
         _configureComponents: function() {
             this._bcConfig = {
                 "siteUrl": "https://devs-next.worldsecuresystems.com",
-                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84cGZTcmFBMnllS2ZMMFlod2tEaWxacEpWVklyOHpGVlBYWnZJMThiUE9hNUFnbFZqajJ3RkFXOENxUDZWNmdPbEhrbGthWlUwVlhmOXNSclJKQlZvejlXOTg5WDVBMUxkb1R4aHQwVTFVVmx0bGVLcnJPSzQ5SkZxZUhOUDE3QXBXMm4rd1daTGExUjlsK0RJR24zTEJsR0pwVFdyM1dGbmxkeVc3bGprcmVaMVVkTmhtR2xyaE1CVVJ1U0pOaGdBUEI1SE9jMkREQlRqOEN4VE83S1krS2w2SHZXeTNOUWx0ellyMEhXNUE0bTZTejEyczBCNm53MnRDYVRLdlJpaEY4bWFQb21QRm4zTnpTVXRFY0Rkd0JGV2s5OWwrRVNjamxFMWxyY0xNcWc="
+                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84amp0b0VVYVZhRjM0ektzelNYelcyRy9uSENhbFFSV0YyYi9XaHdQZUIrK3hlZU41cThxRG1TMmRzbmRHUHNORjhjd1VtdDh1dEpkSWpyMG1iNGdtOWlmSXZkcWhjL05rWjA3cDNIZWlLaUlGUHdCK0pCM3I1TDJnNnZaR2s2YlkzSU9ZZWpESFdGeGhNdTBMUVhxNjROVkJrQUUyMW1CQ2dTSlZ0RnFYa2wrR2pxbkNYdmxxUzRMYm9UUEtwU3g3ZHptbkFIU1VSdjhFcmYvbGMrOEw0S2lkOTFvMWlVSndZdzhxdFl4RzFqVDdnektmMWtYL2E3dEkrN3dHaDQwdmV1SHBHbk9wVDUzYlpNMEpVMlNCK1pYRnRHck1SSzR0Vzk0ZXl2TmxpSko="
             };
 
             this._dataGrid.configure({
                 "bcConfig": this._bcConfig
             });
-
-            /*this._orderByDdDynamic.configure({
-                items: [
-                    {"value": "0", "text": "Order by"},
-                    {"value": "id", "text": "Customer Id"},
-                    {"value": "firstName", "text": "Order by"},
-                    {"value": "middleName", "text": "Middle name"},
-                    {"value": "lastName", "text": "Last name"},
-                    {"value": "homePhone", "text": "Phone number"}
-                ]
-            });*/
         },
         _wireEvents: function() {
             var self = this;

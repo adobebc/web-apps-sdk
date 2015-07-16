@@ -77,10 +77,6 @@
                                 </bc-select>
                             </div>
 
-                            <!--<div class="col-xs-2">
-                                <bc-select id="ddOrderByDynamic"></bc-select>
-                            </div>-->
-
                             <div class="col-xs-2">
                                 <bc-select id="ddItemsPerPage">
                                     <option value="10">10</option>
@@ -100,7 +96,8 @@
                 <bc-api api-name="customers" api-version="v3" fields="id,firstName,middleName,lastName,workPhone,homePhone,email1,email2,email3" rel="datasource"></bc-api>
 
                 <bc-columns style="display: none;">
-                    <div rel="property" data-id="firstName" title="First name"></div>
+                    <div rel="property" data-id="firstName" title="First name">
+                    </div>
                     <div rel="property" data-id="middleName" title="Middle name"></div>
                     <div rel="property" data-id="lastName" title="Middle name"></div>
                     <div rel="property" data-id="homePhone.value" title="Home phone"></div>
@@ -130,6 +127,8 @@
                                 <div rel="property" data-id="name" title="Name"></div>
 
                                 <div rel="property" data-id="totalPrice" title="Total price"></div>
+
+                                <div rel="property" data-id="invoiced" title="Invoiced"></div>
 
                                 <div rel="custom-column" title="Actions">
                                     <bc-button data="\{\{item\}\}" onclick="MyApp.printInvoice(this)">Print invoice</bc-button>

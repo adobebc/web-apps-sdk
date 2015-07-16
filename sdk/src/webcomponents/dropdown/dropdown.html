@@ -68,12 +68,17 @@
             this.trigger("dd:change", selectedItem);
         },
         configure: function(opts) {
+            var legacyDatasource = this._dataSource;
+
             this.items = opts.items || this.items;
             this._dataSource = opts.dataSource || this._dataSource;
             this._bcConfig = opts.bcConfig || this._bcConfig;
 
             if (this._bcConfig && this._dataSource) {
                 this._dataSource.configure({"bcConfig": this._bcConfig});
+            }
+
+            if (this._bcConfig && this._dataSource && this._dataSource != legacyDatasource) {
                 this._buildFromDataSource(this._dataSource);
             }
         },
@@ -90,6 +95,7 @@
             return items;
         },
         _buildFromDataSource: function(dataSource) {
+            debugger;
             var loader = dataSource.fetchData(),
                 self = this;
 

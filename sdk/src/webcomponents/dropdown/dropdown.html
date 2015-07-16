@@ -68,7 +68,7 @@
             this.trigger("dd:change", selectedItem);
         },
         configure: function(opts) {
-            var legacyDatasource = this._dataSource;
+            var legacyBcConfig = this._bcConfig;
 
             this.items = opts.items || this.items;
             this._dataSource = opts.dataSource || this._dataSource;
@@ -78,7 +78,7 @@
                 this._dataSource.configure({"bcConfig": this._bcConfig});
             }
 
-            if (this._bcConfig && this._dataSource && this._dataSource != legacyDatasource) {
+            if (this._bcConfig && this._bcConfig != legacyBcConfig && this._dataSource) {
                 this._buildFromDataSource(this._dataSource);
             }
         },
@@ -103,6 +103,7 @@
             }
 
             loader.done(function(data) {
+                self._fetched = true;
                 self._updateData(data);
             });
         },

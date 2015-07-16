@@ -35,18 +35,16 @@
         <bc-select id="ddCustomers" value-prop="id" text-prop="firstName">
             <bc-api api-name="customers" api-version="v3" fields="id,firstName" rel="datasource"></bc-api>
         </bc-select>
-        
+
         <script type="text/javascript">
-            $(document).ready(function() {
-                var customersDd = document.getElementById("ddCustomers");
-                
-                customersDd.configure({
-                    "bcConfig": {
-                        "siteUrl": "https://devs-next.worldsecuresystems.com",
-                        "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84amp0b0VVYVZhRjM0ektzelNYelcyRy9uSENhbFFSV0YyYi9XaHdQZUIrK3hlZU41cThxRG1TMmRzbmRHUHNORjhjd1VtdDh1dEpkSWpyMG1iNGdtOWlmSXZkcWhjL05rWjA3cDNIZWlLaUlGUHdCK0pCM3I1TDJnNnZaR2s2YlkzSU9ZZWpESFdGeGhNdTBMUVhxNjROVkJrQUUyMW1CQ2dTSlZ0RnFYa2wrR2pxbkNYdmxxUzRMYm9UUEtwU3g3ZHptbkFIU1VSdjhFcmYvbGMrOEw0S2lkOTFvMWlVSndZdzhxdFl4RzFqVDdnektmMWtYL2E3dEkrN3dHaDQwdmV1SHBHbk9wVDUzYlpNMEpVMlNCK1pYRnRHck1SSzR0Vzk0ZXl2TmxpSko="
-                    }
-                });
-            });
+        var customersDd = document.getElementById("ddCustomers");
+        
+        customersDd.configure({
+            "bcConfig": {
+                "siteUrl": "https://devs-next.worldsecuresystems.com",
+                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84amp0b0VVYVZhRjM0ektzelNYelcyRy9uSENhbFFSV0YyYi9XaHdQZUIrK3hlZU41cThxRG1TMmRzbmRHUHNORjhjd1VtdDh1dEpkSWpyMG1iNGdtOWlmSXZkcWhjL05rWjA3cDNIZWlLaUlGUHdCK0pCM3I1TDJnNnZaR2s2YlkzSU9ZZWpESFdGeGhNdTBMUVhxNjROVkJrQUUyMW1CQ2dTSlZ0RnFYa2wrR2pxbkNYdmxxUzRMYm9UUEtwU3g3ZHptbkFIU1VSdjhFcmYvbGMrOEw0S2lkOTFvMWlVSndZdzhxdFl4RzFqVDdnektmMWtYL2E3dEkrN3dHaDQwdmV1SHBHbk9wVDUzYlpNMEpVMlNCK1pYRnRHck1SSzR0Vzk0ZXl2TmxpSko="
+            }
+        });
         </script>
     </body>
 </html>

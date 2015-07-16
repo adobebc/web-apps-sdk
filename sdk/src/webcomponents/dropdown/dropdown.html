@@ -134,8 +134,8 @@
 
             for (var i = 0; i < items.length; i++) {
                 var option = document.createElement("option");
-                option.value = items[i][this.valueProp || "value"];
-                option.innerHTML = items[i][this.textProp || "text"];
+                option.value = items[i].value;
+                option.innerHTML = items[i].text;
 
                 select.add(option);
             }

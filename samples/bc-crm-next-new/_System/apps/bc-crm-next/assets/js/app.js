@@ -104,7 +104,9 @@ window.MyApp = (function($) {
         }
     };
 
-    app.init();
-
     return app;
 })($);
+
+document.addEventListener("WebComponentsReady", function() {
+    MyApp.init();
+});

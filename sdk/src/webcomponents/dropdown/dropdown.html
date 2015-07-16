@@ -58,6 +58,10 @@
             if (dataSource) {
                 this._supportsDataSource = true;
             }
+
+            if (dataSource && dataSource.configure) {
+                this._dataSource = dataSource;
+            }
         },
         getValue: function() {
             return this.items[this.$.orderBy.selectedIndex];

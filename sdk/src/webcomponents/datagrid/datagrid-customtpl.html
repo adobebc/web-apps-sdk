@@ -90,6 +90,10 @@
                     this.domBind.content.removeChild(this._formerContent);
                 }
 
+                if (!content) {
+                    return;
+                }
+
                 this.domBind.content.appendChild(content);
 
                 this._formerContent = content;

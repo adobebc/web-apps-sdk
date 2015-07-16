@@ -12,11 +12,7 @@
             <content></content>
         </div>
 
-        <select class="form-control" id="orderBy" on-change="handleChange">
-            <template is="dom-repeat" items="{{items}}">
-                <option value="{{item.value}}" text="{{item.text}}"></option>
-            </template>
-        </select>
+        <select class="form-control" id="ddItemsHolder" on-change="handleChange"></select>
     </template>
 
     <script type="text/javascript" src="/src/helper.js"></script>
@@ -26,14 +22,18 @@
     var webComponent = {
         is: "bc-select",
         properties: {
-            items: Array,
+            items: {
+                type: Array,
+                notify: true,
+                observer: "_refreshItemsSelect"
+            },
             valueProp: {
                 type: String,
                 default: "value"
             },
             textProp: {
                 type: String,
-                default: "value"
+                default: "text"
             },
             _dataSource: {
                 type: Object,
@@ -64,7 +64,7 @@
             }
         },
         getValue: function() {
-            return this.items[this.$.orderBy.selectedIndex];
+            return this.items[this.$.ddItemsHolder.selectedIndex];
         },
         handleChange: function(evt) {
             var selectedItem = this.getValue();
@@ -126,7 +126,20 @@
             }
 
             this.configure({"items": rows});
-        }
+        },
+        _refreshItemsSelect: function(items) {
+            var select = this.$.ddItemsHolder;
+            
+            select.options.length = 0;
+
+            for (var i = 0; i < items.length; i++) {
+                var option = document.createElement("option");
+                option.value = items[i][this.valueProp || "value"];
+                option.innerHTML = items[i][this.textProp || "text"];
+
+                select.add(option);
+            }
+        } 
     };
 
     webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);

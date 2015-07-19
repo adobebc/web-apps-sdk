@@ -14,7 +14,7 @@ window.MyApp = (function($) {
         _configureComponents: function() {
             this._bcConfig = {
                 "siteUrl": "https://devs-next.worldsecuresystems.com",
-                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84amp0b0VVYVZhRjM0ektzelNYelcyRy9uSENhbFFSV0YyYi9XaHdQZUIrK3hlZU41cThxRG1TMmRzbmRHUHNORjhjd1VtdDh1dEpkSWpyMG1iNGdtOWlmSXZkcWhjL05rWjA3cDNIZWlLaUlGUHdCK0pCM3I1TDJnNnZaR2s2YlkzSU9ZZWpESFdGeGhNdTBMUVhxNjROVkJrQUUyMW1CQ2dTSlZ0RnFYa2wrR2pxbkNYdmxxUzRMYm9UUEtwU3g3ZHptbkFIU1VSdjhFcmYvbGMrOEw0S2lkOTFvMWlVSndZdzhxdFl4RzFqVDdnektmMWtYL2E3dEkrN3dHaDQwdmV1SHBHbk9wVDUzYlpNMEpVMlNCK1pYRnRHck1SSzR0Vzk0ZXl2TmxpSko="
+                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84czVTdjVxZUVIbzhxOHpBTmx3TDVkQ0p3bmt6S2J1VkdEaElSL0dCU3hVVDM0Y0o2SWtVdDNqeGV4WVlBWkQwVzY4aDI3QUNIdjdub21NQnkyd2pGWmJieVduL3VSOUExUDFucCs0RDRuTzNPVHJTbmVhaXQrS3BFbU9yQ0ViZlo0dS9DdERkVSt6SGtMdk5heHJadE0xMVR4SWoyNEd4Y3NMV3FCVkRTcW9neWpNbU5VWTEvZUF0WmVZTlJjMVd3UFlGUVp5NWJUWkNYUE5XZk9aMHl0bnl3RzZmdTVYNWViSzVTbWU5akxpSWFXeUNDSzBFYWllUVdhb1U2MERhL3dkck5DMmV2U1JyMUo4ZHd3K2dUQnR6Vi8vQzFIVUpVWlFsUUFEK3lrT0I="
             };
 
             this._dataGrid.configure({

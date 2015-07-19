@@ -3,7 +3,8 @@
         {"id": 1, "firstName": "Radu Viorel", "lastName": "Cosnita"},
         {"id": 2, "firstName": "John", "lastName": "Doe"},
         {"id": 3, "firstName": "BC", "lastName": "Cool"},
-        {"id": 4, "firstName": "BC 2", "lastName": "Cool 2"}
+        {"id": 4, "firstName": "BC 2", "lastName": "Cool 2"},
+        {"id": 5, "firstName": "BC 3", "lastName": "Cool 3"}
     ],
     "totalItemsCount": 3
 }

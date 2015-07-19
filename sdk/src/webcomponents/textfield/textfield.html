@@ -46,6 +46,12 @@
                 readonly: true
             }
         },
+        customEvents: [
+            "textfield-change", "textfield-search"
+        ],
+        ready: function() {
+             this._wireCustomEventsFromDom();
+        },
         handleChange: function(evt) {
             var newValue = evt.target.value.trim(),
                 disabled = !(newValue && newValue.length > 0);
@@ -55,7 +61,7 @@
             this.value = newValue;
 
             if (evt.keyCode !== 13) {
-                this.trigger("textfield:change", {"value": newValue});
+                this.trigger("textfield-change", {"value": newValue});
             }
 
             if (!disabled && evt.keyCode === 13) {
@@ -65,7 +71,7 @@
             }
         },
         handleSearch: function(evt) {
-            this.trigger("textfield:search", {"value": this.value});
+            this.trigger("textfield-search", {"value": this.value});
         }
     };
 

@@ -14,35 +14,11 @@ window.MyApp = (function($) {
         _configureComponents: function() {
             this._bcConfig = {
                 "siteUrl": "https://devs-next.worldsecuresystems.com",
-                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84czVTdjVxZUVIbzhxOHpBTmx3TDVkQ0p3bmt6S2J1VkdEaElSL0dCU3hVVDM0Y0o2SWtVdDNqeGV4WVlBWkQwVzY4aDI3QUNIdjdub21NQnkyd2pGWmJieVduL3VSOUExUDFucCs0RDRuTzNPVHJTbmVhaXQrS3BFbU9yQ0ViZlo0dS9DdERkVSt6SGtMdk5heHJadE0xMVR4SWoyNEd4Y3NMV3FCVkRTcW9neWpNbU5VWTEvZUF0WmVZTlJjMVd3UFlGUVp5NWJUWkNYUE5XZk9aMHl0bnl3RzZmdTVYNWViSzVTbWU5akxpSWFXeUNDSzBFYWllUVdhb1U2MERhL3dkck5DMmV2U1JyMUo4ZHd3K2dUQnR6Vi8vQzFIVUpVWlFsUUFEK3lrT0I="
+                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtY3JtLW5leHQ7WDBZSnF0R3dDVE85ZjM5ZGlIcm84aFdqUlJzOXlXRHFRSk85NEVmait5UUZQNXk4SkprM1VzaE1XYUcrbTR3UU5mYWRkMHRlQ2xid1NsNlp2R01IWlF3RUI4dElWRDNPQTJ5bXNNMk5LS3NMZFQ0aTJmZy9BWkNkeE5sbkZUWUFpYlh1bXNtKzFTRS9lUXI3NHN2M1pESEdrNTUyUy82WTNUcnBXVVN6eTFnVDArL2lLTFhNWVBlbWJuYnZqK3MxNEF3Rnd2Z0UzMHJpOUg3RDR6NnJoVmVBME1pbmd1NUZQU25aVU54c0wvRlkwTWsxSlpiMzNHNGRkUU05WkUrZFlwZWVlYitEeGNmQm4rdStmMXF3V3l0MzFjLzgzMklHS3ZFd2ZiOEJSc2RsdGFSb3VQbGVRL2lrUlBMRnNmQ1I="
             };
 
             this._dataGrid.configure({
                 "bcConfig": this._bcConfig
-            });
-        },
-        _wireEvents: function() {
-            var self = this;
-
-            this._quickSearch.wireEvents({
-                "textfield:change": function(evtData) {
-                    self.onChangeSearch(evtData.value);
-                },
-                "textfield:search": function(evtData) {
-                    self.onSearch(evtData.value);
-                }
-            });
-
-            this._orderByDd.wireEvents({
-                "dd:change": function(evtData) {
-                    self.onChangeOrderBy(evtData);
-                }
-            });
-
-            this._limitDd.wireEvents({
-                "dd:change": function(evtData) {
-                    self.onChangeLimit(evtData);
-                }
             });
         },
         onChangeOrderBy: function(selectedItem) {
@@ -55,22 +31,22 @@ window.MyApp = (function($) {
 
             this.onSearch(this._filterValue);
         },
-        onChangeSearch: function(newFilterValue) {
-            if (newFilterValue == this._filterValue) {
+        onChangeSearch: function(newFilterData) {
+            if (newFilterData && newFilterData.value == this._filterValue) {
                 return;
             }
 
-            this._filterValue = newFilterValue;
+            this._filterValue = newFilterData.value;
 
             if (this._filterValue == "") {
                 this.onSearch(this._filterValue);
             }
         },
-        onSearch: function(filterValue) {
+        onSearch: function(filterData) {
             this._limit = this._limit || this._limitDd.getValue().value;
             this._orderBy = this._orderBy || this._orderByDd.getValue().value;
 
-            this._dataGrid.searchFullText(filterValue, this._limit, this._orderBy);
+            this._dataGrid.searchFullText(filterData.value, this._limit, this._orderBy);
         },
         showCustomerDetails: function(srcElement) {
             var selectedCustomer = srcElement.data;

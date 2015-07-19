@@ -48,6 +48,14 @@
     BCAPI.Helper.MicroEvent.mixin(Component.prototype);
 
     /**
+     * This constant holds the dom attribute prefix used to wire custom listeners to component events.
+     * 
+     * @constant
+     * @type {String}
+     */
+    Component.prototype.__BCON_EVT_PREFIX = "onbc-";
+
+    /**
      * This method provides a shortcut approach for wiring callbacks to component emitted events.
      *
      * @example
@@ -81,6 +89,57 @@
      * @abstract
      */
     Component.configure = function(opts) { }
+
+    /**
+     * This method wires all component supported custom events declared in dom to custom actions. Each component 
+     * invoking this method supports wiring of component events to listeners from dom attributes.
+     * @example
+     * // wiring a custom action to custom event named change.
+     * <bc-component bcon-change="MyApp.onChange"></bc-component>
+     */
+    Component.prototype._wireCustomEventsFromDom = function() {
+        var self = this;
+
+        $(document).ready(function() {
+            self._wireCustomEventsWhenDomReady();
+        })
+    };
+
+    /**
+     * This method wires all listeners to custom events declared using dom attributes.
+     */
+    Component.prototype._wireCustomEventsWhenDomReady = function() {
+        var customEvents = this.customEvents || [],
+                wiredEvents = {};
+
+        for (var i = 0; i < customEvents.length; i++) {
+            var evtName = customEvents[i],
+                  attrName = this.__BCON_EVT_PREFIX + evtName;
+                  listener = this.getAttribute(attrName);
+
+            if (!listener) {
+                continue;
+            }
+
+            var listenerParts = listener.split("."),
+                  ctx = window[listenerParts[0]],
+                  action = undefined;
+
+            for (var j = 0; j < listenerParts.length; j++) {
+                var partName = listenerParts[j];
+
+                action = (action || window)[partName];
+            }
+
+            wiredEvents[evtName] = (function(action, ctx) {
+                return function(evtData) {
+                    action.call(ctx, evtData);
+                }
+            })(action, ctx);
+        }
+
+        this.wireEvents(wiredEvents);
+    };
 
     /**
      * This class provides the core class from BC SDK used to support components creation.

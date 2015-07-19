@@ -44,7 +44,12 @@
                 type: Boolean
             }
         },
+        customEvents: [
+            "dd-change"
+        ],
         ready: function() {
+            this._wireCustomEventsFromDom();
+
             var options = this.$.selectModel.querySelectorAll("option"),
                 dataSource = this.$.selectModel.querySelector("*[rel='datasource']"),
                 items;
@@ -69,7 +74,7 @@
         handleChange: function(evt) {
             var selectedItem = this.getValue();
 
-            this.trigger("dd:change", selectedItem);
+            this.trigger("dd-change", selectedItem);
         },
         configure: function(opts) {
             var legacyBcConfig = this._bcConfig;

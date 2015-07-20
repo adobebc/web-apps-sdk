@@ -96,9 +96,7 @@
                 <bc-api api-name="customers" api-version="v3" fields="id,firstName,middleName,lastName,workPhone,homePhone,email1,email2,email3" rel="datasource"></bc-api>
 
                 <bc-columns style="display: none;">
-                    <div rel="property" data-id="firstName" title="First name">
-                        <input class="form-control firstFieldsDisabled" value="{{item.firstName}}" type="text" disabled="disabled">
-                    </div>
+                    <div rel="property" data-id="firstName" title="First name"></div>
                     <div rel="property" data-id="middleName" title="Middle name"></div>
                     <div rel="property" data-id="lastName" title="Middle name"></div>
                     <div rel="property" data-id="homePhone.value" title="Home phone"></div>
@@ -117,27 +115,27 @@
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </div>
-
-                    <div rel="custom-repeated-row">
-                        <bc-datagrid data-orders-sid$="{{item.id}}" >
-                            <bc-api api-name="orders" api-version="v3" rel="datasource"></bc-api>
-
-                            <bc-columns style="display: none;">
-                                <div rel="property" data-id="id" title="Order id"></div>
-
-                                <div rel="property" data-id="name" title="Name"></div>
-
-                                <div rel="property" data-id="totalPrice" title="Total price"></div>
-
-                                <div rel="property" data-id="invoiced" title="Invoiced"></div>
-
-                                <div rel="custom-column" title="Actions">
-                                    <bc-button data="\{\{item\}\}" onclick="MyApp.printInvoice(this)">Print invoice</bc-button>
-                                </div>
-                            </bc-columns>
-                        </bc-datagrid>
-                    </div>
                 </bc-columns>
+
+                <div rel="custom-repeated-row">
+                    <bc-datagrid data-orders-sid$="{{item.id}}" >
+                        <bc-api api-name="orders" api-version="v3" rel="datasource"></bc-api>
+
+                        <bc-columns style="display: none;">
+                            <div rel="property" data-id="id" title="Order id"></div>
+
+                            <div rel="property" data-id="name" title="Name"></div>
+
+                            <div rel="property" data-id="totalPrice" title="Total price"></div>
+
+                            <div rel="property" data-id="invoiced" title="Invoiced"></div>
+
+                            <div rel="custom-column" title="Actions">
+                                <bc-button data="\{\{item\}\}" onclick="MyApp.printInvoice(this)">Print invoice</bc-button>
+                            </div>
+                        </bc-columns>
+                    </bc-datagrid>
+                </div>                
             </bc-datagrid>
         </div>
 

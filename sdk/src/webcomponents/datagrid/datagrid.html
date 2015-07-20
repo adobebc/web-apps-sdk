@@ -114,6 +114,13 @@
                 this._expectsDataSource = true;
             }
         },
+        attached: function() {
+            var repeatedRowDiv = Polymer.dom(this).querySelector("div[rel='custom-repeated-row']");
+
+            if (repeatedRowDiv) {
+                this.repeatedRow = repeatedRowDiv.innerHTML;
+            }            
+        },
         configure: function(opts) {
             opts = opts || {};
 
@@ -193,11 +200,6 @@
                 if (itemRel == "custom-column") {
                     cols.push({"template": itemTemplate, "name": itemName});
                     
-                    return;
-                }
-
-                if (itemRel == "custom-repeated-row") {
-                    self.repeatedRow = itemTemplate;
                     return;
                 }
             });

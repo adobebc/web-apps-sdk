@@ -28,6 +28,15 @@
     <script type="text/javascript" src="/src/webcomponents/components.js"></script>
 
     <script>
+    /**
+     * This class provides a text field component which has BC look & feel. Moreover, the text field benefit from a quick search button
+     * which can be activated in cases where textfield is used as full text search.
+     * 
+     * @name TextField
+     * @class
+     * @public
+     * @memberof BCAPI.Components
+     */
     polymerObj = {
         is: "bc-textfield",
         properties: {
@@ -77,7 +86,7 @@
 
     polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
 
-    BCAPI.Components.TextField = Polymer(polymerObj);
+    Polymer(polymerObj);
     </script>
 
 </dom-module>

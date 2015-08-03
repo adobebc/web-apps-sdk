@@ -84,6 +84,15 @@
     <script type="text/javascript" src="/src/webcomponents/components.js"></script>
 
     <script>
+    /**
+     * This class offers a fully customisable DataGrid component. It has a modern look & feel and allows developers to wire various
+     * datasources into it. 
+     * 
+     * @name DataGrid
+     * @class
+     * @public
+     * @memberof BCAPI.Components
+     */
     var webComponent = {
         is: "bc-datagrid",
         properties: {
@@ -236,6 +245,6 @@
 
     webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
 
-    BCAPI.Components.DataGrid = Polymer(webComponent);
+    Polymer(webComponent);
     </script>
 </dom-module>

@@ -61,9 +61,11 @@
 
     /**
      * This class provides the all common methods inherited by every component.
-     * 
+     *
+     * @name  Component
      * @public
      * @constructor
+     * @memberof BCAPI.Components
      */
     function Component() { }
 
@@ -80,6 +82,12 @@
     /**
      * This method provides a shortcut approach for wiring callbacks to component emitted events.
      *
+     * @method wireEvents
+     * @public
+     * @instance
+     * @memberof BCAPI.Components.Component
+     * @param {Object} evts A dictionary containing a list of event names and the callbacks which listen to each event.
+     * 
      * @example
      * function onTextFieldChange(evtData) {
      *     console.log(evtData);
@@ -106,9 +114,10 @@
      * implementation for this method.
      *
      * @public
-     * @method
+     * @method configure
      * @instance
      * @abstract
+     * @memberof BCAPI.Components.Component
      */
     Component.configure = function(opts) { }
 

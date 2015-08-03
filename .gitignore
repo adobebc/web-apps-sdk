@@ -5,7 +5,6 @@ sdk/tests_runner.log
 sdk/tests-output-integration/*
 sdk/tests_runner_integration.log
 sdk/node_modules
-sdk/doc
 sdk/dev_test_config.js
 sdk/ci.zip
 sdk/ci/*

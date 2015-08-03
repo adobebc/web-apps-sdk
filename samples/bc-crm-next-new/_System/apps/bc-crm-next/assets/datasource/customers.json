@@ -6,5 +6,5 @@
         {"id": 4, "firstName": "BC 2", "lastName": "Cool 2"},
         {"id": 5, "firstName": "BC 3", "lastName": "Cool 3"}
     ],
-    "totalItemsCount": 3
+    "attrOptional": 100
 }

@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-jsdoc');
-	
+
 	grunt.initConfig({
 		concat: {
 			options: {
@@ -25,15 +25,6 @@ module.exports = function(grunt) {
 					"dist/bcapi-full.min.js": ["dist/bcapi-full.js"]
 				}
 			}
-		},
-	    jsdoc : {	    	
-	        dist : {
-	        	src: ["src/*", "test/*", "doc-static/index.md"],   	
-	            options : {
-	            	configure: "jsdoc.json",
-	            	destination : "doc"
-	            }
-	        }
-	    }
-    });
+		}
+	});
 };

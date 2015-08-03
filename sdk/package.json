@@ -9,7 +9,7 @@
 		"grunt-cli": "*",
 		"grunt-contrib-concat": "*",
 		"grunt-contrib-uglify": "*",
-		"grunt-jsdoc": "*"
+		"jsdoc": "git+https://github.com/jsdoc3/jsdoc.git"
 	},
 	"license": "MIT"
 }

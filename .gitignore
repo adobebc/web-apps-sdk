@@ -17,6 +17,8 @@ sdk/lib/*
 */*sublime*
 */karma*
 
+*sublime*
+
 *.log
 
 **/node_modules

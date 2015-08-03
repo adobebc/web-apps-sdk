@@ -23,7 +23,7 @@
         "default": {
             "staticFiles": {
                 "include": [
-                    "./docs-static"
+                    "./doc-static"
                 ]
             },            
         	"outputSourceFiles": true

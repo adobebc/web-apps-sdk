@@ -38,6 +38,28 @@
     BCAPI.Components.DataSources = {};
 
     /**
+     * This namespace holds all available validators which can be wired or are used directly by components.
+     * 
+     * @namespace BCAPI.Components.Validation
+     */
+    BCAPI.Components.Validation = {};
+
+    /**
+     * This namespace holds all security classes which can be reused by all components.
+     * 
+     * @namespace BCAPI.Security
+     */
+    BCAPI.Security = {};
+
+    /**
+     * This namespace holds all messaging layers which can be used to communicate between apps and BC environment.
+     * Moreover, this provides the classes required to achieve intercommunication between components from the same app.
+     * 
+     * @namespace BCAPI.Messaging
+     */
+    BCAPI.Messaging = {};
+
+    /**
      * This class provides the all common methods inherited by every component.
      * 
      * @public

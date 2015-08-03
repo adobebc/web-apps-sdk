@@ -107,6 +107,10 @@
         /**
          * This method is overriden in order to use the correct HTTP verb on creation and update
          * since the id of the item is always passed.
+         *
+         * @method
+         * @instance
+         * @memberOf BCAPI.Models.WebApp.CustomField
          */
         isNew: function() {
             return this._isNew;

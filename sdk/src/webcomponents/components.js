@@ -25,6 +25,8 @@
 (function($) {
     /**
      * This namespace holds all SDK classes used for creating new components.
+     *
+     * ![BCAPI Components Overview](assets/ui-sdk-bcapi-components.png)
      * 
      * @namespace BCAPI.Components
      */

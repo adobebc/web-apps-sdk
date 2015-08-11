@@ -32,21 +32,6 @@
     </head>
 
     <body>
-<bc-select id="ddCustomers" value-prop="id" text-prop="firstName">
-    <bc-api api-name="customers" api-version="v3" fields="id,firstName" rel="datasource"></bc-api>
-</bc-select>
-
-<script type="text/javascript">
-document.addEventListener('WebComponentsReady', function() {
-    var customersDd = document.getElementById("ddCustomers");
-    
-    customersDd.configure({
-        "bcConfig": {
-            "siteUrl": "https://raducosnita-max2014.worldsecuresystems.com",
-            "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtYXBpLWRpc2NvdmVyeTttb1ZzNmt5cDR4S3RkSEp2VEQ2U3lLK2szTnFzYjNaQVdHeTVjZkdGck9QTHBuL3JMdlRuTS9Yc3RtQmRCQUhYSTAxaEVXalhVeDlHV0NweTV4Z1RYTnhOMzRqYlFQbjdCWFhNMmxyeCtrd3JKSXVVZG1UYjNybDdVY1ErcnFlQXBYcXZROUhqSnExVkVlN1JQUTE1amlFUzdIRTBwQjhJcUx6bE0zbXpHVGd3ZnlIbzdjTTBEMElQbzJJMERMZUNwVXRNZXBUWnZyN3pMcS9FVWxGcCtiWlU1dWY4bWVjYWNzNFRXVldSUjNaamVHUHpUZnRibU02Vk5pMEI2VU8raEtUZkVWMlppT0tnRUJLb2hlNTZLMzV0SmhvNW1CV0pwUGEveGpNaVhiMmtDVkUwcThMeWdGZUtTSkxzbnd3eCtRVHRWMTNOc1ZhcjkzS3hzQVl5My9CRXZtYmJNQW5QUWM4UDByOWZRRFFwb1dNaURwWkdlUGhBVnphMndLSHU="
-        }
-    });
-});
-</script>
+        <bc-textfield class="col-xl-6" id="tfQuickSearch" placeholder="Type your search text ..."></bc-textfield>
     </body>
 </html>

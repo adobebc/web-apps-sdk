@@ -33,7 +33,10 @@
     BCAPI.Components = {};
 
     /**
-     * This namespace holds all available data sources which can be plugged into UI components.
+     * This namespace holds all available data sources which can be plugged into UI components. Below, you can find 
+     * a diagram providing the foundation classes which are provided out of the box.
+     *
+     * ![BCAPI Datasources Overview](assets/ui-sdk-bcapi-datasources.png)
      * 
      * @namespace BCAPI.Components.DataSources
      */
@@ -120,6 +123,10 @@
      * @instance
      * @abstract
      * @memberof BCAPI.Components.Component
+     * @param {Object} opts The object containing all options which must be configured.
+     * @example
+     * var button = document.getElementById("myButton");
+     * button.configure({"label": "My first button"});
      */
     Component.configure = function(opts) { }
 

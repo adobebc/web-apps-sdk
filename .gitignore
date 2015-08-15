@@ -18,6 +18,7 @@ sdk/lib/*
 */karma*
 
 *sublime*
+*.vpp~*
 
 *.log
 

@@ -44,6 +44,8 @@
 
     /**
      * This namespace holds all available validators which can be wired or are used directly by components.
+     *
+     * ![BCAPI Validation Overview](assets/ui-sdk-bcapi-validation.png)
      * 
      * @namespace BCAPI.Components.Validation
      */

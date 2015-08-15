@@ -63,6 +63,8 @@
     /**
      * This namespace holds all messaging layers which can be used to communicate between apps and BC environment.
      * Moreover, this provides the classes required to achieve intercommunication between components from the same app.
+     *
+     * ![BCAPI Messaging Overview](assets/ui-sdk-bcapi-messaging.png)
      * 
      * @namespace BCAPI.Messaging
      */

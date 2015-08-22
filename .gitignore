@@ -16,7 +16,6 @@ sdk/lib/*
 */.settings
 */.idea
 */*sublime*
-*/karma*
 
 *sublime*
 *.vpp~*

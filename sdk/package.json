@@ -20,5 +20,8 @@
         "karma-firefox-launcher": "^0.1.6",
         "karma-opera-launcher": "^0.3.0 "
     },
+    "scripts": {
+        "test": "./node_modules/.bin/karma start karma.conf.js --single-run"
+    },
     "license": "MIT"
 }

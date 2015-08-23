@@ -2,9 +2,7 @@ language: node_js
 node_js:
   - 0.11
 addons:
-    apt:
-        packages:
-            - google-chrome-stable
+    - googlechrome
 before_script:
   - cd sdk
   - npm install -d

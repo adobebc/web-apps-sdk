@@ -1,7 +1,13 @@
 module.exports = function(config) {
+    var basePath = __dirname;
+
+    console.log("Base path is: " + basePath);
+
     var configuration = {
+        basePath: basePath,
+
         browsers: ["Chrome",  "Firefox"],
-        
+
         frameworks: ["jasmine"],
 
         files: [

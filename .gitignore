@@ -10,7 +10,6 @@ sdk/node_modules
 sdk/dev_test_config.js
 sdk/ci.zip
 sdk/ci/*
-sdk/lib/*
 
 # IDE specific files which must be ignored
 */.project

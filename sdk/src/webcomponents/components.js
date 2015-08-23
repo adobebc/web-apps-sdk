@@ -91,6 +91,15 @@
     Component.prototype.__BCON_EVT_PREFIX = "onbc-";
 
     /**
+     * This constant holds the type of component which can later on be used to discriminate between regular dom elements 
+     * and concrete BCAPI components.
+     * 
+     * @constant
+     * @type {String}
+     */
+    Component.prototype.__COMPTYPE__ = "BcApiComponent";
+
+    /**
      * This method provides a shortcut approach for wiring callbacks to component emitted events.
      *
      * @method wireEvents
@@ -135,6 +144,19 @@
      * button.configure({"label": "My first button"});
      */
     Component.configure = function(opts) { }
+
+    /**
+     * This method can be used in order to determine if a given dom attribute is a bc component or not.
+     * 
+     * @public
+     * @method  isBcComponent
+     * @instance
+     * @memberof BCAPI.Components.Component
+     * @return {Boolean} True if the current component inherits from Component and false otherwise.
+     */
+    Component.prototype.isBcComponent = function() {
+        return this.__COMPTYPE__ == "BcApiComponent";
+    };
 
     /**
      * This method wires all component supported custom events declared in dom to custom actions. Each component 

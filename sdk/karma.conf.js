@@ -32,7 +32,7 @@ module.exports = function(config) {
                 included: true,
                 served: true,
                 watched: true
-            },            
+            },
             {
                 pattern: "src/webcomponents/components.js",
                 included: true,

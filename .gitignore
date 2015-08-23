@@ -1,5 +1,6 @@
 # CI files which must be ignored
 sdk/coverage/*
+sdk/doc/*
 sdk/logs/*
 sdk/tests-output/*
 sdk/tests_runner.log

@@ -1,4 +1,4 @@
-window.ComponentsHelper = (function() {
+window.ComponentTestHelpers = (function() {
     return {
         /**
          * This method provides a helper for executing test logic once a webcomponent is ready. It facilitates the 

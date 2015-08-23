@@ -1,11 +1,5 @@
 module.exports = function(config) {
-    var basePath = __dirname;
-
-    console.log("Base path is: " + basePath);
-
     var configuration = {
-        basePath: basePath,
-
         browsers: ["Chrome",  "Firefox"],
 
         frameworks: ["jasmine"],
@@ -44,6 +38,10 @@ module.exports = function(config) {
                 pattern: "test/webcomponents/helpers/components_helper.js",
                 included: true
             },
+            {
+                pattern: "test/webcomponents/helpers/custom_matchers.js",
+                included: true
+            },            
             "test/webcomponents/**/*.js"
         ],
 

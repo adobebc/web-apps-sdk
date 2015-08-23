@@ -100,6 +100,22 @@
     Component.prototype.__COMPTYPE__ = "BcApiComponent";
 
     /**
+     * This method standardizes the way components can be configured / altered. Each concrete component must provide an
+     * implementation for this method.
+     *
+     * @public
+     * @method configure
+     * @instance
+     * @abstract
+     * @memberof BCAPI.Components.Component
+     * @param {Object} opts The object containing all options which must be configured.
+     * @example
+     * var button = document.getElementById("myButton");
+     * button.configure({"label": "My first button"});
+     */
+    Component.configure = function(opts) { }
+
+    /**
      * This method provides a shortcut approach for wiring callbacks to component emitted events.
      *
      * @method wireEvents
@@ -124,26 +140,14 @@
      * });
      */
     Component.prototype.wireEvents = function(evts) {
+        if (evts === undefined || evts === null) {
+            throw new BCAPI.Components.Exceptions.WireEventException("You can not wire undefined / null events into component.");
+        }
+
         for (var evtName in evts) {
             this.on(evtName, evts[evtName]);
         }
     };
-
-    /**
-     * This method standardizes the way components can be configured / altered. Each concrete component must provide an
-     * implementation for this method.
-     *
-     * @public
-     * @method configure
-     * @instance
-     * @abstract
-     * @memberof BCAPI.Components.Component
-     * @param {Object} opts The object containing all options which must be configured.
-     * @example
-     * var button = document.getElementById("myButton");
-     * button.configure({"label": "My first button"});
-     */
-    Component.configure = function(opts) { }
 
     /**
      * This method can be used in order to determine if a given dom attribute is a bc component or not.

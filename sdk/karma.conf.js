@@ -6,7 +6,7 @@ module.exports = function(config) {
     var configuration = {
         basePath: basePath,
 
-        browsers: ["Chrome",  "Firefox"],
+        browsers: [/*"Chrome",*/  "Firefox"],
 
         frameworks: ["jasmine"],
 

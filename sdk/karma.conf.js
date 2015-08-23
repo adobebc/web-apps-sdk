@@ -42,10 +42,10 @@ module.exports = function(config) {
             "src/webcomponents/**/*.html",
             "src/webcomponents/**/*.js",
             {
-                pattern: "test/webcomponents/components_helper.js",
+                pattern: "test/webcomponents/helpers/components_helper.js",
                 included: true
             },
-            "tests/webcomponents/*.js"
+            "test/webcomponents/**/*.js"
         ],
 
         reporters: ["progress", "coverage"],

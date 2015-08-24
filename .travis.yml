@@ -11,6 +11,8 @@ before_script:
   - export CHROME_BIN=/usr/bin/google-chrome-stable
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+after_script:
+  - find src/ -name '*.js' | xargs node_modules/.bin/eslint
 branches:
     only:
         - web-apps-sdk-ui

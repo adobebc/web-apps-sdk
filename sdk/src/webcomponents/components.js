@@ -178,33 +178,16 @@
     };
 
     /**
-     * This method wires all component supported custom events declared in dom to custom actions. Each component
-     * invoking this method supports wiring of component events to listeners from dom attributes.
-     *
-     * @returns {undefined} No result.
-     * @example
-     * // wiring a custom action to custom event named change.
-     * <bc-component bcon-change="MyApp.onChange"></bc-component>
-     */
-    Component.prototype._wireCustomEventsFromDom = function() {
-        var self = this;
-
-        $(document).ready(function() {
-            self._wireCustomEventsWhenDomReady();
-        });
-    };
-
-    /**
      * This method wires all listeners to custom events declared using dom attributes.
      *
      * @returns {undefined} No result.
      */
-    Component.prototype._wireCustomEventsWhenDomReady = function() {
+    Component.prototype._wireCustomEventsFromDom = function() {
         var customEvents = this.customEvents || [],
             wiredEvents = {};
 
         for (var i = 0; i < customEvents.length; i++) {
-            var evtName = customEvents[i],
+            var evtName = this._getDomEvtName(customEvents[i]),
                 attrName = this.__BCON_EVT_PREFIX + evtName;
             listener = this.getAttribute(attrName);
 
@@ -230,6 +213,30 @@
         }
 
         this.wireEvents(wiredEvents);
+    };
+
+    /**
+     * This method obtains the dom event name for a given custom event name. Custom event names are camel case while in
+     * dom they are all lowercase and each part from camelcase is separated by dashes.
+     * @param  {String} evtName Custom event name as defined at component level.
+     * @return {String} Dom event name which matches the custom event name.
+     */
+    Component.prototype._getDomEvtName = function(evtName) {
+        var domEvtName = [];
+
+        evtName = evtName || "";
+
+        for (var i = 0; i < evtName.length; i++) {
+            var currChar = evtName.charAt(i);
+
+            if (currChar === currChar.toUpperCase()) {
+                domEvtName.push("-");
+            }
+
+            domEvtName.push(currChar.toLowerCase());
+        }
+
+        return domEvtName.join("");
     };
 
     BCAPI.Components.Component = BCAPI.Components.Component || Component;

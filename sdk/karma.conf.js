@@ -32,8 +32,13 @@ module.exports = function(config) {
                 served: true,
                 watched: true
             },
-            "src/webcomponents/**/*.html",
             "src/webcomponents/**/*.js",
+            {
+                pattern: "src/webcomponents/**/*.html",
+                included: true,
+                served: true,
+                watched: true
+            },
             {
                 pattern: "test/webcomponents/helpers/components_helper.js",
                 included: true

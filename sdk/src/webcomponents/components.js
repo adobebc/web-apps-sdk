@@ -116,6 +116,16 @@
     Component.configure = function(opts) {};
 
     /**
+     * This method provides a standard implementation for each component attached to dom phase. Even though it should
+     * be enough for plenty of components, if for some reason you need to override it, make sure you first invoke this.__base.attached();
+     *
+     * @returns {undefined} No result.
+     */
+    Component.prototype.attached = function() {
+        this._wireCustomEventsFromDom();
+    };
+
+    /**
      * This method provides a shortcut approach for wiring callbacks to component emitted events.
      *
      * @method wireEvents
@@ -222,6 +232,8 @@
         this.wireEvents(wiredEvents);
     };
 
+    BCAPI.Components.Component = BCAPI.Components.Component || Component;
+
     /**
      * This class provides the core class from BC SDK used to support components creation.
      * It enforces each component descriptor to inherit several classes in order to create a uniform contract
@@ -251,7 +263,10 @@
      * @return {Object} The component instance with all methods in place.
      */
     ComponentsFactory.prototype.get = function(component) {
+        var baseComp = new Component();
+
         $.extend(component, Component.prototype);
+        component.__base = baseComp;
 
         return component;
     };

@@ -28,7 +28,8 @@ describe("BCAPI.Components.ComponentsFactory test suite.", function() {
         expect(typeof this._compInstance.isBcComponent).toBe("function");
         expect(this._compInstance.isBcComponent()).toBeTruthy();
         expect(typeof this._compInstance.wireEvents).toBe("function");
-
+        expect(this._compInstance.__base).not.toBe(undefined);
+        expect(this._compInstance.__base instanceof BCAPI.Components.Component).toBeTruthy();
     });
 
     it("Ensure a plain object can be correctly extended with component methods using ComponentsFactory implementation.", function() {

@@ -21,7 +21,19 @@
     var webComponent = {
         is: "bc-button",
         properties: {
-            data: Object
+            data: {
+                type: Object,
+                observer: "_onDataChanged"
+            }
+        },
+        customEvents: [
+            "data-changed"
+        ],
+        attached: function() {
+            this.__base.attached();
+        },
+        _onDataChanged: function(newData) {
+            this.trigger("data-changed", newData);
         }
     };
 

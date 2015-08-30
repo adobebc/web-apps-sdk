@@ -146,6 +146,10 @@
         }
 
         for (var evtName in evts) {
+            if (!evts[evtName]) {
+                throw new BCAPI.Components.Exceptions.WireEventException("Event name " + evtName + " does not have callback specified.");
+            }
+
             this.on(evtName, evts[evtName]);
         }
     };

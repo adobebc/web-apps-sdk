@@ -83,4 +83,16 @@ describe("BCAPI.Components.ComponentsFactory test suite.", function() {
             self._compInstance.wireEvents(null);
         }).toBeCustomError("BCAPI.Components.Exceptions.WireEventException");
     });
+
+    it("Ensure events can not be registered without a callback.", function() {
+        var self = this;
+
+        expect(function() {
+            self._compInstance.wireEvents({"customEvent": undefined});
+        }).toBeCustomError("BCAPI.Components.Exceptions.WireEventException");
+
+        expect(function() {
+            self._compInstance.wireEvents({"customEvent": null});
+        }).toBeCustomError("BCAPI.Components.Exceptions.WireEventException");
+    });
 });

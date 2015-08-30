@@ -1,6 +1,6 @@
 module.exports = function(config) {
     var configuration = {
-        browsers: ["Chrome",  "Firefox"],
+        browsers: ["Chrome", "Firefox"],
 
         frameworks: ["jasmine"],
 
@@ -41,7 +41,7 @@ module.exports = function(config) {
             {
                 pattern: "test/webcomponents/helpers/custom_matchers.js",
                 included: true
-            },            
+            },
             "test/webcomponents/**/*.js"
         ],
 
@@ -64,5 +64,5 @@ module.exports = function(config) {
         }
     };
 
-    config.set(configuration);    
+    config.set(configuration);
 };

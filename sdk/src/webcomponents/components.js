@@ -119,6 +119,11 @@
      * This method provides a standard implementation for each component attached to dom phase. Even though it should
      * be enough for plenty of components, if for some reason you need to override it, make sure you first invoke this.__base.attached();
      *
+     * @name  attached
+     * @method
+     * @public
+     * @instance
+     * @memberof BCAPI.Components.Component
      * @returns {undefined} No result.
      */
     Component.prototype.attached = function() {

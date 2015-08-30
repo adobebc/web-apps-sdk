@@ -32,7 +32,18 @@ module.exports = function(config) {
                 served: true,
                 watched: true
             },
-            "src/webcomponents/**/*.js",
+            {
+                pattern: "src/webcomponents/components_exceptions.js",
+                included: true,
+                served: true,
+                watched: true
+            },
+            {
+                pattern: "src/webcomponents/**/*.js",
+                included: false,
+                served: true,
+                watched: true
+            },
             {
                 pattern: "src/webcomponents/**/*.html",
                 included: true,

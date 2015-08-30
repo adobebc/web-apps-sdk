@@ -7,38 +7,9 @@
     
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/buttons/button.js"></script>
 
     <script>
-    /**
-     * This class provides a reusable button component with the same look & feel as BC buttons.
-     * From a functionality point of view this component also carries data object for giving developer
-     * quick access to the context where the button was clicked.
-     *
-     * @class Button
-     * @public
-     * @memberof BCAPI.Components
-     */
-    var webComponent = {
-        is: "bc-button",
-        properties: {
-            data: {
-                type: Object,
-                observer: "_onDataChanged"
-            }
-        },
-        customEvents: [
-            "dataChanged"
-        ],
-        attached: function() {
-            this.__base.attached();
-        },
-        _onDataChanged: function(newData) {
-            this.trigger("data-changed", newData);
-        }
-    };
-
-    webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
-
     Polymer(webComponent);
     </script>
 </dom-module>

@@ -19,7 +19,7 @@ describe("BCAPI.Components.ComponentsFactory test suite.", function() {
                 });
 
                 this.on("evt", this.registeredCallbacks[0]);
-            },
+            }
         };
 
         this._compInstance = this._compFactory.get(this._testComponent);
@@ -48,7 +48,7 @@ describe("BCAPI.Components.ComponentsFactory test suite.", function() {
         this._compInstance.trigger("evt", {});
         expect(this._compInstance.executedEvents.evt).toBe(evtData);
 
-        this._compInstance.wireEvents("evt")
+        this._compInstance.wireEvents("evt");
     });
 
     it("Ensure a plain object correctly wire events using inherited component method.", function() {
@@ -75,8 +75,8 @@ describe("BCAPI.Components.ComponentsFactory test suite.", function() {
     it("Ensure undefined / null events are causing concrete exceptions for wireEvents method.", function() {
         var self = this;
 
-        expect(function() { 
-            self._compInstance.wireEvents(undefined); 
+        expect(function() {
+            self._compInstance.wireEvents(undefined);
         }).toBeCustomError("BCAPI.Components.Exceptions.WireEventException");
 
         expect(function() {

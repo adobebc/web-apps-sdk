@@ -223,8 +223,18 @@
      * It enforces each component descriptor to inherit several classes in order to create a uniform contract
      * across all web components we provide.
      *
+     * @name ComponentsFactory
      * @public
      * @constructor
+     * @memberof BCAPI.Components
+     * @example
+     * var customComponent = {
+     *     is: "custom-component"
+     * };
+     *
+     * customComponent = BCAPI.Components.ComponentsFactory.get(obj);
+     *
+     * Polymer(customComponent);
      */
     function ComponentsFactory() { }
 

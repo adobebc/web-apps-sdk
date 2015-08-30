@@ -28,7 +28,7 @@
      *
      * @namespace  BCAPI.Components.Exceptions
      */
-    BCAPI.Components.Exceptions = {};
+    BCAPI.Components.Exceptions = BCAPI.Components.Exceptions || {};
 
     /**
      * This class provides a custom exception which notifies developers about invalid attempt to wire events to

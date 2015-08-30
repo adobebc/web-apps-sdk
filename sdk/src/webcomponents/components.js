@@ -29,7 +29,7 @@
      *
      * @namespace BCAPI.Components
      */
-    BCAPI.Components = {};
+    BCAPI.Components = BCAPI.Components || {};
 
     /**
      * This namespace holds all available data sources which can be plugged into UI components. Below, you can find
@@ -39,7 +39,7 @@
      *
      * @namespace BCAPI.Components.DataSources
      */
-    BCAPI.Components.DataSources = {};
+    BCAPI.Components.DataSources = BCAPI.Components.DataSources || {};
 
     /**
      * This namespace holds all available validators which can be wired or are used directly by components.
@@ -48,7 +48,7 @@
      *
      * @namespace BCAPI.Components.Validation
      */
-    BCAPI.Components.Validation = {};
+    BCAPI.Components.Validation = BCAPI.Components.Validation || {};
 
     /**
      * This namespace holds all security classes which can be reused by all components.
@@ -57,7 +57,7 @@
      *
      * @namespace BCAPI.Security
      */
-    BCAPI.Security = {};
+    BCAPI.Security = BCAPI.Security || {};
 
     /**
      * This namespace holds all messaging layers which can be used to communicate between apps and BC environment.
@@ -67,7 +67,7 @@
      *
      * @namespace BCAPI.Messaging
      */
-    BCAPI.Messaging = {};
+    BCAPI.Messaging = BCAPI.Messaging || {};
 
     /**
      * This class provides the all common methods inherited by every component.
@@ -256,5 +256,5 @@
         return component;
     };
 
-    BCAPI.Components.ComponentsFactory = new ComponentsFactory();
+    BCAPI.Components.ComponentsFactory = BCAPI.Components.ComponentsFactory || new ComponentsFactory();
 })($);

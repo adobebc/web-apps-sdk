@@ -300,7 +300,7 @@
          * @instance
          * @memberOf BCAPI.Models.Collection
          */
-        server_api: {
+        server_api: {// eslint-disable-line camelcase,no-inline-comments
             "limit": function() {
                 return this._limit || this._defaultLimit;
             },

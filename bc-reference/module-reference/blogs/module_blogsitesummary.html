@@ -25,140 +25,72 @@
     <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
 </ul>
 </div>
-<div class="layouts">
 <h2>This module can be rendered using:</h2>
 <ul>
-    <li><strong>the blog list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use: <a href="/dev-assets/reference/tag-reference/blogs/blog-listing-layout.html"> Blog list's reference page</a></li>
-    <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
-</ul>
-
-<table width="100%" class="data-bordered">
-  <thead>
-<tr>
-<td class="liquid">Liquid tag</td>
-<td class="legacy">Legacy tag</td>
-<td class="description">Description</td>
-</tr>
-</thead>
-    <tbody>
-    <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;type&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"></td>
-         <td class="description">The Blog type ID (56)</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;author&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostauthor&#125;{% endraw %}</code></td><td class="description">Author of the post</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostbody&#125;{% endraw %}</code></td><td class="description">Details of the post</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostbodypreview,Text&#125;{% endraw %}</code></td><td class="description">Display a preview of the first paragraph of your blog post. Replace "Text" with the relevant words to link to see the entire post.</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date&#125;&#125;{% endraw %}</code></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostdate&#125;{% endraw %}</code></td><td class="description">Date of the post</td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;day&#125;&#125;{% endraw %}</code></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostday&#125;{% endraw %}</code></td>
-      <td class="description">Day of the post</td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;month&#125;&#125;{% endraw %}</code></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostmonth&#125;{% endraw %}</code></td>
-      <td class="description">Month of the post</td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;monthNumeric&#125;&#125;{% endraw %}</code></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostmonthnumeric&#125;{% endraw %}</code></td><td class="description">Month part of the date the blog post was posted as a numeric value, e.g. 11-Dec-14 will render <em>12</em></td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;title&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogposttitle&#125;{% endraw %}</code></td><td class="description">The title of the post as an anchor linked to the permalink</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogposttitle_nolink&#125;{% endraw %}</code></td><td class="description">The title of the post</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;year&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostyear&#125;{% endraw %}</code></td><td class="description">Year part of the date that the post was submitted, e.g. 11-Dec-14 will render as the year only, like this: <em>2014</em></td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;commentsCount&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commentcount&#125;{% endraw %}</code></td><td class="description">Number of comments for current post</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commentlist&#125;{% endraw %}</code></td>
-         <td class="description">List of comments associated with this post.<br/>
-         This list is fully customizable, take a look at the <a href="/dev-assets/reference/tag-reference/blogs/blog-comment-list-layout.html">Comment list layout</a> for the list of parameters you can use to render the comments. <br/>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commentrank&#125;{% endraw %}</code></td><td class="description">Rank of comments associated with this post</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_permalink&#125;{% endraw %}</code></td><td class="description">Link for Permalink with anchor</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_permalinkonly&#125;{% endraw %}</code></td><td class="description">Link for Permalink without anchor</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;trackbacksCount&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_trackbackcount&#125;{% endraw %}</code></td><td class="description">Number of trackbacks for current post</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;trackbackUrl&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_trackbacklink&#125;{% endraw %}</code></td><td class="description">Link for trackback</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_trackbacklist&#125;{% endraw %}</code></td>
-         <td class="description">List of trackbacks associated with this post. <br/>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;id&#125;&#125;{% endraw %}</code></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostid&#125;{% endraw %}</code></td>
-      <td class="description">Displays the blog post's ID</td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;authorPictureUrl&#125;&#125;{% endraw %}</code></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostauthorpictureurl&#125;{% endraw %}</code></td>
-      <td class="description">Will render the picture url (relative to site root). e.g. <em>/images/profile.jpg</em></td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostauthorpicture&#125;{% endraw %}</code></td><td class="description">Will render the full HTML image tag of the authors profile picture.</td>
-    </tr>
-    <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;url&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemurl_nolink&#125;{% endraw %}</code></td><td class="description">URL to the item being referred, without host</td>
-        </tr>
-    <tr>
-      <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemurl_withhost&#125;{% endraw %}</code></td><td class="description">URL to the item being referred, with host</td>
-        </tr>
-  </tbody>
-</table>
+    <li>a generic ordered list format, as this module does not use a layout. See the example below.</li><br>
+<a class="fancybox" href="/kb_resources/screenshots/blogsitesummary-default-layout.png"><img alt="" src="/kb_resources/screenshots/blogsitesummary-default-layout.pngAction=thumbnail&amp;Width=300&amp;algorithm=fill"/></a>
+<li><strong> Liquid collections</strong> - the output is a Liquid collection containing the entries:</li>
+</ul><pre class="language-javascript"><code>{% raw %} "moduleName": "blogsitesummary",
+  "moduleDescriptor": {
+    "templatePath": null,
+    "parameters": "render=\"collection\",blogId=\"-1\",collection=\"my_custom_collection_name\",template=\"/\"",
+    "apiEndpoint": "/api/v3/blogsitesummary",
+    "objectType": "56",
+    "objectId": "-1",
+    "adminUrl": ""
+  },
+  "items": [
+    {
+      "url": "/new-blank-blog/test-2",
+      "title": "Test 2",
+      "author": "John Doe",
+      "releaseDate": "2015-08-18T18:08:14.137"
+    },
+    {
+      "url": "/new-blank-blog/test-1",
+      "title": "Test 1",
+      "author": "John Doe",
+      "releaseDate": "2015-08-18T18:07:58.373"
+    },
+    {
+      "url": "/blog/blog-post-5",
+      "title": "Blog post 5",
+      "author": "John Doe",
+      "releaseDate": "2015-08-10T18:05:31.737"
+    },
+    {
+      "url": "/blog/blog-post-4",
+      "title": "Blog post 4",
+      "author": "John Doe",
+      "releaseDate": "2015-08-10T18:04:54.113"
+    },
+    {
+      "url": "/blog/blog-post-6-test",
+      "title": "Blog post 6",
+      "author": "John Doe",
+      "releaseDate": "2015-08-10T00:00:00"
+    }
+  ]{% endraw %}</code></pre>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
 <li>
-<code>{% raw %}&#123;module_blogsitesummary blogId=&quot;9216&quot;&#125;{% endraw %}</code> will output:
-<pre class="language-markup"><code>{% raw %}
-&lt;ul&gt;
-    &lt;li&gt;Some Philosophical questions Richard Dawkins 01-Jan-2000&lt;/li&gt;
-    &lt;li&gt;Welcome to my Blog! Woody Mark 01-Jan-2000&lt;/li&gt;
-&lt;/ul&gt;
-{% endraw %}</code></pre>
+<code>{% raw %}&#123;module_blogsitesummary blogId=&quot;9216&quot; rowCount=&quot;3&quot; &#125;{% endraw %}</code> will output:
+<pre class="language-markup"><code>&lt;ol class=&quot;blogsitesummary&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;/new-blank-blog/test-2&quot;&gt;Test 2&lt;/a&gt;
+        &lt;span class=&quot;author&quot;&gt;John Doe&lt;/span&gt;
+        &lt;span class=&quot;date&quot;&gt;18-Aug-2015&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/new-blank-blog/test-1&quot;&gt;Test 1&lt;/a&gt;
+        &lt;span class=&quot;author&quot;&gt;John Doe&lt;/span&gt;
+        &lt;span class=&quot;date&quot;&gt;18-Aug-2015&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/blog/blog-post-5&quot;&gt;Blog post 5&lt;/a&gt;
+        &lt;span class=&quot;author&quot;&gt;John Doe&lt;/span&gt;
+        &lt;span class=&quot;date&quot;&gt;10-Aug-2015&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
 </li>
 <li><code>{% raw %} &#123;module_blogsitesummary blogId=&quot;9216&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/collection-parameter">collection</a>.</li>
 </ul>
@@ -187,13 +119,24 @@ As you can see above, the module displays the post titles followed by the name o
 </div>
 <div class="examples">
 <h2>Examples</h2>
-<code>{% raw %}&#123;module_blogsitesummary,9216&#125;{% endraw %}</code> will output:
-<ul>
-    <li>Some Philosophical questions Richard Dawkins 01-Jan-2000</li>
-    <li>Welcome to my Blog! Woody Mark 01-Jan-2000</li>
-</ul>
+<code>{% raw %}&#123;module_blogsitesummary,9216,3&#125;{% endraw %}</code> will output:
+<pre class="language-javascript"><code>&lt;ol class=&quot;blogsitesummary&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;/new-blank-blog/test-2&quot;&gt;Test 2&lt;/a&gt;
+        &lt;span class=&quot;author&quot;&gt;John Doe&lt;/span&gt;
+        &lt;span class=&quot;date&quot;&gt;18-Aug-2015&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/new-blank-blog/test-1&quot;&gt;Test 1&lt;/a&gt;
+        &lt;span class=&quot;author&quot;&gt;John Doe&lt;/span&gt;
+        &lt;span class=&quot;date&quot;&gt;18-Aug-2015&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/blog/blog-post-5&quot;&gt;Blog post 5&lt;/a&gt;
+        &lt;span class=&quot;author&quot;&gt;John Doe&lt;/span&gt;
+        &lt;span class=&quot;date&quot;&gt;10-Aug-2015&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</code>
+</pre>
 <p>
-As you can see above, the module displays the post titles followed by the name of the author and the date.
+As you can see above, the module displays the latest 3 posts' titles followed by the name of the author and the date.
 </p>
 </div>
 </div>

@@ -1,6 +1,9 @@
 <h1>FAQ list layout</h1> 
 <div id="modules">
-<p>Used in the following modules: <a title=" module_faq " href="/dev-assets/reference/module-reference/faqs/module_faq.html">&#123;module_faq&#125;</a></p>
+<h2>Is used by these modules</h2>
+<ul>
+    <li><a title=" module_faq " href="/dev-assets/reference/module-reference/faqs/module_faq.html">&#123;module_faq&#125;</a></li>
+</ul>
 </div>
 <div id="accessible">
 <h2>Accessible from</h2>
@@ -8,94 +11,54 @@
   <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; FAQ Layouts</li>
   <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/Faq/list.html</li>
 </ul></div>
-
-{%- if globals.cookie.liquid == false %}
-<div id="legacy-tags">
-	<h2>Legacy Tags</h2>
-	<table width="100%" class="data-bordered">
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
     <thead>
-		<tr>
-			<td class="tag">Tag</td>
-			<td class="description">Description</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>{% raw %}{tag_counter}{% endraw %}</td>
-			<td>Incremental count of the FAQ on the page.</td>
-		</tr>
-		<tr>
-	        <td>{% raw %}{tag_releasedate}{% endraw %}</td>
-	        <td>Release date of FAQ: 16-Apr-2014</td>
-        </tr>
-		<tr>
-	        <td>{% raw %}{tag_expirydate}{% endraw %}</td>
-	        <td>Expiry date of FAQ: 16-Apr-2014</td>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtofavorites,add_Image, remove_Image&#125;{% endraw %}</code></td><td class="description">Add FAQ to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - <code>{% raw %}&#123;tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;&#125;{% endraw %}</code><br>
+         <!-- For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article. --></td>
         </tr>
         <tr>
-	        <td>{% raw %}{tag_lastupdatedate}{% endraw %}</td>
-	        <td>Last update date of FAQ for example 16-Apr-2014</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;answer&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_answer&#125;{% endraw %}</code></td><td class="description">Answer for frequently asked question  (editor content). This outputs the text of the FAQ.</td>
         </tr>
         <tr>
-	        <td>{% raw %}{tag_addtofavorites,add_Image, remove_Image}{% endraw %}</td>
-			<td>Add FAQ to favourites list. Optionally you can customize this to display your own custom image for adding and removing.<br/>
-				<strong>Example: </strong> {% raw %}{tag_addtofavorites,<img alt="" src="/images/add.gif" />,<img alt="" src="/images/remove.gif" />}{% endraw %}
-			</td>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code></td><td class="description">replace Your Text with your own text. This outputs an anchor that takes the user to the detail view of the FAQ. The anchor's text is in this example "Your Text".</td>
         </tr>
         <tr>
-	        <td>{% raw %}{tag_answer}{% endraw %}</td>
-	        <td>Answer for frequently asked question (editor content). This outputs the text of the FAQ.</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;counter&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_counter&#125;{% endraw %}</code></td><td class="description">Incremental count of the FAQ on the page.</td>
         </tr>
         <tr>
-	        <td>{% raw %}{tag_button,Your Text}{% endraw %}</td>
-	        <td>Replace "Your Text" with your own text or leave blank. This outputs an anchor that takes the user to the detail view of the FAQ. The anchor's text is in this example "Your Text".</td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_expirydate&#125;{% endraw %}</code></td><td class="description">Expiry date of FAQ for example <em>16-Apr-2014 03:48 AM</em>. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
         </tr>
-
-	</tbody>
-	</table>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td><td class="description">Last update date of FAQ for example <em>16-Apr-2014 03:48 AM</em>. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;question&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_question_nolink&#125;{% endraw %}</code></td><td class="description">Frequently asked question (will not have hyperlink). This outputs the FAQ's title in plain text.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_question&#125;{% endraw %}</code></td><td class="description">Frequently asked question (will have hyperlink). This outputs the FAQ's title as an anchor. When clicked the site visitor is taken to the detail view. The text of the anchor is the FAQ's title.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_releasedate&#125;{% endraw %}</code></td><td class="description">Release date of FAQ in <a href="/developers/liquid/datatypes#datetime">dateTime format</a></td>
+        </tr>
+    </tbody>
+</table>
 </div>
-{%- else %}
-<div id="liquid-tags">
-	<h2>Liquid Tags</h2>
-	<table width="100%" class="data-bordered">
-    <thead>
-		<tr>
-			<td class="tag">Tag</td>
-			<td class="description">Description</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>{% raw %}{{counter}}{% endraw %}</td>
-			<td>Incremental count of the FAQ on the page.</td>
-		</tr>
-		<tr>
-	        <td>{% raw %}{{releaseDate}}{% endraw %}</td>
-	        <td>Release date of FAQ. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a><br/>(2014-12-09T23:00:00) | {{releaseDate | date: "ddd / MM / yyyy"}}</td>
-        </tr>
-		<tr>
-	        <td>{% raw %}{{expiryDate}}{% endraw %}</td>
-	        <td>Expiry date of FAQ. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a><br/>(2014-12-09T23:00:00) | {{expiryDate | date: "ddd / MM / yyyy"}}</td>
-        </tr>
-        <tr>
-	        <td>{% raw %}{{lastUpdateDate}}{% endraw %}</td>
-	        <td>Last update date of FAQ. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime">dateTime format</a><br/>(2014-12-09T23:00:00) | {{lastUpdateDate | date: "ddd / MM / yyyy"}}</td>
-        </tr>
-        <tr>
-	        <td>{% raw %}{tag_addtofavorites,add_Image, remove_Image}{% endraw %}</td>
-			<td>Add FAQ to favourites list. Optionally you can customize this to display your own custom image for adding and removing.<br/><strong>Example: </strong> {% raw %}{tag_addtofavorites,<img alt="" src="/images/add.gif" />,<img alt="" src="/images/remove.gif" />}{% endraw %}
-			</td>
-        </tr>
-        <tr>
-	        <td>{% raw %}{{answer}}{% endraw %}</td>
-	        <td>Answer for frequently asked question (editor content). This outputs the text of the FAQ.</td>
-        </tr>
-        <tr>
-	        <td>{% raw %}{tag_button,Your Text}{% endraw %}</td>
-	        <td>Replace "Your Text" with your own text or leave blank. This outputs an anchor that takes the user to the detail view of the FAQ. The anchor's text is in this example "Your Text".</td>
-        </tr>
-
-	</tbody>
-	</table>
-</div>
-{%- endif %}

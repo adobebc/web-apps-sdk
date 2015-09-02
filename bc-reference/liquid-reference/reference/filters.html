@@ -151,7 +151,7 @@ Three
         sin amet
 {% endcapture %}
         
-{{ var | newline_to_br }}{% endraw %}</code> removes line breaks from specific string ( Output ex: &quot;OneTwoThree&quot;</td>
+{{ var | strip_newlines: &quot;///&quot;}}{% endraw %}</code> in this example the <code>strip_newlines: &quot;///&quot;</code> filter removes the line breaks and replaces them with &quot;///&quot;</td>
           </tr>
                <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}slice{% endraw %}</code>

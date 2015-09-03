@@ -13,13 +13,49 @@ describe("bc-button test suite for ensuring everything works as expected.", func
         }
     });
 
-    it("Ensure button is correctly transformed to dom element.", function(done) {
+    it("Ensures button is correctly transformed to dom element.", function(done) {
         document.body.appendChild(this._btnComponent);
 
         ComponentTestHelpers.execWhenReady(function() {
             return document.querySelector("bc-button");
         }, function(comp) {
             expect(comp).not.toBe(undefined);
+
+            var innerButtons = comp.querySelectorAll("button");
+            expect(innerButtons.length).toBe(1);
+
+            expect(innerButtons[0]).not.toBe(undefined);
+        }, done);
+    });
+
+    it("Ensures bc-button component renders correctly and applies all styles received as argument.", function(done) {
+        var compClasses = "class1 class2",
+            compNewClasses = "class3",
+            compMarkup = "<bc-button style='" + compClasses + "''>Test button</bc-button>",
+            compHolder = document.createElement("div");
+
+        compHolder.innerHTML = compMarkup;
+        document.body.appendChild(compHolder);
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return document.querySelector("bc-button");
+        }, function(comp) {
+            expect(comp).not.toBe(undefined);
+
+            var innerButtons = comp.querySelectorAll("button");
+            expect(innerButtons.length).toBe(1);
+
+            var innerButton = innerButtons[0];
+
+            expect(innerButton).not.toBe(undefined);
+            expect(innerButton.hasAttribute("style")).toBeTruthy();
+            expect(innerButton.getAttribute("style")).toBe(compClasses);
+
+            comp.style = compNewClasses;
+            expect(innerButton.hasAttribute("style")).toBeTruthy();
+            expect(innerButton.getAttribute("style")).toBe(compNewClasses);
+
+            document.body.appendChild(compHolder);
         }, done);
     });
 
@@ -59,8 +95,6 @@ describe("bc-button test suite for ensuring everything works as expected.", func
             result = undefined,
             compMarkup = "<bc-button onbc-" + evtName + "='" + fnName + "'></bc-button>";
 
-        console.log(compMarkup);
-
         window.GenericFn = function(evtData) {
             result = evtData;
         };
@@ -78,6 +112,13 @@ describe("bc-button test suite for ensuring everything works as expected.", func
 
                 expect(result).toBe(comp.data);
             }
+
+            var innerButtons = comp.querySelectorAll("button");
+            expect(innerButtons.length).toBe(1);
+
+            expect(innerButtons[0]).not.toBe(undefined);
+
+            document.body.removeChild(holder);
         }, done);
     }
 });

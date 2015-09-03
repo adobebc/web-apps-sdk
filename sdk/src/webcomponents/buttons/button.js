@@ -21,6 +21,7 @@
 var webComponent = {
     is: "bc-button",
     properties: {
+        style: String,
         data: {
             type: Object,
             observer: "_onDataChanged"

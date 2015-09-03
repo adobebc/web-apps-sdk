@@ -5,7 +5,9 @@
  *
  * ### Events
  *
- * TBD
+ * | Event name.| Event description |
+ * |---------------------------------|---------------------------------|
+ * | dataChanged | This event is triggered whenever the data attached to the button is changed. |
  *
  * ### Usage
  *
@@ -27,9 +29,6 @@ var webComponent = {
     customEvents: [
         "dataChanged"
     ],
-    attached: function() {
-        this.__base.attached();
-    },
     _onDataChanged: function(newData) {
         this.trigger("data-changed", newData);
     }

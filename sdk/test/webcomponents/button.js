@@ -24,33 +24,60 @@ describe("bc-button test suite for ensuring everything works as expected.", func
     });
 
     it("Ensures button custom events are correctly wired through dom definition.", function(done) {
-        testWireEventsFromDom("data-changed", done);
+        testWireEventsFromDom("data-changed", "GenericFn", done);
+    });
+
+    it("Ensures button custom events dom wiring ignores undefined functions.", function(done) {
+        testWireEventsFromDom("data-changed", "undefined", done);
+    });
+
+    it("Ensures button custom events dom wiring ignores null functions.", function(done) {
+        testWireEventsFromDom("data-changed", "null", done);
+    });
+
+    it("Ensures button custom events dom wiring ignores empty functions.", function(done) {
+        testWireEventsFromDom("data-changed", "", done);
+    });
+
+    it("Ensures button custom events dom wiring ignores whitespace functions.", function(done) {
+        testWireEventsFromDom("data-changed", "       ", done);
+    });
+
+    it("Ensures button custom events dom wiring ignores unknown functions.", function(done) {
+        testWireEventsFromDom("data-changed", "My.Unknown.Functions", done);
     });
 
     /**
      * This function provides a template for testing if wire custom events from dom functionality works as expected.
      * @param {String} evtName Event name to which we want to wire callbacks.
+     * @param {function} fnName The function name which must be wired to button data changed event.
      * @param {function} done Jasmine callback which signals end of asynchronous test.
      * @return {undefined} No result.
      */
-    function testWireEventsFromDom(evtName, done) {
+    function testWireEventsFromDom(evtName, fnName, done) {
         var holder = document.createElement("div"),
-            result = undefined;
+            result = undefined,
+            compMarkup = "<bc-button onbc-" + evtName + "='" + fnName + "'></bc-button>";
+
+        console.log(compMarkup);
 
         window.GenericFn = function(evtData) {
             result = evtData;
         };
 
-        holder.innerHTML = "<bc-button onbc-" + evtName + "='GenericFn'></bc-button>";
+        holder.innerHTML = compMarkup;
         document.body.appendChild(holder);
 
         ComponentTestHelpers.execWhenReady(function() {
             return holder.querySelector("bc-button");
         }, function(comp) {
             expect(comp).not.toBe(undefined);
-            comp.data = {"newProp": "property"};
 
-            expect(result).toBe(comp.data);
+            if (fnName === "GenericFn") {
+                comp.data = {"newProp": "property"};
+
+                expect(result).toBe(comp.data);
+            }
         }, done);
     }
 });

@@ -128,6 +128,8 @@
      */
     Component.prototype.attached = function() {
         this._wireCustomEventsFromDom();
+
+        console.log(this.is + ": attached to dom.");
     };
 
     /**
@@ -194,11 +196,12 @@
         for (var i = 0; i < customEvents.length; i++) {
             var evtName = this._getDomEvtName(customEvents[i]),
                 attrName = this.__BCON_EVT_PREFIX + evtName;
-            listener = this.getAttribute(attrName);
 
-            if (!listener) {
+            if (!this.hasAttribute(attrName)) {
                 continue;
             }
+
+            listener = this.getAttribute(attrName);
 
             var listenerParts = listener.split("."),
                 ctx = window[listenerParts[0]],
@@ -208,6 +211,11 @@
                 var partName = listenerParts[j];
 
                 action = (action || window)[partName];
+
+                if (!action) {
+                    console.log(this.is + ": Unable to wire " + listener + " to event " + evtName);
+                    continue;
+                }
             }
 
             wiredEvents[evtName] = (function(action, ctx) {

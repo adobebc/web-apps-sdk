@@ -55,7 +55,50 @@ describe("bc-button test suite for ensuring everything works as expected.", func
             expect(innerButton.hasAttribute("style")).toBeTruthy();
             expect(innerButton.getAttribute("style")).toBe(compNewClasses);
 
-            document.body.appendChild(compHolder);
+            document.body.removeChild(compHolder);
+        }, done);
+    });
+
+    it("Ensures button click events are working as expected and carry data with them.", function(done) {
+        document.body.appendChild(this._btnComponent);
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return document.querySelector("bc-button");
+        }, function(comp) {
+            var evtData = {"attr1": "mydata"};
+
+            expect(comp).not.toBe(undefined);
+            comp.data = evtData;
+
+            $(comp).click(function() {
+                expect(this).toBe(comp);
+                expect(this.data).toBe(evtData);
+            });
+
+            $(comp).click();
+        }, done);
+    });
+
+    it("Ensures rendered button tag click events correctly are correctly handled by bc-button parent tag.", function(done) {
+        document.body.appendChild(this._btnComponent);
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return document.querySelector("bc-button");
+        }, function(comp) {
+            expect(comp).not.toBe(undefined);
+
+            var evtData = {"attr1": "mydata"},
+                innerButton = comp.querySelector("button");
+
+            expect(innerButton).not.toBe(undefined);
+            comp.data = evtData;
+
+            $(comp).click(function(evt) {
+                expect(evt.currentTarget).toBe(comp);
+                expect(evt.currentTarget.data).toBe(evtData);
+            });
+
+            $(innerButton).click();
         }, done);
     });
 

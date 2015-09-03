@@ -275,12 +275,25 @@
     function ComponentsFactory() { }
 
     /**
-     * This method extends the given component descriptor with various methods and properties specific to BC.
+     * This method extends the given component descriptor with various methods and properties specific to BC. In addition,
+     * it creates a special property named **__base** which can be used to access {@link BCAPI.Components.Component} inherited methods.
      *
+     * @name  get
      * @public
      * @method
-     * @param  {Object} component The component object to which we want to add BC features to.
-     * @return {Object} The component instance with all methods in place.
+     * @instance
+     * @param {Object} component The component descriptor we want to transform to {@link BCAPI.Components.Components}.
+     * @return {WebComponent} The component instance with all methods in place.
+     * @memberof BCAPI.Components.ComponentsFactory
+     * @example
+     * var webComp = {
+     *     "is": "bc-button",
+     *     attached: function() {
+     *         this.__base.attached();
+     *     }
+     * };
+     *
+     * Polymer(BCAPI.Components.ComponentsFactory.get(webComp));
      */
     ComponentsFactory.prototype.get = function(component) {
         var baseComp = new Component();

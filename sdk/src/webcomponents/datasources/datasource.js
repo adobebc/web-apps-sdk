@@ -36,6 +36,25 @@
     function DataSource() { }
 
     /**
+     * This method is invoked automatically when the datasource is ready. At this point. the datasource has not been
+     * attached to main dom. Internally it will try to locate the closest parent which supports datasource and wire itself into parent component under _dataSource property.
+     *
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DataSources.JsonDataSource
+     */
+    DataSource.prototype.ready = function() {
+        var parentNode = this.parentNode;
+
+        while (parentNode && !parentNode._supportsDataSource) {
+            parentNode = parentNode.parentNode;
+        }
+
+        if (parentNode && parentNode._supportsDataSource) {
+            parentNode._dataSource = this;
+        }
+    };
+
+    /**
      * This method must be overriden by each concrete datasource in order to provide the logic for loading
      * an individual item.
      *

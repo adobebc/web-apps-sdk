@@ -63,23 +63,12 @@ var webComponent = {
     is: "bc-json",
     properties: {
         url: String
-    },
-    /**
-     * This method is invoked automatically when the datasource is ready. At this point. the datasource has not been
-     * attached to main.
-     * @return {undefined} No result.
-     */
-    ready: function() {
-        var parentNode = this.parentNode;
+    }
+};
 
-        while (parentNode && !parentNode._supportsDataSource) {
-            parentNode = parentNode.parentNode;
-        }
+$.extend(webComponent, BCAPI.Components.DataSources.DataSource.prototype);
 
-        if (parentNode && parentNode._supportsDataSource) {
-            parentNode._dataSource = this;
-        }
-    },
+$.extend(webComponent, {
     /**
      * This method fetches the json data from the configured **url**.
      *
@@ -106,6 +95,6 @@ var webComponent = {
 
         return loader.promise();
     }
-};
+});
 
 webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);

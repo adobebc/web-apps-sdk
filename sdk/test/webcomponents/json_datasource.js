@@ -60,6 +60,24 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
         }, undefined);
     });
 
+    it("Ensures datasource can be nested within a parent node which supports datasources.", function(done) {
+        this._contentHolder._supportsDataSource = true;
+
+        var jsonUrl = "/test/url/test.json",
+            elemHtml = "<bc-json id='jsonDataSource' url='" + jsonUrl + "'></bc-json>",
+            self = this;
+
+        this._contentHolder.innerHTML = elemHtml;
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return document.getElementById("jsonDataSource");
+        }, function(comp) {
+            expect(self._contentHolder._dataSource).toBe(comp);
+
+            _testFetchWorksOk(self, self._contentHolder._dataSource, jsonUrl, done);
+        }, undefined);
+    });
+
     /**
      * This function provides a template for ensuring fetch operation on json data sources works as expected.
      * @param {Object} ctx The object reference where transient data can be stored.

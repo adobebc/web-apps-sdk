@@ -116,8 +116,9 @@
     Component.configure = function(opts) {};
 
     /**
-     * This method provides a standard implementation for each component attached to dom phase. Even though it should
-     * be enough for plenty of components, if for some reason you need to override it, make sure you first invoke this.__base.attached();
+     * This method provides a standard implementation so that each component correctly handles attached to dom event.
+     * Even though it should be enough for most of the components, if for some reason you need to override it, make
+     * sure you first invoke **this.__base.attached();**
      *
      * @name  attached
      * @method

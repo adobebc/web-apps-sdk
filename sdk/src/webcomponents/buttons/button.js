@@ -3,20 +3,31 @@
  * From a functionality point of view this component also carries data object for giving developer
  * quick access to the context where the button was clicked.
  *
- * ### Events
+ * ## Properties
+ *
+ * Below you can find a complete list of properties which can be configured for this component:
+ *
+ * | Property name | Property description |
+ * | ------------------- | -------------------------- |
+ * | style | The style css classes which must be applied to the inner rendered button tag. |
+ * | data | The data carried by this object. You can easily access it in all event listeners. |
+ *
+ * ## Events
  *
  * | Event name.| Event description |
  * |---------------------------------|---------------------------------|
  * | dataChanged | This event is triggered whenever the data attached to the button is changed. |
  *
- * ### Usage
+ * ## Usage
  *
  * ```html
- * <bc-button></bc-button>
+ * <bc-button>Simple button</bc-button>
  * ```
+ *
  * @class Button
  * @public
  * @memberof BCAPI.Components
+ * @augments BCAPI.Components.Component
  */
 var webComponent = {
     is: "bc-button",

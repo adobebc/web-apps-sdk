@@ -15,6 +15,7 @@ before_script:
 after_script:
   - set -e
   - ./node_modules/.bin/eslint src test/webcomponents
+  - ./node_modules/.bin/jsdoc -c jsdoc.json
 branches:
     only:
         - web-apps-sdk-ui

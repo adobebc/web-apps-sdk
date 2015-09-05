@@ -26,6 +26,8 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
         var self = this;
 
         jasmine.addMatchers(ComponentCustomMatchers);
+        this._dataSource = document.createElement("bc-json");
+        this._dataSource.url = "/test/url";
 
         this._contentHolder = document.createElement("div");
         document.body.appendChild(this._contentHolder);
@@ -37,16 +39,16 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
         document.body.removeChild(this._contentHolder);
     });
 
-    it("Ensures datasource can be dynamically created from js.", function(done) {
+    it("Ensures datasource can be dynamically created from js and list data.", function(done) {
         var jsonDataSource = document.createElement("bc-json"),
             jsonUrl = "/test/url/test.json";
 
         jsonDataSource.url = jsonUrl;
 
-        _testFetchWorksOk(this, jsonDataSource, jsonUrl, done);
+        _testListWorksOk(this, jsonDataSource, jsonUrl, done);
     });
 
-    it("Ensures datasource can be used as standalone dom element.", function(done) {
+    it("Ensures datasource can be used as standalone dom element and list data.", function(done) {
         var jsonUrl = "/test/url/test.json",
             elemHtml = "<bc-json id='jsonDataSource' url='" + jsonUrl + "'></bc-json>",
             self = this;
@@ -56,11 +58,11 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
         ComponentTestHelpers.execWhenReady(function() {
             return document.getElementById("jsonDataSource");
         }, function(comp) {
-            _testFetchWorksOk(self, comp, jsonUrl, done);
+            _testListWorksOk(self, comp, jsonUrl, done);
         }, undefined);
     });
 
-    it("Ensures datasource can be nested within a parent node which supports datasources.", function(done) {
+    it("Ensures datasource can be nested within a parent node which supports datasources  and list data.", function(done) {
         this._contentHolder._supportsDataSource = true;
 
         var jsonUrl = "/test/url/test.json",
@@ -74,20 +76,52 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
         }, function(comp) {
             expect(self._contentHolder._dataSource).toBe(comp);
 
-            _testFetchWorksOk(self, self._contentHolder._dataSource, jsonUrl, done);
+            _testListWorksOk(self, self._contentHolder._dataSource, jsonUrl, done);
         }, undefined);
     });
 
+    it("Ensures fetch operation is not implemented.", function() {
+        var self = this;
+
+        expect(function() {
+            self._dataSource.fetch();
+        }).toBeCustomError("BCAPI.Components.Exceptions.NotImplementedException");
+    });
+
+    it("Ensures create operation is not implemented.", function() {
+        var self = this;
+
+        expect(function() {
+            self._dataSource.create();
+        }).toBeCustomError("BCAPI.Components.Exceptions.NotImplementedException");
+    });
+
+    it("Ensures update operation is not implemented.", function() {
+        var self = this;
+
+        expect(function() {
+            self._dataSource.update();
+        }).toBeCustomError("BCAPI.Components.Exceptions.NotImplementedException");
+    });
+
+    it("Ensures delete operation is not implemented.", function() {
+        var self = this;
+
+        expect(function() {
+            self._dataSource.delete();
+        }).toBeCustomError("BCAPI.Components.Exceptions.NotImplementedException");
+    });
+
     /**
-     * This function provides a template for ensuring fetch operation on json data sources works as expected.
+     * This function provides a template for ensuring list operation on json data sources works as expected.
      * @param {Object} ctx The object reference where transient data can be stored.
      * @param {BCAPI.Components.DataSources.JsonDataSource}   jsonDataSource The current json data source used by this test.
      * @param {String} jsonUrl The json url which we expect to be used by data source.
      * @param {Function} done Jasmine done callback which finishes an async test.
      * @return {undefined} No result.
      */
-    function _testFetchWorksOk(ctx, jsonDataSource, jsonUrl, done) {
-        var result = jsonDataSource.fetch(),
+    function _testListWorksOk(ctx, jsonDataSource, jsonUrl, done) {
+        var result = jsonDataSource.list(),
             expectedData = {"items": [{"id": 1, "text": "Works as expected."}]};
 
         expect(result).not.toBe(undefined);

@@ -70,17 +70,17 @@ $.extend(webComponent, BCAPI.Components.DataSources.DataSource.prototype);
 
 $.extend(webComponent, {
     /**
-     * This method fetches the json data from the configured **url**.
+     * This method list the json data from the configured **url**.
      *
      * @public
      * @instance
-     * @method  fetch
+     * @method  list
      * @param  {Object} opts The options which are passed to the underlining ajax request.
      * @param {Object} opts.headers An object holding all custom headers relevant for the current request.
      * @return {Promise} a promise which is resolved with the actual data.
      * @memberof BCAPI.Components.DataSources.JsonDataSource
      */
-    fetch: function(opts) {
+    list: function(opts) {
         var loader = $.Deferred();
 
         var response = $.ajax({

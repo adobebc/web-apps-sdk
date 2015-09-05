@@ -39,6 +39,12 @@ module.exports = function(config) {
                 watched: true
             },
             {
+                pattern: "src/webcomponents/datasources/datasource.js",
+                included: true,
+                served: true,
+                watched: true
+            },
+            {
                 pattern: "src/webcomponents/**/*.js",
                 included: false,
                 served: true,

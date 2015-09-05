@@ -35,11 +35,11 @@
      * a component.
      *
      * @public
-     * @constructor
+     * @class WireEventException
      * @param {String} msg The message which must be displayed to developers.
      * @memberof BCAPI.Components.Exceptions
      */
-    BCAPI.Components.Exceptions.WireEventException = function(msg) {
+    function WireEventException(msg) {
         Object.defineProperty(this, "msg", {
             writable: false,
             value: msg,
@@ -53,7 +53,38 @@
             enumerable: true,
             configurable: true
         });
-    };
+    }
 
-    BCAPI.Components.Exceptions.WireEventException.prototype = new Error();
+    WireEventException.prototype = new Error();
+
+    BCAPI.Components.Exceptions.WireEventException = WireEventException;
+
+
+    /**
+     * This class provides a custom exception which notifies developers an operation is not implemented or supported.
+     *
+     * @public
+     * @class NotImplementedException
+     * @param {String} msg The message which must be displayed to developers.
+     * @memberof BCAPI.Components.Exceptions
+     */
+    function NotImplementedException(msg) {
+        Object.defineProperty(this, "msg", {
+            writable: false,
+            value: msg,
+            enumerable: true,
+            configurable: false
+        });
+
+        Object.defineProperty(this, "errorType", {
+            writable: false,
+            value: "BCAPI.Components.Exceptions.NotImplementedException",
+            enumerable: true,
+            configurable: true
+        });
+    }
+
+    NotImplementedException.prototype = new Error();
+
+    BCAPI.Components.Exceptions.NotImplementedException = NotImplementedException;
 })();

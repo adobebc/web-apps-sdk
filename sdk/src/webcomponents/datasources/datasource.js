@@ -41,7 +41,6 @@
      *
      * @public
      * @instance
-     * @abstract
      * @method  fetch
      * @param  {Object} opts An object describing all relevant information for the fetch operation.
      * @return {Promise} A promise object which is going to be resolved with data.
@@ -57,7 +56,6 @@
      *
      * @public
      * @instance
-     * @abstract
      * @method  list
      * @param  {Object} opts An object describing all relevant information for the list operation.
      * @return {Promise} A promise object which is going to be resolved with data.
@@ -73,7 +71,6 @@
      *
      * @public
      * @instance
-     * @abstract
      * @method  create
      * @param  {Object} opts An object describing all relevant information for the create operation.
      * @return {Promise} A promise object which is going to be resolved with data.
@@ -89,7 +86,6 @@
      *
      * @public
      * @instance
-     * @abstract
      * @method  update
      * @param  {Object} opts An object describing all relevant information for the update operation.
      * @return {Promise} A promise object which is going to be resolved with data.
@@ -105,7 +101,6 @@
      *
      * @public
      * @instance
-     * @abstract
      * @method  delete
      * @param  {Object} opts An object describing all relevant information for the delete operation.
      * @return {Promise} A promise object which is going to be resolved with data.

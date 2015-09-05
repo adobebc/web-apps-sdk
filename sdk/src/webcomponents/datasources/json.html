@@ -3,44 +3,10 @@
 <dom-module id="bc-json">
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/datasources/datasource.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/datasources/json.js"></script>
 
     <script>
-        var webComponent = {
-            is: "bc-json",
-            properties: {
-                url: String
-            },
-            configure: function(opts) { },
-            ready: function() {
-                var parentNode = this.parentNode;
-
-                while (parentNode && !parentNode._supportsDataSource) {
-                    parentNode = parentNode.parentNode;
-                }
-
-                if (parentNode && parentNode._supportsDataSource) {
-                    parentNode._dataSource = this;
-                }
-            },
-            fetchData: function(opts) {
-                var loader = $.Deferred();
-
-                var response = $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: this.url
-                });
-
-                response.done(function(data) {
-                    loader.resolve(data);
-                });
-
-                return loader.promise();
-            }
-        };
-
-        webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
-
-        BCAPI.Components.DataSources.JsonDataSource = Polymer(webComponent);
+    Polymer(webComponent);
     </script>
 </dom-module>

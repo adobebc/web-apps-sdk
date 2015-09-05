@@ -20,7 +20,10 @@ window.ComponentTestHelpers = (function() {
                 testLogic(comp);
 
                 clearInterval(interval);
-                done();
+
+                if (typeof done === "function") {
+                    done();
+                }
             }, 100);
         }
     };

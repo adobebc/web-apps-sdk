@@ -91,7 +91,7 @@ var webComponent = {
      * @return {Promise} a promise which is resolved with the actual data.
      * @memberof BCAPI.Components.DataSources.JsonDataSource
      */
-    fetchData: function(opts) {
+    fetch: function(opts) {
         var loader = $.Deferred();
 
         var response = $.ajax({

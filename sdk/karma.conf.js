@@ -10,7 +10,7 @@ module.exports = function(config) {
                 pattern: "lib/**",
                 included: false,
                 served: true,
-                watched: true
+                watched: false
             },
             "https://code.jquery.com/jquery-2.1.4.js",
             "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js",
@@ -18,53 +18,58 @@ module.exports = function(config) {
                 pattern: "src/bcapi.js",
                 included: true,
                 served: true,
-                watched: true
+                watched: false
             },
             {
                 pattern: "src/helper.js",
                 included: true,
                 served: true,
-                watched: true
+                watched: false
             },
             {
                 pattern: "src/webcomponents/components.js",
                 included: true,
                 served: true,
-                watched: true
+                watched: false
             },
             {
                 pattern: "src/webcomponents/components_exceptions.js",
                 included: true,
                 served: true,
-                watched: true
+                watched: false
             },
             {
                 pattern: "src/webcomponents/datasources/datasource.js",
                 included: true,
                 served: true,
-                watched: true
+                watched: false
             },
             {
                 pattern: "src/webcomponents/**/*.js",
                 included: false,
                 served: true,
-                watched: true
+                watched: false
             },
             {
                 pattern: "src/webcomponents/**/*.html",
                 included: true,
                 served: true,
-                watched: true
+                watched: false
             },
             {
                 pattern: "test/webcomponents/helpers/components_helper.js",
-                included: true
+                included: true,
+                watched: false
             },
             {
                 pattern: "test/webcomponents/helpers/custom_matchers.js",
-                included: true
+                included: true,
+                watched: false
             },
-            "test/webcomponents/**/*.js"
+            {
+                pattern: "test/webcomponents/**/*.js",
+                watched: false
+            }
         ],
 
         reporters: ["progress", "coverage"],

@@ -55,7 +55,7 @@
         });
     }
 
-    WireEventException.prototype = new Error();
+    // WireEventException.prototype = new Error();
 
     BCAPI.Components.Exceptions.WireEventException = WireEventException;
 
@@ -84,7 +84,7 @@
         });
     }
 
-    NotImplementedException.prototype = new Error();
+    NotImplementedException.prototype = Object.create(Error.prototype);
 
     BCAPI.Components.Exceptions.NotImplementedException = NotImplementedException;
 })();

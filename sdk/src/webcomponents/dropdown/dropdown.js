@@ -258,7 +258,8 @@ var webComponent = {
             var option = options[idx],
                 item = {
                     "value": option.value,
-                    "text": option.text
+                    "text": option.text,
+                    "selected": option.selected
                 };
 
             items.push(item);
@@ -335,7 +336,8 @@ var webComponent = {
         for (var i = 0; i < items.length; i++) {
             var option = document.createElement("option");
             option.value = items[i].value;
-            option.innerHTML = items[i].text;
+            option.selected = items[i].selected;
+            option.textContent = items[i].text;
 
             select.add(option);
         }

@@ -34,7 +34,11 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
     });
 
     afterEach(function() {
-        document.body.removeChild(this._contentHolder);
+        try {
+            document.body.removeChild(this._contentHolder);
+        } catch(err) {
+            console.log("Unable to remove dropdown component ... Probably removed before cleanup phase.");
+        }
     });
 
     it("Ensures configure works as expected for dynamically created dropdown.", function(done) {
@@ -138,6 +142,33 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
             expect(comp.setValue("new value")).toBeFalsy();
 
             expect(comp.getValue()).toBe(items[0]);
+        }, done);
+    });
+
+    it("Ensures dropdown can be configured from html markup.", function(done) {
+        var markup = "<bc-select id='ddConfiguredFromMarkup'><option value='0'>0</option><option value='2' selected>Cool text</option></bc-select>",
+            self = this;
+
+        this._contentHolder.innerHTML = markup;
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return document.getElementById("ddConfiguredFromMarkup");
+        }, function(comp) {
+            var selectedItem = comp.getValue();
+
+            expect(comp.items).not.toBe(undefined);
+            expect(comp.items.length).toBe(2);
+
+            expect(selectedItem).not.toBe(undefined);
+
+            expect(selectedItem.value).toBe("2");
+            expect(selectedItem.text).toBe("Cool text");
+
+            expect(comp.setValue("0")).toBeTruthy();
+            selectedItem = comp.getValue();
+
+            expect(selectedItem.value).toBe("0");
+            expect(selectedItem.text).toBe("0");
         }, done);
     });
 });

@@ -135,7 +135,6 @@ var webComponent = (function() {
             this.class = "form-control";
 
             var options = this.$.selectModel.querySelectorAll("option"),
-                dataSource = this.$.selectModel.querySelector("*[rel='datasource']"),
                 items;
 
             if (options.length > 0) {
@@ -144,11 +143,11 @@ var webComponent = (function() {
                 this.configure({
                     "items": items
                 });
+
+                return;
             }
 
-            if (dataSource && dataSource.isDataSource && dataSource.isDataSource()) {
-                this._dataSource = dataSource;
-            }
+            this._configureFromDataSource();
         },
         /**
          * This method obtains the current selected item.

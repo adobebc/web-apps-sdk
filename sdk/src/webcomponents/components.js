@@ -208,9 +208,31 @@
     };
 
     /**
+     * This method configures the items from this component by extracting the inner html defined datasource.
+     * If the datasource exists, then it is set as component datasource.
+     *
+     * @protected
+     * @instance
+     * @method  _configureFromDataSource
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.Component
+     */
+    Component.prototype._configureFromDataSource = function() {
+        var dataSource = Polymer.dom(this).querySelector("*[rel='datasource']");
+
+        if (dataSource && dataSource.isDataSource && dataSource.isDataSource()) {
+            this._dataSource = dataSource;
+        }
+    };
+
+    /**
      * This method wires all listeners to custom events declared using dom attributes.
      *
+     * @private
+     * @instance
+     * @method  _wireCustomEventsFromDom
      * @returns {undefined} No result.
+     * @memberof BCAPI.Components.Component
      */
     Component.prototype._wireCustomEventsFromDom = function() {
         var customEvents = this.customEvents || [],
@@ -254,8 +276,13 @@
     /**
      * This method obtains the dom event name for a given custom event name. Custom event names are camel case while in
      * dom they are all lowercase and each part from camelcase is separated by dashes.
+     *
+     * @private
+     * @instance
+     * @method  _getDomEvtName
      * @param  {String} evtName Custom event name as defined at component level.
      * @return {String} Dom event name which matches the custom event name.
+     * @memberof BCAPI.Components.Component
      */
     Component.prototype._getDomEvtName = function(evtName) {
         var domEvtName = [];

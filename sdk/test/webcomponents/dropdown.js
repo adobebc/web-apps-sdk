@@ -172,7 +172,7 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
         }, done);
     });
 
-    it("Ensures dropdown can be configured from datasource.", function(done) {
+    it("Ensures dropdown can be populated from dynamic datasource.", function(done) {
         var self = this,
             data = {"items": [{"id": 1, "name": "test"}, {"id": 2, "name": "test 2"}]},
             dataSource = {
@@ -209,4 +209,50 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
             });
         }, undefined);
     });
+
+    it("Ensures dropdown can be populated from html bc datasources.", function(done) {
+        var data = {"items": [
+                {"id": 1, "name": "John"},
+                {"id": 2, "name": "Doe"}]},
+            markup = "<bc-select id='ddTest' value-prop='id' text-prop='name'><bc-json url='/test/url' rel='datasource'></bc-json></bc-select>";
+
+        this._ajaxExpectedData = data;
+        _mockJqueryAjax(this);
+
+        this._contentHolder.innerHTML = markup;
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return document.getElementById("ddTest");
+        }, function(comp) {
+            expect(comp.items).not.toBe(undefined);
+
+            expect(comp.items.length).toBe(data.items.length);
+
+            for (var idx = 0; idx < data.items.length; idx++) {
+                expect(comp.items[idx].value).toBe(data.items[idx].id);
+                expect(comp.items[idx].text).toBe(data.items[idx].name);
+            }
+        }, done);
+    });
+
+    /**
+     * This method is used to mock jQuery ajax function. It stores received options to the given ctx. Moreover, it
+     * returns the data from ctx._ajaxExpectedData as response to the request.
+     *
+     * @param  {Object} ctx The instance object which is going to be used to store all mocked information.
+     * @return {undefined} No result.
+     */
+    function _mockJqueryAjax(ctx) {
+        spyOn($, "ajax").and.callFake(function(lastOptions) {
+            ctx._lastOptions = lastOptions;
+
+            var result = $.Deferred();
+
+            setTimeout(function() {
+                result.resolve(ctx._ajaxExpectedData);
+            });
+
+            return result.promise();
+        });
+    }
 });

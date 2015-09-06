@@ -93,7 +93,7 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
         }, done);
     });
 
-    it("Ensures setValue correctly triggers ddChanged event.", function(done) {
+    it("Ensures setValue correctly triggers changed event.", function(done) {
         var self = this;
 
         ComponentTestHelpers.execWhenReady(function() {
@@ -114,7 +114,7 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
 
             expect(selectedItem).toBe(items[0]);
 
-            comp.on("ddChanged", function(item) {
+            comp.on("changed", function(item) {
                 selectedItem = item;
             });
 
@@ -170,5 +170,43 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
             expect(selectedItem.value).toBe("0");
             expect(selectedItem.text).toBe("0");
         }, done);
+    });
+
+    it("Ensures dropdown can be configured from datasource.", function(done) {
+        var self = this,
+            data = {"items": [{"id": 1, "name": "test"}, {"id": 2, "name": "test 2"}]},
+            dataSource = {
+                list: function() {
+                    var response = $.Deferred();
+
+                    setTimeout(function() {
+                        response.resolve(data);
+                    });
+
+                    return response.promise();
+                }
+            };
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return self._dropDown;
+        }, function(comp) {
+            expect(comp.items).toBe(undefined);
+
+            comp.setAttribute("value-prop", "id");
+            comp.setAttribute("text-prop", "name");
+            comp._dataSource = dataSource;
+
+            comp.on("dataLoaded", function() {
+                expect(comp.items).not.toBe(undefined);
+                expect(comp.items.length).toBe(data.items.length);
+
+                for (idx = 0; idx < data.items.length; idx++) {
+                    comp.items[idx].value = data.items[idx].id;
+                    comp.items[idx].text = data.items[idx].name;
+                }
+
+                done();
+            });
+        }, undefined);
     });
 });

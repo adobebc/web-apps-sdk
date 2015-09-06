@@ -146,7 +146,7 @@ var webComponent = (function() {
                 });
             }
 
-            if (dataSource && dataSource.isDataSource) {
+            if (dataSource && dataSource.isDataSource && dataSource.isDataSource()) {
                 this._dataSource = dataSource;
             }
         },

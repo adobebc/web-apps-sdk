@@ -13,7 +13,7 @@ window.ComponentTestHelpers = (function() {
             var interval = setInterval(function() {
                 var comp = compSelector();
 
-                if (!comp._config) {
+                if (!comp || !(comp.isBcComponent && comp.isBcComponent())) {
                     return;
                 }
 

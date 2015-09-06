@@ -30,10 +30,13 @@
         <link rel="import" href="/src/webcomponents/datagrid/datagrid-customtpl.html">
         <link rel="import" href="/src/webcomponents/dropdown/dropdown.html">
         <link rel="import" href="/src/webcomponents/buttons/button.html">
-        <link rel="import" href="/src/webcomponents/json/json.html">
-        <link rel="import" href="/src/webcomponents/json/api.html">
+        <link rel="import" href="/src/webcomponents/datasources/json.html">
+        <link rel="import" href="/src/webcomponents/datasources/api.html">
     </head>
 
     <body>
+        <bc-select id="ddCustomers" value-prop="id" text-prop="firstName">
+            <bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" rel="datasource"></bc-json>
+        </bc-select>
     </body>
 </html>

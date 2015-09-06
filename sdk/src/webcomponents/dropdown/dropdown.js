@@ -1,6 +1,6 @@
 /**
  * This class offers a flexible drop down component which has BC look & feel. In comparison with standard HTML select,
- * this component benefit from advanced data sources provided by UI SDK.
+ * this component benefit from [advanced data sources]{@link BCAPI.Components.DataSources} provided by UI SDK.
  *
  * ## Properties
  *
@@ -236,7 +236,7 @@ var webComponent = {
      * @memberof BCAPI.Components.DropDown
      */
     _buildFromDataSource: function(dataSource) {
-        var loader = dataSource.fetchData(),
+        var loader = dataSource.list(),
             self = this;
 
         if (!loader) {

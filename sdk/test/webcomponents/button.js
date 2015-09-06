@@ -52,9 +52,9 @@ describe("bc-button test suite for ensuring everything works as expected.", func
     });
 
     it("Ensures bc-button component renders correctly and applies all styles received as argument.", function(done) {
-        var compClasses = "class1 class2",
-            compNewClasses = "class3",
-            compMarkup = "<bc-button style='" + compClasses + "''>Test button</bc-button>",
+        var compStyle = "attr1: a; attr2: b;",
+            compNewStyle = "attr3: c;",
+            compMarkup = "<bc-button style='" + compStyle + "''>Test button</bc-button>",
             compHolder = document.createElement("div");
 
         compHolder.innerHTML = compMarkup;
@@ -72,11 +72,11 @@ describe("bc-button test suite for ensuring everything works as expected.", func
 
             expect(innerButton).not.toBe(undefined);
             expect(innerButton.hasAttribute("style")).toBeTruthy();
-            expect(innerButton.getAttribute("style")).toBe(compClasses);
+            expect(innerButton.getAttribute("style")).toBe(compStyle);
 
-            comp.style = compNewClasses;
+            comp.style = compNewStyle;
             expect(innerButton.hasAttribute("style")).toBeTruthy();
-            expect(innerButton.getAttribute("style")).toBe(compNewClasses);
+            expect(innerButton.getAttribute("style")).toBe(compNewStyle);
 
             document.body.removeChild(compHolder);
         }, done);

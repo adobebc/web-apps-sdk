@@ -194,7 +194,7 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
 
             comp.setAttribute("value-prop", "id");
             comp.setAttribute("text-prop", "name");
-            comp._dataSource = dataSource;
+            comp.configure({"dataSource": dataSource});
 
             comp.on("dataLoaded", function() {
                 expect(comp.items).not.toBe(undefined);

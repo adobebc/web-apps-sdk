@@ -213,15 +213,15 @@
      *
      * @protected
      * @instance
-     * @method  _configureFromDataSource
+     * @method _wireDataSourceFromMarkup
      * @return {undefined} No result.
      * @memberof BCAPI.Components.Component
      */
-    Component.prototype._configureFromDataSource = function() {
+    Component.prototype._wireDataSourceFromMarkup = function() {
         var dataSource = Polymer.dom(this).querySelector("*[rel='datasource']");
 
         if (dataSource && dataSource.isDataSource && dataSource.isDataSource()) {
-            this._dataSource = dataSource;
+            this.dataSource = dataSource;
         }
     };
 

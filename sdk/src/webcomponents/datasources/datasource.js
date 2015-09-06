@@ -58,7 +58,7 @@
 
     /**
      * This method is invoked automatically when the datasource is ready. At this point. the datasource has not been
-     * attached to main dom. Internally it will try to locate the closest parent which supports datasource and wire itself into parent component under _dataSource property.
+     * attached to main dom. Internally it will try to locate the closest parent which supports datasource and wire itself into parent component under dataSource property.
      *
      * @return {undefined} No result.
      * @memberof BCAPI.Components.DataSources.JsonDataSource
@@ -67,12 +67,12 @@
         this.__base.attached.apply(this);
         var parentNode = this.parentNode;
 
-        while (parentNode && !parentNode._supportsDataSource) {
+        while (parentNode && !parentNode.supportsDataSource) {
             parentNode = parentNode.parentNode;
         }
 
-        if (parentNode && parentNode._supportsDataSource) {
-            parentNode._dataSource = this;
+        if (parentNode && parentNode.supportsDataSource) {
+            parentNode.dataSource = this;
         }
 
         this.trigger("attached", {});

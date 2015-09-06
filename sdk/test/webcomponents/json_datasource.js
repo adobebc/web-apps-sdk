@@ -63,7 +63,7 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
     });
 
     it("Ensures datasource can be nested within a parent node which supports datasources  and list data.", function(done) {
-        this._contentHolder._supportsDataSource = true;
+        this._contentHolder.supportsDataSource = true;
 
         var jsonUrl = "/test/url/test.json",
             elemHtml = "<bc-json id='jsonDataSource' url='" + jsonUrl + "'></bc-json>",
@@ -74,9 +74,9 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
         ComponentTestHelpers.execWhenReady(function() {
             return document.getElementById("jsonDataSource");
         }, function(comp) {
-            expect(self._contentHolder._dataSource).toBe(comp);
+            expect(self._contentHolder.dataSource).toBe(comp);
 
-            _testListWorksOk(self, self._contentHolder._dataSource, jsonUrl, done);
+            _testListWorksOk(self, self._contentHolder.dataSource, jsonUrl, done);
         }, undefined);
     });
 

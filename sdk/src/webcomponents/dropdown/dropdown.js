@@ -104,12 +104,12 @@ var webComponent = (function() {
                 notify: true,
                 observer: "_changeClass"
             },
-            _dataSource: {
+            dataSource: {
                 type: Object,
                 notify: true,
                 observer: "_buildFromDataSource"
             },
-            _supportsDataSource: {
+            supportsDataSource: {
                 readOnly: true,
                 type: Boolean,
                 value: true
@@ -147,7 +147,7 @@ var webComponent = (function() {
                 return;
             }
 
-            this._configureFromDataSource();
+            this._wireDataSourceFromMarkup();
         },
         /**
          * This method obtains the current selected item.
@@ -213,21 +213,8 @@ var webComponent = (function() {
          * });
          */
         configure: function(opts) {
-            var legacyBcConfig = this._bcConfig;
-
             this.items = opts.items || this.items;
-            this._dataSource = opts.dataSource || this._dataSource;
-            this._bcConfig = opts.bcConfig || this._bcConfig;
-
-            if (this._bcConfig && this._dataSource) {
-                this._dataSource.configure({
-                    "bcConfig": this._bcConfig
-                });
-            }
-
-            if (this._bcConfig && this._bcConfig !== legacyBcConfig && this._dataSource) {
-                this._buildFromDataSource(this._dataSource);
-            }
+            this.dataSource = opts.dataSource || this.dataSource;
         },
         /**
          * This method is invoked in order to handle item selection changed event triggerd by the inner select element.

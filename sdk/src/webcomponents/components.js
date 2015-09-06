@@ -132,6 +132,28 @@
 
         console.log(this.is + ": attached to dom.");
     };
+    /**
+     * This method provides the algorithm for changing css classes for specified dom elements.
+     *
+     * @public
+     * @instance
+     * @method changeClass
+     * @param {String} newClass A whitespace separated list of classes.
+     * @param {HTMLDomElement} domElem The dom element instance for which we want to change the classes.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.Component
+     */
+    Component.prototype.changeClass = function(newClass, domElem) {
+        var classes = newClass.split(" ");
+
+        while (domElem.classList.length > 0) {
+            domElem.classList.remove(domElem.classList[0]);
+        }
+
+        for (var idx = 0; idx < classes.length; idx++) {
+            domElem.classList.add(classes[idx]);
+        }
+    };
 
     /**
      * This method provides a shortcut approach for wiring callbacks to component emitted events.

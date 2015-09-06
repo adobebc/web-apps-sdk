@@ -94,6 +94,11 @@ var webComponent = {
             type: String,
             default: "text"
         },
+        "class": {
+            type: String,
+            notify: true,
+            observer: "_changeClass"
+        },
         _dataSource: {
             type: Object,
             notify: true,
@@ -118,6 +123,9 @@ var webComponent = {
      * @memberof BCAPI.Components.DropDown
      */
     ready: function() {
+        this._innerSelect = this.$.ddItemsHolder;
+        this.class = "form-control";
+
         var options = this.$.selectModel.querySelectorAll("option"),
             dataSource = this.$.selectModel.querySelector("*[rel='datasource']"),
             items;
@@ -278,8 +286,12 @@ var webComponent = {
     /**
      * This method is invoked whenever items must be rendered.
      *
+     * @private
+     * @instance
+     * @method  _refreshItemsSelect
      * @param  {Array} items An array of items which must be displayed.
      * @return {undefined} No result.
+     * @memberof BCAPI.Components.DropDown
      */
     _refreshItemsSelect: function(items) {
         var select = this.$.ddItemsHolder;
@@ -293,6 +305,19 @@ var webComponent = {
 
             select.add(option);
         }
+    },
+    /**
+     * This method handles the change of css classes applied to the current dropdown instance. Internally, it enforces form-control style.
+     *
+     * @private
+     * @instance
+     * @method  _changeClass
+     * @param  {String} newClass A whitespace separated list of classes.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DropDown
+     */
+    _changeClass: function(newClass) {
+        this.__base.changeClass(newClass, this._innerSelect);
     }
 };
 

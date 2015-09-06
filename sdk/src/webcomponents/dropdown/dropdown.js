@@ -88,11 +88,11 @@ var webComponent = {
         },
         valueProp: {
             type: String,
-            default: "value"
+            value: "value"
         },
         textProp: {
             type: String,
-            default: "text"
+            value: "text"
         },
         "class": {
             type: String,
@@ -156,22 +156,41 @@ var webComponent = {
      * @memberof BCAPI.Components.DropDown
      */
     getValue: function() {
-        return this.items[this.$.ddItemsHolder.selectedIndex];
+        var items = this.items || [],
+            selectedIndex = this.$.ddItemsHolder.selectedIndex;
+
+        if (selectedIndex < 0 || selectedIndex > items.length) {
+            return undefined;
+        }
+
+        return items[selectedIndex];
     },
     /**
-     * This method is invoked in order to handle item selection changed event triggerd by the inner select element.
+     * This method sets the current value from the dropdown.
      *
-     * @public
-     * @instance
-     * @method handleChange
-     * @param  {Event} evt The dom event emmited by the inner dropdown dom element.
-     * @return {undefined} No result.
+     * @param {Object} newValue The new value used for setting the correct selectedIndex.
+     * @returns {Boolean} True if the value was correctly set and false if the value does not match any of the items available in the dropdown.
      * @memberof BCAPI.Components.DropDown
      */
-    handleChange: function(evt) {
-        var selectedItem = this.getValue();
+    setValue: function(newValue) {
+        var itemIdx = -1,
+            items = this.items || [];
 
-        this.trigger("ddChanged", selectedItem);
+        for (var idx = 0; idx < items.length; idx++) {
+            var currItem = items[idx];
+
+            if (currItem[this.valueProp] === newValue) {
+                itemIdx = idx;
+                break;
+            }
+        }
+
+        if (itemIdx > -1) {
+            this.$.ddItemsHolder.selectedIndex = itemIdx;
+            this._handleChange();
+        }
+        
+        return itemIdx > -1;
     },
     /**
      * This method provides a way to quickly configure the current dropdown.
@@ -206,6 +225,21 @@ var webComponent = {
         if (this._bcConfig && this._bcConfig !== legacyBcConfig && this._dataSource) {
             this._buildFromDataSource(this._dataSource);
         }
+    },
+    /**
+     * This method is invoked in order to handle item selection changed event triggerd by the inner select element.
+     *
+     * @private
+     * @instance
+     * @method handleChange
+     * @param  {Event} evt The dom event emmited by the inner dropdown dom element.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DropDown
+     */
+    _handleChange: function(evt) {
+        var selectedItem = this.getValue();
+
+        this.trigger("ddChanged", selectedItem);
     },
     /**
      * This method obtains the items defined using the markup approach for this component.

@@ -88,4 +88,56 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
             }
         }, done);
     });
+
+    it("Ensures setValue correctly triggers ddChanged event.", function(done) {
+        var self = this;
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return self._dropDown;
+        }, function(comp) {
+            var items = [{"value": "0", "text": "Order by"},
+                {"value": "id", "text": "Customer Id"},
+                {"value": "firstName", "text": "Order by"},
+                {"value": "middleName", "text": "Middle name"},
+                {"value": "lastName", "text": "Last name"},
+                {"value": "homePhone", "text": "Phone number"}],
+                innerSelect = self._dropDown.querySelector("select"),
+                selectedItem = undefined;
+
+            comp.configure({"items": items});
+
+            selectedItem = comp.getValue();
+
+            expect(selectedItem).toBe(items[0]);
+
+            comp.on("ddChanged", function(item) {
+                selectedItem = item;
+            });
+
+            expect(comp.setValue("middleName")).toBeTruthy();
+
+            expect(selectedItem).toBe(items[3]);
+        }, done);
+    });
+
+    it("Ensures setValue fails if the given value does not belong to any item.", function(done) {
+        var self = this;
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return self._dropDown;
+        }, function(comp) {
+            var items = [
+                {"value": "Works", "text": "ok"}
+            ];
+
+            expect(comp.getValue()).toBe(undefined);
+            expect(comp.setValue(undefined)).toBeFalsy();
+
+            comp.configure({"items": items});
+
+            expect(comp.setValue("new value")).toBeFalsy();
+
+            expect(comp.getValue()).toBe(items[0]);
+        }, done);
+    });
 });

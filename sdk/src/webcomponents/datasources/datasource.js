@@ -30,10 +30,31 @@
      * Each concrete implementation might have its own supported options and it is not mandatory to provide
      * an implementation for all the methods from DataSource.
      *
+     * ## Events
+     *
+     * | Event name | Event description |
+     * | ---------------- | ----------------------- |
+     * | attached | This event is emmited by the datasource once it is attached to dom. |
+     *
      * @class  DataSource
      * @memberof BCAPI.Components.DataSources
      */
     function DataSource() { }
+
+    DataSource.prototype = BCAPI.Components.ComponentsFactory.get(DataSource.prototype);
+
+    /**
+     * This method is used to tell that this components is a datasource implementation.
+     *
+     * @public
+     * @instance
+     * @method  isDataSource
+     * @return {Boolean} True.
+     * @memberof BCAPI.Components.DataSources.DataSource
+     */
+    DataSource.prototype.isDataSource = function() {
+        return true;
+    };
 
     /**
      * This method is invoked automatically when the datasource is ready. At this point. the datasource has not been
@@ -42,7 +63,8 @@
      * @return {undefined} No result.
      * @memberof BCAPI.Components.DataSources.JsonDataSource
      */
-    DataSource.prototype.ready = function() {
+    DataSource.prototype.attached = function() {
+        this.__base.attached.apply(this);
         var parentNode = this.parentNode;
 
         while (parentNode && !parentNode._supportsDataSource) {
@@ -52,6 +74,8 @@
         if (parentNode && parentNode._supportsDataSource) {
             parentNode._dataSource = this;
         }
+
+        this.trigger("attached", {});
     };
 
     /**

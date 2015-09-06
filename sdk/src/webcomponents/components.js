@@ -312,7 +312,7 @@
      * var webComp = {
      *     "is": "bc-button",
      *     attached: function() {
-     *         this.__base.attached();
+     *         this.__base.attached.apply(this);
      *     }
      * };
      *

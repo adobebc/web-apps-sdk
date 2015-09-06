@@ -66,9 +66,20 @@ var webComponent = {
     }
 };
 
-$.extend(webComponent, BCAPI.Components.DataSources.DataSource.prototype);
+var baseDataSource = Object.create(BCAPI.Components.DataSources.DataSource.prototype);
+$.extend(webComponent, baseDataSource);
+webComponent.__baseDataSource = baseDataSource;
 
 $.extend(webComponent, {
+    /**
+     * This method is invoked automatically when the json datasource is attached to dom. It triggers attached inherited
+     * from datasource and then it invokes attached inherited from component.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DataSource.JsonDataSource
+     */
+    attached: function() {
+        this.__baseDataSource.attached.apply(this);
+    },
     /**
      * This method list the json data from the configured **url**.
      *
@@ -96,5 +107,3 @@ $.extend(webComponent, {
         return loader.promise();
     }
 });
-
-webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);

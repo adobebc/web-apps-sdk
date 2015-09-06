@@ -110,7 +110,9 @@ var webComponent = (function() {
                 observer: "_buildFromDataSource"
             },
             _supportsDataSource: {
-                type: Boolean
+                readOnly: true,
+                type: Boolean,
+                value: true
             }
         },
         customEvents: [
@@ -144,11 +146,7 @@ var webComponent = (function() {
                 });
             }
 
-            if (dataSource) {
-                this._supportsDataSource = true;
-            }
-
-            if (dataSource && dataSource.configure) {
+            if (dataSource && dataSource.isDataSource) {
                 this._dataSource = dataSource;
             }
         },

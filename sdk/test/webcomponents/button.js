@@ -82,6 +82,48 @@ describe("bc-button test suite for ensuring everything works as expected.", func
         }, done);
     });
 
+    it("Ensures bc-button component renders correctly and applies all classes received as argument.", function(done) {
+        var compClasses = "class1 class2",
+            compNewClasses = "class3 class4 class5",
+            compMarkup = "<bc-button>Test button</bc-button>",
+            compHolder = document.createElement("div");
+
+        compHolder.innerHTML = compMarkup;
+        document.body.appendChild(compHolder);
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return document.querySelector("bc-button");
+        }, function(comp) {
+            expect(comp).not.toBe(undefined);
+
+            comp.class = compClasses;
+            compClasses = compClasses.split(" ");
+
+            var innerButtons = comp.querySelectorAll("button");
+            expect(innerButtons.length).toBe(1);
+
+            var innerButton = innerButtons[0];
+
+            expect(innerButton.classList).not.toBe(undefined);
+            expect(innerButton.classList.length).toBe(compClasses.length);
+
+            for (idx = 0; idx < compClasses.length; compClasses++) {
+                expect(innerButton.classList[idx]).toBe(compClasses[idx]);
+            }
+
+            comp.class = compNewClasses;
+            compNewClasses = compNewClasses.split(" ");
+
+            expect(innerButton.classList.length).toBe(compNewClasses.length);
+
+            for (idx = 0; idx < compNewClasses.length; compNewClasses++) {
+                expect(innerButton.classList[idx]).toBe(compNewClasses[idx]);
+            }
+
+            document.body.removeChild(compHolder);
+        }, done);
+    });
+
     it("Ensures button click events are working as expected and carry data with them.", function(done) {
         document.body.appendChild(this._btnComponent);
 

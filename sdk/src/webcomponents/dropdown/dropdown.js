@@ -307,7 +307,7 @@ var webComponent = {
         }
     },
     /**
-     * This method handles the change of css classes applied to the current dropdown instance. Internally, it enforces form-control style.
+     * This method handles the change of css classes applied to the current dropdown instance.
      *
      * @private
      * @instance

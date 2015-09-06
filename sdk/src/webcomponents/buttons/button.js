@@ -55,15 +55,33 @@
 var webComponent = {
     is: "bc-button",
     properties: {
-        style: String,
         data: {
             type: Object,
             observer: "_onDataChanged"
-        }
+        },
+        "class": {
+            type: String,
+            notify: true,
+            observer: "_changeClass"
+        },
+        style: String
     },
     customEvents: [
         "dataChanged"
     ],
+    /**
+     * This method handles the change of css classes applied to the current button instance.
+     *
+     * @private
+     * @instance
+     * @method  _changeClass
+     * @param  {String} newClass A whitespace separated list of classes.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.Button
+     */
+    _changeClass: function(newClass) {
+        this.__base.changeClass(newClass, this.$.innerButton);
+    },
     _onDataChanged: function(newData) {
         this.trigger("data-changed", newData);
     }

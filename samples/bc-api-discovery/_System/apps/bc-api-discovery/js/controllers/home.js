@@ -93,6 +93,7 @@
                 return self.$scope.sampleResourcesSelection.value;
             },
             function () {
+                self._displayResourceFields();
                 self._displaySubresources();
             });
 

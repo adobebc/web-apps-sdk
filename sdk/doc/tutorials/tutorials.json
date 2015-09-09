@@ -1,4 +1,7 @@
 {
+    "get-started": {
+        "title": "Get started with web components."
+    },
     "legacy-apis": {
         "title": "List of legacy apis"
     }

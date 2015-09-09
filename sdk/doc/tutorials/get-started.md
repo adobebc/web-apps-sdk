@@ -15,7 +15,7 @@ you can find the folder structure we are going to create:
             + 
         * index.html
 
-## Create a simple dropdown with some options displayed
+## Create a dropdown with some options displayed
 
 ```html
 <!-- / _System/apps/app_name/index.html -->
@@ -51,7 +51,7 @@ you can find the folder structure we are going to create:
 The above example creates a Business Catalyst dropdown populated with several items.
 Rendered dropdown has all required css classes applied:
 
-## Create a simple dropdown using html + javascript
+## Create a dropdown using html + javascript
 
 ```html
 <!-- / _System/apps/app_name/index.html -->
@@ -82,7 +82,7 @@ Rendered dropdown has all required css classes applied:
                     {"value": "id", "text": "Customer Id"},
                     {"value": "firstName", "text": "Order by"},
                     {"value": "middleName", "text": "Middle name"},
-                    {"value": "lastName", "text": "Last name"},
+                    {"value": "lastName", "text": "Last name"}
                 ]
             });
         });
@@ -101,7 +101,7 @@ dropdown at:
 * {@link BCAPI.Components.Component}
 * {@link BCAPI.Components.DropDown}
 
-## Create a simple dropdown using javascript
+## Create a dropdown using javascript
 
 ```html
 <!-- / _System/apps/app_name/index.html -->
@@ -131,7 +131,7 @@ dropdown at:
                     {"value": "id", "text": "Customer Id"},
                     {"value": "firstName", "text": "Order by"},
                     {"value": "middleName", "text": "Middle name"},
-                    {"value": "lastName", "text": "Last name"},
+                    {"value": "lastName", "text": "Last name"}
                 ]
             });
 

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: webcomponents/components.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: webcomponents/components.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ *
+ *Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+ 
+ *Permission is hereby granted, free of charge, to any person obtaining a
+ *copy of this software and associated documentation files (the "Software"),
+ *to deal in the Software without restriction, including without limitation
+ *the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ *and/or sell copies of the Software, and to permit persons to whom the
+ *Software is furnished to do so, subject to the following conditions:
+ *
+ *The above copyright notice and this permission notice shall be included in
+ *all copies or substantial portions of the Software.
+ *
+ *THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ *DEALINGS IN THE SOFTWARE.
+ *
+ */
+(function($) {
+    /**
+     * This namespace holds all SDK classes used for creating new components.
+     *
+     * ![BCAPI Components Overview](assets/ui-sdk-bcapi-components.png)
+     *
+     * @namespace BCAPI.Components
+     */
+    BCAPI.Components = BCAPI.Components || {};
+
+    /**
+     * This namespace holds all available data sources which can be plugged into UI components. Below, you can find
+     * a diagram providing the foundation classes which are provided out of the box.
+     *
+     * ![BCAPI Datasources Overview](assets/ui-sdk-bcapi-datasources.png)
+     *
+     * @namespace BCAPI.Components.DataSources
+     */
+    BCAPI.Components.DataSources = BCAPI.Components.DataSources || {};
+
+    /**
+     * This namespace holds all available validators which can be wired or are used directly by components.
+     *
+     * ![BCAPI Validation Overview](assets/ui-sdk-bcapi-validation.png)
+     *
+     * @namespace BCAPI.Components.Validation
+     */
+    BCAPI.Components.Validation = BCAPI.Components.Validation || {};
+
+    /**
+     * This namespace holds all security classes which can be reused by all components.
+     *
+     * ![BCAPI Security Overview](assets/ui-sdk-bcapi-security.png)
+     *
+     * @namespace BCAPI.Security
+     */
+    BCAPI.Security = BCAPI.Security || {};
+
+    /**
+     * This namespace holds all messaging layers which can be used to communicate between apps and BC environment.
+     * Moreover, this provides the classes required to achieve intercommunication between components from the same app.
+     *
+     * ![BCAPI Messaging Overview](assets/ui-sdk-bcapi-messaging.png)
+     *
+     * @namespace BCAPI.Messaging
+     */
+    BCAPI.Messaging = BCAPI.Messaging || {};
+
+    /**
+     * This class provides the all common methods inherited by every component.
+     *
+     * @name  Component
+     * @public
+     * @constructor
+     * @memberof BCAPI.Components
+     */
+    function Component() {}
+
+    BCAPI.Helper.MicroEvent.mixin(Component.prototype);
+
+    /**
+     * This constant holds the dom attribute prefix used to wire custom listeners to component events.
+     *
+     * @constant
+     * @type {String}
+     */
+    Component.prototype.__BCON_EVT_PREFIX = "onbc-";
+
+    /**
+     * This constant holds the type of component which can later on be used to discriminate between regular dom elements
+     * and concrete BCAPI components.
+     *
+     * @constant
+     * @type {String}
+     */
+    Component.prototype.__COMPTYPE__ = "BcApiComponent";
+
+    /**
+     * This method standardizes the way components can be configured / altered. Each concrete component must provide an
+     * implementation for this method.
+     *
+     * @public
+     * @method configure
+     * @instance
+     * @abstract
+     * @memberof BCAPI.Components.Component
+     * @param {Object} opts The object containing all options which must be configured.
+     * @returns {undefined} No result.
+     * @example
+     * var button = document.getElementById("myButton");
+     * button.configure({"label": "My first button"});
+     */
+    Component.configure = function(opts) {};
+
+    /**
+     * This method provides a standard implementation so that each component correctly handles attached to dom event.
+     * Even though it should be enough for most of the components, if for some reason you need to override it, make
+     * sure you first invoke **this.__base.attached();**
+     *
+     * @name  attached
+     * @method
+     * @public
+     * @instance
+     * @memberof BCAPI.Components.Component
+     * @returns {undefined} No result.
+     */
+    Component.prototype.attached = function() {
+        this._wireCustomEventsFromDom();
+
+        console.log(this.is + ": attached to dom.");
+    };
+    /**
+     * This method provides the algorithm for changing css classes for specified dom elements.
+     *
+     * @public
+     * @instance
+     * @method changeClass
+     * @param {String} newClass A whitespace separated list of classes.
+     * @param {HTMLDomElement} domElem The dom element instance for which we want to change the classes.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.Component
+     */
+    Component.prototype.changeClass = function(newClass, domElem) {
+        var classes = newClass.split(" ");
+
+        while (domElem.classList.length > 0) {
+            domElem.classList.remove(domElem.classList[0]);
+        }
+
+        for (var idx = 0; idx &lt; classes.length; idx++) {
+            domElem.classList.add(classes[idx]);
+        }
+    };
+
+    /**
+     * This method provides a shortcut approach for wiring callbacks to component emitted events.
+     *
+     * @method wireEvents
+     * @public
+     * @instance
+     * @memberof BCAPI.Components.Component
+     * @param {Object} evts A dictionary containing a list of event names and the callbacks which listen to each event.
+     * @returns {undefined} No result.
+     *
+     * @example
+     * function onTextFieldChange(evtData) {
+     *     console.log(evtData);
+     * }
+     *
+     * function onTextFieldSearch(evtData) {
+     *     console.log(evtData);
+     * }
+     *
+     * var component = new BCAPI.Components.TextField();
+     * component.wireEvents({
+     *     "textfield:change": onTextFieldChange,
+     *     "textfield:search": onTextFieldSearch
+     * });
+     */
+    Component.prototype.wireEvents = function(evts) {
+        if (evts === undefined || evts === null) {
+            throw new BCAPI.Components.Exceptions.WireEventException("You can not wire undefined / null events into component.");
+        }
+
+        for (var evtName in evts) {
+            if (!evts[evtName]) {
+                throw new BCAPI.Components.Exceptions.WireEventException("Event name " + evtName + " does not have callback specified.");
+            }
+
+            this.on(evtName, evts[evtName]);
+        }
+    };
+
+    /**
+     * This method can be used in order to determine if a given dom attribute is a bc component or not.
+     *
+     * @public
+     * @method  isBcComponent
+     * @instance
+     * @memberof BCAPI.Components.Component
+     * @return {Boolean} True if the current component inherits from Component and false otherwise.
+     */
+    Component.prototype.isBcComponent = function() {
+        return this.__COMPTYPE__ === "BcApiComponent";
+    };
+
+    /**
+     * This method configures the items from this component by extracting the inner html defined datasource.
+     * If the datasource exists, then it is set as component datasource.
+     *
+     * @protected
+     * @instance
+     * @method _wireDataSourceFromMarkup
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.Component
+     */
+    Component.prototype._wireDataSourceFromMarkup = function() {
+        var dataSource = Polymer.dom(this).querySelector("*[rel='datasource']");
+
+        if (dataSource &amp;&amp; dataSource.isDataSource &amp;&amp; dataSource.isDataSource()) {
+            this.dataSource = dataSource;
+        }
+    };
+
+    /**
+     * This method wires all listeners to custom events declared using dom attributes.
+     *
+     * @private
+     * @instance
+     * @method  _wireCustomEventsFromDom
+     * @returns {undefined} No result.
+     * @memberof BCAPI.Components.Component
+     */
+    Component.prototype._wireCustomEventsFromDom = function() {
+        var customEvents = this.customEvents || [],
+            wiredEvents = {};
+
+        for (var i = 0; i &lt; customEvents.length; i++) {
+            var evtName = this._getDomEvtName(customEvents[i]),
+                attrName = this.__BCON_EVT_PREFIX + evtName;
+
+            if (!this.hasAttribute(attrName)) {
+                continue;
+            }
+
+            listener = this.getAttribute(attrName);
+
+            var listenerParts = listener.split("."),
+                ctx = window[listenerParts[0]],
+                action = undefined;
+
+            for (var j = 0; j &lt; listenerParts.length; j++) {
+                var partName = listenerParts[j];
+
+                action = (action || window)[partName];
+
+                if (!action) {
+                    console.log(this.is + ": Unable to wire " + listener + " to event " + evtName);
+                    continue;
+                }
+            }
+
+            wiredEvents[evtName] = (function(action, ctx) {
+                return function(evtData) {
+                    action.call(ctx, evtData);
+                };
+            })(action, ctx);
+        }
+
+        this.wireEvents(wiredEvents);
+    };
+
+    /**
+     * This method obtains the dom event name for a given custom event name. Custom event names are camel case while in
+     * dom they are all lowercase and each part from camelcase is separated by dashes.
+     *
+     * @private
+     * @instance
+     * @method  _getDomEvtName
+     * @param  {String} evtName Custom event name as defined at component level.
+     * @return {String} Dom event name which matches the custom event name.
+     * @memberof BCAPI.Components.Component
+     */
+    Component.prototype._getDomEvtName = function(evtName) {
+        var domEvtName = [];
+
+        evtName = evtName || "";
+
+        for (var i = 0; i &lt; evtName.length; i++) {
+            var currChar = evtName.charAt(i);
+
+            if (currChar === currChar.toUpperCase()) {
+                domEvtName.push("-");
+            }
+
+            domEvtName.push(currChar.toLowerCase());
+        }
+
+        return domEvtName.join("");
+    };
+
+    BCAPI.Components.Component = BCAPI.Components.Component || Component;
+
+    /**
+     * This class provides the core class from BC SDK used to support components creation.
+     * It enforces each component descriptor to inherit several classes in order to create a uniform contract
+     * across all web components we provide.
+     *
+     * @name ComponentsFactory
+     * @public
+     * @constructor
+     * @memberof BCAPI.Components
+     * @example
+     * var customComponent = {
+     *     is: "custom-component"
+     * };
+     *
+     * customComponent = BCAPI.Components.ComponentsFactory.get(obj);
+     *
+     * Polymer(customComponent);
+     */
+    function ComponentsFactory() { }
+
+    /**
+     * This method extends the given component descriptor with various methods and properties specific to BC. In addition,
+     * it creates a special property named **__base** which can be used to access {@link BCAPI.Components.Component} inherited methods.
+     *
+     * @name  get
+     * @public
+     * @method
+     * @instance
+     * @param {Object} component The component descriptor we want to transform to {@link BCAPI.Components.Components}.
+     * @return {WebComponent} The component instance with all methods in place.
+     * @memberof BCAPI.Components.ComponentsFactory
+     * @example
+     * var webComp = {
+     *     "is": "bc-button",
+     *     attached: function() {
+     *         this.__base.attached.apply(this);
+     *     }
+     * };
+     *
+     * Polymer(BCAPI.Components.ComponentsFactory.get(webComp));
+     */
+    ComponentsFactory.prototype.get = function(component) {
+        var baseComp = new Component();
+
+        $.extend(component, Component.prototype);
+        component.__base = baseComp;
+
+        return component;
+    };
+
+    BCAPI.Components.ComponentsFactory = BCAPI.Components.ComponentsFactory || new ComponentsFactory();
+})($);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BCAPI.Components.Button.html">Button</a></li><li><a href="BCAPI.Components.Component.html">Component</a></li><li><a href="BCAPI.Components.ComponentsFactory.html">ComponentsFactory</a></li><li><a href="BCAPI.Components.DataGrid.html">DataGrid</a></li><li><a href="BCAPI.Components.DataSources.DataSource.html">DataSource</a></li><li><a href="BCAPI.Components.DataSources.JsonDataSource.html">JsonDataSource</a></li><li><a href="BCAPI.Components.DropDown.html">DropDown</a></li><li><a href="BCAPI.Components.Exceptions.NotImplementedException.html">NotImplementedException</a></li><li><a href="BCAPI.Components.Exceptions.WireEventException.html">WireEventException</a></li><li><a href="BCAPI.Components.TextField.html">TextField</a></li><li><a href="BCAPI.Models.Category.html">Category</a></li><li><a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a></li><li><a href="BCAPI.Models.Collection.html">Collection</a></li><li><a href="BCAPI.Models.Country.html">Country</a></li><li><a href="BCAPI.Models.CountryCollection.html">CountryCollection</a></li><li><a href="BCAPI.Models.FileSystem.File.html">File</a></li><li><a href="BCAPI.Models.FileSystem.Folder.html">Folder</a></li><li><a href="BCAPI.Models.Model.html">Model</a></li><li><a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a></li><li><a href="BCAPI.Models.WebApp.Country.html">Country</a></li><li><a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a></li><li><a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a></li><li><a href="BCAPI.Models.WebApp.Item.html">Item</a></li><li><a href="BCAPI.Models.WebApp.ItemCategory.html">ItemCategory</a></li><li><a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a></li></ul><h3>Namespaces</h3><ul><li><a href="BCAPI.html">BCAPI</a></li><li><a href="BCAPI.Components.html">Components</a></li><li><a href="BCAPI.Components.DataSources.html">DataSources</a></li><li><a href="BCAPI.Components.Exceptions.html">Exceptions</a></li><li><a href="BCAPI.Components.Validation.html">Validation</a></li><li><a href="BCAPI.Config.html">Config</a></li><li><a href="BCAPI.Config.Pagination.html">Pagination</a></li><li><a href="BCAPI.Helper.html">Helper</a></li><li><a href="BCAPI.Helper.Http.html">Http</a></li><li><a href="BCAPI.Helper.Site.html">Site</a></li><li><a href="BCAPI.Messaging.html">Messaging</a></li><li><a href="BCAPI.Models.html">Models</a></li><li><a href="BCAPI.Models.FileSystem.html">FileSystem</a></li><li><a href="BCAPI.Models.WebApp.html">WebApp</a></li><li><a href="BCAPI.Security.html">Security</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-get-started.html">get-started</a></li><li><a href="tutorial-legacy-apis.html">List of legacy apis</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0-dev</a> on Wed Sep 09 2015 06:15:06 GMT+0300 (EEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,7 +1,6 @@
 # Files which must be ignored
 sdk/analysis/*.working
 sdk/coverage/*
-sdk/doc/*
 sdk/logs/*
 sdk/tests-output/*
 sdk/tests_runner.log

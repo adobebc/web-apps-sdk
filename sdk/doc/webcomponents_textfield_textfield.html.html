@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: webcomponents/textfield/textfield.html</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: webcomponents/textfield/textfield.html</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>&lt;link rel="import" href="/lib/polymer/polymer.html">
+
+&lt;dom-module id="bc-textfield">
+    &lt;style type="text/css">
+        button {
+            float: left;
+            width: 5%;
+            min-width: 40px;
+        }
+
+        input[type="text"] {
+            float: left;
+            width: 85%;
+        }
+    &lt;/style>
+
+    &lt;template>
+        &lt;template is="dom-if" if="{{hasSearchButton}}">
+            &lt;button type="button" class="btn btn-primary" on-click="handleSearch" disabled>
+                &lt;span class="glyphicon glyphicon-search">&lt;/span>
+            &lt;/button>
+        &lt;/template>
+
+        &lt;input type="text" class="form-control" on-keyup="handleChange" placeholder="{{placeholder}}" style="float: left;" />
+    &lt;/template>
+
+    &lt;script type="text/javascript" src="/src/helper.js">&lt;/script>
+    &lt;script type="text/javascript" src="/src/webcomponents/components.js">&lt;/script>
+
+    &lt;script>
+    /**
+     * This class provides a text field component which has BC look &amp; feel. Moreover, the text field benefit from a quick search button
+     * which can be activated in cases where textfield is used as full text search.
+     * 
+     * @name TextField
+     * @class
+     * @public
+     * @memberof BCAPI.Components
+     */
+    polymerObj = {
+        is: "bc-textfield",
+        properties: {
+            placeholder: {
+                type: String,
+                value: "Type your text here ..."
+            },
+            hasSearchButton: {
+                type: Boolean,
+                value: false,
+                readOnly: false,
+                reflectToAttribute: true
+            },
+            value: {
+                type: String,
+                readonly: true
+            }
+        },
+        customEvents: [
+            "textfield-change", "textfield-search"
+        ],
+        ready: function() {
+             this._wireCustomEventsFromDom();
+        },
+        handleChange: function(evt) {
+            var newValue = evt.target.value.trim(),
+                disabled = !(newValue &amp;&amp; newValue.length > 0);
+
+            $(this).find("button").prop("disabled", disabled);
+
+            this.value = newValue;
+
+            if (evt.keyCode !== 13) {
+                this.trigger("textfield-change", {"value": newValue});
+            }
+
+            if (!disabled &amp;&amp; evt.keyCode === 13) {
+                this.handleSearch();
+
+                return;
+            }
+        },
+        handleSearch: function(evt) {
+            this.trigger("textfield-search", {"value": this.value});
+        }
+    };
+
+    polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
+
+    Polymer(polymerObj);
+    &lt;/script>
+
+&lt;/dom-module></code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BCAPI.Components.Button.html">Button</a></li><li><a href="BCAPI.Components.Component.html">Component</a></li><li><a href="BCAPI.Components.ComponentsFactory.html">ComponentsFactory</a></li><li><a href="BCAPI.Components.DataGrid.html">DataGrid</a></li><li><a href="BCAPI.Components.DataSources.DataSource.html">DataSource</a></li><li><a href="BCAPI.Components.DataSources.JsonDataSource.html">JsonDataSource</a></li><li><a href="BCAPI.Components.DropDown.html">DropDown</a></li><li><a href="BCAPI.Components.Exceptions.NotImplementedException.html">NotImplementedException</a></li><li><a href="BCAPI.Components.Exceptions.WireEventException.html">WireEventException</a></li><li><a href="BCAPI.Components.TextField.html">TextField</a></li><li><a href="BCAPI.Models.Category.html">Category</a></li><li><a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a></li><li><a href="BCAPI.Models.Collection.html">Collection</a></li><li><a href="BCAPI.Models.Country.html">Country</a></li><li><a href="BCAPI.Models.CountryCollection.html">CountryCollection</a></li><li><a href="BCAPI.Models.FileSystem.File.html">File</a></li><li><a href="BCAPI.Models.FileSystem.Folder.html">Folder</a></li><li><a href="BCAPI.Models.Model.html">Model</a></li><li><a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a></li><li><a href="BCAPI.Models.WebApp.Country.html">Country</a></li><li><a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a></li><li><a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a></li><li><a href="BCAPI.Models.WebApp.Item.html">Item</a></li><li><a href="BCAPI.Models.WebApp.ItemCategory.html">ItemCategory</a></li><li><a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a></li></ul><h3>Namespaces</h3><ul><li><a href="BCAPI.html">BCAPI</a></li><li><a href="BCAPI.Components.html">Components</a></li><li><a href="BCAPI.Components.DataSources.html">DataSources</a></li><li><a href="BCAPI.Components.Exceptions.html">Exceptions</a></li><li><a href="BCAPI.Components.Validation.html">Validation</a></li><li><a href="BCAPI.Config.html">Config</a></li><li><a href="BCAPI.Config.Pagination.html">Pagination</a></li><li><a href="BCAPI.Helper.html">Helper</a></li><li><a href="BCAPI.Helper.Http.html">Http</a></li><li><a href="BCAPI.Helper.Site.html">Site</a></li><li><a href="BCAPI.Messaging.html">Messaging</a></li><li><a href="BCAPI.Models.html">Models</a></li><li><a href="BCAPI.Models.FileSystem.html">FileSystem</a></li><li><a href="BCAPI.Models.WebApp.html">WebApp</a></li><li><a href="BCAPI.Security.html">Security</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-get-started.html">get-started</a></li><li><a href="tutorial-legacy-apis.html">List of legacy apis</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0-dev</a> on Wed Sep 09 2015 06:15:06 GMT+0300 (EEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

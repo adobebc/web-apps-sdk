@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: webcomponents/datagrid/datagrid.html</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: webcomponents/datagrid/datagrid.html</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>&lt;link rel="import" href="/lib/polymer/polymer.html">
+
+&lt;dom-module id="bc-datagrid"> 
+    &lt;style>
+        .bc-datagrid-table {
+            display: table;
+            width: 100%;
+        };
+        .bc-datagrid-thead {
+            display: table-header-group;
+        };
+        .bc-datagrid-tbody {
+            display: table-row-group;
+        };
+        .bc-datagrid-tr {
+            display: table-row;
+        };
+        .bc-datagrid-td {
+            display: table-cell;
+        };
+        /* mimic bootstrap */
+        :host .bc-datagrid-table > .bc-datagrid-thead> .bc-datagrid-tr:first-child > .bc-datagrid-td {
+            border-top: 0;
+        }
+        :host .bc-datagrid-table > .bc-datagrid-thead > .bc-datagrid-tr > .bc-datagrid-td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+        :host .bc-datagrid-table > .bc-datagrid-tbody > .bc-datagrid-tr > .bc-datagrid-td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+        :host .bc-datagrid-hidden-tr {
+            border: 0;
+            display: table-row;
+        };
+    &lt;/style>
+    &lt;template>
+        &lt;content>&lt;/content>
+
+        &lt;template is="dom-if" if="{{visible}}">
+        &lt;div class="panel panel-default">
+            &lt;div class="bc-datagrid-table table">
+                &lt;div class="bc-datagrid-thead">
+                    &lt;div class="bc-datagrid-tr">
+                        &lt;div class="bc-datagrid-td">Displaying &lt;span>{{rows.length}}&lt;/span> out of &lt;span>{{currData.totalItemsCount}}&lt;/span> records.&lt;/div>
+                    &lt;/div>
+                    &lt;div class="bc-datagrid-tr">
+                    &lt;template is="dom-repeat" items="{{columns}}" as="colItem">
+                        &lt;div class="bc-datagrid-td">{{colItem.name}}&lt;/div>
+                    &lt;/template>
+                    &lt;/div>
+                &lt;/div>
+
+                &lt;div class="bc-datagrid-tbody">
+                    &lt;template is="dom-repeat" items="{{rows}}" as="itemRow" index-as="itemIndex">
+                        &lt;div class="bc-datagrid-tr">
+                            &lt;template is="dom-repeat" items="{{columns}}" as="col">
+                                &lt;div class="bc-datagrid-td">
+                                    &lt;bc-datagrid-customtpl item$="{{itemRow}}" col$="{{col}}" template$="{{col.template}}" contains-bindings$>&lt;/bc-datagrid-customtpl>
+                                &lt;/div>
+                            &lt;/template>
+                        &lt;/div>
+
+                        &lt;template is="dom-if" if="{{repeatedRow}}">
+                            &lt;div class="bc-datagrid-hidden-tr">
+                                &lt;div class="bc-datagrid-td">
+                                    &lt;bc-datagrid-customtpl item$="{{itemRow}}" template$="{{repeatedRow}}" contains-bindings$>&lt;/bc-datagrid-customtpl>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/template>
+                    &lt;/template>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+        &lt;/template>
+    &lt;/template>
+
+    &lt;script type="text/javascript" src="/src/helper.js">&lt;/script>
+    &lt;script type="text/javascript" src="/src/webcomponents/components.js">&lt;/script>
+
+    &lt;script>
+    /**
+     * This class offers a fully customisable DataGrid component. It has a modern look &amp; feel and allows developers to wire various
+     * datasources into it. 
+     * 
+     * @name DataGrid
+     * @class
+     * @public
+     * @memberof BCAPI.Components
+     */
+    var webComponent = {
+        is: "bc-datagrid",
+        properties: {
+            columns: Array,
+            rows: Array,
+            repeatedRow: String,
+            apiName: String,
+            apiVersion: String,
+            visible: Boolean,
+            dataVarname: String,
+            bcConfig: Object,
+            currData: {
+                type: Object,
+                readonly: true
+            },
+            _dataSource: {
+                type: Object,
+                notify: true
+            },
+            _expectsDataSource: {
+                type: Boolean
+            }
+        },
+        ready: function() {
+            this._dataSource = Polymer.dom(this).querySelector("*[rel='datasource']");
+
+            if (this._dataSource) {
+                this._expectsDataSource = true;
+            }
+        },
+        attached: function() {
+            var repeatedRowDiv = Polymer.dom(this).querySelector("div[rel='custom-repeated-row']");
+
+            if (repeatedRowDiv) {
+                this.repeatedRow = repeatedRowDiv.innerHTML;
+            }            
+        },
+        configure: function(opts) {
+            opts = opts || {};
+
+            this.dataVarname = opts.dataVarname || this.dataVarname; 
+            this.bcConfig = opts.bcConfig || this.bcConfig || {};
+            this._dataSource = opts.dataSource || this._dataSource;
+
+            if (this._dataSource) {
+                this._dataSource.configure({"bcConfig": this.bcConfig});
+            }
+
+            this.columns = opts.columns || this._getColsFromMarkup() || this.columns;
+            this.rows = opts.rows || this._loadItems() || this.rows;
+        },
+        display: function(visible) {
+            this.visible = visible || false;
+        },
+        getItemAt: function(idx) {
+            return this.rows[idx];
+        },
+        searchFullText: function(filterValue, limit, orderCriteria) {
+            if (!filterValue || filterValue.trim().length == 0) {
+                this._loadItems({
+                    "limit": limit,
+                    "order": orderCriteria
+                });
+
+                return;
+            }
+
+            var filter = {"$or": []},
+                self = this;
+
+            for (var idx = 0; idx &lt; this.columns.length; idx++) {
+                var col = this.columns[idx],
+                    clause = {};
+
+                if (col.rel != "property") {
+                    continue;
+                }
+
+                clause[col.id] = {"$contains": filterValue};
+
+                filter["$or"].push(clause);
+            }
+
+            this._loadItems({
+                "limit": limit,
+                "order": orderCriteria,
+                "where": filter
+            });
+        },
+        _getColsFromMarkup: function() {
+            var colElement = Polymer.dom(this).querySelector("bc-columns"),
+                self = this,
+                cols = [];
+
+            $(colElement).find("> div").each(function(idx, item) {
+                item = $(item);
+
+                var itemId = item.attr("data-id"),
+                    itemName = item.attr("title"),
+                    itemRel = item.attr("rel"),
+                    itemTemplate = item.html().trim();
+
+                if (itemRel == "property") {
+                    if (!itemTemplate) {
+                        itemTemplate = "&lt;span>{{getItemValue(item,col.id)}}&lt;/span>";
+                    }
+
+                    cols.push({"id": itemId, "name": itemName, "template": itemTemplate,
+                                "rel": "property"});
+
+                    return;
+                }
+
+                if (itemRel == "custom-column") {
+                    cols.push({"template": itemTemplate, "name": itemName});
+                    
+                    return;
+                }
+            });
+
+            return cols;
+        },
+        _loadItems: function(opts) {
+            var fetchOptions = {},
+                self = this;
+
+            opts = opts || {};
+
+            if (opts.order &amp;&amp; opts.order &amp;&amp; opts.order != "0") {
+                fetchOptions.order = opts.order;
+            }
+
+            if (opts.where) {
+                fetchOptions.where = opts.where;
+            }
+
+            if (opts.limit) {
+                fetchOptions.limit = opts.limit;
+            }
+
+            this._dataSource.fetchData(fetchOptions).done(function(data) {
+                self._updateCurrentData(data);
+            });
+        },
+        _updateCurrentData: function(data) {
+            this.currData = data;
+            this.configure({rows: data.items});
+        }
+    };
+
+    webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+    Polymer(webComponent);
+    &lt;/script>
+&lt;/dom-module></code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BCAPI.Components.Button.html">Button</a></li><li><a href="BCAPI.Components.Component.html">Component</a></li><li><a href="BCAPI.Components.ComponentsFactory.html">ComponentsFactory</a></li><li><a href="BCAPI.Components.DataGrid.html">DataGrid</a></li><li><a href="BCAPI.Components.DataSources.DataSource.html">DataSource</a></li><li><a href="BCAPI.Components.DataSources.JsonDataSource.html">JsonDataSource</a></li><li><a href="BCAPI.Components.DropDown.html">DropDown</a></li><li><a href="BCAPI.Components.Exceptions.NotImplementedException.html">NotImplementedException</a></li><li><a href="BCAPI.Components.Exceptions.WireEventException.html">WireEventException</a></li><li><a href="BCAPI.Components.TextField.html">TextField</a></li><li><a href="BCAPI.Models.Category.html">Category</a></li><li><a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a></li><li><a href="BCAPI.Models.Collection.html">Collection</a></li><li><a href="BCAPI.Models.Country.html">Country</a></li><li><a href="BCAPI.Models.CountryCollection.html">CountryCollection</a></li><li><a href="BCAPI.Models.FileSystem.File.html">File</a></li><li><a href="BCAPI.Models.FileSystem.Folder.html">Folder</a></li><li><a href="BCAPI.Models.Model.html">Model</a></li><li><a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a></li><li><a href="BCAPI.Models.WebApp.Country.html">Country</a></li><li><a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a></li><li><a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a></li><li><a href="BCAPI.Models.WebApp.Item.html">Item</a></li><li><a href="BCAPI.Models.WebApp.ItemCategory.html">ItemCategory</a></li><li><a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a></li></ul><h3>Namespaces</h3><ul><li><a href="BCAPI.html">BCAPI</a></li><li><a href="BCAPI.Components.html">Components</a></li><li><a href="BCAPI.Components.DataSources.html">DataSources</a></li><li><a href="BCAPI.Components.Exceptions.html">Exceptions</a></li><li><a href="BCAPI.Components.Validation.html">Validation</a></li><li><a href="BCAPI.Config.html">Config</a></li><li><a href="BCAPI.Config.Pagination.html">Pagination</a></li><li><a href="BCAPI.Helper.html">Helper</a></li><li><a href="BCAPI.Helper.Http.html">Http</a></li><li><a href="BCAPI.Helper.Site.html">Site</a></li><li><a href="BCAPI.Messaging.html">Messaging</a></li><li><a href="BCAPI.Models.html">Models</a></li><li><a href="BCAPI.Models.FileSystem.html">FileSystem</a></li><li><a href="BCAPI.Models.WebApp.html">WebApp</a></li><li><a href="BCAPI.Security.html">Security</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-get-started.html">get-started</a></li><li><a href="tutorial-legacy-apis.html">List of legacy apis</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0-dev</a> on Wed Sep 09 2015 06:15:06 GMT+0300 (EEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: webcomponents/datasources/datasource.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: webcomponents/datasources/datasource.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+*
+*Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+*Permission is hereby granted, free of charge, to any person obtaining a
+*copy of this software and associated documentation files (the "Software"),
+*to deal in the Software without restriction, including without limitation
+*the rights to use, copy, modify, merge, publish, distribute, sublicense,
+*and/or sell copies of the Software, and to permit persons to whom the
+*Software is furnished to do so, subject to the following conditions:
+*
+*The above copyright notice and this permission notice shall be included in
+*all copies or substantial portions of the Software.
+*
+*THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+*FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+*DEALINGS IN THE SOFTWARE.
+*
+*/
+(function($) {
+    /**
+     * This class provides the contract which must be implemented by each concrete datasource from the sdk.
+     * A datasource is a data provider which can be plugged into various components from the framework in order to
+     * display the data in different layouts. Most components offered by the sdk supports rendering data from a datasource.
+     *
+     * Each concrete implementation might have its own supported options and it is not mandatory to provide
+     * an implementation for all the methods from DataSource.
+     *
+     * ## Events
+     *
+     * | Event name | Event description |
+     * | ---------------- | ----------------------- |
+     * | attached | This event is emmited by the datasource once it is attached to dom. |
+     *
+     * @class  DataSource
+     * @memberof BCAPI.Components.DataSources
+     */
+    function DataSource() { }
+
+    DataSource.prototype = BCAPI.Components.ComponentsFactory.get(DataSource.prototype);
+
+    /**
+     * This method is used to tell that this components is a datasource implementation.
+     *
+     * @public
+     * @instance
+     * @method  isDataSource
+     * @return {Boolean} True.
+     * @memberof BCAPI.Components.DataSources.DataSource
+     */
+    DataSource.prototype.isDataSource = function() {
+        return true;
+    };
+
+    /**
+     * This method is invoked automatically when the datasource is ready. At this point. the datasource has not been
+     * attached to main dom. Internally it will try to locate the closest parent which supports datasource and wire itself into parent component under dataSource property.
+     *
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DataSources.JsonDataSource
+     */
+    DataSource.prototype.attached = function() {
+        this.__base.attached.apply(this);
+        var parentNode = this.parentNode;
+
+        while (parentNode &amp;&amp; !parentNode.supportsDataSource) {
+            parentNode = parentNode.parentNode;
+        }
+
+        if (parentNode &amp;&amp; parentNode.supportsDataSource) {
+            parentNode.dataSource = this;
+        }
+
+        this.trigger("attached", {});
+    };
+
+    /**
+     * This method must be overriden by each concrete datasource in order to provide the logic for loading
+     * an individual item.
+     *
+     * @public
+     * @instance
+     * @method  fetch
+     * @param  {Object} opts An object describing all relevant information for the fetch operation.
+     * @return {Promise} A promise object which is going to be resolved with data.
+     * @memberof BCAPI.Components.DataSources.DataSource
+     */
+    DataSource.prototype.fetch = function(opts) {
+        throw new BCAPI.Components.Exceptions.NotImplementedException("fetch is not implemented.");
+    };
+
+    /**
+     * This method must be overriden by each concrete datasource in order to provide the logic for loading
+     * a subset of items belonging to the datasource.
+     *
+     * @public
+     * @instance
+     * @method  list
+     * @param  {Object} opts An object describing all relevant information for the list operation.
+     * @return {Promise} A promise object which is going to be resolved with data.
+     * @memberof BCAPI.Components.DataSources.DataSource
+     */
+    DataSource.prototype.list = function(opts) {
+        throw new BCAPI.Components.Exceptions.NotImplementedException("list is not implemented.");
+    };
+
+    /**
+     * This method must be overriden by each concrete datasource in order to provide the logic for adding
+     * a new item to the datasource.
+     *
+     * @public
+     * @instance
+     * @method  create
+     * @param  {Object} opts An object describing all relevant information for the create operation.
+     * @return {Promise} A promise object which is going to be resolved with data.
+     * @memberof BCAPI.Components.DataSources.DataSource
+     */
+    DataSource.prototype.create = function(opts) {
+        throw new BCAPI.Components.Exceptions.NotImplementedException("create is not implemented.");
+    };
+
+    /**
+     * This method must be overriden by each concrete datasource in order to provide the logic for updating
+     * an existing item from the datasource.
+     *
+     * @public
+     * @instance
+     * @method  update
+     * @param  {Object} opts An object describing all relevant information for the update operation.
+     * @return {Promise} A promise object which is going to be resolved with data.
+     * @memberof BCAPI.Components.DataSources.DataSource
+     */
+    DataSource.prototype.update = function(opts) {
+        throw new BCAPI.Components.Exceptions.NotImplementedException("update is not implemented.");
+    };
+
+    /**
+     * This method must be overriden by each concrete datasource in order to provide the logic for removing
+     * an existing item from the datasource.
+     *
+     * @public
+     * @instance
+     * @method  delete
+     * @param  {Object} opts An object describing all relevant information for the delete operation.
+     * @return {Promise} A promise object which is going to be resolved with data.
+     * @memberof BCAPI.Components.DataSources.DataSource
+     */
+    DataSource.prototype.delete = function(opts) {
+        throw new BCAPI.Components.Exceptions.NotImplementedException("delete is not implemented.");
+    };
+
+    BCAPI.Components.DataSources.DataSource = BCAPI.Components.DataSources.DataSource || DataSource;
+})($);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BCAPI.Components.Button.html">Button</a></li><li><a href="BCAPI.Components.Component.html">Component</a></li><li><a href="BCAPI.Components.ComponentsFactory.html">ComponentsFactory</a></li><li><a href="BCAPI.Components.DataGrid.html">DataGrid</a></li><li><a href="BCAPI.Components.DataSources.DataSource.html">DataSource</a></li><li><a href="BCAPI.Components.DataSources.JsonDataSource.html">JsonDataSource</a></li><li><a href="BCAPI.Components.DropDown.html">DropDown</a></li><li><a href="BCAPI.Components.Exceptions.NotImplementedException.html">NotImplementedException</a></li><li><a href="BCAPI.Components.Exceptions.WireEventException.html">WireEventException</a></li><li><a href="BCAPI.Components.TextField.html">TextField</a></li><li><a href="BCAPI.Models.Category.html">Category</a></li><li><a href="BCAPI.Models.CategoryCollection.html">CategoryCollection</a></li><li><a href="BCAPI.Models.Collection.html">Collection</a></li><li><a href="BCAPI.Models.Country.html">Country</a></li><li><a href="BCAPI.Models.CountryCollection.html">CountryCollection</a></li><li><a href="BCAPI.Models.FileSystem.File.html">File</a></li><li><a href="BCAPI.Models.FileSystem.Folder.html">Folder</a></li><li><a href="BCAPI.Models.Model.html">Model</a></li><li><a href="BCAPI.Models.WebApp.AppCollection.html">AppCollection</a></li><li><a href="BCAPI.Models.WebApp.Country.html">Country</a></li><li><a href="BCAPI.Models.WebApp.CustomField.html">CustomField</a></li><li><a href="BCAPI.Models.WebApp.CustomFieldCollection.html">CustomFieldCollection</a></li><li><a href="BCAPI.Models.WebApp.Item.html">Item</a></li><li><a href="BCAPI.Models.WebApp.ItemCategory.html">ItemCategory</a></li><li><a href="BCAPI.Models.WebApp.ItemCollection.html">ItemCollection</a></li></ul><h3>Namespaces</h3><ul><li><a href="BCAPI.html">BCAPI</a></li><li><a href="BCAPI.Components.html">Components</a></li><li><a href="BCAPI.Components.DataSources.html">DataSources</a></li><li><a href="BCAPI.Components.Exceptions.html">Exceptions</a></li><li><a href="BCAPI.Components.Validation.html">Validation</a></li><li><a href="BCAPI.Config.html">Config</a></li><li><a href="BCAPI.Config.Pagination.html">Pagination</a></li><li><a href="BCAPI.Helper.html">Helper</a></li><li><a href="BCAPI.Helper.Http.html">Http</a></li><li><a href="BCAPI.Helper.Site.html">Site</a></li><li><a href="BCAPI.Messaging.html">Messaging</a></li><li><a href="BCAPI.Models.html">Models</a></li><li><a href="BCAPI.Models.FileSystem.html">FileSystem</a></li><li><a href="BCAPI.Models.WebApp.html">WebApp</a></li><li><a href="BCAPI.Security.html">Security</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-get-started.html">get-started</a></li><li><a href="tutorial-legacy-apis.html">List of legacy apis</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0-dev</a> on Wed Sep 09 2015 06:15:06 GMT+0300 (EEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

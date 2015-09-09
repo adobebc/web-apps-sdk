@@ -1,14 +1,13 @@
 {
     "plugins": [
-        "node_modules/jsdoc/plugins/markdown",
-        "node_modules/jsdoc/plugins/commentsOnly"
+        "node_modules/jsdoc/plugins/markdown"
     ],
     "markdown": {
         "parser": "gfm",
         "hardwrap": true
     },
      "source": {
-            "includePattern": ".*\\.(js|html)$",
+            "includePattern": ".*\\.(js)$",
             "include": [
                 "./src",
                 "./doc-static/index.md"

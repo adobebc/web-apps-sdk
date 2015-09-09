@@ -35,5 +35,8 @@
     </head>
 
     <body>
+<bc-select id="ddCustomers" value-prop="id" text-prop="firstName">
+    <bc-api api-name="customers" api-version="v3" fields="id,firstName" rel="datasource"></bc-api>
+</bc-select>
     </body>
 </html>

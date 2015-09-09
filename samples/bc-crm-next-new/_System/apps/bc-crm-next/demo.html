@@ -35,8 +35,12 @@
     </head>
 
     <body>
-        <bc-select id="ddCustomers" value-prop="id" text-prop="firstName">
-            <bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" rel="datasource"></bc-json>
-        </bc-select>
+<bc-select id="ddOrderBy">
+    <option value="0">Order by</option>
+    <option value="id">Customer Id</option>
+    <option value="firstName">First Name</option>
+    <option value="middleName">Middle Name</option>
+    <option value="lastName">Last Name</option>
+</bc-select>
     </body>
 </html>

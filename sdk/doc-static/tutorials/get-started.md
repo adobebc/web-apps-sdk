@@ -222,3 +222,15 @@ more about datasources on {@link BCAPI.Components.DataSources}
 
 Continuing the discussion about datasource **bc-api** seamlessly integrates available Business Catalsyt v3 apis with
 available components from the SDK. You can find more information about bc-api on {@link BCAPI.Components.DataSources.ApiDataSource}
+
+## Conclusions
+
+In the above examples we have briefly described multiple ways of using Business Catalyst Web Apps sdk components. In addition, we presented fast ways to wire data into components.
+
+The data wiring strategy can be reused in most of the components from the SDK. At this point,
+you should probably inspect which components are ready to be used and what options are available
+for configuring the SDK:
+
+* {@link BCAPI.Components}
+* {@tutorial configure-sdk}
+* {@link BCAPI.Security}

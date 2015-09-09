@@ -1,4 +1,5 @@
-# CI files which must be ignored
+# Files which must be ignored
+sdk/analysis/*.working
 sdk/coverage/*
 sdk/doc/*
 sdk/logs/*

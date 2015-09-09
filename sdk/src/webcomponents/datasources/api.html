@@ -3,84 +3,9 @@
 <dom-module id="bc-api">
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/datasources/api.js"></script>
 
     <script>
-        var webComponent = {
-            is: "bc-api",
-            properties: {
-                apiName: String,
-                apiVersion: String,
-                bcConfig: Object,
-                fields: String,
-                where: String
-            },
-            ready: function() {
-                var parentNode = this.parentNode;
-
-                while (parentNode && !parentNode._supportsDataSource) {
-                    parentNode = parentNode.parentNode;
-                }
-
-                if (parentNode && parentNode._supportsDataSource) {
-                    parentNode._dataSource = this;
-                }
-            },            
-            configure: function(opts) {
-                this.bcConfig = opts.bcConfig || this.bcConfig;
-                this.apiName = opts.apiName || this.apiName;
-                this.apiVersion = opts.apiVersion || this.apiVersion;
-                this.fields = opts.fields || this.fields;
-                this.where = opts.where || this.where;
-            },
-            fetchData: function(opts) {
-                var data = [],
-                    loader = $.Deferred();
-
-                opts = opts || {};
-
-                opts.fields = opts.fields || this.fields;
-                opts.where = opts.where || this.where;
-
-                if (!this.bcConfig) {
-                    return;
-                }
-
-                for (var key in opts) {
-                    var optData = opts[key];
-
-                    if (!optData) {
-                        continue;
-                    }
-
-                    if (typeof optData !== "string") {
-                        optData = JSON.stringify(optData);
-                    }
-
-                    data.push(key + "=" + encodeURIComponent(optData));
-                }
-
-                var response = $.ajax({
-                    "url": this._getApiUrl(this.apiName, this.apiVersion),
-                    "data": data.join("&"),
-                    "headers": {
-                        "Authorization": this.bcConfig.accessToken
-                    }
-                });
-
-                response.done(function(data) {
-                    loader.resolve(data);
-                });
-
-                return loader.promise();
-            },
-            _getApiUrl: function(apiName, apiVersion) {
-                return [this.bcConfig.siteUrl, "/webresources/api/", apiVersion, "/sites/current/", 
-                        apiName].join("");
-            }
-        };
-
-        webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
-
-        BCAPI.Components.DataSources.ApiDataSource = Polymer(webComponent);
+    Polymer(webComponent);
     </script>
 </dom-module>

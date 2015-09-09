@@ -30,8 +30,8 @@
 <article>
     <h1>Get started tutorial</h1><p>In this tutorial you can find information about how to create your first application using the BC Web Apps SDK. Below,<br>you can find the folder structure we are going to create:</p>
 <ul>
-<li><app name><ul>
-<li>/_System/apps/<app_name><ul>
+<li>app name<ul>
+<li>/_System/apps/app_name<ul>
 <li>assets<ul>
 <li>css<ul>
 <li>bcapi-latest.css (downloaded from github or cdn)</li>
@@ -43,6 +43,7 @@
 <li>bcapi-webcomponents-latest.html (downloaded from github cdn)</li>
 </ul>
 </li>
+<li></li>
 </ul>
 </li>
 <li>index.html</li>
@@ -51,7 +52,7 @@
 </ul>
 </li>
 </ul>
-<h2>Create a simple dropdown with some options displayed</h2><pre class="prettyprint source lang-html"><code>&lt;!-- / _System/apps/&lt;app_name>/index.html -->
+<h2>Create a simple dropdown with some options displayed</h2><pre class="prettyprint source lang-html"><code>&lt;!-- / _System/apps/app_name/index.html -->
 
 &lt;html>
     &lt;head>
@@ -61,10 +62,10 @@
 
         &lt;title>Hello world webapp&lt;/title>
 
-        &lt;link rel=&quot;stylesheet&quot; href=&quot;/_System/apps/&lt;app_name>/assets/css/bcapi-latest.css&quot;>        
-        &lt;script type=&quot;text/javascript&quot; src=&quot;/_System/apps/&lt;app_name>assets//lib/bcapi-deps-latest.js&quot;>&lt;/script>
-        &lt;script type=&quot;text/javascript&quot; src=&quot;/_System/apps/&lt;app_name>assets//lib/bcapi-latest.js&quot;>&lt;/script>
-        &lt;link rel=&quot;import&quot; href=&quot;/_System/apps/&lt;app_name>assets//lib/bcapi-webcomponents-latest.html&quot;>
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/_System/apps/app_name/assets/css/bcapi-latest.css&quot;>        
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/_System/apps/app_nameassets//lib/bcapi-deps-latest.js&quot;>&lt;/script>
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/_System/apps/app_nameassets//lib/bcapi-latest.js&quot;>&lt;/script>
+        &lt;link rel=&quot;import&quot; href=&quot;/_System/apps/app_nameassets//lib/bcapi-webcomponents-latest.html&quot;>
     &lt;/head>
 
     &lt;body>
@@ -76,8 +77,86 @@
             &lt;option value=&quot;lastName&quot;>Last Name&lt;/option>
         &lt;/bc-select>
     &lt;/body>
-&lt;/html></code></pre><p>The above example creates a Business Catalyst dropdown populated with several items.<br>Rendered dropdown has all required css classes applied:</p>
-<p><img src="/tutorials" alt="Dropdown result"></p>
+&lt;/html></code></pre><p><img src="tutorials/get-started/dropdown-result.png" alt="Dropdown result"></p>
+<p>The above example creates a Business Catalyst dropdown populated with several items.<br>Rendered dropdown has all required css classes applied:</p>
+<h2>Create a simple dropdown using html + javascript</h2><pre class="prettyprint source lang-html"><code>&lt;!-- / _System/apps/app_name/index.html -->
+
+&lt;html>
+    &lt;head>
+        &lt;meta charset=&quot;utf-8&quot;>
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;>
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+
+        &lt;title>Hello world webapp&lt;/title>
+
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/_System/apps/app_name/assets/css/bcapi-latest.css&quot;>        
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/_System/apps/app_nameassets//lib/bcapi-deps-latest.js&quot;>&lt;/script>
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/_System/apps/app_nameassets//lib/bcapi-latest.js&quot;>&lt;/script>
+        &lt;link rel=&quot;import&quot; href=&quot;/_System/apps/app_nameassets//lib/bcapi-webcomponents-latest.html&quot;>
+    &lt;/head>
+
+    &lt;body>
+        &lt;bc-select id=&quot;ddOrderBy&quot;>&lt;/bc-select>
+
+        &lt;script type=&quot;text/javascript&quot;>
+        document.addEventListener('WebComponentsReady', function() {
+            var orderByDd = document.getElementById(&quot;ddOrderBy&quot;);
+            orderByDd.configure({
+                items: [
+                    {&quot;value&quot;: &quot;0&quot;, &quot;text&quot;: &quot;Order by&quot;},
+                    {&quot;value&quot;: &quot;id&quot;, &quot;text&quot;: &quot;Customer Id&quot;},
+                    {&quot;value&quot;: &quot;firstName&quot;, &quot;text&quot;: &quot;Order by&quot;},
+                    {&quot;value&quot;: &quot;middleName&quot;, &quot;text&quot;: &quot;Middle name&quot;},
+                    {&quot;value&quot;: &quot;lastName&quot;, &quot;text&quot;: &quot;Last name&quot;},
+                ]
+            });
+        });
+        &lt;/script>
+    &lt;/body>
+&lt;/html></code></pre><p><img src="tutorials/get-started/dropdown-result.png" alt="Dropdown result"></p>
+<p>In comparison with the first example, the current example shows how you can configure<br>components using JavaScript. You can find more information about components and<br>dropdown at:</p>
+<ul>
+<li><a href="BCAPI.Components.html">BCAPI.Components</a></li>
+<li><a href="BCAPI.Components.Component.html">BCAPI.Components.Component</a></li>
+<li><a href="BCAPI.Components.DropDown.html">BCAPI.Components.DropDown</a></li>
+</ul>
+<h2>Create a simple dropdown using javascript</h2><pre class="prettyprint source lang-html"><code>&lt;!-- / _System/apps/app_name/index.html -->
+
+&lt;html>
+    &lt;head>
+        &lt;meta charset=&quot;utf-8&quot;>
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;>
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+
+        &lt;title>Hello world webapp&lt;/title>
+
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/_System/apps/app_name/assets/css/bcapi-latest.css&quot;>        
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/_System/apps/app_nameassets//lib/bcapi-deps-latest.js&quot;>&lt;/script>
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/_System/apps/app_nameassets//lib/bcapi-latest.js&quot;>&lt;/script>
+        &lt;link rel=&quot;import&quot; href=&quot;/_System/apps/app_nameassets//lib/bcapi-webcomponents-latest.html&quot;>
+    &lt;/head>
+
+    &lt;body>
+        &lt;script type=&quot;text/javascript&quot;>
+        document.addEventListener('WebComponentsReady', function() {
+            var orderByDd = document.createElement(&quot;bc-select&quot;);
+            orderByDd.setAttribute(&quot;id&quot;, &quot;ddOrderByThird&quot;);
+            orderByDd.configure({
+                items: [
+                    {&quot;value&quot;: &quot;0&quot;, &quot;text&quot;: &quot;Order by&quot;},
+                    {&quot;value&quot;: &quot;id&quot;, &quot;text&quot;: &quot;Customer Id&quot;},
+                    {&quot;value&quot;: &quot;firstName&quot;, &quot;text&quot;: &quot;Order by&quot;},
+                    {&quot;value&quot;: &quot;middleName&quot;, &quot;text&quot;: &quot;Middle name&quot;},
+                    {&quot;value&quot;: &quot;lastName&quot;, &quot;text&quot;: &quot;Last name&quot;},
+                ]
+            });
+
+            document.body.appendChild(orderByDd);
+        });
+        &lt;/script>
+    &lt;/body>
+&lt;/html></code></pre><p><img src="tutorials/get-started/dropdown-result.png" alt="Dropdown result"></p>
+<p>In the above example you can see how Business Catalyst Web Apps components can be<br>created only by using javascript DOM api.</p>
 </article>
 
 </section>
@@ -91,7 +170,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0-dev</a> on Wed Sep 09 2015 06:15:06 GMT+0300 (EEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0-dev</a> on Wed Sep 09 2015 06:36:55 GMT+0300 (EEST)
 </footer>
 
 <script> prettyPrint(); </script>

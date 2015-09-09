@@ -82,6 +82,15 @@ var webComponent = {
     _changeClass: function(newClass) {
         this.__base.changeClass(newClass, this.$.innerButton);
     },
+    /**
+     * This method handles the change of data attached to the button. Internally it emits a custom event for notifying all listeners about a state change.
+     *
+     * @public
+     * @instance
+     *
+     * @param {Object} newData The new data binded to this button.
+     * @return {undefined} No result.
+     */
     _onDataChanged: function(newData) {
         this.trigger("data-changed", newData);
     }

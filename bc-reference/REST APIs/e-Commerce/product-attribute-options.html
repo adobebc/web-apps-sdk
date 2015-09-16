@@ -1,0 +1,392 @@
+<h1 apiType="restv3">Product Attribute Options</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2 id="list-options">List all attribute's options of a site</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/productsattributeoptions
+
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of the first 10 options; each object has the following properties:</p>
+
+<ul>
+<li><code>id</code> - the option's ID <em>(numeric)</em></li>
+<li><code>siteId</code> - the site's ID <em>(numeric)</em></li>
+<li><code>groupId</code> - the attribute's ID <em>(numeric)</em></li>
+<li><code>optionName</code> - the option's name <em>(string)</em></li>
+<li><code>imagePath </code>- the option's image path <em>(string)</em></li>
+</ul>
+
+
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/productsattributeoptions",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{% raw %}{
+  "items": [
+    {
+      "id": 81889,
+      "siteId": 1767665,
+      "groupId": 28369,
+      "optionName": "Blue",
+      "imagePath": "/img/tshirt-name-blue.jpg"
+    },
+    {
+      "id": 81890,
+      "siteId": 1767665,
+      "groupId": 28369,
+      "optionName": "Red",
+      "imagePath": "/img/tshirt-name-red.jpg"
+    },
+    {
+      "id": 81891,
+      "siteId": 1767665,
+      "groupId": 28370,
+      "optionName": "Leather",
+      "imagePath": null
+    },
+    {
+      "id": 81892,
+      "siteId": 1767665,
+      "groupId": 28370,
+      "optionName": "Cotton",
+      "imagePath": null
+    }
+  ],
+  "totalItemsCount": 4,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="details">
+<h2 id="details-option">Get an option's details</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/productsattributeoptions/[option_ID]
+
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Displays the details for an attribute as a JSON object</p>
+<ul>
+  <li><code>id</code> - the option's ID <em>(numeric)</em></li>
+  <li><code>siteId</code> - the site's ID <em>(numeric)</em></li>
+  <li><code>groupId</code> - the attribute's ID <em>(numeric)</em></li>
+  <li><code>optionName</code> - the option's name <em>(string)</em></li>
+  <li><code>imagePath </code>- the option's image path <em>(string)</em></li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/productsattributeoptions/81889",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{% raw %}{
+      "id": 81889,
+      "siteId": 1767665,
+      "groupId": 28369,
+      "optionName": "Blue",
+      "imagePath": "/img/tshirt-name-blue.jpg"
+}{% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="create">
+<h2 id="create-option">Create an attribute's option</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/productsattributeoptions
+
+  <ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+  <li><code>groupId</code> - the attribute's ID, required <em>(numeric)</em></li>
+  <li><code>optionName</code> - the option's name, required <em>(string)</em></li>
+  <li><code>imagePath </code>- the option's image path <em>(string)</em></li>
+</ul>
+</div>
+
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+<pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 CREATED
+Location: /webresources/api/v3/sites/current/productsattribute
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/productsattributeoptions",
+    type: "POST",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    processData: false,
+    data: JSON.stringify({
+        "groupId": 28369,
+        "optionName": "Option name",
+        "imagePath": "/optionalPath/imageName.extension"
+    })
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+</div>
+<div id="edit">
+<h2 id="edit-option">Edit an attribute's option</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong>PUT</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/productsattributeoptions/[option_ID]
+
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+  <li><code>optionName</code> - the option's name <em>(string)</em></li>
+  <li><code>imagePath </code>- the option's image path <em>(string)</em></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/productsattributeoptions/81906",
+    type: "PUT",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    processData: false,
+    data: JSON.stringify({
+        "optionName": "Option name",
+        "imagePath": "/optionalPath/imageName.extension"
+    })
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="delete">
+<h2 id="delete-option">Delete an attribute's option</h2>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/productsattributeoptions/[option_ID]
+
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/productsattributeoptions/81906 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/productsattributeoptions/[option_ID]
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+	url: "/webresources/api/v3/sites/current/productsattributeoptions/81906",
+    type: "DELETE",
+    connection: "keep-alive",
+    contentType: "application/json",
+	mimeType: "application/json ",
+    headers: {
+    	"Authorization": $.cookie('access_token')
+        }
+    });
+    request.done(function (msg) {
+    	$('.output pre').html(JSON.stringify(msg, null, 2));
+        console.log(msg);
+    })
+    request.fail(function(jqXHR) {
+    	console.log("Request failed.");
+        console.log("Error code: " + jqXHR.status);
+        console.log("Error text: " + jqXHR.statusText);
+        console.log("Response text: " + jqXHR.responseText);
+    }){% endraw %}</code></pre>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+</div>

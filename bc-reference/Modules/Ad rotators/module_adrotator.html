@@ -1,0 +1,110 @@
+<h1>&#123;module_adrotator&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>This module outputs the individual Ad-Rotator, which randomly displays a group of HTML, images or Flash media when your browser is refreshed.</p>
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta">
+
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_adrotator render=&quot;item&quot; collection=&quot;my_custom_collection_name&quot; adrotatorid=&quot;123&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>render</strong> - for this module this can only be <em>item</em>. For more information on how to use this parameter take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li><li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>ID</strong> - this parameter is assigned by the system and should nor be altered</li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>This module can be rendered using:</h2>
+<ul>
+    <li><strong>a single image nested in a hyperlink</strong> - when the user clicks the image he is taken to the URL specified in the &quot;Click-Thru URL&quot; field.</li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
+</ul>
+
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;id&#125;&#125;{% endraw %}</code></td>
+         <td class="description">The Ad rotator's ID</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemLabel&#125;&#125;{% endraw %}</code></td>
+         <td class="description">The image's label</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemSource&#125;&#125;{% endraw %}</code></td>
+         <td class="description">The URL of the image currently on display</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemClickUrl&#125;&#125;{% endraw %}</code></td>
+         <td class="description">The URL the site is redirected after clicking the image</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemId&#125;&#125;{% endraw %}</code></td>
+         <td class="description">The individual ID of the image</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemFrame&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Whether the &quot;Click-Thru URL&quot; is opened in a new window or in the current one</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemWidth&#125;&#125;{% endraw %}</code></td>
+         <td class="description">The image width</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemHeight&#125;&#125;{% endraw %}</code></td>
+            <td class="description">The image height</td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemType&#125;&#125;{% endraw %}</code></td>
+         <td class="description">The item's type (image, Flash or HTML)</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li>
+    <code>{% raw %}&#123;module_adrotator adrotatorid=&quot;15264&quot;&#125;{% endraw %}</code> - This generates the ad rotator with the ID 15264
+    </li>
+   
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_adrotator,ID&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>ID</strong> - this parameter is assigned by the system and should nor be altered</li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li>
+    <code>{% raw %}&#123;module_adrotator,15264&#125;{% endraw %}</code> - This generates the ad rotator with the ID 15264
+    </li>
+   
+</ul>
+</div>
+</div>

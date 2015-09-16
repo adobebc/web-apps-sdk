@@ -1,0 +1,59 @@
+<h1>News detail layout</h1> 
+<div id="modules">
+<h2>This layout is not used by any module per se.</h2>
+<p>
+Site visitors get to it only after clicking the links outputted by the tag <code>{% raw %}&#123;tag_subject&#125;{% endraw %}</code> or <code>{% raw %}&#123;tag_subject&#125;{% endraw %}</code> which can both be found on the <a title="News List Layout" href="/reference/tag-reference/news/news-list-layout.html">news list layout</a>.
+</p>
+</div>
+<div id="accessible">
+<h2>Accessible from</h2>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; News Layouts</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/Announcement/detail.html</li>
+</ul></div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_addtofavorites,add_Image, remove_Image&#125;{% endraw %}</code></td><td class="description">Add the news item to favorites list. Optionally customize to display your own custom image for adding and removing. Here is an example - <code>{% raw %}&#123;tag_addtofavorites,&lt;img alt="" src="/images/add.gif" /&gt;,&lt;img alt="" src="/images/remove.gif" /&gt;&#125;{% endraw %}</code></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_body&#125;{% endraw %}</code></td><td class="description">Details of  the news item (editor content)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;fromDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_eventfromdate&#125;{% endraw %}</code></td><td class="description">Start date of the event (if applicable)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;toDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_eventtodate&#125;{% endraw %}</code></td><td class="description">End date of the event (if applicable)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_expirydate&#125;{% endraw %}</code></td><td class="description">Expiry date of the news item.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_lastupdatedate&#125;{% endraw %}</code></td><td class="description">Last update date of  the news item.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_releasedate&#125;{% endraw %}</code></td><td class="description">Release date of  the news item.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;subject&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_subject&#125;{% endraw %}</code></td><td class="description">Subject of news item in plain text</td>
+        </tr>
+    </tbody>
+</table>
+</div>

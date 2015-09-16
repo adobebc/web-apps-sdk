@@ -1,0 +1,142 @@
+<h1>&#123;module_forum&#125;</h1> 
+
+<div class="description">
+<h2>Description</h2>
+<p>Displays a list of forums.</p><p class="beta liquid-enabled nocontent">This module also supports <a href="/Developers/beta/introduction-to-liquid" title="Introduction to Liquid">Liquid</a>, take a look at this article to learn how to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access its Liquid output tags</a> and <a href="/developers/liquid/getting-started-with-liquid#liquid-modules" title="Use custom logic to render liquid enabled modules">render it using your own custom logic</a>.</p>
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta">
+
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_forum render=&quot;item|collection&quot; filter="item(individual)/all/classified/latestClassified/random/latest/randomClassified" itemid="newsId or classificationId" noTemplate="true" targetFrame=&quot;_self&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+<li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li><strong>item</strong> - individual item</li>
+        <li><strong>all</strong> - all items</li>
+        <li><strong>latest</strong> - latest items</li>
+        <li><strong>latestClassified</strong> - latest items in a category</li>
+        
+        <li><strong>random</strong> - random item</li>
+        <li><strong>randomClassified</strong> - displays a random item in a particular category</li>
+        <li><strong>classified</strong> - all the items in a category</li>
+    </ul>
+    </li>
+    <li><strong>itemid</strong> - system generated (do not change)</li>
+    <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
+    <li><strong>targetFrame</strong> - the frame in which to open the item in</li><li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>This module can be rendered using:</h2>
+<ul>
+    <li><strong>the  list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/reference/tag-reference/forums/individual-forum-layout.html" title="Forum layout">Forum layout reference page</a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
+</ul>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Expiry date of the forum</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Description of  the forum</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastPostAuthor&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Name (alias) of the person who last posted to the forum</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastPostDate&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Date and time of the last post in the forum</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Name of  forum in plain text.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalPosts&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Total number of the posts in forum</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalTopics&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Total number of topics in forum</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalViews&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Total number of times topics of the forum have been viewed</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;lastUpdateDate&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Last update date of the forum by an administrator. The date is in this format - <em>27-Mar-2013</em></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
+         <td class="description">Release date of  the forum</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_forum filter=&quot;item&quot; itemid=&quot;317&quot; targetFrame=&quot;_blank&quot;&#125;{% endraw %}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
+    <li><code>{% raw %}&#123;module_forum filter=&quot;all&quot;  template="/layouts/custom/individual_forum.tpl"&#125;{% endraw %}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %} &#123;module_forum filter=&quot;item&quot; itemid=&quot;317&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_forum,filter,ID,targetFrame&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<ul>
+        <li>i - individual item</li>
+        <li>a - all items</li>
+        <li>l - latest items</li>
+        <li>r - random item</li>
+        <li>cr - displays a random item in a particular category        
+        <li>cl - latest items in a particular category</li>
+    </ul>
+    </li>
+    <li><strong>ID</strong> - system generated (do not change)</li>
+    <li><strong>targetFrame</strong> - the frame in which to open the item in</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<ul>
+    <li>Forum Layouts &gt; <a href="/reference/tag-reference/forums/individual-forum-layout.html">Individual Forum Layout</a></li>
+    <li>This module also supports <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_forum,i,317,_blank&#125;{% endraw %}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
+    <li><code>{% raw %}&#123;module_forum,a, template="/layouts/custom/individual_forum.tpl"&#125;{% endraw %}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+</ul>
+</div>
+</div>

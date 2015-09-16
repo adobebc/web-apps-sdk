@@ -1,0 +1,56 @@
+<h1>Conditionals</h1>
+<h2>IF - ELSIF</h2>
+<p>IF is one of the simplest decision making logic blocks. It can be used either to check if a variable exists and do something if it is (or it is not) or check if a statement is true or false.</p>
+<p>In this example let's check if the logged in user's firstName exists and if so use it. Otherwise, if the site visitor is not logged in or if the site visitor has not filled in his or her's firstname we will only show &quot;Hello,&quot;:</p>
+
+<pre class="language-javascript"><code>{% raw %}  &#123;&#37; if globals.user.firstName &#37;&#125;
+    &lt;p&gt;Hello &#123;&#123;globals.user.firstName&#125;&#125;,&lt;/p&gt;
+  &#123;&#37; else &#37;&#125;
+    &lt;p&gt;Hello, &lt;/p&gt;
+  &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
+  <p>You can also use multiple variables in an IF block, for example let's assume we have a variable that stores the user's age in years and another one that stores the days since the user's last purchase:</p>
+  <pre class="language-javascript"><code>{% raw %}  &#123;&#37; if myUserData.age &gt; 30 and myUserData.lastOrder &lt; 20 &#37;&#125;
+    &lt;p&gt;Show special offer for users above 30&lt;/p&gt;
+  &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
+<p>You can optionally use <code>{% raw %}elsif{% endraw %}</code> or <code>{% raw %}else{% endraw %}</code>:</p>
+    <pre class="language-javascript"><code>{% raw %}  &#123;&#37; if myUserData.type == &quot;partner&quot; &#37;&#125;
+    &lt;p&gt;&lt;a href=&quot;/partner-login.html&quot;&gt;&lt;/p&gt;
+    &#123;&#37; elsif myUserData.type == &quot;regular&quot; &#37;&#125;
+    &lt;p&gt;&lt;a href=&quot;/login.html&quot;&gt;&lt;/p&gt;    
+  &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
+  <p>or:</p>
+      <pre class="language-javascript"><code>{% raw %}  &#123;&#37; if myUserData.type == &quot;partner&quot; &#37;&#125;
+    &lt;p&gt;&lt;a href=&quot;/partner-login.html&quot;&gt;&lt;/p&gt;
+  &#123;&#37; else &#37;&#125;
+    &#123;&#37; if myUserData.type == &quot;regular&quot; &#37;&#125;
+    &lt;p&gt;&lt;a href=&quot;/login.html&quot;&gt;&lt;/p&gt;    
+  &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
+<h2>CASE</h2>
+<p>Simmilar to multiple nested IF statements, CASE allows you to take different actions based on the value of an evalueated output tag or variable.</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; case item.country &#37;&#125;
+  &#123;&#37; when &#39;DE&#39; &#37;&#125;
+    Willkommen
+  &#123;&#37; when &#39;ES&#39; &#37;&#125;
+    Bienvenido
+  &#123;&#37; when &#39;GB&#39; &#37;&#125;
+    Welcome
+  &#123;&#37; else &#37;&#125;
+    Bine ai venit
+&#123;&#37; endcase &#37;&#125;{% endraw %}</code></pre>
+<p>In the example above <code>{% raw %}item.country{% endraw %}</code> is tested against the known values DE, ES and EN and if it has a different value "Bine ati venit" is rendered.</p>
+<p>You can also use the OR or AND operators with your checks checks:</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; case item.country &#37;&#125;
+  &#123;&#37; when &#39;DE&#39; or &#39;AT&#39;&#37;&#125;
+    Willkommen
+  &#123;&#37; when &#39;ES&#39; or &#39;TD&#39; &#37;&#125;
+    Bienvenido
+  &#123;&#37; when &#39;GB&#39; or &#39;US&#39; or &#39;AU&#39;&#37;&#125;
+    Welcome
+  &#123;&#37; else &#37;&#125;
+    Bine ai venit
+&#123;&#37; endcase &#37;&#125;{% endraw %}</code></pre>
+<h2>UNLESS</h2>
+<p>UNLESS is the opposite if IF, the condition is executed if the condition is false. For example:</p>
+ <pre class="language-javascript"><code>{% raw %}  &#123;&#37; unless myUserData.type == &quot;partner&quot; or myUserData.type == &quot;regular&quot; &#37;&#125;
+    &lt;p&gt;&lt;a href=&quot;/login.html&quot;&lt;/p&gt;    
+  &#123;&#37; endunless &#37;&#125;{% endraw %}</code></pre>

@@ -1,0 +1,64 @@
+<h1>Comparisons in Liquid</h1> 
+<h2>How to compare</h2>
+<p>When comparing variables always make sure you are using the correct data types. If the operand types are mismatched the system tries to make the operation work by converting one of the operands like this:</p>
+<ul>
+<li>comparing string with numeric - the system tries to convert the string operand to numeric. If this is not possible both operands will be treated as string. For example:
+  <ul>
+  <li>5 &gt; "7" - &quot;7&quot; will be converted to numeric and the operation will be false</li>
+  <li>5 &gt; &quot;a132&quot; - &quot;a123&quot; cannot be compared to numeric, this will be treated as &quot;5&quot; &gt; &quot;a123&quot;</li>
+</ul>
+</li>
+<li>comparing string with dateTime -the system will try to convert the string operand to a dateTime variable, if this fails the operands will be compared as string. For example:
+  <ul>
+  <li>2015-01-13T10:47:54 &gt; "2012-01-13T10:47:54" - the second operand will be converted to dateTime and the operation will be true</li>
+  <li>2015-01-13T10:47:54 &gt; "Jul 2012" - the second operand cannot be compared to dateTime and the comparison will be treated as a string to string comparison.</li>
+</ul>
+</li>
+</ul>
+<p> To convert variables take a look at the <em>convert</em> filter in the <a href="/reference/liquid-reference/reference/filters.html">Supported filters</a> article.</p>
+<h3>Number variables</h3>
+<p>Comparing numeric values is pretty straight forward. You can use any of the operators detailed in the - <a href="/reference/liquid-reference/reference/operators.html">Supported operators</a> article, for example:</p>
+<p class="alert alert-info"><strong>Do note</strong> the decimal sepparator is a single dot.</p>
+<pre class="language-javascript"><code>{% raw %}  &#123;&#37; assign var1 = 5.123 &#37;&#125;
+  &#123;&#37; assign var2 = 2 &#37;&#125;
+
+  &#123;&#37; if var1 &gt; var2 &#37;&#125;
+    &lt;p&gt;var1 is larger&lt;/p&gt;
+  &#123;&#37; else &#37;&#125;
+    &lt;p&gt;var2 is larger&lt;/p&gt;
+  &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
+<p>You can also use the OR and AND operators to create more complex comparisons:</p>
+  <pre class="language-javascript"><code>{% raw %}  &#123;&#37; if userData.age &gt; 18 and userData.city == &quot;Chicago&quot; &#37;&#125;
+    &lt;a href=&quot;/chicago-offers.html&quot;&gt;See our special offers for Chicago.&lt;/p&gt;
+  &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
+<h3>String variables</h3>
+<p>When comparing string type variables the characters are compared 1-1, for example</p>
+<pre class="language-javascript"><code>{% raw %}  &#123;&#37; assign var1 = &quot;John&quot; &#37;&#125;
+  &#123;&#37; assign var2 = &quot;S&quot; &#37;&#125;
+
+  &#123;&#37; if var1 &gt; var2 &#37;&#125;
+    &lt;p&gt;var1&lt;/p&gt;
+  &#123;&#37; else &#37;&#125;
+    &lt;p&gt;var2&lt;/p&gt;
+  &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
+  <p>The comparison above will output <em>var2</em> because "S" is considered larger than "J".  </p>
+  <pre class="language-javascript"><code>{% raw %}  &#123;&#37; assign var1 = &quot;J1237c&quot; &#37;&#125;
+  &#123;&#37; assign var2 = &quot;J1237a&quot; &#37;&#125;
+
+  &#123;&#37; if var1 &gt; var2 &#37;&#125;
+    &lt;p&gt;var1&lt;/p&gt;
+  &#123;&#37; else &#37;&#125;
+    &lt;p&gt;var2&lt;/p&gt;
+  &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
+    <p>This time the comparison will output <em>var1</em> because the first 5 characters are identical and at the 6-th character &quot;c&quot; is considered larger than &quot;a&quot;.</p>
+<pre class="language-javascript"><code>{% raw %}  &#123;&#37; assign var1 = &quot;524a1&quot; &#37;&#125;
+  &#123;&#37; assign var2 = 3 &#37;&#125;
+
+  &#123;&#37; if var1 &gt; var2 &#37;&#125;
+    &lt;p&gt;var1&lt;/p&gt;
+  &#123;&#37; else &#37;&#125;
+    &lt;p&gt;var2&lt;/p&gt;
+  &#123;&#37; endif &#37;&#125;{% endraw %}</code></pre>
+ <p>In this example we are comparing a string variable with a numeric one. The string variable however cannot be converted to a string so the comparison will be between two string variables - &quot;524a1&quot; and &quot;3&quot;. In this case <em>524a1</em> is considered larger.</p>
+<h3>Date variables</h3>
+<p>Comparing date type variables is straight forward. Provided at least one of the operands is properly formatted as <em>dateTime </em>and the other operand is either <em>dateTime</em> or <em>string</em> any of the operators detailed in the <a href="/reference/liquid-reference/reference/operators.html">Supported operators</a> article can be used.</p>

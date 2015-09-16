@@ -1,0 +1,81 @@
+<h1>Affiliate program layout</h1> 
+<div id="modules">
+<h2>Is used by these modules</h2>
+<ul>
+    <li><a href="/reference/module-reference/affiliate-programs/module_affiliateprogram.html" title=" module_affiliateprogram">&#123;module_affiliateprogram&#125;</a></li>
+</ul>
+<p>
+</p>
+</div>
+<div id="accesible">
+<h2>Accessible from</h2>
+<ul>
+  <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; Affiliate Program Layouts</li>
+  <li><strong>SFTP &amp; Develop Mode:</strong>/Layouts/Affiliate/affiliate.html </li>
+</ul>
+</div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_actiontotal,actionTypeId,days&#125;{% endraw %}</code></td><td class="description">Total number of actions for the last x days.  the Action type ID's are as follows:
+            <ul>
+            <li>(Inquiries) WebForm = 2 </li>
+            <li>Purchase = 3 </li>
+            <li>Quote = 4 </li>
+            <li>SecureZoneLogin = 5 </li>
+            <li>EmailListSubscribe = 6 </li>
+            <li>EmailListSubscribeDoubleOptIn = 12 </li>
+            <li>EProductDownload = 7 </li>
+            <li>ReferAFriend = 8 </li>
+            <li>BookingForm = 9 </li>
+            <li>EmailListUnsubscribe = 10 </li>
+            <li>CampaignOpen = 11 </li>
+            <li>CampaignLinkClick = 13 </li>
+            <li>ForumNewTopic = 14 </li>
+            <li>ForumNewPost = 15</li>
+            </ul>
+            
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;affiliateLink&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_affiliatelink&#125;{% endraw %}</code></td><td class="description">The link for this affiliate to use on his/her website or forward to friends for tracking purposes.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;clickThrusTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_clickthrustotal&#125;{% endraw %}</code></td><td class="description">Total click-thrus via the affiliate link</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;commissionOwing&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commissionowing&#125;{% endraw %}</code></td><td class="description">Commission owing to the affiliate logged into the secure zone</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;referralsLastMonth&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_referralslastmonth&#125;{% endraw %}</code></td><td class="description">Referrals made last month by the affiliate logged into the secure zone</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;referralsLastWeek&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_referralslastweek&#125;{% endraw %}</code></td><td class="description">Referrals made last week by the affiliate logged into the secure zone</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;referralsToday&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_referralstoday&#125;{% endraw %}</code></td><td class="description">Referrals made today by the affiliate logged into the secure zone</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;referralsTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_referralstotal&#125;{% endraw %}</code></td><td class="description">Total number of referrals made by the affiliate logged into the secure zone</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+</div>

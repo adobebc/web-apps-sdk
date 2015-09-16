@@ -1,0 +1,244 @@
+<h1>Shopping cart layout</h1> 
+<div id="description">
+<h2>Description</h2>
+<p>This layout controls the look and content of the Shopping Cart.
+</p>
+</div>
+<div id="accessible">
+<h2>Accessible from</h2>
+<p>
+The Shopping Cart is the panel customer see after clicking the "View Cart" link outputted by the module &#123;<a href="/reference/module-reference/e-commerce/module_shoppingcartsummary.html">module_shoppingcartsummary</a>&#125;{% endraw %}</code> or after they click a product's "Buy now" button (this is outputted by the {% raw %}&#123;tag_buynow&#125;{% endraw %}</code> tag  used in a product's <a href="/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a> or <a href="/reference/tag-reference/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layouts.)</p>
+<p>
+In the "Develop" section of the site or if you connect via sFTP you can find this layout at this path - /Layouts/OnlineShop/shopping_cart-XX
+</p>
+<p>
+Replace "XX" with the country code you have added in the Site Settings &gt; Site Domains panel (see the "Country" column).
+</p><p>
+If you have multiple domains with different "Country" values you will find multiple quote-receipt-XX files, one for each country.
+This way, with one layout for every country defined you can vary the contents of the layout to accomodate a multilingual website.
+</p></div>
+<div id="tags">
+<h2>Renders these tags</h2>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_buybutton,Text or Image,true&#125;{% endraw %}</code></td><td class="description">Link to checkout and purchase products in cart (Text or Image allow you to render your own text or to use image instead). True is validation function that checks to make sure every order has a valid shipping charge before the customer is able to pay and finalize the order.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;buyUrl&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"></td>
+         <td class="description">The URL for the Buy button</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;buyButtonOnClick&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"></td>
+         <td class="description">The javascript event to be assigned to the Buy button</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_cataloguebreadcrumbs&#125;{% endraw %}</code></td><td class="description">Catalogue breadcrumbs help customers easily navigate between related catalogues</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_clearcartbutton,imagepath&#125;{% endraw %}</code></td><td class="description">Link to clear the cart (add an 'imagepath' to use image instead)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;clearCartOnClick&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"></td>
+         <td class="description">The javascript event to be assigned to the clear cart button</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;items.custom1&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom1&#125;{% endraw %}</code></td><td class="description">Custom field #1. Use to display any information about a product</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;items.custom2&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom2&#125;{% endraw %}</code></td><td class="description">Custom field #2. Use to display any information about a product</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;items.custom3&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom3&#125;{% endraw %}</code></td><td class="description">Custom field #3. Use to display any information about a product</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;items.custom4&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_custom4&#125;{% endraw %}</code></td><td class="description">Custom field #4. Use to display any information about a product</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;discountCode&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_discountcode&#125;{% endraw %}</code></td><td class="description">An input box for customers to enter discount code in</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;quoteUrl&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"></td>
+         <td class="description">Link to checkout and request a quote.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_getquotebutton&#125;{% endraw %}</code></td><td class="description">Link to checkout and request a quote (customize to use image instead)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;giftVoucher&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_giftvoucher&#125;{% endraw %}</code></td><td class="description">An input box for customer to enter gift voucher code in</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;giftVoucherAmount&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_giftvoucheramount&#125;{% endraw %}</code></td><td class="description">Total amount of credit applied to this order as a result of a gift voucher</td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;giftVoucherOnChange&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"></td>
+         <td class="description">The javascript event applied to the gift voucher controls</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;invoiceDiscountAmount&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicediscountamount&#125;{% endraw %}</code></td><td class="description">Total discount amount based on the discount code entered (shipping price isnotdiscounted)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;invoiceTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicetotal&#125;{% endraw %}</code></td><td class="description">Total cost of the current cart (factoring in all costs and discounts)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;invoiceTotalExceptTaxAmount&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicetotalextaxamount&#125;{% endraw %}</code></td><td class="description">Invoice total amount excluding tax (e.g. products ex tax + shipping ex tax)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_invoicetotaltaxamount,state,state special tax rate,regular tax rate name,special tax rate name&#125;{% endraw %}</code></td><td class="description">Invoice total amount of tax (e.g. products tax + shipping tax).  The additional parameters allow a user to configure the system to break out part of the tax for a specific state into two parts. This is useful in some countries where by law you are required to show GST or similar tax on a separate line, for example:
+            <ul>
+                <li>Tax code BC is configured as 12% (the sum of 7% PST and 5% GST)</li>
+                <li>Our tag is configured like this: {%raw%}&#123;tag_invoicetotaltaxamount,BC,5,PST,GST&#125;{% endraw %}</code></li>
+                <li>$100 order for BC would render the tax like this: PST: $7
+                <br />
+                GST: $5</li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productTaxPercentage&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttaxpercentage,percentage&#125;{% endraw %}</code></td><td class="description">To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the product price will be paid as a sales tax, use {% raw %}&#123;tag_producttaxpercentage, 12.5&#125;{% endraw %}</code> tag where <em>12.5</em> is the percentage of tax to be paid.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalTaxPercentage&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totaltaxpercentage,percentage&#125;{% endraw %}</code></td><td class="description">To use this tag, you should enter in the prices of all your products inclusive of tax. To show how much of the total price will be paid as a sales tax , use {% raw %}&#123;tag_producttaxpercentage, 12.5&#125;{% endraw %}</code> tag where <em>12.5</em> is the percentage of tax to be paid.</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;orderId&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_orderid&#125;{% endraw %}</code></td><td class="description">Order ID normally assigned to quotes. You can also use this value to search for the order in the Admin console's CRM &gt; Search panel</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;code&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productcode&#125;{% endraw %}</code></td><td class="description">Product code of the product in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productdescription&#125;{% endraw %}</code></td><td class="description">Product description captured from the 'Instructions' box or 'Product Attributes'</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producteditorcontent&#125;{% endraw %}</code></td><td class="description">Product description as it appears in the WYSIWYG editor</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productextaxamount&#125;{% endraw %}</code></td><td class="description">Price of each product excluding tax in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productGrandTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productgrandtotal&#125;{% endraw %}</code></td><td class="description">Total price of all products including tax in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productimage&#125;{% endraw %}</code></td><td class="description">Small image of the product</td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;imagePath&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"></td>
+         <td class="description">The path of the product's image</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productAmountIncludingTax&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productinctaxamount&#125;{% endraw %}</code></td><td class="description">Price of each product including tax in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productname&#125;{% endraw %}</code></td><td class="description">List of product names in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productname_nolink&#125;{% endraw %}</code></td><td class="description">Product name already in the cart without a link back to the product</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;quantity&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productquantity&#125;{% endraw %}</code></td><td class="description">Number of units of each product in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productremovelink&#125;{% endraw %}</code></td><td class="description">Link to remove product from the cart</td>
+        </tr>
+          <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;removeOnClick&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"></td>
+         <td class="description">The event to be associated with the remove product button</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productSubTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productsubtotal&#125;{% endraw %}</code></td><td class="description">Total price of all products excluding tax in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productTaxAmount&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttaxamount&#125;{% endraw %}</code></td><td class="description">Amount of tax for each product in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productTaxRate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttaxrate&#125;{% endraw %}</code></td><td class="description">Tax rate associated with each product in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productTaxTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttaxtotal&#125;{% endraw %}</code></td><td class="description">Total tax amount for all products in the cart</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttotal&#125;{% endraw %}</code></td><td class="description">Total price of each product in the cart (e.g. units x unit price inc tax)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productTotalExceptTax&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_producttotalextax&#125;{% endraw %}</code></td><td class="description">Total amount for product excluding tax (Product x Quantity)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingextaxamount&#125;{% endraw %}</code></td><td class="description">Price of shipping option chosen excluding tax</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingoptions&#125;{% endraw %}</code></td>
+            <td class="description">List of shipping options. The full syntax is  <code>{% raw %}&#123;tag_shippingoptions, true, OnlyChargeCountryUsers, ShipToSingleCountry, ApplyTaxToShipping, ApplyTaxToGiftVouchers&#125;{% endraw %}</code>
+                <p>Take a look at the <a href="/user-manual/e-Commerce/Shipping/displaying-shipping-options#tag_shippingoptions" title="Customizing the shipping options tag">Displaying shipping options</a> article for more details on each parameter.</p>
+           
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;shippingTaxAmount&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingtaxamount&#125;{% endraw %}</code></td><td class="description">Amount of tax associated with the shipping option chosen</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;shippingTaxRate&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingtaxrate&#125;{% endraw %}</code></td><td class="description">Tax rate associated with the shipping option chosen</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;shippingTotal&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_shippingtotal&#125;{% endraw %}</code></td><td class="description">Total cost of the shipping option chosen (e.g. shipping ex tax + shipping tax)</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalUnits&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalunits&#125;{% endraw %}</code></td><td class="description">Total product units in the cart</td>
+        </tr>
+    </tbody>
+</table>
+</div>

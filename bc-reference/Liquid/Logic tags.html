@@ -1,0 +1,254 @@
+<h1>Supported logic tags</h1> 
+<p class="alert alert-info"><strong>Tip:</strong> What's the difference between <code>{% raw %}&#37;&#125;{%endraw%}</code> and <code>{% raw %}-&#37;&#125;{%endraw%}</code>? Here's how to handle <a href="/how-tos/liquid/cleaning-liquid-generated-whitespace">Liquid generated whitespace</a>.</p>
+<div type="cs-pod">
+<h2 id="IF">IF</h2>
+<p>Simple if decision block.</p>
+<pre class="language-javascript"><code>{% raw %}  &#123;&#37; if item.Color == &#39;red&#39; -&#37;&#125;
+    &lt;p&gt;Red is the color&lt;/p&gt;
+  &#123;&#37; endif -&#37;&#125;{% endraw %}</code></pre>
+  </div>
+  <div type="cs-pod">
+<h2 id="IF-else">IF else</h2>
+<p>Just like a regular IF condition, the only difference is this adds another possible choice.</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; if item.Color == &#39;red&#39; -&#37;&#125;
+&lt;p&gt;Red is the color&lt;/p&gt;
+&#123;&#37; elsif item.Color == 'blue' -&#37;&#125;
+  &lt;p&gt;Blue is the color&lt;/p&gt;
+&#123;&#37; else -&#37;&#125;
+  &lt;p&gt;Neither red nor blue.&lt;/p&gt;
+&#123;&#37; endif -&#37;&#125;
+{% endraw %}</code></pre>
+</div>
+<div type="cs-pod">
+<h2 id="Unless">UNLESS</h2>
+<p>Unless the condition is true the code is executed</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; unless item.Color == &#39;red&#39; -&#37;&#125;
+ &lt;p&gt;The color is not red.&lt;/p&gt;
+&#123;&#37; endunless -&#37;&#125;{% endraw %}</code></pre>
+<p>or</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; unless item.Color == &#39;red&#39; or item.Color == &#39;blue&#39;-&#37;&#125;
+	&lt;p&gt;The color is not red nor blue.&lt;/p&gt;
+&#123;&#37; endunless -&#37;&#125;
+{% endraw %}</code></pre>
+</div>
+<div type="cs-pod">
+<h2 id="Case">CASE</h2>
+<p>Do something based on the possible values of a variable. If none of the "known" values are encountered the last &quot;else&quot; branch will be executed.</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; case item.country -&#37;&#125;
+  &#123;&#37; when &#39;DE&#39; -&#37;&#125;
+    Willkommen
+  &#123;&#37; when &#39;ES&#39; -&#37;&#125;
+    Bienvenido
+  &#123;&#37; when &#39;EN&#39; -&#37;&#125;
+    Welcome
+  &#123;&#37; else -&#37;&#125;
+    Bine ai venit
+&#123;&#37; endcase -&#37;&#125;
+{% endraw %}</code></pre>
+</div>
+<div type="cs-pod">
+<h2 id="FOR">FOR</h2>
+<p>FOR is used to loop over a collection of items.</p>
+<pre class="language-markup"><code>{% raw %}&#123;&#37; for item in webapp1.items -&#37;&#125;
+&lt;p&gt;
+    This item&#39;s name is: &#123;&#123;item.name&#125;&#125; 
+&lt;/p&gt;
+&#123;&#37; endfor -&#37;&#125;{% endraw %}</code></pre>
+<p>In FOR loops you can also access the key/value pairs, for example:</p>
+<pre class="language-markup"><code>{% raw %}&lt;ul&gt;
+&#123;&#37; for getParam in this.globals.visitor -&#37;&#125; 
+  &lt;li&gt;&#123;&#123;getParam[0]&#125;&#125; = &#39;&#123;&#123;getParam[1]&#125;&#125;&#39;&lt;/li&gt;
+&#123;&#37; endfor -&#37;&#125;
+&lt;/ul&gt;{% endraw %}</code></pre>
+<p>will render the <code>{% raw %}this.globals.visitor{% endraw %}</code> object like so:</p>
+<pre class="language-markup"><code>{% raw %}&lt;ul&gt;
+  &lt;li&gt;deviceClass = &#39;desktop&#39;&lt;/li&gt;
+  &lt;li&gt;ip = &#39;10.10.10.10&#39;&lt;/li&gt;
+  &lt;li&gt;country = &#39;US&#39;&lt;/li&gt;
+  &lt;li&gt;userAgent = &#39;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36&#39;&lt;/li&gt;
+&lt;/ul&gt;{% endraw %}</code></pre>
+
+<p><strong>Limit and Offset</strong></p>
+<p>Liquid for loops support the ability to limit and offset the results. You can limit the number of results by a value and offset the results by a value also.<br/>
+	More can be read about these loop filters in the <a href="/reference/liquid-reference/reference/filters.html">filters reference</a>.
+</p>
+
+<p>In a  loop you can access these variables:</p>
+<ul>
+<li><code>{% raw %}{{forloop.length}}{% endraw %}</code> - length of the entire for loop <em>(integer)</em></li>
+<li><code>{% raw %}{{forloop.index}}{% endraw %}</code>  - index of the current iteration <em>(integer)</em></li>
+<li><code>{% raw %}{{forloop.index0}}{% endraw %}</code> - index of the current iteration (zero based) <em>(integer)</em></li>
+<li><code>{% raw %}{{forloop.rindex}}{% endraw %}</code> - how many items are still left? <em>(integer)</em></li>
+<li><code>{% raw %}{{forloop.rindex0}}{% endraw %}</code>     # => how many items are still left? (zero based) <em>(integer)</em></li>
+<li><code>{% raw %}{{forloop.first}}{% endraw %}</code>  - is this the first iteration? <em>(boolean)</em></li>
+<li><code>{% raw %}{{forloop.last}}{% endraw %}</code>   - is this the last iteration? <em>(boolean)</em></li>
+</ul>
+<div class="chx">
+<p>The quickest way to see these variables in action is to iterate over the globals object. Paste this code in any page:</p>
+<pre class="language-javascript"><code>{% raw %}&lt;ul&gt;
+&#123;&#37; for item in globals -&#37;&#125;
+    &lt;li&gt;&#123;&#123;item[0]&#125;&#125;: &#123;&#123;item[1]&#125;&#125;&lt;br/&gt;
+        &lt;p&gt;
+            forloop.length is &#123;&#123;forloop.length&#125;&#125; - length of the entire for loop&lt;br/&gt;
+            forloop.index is &#123;&#123;forloop.index&#125;&#125;  - index of the current iteration&lt;br/&gt;
+            forloop.index0 is &#123;&#123;forloop.index0&#125;&#125; - index of the current iteration (zero based)&lt;br/&gt;
+            forloop.rindex is &#123;&#123;forloop.rindex&#125;&#125; - how many items are still left?&lt;br/&gt;
+            forloop.rindex0 is  &#123;&#123;forloop.rindex0&#125;&#125; - how many items are still left? (zero based)&lt;br/&gt;
+            forloop.first is &#123;&#123;forloop.first&#125;&#125;  - is this the first iteration?&lt;br/&gt;
+            forloop.last is &#123;&#123;forloop.last&#125;&#125;   - is this the last iteration? &lt;br/&gt;
+        &lt;/p&gt;
+    &lt;/li&gt;
+&#123;&#37; endfor -&#37;&#125;
+&lt;/ul&gt;{% endraw %}</code></pre>
+</div>
+<p>You can only iterate over a part of a collection, for example if you have a large list of customers you can only iterate over 20 at a time using the <em><strong>limit</strong></em> and <em><strong>offset</strong></em> variables.</p>
+<div class="chx">
+<pre class="language-javascript"><code>{% raw %} &#123;module_data resource="customers" version="v3" template="" collection="customerInfo" order="firstName" fields="email1, firstName, lastName, id"}
+//this module creates a collection named customerInfo that first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
+//let's display the data in the collection in a table:
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;th&gt;No.&lt;/th&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Email&lt;/th&gt;
+    &lt;/thead&gt;
+    &#123;&#37;for item in customerInfo.items limit:4 offset:0-&#37;&#125;
+//looping the first 4 items of the collection
+    &lt;tr&gt;
+        &lt;td&gt;&#123;&#123;forloop.index&#125;&#125;&lt;/td&gt;
+//in the first td we output the row number using forloop.index
+        &lt;td&gt;&#123;&#123;item.firstName&#125;&#125; &#123;&#123;item.lastName&#125;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#37; if &#123;&#123;item.email1.value&#125;&#125;-&#37;&#125;
+            &#123;&#123;item.email1.value&#125;&#125;
+            &#123;&#37;else-&#37;&#125;
+            N/A
+            &#123;&#37;endif-&#37;&#125;
+//in this if block we check that the current user has the email1 address filled in. Otherwise "N/A" will be displayed.
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&#123;&#37;endfor-&#37;&#125;
+&lt;/table&gt;{% endraw %}</code></pre>
+</div>
+<p>The  loop can also iterate in reverse using the <em><strong>reversed</strong></em> parameter. </p>
+<div class="chx">
+<p>For example, let's use the same customer collection from the previous example this time orders by <em>firstName</em> desc:</p>
+<pre class="language-javascript"><code>{% raw %} &#123;module_data resource="customers" version="v3" template="" collection="customerInfo" order="-firstName" fields="email1, firstName, lastName, id"}
+//this module creates a collection named customerInfo that first 10 customers on your site ordered by the firstName and includes the fields specified in the fields parameter
+&#123;&#37;for item in customerInfo.items reversed -&#37;&#125;
+&lt;li&gt;&#123;&#123;item.firstName&#125;&#125;&lt;/li&gt;
+&#123;&#37;endfor-&#37;&#125;
+//this loop will go over the items in the collection in reverse order
+{% endraw %}</code></pre>
+</div>
+</div>
+<div type="cs-pod">
+<h2 id="Cycle">CYCLE</h2>
+<p>Render one of a few possible items. For example:</p><pre class="language-javascript"><code>{% raw %}&#123;&#37; cycle 'red', 'green', 'blue' -&#37;&#125;<br /> 
+&#123;&#37; cycle 'red', 'green', 'blue' -&#37;&#125;<br /> 
+&#123;&#37; cycle 'red', 'green', 'blue' -&#37;&#125;<br /> 
+&#123;&#37; cycle 'red', 'green', 'blue' -&#37;&#125;<br /> {% endraw %}</code></pre>
+<p class="chx">renders:</p>
+<p class="chx">
+red<br /> 
+green<br /> 
+blue<br /> 
+red<br /> 
+</p>
+</div>
+<div type="cs-pod">
+<h2 id="Include">INCLUDE</h2>
+<p>Include is used to pull data from another page. </p>
+<p class="chx">You can think of it much like you would think of a content holder. The main difference is when you get a page's contents using include the Liquid  objects and collections will become available in your main page.</p>
+<p>For example, paste this code in a page, name it <em>to-be-included.html</em>:</p>
+<pre class="language-javascript"><code>{% raw %}&lt;html&gt;&lt;head&gt;&lt;head&gt;
+&lt;body&gt;
+&#123;module_data resource="customers" subresource="orders" resourceId="&#123;&#123;-&#37;&#125;globals.user.entityid&#125;&#125;" version="v3" template="" collection="customerOrders"&#125; 
+//this gets the list of orders for the logged in customer
+&lt;/body&gt;
+&lt;/html&gt;
+{% endraw %}</code></pre>
+<p>On another page (the main page) paste this code:</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37;include "/to-be-included.html"-&#37;&#125;
+&lt;pre&gt;&#123;&#123;customerOrders | json&#125;&#125;&lt;/pre&gt;
+//even though the collection customerOrders is not defined in the main page you will still see its contents{% endraw %}</code></pre>
+<p class="chx">This feature is particularly useful in helping you keep the Liquid content organized, for example you can group pages that contains snippets of Liquid code (orders for the logged in customers, more complex code snippets that loop other objects or take into account more factors - is the user a wholesaler, does he have access to a particular page, does he have an order over $50 in the last week and so on) in a single folder and include them when needed.</p>
+</div>
+<div type="cs-pod">
+<h2 id="Assign">ASSIGN</h2>
+<p>This is used to create a new variable.</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; assign new_variable = &quot;my new value&quot; -&#37;&#125;{% endraw %}</code></pre>
+<p>Or update a variable's value:</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; assign new_variable = &quot;the new value&quot; -&#37;&#125;{% endraw %}</code></pre>
+</div>
+<div type="cs-pod">
+<h2 id="Capture">CAPTURE</h2>
+<p>Assign a block of text, HTML code to a variable.</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; capture item_date -&#37;&#125;&lt;span style=&quot;color:blue&quot;&gt;&#123;&#123;item.releaseDate&#125;&#125;&lt;/span&gt;&#123;&#37; endcapture -&#37;&#125;{% endraw %}</code></pre>
+<p>You can then use <code>{% raw %}&#123;&#123;item_date&#125;&#125;{% endraw %}</code> to output the release date of the item in blue. The HTML code or text between the capture tags does not render on the page.</p>
+</div>
+<div type="cs-pod">
+<h2 id="Comment">COMMENT</h2>
+<p>Comments out a block of text. The text between the comment tags does not render in the front-end.</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37;comment-&#37;&#125;
+	Do not forget to remove comments
+&#123;&#37;endcomment-&#37;&#125;{% endraw %}</code></pre>
+<p>The comment will only be visible in the Admin Console.</p>
+</div>
+<div type="cs-pod">
+<h2 id="Raw">RAW</h2>
+<p>Raw renders liquid markup in plain text. </p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37;raw-&#37;&#125;
+	&#123;&#123;this | json&#125;&#125;
+&#123;&#37;endraw-&#37;&#125;{% endraw %}</code></pre>
+<p>This will render the Liquid code in plain text.</p>
+</div>
+<div type="cs-pod">
+<h2 id="Tablerow">TABLEROW</h2>
+<p>This will draw a table. You can specify how many columns the table will contain using the "cols:" value.</p>
+<pre class="language-javascript"><code>{% raw %}
+&lt;table&gt;
+&#123;&#37; tablerow item in webapp1.items cols:2 -&#37;&#125;
+    &#123;&#123;item.name&#125;&#125;&#123;&#123;item.counter&#125;&#125;
+&#123;&#37; endtablerow -&#37;&#125;
+&lt;/table&gt;{% endraw %}</code></pre>
+</div>
+
+<h2 id="Examples">Examples</h2>
+<p>A more complex example that uses a FOR loop to go over the items of a webapp collection and make some additional decisions using the CASE statement:</p>
+<pre class="language-javascript"><code>{% raw %}&#123;&#37; assign european_make = &quot;This vehicle is from Europe!&quot;-&#37;&#125; //create a variable named european_make<br>
+&#123;&#37; for item in webapp1.items -&#37;&#125; 
+// looping the webapp1.items
+
+&#123;&#37; if item.Color == &quot;red&quot; and (item.Country contains &quot;U&quot; or item.Country == &quot;US&quot;) and item.name contains &quot;a&quot; and item.name contains &quot;e&quot;-&#37;&#125;
+
+&lt;p&gt;
+    Item number &#123;&#123;item.counter&#125;&#125; name is: &#123;&#123;item.name&#125;&#125; and its color is &lt;span style=&quot;color:&#123;&#123;item.Color&#125;&#125;&quot;&gt;&#123;&#123;item.Color&#125;&#125;&lt;/span&gt; and country is &#123;&#123;item.Country&#125;&#125;
+&lt;/p&gt;
+
+&#123;&#37;unless item.country == &quot;US&quot; or item.country == &quot;AU&quot;-&#37;&#125; // if the country is not US nor AU display the contents of the european_make variable
+&#123;&#123;european_make&#125;&#125;
+&lt;br/&gt;
+&#123;&#37;endunless-&#37;&#125;
+
+&#123;&#37;comment-&#37;&#125;
+	this is a comment - if you also have Japanese cars the &quot;unless&quot; statement above is not accurate - whoops...
+&#123;&#37;endcomment-&#37;&#125;
+
+&#123;&#37; capture item_productionDate -&#37;&#125;&lt;span style=&quot;color:blue&quot;&gt;&#123;&#123;item.releaseDate&#125;&#125;&lt;/span&gt;&#123;&#37; endcapture -&#37;&#125;
+ 
+  &#123;&#37; case item.country -&#37;&#125;
+    &#123;&#37; when &#39;DE&#39; -&#37;&#125;
+      Jahr der Wagen rollte vom Band auf
+    &#123;&#37; when &#39;EN&#39; -&#37;&#125;
+      Año el coche salió de la línea de montaje el
+    &#123;&#37; else -&#37;&#125;
+      Year the car rolled off the assembly line on 
+  &#123;&#37; endcase -&#37;&#125;
+
+&#123;&#123;item_productionDate&#125;&#125;
+
+&lt;br/&gt;
+&lt;br/&gt;
+
+&#123;&#37; endif -&#37;&#125;
+&#123;&#37; endfor -&#37;&#125;{% endraw %}</code></pre>

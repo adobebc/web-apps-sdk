@@ -1,0 +1,87 @@
+<h1>Shopping cart</h1> 
+<div id="description">
+<h2>Description</h2>
+<p>The shopping cart summary is displayed in the overall layout of your online shop using <a href="/reference/module-reference/e-commerce/module_shoppingcartsummary.html" title="module_shoppingcartsummary">&#123;module_shoppingcartsummary&#125;</a>. The summary is displayed when a customer adds an item to the cart. The default layout of this module is shown below:<br />
+<img alt="" src="http://helpx.adobe.com/business-catalyst/partner/customize-your-online-shop-look/_jcr_content/main-pars/image_7.img.png/shopping-cart-summary.png" /></p>
+</div>
+<div id="accessible">
+<h2>Accessible from</h2>
+<p>This layout is not created by default. You will first need to create it using the Develop tab or via sFTP, (see the Custom templates article for more info on how to create layouts) as described below:</p>
+<h4 id="Creating the template">Creating the template</h4>
+<ol>
+    <li> Open a code editor of your choice, however for this article we will be using the Business Catalyst&nbsp;<a href="http://helpx.adobe.com/business-catalyst/partner/pages-site-assets-using-develop.html" onclick="s_objectID='http://helpx.adobe.com/business-catalyst/partner/pages-site-assets-using-develop.html_1';return this.s_oc?this.s_oc(e):true">Develop mode</a>. Open the Develop mode by clicking the&nbsp;<strong>Develop&nbsp;</strong>tab in the top ribbon menu of the admin.    </li>
+    <li> Click the&nbsp;<em>New file&nbsp;</em>icon and give your file a name with a&nbsp;<strong>.tpl&nbsp;</strong>extension, for example <em>cartsummary.tpl </em></li>
+    <li> Remove all the HTML default markup as it is not needed for custom templates. Customize how you would like the shopping cart summary to look by using the below tags:
+    <table>
+        <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;cartUrl&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_cartUrl&#125;{% endraw %}</code></td>
+                <td class="description">renders the URL to the cart summary page, which can be either OrderRetrievev2.aspx or OrderRetrieve.aspx (the old, legacy v1 version)</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemCount&#125;&#125;{% endraw %}</code></td>
+                <td><code>{% raw %}&#123;tag_itemCount&#125;{% endraw %}</code></td>
+                <td class="description">renders the number of the items in the cart or 0 if none.</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalAmount&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalAmount&#125;{% endraw %}</code></td>
+                <td class="description">renders the total money amount of the items (with two decimals) or 0.00 if the items don't have prices or there are no items in the cart</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;currencyFormat&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_currency&#125;{% endraw %}</code></td>
+                <td class="description">renders the coin of the current country, which is either the site country or the country of the order (if set)</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_totalAmountWithCurrency&#125;{% endraw %}</code></td>
+                <td class="description">renders both coin and total amount (this is only for the sake of convenience, you might want to use it instead of <code>{% raw %}&#123;tag_currency&#125;{% endraw %}</code><code>{% raw %}&#123;tag_totalAmount&#125;{% endraw %}</code>)</td>
+            </tr>
+          <tr><td valign="top" class="liquid tag"></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_isEmpty&#125;{% endraw %}</code></td>
+                <td class="description">renders 0 or 1 (for when the cart is empty - used to display a different message when there are no items)</td>
+            </tr>
+            <tr><td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;countryCode&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_countryCode&#125;{% endraw %}</code></td>
+                <td class="description">the country code of the currency used</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Below is a example of a custom template using the above tags:</p>
+    <pre class="language-markup"><code>{% raw %}
+    &lt;div class="cartSummary empty&#123;tag_isEmpty}"&gt;<br/>
+    &lt;div class="cartSummaryItem"&gt;Shopping cart is empty&lt;/div&gt;<br/>
+    &lt;/div&gt;<br/>
+    &lt;div class="cartSummary notEmpty&#123;tag_isEmpty}"&gt;<br/>
+    &lt;div class="cartSummaryItem"&gt;&#123;tag_itemCount} item(s), Total &#123;tag_currency}&#123;tag_totalAmount}&lt;/div&gt;<br/>
+    &lt;div&gt;&lt;a class="cartSummaryLink" href="&#123;tag_cartUrl}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
+    &lt;/div&gt;<br/>
+    {% endraw %}</code></pre>
+    <p class="alert alert-info"><strong>Note:</strong> If you are using the above example, ensure that you add the below to your CSS to change the table class based on whether an item is added to the cart or not.</p>
+    <p><em>&nbsp;&nbsp;.empty0 { display:none; }</em></p>
+    <p><em>&nbsp;&nbsp;.notEmpty1 { display:none; }</em></p>
+    </li>
+    <li>
+    Save this file by clicking&nbsp;<strong>Publish</strong>
+    </li>
+</ol>
+<h4 id="Assigning the template">Assigning the template</h4>
+<ol>
+    <li>
+    Locate the  &#123;module_shoppingcartsummary} module on your site. By default this can be found in&nbsp;<strong>Site Manager &gt; Module Templates &gt; Online Shop Layouts &gt; Overall Layout.</strong>
+    </li>
+    <li>
+    Replace this module with: <code>{% raw %}&#123;module_shoppingcartsummary template="/<strong>path/to/template</strong>.<strong>tpl</strong>"&#125;{% endraw %}</code><br /> - for example 
+    <code>{% raw %}&#123;module_shoppingcartsummary template="/cartsummary.tpl"&#125;{% endraw %}</code>
+    </li>
+    <li>
+    Save the layout.
+    </li>
+</ol>
+<p>Test the new layout out by adding a product to the cart on the front end of your website.</p>
+<p class="alert alert-info"><strong>Note</strong><em>: If the tpl file is not found, the module renders as if not having the parameter.</em></p>
+</div>

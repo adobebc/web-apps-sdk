@@ -1,0 +1,134 @@
+<h1>&#123;module_searchresults&#125;</h1> 
+<div class="description">
+<h2>Description</h2>
+<p>Displays site-wide search results. This module can be placed on the same web page/template as the search box or on a different page. In the second case the action URL of the search box needs to be altered so that it redirects the visitor to the page this module is inserted on.</p>
+</div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta">
+
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_searchresults render=&quot;item|collection&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot; hidePageNumbers=true|false hightlightType=&quot;span|bold&quot; targetFrame=“_blank" resultsPerPage=“20" characterLimit="440" emptySearchResultString=“No results found"&#125;{% endraw %}</code></pre>
+<p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+    <li><strong>targetFrame</strong> - specifies in which frame the the results need to be opened</li>
+    <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page. Default is <em>10</em> results per page.</li>
+    <li><strong>characterLimit</strong> - the number of characters to be rendered in each search result</li>
+    <li><strong>hidePageNumbers</strong> - show or hide pagination links. Possible values are <em>true</em> or <em>false</em></li>
+        <li><strong>hightlightType</strong> - specifies the element type used to wrap the search keywords. Possible values are:
+    <ul>
+    <li><strong>bold</strong></li>
+    <li><strong>span</strong></li>
+    </ul>
+    </li>
+    <li><strong>emptySearchResultString</strong> - specify the message to be displayed when no results are found</li>
+        <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>This module can be rendered:</h2>
+<ul>
+    <li><strong>the site search layout </strong>- on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use: <a href="/reference/tag-reference/site-search/site-search-layout.html">Site Search Layout reference page</a></li>
+    <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
+</ul>
+
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="legacy">Legacy tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+  <tbody>
+    <tr>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;counter&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_counter&#125;{% endraw %}</code></td><td class="description">Incremental count of the items on the page</td>
+        </tr>
+    <tr>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_description&#125;{% endraw %}</code></td><td class="description">Short description of the item</td>
+        </tr>
+    <tr>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;image_url&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_image&#125;{% endraw %}</code></td><td class="description">An image reflective of the type of the item; for example, <em>Web Page</em> or <em>News</em></td>
+        </tr>
+    <tr>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;id&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemid&#125;{% endraw %}</code></td><td class="description">Internal ID of the item</td>
+        </tr>
+    <tr>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;type&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_itemtype&#125;{% endraw %}</code></td><td class="description">Type of the item; for example, <em>Web Page</em>, <em>News</em>, <em>Web App</em>, or <em>FAQ</em></td>
+        </tr>
+    <tr>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name_nolink&#125;{% endraw %}</code></td><td class="description">Item name without a hyperlink to the item</td>
+        </tr>
+    <tr>
+         <td valign="top" class="liquid tag"></td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Item name with a hyperlink to the item</td>
+        </tr>
+         <tr>
+         <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="legacy tag"></td>
+            <td class="description">Pagination controls:<ul><li>currentPage</li>
+              <li>numberOfPages</li>
+              <li>previousPageUrl</li>
+              <li>nextPageUrl</li>
+            </ul>
+            </td>
+        </tr>
+  </tbody>
+</table>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_searchresults targetFrame="_blank" resultsPerPage="12"&#125;{% endraw %}</code> - This module will display 12 results per page in the new window.</li>
+</ul>
+</div>
+</div>
+  <div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_searchresults,targetFrame,resultsPerPage,hightlightType,characterLimit,hidePageNumbers,paginationLinks,No results found&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>targetFrame</strong> - specifies in which frame the the results need to be opened</li>
+    <li><strong>resultsPerPage</strong> - specifies the number of results the search will display per page. Default is <em>10</em> results per page.</li>
+    <li><strong>characterLimit</strong> - the number of characters to be rendered in each search result</li>
+    <li><strong>hightlightType</strong> - specifies the element type used to wrap the search keywords. Possible values are:
+    <ul>
+    <li><strong>bold</strong></li>
+    <li><strong>span</strong></li>
+    </ul>
+    </li>
+    <li><strong>hidePageNumbers</strong> - show or hide pagination links. Possible values are <em>true</em> or <em>false</em></li>
+    <li><strong>emptySearchResultString</strong> - specify the message to be displayed when no results are found</li>
+</ul>
+</div>
+<div class="layouts">
+<h2>Layouts</h2>
+<ul>
+    <li>Online Shop Layouts &gt;<a href="/reference/tag-reference/site-search/site-search-layout.html"> Site Search Layout</a></li>
+</ul>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_searchresults,_blank,12,span,50,,Sorry, found no results,,>&#125;{% endraw %}</code> - This module will display 12 results per page in the new window. The results body will be truncated to 50 characters. The keywords in the search results will be wrapped in a &quot;span&quot; element</li>
+</ul>
+</div>
+</div>

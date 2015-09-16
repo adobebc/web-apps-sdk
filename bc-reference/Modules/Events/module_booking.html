@@ -47,8 +47,8 @@
 <div class="layouts">
 <h2>This module can be rendered using:</h2>
 <ul>
-    <li><strong>the  list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/reference/tag-reference/events/event-list-layout.html" title="News layout">Event layout reference page</a></li>
-    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong>the  list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/reference/layouts-and-tags/events/event-list-layout.html" title="News layout">Event layout reference page</a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
 <table width="100%" class="data-bordered">
@@ -62,7 +62,7 @@
         
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;name&#125;&#125;{% endraw %}</code></td>
-         <td class="description">Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/reference/tag-reference/events/event-detail-layout.html">detail layout</a></td>
+         <td class="description">Booking name including a hyperlink. The hyperlink sends the user to the event's <a href="/reference/layouts-and-tags/events/event-detail-layout.html">detail layout</a></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;body&#125;&#125;{% endraw %}</code></td>
@@ -129,7 +129,7 @@
     <li><code>{% raw %}&#123;module_booking filter=&quot;random&quot;&#125;{% endraw %}</code> - displays a single random item</li>
     <li><code>{% raw %}&#123;module_booking filter=&quot;classified&quot; itemid=&quot;14075&quot;&#125;{% endraw %}</code> - displays all the items classified in the category with the ID 14075</li>
     <li><code>{% raw %}&#123;module_booking filter=&quot;randomClassified&quot; itemid=&quot;14075&quot;&#125;{% endraw %}</code> - displays a random item classified in the category with the ID 14075</li>
-    <li><code>{% raw %}&#123;module_booking filter=&quot;item&quot; itemid=&quot;63522&quot;  template="/layouts/custom/bookings.tpl"&#125;{% endraw %}</code> - displays an individual item using a <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %}&#123;module_booking filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_booking filter=&quot;item&quot; itemid=&quot;63522&quot;  template="/layouts/custom/bookings.tpl"&#125;{% endraw %}</code> - displays an individual item using a <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %}&#123;module_booking filter=&quot;all&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
@@ -163,8 +163,8 @@
 <div class="layouts">
 <h2>Layouts</h2>
 <ul>
-    <li>Event Layouts &gt;&nbsp;<a href="/reference/tag-reference/events/event-list-layout.html" title="List Layout">List Layout</a></li>
-    <li>This module also supports <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+    <li>Event Layouts &gt;&nbsp;<a href="/reference/layouts-and-tags/events/event-list-layout.html" title="List Layout">List Layout</a></li>
+    <li>This module also supports <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</a></li>
 </ul>
 </div>
 <div class="examples">
@@ -176,7 +176,7 @@
     <li><code>{% raw %}&#123;module_booking,r&#125;{% endraw %}</code> - displays a single random item</li>
     <li><code>{% raw %}&#123;module_booking,c,14075&#125;{% endraw %}</code> - displays all the items classified in the category with the ID 14075</li>
     <li><code>{% raw %}&#123;module_booking,cr,14075&#125;{% endraw %}</code> - displays a random item classified in the category with the ID 14075</li>
-    <li><code>{% raw %}&#123;module_booking,i,63522  template="/layouts/custom/bookings.tpl"&#125;{% endraw %}</code> - displays an individual item using a <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{% raw %}&#123;module_booking,i,63522  template="/layouts/custom/bookings.tpl"&#125;{% endraw %}</code> - displays an individual item using a <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 </div>
 </div>

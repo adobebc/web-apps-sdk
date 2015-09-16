@@ -17,23 +17,23 @@ Next, we need to populate it with some tags. The easiest way to get started is t
 <br />
 <ol>
     <li>
-    Go to the Pages &gt; Module Templates &gt; Online Shop Layouts and open up the <a href="/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a>.
+    Go to the Pages &gt; Module Templates &gt; Online Shop Layouts and open up the <a href="/reference/layouts-and-tags/e-commerce/individual-product-small-layout.html">Individual Product - Small</a>.
     </li>
     <li>
-    Switch to the HTML view and copy everything. Go to the productfeaturelist.tpl file and paste everything in there. To confirm the new custom template is rendering properly add a few new tags so it looks differently then the regular <a href="/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a> layout.
+    Switch to the HTML view and copy everything. Go to the productfeaturelist.tpl file and paste everything in there. To confirm the new custom template is rendering properly add a few new tags so it looks differently then the regular <a href="/reference/layouts-and-tags/e-commerce/individual-product-small-layout.html">Individual Product - Small</a> layout.
     </li>
 </ol>
 <h4>Step 2 - configure the module to use the custom template</h4>
 <br />
 <ol>
     <li>Now that the custom template is created and populated we need to add an eCommerce module and configure it to use it.</li>
-    <li> Let's assume we need a product listing to use this new template. This means we will use the &#123;<a href="/reference/module-reference/e-commerce/module_productfeaturelist.html">module_productfeaturelist</a>&#125; module. This is the syntax we will use:
+    <li> Let's assume we need a product listing to use this new template. This means we will use the &#123;<a href="/reference/modules/e-commerce/module_productfeaturelist.html">module_productfeaturelist</a>&#125; module. This is the syntax we will use:
     <br />
     <br />
     &#123;module_productfeaturelist,special offer,3,price,_blank,true template="/layouts/onlineshop/custom/productfeaturelist.tpl"&#125;</li>
 </ol>
 <p>
-If you insert this on a webpage and preview that webpage you will notice it is using the custom layout instead of the default <a href="/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a>.
+If you insert this on a webpage and preview that webpage you will notice it is using the custom layout instead of the default <a href="/reference/layouts-and-tags/e-commerce/individual-product-small-layout.html">Individual Product - Small</a>.
 </p>
 <h2 id="supress-output">Use custom layouts to suppress a module's output</h2>
 <p>With the introduction of <em>collections</em> you might want a module not to output anything and use only its collection representation to render the data.</p>
@@ -53,7 +53,7 @@ To hide a module's output simply remove the path to the custom layout specified 
 </div>
 <div id="parameters">
 <h2>Parameters</h2>
-<p>The custom template declaration has only one parameter, that is the path to the file itself. If the file does not exist or it cannot be found for any reason the module will render with its default layout instead. So for example if the custom template file "/layouts/onlineshop/custom/productfeaturelist.tpl" does not exist or we have a typo in its path the &#123;<a href="/reference/module-reference/e-commerce/module_productfeaturelist.html">module_productfeaturelist</a>&#125; module will render using the <a href="/reference/tag-reference/e-commerce/individual-product-small-layout.html">Individual Product - Small</a> layout instead.</p>
+<p>The custom template declaration has only one parameter, that is the path to the file itself. If the file does not exist or it cannot be found for any reason the module will render with its default layout instead. So for example if the custom template file "/layouts/onlineshop/custom/productfeaturelist.tpl" does not exist or we have a typo in its path the &#123;<a href="/reference/modules/e-commerce/module_productfeaturelist.html">module_productfeaturelist</a>&#125; module will render using the <a href="/reference/layouts-and-tags/e-commerce/individual-product-small-layout.html">Individual Product - Small</a> layout instead.</p>
 <p class="alert alert-info"><strong>Note:</strong> if the value of template parameter is empty <em>template=””</em> you will end up having an empty output - see <a href="#supress-output">related section</a> above.</p>
 </div>
 <div id="Examples">

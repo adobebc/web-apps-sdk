@@ -40,8 +40,8 @@
 <div class="layouts">
 <h2>This module can be rendered using:</h2>
 <ul>
-    <li><strong>the  list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/reference/tag-reference/forums/individual-forum-layout.html" title="Forum layout">Forum layout reference page</a></li>
-    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong>the  list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/reference/layouts-and-tags/forums/individual-forum-layout.html" title="Forum layout">Forum layout reference page</a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
 <table width="100%" class="data-bordered">
@@ -99,7 +99,7 @@
 <h2>Examples</h2>
 <ul>
     <li><code>{% raw %}&#123;module_forum filter=&quot;item&quot; itemid=&quot;317&quot; targetFrame=&quot;_blank&quot;&#125;{% endraw %}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
-    <li><code>{% raw %}&#123;module_forum filter=&quot;all&quot;  template="/layouts/custom/individual_forum.tpl"&#125;{% endraw %}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %} &#123;module_forum filter=&quot;item&quot; itemid=&quot;317&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_forum filter=&quot;all&quot;  template="/layouts/custom/individual_forum.tpl"&#125;{% endraw %}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %} &#123;module_forum filter=&quot;item&quot; itemid=&quot;317&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
@@ -128,15 +128,15 @@
 <div class="layouts">
 <h2>Layouts</h2>
 <ul>
-    <li>Forum Layouts &gt; <a href="/reference/tag-reference/forums/individual-forum-layout.html">Individual Forum Layout</a></li>
-    <li>This module also supports <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+    <li>Forum Layouts &gt; <a href="/reference/layouts-and-tags/forums/individual-forum-layout.html">Individual Forum Layout</a></li>
+    <li>This module also supports <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</a></li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
     <li><code>{% raw %}&#123;module_forum,i,317,_blank&#125;{% endraw %}</code> - it will display an individual forum with an id of 317 and it will display it in the new frame</li>
-    <li><code>{% raw %}&#123;module_forum,a, template="/layouts/custom/individual_forum.tpl"&#125;{% endraw %}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{% raw %}&#123;module_forum,a, template="/layouts/custom/individual_forum.tpl"&#125;{% endraw %}</code> - it will display all the forums on the site using the individual_forum.tpl <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 </div>
 </div>

@@ -53,8 +53,8 @@
 <div class="layouts">
 <h2>This module can be rendered using:</h2>
 <ul>
-    <li><strong>the webapp list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the<a href="/reference/tag-reference/blogs/blog-listing-layout.html"> </a><a href="/reference/tag-reference/web-apps/web-app-list-layout.html">Webapp List Layout's reference page </a></li>
-    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong>the webapp list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the<a href="/reference/layouts-and-tags/blogs/blog-listing-layout.html"> </a><a href="/reference/layouts-and-tags/web-apps/web-app-list-layout.html">Webapp List Layout's reference page </a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
 <p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{% raw %}&#123;&#123;cars1.items[0].["large image_value"]&#125;&#125;{% endraw %}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by the name of the collection (in this case <em>cars1</em>).</p>
@@ -115,7 +115,7 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;button&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code></td><td class="description">will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code></td><td class="description">will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="/reference/layouts-and-tags/web-apps/web-app-detail-layout.html">detail layout</a></td>
         </tr>
           <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;commentCount&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commentcount&#125;{% endraw %}</code></td><td class="description">Number of comments for current post</td>
@@ -140,11 +140,11 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_edit&#125;{% endraw %}</code></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_edit&#125;{% endraw %}</code></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/layouts-and-tags/web-apps/web-app-edit-layout.html">edit layout</a></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;editUrl&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></td>
+         <td valign="top" class="legacy tag"></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/layouts-and-tags/web-apps/web-app-edit-layout.html">edit layout</a></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
@@ -161,7 +161,7 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Name of the item - will have hyperlink that points to the item's <a href="/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Name of the item - will have hyperlink that points to the item's <a href="/reference/layouts-and-tags/web-apps/web-app-detail-layout.html">detail layout</a></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
@@ -215,7 +215,7 @@
 <h2>Examples</h2>
 <ul>
     <li><code>{% raw %}&#123;module_webappscustomer id=&quot;56&quot; filter=&quot;all&quot;&#125;{% endraw %}</code> - will display all web app items that belong to the customer that's logged in for a web app with ID 56</li>
-    <li><code>{% raw %}&#123;module_webappscustomer id=&quot;56&quot; filter=&quot;classified&quot; itemid=&quot;14609&quot; targetFrame=&quot;_blank&quot; resultsPerPage=&quot;13&quot; template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
+    <li><code>{% raw %}&#123;module_webappscustomer id=&quot;56&quot; filter=&quot;classified&quot; itemid=&quot;14609&quot; targetFrame=&quot;_blank&quot; resultsPerPage=&quot;13&quot; template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
     <li><code>{% raw %}&#123;module_webappscustomer id=&quot;56&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
@@ -258,15 +258,15 @@
 <div class="layouts">
 <h2>Layouts</h2>
 <ul>
-    <li>Web App Layouts &gt;&nbsp;<a href="/reference/tag-reference/web-apps/web-app-list-layout.html">List Layout </a></li>
-    <li>This module also supports <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+    <li>Web App Layouts &gt;&nbsp;<a href="/reference/layouts-and-tags/web-apps/web-app-list-layout.html">List Layout </a></li>
+    <li>This module also supports <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</a></li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
     <li><code>{% raw %}&#123;module_webappscustomer,56,a,&#125;{% endraw %}</code> - will display all web app items that belong to the customer that's logged in for a web app with ID 56</li>
-    <li><code>{% raw %}&#123;module_webappscustomer,56,c,14609,,_blank,,13 template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
+    <li><code>{% raw %}&#123;module_webappscustomer,56,c,14609,,_blank,,13 template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will display the webapp items in the category with the ID 14609 using the walist.html <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a>, 13 items per page </li>
 </ul>
 </div>
 </div>

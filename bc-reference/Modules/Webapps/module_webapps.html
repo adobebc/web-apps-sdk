@@ -54,8 +54,8 @@
 <div class="layouts">
 <h2>This module can be rendered using:</h2>
 <ul>
-    <li><strong>the webapp list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the<a href="/reference/tag-reference/blogs/blog-listing-layout.html"> </a><a href="/reference/tag-reference/web-apps/web-app-list-layout.html">Webapp List Layout's reference page </a></li>
-    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><strong>the webapp list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the<a href="/reference/layouts-and-tags/blogs/blog-listing-layout.html"> </a><a href="/reference/layouts-and-tags/web-apps/web-app-list-layout.html">Webapp List Layout's reference page </a></li>
+    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
     <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
 </ul>
 <p class="alert alert-warning"><strong>Warning:</strong> if you need to access a liquid tag that has a space in its name, for example <em>tag_large image_value</em> use this syntax: <code>{% raw %}&#123;&#123;cars1.items[0].["large image_value"]&#125;&#125;{% endraw %}</code> - Liquid does not allow for the name of its output tags to contain spaces. In this case the tag that contains a space needs to be wrapped in square brackets and quotes and preceded by the name of the collection (in this case <em>cars1</em>).</p>
@@ -116,7 +116,7 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;button&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code></td><td class="description">will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code></td><td class="description">will output a hyperlink with the text "Your Text" and when clicked will take the site visitor to the <a href="/reference/layouts-and-tags/web-apps/web-app-detail-layout.html">detail layout</a></td>
         </tr>
           <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;commentCount&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commentcount&#125;{% endraw %}</code></td><td class="description">Number of comments for current post</td>
@@ -141,11 +141,11 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_edit&#125;{% endraw %}</code></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_edit&#125;{% endraw %}</code></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/layouts-and-tags/web-apps/web-app-edit-layout.html">edit layout</a></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;editUrl&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/tag-reference/web-apps/web-app-edit-layout.html">edit layout</a></td>
+         <td valign="top" class="legacy tag"></td><td class="description">Creates a link that allows current customer to edit a web app item they have previously submitted (only available if customer logged in to a secure zone). Clicking this link will open up the <a href="/reference/layouts-and-tags/web-apps/web-app-edit-layout.html">edit layout</a></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;expiryDate&#125;&#125;{% endraw %}</code></td>
@@ -162,7 +162,7 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Name of the item - will have hyperlink that points to the item's <a href="/reference/tag-reference/web-apps/web-app-detail-layout.html">detail layout</a></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_name&#125;{% endraw %}</code></td><td class="description">Name of the item - will have hyperlink that points to the item's <a href="/reference/layouts-and-tags/web-apps/web-app-detail-layout.html">detail layout</a></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>
@@ -218,7 +218,7 @@
     <li><code>{% raw %}&#123;module_webapps id=&quot;56&quot; filter=&quot;all&quot; targetFrame=&quot;_blank&quot; useBackupTemplate=&quot;true&quot; resultsPerPage=&quot;12&quot; hideEmptyMessage=&quot;true&quot; rowCount=&quot;3&quot;&#125;{% endraw %}</code> - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
     <li><code>{% raw %}&#123;module_webapps id=&quot;123&quot; filter=&quot;all&quot; rowCount=&quot;12&quot; &#125;{% endraw %}</code> - will only display 12 items per page </li>
     <li><code>{% raw %}&#123;module_webapps id=&quot;123&quot; filter=&quot;latest&quot; rowCount=&quot;5&quot;&#125;{% endraw %}</code> - will only display the latest 5 items (by date) on the page</li>
-    <li><code>{% raw %}&#123;module_webapps id=&quot;56&quot; filter=&quot;all&quot; resultsPerPage=&quot;10&quot; rowCount=&quot;1&quot; template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will only display 10 items using the walist.html <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %}&#123;module_webapps id=&quot;123&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_webapps id=&quot;56&quot; filter=&quot;all&quot; resultsPerPage=&quot;10&quot; rowCount=&quot;1&quot; template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will only display 10 items using the walist.html <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a></li><li><code>{% raw %}&#123;module_webapps id=&quot;123&quot; collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 <p>The previous and next links can be customized using CSS. Each link has its own custom CSS class. To see the CSS class assigned to these links view the web page source where these links appear. The CSS class name format is: WebAppIDPrev and WebAppIDNext where ID is the internal ID assigned to your Web App. You can easily find the ID using Firebug once on the live page.</p>
 </div>
@@ -261,8 +261,8 @@
 <div class="layouts">
 <h2>Layouts</h2>
 <ul>
-    <li>Web App Layouts &gt;&nbsp;<a href="/reference/tag-reference/web-apps/web-app-list-layout.html">List Layout </a></li>
-    <li>This module also supports <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom templates</a></li>
+    <li>Web App Layouts &gt;&nbsp;<a href="/reference/layouts-and-tags/web-apps/web-app-list-layout.html">List Layout </a></li>
+    <li>This module also supports <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</a></li>
 </ul>
 </div>
 <div class="examples">
@@ -271,7 +271,7 @@
     <li><code>{% raw %}&#123;module_webapps,56,a,,,_blank,true,12,true,3&#125;{% endraw %}</code> - this module will display 12 web app items according in the list view in the new window in three items per row way and the web app will use the backup layout. </li>
     <li><code>{% raw %}&#123;module_webapps,123,a,,,,,12&#125;{% endraw %}</code> - will only display 12 items per page </li>
     <li><code>{% raw %}&#123;module_webapps,123,l,5&#125;{% endraw %}</code> - will only display the latest 5 items (by date) on the page</li>
-    <li><code>{% raw %}&#123;module_webapps,56,a,,,,,10,,1 template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will only display 10 items using the walist.html <a href="/reference/tag-reference/custom-templates/custom-templates.html">custom template</a></li>
+    <li><code>{% raw %}&#123;module_webapps,56,a,,,,,10,,1 template="/layouts/custom/walist.html"&#125;{% endraw %}</code> - will only display 10 items using the walist.html <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a></li>
 </ul>
 <p>The previous and next links can be customized using CSS. Each link has its own custom CSS class. To see the CSS class assigned to these links view the web page source where these links appear. The CSS class name format is: WebAppIDPrev and WebAppIDNext where ID is the internal ID assigned to your Web App. You can easily find the ID using Firebug once on the live page.</p>
 </div>

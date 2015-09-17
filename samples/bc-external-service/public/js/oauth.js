@@ -46,11 +46,10 @@ var OAuth = (function(OAuthConfig) {
             "?client_id=", encodeURIComponent(this._config.clientId),
             "&version=", this._config.version, 
             "&redirect_uri=", encodeURI(this._config.redirectUri),
-            "&state=12345", "&response_type=code"],
+            "&state="+_local_state, "&response_type=code", "&consent=implicit","&site=https://bogdan-01-va.localbc.com"],
             authorizeUrl = urlParts.join("");
 
         console.log("Redirecting browser to url: %s", authorizeUrl);
-
         window.location.href = authorizeUrl;
     };
 
@@ -61,6 +60,10 @@ var OAuth = (function(OAuthConfig) {
         var https = require("https"),
             url = require("url");
         var urlParts = url.parse(req.url, true);
+        
+        console.log("---------------------------Authenticate partner - start--------------------------------------")
+        console.log(req);
+        console.log("---------------------------Authenticate partner - end--------------------------------------")
 
         process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
@@ -85,6 +88,7 @@ var OAuth = (function(OAuthConfig) {
         };
 
         var req = https.request(requestOptions, function(res) {
+            
             var body = "";
             res.setEncoding("utf8");
 
@@ -95,9 +99,11 @@ var OAuth = (function(OAuthConfig) {
             res.on("end", function() {
                 var tokenResponse = JSON.parse(body),
                     secureUrls = [];
-
+                
                 console.log("---------------- Backend accessible data ----------------");
-
+                console.log(tokenResponse);
+                
+                console.log("----------This is a test-----------------");
                 for (var idx = 0; idx < tokenResponse.additional_info.sites.length; idx++) {
                     var siteInfo = tokenResponse.additional_info.sites[idx];
 
@@ -127,6 +133,8 @@ var OAuth = (function(OAuthConfig) {
         req.end();
 
         process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1';
+        
+         console.log("-----------------END REQUEST-------------");
     };
 
     return new OAuthTwoLeg(OAuthConfig);

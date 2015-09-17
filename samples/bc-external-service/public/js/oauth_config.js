@@ -24,7 +24,8 @@
 var OAuthConfig = (function() {
     _bcSecureHost = "dc1.worldsecuresystems.com";
     _appBaseUri = "https://simpletest.com";
-
+    _local_state = "12345";
+    
     return {
         bcSecureHost: _bcSecureHost,
         bcSecureUrl: "https://" + _bcSecureHost,

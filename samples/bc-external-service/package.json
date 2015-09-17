@@ -4,6 +4,7 @@
     "description": "This package provides a sample service which integrates with BC and executes some API calls from an external site.",
     "dependencies": {
         "express": "^4.13.0",
-        "jade": "^1.11.0"
+        "jade": "^1.11.0",
+        "crypto-js": "^3.1"
     }
 }

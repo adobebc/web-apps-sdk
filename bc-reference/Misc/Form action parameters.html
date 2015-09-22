@@ -1,25 +1,29 @@
 <h1>Form Action Parameters</h1> 
 
-<p>Form action option paramaters. Adding these for form actions have varius added features to form processing.</p>
+<p>Form action option parameters. Adding these for form actions have various added features to form processing.</p>
 
 <table width="100%" class="data-bordered">
   
   <tbody>
   
     <tr>
-            <td valign="top" class="cellrowborder"><strong>PageID</strong></td><td><span class="cellcontent">Adding this paramater to your form action you can specify a custom landing page for your webform. Take a look at the <a href="http://forums.adobe.com/docs/DOC-2363#main_Redirecting_the_Web_Form_confirmation_page" target="_blank">Customizing Web Forms document</a> for an example of this implementation.</td>
+            <td valign="top" class="cellrowborder"><strong>PageID</strong></td>
+            <td><span class="cellcontent">Adding this parameter to your form action you can specify a custom landing page for your web form. Take a look at the <a href="http://forums.adobe.com/docs/DOC-2363#main_Redirecting_the_Web_Form_confirmation_page" target="_blank">Customizing Web Forms document</a> for an example of this implementation.</td>
         </tr>
     <tr>
             <td valign="top" class="cellrowborder"><strong>OPTIN</strong></td><td><span class="cellcontent">Default is False. When a form contains a mailing list registration this option forces the double opt in status. Possible values are "true" or "false".</td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><strong>SAR</strong></td><td><span class="cellcontent">Default is True. You can disable the auto responder if desired. To do this, you will need to alter the form action URL by adding this paramater. Possible values are "true" or "false", take a look at the <a href="http://forums.adobe.com/docs/DOC-2363#main_Disabling_an_Auto_Responder" target="_blank">Customizing Web Forms document</a> for an example of this implementation.</td>
+            <td valign="top" class="cellrowborder"><strong>SAR</strong></td>
+            <td><span class="cellcontent">Default is True. You can disable the auto responder if desired. To do this, you will need to alter the form action URL by adding this parameter. Possible values are "true" or "false", take a look at the <a href="http://forums.adobe.com/docs/DOC-2363#main_Disabling_an_Auto_Responder" target="_blank">Customizing Web Forms document</a> for an example of this implementation.</td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><strong>SWE</strong></td><td><span class="cellcontent">Default is True. This paramter prevents the securezone email being sent out. Possible values are "true" or "false", take a look at the <a href="http://forums.adobe.com/docs/DOC-2363#main_Disabling_the_Secure_Zone_login_details_email" target="_blank">Customizing Web Forms document</a> for an example of this implementation.</td>
+            <td valign="top" class="cellrowborder"><strong>SWE</strong></td>
+            <td><span class="cellcontent">Default is True. This parameter prevents the securezone email being sent out. Possible values are "true" or "false", take a look at the <a href="http://forums.adobe.com/docs/DOC-2363#main_Disabling_the_Secure_Zone_login_details_email" target="_blank">Customizing Web Forms document</a> for an example of this implementation.</td>
         </tr>
     <tr>
-            <td valign="top" class="cellrowborder"><strong>SendInvoice</strong></td><td><span class="cellcontent">If you have a custom web form taking payment other then the eCommerce module this will trigger an invoice to be sent. Please note that there is no False option availible for the eCommerce module. The only possible value is "true", take a look at the <a href="http://helpx.adobe.com/business-catalyst/partner/collecting-payment-using-web-form.html#main_Sending_an_invoice" target="_blank">
+            <td valign="top" class="cellrowborder"><strong>SendInvoice</strong></td>
+            <td><span class="cellcontent">If you have a custom web form taking payment other then the eCommerce module this will trigger an invoice to be sent. Please note that there is no False option available for the eCommerce module. The only possible value is "true", take a look at the <a href="http://helpx.adobe.com/business-catalyst/partner/collecting-payment-using-web-form.html#main_Sending_an_invoice" target="_blank">
 Collect payment using a form</a> article for an example of this implementation.</td>
         </tr>
    <tr>
@@ -31,5 +35,12 @@ Collect payment using a form</a> article for an example of this implementation.<
             <td valign="top" class="cellrowborder"><strong>JSON</strong></td>
             <td><span class="cellcontent">This parameter allows you to submit webforms using AJAX. Do note this is only limited to standard web forms, other types of forms (like webapp submission forms for example) do not support this method. For a step-by-step tutorial on how to create an AJAX-powered web form take a look at this tutorial: <a href="http://docs.businesscatalyst.com/user-manual/CRM/web-forms/submitting-standard-web-forms-with-ajax-and-json">Submitting standard web forms with Ajax and JSON</a></td>
       </tr>
+       <tr>
+         <td valign="top" class="cellrowborder"><strong>ExcludeBoolFalse</strong></td>
+         <td><p class="cellcontent">Default is True. Used when adding a web app search forms.<br>
+           <strong>True</strong> – if the user doesn’t check the boolean field in the web app search form or it does not exists in the web app search form, then the system returns all the web app items from the database, regardless of the actual fields value (true or false) stored in the database. When the boolean field is checked (true) in the web app search form, the system will return only the web app items whose boolean field have the value true saved in the database. This check is applied for every boolean field included in a web app item. <br />
+         <strong>False</strong> – if the user doesn’t check the boolean field in the web app search form or it does not exists in the web app search form, then the system returns only the web app items whose boolean field is false in the database. When field is checked, the system will search for items having the boolean field with <em>value=true</em> while items with boolean field <em>value=false</em> will be ignored.
+         </p></td>
+       </tr>
   </tbody>
 </table>

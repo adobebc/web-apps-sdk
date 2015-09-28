@@ -45,7 +45,9 @@
 <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
 </li>
 <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - discount code's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}enabled{% endraw %</code><code>}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 
 <p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
@@ -91,6 +93,8 @@ request.fail(function (jqXHR) {
       "expireAfterXUses": -1,
       "releaseDate": "2011-01-11T23:00:00",
       "expiryDate": "9998-12-31T15:00:00",
+	  "createDate": "2011-01-11T23:00:00",
+	  "lastUpdateDate": "2011-01-11T23:00:00",
       "enabled": true
     },
     {
@@ -104,6 +108,8 @@ request.fail(function (jqXHR) {
       "expireAfterXUses": -1,
       "releaseDate": "2011-03-03T23:00:00",
       "expiryDate": "9998-12-31T15:00:00",
+	  "createDate": "2011-01-11T23:00:00",
+	  "lastUpdateDate": "2011-01-11T23:00:00",
       "enabled": true
     }
   ],
@@ -158,6 +164,8 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
 </li>
 <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - discount code's  creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -199,6 +207,8 @@ request.fail(function (jqXHR) {
   "expireAfterXUses": -1,
   "releaseDate": "2011-03-03T23:00:00",
   "expiryDate": "9998-12-31T15:00:00",
+  "createDate": "2011-01-11T23:00:00",
+  "lastUpdateDate": "2011-01-11T23:00:00",
   "enabled": true
 }{% endraw %}</code></pre>
 </div>
@@ -247,6 +257,8 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
 </li>
 <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - discount code's  creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 </div>
@@ -325,6 +337,8 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
 </li>
 <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - discount code's  creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 </div>

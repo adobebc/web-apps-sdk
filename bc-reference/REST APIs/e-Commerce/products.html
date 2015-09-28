@@ -70,6 +70,8 @@
 <li><strong>custom4</strong> - custom field 4 <em>(string)</em></li>
 <li><strong>releaseDate</strong> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>expiryDate</strong> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate </strong>- product's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - product's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>captureDetails</strong> - captureDetails <em>(boolean)</em></li>
 <li><strong>isOnSale</strong> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
 <li><strong>hideIfNoStock</strong> - hide product if stock is 0 <em>(boolean)</em></li>
@@ -82,8 +84,10 @@
 <li><strong>hasAttributes</strong> - hasAttributes <em>(boolean)</em></li>
 <li><strong>cycleTypeCount</strong> - cycleTypeCount <em>(number)</em></li>
 <li><strong>hasVariations</strong> - whether the product has variations enabled<em>(boolean)</em></li>
-<li><strong>url</strong> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
-<li><strong>metaProductDescription</strong> - metaProductDescription <em>(string)</em></li>
+<li><strong>slug</strong> - product's slug <em>(string)</em></li>
+<li><strong>metaProductDescription</strong> - meta description <em>(string)</em></li>
+<li><strong>canonicalUrl</strong> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
+<li><strong>absoluteCanonicalUrl</strong> - product's absolute url <em>(string)</em></li>
 
 </ul>
 
@@ -119,122 +123,130 @@ request.fail(function (jqXHR) {
 <p><strong>Sample response</strong></p>
 <pre class="language-javascript"><code>{% raw %}{
   "items": [
-    {
-      "id": 3909340,
-      "siteId": 246884,
-      "name": "Sample Product 1",
-      "roleId": -1,
-      "weight": null,
-      "productCode": "EYE2FQZUGZ",
-      "tags": "keyword1",
-      "unitType": "",
-      "smallImage": "/images/products/prod2.gif",
-      "largeImage": "/images/products/placeholder-product-image-large.png",
-      "description": "This is a sample product. You can edit this product by logging in to your Admin\nConsole and going to 'ECommerce > Products'\r\n",
-      "inventoryControl": false,
-      "canPreorder": false,
-      "minUnits": 1,
-      "maxUnits": -1,
-      "inStock": -1,
-      "onOrder": 0,
-      "reOrder": -1,
-      "reOrderNotified": false,
-      "variablePerCycle": false,
-      "groupingID": null,
-      "GroupingDefault": false,
-      "electronicProduct": false,
-      "displayFileName": null,
-      "size": 0,
-      "downloadLimitCount": -1,
-      "downloadLimitIp": -1,
-      "productWeight": -1,
-      "productVolume": -1,
-      "productHeight": -1,
-      "productDepth": -1,
-      "supplierEntityId": null,
-      "supplierCommission": 0,
-      "isGiftVoucher": false,
-      "poplets": null,
-      "attributes": null,
-      "custom1": "",
-      "custom2": "",
-      "custom3": "",
-      "custom4": "",
-      "releaseDate": "2011-06-02T00:00:00",
-      "expiryDate": "9998-12-31T15:00:00",
-      "captureDetails": false,
-      "isOnSale": false,
-      "hideIfNoStock": false,
-      "enableDropShipping": false,
-      "excludeFromSearch": false,
-      "enabled": true,
-      "deleted": false,
-      "title": "",
-      "reIndex": false,
-      "hasAttributes": false,
-      "cycleTypeCount": -1,
-      "hasVariations": false,
-      "slug": "sample-product-1",
-      "metaProductDescription": ""
-    },
-    {
-      "id": 3909341,
-      "siteId": 246884,
-      "name": "Sample Product 2",
-      "roleId": -1,
-      "weight": null,
-      "productCode": "HC9YKI0HFP",
-      "tags": "",
-      "unitType": "",
-      "smallImage": "/images/products/prod1.gif",
-      "largeImage": "/images/products/placeholder-product-image-large.png",
-      "description": "This is a sample product. You can edit this product by logging in to your Admin Console and going to 'ECommerce > Products'\r\n",
-      "inventoryControl": false,
-      "canPreorder": false,
-      "minUnits": 1,
-      "maxUnits": -1,
-      "inStock": -1,
-      "onOrder": 0,
-      "reOrder": -1,
-      "reOrderNotified": false,
-      "variablePerCycle": false,
-      "groupingID": null,
-      "GroupingDefault": false,
-      "electronicProduct": false,
-      "displayFileName": null,
-      "size": 0,
-      "downloadLimitCount": -1,
-      "downloadLimitIp": -1,
-      "productWeight": -1,
-      "productVolume": -1,
-      "productHeight": -1,
-      "productDepth": -1,
-      "supplierEntityId": null,
-      "supplierCommission": 0,
-      "isGiftVoucher": false,
-      "poplets": null,
-      "attributes": null,
-      "custom1": "",
-      "custom2": "",
-      "custom3": "",
-      "custom4": "",
-      "releaseDate": "2011-06-02T00:00:00",
-      "expiryDate": "9998-12-31T15:00:00",
-      "captureDetails": false,
-      "isOnSale": false,
-      "hideIfNoStock": false,
-      "enableDropShipping": false,
-      "excludeFromSearch": false,
-      "enabled": true,
-      "deleted": false,
-      "title": "",
-      "reIndex": false,
-      "hasAttributes": false,
-      "cycleTypeCount": -1,
-      "hasVariations": false,
-      "slug": "sample-product-2",
-      "metaProductDescription": null
-    }
+{  
+   "id":9683555,
+   "siteId":2163596,
+   "name":"Childhood Dreams T-Shirt",
+   "roleId":-1,
+   "weight":1,
+   "productCode":"R7VWTBA6LR",
+   "tags":"",
+   "unitType":"",
+   "smallImage":"/shop/tshirt1.jpg",
+   "largeImage":"/shop/big-product-image.jpg",
+   "description":"Casual T-Shirt made from high quality bio cotton. It's light, very comfortable to wear yet it's durable and colors will remain vivid even after a couple of washes. This product is made with respect to human rights and the environment.  Made in Thailand.\r\n",
+   "inventoryControl":true,
+   "canPreorder":false,
+   "minUnits":1,
+   "maxUnits":-1,
+   "inStock":18,
+   "onOrder":0,
+   "reOrder":-1,
+   "reOrderNotified":false,
+   "variablePerCycle":false,
+   "groupingID":39793,
+   "GroupingDefault":true,
+   "electronicProduct":false,
+   "displayFileName":null,
+   "size":0,
+   "downloadLimitCount":-1,
+   "downloadLimitIp":-1,
+   "productWeight":-1.0,
+   "productVolume":-1.0,
+   "productHeight":-1.0,
+   "productDepth":-1.0,
+   "supplierEntityId":null,
+   "supplierCommission":0.0,
+   "isGiftVoucher":false,
+   "poplets":null,
+   "attributes":null,
+   "custom1":"featured",
+   "custom2":"",
+   "custom3":"",
+   "custom4":"",
+   "releaseDate":"2013-01-15T23:00:00",
+   "expiryDate":"9998-12-31T15:00:00",
+   "createDate":"2015-07-14T01:22:17.67",
+   "lastUpdateDate":"2015-07-14T01:22:17.67",
+   "captureDetails":false,
+   "isOnSale":false,
+   "hideIfNoStock":false,
+   "enableDropShipping":false,
+   "excludeFromSearch":false,
+   "enabled":true,
+   "deleted":false,
+   "title":"",
+   "reIndex":false,
+   "hasAttributes":true,
+   "cycleTypeCount":-1,
+   "hasVariations":true,
+   "slug":"childhood-dreams-t-shirt",
+   "metaProductDescription":null,
+   "canonicalUrl":"/all-t-shirts/womens-t-shirts/childhood-dreams-t-shirt",
+   "absoluteCanonicalUrl":"www.mydomain.com/all-t-shirts/womens-t-shirts/childhood-dreams-t-shirt"
+},
+{  
+   "id":9683556,
+   "siteId":2163596,
+   "name":"Kung-Fu Panda T-Shirt",
+   "roleId":-1,
+   "weight":2,
+   "productCode":"UFQ3WULVDN",
+   "tags":"",
+   "unitType":"",
+   "smallImage":"/shop/tshirt2.jpg",
+   "largeImage":"/shop/big-product-image.jpg",
+   "description":"Casual T-Shirt made from high quality bio cotton. It's light, very comfortable to wear yet it's durable and colors will remain vivid even after a couple of washes. This product is made with respect to human rights and the environment.  Made in Thailand.\r\n",
+   "inventoryControl":true,
+   "canPreorder":false,
+   "minUnits":1,
+   "maxUnits":-1,
+   "inStock":0,
+   "onOrder":0,
+   "reOrder":-1,
+   "reOrderNotified":false,
+   "variablePerCycle":false,
+   "groupingID":39793,
+   "GroupingDefault":false,
+   "electronicProduct":false,
+   "displayFileName":null,
+   "size":0,
+   "downloadLimitCount":-1,
+   "downloadLimitIp":-1,
+   "productWeight":-1.0,
+   "productVolume":-1.0,
+   "productHeight":-1.0,
+   "productDepth":-1.0,
+   "supplierEntityId":null,
+   "supplierCommission":0.0,
+   "isGiftVoucher":false,
+   "poplets":null,
+   "attributes":null,
+   "custom1":"",
+   "custom2":"",
+   "custom3":"",
+   "custom4":"",
+   "releaseDate":"2013-01-15T23:00:00",
+   "expiryDate":"9998-12-31T15:00:00",
+   "createDate":"2015-07-14T01:22:17.67",
+   "lastUpdateDate":"2015-07-14T01:22:17.67",
+   "captureDetails":false,
+   "isOnSale":false,
+   "hideIfNoStock":false,
+   "enableDropShipping":false,
+   "excludeFromSearch":false,
+   "enabled":true,
+   "deleted":false,
+   "title":"",
+   "reIndex":false,
+   "hasAttributes":true,
+   "cycleTypeCount":-1,
+   "hasVariations":true,
+   "slug":"kung-fu-panda-t-shirt",
+   "metaProductDescription":null,
+   "canonicalUrl":"/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt",
+   "absoluteCanonicalUrl":"www.mydomain.com/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt"
+}
   ],
   "totalItemsCount": 2,
   "skip": 0,
@@ -270,62 +282,66 @@ request.fail(function (jqXHR) {
 
 <p>Displays the details for the product as a JSON object</p>
 <ul>
-<li><strong>id</strong> - product ID <em>(number)</em></li>
-<li><strong>siteId</strong> - site ID <em>(number)</em></li>
-<li><strong>name</strong> - product's name <em>(string)</em></li>
-<li><strong>roleId</strong> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
-<li><strong>weight</strong> - product's weight <em>(number)</em></li>
-<li><strong>productCode</strong> - product's code <em>(string)</em></li>
-<li><strong>tags</strong> - product's tags <em>(string)</em></li>
-<li><strong>unitType</strong> - unitType <em>(string)</em></li>
-<li><strong>smallImage</strong> - product's smallImage <em>(string)</em></li>
-<li><strong>largeImage</strong> - product's largeImage <em>(string)</em></li>
-<li><strong>description</strong> - product's description <em>(string)</em></li>
-<li><strong>inventoryControl</strong> - whether this product has inventoryControl on or off<em>(boolean)</em></li>
-<li><strong>canPreorder</strong> - canPreorder <em>(boolean)</em></li>
-<li><strong>minUnits</strong> - min number units that can be added to the cart <em>(number)</em></li>
-<li><strong>maxUnits</strong> - max number units that can be added to the cart <em>(number)</em></li>
-<li><strong>inStock</strong> - number of items in stock<em>(number)</em></li>
-<li><strong>onOrder</strong> - onOrder <em>(number)</em></li>
-<li><strong>reOrder</strong> - reOrder <em>(number)</em></li>
-<li><strong>reOrderNotified</strong> - reOrderNotified <em>(boolean)</em></li>
-<li><strong>variablePerCycle</strong> - variablePerCycle <em>(boolean)</em></li>
-<li><strong>groupingID</strong> - the product's groupID <em>(number)</em></li>
-<li><strong>GroupingDefault</strong> - GroupingDefault <em>(boolean)</em></li>
-<li><strong>electronicProduct</strong> - whether or not this product is an e-Product <em>(boolean)</em></li>
-<li><strong>displayFileName</strong> - product's display name <em>(string)</em></li>
-<li><strong>size</strong> - size <em>(number)</em></li>
-<li><strong>downloadLimitCount</strong> - download limit (only applies to e-Products) <em>(number)</em></li>
-<li><strong>downloadLimitIp</strong> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
-<li><strong>productWeight</strong> - product weight <em>(number)</em></li>
-<li><strong>productVolume</strong> - product volume <em>(number)</em></li>
-<li><strong>productHeight</strong> - product height <em>(number)</em></li>
-<li><strong>productDepth</strong> - product depth <em>(number)</em></li>
-<li><strong>supplierEntityId</strong> - the supplier's entity ID <em>(number)</em></li>
-<li><strong>supplierCommission</strong> - the supplier's commission <em>(number)</em></li>
-<li><strong>isGiftVoucher</strong> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
-<li><strong>poplets</strong> - the product's poplets<em>(string)</em></li>
-<li><strong>attributes</strong> - product's attributes <em>(string)</em></li>
-<li><strong>custom1</strong> - custom field 1 <em>(string)</em></li>
-<li><strong>custom2</strong> - custom field 2 <em>(string)</em></li>
-<li><strong>custom3</strong> - custom field 3 <em>(string)</em></li>
-<li><strong>custom4</strong> - custom field 4 <em>(string)</em></li>
-<li><strong>releaseDate</strong> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>expiryDate</strong> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>captureDetails</strong> - captureDetails <em>(boolean)</em></li>
-<li><strong>isOnSale</strong> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
-<li><strong>hideIfNoStock</strong> - hide product if stock is 0 <em>(boolean)</em></li>
-<li><strong>enableDropShipping</strong> - enable drop shipping <em>(boolean)</em></li>
-<li><strong>excludeFromSearch</strong> - exclude this product from search results<em>(boolean)</em></li>
-<li><strong>enabled</strong> - enabled <em>(boolean)</em></li>
-<li><strong>deleted</strong> - deleted <em>(boolean)</em></li>
-<li><strong>title</strong> - product's title <em>(string)</em></li>
-<li><strong>reIndex</strong> - reIndex <em>(boolean)</em></li>
-<li><strong>hasAttributes</strong> - hasAttributes <em>(boolean)</em></li>
-<li><strong>cycleTypeCount</strong> - cycleTypeCount <em>(number)</em></li>
-<li><strong>hasVariations</strong> - whether the product has variations enabled<em>(boolean)</em></li>
-<li><strong>url</strong> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
-<li><strong>metaProductDescription</strong> - metaProductDescription <em>(string)</em></li>
+  <li><strong>id</strong> - product ID <em>(number)</em></li>
+  <li><strong>siteId</strong> - site ID <em>(number)</em></li>
+  <li><strong>name</strong> - product's name <em>(string)</em></li>
+  <li><strong>roleId</strong> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
+  <li><strong>weight</strong> - product's weight <em>(number)</em></li>
+  <li><strong>productCode</strong> - product's code <em>(string)</em></li>
+  <li><strong>tags</strong> - product's tags <em>(string)</em></li>
+  <li><strong>unitType</strong> - unitType <em>(string)</em></li>
+  <li><strong>smallImage</strong> - product's smallImage <em>(string)</em></li>
+  <li><strong>largeImage</strong> - product's largeImage <em>(string)</em></li>
+  <li><strong>description</strong> - product's description <em>(string)</em></li>
+  <li><strong>inventoryControl</strong> - whether this product has inventoryControl on or off<em>(boolean)</em></li>
+  <li><strong>canPreorder</strong> - canPreorder <em>(boolean)</em></li>
+  <li><strong>minUnits</strong> - min number units that can be added to the cart <em>(number)</em></li>
+  <li><strong>maxUnits</strong> - max number units that can be added to the cart <em>(number)</em></li>
+  <li><strong>inStock</strong> - number of items in stock<em>(number)</em></li>
+  <li><strong>onOrder</strong> - onOrder <em>(number)</em></li>
+  <li><strong>reOrder</strong> - reOrder <em>(number)</em></li>
+  <li><strong>reOrderNotified</strong> - reOrderNotified <em>(boolean)</em></li>
+  <li><strong>variablePerCycle</strong> - variablePerCycle <em>(boolean)</em></li>
+  <li><strong>groupingID</strong> - the product's groupID <em>(number)</em></li>
+  <li><strong>GroupingDefault</strong> - GroupingDefault <em>(boolean)</em></li>
+  <li><strong>electronicProduct</strong> - whether or not this product is an e-Product <em>(boolean)</em></li>
+  <li><strong>displayFileName</strong> - product's display name <em>(string)</em></li>
+  <li><strong>size</strong> - size <em>(number)</em></li>
+  <li><strong>downloadLimitCount</strong> - download limit (only applies to e-Products) <em>(number)</em></li>
+  <li><strong>downloadLimitIp</strong> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
+  <li><strong>productWeight</strong> - product weight <em>(number)</em></li>
+  <li><strong>productVolume</strong> - product volume <em>(number)</em></li>
+  <li><strong>productHeight</strong> - product height <em>(number)</em></li>
+  <li><strong>productDepth</strong> - product depth <em>(number)</em></li>
+  <li><strong>supplierEntityId</strong> - the supplier's entity ID <em>(number)</em></li>
+  <li><strong>supplierCommission</strong> - the supplier's commission <em>(number)</em></li>
+  <li><strong>isGiftVoucher</strong> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
+  <li><strong>poplets</strong> - the product's poplets<em>(string)</em></li>
+  <li><strong>attributes</strong> - product's attributes <em>(string)</em></li>
+  <li><strong>custom1</strong> - custom field 1 <em>(string)</em></li>
+  <li><strong>custom2</strong> - custom field 2 <em>(string)</em></li>
+  <li><strong>custom3</strong> - custom field 3 <em>(string)</em></li>
+  <li><strong>custom4</strong> - custom field 4 <em>(string)</em></li>
+  <li><strong>releaseDate</strong> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>expiryDate</strong> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>createDate </strong>- product's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>lastUpdateDate</strong> - product's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>captureDetails</strong> - captureDetails <em>(boolean)</em></li>
+  <li><strong>isOnSale</strong> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
+  <li><strong>hideIfNoStock</strong> - hide product if stock is 0 <em>(boolean)</em></li>
+  <li><strong>enableDropShipping</strong> - enable drop shipping <em>(boolean)</em></li>
+  <li><strong>excludeFromSearch</strong> - exclude this product from search results<em>(boolean)</em></li>
+  <li><strong>enabled</strong> - enabled <em>(boolean)</em></li>
+  <li><strong>deleted</strong> - deleted <em>(boolean)</em></li>
+  <li><strong>title</strong> - product's title <em>(string)</em></li>
+  <li><strong>reIndex</strong> - reIndex <em>(boolean)</em></li>
+  <li><strong>hasAttributes</strong> - hasAttributes <em>(boolean)</em></li>
+  <li><strong>cycleTypeCount</strong> - cycleTypeCount <em>(number)</em></li>
+  <li><strong>hasVariations</strong> - whether the product has variations enabled<em>(boolean)</em></li>
+  <li><strong>slug</strong> - product's slug <em>(string)</em></li>
+  <li><strong>metaProductDescription</strong> - meta description <em>(string)</em></li>
+  <li><strong>canonicalUrl</strong> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
+  <li><strong>absoluteCanonicalUrl</strong> - product's absolute url <em>(string)</em></li>
 
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -337,7 +353,7 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/products/146985",
+    url: "/webresources/api/v3/sites/current/products/9683556",
     type: "GET",
     conenection: "keep-alive",    
     contentType: "application/json",
@@ -357,62 +373,66 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
 <pre class="language-javascript"><code>{% raw %}{
-  "id": 3909341,
-  "siteId": 246884,
-  "name": "Sample Product 2",
-  "roleId": -1,
-  "weight": null,
-  "productCode": "HC9YKI0HFP",
-  "tags": "",
-  "unitType": "",
-  "smallImage": "/images/products/prod1.gif",
-  "largeImage": "/images/products/placeholder-product-image-large.png",
-  "description": "This is a sample product. You can edit this product by logging in to your Admin Console and going to 'ECommerce > Products'\r\n",
-  "inventoryControl": false,
-  "canPreorder": false,
-  "minUnits": 1,
-  "maxUnits": -1,
-  "inStock": -1,
-  "onOrder": 0,
-  "reOrder": -1,
-  "reOrderNotified": false,
-  "variablePerCycle": false,
-  "groupingID": null,
-  "GroupingDefault": false,
-  "electronicProduct": false,
-  "displayFileName": null,
-  "size": 0,
-  "downloadLimitCount": -1,
-  "downloadLimitIp": -1,
-  "productWeight": -1,
-  "productVolume": -1,
-  "productHeight": -1,
-  "productDepth": -1,
-  "supplierEntityId": null,
-  "supplierCommission": 0,
-  "isGiftVoucher": false,
-  "poplets": null,
-  "attributes": null,
-  "custom1": "",
-  "custom2": "",
-  "custom3": "",
-  "custom4": "",
-  "releaseDate": "2011-06-02T00:00:00",
-  "expiryDate": "9998-12-31T15:00:00",
-  "captureDetails": false,
-  "isOnSale": false,
-  "hideIfNoStock": false,
-  "enableDropShipping": false,
-  "excludeFromSearch": false,
-  "enabled": true,
-  "deleted": false,
-  "title": "",
-  "reIndex": false,
-  "hasAttributes": false,
-  "cycleTypeCount": -1,
-  "hasVariations": false,
-  "slug": "sample-product-2",
-  "metaProductDescription": null
+  "id":9683556,
+   "siteId":2163596,
+   "name":"Kung-Fu Panda T-Shirt",
+   "roleId":-1,
+   "weight":2,
+   "productCode":"UFQ3WULVDN",
+   "tags":"",
+   "unitType":"",
+   "smallImage":"/shop/tshirt2.jpg",
+   "largeImage":"/shop/big-product-image.jpg",
+   "description":"Casual T-Shirt made from high quality bio cotton. It's light, very comfortable to wear yet it's durable and colors will remain vivid even after a couple of washes. This product is made with respect to human rights and the environment.  Made in Thailand.\r\n",
+   "inventoryControl":true,
+   "canPreorder":false,
+   "minUnits":1,
+   "maxUnits":-1,
+   "inStock":0,
+   "onOrder":0,
+   "reOrder":-1,
+   "reOrderNotified":false,
+   "variablePerCycle":false,
+   "groupingID":39793,
+   "GroupingDefault":false,
+   "electronicProduct":false,
+   "displayFileName":null,
+   "size":0,
+   "downloadLimitCount":-1,
+   "downloadLimitIp":-1,
+   "productWeight":-1.0,
+   "productVolume":-1.0,
+   "productHeight":-1.0,
+   "productDepth":-1.0,
+   "supplierEntityId":null,
+   "supplierCommission":0.0,
+   "isGiftVoucher":false,
+   "poplets":null,
+   "attributes":null,
+   "custom1":"",
+   "custom2":"",
+   "custom3":"",
+   "custom4":"",
+   "releaseDate":"2013-01-15T23:00:00",
+   "expiryDate":"9998-12-31T15:00:00",
+   "createDate":"2015-07-14T01:22:17.67",
+   "lastUpdateDate":"2015-07-14T01:22:17.67",
+   "captureDetails":false,
+   "isOnSale":false,
+   "hideIfNoStock":false,
+   "enableDropShipping":false,
+   "excludeFromSearch":false,
+   "enabled":true,
+   "deleted":false,
+   "title":"",
+   "reIndex":false,
+   "hasAttributes":true,
+   "cycleTypeCount":-1,
+   "hasVariations":true,
+   "slug":"kung-fu-panda-t-shirt",
+   "metaProductDescription":null,
+   "canonicalUrl":"/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt",
+   "absoluteCanonicalUrl":"www.mydomain.com/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt"
 }{% endraw %}</code></pre>
 </div>
 <hr>

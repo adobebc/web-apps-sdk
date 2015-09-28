@@ -46,7 +46,9 @@
 <li><strong>imageUrl</strong> - the path to the catalog's thumbnail <em>(string)</em></li>
 <li><strong>releaseDate</strong> - catalog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>expiryDate</strong> - catalog's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>notify</strong> - user to not<em>(numeric)</em></li>
+<li><strong>notify</strong> - user to notify <em>(numeric)</em></li>
+<li><strong>createDate</strong> - catalog's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>lastUpdateDate</strong> - catalog's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>useFriendlyUrl</strong> - catalog URL <em>(string)</em></li>
 <li><strong>excludeFromFeed</strong> - whether the products in this catalog are included in the XML feed <em>(boolean)</em></li>
 <li><strong>enabled</strong> - whether the catalog is enabled or not <em>(boolean)</em></li>
@@ -55,6 +57,7 @@
 <li><strong>maxPrice</strong> - browsepanel maximum price <em>(numeric)</em></li>
 <li><strong>priceSlots</strong> - the total number of slots in the browsepanel <em>(numeric)</em></li>
 <li><strong>productsStatsXml</strong> - productsStatsXml <em>(string)</em></li>
+<li><strong>url</strong> - catalog's url (string)</li>
 
 </ul>
 
@@ -105,6 +108,8 @@ request.fail(function (jqXHR) {
       "releaseDate": "2011-04-11T00:00:00",
       "expiryDate": "9998-12-31T15:00:00",
       "notify": null,
+      "createDate": "2015-08-18T12:41:39.233",
+      "lastUpdateDate": "2015-08-18T12:41:39.233",
       "useFriendlyUrl": true,
       "excludeFromFeed": false,
       "enabled": true,
@@ -113,7 +118,7 @@ request.fail(function (jqXHR) {
       "maxPrice": 1000,
       "priceSlots": 5,
       "productsStatsXml": "3003000000300000030000003",
-      "reIndex": true
+      "url": "/classic-boutique"
     },
     {
       "id": 25481,
@@ -129,7 +134,9 @@ request.fail(function (jqXHR) {
       "imageUrl": "",
       "releaseDate": "2011-04-11T00:00:00",
       "expiryDate": "9998-12-31T15:00:00",
-      "notify": null,
+      "notify": null, 
+      "createDate": "2015-08-18T12:41:39.233",
+      "lastUpdateDate": "2015-08-18T12:41:39.233",
       "useFriendlyUrl": true,
       "excludeFromFeed": false,
       "enabled": true,
@@ -138,7 +145,7 @@ request.fail(function (jqXHR) {
       "maxPrice": 1000,
       "priceSlots": 5,
       "productsStatsXml": "3003000000300000030000003",
-      "reIndex": false
+      "url": "/woody-perfumes"
     }
   ],
   "totalItemsCount": 2,
@@ -175,33 +182,36 @@ request.fail(function (jqXHR) {
 
 <p>Displays the details for the catalog as a JSON object</p>
 <ul>
-<li><strong> id</strong> -  catalog's id <em>(numeric)</em></li>
-<li><strong>siteId</strong> - site's id <em>(numeric)</em></li>
-<li><strong>parentId</strong> - the ID of this catalog's parent (<em>-1</em> if this is a root level catalog) <em>(numeric)</em></li>
-<li><strong>templateId</strong> - templateId <em>(numeric)</em></li>
-<li><strong>roleId</strong> - the roleID of the user to be notified if the catalog is about to expire (<em>-1</em> for none) <em>(number)</em></li>
-<li><strong>displayTypeId</strong> - show prices to everybody or only to existing customers. Possible values are:
-<ul>
-<li><strong>1</strong>: everyone</li>
-<li><strong>2</strong>: only existing customers</li>
-</ul>
-</li>
-<li><strong>weight</strong> - catalog's weight <em>(numeric)</em></li>
-<li><strong>name</strong> - catalog's name <em>(string)</em></li>
-<li><strong>title</strong> - catalog's title <em>(string)</em></li>
-<li><strong>description</strong> - catalog's description <em>(string)</em></li>
-<li><strong>imageUrl</strong> - the path to the catalog's thumbnail <em>(string)</em></li>
-<li><strong>releaseDate</strong> - catalog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>expiryDate</strong> - catalog's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>notify</strong> - user to not<em>(numeric)</em></li>
-<li><strong>useFriendlyUrl</strong> - catalog URL <em>(string)</em></li>
-<li><strong>excludeFromFeed</strong> - whether the products in this catalog are included in the XML feed <em>(boolean)</em></li>
-<li><strong>enabled</strong> - whether the catalog is enabled or not <em>(boolean)</em></li>
-<li><strong>deleted</strong> - whether the catalog is deleted or not <em>(boolean)</em></li>
-<li><strong>minPrice</strong> - browsepanel minimum price <em>(numeric)</em></li>
-<li><strong>maxPrice</strong> - browsepanel maximum price <em>(numeric)</em></li>
-<li><strong>priceSlots</strong> - the total number of slots in the browsepanel <em>(numeric)</em></li>
-<li><strong>productsStatsXml</strong> - productsStatsXml <em>(string)</em></li>
+  <li><strong> id</strong> -  catalog's id <em>(numeric)</em></li>
+  <li><strong>siteId</strong> - site's id <em>(numeric)</em></li>
+  <li><strong>parentId</strong> - the ID of this catalog's parent (<em>-1</em> if this is a root level catalog) <em>(numeric)</em></li>
+  <li><strong>templateId</strong> - templateId <em>(numeric)</em></li>
+  <li><strong>roleId</strong> - the roleID of the user to be notified if the catalog is about to expire (<em>-1</em> for none) <em>(number)</em></li>
+  <li><strong>displayTypeId</strong> - show prices to everybody or only to existing customers. Possible values are:
+    <ul>
+      <li><strong>1</strong>: everyone</li>
+      <li><strong>2</strong>: only existing customers</li>
+    </ul>
+  </li>
+  <li><strong>weight</strong> - catalog's weight <em>(numeric)</em></li>
+  <li><strong>name</strong> - catalog's name <em>(string)</em></li>
+  <li><strong>title</strong> - catalog's title <em>(string)</em></li>
+  <li><strong>description</strong> - catalog's description <em>(string)</em></li>
+  <li><strong>imageUrl</strong> - the path to the catalog's thumbnail <em>(string)</em></li>
+  <li><strong>releaseDate</strong> - catalog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>expiryDate</strong> - catalog's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>notify</strong> - user to notify <em>(numeric)</em></li>
+  <li><strong>createDate</strong> - catalog's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>lastUpdateDate</strong> - catalog's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>useFriendlyUrl</strong> - catalog URL <em>(string)</em></li>
+  <li><strong>excludeFromFeed</strong> - whether the products in this catalog are included in the XML feed <em>(boolean)</em></li>
+  <li><strong>enabled</strong> - whether the catalog is enabled or not <em>(boolean)</em></li>
+  <li><strong>deleted</strong> - whether the catalog is deleted or not <em>(boolean)</em></li>
+  <li><strong>minPrice</strong> - browsepanel minimum price <em>(numeric)</em></li>
+  <li><strong>maxPrice</strong> - browsepanel maximum price <em>(numeric)</em></li>
+  <li><strong>priceSlots</strong> - the total number of slots in the browsepanel <em>(numeric)</em></li>
+  <li><strong>productsStatsXml</strong> - productsStatsXml <em>(string)</em></li>
+  <li><strong>url</strong> - catalog's url (string)</li>
 
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -247,6 +257,8 @@ request.fail(function (jqXHR) {
   "releaseDate": "2011-04-11T00:00:00",
   "expiryDate": "9998-12-31T15:00:00",
   "notify": null,
+  "createDate": "2015-08-18T12:41:39.233",
+  "lastUpdateDate": "2015-08-18T12:41:39.233",
   "useFriendlyUrl": true,
   "excludeFromFeed": false,
   "enabled": true,
@@ -255,7 +267,7 @@ request.fail(function (jqXHR) {
   "maxPrice": 1000,
   "priceSlots": 5,
   "productsStatsXml": "3003000000300000030000003",
-  "reIndex": true
+  "url": "/classic-boutique"
 }{% endraw %}</code></pre>
 </div>
 <hr>

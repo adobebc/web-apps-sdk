@@ -42,6 +42,8 @@
 <li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
 <li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - customer's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - customer's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 <p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
@@ -77,6 +79,8 @@ Content-Type: application/json
       "company": "",
       "dateOfBirth": "1982-12-06T23:00:00",
       "username": "",
+      "createDate": "2015-02-20T14:51:26.23",
+      "lastUpdateDate": "2015-02-20T14:51:26.23",
       "wholesaler": false
     },
     {
@@ -93,6 +97,8 @@ Content-Type: application/json
       "company": "",
       "dateOfBirth": "",
       "username": "mbol",
+      "createDate": "2015-02-20T14:51:26.23",
+      "lastUpdateDate": "2015-02-20T14:51:26.23",
       "wholesaler": false
     }
   ],
@@ -323,6 +329,8 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
 <li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - customer's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - customer's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 
@@ -355,6 +363,8 @@ Content-Type: application/json
     "lastName": "John",
     "company": "",
     "dateOfBirth": "1982-12-06T23:00:00",
+    "createDate": "2015-02-20T14:51:26.23",
+    "lastUpdateDate": "2015-02-20T14:51:26.23",
     "username": "",
     "wholesaler": false
 }{% endraw %}</code></pre>
@@ -492,6 +502,8 @@ request.fail(function(jqXHR) {
     "lastName": "New_user",
     &quot;company&quot;: &quot;&quot;,
     "username": "myUsername"
+    "createDate": "2015-02-20T14:51:26.23",
+    "lastUpdateDate": "2015-02-20T14:51:26.23",
   }],
   "totalItemsCount": 1,
   "skip": 0,
@@ -536,6 +548,8 @@ request.fail(function(jqXHR) {
 <li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
 <li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - customer's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - customer's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 </div>
@@ -675,6 +689,8 @@ console.log("Response text: " + jqXHR.responseText);
 <li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}dateOfBirth{% endraw %}</code> e.g. <em>1982-12-06T23:00:00 (<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em><em></em></li>
 <li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - customer's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - customer's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><code>{% raw %}wholesaler{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 </div>

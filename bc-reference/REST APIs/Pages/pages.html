@@ -29,28 +29,29 @@
 <h3>Response</h3>
 <p>An array of the first 10 web pages; each object has the following properties:</p>
 <ul>
-  <li><code>{% raw %}id{% endraw %}</code> - the page's ID</li>
-  <li><code>{% raw %}siteId{% endraw %}</code> - the ID of the site the page is on</li>
-  <li><code>{% raw %}url{% endraw %}</code> - the page's URL</li>
-  <li><code>{% raw %}name{% endraw %}</code> - the page's NAME</li>
-  <li><code>{% raw %}deleted{% endraw %}</code> - whether the page is deleted or not</li>
-  <li><code>{% raw %}categoryId{% endraw %}</code> - the ID of the category (-1 of the page is not classified)</li>
-  <li><code>{% raw %}roleId{% endraw %}</code> - the ID of the role responsible (-1 if not applicable)</li>
-  <li><code>{% raw %}templateId{% endraw %}</code> - the ID of the template (-1 if no template is applied or 0 to use the default template)</li>
-  <li><code>{% raw %}parentId{% endraw %}</code> - the ID of the parent folder (-1 if the page is placed in the site's root folder) </li>
-  <li><code>{% raw %}displayFileName{% endraw %}</code> - the page's display name</li>
-  <li><code>{% raw %}size{% endraw %}</code> - the page's size</li>
-  <li><code>{% raw %}enabled{% endraw %}</code> - whether the page is enabled or not</li>
-  <li><code>{% raw %}startPage{% endraw %}</code> - whether the page is set as start page</li>
-  <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date of the page</li>
-  <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date of the page</li>
-  <li><code>{% raw %}displayable{% endraw %}</code> - whether the page is live or it is a draft page</li>
-  <li><code>{% raw %}excludeFromSearch{% endraw %}</code> - whether to exclude the page from the site search</li>
-  <li><code>{% raw %}livePageId{% endraw %}</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the corresponding live page.</li>
-  <li><code>{% raw %}content{% endraw %}</code> - the content of the page</li>
-  <li><code>{% raw %}redirect301{% endraw %}</code> - the URL this page should 301 redirect to</li>
-  <li><code>{% raw %}title{% endraw %}</code> - the page's title</li>
-  <li><code>{% raw %}seoMetadataDescription{% endraw %}</code> - the page's SEO meta description</li>
+  <li><code>{% raw %}id{% endraw %}</code> - the page's ID <em>(number)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - the ID of the site the page is on <em>(number)</em></li>
+  <li><code>{% raw %}workflowId{% endraw %}</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned) <em>(number)</em></li>
+  <li><code>{% raw %}roleId{% endraw %}</code> - the ID of the role responsible (-1 if not applicable) <em>(number)</em></li>
+  <li><code>{% raw %}templateId{% endraw %}</code> - the ID of the template (-1 if no template is applied or 0 to use the default template) <em>(number)</em></li>
+  <li><code>{% raw %}parentId{% endraw %}</code> - the ID of the parent page (-1 if no page is applied or 0 to use the default template) <em>(number)</em></li>
+  <li><code>{% raw %}livePageId{% endraw %}</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page. <em>(number)</em></li>
+  <li><code>{% raw %}pageUrl{% endraw %}</code> - the page's url <em>(string)</em></li>
+  <li><code>{% raw %}name{% endraw %}</code> - the page's name <em>(string)</em></li>
+  <li><code>{% raw %}displayFileName{% endraw %}</code> - the page's display name <em>(string)</em></li>
+  <li><code>{% raw %}size{% endraw %}</code> - the page's size <em>(number)</em></li>
+  <li><code>{% raw %}enabled{% endraw %}</code> - whether the page is enabled or not <em>(boolean)</em></li>
+  <li><code>{% raw %}startPage{% endraw %}</code> - whether the page is set as start page<em>(boolean)</em></li>
+  <li><code>{% raw %}createDate{% endraw %}</code> - the creation date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}lastUpdateDate{% endraw %}</code> - the last update date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}displayable{% endraw %}</code> - whether the page is live or it is a draft page <em>(boolean)</em></li>
+  <li><code>{% raw %}excludeFromSearch{% endraw %}</code> - whether to exclude the page from the site search <em>(boolean)</em></li>
+  <li><code>{% raw %}content{% endraw %}</code> - the content of the page HTML encoded <em>(string)</em></li>
+  <li><code>{% raw %}redirect301{% endraw %}</code> - the URL this page should 301 redirect to <em>(string)</em></li>
+  <li><code>{% raw %}title{% endraw %}</code> - the page's title <em>(string)</em></li>
+  <li><code>{% raw %}seoMetadataDescription{% endraw %}</code> - the page's SEO meta description <em>(string)</em></li>
 </ul><p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 <hr>
@@ -63,7 +64,7 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/pages",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -84,52 +85,54 @@ request.fail(function (jqXHR) {
 {
   "items": [
     {
-      "id": 2411253,
-      "siteId": 38581,
-      "pageUrl": "/page1",
-      "name": "Page 1 name",
-      "deleted": false,
-      "categoryId": -1,
-      "roleId": -1,
-      "templateId": -1,
-      "parentId": -1,
-      "displayFileName": "page1.htm",
-      "size": 183,
-      "enabled": false,
-      "startPage": false,
-      "releaseDate": "2044-01-01T00:00:00",
-      "expiryDate": "9999-01-01T00:00:00",
-      "displayable": true,
-      "excludeFromSearch": true,
-      "livePageId": null,
-      "content": "Page1 content",
-      "redirect301": "",
-      "title": "Page1 title",
-      "seoMetadataDescription": "Sample metadata"
+     "id":9017917,
+     "siteId":2163596,
+     "workflowId":-1,
+     "roleId":-1,
+     "templateId":0,
+     "parentId":-1,
+     "livePageId":null,
+     "pageUrl":"/about.html",
+     "name":"About Us",
+     "displayFileName":"about.html",
+     "size":5281,
+     "enabled":true,
+     "startPage":false,
+     "createDate":"2015-07-14T01:22:17.67",
+     "lastUpdateDate":"2015-07-31T11:49:02.1",
+     "releaseDate":"2015-07-31T11:49:02.1",
+     "expiryDate":"9998-12-31T15:00:00",
+     "displayable":true,
+     "excludeFromSearch":false,
+     "content":"Content here",
+     "redirect301":"",
+     "title":"About Us",
+     "seoMetadataDescription":"Sample description"
     },
     {
-      "id": 2411254,
-      "siteId": 38581,
-      "pageUrl": "/page2",
-      "name": "page2",
-      "deleted": false,
-      "categoryId": -1,
-      "roleId": -1,
-      "templateId": 0,
-      "parentId": -1,
-      "displayFileName": "page2.html",
-      "size": 16993,
-      "enabled": true,
-      "startPage": false,
-      "releaseDate": "2009-05-11T07:00:00",
-      "expiryDate": "9999-01-01T00:00:00",
-      "displayable": true,
-      "excludeFromSearch": false,
-      "livePageId": null,
-      "content": "Page2 content&quot;,
-      "redirect301": "",
-      "title": "Page2",
-      "seoMetadataDescription": "Sample metadata"
+     "id":9017918,
+     "siteId":2163596,
+     "workflowId":-1,
+     "roleId":-1,
+     "templateId":0,
+     "parentId":-1,
+     "livePageId":null,
+     "pageUrl":"/contact",
+     "name":"Contact",
+     "displayFileName":"contact.html",
+     "size":2810,
+     "enabled":true,
+     "startPage":false,
+     "createDate":"2015-07-14T01:22:17.67",
+     "lastUpdateDate":"2015-08-06T13:21:41.373",
+     "releaseDate":"2015-08-03T00:00:00",
+     "expiryDate":"9998-12-31T15:00:00",
+     "displayable":true,
+     "excludeFromSearch":false,
+     "content": "Page2 content&quot;,
+     "redirect301": "",
+     "title": "Contact Us",
+     "seoMetadataDescription": "Sample metadata"
     }
 ],
 "totalItemsCount": 2,    
@@ -167,28 +170,30 @@ request.fail(function (jqXHR) {
 
 <p>Returns the properties below for a single page:</p>
 <ul>
-  <li><code>{% raw %}id{% endraw %}</code> - the page's ID</li>
-  <li><code>{% raw %}siteId{% endraw %}</code> - the ID of the site the page is on</li>
-  <li><code>{% raw %}url{% endraw %}</code> - the page's URL</li>
-  <li><code>{% raw %}name{% endraw %}</code> - the page's NAME</li>
-  <li><code>{% raw %}deleted{% endraw %}</code> - whether the page is deleted or not</li>
-  <li><code>{% raw %}categoryId{% endraw %}</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned)</li>
-  <li><code>{% raw %}roleId{% endraw %}</code> - the ID of the role responsible (-1 if not applicable)</li>
-  <li><code>{% raw %}templateId{% endraw %}</code> - the ID of the template (-1 if no template is applied or 0 to use the default template)</li>
-  <li><code>{% raw %}parentId{% endraw %}</code> - the ID of the parent folder (-1 if the page is placed in the site's root folder)</li>
-  <li><code>{% raw %}displayFileName{% endraw %}</code> - the page's display name</li>
-  <li><code>{% raw %}size{% endraw %}</code> - the page's size</li>
-  <li><code>{% raw %}enabled{% endraw %}</code> - whether the page is enabled or not</li>
-  <li><code>{% raw %}startPage{% endraw %}</code> - whether the page is set as start page</li>
-  <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date of the page</li>
-  <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date of the page</li>
-  <li><code>{% raw %}displayable{% endraw %}</code> - whether the page is live or it is a draft page</li>
-  <li><code>{% raw %}excludeFromSearch{% endraw %}</code> - whether to exclude the page from the site search</li>
-  <li><code>{% raw %}livePageId{% endraw %}</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
-  <li><code>{% raw %}content{% endraw %}</code> - the content of the page</li>
-  <li><code>{% raw %}redirect301{% endraw %}</code> - the URL this page should 301 redirect to</li>
-  <li><code>{% raw %}title{% endraw %}</code> - the page's title</li>
-  <li><code>{% raw %}seoMetadataDescription{% endraw %}</code> - the page's SEO meta description</li>
+  <li><code>{% raw %}id{% endraw %}</code> - the page's ID <em>(number)</em></li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - the ID of the site the page is on <em>(number)</em></li>
+  <li><code>{% raw %}workflowId{% endraw %}</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned) <em>(number)</em></li>
+  <li><code>{% raw %}roleId{% endraw %}</code> - the ID of the role responsible (-1 if not applicable) <em>(number)</em></li>
+  <li><code>{% raw %}templateId{% endraw %}</code> - the ID of the template (-1 if no template is applied or 0 to use the default template) <em>(number)</em></li>
+  <li><code>{% raw %}parentId{% endraw %}</code> - the ID of the parent page (-1 if no page is applied or 0 to use the default template) <em>(number)</em></li>
+  <li><code>{% raw %}livePageId{% endraw %}</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page. <em>(number)</em></li>
+  <li><code>{% raw %}pageUrl{% endraw %}</code> - the page's url <em>(string)</em></li>
+  <li><code>{% raw %}name{% endraw %}</code> - the page's name <em>(string)</em></li>
+  <li><code>{% raw %}displayFileName{% endraw %}</code> - the page's display name <em>(string)</em></li>
+  <li><code>{% raw %}size{% endraw %}</code> - the page's size <em>(number)</em></li>
+  <li><code>{% raw %}enabled{% endraw %}</code> - whether the page is enabled or not <em>(boolean)</em></li>
+  <li><code>{% raw %}startPage{% endraw %}</code> - whether the page is set as start page<em>(boolean)</em></li>
+  <li><code>{% raw %}createDate{% endraw %}</code> - the creation date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}lastUpdateDate{% endraw %}</code> - the last update date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}displayable{% endraw %}</code> - whether the page is live or it is a draft page <em>(boolean)</em></li>
+  <li><code>{% raw %}excludeFromSearch{% endraw %}</code> - whether to exclude the page from the site search <em>(boolean)</em></li>
+  <li><code>{% raw %}content{% endraw %}</code> - the content of the page HTML encoded <em>(string)</em></li>
+  <li><code>{% raw %}redirect301{% endraw %}</code> - the URL this page should 301 redirect to <em>(string)</em></li>
+  <li><code>{% raw %}title{% endraw %}</code> - the page's title <em>(string)</em></li>
+  <li><code>{% raw %}seoMetadataDescription{% endraw %}</code> - the page's SEO meta description <em>(string)</em></li>
+  <li></li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
 <hr>
@@ -199,9 +204,9 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/pages/2411253",
+    url: "/webresources/api/v3/sites/current/pages/9017917",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -220,28 +225,29 @@ request.fail(function (jqXHR) {
 
 <h3>Sample response</h3>
 <pre class="language-javascript"><code>{% raw %}{
-      "id": 2411253,
-      "siteId": 38581,
-      "pageUrl": "/page1",
-      "name": "Page 1 name",
-      "deleted": false,
-      "categoryId": -1,
-      "roleId": -1,
-      "templateId": -1,
-      "parentId": -1,
-      "displayFileName": "page1.htm",
-      "size": 183,
-      "enabled": false,
-      "startPage": false,
-      "releaseDate": "2044-01-01T00:00:00",
-      "expiryDate": "9999-01-01T00:00:00",
-      "displayable": true,
-      "excludeFromSearch": true,
-      "livePageId": null,
-      "content": "Page1 content",
-      "redirect301": "",
-      "title": "Page1 title",
-      "seoMetadataDescription": "Sample metadata"
+     "id":9017917,
+     "siteId":2163596,
+     "workflowId":-1,
+     "roleId":-1,
+     "templateId":0,
+     "parentId":-1,
+     "livePageId":null,
+     "pageUrl":"/about.html",
+     "name":"About Us",
+     "displayFileName":"about.html",
+     "size":5281,
+     "enabled":true,
+     "startPage":false,
+     "createDate":"2015-07-14T01:22:17.67",
+     "lastUpdateDate":"2015-07-31T11:49:02.1",
+     "releaseDate":"2015-07-31T11:49:02.1",
+     "expiryDate":"9998-12-31T15:00:00",
+     "displayable":true,
+     "excludeFromSearch":false,
+     "content":"Content here",
+     "redirect301":"",
+     "title":"About Us",
+     "seoMetadataDescription":"Sample description"
 }{% endraw %}</code></pre>
 </div>
 <hr>
@@ -274,28 +280,29 @@ request.fail(function (jqXHR) {
 The response should be "201 created" if the page was successfully created.
 <p>Here are the parameters you can use when creating a page:</p>
 <ul>
-  <li><code>{% raw %}id{% endraw %}</code> - the page's ID</li>
-  <li><code>{% raw %}siteId{% endraw %}</code> - the ID of the site the page is on</li>
-  <li><code>{% raw %}url{% endraw %}</code> - the page's URL</li>
-  <li><code>{% raw %}name{% endraw %}</code> - the page's NAME</li>
-  <li><code>{% raw %}deleted{% endraw %}</code> - whether the page is deleted or not</li>
-  <li><code>{% raw %}categoryId{% endraw %}</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned)</li>
-  <li><code>{% raw %}roleId{% endraw %}</code> - the ID of the role responsible (-1 if not applicable)</li>
-  <li><code>{% raw %}templateId{% endraw %}</code> - the ID of the template (-1 if no template is applied or 0 to use the default template)</li>
-
-  <li><code>{% raw %}displayFileName{% endraw %}</code> - the page's display name</li>
-  <li><code>{% raw %}size{% endraw %}</code> - the page's size</li>
-  <li><code>{% raw %}enabled{% endraw %}</code> - whether the page is enabled or not</li>
-  <li><code>{% raw %}startPage{% endraw %}</code> - whether the page is set as start page</li>
-  <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date of the page</li>
-  <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date of the page</li>
-  <li><code>{% raw %}displayable{% endraw %}</code> - whether the page is live or it is a draft page</li>
-  <li><code>{% raw %}excludeFromSearch{% endraw %}</code> - whether to exclude the page from the site search</li>
-  <li><code>{% raw %}livePageId{% endraw %}</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page.</li>
-  <li><code>{% raw %}content{% endraw %}</code> - the content of the page HTML encoded</li>
-  <li><code>{% raw %}redirect301{% endraw %}</code> - the URL this page should 301 redirect to</li>
-  <li><code>{% raw %}title{% endraw %}</code> - the page's title</li>
-  <li><code>{% raw %}seoMetadataDescription{% endraw %}</code> - the page's SEO meta description</li>
+  <li><code>{% raw %}siteId{% endraw %}</code> - the ID of the site the page is on <em>(number)</em></li>
+  <li><code>{% raw %}workflowId{% endraw %}</code> - the ID of the workflow assigned (-1 of the page does not have a workflow assigned) <em>(number)</em></li>
+  <li><code>{% raw %}roleId{% endraw %}</code> - the ID of the role responsible (-1 if not applicable) <em>(number)</em></li>
+  <li><code>{% raw %}templateId{% endraw %}</code> - the ID of the template (-1 if no template is applied or 0 to use the default template) <em>(number)</em></li>
+  <li><code>{% raw %}parentId{% endraw %}</code> - the ID of the parent page (-1 if no page is applied or 0 to use the default template) <em>(number)</em></li>
+  <li><code>{% raw %}livePageId{% endraw %}</code> - only applicable if the "displayable" parameter is "true" (meaning this is a draft page). The "livePageId" is the ID of the live page. <em>(number)</em></li>
+  <li><code>{% raw %}pageUrl{% endraw %}</code> - the page's url <em>(string)</em></li>
+  <li><code>{% raw %}name{% endraw %}</code> - the page's name <em>(string)</em></li>
+  <li><code>{% raw %}displayFileName{% endraw %}</code> - the page's display name <em>(string)</em></li>
+  <li><code>{% raw %}size{% endraw %}</code> - the page's size <em>(number)</em></li>
+  <li><code>{% raw %}enabled{% endraw %}</code> - whether the page is enabled or not <em>(boolean)</em></li>
+  <li><code>{% raw %}startPage{% endraw %}</code> - whether the page is set as start page<em>(boolean)</em></li>
+  <li><code>{% raw %}createDate{% endraw %}</code> - the creation date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}lastUpdateDate{% endraw %}</code> - the last update date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}releaseDate{% endraw %}</code> - the release date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date of the page <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}displayable{% endraw %}</code> - whether the page is live or it is a draft page <em>(boolean)</em></li>
+  <li><code>{% raw %}excludeFromSearch{% endraw %}</code> - whether to exclude the page from the site search <em>(boolean)</em></li>
+  <li><code>{% raw %}content{% endraw %}</code> - the content of the page HTML encoded <em>(string)</em></li>
+  <li><code>{% raw %}redirect301{% endraw %}</code> - the URL this page should 301 redirect to <em>(string)</em></li>
+  <li><code>{% raw %}title{% endraw %}</code> - the page's title <em>(string)</em></li>
+  <li><code>{% raw %}seoMetadataDescription{% endraw %}</code> - the page's SEO meta description <em>(string)</em></li>
+  <li></li>
 </ul>
 </div>
 <div class="sample">
@@ -310,8 +317,7 @@ var request = $.ajax({
   data: JSON.stringify({
     "name": "About-page",
     "pageUrl": "/about-page",
-    "deleted": false,
-    &quot;displayable&quot;: true,
+    &quot;displayable&quot;: false,
     "displayFileName": "About",
     "content": "&lt;h1&gt;This is my About page&lt;/h1&gt;&lt;p&gt;Some content here&lt;/p&gt;",
     "templateId": "0"
@@ -324,7 +330,6 @@ var request = $.ajax({
   }
 });
 request.done(function(msg) {
-  $('.output pre').html(JSON.stringify(msg));
   console.log(msg);
 })
 request.fail(function(jqXHR) {
@@ -334,7 +339,7 @@ request.fail(function(jqXHR) {
   console.log("Response text: " + jqXHR.responseText);
 }){% endraw %}</code></pre>
 <p id="sample-create-live"><strong>Create a Draft page for the page above</strong></p>
-<p>The draft will need to have a corresponsing Live page (it cannot exist as a stand alone draft). You will notice the call is almost identical but for a single parameter. <code>{% raw %}livePageId{% endraw %}</code> serves two purposes - it  <strong>marks this page as draft </strong>and specifies <strong>what page this is the draft for</strong>:</p>
+<p>The draft will need to have a corresponding Live page (it cannot exist as a stand alone draft). You will notice the call is almost identical but for a single parameter. <code>{% raw %}livePageId{% endraw %}</code> serves two purposes - it  <strong>marks this page as draft </strong>and specifies <strong>what page this is the draft for</strong>:</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
@@ -344,6 +349,7 @@ var request = $.ajax({
   data: JSON.stringify({
     "name": "About-page2",
     "pageUrl": "/about-page2",
+    &quot;displayable&quot;: true,
 	  &quot;livePageId&quot;: 13752869,
     "deleted": false,
     "displayFileName": "About - new",
@@ -351,14 +357,13 @@ var request = $.ajax({
     "templateId": "0"
   }),
   type: "POST",    
-    contentType: "application/json",
-    mimeType: "application/json ",
+  contentType: "application/json",
+  mimeType: "application/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
 });
 request.done(function(msg) {
-  $('.output pre').html(JSON.stringify(msg));
   console.log(msg);
 })
 request.fail(function(jqXHR) {
@@ -370,15 +375,15 @@ request.fail(function(jqXHR) {
 <p>In this example below we will take live (Publish) the draft page created above live. This means its content of the draft page will replace the content of the page with the ID <em>13752869</em> (the original About page).</p>
 <p>Before we run the call that actually publishes the page there is an extra step we need to take into account. We know the ID of the live page, we specified it when creating the draft. What is the ID of the draft page itself? </p>
 <p class="alert alert-info"><strong>Note:</strong> the live and draft pages are treated as sepparated entities, each of them is a stand-alone page, with a different ID and optionally even a different URL.</p>
-<p id="sample-get-draft-url"><strong>Get the URL of the draft page</strong></p>
+<p id="sample-get-draft-url"><strong>Get the ID of the draft page</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
   url: '/webresources/api/v3/sites/current/pages?where={"livePageId":13752911}',
   type: "GET",    
-    contentType: "application/json",
-    mimeType: "application/json ",
+  contentType: "application/json",
+  mimeType: "application/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -400,15 +405,14 @@ request.fail(function(jqXHR) {
 
 var request = $.ajax({
   url: "/webresources/api/v3/sites/current/pages/13752930?publish=true",
-  type: "POST",    
-    contentType: "application/json",
-    mimeType: "application/json ",
+  type: "PUT",    
+  contentType: "application/json",
+  mimeType: "application/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
 });
 request.done(function(msg) {
-  $('.output pre').html(JSON.stringify(msg));
   console.log(msg);
 })
 request.fail(function(jqXHR) {
@@ -447,7 +451,6 @@ request.fail(function(jqXHR) {
 <p>The response should be "204 no content" if the secure zone was successfully modified.</p>
 <p>Here are the parameters you can use when updating a page:</p>
 <ul>
-  <li><code>{% raw %}id{% endraw %}</code> - the page's ID</li>
   <li><code>{% raw %}siteId{% endraw %}</code> - the ID of the site the page is on</li>
   <li><code>{% raw %}url{% endraw %}</code> - the page's URL</li>
   <li><code>{% raw %}name{% endraw %}</code> - the page's NAME</li>
@@ -473,7 +476,7 @@ request.fail(function(jqXHR) {
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<p>In this example let's remove the template for the page with the ID <em>4518294</em>. To do this we will assign the tempalte with the <em>ID -1</em>:</p>
+<p>In this example let's remove the template for the page with the ID <em>4518294</em>. To do this we will assign the template with the <em>ID -1</em>:</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
@@ -481,15 +484,15 @@ var request = $.ajax({
   url: "/webresources/api/v3/sites/current/pages/4518294",
   processData: false,
   data: JSON.stringify({
-        "name": "Card - modified",
-        "templateId" : "-1"
-                }),
-         type: "PUT",    
-    contentType: "application/json",
-    mimeType: "application/json ",
-         headers: {
-            "Authorization": $.cookie('access_token')
-          }
+  	"name": "Card - modified",
+ 	"templateId" : "-1"
+    }),
+  type: "PUT",    
+  contentType: "application/json",
+  mimeType: "application/json ",
+  headers: {
+     "Authorization": $.cookie('access_token')
+  }
 });
 request.done(function (msg) {
     console.log(msg);
@@ -544,7 +547,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/pages/2567169",
     type: "DELETE",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {

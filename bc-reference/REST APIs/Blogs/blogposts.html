@@ -28,22 +28,23 @@
 <p>An array of the first 10 blog posts; each object has the following properties:</p>
 
 <ul>
-<li><strong>id</strong> - the blog's ID <em>(numeric)</em></li>
+<li><strong>id</strong> - the blogpost's ID <em>(numeric)</em></li>
 <li><strong>siteId</strong> - the site's ID <em>(numeric)</em></li>
 <li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
-<li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
-<li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
+<li><strong>postTitle</strong> - the post's title <em>(string)</em></li>
+<li><strong>postFeaturedImage</strong> - the post's featured image URL <em>(string)</em></li>
+<li><strong>postBody</strong> - the post's content <em>(string)</em></li>
 <li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>releaseDate</strong> - the post's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the post's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
-<li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
+<li><strong>enabled</strong> - whether the post is enabled or not <em>(boolean)</em></li>
+<li><strong>deleted</strong> - whether the  post was deleted or not<em> (boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
-<li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
-<li><strong>postUrl</strong> - the blog's friendly URL <em>(string)</em></li>
-<li><strong>metaBlogPostTitle</strong> - the blog's meta title <em>(string)</em></li>
-<li><strong>metaBlogPostDescription</strong> - the blog's meta description <em>(string)</em></li>
+<li><strong>slug</strong> - the post's slug <em>(string)</em></li>
+<li><strong>postUrl</strong> - the post's friendly URL <em>(string)</em></li>
+<li><strong>metaBlogPostTitle</strong> - the post's meta title <em>(string)</em></li>
+<li><strong>metaBlogPostDescription</strong> - the post's meta description <em>(string)</em></li>
 </ul>
 
 
@@ -59,7 +60,7 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogposts",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -83,6 +84,7 @@ request.fail(function (jqXHR) {
       "siteId": 246884,
       "blogId": 4405,
       "postTitle": "Some philosophical questions...",
+      "postFeaturedImage": "/img/mock.jpg",
       "postBody": "CONTENT HERE",
       "createBy": 1087314,
       "releaseDate": "2014-12-09T23:00:00",
@@ -102,6 +104,7 @@ request.fail(function (jqXHR) {
       "siteId": 246884,
       "blogId": 4405,
       "postTitle": "Welcome to my Blog!",
+      "postFeaturedImage": null,
       "postBody": "CONTENT HERE",
       "createBy": 1087314,
       "releaseDate": "2014-12-07T23:00:00",
@@ -151,22 +154,24 @@ request.fail(function (jqXHR) {
 
 <p>Displays the details for the blog post as a JSON object</p>
 <ul>
-<li><strong>id</strong> - the blog's ID <em>(numeric)</em></li>
-<li><strong>siteId</strong> - the site's ID <em>(numeric)</em></li>
-<li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
-<li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
-<li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
-<li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
-<li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
-<li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
-<li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
-<li><strong>postUrl</strong> - the blog's friendly URL <em>(string)</em></li>
-<li><strong>metaBlogPostTitle</strong> - the blog's meta title <em>(string)</em></li>
-<li><strong>metaBlogPostDescription</strong> - the blog's meta description <em>(string)</em></li>
+
+  <li><strong>id</strong> - the blogpost's ID <em>(numeric)</em></li>
+  <li><strong>siteId</strong> - the site's ID <em>(numeric)</em></li>
+  <li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
+  <li><strong>postTitle</strong> - the post's title <em>(string)</em></li>
+  <li><strong>postFeaturedImage</strong> - the post's featured image URL <em>(string)</em></li>
+  <li><strong>postBody</strong> - the post's content <em>(string)</em></li>
+  <li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
+  <li><strong>releaseDate</strong> - the post's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>createDate</strong> - the post's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>enabled</strong> - whether the post is enabled or not <em>(boolean)</em></li>
+  <li><strong>deleted</strong> - whether the  post was deleted or not<em> (boolean)</em></li>
+  <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
+  <li><strong>slug</strong> - the post's slug <em>(string)</em></li>
+  <li><strong>postUrl</strong> - the post's friendly URL <em>(string)</em></li>
+  <li><strong>metaBlogPostTitle</strong> - the post's meta title <em>(string)</em></li>
+  <li><strong>metaBlogPostDescription</strong> - the post's meta description <em>(string)</em></li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
@@ -179,7 +184,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogposts/303870",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -201,6 +206,7 @@ request.fail(function (jqXHR) {
   "siteId": 246884,
   "blogId": 4405,
   "postTitle": "Some philosophical questions...",
+  "postFeaturedImage": "/img/mock.jpg",
   "postBody": "CONTENT HERE ",
   "createBy": 1087314,
   "releaseDate": "2014-12-09T23:00:00",
@@ -241,19 +247,20 @@ request.fail(function (jqXHR) {
 <h4>Parameters</h4>
 <ul>
 <li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
-<li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
-<li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
+<li><strong>postTitle</strong> - the post's title <em>(string)</em></li>
+<li><strong>postFeaturedImage</strong> - the post's featured image URL <em>(string)</em></li>
+<li><strong>postBody</strong> - the post's content <em>(string)</em></li>
 <li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>releaseDate</strong> - the post's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><strong>createDate</strong> - the post's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
 <li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
-<li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
+<li><strong>enabled</strong> - whether the post is enabled or not <em>(boolean)</em></li>
+<li><strong>deleted</strong> - whether the  post was deleted or not<em> (boolean)</em></li>
 <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
-<li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
-<li><strong>postUrl</strong> - the blog's friendly URL <em>(string)</em></li>
-<li><strong>metaBlogPostTitle</strong> - the blog's meta title <em>(string)</em></li>
-<li><strong>metaBlogPostDescription</strong> - the blog's meta description <em>(string)</em></li>
+<li><strong>slug</strong> - the post's slug <em>(string)</em></li>
+<li><strong>postUrl</strong> - the post's friendly URL <em>(string)</em></li>
+<li><strong>metaBlogPostTitle</strong> - the post's meta title <em>(string)</em></li>
+<li><strong>metaBlogPostDescription</strong> - the post's meta description <em>(string)</em></li>
 </ul>
 </div>
 </div>
@@ -274,7 +281,7 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogposts",
     type: "POST",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -326,20 +333,22 @@ request.fail(function (jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
-<li><strong>postTitle</strong> - the blog's title <em>(stirng)</em></li>
-<li><strong>postBody</strong> - the blog's content <em>(stirng)</em></li>
-<li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
-<li><strong>releaseDate</strong> - the blog's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>createDate</strong> - the blog's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>enabled</strong> - whether the blog is enabled or not <em>(boolean)</em></li>
-<li><strong>deleted</strong> - whether the blog post was deleted or not<em> (boolean)</em></li>
-<li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
-<li><strong>slug</strong> - the blog's slug <em>(string)</em></li>
-<li><strong>postUrl</strong> - the blog's friendly URL <em>(string)</em></li>
-<li><strong>metaBlogPostTitle</strong> - the blog's meta title <em>(string)</em></li>
-<li><strong>metaBlogPostDescription</strong> - the blog's meta description <em>(string)</em></li>
+
+  <li><strong>blogId</strong> - the blog's ID <em>(numeric)</em></li>
+  <li><strong>postTitle</strong> - the post's title <em>(string)</em></li>
+  <li><strong>postFeaturedImage</strong> - the post's featured image URL <em>(string)</em></li>
+  <li><strong>postBody</strong> - the post's content <em>(string)</em></li>
+  <li><strong>createBy</strong> - the ID of the user who created the post <em>(numeric)</em></li>
+  <li><strong>releaseDate</strong> - the post's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>createDate</strong> - the post's create date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>lastUpdateDate</strong> - the date of the latest update <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><strong>enabled</strong> - whether the post is enabled or not <em>(boolean)</em></li>
+  <li><strong>deleted</strong> - whether the  post was deleted or not<em> (boolean)</em></li>
+  <li><strong>disableComments</strong> - whether site visitor comments are allowed or not <em>(boolean)</em></li>
+  <li><strong>slug</strong> - the post's slug <em>(string)</em></li>
+  <li><strong>postUrl</strong> - the post's friendly URL <em>(string)</em></li>
+  <li><strong>metaBlogPostTitle</strong> - the post's meta title <em>(string)</em></li>
+  <li><strong>metaBlogPostDescription</strong> - the post's meta description <em>(string)</em></li>
 </ul>
 </div>
 <div class="response">
@@ -357,7 +366,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogposts/1383385",
     type: "PUT",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -431,8 +440,8 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/blogposts/[id]",<br>    type: "DELETE",
-    conenection: "keep-alive",<br>    contentType: "application/json",
-mimeType: "application/json ",<br>    headers: {<br>       	"Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
+    connection: "keep-alive",<br>    contentType: "application/json",
+	mimeType: "application/json ",<br>    headers: {<br>       	"Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
 </div>
 <div class="response">
 <h3>Response</h3>

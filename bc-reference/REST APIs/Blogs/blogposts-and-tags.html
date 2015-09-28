@@ -55,7 +55,7 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogposts/303870/tags",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -109,7 +109,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogposts/1383385/tags",
     type: "POST",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -170,7 +170,7 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/blogs/18029/securezones?items=[{'objectId':18029,'zoneId':51,'objectType':55,'displayable':1}]",<br>    type: "DELETE",
-	  conenection: "keep-alive",<br>    contentType: "application/json",
+	  connection: "keep-alive",<br>    contentType: "application/json",
 mimeType: "application/json ",<br>    headers: {<br>       	"Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br><br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
 <hr>
 </div>

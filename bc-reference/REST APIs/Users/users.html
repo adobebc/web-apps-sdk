@@ -1,0 +1,204 @@
+<h1 apiType="restv3">Users 
+</h1><ul id="toc"></ul>
+<div id="getme">
+<h2>Get access token bearer's user </h2><div class="description">
+<p>List the attributes of the user for whom the access token (present in the Authorization header) was issued.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/users/me
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The details for the specified customer ID in JSON format.</p>
+
+<ul>
+  
+  <li><code>{% raw %}id{% endraw -%}</code> - the ID of the user <em>(integer)</em></li>
+  <li><code>{% raw %}siteId{% endraw -%}</code> - the ID of the site <em>(integer)</em></li>
+  <li><code>{% raw %}email{% endraw -%}</code> - the email of the user <em>(string)</em></li>
+  <li><code>{% raw %}firstName{% endraw -%}</code> - the first name of the user <em>(string)</em></li>
+  <li><code>{% raw %}lastName{% endraw -%}</code> - the last name of the user <em>(string)</em></li>
+  <li><code>{% raw %}mobileNumber{% endraw -%}</code> - mobile phone number of the user <em>(string)</em></li>
+  <li><code>{% raw %}aliases{% endraw -%}</code> - aliases of the user <em>(string)</em></li>
+  <li><code>{% raw %}createDate{% endraw -%}</code> - the creation date of the user <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}lastUpdateDate{% endraw -%}</code> - the last update date of the user <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+  <li><code>{% raw %}catchAll{% endraw -%}</code> - specifies if mails from alternate email are forwarded to the user's inbox. <em> (boolean)</em></li>
+  <li><code>{% raw %}enabled{% endraw -%}</code> - user enabled or not<em> (boolean)</em></li>
+  <li><code>{% raw %}userTypeId{% endraw -%}</code> - the user's role<em> (integer)</em></li>
+  <li><code>{% raw %}alternateEmail{% endraw -%}</code> - the user's second, alternate email <em>(string)</em></li>
+</ul>
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/users/me HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+    "id": 54277,
+    "siteId": 38581,
+    "email": "my@mail.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "mobileNumber": "+1111",
+    "createDate": "2014-11-18T10:11:08.12",
+    "lastUpdateDate": "2014-11-18T10:11:08.17",
+    "catchAll": false,
+    "enabled": true,
+    "userTypeId": 1,
+    "alternateEmail": null,
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p>Get access token bearer's user </p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/users/me",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre></div>
+<hr>
+</div>
+<div id="listuser">
+  <h2>Get user by ID</h2>
+  <div class="description">
+    <p>List the attributes of a user.</p>
+  </div>
+  <div class="request">
+    <h3>Request</h3>
+    <ul>
+      <li><strong>Method:</strong> GET</li>
+      <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields
+        <p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p>
+      </li>
+      <li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+        <ul>
+          <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+        </ul>
+      </li>
+      <li><strong>Path:</strong> /webresources/api/v3/sites/current/users/[ID]
+        <ul>
+          <li>Alternatively, use use siteID instead of 'current'</li>
+        </ul>
+      </li>
+      <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+    </ul>
+  </div>
+  <div class="response">
+    <h3>Response</h3>
+    <p>The details for the specified customer ID in JSON format.</p>
+    <ul>
+<li><code>{% raw %}id{% endraw -%}</code> - the ID of the user <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw -%}</code>  - the ID of the site <em>(integer)</em></li>
+<li><code>{% raw %}email{% endraw -%}</code> - the email of the user <em>(string)</em></li>
+<li><code>{% raw %}firstName{% endraw -%}</code> - the first name of the user <em>(string)</em></li>
+<li><code>{% raw %}lastName{% endraw -%}</code> - the last name of the user <em>(string)</em></li>
+<li><code>{% raw %}mobileNumber{% endraw -%}</code> - mobile phone number of the user <em>(string)</em></li>
+<li><code>{% raw %}aliases{% endraw -%}</code> - aliases of the user <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw -%}</code> - the creation date of the user <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw -%}</code> - the last update date of the user <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}catchAll{% endraw -%}</code> - specifies if mails from alternate email are forwarded to the user's inbox. <em> (boolean)</em></li>
+<li><code>{% raw %}enabled{% endraw -%}</code> - user enabled or not<em> (boolean)</em></li>
+<li><code>{% raw %}userTypeId{% endraw -%}</code> - the user's role<em> (integer)</em></li>
+<li><code>{% raw %}alternateEmail{% endraw -%}</code> - the user's second, alternate email <em>(string)</em></li>
+    </ul>
+    <p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+    <p>Accepts and returns JSON as Content-Type.</p>
+  </div>
+  <hr>
+  <div class="request-sample">
+    <p><strong>Request:</strong></p>
+    <pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/users/54277 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+  </div>
+  <div class="response-sample">
+    <p><strong>Response:</strong></p>
+    <pre class="language-javascript"><code>{% raw %}{
+    "id": 54277,
+    "siteId": 38581,
+    "email": "my@mail.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "mobileNumber": "+1111",
+    "createDate": "2014-11-18T10:11:08.12",
+    "lastUpdateDate": "2014-11-18T10:11:08.17",
+    "catchAll": false,
+    "enabled": true,
+    "userTypeId": 1,
+    "alternateEmail": null,
+}{% endraw %}</code></pre>
+  </div>
+  <hr>
+  <div class="sample">
+    <h3>Sample code</h3>
+    <p>Get access token bearer's user </p>
+    <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/users/54277",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+  </div>
+  <hr>
+</div>

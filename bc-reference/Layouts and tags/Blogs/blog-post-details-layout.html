@@ -59,15 +59,17 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commentspaged&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_commentspaged,sortType,perPage&#125;{% endraw %}</code></td>
          <td class="description">A paged list of comments associated with this post. <br/>
-        <!-- For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article. --></td>
+         sortType - can only have the value <em>date or -date</em>, sorts the comments based on date.<br />
+         perPage - how many comments per page, <em>default is 25</em><br/>
+        For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_trackbacklist&#125;{% endraw %}</code></td>
          <td class="description">List of trackbacks associated with this post.<br/>
-        <!-- For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article. --></td>
+        For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;id&#125;&#125;{% endraw %}</code></td>
@@ -108,6 +110,13 @@
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;year&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostyear&#125;{% endraw %}</code></td><td class="description">Year part of the date that the post was submitted. Example: 11-Dec-14 will render as the year only, like this: <em>2014</em></td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pendingComment&#125;&#125;{% endraw %}</code></td>
+          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_pendingcomments&#125;{% endraw %}</code></td>
+          <td class="description">Checks if status of the comment is set to "pending" from admin, in which case outputs the following message: <em>Your comment is awaiting moderation!</em>
+          <br/>
+        For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"></td>

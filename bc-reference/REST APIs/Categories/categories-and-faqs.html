@@ -51,7 +51,7 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/categories/[categoryID]",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -153,7 +153,7 @@ Content-Length: length{% endraw %}</code></pre>
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/14610/faqs",<br>    data:JSON.stringify({"items":[{"objectId":44772}]}),<br>    type: "POST",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {

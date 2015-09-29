@@ -152,7 +152,7 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/10428439/orders",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -175,7 +175,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/10428439/orders?where={'totalPrice':{'$gt':'40'&#125;&#125;",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {

@@ -51,7 +51,7 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/categories/[categoryID]/mediadownloads",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -159,7 +159,7 @@ var request = $.ajax({
     url: "/webresources/api/v3/sites/current/categories/14610/mediadownloads",
     data:JSON.stringify({"items":[{"objectId":133624}]}),
     type: "POST",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {

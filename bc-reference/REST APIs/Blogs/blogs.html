@@ -62,7 +62,7 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -170,7 +170,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/4405",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -277,7 +277,7 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs",
     type: "POST",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -357,7 +357,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/18029",
     type: "PUT",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -434,7 +434,7 @@ Content-Length: length{% endraw %}</code></pre>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/blogs/[blogid]&quot;,<br>    type: &quot;DELETE&quot;,<br>    conenection: &quot;keep-alive&quot;,<br>    contentType: &quot;application/json&quot;,<br>    headers: {<br>        &quot;Authorization&quot;: $.cookie('access_token')<br>    }<br>});
+var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/blogs/[blogid]&quot;,<br>    type: &quot;DELETE&quot;,<br>    connection: &quot;keep-alive&quot;,<br>    contentType: &quot;application/json&quot;,<br>    headers: {<br>        &quot;Authorization&quot;: $.cookie('access_token')<br>    }<br>});
 request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br>
 })
 request.fail(function (jqXHR) {

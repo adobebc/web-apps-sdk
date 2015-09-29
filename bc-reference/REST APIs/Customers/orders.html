@@ -206,7 +206,7 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -229,7 +229,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders?where={'createDate':{'$gt':'2013-06-10'&#125;&#125;",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -409,7 +409,7 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/[orderId]",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -432,7 +432,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/7051740?fields=status,discountCode,workflow,customer,taxCode",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -637,7 +637,7 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orders",
 type: "POST",
-conenection: "keep-alive",    
+connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
 processData: false,
@@ -816,7 +816,7 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orders/9593213",
 type: "PUT",
-conenection: "keep-alive",    
+connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
 headers: {
@@ -895,7 +895,7 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/9593213",
     type: "DELETE",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {

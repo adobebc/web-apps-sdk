@@ -74,7 +74,7 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/catalogs",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -225,7 +225,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/catalogs/25479",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {

@@ -128,7 +128,7 @@ Content-Type: application/json
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/prices",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
@@ -153,7 +153,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/prices/3909340",
     type: "GET",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {

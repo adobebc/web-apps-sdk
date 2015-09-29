@@ -46,7 +46,7 @@
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/tags",
     type: "GET",
-    conenection: "keep-alive",    contentType: "application/json",
+    connection: "keep-alive",    contentType: "application/json",
     mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
@@ -136,7 +136,7 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/tags",
     type: "POST",
-    conenection: "keep-alive",    contentType: "application/json",
+    connection: "keep-alive",    contentType: "application/json",
     mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
@@ -197,7 +197,7 @@ request.fail(function (jqXHR) {
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/tags/370473",
     type: "PUT",
-    conenection: "keep-alive",    contentType: "application/json",
+    connection: "keep-alive",    contentType: "application/json",
     mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
@@ -275,7 +275,7 @@ Content-Length: length{% endraw %}</code></pre>
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/tags/370473",
     type: "DELETE",
-    conenection: "keep-alive",    
+    connection: "keep-alive",    
 	  contentType: "application/json",
     mimeType: "application/json ",
     headers: {

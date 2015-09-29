@@ -123,7 +123,7 @@ Content-Type: application/json
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/faqs&quot;,<br>    type: &quot;GET&quot;,
-    conenection: "keep-alive",    contentType: "application/json",
+    connection: "keep-alive",    contentType: "application/json",
     mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')

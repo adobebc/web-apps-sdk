@@ -46,7 +46,7 @@ var OAuth = (function(OAuthConfig) {
             "?client_id=", encodeURIComponent(this._config.clientId),
             "&version=", this._config.version, 
             "&redirect_uri=", encodeURI(this._config.redirectUri),
-            "&state="+_local_state, "&response_type=code", "&consent=implicit","&site=https://bogdan-01-va.localbc.com"],
+            "&state="+_local_state, "&response_type=code"],
             authorizeUrl = urlParts.join("");
 
         console.log("Redirecting browser to url: %s", authorizeUrl);

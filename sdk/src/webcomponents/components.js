@@ -51,7 +51,9 @@
     BCAPI.Components.Validation = BCAPI.Components.Validation || {};
 
     /**
-     * This namespace holds all security classes which can be reused by all components.
+     * This namespace holds all security classes which can be reused by all components. Because modern platforms
+     * provides OAuth 2 authorization this namespace also provides helper classes for easily accessing oauth 2
+     * specific tokens and for renewing access.
      *
      * ![BCAPI Security Overview](assets/ui-sdk-bcapi-security.png)
      *

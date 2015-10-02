@@ -46,9 +46,9 @@ module.exports = function(config) {
             },
             {
                 pattern: "src/webcomponents/**/*.js",
-                included: false,
+                included: true,
                 served: true,
-                watched: false
+                watched: true
             },
             {
                 pattern: "src/webcomponents/**/*.html",

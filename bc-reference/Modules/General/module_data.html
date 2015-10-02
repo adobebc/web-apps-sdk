@@ -1,7 +1,7 @@
 <h1>&#123;module_data&#125;</h1> 
 <div class="description">
 <h2>Description</h2>
-<p>This module  can be used fetch any piece of data which can be accessed by the v3 API endpoints.</p>
+<p>This module  can be used to fetch any piece of data which can be accessed by the v3 API endpoints.</p>
 </div><div id="named-params" class="beta nocontent">
 
   <div class="syntax">
@@ -26,6 +26,10 @@
 </li>
 <li><strong>collection</strong> - the name of the Liquid collection the result will be placed in.</li>
 </ul>
+<p class="alert alert-info">
+<strong>Warning:</strong> By default all the items will be fetched, including the disabled ones. You would need to filter specifically only for the items enabled by using the <code>where</code> parameter <em>(e.g.  where="\{'enabled':true\}"</em>.</p>
+<p class="alert alert-info">
+<strong>Note: </strong>With the flexibility module_data offers when accessing the server data its syntax can get pretty complicated. To make module_data easier to work with we have introduced the <a href="/developers/apps/bc-api-discovery" title="BC API Discovery">BC API Discovery app</a> . This is a free tool that enables you to visually create complex queries you can then copy-paste right in your site. </p>
 </div>
 <div class="examples">
 <h2>Examples</h2>

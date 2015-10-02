@@ -49,12 +49,12 @@ Site visitors get to it only after clicking the links outputted by any of these 
 <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;attributes&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_attributes, horizontal, hideDisabledVariations, autoSelectFirstVariation&#125;{% endraw %}</code></td><td class="description"> Renders attribute dropdowns for a given product. <p>Parameters: </p>
-            <ul>
+           <ul>
             <li><em>horizontal</em> – kept existing behavior</li>
             <li><em>hideDisabledVariations</em> – true or false</li>
             <li><em>autoSelectFirstVariation</em> – true or false</li>
             </ul>
-            </td>
+            <p>The Liquid tag renders an object, use <em>json</em> filter to see it's properties like so: <code>{{ attributes | json }}</code></p></td>
         </tr>
 <tr>
             <td valign="top" class="liquid tag"></td>

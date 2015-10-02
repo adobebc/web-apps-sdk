@@ -35,11 +35,17 @@
 <li><strong>1</strong> - Home address</li>
 <li><strong>2</strong> - Work address</li>
 <li><strong>3</strong> - PO box</li>
+<li><strong>5</strong> - DeliveryAddress </li>
 <li><strong>8</strong> - Billing address</li>
 
 </ul>
 </li><li><code>{% raw %}objectId{% endraw %}</code><em> (number)</em></li>
-<li><code>{% raw %}objectType{% endraw %}</code><em> (number)</em></li>
+<li><code>{% raw %}objectType{% endraw %}</code><em>(number)</em>
+  <ul>
+    <li><strong>1001</strong> - Default</li>
+    <li><strong>2008</strong> - Orders</li>
+  </ul>
+</li>
 <li><code>{% raw %}createDate{% endraw %}</code><em> (dateTime)</em></li>
 <li><code>{% raw %}lastUpdateDate{% endraw %}</code><em> (dateTime)</em></li>
 <li><code>{% raw %}default{% endraw %}</code><em> (boolean)</em></li>
@@ -188,11 +194,17 @@ request.fail(function (jqXHR) {
 <li><strong>1</strong> - Home address</li>
 <li><strong>2</strong> - Work address</li>
 <li><strong>3</strong> - PO box</li>
+<li><strong>5</strong> - DeliveryAddress </li>
 <li><strong>8</strong> - Billing address</li>
 
 </ul>
-</li><li><code>{% raw %}objectId{% endraw %}</code><em> (number)</em></li>
+</li><li><code>{% raw %}objectId{% endraw %}</code><em> (number)</em>
+  </li>
 <li><code>{% raw %}objectType{% endraw %}</code><em> (number)</em></li>
+<ul>
+  <li><strong>1001</strong> - Default</li>
+  <li><strong>2008</strong> - Orders</li>
+</ul>
 <li><code>{% raw %}createDate{% endraw %}</code><em> (dateTime)</em></li>
 <li><code>{% raw %}lastUpdateDate{% endraw %}</code><em> (dateTime)</em></li>
 <li><code>{% raw %}default{% endraw %}</code><em> (boolean)</em></li>

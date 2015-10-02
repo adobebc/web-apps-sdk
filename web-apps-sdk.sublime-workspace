@@ -287,6 +287,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "web-apps-sdk.sublime-workspace",
+			"settings":
+			{
+				"buffer_size": 29940,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sublime_builders/bcapi-jsdoc.sublime-build",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/User/bcapi-jsdoc.sublime-build",
 	"build_system_choices":
@@ -433,12 +449,13 @@
 	},
 	"expanded_folders":
 	[
-		"/home/rcosnita/work/web-apps-sdk"
+		"/home/rcosnita/work/web-apps-sdk",
+		"/home/rcosnita/work/web-apps-sdk/sublime_builders"
 	],
 	"file_history":
 	[
-		"/home/rcosnita/work/web-apps-sdk/web-apps-sdk.sublime-project",
 		"/home/rcosnita/work/web-apps-sdk/sdk/package.json",
+		"/home/rcosnita/work/web-apps-sdk/web-apps-sdk.sublime-project",
 		"/home/rcosnita/work/web-apps-sdk/.travis.yml",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/helper.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/components.js",
@@ -568,7 +585,7 @@
 	],
 	"find":
 	{
-		"height": 46.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
@@ -582,6 +599,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"build",
 			"Polymer",
 			"{% raw %}",
 			"docType ",
@@ -708,8 +726,7 @@
 			"vpcRouteTableInternet",
 			"public",
 			"s3ProvisionBucket",
-			"url",
-			"resourceFields"
+			"url"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -729,8 +746,69 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "web-apps-sdk.sublime-workspace",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29940,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3696,
+								3721
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7557.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sublime_builders/bcapi-jsdoc.sublime-build",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -786,6 +864,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"packa",
+				"sdk/package.json"
+			],
 			[
 				"microevent",
 				"sdk/node_modules/karma/node_modules/core-js/library/fn/object/prevent-extensions.js"

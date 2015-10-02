@@ -16,9 +16,7 @@ sdk/ci/*
 */.project
 */.settings
 */.idea
-*/*sublime*
 
-*sublime*
 *.vpp~*
 
 *.log

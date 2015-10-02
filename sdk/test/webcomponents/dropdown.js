@@ -36,7 +36,7 @@ describe("BCAPI.Components.DropDown tests suite.", function() {
     afterEach(function() {
         try {
             document.body.removeChild(this._contentHolder);
-        } catch(err) {
+        } catch (err) {
             console.log("Unable to remove dropdown component ... Probably removed before cleanup phase.");
         }
     });

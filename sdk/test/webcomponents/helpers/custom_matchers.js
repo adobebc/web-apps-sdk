@@ -16,7 +16,7 @@ window.ComponentCustomMatchers = (function() {
 
                         result.pass = false;
                         result.message = "The intercepted method did not raised exception of type: " + errorType;
-                    } catch(actualEx) {
+                    } catch (actualEx) {
                         result.pass = actualEx.errorType === errorType && actualEx.msg;
 
                         if (!result.pass) {

@@ -1,0 +1,28 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+    "build_systems": [
+        {
+            "name": "Build JSDoc",
+            "shell_cmd": "node node_modules/.bin/jsdoc -c jsdoc.json",
+            "selector": "source.js",
+            "working_dir": "${project_path}/sdk"
+        },
+        {
+            "name": "Run tests",
+            "shell_cmd": "npm test",
+            "selector": "source.js",
+            "working_dir": "${project_path}/sdk"
+        },
+        {
+            "name": "Run ESLint",
+            "shell_cmd": "node node_modules/.bin/eslint src test/webcomponents",
+            "selector": "source.js",
+            "working_dir": "${project_path}/sdk"
+        }
+    ]
+}

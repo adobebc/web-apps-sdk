@@ -31,7 +31,7 @@ describe("bc-button test suite for ensuring everything works as expected.", func
     afterEach(function() {
         try {
             document.body.removeChild(this._btnComponent);
-        } catch(e) {
+        } catch (e) {
             console.log("Unable to remove bc-button from document .... Probably not added.");
         }
     });

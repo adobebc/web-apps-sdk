@@ -287,77 +287,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "{\n    \"name\": \"bcapi.js\",\n    \"preferGlobal\": false,\n    \"version\": \"0.0.1\",\n    \"author\": \"Adobe Business Catalyst\",\n    \"description\": \"Web App SDK for Adobe Business Catalyst\",\n    \"dependencies\": {\n        \"grunt\": \"*\",\n        \"grunt-cli\": \"*\",\n        \"grunt-contrib-concat\": \"*\",\n        \"grunt-contrib-uglify\": \"*\",\n        \"jsdoc\": \"git+https://github.com/jsdoc3/jsdoc.git\"\n    },\n    \"devDependencies\": {\n        \"jasmine-core\": \"^2.3.4\",\n        \"karma\": \"^0.13.9\",\n        \"karma-jasmine\": \"^0.3.6\",\n        \"karma-coverage\": \"^0.5.0\",\n        \"karma-chrome-launcher\": \"^0.2.0\",\n        \"karma-firefox-launcher\": \"^0.1.6\",\n        \"karma-opera-launcher\": \"^0.3.0 \"\n    },\n    \"scripts\": {\n        \"test\": \"./node_modules/.bin/karma start karma.conf.js --single-run\"\n    },\n    \"license\": \"MIT\"\n}\n",
-			"file": "sdk/package.json",
-			"file_size": 327,
-			"file_write_time": 130847319378549557,
-			"settings":
-			{
-				"buffer_size": 808,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "language: node_js\nnode_js:\n  - 0.11\nbefore_script:\n  - cd sdk \n  - export CHROME_BIN=chromium-browser\n  - export DISPLAY=:99.0\n  - sh -e /etc/init.d/xvfb start\nbranches:\n  only:\n    - web-apps-sdk-ui",
-			"file": ".travis.yml",
-			"file_size": 199,
-			"file_write_time": 130847318875978385,
-			"settings":
-			{
-				"buffer_size": 199,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "sdk/karma.conf.js",
-			"settings":
-			{
-				"buffer_size": 1979,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "sdk/src/helper.js",
-			"settings":
-			{
-				"buffer_size": 6444,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "/* \n* \n* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.\n\n* Permission is hereby granted, free of charge, to any person obtaining a\n* copy of this software and associated documentation files (the \"Software\"), \n* to deal in the Software without restriction, including without limitation \n* the rights to use, copy, modify, merge, publish, distribute, sublicense, \n* and/or sell copies of the Software, and to permit persons to whom the \n* Software is furnished to do so, subject to the following conditions:\n* \n* The above copyright notice and this permission notice shall be included in\n* all copies or substantial portions of the Software.\n* \n* THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, \n* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER \n* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING \n* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER \n* DEALINGS IN THE SOFTWARE.\n* \n*/\n\n(function($) {\n    /**\n     * This namespace holds all SDK classes used for creating new components.\n     *\n     * ![BCAPI Components Overview](assets/ui-sdk-bcapi-components.png)\n     * \n     * @namespace BCAPI.Components\n     */\n    BCAPI.Components = {};\n\n    /**\n     * This namespace holds all available data sources which can be plugged into UI components. Below, you can find \n     * a diagram providing the foundation classes which are provided out of the box.\n     *\n     * ![BCAPI Datasources Overview](assets/ui-sdk-bcapi-datasources.png)\n     * \n     * @namespace BCAPI.Components.DataSources\n     */\n    BCAPI.Components.DataSources = {};\n\n    /**\n     * This namespace holds all available validators which can be wired or are used directly by components.\n     *\n     * ![BCAPI Validation Overview](assets/ui-sdk-bcapi-validation.png)\n     * \n     * @namespace BCAPI.Components.Validation\n     */\n    BCAPI.Components.Validation = {};\n\n    /**\n     * This namespace holds all security classes which can be reused by all components.\n     *\n     * ![BCAPI Security Overview](assets/ui-sdk-bcapi-security.png)\n     * \n     * @namespace BCAPI.Security\n     */\n    BCAPI.Security = {};\n\n    /**\n     * This namespace holds all messaging layers which can be used to communicate between apps and BC environment.\n     * Moreover, this provides the classes required to achieve intercommunication between components from the same app.\n     *\n     * ![BCAPI Messaging Overview](assets/ui-sdk-bcapi-messaging.png)\n     * \n     * @namespace BCAPI.Messaging\n     */\n    BCAPI.Messaging = {};\n\n    /**\n     * This class provides the all common methods inherited by every component.\n     *\n     * @name  Component\n     * @public\n     * @constructor\n     * @memberof BCAPI.Components\n     */\n    function Component() { }\n\n    BCAPI.Helper.MicroEvent.mixin(Component.prototype);\n\n    /**\n     * This constant holds the dom attribute prefix used to wire custom listeners to component events.\n     * \n     * @constant\n     * @type {String}\n     */\n    Component.prototype.__BCON_EVT_PREFIX = \"onbc-\";\n\n    /**\n     * This method provides a shortcut approach for wiring callbacks to component emitted events.\n     *\n     * @method wireEvents\n     * @public\n     * @instance\n     * @memberof BCAPI.Components.Component\n     * @param {Object} evts A dictionary containing a list of event names and the callbacks which listen to each event.\n     * \n     * @example\n     * function onTextFieldChange(evtData) {\n     *     console.log(evtData);\n     * }\n     *\n     * function onTextFieldSearch(evtData) {\n     *     console.log(evtData);\n     * }\n     * \n     * var component = new BCAPI.Components.TextField();\n     * component.wireEvents({\n     *     \"textfield:change\": onTextFieldChange,\n     *     \"textfield:search\": onTextFieldSearch \n     * });\n     */\n    Component.prototype.wireEvents = function(evts) {\n        for (var evtName in evts) {\n            this.on(evtName, evts[evtName]);\n        }\n    };\n\n    /**\n     * This method standardizes the way components can be configured / altered. Each concrete component must provide an\n     * implementation for this method.\n     *\n     * @public\n     * @method configure\n     * @instance\n     * @abstract\n     * @memberof BCAPI.Components.Component\n     * @param {Object} opts The object containing all options which must be configured.\n     * @example\n     * var button = document.getElementById(\"myButton\");\n     * button.configure({\"label\": \"My first button\"});\n     */\n    Component.configure = function(opts) { }\n\n    /**\n     * This method wires all component supported custom events declared in dom to custom actions. Each component \n     * invoking this method supports wiring of component events to listeners from dom attributes.\n     * @example\n     * // wiring a custom action to custom event named change.\n     * <bc-component bcon-change=\"MyApp.onChange\"></bc-component>\n     */\n    Component.prototype._wireCustomEventsFromDom = function() {\n        var self = this;\n\n        $(document).ready(function() {\n            self._wireCustomEventsWhenDomReady();\n        })\n    };\n\n    /**\n     * This method wires all listeners to custom events declared using dom attributes.\n     */\n    Component.prototype._wireCustomEventsWhenDomReady = function() {\n        var customEvents = this.customEvents || [],\n                wiredEvents = {};\n\n        for (var i = 0; i < customEvents.length; i++) {\n            var evtName = customEvents[i],\n                  attrName = this.__BCON_EVT_PREFIX + evtName;\n                  listener = this.getAttribute(attrName);\n\n            if (!listener) {\n                continue;\n            }\n\n            var listenerParts = listener.split(\".\"),\n                  ctx = window[listenerParts[0]],\n                  action = undefined;\n\n            for (var j = 0; j < listenerParts.length; j++) {\n                var partName = listenerParts[j];\n\n                action = (action || window)[partName];\n            }\n\n            wiredEvents[evtName] = (function(action, ctx) {\n                return function(evtData) {\n                    action.call(ctx, evtData);\n                }\n            })(action, ctx);\n        }\n\n        this.wireEvents(wiredEvents);\n    };\n\n    /**\n     * This class provides the core class from BC SDK used to support components creation.\n     * It enforces each component descriptor to inherit several classes in order to create a uniform contract\n     * across all web components we provide.\n     * \n     * @public\n     * @constructor\n     */\n    function ComponentsFactory() { };\n\n    /**\n     * This method extends the given component descriptor with various methods and properties specific to BC.\n     * \n     * @public\n     * @method\n     * @param  {Object} component The component object to which we want to add BC features to.\n     * @return {Object} The component instance with all methods in place.\n     */\n    ComponentsFactory.prototype.get = function(component) {\n        $.extend(component, Component.prototype);\n\n        return component;\n    };\n\n    BCAPI.Components.ComponentsFactory = new ComponentsFactory();\n})($);",
-			"file": "sdk/src/webcomponents/components.js",
-			"file_size": 7311,
-			"file_write_time": 130841127903110140,
-			"settings":
-			{
-				"buffer_size": 7311,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "<link rel=\"import\" href=\"/lib/polymer/polymer.html\">\n\n<dom-module id=\"bc-button\">\n    <template>\n        <content></content>\n    </template>\n    \n    <script type=\"text/javascript\" src=\"/src/helper.js\"></script>\n    <script type=\"text/javascript\" src=\"/src/webcomponents/components.js\"></script>\n\n    <script>\n    /**\n     * This class provides a reusable button component with the same look & feel as BC buttons.\n     * From a functionality point of view this component also carries data object for giving developer\n     * quick access to the context where the button was clicked.\n     * \n     * @name Button\n     * @memberof BCAPI.Components\n     * @class\n     * @public\n     */\n    var webComponent = {\n        is: \"bc-button\",\n        properties: {\n            data: Object\n        }\n    };\n\n    webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);\n\n    Polymer(webComponent);\n    </script>\n</dom-module>",
-			"file": "sdk/src/webcomponents/buttons/button.html",
-			"file_size": 924,
-			"file_write_time": 130847305638731412,
-			"settings":
-			{
-				"buffer_size": 924,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "window.ComponentsHelper = (function() {\n    return {\n        /**\n         * This method provides a helper for executing test logic once a webcomponent is ready. It facilitates the \n         * development of new unit tests which targets custom elements.\n         */\n        execWhenReady: function(compSelector, testLogic, done) {\n            var interval = setInterval(function() {\n                var comp = compSelector();\n\n                if (!comp._config) {\n                    return;\n                }\n\n                testLogic(comp);\n\n                clearInterval(interval);\n                done();\n            }, 100);\n        }\n    }\n})();",
-			"file": "sdk/test/webcomponents/helpers/components_helper.js",
-			"file_size": 651,
-			"file_write_time": 130847286390570928,
-			"settings":
-			{
-				"buffer_size": 651,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/User/bcapi-jsdoc.sublime-build",
 	"build_system_choices":
@@ -430,8 +359,8 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 117.0,
-		"last_filter": "Package Control: In",
+		"height": 138.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -475,7 +404,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 539.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -504,17 +433,24 @@
 	},
 	"expanded_folders":
 	[
-		"/extended/rcosnita/workspace_bc/web-apps-sdk",
-		"/extended/rcosnita/workspace_bc/web-apps-sdk/sdk/lib/polymer"
+		"/home/rcosnita/work/web-apps-sdk"
 	],
 	"file_history":
 	[
-		"/extended/rcosnita/workspace_bc/web-apps-sdk/sdk/lib/webcomponentsjs/webcomponents-lite.js",
-		"/extended/rcosnita/workspace_bc/web-apps-sdk/sdk/node_modules/karma/node_modules/core-js/library/fn/object/prevent-extensions.js",
-		"/extended/rcosnita/workspace_bc/web-apps-sdk/sdk/doc/index.html",
-		"/extended/rcosnita/workspace_bc/web-apps-sdk/sdk/src/bcapi.js",
-		"/extended/rcosnita/workspace_bc/web-apps-sdk/sdk/src/webcomponents/buttons/button.html",
-		"/extended/rcosnita/workspace_bc/web-apps-sdk/sdk/test/webcomponents/helpers",
+		"/home/rcosnita/work/web-apps-sdk/web-apps-sdk.sublime-project",
+		"/home/rcosnita/work/web-apps-sdk/sdk/package.json",
+		"/home/rcosnita/work/web-apps-sdk/.travis.yml",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/helper.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/components.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/buttons/button.html",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/helpers/components_helper.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/karma.conf.js",
+		"/home/users/rcosnita/work/web-apps-sdk/sdk/lib/webcomponentsjs/webcomponents-lite.js",
+		"/home/users/rcosnita/work/web-apps-sdk/sdk/node_modules/karma/node_modules/core-js/library/fn/object/prevent-extensions.js",
+		"/home/users/rcosnita/work/web-apps-sdk/sdk/doc/index.html",
+		"/home/users/rcosnita/work/web-apps-sdk/sdk/src/bcapi.js",
+		"/home/users/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/buttons/button.html",
+		"/home/users/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/helpers",
 		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/doc-static/index.md",
 		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/src/webcomponents/components.js",
 		"/home/rcosnita/workspace_bc/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html",
@@ -548,26 +484,26 @@
 		"/home/rcosnita/workspace_bc/polymer-benchmark/polymerjs-experiment/index.html",
 		"/home/rcosnita/workspace_bc/polymer-benchmark/polymerjs-experiment/list.html",
 		"/home/rcosnita/workspace_bc/polymer-benchmark/reactjs-experiment/index.html",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/ci/install_jenkins.sh",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/ci/configure_jenkins_master.py",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/publish.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/container.tmpl",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/fulltext-search-ui.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/package.json",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/jsdoc/lib/jsdoc/tutorial.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/plugins/ArticleTag.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/jsdoc/lib/jsdoc/tutorial.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/jsdoc/lib/jsdoc/tutorial/resolver.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/quicksearch.tmpl",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/source.tmpl",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/jsdoc.json",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/layout.tmpl",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/fulltext-search.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/styles/site.spacelab.css",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/docstrap.lib.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/toc.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/lunr.min.js",
-		"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/src/utils/ActiveArray.js6",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/ci/install_jenkins.sh",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/ci/configure_jenkins_master.py",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/publish.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/container.tmpl",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/fulltext-search-ui.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/package.json",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/jsdoc/lib/jsdoc/tutorial.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/plugins/ArticleTag.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/jsdoc/lib/jsdoc/tutorial.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/jsdoc/lib/jsdoc/tutorial/resolver.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/quicksearch.tmpl",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/source.tmpl",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/jsdoc.json",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/layout.tmpl",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/fulltext-search.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/styles/site.spacelab.css",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/docstrap.lib.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/toc.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/lunr.min.js",
+		"/home/users/rcosnita/work/BlitzRepos/Blitz/src/utils/ActiveArray.js6",
 		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/ci/ssh-agent-start.sh",
 		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/package.json",
 		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/ci/blitz_ci_rsa",
@@ -628,15 +564,7 @@
 		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/tutorials.json",
 		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/articles/article.md",
 		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/todo-app/todo-app.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/setup-ide/setup-ide.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/setup-ide/setup-ide.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/hello-world/hello-world.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/data-bindings/data-bindings.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/data-bindings",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/articles/data-bindings.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/grunt-jsdoc/node_modules/ink-docstrap/themes/amelia/tutorials.list.html",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/src/doc/namespaces.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/README.md"
+		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/setup-ide/setup-ide.json"
 	],
 	"find":
 	{
@@ -801,225 +729,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "sdk/package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 808,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								807,
-								807
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": ".travis.yml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 199,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								199
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/YAML/YAML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "sdk/karma.conf.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1979,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								926,
-								926
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "sdk/src/helper.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6444,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1119,
-								1119
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "sdk/src/webcomponents/components.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7311,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								745,
-								745
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "sdk/src/webcomponents/buttons/button.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 924,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								50,
-								50
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "sdk/test/webcomponents/helpers/components_helper.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 651,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								23,
-								23
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1040,18 +751,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1509,7 +1213,7 @@
 		[
 			[
 				"",
-				"/extended/rcosnita/workspace_bc/BlitzRepos/Blitz/blitz.sublime-project"
+				"/home/users/rcosnita/work/BlitzRepos/Blitz/blitz.sublime-project"
 			]
 		],
 		"width": 380.0

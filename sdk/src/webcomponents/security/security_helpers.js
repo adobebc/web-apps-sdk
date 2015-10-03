@@ -21,7 +21,7 @@
  *DEALINGS IN THE SOFTWARE.
  *
  */
-(function() {
+(function($) {
     BCAPI.Security.__bcSecurityCtxLoader = undefined;
     BCAPI.Security._securityCfg = undefined;
     BCAPI.Security._bcSecurityCtx = undefined;
@@ -65,6 +65,36 @@
     };
 
     /**
+     * This method provides a method for obtaining the bc configuration for this session. If there was a configure
+     * method explicitly invoked then that configuration will be returned. Otherwise, an implicit bc configuration will
+     * be built based on the current url and access token cookie.
+     *
+     * @public
+     * @method
+     * @name getBcConfig
+     * @memberof BCAPI.Security
+     * @param {Window} wnd the window object which must be used when implicitly building a configuration. If this is not specified current window will be used.
+     * @returns {undefined} no result.
+     */
+    BCAPI.Security.getBcConfig = BCAPI.Security.getBcConfig || function(wnd) {
+        if (BCAPI.Security._securityCfg) {
+            return BCAPI.Security._securityCfg;
+        }
+
+        wnd = wnd || window;
+
+        var siteUrl = wnd.location.protocol + "//" + wnd.location.hostname,
+            accessToken = $.cookie("access_token");
+
+        BCAPI.Security._securityCfg = {
+            "siteUrl": siteUrl,
+            "accessToken": accessToken
+        };
+
+        return BCAPI.Security._securityCfg;
+    };
+
+    /**
      * This method provides a simple way to obtain the current bc security context.
      *
      * @public
@@ -90,7 +120,7 @@
         }
 
         var meDataSource = document.createElement("bc-api"),
-            securityCfg = BCAPI.Security._securityCfg;
+            securityCfg = BCAPI.Security.getBcConfig();
 
         meDataSource.configure({
             "bcConfig": securityCfg,
@@ -122,4 +152,4 @@
 
         return BCAPI.Security.__bcSecurityCtxLoader;
     };
-})();
+})(jQuery);

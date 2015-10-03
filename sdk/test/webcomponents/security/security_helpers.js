@@ -74,7 +74,34 @@ describe("BCAPI.Security helper method tests suite.", function() {
 
         BCAPI.Security.configure(securityCfg);
 
-        expect(BCAPI.Security._securityCfg).toBe(securityCfg);
+        expect(BCAPI.Security.getBcConfig()).toBe(securityCfg);
+    });
+
+    it("Make sure implicit bc config is built using the current window location and access token cookie.", function() {
+        var currWnd = {
+                "location": {
+                    "hostname": "sampedomain.com",
+                    "protocol": "https"
+                }
+            },
+            encryptedToken = "encrypted token";
+
+        spyOn($, "cookie").and.returnValue(encryptedToken);
+
+        securityCfg = BCAPI.Security.getBcConfig(currWnd);
+
+        expect(securityCfg.siteUrl).toBe(currWnd.location.protocol + "//" + currWnd.location.hostname);
+        expect(securityCfg.accessToken).toBe(encryptedToken);
+    });
+
+    it("Make sure get bc config is using an internal cache for boosting performance.", function() {
+        var previousCfg = {"a": "b"};
+
+        BCAPI.Security._securityCfg = previousCfg;
+
+        var securityCfg = BCAPI.Security.getBcConfig();
+
+        expect(securityCfg).toBe(previousCfg);
     });
 
     it("Make sure bc security context can be obtained with securityCfg configured.", function(done) {

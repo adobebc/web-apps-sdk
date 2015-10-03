@@ -327,9 +327,9 @@ var webComponent = (function() {
 
             for (var i = 0; i < items.length; i++) {
                 var option = document.createElement("option");
-                option.value = items[i].value;
+                option.value = items[i][this.valueProp] || items[i].value;
                 option.selected = items[i].selected;
-                option.textContent = items[i].text;
+                option.textContent = items[i][this.textProp] || items[i].text;
 
                 select.add(option);
             }

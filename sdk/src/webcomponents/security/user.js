@@ -34,7 +34,7 @@
      * @param {String} userInfo.lastName user last name.
      */
     function User(userInfo) {
-        this.userId = userInfo.userId;
+        this.userId = userInfo.userId || userInfo.id;
         this.firstName = userInfo.firstName;
         this.lastName = userInfo.lastName;
     }

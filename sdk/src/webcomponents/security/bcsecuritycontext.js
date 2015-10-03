@@ -32,8 +32,8 @@
      * @param {BCAPI.Security.User} user the current logged in user.
      */
     function BcSecurityContext(accessToken, user) {
-        this.user = user;
         this.accessToken = accessToken;
+        this.user = user;
     }
 
     /**

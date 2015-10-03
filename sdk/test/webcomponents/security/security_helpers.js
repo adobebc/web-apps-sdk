@@ -47,13 +47,13 @@ describe("BCAPI.Security helper method tests suite.", function() {
             BCAPI.Security.configure({"a": "b"});
         }).toBeCustomError("BCAPI.Components.Exceptions.BadArgumentException",
             function(actualEx) {
-                expect(actualEx.arg).toBe("securityCfg.site");
+                expect(actualEx.arg).toBe("securityCfg.siteUrl");
             });
     });
 
     it("Make sure an exception is raised if no access token is provided for configure.", function() {
         expect(function() {
-            BCAPI.Security.configure({"site": "https://devs-next.com"});
+            BCAPI.Security.configure({"siteUrl": "https://devs-next.com"});
         }).toBeCustomError("BCAPI.Components.Exceptions.BadArgumentException",
             function(actualEx) {
                 expect(actualEx.arg).toBe("securityCfg.accessToken");
@@ -62,12 +62,80 @@ describe("BCAPI.Security helper method tests suite.", function() {
 
     it("Make sure configure works as expected.", function() {
         var securityCfg = {
-            "site": "https://raducosnita-max2014.worldsecuresystems.com",
+            "siteUrl": "https://testsite.com",
             "accessToken": "encrypted token"
         };
 
         BCAPI.Security.configure(securityCfg);
 
         expect(BCAPI.Security.securityCfg).toBe(securityCfg);
+    });
+
+    it("Make sure bc security context can be obtained with securityCfg configured.", function(done) {
+        var securityCfg = {
+                "siteUrl": "https://testsite.com",
+                "accessToken": "encrypted token value"
+            },
+            userData = {
+                "id": 123,
+                "firstName": "John",
+                "lastName": "Doe"
+            },
+            meDataSource = {
+                "configureInvoked": false,
+                "listInvoked": false,
+                "list": function() {
+                    this.listInvoked = true;
+                    var response = $.Deferred();
+
+                    setTimeout(function() {
+                        response.resolve(userData);
+                    });
+
+                    return response.promise();
+                },
+                "configure": function(opts) {
+                    this.configureInvoked = true;
+                    expect(opts.bcConfig).toBe(securityCfg);
+                    expect(opts.apiName).toBe("users");
+                    expect(opts.apiVersion).toBe("v3");
+                    expect(opts.resourceId).toBe("me");
+                    expect(opts.fields).toBe("id,firstName,lastName");
+                }
+            };
+
+        BCAPI.Security.configure(securityCfg);
+
+        spyOn(document, "createElement").and.callFake(function(elemName) {
+            if (elemName === "bc-api") {
+                return meDataSource;
+            }
+
+            throw new Exception("Unexpected element name: " + elemName);
+        });
+
+        BCAPI.Security.getBcSecurity().then(function(bcCtx) {
+            expect(meDataSource.listInvoked).toBeTruthy();
+            expect(meDataSource.configureInvoked).toBeTruthy();
+
+            expect(bcCtx).not.toBe(undefined);
+
+            expect(bcCtx.accessToken).not.toBe(undefined);
+            expect(bcCtx.user).not.toBe(undefined);
+
+            expect(bcCtx.accessToken.userId).toBe(userData.id);
+            expect(bcCtx.accessToken.token).toBe(securityCfg.accessToken);
+            expect(bcCtx.accessToken.scopes.length).toBe(0);
+
+            expect(bcCtx.accessToken.user.id).toBe(userData.userId);
+            expect(bcCtx.accessToken.user.firstName).toBe(userData.firstName);
+            expect(bcCtx.accessToken.user.lastName).toBe(userData.lastName);
+
+            expect(bcCtx.user.id).toBe(userData.userId);
+            expect(bcCtx.user.firstName).toBe(userData.firstName);
+            expect(bcCtx.user.lastName).toBe(userData.lastName);
+
+            done();
+        });
     });
 });

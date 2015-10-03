@@ -49,9 +49,9 @@
                             "securityCfg");
         }
 
-        if (!securityCfg.site) {
+        if (!securityCfg.siteUrl) {
             throw new BCAPI.Components.Exceptions.BadArgumentException("securityCfg argument does not contain a site.",
-                            "securityCfg.site");
+                            "securityCfg.siteUrl");
         }
 
         if (!securityCfg.accessToken) {
@@ -65,13 +65,38 @@
     /**
      * This method provides a simple way to obtain the current bc security context.
      *
+     * @public
      * @method
      * @name getBcSecurity
      * @memberof BCAPI.Security
-     * @returns {BCAPI.Security.BcSecurityContext} the bc security context which holds all information describing the
-     * current session.
+     * @returns {Promise} A promise which will be resolved with the bc security context for the current session. Internally
+     * it uses a cache so that all subsequent calls to this method work really fast.
      */
     BCAPI.Security.getBcSecurity = BCAPI.Security.getBcSecurity || function() {
+        var securityCtxLoader = $.Deferred(),
+            meDataSource = document.createElement("bc-api");
 
+        meDataSource.configure({
+            "bcConfig": BCAPI.Security.securityCfg,
+            "apiName": "users",
+            "apiVersion": "v3",
+            "resourceId": "me",
+            "fields": "id,firstName,lastName"
+        });
+
+        var response = meDataSource.list();
+
+        response.then(function(userData) {
+            var user = new BCAPI.Security.User(userData),
+                accessToken = new BCAPI.Security.AccessToken({
+                    "userId": user.userId,
+                    "user": user,
+                    "token": BCAPI.Security.securityCfg.accessToken
+                });
+
+            securityCtxLoader.resolve(new BCAPI.Security.BcSecurityContext(accessToken, user));
+        });
+
+        return securityCtxLoader.promise();
     };
 })();

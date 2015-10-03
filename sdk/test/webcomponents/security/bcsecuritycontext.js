@@ -36,11 +36,16 @@ describe("BCAPI.Security.BcSecurityContext", function() {
         });
 
         this._accessToken = new AccessToken();
+        this._config = {
+            "siteUrl": "https://simplesite.com",
+            "accessToken": "encrypted token value"
+        };
 
-        this._securityContext = new BcSecurityContext(this._accessToken, this._user);
+        this._securityContext = new BcSecurityContext(this._accessToken, this._user, this._config);
 
         expect(this._securityContext.accessToken).toBe(this._accessToken);
         expect(this._securityContext.user).toBe(this._user);
+        expect(this._securityContext.config).toBe(this._config);
     });
 
     it("Ensures renew access is not supported at the moment.", function() {

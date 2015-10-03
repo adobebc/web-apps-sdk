@@ -79,7 +79,7 @@ $.extend(webComponent, {
     list: function(opts) {
         var data = [],
             loader = $.Deferred(),
-            bcConfig = BCAPI.Security.securityCfg;
+            bcConfig = BCAPI.Security._securityCfg;
 
         opts = opts || {};
 

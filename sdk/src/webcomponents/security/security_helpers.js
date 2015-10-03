@@ -22,7 +22,8 @@
  *
  */
 (function() {
-    BCAPI.Security.securityCfg = undefined;
+    BCAPI.Security.__bcSecurityCtxLoader = undefined;
+    BCAPI.Security._securityCfg = undefined;
     BCAPI.Security._bcSecurityCtx = undefined;
 
     /**
@@ -60,7 +61,7 @@
                             "securityCfg.accessToken");
         }
 
-        BCAPI.Security.securityCfg = securityCfg;
+        BCAPI.Security._securityCfg = securityCfg;
     };
 
     /**
@@ -74,6 +75,10 @@
      * it uses a cache so that all subsequent calls to this method work really fast.
      */
     BCAPI.Security.getBcSecurity = BCAPI.Security.getBcSecurity || function() {
+        if (BCAPI.Security.__bcSecurityCtxLoader) {
+            return BCAPI.Security.__bcSecurityCtxLoader;
+        }
+
         var securityCtxLoader = $.Deferred();
         
         if (BCAPI.Security._bcSecurityCtx) {
@@ -84,10 +89,11 @@
             return securityCtxLoader.promise();
         }
 
-        var meDataSource = document.createElement("bc-api");
+        var meDataSource = document.createElement("bc-api"),
+            securityCfg = BCAPI.Security._securityCfg;
 
         meDataSource.configure({
-            "bcConfig": BCAPI.Security.securityCfg,
+            "bcConfig": securityCfg,
             "apiName": "users",
             "apiVersion": "v3",
             "resourceId": "me",
@@ -101,15 +107,19 @@
                 accessToken = new BCAPI.Security.AccessToken({
                     "userId": user.userId,
                     "user": user,
-                    "token": BCAPI.Security.securityCfg.accessToken
+                    "token": securityCfg.accessToken
                 }),
-                securityCtx = new BCAPI.Security.BcSecurityContext(accessToken, user);
+                securityCtx = new BCAPI.Security.BcSecurityContext(accessToken, user, securityCfg);
 
             BCAPI.Security._bcSecurityCtx = securityCtx;
 
             securityCtxLoader.resolve(securityCtx);
+
+            BCAPI.Security.__bcSecurityCtxLoader = undefined;
         });
 
-        return securityCtxLoader.promise();
+        BCAPI.Security.__bcSecurityCtxLoader = securityCtxLoader.promise();
+
+        return BCAPI.Security.__bcSecurityCtxLoader;
     };
 })();

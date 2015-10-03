@@ -27,8 +27,9 @@ describe("BCAPI.Security helper method tests suite.", function() {
     });
 
     afterEach(function() {
-        BCAPI.Security.securityCfg = undefined;
+        BCAPI.Security._securityCfg = undefined;
         BCAPI.Security._bcSecurityCtx = undefined;
+        BCAPI.Security.__bcSecurityCtxLoader = undefined;
     });
 
     it("Make sure an exception is raised if no configuration is given as parameter.", function() {
@@ -73,7 +74,7 @@ describe("BCAPI.Security helper method tests suite.", function() {
 
         BCAPI.Security.configure(securityCfg);
 
-        expect(BCAPI.Security.securityCfg).toBe(securityCfg);
+        expect(BCAPI.Security._securityCfg).toBe(securityCfg);
     });
 
     it("Make sure bc security context can be obtained with securityCfg configured.", function(done) {
@@ -139,10 +140,28 @@ describe("BCAPI.Security helper method tests suite.", function() {
             expect(bcCtx.user.firstName).toBe(userData.firstName);
             expect(bcCtx.user.lastName).toBe(userData.lastName);
 
+            expect(bcCtx.config).toBe(securityCfg);
+
             expect(BCAPI.Security._bcSecurityCtx).toBe(bcCtx);
 
             done();
         });
+    });
+
+    it("Make sure two subsequent calls to BCAPI.Security.BcSecurityContext returns the same promise.", function() {
+        var meDataSource = {
+            "configure": function() { },
+            "list": function() {
+                return $.Deferred().promise();
+            }
+        };
+
+        spyOn(document, "createElement").and.returnValue(meDataSource);
+
+        var promise1 = BCAPI.Security.getBcSecurity(),
+            promise2 = BCAPI.Security.getBcSecurity();
+
+        expect(promise1).toBe(promise2);
     });
 
     it("Make sure subsequent calls to getBcSecurity return a cached version.", function(done) {

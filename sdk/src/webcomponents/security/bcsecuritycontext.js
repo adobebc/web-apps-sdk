@@ -30,10 +30,14 @@
      * @memberof BCAPI.Security
      * @param {BCAPI.Security.AccessToken} accessToken the current access token used by the application.
      * @param {BCAPI.Security.User} user the current logged in user.
+     * @param {Object} config the configuration object used to describe the bc environment for the current session.
+     * @param {String} config.siteUrl the secure site url on which api calls can be made.
+     * @param {String} config.accessToken the current access token encrypted value.
      */
-    function BcSecurityContext(accessToken, user) {
+    function BcSecurityContext(accessToken, user, config) {
         this.accessToken = accessToken;
         this.user = user;
+        this.config = config;
     }
 
     /**

@@ -26,6 +26,11 @@ describe("BCAPI.Security helper method tests suite.", function() {
         jasmine.addMatchers(ComponentCustomMatchers);
     });
 
+    afterEach(function() {
+        BCAPI.Security.securityCfg = undefined;
+        BCAPI.Security._bcSecurityCtx = undefined;
+    });
+
     it("Make sure an exception is raised if no configuration is given as parameter.", function() {
         expect(function() {
             BCAPI.Security.configure();
@@ -96,7 +101,6 @@ describe("BCAPI.Security helper method tests suite.", function() {
                 },
                 "configure": function(opts) {
                     this.configureInvoked = true;
-                    expect(opts.bcConfig).toBe(securityCfg);
                     expect(opts.apiName).toBe("users");
                     expect(opts.apiVersion).toBe("v3");
                     expect(opts.resourceId).toBe("me");
@@ -134,6 +138,20 @@ describe("BCAPI.Security helper method tests suite.", function() {
             expect(bcCtx.user.id).toBe(userData.userId);
             expect(bcCtx.user.firstName).toBe(userData.firstName);
             expect(bcCtx.user.lastName).toBe(userData.lastName);
+
+            expect(BCAPI.Security._bcSecurityCtx).toBe(bcCtx);
+
+            done();
+        });
+    });
+
+    it("Make sure subsequent calls to getBcSecurity return a cached version.", function(done) {
+        var securityCtx = new BCAPI.Security.BcSecurityContext();
+
+        BCAPI.Security._bcSecurityCtx = securityCtx;
+
+        BCAPI.Security.getBcSecurity().then(function(newSecurityCtx) {
+            expect(newSecurityCtx).toBe(securityCtx);
 
             done();
         });

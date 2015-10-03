@@ -25,6 +25,10 @@
         <script src="/src/helper.js"></script>
         <script src="/src/webcomponents/components.js"></script>
         <script src="/src/webcomponents/components_exceptions.js"></script>
+        <script src="/src/webcomponents/security/accesstoken.js"></script>
+        <script src="/src/webcomponents/security/user.js"></script>
+        <script src="/src/webcomponents/security/bcsecuritycontext.js"></script>
+        <script src="/src/webcomponents/security/security_helpers.js"></script>
         <link rel="import" href="/src/webcomponents/textfield/textfield.html">
         <link rel="import" href="/src/webcomponents/datagrid/datagrid.html">
         <link rel="import" href="/src/webcomponents/datagrid/datagrid-customtpl.html">
@@ -32,11 +36,22 @@
         <link rel="import" href="/src/webcomponents/buttons/button.html">
         <link rel="import" href="/src/webcomponents/datasources/json.html">
         <link rel="import" href="/src/webcomponents/datasources/api.html">
+
+        <script type="text/javascript">
+        BCAPI.Security.configure({
+            "siteUrl": "https://raducosnita-max2014.worldsecuresystems.com",
+            "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtYXBpLWRpc2NvdmVyeTttb1ZzNmt5cDR4S3RkSEp2VEQ2U3lMTTI5MG13MzcxU1RIYjU4NXNaZlBpNWFIdUVmb25sVUdwMjlLd3ZUZmwzd01sQXE4ODdkY0NTcTdjblp5TW1ReHZDMmVKY1VST0hhVldBZ0I5OUFvWlpDa3FQeFpKR0VobGFxVy8vM2tkbWdWOXQxVEVCTzRYcHdlbEQwK3AycWRCRUJqT242VmtVUHpxSms3dVdudXdvZ0xhWnlYWE5vYm1EYkhTdytOWE82UnRCaTg0ZDc5Y3NQYmZVSHUrdzRSbEsxQWxVSFdkUmJIOHhlTlpVYk11cm5Pcnl3TlpObWEyR0tkN05HclJndnZYMERTc3RGK0hhaGtJRHlpaVVWcGIvY21VSVB2M2hyaEgzSXlLVnBadTBhNkhOeFdMWnNWOVpyMFJTanllblUrN25KZmFxZ2hiZjlwa0l1NXVxQWcyYkNyRy9jc0pWdHYzNldNU05STCtCc3IvdzJyYkdnM2NZVGJuYlRPeDQ="
+        });
+
+        BCAPI.Security.getBcSecurity().then(function(securityCtx) {
+            console.log(securityCtx);
+        });
+        </script>        
     </head>
 
     <body>
-<bc-select id="ddCustomers" value-prop="id" text-prop="firstName">
-    <bc-api api-name="customers" api-version="v3" fields="id,firstName" rel="datasource"></bc-api>
-</bc-select>
+        <bc-select id="ddCustomers" value-prop="id" text-prop="firstName">
+            <bc-api api-name="customers" api-version="v3" fields="id,firstName" rel="datasource"></bc-api>
+        </bc-select>
     </body>
 </html>

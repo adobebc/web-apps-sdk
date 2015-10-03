@@ -34,12 +34,32 @@ var webComponent = {
     properties: {
         apiName: String,
         apiVersion: String,
-        bcConfig: Object,
         fields: String,
         where: String
+    }
+};
+
+var baseDataSource = Object.create(BCAPI.Components.DataSources.DataSource.prototype);
+$.extend(webComponent, baseDataSource);
+webComponent.__baseDataSource = baseDataSource;
+
+$.extend(webComponent, {
+    /**
+     * This method is invoked automatically in order to attach the current datasource to its parent component
+     * if necessary.
+     *
+     * @public
+     * @method
+     * @name attached
+     * @memberof BCAPI.Components.DataSources
+     * @returns {undefined}
+     */
+    attached: function() {
+        this.__baseDataSource.attached.apply(this);
     },
     ready: function() {
-        var parentNode = this.parentNode;
+        var parentNode = this.parentNode,
+            self = this;
 
         while (parentNode && !parentNode._supportsDataSource) {
             parentNode = parentNode.parentNode;
@@ -50,22 +70,24 @@ var webComponent = {
         }
     },
     configure: function(opts) {
-        this.bcConfig = opts.bcConfig || this.bcConfig;
         this.apiName = opts.apiName || this.apiName;
         this.apiVersion = opts.apiVersion || this.apiVersion;
         this.fields = opts.fields || this.fields;
         this.where = opts.where || this.where;
+        this.resourceId = opts.resourceId;
     },
     list: function(opts) {
         var data = [],
-            loader = $.Deferred();
+            loader = $.Deferred(),
+            bcConfig = BCAPI.Security.securityCfg;
 
         opts = opts || {};
 
         opts.fields = opts.fields || this.fields;
         opts.where = opts.where || this.where;
+        opts.resourceId = opts.resourceId || this.resourceId;
 
-        if (!this.bcConfig) {
+        if (!bcConfig) {
             return;
         }
 
@@ -84,10 +106,10 @@ var webComponent = {
         }
 
         var response = $.ajax({
-            "url": this._getApiUrl(this.apiName, this.apiVersion),
+            "url": this._getApiUrl(this.apiName, this.apiVersion, opts.resourceId, bcConfig),
             "data": data.join("&"),
             "headers": {
-                "Authorization": this.bcConfig.accessToken
+                "Authorization": bcConfig.accessToken
             }
         });
 
@@ -97,11 +119,9 @@ var webComponent = {
 
         return loader.promise();
     },
-    _getApiUrl: function(apiName, apiVersion) {
-        return [this.bcConfig.siteUrl, "/webresources/api/", apiVersion, "/sites/current/",
-            apiName
+    _getApiUrl: function(apiName, apiVersion, resourceId, bcConfig) {
+        return [bcConfig.siteUrl, "/webresources/api/", apiVersion, "/sites/current/",
+            apiName, resourceId ? "/" + resourceId : ""
         ].join("");
     }
-};
-
-webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+});

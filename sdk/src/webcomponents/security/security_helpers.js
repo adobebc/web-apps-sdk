@@ -23,6 +23,7 @@
  */
 (function() {
     BCAPI.Security.securityCfg = undefined;
+    BCAPI.Security._bcSecurityCtx = undefined;
 
     /**
      * This method provides a simple way for setting all security details when running an app.
@@ -73,8 +74,17 @@
      * it uses a cache so that all subsequent calls to this method work really fast.
      */
     BCAPI.Security.getBcSecurity = BCAPI.Security.getBcSecurity || function() {
-        var securityCtxLoader = $.Deferred(),
-            meDataSource = document.createElement("bc-api");
+        var securityCtxLoader = $.Deferred();
+        
+        if (BCAPI.Security._bcSecurityCtx) {
+            setTimeout(function() {
+                securityCtxLoader.resolve(BCAPI.Security._bcSecurityCtx);
+            });
+
+            return securityCtxLoader.promise();
+        }
+
+        var meDataSource = document.createElement("bc-api");
 
         meDataSource.configure({
             "bcConfig": BCAPI.Security.securityCfg,
@@ -92,9 +102,12 @@
                     "userId": user.userId,
                     "user": user,
                     "token": BCAPI.Security.securityCfg.accessToken
-                });
+                }),
+                securityCtx = new BCAPI.Security.BcSecurityContext(accessToken, user);
 
-            securityCtxLoader.resolve(new BCAPI.Security.BcSecurityContext(accessToken, user));
+            BCAPI.Security._bcSecurityCtx = securityCtx;
+
+            securityCtxLoader.resolve(securityCtx);
         });
 
         return securityCtxLoader.promise();

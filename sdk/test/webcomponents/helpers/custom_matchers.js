@@ -8,7 +8,7 @@ window.ComponentCustomMatchers = (function() {
          */
         toBeCustomError: function() {
             return {
-                compare: function(interceptedMethod, errorType) {
+                compare: function(interceptedMethod, errorType, extraCompare) {
                     var result = {};
 
                     try {
@@ -27,6 +27,10 @@ window.ComponentCustomMatchers = (function() {
                             } else if (!actualEx.msg) {
                                 result.message = "The given exception does not have a msg set.";
                             }
+                        }
+
+                        if (typeof extraCompare === "function") {
+                            extraCompare(actualEx);
                         }
                     }
 

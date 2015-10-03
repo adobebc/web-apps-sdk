@@ -55,7 +55,7 @@
         });
     }
 
-    // WireEventException.prototype = new Error();
+    WireEventException.prototype = Object.create(Error.prototype);
 
     BCAPI.Components.Exceptions.WireEventException = WireEventException;
 
@@ -87,4 +87,41 @@
     NotImplementedException.prototype = Object.create(Error.prototype);
 
     BCAPI.Components.Exceptions.NotImplementedException = NotImplementedException;
+
+    /**
+     * This class provides a custom exception which notifies developers about a missing or bad argument. This
+     * exception usually occurs when invoking a method with the wrong number of arguments.
+     *
+     * @public
+     * @class BadArgumentException
+     * @param {String} msg The message which must be displayed to developers.
+     * @param {String} arg The argument which caused this exeption.
+     * @memberof BCAPI.Components.Exceptions
+     */
+    function BadArgumentException(msg, arg) {
+        Object.defineProperty(this, "msg", {
+            writable: false,
+            value: msg,
+            enumerable: true,
+            configurable: false
+        });
+
+        Object.defineProperty(this, "arg", {
+            writable: false,
+            value: arg,
+            enumerable: true,
+            configurable: false
+        });
+
+        Object.defineProperty(this, "errorType", {
+            writable: false,
+            value: "BCAPI.Components.Exceptions.BadArgumentException",
+            enumerable: true,
+            configurable: true
+        });
+    }
+
+    BadArgumentException.prototype = Object.create(Error.prototype);
+
+    BCAPI.Components.Exceptions.BadArgumentException = BadArgumentException;
 })();

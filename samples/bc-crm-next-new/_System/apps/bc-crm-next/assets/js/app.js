@@ -63,10 +63,11 @@ window.MyApp = (function($) {
         },
         printInvoice: function(srcElement) {
             var order = srcElement.data,
-                invoiceUrl = [this._bcConfig.siteUrl, "/webresources/api/v3/sites/current/orders/", order.id, "?",
+                bcConfig = BCAPI.Security.getBcConfig(),
+                invoiceUrl = [bcConfig.siteUrl, "/webresources/api/v3/sites/current/orders/", order.id, "?",
                                 "format=application/vnd.bc.ecommerce.invoice-pdf"];
 
-            invoiceUrl.push("&access_token=" + encodeURIComponent(this._bcConfig.accessToken));
+            invoiceUrl.push("&access_token=" + encodeURIComponent(bcConfig.accessToken));
 
             window.open(invoiceUrl.join(""));
         }

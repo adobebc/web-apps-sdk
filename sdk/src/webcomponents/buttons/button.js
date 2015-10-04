@@ -68,7 +68,12 @@ var webComponent = {
     },
     customEvents: [
         "dataChanged"
-    ],
+    ]
+};
+
+webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+$.extend(webComponent, {
     /**
      * This method handles the change of css classes applied to the current button instance.
      *
@@ -94,6 +99,4 @@ var webComponent = {
     _onDataChanged: function(newData) {
         this.trigger("data-changed", newData);
     }
-};
-
-webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+});

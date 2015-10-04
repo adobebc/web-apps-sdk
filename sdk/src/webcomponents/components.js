@@ -153,7 +153,12 @@
         }
 
         for (var idx = 0; idx < classes.length; idx++) {
-            domElem.classList.add(classes[idx]);
+            try {
+                domElem.classList.add(classes[idx]);
+            }
+            catch (ex) {
+                
+            }
         }
     };
 

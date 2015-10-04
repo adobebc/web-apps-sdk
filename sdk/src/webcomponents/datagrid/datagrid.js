@@ -39,19 +39,25 @@ var webComponent = {
         apiVersion: String,
         visible: Boolean,
         dataVarname: String,
-        bcConfig: Object,
         currData: {
             type: Object,
             readonly: true
         },
-        _dataSource: {
+        dataSource: {
             type: Object,
             notify: true
         },
-        _expectsDataSource: {
-            type: Boolean
+        supportsDataSource: {
+            readOnly: true,
+            type: Boolean,
+            value: true
         }
-    },
+    }
+};
+
+webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+$.extend(webComponent, {
     /**
      * This method is invoked automatically when component is ready and tries to wire available datasource from shadow dom.
      *
@@ -61,11 +67,7 @@ var webComponent = {
      * @memberof BCAPI.Components.DataGrid
      */
     ready: function() {
-        this._dataSource = Polymer.dom(this).querySelector("*[rel='datasource']");
-
-        if (this._dataSource) {
-            this._expectsDataSource = true;
-        }
+        this._wireDataSourceFromMarkup();
     },
     /**
      * This method is invoked automatically once the datagrid is attached to the main dom. It tries to obtain the template for custom defined repeated row.
@@ -77,6 +79,8 @@ var webComponent = {
      * @memberof BCAPI.Components.DataGrid
      */
     attached: function() {
+        this.__base.attached.apply(this);
+
         var repeatedRowDiv = Polymer.dom(this).querySelector("div[rel='custom-repeated-row']");
 
         if (repeatedRowDiv) {
@@ -97,14 +101,7 @@ var webComponent = {
         opts = opts || {};
 
         this.dataVarname = opts.dataVarname || this.dataVarname;
-        this.bcConfig = opts.bcConfig || this.bcConfig || {};
-        this._dataSource = opts.dataSource || this._dataSource;
-
-        if (this._dataSource) {
-            this._dataSource.configure({
-                "bcConfig": this.bcConfig
-            });
-        }
+        this.dataSource = opts.dataSource || this.dataSource;
 
         this.columns = opts.columns || this._getColsFromMarkup() || this.columns;
         this.rows = opts.rows || this._loadItems() || this.rows;
@@ -260,7 +257,7 @@ var webComponent = {
             fetchOptions.limit = opts.limit;
         }
 
-        this._dataSource.list(fetchOptions).done(function(data) {
+        this.dataSource.list(fetchOptions).done(function(data) {
             self._updateCurrentData(data);
         });
     },
@@ -280,6 +277,4 @@ var webComponent = {
             rows: data.items
         });
     }
-};
-
-webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+});

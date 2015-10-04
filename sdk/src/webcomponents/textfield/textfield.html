@@ -56,8 +56,16 @@
             }
         },
         customEvents: [
-            "textfield-change", "textfield-search"
-        ],
+            "textfieldChange", "textfieldSearch"
+        ]
+    };
+
+    polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
+
+    $.extend(polymerObj, {
+        attached: function() {
+            this.__base.attached.apply(this);
+        },
         ready: function() {
              this._wireCustomEventsFromDom();
         },
@@ -82,9 +90,7 @@
         handleSearch: function(evt) {
             this.trigger("textfield-search", {"value": this.value});
         }
-    };
-
-    polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
+    });
 
     Polymer(polymerObj);
     </script>

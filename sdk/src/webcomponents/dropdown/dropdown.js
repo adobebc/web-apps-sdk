@@ -118,7 +118,25 @@ var webComponent = (function() {
         customEvents: [
             EVT_CHANGED,
             EVT_DATA_LOADED
-        ],
+        ]
+    };
+
+    webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+    $.extend(webComponent, {
+        /**
+         * This method is invoked automatically when the webcomponent is attached to dom. It wires all custom events and
+         * other specific concerns.
+         *
+         * @public
+         * @instance
+         * @method
+         * @memberof BCAPI.Components.DropDown
+         * @returns {undefined} no result.
+         */
+        attached: function() {
+            this.__base.attached.apply(this);
+        },
         /**
          * This method is invoked automatically when the component is ready to be used. At this point the component has not
          * been attached to the main dom. Internally, the method uses the shadow dom and tries to configure dataSource
@@ -347,9 +365,7 @@ var webComponent = (function() {
         _changeClass: function(newClass) {
             this.__base.changeClass(newClass, this._innerSelect);
         }
-    };
-
-    webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+    });
 
     return webComponent;
 })();

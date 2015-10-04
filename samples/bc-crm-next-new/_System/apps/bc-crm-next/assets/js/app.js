@@ -8,17 +8,12 @@ window.MyApp = (function($) {
             this._filterValue = "";
             this._orderBy = "0";
 
-            this._configureComponents();
-        },
-        _configureComponents: function() {
-            this._bcConfig = {
+            BCAPI.Security.configure({
                 "siteUrl": "https://devs-next.worldsecuresystems.com",
-                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtbWVldC10aGUtdGVhbTtHckx3a0hpOWFqZWJtcklReVYrOEdERTU5WW9VdmlPeUl2WnVlZ0cvUFhhS0x4V0hNQk0vbk5lSU42R3VJeUVucUNaOHpnNW1CUGtmNnlTR3ZQOEdzK3BPM3hMSEU1cHhLUGYwYTlOU2J5ZmJSUVA0eUMwbVVTY0s3SjVMTDJTRUFqTW9sbUV3UnI0eTlBRUpWaVQrZHMvb0J1SitENVBGVysxVVo4Y3lHZ2Irc1lHM0I2MTEycDRpWGVlczlqOEpiZGlYdkFXU2VQV3R3VDFCR1l1N0hPQzZFZXNFYzB4VnQrSkhOK04xT1VoMWc3Ty93ajd3WklCcGVjWkhqOWY2NUF0dlNMSUdLSFpZUFN3QWxJc0dZb0RYZWkxL2NLL0JhOUpUS3lSZ1ZWZ1NJckdwVXc4N3lLdnk2VFBKRmNkWG4wZVJBS3B6dzZJT2k5QXRBQ29DemxEenJEaDZKeU54OEduT2RNa3hBaXJmZ1lHVmZQNDVIdTRzOG9LQ0tncy8="
-            };
-
-            this._dataGrid.configure({
-                "bcConfig": this._bcConfig
+                "accessToken": "Bearer _bc_Q2xpZW50SWQ9YmMtYXBpLWRpc2NvdmVyeTttb1ZzNmt5cDR4S3RkSEp2VEQ2U3lQU3J4RjhUUHd3UkYvTGpHVGFSZWVMUDJsRWNDbnNQZzhEbGJQTHNMUFg0bUdLVXk3akxvVmI1Y29UMkNzYmhteWVoL1huTzcxa3ZYWFRDOVZGeG1abjVPUWNMQWQ3Zmh5YlZVeUpyYVV2L2VOQmhwUlhxZG1zazNVOXhnV2kzVDlWalJEWDR1MEdBRnVXYWtVNWUxK05vLzJvN2lyUXNLb2kvQloyMVgycDl4a2lBbU5pWVVXaGxFYmpPNDA0MVBQSWoramJxWUZiTHJRenRINEdjOFZmcnNad2hta0YrU1RzQThmV01DTXZxb3lSVzlUWitLSk1hZHJBM2FLclZ6ckNRdURIdWx0d0xxd3NGOGNSbU1rbW9wMzFMQzU4VVZlNTBodmZPSXVUZUhKY2t3ZVdGMFMvQ2pFUEl6Zk54TGZLdkhmNG82ZWdBUStsNW9NSC9pWjVSMU8yY1g4ZHNNWUFlQUJQM1M4b00="
             });
+
+            this._dataGrid.configure();
         },
         onChangeOrderBy: function(selectedItem) {
             this._orderBy = selectedItem.value;
@@ -59,13 +54,11 @@ window.MyApp = (function($) {
                 ordersGrid = $(ordersGridSelector)[0],
                 visible = !ordersGrid.visible;
 
-            ordersGrid._dataSource.configure({
+            ordersGrid.dataSource.configure({
                 "where": {"entityId": selectedCustomer.id}
             });
-            ordersGrid.configure({
-                "bcConfig": this._bcConfig
-            });
 
+            ordersGrid.configure();
             ordersGrid.display(visible);
         },
         printInvoice: function(srcElement) {

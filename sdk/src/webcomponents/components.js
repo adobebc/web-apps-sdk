@@ -155,9 +155,8 @@
         for (var idx = 0; idx < classes.length; idx++) {
             try {
                 domElem.classList.add(classes[idx]);
-            }
-            catch (ex) {
-                
+            } catch (ex) {
+                ex = ex;
             }
         }
     };

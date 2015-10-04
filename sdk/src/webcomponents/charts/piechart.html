@@ -1,0 +1,84 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<dom-module id="bc-piechart">
+    <template>
+        <div id="chart_div"></div>
+    </template>
+
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+
+    <script type="text/javascript">
+        var webComponent = {
+            is: "bc-piechart",
+            properties: {
+                width: Number,
+                height: Number,
+                title: String,
+                dataSource: {
+                    type: Object,
+                    observer: "_onDataSourceUpdate"
+                },
+                supportsDataSource: {
+                    type: Boolean,
+                    value: true
+                }
+            }
+        };
+
+        webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+        $.extend(webComponent, {
+            attached: function() {
+                this.__base.attached.apply(this);
+                
+                var self = this;
+
+                google.load("visualization", "1.0", {
+                    "packages": ["corechart"],
+                    "callback": function() {
+                        self._drawChart();          
+                        self.dataSource = Polymer.dom(self).querySelector("[rel='datasource']");
+                    }
+                });
+            },
+            _onDataSourceUpdate: function(dataSource) {
+                var loader = dataSource.list(),
+                    self = this;
+
+                loader.then(function(data) {
+                    self._data.addRows(data.items);
+
+                    var chart = new google.visualization.PieChart(self.$.chart_div);
+                    chart.draw(self._data, self._chartOptions);
+                });
+            },
+            _drawChart: function() {
+                this._data = new google.visualization.DataTable();
+                this._wireColumnsFromMarkup();
+
+                this._chartOptions = {
+                    "title": this.title,
+                    "width": this.width || 800,
+                    "height": this.height || 600
+                };
+            },
+            _wireColumnsFromMarkup: function() {
+                var bcCols = Polymer.dom(this).querySelector("bc-columns");
+
+                if (!bcCols) {
+                    return;
+                }
+
+                var cols = bcCols.querySelectorAll("[rel='dimension']"),
+                    self = this;
+
+                $(cols).each(function(colIdx, column) {
+                    self._data.addColumn(column.getAttribute("data-type"), column.getAttribute("data-id"));
+                });
+            }
+        });
+
+        Polymer(webComponent);
+    </script>
+</dom-module>

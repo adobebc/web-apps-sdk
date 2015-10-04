@@ -1,0 +1,79 @@
+<!--
+* 
+* 
+* Copyright (c) 2012-2015 Adobe Systems Incorporated. All rights reserved.
+
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"), 
+* to deal in the Software without restriction, including without limitation 
+* the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+* and/or sell copies of the Software, and to permit persons to whom the 
+* Software is furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+* DEALINGS IN THE SOFTWARE.
+* 
+*
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Customers API Demo + UI SDK</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+        <script type="text/javascript" src="/dist/bcapi-0.2.0.js"></script>
+
+        <script type="text/javascript" src="/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <script type="text/javascript" src="/src/helper.js"></script>
+        <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+        <script type="text/javascript" src="/src/webcomponents/components_exceptions.js"></script>
+        <script type="text/javascript" src="/src/webcomponents/security/accesstoken.js"></script>
+        <script type="text/javascript" src="/src/webcomponents/security/user.js"></script>
+        <script type="text/javascript" src="/src/webcomponents/security/bcsecuritycontext.js"></script>
+        <script type="text/javascript" src="/src/webcomponents/security/security_helpers.js"></script>
+        <link rel="import" href="/src/webcomponents/textfield/textfield.html">
+        <link rel="import" href="/src/webcomponents/datagrid/datagrid.html">
+        <link rel="import" href="/src/webcomponents/datagrid/datagrid-customtpl.html">
+        <link rel="import" href="/src/webcomponents/dropdown/dropdown.html">
+        <link rel="import" href="/src/webcomponents/buttons/button.html">
+        <link rel="import" href="/src/webcomponents/charts/piechart.html">
+        <link rel="import" href="/src/webcomponents/datasources/json.html">
+        <link rel="import" href="/src/webcomponents/datasources/api.html">
+    </head>
+
+    <body>
+        <bc-piechart title="Last night pizza">
+            <bc-json url="/_System/apps/bc-sample-charts/assets/datasource/lastnight_pizza.json" rel="datasource"></bc-json>
+
+            <bc-columns style="display: none;">
+                <div rel="dimension" data-id="Topping" data-type="string"></div>
+                <div rel="dimension" data-id="Slices" data-type="number"></div>
+            </bc-columns>
+        </bc-piechart>
+    </body>
+</html>

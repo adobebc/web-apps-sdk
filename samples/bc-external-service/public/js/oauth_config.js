@@ -1,5 +1,5 @@
 var OAuthConfig = (function() {
-    _bcSecureHost = "dc1.worldsecuresystems.com";
+    _bcSecureHost = "ava-next.worldsecuresystems.com";
     _appBaseUri = "https://simpletest.com";
 
     return {
@@ -7,7 +7,7 @@ var OAuthConfig = (function() {
         bcSecureUrl: "https://" + _bcSecureHost,
         bcAuthorizeEndpoint: "/api/oauth/authorize",
         bcTokenEndpoint: "/api/oauth/token",
-        clientId: "radudev-demo-service-10",
+        clientId: "raducos-max-service",
         version: "0.1",
         redirectUri: _appBaseUri + "/oauth/cb",
         appIndexPage: _appBaseUri + "/_System/apps/bc-api-discovery/index.html"

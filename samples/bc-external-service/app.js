@@ -6,7 +6,7 @@ var app = express();
 
 var oauthConfig = require("./public/js/oauth_config");
 
-oauthConfig.clientSecret = "/WTcJ26xYt2Xgp51039CwQ==";
+oauthConfig.clientSecret = "cn/Zp1VFqp6v36PKvkkvrA==";
 
 app.set("view engine", "jade");
 

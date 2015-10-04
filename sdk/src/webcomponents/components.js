@@ -146,6 +146,10 @@
      * @memberof BCAPI.Components.Component
      */
     Component.prototype.changeClass = function(newClass, domElem) {
+        if (!domElem) {
+            return;
+        }
+
         var classes = newClass.split(" ");
 
         while (domElem.classList.length > 0) {

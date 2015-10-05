@@ -77,7 +77,7 @@
          <td class="description">Percentage of booking seats already booked e.g. <em>40%</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date&#125;&#125;{% endraw %} - Use Liquid <a href="/reference/liquid/filters.html#Dateswitches" target="_blank">date switches</a> to format the date</code></td>
          <td class="description">Date of booking e.g. <em>24-Aug-2014</em></td>
         </tr>
 
@@ -86,15 +86,15 @@
          <td class="description">Add booking to favorites list. Optionally customize to display your own custom image for adding and removing like so - {% raw %}&#123;tag_addtofavorites,&lt;img alt="" src="/images/plus_icon" /&gt;,&lt;img alt="" src="/images/minus_icon" /&gt;&#125;{% endraw %}</code> <br/>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;day&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>Use Liquid <a href="/reference/liquid/filters.html#Dateswitches" target="_blank">date switches</a> to format the day</code></td>
          <td class="description">Day of Booking e.g. <em>24</em> if the booking date is 24-Aug-2014 </td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;monthName&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>Use Liquid <a href="/reference/liquid/filters.html#Dateswitches" target="_blank">date switches</a> to format the month</code></td>
          <td class="description">Month of Booking e.g. <em>Aug</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;year&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>Use Liquid <a href="/reference/liquid/filters.html#Dateswitches" target="_blank">date switches</a> to format the year</code></td>
          <td class="description">Year of Booking e.g. <em>2014</em> if the booking date is 24-Aug-2014</td>
         </tr>
         <tr>
@@ -102,7 +102,7 @@
          <td class="description">Number of available seats left for booking e.g. <em>79</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;weekday&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>Use Liquid <a href="/reference/liquid/filters.html#Dateswitches" target="_blank">date switches</a> to format the weekday</code></td>
          <td class="description">Day of booking e.g. <em>Saturday </em>if the booking date is 24-Aug-2013</td>
         </tr>
         <tr>

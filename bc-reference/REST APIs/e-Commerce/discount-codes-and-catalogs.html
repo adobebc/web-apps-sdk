@@ -33,7 +33,7 @@
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-    url: &quot;/webresources/api/v3/sites/current/discountcodes/3309/catalogues&quot;,
+    url: &quot;/webresources/api/v3/sites/current/discountcodes/3309/catalogs&quot;,
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
@@ -124,7 +124,7 @@ request.fail(function (jqXHR) {
 </div>
 
 <div id="create">
-<h2>Apply a discount code to a catalog</h2>
+<h2>Apply a discount code to a catalog or catalogs</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -158,13 +158,20 @@ request.fail(function (jqXHR) {
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
 var request = $.ajax({
-  url: "/webresources/api/v3/sites/current/discountcodes/65460/catalogues",
-  data:JSON.stringify({"items":[{"discountCodeId":65460,"catalogueId":25481}]}),<br>    type: "POST",    
+    url: "/webresources/api/v3/sites/current/discountcodes/65460/catalogs",
+    data: JSON.stringify({
+        "items": [{
+            "catalogueId": 25481
+        }, {
+            "catalogueId": 25482
+        }]
+    }),
+        type:   "POST",
     contentType: "application/json",
     mimeType: "application/json ",
-  headers: {
-    "Authorization": $.cookie('access_token')
-  }
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
 });
 request.done(function(msg) {
   console.log(msg);
@@ -176,11 +183,12 @@ request.fail(function(jqXHR) {
   console.log("Response text: " + jqXHR.responseText);
 }){% endraw %}</code></pre>
 </div>
+<p class="alert alert-info"><strong>Note:</strong> If the discountCode has the discountType equal to 3, then you can't assign a catalogue to it.</p>
 <hr>
 </div>
 
 <div id="delete">
-<h2>Remove the discount code from a catalog</h2>
+<h2>Remove the discount code from a catalog or catalogs</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -211,12 +219,14 @@ request.fail(function(jqXHR) {
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 //the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
 
-var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/discountcodes/65460/catalogs?items=[{"discountCodeId":65460,"catalogueId":25481}]",<br>    type: "DELETE",    
-    contentType: "application/json",
-    mimeType: "application/json ",
-    headers: {
-        "Authorization": $.cookie('access_token')
-    }
+var  request = $.ajax({    
+  url: "/webresources/api/v3/sites/current/discountcodes/6188/catalogs?items=[{'catalogueId':25481},{'catalogueId':25482}]",
+  type:   "DELETE",
+  contentType: "application/json",
+  mimeType: "application/json ",
+  headers: {
+      "Authorization": $.cookie('access_token')
+  }
 });
 request.done(function (msg) {
     console.log(msg);

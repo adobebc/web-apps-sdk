@@ -115,7 +115,9 @@ Site visitors get to it only after clicking the links outputted by any of these 
         </tr>
 <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;groupingList&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_groupinglist&#125;{% endraw %}</code></td><td class="description">List of product attributes used to switch between products</td>
+         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_groupinglist&#125;{% endraw %}</code></td>
+         <td class="description"><p>List of product attributes used to switch between products.</p>
+         <p>The Liquid tag renders an object, use <em>json</em> filter to see it's properties like so: <code>{{ groupingList | json }}</code></p></td>
         </tr>
 <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;inStock&#125;&#125;{% endraw %}</code></td>

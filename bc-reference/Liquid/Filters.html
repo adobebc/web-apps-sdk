@@ -123,7 +123,7 @@
            <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}truncatewords{% endraw %}</code>
               </td>
-              <td><code>{% raw %}{{"&lt;p&gt;Lorem ipsum dolor sin amet&lt;/p&gt;" | truncatewords: 2}}{% endraw %}</code> strips the paragraph to a specified number of words. Example output: &quot;Lorem ipsum&quot;</td>
+              <td><code>{% raw %}{{"&lt;p&gt;Lorem ipsum dolor sin amet&lt;/p&gt;" | truncatewords: 2, &quot;...&quot;}}{% endraw %}</code> strips the paragraph to a specified number of words. Example output: &quot;Lorem ipsum...&quot;</td>
           </tr>
           <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}newline_to_br {% endraw %}</code>

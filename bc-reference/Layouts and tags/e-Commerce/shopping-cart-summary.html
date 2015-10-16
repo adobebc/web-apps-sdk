@@ -49,18 +49,23 @@
                 <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_countryCode&#125;{% endraw %}</code></td>
                 <td class="description">the country code of the currency used</td>
             </tr>
+            <tr>
+                <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;items&#125;&#125;{% endraw %}</code></td>
+                <td valign="top" class="legacy tag">&nbsp;</td>
+                <td class="description">an array containing the products in the cart</td>
+            </tr>
         </tbody>
     </table>
-    <p>Below is a example of a custom template using the above tags:</p>
+    <p>To loop the products inside the shopping cart you will need to use a FOR loop:</p>
+    <pre class="language-markup"><code>{% raw %}    &lt;ul&gt;<br>    {% for item in items -%}<br>    &lt;li&gt;<br>    	&lt;a href=&quot;{{item.smallImage}}&quot;&gt;<br>          &lt;img src=&quot;{{item.smallImage}}&quot;/&gt;<br>          &lt;span&gt;{{item.name}} - &lt;/span&gt;<br>          &lt;span&gt;{{item.totalPrice}}&lt;/span&gt;<br>        &lt;/a&gt;<br>    &lt;/li&gt;<br>    {% endfor -%}<br>    &lt;/ul&gt;
+    &lt;div&gt;Total cost - {{currencyFormat}}{{totalAmount}}&lt;/div&gt;
+    &lt;a class="cartSummaryLink" href="&#123;{cartUrl}}"&gt;View Cart&lt;/a&gt;{% endraw %}</code></pre>
+    <p>Below is another example of a layout:</p>
     <pre class="language-markup"><code>{% raw %}
-    &lt;div class="cartSummary empty&#123;tag_isEmpty}"&gt;<br/>
-    &lt;div class="cartSummaryItem"&gt;Shopping cart is empty&lt;/div&gt;<br/>
-    &lt;/div&gt;<br/>
-    &lt;div class="cartSummary notEmpty&#123;tag_isEmpty}"&gt;<br/>
-    &lt;div class="cartSummaryItem"&gt;&#123;tag_itemCount} item(s), Total &#123;tag_currency}&#123;tag_totalAmount}&lt;/div&gt;<br/>
-    &lt;div&gt;&lt;a class="cartSummaryLink" href="&#123;tag_cartUrl}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
-    &lt;/div&gt;<br/>
-    {% endraw %}</code></pre>
+    &lt;div class="cartSummary empty&#123;tag_isEmpty}"&gt;<br/>    &lt;div class="cartSummaryItem"&gt;Shopping cart is empty&lt;/div&gt;<br/>    &lt;/div&gt;<br/>
+    &lt;div class="cartSummary notEmpty&#123;tag_isEmpty}"&gt;<br/>    &lt;div class="cartSummaryItem"&gt;&#123;{itemCount}} item(s), Total &#123;{currencyFormat}}&#123;{totalAmount}}&lt;/div&gt;
+    &lt;div&gt;&lt;a class="cartSummaryLink" href="&#123;{cartUrl}}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
+    &lt;/div&gt;{% endraw %}</code></pre>
     <p class="alert alert-info"><strong>Note:</strong> If you are using the above example, ensure that you add the below to your CSS to change the table class based on whether an item is added to the cart or not.</p>
     <p><em>&nbsp;&nbsp;.empty0 { display:none; }</em></p>
     <p><em>&nbsp;&nbsp;.notEmpty1 { display:none; }</em></p>

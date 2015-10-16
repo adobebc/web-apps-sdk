@@ -57,14 +57,29 @@
         </tbody>
     </table>
     <p>To loop the products inside the shopping cart you will need to use a FOR loop:</p>
-    <pre class="language-markup"><code>{% raw %}    &lt;ul&gt;<br>    {% for item in items -%}<br>    &lt;li&gt;<br>    	&lt;a href=&quot;{{item.smallImage}}&quot;&gt;<br>          &lt;img src=&quot;{{item.smallImage}}&quot;/&gt;<br>          &lt;span&gt;{{item.name}} - &lt;/span&gt;<br>          &lt;span&gt;{{item.totalPrice}}&lt;/span&gt;<br>        &lt;/a&gt;<br>    &lt;/li&gt;<br>    {% endfor -%}<br>    &lt;/ul&gt;
+    <pre class="language-markup"><code>{% raw %}    &lt;ul&gt;
+    {% for item in items -%}
+    &lt;li&gt;
+    	&lt;a href=&quot;{{item.smallImage}}&quot;&gt;
+          &lt;img src=&quot;{{item.smallImage}}&quot;/&gt;
+          &lt;span&gt;{{item.name}} - &lt;/span&gt;
+          &lt;span&gt;{{item.totalPrice}}&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    {% endfor -%}
+    &lt;/ul&gt;
     &lt;div&gt;Total cost - {{currencyFormat}}{{totalAmount}}&lt;/div&gt;
-    &lt;a class="cartSummaryLink" href="&#123;{cartUrl}}"&gt;View Cart&lt;/a&gt;{% endraw %}</code></pre>
+    &lt;a class=&quot;cartSummaryLink&quot; href=&quot;{{cartUrl}}&quot;&gt;View Cart&lt;/a&gt;{% endraw %}</code></pre>
     <p>Below is another example of a layout:</p>
     <pre class="language-markup"><code>{% raw %}
-    &lt;div class="cartSummary empty&#123;tag_isEmpty}"&gt;<br/>    &lt;div class="cartSummaryItem"&gt;Shopping cart is empty&lt;/div&gt;<br/>    &lt;/div&gt;<br/>
-    &lt;div class="cartSummary notEmpty&#123;tag_isEmpty}"&gt;<br/>    &lt;div class="cartSummaryItem"&gt;&#123;{itemCount}} item(s), Total &#123;{currencyFormat}}&#123;{totalAmount}}&lt;/div&gt;
-    &lt;div&gt;&lt;a class="cartSummaryLink" href="&#123;{cartUrl}}"&gt;View Cart&lt;/a&gt;&lt;/div&gt;<br/>
+    &lt;div class=&quot;cartSummary empty{tag_isEmpty}&quot;&gt;
+    &lt;div class=&quot;cartSummaryItem&quot;&gt;Shopping cart is empty&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;cartSummary notEmpty{tag_isEmpty}&quot;&gt;
+    &lt;div class=&quot;cartSummaryItem&quot;&gt;{{itemCount}} item(s), Total {{currencyFormat}}{{totalAmount}}&lt;/div&gt;
+    &lt;div&gt;&lt;a class=&quot;cartSummaryLink&quot; href=&quot;{{cartUrl}}&quot;&gt;View Cart&lt;/a&gt;&lt;/div&gt;
+
     &lt;/div&gt;{% endraw %}</code></pre>
     <p class="alert alert-info"><strong>Note:</strong> If you are using the above example, ensure that you add the below to your CSS to change the table class based on whether an item is added to the cart or not.</p>
     <p><em>&nbsp;&nbsp;.empty0 { display:none; }</em></p>

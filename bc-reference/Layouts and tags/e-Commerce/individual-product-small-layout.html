@@ -151,7 +151,14 @@
         </tr>
 <tr>
   <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;onOrder&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_onorder&#125;{% endraw %}</code></td><td class="description">Number of units on order</td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_onorder, syncWithAttributes, noSelectionMessage, disabledSelectionMessage&#125;{% endraw %}</code></td>
+  <td class="description">Number of units on order.
+    <p>Parameters:</p>
+    <ul>
+      <li><em>syncWithAttributes</em> – true or false</li>
+      <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
+      <li><em>disabledSelectionMessage</em> – specify the message displayed when site customer has selected a variation that is disabled</li>
+    </ul></td>
         </tr>
 <tr>
   <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;isOnSale&#125;&#125;{% endraw %}</code></td>
@@ -160,7 +167,14 @@
         </tr>
 <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productCode&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productcode&#125;{% endraw %}</code></td><td class="description">Product code</td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productcode, syncWithAttributes, noSelectionMessage, disabledSelectionMessage&#125;{% endraw %}</code></td>
+            <td class="description">Product code. With variations enabled, tg product will render the variation code instead of the product codes in all layouts where this is used.
+              <p>Parameters:</p>
+              <ul>
+                <li><em>syncWithAttributes</em> – true or false</li>
+                <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
+                <li><em>disabledSelectionMessage</em> – specify the message displayed when site customer has selected a variation that is disabled</li>
+              </ul></td>
         </tr>
 <tr>
   <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>

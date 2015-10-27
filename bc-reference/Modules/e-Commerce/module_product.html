@@ -67,9 +67,15 @@ The &#123;module_product&#125; module is always rendered using either the <a hre
     </tr>
 <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;attributes&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_attributes&#125;{% endraw %}</code></td><td class="description"><p>Renders attribute dropdowns for a given product</p>
-           <p>The Liquid tag renders an object, use <em>json</em> filter to see it's properties like so: <code>{{ attributes | json }}</code></p></td>
-    </tr>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_attributes, horizontal, hideDisabledVariations, autoSelectFirstVariation&#125;{% endraw %}</code></td>
+            <td class="description"><p>Renders attribute dropdowns for a given product:</p>
+              <ul>
+                <li><em>horizontal</em> - display attributes horizontally</li>
+                <li><em>hideDisabledVariations</em> - true or false</li>
+                <li><em>autoSelectFirstVariation</em> - true or false</li>
+              </ul>
+              <p>The Liquid tag renders an object, use <em>json</em> filter to see it's properties like so: <code>{{ attributes | json }}</code></p></td>
+        </tr>
 <tr>
             <td valign="top" class="liquid tag"></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_button,Your Text&#125;{% endraw %}</code></td><td class="description">Replace Your Text with your own text; for example, <em>Click for more information</em></td>
@@ -172,7 +178,14 @@ The &#123;module_product&#125; module is always rendered using either the <a hre
         </tr>
 <tr>
   <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;onOrder&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_onorder&#125;{% endraw %}</code></td><td class="description">Number of units on order</td>
+  <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_onorder, syncWithAttributes, noSelectionMessage, disabledSelectionMessage&#125;{% endraw %}</code></td>
+  <td class="description">Number of units on order.
+    <p>Parameters:</p>
+    <ul>
+      <li><em>syncWithAttributes</em> – true or false</li>
+      <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
+      <li><em>disabledSelectionMessage</em> – specify the message displayed when site customer has selected a variation that is disabled</li>
+    </ul></td>
         </tr>
 <tr>
   <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;isOnSale&#125;&#125;{% endraw %}</code></td>
@@ -180,7 +193,14 @@ The &#123;module_product&#125; module is always rendered using either the <a hre
         </tr>
 <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;productCode&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productcode&#125;{% endraw %}</code></td><td class="description">Product code</td>
+            <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_productcode, syncWithAttributes, noSelectionMessage, disabledSelectionMessage&#125;{% endraw %}</code></td>
+            <td class="description">Product code. With variations enabled, tg product will render the variation code instead of the product codes in all layouts where this is used.
+              <p>Parameters:</p>
+              <ul>
+                <li><em>syncWithAttributes</em> – true or false</li>
+                <li><em>noSelectionMessage</em> – specify the message displayed when site customer has not selected a variation</li>
+                <li><em>disabledSelectionMessage</em> – specify the message displayed when site customer has selected a variation that is disabled</li>
+              </ul></td>
         </tr>
 <tr>
   <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;releaseDate&#125;&#125;{% endraw %}</code></td>

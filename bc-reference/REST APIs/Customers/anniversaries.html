@@ -101,7 +101,7 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p><strong>List all the CRM records with at least one anniversary set</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries",
@@ -124,7 +124,7 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>List all anniversary dates for a particular customer</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries/61396913",
@@ -227,7 +227,7 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries",
@@ -332,7 +332,7 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries/61396913",
@@ -405,7 +405,7 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries/61396913",

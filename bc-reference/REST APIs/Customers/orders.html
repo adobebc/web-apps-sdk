@@ -201,7 +201,7 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p><strong>Get the list of orders on a site</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders",
@@ -224,7 +224,7 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p id="orders-created-after"><strong>Get the list of orders created after (&quot;$gt&quot;</strong><strong> stands for &quot;greater  than&quot;) a specific date</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders?where={'createDate':{'$gt':'2013-06-10'&#125;&#125;",
@@ -404,7 +404,7 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p id="get-order-details"><strong>Get the details of an order</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/[orderId]",
@@ -427,7 +427,7 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>Get the details of an order - this only includes the specified fields:</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/7051740?fields=status,discountCode,workflow,customer,taxCode",
@@ -632,7 +632,7 @@ Content-Length: length{% endraw %}</code></pre>
 <p>Another thing to note - when the &quot;invoiced&quot; parameter is set to true the stock levels for the products in the order are updated (the products are substracted).</p>
 <p>The total price is computerd based on the shipping options, discount codes, item prices, taxes and so on.</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orders",
@@ -811,7 +811,7 @@ Content-Length: length{% endraw %}</code></pre>
 <p>Another thing to note - when the &quot;invoiced&quot; parameter is set to true the stock levels for the products in the order are updated (the products are substracted).</p>
 <p>If the new status  is configured to notify the customer an email will be sent by the system to the customer's primary email address.</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orders/9593213",
@@ -890,7 +890,7 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/9593213",

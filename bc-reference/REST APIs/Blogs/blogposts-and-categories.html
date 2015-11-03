@@ -23,8 +23,8 @@
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>{% raw %}objectID{% endraw %}</code> - the ID of the blog <em>(integer)</em></li>
-<li><code>{% raw %}categoryID{% endraw %}</code> the Id of the category <em>(integer)</em></li>
+<li><code>{% raw %}objectId{% endraw %}</code> - the ID of the blog <em>(integer)</em></li>
+<li><code>{% raw %}categoryId{% endraw %}</code> the Id of the category <em>(integer)</em></li>
 <li><code>{% raw %}objectType{% endraw %}</code> - category object type is 56 <em>(integer)</em></li>
 <li><code>{% raw %}displayable{% endraw %}</code> should be 1 <em>(string)</em></li>
 <li><code>{% raw %}siteId{% endraw %}</code> the ID of the site <em>(integer)</em></li>
@@ -44,7 +44,7 @@
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogposts/1383385/categories",
@@ -131,9 +131,9 @@ Content-Type: application/json
 
 
 {
-  "ObjectID": 303870,
-  "cateogoryID": 14606,
-  "objecType": 56,
+  "objectId": 303870,
+  "categoryId": 14606,
+  "objectType": 56,
   "displayable": 1
 }{% endraw %}</code></pre>
 </div>
@@ -150,7 +150,7 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/blogposts/303870/categories",<br>    data:{"items":[{"objectId":303870,"categoryId":14610,"objectType":56,"displayable":1}]},<br>    type: "POST",<br>    contentType: "application/json",
 mimeType: "application/json ",<br>    headers: {
@@ -207,7 +207,7 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/blogposts/303870/categories?items=[{'objectId':303870,'categoryId':14610,'objectType':56,'displayable':1}]",<br>    type: "DELETE",    
     contentType: "application/json",

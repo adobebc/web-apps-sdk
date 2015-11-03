@@ -78,7 +78,7 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p>Get access token bearer's user </p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/users/me",
@@ -178,7 +178,7 @@ Content-Type: application/json
     <h3>Sample code</h3>
     <p>Get access token bearer's user </p>
     <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-//the authorization token is now stored in the access_token cookie, we will need to pass it in the "Authorization" header
+
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/users/54277",

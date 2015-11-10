@@ -26,9 +26,9 @@
 <li><code>{% raw %}objectId{% endraw %}</code> - the ID of the blog <em>(integer)</em></li>
 <li><code>{% raw %}categoryId{% endraw %}</code> the Id of the category <em>(integer)</em></li>
 <li><code>{% raw %}objectType{% endraw %}</code> - category object type is 56 <em>(integer)</em></li>
-<li><code>{% raw %}displayable{% endraw %}</code> should be 1 <em>(string)</em></li>
+<li><code>{% raw %}displayable{% endraw %}</code> should be 1 <em>(integer)</em></li>
 <li><code>{% raw %}siteId{% endraw %}</code> the ID of the site <em>(integer)</em></li>
-<li><code>{% raw %}category{% endraw %}</code> json object, listing <a href="/reference/rest-apis-legacy/categories-v2/create-category.html" title="Default category fields">default category fields</a> <em>(string)</em></li>
+<li><code>{% raw %}category{% endraw %}</code> json object, listing <a href="/reference/rest-apis-legacy/categories-v2/create-category.html" title="Default category fields">default category fields</a> <em>(object)</em></li>
 
 
 </ul>
@@ -128,14 +128,7 @@ request.fail(function (jqXHR) {
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-
-
-{
-  "objectId": 303870,
-  "categoryId": 14606,
-  "objectType": 56,
-  "displayable": 1
-}{% endraw %}</code></pre>
+{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
@@ -150,11 +143,30 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/blogposts/303870/categories",
+    data: {
+        "items": [{
+            "categoryId": 14610,
+        }]
+    },
+    type: "POST",
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function(msg) {
+    console.log(msg);
 
-
-var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/blogposts/303870/categories",<br>    data:{"items":[{"objectId":303870,"categoryId":14610,"objectType":56,"displayable":1}]},<br>    type: "POST",<br>    contentType: "application/json",
-mimeType: "application/json ",<br>    headers: {
-        "Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br><br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
+})
+request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
 </div>
 <hr>
 </div>
@@ -208,17 +220,20 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 
-
-var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/blogposts/303870/categories?items=[{'objectId':303870,'categoryId':14610,'objectType':56,'displayable':1}]",<br>    type: "DELETE",    
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/blogposts/303870/categories?items=[{'objectId':303870,'categoryId':14610,'objectType':56,'displayable':1}]",
+    type: "DELETE",
     contentType: "application/json",
     mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
 });
-request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br>
+request.done(function(msg) {
+    console.log(msg);
+
 })
-    request.fail(function(jqXHR) {
+request.fail(function(jqXHR) {
     console.log("Request failed.");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);

@@ -39,7 +39,17 @@
   <li><code>{% raw %}lastUpdateDate{% endraw -%}</code> - the last update date of the user <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
   <li><code>{% raw %}catchAll{% endraw -%}</code> - specifies if mails from alternate email are forwarded to the user's inbox. <em> (boolean)</em></li>
   <li><code>{% raw %}enabled{% endraw -%}</code> - user enabled or not<em> (boolean)</em></li>
-  <li><code>{% raw %}userTypeId{% endraw -%}</code> - the user's role<em> (integer)</em></li>
+  <li><code>{% raw %}userTypeId{% endraw -%}</code> - the user's role<em> (integer)</em>
+    <ul>
+      <li><strong>1</strong> - BusinessOwner</li>
+      <!--
+      <li>2 - WebPro</li>
+      <li>3 - Privileged</li>
+      <li>4 - Secure</li>
+      -->
+      <li><strong>5</strong> - AdobeId</li>
+    </ul>
+  </li>
   <li><code>{% raw %}alternateEmail{% endraw -%}</code> - the user's second, alternate email <em>(string)</em></li>
 </ul>
 <p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>

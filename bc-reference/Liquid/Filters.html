@@ -1,7 +1,7 @@
 <title>Filters</title>
 <h1>Supported filters </h1>  
 <div type="cs-pod">
-     <h2 id="math-filters">Mathematical Filters</h2> 
+     <h2 id="math-filters">Mathematical filters</h2> 
         <table width="100%" class="data-bordered">
             <tbody>
                 <tr>
@@ -208,6 +208,27 @@ Three
           <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}last{% endraw %}</code></td>
               <td><code>{% raw %}{{myArray | last}}{% endraw %}</code> Will output the last item in an array</td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}map{% endraw %}</code></td>
+            <td><p>myArray = 
+            [{
+    "id": 9683555,
+    "name": "Childhood Dreams T-Shirt"
+  },
+  {
+    "id": 9683556,
+    "name": "Kung-Fu Panda T-Shirt"
+  }]
+            </p>
+            <p><code>{% raw %}{{myArray | map: &quot;name&quot;}}{% endraw %}</code> </p>
+            <p>Accepts an array element's attribute as a parameter and creates a new array from it's values: [
+              "Childhood Dreams T-Shirt",
+            "Kung-Fu Panda T-Shirt"]</p></td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder">&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
       </tbody>
     </table>
@@ -583,6 +604,29 @@ Three
             <td><span class="cellcontent">Encodes/decodes a parameter than can be appended to an URL.<code>{% raw %} {{"&lt;div&gt; &amp; &lt;span&gt;" | url_param_escape}}{% endraw %} / {% raw %} {{&quot;&amp;lt;hello&amp;gt; &amp;amp; &amp;lt;shopify&amp;gt;&quot; | url_param_unescape}}{% endraw %}</code></span>
             </td>
         </tr>
+             <tr>
+               <td valign="top" class="cellrowborder"><code>{% raw %}number{% endraw %}</code></td>
+               <td><p>We use the format strings from .Net, which are available <a href="https://msdn.microsoft.com/en-us/library/dwhawy9k%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396" rel="nofollow">here</a> and <a href="https://msdn.microsoft.com/en-us/library/0c899ak8%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396" rel="nofollow">here</a>. By default, if no format string is specified, we use the "N2" format which displays numbers using two decimals and which also includes the group separator if necessary. </p>
+                 <p>Examples:</p>
+                 <p>Cultures that use dot '.' as the decimal separator ($ is used as a sample currency):            
+                 </p>
+                 <ul>
+                   <li><code>{{ invoiceTotal | number }}</code>: 1,050.00</li>
+                   <li><code>{{ invoiceTotal | number: "N2" }}</code>: 1,050.00</li>
+                   <li><code>{{ invoiceTotal | number: "N4" }}</code>: 1,050.0000</li>
+                   <li><code>{{ invoiceTotal | number: "F2" }}</code>: 1050.00</li>
+                   <li><code>{{ invoiceTotal | number: "F2" }}</code>: $1050.00</li>
+                 </ul>
+                 <p>Cultures that use comma ',' as the decimal separator (EUR is used as a sample currency):            
+                 </p>
+                 <ul>
+                   <li><code>{{ invoiceTotal | number }}</code>: 1.050,00</li>
+                   <li><code>{{ invoiceTotal | number: "N2" }}</code>: 1.050,00</li>
+                   <li><code>{{ invoiceTotal | number: "N4" }}</code>: 1.050,0000</li>
+                   <li><code>{{ invoiceTotal | number: "F2" }}</code>: 1050,00</li>
+                   <li><code>{{ invoiceTotal | number: "F2" }}</code>: EUR1050,00</li>
+               </ul></td>
+             </tr>
              <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}money{% endraw %}</code>
               </td>

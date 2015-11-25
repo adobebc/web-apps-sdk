@@ -1,0 +1,3 @@
+[submodule "sdk/lib/polymer"]
+	path = sdk/lib/polymer
+	url = https://github.com/Polymer/polymer.git

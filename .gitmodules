@@ -1,3 +1,6 @@
 [submodule "sdk/lib/polymer"]
 	path = sdk/lib/polymer
 	url = https://github.com/Polymer/polymer.git
+[submodule "sdk/lib/webcomponentsjs"]
+	path = sdk/lib/webcomponentsjs
+	url = https://github.com/webcomponents/webcomponentsjs.git

@@ -36,7 +36,10 @@ var webComponent = {
         apiVersion: String,
         fields: String,
         where: String
-    }
+    },
+    customEvents: [
+        "postFetch"
+    ]
 };
 
 var baseDataSource = Object.create(BCAPI.Components.DataSources.DataSource.prototype);
@@ -68,6 +71,8 @@ $.extend(webComponent, {
         if (parentNode && parentNode._supportsDataSource) {
             parentNode._dataSource = this;
         }
+
+        //this._wireCustomEventsFromDom();
     },
     configure: function(opts) {
         this.apiName = opts.apiName || this.apiName;
@@ -112,8 +117,13 @@ $.extend(webComponent, {
                 "Authorization": bcConfig.accessToken
             }
         });
-
+        var self = this;
         response.done(function(data) {
+
+            var evtCtx = { result: data };
+            self.trigger("post-fetch", evtCtx);
+            data = evtCtx.result;
+            
             loader.resolve(data);
         });
 

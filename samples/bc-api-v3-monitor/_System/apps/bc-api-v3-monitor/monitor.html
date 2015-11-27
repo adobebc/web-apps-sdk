@@ -94,19 +94,17 @@
                     </div>
                 </bc-columns>
 
-                <div rel="custom-repeated-row">
+                <div rel="custom-repeated-row" style="width: 100%">
                     <bc-datagrid data-monitor-sid$="{{item.guid}}" >
                         <bc-api api-name="monitor" api-version="v3" rel="datasource" onbc-post-fetch="MonitorApp.monitorResultsSelector"></bc-api>
 
                         <bc-columns style="display: none;">
                             <div rel="property" data-id="api" title="Api"></div>
-                            <div rel="property" data-id="status" title="Status"></div>
+                            <div id = "apiStatus" rel="property" data-id="status" title="Status"></div>
                             <div rel="property" data-id="statusCode" title="Status Code"></div>
                             <div rel="property" data-id="lastMonitoredDate" title="Last Monitored Date"></div>
-                            <div rel="property" data-id="lastResponse" title="Last respone">     
+                            <div rel="property" data-id="lastResponse" title="Last respone" style=" white-space: pre-wrap ; display: block; unicode-bidi: embed;">     
                             </div>
-
-
 
                         </bc-columns>
                     </bc-datagrid>

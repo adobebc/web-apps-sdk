@@ -198,6 +198,7 @@ $.extend(webComponent, {
                 itemName = item.attr("title"),
                 itemRel = item.attr("rel"),
                 itemTemplate = item.html().trim();
+                itemStyle = item.attr("style");
 
             if (itemRel === "property") {
                 if (!itemTemplate) {
@@ -208,7 +209,8 @@ $.extend(webComponent, {
                     "id": itemId,
                     "name": itemName,
                     "template": itemTemplate,
-                    "rel": "property"
+                    "rel": "property",
+                    "style": itemStyle
                 });
 
                 return;
@@ -272,9 +274,16 @@ $.extend(webComponent, {
      * @memberof BCAPI.Components.DataGrid
      */
     _updateCurrentData: function(data) {
-        this.currData = data;
+        var rows;
+        if('items' in data) {
+            rows = data.items;
+            this.currData = data;
+        } else {
+            rows = data;
+            this.currData = {items: data, totalItemsCount: rows.length};
+        }
         this.configure({
-            rows: data.items
+            rows: rows
         });
     }
 });

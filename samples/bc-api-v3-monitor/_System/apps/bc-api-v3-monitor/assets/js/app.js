@@ -1,4 +1,5 @@
 window.MonitorApp = (function($) {
+
     var app = {
         init: function() {
             this._dataGrid = document.getElementById("gridMonitor");
@@ -29,10 +30,11 @@ window.MonitorApp = (function($) {
 
                 var apiDescriptor = evtCtx.result.monitorResponse[key];
                 apiDescriptor.api = key;
-                apiDescriptor.lastResponse = "<pre>" + JSON.stringify(apiDescriptor.lastResponse, null, 4) + "</pre>"; 
+                apiDescriptor.lastResponse = JSON.stringify(apiDescriptor.lastResponse, null, 4); 
+
                 newData.push(apiDescriptor);
             }
-            evtCtx.result = { items: newData };
+            evtCtx.result = newData;
         }
     };
 

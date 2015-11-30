@@ -12,7 +12,7 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{% raw %}&#123;module_product render=&quot;items&quot; catalogId=&quot;14886&quot; targetFrame=&quot;_blank&quot; productid=&quot;954557&quot; decoration=&quot;no&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
+<pre class="language-markup"><code>{% raw %}&#123;module_product render=&quot;items&quot; catalogId=&quot;14886&quot; targetFrame=&quot;_blank&quot; productid=&quot;954557&quot; useLi=&quot;true&quot; collection=&quot;my_custom_collection_name&quot; template=&quot;/folder/template.tpl&quot;&#125;{% endraw %}</code></pre><p class="alert alert-info"><strong>Note:</strong> When using named parameters always wrap the individual parameters in double quotes. Also, do note that modules using <a href="/developers/beta/modules-and-named-parameters">named parameters</a> do not work for campaigns just yet.</p>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
@@ -22,7 +22,7 @@
     <li><strong>catalogId</strong> - system generated catalogue id (do not change)</li>
     <li><strong>productid</strong> - system generated product id (do not change)</li>
     <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
-    <li><strong>useLi</strong> - wrap the module output in a list rather than a table</li>
+    <li><strong>useLi</strong> - boolean value that will wrap the module output in a list rather than a table</li>
     <li><strong>usebackupLayout</strong> - use the backup layout instead of the default one. The value of this parameter is ignored if the <em>template </em>parameter is also present.</li>
     <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
     <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>

@@ -43,11 +43,6 @@ describe("bc-button test suite for ensuring everything works as expected.", func
             return document.querySelector("bc-button");
         }, function(comp) {
             expect(comp).not.toBe(undefined);
-
-            var innerButtons = comp.querySelectorAll("button");
-            expect(innerButtons.length).toBe(1);
-
-            expect(innerButtons[0]).not.toBe(undefined);
         }, done);
     });
 
@@ -65,18 +60,12 @@ describe("bc-button test suite for ensuring everything works as expected.", func
         }, function(comp) {
             expect(comp).not.toBe(undefined);
 
-            var innerButtons = comp.querySelectorAll("button");
-            expect(innerButtons.length).toBe(1);
-
-            var innerButton = innerButtons[0];
-
-            expect(innerButton).not.toBe(undefined);
-            expect(innerButton.hasAttribute("style")).toBeTruthy();
-            expect(innerButton.getAttribute("style")).toBe(compStyle);
+            expect(comp.hasAttribute("style")).toBeTruthy();
+            expect(comp.getAttribute("style")).toBe(compStyle);
 
             comp.style = compNewStyle;
-            expect(innerButton.hasAttribute("style")).toBeTruthy();
-            expect(innerButton.getAttribute("style")).toBe(compNewStyle);
+            expect(comp.hasAttribute("style")).toBeTruthy();
+            expect(comp.getAttribute("style")).toBe(compNewStyle);
 
             document.body.removeChild(compHolder);
         }, done);
@@ -99,25 +88,20 @@ describe("bc-button test suite for ensuring everything works as expected.", func
             comp.class = compClasses;
             compClasses = compClasses.split(" ");
 
-            var innerButtons = comp.querySelectorAll("button");
-            expect(innerButtons.length).toBe(1);
-
-            var innerButton = innerButtons[0];
-
-            expect(innerButton.classList).not.toBe(undefined);
-            expect(innerButton.classList.length).toBe(compClasses.length);
+            expect(comp.classList).not.toBe(undefined);
+            expect(comp.classList.length).toBe(compClasses.length);
 
             for (idx = 0; idx < compClasses.length; compClasses++) {
-                expect(innerButton.classList[idx]).toBe(compClasses[idx]);
+                expect(comp.classList[idx]).toBe(compClasses[idx]);
             }
 
             comp.class = compNewClasses;
             compNewClasses = compNewClasses.split(" ");
 
-            expect(innerButton.classList.length).toBe(compNewClasses.length);
+            expect(comp.classList.length).toBe(compNewClasses.length);
 
             for (idx = 0; idx < compNewClasses.length; compNewClasses++) {
-                expect(innerButton.classList[idx]).toBe(compNewClasses[idx]);
+                expect(comp.classList[idx]).toBe(compNewClasses[idx]);
             }
 
             document.body.removeChild(compHolder);
@@ -152,10 +136,8 @@ describe("bc-button test suite for ensuring everything works as expected.", func
         }, function(comp) {
             expect(comp).not.toBe(undefined);
 
-            var evtData = {"attr1": "mydata"},
-                innerButton = comp.querySelector("button");
+            var evtData = {"attr1": "mydata"};
 
-            expect(innerButton).not.toBe(undefined);
             comp.data = evtData;
 
             $(comp).click(function(evt) {
@@ -163,7 +145,7 @@ describe("bc-button test suite for ensuring everything works as expected.", func
                 expect(evt.currentTarget.data).toBe(evtData);
             });
 
-            $(innerButton).click();
+            $(comp).click();
         }, done);
     });
 
@@ -220,11 +202,6 @@ describe("bc-button test suite for ensuring everything works as expected.", func
 
                 expect(result).toBe(comp.data);
             }
-
-            var innerButtons = comp.querySelectorAll("button");
-            expect(innerButtons.length).toBe(1);
-
-            expect(innerButtons[0]).not.toBe(undefined);
 
             document.body.removeChild(holder);
         }, done);

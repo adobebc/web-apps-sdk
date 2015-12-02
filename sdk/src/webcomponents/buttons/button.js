@@ -59,12 +59,14 @@ var webComponent = {
             type: Object,
             observer: "_onDataChanged"
         },
-        "class": {
+        style: {
             type: String,
-            notify: true,
-            observer: "_changeClass"
+            reflectToAttribute: true
         },
-        style: String
+        class: {
+            type: String,
+            reflectToAttribute: true
+        }
     },
     customEvents: [
         "dataChanged"
@@ -74,28 +76,6 @@ var webComponent = {
 webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
 
 $.extend(webComponent, {
-    /**
-     * This method handles the change of css classes applied to the current button instance.
-     *
-     * @private
-     * @instance
-     * @method  _changeClass
-     * @param  {String} newClass A whitespace separated list of classes.
-     * @return {undefined} No result.
-     * @memberof BCAPI.Components.Button
-     */
-    _changeClass: function(newClass) {
-        this.__base.changeClass(newClass, this.$.innerButton);
-    },
-    /**
-     * This method handles the change of data attached to the button. Internally it emits a custom event for notifying all listeners about a state change.
-     *
-     * @public
-     * @instance
-     *
-     * @param {Object} newData The new data binded to this button.
-     * @return {undefined} No result.
-     */
     _onDataChanged: function(newData) {
         this.trigger("data-changed", newData);
     }

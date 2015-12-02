@@ -146,7 +146,7 @@
      * @memberof BCAPI.Components.Component
      */
     Component.prototype.changeClass = function(newClass, domElem) {
-        if (!domElem) {
+        if (!domElem || !newClass) {
             return;
         }
 

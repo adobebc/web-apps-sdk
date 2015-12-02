@@ -8,7 +8,7 @@
         "grunt": "*",
         "grunt-cli": "*",
         "grunt-contrib-concat": "*",
-        "grunt-contrib-uglify": "*",
+        "grunt-contrib-uglify": "*",        
         "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git"
     },
     "devDependencies": {
@@ -20,7 +20,9 @@
         "karma-firefox-launcher": "^0.1.6",
         "karma-opera-launcher": "^0.3.0 ",
         "eslint": "^1.2.1",
-        "esprima": "^2.5.0"
+        "esprima": "^2.5.0",
+        "grunt-vulcanize": "*",
+        "grunt-init": "*"
     },
     "eslintConfig": {
         "parser": "esprima",

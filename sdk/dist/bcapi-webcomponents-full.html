@@ -5,9 +5,90 @@
         <content></content>
     </template>
     
-    <script type="text/javascript" src="/src/helper.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/buttons/button.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" >/*
+*
+*Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+*Permission is hereby granted, free of charge, to any person obtaining a
+*copy of this software and associated documentation files (the "Software"),
+*to deal in the Software without restriction, including without limitation
+*the rights to use, copy, modify, merge, publish, distribute, sublicense,
+*and/or sell copies of the Software, and to permit persons to whom the
+*Software is furnished to do so, subject to the following conditions:
+*
+*The above copyright notice and this permission notice shall be included in
+*all copies or substantial portions of the Software.
+*
+*THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+*FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+*DEALINGS IN THE SOFTWARE.
+*
+*/
+/**
+ * This class provides a reusable button component with the same look & feel as BC buttons.
+ * From a functionality point of view this component also carries data object for giving developer
+ * quick access to the context where the button was clicked.
+ *
+ * ## Properties
+ *
+ * Below you can find a complete list of properties which can be configured for this component:
+ *
+ * | Property name | Property description |
+ * | ------------------- | -------------------------- |
+ * | style | The style css classes which must be applied to the inner rendered button tag. |
+ * | data | The data carried by this object. You can easily access it in all event listeners. |
+ *
+ * ## Events
+ *
+ * | Event name.| Event description |
+ * |---------------------------------|---------------------------------|
+ * | dataChanged | This event is triggered whenever the data attached to the button is changed. |
+ *
+ * ## Usage
+ *
+ * ```html
+ * <bc-button>Simple button</bc-button>
+ * ```
+ *
+ * @class Button
+ * @public
+ * @memberof BCAPI.Components
+ * @augments BCAPI.Components.Component
+ */
+var webComponent = {
+    is: "bc-button",
+    properties: {
+        data: {
+            type: Object,
+            observer: "_onDataChanged"
+        },
+        style: {
+            type: String,
+            reflectToAttribute: true
+        },
+        class: {
+            type: String,
+            reflectToAttribute: true
+        }
+    },
+    customEvents: [
+        "dataChanged"
+    ]
+};
+
+webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+$.extend(webComponent, {
+    _onDataChanged: function(newData) {
+        this.trigger("data-changed", newData);
+    }
+});</script>
 
     <script type="text/javascript">
     Polymer(webComponent);
@@ -20,8 +101,8 @@
     </template>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="/src/helper.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
 
     <script type="text/javascript">
         var webComponent = {
@@ -99,8 +180,8 @@
 </dom-module><link rel="import" href="/lib/polymer/polymer.html">
 
 <dom-module id="bc-datagrid-customtpl">
-    <script type="text/javascript" src="/src/helper.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
 
     <script>
         var webComponent = {
@@ -286,9 +367,297 @@
         </template>
     </template>
 
-    <script type="text/javascript" src="/src/helper.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/datagrid/datagrid.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" >/*
+*
+*Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+*Permission is hereby granted, free of charge, to any person obtaining a
+*copy of this software and associated documentation files (the "Software"),
+*to deal in the Software without restriction, including without limitation
+*the rights to use, copy, modify, merge, publish, distribute, sublicense,
+*and/or sell copies of the Software, and to permit persons to whom the
+*Software is furnished to do so, subject to the following conditions:
+*
+*The above copyright notice and this permission notice shall be included in
+*all copies or substantial portions of the Software.
+*
+*THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+*FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+*DEALINGS IN THE SOFTWARE.
+*
+*/
+/**
+ * This class offers a fully customisable DataGrid component. It has a modern look & feel and allows developers to wire various
+ * datasources into it.
+ *
+ * @class DataGrid
+ * @public
+ * @memberof BCAPI.Components
+ */
+var webComponent = {
+    is: "bc-datagrid",
+    properties: {
+        columns: Array,
+        rows: Array,
+        repeatedRow: String,
+        apiName: String,
+        apiVersion: String,
+        visible: Boolean,
+        dataVarname: String,
+        currData: {
+            type: Object,
+            readonly: true
+        },
+        dataSource: {
+            type: Object,
+            notify: true
+        },
+        supportsDataSource: {
+            readOnly: true,
+            type: Boolean,
+            value: true
+        }
+    }
+};
+
+webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+$.extend(webComponent, {
+    /**
+     * This method is invoked automatically when component is ready and tries to wire available datasource from shadow dom.
+     *
+     * @public
+     * @instance
+     * @returns {undefined} No result.
+     * @memberof BCAPI.Components.DataGrid
+     */
+    ready: function() {
+        this._wireDataSourceFromMarkup();
+    },
+    /**
+     * This method is invoked automatically once the datagrid is attached to the main dom. It tries to obtain the template for custom defined repeated row.
+     *
+     * @public
+     * @instance
+     *
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DataGrid
+     */
+    attached: function() {
+        this.__base.attached.apply(this);
+
+        var repeatedRowDiv = Polymer.dom(this).querySelector("div[rel='custom-repeated-row']");
+
+        if (repeatedRowDiv) {
+            this.repeatedRow = repeatedRowDiv.innerHTML;
+        }
+    },
+    /**
+     * This method allows developers to configure the current instance of the datagrid. Each bindable property can be configured using this method.
+     *
+     * @param {opts} opts The options which must be configured on datasource.
+     * @param {Array} opts.columns An array holding the descriptor of each individual column.
+     * @param {Array} opts.rows An array holding each row items.
+     * @param {BCAPI.Components.DataSources.DataSource} opts.dataSource The datasource instance we want to wire into the datagrid.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DataGrid
+     */
+    configure: function(opts) {
+        opts = opts || {};
+
+        this.dataVarname = opts.dataVarname || this.dataVarname;
+        this.dataSource = opts.dataSource || this.dataSource;
+
+        this.columns = opts.columns || this._getColsFromMarkup() || this.columns;
+        this.rows = opts.rows || this._loadItems() || this.rows;
+    },
+    /**
+     * This method shows or hide the current instance of the datagrid.
+     *
+     * @public
+     * @instance
+     *
+     * @param {Boolean} visible A flag telling if the datagrid should be visible or hidden.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DataSource
+     */
+    display: function(visible) {
+        this.visible = visible || false;
+    },
+    /**
+     * This method returns the item available in the grid at a given index.
+     *
+     * @public
+     * @instance
+     * @param {Number} idx The index (row number) where the item can be found.
+     * @return {Object} The item from the specified index or undefined if the row is not available.
+     * @memberof BCAPI.Components.DataGrid
+     */
+    getItemAt: function(idx) {
+        return this.rows[idx];
+    },
+    /**
+     * This method triggers a full text search in the current datagrid.
+     *
+     * @public
+     * @instance
+     * @param {String} filterValue The filter we want to apply to the items belonging to the grid (or its underlining datasource).
+     * @param {Number} limit The maximum number of items which can be included in the resultset.
+     * @param {String} orderCriteria The order criteria used for arranging the items from the result set.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DataGrid
+     */
+    searchFullText: function(filterValue, limit, orderCriteria) {
+        if (!filterValue || filterValue.trim().length === 0) {
+            this._loadItems({
+                "limit": limit,
+                "order": orderCriteria
+            });
+
+            return;
+        }
+
+        var filter = {
+                "$or": []
+            },
+            self = this;
+
+        for (var idx = 0; idx < this.columns.length; idx++) {
+            var col = this.columns[idx],
+                clause = {};
+
+            if (col.rel !== "property") {
+                continue;
+            }
+
+            clause[col.id] = {
+                "$contains": filterValue
+            };
+
+            filter.$or.push(clause);
+        }
+
+        this._loadItems({
+            "limit": limit,
+            "order": orderCriteria,
+            "where": filter
+        });
+    },
+    /**
+     * This method scans the current datagrid markup and tries to obtain datagrid columns definition.
+     *
+     * @private
+     * @instance
+     * @returns {Array} An array containing all columns descriptors extracted from markup.
+     * @memberof BCAPI.Components.DataGrid
+     */
+    _getColsFromMarkup: function() {
+        var colElement = Polymer.dom(this).querySelector("bc-columns"),
+            self = this,
+            cols = [];
+
+        $(colElement).find("> div").each(function(idx, item) {
+            item = $(item);
+
+            var itemId = item.attr("data-id"),
+                itemName = item.attr("title"),
+                itemRel = item.attr("rel"),
+                itemTemplate = item.html().trim();
+                itemStyle = item.attr("style");
+
+            if (itemRel === "property") {
+                if (!itemTemplate) {
+                    itemTemplate = "<span>{{getItemValue(item,col.id)}}</span>";
+                }
+
+                cols.push({
+                    "id": itemId,
+                    "name": itemName,
+                    "template": itemTemplate,
+                    "rel": "property",
+                    "style": itemStyle
+                });
+
+                return;
+            }
+
+            if (itemRel === "custom-column") {
+                cols.push({
+                    "template": itemTemplate,
+                    "name": itemName
+                });
+
+                return;
+            }
+        });
+
+        return cols;
+    },
+    /**
+     * This method loads items from the underlining datasource. Options parameter controls the arguments that reach into data source list operation.
+     *
+     * @public
+     * @instance
+     *
+     * @param  {Object} opts The load options which influence the final listed items. It can be used to define custom queries for the datasource.
+     * @param {String} opts.order Defines the order criteria for arranging items.
+     * @param {String} opts.where Defines the filter which must be applied when listing records.
+     * @param {Number} limit Defines the maximum number of items which must be listed.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DataGrid
+     */
+    _loadItems: function(opts) {
+        var fetchOptions = {},
+            self = this;
+
+        opts = opts || {};
+
+        if (opts.order && opts.order && opts.order !== "0") {
+            fetchOptions.order = opts.order;
+        }
+
+        if (opts.where) {
+            fetchOptions.where = opts.where;
+        }
+
+        if (opts.limit) {
+            fetchOptions.limit = opts.limit;
+        }
+
+        this.dataSource.list(fetchOptions).done(function(data) {
+            self._updateCurrentData(data);
+        });
+    },
+    /**
+     * This method renders the given data into the datagrid display area.
+     *
+     * @public
+     * @instance
+     *
+     * @param  {Object} data An object holding data which must be displayed in the datagrid.
+     * @returns {undefined} No result.
+     * @memberof BCAPI.Components.DataGrid
+     */
+    _updateCurrentData: function(data) {
+        var rows;
+        if('items' in data) {
+            rows = data.items;
+            this.currData = data;
+        } else {
+            rows = data;
+            this.currData = {items: data, totalItemsCount: rows.length};
+        }
+        this.configure({
+            rows: rows
+        });
+    }
+});</script>
 
     <script>
     Polymer(webComponent);
@@ -296,10 +665,118 @@
 </dom-module><link rel="import" href="/lib/polymer/polymer.html">
 
 <dom-module id="bc-json">
-    <script type="text/javascript" src="/src/helper.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/datasources/datasource.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/datasources/json.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" >/*
+*
+*Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+*Permission is hereby granted, free of charge, to any person obtaining a
+*copy of this software and associated documentation files (the "Software"),
+*to deal in the Software without restriction, including without limitation
+*the rights to use, copy, modify, merge, publish, distribute, sublicense,
+*and/or sell copies of the Software, and to permit persons to whom the
+*Software is furnished to do so, subject to the following conditions:
+*
+*The above copyright notice and this permission notice shall be included in
+*all copies or substantial portions of the Software.
+*
+*THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+*FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+*DEALINGS IN THE SOFTWARE.
+*
+*/
+/**
+ * This class provides a json datasource responsible for loading a given json file and wrap it as a data source.
+ *
+ * ## Properties
+ *
+ * Below you can find a complete list of properties which can be configured for this component:
+ *
+ * | Property name | Property description |
+ * | ------------------- | -------------------------- |
+ * | url | This is the absolute / relative url location the data which must be loaded as json. |
+ *
+ * ## Usage
+ *
+ * ### Html nested in component
+ *
+ * ```html
+ * <bc-select id="ddCustomers" value-prop="id" text-prop="firstName">
+ *     <bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" rel="datasource"></bc-json>
+ * </bc-select>
+ * ```
+ *
+ * ### Html standalone datasource
+ *
+ * ```html
+ * <bc-json url="/_System/apps/bc-crm-next/assets/datasource/customers.json" id="jsonDs"></bc-json>
+ * ```
+ *
+ * ### Javascript
+ *
+ * ```javascript
+ * var jsonDataSource = document.createElement("bc-json");
+ * jsonDataSource.setAttribute("url", "/_System/apps/bc-crm-next/assets/datasource/customers.json");
+ * ```
+ *
+ * @class  JsonDataSource
+ * @memberof BCAPI.Components.DataSources
+ * @augments BCAPI.Components.DataSources.DataSource
+ */
+var webComponent = {
+    is: "bc-json",
+    properties: {
+        url: String
+    }
+};
+
+var baseDataSource = Object.create(BCAPI.Components.DataSources.DataSource.prototype);
+$.extend(webComponent, baseDataSource);
+webComponent.__baseDataSource = baseDataSource;
+
+$.extend(webComponent, {
+    /**
+     * This method is invoked automatically when the json datasource is attached to dom. It triggers attached inherited
+     * from datasource and then it invokes attached inherited from component.
+     * @return {undefined} No result.
+     * @memberof BCAPI.Components.DataSource.JsonDataSource
+     */
+    attached: function() {
+        this.__baseDataSource.attached.apply(this);
+    },
+    /**
+     * This method list the json data from the configured **url**.
+     *
+     * @public
+     * @instance
+     * @method  list
+     * @param  {Object} opts The options which are passed to the underlining ajax request.
+     * @param {Object} opts.headers An object holding all custom headers relevant for the current request.
+     * @return {Promise} a promise which is resolved with the actual data.
+     * @memberof BCAPI.Components.DataSources.JsonDataSource
+     */
+    list: function(opts) {
+        var loader = $.Deferred();
+
+        var response = $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: this.url
+        });
+
+        response.done(function(data) {
+            loader.resolve(data);
+        });
+
+        return loader.promise();
+    }
+});</script>
 
     <script>
     Polymer(webComponent);
@@ -307,10 +784,147 @@
 </dom-module><link rel="import" href="/lib/polymer/polymer.html">
 
 <dom-module id="bc-api">
-    <script type="text/javascript" src="/src/helper.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/datasources/datasource.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/datasources/api.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" >/*
+*
+*Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+*Permission is hereby granted, free of charge, to any person obtaining a
+*copy of this software and associated documentation files (the "Software"),
+*to deal in the Software without restriction, including without limitation
+*the rights to use, copy, modify, merge, publish, distribute, sublicense,
+*and/or sell copies of the Software, and to permit persons to whom the
+*Software is furnished to do so, subject to the following conditions:
+*
+*The above copyright notice and this permission notice shall be included in
+*all copies or substantial portions of the Software.
+*
+*THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+*FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+*DEALINGS IN THE SOFTWARE.
+*
+*/
+/**
+ * This class provides a datasource which can seamlessly integrate BC APIs v3 with the components provided by the sdk.
+ * As functionality it is similar with **module_data** from listing perspective, but it also supports create / update and delete
+ * operations.
+ *
+ * @class ApiDataSource
+ * @memberof BCAPI.Components.DataSources
+ */
+var webComponent = {
+    is: "bc-api",
+    properties: {
+        apiName: String,
+        apiVersion: String,
+        fields: String,
+        where: String
+    },
+    customEvents: [
+        "postFetch"
+    ]
+};
+
+var baseDataSource = Object.create(BCAPI.Components.DataSources.DataSource.prototype);
+$.extend(webComponent, baseDataSource);
+webComponent.__baseDataSource = baseDataSource;
+
+$.extend(webComponent, {
+    /**
+     * This method is invoked automatically in order to attach the current datasource to its parent component
+     * if necessary.
+     *
+     * @public
+     * @method
+     * @name attached
+     * @memberof BCAPI.Components.DataSources
+     * @returns {undefined}
+     */
+    attached: function() {
+        this.__baseDataSource.attached.apply(this);
+    },
+    ready: function() {
+        var parentNode = this.parentNode,
+            self = this;
+
+        while (parentNode && !parentNode._supportsDataSource) {
+            parentNode = parentNode.parentNode;
+        }
+
+        if (parentNode && parentNode._supportsDataSource) {
+            parentNode._dataSource = this;
+        }
+
+        //this._wireCustomEventsFromDom();
+    },
+    configure: function(opts) {
+        this.apiName = opts.apiName || this.apiName;
+        this.apiVersion = opts.apiVersion || this.apiVersion;
+        this.fields = opts.fields || this.fields;
+        this.where = opts.where || this.where;
+        this.resourceId = opts.resourceId;
+    },
+    list: function(opts) {
+        var data = [],
+            loader = $.Deferred(),
+            bcConfig = BCAPI.Security.getBcConfig();
+
+        opts = opts || {};
+
+        opts.fields = opts.fields || this.fields;
+        opts.where = opts.where || this.where;
+        opts.resourceId = opts.resourceId || this.resourceId;
+
+        if (!bcConfig) {
+            return;
+        }
+
+        for (var key in opts) {
+            var optData = opts[key];
+
+            if (!optData) {
+                continue;
+            }
+
+            if (typeof optData !== "string") {
+                optData = JSON.stringify(optData);
+            }
+
+            data.push(key + "=" + encodeURIComponent(optData));
+        }
+
+        var response = $.ajax({
+            "url": this._getApiUrl(this.apiName, this.apiVersion, opts.resourceId, bcConfig),
+            "data": data.join("&"),
+            "headers": {
+                "Authorization": bcConfig.accessToken
+            }
+        });
+        var self = this;
+        response.done(function(data) {
+
+            var evtCtx = { result: data };
+            self.trigger("post-fetch", evtCtx);
+            data = evtCtx.result;
+            
+            loader.resolve(data);
+        });
+
+        return loader.promise();
+    },
+    _getApiUrl: function(apiName, apiVersion, resourceId, bcConfig) {
+        return [bcConfig.siteUrl, "/webresources/api/", apiVersion, "/sites/current/",
+            apiName, resourceId ? "/" + resourceId : ""
+        ].join("");
+    }
+});
+</script>
 
     <script>
     Polymer(webComponent);
@@ -332,9 +946,379 @@
         <select class$="{{class}}" id="ddItemsHolder" on-change="_handleChange"></select>
     </template>
 
-    <script type="text/javascript" src="/src/helper.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/dropdown/dropdown.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" >/**
+ * This class offers a flexible drop down component which has BC look & feel. In comparison with standard HTML select,
+ * this component benefit from [advanced data sources]{@link BCAPI.Components.DataSources} provided by UI SDK.
+ *
+ * ## Properties
+ *
+ * Below you can find a complete list of properties which can be configured for this component:
+ *
+ * | Property name | Property description |
+ * | ------------------- | -------------------------- |
+ * | items | An array providing the items which must be displayed in the dropdown. |
+ * | valueProp | A string telling which is the value property which must be extracted from each item. |
+ * | textProp | A string telling which is the text property which must be extracted from each item and displayed to users. |
+ *
+ * ## Events
+ *
+ * | Event name.| Event description |
+ * |---------------------------------|---------------------------------|
+ * | changed | This event is triggered whenever dropdown selection is changed. |
+ * | dataLoaded | This event is triggered whenever dropdown is configured with an asynchronous data source. See {@link BCAPI.Components.DataSources} |
+ *
+ * ## Usage
+ *
+ * ### Html markup
+ *
+ * ```html
+ * <bc-select id="ddOrderBy">
+ *   <option value="0">Order by</option>
+ *   <option value="id">Customer Id</option>
+ *   <option value="firstName">First Name</option>
+ *   <option value="middleName">Middle Name</option>
+ *   <option value="lastName">Last Name</option>
+ * </bc-select>
+ * ```
+ *
+ * ### Html markup + javascript
+ *
+ * ```html
+ * <bc-select id="ddOrderBy"></bc-select>
+ *
+ * <script type="text/javascript">
+ * document.addEventListener('WebComponentsReady', function() {
+ *     var orderByDd = document.getElementById("ddOrderBy");
+ *
+ *     orderByDd.configure({
+ *         items: [
+ *                 {"value": "0", "text": "Order by"},
+ *                 {"value": "id", "text": "Customer Id"},
+ *                 {"value": "firstName", "text": "Order by"},
+ *                 {"value": "middleName", "text": "Middle name"},
+ *                 {"value": "lastName", "text": "Last name"},
+ *                 {"value": "homePhone", "text": "Phone number"}
+ *        ]
+ *     });
+ * });
+ * </script>
+ * ```
+ *
+ * ### Javascript only
+ *
+ * ```javascript
+ * var orderByDd = document.createElement("bc-select");
+ *
+ * orderByDd.configure({
+ *     items: [
+ *         {"value": "0", "text": "Order by"},
+ *         {"value": "id", "text": "Customer Id"},
+ *         {"value": "firstName", "text": "Order by"},
+ *         {"value": "middleName", "text": "Middle name"},
+ *         {"value": "lastName", "text": "Last name"},
+ *         {"value": "homePhone", "text": "Phone number"}
+ *    ]
+ * });
+ * ```
+ *
+ * @name DropDown
+ * @class
+ * @public
+ * @memberof BCAPI.Components
+ * @augments BCAPI.Components.Component
+ */
+var webComponent = (function() {
+    EVT_CHANGED = "changed";
+    EVT_DATA_LOADED = "dataLoaded";
+
+    var webComponent = {
+        is: "bc-select",
+        properties: {
+            items: {
+                type: Array,
+                notify: true,
+                observer: "_refreshItemsSelect"
+            },
+            valueProp: {
+                type: String,
+                value: "value"
+            },
+            textProp: {
+                type: String,
+                value: "text"
+            },
+            "class": {
+                type: String,
+                notify: true,
+                observer: "_changeClass"
+            },
+            dataSource: {
+                type: Object,
+                notify: true,
+                observer: "_buildFromDataSource"
+            },
+            supportsDataSource: {
+                readOnly: true,
+                type: Boolean,
+                value: true
+            }
+        },
+        customEvents: [
+            EVT_CHANGED,
+            EVT_DATA_LOADED
+        ]
+    };
+
+    webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+    $.extend(webComponent, {
+        /**
+         * This method is invoked automatically when the webcomponent is attached to dom. It wires all custom events and
+         * other specific concerns.
+         *
+         * @public
+         * @instance
+         * @method
+         * @memberof BCAPI.Components.DropDown
+         * @returns {undefined} no result.
+         */
+        attached: function() {
+            this.__base.attached.apply(this);
+        },
+        /**
+         * This method is invoked automatically when the component is ready to be used. At this point the component has not
+         * been attached to the main dom. Internally, the method uses the shadow dom and tries to configure dataSource
+         * and render all required items.
+         *
+         * @public
+         * @instance
+         * @method  ready
+         * @return {undefined} No result.
+         * @memberof BCAPI.Components.DropDown
+         */
+        ready: function() {
+            this._innerSelect = this.$.ddItemsHolder;
+            this.class = "form-control";
+
+            var options = this.$.selectModel.querySelectorAll("option"),
+                items;
+
+            if (options.length > 0) {
+                items = this._buildFromMarkup(options);
+
+                this.configure({
+                    "items": items
+                });
+
+                return;
+            }
+
+            this._wireDataSourceFromMarkup();
+        },
+        /**
+         * This method obtains the current selected item.
+         *
+         * @public
+         * @instance
+         * @method getValue
+         * @return {Object} The selected item.
+         * @memberof BCAPI.Components.DropDown
+         */
+        getValue: function() {
+            var items = this.items || [],
+                selectedIndex = this.$.ddItemsHolder.selectedIndex;
+
+            if (selectedIndex < 0 || selectedIndex > items.length) {
+                return undefined;
+            }
+
+            return items[selectedIndex];
+        },
+        /**
+         * This method sets the current value from the dropdown.
+         *
+         * @param {Object} newValue The new value used for setting the correct selectedIndex.
+         * @returns {Boolean} True if the value was correctly set and false if the value does not match any of the items available in the dropdown.
+         * @memberof BCAPI.Components.DropDown
+         */
+        setValue: function(newValue) {
+            var itemIdx = -1,
+                items = this.items || [];
+
+            for (var idx = 0; idx < items.length; idx++) {
+                var currItem = items[idx];
+
+                if (currItem[this.valueProp] === newValue) {
+                    itemIdx = idx;
+                    break;
+                }
+            }
+
+            if (itemIdx > -1) {
+                this.$.ddItemsHolder.selectedIndex = itemIdx;
+                this._handleChange();
+            }
+            
+            return itemIdx > -1;
+        },
+        /**
+         * This method provides a way to quickly configure the current dropdown.
+         *
+         * @public
+         * @method configure
+         * @instance
+         * @param  {Object} opts All properties which must be set to the current dropdown instance.
+         * @return {undefined} No result.
+         * @memberof BCAPI.Components.DropDown
+         * @example
+         * var dropDown = document.createElement("bc-select");
+         * dropDown.configure({
+         *     "items": [
+         *         {"value": "0", "text": "Order by"}
+         *     ]
+         * });
+         */
+        configure: function(opts) {
+            this.items = opts.items || this.items;
+            this.dataSource = opts.dataSource || this.dataSource;
+        },
+        /**
+         * This method is invoked in order to handle item selection changed event triggerd by the inner select element.
+         *
+         * @private
+         * @instance
+         * @method handleChange
+         * @param  {Event} evt The dom event emmited by the inner dropdown dom element.
+         * @return {undefined} No result.
+         * @memberof BCAPI.Components.DropDown
+         */
+        _handleChange: function(evt) {
+            var selectedItem = this.getValue();
+
+            this.trigger(EVT_CHANGED, selectedItem);
+        },
+        /**
+         * This method obtains the items defined using the markup approach for this component.
+         *
+         * @private
+         * @instance
+         * @method  _buildFromMarkup
+         * @param  {options} options The options object used for obtaining the items defined in markup.
+         * @return {Array} The items obtained from the markup.
+         * @memberof BCAPI.Components.DropDown
+         */
+        _buildFromMarkup: function(options) {
+            var items = [];
+
+            for (var idx = 0; idx < options.length; idx++) {
+                var option = options[idx],
+                    item = {
+                        "value": option.value,
+                        "text": option.text,
+                        "selected": option.selected
+                    };
+
+                items.push(item);
+            }
+
+            return items;
+        },
+        /**
+         * This method builds the items which must be rendered from the internally defined dataSource. It wires an async
+         * listener to the data source events and renders all items when necessary.
+         *
+         * @private
+         * @instance
+         * @method _buildFromDataSource
+         * @param  {BCAPI.Components.DataSource} dataSource The data source which must be used for obtaining the items.
+         * @return {undefined} No result.
+         * @memberof BCAPI.Components.DropDown
+         */
+        _buildFromDataSource: function(dataSource) {
+            var loader = dataSource.list(),
+                self = this;
+
+            if (!loader) {
+                return;
+            }
+
+            loader.done(function(data) {
+                self._fetched = true;
+                self._updateData(data);
+
+                self.trigger(EVT_DATA_LOADED, {});
+            });
+        },
+        /**
+         * This method updates the currently displayed data with new values provided through data argument.
+         *
+         * @private
+         * @instance
+         * @method _updateData
+         * @param  {Object} data The new data which must be rendered within the component. All relevant records must be placed under items property belonging to data.
+         * @return {undefined} No result.
+         */
+        _updateData: function(data) {
+            var items = data.items,
+                rows = [];
+
+            for (var idx = 0; items && idx < items.length; idx++) {
+                var row = {},
+                    item = items[idx];
+
+                row.value = item[this.valueProp];
+                row.text = item[this.textProp];
+
+                rows.push(row);
+            }
+
+            this.configure({
+                "items": rows
+            });
+        },
+        /**
+         * This method is invoked whenever items must be rendered.
+         *
+         * @private
+         * @instance
+         * @method  _refreshItemsSelect
+         * @param  {Array} items An array of items which must be displayed.
+         * @return {undefined} No result.
+         * @memberof BCAPI.Components.DropDown
+         */
+        _refreshItemsSelect: function(items) {
+            var select = this.$.ddItemsHolder;
+
+            select.options.length = 0;
+
+            for (var i = 0; i < items.length; i++) {
+                var option = document.createElement("option");
+                option.value = items[i][this.valueProp] || items[i].value;
+                option.selected = items[i].selected;
+                option.textContent = items[i][this.textProp] || items[i].text;
+
+                select.add(option);
+            }
+        },
+        /**
+         * This method handles the change of css classes applied to the current dropdown instance.
+         *
+         * @private
+         * @instance
+         * @method  _changeClass
+         * @param  {String} newClass A whitespace separated list of classes.
+         * @return {undefined} No result.
+         * @memberof BCAPI.Components.DropDown
+         */
+        _changeClass: function(newClass) {
+            this.__base.changeClass(newClass, this._innerSelect);
+        }
+    });
+
+    return webComponent;
+})();</script>
 
     <script>
     Polymer(webComponent);
@@ -365,8 +1349,8 @@
         <input type="text" class="form-control" on-keyup="handleChange" placeholder="{{placeholder}}" style="float: left;" />
     </template>
 
-    <script type="text/javascript" src="/src/helper.js"></script>
-    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.js"></script>
 
     <script>
     /**

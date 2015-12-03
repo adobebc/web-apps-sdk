@@ -21,7 +21,6 @@
         "karma-opera-launcher": "^0.3.0 ",
         "eslint": "^1.2.1",
         "esprima": "^2.5.0",
-        "grunt-vulcanize": "*",
         "grunt-init": "*"
     },
     "eslintConfig": {

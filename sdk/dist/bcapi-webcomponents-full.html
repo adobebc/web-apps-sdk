@@ -7305,8 +7305,8 @@ this.fire('dom-change');
         <content></content>
     </template>
     
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
     <script type="text/javascript" >var webComponent={is:"bc-button",properties:{data:{type:Object,observer:"_onDataChanged"},style:{type:String,reflectToAttribute:!0},"class":{type:String,reflectToAttribute:!0}},customEvents:["dataChanged"]};webComponent=BCAPI.Components.ComponentsFactory.get(webComponent),$.extend(webComponent,{_onDataChanged:function(t){this.trigger("data-changed",t)}});</script>
 
     <script type="text/javascript">
@@ -7320,8 +7320,8 @@ this.fire('dom-change');
     </template>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
 
     <script type="text/javascript">
         var webComponent = {
@@ -7399,8 +7399,8 @@ this.fire('dom-change');
 </dom-module>
 
 <dom-module id="bc-datagrid-customtpl">
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
 
     <script>
         var webComponent = {
@@ -7586,8 +7586,8 @@ this.fire('dom-change');
         </template>
     </template>
 
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
     <script type="text/javascript" >var webComponent={is:"bc-datagrid",properties:{columns:Array,rows:Array,repeatedRow:String,apiName:String,apiVersion:String,visible:Boolean,dataVarname:String,currData:{type:Object,readonly:!0},dataSource:{type:Object,notify:!0},supportsDataSource:{readOnly:!0,type:Boolean,value:!0}}};webComponent=BCAPI.Components.ComponentsFactory.get(webComponent),$.extend(webComponent,{ready:function(){this._wireDataSourceFromMarkup()},attached:function(){this.__base.attached.apply(this);var t=Polymer.dom(this).querySelector("div[rel='custom-repeated-row']");t&&(this.repeatedRow=t.innerHTML)},configure:function(t){t=t||{},this.dataVarname=t.dataVarname||this.dataVarname,this.dataSource=t.dataSource||this.dataSource,this.columns=t.columns||this._getColsFromMarkup()||this.columns,this.rows=t.rows||this._loadItems()||this.rows},display:function(t){this.visible=t||!1},getItemAt:function(t){return this.rows[t]},searchFullText:function(t,e,r){if(!t||0===t.trim().length)return void this._loadItems({limit:e,order:r});for(var a={$or:[]},o=0;o<this.columns.length;o++){var i=this.columns[o],n={};"property"===i.rel&&(n[i.id]={$contains:t},a.$or.push(n))}this._loadItems({limit:e,order:r,where:a})},_getColsFromMarkup:function(){var t=Polymer.dom(this).querySelector("bc-columns"),e=[];return $(t).find("> div").each(function(t,r){r=$(r);var a=r.attr("data-id"),o=r.attr("title"),i=r.attr("rel"),n=r.html().trim();return itemStyle=r.attr("style"),"property"===i?(n||(n="<span>{{getItemValue(item,col.id)}}</span>"),void e.push({id:a,name:o,template:n,rel:"property",style:itemStyle})):"custom-column"===i?void e.push({template:n,name:o}):void 0}),e},_loadItems:function(t){var e={},r=this;t=t||{},t.order&&t.order&&"0"!==t.order&&(e.order=t.order),t.where&&(e.where=t.where),t.limit&&(e.limit=t.limit),this.dataSource.list(e).done(function(t){r._updateCurrentData(t)})},_updateCurrentData:function(t){var e;"items"in t?(e=t.items,this.currData=t):(e=t,this.currData={items:t,totalItemsCount:e.length}),this.configure({rows:e})}});</script>
 
     <script>
@@ -7596,9 +7596,9 @@ this.fire('dom-change');
 </dom-module>
 
 <dom-module id="bc-json">
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
     <script type="text/javascript" >var webComponent={is:"bc-json",properties:{url:String}},baseDataSource=Object.create(BCAPI.Components.DataSources.DataSource.prototype);$.extend(webComponent,baseDataSource),webComponent.__baseDataSource=baseDataSource,$.extend(webComponent,{attached:function(){this.__baseDataSource.attached.apply(this)},list:function(e){var t=$.Deferred(),a=$.ajax({type:"GET",dataType:"json",url:this.url});return a.done(function(e){t.resolve(e)}),t.promise()}});</script>
 
     <script>
@@ -7607,9 +7607,9 @@ this.fire('dom-change');
 </dom-module>
 
 <dom-module id="bc-api">
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
     <script type="text/javascript" >var webComponent={is:"bc-api",properties:{apiName:String,apiVersion:String,fields:String,where:String},customEvents:["postFetch"]},baseDataSource=Object.create(BCAPI.Components.DataSources.DataSource.prototype);$.extend(webComponent,baseDataSource),webComponent.__baseDataSource=baseDataSource,$.extend(webComponent,{attached:function(){this.__baseDataSource.attached.apply(this)},ready:function(){for(var e=this.parentNode;e&&!e._supportsDataSource;)e=e.parentNode;e&&e._supportsDataSource&&(e._dataSource=this)},configure:function(e){this.apiName=e.apiName||this.apiName,this.apiVersion=e.apiVersion||this.apiVersion,this.fields=e.fields||this.fields,this.where=e.where||this.where,this.resourceId=e.resourceId},list:function(e){var t=[],r=$.Deferred(),i=BCAPI.Security.getBcConfig();if(e=e||{},e.fields=e.fields||this.fields,e.where=e.where||this.where,e.resourceId=e.resourceId||this.resourceId,i){for(var s in e){var a=e[s];a&&("string"!=typeof a&&(a=JSON.stringify(a)),t.push(s+"="+encodeURIComponent(a)))}var o=$.ajax({url:this._getApiUrl(this.apiName,this.apiVersion,e.resourceId,i),data:t.join("&"),headers:{Authorization:i.accessToken}}),n=this;return o.done(function(e){var t={result:e};n.trigger("post-fetch",t),e=t.result,r.resolve(e)}),r.promise()}},_getApiUrl:function(e,t,r,i){return[i.siteUrl,"/webresources/api/",t,"/sites/current/",e,r?"/"+r:""].join("")}});</script>
 
     <script>
@@ -7632,8 +7632,8 @@ this.fire('dom-change');
         <select class$="{{class}}" id="ddItemsHolder" on-change="_handleChange"></select>
     </template>
 
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
     <script type="text/javascript" >var webComponent=function(){EVT_CHANGED="changed",EVT_DATA_LOADED="dataLoaded";var e={is:"bc-select",properties:{items:{type:Array,notify:!0,observer:"_refreshItemsSelect"},valueProp:{type:String,value:"value"},textProp:{type:String,value:"text"},"class":{type:String,notify:!0,observer:"_changeClass"},dataSource:{type:Object,notify:!0,observer:"_buildFromDataSource"},supportsDataSource:{readOnly:!0,type:Boolean,value:!0}},customEvents:[EVT_CHANGED,EVT_DATA_LOADED]};return e=BCAPI.Components.ComponentsFactory.get(e),$.extend(e,{attached:function(){this.__base.attached.apply(this)},ready:function(){this._innerSelect=this.$.ddItemsHolder,this["class"]="form-control";var e,t=this.$.selectModel.querySelectorAll("option");return t.length>0?(e=this._buildFromMarkup(t),void this.configure({items:e})):void this._wireDataSourceFromMarkup()},getValue:function(){var e=this.items||[],t=this.$.ddItemsHolder.selectedIndex;if(!(0>t||t>e.length))return e[t]},setValue:function(e){for(var t=-1,r=this.items||[],a=0;a<r.length;a++){var s=r[a];if(s[this.valueProp]===e){t=a;break}}return t>-1&&(this.$.ddItemsHolder.selectedIndex=t,this._handleChange()),t>-1},configure:function(e){this.items=e.items||this.items,this.dataSource=e.dataSource||this.dataSource},_handleChange:function(e){var t=this.getValue();this.trigger(EVT_CHANGED,t)},_buildFromMarkup:function(e){for(var t=[],r=0;r<e.length;r++){var a=e[r],s={value:a.value,text:a.text,selected:a.selected};t.push(s)}return t},_buildFromDataSource:function(e){var t=e.list(),r=this;t&&t.done(function(e){r._fetched=!0,r._updateData(e),r.trigger(EVT_DATA_LOADED,{})})},_updateData:function(e){for(var t=e.items,r=[],a=0;t&&a<t.length;a++){var s={},i=t[a];s.value=i[this.valueProp],s.text=i[this.textProp],r.push(s)}this.configure({items:r})},_refreshItemsSelect:function(e){var t=this.$.ddItemsHolder;t.options.length=0;for(var r=0;r<e.length;r++){var a=document.createElement("option");a.value=e[r][this.valueProp]||e[r].value,a.selected=e[r].selected,a.textContent=e[r][this.textProp]||e[r].text,t.add(a)}},_changeClass:function(e){this.__base.changeClass(e,this._innerSelect)}}),e}();</script>
 
     <script>
@@ -7665,8 +7665,8 @@ this.fire('dom-change');
         <input type="text" class="form-control" on-keyup="handleChange" placeholder="{{placeholder}}" style="float: left;" />
     </template>
 
-    <script type="text/javascript" src="bcapi-full.js"></script>
-    <script type="text/javascript" src="bcapi-full.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
+    <script type="text/javascript" src="bcapi-full.min.js"></script>
 
     <script>
     /**

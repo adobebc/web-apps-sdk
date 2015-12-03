@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 			options: {
 				jsFiles: jsFiles,
 				webComponentFiles: webComponentFiles,
-				jsDistFileName: "bcapi-full.js",
+				jsDistFileName: "bcapi-full.min.js",
 				componentsDistFileName: "bcapi-webcomponents-full.html"
 			},
 			default: {
@@ -45,4 +45,6 @@ module.exports = function(grunt) {
 			}
 		}
 	});
+
+	grunt.registerTask("default", [ "concat:dist", "uglify", "bcapi_polymer_concat" ]);
 };

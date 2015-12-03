@@ -12,6 +12,7 @@
         "grunt-contrib-cssmin": "*",
         "grunt-contrib-clean": "*",
         "grunt-contrib-uglify": "*",
+        "grunt-string-replace": "*",
         "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git"
     },
     "devDependencies": {

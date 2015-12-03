@@ -6,11 +6,12 @@ var files = require("./files"),
 
 module.exports = function(grunt) {
 
-	grunt.loadNpmTasks("grunt-contrib-concat");
-	grunt.loadNpmTasks("grunt-contrib-uglify");
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks("grunt-contrib-concat");	
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-string-replace');
+	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.task.loadTasks("lib/grunt-bcapi-polymer-concat/tasks");
 
 	grunt.initConfig({
@@ -58,6 +59,19 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		"string-replace": {
+			dist: {
+				files: {
+					"dist/": "dist/bcapi-full.min.css"
+				},
+				options: {
+					replacements: [{
+						pattern: /\.\.\/fonts\//ig,
+						replacement: "fonts/"
+					}]
+				}
+			}
+		},
 		uglify: {
 			options: {
 				mangle: false
@@ -71,5 +85,5 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask("default", [ "clean:dist", "concat:dist_js", "uglify:bcapi_dist", "cssmin", 
-			"bcapi_polymer_concat", "copy", "clean:postbuild" ]);
+			"bcapi_polymer_concat", "copy", "string-replace", "clean:postbuild" ]);
 };

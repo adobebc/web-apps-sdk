@@ -2,6 +2,9 @@
     "get-started": {
         "title": "Get started with web components."
     },
+    "development-guide": {
+        "title": "Setup your development environment"
+    },
     "legacy-apis": {
         "title": "List of legacy apis"
     }

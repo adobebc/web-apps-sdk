@@ -4,3 +4,6 @@
 [submodule "sdk/lib/webcomponentsjs"]
 	path = sdk/lib/webcomponentsjs
 	url = https://github.com/webcomponents/webcomponentsjs.git
+[submodule "sdk/lib/bootstrap"]
+	path = sdk/lib/bootstrap
+	url = https://github.com/twbs/bootstrap.git

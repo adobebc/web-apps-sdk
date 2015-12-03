@@ -8,7 +8,8 @@
 
 'use strict';
 
-var fs = require("fs");
+var fs = require("fs"),
+  uglifyJs = require("uglify-js");
 
 module.exports = function(grunt) {
 
@@ -102,6 +103,8 @@ module.exports = function(grunt) {
       body = self._replaceCompInlineJs(body, fileName);
     });
 
+    body = this._cleanPolymerInternalImports(body);
+
     return body;
   };
 
@@ -119,11 +122,32 @@ module.exports = function(grunt) {
     }
 
     var jsBody = fs.readFileSync(potentialJsName.substring(1)).toString(),
-      replacePattern = new RegExp(this._compInlineReplacerPattern.replace("%(filename)s", potentialJsName)),
-      inlinePattern = "<script$1>" + jsBody + "</script>";
+      replacePattern = new RegExp(this._compInlineReplacerPattern.replace("%(filename)s", potentialJsName));
+
+    jsBody = uglifyJs.minify(jsBody, {fromString: true}).code;
+
+    var inlinePattern = "<script$1>" + jsBody + "</script>";
 
     body = body.replace(replacePattern, inlinePattern);
 
+    return body;
+  };
+
+  /**
+   * This method removes all polymer internal import links. They are not required in the concatenated production
+   * ready version.
+   *
+   * @private
+   * @method
+   */
+  FilesNormalizer.prototype._cleanPolymerInternalImports = function(body) {
+    body = body.replace("<link rel=\"import\" href=\"polymer-micro.html\">", "");
+    body = body.replace("<link rel=\"import\" href=\"polymer-mini.html\">", "");
+    
+    while (body.indexOf("<link rel=\"import\" href=\"bcapi-webcomponents-full.html\">") > -1) {
+      body = body.replace("<link rel=\"import\" href=\"bcapi-webcomponents-full.html\">", "");
+    }
+    
     return body;
   };
 };

@@ -1,0 +1,92 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<dom-module id="bc-datagrid"> 
+    <style>
+        .bc-datagrid-table {
+            display: table;
+            width: 100%;
+        };
+        .bc-datagrid-thead {
+            display: table-header-group;
+            font-weight: bold;
+        };
+        .bc-datagrid-tbody {
+            display: table-row-group;
+        };
+        .bc-datagrid-tr {
+            display: table-row;
+        };
+        .bc-datagrid-td {
+            display: table-cell;
+        };
+        /* mimic bootstrap */
+        :host .bc-datagrid-table > .bc-datagrid-thead> .bc-datagrid-tr:first-child > .bc-datagrid-td {
+            border-top: 0;
+        }
+        :host .bc-datagrid-table > .bc-datagrid-thead > .bc-datagrid-tr > .bc-datagrid-td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+        :host .bc-datagrid-table > .bc-datagrid-tbody > .bc-datagrid-tr > .bc-datagrid-td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+        :host .bc-datagrid-hidden-tr {
+            border: 0;
+            display: table-row;
+        };
+
+    </style>
+    <template>
+        <content></content>
+
+        <template is="dom-if" if="{{visible}}">
+        <div class="panel panel-default">
+            <div class="bc-datagrid-table table">
+                <div class="bc-datagrid-thead">
+                    <div class="bc-datagrid-tr">
+                        <div class="bc-datagrid-td">Displaying <span>{{rows.length}}</span> out of <span>{{currData.totalItemsCount}}</span> records.</div>
+                    </div>
+                    <div class="bc-datagrid-tr">
+                    <template is="dom-repeat" items="{{columns}}" as="colItem">
+                        <div class="bc-datagrid-td">{{colItem.name}}</div>
+                    </template>
+                    </div>
+                </div>
+
+                <div class="bc-datagrid-tbody">
+                    <template is="dom-repeat" items="{{rows}}" as="itemRow" index-as="itemIndex">
+                        <div class="bc-datagrid-tr">
+                            <template is="dom-repeat" items="{{columns}}" as="col">
+                                <div class="bc-datagrid-td">
+                                    <bc-datagrid-customtpl item$="{{itemRow}}" col$="{{col}}" template$="{{col.template}}" contains-bindings$ style$="{{col.style}}"></bc-datagrid-customtpl>
+                                </div>
+                            </template>
+                        </div>
+
+                        <template is="dom-if" if="{{repeatedRow}}">
+                            <div class="bc-datagrid-hidden-tr">
+                                <div class="bc-datagrid-td">
+                                    <bc-datagrid-customtpl item$="{{itemRow}}" template$="{{repeatedRow}}" contains-bindings$></bc-datagrid-customtpl>
+                                </div>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </div>
+        </div>
+        </template>
+    </template>
+
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/datagrid/datagrid.js"></script>
+
+    <script>
+    Polymer(webComponent);
+    </script>
+</dom-module>

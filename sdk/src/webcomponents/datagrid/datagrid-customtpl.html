@@ -1,0 +1,107 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<dom-module id="bc-datagrid-customtpl">
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+
+    <script>
+        var webComponent = {
+            "is": "bc-datagrid-customtpl",
+            "properties": {
+                item: {
+                    type: Object,
+                    notify: true,
+                    observer: "changedItem"
+                },
+                col: Object,
+                template: {
+                    type: String,
+                    notify: true
+                },
+                containsBindings: {
+                    type: Boolean,
+                    notify: true,
+                    observer: "changedContainsBindings"
+                }
+            },
+            ready: function() {
+                var content = this._getContentElement(),
+                    self = this;
+
+                this.domBind = document.createElement('template', 'dom-bind');
+                this.domBind.set("item", this.item);
+                this.domBind.set("col", this.col);
+                this.domBind.getItemValue = function(item, property) {
+                    return self.getItemValue(item, property);
+                }
+
+                this._refreshDom(content);
+
+                Polymer.dom(this).appendChild(this.domBind);
+            },
+            getItemValue: function(item, itemProperty) {
+                var propertyParts = itemProperty.split(".");
+
+                for (var idx = 0; idx < propertyParts.length; idx++) {
+                    item = item[propertyParts[idx]];
+
+                    if (item === undefined || item === null) {
+                        return;
+                    }
+                }
+
+                return item;
+            },
+            changedItem: function(newItem) {
+                if (!this.domBind) {
+                    return;
+                }
+
+                this.domBind.set("item", newItem);
+            },
+            changedContainsBindings: function(containsBindings) {
+                var content = this._getContentElement();
+
+                this._refreshDom(content);
+            },
+            _getContentElement: function() {
+                if (!this.template) {
+                    return;
+                }
+
+                var content = document.createElement("div"),
+                    template = this.template,
+                    self = this;
+
+                if (this.containsBindings) {
+                    template = template.replace("\\{\\{", "{{").replace("\\}\\}", "}}");
+                }
+
+                content.innerHTML = template;
+
+                return content;
+            },
+            _refreshDom: function(content) {
+                if (!this.domBind) {
+                    return;
+                }
+
+                if (this._formerContent) {
+                    this.domBind.content.removeChild(this._formerContent);
+                }
+
+                if (!content) {
+                    return;
+                }
+
+                this.domBind.content.appendChild(content);
+
+                this._formerContent = content;
+            }
+        };
+
+        webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
+
+        Polymer(webComponent);
+    </script>
+</dom-module>

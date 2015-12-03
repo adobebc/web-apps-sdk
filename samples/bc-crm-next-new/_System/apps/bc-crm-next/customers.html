@@ -1,0 +1,126 @@
+<!--
+* 
+* 
+* Copyright (c) 2012-2015 Adobe Systems Incorporated. All rights reserved.
+
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"), 
+* to deal in the Software without restriction, including without limitation 
+* the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+* and/or sell copies of the Software, and to permit persons to whom the 
+* Software is furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+* DEALINGS IN THE SOFTWARE.
+* 
+*
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Customers API Demo + UI SDK</title>
+
+        <link rel="stylesheet" href="/dist/bcapi-full.min.css">
+
+        <script type="text/javascript" src="/dist/bcapi-full.min.js"></script>
+
+        <link rel="import" href="/dist/bcapi-webcomponents-full.html">
+
+        <script type="text/javascript" src="/_System/apps/bc-crm-next/assets/js/app.js"></script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="panel panel-default" style="margin-bottom: 0px">
+                    <div class="panel-heading" id="panelHeadingToAddAlert">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <bc-textfield class="col-xl-6" id="tfQuickSearch" placeholder="Type your search text ..." has-search-button onbc-textfield-change="MyApp.onChangeSearch" onbc-textfield-search="MyApp.onSearch"></bc-textfield>
+                            </div>
+
+                            <div class="col-xs-2">
+                                <bc-select id="ddOrderBy" onbc-changed="MyApp.onChangeOrderBy">
+                                    <option value="0">Order by</option>
+                                    <option value="id">Customer Id</option>
+                                    <option value="firstName">First Name</option>
+                                    <option value="middleName">Middle Name</option>
+                                    <option value="lastName">Last Name</option>
+                                </bc-select>
+                            </div>
+
+                            <div class="col-xs-2">
+                                <bc-select id="ddItemsPerPage" onbc-changed="MyApp.onChangeLimit">
+                                    <option value="10">10</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </bc-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container-fluid" style="margin-top: 100px;">
+            <bc-datagrid id="gridCustomers" visible="true">
+                <bc-api api-name="customers" api-version="v3" fields="id,firstName,middleName,lastName,workPhone,homePhone,email1,email2,email3" rel="datasource"></bc-api>
+
+                <bc-columns style="display: none;">
+                    <div rel="property" data-id="firstName" title="First name"></div>
+                    <div rel="property" data-id="middleName" title="Middle name"></div>
+                    <div rel="property" data-id="lastName" title="Last name"></div>
+                    <div rel="property" data-id="homePhone.value" title="Home phone"></div>
+                    <div rel="property" data-id="email1.value" title="Email 1"></div>
+
+                    <div rel="custom-column" title="Custom column 1">
+                        <bc-button class="btn btn-default accordion-toggle" alt="Customer details" title="Customer details" onclick="MyApp.showCustomerDetails(this)" data$="{{item}}">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </bc-button>
+
+                        <bc-button class="btn btn-default accordion-toggle" alt="Customer orders" title="Customer orders" onclick="MyApp.showCustomerOrders(this)" data$="{{item}}">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                        </bc-button>
+
+                        <button class="btn btn-default" alt="Delete customer" title="Delete customer">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                </bc-columns>
+
+                <div rel="custom-repeated-row">
+                    <bc-datagrid data-orders-sid$="{{item.id}}" >
+                        <bc-api api-name="orders" api-version="v3" rel="datasource"></bc-api>
+
+                        <bc-columns style="display: none;">
+                            <div rel="property" data-id="id" title="Order id"></div>
+
+                            <div rel="property" data-id="name" title="Name"></div>
+
+                            <div rel="property" data-id="totalPrice" title="Total price"></div>
+
+                            <div rel="property" data-id="invoiced" title="Invoiced"></div>
+
+                            <div rel="custom-column" title="Actions">
+                                <bc-button class="btn btn-default" data="\{\{item\}\}" onclick="MyApp.printInvoice(this)">Print invoice</bc-button>
+                            </div>
+                        </bc-columns>
+                    </bc-datagrid>
+                </div>                
+            </bc-datagrid>
+        </div>
+    </body>
+</html>

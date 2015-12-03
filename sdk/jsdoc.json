@@ -1,20 +1,34 @@
 {
-    "plugins": ["ci/jsdoc/markdown"],
+    "plugins": [
+        "node_modules/jsdoc/plugins/markdown"
+    ],
     "markdown": {
         "parser": "gfm",
         "hardwrap": true
     },
+     "source": {
+            "includePattern": ".*\\.(js)$",
+            "include": [
+                "./src",
+                "./doc-static/index.md"
+            ]
+     },    
     "opts": {
-		"recurse": true,
-    	"template": "doc-static/docstrap/template",
-    	"tutorials": ""
+            "recurse": true,
+            "template": "node_modules/jsdoc/templates/default",
+            "tutorials": "./doc-static/tutorials",
+            "destination": "./doc"
     },
     "templates": {
         "cleverLinks": false,
         "default": {
+            "staticFiles": {
+                "include": [
+                    "./doc-static"
+                ]
+            },            
         	"outputSourceFiles": true
         },
-        "monospaceLinks": false,
-        "theme": "flatly"
+        "monospaceLinks": false
     }
 }

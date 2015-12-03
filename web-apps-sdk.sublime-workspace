@@ -4,370 +4,178 @@
 		"selected_items":
 		[
 			[
-				"we",
-				"webapps_dd_api	Web apps sdk ui static dropdown."
+				"file",
+				"filepath"
 			],
 			[
-				"searchable",
-				"searchableDocumentsStr"
+				"bc",
+				"bcapi-webcomponents-full"
 			],
 			[
-				"searchableDocu",
-				"searchableDocuments"
+				"web",
+				"webComponentFiles"
 			],
 			[
-				"_index",
-				"_index"
+				"targe",
+				"targetUrl"
 			],
 			[
-				"J",
-				"_JOB_UNITTEST_TPL"
+				"uisdk",
+				"uisdk	UI SDK piechart sample."
 			],
 			[
-				"Argument",
-				"ArgumentParser	class"
+				"uis",
+				"uisdk	UI SDK dd with dynamic data"
 			],
 			[
-				"l",
-				"length	String"
+				"ui",
+				"uisdk	UI SDK piechart sample."
 			],
 			[
-				"margin",
-				"margin-left"
+				"inner",
+				"innerHtml"
 			],
 			[
-				"populate",
-				"populateRelatedArticles"
+				"data",
+				"dataSource"
 			],
 			[
-				"markdown",
-				"markdownParser"
+				"char",
+				"chart_div"
 			],
 			[
-				"MODEL_INIT",
-				"MODEL_INIT_COMPLETED_EVENT"
+				"col",
+				"columns"
 			],
 			[
-				"COMPONENT_VALI",
-				"COMPONENT_VALIDATE_COMPLETED_EVENT"
+				"repe",
+				"repeatedRow"
 			],
 			[
-				"compLoad",
-				"compLoadersPromise"
+				"repeated",
+				"repeatedRow"
 			],
 			[
-				"hasA",
-				"hasAttribute(${0:attrName})	Element"
+				"encry",
+				"encryptedToken"
 			],
 			[
-				"jqueyr",
-				"jquery-ui"
+				"get",
+				"getBcConfig"
 			],
 			[
-				"Pareme",
-				"ParameterValue"
+				"secu",
+				"securityCtxLoader"
 			],
 			[
-				"eu",
-				"eu-west-1b"
+				"securit",
+				"securityCtxLoader"
 			],
 			[
-				"vpcNat",
-				"vpcNatNetwork"
+				"new",
+				"newSecurityCtx"
 			],
 			[
-				"Parame",
-				"ParameterValue"
+				"security",
+				"securityCtx"
 			],
 			[
-				"vpcP",
-				"vpcPublicSg"
+				"conf",
+				"configureInvoked"
 			],
 			[
-				"Param",
-				"ParameterValue"
+				"list",
+				"listInvoked"
 			],
 			[
-				"vpcInte",
-				"vpcInternalSg"
+				"securi",
+				"securityCtxLoader"
 			],
 			[
-				"PAram",
-				"ParameterValue"
-			],
-			[
-				"Paramete",
-				"ParameterKey"
-			],
-			[
-				"par",
-				"partition	forflow"
-			],
-			[
-				"start",
-				"startswith"
-			],
-			[
-				"num",
-				"num_of_threads"
-			],
-			[
-				"save",
-				"save_tofile	function"
-			],
-			[
-				"Enwi",
-				"EnwikctionaryAbstractParser	class"
-			],
-			[
-				"write",
-				"writelines	function"
-			],
-			[
-				"wi",
-				"wiktionary"
-			],
-			[
-				"partiti",
-				"partition_id	param"
-			],
-			[
-				"partit",
-				"partition_start	statement"
-			],
-			[
-				"ab",
-				"abstract_content	param"
-			],
-			[
-				"part",
-				"partition_start	statement"
-			],
-			[
-				"partition",
-				"partitions_limit	statement"
-			],
-			[
-				"abstract",
-				"abstract_content	statement"
-			],
-			[
-				"abs",
-				"abstract_content	statement"
-			],
-			[
-				"memory",
-				"memory_stream"
-			],
-			[
-				"read",
-				"readlines	function"
-			],
-			[
-				"abstrac",
-				"abstract_file	function"
-			],
-			[
-				"abstr",
-				"abstract_file	function"
-			],
-			[
-				"bui",
-				"build_words_toc	function"
-			],
-			[
-				"background",
-				"background-attachment"
-			],
-			[
-				"back",
-				"background-size"
-			],
-			[
-				"_bin",
-				"_bindBaseTrackingEvents"
-			],
-			[
-				"appl",
-				"apply(${0:thisArg})	Function"
-			],
-			[
-				"join",
-				"joined_email	statement"
-			],
-			[
-				"contact",
-				"contact_addr	statement"
-			],
-			[
-				"_smtp",
-				"_smtp	statement"
-			],
-			[
-				"_sm",
-				"_smtp_config	statement"
-			],
-			[
-				"welcom",
-				"welcome_email	statement"
-			],
-			[
-				"S",
-				"SmtpHelper	class"
-			],
-			[
-				"send",
-				"send_operational_email	function"
-			],
-			[
-				"SM",
-				"SMTP_SSL	class"
-			],
-			[
-				"smtp",
-				"smtplib	module"
-			],
-			[
-				"_SI",
-				"_SIGNUP_URL_EXISTING	statement"
-			],
-			[
-				"Trac",
-				"tracking_codes"
-			],
-			[
-				"email",
-				"email_address	param"
-			],
-			[
-				"Base",
-				"BASEMODEL	statement"
-			],
-			[
-				"databa",
-				"database_config	function"
-			],
-			[
-				"subresource",
-				"subresourceName"
-			],
-			[
-				"sampleResources",
-				"sampleResourcesSelection"
-			],
-			[
-				"bac",
-				"background-repeat"
-			],
-			[
-				"background-",
-				"background-image"
-			],
-			[
-				"sampleResource",
-				"sampleResources"
-			],
-			[
-				"_dis",
-				"_displayVersions"
-			],
-			[
-				"_displ",
-				"_displaySubresourceFields"
-			],
-			[
-				"_display",
-				"_displayResourceFields"
-			],
-			[
-				"Instruction",
-				"InstructionsController"
+				"_",
+				"_securityContext"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "web-apps-sdk.sublime-workspace",
+			"file": "sdk/src/webcomponents/datasources/datasource.js",
 			"settings":
 			{
-				"buffer_size": 29940,
+				"buffer_size": 6498,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "sublime_builders/bcapi-jsdoc.sublime-build",
+			"file": "sdk/lib/grunt-bcapi-polymer-concat/tasks/bcapi_polymer_concat.js",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 2412,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sdk/files.js",
+			"settings":
+			{
+				"buffer_size": 2365,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sdk/Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 934,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sdk/lib/grunt-bcapi-polymer-concat/package.json",
+			"settings":
+			{
+				"buffer_size": 1019,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sdk/package.json",
+			"settings":
+			{
+				"buffer_size": 4665,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html",
+			"settings":
+			{
+				"buffer_size": 7111,
 				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "Packages/User/bcapi-jsdoc.sublime-build",
+	"build_system": "Run ESLint",
 	"build_system_choices":
 	[
 		[
 			[
 				[
-					"Anaconda Python Builder",
+					"Build JSDoc",
 					""
 				],
 				[
-					"Packages/Python/Python.sublime-build",
+					"Run ESLint",
 					""
 				],
 				[
-					"Packages/Python/Python.sublime-build",
-					"Syntax Check"
-				]
-			],
-			[
-				"Packages/Python/Python.sublime-build",
-				"Syntax Check"
-			]
-		],
-		[
-			[
-				[
-					"Packages/JSHint/JSHint.sublime-build",
-					""
-				],
-				[
-					"Packages/User/blitz-gulp.sublime-build",
-					""
-				],
-				[
-					"Packages/User/blitz-jsdoc.sublime-build",
-					""
-				],
-				[
-					"Packages/User/es6-gulp.sublime-build",
-					""
-				],
-				[
-					"Packages/User/jsdoc.sublime-build",
+					"Run tests",
 					""
 				]
 			],
 			[
-				"Packages/User/blitz-jsdoc.sublime-build",
-				""
-			]
-		],
-		[
-			[
-				[
-					"Packages/User/bcapi-jsdoc.sublime-build",
-					""
-				],
-				[
-					"Packages/User/blitz-jsdoc.sublime-build",
-					""
-				]
-			],
-			[
-				"Packages/User/bcapi-jsdoc.sublime-build",
+				"Run ESLint",
 				""
 			]
 		]
@@ -375,67 +183,34 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 138.0,
-		"last_filter": "",
+		"height": 75.0,
+		"last_filter": "Package Control: install package",
 		"selected_items":
 		[
 			[
-				"Package Control: In",
+				"Package Control: install package",
 				"Package Control: Install Package"
 			],
 			[
-				"Package Control: Remove",
-				"Package Control: Remove Package"
-			],
-			[
-				"Package Control: Install",
+				"Package Control: install",
 				"Package Control: Install Package"
-			],
-			[
-				"Package Control: Instal",
-				"Package Control: Install Package"
-			],
-			[
-				"Package Control: Insta",
-				"Package Control: Install Package"
-			],
-			[
-				"Package Control: ",
-				"Package Control: Install Package"
-			],
-			[
-				"",
-				"Anaconda: Run Current Test"
 			],
 			[
 				"Package Control: insta",
 				"Package Control: Install Package"
 			],
 			[
-				"Package Control: install package",
-				"Package Control: Install Package"
-			],
-			[
-				"Package Control: Install Package",
+				"Package Control: install ",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 467.0
 	},
 	"console":
 	{
-		"height": 139.0,
+		"height": 0.0,
 		"history":
 		[
-			"Install Package",
-			"install package",
-			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
-			"package",
-			"install-package",
-			"install",
-			"install package MarkdownEditing",
-			"install package",
-			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
 		]
 	},
 	"distraction_free":
@@ -450,146 +225,101 @@
 	"expanded_folders":
 	[
 		"/home/rcosnita/work/web-apps-sdk",
-		"/home/rcosnita/work/web-apps-sdk/sublime_builders"
+		"/home/rcosnita/work/web-apps-sdk/sdk",
+		"/home/rcosnita/work/web-apps-sdk/sdk/dist",
+		"/home/rcosnita/work/web-apps-sdk/sdk/lib",
+		"/home/rcosnita/work/web-apps-sdk/sdk/lib/grunt-bcapi-polymer-concat",
+		"/home/rcosnita/work/web-apps-sdk/sdk/lib/grunt-bcapi-polymer-concat/tasks",
+		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules",
+		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize",
+		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize/node_modules",
+		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize/node_modules/.bin",
+		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize/node_modules/vulcanize/lib",
+		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize/tasks",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/textfield"
 	],
 	"file_history":
 	[
+		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize/tasks/vulcanize.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize/node_modules/.bin/vulcanize",
+		"/home/rcosnita/work/web-apps-sdk/sdk/lib/grunt-bcapi-polymer-concat/package.json",
+		"/home/rcosnita/work/web-apps-sdk/sdk/dist/bcapi-webcomponents-full.html",
 		"/home/rcosnita/work/web-apps-sdk/sdk/package.json",
-		"/home/rcosnita/work/web-apps-sdk/web-apps-sdk.sublime-project",
-		"/home/rcosnita/work/web-apps-sdk/.travis.yml",
-		"/home/rcosnita/work/web-apps-sdk/sdk/src/helper.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datasources/json.html",
+		"/home/rcosnita/work/web-apps-sdk/sdk/coverage/Chrome 45.0.2454 (Linux 0.0.0)/src/webcomponents/datasources/datasource.js.html",
+		"/home/rcosnita/work/web-apps-sdk/sdk/bcapi-webcomponents.html",
+		"/home/rcosnita/work/web-apps-sdk/sdk/dist/bcapi-full.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security/security_helpers.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datasources/json.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datasources/api.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/components.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/buttons/button.js",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/js/app.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/buttons/button.html",
-		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/helpers/components_helper.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/button.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datagrid/datagrid.html",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next/_System/apps/bc-crm-next/customers.html",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security/bcsecuritycontext.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/security/bcsecuritycontext.js",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-sample-charts/_System/apps/bc-sample-charts/demo.html",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next/_System/apps/bc-crm-next/assets/js/customer-rendering.js",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/demo.html",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-sample-charts/_System/apps/bc-sample-charts/assets/datasource/lastnight_pizza.json",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/datasource/customers.json",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/charts/piechart.html",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datagrid/datagrid.js",
+		"/home/rcosnita/.config/sublime-text-3/Packages/User/snippets/uisdk-piechart-withjson.sublime-snippet",
+		"/home/rcosnita/.config/sublime-text-3/Packages/User/snippets/uisdk-dd-with-api.sublime-snippet",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/dropdown/dropdown.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/dropdown/dropdown.html",
+		"/home/rcosnita/.config/sublime-text-3/Packages/User/snippets/adobe_license_js.sublime-snippet",
+		"/home/rcosnita/.config/sublime-text-3/Packages/User/snippets/adobe_license_html.sublime-snippet",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-sample-charts/_System/apps/bc-sample-charts/assets/demo.html",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-sample-charts/_System/apps/bc-sample-charts/assets/LICENSE",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-sample-charts",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datagrid/datagrid-customtpl.html",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/dropdown.js",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-external-service/app.js",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-external-service/public/js/oauth_config.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/textfield/textfield.html",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-gallery/bc-gallery/demo.html",
+		"/home/rcosnita/.config/sublime-text-3/Packages/User/snippets/uisdk-dd-with-staticdata.sublime-snippet",
+		"/home/rcosnita/.config/sublime-text-3/Packages/User/snippets/uisdk-dd-with-json.sublime-snippet",
+		"/home/rcosnita/.config/sublime-text-3/Packages/User/snippets/uisdk-dd-with-dynamicdata.sublime-snippet",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/security/security_helpers.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/helper.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/bcapi.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/karma.conf.js",
-		"/home/users/rcosnita/work/web-apps-sdk/sdk/lib/webcomponentsjs/webcomponents-lite.js",
-		"/home/users/rcosnita/work/web-apps-sdk/sdk/node_modules/karma/node_modules/core-js/library/fn/object/prevent-extensions.js",
-		"/home/users/rcosnita/work/web-apps-sdk/sdk/doc/index.html",
-		"/home/users/rcosnita/work/web-apps-sdk/sdk/src/bcapi.js",
-		"/home/users/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/buttons/button.html",
-		"/home/users/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/helpers",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/doc-static/index.md",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/src/webcomponents/components.js",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/feedback_partners.md",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/js/app.js",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/samples/bc-crm-next/_System/apps/bc-crm-next/customers.html",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/samples/bc-crm-next/_System/apps/bc-crm-next/assets/js/customer-rendering.js",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/demo.html",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/datasource/customers.json",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/ui-requirements.md",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/src/webcomponents/buttons/button.html",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/src/webcomponents/datagrid/datagrid.html",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/src/webcomponents/dropdown/dropdown.html",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/src/webcomponents/textfield/textfield.html",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/jsdoc.json",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/src/webapp_customfield.js",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/LICENSE",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/doc-ui/index.md",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/package.json",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/README.md",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/node_modules/grunt/node_modules/colors/ReadMe.md",
-		"/home/rcosnita/workspace_bc/web-apps-sdk/sdk/analysis/BC UI SDK.vpp",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/blitz-experiment/src/views/DefaultView.js6",
-		"/extended/rcosnita/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/vanillajs-experiment/experiment.js",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/vanillajs-experiment/index.html",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/blitz-experiment/public/index.html",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/blitz-experiment/src/bootstrap/Application.js6",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/README.md",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/reactjs-experiment/experiment.js",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/polymerjs-experiment/index.html",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/polymerjs-experiment/list.html",
-		"/home/rcosnita/workspace_bc/polymer-benchmark/reactjs-experiment/index.html",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/ci/install_jenkins.sh",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/ci/configure_jenkins_master.py",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/publish.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/container.tmpl",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/fulltext-search-ui.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/package.json",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/jsdoc/lib/jsdoc/tutorial.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/plugins/ArticleTag.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/jsdoc/lib/jsdoc/tutorial.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/jsdoc/lib/jsdoc/tutorial/resolver.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/quicksearch.tmpl",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/source.tmpl",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/jsdoc.json",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/layout.tmpl",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/fulltext-search.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/styles/site.spacelab.css",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/docstrap.lib.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/toc.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/lunr.min.js",
-		"/home/users/rcosnita/work/BlitzRepos/Blitz/src/utils/ActiveArray.js6",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/ci/ssh-agent-start.sh",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/package.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/ci/blitz_ci_rsa",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/gulpfile.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/concepts/events/events.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/menu.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/.publish/tutorials/concepts/events/events.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/concepts/routing/routing.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/concepts/concepts.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/src/routes/BaseRoute.js6",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/.publish/menu.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/.publish/tutorials/concepts/scopes/scopes.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/src/routes/Router.js6",
-		"/home/rcosnita/.config/sublime-text-3/Packages/User/blitz-jsdoc.sublime-build",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/concepts/data-bindings/data-bindings.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/tutorials/tutorials.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/src/doc/jsdoc-gulp.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/.publish/tutorials/concepts/data-bindings/data-bindings.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/layout.tmpl",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/jsdoc.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/development/development.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/styles/site.spacelab.css",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/.publish/tutorials/development/development.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/toc.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/jsdoc/jsdoc.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/gulp-jsdoc/index.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/jsdoc/cli.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/jsdoc/lib/jsdoc/env.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/.bin/jsdoc",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/src/doc/jsdoc-plugin.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/jsdoc/jsdoc",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/publish.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/plugins/IncludeTag.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/data-bindings/data-bindings.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/index.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/src/utils/ActiveObject.js6",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/returns.tmpl",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/jsdoc/lib/jsdoc/template.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/tutorial.tmpl",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/plugins/ArticleTag.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/type.tmpl",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/docs/code/blitz/utils/ActiveObjectSummary.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/todo-app/todo-app.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/styles/sunlight.default.css",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/static/scripts/prettify/prettify.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/details.tmpl",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/source.tmpl",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/container.tmpl",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/examples.tmpl",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/template/tmpl/example.tmpl",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/jsdoc/plugins/markdown.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/jsdoc/lib/jsdoc/src/parser.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/jsdoc/lib/jsdoc/doclet.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/jsdoc/lib/jsdoc/util/templateHelper.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/jsdoc/plugins/markdown.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/node_modules/ink-docstrap/node_modules/jsdoc/lib/jsdoc/util/markdown.js",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/articles/articles.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/tutorials.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/articles/article.md",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/todo-app/todo-app.json",
-		"/home/rcosnita/workspace_bc/BlitzRepos/Blitz/docs/tutorials/setup-ide/setup-ide.json"
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/security/access_token.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datasources/datasource.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datasources/api.html",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/datasource.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/json_datasource.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security/user.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security/accesstoken.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/components_exceptions.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/helpers/custom_matchers.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/components_factory.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/security/user.js",
+		"/home/rcosnita/work/web-apps-sdk/web-apps-sdk.sublime-project",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/integration/test_category.js",
+		"/home/rcosnita/work/web-apps-sdk/.travis.yml",
+		"/home/rcosnita/work/web-apps-sdk/web-apps-sdk.sublime-workspace",
+		"/home/rcosnita/.config/sublime-text-3/Packages/User/Default.sublime-theme",
+		"/home/rcosnita/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/rcosnita/work/sftp-uploader/upload.py",
+		"/home/rcosnita/work/sftp-uploader/__init__.py",
+		"/home/rcosnita/.config/sublime-text-3/Packages/SideBarEnhancements/Side Bar.sublime-settings"
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -599,134 +329,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"build",
-			"Polymer",
-			"{% raw %}",
-			"docType ",
-			"tutorial",
-			"tutoriallink",
-			"tutorials",
-			"index",
-			"generateSourceFiles",
-			"tutorial",
-			"tutorials",
-			"generateSourceFiles(",
-			"tutorial",
-			"generateSourceFiles",
-			"generate(",
-			"source.tmpl",
-			"modal-body",
-			"searchableDocuments",
-			"$",
-			"jquery",
-			"outdir",
-			"template",
-			"searchableDocuments",
-			"publish",
-			"layout.tmp",
-			"index",
-			"generate(",
-			"searchableDocuments",
-			"<?js=",
-			"view",
-			"sourceFilePaths",
-			"script src=",
-			"git+",
-			"route",
-			"##",
-			"@media",
-			"main",
-			"fixedMenu",
-			"global",
-			"env.",
-			"args",
-			"cb",
-			"infos",
-			"tutorial",
-			"tocs",
-			"calcHadingOffsets",
-			".toc(()",
-			"#toc",
-			"view",
-			"navOptions",
-			"members.tutorials",
-			"tutorials",
-			"toc",
-			"extractArticleLinks",
-			"replaceInclude",
-			"position: fixed",
-			"nav",
-			"linenums",
-			"sunlight-code-container",
-			"replaceIncludeTag",
-			"defaultTags",
-			"parse",
-			"hasOwn",
-			"exports.",
-			"opts",
-			"opts.readme",
-			"indexUrl",
-			"index.members",
-			"indexUrl",
-			"index",
-			"\"index\"",
-			"include",
-			"generate",
-			"index",
-			"indexUrl",
-			"tutorial",
-			"tutorials",
-			"publish",
-			"markArticles",
-			"tutorial.members",
-			"navigationMaster.tutorial.",
-			"navigationMaster.",
-			"navigation",
-			"mark",
-			"saveChildren",
-			"generateTutorial",
-			"isArticle",
-			"tutorials",
-			"generateTutorial",
-			"data = ",
-			"helper = ",
-			"helper",
-			"tutorial",
-			"description",
-			"generateTutorial",
-			"buildNav",
-			"example",
-			"table",
-			"();",
-			"},\n",
-			"_bindRootContext",
-			".config",
-			"staticFiles",
-			"COMPONENT_RELOAD_EVENT",
-			"_bindRootContext",
-			"console.log",
-			"\"\"",
-			"safetyAz",
-			"eu-west-1b",
-			"eu-west-1a",
-			"vpcPublicNetwork",
-			"igw",
-			"vpcPublicNetworkSafety",
-			".1.",
-			"vpcPublicNetwork",
-			"vpcPublicNetworkSafety",
-			"vpcPrefixIpPart",
-			"10.5",
-			"vpcPublicIp",
-			"\"Ref\": \"vpc\"",
-			"10.5.0",
-			"10.0",
-			"10.0.0",
-			"Nginx",
-			"vpcRouteTableInternet",
-			"public",
-			"s3ProvisionBucket",
-			"url"
+			"<link rel=\"import\" href=\"/lib/polymer/polymer.html\">",
+			"_refreshDom",
+			"_getContentElement",
+			"debugger",
+			"repeatedRow",
+			"_getColsFromMarkup",
+			"_loadItems",
+			"loadItems",
+			"_dataSource",
+			"_wireDataSourceFromMarkup",
+			"bcConfig",
+			"_update",
+			"_updat",
+			"_updateData",
+			"_refreshItemsSelect",
+			"_securityCfg",
+			"datasource.js",
+			"'"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -734,8 +354,7 @@
 		"regex": false,
 		"replace_history":
 		[
-			"*",
-			"this.$scope.allFieldsSelected"
+			"\""
 		],
 		"reverse": false,
 		"show_context": true,
@@ -751,41 +370,11 @@
 			[
 				{
 					"buffer": 0,
-					"file": "web-apps-sdk.sublime-workspace",
+					"file": "sdk/src/webcomponents/datasources/datasource.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 29940,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3696,
-								3721
-							]
-						],
-						"settings":
-						{
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7557.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "sublime_builders/bcapi-jsdoc.sublime-build",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
+						"buffer_size": 6498,
 						"regions":
 						{
 						},
@@ -798,15 +387,207 @@
 						],
 						"settings":
 						{
-							"open_with_edit": true,
 							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sdk/lib/grunt-bcapi-polymer-concat/tasks/bcapi_polymer_concat.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2412,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2121,
+								2121
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 910.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "sdk/files.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2365,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1458,
+								1458
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 478.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sdk/Gruntfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 934,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								227,
+								227
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Theme - Afterglow/Prefs/Langs/Gruntfile JS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "sdk/lib/grunt-bcapi-polymer-concat/package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1019,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								917,
+								917
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Theme - Afterglow/Prefs/Langs/npm JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "sdk/package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4665,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1126,
+								1126
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Theme - Afterglow/Prefs/Langs/npm JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7111,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2380,
+								2380
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 622.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -814,11 +595,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 38.0
+		"height": 26.0
 	},
 	"input":
 	{
-		"height": 33.0
+		"height": 44.0
 	},
 	"layout":
 	{
@@ -839,13 +620,14 @@
 		"rows":
 		[
 			0.0,
+			0.5,
 			1.0
 		]
 	},
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 191.0
+		"height": 202.0
 	},
 	"output.find_results":
 	{
@@ -855,7 +637,7 @@
 	"project": "web-apps-sdk.sublime-project",
 	"replace":
 	{
-		"height": 72.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -865,465 +647,253 @@
 		"selected_items":
 		[
 			[
-				"packa",
-				"sdk/package.json"
+				"vul",
+				"sdk/node_modules/grunt-vulcanize/tasks/vulcanize.js"
 			],
 			[
-				"microevent",
-				"sdk/node_modules/karma/node_modules/core-js/library/fn/object/prevent-extensions.js"
+				"customers",
+				"samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html"
 			],
 			[
-				"index",
-				"sdk/doc/index.html"
+				"vulcanize.js",
+				"sdk/node_modules/grunt-vulcanize/tasks/vulcanize.js"
 			],
 			[
-				"button",
-				"sdk/src/webcomponents/buttons/button.html"
+				"datasource.html",
+				"sdk/src/webcomponents/datasources/json.html"
+			],
+			[
+				"button.js",
+				"sdk/test/webcomponents/button.js"
 			],
 			[
 				"component",
 				"sdk/src/webcomponents/components.js"
 			],
 			[
-				"components.js",
-				"sdk/src/webcomponents/components.js"
-			],
-			[
-				"customers.html",
-				"samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html"
-			],
-			[
-				"customers",
-				"samples/bc-crm-next/_System/apps/bc-crm-next/assets/js/customer-rendering.js"
-			],
-			[
-				"fee",
-				"feedback_partners.md"
+				"api.js",
+				"sdk/src/webcomponents/datasources/api.js"
 			],
 			[
 				"app.js",
 				"samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/js/app.js"
 			],
 			[
+				"button.html",
+				"sdk/src/webcomponents/buttons/button.html"
+			],
+			[
+				"datagrid.html",
+				"sdk/src/webcomponents/datagrid/datagrid.html"
+			],
+			[
+				"button",
+				"sdk/src/webcomponents/buttons/button.html"
+			],
+			[
+				"customers.html",
+				"samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html"
+			],
+			[
+				"customres.html",
+				"samples/bc-crm-next/_System/apps/bc-crm-next/customers.html"
+			],
+			[
+				"demo.",
+				"samples/bc-sample-charts/_System/apps/bc-sample-charts/demo.html"
+			],
+			[
 				"demo",
 				"samples/bc-crm-next-new/_System/apps/bc-crm-next/demo.html"
 			],
 			[
-				"customer",
-				"samples/bc-crm-next/_System/apps/bc-crm-next/customers.html"
-			],
-			[
-				"app.",
-				"samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/js/app.js"
+				"last",
+				"samples/bc-sample-charts/_System/apps/bc-sample-charts/assets/datasource/lastnight_pizza.json"
 			],
 			[
 				"customers.json",
 				"samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/datasource/customers.json"
 			],
 			[
-				"demo.",
-				"samples/bc-crm-next-new/_System/apps/bc-crm-next/demo.html"
+				"lastnigh",
+				"samples/bc-sample-charts/_System/apps/bc-sample-charts/assets/datasource/lastnight_pizza.json"
 			],
 			[
-				"jsdoc.js",
-				"sdk/jsdoc.json"
+				"demo.html",
+				"samples/bc-sample-charts/_System/apps/bc-sample-charts/demo.html"
 			],
 			[
-				"webapp_custom",
-				"sdk/src/webapp_customfield.js"
+				"chart",
+				"sdk/src/webcomponents/charts/piechart.html"
 			],
 			[
-				"jsdoc",
-				"sdk/jsdoc.json"
-			],
-			[
-				"package",
-				"sdk/package.json"
-			],
-			[
-				"readm",
-				"sdk/node_modules/grunt/node_modules/colors/ReadMe.md"
-			],
-			[
-				"defaultview",
-				"blitz-experiment/src/views/DefaultView.js6"
-			],
-			[
-				"list.html",
-				"polymerjs-experiment/list.html"
-			],
-			[
-				"experiment.js",
-				"reactjs-experiment/experiment.js"
-			],
-			[
-				"configure",
-				"ci/configure_jenkins_master.py"
-			],
-			[
-				"tutorial.",
-				"node_modules/jsdoc/lib/jsdoc/tutorial.js"
-			],
-			[
-				"arti",
-				"node_modules/ink-docstrap/plugins/ArticleTag.js"
-			],
-			[
-				"publish.",
-				"node_modules/ink-docstrap/template/publish.js"
-			],
-			[
-				"toc.js",
-				"node_modules/ink-docstrap/template/static/scripts/toc.js"
-			],
-			[
-				"activearray",
-				"src/utils/ActiveArray.js6"
-			],
-			[
-				"gulp",
-				"gulpfile.js"
-			],
-			[
-				"events.md",
-				"docs/tutorials/concepts/events/events.md"
-			],
-			[
-				"menu.md",
-				"docs/menu.md"
-			],
-			[
-				"scope.md",
-				".publish/tutorials/concepts/scopes/scopes.md"
-			],
-			[
-				"routing.md",
-				"docs/tutorials/concepts/routing/routing.md"
-			],
-			[
-				"jsdoc-gul",
-				"src/doc/jsdoc-gulp.js"
-			],
-			[
-				"data",
-				"docs/tutorials/concepts/data-bindings/data-bindings.md"
-			],
-			[
-				"databin",
-				".publish/tutorials/concepts/data-bindings/data-bindings.md"
-			],
-			[
-				"development.md",
-				"docs/tutorials/development/development.md"
-			],
-			[
-				"develo",
-				".publish/tutorials/development/development.md"
-			],
-			[
-				"jsdoc.json",
-				"jsdoc.json"
-			],
-			[
-				"gul",
-				"gulpfile.js"
-			],
-			[
-				"env",
-				"node_modules/jsdoc/lib/jsdoc/env.js"
-			],
-			[
-				"packages",
-				"package.json"
-			],
-			[
-				"env.js",
-				"node_modules/jsdoc/lib/jsdoc/env.js"
-			],
-			[
-				"cli",
-				"node_modules/jsdoc/cli.js"
-			],
-			[
-				"cli.js",
-				"node_modules/jsdoc/cli.js"
-			],
-			[
-				"index.md",
-				"docs/index.md"
-			],
-			[
-				"include",
-				"node_modules/ink-docstrap/plugins/IncludeTag.js"
-			],
-			[
-				"toc",
-				"node_modules/ink-docstrap/template/static/scripts/toc.js"
-			],
-			[
-				"sitespa",
-				"node_modules/ink-docstrap/template/static/styles/site.spacelab.css"
-			],
-			[
-				"incudetag",
-				"node_modules/ink-docstrap/plugins/IncludeTag.js"
-			],
-			[
-				"publish",
-				"node_modules/ink-docstrap/template/publish.js"
-			],
-			[
-				"layout",
-				"node_modules/ink-docstrap/template/tmpl/layout.tmpl"
-			],
-			[
-				"jsdoc/template",
-				"node_modules/jsdoc/lib/jsdoc/template.js"
-			],
-			[
-				"includeta",
-				"node_modules/ink-docstrap/plugins/IncludeTag.js"
-			],
-			[
-				"jsdocs",
-				"jsdoc.json"
-			],
-			[
-				"activeobjectsu",
-				"docs/docs/code/blitz/utils/ActiveObjectSummary.md"
-			],
-			[
-				"activeobject",
-				"src/utils/ActiveObject.js6"
-			],
-			[
-				"todo-ap",
-				"docs/tutorials/todo-app/todo-app.md"
-			],
-			[
-				"publish.js",
-				"node_modules/ink-docstrap/template/publish.js"
-			],
-			[
-				"todo",
-				"docs/tutorials/todo-app/todo-app.md"
-			],
-			[
-				"markdow",
-				"node_modules/jsdoc/plugins/markdown.js"
-			],
-			[
-				"mark",
-				"node_modules/jsdoc/plugins/markdown.js"
-			],
-			[
-				"parser",
-				"node_modules/jsdoc/lib/jsdoc/src/parser.js"
-			],
-			[
-				"doclet",
-				"node_modules/jsdoc/lib/jsdoc/doclet.js"
-			],
-			[
-				"templateh",
-				"node_modules/ink-docstrap/node_modules/jsdoc/lib/jsdoc/util/templateHelper.js"
-			],
-			[
-				"tutorials.list",
-				"node_modules/ink-docstrap/node_modules/grunt-jsdoc/node_modules/ink-docstrap/themes/amelia/tutorials.list.html"
-			],
-			[
-				"activeobj",
-				"src/utils/ActiveObject.js6"
-			],
-			[
-				"namespace",
-				"src/doc/namespaces.js"
-			],
-			[
-				"readme.md",
-				"node_modules/ink-docstrap/README.md"
-			],
-			[
-				"spacelab.",
-				"node_modules/ink-docstrap/template/static/styles/site.spacelab.css"
-			],
-			[
-				"activearra",
-				"src/utils/ActiveArray.js6"
-			],
-			[
-				"baseobjec",
-				"src/utils/BaseObject.js6"
-			],
-			[
-				"activeobje",
-				"src/utils/ActiveObject.js6"
-			],
-			[
-				"activebinder.js6",
-				"src/utils/ActiveBinder.js6"
-			],
-			[
-				"first",
-				"src/first_class.js"
-			],
-			[
-				"index.js",
-				"samples/textbox-gridfiltering/controllers/index.js"
-			],
-			[
-				"idnex.html",
-				"samples/textbox-gridfiltering/views/index.html"
-			],
-			[
-				"textfiel",
-				"src/components/textfield/controllers/textfield.js"
-			],
-			[
-				"textfi",
-				"src/components/textfield/controllers/textfield.js"
-			],
-			[
-				"app_config",
-				"src/app_config.js"
-			],
-			[
-				"dropdown.js",
-				"src/components/dropdown/controllers/dropdown.js"
-			],
-			[
-				"index.html",
-				"samples/todo-app/views/index.html"
-			],
-			[
-				"rest_model",
-				"src/models/rest_model.js"
-			],
-			[
-				"form.js",
-				"src/components/form/controllers/form.js"
-			],
-			[
-				"textfie",
-				"src/components/textfield/controllers/textfield.js"
-			],
-			[
-				"constan",
-				"src/utils/constants.js"
-			],
-			[
-				"constants",
-				"src/utils/constants.js"
-			],
-			[
-				"model",
-				"src/factories/model.js"
-			],
-			[
-				"componen",
-				"src/factories/component.js"
-			],
-			[
-				"simple",
-				"src/models/simple_model.js"
-			],
-			[
-				"handle",
-				"src/utils/handlebars.js"
-			],
-			[
-				"constant",
-				"src/utils/constants.js"
-			],
-			[
-				"crea",
-				"doc-lib/tutorials/create-new-components/create-new-components.md"
-			],
-			[
-				"create",
-				"doc/create-new-components/create-new-components.md"
-			],
-			[
-				"con",
-				"src/utils/constants.js"
-			],
-			[
-				"rest",
-				"src/models/rest_model.js"
-			],
-			[
-				"model.js",
-				"src/factories/model.js"
-			],
-			[
-				"drop",
-				"src/components/dropdown/controllers/dropdown.js"
-			],
-			[
-				"simple_mo",
-				"src/models/simple_model.js"
+				"buttons.js",
+				"sdk/src/webcomponents/buttons/button.js"
 			],
 			[
 				"compon",
-				"src/factories/component.js"
+				"sdk/src/webcomponents/components.js"
 			],
 			[
-				"button.js",
-				"src/components/button/controllers/button.js"
+				"datagr",
+				"sdk/src/webcomponents/datagrid/datagrid.js"
 			],
 			[
-				"constn",
-				"src/utils/constants.js"
+				"dropdown.js",
+				"sdk/src/webcomponents/dropdown/dropdown.js"
 			],
 			[
-				"consta",
-				"src/utils/constants.js"
+				"dropdown",
+				"sdk/src/webcomponents/dropdown/dropdown.html"
 			],
 			[
-				"base.html",
-				"experiment1/experiment1/frontend/views/base.html"
+				"data",
+				"sdk/src/webcomponents/datagrid/datagrid-customtpl.html"
+			],
+			[
+				"datagridcu",
+				"sdk/src/webcomponents/datagrid/datagrid-customtpl.html"
+			],
+			[
+				"datagrid.js",
+				"sdk/src/webcomponents/datagrid/datagrid.js"
+			],
+			[
+				"datagird",
+				"sdk/src/webcomponents/datagrid/datagrid.html"
+			],
+			[
+				"oauth_confi",
+				"samples/bc-external-service/public/js/oauth_config.js"
+			],
+			[
+				"datagir",
+				"sdk/src/webcomponents/datagrid/datagrid-customtpl.html"
+			],
+			[
+				"button.",
+				"sdk/src/webcomponents/buttons/button.js"
+			],
+			[
+				"dropdown.html",
+				"sdk/src/webcomponents/dropdown/dropdown.html"
+			],
+			[
+				"textfiel",
+				"sdk/src/webcomponents/textfield/textfield.html"
+			],
+			[
+				"textfie",
+				"sdk/src/webcomponents/textfield/textfield.html"
+			],
+			[
+				"components",
+				"sdk/src/webcomponents/components.js"
+			],
+			[
+				"components.",
+				"sdk/src/webcomponents/components.js"
+			],
+			[
+				"api",
+				"sdk/src/webcomponents/datasources/api.js"
+			],
+			[
+				"customers.",
+				"samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html"
+			],
+			[
+				"helper.js",
+				"sdk/src/helper.js"
+			],
+			[
+				"bcapi",
+				"sdk/src/bcapi.js"
+			],
+			[
+				"bcsecu",
+				"sdk/src/webcomponents/security/bcsecuritycontext.js"
+			],
+			[
+				"bcsecuir",
+				"sdk/test/webcomponents/security/bcsecuritycontext.js"
+			],
+			[
+				"bcs",
+				"sdk/src/webcomponents/security/bcsecuritycontext.js"
+			],
+			[
+				"karma",
+				"sdk/karma.conf.js"
+			],
+			[
+				"datasource.js",
+				"sdk/src/webcomponents/datasources/datasource.js"
+			],
+			[
+				"json.js",
+				"sdk/src/webcomponents/datasources/json.js"
+			],
+			[
+				"json",
+				"sdk/test/webcomponents/json_datasource.js"
+			],
+			[
+				"dro",
+				"sdk/test/webcomponents/dropdown.js"
+			],
+			[
+				"users",
+				"sdk/src/webcomponents/security/user.js"
+			],
+			[
+				"accesstoken",
+				"sdk/src/webcomponents/security/accesstoken.js"
+			],
+			[
+				"bcsecuritycontext",
+				"sdk/src/webcomponents/security/bcsecuritycontext.js"
+			],
+			[
+				"custom_mat",
+				"sdk/test/webcomponents/helpers/custom_matchers.js"
+			],
+			[
+				"compone",
+				"sdk/src/webcomponents/components_exceptions.js"
+			],
+			[
+				"karm",
+				"sdk/karma.conf.js"
+			],
+			[
+				"custom_ma",
+				"sdk/test/webcomponents/helpers/custom_matchers.js"
+			],
+			[
+				"test",
+				"sdk/test/integration/test_category.js"
 			]
 		],
 		"width": 0.0
 	},
 	"select_project":
 	{
-		"height": 500.0,
+		"height": 0.0,
 		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"",
-				"/home/users/rcosnita/work/BlitzRepos/Blitz/blitz.sublime-project"
-			]
 		],
-		"width": 380.0
+		"width": 0.0
 	},
 	"select_symbol":
 	{
-		"height": 33.0,
+		"height": 0.0,
 		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"ModelFacade",
-				"ModelFacade"
-			],
-			[
-				"ModelFilter",
-				"ModelFilter"
-			],
-			[
-				"UserDummy",
-				"UserDummy"
-			],
-			[
-				"Redi",
-				"RedirectResponse"
-			]
 		],
-		"width": 631.0
+		"width": 0.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -1333,7 +903,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 344.0,
+	"side_bar_width": 316.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

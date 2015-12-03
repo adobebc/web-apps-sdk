@@ -1,0 +1,98 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<dom-module id="bc-textfield">
+    <style type="text/css">
+        button {
+            float: left;
+            width: 5%;
+            min-width: 40px;
+        }
+
+        input[type="text"] {
+            float: left;
+            width: 85%;
+        }
+    </style>
+
+    <template>
+        <template is="dom-if" if="{{hasSearchButton}}">
+            <button type="button" class="btn btn-primary" on-click="handleSearch" disabled>
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </template>
+
+        <input type="text" class="form-control" on-keyup="handleChange" placeholder="{{placeholder}}" style="float: left;" />
+    </template>
+
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/webcomponents/components.js"></script>
+
+    <script>
+    /**
+     * This class provides a text field component which has BC look & feel. Moreover, the text field benefit from a quick search button
+     * which can be activated in cases where textfield is used as full text search.
+     * 
+     * @name TextField
+     * @class
+     * @public
+     * @memberof BCAPI.Components
+     */
+    polymerObj = {
+        is: "bc-textfield",
+        properties: {
+            placeholder: {
+                type: String,
+                value: "Type your text here ..."
+            },
+            hasSearchButton: {
+                type: Boolean,
+                value: false,
+                readOnly: false,
+                reflectToAttribute: true
+            },
+            value: {
+                type: String,
+                readonly: true
+            }
+        },
+        customEvents: [
+            "textfieldChange", "textfieldSearch"
+        ]
+    };
+
+    polymerObj = BCAPI.Components.ComponentsFactory.get(polymerObj);
+
+    $.extend(polymerObj, {
+        attached: function() {
+            this.__base.attached.apply(this);
+        },
+        ready: function() {
+             this._wireCustomEventsFromDom();
+        },
+        handleChange: function(evt) {
+            var newValue = evt.target.value.trim(),
+                disabled = !(newValue && newValue.length > 0);
+
+            $(this).find("button").prop("disabled", disabled);
+
+            this.value = newValue;
+
+            if (evt.keyCode !== 13) {
+                this.trigger("textfield-change", {"value": newValue});
+            }
+
+            if (!disabled && evt.keyCode === 13) {
+                this.handleSearch();
+
+                return;
+            }
+        },
+        handleSearch: function(evt) {
+            this.trigger("textfield-search", {"value": this.value});
+        }
+    });
+
+    Polymer(polymerObj);
+    </script>
+
+</dom-module>

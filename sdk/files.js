@@ -24,6 +24,8 @@
 var jsCoreFiles = [
     "lib/webcomponentsjs/webcomponents.js",
     "lib/bootstrap/dist/js/bootstap.js",
+    "lib/jquery/dist/jquery.js",
+    "lib/jquery-cookie/jquery.cookie.js",
     "src/bcapi.js",
     "src/helper.js",
     "src/config.js",

@@ -7,3 +7,9 @@
 [submodule "sdk/lib/bootstrap"]
 	path = sdk/lib/bootstrap
 	url = https://github.com/twbs/bootstrap.git
+[submodule "sdk/lib/jquery"]
+	path = sdk/lib/jquery
+	url = https://github.com/jquery/jquery.git
+[submodule "sdk/lib/jquery-cookie"]
+	path = sdk/lib/jquery-cookie
+	url = https://github.com/carhartl/jquery-cookie.git

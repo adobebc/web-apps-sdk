@@ -6,7 +6,6 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks("grunt-contrib-concat");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
-	grunt.loadNpmTasks("grunt-jsdoc");
 	grunt.task.loadTasks("lib/grunt-bcapi-polymer-concat/tasks");
 
 	grunt.initConfig({

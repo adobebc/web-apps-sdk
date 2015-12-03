@@ -8,7 +8,7 @@
         "grunt": "*",
         "grunt-cli": "*",
         "grunt-contrib-concat": "*",
-        "grunt-contrib-uglify": "*",        
+        "grunt-contrib-uglify": "*",
         "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git"
     },
     "devDependencies": {

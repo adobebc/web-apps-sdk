@@ -197,7 +197,7 @@ $.extend(webComponent, {
             var itemId = item.attr("data-id"),
                 itemName = item.attr("title"),
                 itemRel = item.attr("rel"),
-                itemTemplate = item.html().trim();
+                itemTemplate = item.html().trim(),
                 itemStyle = item.attr("style");
 
             if (itemRel === "property") {
@@ -275,7 +275,7 @@ $.extend(webComponent, {
      */
     _updateCurrentData: function(data) {
         var rows;
-        if('items' in data) {
+        if ("items" in data) {
             rows = data.items;
             this.currData = data;
         } else {

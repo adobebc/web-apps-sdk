@@ -122,7 +122,7 @@ module.exports = function(grunt) {
       replacePattern = new RegExp(this._compInlineReplacerPattern.replace("%(filename)s", potentialJsName)),
       inlinePattern = "<script$1>" + jsBody + "</script>";
 
-    body = body.replace(replacePattern, inlinePattern)
+    body = body.replace(replacePattern, inlinePattern);
 
     return body;
   };

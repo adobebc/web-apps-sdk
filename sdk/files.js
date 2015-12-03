@@ -44,6 +44,7 @@ var jsCoreFiles = [
 ];
 
 var webComponentFiles = [
+    "lib/polymer.html",
     "src/webcomponents/buttons/button.html",
     "src/webcomponents/charts/piechart.html",
     "src/webcomponents/datagrid/datagrid-customtpl.html",

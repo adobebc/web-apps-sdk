@@ -23,6 +23,7 @@
 */
 var jsCoreFiles = [
     "lib/webcomponentsjs/webcomponents.js",
+    "lib/bootstrap/dist/js/bootstap.js",
     "src/bcapi.js",
     "src/helper.js",
     "src/config.js",

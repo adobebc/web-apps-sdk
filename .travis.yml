@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - 0.11
 before_script:
+  - git submodule status
   - cd sdk
   - npm install -d
   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -16,6 +17,7 @@ after_script:
   - set -e
   - ./node_modules/.bin/eslint src test/webcomponents
   - ./node_modules/.bin/jsdoc -c jsdoc.json
+  - ./node_modules/.bin/grunt
 branches:
     only:
         - web-apps-sdk-ui

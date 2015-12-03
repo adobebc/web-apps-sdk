@@ -28,9 +28,6 @@ function orderWrapper() {
 
 orderWrapper.prototype.queryOrders = function (queryString, access_token) {
 
-
-    console.log(access_token);
-
     var requestBase = $.ajax({
         url: this._rootPath + "webresources/api/v3/sites/current/orders",
         type: "GET",
@@ -52,9 +49,6 @@ orderWrapper.prototype.queryOrderItems = function (queryString, access_token) {
 
 
     var url = this._rootPath + "webresources/api/v3/sites/current/orderitems";
-
-    console.log(queryString);
-    console.log(url);
 
     var requestBase = $.ajax({
         url: url,

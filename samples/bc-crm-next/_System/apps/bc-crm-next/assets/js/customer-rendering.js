@@ -41,8 +41,6 @@ customerWrapper.prototype.queryCustomers = function (resource, queryString, acce
         this._lastCustomersHttpRequest.abort();
     }
 
-    console.log(access_token);
-
     var requestBase = $.ajax({
         url: this._rootPath + "webresources/api/v3/sites/current/" + resource,
         type: "GET",
@@ -70,9 +68,6 @@ customerWrapper.prototype.queryCustomer = function (customerId, queryString, acc
 
 
     var url = this._rootPath + "webresources/api/v3/sites/current/customers/" + customerId;
-
-    console.log(queryString);
-    console.log(url);
 
     var requestBase = $.ajax({
         url: url,
@@ -220,7 +215,7 @@ function renderCustomerFromObject(jsonObject) {
     $customerIdTableData.appendTo($customerTableRow);
 
     var $customerName = $("<td/>").append($("<input/>", {
-        value: jsonObject.firstName + " " + jsonObject.middleName + " " + jsonObject.lastName,
+        value: normalizeValue(jsonObject.firstName) + " " + normalizeValue(jsonObject.middleName) + " " + normalizeValue(jsonObject.lastName),
         class: "form-control firstFieldsDisabled",
         type: "text",
         id: "customerName"
@@ -243,9 +238,6 @@ function renderCustomerFromObject(jsonObject) {
     }));
     $customerEmailTableData.appendTo($customerTableRow);
 
-    console.log(jsonObject.email1);
-
-
     var $chooseActionTableData = $("<td/>");
     $chooseActionTableData.appendTo($customerTableRow);
 
@@ -259,6 +251,7 @@ function renderCustomerFromObject(jsonObject) {
     $customerShowDetailsTableData.appendTo($customerTableRow);
     var $customerShowDetailsButton = $("<button/>", {
         class: "btn btn-default accordion-toggle",
+        title: "Show customer details",
         onClick: "advancedSearch(" + jsonObject.id + ")"
     });
     $customerShowDetailsButton.attr("data-target", "#" + jsonObject.id.toString());
@@ -277,6 +270,7 @@ function renderCustomerFromObject(jsonObject) {
     $customerShowDetailsTableData.appendTo($customerTableRow);
     var $customerShowDetailsButton = $("<button/>", {
         class: "btn btn-default accordion-toggle",
+        title: "Show customer orders",
         onClick: "showOrders(" + jsonObject.id + ")"
     });
     $customerShowDetailsButton.attr("data-target", "#" + jsonObject.id.toString());
@@ -294,6 +288,7 @@ function renderCustomerFromObject(jsonObject) {
     $customerDeleteColumn.appendTo($customerTableRow);
     var $customerDeleteButton = $("<button/>", {
         class: "btn btn-default",
+        title: "Delete customer",
         onClick: "deleteCustomerWrap(" + jsonObject.id + ")"
     });
 
@@ -512,8 +507,6 @@ function startSearch() {
     }
 
     serializedQuery = JSON.stringify(query);
-    console.log(serializedQuery);
-
 
     refresh();
     $('#showFilter').fadeToggle(500);
@@ -562,8 +555,6 @@ function showOrders(customerId) {
     })));
 
     var request = customerW.queryCustomers("orders", "where={\"entityId\":" + customerId + "}", access_token, true)
-
-    console.log(request);
 
     request.done(function (data) {
 
@@ -936,7 +927,6 @@ function advancedSearch(customerId) {
 
 
             $.each(titleTypes.items, function (index, value) {
-                console.log(value);
                 if (value.id == customer.titleTypeId) {
                     $titleTypeSelect.append($("<option/>", {
                         value: value.id,
@@ -992,8 +982,6 @@ function advancedSearch(customerId) {
 
 
             var $expandableDiv = $('#' + customer.id);
-            console.log(customer);
-            console.log($expandableDiv);
 
             $detailsTable.appendTo($expandableDiv);
         });
@@ -1017,6 +1005,16 @@ function getValue(object) {
         return "";
     }
 }
+
+function normalizeValue(value) {
+    if(value) {
+        return value;
+    }
+    else {
+        return "";
+    }
+}
+
 
 function enableForEdit(customerId) {
     $(".form_" + customerId).attr("disabled", false);
@@ -1146,7 +1144,6 @@ function searchWithLimit(skip, limit) {
         }
 
         serializedQuery = JSON.stringify(query);
-        console.log(serializedQuery);
 
 
         refresh();

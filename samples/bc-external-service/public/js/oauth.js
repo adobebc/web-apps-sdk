@@ -1,3 +1,26 @@
+/* 
+* 
+* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+* Permission is hereby granted, free of charge, to any person obtaining a
+* copy of this software and associated documentation files (the "Software"), 
+* to deal in the Software without restriction, including without limitation 
+* the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+* and/or sell copies of the Software, and to permit persons to whom the 
+* Software is furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+* DEALINGS IN THE SOFTWARE.
+* 
+*/
 var isNodeJs = false;
 
 try {
@@ -23,11 +46,10 @@ var OAuth = (function(OAuthConfig) {
             "?client_id=", encodeURIComponent(this._config.clientId),
             "&version=", this._config.version, 
             "&redirect_uri=", encodeURI(this._config.redirectUri),
-            "&state=12345", "&response_type=code"],
+            "&state="+_local_state, "&response_type=code"],
             authorizeUrl = urlParts.join("");
 
         console.log("Redirecting browser to url: %s", authorizeUrl);
-
         window.location.href = authorizeUrl;
     };
 
@@ -38,6 +60,10 @@ var OAuth = (function(OAuthConfig) {
         var https = require("https"),
             url = require("url");
         var urlParts = url.parse(req.url, true);
+        
+        console.log("---------------------------Authenticate partner - start--------------------------------------")
+        console.log(req);
+        console.log("---------------------------Authenticate partner - end--------------------------------------")
 
         process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
@@ -62,6 +88,7 @@ var OAuth = (function(OAuthConfig) {
         };
 
         var req = https.request(requestOptions, function(res) {
+            
             var body = "";
             res.setEncoding("utf8");
 
@@ -72,9 +99,11 @@ var OAuth = (function(OAuthConfig) {
             res.on("end", function() {
                 var tokenResponse = JSON.parse(body),
                     secureUrls = [];
-
+                
                 console.log("---------------- Backend accessible data ----------------");
-
+                console.log(tokenResponse);
+                
+                console.log("----------This is a test-----------------");
                 for (var idx = 0; idx < tokenResponse.additional_info.sites.length; idx++) {
                     var siteInfo = tokenResponse.additional_info.sites[idx];
 
@@ -104,6 +133,8 @@ var OAuth = (function(OAuthConfig) {
         req.end();
 
         process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1';
+        
+         console.log("-----------------END REQUEST-------------");
     };
 
     return new OAuthTwoLeg(OAuthConfig);

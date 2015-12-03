@@ -115,10 +115,10 @@ $.extend(webComponent, {
                 "Authorization": bcConfig.accessToken
             }
         });
-        
+
         var self = this;
         response.done(function(data) {
-            var evtCtx = { result: data };
+            var evtCtx = {result: data};
             self.trigger("post-fetch", evtCtx);
             data = evtCtx.result;
 

@@ -26,6 +26,8 @@ var jsCoreFiles = [
     "lib/bootstrap/dist/js/bootstap.js",
     "lib/jquery/dist/jquery.js",
     "lib/jquery-cookie/jquery.cookie.js",
+    "lib/underscore/underscore.js",
+    "lib/backbone/backbone.js",
     "src/bcapi.js",
     "src/helper.js",
     "src/config.js",

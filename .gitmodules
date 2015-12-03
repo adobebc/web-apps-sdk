@@ -13,3 +13,9 @@
 [submodule "sdk/lib/jquery-cookie"]
 	path = sdk/lib/jquery-cookie
 	url = https://github.com/carhartl/jquery-cookie.git
+[submodule "sdk/lib/underscore"]
+	path = sdk/lib/underscore
+	url = https://github.com/jashkenas/underscore.git
+[submodule "sdk/lib/backbone"]
+	path = sdk/lib/backbone
+	url = https://github.com/jashkenas/backbone.git

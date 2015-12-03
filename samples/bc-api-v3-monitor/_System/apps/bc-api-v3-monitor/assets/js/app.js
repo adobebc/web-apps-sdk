@@ -4,7 +4,7 @@ window.MonitorApp = (function($) {
         init: function() {
             this._dataGrid = document.getElementById("gridMonitor");
 
-            BCAPI.Security.configure(getBcConfig());
+            BCAPI.Security.configure(BCAPI.Security.getBcConfig());
 
             this._dataGrid.configure();
         },

@@ -1,13 +1,16 @@
 {
     "name": "bcapi.js",
     "preferGlobal": false,
-    "version": "0.0.1",
+    "version": "2.0.0",
     "author": "Adobe Business Catalyst",
     "description": "Web App SDK for Adobe Business Catalyst",
     "dependencies": {
         "grunt": "*",
         "grunt-cli": "*",
         "grunt-contrib-concat": "*",
+        "grunt-contrib-copy": "*",
+        "grunt-contrib-cssmin": "*",
+        "grunt-contrib-clean": "*",
         "grunt-contrib-uglify": "*",
         "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git"
     },

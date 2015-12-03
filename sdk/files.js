@@ -60,7 +60,24 @@ var webComponentFiles = [
     "src/webcomponents/textfield/textfield.html"
 ];
 
+var cssFiles = [
+    "lib/bootstrap/dist/css/bootstrap.css"
+];
+
+var fileDescriptors = [
+    {"src": ["lib/bootstrap/dist/fonts/**"],
+     "dest": "dist/fonts/"}
+];
+
+var toCopyFiles = [];
+
+fileDescriptors.forEach(function(copyDesc) {
+    toCopyFiles.push({expand: true, flatten: true, src: copyDesc.src, dest: copyDesc.dest});
+});
+
 module.exports = {
+    cssFiles: cssFiles,
     jsCoreFiles: jsCoreFiles,
+    toCopyFiles: toCopyFiles,
     webComponentFiles: webComponentFiles
 };

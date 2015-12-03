@@ -22,6 +22,7 @@
 *
 */
 var jsCoreFiles = [
+    "lib/webcomponentsjs/webcomponents.js",
     "src/bcapi.js",
     "src/helper.js",
     "src/config.js",

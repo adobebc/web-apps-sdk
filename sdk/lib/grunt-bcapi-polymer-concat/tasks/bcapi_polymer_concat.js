@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       jsFiles = options.jsFiles || [],
       webComponentFiles = options.webComponentFiles || [],
       concatenatedFiles = jsFiles.concat(webComponentFiles),
-      jsDistFileName = options.jsDistFileName || "bcapi-full.js",
+      jsDistFileName = options.jsDistFileName || "bcapi-full.min.js",
       componentsDistFileName = options.componentsDistFileName || "bcapi-webcomponents-full.html";
 
     this.files.forEach(function(f) {
@@ -141,12 +141,18 @@ module.exports = function(grunt) {
    * @method
    */
   FilesNormalizer.prototype._cleanPolymerInternalImports = function(body) {
-    body = body.replace("<link rel=\"import\" href=\"polymer-micro.html\">", "");
-    body = body.replace("<link rel=\"import\" href=\"polymer-mini.html\">", "");
-    
-    while (body.indexOf("<link rel=\"import\" href=\"bcapi-webcomponents-full.html\">") > -1) {
-      body = body.replace("<link rel=\"import\" href=\"bcapi-webcomponents-full.html\">", "");
-    }
+    var patternsToRemove = [
+      "<link rel=\"import\" href=\"polymer-micro.html\">",
+      "<link rel=\"import\" href=\"polymer-mini.html\">",
+      "<link rel=\"import\" href=\"" + this._componentsDistFileName + "\">",
+      "<script type=\"text/javascript\" src=\"" + this._jsDistFileName + "\"></script>"
+    ];
+
+    patternsToRemove.forEach(function(pattern) {
+      while (body.indexOf(pattern) > -1) {
+        body = body.replace(pattern, "");
+      }
+    });
     
     return body;
   };

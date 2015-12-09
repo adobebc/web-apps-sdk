@@ -35,7 +35,7 @@
 
         <link rel="stylesheet" href="/dist/bcapi-full.min.css">
 
-        <script type="text/javascript" src="/dist/bcapi-full.min.js"></script>
+        <script type="text/javascript" src="/dist/bcapi-full.js"></script>
 
         <link rel="import" href="/dist/bcapi-webcomponents-full.html">
 
@@ -87,11 +87,11 @@
                     <div rel="property" data-id="email1.value" title="Email 1"></div>
 
                     <div rel="custom-column" title="Custom column 1">
-                        <bc-button class="btn btn-default accordion-toggle" alt="Customer details" title="Customer details" onclick="MyApp.showCustomerDetails(this)" data$="{{item}}">
+                        <bc-button class="btn btn-default accordion-toggle" alt="Customer details" title="Customer details" onclick="MyApp.showCustomerDetails" data$="{{item}}">
                             <span class="glyphicon glyphicon-chevron-down"></span>
                         </bc-button>
 
-                        <bc-button class="btn btn-default accordion-toggle" alt="Customer orders" title="Customer orders" onclick="MyApp.showCustomerOrders(this)" data$="{{item}}">
+                        <bc-button class="btn btn-default accordion-toggle" alt="Customer orders" title="Customer orders" onclick="MyApp.showCustomerOrders" data$="{{item}}">
                             <span class="glyphicon glyphicon-list-alt"></span>
                         </bc-button>
 

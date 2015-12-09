@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"action",
+				"actionParts"
+			],
+			[
+				"acti",
+				"actionStr"
+			],
+			[
 				"cop",
 				"toCopyFiles"
 			],
@@ -124,10 +132,10 @@
 	"buffers":
 	[
 		{
-			"file": "sdk/lib/grunt-bcapi-polymer-concat/tasks/bcapi_polymer_concat.js",
+			"file": "samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/js/app.js",
 			"settings":
 			{
-				"buffer_size": 4642,
+				"buffer_size": 3455,
 				"line_ending": "Unix"
 			}
 		},
@@ -135,7 +143,23 @@
 			"file": "samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html",
 			"settings":
 			{
-				"buffer_size": 6358,
+				"buffer_size": 6342,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sdk/src/webcomponents/buttons/button.js",
+			"settings":
+			{
+				"buffer_size": 2917,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sdk/src/webcomponents/components.js",
+			"settings":
+			{
+				"buffer_size": 14211,
 				"line_ending": "Unix"
 			}
 		}
@@ -210,26 +234,26 @@
 	[
 		"/home/rcosnita/work/web-apps-sdk",
 		"/home/rcosnita/work/web-apps-sdk/sdk",
-		"/home/rcosnita/work/web-apps-sdk/sdk/dist",
-		"/home/rcosnita/work/web-apps-sdk/sdk/lib",
-		"/home/rcosnita/work/web-apps-sdk/sdk/lib/backbone",
-		"/home/rcosnita/work/web-apps-sdk/sdk/lib/bootstrap/dist",
-		"/home/rcosnita/work/web-apps-sdk/sdk/lib/bootstrap/dist/css",
-		"/home/rcosnita/work/web-apps-sdk/sdk/lib/grunt-bcapi-polymer-concat/tasks",
-		"/home/rcosnita/work/web-apps-sdk/sdk/lib/jquery/dist",
-		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize",
-		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize/node_modules",
-		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize/node_modules/.bin",
-		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-vulcanize/tasks"
+		"/home/rcosnita/work/web-apps-sdk/sdk/doc-static/tutorials",
+		"/home/rcosnita/work/web-apps-sdk/sdk/lib/backbone"
 	],
 	"file_history":
 	[
 		"/home/rcosnita/work/web-apps-sdk/sdk/files.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/components.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/button.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datagrid/datagrid.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/buttons/button.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/doc-static/tutorials/get-started.md",
+		"/home/rcosnita/work/web-apps-sdk/.travis.yml",
+		"/home/rcosnita/work/web-apps-sdk/sdk/lib/grunt-bcapi-polymer-concat/tasks/bcapi_polymer_concat.js",
+		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html",
+		"/home/rcosnita/work/web-apps-sdk/sdk/doc-static/tutorials/development-guide.md",
+		"/home/rcosnita/work/web-apps-sdk/sdk/doc-static/tutorials/tutorials.json",
 		"/home/rcosnita/work/web-apps-sdk/sdk/Gruntfile.js",
 		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/js/app.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/package.json",
 		"/home/rcosnita/work/web-apps-sdk/sdk/dist/bcapi-full.js",
-		"/home/rcosnita/work/web-apps-sdk/.travis.yml",
 		"/home/rcosnita/work/web-apps-sdk/sdk/dist/bcapi-full.min.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/dist/bcapi-full.min.css",
 		"/home/rcosnita/work/web-apps-sdk/sdk/node_modules/grunt-contrib-htmlmin/node_modules/pretty-bytes/node_modules/meow/node_modules/normalize-package-data/test/fixtures/read-package-json.json",
@@ -246,10 +270,6 @@
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security/security_helpers.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datasources/json.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datasources/api.js",
-		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/components.js",
-		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/buttons/button.js",
-		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html",
-		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/button.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datagrid/datagrid.html",
 		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next/_System/apps/bc-crm-next/customers.html",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security/bcsecuritycontext.js",
@@ -260,7 +280,6 @@
 		"/home/rcosnita/work/web-apps-sdk/samples/bc-sample-charts/_System/apps/bc-sample-charts/assets/datasource/lastnight_pizza.json",
 		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/datasource/customers.json",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/charts/piechart.html",
-		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datagrid/datagrid.js",
 		"/home/rcosnita/.config/sublime-text-3/Packages/User/snippets/uisdk-piechart-withjson.sublime-snippet",
 		"/home/rcosnita/.config/sublime-text-3/Packages/User/snippets/uisdk-dd-with-api.sublime-snippet",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/dropdown/dropdown.js",
@@ -304,7 +323,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
@@ -318,6 +337,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"onclick",
+			"ready",
+			"_wireCustomEventsFromDom",
 			"underscore",
 			"../fonts/",
 			"../fonts",
@@ -363,38 +385,38 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "sdk/lib/grunt-bcapi-polymer-concat/tasks/bcapi_polymer_concat.js",
+					"file": "samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/js/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4642,
+						"buffer_size": 3455,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4029,
-								4029
+								3432,
+								3432
 							]
 						],
 						"settings":
 						{
 							"side_bar_folders_auto_load_folder": 1,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1944.0,
+						"translation.y": 1512.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -403,15 +425,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6358,
+						"buffer_size": 6342,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1419,
-								1483
+								4879,
+								4879
 							]
 						],
 						"settings":
@@ -422,7 +444,69 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 316.0,
+						"translation.y": 1986.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "sdk/src/webcomponents/buttons/button.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2917,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2813,
+								2813
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1344.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sdk/src/webcomponents/components.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14211,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8930,
+								8930
+							]
+						],
+						"settings":
+						{
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6421.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -433,7 +517,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 36.0
 	},
 	"input":
 	{
@@ -474,7 +558,7 @@
 	"project": "web-apps-sdk.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 68.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -484,8 +568,40 @@
 		"selected_items":
 		[
 			[
+				"components.js",
+				"sdk/src/webcomponents/components.js"
+			],
+			[
+				"components",
+				"sdk/src/webcomponents/components.js"
+			],
+			[
+				"button",
+				"sdk/src/webcomponents/buttons/button.js"
+			],
+			[
+				"customers.html",
+				"samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html"
+			],
+			[
+				"files.js",
+				"sdk/files.js"
+			],
+			[
+				"datagrid",
+				"sdk/src/webcomponents/datagrid/datagrid.js"
+			],
+			[
+				"button.js",
+				"sdk/src/webcomponents/buttons/button.js"
+			],
+			[
 				"app.js",
 				"samples/bc-crm-next-new/_System/apps/bc-crm-next/assets/js/app.js"
+			],
+			[
+				"",
+				".travis.yml"
 			],
 			[
 				"packages.json",
@@ -498,10 +614,6 @@
 			[
 				"packages",
 				"sdk/package.json"
-			],
-			[
-				"button",
-				"sdk/src/webcomponents/buttons/button.html"
 			],
 			[
 				"vul",
@@ -520,10 +632,6 @@
 				"sdk/src/webcomponents/datasources/json.html"
 			],
 			[
-				"button.js",
-				"sdk/test/webcomponents/button.js"
-			],
-			[
 				"component",
 				"sdk/src/webcomponents/components.js"
 			],
@@ -538,10 +646,6 @@
 			[
 				"datagrid.html",
 				"sdk/src/webcomponents/datagrid/datagrid.html"
-			],
-			[
-				"customers.html",
-				"samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html"
 			],
 			[
 				"customres.html",
@@ -634,10 +738,6 @@
 			[
 				"textfie",
 				"sdk/src/webcomponents/textfield/textfield.html"
-			],
-			[
-				"components",
-				"sdk/src/webcomponents/components.js"
 			],
 			[
 				"components.",

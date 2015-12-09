@@ -7307,7 +7307,7 @@ this.fire('dom-change');
     
     
     
-    <script type="text/javascript" >var webComponent={is:"bc-button",properties:{data:{type:Object,observer:"_onDataChanged"},style:{type:String,reflectToAttribute:!0},"class":{type:String,reflectToAttribute:!0}},customEvents:["dataChanged"]};webComponent=BCAPI.Components.ComponentsFactory.get(webComponent),$.extend(webComponent,{_onDataChanged:function(t){this.trigger("data-changed",t)}});</script>
+    <script type="text/javascript" >var webComponent={is:"bc-button",properties:{data:{type:Object,observer:"_onDataChanged"},style:{type:String,reflectToAttribute:!0},"class":{type:String,reflectToAttribute:!0}},customEvents:["dataChanged"]};webComponent=BCAPI.Components.ComponentsFactory.get(webComponent),$.extend(webComponent,{attached:function(){this.__base.attached.apply(this),this._rescopeNativeDomEvent("onclick",[this])},_onDataChanged:function(t){this.trigger("data-changed",t)}});</script>
 
     <script type="text/javascript">
     Polymer(webComponent);

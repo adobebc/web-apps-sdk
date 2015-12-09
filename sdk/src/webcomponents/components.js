@@ -134,6 +134,7 @@
 
         console.log(this.is + ": attached to dom.");
     };
+
     /**
      * This method provides the algorithm for changing css classes for specified dom elements.
      *
@@ -215,6 +216,53 @@
      */
     Component.prototype.isBcComponent = function() {
         return this.__COMPTYPE__ === "BcApiComponent";
+    };
+
+    /**
+     * This method is designed to allow components to rescope native dom elemenets events to a custom reliable
+     * action. We do this, because at the moment, the native dom events have weir behavior on non-chrome browser,
+     * though making simple events like onclick unpredictable.
+     *
+     * @protected
+     * @instance
+     * @method
+     * @param {String} evtName The native dom event name we want to rescope.
+     * @param {Array} args An array of additional arguments we want to pass to the callback method.
+     * @returns {function} The new function which is going to handle the event name.
+     */
+    Component.prototype._rescopeNativeDomEvent = function(evtName, args) {
+        console.log("Rescoping event: " + evtName);
+
+        var actionStr = this.getAttribute(evtName);
+
+        if (!actionStr || actionStr.trim().length == 0) {
+            return function() { };
+        }
+
+        var actionParts = actionStr.split("."),
+            action = undefined,
+            ctx = undefined,
+            idx = 0;
+
+        do {
+            action = (action || window)[actionParts[idx++]];
+
+            if (!action) {
+                break;
+            }
+
+            if (typeof action === "object") {
+                ctx = action;
+            }
+        } while (action && idx < actionParts.length);
+
+        var callback = function() {
+            action.apply(ctx || {}, args);
+        };
+
+        this.addEventListener(evtName.substring(2), callback);
+
+        return callback;
     };
 
     /**

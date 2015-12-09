@@ -75,11 +75,7 @@ app.post("/oauth/cb", function(req, res) {
     
     if (req.query.state == request_hmac) {           
         console.log("----------------Request is from BC----------------");      
-        oauth.handleAuthorizationCode(req, function(securityCtx) {
-            securityCtx.appIndexPage = oauthConfig.appIndexPage;       
-                
-            res.sendStatus(200);
-        });         
+        res.sendStatus(204);      
     } else {                        
         console.log("----------------This is a fake request----------------");
         res.sendStatus(500);

@@ -47,11 +47,6 @@ app.get("/oauth/cb", function(req, res) {
     console.log("----------------New Request----------------");
     console.log(req);   
     
-    var request_hmac = getHmacSignature(oauthConfig.clientSecret,
-    _appBaseUri,
-    "oauth/cb", 
-    req.query
-    );
     
     if (req.query.state == _local_state) {       
         oauth.handleAuthorizationCode(req, function(securityCtx) {
@@ -59,8 +54,26 @@ app.get("/oauth/cb", function(req, res) {
         
         console.log(securityCtx);       
         res.render("cb-output", securityCtx);                       
-        });
-    } else if (req.query.state == request_hmac) {           
+        });       
+    } else {                        
+        console.log("----------------This is a fake request----------------");
+        res.sendStatus(500);
+    }
+
+});
+
+app.post("/oauth/cb", function(req, res) {
+    
+    console.log("----------------New Request----------------");
+    console.log(req);   
+    
+    var request_hmac = getHmacSignature(oauthConfig.clientSecret,
+    _appBaseUri,
+    "oauth/cb", 
+    req.query
+    );
+    
+    if (req.query.state == request_hmac) {           
         console.log("----------------Request is from BC----------------");      
         oauth.handleAuthorizationCode(req, function(securityCtx) {
             securityCtx.appIndexPage = oauthConfig.appIndexPage;       

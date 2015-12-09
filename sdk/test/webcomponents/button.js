@@ -143,32 +143,6 @@ describe("bc-button test suite for ensuring everything works as expected.", func
             }, function() {
                 window.MyApp = undefined;
             }, done);
-
-        /*var innerDiv = document.createElement("div");
-        innerDiv.innerHTML = "<bc-button onclick='MyApp.handleClick' data=\"simple test\">Button</bc-button>";
-        document.body.appendChild(innerDiv);
-
-        ComponentTestHelpers.execWhenReady(function() {
-            return innerDiv.querySelector("bc-button");
-        }, function(comp) {
-            try {
-                expect(comp).not.toBe(undefined);
-
-                $(comp).click();
-
-                expect(btn).toBe(comp);
-                expect(btn.data).not.toBe(undefined);
-
-                expect(btn.data).toBe("simple test");
-
-                done();
-            } finally {
-                document.body.removeChild(innerDiv);
-                window.MyApp = undefined;
-            }
-        });*/
-
-
     });
 
     it("Ensures native onclick event is correctly rescoped so that it invokes a standalone function.", function(done) {

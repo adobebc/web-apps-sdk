@@ -14,7 +14,7 @@
         },
         {
             "name": "Run tests",
-            "shell_cmd": "node node_modules/.bin/karma run",
+            "shell_cmd": "npm test",
             "selector": "source.js",
             "working_dir": "${project_path}/sdk"
         },

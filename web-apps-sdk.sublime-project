@@ -23,6 +23,12 @@
             "shell_cmd": "node node_modules/.bin/eslint src test/webcomponents",
             "selector": "source.js",
             "working_dir": "${project_path}/sdk"
+        },
+        { 
+            "name": "Build production version",
+            "shell_cmd": "node node_modules/.bin/grunt",
+            "selector": "source.js",
+            "working_dir": "${project_path}/sdk"
         }
     ]
 }

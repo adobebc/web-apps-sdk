@@ -2,18 +2,23 @@ module.exports = function(config) {
     var configuration = {
         browsers: ["Chrome", "Firefox"],
 
+        coverageReporter: {
+            type: "html",
+            dir: "coverage/"
+        },
+
         frameworks: ["jasmine"],
 
         files: [
-            "lib/webcomponentsjs/webcomponents-lite.min.js",
+            "lib/webcomponentsjs/webcomponents.min.js",
             {
                 pattern: "lib/**",
                 included: false,
                 served: true,
                 watched: false
             },
-            "https://code.jquery.com/jquery-2.1.4.js",
-            "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js",
+            "lib/jquery/dist/jquery.js",
+            "lib/jquery-cookie/jquery.cookie.js",
             {
                 pattern: "src/bcapi.js",
                 included: true,
@@ -72,8 +77,6 @@ module.exports = function(config) {
             }
         ],
 
-        reporters: ["progress", "coverage"],
-
         preprocessors: {
             "src/**/*.js": ["coverage"]
         },
@@ -85,9 +88,13 @@ module.exports = function(config) {
             "/src": "http://localhost:9876/base/src"
         },
 
-        coverageReporter: {
-            type: "html",
-            dir: "coverage/"
+        reporters: ["progress", "coverage", "threshold"],
+
+        thresholdReporter: {
+            statements: 95,
+            branches: 95,
+            functions: 95,
+            lines: 95
         }
     };
 

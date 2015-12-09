@@ -44,7 +44,19 @@
  * ## Usage
  *
  * ```html
- * <bc-button>Simple button</bc-button>
+ * <bc-button onclick="MyApp.handleClick" data="{'a': 'b'}">Simple button</bc-button>
+ * ```
+ *
+ * ```javascript
+ * var MyApp = (function() {
+ *  function MyApp() { }
+ *
+ *  MyApp.prototype.handleClick = function(btn) {
+ *   console.log(btn.data.a);
+ *  };
+ *
+ *  return new MyApp();
+ * })();
  * ```
  *
  * @class Button

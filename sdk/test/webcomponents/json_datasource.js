@@ -112,6 +112,10 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
         }).toBeCustomError("BCAPI.Components.Exceptions.NotImplementedException");
     });
 
+    it("Ensures json web components correctly returns true for isDataSource.", function(done) {
+        expect(this._dataSource.isDataSource()).toBeTruthy();
+    });
+
     /**
      * This function provides a template for ensuring list operation on json data sources works as expected.
      * @param {Object} ctx The object reference where transient data can be stored.

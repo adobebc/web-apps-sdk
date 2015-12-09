@@ -91,7 +91,7 @@ $.extend(webComponent, {
     attached: function() {
         this.__base.attached.apply(this);
 
-        this._rescopeNativeDomEvent("onclick", [this]);
+        //this._rescopeNativeDomEvent("onclick", [this]);
     },
     _onDataChanged: function(newData) {
         this.trigger("data-changed", newData);

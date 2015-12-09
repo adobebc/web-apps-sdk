@@ -239,7 +239,7 @@
 
         var actionStr = this.getAttribute(evtName);
 
-        if (!actionStr || actionStr.trim().length == 0) {
+        if (!actionStr || actionStr.trim().length === 0) {
             return function() { };
         }
 

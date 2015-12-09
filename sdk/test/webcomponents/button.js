@@ -128,25 +128,62 @@ describe("bc-button test suite for ensuring everything works as expected.", func
         }, done);
     });
 
-    it("Ensures rendered button tag click events correctly are correctly handled by bc-button parent tag.", function(done) {
-        document.body.appendChild(this._btnComponent);
+    it("Ensures native onclick event is correctly rescoped so that it works on all browsers.", function(done) {
+        var btn;
+
+        window.MyApp = {
+            handleClick: function(comp) {
+                btn = comp;
+            }
+        };
+
+        testNativeOnclickRescoping("<bc-button onclick='MyApp.handleClick' data=\"simple test\">Button</bc-button>",
+            "simple test", function() {
+                return btn;
+            }, function() {
+                window.MyApp = undefined;
+            }, done);
+
+        /*var innerDiv = document.createElement("div");
+        innerDiv.innerHTML = "<bc-button onclick='MyApp.handleClick' data=\"simple test\">Button</bc-button>";
+        document.body.appendChild(innerDiv);
 
         ComponentTestHelpers.execWhenReady(function() {
-            return document.querySelector("bc-button");
+            return innerDiv.querySelector("bc-button");
         }, function(comp) {
-            expect(comp).not.toBe(undefined);
+            try {
+                expect(comp).not.toBe(undefined);
 
-            var evtData = {"attr1": "mydata"};
+                $(comp).click();
 
-            comp.data = evtData;
+                expect(btn).toBe(comp);
+                expect(btn.data).not.toBe(undefined);
 
-            $(comp).click(function(evt) {
-                expect(evt.currentTarget).toBe(comp);
-                expect(evt.currentTarget.data).toBe(evtData);
-            });
+                expect(btn.data).toBe("simple test");
 
-            $(comp).click();
-        }, done);
+                done();
+            } finally {
+                document.body.removeChild(innerDiv);
+                window.MyApp = undefined;
+            }
+        });*/
+
+
+    });
+
+    it("Ensures native onclick event is correctly rescoped so that it invokes a standalone function.", function(done) {
+        var btn;
+
+        window.handleClick = function(comp) {
+            btn = comp;
+        };
+
+        testNativeOnclickRescoping("<bc-button onclick='handleClick' data=\"simple test\">Button</bc-button>",
+            "simple test", function() {
+                return btn;
+            }, function() {
+                window.handleClick = undefined;
+            }, done);
     });
 
     it("Ensures button custom events are correctly wired through dom definition.", function(done) {
@@ -206,4 +243,43 @@ describe("bc-button test suite for ensuring everything works as expected.", func
             document.body.removeChild(holder);
         }, done);
     }
+
+    /**
+     * This function provides a template for making sure button onclick native dom event is correctly rescoped once
+     * the webcomponent is attached to dom. This test must is extremely important because by default, it does not work
+     * on all browsers.
+     * @param {String} compMarkup The markup used for creating an instance of the button.
+     * @param {String} expectedData The expected value for button data property.
+     * @param {function} getActualBtn The actual btn argument received as parameter by the callback.
+     * @param {function} cleanup The cleanup method which must invoked after the test logic executes.
+     * @param {function} done The method which tells the asynchronous test logic ended.
+     * @returns {undefined}
+     */
+    function testNativeOnclickRescoping(compMarkup, expectedData, getActualBtn, cleanup, done) {
+        var innerDiv = document.createElement("div");
+        innerDiv.innerHTML = compMarkup;
+        document.body.appendChild(innerDiv);
+
+        ComponentTestHelpers.execWhenReady(function() {
+            return innerDiv.querySelector("bc-button");
+        }, function(comp) {
+            try {
+                expect(comp).not.toBe(undefined);
+
+                $(comp).click();
+
+                var btn = getActualBtn();
+
+                expect(btn).toBe(comp);
+                expect(btn.data).not.toBe(undefined);
+
+                expect(btn.data).toBe(expectedData);
+
+                done();
+            } finally {
+                document.body.removeChild(innerDiv);
+                cleanup();
+            }
+        });
+    };
 });

@@ -60,119 +60,111 @@
         </table>
 </div>
 <div type="cs-pod">
-     <h2 id="string-filters">String manipulation filters</h2>
+  <h2 id="string-filters">String manipulation filters</h2>
 <table width="100%" class="data-bordered">
       <tbody>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}append{% endraw %}</code>
-              </td>
-              <td><span class="cellcontent"><code>{% raw %}{{"This is the first part" | append: " appending the second part"}}{% endraw %}</code> outputs "This is the first part  appending the second part"</span>
-              </td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}prepend{% endraw %}</code>
-              </td>
-              <td><span class="cellcontent"><code>{% raw %}{{" this is the second part" | prepend: "This is the first part"}}{% endraw %}</code> outputs "This is the first part  this is thesecond part"</span>
-              </td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}capitalize{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'Sample text' | capitalize}}{% endraw %}</code> outputs "Sample Text"</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}downcase{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'Sample text' | downcase}}{% endraw %}</code> outputs "sample text"</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}upcase{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'Sample text' | upcase}}{% endraw %}</code> outputs "SAMPLE TEXT"</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}remove{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'Sample text. All occurences of "text" will be removed.' | remove: "text"}}{% endraw %}</code> outputs 'Sample . All occurences of "" will be removed.'</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}replace{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'Sample text. All occurences of "text" will be replaced.' | replace: "text", "string"}}{% endraw %}</code> outputs 'Sample string. All occurences of "string" will be replaced.'</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}replace_first{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'Sample text text.' | replace_first: "text", "string"}}{% endraw %}</code> outputs "Sample string text"</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}truncate{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'Sample text ' | truncate: 9, "..."}}{% endraw %}</code> outputs 'Sample... '</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}split{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'1,2,3,4,5 ' | split: ","}}{% endraw %}</code> splits the text and creates an array ["1","2","3","4","5"]</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}strip_html{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{"&lt;p&gt;My paragraph&lt;/p&gt;" | strip_html}}{% endraw %}</code> strips the HTML code from the string, this outputs "My paragraph"</td>
-          </tr>
-           <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}truncatewords{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{"&lt;p&gt;Lorem ipsum dolor sin amet&lt;/p&gt;" | truncatewords: 2, &quot;...&quot;}}{% endraw %}</code> strips the paragraph to a specified number of words. Example output: &quot;Lorem ipsum...&quot;</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}newline_to_br {% endraw %}</code>
-              </td>
-              <td><code>{% raw %} {% capture var %}
-One
-Two
-Three
-       &lt;br&gt;heloo echo ecko
-        lorem ipsum dolor 
-        sin amet
-{% endcapture %}
-        
-{{ var | newline_to_br }}{% endraw %}</code> creates a line break for each new line encountered</td>
-          </tr>
-          <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}strip_newlines{% endraw %}</code>
-              </td>
-              <td><code>{% raw %} {% capture var %}
-One
-Two
-Three
-       &lt;br&gt;heloo echo ecko
-        lorem ipsum dolor 
-        sin amet
-{% endcapture %}
-        
-{{ var | strip_newlines: &quot;///&quot;}}{% endraw %}</code> in this example the <code>strip_newlines: &quot;///&quot;</code> filter removes the line breaks and replaces them with &quot;///&quot;</td>
-          </tr>
-               <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}slice{% endraw %}</code>
-              </td>
-              <td><code>{% raw %} {{ "hello" | slice: -4, 2 }} {% endraw %}</code> keeps only the first two letters starting from position -4 in a string, where -1 is the last letter: '<em>el</em>'.</td>
-          </tr>
-           <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}strip{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | strip }}{% endraw %}</code> Strips tabs, spaces, and newlines (all whitespace) from the left and right side of a string. Output: 'too many spaces'</td>
-          </tr>
               <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}lstrip{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | lstrip }}{% endraw %}</code> Strips tabs, spaces, and newlines (all whitespace) from the left side of a string. Output: 'too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</td>
-          </tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}append{% endraw %}</code></td>
+                <td><span class="cellcontent"><code>{% raw %}{{ 'This is the first part' | append: ' appending the second part' }}{% endraw %}</code> outputs "This is the first part  appending the second part"</span></td>
+              </tr>
               <tr>
-              <td valign="top" class="cellrowborder"><code>{% raw %}rstrip{% endraw %}</code>
-              </td>
-              <td><code>{% raw %}{{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | rstrip }}{% endraw %}</code> stripsStrips tabs, spaces, and newlines (all whitespace) from the right side of a string. Output: '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces'</td>
-          </tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}capitalize{% endraw %}</code></td>
+                <td><code>{% raw %}{{ 'Sample text' | capitalize }}{% endraw %}</code> outputs "Sample Text"</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}downcase{% endraw %}</code></td>
+                <td><code>{% raw %}{{ 'Sample text' | downcase }}{% endraw %}</code> outputs "sample text"</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}escape{% endraw %}</code></td>
+                <td><code>{% raw %}{{ &quot;&lt;h1&gt;Escaped heading&lt;/h1&gt;&quot; | escape }}{% endraw %}</code> outputs HTML encoded &quot;&amp;lt;h1&amp;gt;Escaped heading&amp;lt;/h1&amp;gt;&quot;</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}newline_to_br {% endraw %}</code></td>
+                <td><code>{% raw %}{% capture var %}
+                  One
+                  Two
+                  Three
+                  &lt;br&gt;heloo echo ecko
+                  lorem ipsum dolor 
+                  sin amet
+                  {% endcapture %}
+                  
+                  {{ var | newline_to_br }}{% endraw %}</code> creates a line break for each new line encountered</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}pluralize{% endraw %}</code></td>
+                <td><span class="cellcontent"><code>{% raw %}{{ item.quantity | pluralize: 'item', 'items' }}{% endraw %}</code> outputs &quot;item&quot; if item.quantity is 1, or &quot;items&quot; if item.quantity is bigger then 1</span></td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}prepend{% endraw %}</code></td>
+                <td><span class="cellcontent"><code>{% raw %}{{' this is the second part' | prepend: 'This is the first part' }}{% endraw %}</code> outputs "This is the first part  this is thesecond part"</span></td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}remove{% endraw %}</code></td>
+                <td><code>{% raw %}{{'Sample text. All occurences of &quot;text&quot; will be removed.' | remove: 'text' }}{% endraw %}</code> outputs 'Sample . All occurences of "" will be removed.'</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}replace{% endraw %}</code></td>
+                <td><code>{% raw %}{{'Sample text. All occurences of "text" will be replaced.' | replace: 'text', 'string' }}{% endraw %}</code> outputs 'Sample string. All occurences of "string" will be replaced.'</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}replace_first{% endraw %}</code></td>
+                <td><code>{% raw %}{{'Sample text text.' | replace_first: 'text', 'string' }}{% endraw %}</code> outputs "Sample string text"</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}slice{% endraw %}</code></td>
+                <td><code>{% raw %} {{ 'hello' | slice: -4, 2 }} {% endraw %}</code> keeps only the first two letters starting from position -4 in a string, where -1 is the last letter: '<em>el</em>'.</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}split{% endraw %}</code></td>
+                <td><code>{% raw %}{{ '1,2,3,4,5 ' | split: ',' }}{% endraw %}</code> splits the text and creates an array ["1","2","3","4","5"]</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}strip{% endraw %}</code></td>
+                <td><code>{% raw %}{{ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | strip }}{% endraw %}</code> Strips tabs, spaces, and newlines (all whitespace) from the left and right side of a string. Output: 'too many spaces'</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}lstrip{% endraw %}</code></td>
+                <td><code>{% raw %}{{ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | lstrip }}{% endraw %}</code> Strips tabs, spaces, and newlines (all whitespace) from the left side of a string. Output: 'too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}rstrip{% endraw %}</code></td>
+                <td><code>{% raw %}{{ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' | rstrip }}{% endraw %}</code> stripsStrips tabs, spaces, and newlines (all whitespace) from the right side of a string. Output: '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;too many spaces'</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}strip_html{% endraw %}</code></td>
+                <td><code>{% raw %}{ '&lt;p&gt;My paragraph&lt;/p&gt;' | strip_html }}{% endraw %}</code> strips the HTML code from the string, this outputs "My paragraph"</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}strip_newlines{% endraw %}</code></td>
+                <td><code>{% raw %} {% capture var %}
+                  One
+                  Two
+                  Three
+                  &lt;br&gt;heloo echo ecko
+                  lorem ipsum dolor 
+                  sin amet
+                  {% endcapture %}
+                  
+                  {{ var | strip_newlines: '///'}}{% endraw %}</code> in this example the <code>strip_newlines: &quot;///&quot;</code> filter removes the line breaks and replaces them with &quot;///&quot;</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}truncate{% endraw %}</code></td>
+                <td><code>{% raw %}{{ 'Sample text ' | truncate: 9, '...' }}{% endraw %}</code> outputs 'Sample... '</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}truncatewords{% endraw %}</code></td>
+                <td><code>{% raw %}{{ '&lt;p&gt;Lorem ipsum dolor sin amet&lt;/p&gt;' | truncatewords: 2, '...' }}{% endraw %}</code> strips the paragraph to a specified number of words. Example output: &quot;Lorem ipsum...&quot;</td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}unescape{% endraw %}</code></td>
+                <td><span class="cellcontent">Opposite of escape, basically HTML decode.<code>{% raw %}  {{ "&lt;div style=&#39;color:red&#39;&gt;&lt;h1&gt;header&lt;/h1&gt;&lt;p&gt;this is a paragraph&lt;/p&gt;&lt;/div&gt;" | unescape }}{% endraw %}</code></span></td>
+              </tr>
+              <tr>
+                <td valign="top" class="cellrowborder"><code>{% raw %}upcase{% endraw %}</code></td>
+                <td><code>{% raw %}{{ 'Sample text' | upcase }}{% endraw %}</code> outputs "SAMPLE TEXT"</td>
+              </tr>
       </tbody>
     </table>
 </div>
@@ -195,19 +187,19 @@ Three
            <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}join{% endraw %}</code>
               </td>
-              <td><code>{% raw %}{{myArray | join: "///"}}{% endraw %}</code> assuming myArray is an array joins the elements and puts the separator between each element</td>
+              <td><code>{% raw %}{{ myArray | join: "///" }}{% endraw %}</code> assuming myArray is an array joins the elements and puts the separator between each element</td>
           </tr>
           <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}sort{% endraw %}</code></td>
-              <td><code>{% raw %}{{myArray | sort}}{% endraw %}</code> assuming myArray is an array ["5","4","3"] ]the sort filter outputs ["3","4","5"]</td>
+              <td><code>{% raw %}{{ myArray | sort }}{% endraw %}</code> assuming myArray is an array ["5","4","3"] ]the sort filter outputs ["3","4","5"]</td>
           </tr>
           <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}first{% endraw %}</code></td>
-              <td><code>{% raw %}{{myArray | first}}{% endraw %}</code> Will output the first item in an array</td>
+              <td><code>{% raw %}{{ myArray | first }}{% endraw %}</code> Will output the first item in an array</td>
           </tr>
           <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}last{% endraw %}</code></td>
-              <td><code>{% raw %}{{myArray | last}}{% endraw %}</code> Will output the last item in an array</td>
+              <td><code>{% raw %}{{ myArray | last }}{% endraw %}</code> Will output the last item in an array</td>
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}map{% endraw %}</code></td>
@@ -238,19 +230,19 @@ Three
             <tr>
                 <td valign="top" class="cellrowborder"><code>{% raw %}site_date{% endraw %}</code>
                 </td>
-                <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | date}}{% endraw %}</code> outputs "09-Jan-2015"</span>
+                <td><span class="cellcontent"><code>{% raw %}{{ globals.site.dateNow | date }}{% endraw %}</code> outputs "09-Jan-2015"</span>
                 </td>
             </tr>
             <tr>
                 <td valign="top" class="cellrowborder"><code>{% raw %}site_datetime{% endraw %}</code>
                 </td>
-                <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | datetime}}{% endraw %}</code> outputs "09-Jan-2015 02:46 PM"</span>
+                <td><span class="cellcontent"><code>{% raw %}{{ globals.site.dateNow | datetime }}{% endraw %}</code> outputs "09-Jan-2015 02:46 PM"</span>
                 </td>
             </tr>
             <tr>
                 <td valign="top" class="cellrowborder"><code>{% raw %}date_utc{% endraw %}</code>
                 </td>
-                <td><span class="cellcontent"><code>{% raw %}{{globals.site.dateNow | date_utc}}{% endraw %}</code> converts a date to UTC (assuming that the date is always given in the site’s timezone)</span>
+                <td><span class="cellcontent"><code>{% raw %}{{ globals.site.dateNow | date_utc }}{% endraw %}</code> converts a date to UTC (assuming that the date is always given in the site’s timezone)</span>
                 </td>
             </tr>
         </tbody>
@@ -561,13 +553,14 @@ Three
         <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}convert{% endraw %}</code>
             </td>
-            <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{3 | convert: "string" | json}}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{"3" | convert: "number" | json}}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{"false" | convert: "boolean" | json}}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{"2015-01-07" | convert: "date"}}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> </ul></span>
+            <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{ 3 | convert: "string" | json }}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{ "3" | convert: "number" | json }}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{ "false" | convert: "boolean" | json }}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{ "2015-01-07" | convert: "date" }}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> </ul></span>
             </td>
         </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}json{% endraw %}</code>
             </td>
-            <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>{% raw %}&#123;&#123;webapp1.items[0] | json&#125;&#125;{% endraw %}</code>              looks like:                          <pre class="language-javascript"><code>{
+            <td><span class="cellcontent">Displays the data passed in JSON format. For example rendering a single webapp item using -              <code>{% raw %}&#123;&#123; webapp1.items[0] | json &#125;&#125;{% endraw %}</code>              looks like:                          
+                <pre class="language-javascript"><code>{
  "itemid":"4646524",
  "name":"ABA",
  "urlWithHost":"http://abcd.com/car/ABA",
@@ -590,17 +583,11 @@ Three
             <td><span class="cellcontent">Can be used to return the number of elements in an array or the number of characters in a string.</span>
             </td>
         </tr>
-         <tr>
-            <td valign="top" class="cellrowborder"><code>{% raw %}unescape{% endraw %}</code>
-            </td>
-            <td><span class="cellcontent">Opposite of escape, basically HTML decode.<code>{% raw %}  {{"&lt;div style=&#39;color:red&#39;&gt;&lt;h1&gt;header&lt;/h1&gt;&lt;p&gt;this is a paragraph&lt;/p&gt;&lt;/div&gt;" | unescape}}{% endraw %}</code></span>
-            </td>
-        </tr>
         <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}url_param_escape/ url_param_unescape {% endraw %}</code>
             </td>
             <td><p class="cellcontent">Encodes/decodes a parameter than can be appended to an URL.</p>
-              <p class="cellcontent"><code>{% raw %} {{"&lt;div&gt; &amp; &lt;span&gt;" | url_param_escape}}{% endraw %} / {% raw %} {{&quot;&amp;lt;hello&amp;gt; &amp;amp; &amp;lt;shopify&amp;gt;&quot; | url_param_unescape}}{% endraw %}</code></p>
+              <p class="cellcontent"><code>{% raw %} {{ "&lt;div&gt; &amp; &lt;span&gt;" | url_param_escape }}{% endraw %} / {% raw %} {{ &quot;&amp;lt;hello&amp;gt; &amp;amp; &amp;lt;shopify&amp;gt;&quot; | url_param_unescape }}{% endraw %}</code></p>
             </td>
         </tr>
              <tr>

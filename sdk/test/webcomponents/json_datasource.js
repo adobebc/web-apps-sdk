@@ -112,7 +112,7 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
         }).toBeCustomError("BCAPI.Components.Exceptions.NotImplementedException");
     });
 
-    it("Ensures json web components correctly returns true for isDataSource.", function(done) {
+    it("Ensures json web components correctly returns true for isDataSource.", function() {
         expect(this._dataSource.isDataSource()).toBeTruthy();
     });
 

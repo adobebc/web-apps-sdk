@@ -17,7 +17,6 @@
 <ul>
 <li><strong>Method:</strong> GET</li>
 <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
-<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
 <li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
 
 <ul>
@@ -26,7 +25,7 @@
 <li><strong>Path:</strong> /webresources/api/v3/sites/current/templates
 
 <ul>
-<li>Alternatively, use use siteID instead of 'current'</li>
+<li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 <li><strong>Required Permissions:</strong> View Template</li>
@@ -52,7 +51,7 @@
 
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the template is enabled or not <em>(boolean)</em></li>
 <li><code>{% raw %}liveTemplateId{% endraw %}</code> - if the template is in draft mode this is the ID of the live template it corresponds to <em>(integer)</em>. 
-<p class="alert alert-info">In the Admin Console the the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
+<p class="alert alert-info">In the Admin Console the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
 
 <li><code>{% raw %}noHeaders{% endraw %}</code> - whether this template has the &quot;No HEAD elements&quot; option checked or not<em>(boolean)</em></li></ul>
 <p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
@@ -264,7 +263,7 @@ request.fail(function (jqXHR) {
 <li><strong>Path:</strong> /webresources/api/v3/sites/current/templates/[template_ID]
 
   <ul>
-<li>Alternatively, use use siteID instead of 'current'</li>
+<li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 <li><strong>Required Permissions:</strong> View Template</li>
@@ -290,7 +289,7 @@ request.fail(function (jqXHR) {
 
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the template is enabled or not <em>(boolean)</em></li>
 <li><code>{% raw %}liveTemplateId{% endraw %}</code> - if the template is in draft mode this is the ID of the live template it corresponds to <em>(integer)</em>. 
-<p class="alert alert-info">In the Admin Console the the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
+<p class="alert alert-info">In the Admin Console the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
 
 <li><code>{% raw %}noHeaders{% endraw %}</code> - whether this template has the &quot;No HEAD elements&quot; option checked or not<em>(boolean)</em></li></ul>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -433,7 +432,7 @@ request.fail(function (jqXHR) {
 </ul></li>
 <li><strong>Path:</strong> /webresources/api/v3/sites/current/templates/
   <ul>
-  <li>Alternatively, use use siteID instead of 'current'</li>
+  <li>Alternatively, use siteID instead of 'current'</li>
 </ul>
 </li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
@@ -452,7 +451,7 @@ request.fail(function (jqXHR) {
 
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the template is enabled or not <em>(boolean)</em></li>
 <li><code>{% raw %}liveTemplateId{% endraw %}</code> - if the template is in draft mode this is the ID of the live template it corresponds to <em>(integer)</em>. 
-<p class="alert alert-info">In the Admin Console the the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
+<p class="alert alert-info">In the Admin Console the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
 
 <li><code>{% raw %}noHeaders{% endraw %}</code> - whether this template has the &quot;No HEAD elements&quot; option checked or not<em>(boolean)</em></li>
 <li><code>{% raw %}desktopContent{% endraw %}</code> -the template's content <em>(string)</em></li>
@@ -557,7 +556,7 @@ console.log("Response text: " + jqXHR.responseText);
 </ul></li>
 <li><strong>Path:</strong> /webresources/api/v3/sites/current/templates/[template_ID]
   <ul>
-  <li>Alternatively, use use siteID instead of 'current'</li>
+  <li>Alternatively, use siteID instead of 'current'</li>
 </ul>
 </li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
@@ -578,7 +577,7 @@ console.log("Response text: " + jqXHR.responseText);
 
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the template is enabled or not <em>(boolean)</em></li>
 <li><code>{% raw %}liveTemplateId{% endraw %}</code> - if the template is in draft mode this is the ID of the live template it corresponds to <em>(integer)</em>. 
-<p class="alert alert-info">In the Admin Console the the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
+<p class="alert alert-info">In the Admin Console the live and draft versions of a template appear to be one entity. The system however, saves two different templates. One represents the draft version and a completely different template that represents the live version. This parameter is used to &quot;connect&quot; the two templates that basically represent the two states - live and draft.</p></li>
 
 <li><code>{% raw %}noHeaders{% endraw %}</code> - whether this template has the &quot;No HEAD elements&quot; option checked or not<em>(boolean)</em></li>
 <li><code>{% raw %}desktopContent{% endraw %}</code> -the template's content <em>(string)</em></li>
@@ -673,7 +672,7 @@ request.fail(function(jqXHR) {
 </ul></li>
 <li><strong>Path:</strong> /webresources/api/v3/sites/current/templates/[template_ID]
   <ul>
-  <li>Alternatively, use use siteID instead of 'current'</li>
+  <li>Alternatively, use siteID instead of 'current'</li>
 </ul>
 </li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>

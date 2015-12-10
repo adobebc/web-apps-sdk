@@ -15,7 +15,7 @@
 <li><strong>Path:</strong> /webresources/api/v3/sites/current/blogs/[blogs_ID]/tags
 
   <ul>
-<li>Alternatively, use use siteID instead of 'current'</li>
+<li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 
@@ -28,11 +28,11 @@
 <p>An array of the first 10 blogs; each object has the following properties:</p>
 
 <ul>
-<li><strong>objectId</strong> - the blog post's ID <em>(numeric)</em></li>
-<li><strong>tagId</strong> - the tag's ID <em>(numeric)</em></li>
-<li><strong>objectType</strong> - the current item's object type - for blogposts this is <em>56</em> <em>(numeric)</em></li>
-<li><strong>siteId</strong> -the site's ID <em>(numeric)</em></li>
-<li><strong>tag</strong> - an object containing the tag's properties <em>(object)</em>
+<li><code>objectId</code> - the blog post's ID <em>(numeric)</em></li>
+<li><code>tagId</code> - the tag's ID <em>(numeric)</em></li>
+<li><code>objectType</code> - the current item's object type - for blogposts this is <em>56</em> <em>(numeric)</em></li>
+<li><code>siteId</code> -the site's ID <em>(numeric)</em></li>
+<li><code>tag</code> - an object containing the tag's properties <em>(object)</em>
 <ul>
 <li><strong>id</strong> - the tag's ID <em>(numeric)</em></li>
 <li><strong>siteId</strong> -the site's ID <em>(numeric)</em></li>
@@ -93,7 +93,7 @@ request.fail(function (jqXHR) {
 <li><strong>Path:</strong> /webresources/api/v3/sites/current/blogs/[blogs_ID]/tags
 
   <ul>
-<li>Alternatively, use use siteID instead of 'current'</li>
+<li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 
@@ -157,7 +157,7 @@ request.fail(function (jqXHR) {
 <li><strong>Path:</strong> /webresources/api/v3/sites/current/blogposts/[blog_ID]/tags
 
   <ul>
-<li>Alternatively, use use siteID instead of 'current'</li>
+<li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 

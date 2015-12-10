@@ -3,59 +3,45 @@
 <div type="cs-pod">
      <h2 id="math-filters">Mathematical filters</h2> 
         <table width="100%" class="data-bordered">
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}ceil{% endraw %}</code></td>
+            <td><span class="cellcontent">rounded up - <code>{% raw %}{{4.3|ceil}} {% endraw %}</code> is 5</span></td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}divided_by{% endraw %}</code></td>
+            <td><p><span class="cellcontent">division - <code>{% raw %}{{500 | divided_by: 20}}{% endraw %}</code> is 25 <br>
+              Note: when you divide a number by another number which  has one decimal the result will also have an output:<br>
+              <code>{% raw %}{{399 | divided_by: 2.0}} {% endraw %}</code> will output: <strong>199.5</strong></span></p></td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}floor{% endraw %}</code></td>
+            <td><span class="cellcontent">rounded down - <code>{% raw %}{{4.6|floor}} {% endraw %}</code> is 4</span></td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}minus{% endraw %}</code></td>
+            <td><span class="cellcontent">substraction - <code>{% raw %}{{500 | minus: 20}}{% endraw %}</code> is 480</span></td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}modulo{% endraw %}</code></td>
+            <td><span class="cellcontent">Divides the number by the modulo parameter and returns the remainder - <code>{% raw %}{{3 | modulo: 2}}{% endraw %}</code> is 1, <code>{% raw %}{{6 | modulo: 2}}{% endraw %}</code> is 0</span></td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}plus{% endraw %}</code></td>
+            <td><span class="cellcontent">addition - <code>{% raw %}{{500 | plus: 20}}{% endraw %}</code> is 520</span></td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}round{% endraw %}</code></td>
+            <td><span class="cellcontent">typical rounding - <code>{% raw %}{{4.5|round}} {% endraw %}</code> is 5 &amp;<code>{% raw %}{{4.4|round}} {% endraw %}</code> is 4</span></td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}round:x{% endraw %}</code></td>
+            <td><span class="cellcontent">rounding by number of decimals - <code>{% raw %}{{4.5612|round:2}} {% endraw %}</code> is 4.56</span></td>
+          </tr>
+          <tr>
+            <td valign="top" class="cellrowborder"><code>{% raw %}times{% endraw %}</code></td>
+            <td><span class="cellcontent">multiplication - <code>{% raw %}{{500 | times: 2}}{% endraw %}</code> is 1000</span></td>
+          </tr>
             <tbody>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}divided_by{% endraw %}</code>
-                    </td>
-                    <td><p><span class="cellcontent">division - <code>{% raw %}{{500 | divided_by: 20}}{% endraw %}</code> is 25
-                    <br>
-                    Note: when you divide a number by another number which  has one decimal the result will also have an output:<br>
-                    <code>{% raw %}{{399 | divided_by: 2.0}} {% endraw %}</code> will output: <strong>199.5</strong> </span></p>
-                    <p>&nbsp;</p></td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}minus{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">substraction - <code>{% raw %}{{500 | minus: 20}}{% endraw %}</code> is 480</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}plus{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">addition - <code>{% raw %}{{500 | plus: 20}}{% endraw %}</code> is 520</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}times{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">multiplication - <code>{% raw %}{{500 | times: 2}}{% endraw %}</code> is 1000</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}modulo{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">Divides the number by the modulo parameter and returns the remainder - <code>{% raw %}{{3 | modulo: 2}}{% endraw %}</code> is 1, <code>{% raw %}{{6 | modulo: 2}}{% endraw %}</code> is 0</span></td>
-                </tr>
-                 <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}floor{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">rounded down - <code>{% raw %}{{4.6|floor}} {% endraw %}</code> is 4</span></td>
-                </tr>
-                  <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}ceil{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">rounded up - <code>{% raw %}{{4.3|ceil}} {% endraw %}</code> is 5</span></td>
-                </tr>
-                  <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}round{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">typical rounding - <code>{% raw %}{{4.5|round}} {% endraw %}</code> is 5 &amp;<code>{% raw %}{{4.4|round}} {% endraw %}</code> is 4</span></td>
-                </tr>
-                  <tr>
-                    <td valign="top" class="cellrowborder"><code>{% raw %}round:x{% endraw %}</code>
-                    </td>
-                    <td><span class="cellcontent">rounding by number of decimals - <code>{% raw %}{{4.5612|round:2}} {% endraw %}</code> is 4.56</span></td>
-                </tr>
             </tbody>
         </table>
 </div>
@@ -203,7 +189,7 @@
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}map{% endraw %}</code></td>
-            <td><p>myArray = 
+            <td><p>array = 
             [{
     "id": 9683555,
     "name": "Childhood Dreams T-Shirt"
@@ -213,7 +199,7 @@
     "name": "Kung-Fu Panda T-Shirt"
   }]
             </p>
-            <p><code>{% raw %}{{myArray | map: &quot;name&quot;}}{% endraw %}</code> </p>
+            <p><code>{% raw %}{{array | map: &quot;name&quot;}}{% endraw %}</code> </p>
             <p>Accepts an array element's attribute as a parameter and creates a string from it's values: Childhood Dreams T-ShirtKung-Fu Panda T-Shirt</p></td>
           </tr>
           <tr>
@@ -383,7 +369,7 @@
     <p>To output <strong> 1914\09\03 @ 12:00:00 a.m.</strong> use <code>{% raw %}{{dateVariable
       | date: "yyyy\\MM\\dd @ hh:mm:ss tt"}}{% endraw %}</code></p>
     <p class="alert alert-warning">To use "\" (the backslash character) as separator for date elements you need to
-      escape the it in the liquid tag. Using "\\" renders "\" in the front-end.</p>
+      escape  it in the liquid tag. Using "\\" renders "\" in the front-end.</p>
     <p>Spaces and any other characters that are not usable switches are rendered without
       the need for escaping.</p>
 </div>

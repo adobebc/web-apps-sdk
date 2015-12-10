@@ -32,7 +32,7 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
         this._contentHolder = document.createElement("div");
         document.body.appendChild(this._contentHolder);
 
-        _mockJqueryAjax(self);
+        ComponentTestHelpers.mockJqueryAjax(self);
     });
 
     afterEach(function() {
@@ -143,27 +143,6 @@ describe("BCAPI.Components.DataSources.JsonDataSource tests suite.", function() 
             expect(data).toBe(expectedData);
 
             done();
-        });
-    }
-
-    /**
-     * This method is used to mock jQuery ajax function. It stores received options to the given ctx. Moreover, it
-     * returns the data from ctx._ajaxExpectedData as response to the request.
-     *
-     * @param  {Object} ctx The instance object which is going to be used to store all mocked information.
-     * @return {undefined} No result.
-     */
-    function _mockJqueryAjax(ctx) {
-        spyOn($, "ajax").and.callFake(function(lastOptions) {
-            ctx._lastOptions = lastOptions;
-
-            var result = $.Deferred();
-
-            setTimeout(function() {
-                result.resolve(ctx._ajaxExpectedData);
-            });
-
-            return result.promise();
         });
     }
 });

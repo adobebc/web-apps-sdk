@@ -48,37 +48,47 @@ webComponent.__baseDataSource = baseDataSource;
 
 $.extend(webComponent, {
     /**
-     * This method is invoked automatically in order to attach the current datasource to its parent component
-     * if necessary.
+     * This method can be used by developers to programmatically configure data source behavior.
      *
      * @public
      * @method
-     * @name attached
-     * @memberof BCAPI.Components.DataSources
+     * @instance
+     * @param {Object} opts The options object used to configure the api datasource.
+     * @param {String} opts.apiName The bc api name we want to bind this datasource to.
+     * @param {String} opts.apiVersion The bc api version we want to use.
+     * @param {String} opts.fields (optional) A comma separated list of fields we want to obtain during list / fetch operations.
+     * @param {Object} opts.where (optional) A json object we want to use for filtering api records on server side.
+     * @param {Object} opts.resourceId (optional) A specific resource identifier we want to fetch using this data source.
+     * @memberof BCAPI.Components.DataSources.ApiDataSource
      * @returns {undefined}
      */
-    attached: function() {
-        this.__baseDataSource.attached.apply(this);
-    },
-    ready: function() {
-        var parentNode = this.parentNode,
-            self = this;
-
-        while (parentNode && !parentNode._supportsDataSource) {
-            parentNode = parentNode.parentNode;
-        }
-
-        if (parentNode && parentNode._supportsDataSource) {
-            parentNode._dataSource = this;
-        }
-    },
     configure: function(opts) {
         this.apiName = opts.apiName || this.apiName;
         this.apiVersion = opts.apiVersion || this.apiVersion;
         this.fields = opts.fields || this.fields;
-        this.where = opts.where || this.where;
+        
+        var where = opts.where || this.where;
+        if (where && typeof where === "string") {
+            where = JSON.parse(where);
+        }
+
+        this.where = where;
         this.resourceId = opts.resourceId;
     },
+    /**
+     * This method is used for list / fetch operations on the binded api name / version. It supports temporary overriding
+     * datasource parameters (where, fields, resourceId) through opts parameter.
+     *
+     * @public
+     * @instance
+     * @method
+     * @param {Object} opts Options used to override datasource parameters. In addition it can be used override other parameters passed to api (e.g order).
+     * @param {String} opts.fields (optional) A comma separated list of fields we want to fetch from api.
+     * @param {Object} opts.where (optional) A json object describing the filter which must be applied server side for the current list / fetch operation.
+     * @param {String} opts.resourceId (optional) A resource identifier we attempt to fetch from server.
+     * @memberof BCAPI.Components.DataSources.ApiDataSource
+     * @returns {Promise} A promise which can be used in order to react when the list operation finished. At the moment it is a jquery compatible promise.
+     */
     list: function(opts) {
         var data = [],
             loader = $.Deferred(),
@@ -88,7 +98,9 @@ $.extend(webComponent, {
 
         opts.fields = opts.fields || this.fields;
         opts.where = opts.where || this.where;
-        opts.resourceId = opts.resourceId || this.resourceId;
+        
+        var resourceId = opts.resourceId || this.resourceId;
+        delete opts.resourceId;
 
         if (!bcConfig) {
             return;
@@ -109,7 +121,7 @@ $.extend(webComponent, {
         }
 
         var response = $.ajax({
-            "url": this._getApiUrl(this.apiName, this.apiVersion, opts.resourceId, bcConfig),
+            "url": this._getApiUrl(this.apiName, this.apiVersion, resourceId, bcConfig),
             "data": data.join("&"),
             "headers": {
                 "Authorization": bcConfig.accessToken
@@ -127,6 +139,19 @@ $.extend(webComponent, {
 
         return loader.promise();
     },
+    /**
+     * This method calculates the absolute api url based on the specified parameters.
+     *
+     * @private
+     * @method
+     * @instance
+     * @param {String} apiName The api we want to use.
+     * @param {String} apiVersion The api version we want to use.
+     * @param {String} resourceId The resource unique identifier we want to fetch.
+     * @param {Object} bcConfig The bc configuration to use. See {@link BCAPI.Security.configure} for more details.
+     * @memberof BCAPI.Components.DataSources.ApiDataSource
+     * @returns {String} The api absolute url.
+     */
     _getApiUrl: function(apiName, apiVersion, resourceId, bcConfig) {
         return [bcConfig.siteUrl, "/webresources/api/", apiVersion, "/sites/current/",
             apiName, resourceId ? "/" + resourceId : ""

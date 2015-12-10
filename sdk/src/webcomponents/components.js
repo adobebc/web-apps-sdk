@@ -330,6 +330,8 @@
                     action.call(ctx, evtData);
                 };
             })(action, ctx);
+
+            console.log(evtName);
         }
 
         this.wireEvents(wiredEvents);

@@ -25,6 +25,34 @@ window.ComponentTestHelpers = (function() {
                     done();
                 }
             }, 100);
+        },
+
+        /**
+         * This method is used to mock jQuery ajax function. It stores received options to the given ctx. Moreover, it
+         * returns the data from ctx._ajaxExpectedData as response to the request.
+         *
+         * @param  {Object} ctx The instance object which is going to be used to store all mocked information.
+         * @return {undefined} No result.
+         * @example
+         * describe("Sample test suite", function() {
+         *  beforeEach(function() {
+         *      this._ajaxExpectedData = {"a": "b"};
+         *      ComponentTestHelpers.mockJqueryAjax(this);
+         *  });
+         * });
+         */
+        mockJqueryAjax: function(ctx) {
+            spyOn($, "ajax").and.callFake(function(lastOptions) {
+                ctx._lastOptions = lastOptions;
+
+                var result = $.Deferred();
+
+                setTimeout(function() {
+                    result.resolve(ctx._ajaxExpectedData);
+                });
+
+                return result.promise();
+            });
         }
     };
 })();

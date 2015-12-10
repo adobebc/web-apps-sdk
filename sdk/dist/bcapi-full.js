@@ -22872,18 +22872,22 @@ BCAPI.Helper.MicroEvent = (function() {
      * though making simple events like onclick unpredictable.
      *
      * @protected
+     * @method _rescopeNativeDomEvent
      * @instance
-     * @method
      * @param {String} evtName The native dom event name we want to rescope.
      * @param {Array} args An array of additional arguments we want to pass to the callback method.
+     * @memberof BCAPI.Components.Component
      * @returns {function} The new function which is going to handle the event name.
+     * @example
+     * // from inside a webcomponent (e.g bc-button) you can invoke _rescopeNativeDomEvent method.
+     * this._rescopeNativeDomEvent("onclick", [this]);
      */
     Component.prototype._rescopeNativeDomEvent = function(evtName, args) {
         console.log("Rescoping event: " + evtName);
 
         var actionStr = this.getAttribute(evtName);
 
-        if (!actionStr || actionStr.trim().length == 0) {
+        if (!actionStr || actionStr.trim().length === 0) {
             return function() { };
         }
 

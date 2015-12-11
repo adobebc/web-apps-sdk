@@ -90,6 +90,9 @@ $.extend(webComponent, {
     /**
      * This method allows developers to configure the current instance of the datagrid. Each bindable property can be configured using this method.
      *
+     * @public
+     * @method
+     * @instance
      * @param {opts} opts The options which must be configured on datasource.
      * @param {Array} opts.columns An array holding the descriptor of each individual column.
      * @param {Array} opts.rows An array holding each row items.

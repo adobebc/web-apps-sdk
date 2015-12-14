@@ -176,18 +176,10 @@
 			}
 		},
 		{
-			"file": "sdk/karma.conf.js",
+			"file": "sdk/src/webcomponents/datagrid/datagrid.js",
 			"settings":
 			{
-				"buffer_size": 2756,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "sdk/test/webcomponents/datasources/api.js",
-			"settings":
-			{
-				"buffer_size": 12030,
+				"buffer_size": 9499,
 				"line_ending": "Unix"
 			}
 		},
@@ -200,10 +192,18 @@
 			}
 		},
 		{
-			"file": "sdk/test/webcomponents/datasources/json.js",
+			"file": "sdk/karma.conf.js",
 			"settings":
 			{
-				"buffer_size": 5721,
+				"buffer_size": 2756,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sdk/test/webcomponents/datagrid.js",
+			"settings":
+			{
+				"buffer_size": 1401,
 				"line_ending": "Unix"
 			}
 		}
@@ -301,23 +301,16 @@
 	"expanded_folders":
 	[
 		"/home/rcosnita/work/web-apps-sdk",
-		"/home/rcosnita/work/web-apps-sdk/samples",
-		"/home/rcosnita/work/web-apps-sdk/samples/bc-api-v3-monitor",
-		"/home/rcosnita/work/web-apps-sdk/samples/bc-api-v3-monitor/_System",
-		"/home/rcosnita/work/web-apps-sdk/samples/bc-api-v3-monitor/_System/apps",
-		"/home/rcosnita/work/web-apps-sdk/samples/bc-api-v3-monitor/_System/apps/bc-api-v3-monitor",
-		"/home/rcosnita/work/web-apps-sdk/samples/bc-api-v3-monitor/_System/apps/bc-api-v3-monitor/assets",
-		"/home/rcosnita/work/web-apps-sdk/samples/bc-api-v3-monitor/_System/apps/bc-api-v3-monitor/assets/js",
 		"/home/rcosnita/work/web-apps-sdk/sdk",
-		"/home/rcosnita/work/web-apps-sdk/sdk/src",
-		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents",
-		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security",
 		"/home/rcosnita/work/web-apps-sdk/sdk/test",
-		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents",
-		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/helpers"
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents"
 	],
 	"file_history":
 	[
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/datasources/api.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/datasources/json.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/datasource.js",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/button.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/components.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/helper.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datasources/json.js",
@@ -328,7 +321,6 @@
 		"/home/rcosnita/work/web-apps-sdk/samples/bc-crm-next-new/_System/apps/bc-crm-next/customers.html",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security/security_helpers.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/files.js",
-		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/button.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/buttons/button.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/datasources/json_datasource.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/json_datasource.js",
@@ -390,7 +382,6 @@
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/bcapi.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/security/access_token.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/datasources/api.html",
-		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/datasource.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security/user.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/security/accesstoken.js",
 		"/home/rcosnita/work/web-apps-sdk/sdk/src/webcomponents/components_exceptions.js",
@@ -407,7 +398,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -475,7 +466,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -491,8 +482,8 @@
 						"selection":
 						[
 							[
-								5337,
-								5342
+								260,
+								260
 							]
 						],
 						"settings":
@@ -503,81 +494,45 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1836.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 1,
-					"file": "sdk/karma.conf.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2756,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2501,
-								2501
-							]
-						],
-						"settings":
-						{
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1105.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "sdk/test/webcomponents/datasources/api.js",
+					"buffer": 1,
+					"file": "sdk/src/webcomponents/datagrid/datagrid.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12030,
+						"buffer_size": 9499,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11715,
-								11715
+								1128,
+								1128
 							]
 						],
 						"settings":
 						{
-							"open_with_edit": true,
 							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5011.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "sdk/test/webcomponents/button.js",
 					"semi_transient": false,
 					"settings":
@@ -589,8 +544,8 @@
 						"selection":
 						[
 							[
-								1241,
-								1241
+								0,
+								0
 							]
 						],
 						"settings":
@@ -600,28 +555,34 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 4.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
 				{
-					"buffer": 4,
-					"file": "sdk/test/webcomponents/datasources/json.js",
+					"buffer": 3,
+					"file": "sdk/karma.conf.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5721,
+						"buffer_size": 2756,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1591,
-								1591
+								2151,
+								2151
 							]
 						],
 						"settings":
@@ -631,11 +592,41 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 1938.0,
+						"translation.x": 0.0,
+						"translation.y": 1690.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "sdk/test/webcomponents/datagrid.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1303,
+								1303
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -643,7 +634,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -660,21 +651,21 @@
 				1
 			],
 			[
+				1,
 				0,
-				1,
-				1,
-				2
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.5,
 			1.0
 		]
 	},
@@ -691,7 +682,7 @@
 	"project": "web-apps-sdk.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -703,6 +694,10 @@
 			[
 				"button",
 				"sdk/test/webcomponents/button.js"
+			],
+			[
+				"datagrid",
+				"sdk/src/webcomponents/datagrid/datagrid.js"
 			],
 			[
 				"helper",
@@ -779,10 +774,6 @@
 			[
 				"files.js",
 				"sdk/files.js"
-			],
-			[
-				"datagrid",
-				"sdk/src/webcomponents/datagrid/datagrid.js"
 			],
 			[
 				"app.js",
@@ -1009,7 +1000,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

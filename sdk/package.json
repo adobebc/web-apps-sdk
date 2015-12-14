@@ -12,21 +12,21 @@
         "grunt-contrib-cssmin": "*",
         "grunt-contrib-clean": "*",
         "grunt-contrib-uglify": "*",
-        "grunt-string-replace": "*",
+        "grunt-string-replace": "*",        
         "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git"
     },
     "devDependencies": {
-        "jasmine-core": "^2.3.4",
+        "eslint": "^1.2.1",
+        "esprima": "^2.5.0",
+        "grunt-init": "*",
+        "jasmine-core": "^2.3.4",        
         "karma": "^0.13.9",
         "karma-jasmine": "^0.3.6",
         "karma-coverage": "^0.5.0",
         "karma-chrome-launcher": "^0.2.0",
         "karma-firefox-launcher": "^0.1.6",
         "karma-opera-launcher": "^0.3.0 ",
-        "karma-threshold-reporter": "*",
-        "eslint": "^1.2.1",
-        "esprima": "^2.5.0",
-        "grunt-init": "*",
+        "karma-threshold-reporter": "*",        
         "uglify-js": "*"
     },
     "eslintConfig": {

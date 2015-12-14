@@ -23,7 +23,7 @@
  */
 describe("bc-datagrid test suite for ensuring everything works as expected.", function() {
     beforeEach(function() {
-        this._markup = "<html></html>";
+        this._markupLoader = ComponentTestHelpers.loadTemplate("/test/webcomponents/templates/datagrid/datagrid.html");
     });
 
     afterEach(function() {
@@ -31,6 +31,10 @@ describe("bc-datagrid test suite for ensuring everything works as expected.", fu
     });
 
     it("Ensures bc-datagrid configure works as expected.", function(done) {
-        throw new Error(this._markup);
+        this._markupLoader.then(function(compMarkup) {
+            console.log(compMarkup);
+
+            done();
+        });
     });
 });

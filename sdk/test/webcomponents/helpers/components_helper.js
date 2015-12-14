@@ -28,6 +28,30 @@ window.ComponentTestHelpers = (function() {
         },
 
         /**
+         * This method loads an existing test template and returns its string content.
+         *
+         * @param {String} tplPath The template path we want to load.
+         * @param {Object} ctxData The context object which must be passed to template during rendering.
+         * @returns {Promise} a promise object which resolves to template string once solved.
+         */
+        loadTemplate: function(tplPath, ctxData) {
+            var result = $.Deferred();
+
+            ctxData = ctxData || {};
+
+            var req = new XMLHttpRequest();
+            req.addEventListener("load", function() {
+                var tpl = Handlebars.compile(this.responseText);
+                result.resolve(tpl(ctxData));
+            });
+            req.overrideMimeType("text/plain; charset=x-user-defined");
+            req.open("GET", tplPath);
+            req.send();
+
+            return result.promise();
+        },
+
+        /**
          * This method is used to mock jQuery ajax function. It stores received options to the given ctx. Moreover, it
          * returns the data from ctx._ajaxExpectedData as response to the request.
          *

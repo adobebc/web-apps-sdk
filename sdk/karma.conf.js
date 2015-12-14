@@ -10,6 +10,12 @@ module.exports = function(config) {
         frameworks: ["jasmine"],
 
         files: [
+            {
+                "pattern": "node_modules/handlebars/dist/handlebars.js",
+                "included": true,
+                "served": true,
+                "watched": false
+            },
             "lib/webcomponentsjs/webcomponents.min.js",
             {
                 pattern: "lib/**",
@@ -74,6 +80,11 @@ module.exports = function(config) {
             {
                 pattern: "test/webcomponents/**/*.js",
                 watched: false
+            },
+            {
+                pattern: "test/webcomponents/templates/**/*.html",
+                watched: false,
+                served: true
             }
         ],
 
@@ -85,7 +96,8 @@ module.exports = function(config) {
 
         proxies: {
             "/lib": "http://localhost:9876/base/lib",
-            "/src": "http://localhost:9876/base/src"
+            "/src": "http://localhost:9876/base/src",
+            "/test": "http://localhost:9876/base/test"
         },
 
         reporters: ["progress", "coverage", "threshold"],

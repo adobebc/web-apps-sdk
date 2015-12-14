@@ -19,6 +19,3 @@
 [submodule "sdk/lib/backbone"]
 	path = sdk/lib/backbone
 	url = https://github.com/jashkenas/backbone.git
-[submodule "sdk/lib/handlebars.js"]
-	path = sdk/lib/handlebars.js
-	url = https://github.com/wycats/handlebars.js.git

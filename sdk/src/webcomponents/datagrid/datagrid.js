@@ -22,8 +22,7 @@
 *
 */
 /**
- * This class offers a fully customisable DataGrid component. It has a modern look & feel and allows developers to wire various
- * datasources into it.
+ * This class offers a fully customisable DataGrid component. It has a modern look & feel and allows developers to wire various datasources into it.
  *
  * @class DataGrid
  * @public
@@ -38,7 +37,6 @@ var webComponent = {
         apiName: String,
         apiVersion: String,
         visible: Boolean,
-        dataVarname: String,
         currData: {
             type: Object,
             readonly: true
@@ -52,7 +50,10 @@ var webComponent = {
             type: Boolean,
             value: true
         }
-    }
+    },
+    customEvents: [
+        "dataLoaded", "dataUpdated"
+    ]
 };
 
 webComponent = BCAPI.Components.ComponentsFactory.get(webComponent);
@@ -103,7 +104,6 @@ $.extend(webComponent, {
     configure: function(opts) {
         opts = opts || {};
 
-        this.dataVarname = opts.dataVarname || this.dataVarname;
         this.dataSource = opts.dataSource || this.dataSource;
 
         this.columns = opts.columns || this._getColsFromMarkup() || this.columns;
@@ -263,6 +263,8 @@ $.extend(webComponent, {
         }
 
         this.dataSource.list(fetchOptions).done(function(data) {
+            self.trigger("dataLoaded", data);
+
             self._updateCurrentData(data);
         });
     },
@@ -278,6 +280,7 @@ $.extend(webComponent, {
      */
     _updateCurrentData: function(data) {
         var rows;
+
         if ("items" in data) {
             rows = data.items;
             this.currData = data;
@@ -285,8 +288,11 @@ $.extend(webComponent, {
             rows = data;
             this.currData = {items: data, totalItemsCount: rows.length};
         }
+
         this.configure({
             rows: rows
         });
+
+        this.trigger("dataUpdated", data);
     }
 });

@@ -1,0 +1,6 @@
+{
+    "items": [
+        {"id": 1, "firstName": "Radu Viorel", "lastName": "Cosnita"}
+    ],
+    "attrOptional": 100
+}

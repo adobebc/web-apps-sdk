@@ -30,5 +30,8 @@
             "selector": "source.js",
             "working_dir": "${project_path}/sdk"
         }
-    ]
+    ],
+    "settings": {
+        "draw_white_space": "all"
+    }
 }

@@ -1,1 +1,9 @@
-<p>Hello world</p>
+<bc-datagrid id="datagrid" visible="true">
+    <bc-json url="/test/webcomponents/templates/datagrid/customers.json" rel="datasource"></bc-json>
+
+    <bc-columns style="display: none;">
+        <div rel="property" data-id="id" title="Id"></div>
+        <div rel="property" data-id="firstName" title="First name"></div>
+        <div rel="property" data-id="lastName" title="Last name"><span>\{{item.lastName}}</div>
+    </bc-columns>
+</bc-datagrid>

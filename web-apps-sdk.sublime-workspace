@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"response",
+				"responseText"
+			],
+			[
 				"expec",
 				"expectedWhere"
 			],
@@ -187,7 +191,7 @@
 			"file": "sdk/test/webcomponents/helpers/components_helper.js",
 			"settings":
 			{
-				"buffer_size": 2927,
+				"buffer_size": 3112,
 				"line_ending": "Unix"
 			}
 		},
@@ -195,7 +199,7 @@
 			"file": "sdk/karma.conf.js",
 			"settings":
 			{
-				"buffer_size": 2957,
+				"buffer_size": 3170,
 				"line_ending": "Unix"
 			}
 		},
@@ -203,15 +207,15 @@
 			"file": "sdk/test/webcomponents/datagrid.js",
 			"settings":
 			{
-				"buffer_size": 1625,
+				"buffer_size": 1644,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "sdk/test/webcomponents/templates/datagrid/datagrid.tpl",
+			"file": "sdk/test/webcomponents/templates/datagrid/datagrid.html",
 			"settings":
 			{
-				"buffer_size": 15,
+				"buffer_size": 18,
 				"line_ending": "Unix"
 			}
 		}
@@ -313,7 +317,8 @@
 		"/home/rcosnita/work/web-apps-sdk/sdk/lib",
 		"/home/rcosnita/work/web-apps-sdk/sdk/test",
 		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents",
-		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/templates"
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/templates",
+		"/home/rcosnita/work/web-apps-sdk/sdk/test/webcomponents/templates/datagrid"
 	],
 	"file_history":
 	[
@@ -413,7 +418,7 @@
 	],
 	"find":
 	{
-		"height": 42.0
+		"height": 48.0
 	},
 	"find_in_files":
 	{
@@ -512,7 +517,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -540,10 +545,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 924.0,
+						"translation.y": 1344.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -552,15 +557,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2927,
+						"buffer_size": 3112,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2904,
-								2904
+								2009,
+								2009
 							]
 						],
 						"settings":
@@ -571,25 +576,19 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 625.0,
+						"translation.y": 1184.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 3,
 					"file": "sdk/karma.conf.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2957,
+						"buffer_size": 3170,
 						"regions":
 						{
 						},
@@ -609,10 +608,48 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1822.0,
+						"translation.y": 1890.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "sdk/karma.conf.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3170,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2352,
+								2352
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2834.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -621,15 +658,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1625,
+						"buffer_size": 1644,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1423,
-								1423
+								1544,
+								1544
 							]
 						],
 						"settings":
@@ -639,27 +676,27 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 264.0,
+						"translation.y": 773.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "sdk/test/webcomponents/templates/datagrid/datagrid.tpl",
+					"file": "sdk/test/webcomponents/templates/datagrid/datagrid.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15,
+						"buffer_size": 18,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15,
-								15
+								18,
+								18
 							]
 						],
 						"settings":
@@ -680,7 +717,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 40.0
 	},
 	"input":
 	{
@@ -728,7 +765,7 @@
 	"project": "web-apps-sdk.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 76.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -737,6 +774,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"karma",
+				"sdk/karma.conf.js"
+			],
 			[
 				"",
 				"sdk/package.json"
@@ -986,10 +1027,6 @@
 				"sdk/src/webcomponents/security/bcsecuritycontext.js"
 			],
 			[
-				"karma",
-				"sdk/karma.conf.js"
-			],
-			[
 				"datasource.js",
 				"sdk/src/webcomponents/datasources/datasource.js"
 			],
@@ -1050,7 +1087,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

@@ -82,9 +82,10 @@ module.exports = function(config) {
                 watched: false
             },
             {
-                pattern: "test/webcomponents/templates/**/*.html",
+                pattern: "test/webcomponents/templates/**/*.*",
                 watched: false,
-                served: true
+                served: true,
+                included: false
             }
         ],
 
@@ -104,7 +105,7 @@ module.exports = function(config) {
 
         thresholdReporter: {
             statements: 90,
-            branches: 90,
+            branches: 85,
             functions: 85,
             lines: 90
         }

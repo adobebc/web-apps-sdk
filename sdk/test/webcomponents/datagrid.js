@@ -143,7 +143,7 @@ describe("bc-datagrid test suite for ensuring everything works as expected.", fu
             expectedRowAssertions = data.items.length * dataGrid.columns.length,
             rowAssertions = 0;
 
-        for (var idx = 0; idx < data.items.length; idx++) {
+        /*for (var idx = 0; idx < data.items.length; idx++) {
             var row = data.items[idx],
                 elements = dataGrid.querySelectorAll("span");
 
@@ -162,7 +162,9 @@ describe("bc-datagrid test suite for ensuring everything works as expected.", fu
                 expect(elemFound).toBeTruthy();
                 rowAssertions++;
             }
-        }
+        }*/
+
+        throw new Error(dataGrid.innerHTML);
 
         expect(rowAssertions).toBe(expectedRowAssertions);
     }

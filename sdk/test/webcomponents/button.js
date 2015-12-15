@@ -255,5 +255,5 @@ describe("bc-button test suite for ensuring everything works as expected.", func
                 cleanup();
             }
         });
-    };
+    }
 });

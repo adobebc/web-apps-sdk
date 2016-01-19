@@ -5,41 +5,41 @@
         <table width="100%" class="data-bordered">
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}ceil{% endraw %}</code></td>
-            <td><span class="cellcontent">rounded up - <code>{% raw %}{{4.3|ceil}} {% endraw %}</code> is 5</span></td>
+            <td><span class="cellcontent">rounded up - <code>{% raw %}{{ 4.3 | ceil }} {% endraw %}</code> is 5</span></td>
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}divided_by{% endraw %}</code></td>
-            <td><p><span class="cellcontent">division - <code>{% raw %}{{500 | divided_by: 20}}{% endraw %}</code> is 25 <br>
+            <td><p><span class="cellcontent">division - <code>{% raw %}{{ 500 | divided_by: 20 }}{% endraw %}</code> is 25 <br>
               Note: when you divide a number by another number which  has one decimal the result will also have an output:<br>
               <code>{% raw %}{{399 | divided_by: 2.0}} {% endraw %}</code> will output: <strong>199.5</strong></span></p></td>
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}floor{% endraw %}</code></td>
-            <td><span class="cellcontent">rounded down - <code>{% raw %}{{4.6|floor}} {% endraw %}</code> is 4</span></td>
+            <td><span class="cellcontent">rounded down - <code>{% raw %}{{ 4.6 |floor }} {% endraw %}</code> is 4</span></td>
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}minus{% endraw %}</code></td>
-            <td><span class="cellcontent">substraction - <code>{% raw %}{{500 | minus: 20}}{% endraw %}</code> is 480</span></td>
+            <td><span class="cellcontent">substraction - <code>{% raw %}{{ 500 | minus: 20 }}{% endraw %}</code> is 480</span></td>
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}modulo{% endraw %}</code></td>
-            <td><span class="cellcontent">Divides the number by the modulo parameter and returns the remainder - <code>{% raw %}{{3 | modulo: 2}}{% endraw %}</code> is 1, <code>{% raw %}{{6 | modulo: 2}}{% endraw %}</code> is 0</span></td>
+            <td><span class="cellcontent">Divides the number by the modulo parameter and returns the remainder - <code>{% raw %}{{ 3 | modulo: 2 }}{% endraw %}</code> is 1, <code>{% raw %}{{ 6 | modulo: 2 }}{% endraw %}</code> is 0</span></td>
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}plus{% endraw %}</code></td>
-            <td><span class="cellcontent">addition - <code>{% raw %}{{500 | plus: 20}}{% endraw %}</code> is 520</span></td>
+            <td><span class="cellcontent">addition - <code>{% raw %}{{ 500 | plus: 20 }}{% endraw %}</code> is 520</span></td>
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}round{% endraw %}</code></td>
-            <td><span class="cellcontent">typical rounding - <code>{% raw %}{{4.5|round}} {% endraw %}</code> is 5 &amp;<code>{% raw %}{{4.4|round}} {% endraw %}</code> is 4</span></td>
+            <td><span class="cellcontent">typical rounding - <code>{% raw %}{{ 4.5 | round }} {% endraw %}</code> is 5 &amp;<code>{% raw %}{{ 4.4 |round }} {% endraw %}</code> is 4</span></td>
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}round:x{% endraw %}</code></td>
-            <td><span class="cellcontent">rounding by number of decimals - <code>{% raw %}{{4.5612|round:2}} {% endraw %}</code> is 4.56</span></td>
+            <td><span class="cellcontent">rounding by number of decimals - <code>{% raw %}{{ 4.5612 | round: 2 }} {% endraw %}</code> is 4.56</span></td>
           </tr>
           <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}times{% endraw %}</code></td>
-            <td><span class="cellcontent">multiplication - <code>{% raw %}{{500 | times: 2}}{% endraw %}</code> is 1000</span></td>
+            <td><span class="cellcontent">multiplication - <code>{% raw %}{{ 500 | times: 2 }}{% endraw %}</code> is 1000</span></td>
           </tr>
             <tbody>
             </tbody>
@@ -120,7 +120,7 @@
               </tr>
               <tr>
                 <td valign="top" class="cellrowborder"><code>{% raw %}strip_html{% endraw %}</code></td>
-                <td><code>{% raw %}{ '&lt;p&gt;My paragraph&lt;/p&gt;' | strip_html }}{% endraw %}</code> strips the HTML code from the string, this outputs "My paragraph"</td>
+                <td><code>{% raw %}{{ '&lt;p&gt;My paragraph&lt;/p&gt;' | strip_html }}{% endraw %}</code> strips the HTML code from the string, this outputs "My paragraph"</td>
               </tr>
               <tr>
                 <td valign="top" class="cellrowborder"><code>{% raw %}strip_newlines{% endraw %}</code></td>
@@ -145,7 +145,7 @@
               </tr>
               <tr>
                 <td valign="top" class="cellrowborder"><code>{% raw %}unescape{% endraw %}</code></td>
-                <td><span class="cellcontent">Opposite of escape, basically HTML decode.<code>{% raw %}  {{ "&lt;div style=&#39;color:red&#39;&gt;&lt;h1&gt;header&lt;/h1&gt;&lt;p&gt;this is a paragraph&lt;/p&gt;&lt;/div&gt;" | unescape }}{% endraw %}</code></span></td>
+                <td><span class="cellcontent"><code>{% raw %}  {{ "&lt;div style=&#39;color:red&#39;&gt;&lt;h1&gt;header&lt;/h1&gt;&lt;p&gt;this is a paragraph&lt;/p&gt;&lt;/div&gt;" | unescape }}{% endraw %} Opposite of escape, basically HTML decode.</code></span></td>
               </tr>
               <tr>
                 <td valign="top" class="cellrowborder"><code>{% raw %}upcase{% endraw %}</code></td>
@@ -226,10 +226,46 @@
                 </td>
             </tr>
             <tr>
-                <td valign="top" class="cellrowborder"><code>{% raw %}date_utc{% endraw %}</code>
-                </td>
-                <td><span class="cellcontent"><code>{% raw %}{{ globals.site.dateNow | date_utc }}{% endraw %}</code> converts a date to UTC (assuming that the date is always given in the site’s timezone)</span>
-                </td>
+              <td valign="top" class="cellrowborder"><code>{% raw %}date_utc{% endraw %}</code></td>
+              <td><span class="cellcontent"><code>{% raw %}{{ globals.site.dateNow | date_utc }}{% endraw %}</code> converts a date to UTC (assuming that the date is always given in the site’s timezone)</span></td>
+            </tr>
+            <tr>
+              <td valign="top" class="cellrowborder"><code>{% raw %}date_add{% endraw %}</code></td>
+              <td><p class="cellcontent"><code>{% raw %}{{ myDate | date_add: amount, datePart }}{% endraw %}</code></p>
+                <ul>
+                  <li><code>myDate</code> - filter input should be a date time object or a string convertible to a date time object</li>
+                  <li><code>amount</code> - an integer number or a string convertible to an integer number representing the amount of date or time units to add (if positive) or to subtract (if negative) from the input date time object</li>
+                  <li><code>datePart</code> - a string representing the date or time parts to be added or subtracted. <br>
+                  The allowed values are: 
+                    <ul>
+                      <li>"year"</li>
+                      <li>"month"</li>
+                      <li>"day"</li>
+                      <li>"hour"</li>
+                      <li>"minute"</li>
+                      <li>"second" </li>
+                      <li>"millisecond"</li>
+                    </ul>
+                  </li>
+                </ul>
+                <p>E.g. using either:</p>
+                <p><code>{% raw %}{% assign myDate = &quot;2016-06-15T12:30:30.400&quot; -%}{% endraw %} <br>
+                </code>or <br>
+                <code>{% raw %}{% assign myDate = &quot;2016-06-15T12:30:30.400&quot; | convert: &quot;date&quot; -%}{% endraw %}</code><br>
+                <br>
+                and
+                </p>
+                <ul>
+                  <li><code>{% raw %}{{ myDate | date_add: 1000, &quot;year&quot; }}{% endraw %}</code> will output <strong>3016-06-15T12:30:30</strong></li>
+                  <li><code>{% raw %}{{ myDate | date_add: 3, &quot;month&quot; }}{% endraw %}</code> will output <strong>2016-09-15T12:30:30</strong></li>
+                  <li><code>{% raw %}{{ myDate | date_add: 15, &quot;day&quot; }}{% endraw %}</code> will output <strong>2016-06-30T12:30:30</strong></li>
+                  <li><code>{% raw %}{{ myDate | date_add: &quot;20&quot;, &quot;hour&quot; }}{% endraw %}</code> will output <strong>2016-06-16T08:30:30</strong></li>
+                  <li><code>{% raw %}{{ myDate | date_add: &quot;-40&quot;, &quot;minute&quot; }}{% endraw %}</code> will output <strong>2016-06-15T11:50:30</strong></li>
+                  <li><code>{% raw %}{{ myDate | date_add: 1800, &quot;second&quot; }}{% endraw %}</code> will output <strong>2016-06-15T13:00:30</strong></li>
+                  <li><code>{% raw %}{{ myDate | date_add: -500, "millisecond" | date_add: 20, "hour" | date_add: -12, "month" | date: "yyyy-MM-ddThh:mm:ss.fff" }}{%endraw%}</code> will output <strong>2015-06-16T08:30:29.900</strong></li>
+                </ul>
+                <p class="alert alert-warning">If one of the parameters is of an incompatible type or value, the filter will not alter the input.</p>
+              <p>&nbsp;</p></td>
             </tr>
         </tbody>
     </table>

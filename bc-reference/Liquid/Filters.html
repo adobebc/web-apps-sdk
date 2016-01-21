@@ -232,38 +232,32 @@
             <tr>
               <td valign="top" class="cellrowborder"><code>{% raw %}date_add{% endraw %}</code></td>
               <td><p class="cellcontent"><code>{% raw %}{{ myDate | date_add: amount, datePart }}{% endraw %}</code></p>
+                <p><code>myDate</code> - filter input should be a date time object or a string convertible to a date time object</p>
+                <p><code>amount</code> - an integer number or a string convertible to an integer number representing the amount of date or time units to add (if positive) or to subtract (if negative) from the input date time object</p>
+                <p><code>datePart</code> - a string representing the date or time parts to be added or subtracted. The allowed values are: 
+                </p>
                 <ul>
-                  <li><code>myDate</code> - filter input should be a date time object or a string convertible to a date time object</li>
-                  <li><code>amount</code> - an integer number or a string convertible to an integer number representing the amount of date or time units to add (if positive) or to subtract (if negative) from the input date time object</li>
-                  <li><code>datePart</code> - a string representing the date or time parts to be added or subtracted. <br>
-                  The allowed values are: 
-                    <ul>
-                      <li>"year"</li>
-                      <li>"month"</li>
-                      <li>"day"</li>
-                      <li>"hour"</li>
-                      <li>"minute"</li>
-                      <li>"second" </li>
-                      <li>"millisecond"</li>
-                    </ul>
-                  </li>
+                  <li>"year"</li>
+                  <li>"month"</li>
+                  <li>"day"</li>
+                  <li>"hour"</li>
+                  <li>"minute"</li>
+                  <li>"second" </li>
+                  <li>"millisecond"</li>
                 </ul>
-                <p>E.g. using either:</p>
-                <p><code>{% raw %}{% assign myDate = &quot;2016-06-15T12:30:30.400&quot; -%}{% endraw %} <br>
-                </code>or <br>
+                <p>E.g. using either one of the two line below:</p>
+                <p><code>{% raw %}{% assign myDate = &quot;2016-06-15T12:30:30.400&quot; -%}{% endraw %} </code><br>
                 <code>{% raw %}{% assign myDate = &quot;2016-06-15T12:30:30.400&quot; | convert: &quot;date&quot; -%}{% endraw %}</code><br>
                 <br>
                 and
                 </p>
-                <ul>
-                  <li><code>{% raw %}{{ myDate | date_add: 1000, &quot;year&quot; }}{% endraw %}</code> will output <strong>3016-06-15T12:30:30</strong></li>
-                  <li><code>{% raw %}{{ myDate | date_add: 3, &quot;month&quot; }}{% endraw %}</code> will output <strong>2016-09-15T12:30:30</strong></li>
-                  <li><code>{% raw %}{{ myDate | date_add: 15, &quot;day&quot; }}{% endraw %}</code> will output <strong>2016-06-30T12:30:30</strong></li>
-                  <li><code>{% raw %}{{ myDate | date_add: &quot;20&quot;, &quot;hour&quot; }}{% endraw %}</code> will output <strong>2016-06-16T08:30:30</strong></li>
-                  <li><code>{% raw %}{{ myDate | date_add: &quot;-40&quot;, &quot;minute&quot; }}{% endraw %}</code> will output <strong>2016-06-15T11:50:30</strong></li>
-                  <li><code>{% raw %}{{ myDate | date_add: 1800, &quot;second&quot; }}{% endraw %}</code> will output <strong>2016-06-15T13:00:30</strong></li>
-                  <li><code>{% raw %}{{ myDate | date_add: -500, "millisecond" | date_add: 20, "hour" | date_add: -12, "month" | date: "yyyy-MM-ddThh:mm:ss.fff" }}{%endraw%}</code> will output <strong>2015-06-16T08:30:29.900</strong></li>
-                </ul>
+                <p><code>{% raw %}{{ myDate | date_add: 1000, &quot;year&quot; }}{% endraw %}</code> will output <strong>3016-06-15T12:30:30</strong></p>
+                <p><code>{% raw %}{{ myDate | date_add: 3, &quot;month&quot; }}{% endraw %}</code> will output <strong>2016-09-15T12:30:30</strong></p>
+                <p><code>{% raw %}{{ myDate | date_add: 15, &quot;day&quot; }}{% endraw %}</code> will output <strong>2016-06-30T12:30:30</strong></p>
+                <p><code>{% raw %}{{ myDate | date_add: &quot;20&quot;, &quot;hour&quot; }}{% endraw %}</code> will output <strong>2016-06-16T08:30:30</strong></p>
+                <p><code>{% raw %}{{ myDate | date_add: &quot;-40&quot;, &quot;minute&quot; }}{% endraw %}</code> will output <strong>2016-06-15T11:50:30</strong></p>
+                <p><code>{% raw %}{{ myDate | date_add: 1800, &quot;second&quot; }}{% endraw %}</code> will output <strong>2016-06-15T13:00:30</strong></p>
+                <p><code>{% raw %}{{ myDate | date_add: -500, "millisecond" | date_add: 20, "hour" | date_add: -12, "month" | date: "yyyy-MM-ddThh:mm:ss.fff" }}{%endraw%}</code> will output <strong>2015-06-16T08:30:29.900</strong></p>
                 <p class="alert alert-warning">If one of the parameters is of an incompatible type or value, the filter will not alter the input.</p>
               <p>&nbsp;</p></td>
             </tr>

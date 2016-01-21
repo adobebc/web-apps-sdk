@@ -69,20 +69,20 @@
 &lt;/ul&gt;{% endraw %}</code></pre>
 
 <p><strong>Break</strong></p>
-<p>Causes the for loop to stop iterating when it encounters the <code>break</code> tag.</p>
+<p>Causes the for loop to <em>stop iterating</em> when it encounters the <code>break</code> tag.</p>
 <pre class="language-markup"><code>{%raw%}{% for i in (1..5) -%}
-    {% if i == 4 -%}
+	{% if i == 4 -%}
     	{% break %}
     {% else -%}
     	{{ i }}
     {% endif -%}
 {% endfor -%}{%endraw%}</code></pre>
-<p>Will output:<code> 1 2 3</code></p>
+<p>Will output: <code>1 2 3</code></p>
 <p><strong>Continue</strong></p>
-<p>Causes the for loop to skip the current iteration when it encounters the <code>continue</code> tag.</p>
+<p>Causes the for loop to <em>skip the current iteration</em> when it encounters the <code>continue</code> tag.</p>
 <pre class="language-markup"><code>{%raw%}{% for i in (1..5) -%}
-    {% if i == 4 -%}
-    	{% break %}
+	{% if i == 4 -%}
+    	{% continue %}
     {% else -%}
     	{{ i }}
     {% endif -%}

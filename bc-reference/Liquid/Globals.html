@@ -36,15 +36,37 @@
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;globals.user&#125;&#125;{% endraw %}</code></td>
-         <td class="description">User related information (assuming somebody is logged in):<pre class="language-javascript"><code>{% raw %}"user": {
-    "entityId": 10524619,
-    "firstname": "John",
-    "lastname": "Doe",
-    "fullname": "John Doe",
-    "username": "jdoe",
-    "email": "john_doe@mailinator.com",
-    "isLoggedIn": true
-  }{% endraw %}</code></pre></td>
+         <td class="description">User related information (assuming somebody is logged in):<pre class="language-javascript"><code>
+  {%raw%}{
+  "entityId": 9532870,
+  "firstname": "John",
+  "middleName": "Doe",
+  "lastname": "John",
+  "fullname": "John John Doe",
+  "username": "jdoe",
+  "email": "jdoe@mailinator.com",
+  "email2": "jdoe2@mailinator.com",
+  "email3": "jdoe3@mailinator.com",
+  "customerType": {
+    "id": 420538,
+    "name": "Other"
+  },
+  "leadSourceType": {
+    "id": 465473,
+    "name": "Other"
+  },
+  "industryType": {
+    "id": 1090438,
+    "name": "Other"
+  },
+  "ratingType": {
+    "id": 126400,
+    "name": "Warm"
+  },
+  "isWholesaler": true,
+  "isLoggedIn": true
+}{%endraw%}
+  </code></pre></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;globals.visitor&#125;&#125;{% endraw %}</code></td>

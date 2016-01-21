@@ -70,23 +70,23 @@
 
 <p><strong>Break</strong></p>
 <p>Causes the for loop to stop iterating when it encounters the <code>break</code> tag.</p>
-<pre class="language-markup"><code>{% for i in (1..5) -%}
+<pre class="language-markup"><code>{%raw%}{% for i in (1..5) -%}
     {% if i == 4 -%}
     	{% break %}
     {% else -%}
     	{{ i }}
     {% endif -%}
-{% endfor -%}</code></pre>
+{% endfor -%}{%endraw%}</code></pre>
 <p>Will output:<code> 1 2 3</code></p>
 <p><strong>Continue</strong></p>
 <p>Causes the for loop to skip the current iteration when it encounters the <code>continue</code> tag.</p>
-<pre class="language-markup"><code>{% for i in (1..5) -%}
+<pre class="language-markup"><code>{%raw%}{% for i in (1..5) -%}
     {% if i == 4 -%}
     	{% break %}
     {% else -%}
     	{{ i }}
     {% endif -%}
-{% endfor -%}</code></pre>
+{% endfor -%}{%endraw%}</code></pre>
 <p>Will output: <code>1 2 3   5</code></p>
 <p><strong>Limit and Offset</strong></p>
 <p>Liquid for loops support the ability to limit and offset the results. You can limit the number of results by a value and offset the results by a value also.<br/>

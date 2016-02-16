@@ -1,23 +1,108 @@
 <h1>&#123;module_recaptcha&#125;</h1> 
 <div class="description">
 <h2>Description</h2>
-<p>Displays Google's <a href="https://www.google.com/recaptcha/intro/index.html" title="Google Recaptcha" target="_blank">Recaptcha</a>. This module can be added from the webform detail panel and  does not have parameters or layouts it can use. </p>
-
+<p>Displays Google's <a href="https://www.google.com/recaptcha/intro/index.html" title="Google Recaptcha" target="_blank">Recaptcha</a>. This module can be added from the webform detail panel.</p>
+<h3>&nbsp;</h3>
 </div>
+<ul id="tabs" class="beta">
+
+    <li><a href="#named-params">New named parameters documentation</a></li>
+    <li><a href="#legacy">Legacy module documentation</a></li>
+  </ul>
+  <div id="named-params" class="beta">
 <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{% raw %}&#123;module_recaptcha collection=&quot;my_custom_collection_name&quot; template=&quot;&quot;&#125;{% endraw %}</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_recaptcha theme=&quot;white&quot; version=&quot;1&quot; size=&quot;normal&quot; type=&quot;image&quot;&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
-</ul>
+  <li><strong>theme</strong> - the theme used, default is <em>&quot;white</em>&quot; for v1 and <em>&quot;light</em>&quot; for v2</li>
+  <li><strong>version</strong> - version of reCaptcha used
+    <ul>
+      <li>1 - for v1 (default)</li>
+      <li>2 - for v2</li>
+    </ul>
+  </li>
+  <li><strong>size </strong>- the size of the widget (only for v2)
+    <ul>
+      <li>normal (default)</li>
+      <li>compact</li>
+    </ul>
+  </li>
+  <li><strong>type</strong> -  the type of recaptcha to serve (only for v2)
+    <ul>
+      <li>image (default)</li>
+      <li>audio</li>
+      </ul>
+  </li>
+  </ul>
+<p><span class="alert alert-info"><strong>Note:</strong> For themes and more information please check Google reCAPTCHA Documentation: <a href="https://developers.google.com/recaptcha/old/docs/customization" target="_blank">Version 1.0 - Customizing the Look and Feel</a>, <a href="https://developers.google.com/recaptcha/docs/display" target="_blank">Version 2.0 - Displaying the widget</a></span></p>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{% raw %}&#123;module_recaptcha&#125;{% endraw %}</code></li>
+    <li><code>{% raw %}&#123;module_recaptcha version=&quot;2&quot;&#125;{% endraw %}</code> - will display a default v2 reCaptcha.</li>
+       <li><code>{% raw %}&#123;module_recaptcha theme=&quot;red&quot; size=&quot;compact&quot; type=&quot;audio&quot;&#125;{% endraw %}</code> - will display a  v1 reCaptcha with the red theme, the size and type parameters are only for v2, they will be ignored</li>
+    </ul>
+<h3>Known Issues</h3>
+<p><strong>Back button issue</strong>: In IE or Edge when visiting a page containing a ReCaptcha V2 control by using the back button after the form submission, one of the following problems might happen:</p>
+<ul>
+  <li>the reCaptcha control displays the "ERROR: Stoken expired" message</li>
+  <li>the reCaptcha control loads ok but the spinner enters an infinite loop when clicking the checkbox </li>
 </ul>
+<p>End users can still use the page if refreshing it from the browser. Alternatively, partners can provide a links or buttons like below for refreshing all ReCaptcha controls from the page:</p>
+<pre class="language-markup"><code>&lt;a href="#" onclick="reCaptchaV2Manager.reloadControls(); return false;"&gt;Reload captcha&lt;/a&gt;</code></pre>
+<p id="ReCaptchaV2implementationnotes-ReCaptchaV1andReCaptchaV2controlsonthepage"><strong>Both reCaptcha versions  on the same page</strong>: V2 controls will not work on back button if V1 controls are present as well.</p>
+<p>&nbsp;</p>
+</div>
+</div>
+<div id="legacy">
+  <div class="syntax">
+<h2>Syntax</h2>
+<pre class="language-markup"><code>{% raw %}&#123;module_recaptcha,theme,version,size,type&#125;{% endraw %}</code></pre>
+</div>
+<div class="parameters">
+<h2>Parameters</h2>
+<ul>
+<li><strong>theme</strong> - the theme used, default is <em>&quot;white</em>&quot; for v1 and <em>&quot;light</em>&quot; for v2</li>
+<li><strong>version</strong> - version of reCaptcha used
+  <ul>
+    <li>1 - for v1 (default)</li>
+    <li>2 - for v2</li>
+    </ul>
+</li>
+<li><strong>size </strong>- the size of the widget (for v2)
+  <ul>
+    <li>normal (default)</li>
+    <li>compact</li>
+    </ul>
+</li>
+<li><strong>type</strong> -  the type of CAPTCHA to serve (for v2)
+  <ul>
+    <li>image (default)</li>
+    <li>audio</li>
+    </ul>
+</li>
+</ul>
+<p class="alert alert-info"><strong>Note:</strong> For themes and more information please check Google reCAPTCHA Documentation: <a href="https://developers.google.com/recaptcha/old/docs/customization" target="_blank">Version 1.0 - Customizing the Look and Feel</a>, <a href="https://developers.google.com/recaptcha/docs/display" target="_blank">Version 2.0 - Displaying the widget</a></p>
+<p><a href="https://developers.google.com/recaptcha/docs/display" target="_blank"></a></p>
+</div>
+<div class="examples">
+<h2>Examples</h2>
+<ul>
+    <li><code>{% raw %}&#123;module_recaptcha&#125;{% endraw %}</code> - will display the v1 reCaptcha with all default parameters.</li>
+    <li><code>{% raw %}&#123;module_recaptcha,dark,2,compact,&#125;{% endraw %}</code> - will display the v2 reCaptcha with a dark theme and a compact size.</li>
+    </ul>
+<h3>Known Issues</h3>
+<p><strong>Back button issue</strong>: In IE or Edge when visiting a page containing a ReCaptcha V2 control by using the back button after the form submission, one of the following problems might happen:</p>
+<ul>
+  <li>the reCaptcha control displays the "ERROR: Stoken expired" message</li>
+  <li>the reCaptcha control loads ok but the spinner enters an infinite loop when clicking the checkbox </li>
+</ul>
+<p>End users can still use the page if refreshing it from the browser. Alternatively, partners can provide a links or buttons like below for refreshing all ReCaptcha controls from the page:</p>
+<pre class="language-markup"><code>&lt;a href="#" onclick="reCaptchaV2Manager.reloadControls(); return false;"&gt;Reload captcha&lt;/a&gt;</code></pre>
+<p id="ReCaptchaV2implementationnotes-ReCaptchaV1andReCaptchaV2controlsonthepage2"><strong>Both reCaptcha versions  on the same page</strong>: V2 controls will not work on back button if V1 controls are present as well.</p>
+<p>&nbsp;</p>
+</div>
 </div>

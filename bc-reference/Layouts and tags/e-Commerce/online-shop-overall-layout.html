@@ -31,10 +31,25 @@
         <tr> <td valign="top" class="liquid tag"></td>
             <td valign="top" class="legacy tag"><p><code>{% raw %}&#123;tag_cataloguelist&#125;{% endraw %}</code>
               </td><td class="description">Lists the sub-catalogues in the current catalogue, for example &#123;tag_cataloguelist,x&#125; where <em>x</em> is the number of catalogues per row).</p>
-              <p><span class="cellcontent">The full syntax is &#123;tag_cataloguelist, rowLength, targetFrame, notUsed, sortType, hideEmptyMessage, list/table&#125;
-              </p>
-              <p><span class="cellcontent">Change: &#123;tag_cataloguelist,4&#125; to &#123;tag_cataloguelist,4,,,,,true&#125; to display in an unordered list structure.<br />
-       For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.
+              <p><span class="cellcontent">The full syntax is &#123;tag_cataloguelist, rowLength, targetFrame, notUsed, sortType, hideEmptyMessage, list/table&#125;, here are the possible parameters:</p>
+              <ul>
+    <li><strong>rowLength </strong>- Number of products per row</li>
+    <li><strong>targetFrame </strong>- e.g. _blank. Specify the frame you want the product
+        to open in</li>
+    <li><strong>resultsPerPage</strong>- Number of products per page (limit of 500 products
+        per page)</li>
+    <li><strong>sortType</strong>:</li>
+    <ul>
+        <li>Alphabetical</li>
+        <li>Price (Cheapest to most expensive)</li>
+        <li>Expiry Date (Newest to oldest)</li>
+        <li>Weight (Default)</li>
+    </ul>
+    <li><strong>hideEmptyMessage </strong>- if a catalogue does not have any products
+        you will see a message -This catalog has no products.-</li>
+    <li><strong>useLi </strong>- will render &lt;ul&gt; and &lt;li&gt;-s instead of &lt;table&gt;-s.</li>
+</ul>
+              <p>For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.
             </p></td>
         </tr>
         <tr>

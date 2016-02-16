@@ -70,22 +70,22 @@
 
 <p><strong>Break</strong></p>
 <p>Causes the for loop to <em>stop iterating</em> when it encounters the <code>break</code> tag.</p>
-<pre class="language-markup"><code>{% raw %}{% for i in (1..5) -%}
-	{% if i == 4 -%}
+<pre class="language-javascript"><code>{% raw %}{% for i in (1..5) -%}<br/>
+	{% if i == 4 -%}<br/>
 		{% break %}
-	{% else -%}
+	{% else -%}<br/>
 		{{ i }}
-	{% endif -%}
+	{% endif -%}<br/>
 {% endfor -%}{% endraw %}</code></pre>
 <p>Will output: <code>1 2 3</code></p>
 <p><strong>Continue</strong></p>
 <p>Causes the for loop to <em>skip the current iteration</em> when it encounters the <code>continue</code> tag.</p>
-<pre class="language-markup"><code>{% raw %}{% for i in (1..5) -%}
-	{% if i == 4 -%}
+<pre class="language-javascript"><code>{% raw %}{% for i in (1..5) -%}<br/>
+	{% if i == 4 -%}<br/>
 		{% continue %}
-	{% else -%}
+	{% else -%}<br/>
 		{{ i }}
-	{% endif -%}
+	{% endif -%}<br/>
 {% endfor -%}{% endraw %}</code></pre>
 <p>Will output: <code>1 2 3   5</code></p>
 <p><strong>Limit and Offset</strong></p>

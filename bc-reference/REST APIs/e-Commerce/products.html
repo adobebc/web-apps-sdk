@@ -1,93 +1,120 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</script>
+<style>
+li.removed{text-decoration:line-through;opacity:.8}
+li.new code {font-weight:700}
+</style>
+
 <h1 apiType="restv3">Products</h1> 
 <ul id="toc"></ul>
 <div id="list">
-<h2 id ="list-products">List the products of a site</h2>
+<h2 id="list-products">List the products of a site</h2>
+<p>Get all the products of your site.</p>
 <div class="request">
 <h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
 <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
-<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
-
-<ul>
-<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
-</ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/products
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
 
   <ul>
-<li>Alternatively, use siteID instead of 'current'</li>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/<code>products</code>
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
-
 </ul>
 </div>
 <div class="response">
 <h3>Response</h3>
 
 <p>An array of the first 10 products; each object has the following properties:</p>
-
 <ul>
-<li><strong>id</strong> - product ID <em>(number)</em></li>
-<li><strong>siteId</strong> - site ID <em>(number)</em></li>
-<li><strong>name</strong> - product's name <em>(string)</em></li>
-<li><strong>roleId</strong> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
-<li><strong>weight</strong> - product's weight <em>(number)</em></li>
-<li><strong>productCode</strong> - product's code <em>(string)</em></li>
-<li><strong>tags</strong> - product's tags <em>(string)</em></li>
-<li><strong>unitType</strong> - unitType <em>(string)</em></li>
-<li><strong>smallImage</strong> - product's smallImage <em>(string)</em></li>
-<li><strong>largeImage</strong> - product's largeImage <em>(string)</em></li>
-<li><strong>description</strong> - product's description <em>(string)</em></li>
-<li><strong>inventoryControl</strong> - whether this product has inventoryControl on or off<em>(boolean)</em></li>
-<li><strong>canPreorder</strong> - canPreorder <em>(boolean)</em></li>
-<li><strong>minUnits</strong> - min number units that can be added to the cart <em>(number)</em></li>
-<li><strong>maxUnits</strong> - max number units that can be added to the cart <em>(number)</em></li>
-<li><strong>inStock</strong> - number of items in stock<em>(number)</em></li>
-<li><strong>onOrder</strong> - onOrder <em>(number)</em></li>
-<li><strong>reOrder</strong> - reOrder <em>(number)</em></li>
-<li><strong>reOrderNotified</strong> - reOrderNotified <em>(boolean)</em></li>
-<li><strong>variablePerCycle</strong> - variablePerCycle <em>(boolean)</em></li>
-<li><strong>groupingID</strong> - the product's groupID <em>(number)</em></li>
-<li><strong>GroupingDefault</strong> - GroupingDefault <em>(boolean)</em></li>
-<li><strong>electronicProduct</strong> - whether or not this product is an e-Product <em>(boolean)</em></li>
-<li><strong>displayFileName</strong> - product's display name <em>(string)</em></li>
-<li><strong>size</strong> - size <em>(number)</em></li>
-<li><strong>downloadLimitCount</strong> - download limit (only applies to e-Products) <em>(number)</em></li>
-<li><strong>downloadLimitIp</strong> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
-<li><strong>productWeight</strong> - product weight <em>(number)</em></li>
-<li><strong>productVolume</strong> - product volume <em>(number)</em></li>
-<li><strong>productHeight</strong> - product height <em>(number)</em></li>
-<li><strong>productDepth</strong> - product depth <em>(number)</em></li>
-<li><strong>supplierEntityId</strong> - the supplier's entity ID <em>(number)</em></li>
-<li><strong>supplierCommission</strong> - the supplier's commission <em>(number)</em></li>
-<li><strong>isGiftVoucher</strong> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
-<li><strong>poplets</strong> - the product's poplets<em>(string)</em></li>
-<li><strong>attributes</strong> - deprecated, this is null by default, please use <a href="/reference/rest-apis/e-commerce/product-attributes.html" title="Product Attributes">Product Attributes endpoint</a></li><li><strong>custom1</strong> - custom field 1 <em>(string)</em></li>
-<li><strong>custom2</strong> - custom field 2 <em>(string)</em></li>
-<li><strong>custom3</strong> - custom field 3 <em>(string)</em></li>
-<li><strong>custom4</strong> - custom field 4 <em>(string)</em></li>
-<li><strong>releaseDate</strong> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>expiryDate</strong> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>createDate </strong>- product's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>lastUpdateDate</strong> - product's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>captureDetails</strong> - captureDetails <em>(boolean)</em></li>
-<li><strong>isOnSale</strong> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
-<li><strong>hideIfNoStock</strong> - hide product if stock is 0 <em>(boolean)</em></li>
-<li><strong>enableDropShipping</strong> - enable drop shipping <em>(boolean)</em></li>
-<li><strong>excludeFromSearch</strong> - exclude this product from search results<em>(boolean)</em></li>
-<li><strong>enabled</strong> - enabled <em>(boolean)</em></li>
-<li><strong>deleted</strong> - deleted <em>(boolean)</em></li>
-<li><strong>title</strong> - product's title <em>(string)</em></li>
-<li><strong>reIndex</strong> - reIndex <em>(boolean)</em></li>
-<li><strong>hasAttributes</strong> - hasAttributes <em>(boolean)</em></li>
-<li><strong>cycleTypeCount</strong> - cycleTypeCount <em>(number)</em></li>
-<li><strong>hasVariations</strong> - whether the product has variations enabled<em>(boolean)</em></li>
-<li><strong>slug</strong> - product's slug <em>(string)</em></li>
-<li><strong>metaProductDescription</strong> - meta description <em>(string)</em></li>
-<li><strong>canonicalUrl</strong> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
-<li><strong>absoluteCanonicalUrl</strong> - product's absolute url <em>(string)</em></li>
-
+  <li><code>id</code> - product ID <em>(number)</em></li>
+<li><code>siteId</code> - site ID <em>(number)</em></li>
+<li><code>name</code> - product's name <em>(string)</em></li>
+<li><code>roleId</code> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
+<li><code>weight</code> - product's weight <em>(number)</em></li>
+<li><code>productCode</code> - product's code <em>(string)</em></li>
+<li class="" data-release="R213"><code>tags</code> - product's keywords <em>(string)</em></li>
+<!--<li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>-->
+<li><code>unitType</code> - unitType <em>(string)</em></li>
+<li><code>smallImage</code> - product's small image <em>(string)</em></li>
+<li><code>largeImage</code> - product's large image <em>(string)</em></li>
+<li><code>description</code> - product's description <em>(string)</em></li>
+<li><code>inventoryControl</code> - whether this product has inventoryControl on or off<em> (boolean)</em></li>
+<li><code>canPreorder</code> - whether this product can be pre ordered or not <em>(boolean)</em></li>
+<li><code>minUnits</code> - minimum number of units that can be added to the cart <em>(number)</em></li>
+<li><code>maxUnits</code> - maximum number of units that can be added to the cart <em>(number)</em></li>
+<li><code>inStock</code> - number of items in stock <em>(number)</em></li>
+<li><code>onOrder</code> - onOrder <em>(number)</em></li>
+<li><code>reOrder</code> - reOrder <em>(number)</em></li>
+<li><code>reOrderNotified</code> - reOrderNotified <em>(boolean)</em></li>
+<li class="new" data-release="R213"><code>cycleTypeId</code> - can be one of the following integers (<em>number</em>)
+  <ul>
+    <li><strong>1</strong> - Once</li>
+    <li><strong>2</strong> - Daily</li>
+    <li><strong>3</strong> - Weekly</li>
+    <li><strong>4</strong> - Fortnightly</li>
+    <li><strong>5</strong> - Monthly</li>
+    <li><strong>6</strong> - Quarterly</li>
+    <li><strong>7</strong> - Half Yearly</li>
+    <li><strong>8</strong> - Yearly</li>
+  </ul>
+</li>
+<li><code>variablePerCycle</code> - variablePerCycle <em>(boolean)</em></li>
+<li><code>groupingID</code> - the product's groupID <em>(number)</em></li>
+<li><code>GroupingDefault</code> - GroupingDefault <em>(boolean)</em></li>
+<li><code>electronicProduct</code> - whether or not this product is an e-Product <em>(boolean)</em></li>
+<li><code>displayFileName</code> - product's display name <em>(string)</em></li>
+<li><code>size</code> - size <em>(number)</em></li>
+<li><code>downloadLimitCount</code> - download limit (only applies to e-Products) <em>(number)</em></li>
+<li><code>downloadLimitIp</code> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
+<li><code>productWeight</code> - product weight <em>(number)</em></li>
+<li><code>productVolume</code> - product volume <em>(number)</em></li>
+<li><code>productHeight</code> - product height <em>(number)</em></li>
+<li><code>productDepth</code> - product depth <em>(number)</em></li>
+<li><code>supplierEntityId</code> - the supplier's entity ID <em>(number)</em></li>
+<li><code>supplierCommission</code> - the supplier's commission <em>(number)</em></li>
+<li><code>isGiftVoucher</code> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
+<li><code>poplets</code> - the product's poplets<em>(string)</em></li>
+<li><code>attributes</code> - deprecated, this is null by default, please use <a href="/reference/rest-apis/e-commerce/product-attributes.html" title="Product Attributes">Product Attributes endpoint</a></li><li><code>custom1</code> - custom field 1 <em>(string)</em></li>
+<li><code>custom2</code> - custom field 2 <em>(string)</em></li>
+<li><code>custom3</code> - custom field 3 <em>(string)</em></li>
+<li><code>custom4</code> - custom field 4 <em>(string)</em></li>
+<li><code>releaseDate</code> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>expiryDate</code> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>createDate </code>- product's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>lastUpdateDate</code> - product's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>captureDetails</code> - captureDetails <em>(boolean)</em></li>
+<li><code>isOnSale</code> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
+<li><code>hideIfNoStock</code> - hide product if stock is 0 <em>(boolean)</em></li>
+<li><code>enableDropShipping</code> - enable drop shipping <em>(boolean)</em></li>
+<li><code>excludeFromSearch</code> - exclude this product from search results<em>(boolean)</em></li>
+<li><code>enabled</code> - enabled <em>(boolean)</em></li>
+<li><code>deleted</code> - deleted <em>(boolean)</em></li>
+<li><code>title</code> - product's title <em>(string)</em></li>
+<li><code>reIndex</code> - reIndex <em>(boolean)</em></li>
+<li><code>hasAttributes</code> - hasAttributes <em>(boolean)</em></li>
+<li><code>cycleTypeCount</code> - cycleTypeCount <em>(number)</em></li>
+<li><code>hasVariations</code> - whether the product has variations enabled<em>(boolean)</em></li>
+<li><code>slug</code> - product's slug <em>(string)</em></li>
+<li><code>metaProductDescription</code> - meta description <em>(string)</em></li>
+<li><code>canonicalUrl</code> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
+<li><code>absoluteCanonicalUrl</code> - product's absolute url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage1</code> - product's poplet image 1 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage2</code> - product's poplet image 2 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage3</code> - product's poplet image 3 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage4</code> - product's poplet image 4 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage5</code> - product's poplet image 5 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage6</code> - product's poplet image 6 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage7</code> - product's poplet image 7 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage8</code> - product's poplet image 8 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage9</code> - product's poplet image 9 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage10</code> - product's poplet image 10 url <em>(string)</em></li>
 </ul>
 
 
@@ -97,7 +124,7 @@
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
 
 
 var request = $.ajax({
@@ -112,150 +139,148 @@ var request = $.ajax({
 });
 request.done(function (msg) {
     console.log(msg);
-})
+});
 request.fail(function (jqXHR) {
     console.log("Request failed.");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-}){% endraw %}</code></pre>
-<p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{% raw %}{
-  "items": [
-{  
-   "id":9683555,
-   "siteId":2163596,
-   "name":"Childhood Dreams T-Shirt",
-   "roleId":-1,
-   "weight":1,
-   "productCode":"R7VWTBA6LR",
-   "tags":"",
-   "unitType":"",
-   "smallImage":"/shop/tshirt1.jpg",
-   "largeImage":"/shop/big-product-image.jpg",
-   "description":"Casual T-Shirt made from high quality bio cotton. It's light, very comfortable to wear yet it's durable and colors will remain vivid even after a couple of washes. This product is made with respect to human rights and the environment.  Made in Thailand.\r\n",
-   "inventoryControl":true,
-   "canPreorder":false,
-   "minUnits":1,
-   "maxUnits":-1,
-   "inStock":18,
-   "onOrder":0,
-   "reOrder":-1,
-   "reOrderNotified":false,
-   "variablePerCycle":false,
-   "groupingID":39793,
-   "GroupingDefault":true,
-   "electronicProduct":false,
-   "displayFileName":null,
-   "size":0,
-   "downloadLimitCount":-1,
-   "downloadLimitIp":-1,
-   "productWeight":-1.0,
-   "productVolume":-1.0,
-   "productHeight":-1.0,
-   "productDepth":-1.0,
-   "supplierEntityId":null,
-   "supplierCommission":0.0,
-   "isGiftVoucher":false,
-   "poplets":null,
-   "attributes":null,
-   "custom1":"featured",
-   "custom2":"",
-   "custom3":"",
-   "custom4":"",
-   "releaseDate":"2013-01-15T23:00:00",
-   "expiryDate":"9998-12-31T15:00:00",
-   "createDate":"2015-07-14T01:22:17.67",
-   "lastUpdateDate":"2015-07-14T01:22:17.67",
-   "captureDetails":false,
-   "isOnSale":false,
-   "hideIfNoStock":false,
-   "enableDropShipping":false,
-   "excludeFromSearch":false,
-   "enabled":true,
-   "deleted":false,
-   "title":"",
-   "reIndex":false,
-   "hasAttributes":true,
-   "cycleTypeCount":-1,
-   "hasVariations":true,
-   "slug":"childhood-dreams-t-shirt",
-   "metaProductDescription":null,
-   "canonicalUrl":"/all-t-shirts/womens-t-shirts/childhood-dreams-t-shirt",
-   "absoluteCanonicalUrl":"www.mydomain.com/all-t-shirts/womens-t-shirts/childhood-dreams-t-shirt"
-},
-{  
-   "id":9683556,
-   "siteId":2163596,
-   "name":"Kung-Fu Panda T-Shirt",
-   "roleId":-1,
-   "weight":2,
-   "productCode":"UFQ3WULVDN",
-   "tags":"",
-   "unitType":"",
-   "smallImage":"/shop/tshirt2.jpg",
-   "largeImage":"/shop/big-product-image.jpg",
-   "description":"Casual T-Shirt made from high quality bio cotton. It's light, very comfortable to wear yet it's durable and colors will remain vivid even after a couple of washes. This product is made with respect to human rights and the environment.  Made in Thailand.\r\n",
-   "inventoryControl":true,
-   "canPreorder":false,
-   "minUnits":1,
-   "maxUnits":-1,
-   "inStock":0,
-   "onOrder":0,
-   "reOrder":-1,
-   "reOrderNotified":false,
-   "variablePerCycle":false,
-   "groupingID":39793,
-   "GroupingDefault":false,
-   "electronicProduct":false,
-   "displayFileName":null,
-   "size":0,
-   "downloadLimitCount":-1,
-   "downloadLimitIp":-1,
-   "productWeight":-1.0,
-   "productVolume":-1.0,
-   "productHeight":-1.0,
-   "productDepth":-1.0,
-   "supplierEntityId":null,
-   "supplierCommission":0.0,
-   "isGiftVoucher":false,
-   "poplets":null,
-   "attributes":null,
-   "custom1":"",
-   "custom2":"",
-   "custom3":"",
-   "custom4":"",
-   "releaseDate":"2013-01-15T23:00:00",
-   "expiryDate":"9998-12-31T15:00:00",
-   "createDate":"2015-07-14T01:22:17.67",
-   "lastUpdateDate":"2015-07-14T01:22:17.67",
-   "captureDetails":false,
-   "isOnSale":false,
-   "hideIfNoStock":false,
-   "enableDropShipping":false,
-   "excludeFromSearch":false,
-   "enabled":true,
-   "deleted":false,
-   "title":"",
-   "reIndex":false,
-   "hasAttributes":true,
-   "cycleTypeCount":-1,
-   "hasVariations":true,
-   "slug":"kung-fu-panda-t-shirt",
-   "metaProductDescription":null,
-   "canonicalUrl":"/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt",
-   "absoluteCanonicalUrl":"www.mydomain.com/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt"
-}
-  ],
-  "totalItemsCount": 2,
-  "skip": 0,
-  "limit": 10
-}{% endraw %}</code></pre>
+});</code></pre>
+<h4><strong>Sample response</strong></h4>
+<pre class="language-javascript"><code>{
+    "items": [{
+        "id": 9683555,
+        "siteId": 2163596,
+        "name": "Childhood Dreams T-Shirt",
+        "roleId": -1,
+        "weight": 1,
+        "productCode": "R7VWTBA6LR",
+        "tags": "featured",
+        "unitType": "",
+        "smallImage": "/shop/tshirt1.jpg",
+        "largeImage": "/shop/big-product-image.jpg",
+        "description": "Casual T-Shirt made from high quality bio cotton. It's light, very comfortable to wear yet it's durable and colors will remain vivid even after a couple of washes. This product is made with respect to human rights and the environment.  Made in Thailand.\r\n",
+        "inventoryControl": true,
+        "canPreorder": false,
+        "minUnits": 1,
+        "maxUnits": -1,
+        "inStock": 18,
+        "onOrder": 0,
+        "reOrder": -1,
+        "reOrderNotified": false,
+        "variablePerCycle": false,
+        "groupingID": 39793,
+        "GroupingDefault": true,
+        "electronicProduct": false,
+        "displayFileName": null,
+        "size": 0,
+        "downloadLimitCount": -1,
+        "downloadLimitIp": -1,
+        "productWeight": -1.0,
+        "productVolume": -1.0,
+        "productHeight": -1.0,
+        "productDepth": -1.0,
+        "supplierEntityId": null,
+        "supplierCommission": 0.0,
+        "isGiftVoucher": false,
+        "poplets": null,
+        "attributes": null,
+        "custom1": "featured",
+        "custom2": "",
+        "custom3": "",
+        "custom4": "",
+        "releaseDate": "2013-01-15T23:00:00",
+        "expiryDate": "9998-12-31T15:00:00",
+        "createDate": "2015-07-14T01:22:17.67",
+        "lastUpdateDate": "2015-07-14T01:22:17.67",
+        "captureDetails": false,
+        "isOnSale": false,
+        "hideIfNoStock": false,
+        "enableDropShipping": false,
+        "excludeFromSearch": false,
+        "enabled": true,
+        "deleted": false,
+        "title": "",
+        "reIndex": false,
+        "hasAttributes": true,
+        "cycleTypeCount": -1,
+        "hasVariations": true,
+        "slug": "childhood-dreams-t-shirt",
+        "metaProductDescription": null,
+        "canonicalUrl": "/all-t-shirts/womens-t-shirts/childhood-dreams-t-shirt",
+        "absoluteCanonicalUrl": "www.mydomain.com/all-t-shirts/womens-t-shirts/childhood-dreams-t-shirt"
+    }, {
+        "id": 9683556,
+        "siteId": 2163596,
+        "name": "Kung-Fu Panda T-Shirt",
+        "roleId": -1,
+        "weight": 2,
+        "productCode": "UFQ3WULVDN",
+        "tags": "new",
+        "unitType": "",
+        "smallImage": "/shop/tshirt2.jpg",
+        "largeImage": "/shop/big-product-image.jpg",
+        "description": "Casual T-Shirt made from high quality bio cotton. It's light, very comfortable to wear yet it's durable and colors will remain vivid even after a couple of washes. This product is made with respect to human rights and the environment.  Made in Thailand.\r\n",
+        "inventoryControl": true,
+        "canPreorder": false,
+        "minUnits": 1,
+        "maxUnits": -1,
+        "inStock": 0,
+        "onOrder": 0,
+        "reOrder": -1,
+        "reOrderNotified": false,
+        "variablePerCycle": false,
+        "groupingID": 39793,
+        "GroupingDefault": false,
+        "electronicProduct": false,
+        "displayFileName": null,
+        "size": 0,
+        "downloadLimitCount": -1,
+        "downloadLimitIp": -1,
+        "productWeight": -1.0,
+        "productVolume": -1.0,
+        "productHeight": -1.0,
+        "productDepth": -1.0,
+        "supplierEntityId": null,
+        "supplierCommission": 0.0,
+        "isGiftVoucher": false,
+        "poplets": null,
+        "attributes": null,
+        "custom1": "",
+        "custom2": "",
+        "custom3": "",
+        "custom4": "",
+        "releaseDate": "2013-01-15T23:00:00",
+        "expiryDate": "9998-12-31T15:00:00",
+        "createDate": "2015-07-14T01:22:17.67",
+        "lastUpdateDate": "2015-07-14T01:22:17.67",
+        "captureDetails": false,
+        "isOnSale": false,
+        "hideIfNoStock": false,
+        "enableDropShipping": false,
+        "excludeFromSearch": false,
+        "enabled": true,
+        "deleted": false,
+        "title": "",
+        "reIndex": false,
+        "hasAttributes": true,
+        "cycleTypeCount": -1,
+        "hasVariations": true,
+        "slug": "kung-fu-panda-t-shirt",
+        "metaProductDescription": null,
+        "canonicalUrl": "/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt",
+        "absoluteCanonicalUrl": "www.mydomain.com/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt"
+    }],
+    "totalItemsCount": 2,
+    "skip": 0,
+    "limit": 10
+}</code></pre>
 </div>
 <hr>
 </div>
 <div id="details">
-<h2>Get a product's attributes</h2>
+<h2>Get a product's details</h2>
+<p>Get one product and it's details.</p>
 <div class="request">
 <h3>Request</h3>
 
@@ -267,10 +292,9 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/products/[product_ID]
-
-  <ul>
-<li>Alternatively, use siteID instead of 'current'</li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/<code>products</code>/<code>[product_ID]</code>
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 
@@ -281,75 +305,96 @@ request.fail(function (jqXHR) {
 
 <p>Displays the details for the product as a JSON object</p>
 <ul>
-  <li><strong>id</strong> - product ID <em>(number)</em></li>
-  <li><strong>siteId</strong> - site ID <em>(number)</em></li>
-  <li><strong>name</strong> - product's name <em>(string)</em></li>
-  <li><strong>roleId</strong> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
-  <li><strong>weight</strong> - product's weight <em>(number)</em></li>
-  <li><strong>productCode</strong> - product's code <em>(string)</em></li>
-  <li><strong>tags</strong> - product's tags <em>(string)</em></li>
-  <li><strong>unitType</strong> - unitType <em>(string)</em></li>
-  <li><strong>smallImage</strong> - product's smallImage <em>(string)</em></li>
-  <li><strong>largeImage</strong> - product's largeImage <em>(string)</em></li>
-  <li><strong>description</strong> - product's description <em>(string)</em></li>
-  <li><strong>inventoryControl</strong> - whether this product has inventoryControl on or off<em>(boolean)</em></li>
-  <li><strong>canPreorder</strong> - canPreorder <em>(boolean)</em></li>
-  <li><strong>minUnits</strong> - min number units that can be added to the cart <em>(number)</em></li>
-  <li><strong>maxUnits</strong> - max number units that can be added to the cart <em>(number)</em></li>
-  <li><strong>inStock</strong> - number of items in stock<em>(number)</em></li>
-  <li><strong>onOrder</strong> - onOrder <em>(number)</em></li>
-  <li><strong>reOrder</strong> - reOrder <em>(number)</em></li>
-  <li><strong>reOrderNotified</strong> - reOrderNotified <em>(boolean)</em></li>
-  <li><strong>variablePerCycle</strong> - variablePerCycle <em>(boolean)</em></li>
-  <li><strong>groupingID</strong> - the product's groupID <em>(number)</em></li>
-  <li><strong>GroupingDefault</strong> - GroupingDefault <em>(boolean)</em></li>
-  <li><strong>electronicProduct</strong> - whether or not this product is an e-Product <em>(boolean)</em></li>
-  <li><strong>displayFileName</strong> - product's display name <em>(string)</em></li>
-  <li><strong>size</strong> - size <em>(number)</em></li>
-  <li><strong>downloadLimitCount</strong> - download limit (only applies to e-Products) <em>(number)</em></li>
-  <li><strong>downloadLimitIp</strong> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
-  <li><strong>productWeight</strong> - product weight <em>(number)</em></li>
-  <li><strong>productVolume</strong> - product volume <em>(number)</em></li>
-  <li><strong>productHeight</strong> - product height <em>(number)</em></li>
-  <li><strong>productDepth</strong> - product depth <em>(number)</em></li>
-  <li><strong>supplierEntityId</strong> - the supplier's entity ID <em>(number)</em></li>
-  <li><strong>supplierCommission</strong> - the supplier's commission <em>(number)</em></li>
-  <li><strong>isGiftVoucher</strong> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
-  <li><strong>poplets</strong> - the product's poplets<em>(string)</em></li>
-  <li><strong>attributes</strong> - product's attributes <em>(string)</em></li>
-  <li><strong>custom1</strong> - custom field 1 <em>(string)</em></li>
-  <li><strong>custom2</strong> - custom field 2 <em>(string)</em></li>
-  <li><strong>custom3</strong> - custom field 3 <em>(string)</em></li>
-  <li><strong>custom4</strong> - custom field 4 <em>(string)</em></li>
-  <li><strong>releaseDate</strong> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-  <li><strong>expiryDate</strong> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-  <li><strong>createDate </strong>- product's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-  <li><strong>lastUpdateDate</strong> - product's last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-  <li><strong>captureDetails</strong> - captureDetails <em>(boolean)</em></li>
-  <li><strong>isOnSale</strong> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
-  <li><strong>hideIfNoStock</strong> - hide product if stock is 0 <em>(boolean)</em></li>
-  <li><strong>enableDropShipping</strong> - enable drop shipping <em>(boolean)</em></li>
-  <li><strong>excludeFromSearch</strong> - exclude this product from search results<em>(boolean)</em></li>
-  <li><strong>enabled</strong> - enabled <em>(boolean)</em></li>
-  <li><strong>deleted</strong> - deleted <em>(boolean)</em></li>
-  <li><strong>title</strong> - product's title <em>(string)</em></li>
-  <li><strong>reIndex</strong> - reIndex <em>(boolean)</em></li>
-  <li><strong>hasAttributes</strong> - hasAttributes <em>(boolean)</em></li>
-  <li><strong>cycleTypeCount</strong> - cycleTypeCount <em>(number)</em></li>
-  <li><strong>hasVariations</strong> - whether the product has variations enabled<em>(boolean)</em></li>
-  <li><strong>slug</strong> - product's slug <em>(string)</em></li>
-  <li><strong>metaProductDescription</strong> - meta description <em>(string)</em></li>
-  <li><strong>canonicalUrl</strong> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
-  <li><strong>absoluteCanonicalUrl</strong> - product's absolute url <em>(string)</em></li>
-
+  <li><code>id</code> - product ID <em>(number)</em></li>
+  <li><code>siteId</code> - site ID <em>(number)</em></li>
+  <li><code>name</code> - product's name <em>(string)</em></li>
+  <li><code>roleId</code> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
+  <li><code>weight</code> - product's weight <em>(number)</em></li>
+  <li><code>productCode</code> - product's code <em>(string)</em></li>
+  <li class="" data-release="R213"><code>tags</code> - product's keywords <em>(string)</em></li>
+<!--  <li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>-->
+  <li><code>unitType</code> - unitType <em>(string)</em></li>
+  <li><code>smallImage</code> - product's small image <em>(string)</em></li>
+  <li><code>largeImage</code> - product's large image <em>(string)</em></li>
+  <li><code>description</code> - product's description <em>(string)</em></li>
+  <li><code>inventoryControl</code> - whether this product has inventoryControl on or off<em> (boolean)</em></li>
+  <li><code>canPreorder</code> - whether this product can be pre ordered or not <em>(boolean)</em></li>
+  <li><code>minUnits</code> - minimum number of units that can be added to the cart <em>(number)</em></li>
+  <li><code>maxUnits</code> - maximum number of units that can be added to the cart <em>(number)</em></li>
+  <li><code>inStock</code> - number of items in stock <em>(number)</em></li>
+  <li><code>onOrder</code> - onOrder <em>(number)</em></li>
+  <li><code>reOrder</code> - reOrder <em>(number)</em></li>
+  <li><code>reOrderNotified</code> - reOrderNotified <em>(boolean)</em></li>
+  <li class="new" data-release="R212"><code>cycleTypeId</code> - can be one of the following integers (<em>number</em>)
+    <ul>
+      <li><strong>1</strong> - Once</li>
+      <li><strong>2</strong> - Daily</li>
+      <li><strong>3</strong> - Weekly</li>
+      <li><strong>4</strong> - Fortnightly</li>
+      <li><strong>5</strong> - Monthly</li>
+      <li><strong>6</strong> - Quarterly</li>
+      <li><strong>7</strong> - Half Yearly</li>
+      <li><strong>8</strong> - Yearly</li>
+      </ul>
+  </li>
+  <li><code>variablePerCycle</code> - variablePerCycle <em>(boolean)</em></li>
+  <li><code>groupingID</code> - the product's groupID <em>(number)</em></li>
+  <li><code>GroupingDefault</code> - GroupingDefault <em>(boolean)</em></li>
+  <li><code>electronicProduct</code> - whether or not this product is an e-Product <em>(boolean)</em></li>
+  <li><code>displayFileName</code> - product's display name <em>(string)</em></li>
+  <li><code>size</code> - size <em>(number)</em></li>
+  <li><code>downloadLimitCount</code> - download limit (only applies to e-Products) <em>(number)</em></li>
+  <li><code>downloadLimitIp</code> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
+  <li><code>productWeight</code> - product weight <em>(number)</em></li>
+  <li><code>productVolume</code> - product volume <em>(number)</em></li>
+  <li><code>productHeight</code> - product height <em>(number)</em></li>
+  <li><code>productDepth</code> - product depth <em>(number)</em></li>
+  <li><code>supplierEntityId</code> - the supplier's entity ID <em>(number)</em></li>
+  <li><code>supplierCommission</code> - the supplier's commission <em>(number)</em></li>
+  <li><code>isGiftVoucher</code> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
+  <li><code>poplets</code> - the product's poplets<em>(string)</em></li>
+  <li><code>attributes</code> - deprecated, this is null by default, please use <a href="/reference/rest-apis/e-commerce/product-attributes.html" title="Product Attributes">Product Attributes endpoint</a></li>
+  <li><code>custom1</code> - custom field 1 <em>(string)</em></li>
+  <li><code>custom2</code> - custom field 2 <em>(string)</em></li>
+  <li><code>custom3</code> - custom field 3 <em>(string)</em></li>
+  <li><code>custom4</code> - custom field 4 <em>(string)</em></li>
+  <li><code>releaseDate</code> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>expiryDate</code> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>createDate </code>- product's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>lastUpdateDate</code> - product's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>captureDetails</code> - captureDetails <em>(boolean)</em></li>
+  <li><code>isOnSale</code> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
+  <li><code>hideIfNoStock</code> - hide product if stock is 0 <em>(boolean)</em></li>
+  <li><code>enableDropShipping</code> - enable drop shipping <em>(boolean)</em></li>
+  <li><code>excludeFromSearch</code> - exclude this product from search results<em>(boolean)</em></li>
+  <li><code>enabled</code> - enabled <em>(boolean)</em></li>
+  <li><code>deleted</code> - deleted <em>(boolean)</em></li>
+  <li><code>title</code> - product's title <em>(string)</em></li>
+  <li><code>reIndex</code> - reIndex <em>(boolean)</em></li>
+  <li><code>hasAttributes</code> - hasAttributes <em>(boolean)</em></li>
+  <li><code>cycleTypeCount</code> - cycleTypeCount <em>(number)</em></li>
+  <li><code>hasVariations</code> - whether the product has variations enabled<em>(boolean)</em></li>
+  <li><code>slug</code> - product's slug <em>(string)</em></li>
+  <li><code>metaProductDescription</code> - meta description <em>(string)</em></li>
+  <li><code>canonicalUrl</code> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
+  <li><code>absoluteCanonicalUrl</code> - product's absolute url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage1</code> - product's poplet image 1 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage2</code> - product's poplet image 2 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage3</code> - product's poplet image 3 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage4</code> - product's poplet image 4 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage5</code> - product's poplet image 5 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage6</code> - product's poplet image 6 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage7</code> - product's poplet image 7 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage8</code> - product's poplet image 8 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage9</code> - product's poplet image 9 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage10</code> - product's poplet image 10 url <em>(string)</em></li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/products/9683556",
@@ -369,70 +414,505 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-}){% endraw %}</code></pre>
-<p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{% raw %}{
-  "id":9683556,
-   "siteId":2163596,
-   "name":"Kung-Fu Panda T-Shirt",
-   "roleId":-1,
-   "weight":2,
-   "productCode":"UFQ3WULVDN",
-   "tags":"",
-   "unitType":"",
-   "smallImage":"/shop/tshirt2.jpg",
-   "largeImage":"/shop/big-product-image.jpg",
-   "description":"Casual T-Shirt made from high quality bio cotton. It's light, very comfortable to wear yet it's durable and colors will remain vivid even after a couple of washes. This product is made with respect to human rights and the environment.  Made in Thailand.\r\n",
-   "inventoryControl":true,
-   "canPreorder":false,
-   "minUnits":1,
-   "maxUnits":-1,
-   "inStock":0,
-   "onOrder":0,
-   "reOrder":-1,
-   "reOrderNotified":false,
-   "variablePerCycle":false,
-   "groupingID":39793,
-   "GroupingDefault":false,
-   "electronicProduct":false,
-   "displayFileName":null,
-   "size":0,
-   "downloadLimitCount":-1,
-   "downloadLimitIp":-1,
-   "productWeight":-1.0,
-   "productVolume":-1.0,
-   "productHeight":-1.0,
-   "productDepth":-1.0,
-   "supplierEntityId":null,
-   "supplierCommission":0.0,
-   "isGiftVoucher":false,
-   "poplets":null,
-   "attributes":null,
-   "custom1":"",
-   "custom2":"",
-   "custom3":"",
-   "custom4":"",
-   "releaseDate":"2013-01-15T23:00:00",
-   "expiryDate":"9998-12-31T15:00:00",
-   "createDate":"2015-07-14T01:22:17.67",
-   "lastUpdateDate":"2015-07-14T01:22:17.67",
-   "captureDetails":false,
-   "isOnSale":false,
-   "hideIfNoStock":false,
-   "enableDropShipping":false,
-   "excludeFromSearch":false,
-   "enabled":true,
-   "deleted":false,
-   "title":"",
-   "reIndex":false,
-   "hasAttributes":true,
-   "cycleTypeCount":-1,
-   "hasVariations":true,
-   "slug":"kung-fu-panda-t-shirt",
-   "metaProductDescription":null,
-   "canonicalUrl":"/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt",
-   "absoluteCanonicalUrl":"www.mydomain.com/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt"
-}{% endraw %}</code></pre>
+})</code></pre>
+<h4><strong>Sample response</strong></h4>
+<pre class="language-javascript"><code>{
+    "id":9683556,
+    "siteId":2163596,
+    "name":"Kung-Fu Panda T-Shirt",
+    "roleId":-1,
+    "weight":2,
+    "productCode":"UFQ3WULVDN",
+    "tags": "new",
+    "unitType":"",
+    "smallImage":"/shop/tshirt2.jpg",
+    "largeImage":"/shop/big-product-image.jpg",
+    "description":"Casual T-Shirt made from high quality bio cotton. It's light, very comfortable to wear yet it's durable and colors will remain vivid even after a couple of washes. This product is made with respect to human rights and the environment.  Made in Thailand.\r\n",
+    "inventoryControl":true,
+    "canPreorder":false,
+    "minUnits":1,
+    "maxUnits":-1,
+    "inStock":0,
+    "onOrder":0,
+    "reOrder":-1,
+    "reOrderNotified":false,
+    "cycleTypeId": 1,
+    "variablePerCycle":false,
+    "groupingID":39793,
+    "GroupingDefault":false,
+    "electronicProduct":false,
+    "displayFileName":null,
+    "size":0,
+    "downloadLimitCount":-1,
+    "downloadLimitIp":-1,
+    "productWeight":-1.0,
+    "productVolume":-1.0,
+    "productHeight":-1.0,
+    "productDepth":-1.0,
+    "supplierEntityId":null,
+    "supplierCommission":0.0,
+    "isGiftVoucher":false,
+    "poplets":null,
+    "attributes":null,
+    "custom1":"",
+    "custom2":"",
+    "custom3":"",
+    "custom4":"",
+    "releaseDate":"2013-01-15T23:00:00",
+    "expiryDate":"9998-12-31T15:00:00",
+    "createDate":"2015-07-14T01:22:17.67",
+    "lastUpdateDate":"2015-07-14T01:22:17.67",
+    "captureDetails":false,
+    "isOnSale":false,
+    "hideIfNoStock":false,
+    "enableDropShipping":false,
+    "excludeFromSearch":false,
+    "enabled":true,
+    "deleted":false,
+    "title":"",
+    "reIndex":false,
+    "hasAttributes":true,
+    "cycleTypeCount":-1,
+    "hasVariations":true,
+    "slug":"kung-fu-panda-t-shirt",
+    "metaProductDescription":null,
+    "canonicalUrl":"/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt",
+    "absoluteCanonicalUrl":"www.mydomain.com/all-t-shirts/mens-t-shirts/kung-fu-panda-t-shirt",
+    "popletImage1": "/shop/tshirt2_poplet1.jpg",
+    "popletImage2": "/shop/tshirt2_poplet2.jpg",
+    "popletImage3": "/shop/tshirt2_poplet3.jpg",
+    "popletImage4": "/shop/tshirt2_poplet4.jpg",
+    "popletImage5": null,
+    "popletImage6": null,
+    "popletImage7": null,
+    "popletImage8": null,
+    "popletImage9": null,
+    "popletImage10": null
+}</code></pre></div>
 </div>
+<div id="create">
+<h2>Create a product</h2>
+<p>Create a new product.</p>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/<code>products</code>
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+  <li><code>name</code> - product's name <em>(string)</em></li>
+  <li><code>roleId</code> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
+  <li><code>weight</code> - product's weight <em>(number)</em></li>
+  <li><code>productCode</code> - product's code <em>(string)</em></li>
+<!--  <li class="" data-release="R213"><code>tags</code> - product's keywords <em>(string)</em></li>-->
+<!--  <li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>-->
+  <li><code>unitType</code> - unitType <em>(string)</em></li>
+  <li><code>smallImage</code> - product's small image <em>(string)</em></li>
+  <li><code>largeImage</code> - product's large image <em>(string)</em></li>
+  <li><code>description</code> - product's description <em>(string)</em></li>
+  <li><code>inventoryControl</code> - whether this product has inventoryControl on or off<em> (boolean)</em></li>
+  <li><code>canPreorder</code> - whether this product can be pre ordered or not <em>(boolean)</em></li>
+  <li><code>minUnits</code> - minimum number of units that can be added to the cart <em>(number)</em></li>
+  <li><code>maxUnits</code> - maximum number of units that can be added to the cart <em>(number)</em></li>
+  <li><code>inStock</code> - number of items in stock <em>(number)</em></li>
+  <li><code>onOrder</code> - onOrder <em>(number)</em></li>
+  <li><code>reOrder</code> - reOrder <em>(number)</em></li>
+  <li><code>reOrderNotified</code> - reOrderNotified <em>(boolean)</em></li>
+  <li class="new" data-release="R212"><code>cycleTypeId</code> - can be one of the following integers (<em>number</em>)
+    <ul>
+      <li><strong>1</strong> - Once</li>
+      <li><strong>2</strong> - Daily</li>
+      <li><strong>3</strong> - Weekly</li>
+      <li><strong>4</strong> - Fortnightly</li>
+      <li><strong>5</strong> - Monthly</li>
+      <li><strong>6</strong> - Quarterly</li>
+      <li><strong>7</strong> - Half Yearly</li>
+      <li><strong>8</strong> - Yearly</li>
+      </ul>
+  </li>
+  <li><code>variablePerCycle</code> - variablePerCycle <em>(boolean)</em></li>
+  <li><code>groupingID</code> - the product's groupID <em>(number)</em></li>
+  <li><code>GroupingDefault</code> - GroupingDefault <em>(boolean)</em></li>
+  <li><code>electronicProduct</code> - whether or not this product is an e-Product <em>(boolean)</em></li>
+  <li><code>displayFileName</code> - product's display name <em>(string)</em></li>
+  <li><code>size</code> - size <em>(number)</em></li>
+  <li><code>downloadLimitCount</code> - download limit (only applies to e-Products) <em>(number)</em></li>
+  <li><code>downloadLimitIp</code> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
+  <li><code>productWeight</code> - product weight <em>(number)</em></li>
+  <li><code>productVolume</code> - product volume <em>(number)</em></li>
+  <li><code>productHeight</code> - product height <em>(number)</em></li>
+  <li><code>productDepth</code> - product depth <em>(number)</em></li>
+  <li><code>supplierEntityId</code> - the supplier's entity ID <em>(number)</em></li>
+  <li><code>supplierCommission</code> - the supplier's commission <em>(number)</em></li>
+  <li><code>isGiftVoucher</code> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
+  <li><code>poplets</code> - the product's poplets<em>(string)</em></li>
+  <li><code>attributes</code> - deprecated, this is null by default, please use <a href="/reference/rest-apis/e-commerce/product-attributes.html" title="Product Attributes">Product Attributes endpoint</a></li>
+  <li><code>custom1</code> - custom field 1 <em>(string)</em></li>
+  <li><code>custom2</code> - custom field 2 <em>(string)</em></li>
+  <li><code>custom3</code> - custom field 3 <em>(string)</em></li>
+  <li><code>custom4</code> - custom field 4 <em>(string)</em></li>
+  <li><code>releaseDate</code> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>expiryDate</code> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>createDate </code>- product's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>lastUpdateDate</code> - product's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>captureDetails</code> - captureDetails <em>(boolean)</em></li>
+  <li><code>isOnSale</code> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
+  <li><code>hideIfNoStock</code> - hide product if stock is 0 <em>(boolean)</em></li>
+  <li><code>enableDropShipping</code> - enable drop shipping <em>(boolean)</em></li>
+  <li><code>excludeFromSearch</code> - exclude this product from search results<em>(boolean)</em></li>
+  <li><code>enabled</code> - enabled <em>(boolean)</em></li>
+  <li><code>title</code> - product's title <em>(string)</em></li>
+  <li><code>reIndex</code> - reIndex <em>(boolean)</em></li>
+  <li><code>hasAttributes</code> - hasAttributes <em>(boolean)</em></li>
+  <li><code>cycleTypeCount</code> - cycleTypeCount <em>(number)</em></li>
+  <li><code>hasVariations</code> - whether the product has variations enabled<em>(boolean)</em></li>
+  <li><code>slug</code> - product's slug <em>(string)</em></li>
+  <li><code>metaProductDescription</code> - meta description <em>(string)</em></li>
+  <li><code>canonicalUrl</code> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
+  <li><code>absoluteCanonicalUrl</code> - product's absolute url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage1</code> - product's poplet image 1 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage2</code> - product's poplet image 2 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage3</code> - product's poplet image 3 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage4</code> - product's poplet image 4 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage5</code> - product's poplet image 5 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage6</code> - product's poplet image 6 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage7</code> - product's poplet image 7 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage8</code> - product's poplet image 8 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage9</code> - product's poplet image 9 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage10</code> - product's poplet image 10 url <em>(string)</em></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts JSON as Content-Type.</p>
+<div class="response-sample">
+  <pre class="  language-javascript"><code>HTTP/1.1 201 Created
+Location: /webresources/api/v3/sites/current/products/[product-id]
+Content-Type: application/json; charset=utf-8</code></pre>
+</div>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/products/",
+    type: "POST",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    processData: false,
+    data: JSON.stringify({
+        "name": "New Created Product",
+        "unitType": "",
+        "smallImage": "/img/products/small.jpg",
+        "largeImage": "/img/products/large.jpg",
+        "slug": "new-product-url",
+        "absoluteCanonicalUrl": "",
+        "popletImage1": null,
+        "popletImage2": null,
+        "popletImage3": null,
+        "popletImage4": null    
+    })
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+</div>
+
+<p class="alert alert-warning"><strong>Important!</strong> This call creates the product, but doesn't actually upload any images. To do this, you'll need to generate a second request. Please see <a href="#upload-image">Upload product image</a>.</p>
+</div>
+<div id="edit">
+<h2>Edit a product</h2>
+<p>Update an existing product.</p>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> PUT</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/<code>products</code>/<code>[product_ID]</code>
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+  <li><code>name</code> - product's name <em>(string)</em></li>
+  <li><code>roleId</code> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
+  <li><code>weight</code> - product's weight <em>(number)</em></li>
+  <li><code>productCode</code> - product's code <em>(string)</em></li>
+<!--  <li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>-->
+  <li><code>unitType</code> - unitType <em>(string)</em></li>
+  <li><code>smallImage</code> - product's small image <em>(string)</em></li>
+  <li><code>largeImage</code> - product's large image <em>(string)</em></li>
+  <li><code>description</code> - product's description <em>(string)</em></li>
+  <li><code>inventoryControl</code> - whether this product has inventoryControl on or off<em> (boolean)</em></li>
+  <li><code>canPreorder</code> - whether this product can be pre ordered or not <em>(boolean)</em></li>
+  <li><code>minUnits</code> - minimum number of units that can be added to the cart <em>(number)</em></li>
+  <li><code>maxUnits</code> - maximum number of units that can be added to the cart <em>(number)</em></li>
+  <li><code>inStock</code> - number of items in stock <em>(number)</em></li>
+  <li><code>onOrder</code> - onOrder <em>(number)</em></li>
+  <li><code>reOrder</code> - reOrder <em>(number)</em></li>
+  <li><code>reOrderNotified</code> - reOrderNotified <em>(boolean)</em></li>
+  <li class="new" data-release="R212"><code>cycleTypeId</code> - can be one of the following integers (<em>number</em>)
+    <ul>
+      <li><strong>1</strong> - Once</li>
+      <li><strong>2</strong> - Daily</li>
+      <li><strong>3</strong> - Weekly</li>
+      <li><strong>4</strong> - Fortnightly</li>
+      <li><strong>5</strong> - Monthly</li>
+      <li><strong>6</strong> - Quarterly</li>
+      <li><strong>7</strong> - Half Yearly</li>
+      <li><strong>8</strong> - Yearly</li>
+      </ul>
+  </li>
+  <li><code>variablePerCycle</code> - variablePerCycle <em>(boolean)</em></li>
+  <li><code>groupingID</code> - the product's groupID <em>(number)</em></li>
+  <li><code>GroupingDefault</code> - GroupingDefault <em>(boolean)</em></li>
+  <li><code>electronicProduct</code> - whether or not this product is an e-Product <em>(boolean)</em></li>
+  <li><code>displayFileName</code> - product's display name <em>(string)</em></li>
+  <li><code>size</code> - size <em>(number)</em></li>
+  <li><code>downloadLimitCount</code> - download limit (only applies to e-Products) <em>(number)</em></li>
+  <li><code>downloadLimitIp</code> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
+  <li><code>productWeight</code> - product weight <em>(number)</em></li>
+  <li><code>productVolume</code> - product volume <em>(number)</em></li>
+  <li><code>productHeight</code> - product height <em>(number)</em></li>
+  <li><code>productDepth</code> - product depth <em>(number)</em></li>
+  <li><code>supplierEntityId</code> - the supplier's entity ID <em>(number)</em></li>
+  <li><code>supplierCommission</code> - the supplier's commission <em>(number)</em></li>
+  <li><code>isGiftVoucher</code> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
+  <li><code>poplets</code> - the product's poplets<em>(string)</em></li>
+  <li><code>attributes</code> - deprecated, this is null by default, please use <a href="/reference/rest-apis/e-commerce/product-attributes.html" title="Product Attributes">Product Attributes endpoint</a></li>
+  <li><code>custom1</code> - custom field 1 <em>(string)</em></li>
+  <li><code>custom2</code> - custom field 2 <em>(string)</em></li>
+  <li><code>custom3</code> - custom field 3 <em>(string)</em></li>
+  <li><code>custom4</code> - custom field 4 <em>(string)</em></li>
+  <li><code>releaseDate</code> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>expiryDate</code> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>createDate </code>- product's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>lastUpdateDate</code> - product's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>captureDetails</code> - captureDetails <em>(boolean)</em></li>
+  <li><code>isOnSale</code> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
+  <li><code>hideIfNoStock</code> - hide product if stock is 0 <em>(boolean)</em></li>
+  <li><code>enableDropShipping</code> - enable drop shipping <em>(boolean)</em></li>
+  <li><code>excludeFromSearch</code> - exclude this product from search results<em>(boolean)</em></li>
+  <li><code>enabled</code> - enabled <em>(boolean)</em></li>
+  <li><code>deleted</code> - deleted <em>(boolean)</em></li>
+  <li><code>title</code> - product's title <em>(string)</em></li>
+  <li><code>reIndex</code> - reIndex <em>(boolean)</em></li>
+  <li><code>hasAttributes</code> - hasAttributes <em>(boolean)</em></li>
+  <li><code>cycleTypeCount</code> - cycleTypeCount <em>(number)</em></li>
+  <li><code>hasVariations</code> - whether the product has variations enabled<em>(boolean)</em></li>
+  <li><code>slug</code> - product's slug <em>(string)</em></li>
+  <li><code>metaProductDescription</code> - meta description <em>(string)</em></li>
+  <li><code>canonicalUrl</code> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
+  <li><code>absoluteCanonicalUrl</code> - product's absolute url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage1</code> - product's poplet image 1 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage2</code> - product's poplet image 2 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage3</code> - product's poplet image 3 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage4</code> - product's poplet image 4 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage5</code> - product's poplet image 5 url <em>(string)</em></li>
+<li class="new" data-release="R212"><code>popletImage6</code> - product's poplet image 6 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage7</code> - product's poplet image 7 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage8</code> - product's poplet image 8 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage9</code> - product's poplet image 9 url <em>(string)</em></li>
+<li class="new" data-release="R213"><code>popletImage10</code> - product's poplet image 10 url <em>(string)</em></li>
+</ul>
 <p>&nbsp;</p>
+</div>
+<div class="response">
+<div class="response">
+  <h3>Response</h3>
+  <p>Returns an empty body if successful or a detailed error message.</p>
+  <p>Accepts JSON as Content-Type.</p>
+  <div class="response-sample">
+    <pre class="  language-javascript"><code>HTTP/1.1 204 No Content
+Location: /webresources/api/v3/sites/current/products/[product_id]
+Content-Type: application/json; charset=utf-8</code></pre>
+  </div>
+</div>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/products/9683556",
+    type: "PUT",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },   
+    processData: false,
+	data: JSON.stringify({
+        "name": "Kung-Fu Panda T-Shirt 2",
+        "description":"This is a description",
+        "slug": "new-product-url-updated",
+        "absoluteCanonicalUrl": "",
+        "popletImage1": "/shop/update-tshirt2_poplet1.jpg",
+        "popletImage2": "/shop/update-tshirt2_poplet2.jpg",
+        "popletImage3": "/shop/update-tshirt2_poplet3.jpg",
+        "popletImage4": "/shop/update-tshirt2_poplet4.jpg"
+	})
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code>
+</pre>
+</div>
+</div>
+<div id="delete">
+<h2>Delete a product</h2>
+<p>Delete an existing meeting.</p>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/<code>products</code>/<code>[product_ID]</code>
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<div class="response-sample">
+  <pre class="  language-javascript"><code>DELETE /webresources/api/v3/sites/current/products/532542 HTTPS/1.1
+Location: /webresources/api/v3/sites/current/products/[product_id]
+Content-Type: application/json; charset=utf-8</code></pre>
+</div>
+</div>
+<div class="response">
+<h3>Response</h3>
+<p>Returns an empty body if successful or a detailed error message.</p>
+<div class="request-sample">
+  <pre class="  language-javascript"><code>HTTP/1.1 204 No Content</code></pre>
+</div>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/products/9683556",
+    type: "DELETE",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+</div>
+</div>
+<div id="upload-image">
+
+<h2>Upload product image</h2>
+<p>Upload images  to an existing product.</p>
+<h3>Request</h3>
+<ul>
+  <li><strong>Method:</strong> PUT </li>
+  <li><strong>Path</strong>:
+    <ul>
+      <li>/webresources/api/v3/sites/current/products/[product-id]<strong>?image=smallimage</strong></li>
+      <li>/webresources/api/v3/sites/current/products/[product-id]<strong>?image=largeimage</strong></li>
+      <li>/webresources/api/v3/sites/current/products/[product-id]<strong>?image=popletimage1</strong></li>
+      <li>/webresources/api/v3/sites/current/products/[product-id]<strong>?   ...</strong></li>
+      <li>/webresources/api/v3/sites/current/products/[product-id]<strong>?image=popletimage10</strong></li>
+    </ul>
+  </li>
+  <li><strong>Headers:</strong>
+    <ul>
+      <li><strong>Authorization</strong>: This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+      <li><strong>Content-Type</strong>: application/octet-stream</li>
+    </ul>
+  </li>
+</ul>
+<p class="alert alert-info"><strong>Note: </strong>In order to be uploaded, the image path <strong>must be previously set </strong>in <code>smallImage</code> or <code>largeImage</code> or poplet image field. There are ten poplet images, from <code>popletImage1</code> to <code>popletImage10</code>. Exception <code>&quot;Image path not found.&quot;</code> will be thrown for negative case.</p>
+<p class="alert alert-warning"><strong>WARNING:</strong> The request will overwrite any file found at the image path.</p>
+<div class="sample">
+  <h3>Sample request</h3>
+  <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/products/9683556?image=smallimage&quot;,<br>    type: &quot;PUT&quot;,
+    data: binary-file,
+	processData: false,
+    contentType: "application/octet-stream",
+    headers: {
+         "Authorization": BCAPI.Helper.Site.getAccessToken()
+    }
+});
+request.done(function(data) {
+    console.log(data);
+});
+    request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+</div>
+<div class="response">
+  <h3>Response</h3>
+  <p>Returns an empty body if successful or a detailed error message.</p>
+  <div class="request-sample">
+    <pre class="  language-javascript"><code>HTTP/1.1 204 No Content</code></pre>
+  </div>
+</div>
+<p></p>
 </div>

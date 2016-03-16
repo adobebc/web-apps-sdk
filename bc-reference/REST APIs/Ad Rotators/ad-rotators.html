@@ -1,0 +1,171 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</script>
+<style>
+li.removed{text-decoration:line-through;opacity:.8}
+li.new code {font-weight:700}
+</style>
+
+<h1 apiType="restv3">Ad Rotators</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2 id="list-products">List all  ad rotators</h2>
+<p>Get all the ad rotators of a site.</p>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+
+  <ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/<code>adrotators</code>
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response body</h3>
+
+<p>An array of the first 10 products; each object has the following properties:</p>
+
+<ul>
+<li><code>id</code> - ad rotator ID <em>(number)</em></li>
+<li><code>siteId</code> - site ID <em>(number)</em></li>
+<li><code>name</code> - ad rotator's name <em>(string)</em></li>
+<li><code>createDate </code>- ad rotator's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>lastUpdateDate</code> -  ad rotator's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>enabled</code> - enabled <em>(boolean)</em></li>
+</ul>
+
+
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/adrotators",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "id": 4994,
+      "siteId": 1767665,
+      "name": "My Ad Rotator",
+      "createDate": "2016-03-15T12:34:04.807",
+      "lastUpdateDate": "2016-03-15T12:36:58.14",
+      "enabled": true
+    },
+    {
+      "id": 4995,
+      "siteId": 1767665,
+      "name": "My Second Empty Rotator",
+      "createDate": "2016-03-15T12:38:57.59",
+      "lastUpdateDate": "2016-03-15T12:38:57.59",
+      "enabled": true
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
+</div>
+<hr>
+</div>
+<div id="details">
+<h2>Get an ad rotator's details</h2>
+<p>Get one ad rotator and it's details.</p>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/products/[product_ID]
+
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Displays the details for the product as a JSON object</p>
+<ul>
+  
+  <li><code>id</code> - ad rotator ID <em>(number)</em></li>
+  <li><code>siteId</code> - site ID <em>(number)</em></li>
+  <li><code>name</code> - ad rotator's name <em>(string)</em></li>
+  <li><code>createDate </code>- product's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>lastUpdateDate</code> - product's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>enabled</code> - enabled <em>(boolean)</em></li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/adrotators/4994",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "id": 4994,
+  "siteId": 1767665,
+  "name": "My Ad Rotator",
+  "createDate": "2016-03-15T12:34:04.807",
+  "lastUpdateDate": "2016-03-15T12:36:58.14",
+  "enabled": true
+}</code></pre></div>
+</div>

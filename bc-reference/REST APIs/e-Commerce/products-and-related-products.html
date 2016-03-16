@@ -1,0 +1,116 @@
+<h1 apiType="restv3">Related products</h1><ul id="toc"></ul>
+<div id="list">
+<h2 id ="list-products">Get all related products for a product</h2>
+<div class="request">
+  <h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/<code>products</code>/<code>[product_ID]</code>/<code>relatedproducts</code>
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of the first 10 variations; each object has the following properties:</p>
+
+<ul>
+<li><code>productId</code> - product ID <em>(number)</em></li>
+<li><code>relatedProductId</code> - related product's ID <em>(number)</em></li>
+<li><code>siteId</code> - site ID <em>(number)</em></li>
+<li><code>relatedProduct</code> - related product's object - full list in <a href="/reference/rest-apis/e-commerce/products.html" title="Products API" target="_blank">Products API page</a> <em>(object)</em></li>
+</ul>
+
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/products/6710934/relatedproducts",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "productId": 6710934,
+      "relatedProductId": 6710935,
+      "siteId": 1767665,
+      "relatedProduct": {
+        "id": 6710935,
+        "siteId": 1767665,
+        "name": "Item 2",
+        ...
+      }
+    },
+    {
+      "productId": 6710934,
+      "relatedProductId": 6710936,
+      "siteId": 1767665,
+      "relatedProduct": {
+        "id": 6710936,
+        "siteId": 1767665,
+        "name": "Item 3",
+        ...
+      }
+    },
+    {
+      "productId": 6710934,
+      "relatedProductId": 6710937,
+      "siteId": 1767665,
+      "relatedProduct": {
+        "id": 6710937,
+        "siteId": 1767665,
+        "name": "Item 4",
+        ...
+      }
+    },
+    {
+      "productId": 6710934,
+      "relatedProductId": 6710938,
+      "siteId": 1767665,
+      "relatedProduct": {
+        "id": 6710938,
+        "siteId": 1767665,
+        "name": "Item 5",
+        ...
+      }
+    }
+  ],
+  "totalItemsCount": 4,
+  "skip": 0,
+  "limit": 10
+</code></pre></div>
+</div>

@@ -18,17 +18,17 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>parentId</strong> - the ID of the parent catalog, default is <strong>-1</strong> (the select contains all the catalogs)</li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+    <li><code>parentId</code> - the ID of the parent catalog, default is <strong>-1</strong> (the select contains all the catalogs)</li>
+    <li><code>collection</code> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><code>template</code> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
 </ul>
 </div>
 <div class="layouts">
 <h2>This module can be rendered:</h2>
 <ul>
-    <li><strong>as aregular drop down</strong> - the module outputs the <em>option</em> tags, to use it wrap it into a <em>select</em> like this:
+    <li><code>as aregular drop down</code> - the module outputs the <em>option</em> tags, to use it wrap it into a <em>select</em> like this:
       <pre><code>{% raw %}&lt;select&gt;&#123;module_catalogueselect&#125;&lt;/select{% endraw %}</code>&gt;</pre></li>
-    <li><strong>using Liquid collections</strong> - you can create an object representation of your catalog tree like this:
+    <li><code>using Liquid collections</code> - you can create an object representation of your catalog tree like this:
       <pre class="language-javascript">
     <code>{% raw %}
   "catalogue": {
@@ -99,7 +99,7 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>parent</strong> - the ID of the parent catalog, default is <strong>-1</strong> (the select contains all the catalogs)</li>
+    <li><code>parent</code> - the ID of the parent catalog, default is <strong>-1</strong> (the select contains all the catalogs)</li>
 </ul>
 </div>
 <div class="layouts">

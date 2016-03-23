@@ -19,31 +19,31 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
-    <li><strong>filter</strong> - sets display criteria.
+<li><code>render</code> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+    <li><code>filter</code> - sets display criteria.
 <ul>
-        <li><strong>all</strong> - displays all items that belong to that customer</li>
-        <li><strong>workflow</strong> - display all cases that have a particular workflow assigned to them. Please note that only if this filter is used is the workflowID used as a next parameter. The best way to set the ID is to use module manager.</li>
+        <li><code>all</code> - displays all items that belong to that customer</li>
+        <li><code>workflow</code> - display all cases that have a particular workflow assigned to them. Please note that only if this filter is used is the workflowID used as a next parameter. The best way to set the ID is to use module manager.</li>
     </ul>
     </li>
-    <li><strong>sortBy</strong> - allows you to select the order in which you want to sort the items.
+    <li><code>sortBy</code> - allows you to select the order in which you want to sort the items.
 <ul>
         <li>Default - default sort here is <strong>Date Created</strong></li>
         <li>Subject - sorts items according to the subject name alphabetically</li>
     </ul>
     </li>
-     <li><strong>workflowId</strong> - appears only when selecting "all items in a workflow" as a display criteria </li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
-    <li><strong>templateID</strong> - optional, the ID of the template used to render the case details view</li>
+     <li><code>workflowId</code> - appears only when selecting "all items in a workflow" as a display criteria </li>
+    <li><code>collection</code> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><code>template</code> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+    <li><code>templateID</code> - optional, the ID of the template used to render the case details view</li>
 </ul>
 </div>
 <div class="layouts">
 <h2>This module can be rendered using:</h2>
 <ul>
-   <li><strong>the  list layout</strong> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/reference/layouts-and-tags/cases/case-list-layout.html" title="News layout">Case layout reference page</a></li>
-    <li><strong>your own custom layout</strong> - take a look at the <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
-    <li><strong> Liquid collections</strong> - here are the Liquid  output tags you can use:</li>
+   <li><code>the  list layout</code> - on this layout you can use either the legacy tags or Liquid output tags. Here is a list of all the tags you can use the <a href="/reference/layouts-and-tags/cases/case-list-layout.html" title="News layout">Case layout reference page</a></li>
+    <li><code>your own custom layout</code> - take a look at the <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom templates</strong></a> article for more details</li>
+    <li><code> Liquid collections</code> - here are the Liquid  output tags you can use:</li>
 </ul>
 <table width="100%" class="data-bordered">
     <thead>
@@ -119,20 +119,20 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>filter</strong> - sets display criteria.
+    <li><code>filter</code> - sets display criteria.
 <ul>
-        <li><strong>a</strong> - displays all items that belong to that customer</li>
-        <li><strong>c</strong> - display all cases that have a particular workflow assigned to them. Please note that only if this filter is used is the workflowID used as a next parameter. The best way to set the ID is to use module manager.</li>
+        <li><code>a</code> - displays all items that belong to that customer</li>
+        <li><code>c</code> - display all cases that have a particular workflow assigned to them. Please note that only if this filter is used is the workflowID used as a next parameter. The best way to set the ID is to use module manager.</li>
     </ul>
     </li>
-    <li><strong>sortBy</strong> - allows you to select the order in which you want to sort the items.
+    <li><code>sortBy</code> - allows you to select the order in which you want to sort the items.
 <ul>
         <li>Default - default sort here is Date Created</li>
         <li>Subject - sorts items according to the subject name alphabetically</li>
     </ul>
     </li>
-    <li><strong>workflowId</strong> - appears only when selecting "all items in a workflow" as a display criteria </li>
-    <li><strong>templateId</strong> - the ID of the sitewide template used to display the case details page</li>
+    <li><code>workflowId</code> - appears only when selecting "all items in a workflow" as a display criteria </li>
+    <li><code>templateId</code> - the ID of the sitewide template used to display the case details page</li>
 </ul>
 </div>
 <div class="layouts">

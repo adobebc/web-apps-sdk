@@ -11,20 +11,20 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>resource</strong> - this parameter is used to specify the name of the resource which is going to be queried. </li>
-<li><strong>version</strong> - this parameter is used to specify the version of the resource which is going to be queried. The value should be "v3"
+<li><code>resource</code> - this parameter is used to specify the name of the resource which is going to be queried. </li>
+<li><code>version</code> - this parameter is used to specify the version of the resource which is going to be queried. The value should be "v3"
 </li>
-<li><strong>subresource</strong> - this parameter specifies the projection which must be queried for a given resource item. </li>
-<li><strong>resourceId</strong> - this parameter indicates that a specific item id must be fetched from the specified resource collection. </li>
-<li><strong>skip</strong> - this parameter specifies how many records to be skipped (the offset from the beginning of the collection). </li>
-<li><strong>limit</strong> - this parameter specifies how many items to be included from the total number of items returned by the module. The default value is <em>10</em> and the maximum value is <em>500 </em></li>
-<li><strong>where</strong> - this parameter is used to add a filter to the module.</li>
-<li><strong>order</strong> - this parameter specifies the ordering criteria. </li>
-<li><strong>fields</strong> - this parameter is used to add additional fields (which might be hidden by default).
+<li><code>subresource</code> - this parameter specifies the projection which must be queried for a given resource item. </li>
+<li><code>resourceId</code> - this parameter indicates that a specific item id must be fetched from the specified resource collection. </li>
+<li><code>skip</code> - this parameter specifies how many records to be skipped (the offset from the beginning of the collection). </li>
+<li><code>limit</code> - this parameter specifies how many items to be included from the total number of items returned by the module. The default value is <em>10</em> and the maximum value is <em>500 </em></li>
+<li><code>where</code> - this parameter is used to add a filter to the module.</li>
+<li><code>order</code> - this parameter specifies the ordering criteria. </li>
+<li><code>fields</code> - this parameter is used to add additional fields (which might be hidden by default).
 </li>
-<li><strong>template</strong> - this parameter specifies if the module output layout (html) is get from current page (inline) or from a custom template (template="" vs. template="[custom_templatefile_path]")
+<li><code>template</code> - this parameter specifies if the module output layout (html) is get from current page (inline) or from a custom template (template="" vs. template="[custom_templatefile_path]")
 </li>
-<li><strong>collection</strong> - the name of the Liquid collection the result will be placed in.</li>
+<li><code>collection</code> - the name of the Liquid collection the result will be placed in.</li>
 </ul>
 <p class="alert alert-info">
 <strong>Warning:</strong> By default all the items will be fetched, including the disabled ones. You would need to filter specifically only for the items enabled by using the <code>where</code> parameter <em>(e.g.  where="\{'enabled':true\}"</em>.</p>

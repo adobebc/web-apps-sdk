@@ -17,14 +17,14 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
-     <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<li><code>render</code> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+     <li><code>filter</code> - filtering criteria for display and can be one of the following:
 <ul>
         <li>item - individual item</li>
         <li>all - all items</li>
 </ul>
      </li>
-    <li><strong>itemType</strong> - 
+    <li><code>itemType</code> - 
       <ul>
         <li>7 - news items</li>
     <li>48 - event items</li>
@@ -34,9 +34,9 @@
     <li>35 - webapps</li>
       </ul>
     </li>
-      <li><strong>itemID</strong> - if you choose itemType 35 (a webapp) you can specify the webapp's ID. In this case only the favorite webapp items in that particular webapp will be displayed.</li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+      <li><code>itemID</code> - if you choose itemType 35 (a webapp) you can specify the webapp's ID. In this case only the favorite webapp items in that particular webapp will be displayed.</li>
+    <li><code>collection</code> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><code>template</code> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="examples">
@@ -55,13 +55,13 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-     <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+     <li><code>filter</code> - filtering criteria for display and can be one of the following:
 <ul>
         <li>i - individual item</li>
         <li>a - all items</li>
 </ul>
      </li>
-    <li><strong>itemType</strong> - 
+    <li><code>itemType</code> - 
       <ul>
         <li>7 - news items</li>
     <li>48 - event items</li>
@@ -71,7 +71,7 @@
     <li>35 - webapps</li>
       </ul>
     </li>
-      <li><strong>itemID</strong> - if you choose itemType 35 (a webapp) you can specify the webapp's ID. In this case only the favorite webapp items in that particular webapp will be displayed.</li>
+      <li><code>itemID</code> - if you choose itemType 35 (a webapp) you can specify the webapp's ID. In this case only the favorite webapp items in that particular webapp will be displayed.</li>
       
     </li>
 </ul>

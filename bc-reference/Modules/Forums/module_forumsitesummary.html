@@ -18,9 +18,9 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>render</strong> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
-    <li><strong>rowCount</strong> -  limits the number of posts the module will display</li><li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+<li><code>render</code> - optional parameter, indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+<li><code>rowCount</code> -  limits the number of posts the module will display</li><li><code>collection</code> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><code>template</code> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
 </ul>
 </div>
 <div class="layouts">
@@ -28,7 +28,7 @@
 <ul>
     <li>a generic un-ordered list format, as this module does not use a layout. See the example below.</li><br>
 <a class="fancybox" href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1458.png"><img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/forum_sitesummary.jpg?Action=thumbnail&amp;Width=300&amp;algorithm=fill"/></a>
-<li><strong> Liquid collections</strong> - the output is a Liquid collection containing the entries:</li>
+<li><code> Liquid collections</code> - the output is a Liquid collection containing the entries:</li>
 </ul><pre class="language-javascript"><code>{% raw %} "my_custom_collection_name": {
     "moduleName": "forumsitesummary",
     "moduleDescriptor": {
@@ -79,7 +79,7 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>numberOfPosts</strong> - it limits the number of posts the module will display</li>
+    <li><code>numberOfPosts</code> - it limits the number of posts the module will display</li>
 </ul>
 </div>
 <div class="layouts">

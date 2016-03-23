@@ -18,17 +18,17 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>catalogId</strong> - the catalogID, the productlistdump will list the products inside that catalog. This can also be "-1" - this will list all the products in the site.</li>
-    <li><strong>rowCount</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
-    <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
-    <li><strong>sortType</strong> - will sort the item in specified order
+    <li><code>catalogId</code> - the catalogID, the productlistdump will list the products inside that catalog. This can also be "-1" - this will list all the products in the site.</li>
+    <li><code>rowCount</code> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
+    <li><code>targetFrame</code> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
+    <li><code>sortType</code> - will sort the item in specified order
 <ul>
         <li>Alphabetical - sorts items alphabetically</li>
         <li>Weight - sorts items by weight</li>
     </ul>
     </li>
-    <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
+    <li><code>collection</code> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><code>template</code> - this module does not support custom templates. You can use the <em>template</em> parameter however to <a href="/developers/liquid/template-parameter#supress">supress the module's output</a></li>
 </ul>
 </div>
 <div class="layouts">
@@ -41,7 +41,7 @@
 &lt;li&gt;&lt;a href=&quot;/catalog1/product2&quot;&gt;This is my secondproduct&lt;/a&gt;&lt;/li&gt;<br/>
 &lt;/ul&gt;{% endraw %}</code>
 </pre></li>
-  <li><strong> Liquid collections</strong> - the output is a Liquid collection containing the products:</li>
+  <li><code> Liquid collections</code> - the output is a Liquid collection containing the products:</li>
 </ul><pre class="language-javascript"><code>{% raw %}
 "dump": {
     "moduleName": "productlistdump",
@@ -108,13 +108,13 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>catID</strong> - the catalogID, the productlistdump will list the products inside that catalog. This can also be "-1" - this will list all the products in the site.</li>
-    <li><strong>rowLength</strong> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
-    <li><strong>targetFrame</strong> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
-    <li><strong>sortBy</strong> - will sort the item in specified order
+    <li><code>catID</code> - the catalogID, the productlistdump will list the products inside that catalog. This can also be "-1" - this will list all the products in the site.</li>
+    <li><code>rowLength</code> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row</li>
+    <li><code>targetFrame</code> - possible values are <em> _blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
+    <li><code>sortBy</code> - will sort the item in specified order
 <ul>
-        <li><strong>Alphabetical</strong> - sorts items alphabetically</li>
-        <li><strong>Weight</strong> - sorts items by weight</li>
+        <li><code>Alphabetical</code> - sorts items alphabetically</li>
+        <li><code>Weight</code> - sorts items by weight</li>
     </ul>
     </li>
 </ul>

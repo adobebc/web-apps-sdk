@@ -18,16 +18,16 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
-    <li><strong>id</strong> - System generated ID (Do not change this number.)</li>
-    <li><strong>rowCount</strong> - Set the number of photos displayed per row</li>
-    <li><strong>targetFrame</strong> - Set the destination frame where the photos will open (such as <em>_blank</em>)</li>
-    <li><strong>resultsPerPage</strong> - Set the number of photos displayed per page</li>
-    <li><strong>width/height</strong> - Set the width and height of the  						thumbnail images. The default value is 80 pixels wide by 80 pixels high.</li>
-    <li><strong>useStandardMethod</strong> - Use the standard Thumbnail Generation.  Set to <strong>false</strong> for better thumbnail quality (with increased file size).</li>
-	 <li><strong>thumbnail</strong> - To avoid squashed images and control image proportion size. Use the following paramaters: <strong>proportional</strong>, <strong>fill</strong>, <strong>fill_proportional</strong>.</li>
-     <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - you can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+<li><code>render</code> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+    <li><code>id</code> - System generated ID (Do not change this number.)</li>
+    <li><code>rowCount</code> - Set the number of photos displayed per row</li>
+    <li><code>targetFrame</code> - Set the destination frame where the photos will open (such as <em>_blank</em>)</li>
+    <li><code>resultsPerPage</code> - Set the number of photos displayed per page</li>
+    <li><code>width/height</code> - Set the width and height of the  						thumbnail images. The default value is 80 pixels wide by 80 pixels high.</li>
+    <li><code>useStandardMethod</code> - Use the standard Thumbnail Generation.  Set to <strong>false</strong> for better thumbnail quality (with increased file size).</li>
+	 <li><code>thumbnail</code> - To avoid squashed images and control image proportion size. Use the following paramaters: <strong>proportional</strong>, <strong>fill</strong>, <strong>fill_proportional</strong>.</li>
+     <li><code>collection</code> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><code>template</code> - you can leave the value of the template parameter blank to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 <p class="alert alert-info">
 Note: If an image is 640 pixels wide x 400 pixels high and you set the thumbnail size to 120 x 120 pixels, the thumbnail image will have a maximum width of 120 and a smaller height. Proportions are respected when creating the thumbnail image.
@@ -50,7 +50,7 @@ Alternatively if the image dimensions are 400 pixels wide x 640 pixels high, the
 <h2>This module can be rendered:</h2>
 <ul>
     <li><strong>in plain text</strong></li>
-    <li><strong>using Liquid collections</strong> - this is the Liquid output tag you can use - <code>{% raw %}my_custom_collection_name.title{% endraw %}</code></li>
+    <li><code>using Liquid collections</code> - this is the Liquid output tag you can use - <code>{% raw %}my_custom_collection_name.title{% endraw %}</code></li>
 </ul>
 </div>
 <div class="examples">
@@ -67,13 +67,13 @@ Alternatively if the image dimensions are 400 pixels wide x 640 pixels high, the
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>ID</strong> - System generated ID (Do not change this number.)</li>
-    <li><strong>rowLength</strong> - Set the number of photos displayed per row</li>
-    <li><strong>targetFrame</strong> - Set the destination frame where the photos will open (such as <em>_blank</em>)</li>
-    <li><strong>resultsPerPage</strong> - Set the number of photos displayed per page</li>
-    <li><strong>Width/Height</strong> - Set the width and height of the  						thumbnail images. The default value is 80 pixels wide by 80 pixels high.</li>
-    <li><strong>UseStandardMethod</strong> - Use the standard Thumbnail Generation.  Set to <strong>false</false> for better thumbnail quality (with increased file size).</li>
-	 <li><strong>thumbnailAlgorithm</strong> - To avoid squashed images and control image proportion size. Use the following paramaters: <em>proportional</em>,<em>fill</em>, <em>fill_proportional</em>.</li>
+    <li><code>ID</code> - System generated ID (Do not change this number.)</li>
+    <li><code>rowLength</code> - Set the number of photos displayed per row</li>
+    <li><code>targetFrame</code> - Set the destination frame where the photos will open (such as <em>_blank</em>)</li>
+    <li><code>resultsPerPage</code> - Set the number of photos displayed per page</li>
+    <li><code>Width/Height</code> - Set the width and height of the  						thumbnail images. The default value is 80 pixels wide by 80 pixels high.</li>
+    <li><code>UseStandardMethod</code> - Use the standard Thumbnail Generation.  Set to <strong>false</false> for better thumbnail quality (with increased file size).</li>
+	 <li><code>thumbnailAlgorithm</code> - To avoid squashed images and control image proportion size. Use the following paramaters: <em>proportional</em>,<em>fill</em>, <em>fill_proportional</em>.</li>
 </ul>
 <p class="alert alert-info">
 Note: If an image is 640 pixels wide x 400 pixels high and you set the thumbnail size to 120 x 120 pixels, the thumbnail image will have a maximum width of 120 and a smaller height. Proportions are respected when creating the thumbnail image.

@@ -1,7 +1,14 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</script>
+<style>
+li.removed{text-decoration:line-through;opacity:.8}
+li.new code {font-weight:700}
+</style>
+
 <h1 apiType="restv3">RSS</h1> 
 <ul id="toc"></ul>
 <div id="list">
-<h2>Get RSS</h2>
+<h2>List all RSS channels</h2>
 <div class="description">
 <p>Gets the list of RSS resources available.</p>
 </div>
@@ -28,62 +35,76 @@
 <p>The details for the specified customer ID in JSON format.</p>
 
 <ul>
-<li><code>{% raw %}id{% endraw %}</code> - the id of the RSS <em>(integer)</em></li>
-
-<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
-<li><code>{% raw %}label{% endraw %}</code> - the name of the customer Type <em>(string)</em></li>
-<li><code>{% raw %}default{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>Id</code> - the id of the RSS channel<em>(integer)</em></li>
+<li><code>siteId</code> - the id of the site <em>(integer)</em></li>
+<li><code>title</code> - the RSS channel's name<em>(integer)</em></li>
+<li><code>description</code> - the RSS channel's description <em>(integer)</em></li>
+<li><code>maxFeedEntries</code> - the update frequency of the channel <em>(integer)</em>
+  <ul>
+    <li><strong>15</strong> - Several times a week</li>
+    <li><strong>30</strong> - Once a day</li>
+    <li><strong>50</strong> - Many times a day</li>
+    <li><strong>100</strong> - Wildfire!</li>
+  </ul>
+</li>
+<li><code>createBy</code> - the id of the  entity that created the channel <em>(number)</em></li>
+<li><code>createDate</code> - the name of the customer Type <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>lastUpdateBy</code> - the id of the entity that did the last modification <em>(number)</em></li>
+<li><code>lastUpdateDate</code> - the name of the customer Type <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>enabled</code> - enabled <em>(boolean)</em></li>
 
 </ul>
-<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="request-sample">
-<p><strong>Request:</strong></p>
+<h4><strong>Request:</strong></h4>
 
-<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/rsschannels HTTPS/1.1
+<pre class="language-javascript"><code>GET /webresources/api/v3/sites/current/rsschannels HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
-Content-Type: application/json
-{% endraw %}</code></pre>
+Content-Type: application/json</code></pre>
 </div>
 <div class="response-sample">
-<p><strong>Response:</strong></p>
+<h4><strong>Response:</strong></h4>
 
-<pre class="language-javascript"><code>{% raw %}{
+<pre class="language-javascript"><code>{
   "items": [
     {
-      "id": 287045,
-      "siteId": 38581,
-      "label": "Woodwork",
-      "default": false
+      "Id": 13412,
+      "siteId": 1767665,
+      "title": "First Channel",
+      "description": "This is a test channel",
+      "maxFeedEntries": 15,
+      "createBy": 1059477,
+      "createDate": "2016-03-14T17:10:25.573",
+      "lastUpdateBy": 1059477,
+      "lastUpdateDate": "2016-03-14T17:10:25.573",
+      "enabled": true
     },
     {
-      "id": 287046,
-      "siteId": 38581,
-      "label": "Manufacturing",
-      "default": false
-    },
-    {
-      "id": 287047,
-      "siteId": 38581,
-      "label": "General purpose goods",
-      "default": false
+      "Id": 13425,
+      "siteId": 1767665,
+      "title": "Second Channel",
+      "description": "This is a test channel",
+      "maxFeedEntries": 100,
+      "createBy": 1059477,
+      "createDate": "2016-03-15T15:16:19.407",
+      "lastUpdateBy": 1059477,
+      "lastUpdateDate": "2016-03-15T15:16:19.407",
+      "enabled": true
     }
   ],
-  "totalItemsCount": 3,
+  "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}{% endraw %}</code></pre>
+}</code></pre>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample code</h3>
-<p><strong>Get the list of RSS</strong></p>
-<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/rsschannels",
@@ -97,18 +118,68 @@ var request = $.ajax({
 });
 request.done(function (msg) {
     console.log(msg);
-})
+});
 request.fail(function (jqXHR) {
     console.log("Request failed.");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
-
-
     console.log("Response text: " + jqXHR.responseText);
-}){% endraw %}</code></pre>
-<p><strong>Get the details of a particular RSS</strong></p>
-<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+});</code></pre>
+</div>
+<hr>
+</div>
 
+<div id="get">
+<h2>Get  a  RSS channel</h2>
+<div class="description">Get details of one RSS channel.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/<code>rsschannels</code>/<code>[rsschannel_ID]</code>
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+  <li><code>Id</code> - the id of the RSS channel<em>(integer)</em></li>
+  <li><code>siteId</code> - the id of the site <em>(integer)</em></li>
+  <li><code>title</code> - the RSS channel's name<em>(integer)</em></li>
+  <li><code>description</code> - the RSS channel's description <em>(integer)</em></li>
+  <li><code>maxFeedEntries</code> - the update frequency of the channel <em>(integer)</em>
+    <ul>
+      <li><strong>15</strong> - Several times a week</li>
+      <li><strong>30</strong> - Once a day</li>
+      <li><strong>50</strong> - Many times a day</li>
+      <li><strong>100</strong> - Wildfire!</li>
+    </ul>
+  </li>
+  <li><code>createBy</code> - the id of the  entity that created the channel <em>(number)</em></li>
+  <li><code>createDate</code> - the name of the customer Type <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>lastUpdateBy</code> - the id of the entity that did the last modification <em>(number)</em></li>
+  <li><code>lastUpdateDate</code> - the name of the customer Type <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  <li><code>enabled</code> - enabled <em>(boolean)</em></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<h3><strong>Sample request</strong></h3>
+
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
 
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/rsschannels/287045",
@@ -128,100 +199,28 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-}){% endraw %}</code></pre>
-</div>
-<hr>
-</div>
-
-<div id="create">
-<h2>Create  a new RSS resource</h2>
-<div class="description">Using this method you can add an RSS's resource to your site.</div>
-<div class="request">
-<h3>Request</h3>
-<ul>
-<li><strong>Method:</strong> POST</li>
-<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
-
-<ul>
-<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
-</ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/rsschannels
-  <ul>
-    <li>Alternatively, use siteID instead of 'current'</li>
-</ul>
-</li>
-<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
-</ul>
-<h4>Parameters</h4>
-<ul>
-<li><code>{% raw %}label{% endraw %}</code> - the name of the RSS resource<em> (string)</em></li>
-<li><code>{% raw %}default{% endraw %}</code><em> (boolean)</em></li>
-</ul>
-</div>
-<div class="response">
-<h3>Response</h3>
-
-<p>Returns an empty body if successful or a detailed error message.</p>
-<p>Accepts and returns JSON as Content-Type.</p>
-</div>
-<hr>
-<div class="request-sample">
-<p><strong>Request:</strong></p>
-
-<pre class="language-javascript"><code>{% raw %}POST /webresources/api/v3/sites/current/rsschannels HTTPS/1.1
-Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
-Connection: keep-alive
-Content-Type: application/json
-
-
-{
-    "label": "Woodworks and others",
-    "default": false
-}{% endraw %}</code></pre>
+})</code></pre>
 </div>
 <div class="response-sample">
 <p><strong>Response:</strong></p>
 
-<pre class="language-javascript"><code>{% raw %}
-HTTP/1.1 201 CREATED
-Location: /webresources/api/v3/sites/current/rsschannels/28742
-Content-Type: application/json; charset=utf-8
-Content-Length: length{% endraw %}</code></pre>
+<pre class="language-javascript"><code>{
+  "Id": 13412,
+  "siteId": 1767665,
+  "title": "First Channel",
+  "description": "This is a test channel",
+  "maxFeedEntries": 15,
+  "createBy": 1059477,
+  "createDate": "2016-03-14T17:10:25.573",
+  "lastUpdateBy": 1059477,
+  "lastUpdateDate": "2016-03-14T17:10:25.573",
+  "enabled": true
+}</code></pre>
 </div>
 <hr>
-<div class="sample">
-<h3>Sample code</h3>
-<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
-var request = $.ajax({
-url: "/webresources/api/v3/sites/current/rsschannels",
-type: "PUT",
-connection: "keep-alive",    
-contentType: "application/json",
-mimeType: "application/json ",
-headers: {
-    "Authorization": $.cookie('access_token')
-},
-processData: false,
-data: JSON.stringify({
-    "label": "Woodworks and others",
-    "default": false
-})
-});
-request.done(function(msg) {
-console.log(msg);
-})
-request.fail(function(jqXHR) {
-console.log("Request failed.");
-console.log("Error code: " + jqXHR.status);
-console.log("Error text: " + jqXHR.statusText);
-console.log("Response text: " + jqXHR.responseText);
-}){% endraw %}</code></pre>
-</div>
 <hr>
 </div>
-<div id="edit">
+<!--<div id="edit">
 <h2>Edit  an RSS resource</h2>
 <div class="description">Using this method you can edit a RSS resource</div>
 <div class="request">
@@ -380,4 +379,4 @@ request.fail(function(jqXHR) {
 }){% endraw %}</code></pre>
 </div>
 <hr>
-</div>
+</div>-->

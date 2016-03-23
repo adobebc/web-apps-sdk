@@ -32,9 +32,9 @@
 <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
 <li><code>{% raw %}discountType{% endraw %}</code> - the type of the discount code <em>(integer)</em>
   <ul>
-<li><strong>1</strong> - Percentage of Order</li>
-<li><strong>2</strong> - Fixed Dollar Amount</li>
-<li><strong>3</strong> - Free Shipping</li>
+<li><code>1</code> - Percentage of Order</li>
+<li><code>2</code> - Fixed Dollar Amount</li>
+<li><code>3</code> - Free Shipping</li>
 </ul>
 </li>
 <li><code>{% raw %}code{% endraw %}</code> - the discount code's code<em>(string)</em></li>
@@ -42,11 +42,11 @@
 <li><code>{% raw %}discountPercentageOrFixedAmount{% endraw %}</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
 <li><code>{% raw %}discountThreshold{% endraw %}</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
 <li><code>{% raw %}expireAfterXUses{% endraw %}</code> - the number of uses the discount code expires after <em>(string)</em></li>
-<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em>
 </li>
-<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>{% raw %}createDate{% endraw %}</code> - discount code's creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - discount code's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 
@@ -151,9 +151,9 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
 <li><code>{% raw %}discountType{% endraw %}</code> - the type of the discount code <em>(integer)</em>
   <ul>
-<li><strong>1</strong> - Percentage of Order</li>
-<li><strong>2</strong> - Fixed Dollar Amount</li>
-<li><strong>3</strong> - Free Shipping</li>
+<li><code>1</code> - Percentage of Order</li>
+<li><code>2</code> - Fixed Dollar Amount</li>
+<li><code>3</code> - Free Shipping</li>
 </ul>
 </li>
 <li><code>{% raw %}code{% endraw %}</code> - the discount code's code<em>(string)</em></li>
@@ -161,11 +161,11 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}discountPercentageOrFixedAmount{% endraw %}</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
 <li><code>{% raw %}discountThreshold{% endraw %}</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
 <li><code>{% raw %}expireAfterXUses{% endraw %}</code> - the number of uses the discount code expires after <em>(string)</em></li>
-<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em>
 </li>
-<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>{% raw %}createDate{% endraw %}</code> - discount code's  creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - discount code's  creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -244,9 +244,9 @@ request.fail(function (jqXHR) {
 <ul>
 <li><code>{% raw %}discountType{% endraw %}</code> - the type of the discount code <em>(integer)</em>
   <ul>
-  <li><strong>1</strong> - Percentage of Order</li>
-  <li><strong>2</strong> - Fixed Dollar Amount</li>
-  <li><strong>3</strong> - Free Shipping</li>
+  <li><code>1</code> - Percentage of Order</li>
+  <li><code>2</code> - Fixed Dollar Amount</li>
+  <li><code>3</code> - Free Shipping</li>
   </ul>
 </li>
 <li><code>{% raw %}code{% endraw %}</code> - the discount code's code<em>(string)</em></li>
@@ -254,11 +254,11 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}discountPercentageOrFixedAmount{% endraw %}</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
 <li><code>{% raw %}discountThreshold{% endraw %}</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
 <li><code>{% raw %}expireAfterXUses{% endraw %}</code> - the number of uses the discount code expires after <em>(string)</em></li>
-<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em>
 </li>
-<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>{% raw %}createDate{% endraw %}</code> - discount code's  creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - discount code's  creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 </div>
@@ -324,9 +324,9 @@ request.fail(function (jqXHR) {
 <ul>
 <li><code>{% raw %}discountType{% endraw %}</code> - the type of the discount code <em>(integer)</em>
   <ul>
-  <li><strong>1</strong> - Percentage of Order</li>
-  <li><strong>2</strong> - Fixed Dollar Amount</li>
-  <li><strong>3</strong> - Free Shipping</li>
+  <li><code>1</code> - Percentage of Order</li>
+  <li><code>2</code> - Fixed Dollar Amount</li>
+  <li><code>3</code> - Free Shipping</li>
   </ul>
 </li>
 <li><code>{% raw %}code{% endraw %}</code> - the discount code's code<em>(string)</em></li>
@@ -334,11 +334,11 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}discountPercentageOrFixedAmount{% endraw %}</code> - if the discount type is &quot;1&quot; this represents the percentage to be discounted. If the discount type is 1 or 2 this value is <em>-1</em> <em>(numeric)</em></li>
 <li><code>{% raw %}discountThreshold{% endraw %}</code> - only apply this discount if the order's value is over this threshold <em>(integer)</em></li>
 <li><code>{% raw %}expireAfterXUses{% endraw %}</code> - the number of uses the discount code expires after <em>(string)</em></li>
-<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em>
+<li><code>{% raw %}releaseDate{% endraw %}</code> - the release date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em>
 </li>
-<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>{% raw %}createDate{% endraw %}</code> - discount code's  creation date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
+<li><code>{% raw %}expiryDate{% endraw %}</code> - the expiry date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - discount code's  creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - discount code's  last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> - whether the discount code is enabled or not <em>(boolean)</em></li>
 </ul>
 </div>

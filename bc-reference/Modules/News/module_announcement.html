@@ -18,34 +18,34 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>render</strong> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
-    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+<li><code>render</code> - possible values are <em>item</em> or <em>collection</em> (the default is <em>item</em>). The render parameter indicates whether the template content is used to render a collection or to render a single item. Take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+    <li><code>filter</code> - filtering criteria for display and can be one of the following:
 <ul>
-        <li><strong>item</strong> - individual item</li>
-        <li><strong>all</strong> - all items</li>
-        <li><strong>latest</strong> - latest items</li>
-        <li><strong>latestClassified</strong> - latest items in a category</li>
+        <li><code>item</code> - individual item</li>
+        <li><code>all</code> - all items</li>
+        <li><code>latest</code> - latest items</li>
+        <li><code>latestClassified</code> - latest items in a category</li>
         
-        <li><strong>random</strong> - random item</li>
-        <li><strong>randomClassified</strong> - displays a random item in a particular category</li>
-        <li><strong>classified</strong> - all the items in a category</li>
+        <li><code>random</code> - random item</li>
+        <li><code>randomClassified</code> - displays a random item in a particular category</li>
+        <li><code>classified</code> - all the items in a category</li>
     </ul>
     </li>
     <li><strong>itemid</strong> &ndash; the itemID or the categoryId, depending on the filter type can be hoe many items to display</li>
     <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty or you can also pass <strong>false</strong></li>
     <li><strong>effect</strong> &ndash; enter <em>ajax</em> (see the examples below) if you want to take advantage of the latest web technologies for a better customer experience</li>
     <li><strong>targetFrame</strong> &ndash; the frame in which to open the item in</li>
-    <li><strong>rowLength</strong> - this parameter is only used when the filter is either "l" or "cl" and dictates how many items are rendered per row</li>
+    <li><code>rowLength</code> - this parameter is only used when the filter is either "l" or "cl" and dictates how many items are rendered per row</li>
     <li><strong>resultsPerPage </strong>- number of items per page</li>
     <li><strong>hideEmptyMessages </strong>- hide the default text rendered when no announcements are found</li>
-    <li><strong>sortType</strong> - if you leave this parameter blank, by default announcements will be sorted from the latest to the oldest where the latest is displayed first
+    <li><code>sortType</code> - if you leave this parameter blank, by default announcements will be sorted from the latest to the oldest where the latest is displayed first
   <ul>
-    <li><strong>alphabetical</strong> - will sort announcements alphabetically</li>
-    <li><strong>datereverse</strong> - will sort announcements in the reverse order, that is from the oldest to the latest</li>
+    <li><code>alphabetical</code> - will sort announcements alphabetically</li>
+    <li><code>datereverse</code> - will sort announcements in the reverse order, that is from the oldest to the latest</li>
     </ul>
     </li>
-        <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+        <li><code>collection</code> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><code>template</code> - optional, for this module this can either represent the path of the custom template you want to use, or use a blank value (template=&quot;&quot;) if you need to <a href="/Developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 
 </ul>
 </div>
@@ -76,7 +76,7 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+    <li><code>filter</code> - filtering criteria for display and can be one of the following:
 <ul>
         <li>i - individual item</li>
         <li>a - all items</li>
@@ -91,13 +91,13 @@
     <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in true, otherwise leave empty</li>
     <li><strong>effect</strong> &ndash; enter <em>ajax</em> (see the examples below) if you want to take advantage of the latest web technologies for a better customer experience</li>
     <li><strong>target</strong> &ndash; the frame in which to open the item in</li>
-    <li><strong>reserved</strong> - for use in a future release</li>
+    <li><code>reserved</code> - for use in a future release</li>
     <li><strong>resultsPerPage </strong>- number of items per page</li>
-    <li><strong>length</strong> - this parameter is only used when the filter is either "l" or "cl" and dictates how many items are rendered per row</li>
-    <li><strong>sort</strong> - if you leave this parameter blank, by default announcements will be sorted from the latest to the oldest where the latest is displayed first
+    <li><code>length</code> - this parameter is only used when the filter is either "l" or "cl" and dictates how many items are rendered per row</li>
+    <li><code>sort</code> - if you leave this parameter blank, by default announcements will be sorted from the latest to the oldest where the latest is displayed first
 <ul>
-        <li><strong>alphabetical</strong> - will sort announcements alphabetically</li>
-        <li><strong>datereverse</strong> - will sort announcements in the reverse order, that is from the oldest to the latest</li>
+        <li><code>alphabetical</code> - will sort announcements alphabetically</li>
+        <li><code>datereverse</code> - will sort announcements in the reverse order, that is from the oldest to the latest</li>
     </ul>
     </li>
 </ul>

@@ -28,62 +28,62 @@
 <p>An array of the first 10 products; each object has the following properties:</p>
 
 <ul>
-<li><strong>id</strong> - product ID <em>(number)</em></li>
-<li><strong>siteId</strong> - site ID <em>(number)</em></li>
-<li><strong>name</strong> - product's name <em>(string)</em></li>
-<li><strong>roleId</strong> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
-<li><strong>weight</strong> - product's weight <em>(number)</em></li>
-<li><strong>productCode</strong> - product's code <em>(string)</em></li>
-<li><strong>tags</strong> - product's tags <em>(string)</em></li>
-<li><strong>unitType</strong> - unitType <em>(string)</em></li>
-<li><strong>smallImage</strong> - product's smallImage <em>(string)</em></li>
-<li><strong>largeImage</strong> - product's largeImage <em>(string)</em></li>
-<li><strong>description</strong> - product's description <em>(string)</em></li>
-<li><strong>inventoryControl</strong> - whether this product has inventoryControl on or off<em>(boolean)</em></li>
-<li><strong>canPreorder</strong> - canPreorder <em>(boolean)</em></li>
-<li><strong>minUnits</strong> - min number units that can be added to the cart <em>(number)</em></li>
-<li><strong>maxUnits</strong> - max number units that can be added to the cart <em>(number)</em></li>
-<li><strong>inStock</strong> - number of items in stock<em>(number)</em></li>
-<li><strong>onOrder</strong> - onOrder <em>(number)</em></li>
-<li><strong>reOrder</strong> - reOrder <em>(number)</em></li>
-<li><strong>reOrderNotified</strong> - reOrderNotified <em>(boolean)</em></li>
-<li><strong>variablePerCycle</strong> - variablePerCycle <em>(boolean)</em></li>
-<li><strong>groupingID</strong> - the product's groupID <em>(number)</em></li>
-<li><strong>GroupingDefault</strong> - GroupingDefault <em>(boolean)</em></li>
-<li><strong>electronicProduct</strong> - whether or not this product is an e-Product <em>(boolean)</em></li>
-<li><strong>displayFileName</strong> - product's display name <em>(string)</em></li>
-<li><strong>size</strong> - size <em>(number)</em></li>
-<li><strong>downloadLimitCount</strong> - download limit (only applies to e-Products) <em>(number)</em></li>
-<li><strong>downloadLimitIp</strong> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
-<li><strong>productWeight</strong> - product weight <em>(number)</em></li>
-<li><strong>productVolume</strong> - product volume <em>(number)</em></li>
-<li><strong>productHeight</strong> - product height <em>(number)</em></li>
-<li><strong>productDepth</strong> - product depth <em>(number)</em></li>
-<li><strong>supplierEntityId</strong> - the supplier's entity ID <em>(number)</em></li>
-<li><strong>supplierCommission</strong> - the supplier's commission <em>(number)</em></li>
-<li><strong>isGiftVoucher</strong> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
-<li><strong>poplets</strong> - the product's poplets<em>(string)</em></li>
-<li><strong>attributes</strong> - product's attributes <em>(string)</em></li>
-<li><strong>custom1</strong> - custom field 1 <em>(string)</em></li>
-<li><strong>custom2</strong> - custom field 2 <em>(string)</em></li>
-<li><strong>custom3</strong> - custom field 3 <em>(string)</em></li>
-<li><strong>custom4</strong> - custom field 4 <em>(string)</em></li>
-<li><strong>releaseDate</strong> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>expiryDate</strong> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime">dateTime</a>)</em></li>
-<li><strong>captureDetails</strong> - captureDetails <em>(boolean)</em></li>
-<li><strong>isOnSale</strong> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
-<li><strong>hideIfNoStock</strong> - hide product if stock is 0 <em>(boolean)</em></li>
-<li><strong>enableDropShipping</strong> - enable drop shipping <em>(boolean)</em></li>
-<li><strong>excludeFromSearch</strong> - exclude this product from search results<em>(boolean)</em></li>
-<li><strong>enabled</strong> - enabled <em>(boolean)</em></li>
-<li><strong>deleted</strong> - deleted <em>(boolean)</em></li>
-<li><strong>title</strong> - product's title <em>(string)</em></li>
-<li><strong>reIndex</strong> - reIndex <em>(boolean)</em></li>
-<li><strong>hasAttributes</strong> - hasAttributes <em>(boolean)</em></li>
-<li><strong>cycleTypeCount</strong> - cycleTypeCount <em>(number)</em></li>
-<li><strong>hasVariations</strong> - whether the product has variations enabled<em>(boolean)</em></li>
-<li><strong>url</strong> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
-<li><strong>metaProductDescription</strong> - metaProductDescription <em>(string)</em></li>
+<li><code>id</code> - product ID <em>(number)</em></li>
+<li><code>siteId</code> - site ID <em>(number)</em></li>
+<li><code>name</code> - product's name <em>(string)</em></li>
+<li><code>roleId</code> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
+<li><code>weight</code> - product's weight <em>(number)</em></li>
+<li><code>productCode</code> - product's code <em>(string)</em></li>
+<li><code>tags</code> - product's tags <em>(string)</em></li>
+<li><code>unitType</code> - unitType <em>(string)</em></li>
+<li><code>smallImage</code> - product's smallImage <em>(string)</em></li>
+<li><code>largeImage</code> - product's largeImage <em>(string)</em></li>
+<li><code>description</code> - product's description <em>(string)</em></li>
+<li><code>inventoryControl</code> - whether this product has inventoryControl on or off<em>(boolean)</em></li>
+<li><code>canPreorder</code> - canPreorder <em>(boolean)</em></li>
+<li><code>minUnits</code> - min number units that can be added to the cart <em>(number)</em></li>
+<li><code>maxUnits</code> - max number units that can be added to the cart <em>(number)</em></li>
+<li><code>inStock</code> - number of items in stock<em>(number)</em></li>
+<li><code>onOrder</code> - onOrder <em>(number)</em></li>
+<li><code>reOrder</code> - reOrder <em>(number)</em></li>
+<li><code>reOrderNotified</code> - reOrderNotified <em>(boolean)</em></li>
+<li><code>variablePerCycle</code> - variablePerCycle <em>(boolean)</em></li>
+<li><code>groupingID</code> - the product's groupID <em>(number)</em></li>
+<li><code>GroupingDefault</code> - GroupingDefault <em>(boolean)</em></li>
+<li><code>electronicProduct</code> - whether or not this product is an e-Product <em>(boolean)</em></li>
+<li><code>displayFileName</code> - product's display name <em>(string)</em></li>
+<li><code>size</code> - size <em>(number)</em></li>
+<li><code>downloadLimitCount</code> - download limit (only applies to e-Products) <em>(number)</em></li>
+<li><code>downloadLimitIp</code> - download limit per IP (only applies to e-Products) <em>(number)</em></li>
+<li><code>productWeight</code> - product weight <em>(number)</em></li>
+<li><code>productVolume</code> - product volume <em>(number)</em></li>
+<li><code>productHeight</code> - product height <em>(number)</em></li>
+<li><code>productDepth</code> - product depth <em>(number)</em></li>
+<li><code>supplierEntityId</code> - the supplier's entity ID <em>(number)</em></li>
+<li><code>supplierCommission</code> - the supplier's commission <em>(number)</em></li>
+<li><code>isGiftVoucher</code> - whether this product is to be used as a gift voucher <em>(boolean)</em></li>
+<li><code>poplets</code> - the product's poplets<em>(string)</em></li>
+<li><code>attributes</code> - product's attributes <em>(string)</em></li>
+<li><code>custom1</code> - custom field 1 <em>(string)</em></li>
+<li><code>custom2</code> - custom field 2 <em>(string)</em></li>
+<li><code>custom3</code> - custom field 3 <em>(string)</em></li>
+<li><code>custom4</code> - custom field 4 <em>(string)</em></li>
+<li><code>releaseDate</code> - product's release date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>expiryDate</code> - product's expiry date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>captureDetails</code> - captureDetails <em>(boolean)</em></li>
+<li><code>isOnSale</code> - whether this product is marked as &quot;on sale&quot; <em>(boolean)</em></li>
+<li><code>hideIfNoStock</code> - hide product if stock is 0 <em>(boolean)</em></li>
+<li><code>enableDropShipping</code> - enable drop shipping <em>(boolean)</em></li>
+<li><code>excludeFromSearch</code> - exclude this product from search results<em>(boolean)</em></li>
+<li><code>enabled</code> - enabled <em>(boolean)</em></li>
+<li><code>deleted</code> - deleted <em>(boolean)</em></li>
+<li><code>title</code> - product's title <em>(string)</em></li>
+<li><code>reIndex</code> - reIndex <em>(boolean)</em></li>
+<li><code>hasAttributes</code> - hasAttributes <em>(boolean)</em></li>
+<li><code>cycleTypeCount</code> - cycleTypeCount <em>(number)</em></li>
+<li><code>hasVariations</code> - whether the product has variations enabled<em>(boolean)</em></li>
+<li><code>url</code> - product's url (if the product is placed in multiple catalogs the url of the default one will be used) <em>(string)</em></li>
+<li><code>metaProductDescription</code> - metaProductDescription <em>(string)</em></li>
 
 </ul>
 

@@ -22,7 +22,7 @@
 <p>Object:</p>
 
 <ul>
-<li><code>{% raw %}id{% endraw %}</code> - unique - field id, if left empty, will be auto-generated <em>(int)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - unique, required - field id - <em>(int)</em></li>
 <li><code>{% raw %}name{% endraw %}</code> - unique, required - the name of the field (it must be unique amongst the custom &amp; system fields) <em>(string)</em></li>
 <li><code>{% raw %}type{% endraw %}</code> - required, one of the below: <em>(string)</em>
 
@@ -73,11 +73,15 @@ Connection: keep-alive
 Content-Type: application/json
 
 {
-   "name"    : "Part code",
-   "type"    : "DropDown_List",
-   "listItems": ["First option", "Second one"],
-   "required": false,
-   "order"   : 3
+    "id": 44,
+    "name": "Part code",
+    "type": "DropDown_List",
+    "listItems": [
+        "First option",
+        "Second one"
+    ],
+    "required": false,
+    "order": 3
 }
 {% endraw %}</code></pre>
 
@@ -89,7 +93,7 @@ Location: /api/v2/admin/sites/current/webapps/Cars/fields/123
 {% endraw %}</code></pre>
 
 <hr><h2>Sample code</h2>
-<pre class="language-javascript"><code>{% raw %}var request = $.ajax({
+<pre class="language-javascript"><code>var request = $.ajax({
     url: "/api/v2/admin/sites/current/webapps/test app2/fields",
     type: "POST",
     connection: "keep-alive",
@@ -98,18 +102,24 @@ Location: /api/v2/admin/sites/current/webapps/Cars/fields/123
         "Authorization": $.cookie('access_token')
     },
     processData: false,
-    data: JSON.stringify({"name": "Customfield1", "type": "String","required": true, "order": 1,"listItems": ["First option", "Second one"], "addEmptyOption": true})
+    data: JSON.stringify({
+        "name": "Customfield1",
+        "type": "CheckBox_List",
+        "required": true,
+        "order": 1,
+        "listItems": ["First option", "Second one"],
+        "addEmptyOption": true
+    })
 });
-request.done(function (msg) {
+request.done(function(msg) {
     console.log(msg);
-})
-request.fail(function (jqXHR) {
+});
+request.fail(function(jqXHR) {
     console.log("Request failed.");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})
-{% endraw %}</code></pre>
+});</code></pre>
 
 <hr><h2>Error codes</h2>
 

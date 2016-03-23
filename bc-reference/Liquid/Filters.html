@@ -569,7 +569,7 @@
         <tr>
             <td valign="top" class="cellrowborder"><code>{% raw %}convert{% endraw %}</code>
             </td>
-            <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><strong>string</strong> - <code>{% raw %}{{ 3 | convert: "string" | json }}{% endraw %}</code> outputs "3"</li> <li><strong>number</strong> - <code>{% raw %}{{ "3" | convert: "number" | json }}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><strong>boolean</strong> - <code>{% raw %}{{ "false" | convert: "boolean" | json }}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><strong>date</strong> - <code>{% raw %}{{ "2015-01-07" | convert: "date" }}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> </ul></span>
+            <td><span class="cellcontent">Converts variables into different formats. Possible dataTypes are:           <ul> <li><code>string</code> - <code>{% raw %}{{ 3 | convert: "string" | json }}{% endraw %}</code> outputs "3"</li> <li><code>number</code> - <code>{% raw %}{{ "3" | convert: "number" | json }}{% endraw %}</code> outputs 3 (this can now be used with the mathematical filters)</li> <li><code>boolean</code> - <code>{% raw %}{{ "false" | convert: "boolean" | json }}{% endraw %}</code> outputs "false" (it is treated as a boolean variable)</li> <li><code>date</code> - <code>{% raw %}{{ "2015-01-07" | convert: "date" }}{% endraw %}</code> outputs <em>2015-01-07T00:00:00</em> in dateTime format<br> </li> </ul></span>
             </td>
         </tr>
         <tr>

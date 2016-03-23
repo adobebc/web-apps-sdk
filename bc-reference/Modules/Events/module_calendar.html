@@ -20,30 +20,30 @@
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
-<li><strong>render</strong> - for this module the value of this parameter can only be <em>collection</em> (if no value is specified the default will be <em>collection</em>). For more information on how to use this parameter take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
-    <li><strong>eventType</strong> - the type of item to display. This parameter has 3 possible values:
+<li><code>render</code> - for this module the value of this parameter can only be <em>collection</em> (if no value is specified the default will be <em>collection</em>). For more information on how to use this parameter take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
+    <li><code>eventType</code> - the type of item to display. This parameter has 3 possible values:
 <ul>
-        <li><strong>all</strong> - display both News and Events</li>
-        <li><strong>news</strong> - display only News</li>
-        <li><strong>events</strong> - display only Events</li>
+        <li><code>all</code> - display both News and Events</li>
+        <li><code>news</code> - display only News</li>
+        <li><code>events</code> - display only Events</li>
     </ul>
     </li>
-    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+    <li><code>filter</code> - filtering criteria for display and can be one of the following:
 <ul>
-        <li><strong>all</strong> - all items</li>
-        <li><strong>classified</strong> - displays an item in a particular category</li>
+        <li><code>all</code> - all items</li>
+        <li><code>classified</code> - displays an item in a particular category</li>
     </ul>
     </li>
-    <li><strong>classificationId</strong> -if you choose to display the classified calendar items specify the classification ID here</li>
+    <li><code>classificationId</code> -if you choose to display the classified calendar items specify the classification ID here</li>
         <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
-            <li><strong>targetFrame</strong> - specify the way the item opens when it is clicked. the possible values are:
+            <li><code>targetFrame</code> - specify the way the item opens when it is clicked. the possible values are:
             <ul>
-            <li><strong>_blank</strong> - open the new item in a new window</li>
-            <li><strong>_self</strong> - open the new item in the same window</li>
+            <li><code>_blank</code> - open the new item in a new window</li>
+            <li><code>_self</code> - open the new item in the same window</li>
             </ul>
             </li>
-            <li><strong>collection</strong> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
-    <li><strong>template</strong> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
+            <li><code>collection</code> - use this if you need to <a href="/developers/liquid/getting-started-with-liquid#available_tags" title="Get a module's output tags">access the module's Liquid output tags</a></li>
+    <li><code>template</code> - render the module using a custom template. You can leave the value of the template parameter blank to <a href="/developers/beta/getting-started-with-liquid#template" title="Suppress the original module output">suppress the original output</a> and use Liquid output tags instead</li>
 </ul>
 </div>
 <div class="layouts">
@@ -51,7 +51,7 @@
 <ul>
     <li><strong>in its generic shape</strong>, as by default this module does not use a layout. Here is how the output looks like: <a class="fancybox" href="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1458.png"><img alt="" src="http://knowledgebase6.businesscatalyst.com/kb_resources/screenshots/2013-03-27_1458.png?Action=thumbnail&amp;Width=500&amp;algorithm=fill"/></a>
     </li>
-    <li><strong>using Liquid collections</strong> - the output is a Liquid collection containing the days :    <br>
+    <li><code>using Liquid collections</code> - the output is a Liquid collection containing the days :    <br>
       <br>
       <pre class="language-javascript"><code>{% raw %}"my_custom_collection_name": {
       "moduleName": "calendar",
@@ -98,25 +98,25 @@
 <div class="parameters">
 <h2> Parameters</h2>
 <ul>
-    <li><strong>what</strong> - the type of item to display. This parameter has 3 possible values:
+    <li><code>what</code> - the type of item to display. This parameter has 3 possible values:
 <ul>
         <li>0 - display both News and Events</li>
         <li>7 - display only News</li>
         <li>48 - display only Events</li>
     </ul>
     </li>
-    <li><strong>filter</strong> - filtering criteria for display and can be one of the following:
+    <li><code>filter</code> - filtering criteria for display and can be one of the following:
 <ul>
   <li>a - all items</li>
   <li>c - displays an item in a particular category</li>
 </ul>
     </li>
-    <li><strong>classificationId</strong> -if you choose to display the classified calendar items specify the classification ID here</li>
+    <li><code>classificationId</code> -if you choose to display the classified calendar items specify the classification ID here</li>
     <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty</li>
-    <li><strong>targetFrame</strong> - specify the way the item opens when it is clicked. the possible values are:
+    <li><code>targetFrame</code> - specify the way the item opens when it is clicked. the possible values are:
       <ul>
-        <li><strong>_blank</strong> - open the new item in a new window</li>
-        <li><strong>_self</strong> - open the new item in the same window</li>
+        <li><code>_blank</code> - open the new item in a new window</li>
+        <li><code>_self</code> - open the new item in the same window</li>
       </ul>
     </li>
 </ul>

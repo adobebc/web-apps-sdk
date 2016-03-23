@@ -33,7 +33,7 @@
 <li><code>weight</code> - product's weight <em>(number)</em></li>
 <li><code>productCode</code> - product's code <em>(string)</em></li>
 <li class="" data-release="R213"><code>tags</code> - product's keywords <em>(string)</em></li>
-<!--<li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>-->
+<li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>
 <li><code>unitType</code> - unitType <em>(string)</em></li>
 <li><code>smallImage</code> - product's small image <em>(string)</em></li>
 <li><code>largeImage</code> - product's large image <em>(string)</em></li>
@@ -149,6 +149,7 @@ request.fail(function (jqXHR) {
         "weight": 1,
         "productCode": "R7VWTBA6LR",
         "tags": "featured",
+		"keywords": "featured",
         "unitType": "",
         "smallImage": "/shop/tshirt1.jpg",
         "largeImage": "/shop/big-product-image.jpg",
@@ -210,6 +211,7 @@ request.fail(function (jqXHR) {
         "weight": 2,
         "productCode": "UFQ3WULVDN",
         "tags": "new",
+        "keywords": "new",
         "unitType": "",
         "smallImage": "/shop/tshirt2.jpg",
         "largeImage": "/shop/big-product-image.jpg",
@@ -305,7 +307,7 @@ request.fail(function (jqXHR) {
   <li><code>weight</code> - product's weight <em>(number)</em></li>
   <li><code>productCode</code> - product's code <em>(string)</em></li>
   <li class="" data-release="R213"><code>tags</code> - product's keywords <em>(string)</em></li>
-<!--  <li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>-->
+<li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>
   <li><code>unitType</code> - unitType <em>(string)</em></li>
   <li><code>smallImage</code> - product's small image <em>(string)</em></li>
   <li><code>largeImage</code> - product's large image <em>(string)</em></li>
@@ -417,6 +419,7 @@ request.fail(function (jqXHR) {
     "weight":2,
     "productCode":"UFQ3WULVDN",
     "tags": "new",
+    "keywords": "new",
     "unitType":"",
     "smallImage":"/shop/tshirt2.jpg",
     "largeImage":"/shop/big-product-image.jpg",
@@ -510,7 +513,7 @@ request.fail(function (jqXHR) {
   <li><code>weight</code> - product's weight <em>(number)</em></li>
   <li><code>productCode</code> - product's code <em>(string)</em></li>
 <!--  <li class="" data-release="R213"><code>tags</code> - product's keywords <em>(string)</em></li>-->
-<!--  <li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>-->
+<li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>
   <li><code>unitType</code> - unitType <em>(string)</em></li>
   <li><code>smallImage</code> - product's small image <em>(string)</em></li>
   <li><code>largeImage</code> - product's large image <em>(string)</em></li>
@@ -615,6 +618,7 @@ var request = $.ajax({
     processData: false,
     data: JSON.stringify({
         "name": "New Created Product",
+		"keywords": "test",
         "unitType": "",
         "smallImage": "/img/products/small.jpg",
         "largeImage": "/img/products/large.jpg",
@@ -665,7 +669,7 @@ request.fail(function (jqXHR) {
   <li><code>roleId</code> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
   <li><code>weight</code> - product's weight <em>(number)</em></li>
   <li><code>productCode</code> - product's code <em>(string)</em></li>
-<!--  <li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>-->
+<li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>
   <li><code>unitType</code> - unitType <em>(string)</em></li>
   <li><code>smallImage</code> - product's small image <em>(string)</em></li>
   <li><code>largeImage</code> - product's large image <em>(string)</em></li>
@@ -773,6 +777,7 @@ var request = $.ajax({
     processData: false,
 	data: JSON.stringify({
         "name": "Kung-Fu Panda T-Shirt 2",
+        "keywords": "keyword",
         "description":"This is a description",
         "slug": "new-product-url-updated",
         "absoluteCanonicalUrl": "",

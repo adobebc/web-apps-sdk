@@ -50,8 +50,74 @@ Alternatively if the image dimensions are 400 pixels wide x 640 pixels high, the
 <h2>This module can be rendered:</h2>
 <ul>
     <li><strong>in plain text</strong></li>
-    <li><code>using Liquid collections</code> - this is the Liquid output tag you can use - <code>{% raw %}my_custom_collection_name.title{% endraw %}</code></li>
-</ul>
+    <li><cstrongode>
+    using Liquid collections</strong> - these are the Liquid output tags you can use</li>
+    </ul>
+<table width="100%" class="data-bordered">
+  <thead>
+    <tr>
+      <td class="liquid">Liquid tag</td>
+      <td class="description">Description</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2" valign="top" class="liquid tag"><code><strong>{% raw %}&#123;&#123;items&#125;&#125;{% endraw %}</strong></code></td>
+      </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code> {% raw %}&#123;&#123;photoGalleryId&#125;&#125;{% endraw %}</code></td>
+      <td class="description">The photo gallery id</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;useLightBox&#125;&#125;{% endraw %}</code></td>
+      <td class="description">Bollean value if using lightbox</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;link&#125;&#125;{% endraw %}</code></td>
+      <td class="description">Url of the gallery item image</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;description&#125;&#125;{% endraw %}</code></td>
+      <td class="description">Image caption</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;thumbnailLink&#125;&#125;{% endraw %}</code></td>
+      <td class="description">Url for image thumbnail</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;targetFrame&#125;&#125;{% endraw %}</code></td>
+      <td class="description">Target frame</td>
+    </tr>
+    <tr>
+      <td colspan="2" valign="top" class="liquid tag"><code><strong>{% raw %}&#123;&#123;pagination&#125;&#125;{% endraw %}</strong></code></td>
+      </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;currentPage&#125;&#125;{% endraw %}</code></td>
+      <td class="description">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;itemsPerPage&#125;&#125;{% endraw %}</code></td>
+      <td class="description">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;numberOfPages&#125;&#125;{% endraw %}</code></td>
+      <td class="description">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;totalItemsCount&#125;&#125;{% endraw %}</code></td>
+      <td class="description">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;previousPageUrl&#125;&#125;{% endraw %}</code></td>
+      <td class="description">defaults to <code class="language-markup">null</code></td>
+    </tr>
+    <tr>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;nextPageUrl&#125;&#125;{% endraw %}</code></td>
+      <td class="description">defaults to <code class="language-markup">null</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
 </div>
 <div class="examples">
 <h2>Examples</h2>

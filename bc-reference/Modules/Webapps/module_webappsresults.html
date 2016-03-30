@@ -190,10 +190,23 @@
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_datasource_id&#125;{% endraw %}</code></td>
             <td class="description">Renders the ID of the datasource field e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{% raw %}&#123;tag_country_id&#125;{% endraw %}</code></td>
         </tr>
-  <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;datasource&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_datasource&#125;{% endraw %}</code></td>
-            <td class="description">Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{% raw %}&#123;tag_country&#125;{% endraw %}</code></td>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;datasource&#125;&#125;{% endraw %}</code></td>
+          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_datasource&#125;{% endraw %}</code></td>
+          <td class="description">Renders a link to the datasource item e.g. - if my datasource field is named <em>country,</em> the tag will be <code>{% raw %}&#123;tag_country&#125;{% endraw %}</code></td>
+        </tr>
+      <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination&#125;&#125;{% endraw %}</code></td>
+         <td valign="top" class="legacy tag">&nbsp;</td>
+            <td class="description"><p>An object outside the items collection of objects with the following properties<code>:</code></p>
+              <ul>
+                <li>currentPage</li>
+                <li>itemsPerPage</li>
+                <li>numberOfPages</li>
+                <li>totalItemsCount</li>
+                <li>previousPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+                <li>nextPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+              </ul>            </td>
     </tr>
     </tbody>
 </table>

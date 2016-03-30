@@ -53,8 +53,22 @@
             <td class="description">Date when comment was given in <a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime format</a></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;website&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_website&#125;{% endraw %}</code></td><td class="description">Website of the person who provided the comment. If the comment form was submitted with the "Website" field not filled in this tag will output <code>{% raw %}&#123;tag_website&#125;{% endraw %}</code></td>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;website&#125;&#125;{% endraw %}</code></td>
+          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_website&#125;{% endraw %}</code></td>
+          <td class="description">Website of the person who provided the comment. If the comment form was submitted with the "Website" field not filled in this tag will output <code>{% raw %}&#123;tag_website&#125;{% endraw %}</code></td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}{{pagination}}{% endraw %}</code></td>
+          <td class="description">&nbsp;</td>
+          <td class="description">Pagination controls:
+            <ul>
+              <li>currentPage</li>
+              <li>itemsPerPage</li>
+              <li>numberOfPages</li>
+              <li>totalItemsCount</li>
+              <li>previousPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+              <li>nextPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+          </ul></td>
         </tr>
     </tbody>
 </table>

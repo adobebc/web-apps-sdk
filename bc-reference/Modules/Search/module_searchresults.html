@@ -81,10 +81,13 @@
          <tr>
          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination&#125;&#125;{% endraw %}</code></td>
             <td valign="top" class="legacy tag"></td>
-            <td class="description">Pagination controls:<ul><li>currentPage</li>
+            <td class="description">Pagination controls:<ul>
+              <li>currentPage</li>
+              <li>itemsPerPage</li>
               <li>numberOfPages</li>
-              <li>previousPageUrl</li>
-              <li>nextPageUrl</li>
+              <li>totalItemsCount</li>
+              <li>previousPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+              <li>nextPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
             </ul>
             </td>
         </tr>

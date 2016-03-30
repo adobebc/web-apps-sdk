@@ -277,21 +277,34 @@
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;catalogId&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_catalogueid&#125;{% endraw %}</code></td><td class="description">Displays catalog system id the product is currently displayed in</td>
         </tr>
+<tr>
+  <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;inventoryByAttributes&#125;&#125;{% endraw %}</code></td>
+  <td valign="top" class="legacy tag"></td>
+  <td class="description">Renders a JSON object that containsthe following parameters:
+    <ul>
+      <li>id</li>
+      <li>sku</li>
+      <li>inStock</li>
+      <li>onOrder</li>
+      <li>enabled</li>
+      <li>attributeString</li>
+      <li>attributes</li>
+      </ul></td>
+</tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;inventoryByAttributes&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"></td>
-         <td class="description">Renders a JSON object that containsthe following parameters:
-         <ul>
-         <li>id</li>
-         <li>sku</li>
-         <li>inStock</li>
-         <li>onOrder</li>
-         <li>enabled</li>
-         <li>attributeString</li>
-         <li>attributes</li>
-         </ul></td>
-      </tr>
-</tbody>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination&#125;&#125;{% endraw %}</code></td>
+          <td valign="top" class="legacy tag"></td>
+          <td class="description">Pagination controls:
+            <ul>
+              <li>currentPage</li>
+              <li>itemsPerPage</li>
+              <li>numberOfPages</li>
+              <li>totalItemsCount</li>
+              <li>previousPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+              <li>nextPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+            </ul></td>
+        </tr>
+    </tbody>
 </table>
 </div>
 <div class="examples">

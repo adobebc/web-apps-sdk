@@ -21,8 +21,67 @@
 <div class="layouts">
 <h2>This module can be rendered using:</h2>
 <ul>
-    <li>This module is not rendered by any layouts. See the example below for the format of the output.</li>
+    <li><code class="language-markup">A static layout</code> - this module is not rendered by any layouts. See the example below for the format of the output.</li>
+    <li><code class="language-markup">Liquid collections</code> - here are the Liquid output tags you can use:</li>
 </ul>
+<table width="100%" class="data-bordered">
+    <thead>
+<tr>
+<td class="liquid">Liquid tag</td>
+<td class="description">Description</td>
+</tr>
+</thead>
+    <tbody>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}{{searchQuery}}{% endraw %}</code></td>
+         <td class="description">A string representation if used in the search results</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}{{pageNumber}}{% endraw %}</code></td>
+         <td class="description">Results page number</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}{{items.counter}}{% endraw %}</code></td>
+         <td class="description">FAQ Counter</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}{{items.url}}{% endraw %}</code></td>
+         <td class="description">FAQ URL</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}{{items.question}}{% endraw %}</code></td>
+         <td class="description">FAQ Question</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}{{items.name}}{% endraw %}</code></td>
+         <td class="description"><p>The item's category:</p>
+           <ul>
+             <li>if there's only one it will output the name of the category.</li>
+             <li>if there's more then one category assigned to the item it will output <strong>&quot;Multiple&quot;</strong></li>
+          </ul></td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}{{selectedIndex}}{% endraw %}</code></td>
+         <td class="description">The faq starting index</td>
+        </tr>
+        <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}{{pagination}}</code><code>{% endraw %}</code></td>
+            <td class="description">Pagination controls:
+              <ul>
+                <li>currentPage</li>
+                <li>itemsPerPage</li>
+                <li>numberOfPages</li>
+                <li>totalItemsCount</li>
+                <li>previousPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+                <li>nextPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+            </ul></td>
+        </tr>
+         <tr>
+            <td valign="top" class="liquid tag"><code>{% raw %}{{itemType}}{% endraw %}</code></td>
+         <td class="description">The item's type (image, Flash or HTML)</td>
+        </tr>
+    </tbody>
+</table>
 </div>
 <div class="examples">
 <h2>Examples</h2>

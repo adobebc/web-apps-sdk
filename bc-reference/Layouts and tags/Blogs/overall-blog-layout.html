@@ -53,14 +53,27 @@
         For additional information on how to render the output of this tag using Liquid take a look at the <a href="/developers/liquid/enable-other-liquid-objects">Enable other Liquid tags</a> article.</td>
         </tr>
         <tr>
-          
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination.previousPageUrl&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_previouspage&#125;{% endraw %}</code></td><td class="description">Link to the previous page of blog posts</td>
+          <td valign="top" class="liquid tag">&nbsp;</td>
+          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_pagination&#125;{% endraw %}</code></td>
+          <td class="description">Enhanced pagination e.g. <em>1 .. 2 3 4 5 .. 10</em> to provide fast access to adjacentpages</td>
         </tr>
         <tr>
-          
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination&#125;&#125;{% endraw %}</code></td>
-         <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_pagination&#125;{% endraw %}</code></td><td class="description">Enhanced pagination e.g. <em>1 .. 2 3 4 5 .. 10</em> to provide fast access to adjacentpages</td>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination&#125;&#125;{% endraw %}</code></td>
+          <td valign="top" class="legacy tag">&nbsp;</td>
+          <td class="description">Pagination controls:
+            <ul>
+              <li>currentPage</li>
+              <li>itemsPerPage</li>
+              <li>numberOfPages</li>
+              <li>totalItemsCount</li>
+              <li>previousPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+              <li>nextPageUrl (<em><code class="language-markup">null</code> if empty</em>)</li>
+          </ul></td>
+        </tr>
+        <tr>
+          <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;pagination.previousPageUrl&#125;&#125;{% endraw %}</code></td>
+          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_previouspage&#125;{% endraw %}</code></td>
+          <td class="description">Link to the previous page of blog posts</td>
         </tr>
         <tr>
           

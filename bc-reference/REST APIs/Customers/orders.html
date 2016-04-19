@@ -698,7 +698,7 @@ request.fail(function(jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/orders
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/orders/[order_ID]
   <ul>
   <li>Alternatively, use siteID instead of 'current'</li>
 </ul>
@@ -783,7 +783,7 @@ request.fail(function(jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/orders HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/orders/9593213 HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -853,7 +853,7 @@ console.log("Response text: " + jqXHR.responseText);
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/orders
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/orders/[order_ID]
   <ul>
   <li>Alternatively, use siteID instead of 'current'</li>
 </ul>
@@ -912,4 +912,54 @@ request.fail(function(jqXHR) {
 }){% endraw %}</code></pre>
 </div>
 <hr>
+</div>
+<div id="print-support">
+
+<h2>Order print support</h2>
+<p>Download PDF files for invoice, packing slip or package label.</p>
+<h3>Request</h3>
+<ul>
+  <li><strong>Method:</strong> GET </li>
+  <li><strong>Path</strong>: /webresources/api/v3/sites/current/orders/[order_ID]  </li>
+  <li><strong>Headers:</strong>
+    <ul>
+      <li><strong>Authorization</strong>: This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+      <li><strong>Accept</strong> (one of the following): 
+        <ul>
+          <li>application/vnd.bc.ecommerce.packagingslip-pdf</li>
+          <li>application/vnd.bc.ecommerce.packaginglabel-pdf</li>
+          <li>application/vnd.bc.ecommerce.invoice-pdf</li>
+        </ul>
+      </li>
+      </ul>
+  </li>
+</ul>
+  <h3>Sample request</h3>
+  <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/orders/[order_ID]&quot;,<br>    type: &quot;GET&quot;,
+    contentType: "application/octet-stream",
+    headers: {
+         "Authorization": BCAPI.Helper.Site.getAccessToken(),
+         "Accept": "application/vnd.bc.ecommerce.invoice-pdf",
+    }
+});
+request.done(function(data) {
+    console.log(data);
+});
+    request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+</div>
+<div class="response">
+  <h3>Response</h3>
+  <p>Returns an empty body if successful or a detailed error message.</p>
+  <div class="request-sample">
+    <pre class="  language-javascript"><code>HTTP/1.1 200 OK</code></pre>
+  </div>
+</div>
+<p></p>
 </div>

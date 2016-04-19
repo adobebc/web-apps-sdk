@@ -44,21 +44,23 @@
         </tr>
     <tr>
       <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date&#125;&#125;{% endraw %}</code></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostdate&#125;{% endraw %}</code></td><td class="description">Date of the post</td>
+      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostdate&#125;{% endraw %}</code></td>
+      <td class="description">Date of the post  e.g. <em>24-Aug-2014</em>. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime format</a></td>
     </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;day&#125;&#125;{% endraw %}</code></td>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date | date: "dd"&#125;&#125;{% endraw %}</code></td>
       <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostday&#125;{% endraw %}</code></td>
-      <td class="description">Day of the post</td>
+      <td class="description">Day of the post. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime format</a></td>
     </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;month&#125;&#125;{% endraw %}</code></td>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date | date: "MMMM"&#125;&#125;{% endraw %}</code></td>
       <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostmonth&#125;{% endraw %}</code></td>
-      <td class="description">Month of the post</td>
+      <td class="description">Month of the post. The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime format</a></td>
     </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;monthNumeric&#125;&#125;{% endraw %}</code></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostmonthnumeric&#125;{% endraw %}</code></td><td class="description">Month part of the date the blog post was posted as a numeric value, e.g. 11-Dec-14 will render <em>12</em></td>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date | date: "MM"&#125;&#125;{% endraw %}</code></td>
+      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostmonthnumeric&#125;{% endraw %}</code></td>
+      <td class="description">Month part of the date the blog post was posted as a numeric value, e.g. 11-Dec-14 will render <em>12.</em> The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime format</a></td>
     </tr>
     <tr>
       <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;title&#125;&#125;{% endraw %}</code></td>
@@ -74,8 +76,9 @@
       <td class="description">The featured image's URL of the blog post (relative to site root). e.g. <em>/img/featured-1.jpg</em></td>
     </tr>
     <tr>
-      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;year&#125;&#125;{% endraw %}</code></td>
-      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostyear&#125;{% endraw %}</code></td><td class="description">Year part of the date that the post was submitted, e.g. 11-Dec-14 will render as the year only, like this: <em>2014</em></td>
+      <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;date | date: &quot;yyyy&quot;&#125;&#125;{% endraw %}</code></td>
+      <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostyear&#125;{% endraw %}</code></td>
+      <td class="description">Year part of the date that the post was submitted, e.g. 11-Dec-14 will render as the year only, like this: <em>2014 .</em> The Liquid tag uses the <a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime format</a></td>
     </tr>
     <tr>
       <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;commentsCount&#125;&#125;{% endraw %}</code></td>

@@ -1,0 +1,495 @@
+<h2 apiType="restv1">List System Web Form Fields</h2> 
+<ul id="toc"></ul>
+<p>Lists all system webform fields from the specified webform.</p>
+<div id="list">
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+<ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul>
+<li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/system</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An object with the following properties:</p>
+
+<ul>
+<li><code>links</code> - a collection of links <em>(array)</em>
+
+<ul>
+<li><code>self</code> - the API URL that will return this result <em>(string)</em></li>
+<li><code>previous</code> - the API URL that will return the previous page of results, if any <em>(string)</em></li>
+<li><code>next</code> - the API URL that will return the next page of results, if any <em>(string)</em></li>
+</ul></li>
+<li><code>items</code> - an array of Web Form objects with the following properties <em>(array)</em> 
+
+  <ul>
+<li><code>links</code> - a collection of links <em>(array)</em>
+
+<ul>
+<li><code>self</code> - the API URL that will return full details for this web form <em>(string)</em></li>
+</ul></li>
+<li><code>id</code> - the ID of the web form field <em>(integer)</em> </li>
+<li><code>name</code> - the name of the web form field <em>(string)</em></li>
+<li><code>type</code> - an object of the field's type
+  <ul>
+    <li><code>id</code> - the ID of the web form field type <em>(integer)</em></li>
+    <li><code>name</code> - the name of the web form field type <em>(string)</em></li>
+  </ul>
+</li>
+<li><code>mandatory</code> - if the web form is mandatory set this to true <em>(bool)</em></li>
+<li><code>order</code> - the order of the field in the web form<em> (integer)</em></li>
+  </ul>
+</li>
+</ul>
+
+
+<p>Accepts and returns JSON or XML as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>GET /api/v1/admin/sites/1767665/webforms/10090/fields/system
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json</code></pre>
+
+<h3>Sample response</h3>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "links": [
+    {
+      "rel": "self",
+      "uri": "https://api.worldsecuresystems.com/api/v1/admin/sites/1767665/webforms/10090/fields/system"
+    },
+    {
+      "rel": "previous",
+      "uri": null
+    },
+    {
+      "rel": "next",
+      "uri": null
+    }
+  ],
+  "items": [
+    {
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://api.worldsecuresystems.com/api/v1/admin/sites/1767665/webforms/10090/fields/system/-2"
+        }
+      ],
+      "id": -2,
+      "name": "CustomerDetails",
+      "type": {
+        "id": -2,
+        "name": "CustomerDetails"
+      },
+      "mandatory": true,
+      "order": 1
+    },
+    {
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://api.worldsecuresystems.com/api/v1/admin/sites/1767665/webforms/10090/fields/system/-3"
+        }
+      ],
+      "id": -3,
+      "name": "CustomerEmailAddress",
+      "type": {
+        "id": -3,
+        "name": "CustomerEmailAddress"
+      },
+      "mandatory": true,
+      "order": 2
+    },
+    {
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://api.worldsecuresystems.com/api/v1/admin/sites/1767665/webforms/10090/fields/system/-20"
+        }
+      ],
+      "id": -20,
+      "name": "CustomerHomePhoneNumber",
+      "type": {
+        "id": -20,
+        "name": "CustomerHomePhoneNumber"
+      },
+      "mandatory": true,
+      "order": 3
+    },
+    {
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://api.worldsecuresystems.com/api/v1/admin/sites/1767665/webforms/10090/fields/system/-11"
+        }
+      ],
+      "id": -11,
+      "name": "CustomerWorkAddress",
+      "type": {
+        "id": -11,
+        "name": "CustomerWorkAddress"
+      },
+      "mandatory": true,
+      "order": 4
+    },
+    {
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://api.worldsecuresystems.com/api/v1/admin/sites/1767665/webforms/10090/fields/system/-402"
+        }
+      ],
+      "id": -402,
+      "name": "ImageVerificationV2Only",
+      "type": {
+        "id": -402,
+        "name": "ImageVerificationV2Only"
+      },
+      "mandatory": true,
+      "order": 8
+    }
+  ],
+  "totalItemsCount": 5,
+  "itemsPerPageCount": 1000,
+  "currentPage": 1
+}</code></pre>
+
+<h3>Sample code</h3>
+
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v1/admin/sites/1767665/webforms/10090/fields/system",
+    type: "GET",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json"
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
+<hr>
+</div>
+
+
+</div>
+<div id="details">
+<h2 id="WebFormsAPI-Getsystemwebformfielddetails">Get System Webform Field Details</h2>
+
+    <p>Get details for a system webform field.</p>
+
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+<ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul>
+<li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/system/[field_ID]</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An object with the following properties:</p>
+
+<ul>
+  <li><code>links</code> - a collection of links <em>(array)</em>
+    <ul>
+      <li><code>self</code> - the API URL that will return full details for this web form <em>(string)</em></li>
+    </ul>
+  </li>
+  <li><code>id</code> - the ID of the web form field <em>(integer)</em></li>
+  <li><code>name</code> - the name of the web form field <em>(string)</em></li>
+  <li><code>type</code> - an object of the field's type
+    <ul>
+      <li><code>id</code> - the ID of the web form field type <em>(integer)</em></li>
+      <li><code>name</code> - the name of the web form field type <em>(string)</em></li>
+    </ul>
+  </li>
+  <li><code>mandatory</code> - if the web form is mandatory set this to true <em>(bool)</em></li>
+  <li><code>order</code> - the order of the field in the web form<em> (integer)</em></li>
+</ul>
+
+
+<p>Accepts and returns JSON or XML as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>GET /api/v1/admin/sites/current/webforms/1767665/webforms/10090/fields/system/-400
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json</code></pre>
+
+<h3>Sample response</h3>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "id": -400,
+    "name": "[ImageVerification]",
+    "type": {
+        "id": -400,
+        "name": "ImageVerification"
+    },
+    "mandatory": true,
+    "order": 3
+}
+</code></pre>
+
+<h3>Sample code</h3>
+
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v1/admin/sites/current/webforms/1767665/webforms/10090/fields/system/-400",
+    type: "GET",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json"
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
+<hr>
+</div>
+
+
+</div>
+<div id="create">
+<h2 id="WebFormsAPI-CreateSystemWebFormField">Create System  Field in Web Form</h2>
+<p>Creates a new system field.</p>
+
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+<ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul>
+<li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/system
+  
+  <ul>
+    <li>Alternatively use "current" in place of site_ID for current login token's site</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+  <li><code>type</code> - field's type
+    <ul>
+      <li><code>id</code> - the ID of the web form field type <em>(integer)</em></li>
+      </ul>
+  </li>
+  <li><code>mandatory</code> - if the web form is mandatory set this to true <em>(bool)</em></li>
+  <li><code>order</code> - the order of the field in the web form<em> -</em> if missing field is placed last in list<em> (integer)</em></li>
+</ul>
+<p>&nbsp;</p>
+</div>
+<div class="response">
+<h3>Response</h3>
+<p>Accepts JSON or XML as Content-Type.</p>
+<div class="response-sample">
+  <pre class="  language-javascript"><code>HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "links": [
+    {
+      "rel": "self",
+      "uri": "https://api.worldsecuresystems.com/api/v1/admin/sites/1767665/webforms/10090/fields/system/-34"
+    }
+  ],
+  "id": -34
+}</code></pre>
+</div>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>POST /api/v1/admin/sites/current/webforms
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json</code>
+</pre>
+<h3>Sample code</h3>
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v1/admin/sites/1767665/webforms/10090/fields/system",
+    type: "POST",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json",
+	&quot;processData&quot;: false,
+    data: JSON.stringify({
+        "type": {
+			&quot;id&quot;: &quot;-34&quot;
+		},
+		&quot;mandatory&quot; : true
+    })
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
+<hr>
+</div>
+
+
+</div>
+<div id="edit">
+  <h2>Update System Web Form Field</h2>
+  <p>Updates an existing system field.</p>
+  <div class="request">
+    <h3>Request</h3>
+    <ul>
+      <li><strong>Method:</strong> PUT</li>
+      <li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+      <ul>
+        <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+      </ul>
+      <li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/system/[field_ID]</li>
+      <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+      <li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+    </ul>
+    <h4>Parameters      </h4>
+    <ul>
+      <li><code>mandatory</code> - if the web form is mandatory set this to true <em>(bool)</em></li>
+      <li><code>order</code> - the order of the field in the web form<em> (integer)</em></li>
+    </ul>
+    <p>&nbsp;</p>
+  </div>
+  <div class="response">
+    <div class="response">
+      <h3>Response</h3>
+      <p>Returns an empty body if successful or a detailed error message.</p>
+      <p>Accepts JSON or XML as Content-Type.</p>
+      <div class="response-sample">
+        <pre class="  language-javascript"><code>HTTP/1.1 200 OK
+Content-Length: 0</code></pre>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="sample">
+    <h3>Sample request</h3>
+    <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/api/v1/admin/sites/1767665/webforms/10090/fields/system/-34",
+    type: "PUT",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },   
+    processData: false,
+	data: JSON.stringify({
+        "mandatory": false,
+        "order": 21
+    })
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code>
+    </pre>
+  </div>
+</div>
+<div id="delete">
+  <h2>Delete System Web Form Field</h2>
+  <p>Delete system field from the web form.</p>
+  <div class="request">
+    <h3>Request</h3>
+    <ul>
+      <li><strong>Method:</strong> DELETE      </li>
+      <li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+      <ul>
+        <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+      </ul>
+      <li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/system/[field_ID]      </li>
+      <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+      <li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+    </ul>
+    <div class="response-sample">
+      <pre class="  language-javascript"><code>DELETE /api/v1/admin/sites/1767665/webforms/10851/fields/system/-34 HTTPS/1.1
+Content-Type: application/json; charset=utf-8</code></pre>
+    </div>
+  </div>
+  <div class="response">
+    <h3>Response</h3>
+    <p>Returns an empty body if successful or a detailed error message.</p>
+    <div class="request-sample">
+      <pre class="  language-javascript"><code>HTTP/1.1 200 OK</code>
+<code>Content-Length: 0</code></pre>
+    </div>
+  </div>
+  <hr>
+  <div class="sample">
+    <h3>Sample request</h3>
+    <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/api/v1/admin/sites/1767665/webforms/10090/fields/system/-34",
+    type: "DELETE",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+  </div>
+</div>

@@ -24,7 +24,7 @@
 <div class="response">
 <h3>Response</h3>
 
-<p>An array of the first 10 products; each object has the following properties:</p>
+<p>An array of the first 10 items; each object has the following properties:</p>
 <ul>
   <li><code>id</code> - product ID <em>(number)</em></li>
 <li><code>siteId</code> - site ID <em>(number)</em></li>
@@ -32,7 +32,6 @@
 <li><code>roleId</code> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
 <li><code>weight</code> - product's weight <em>(number)</em></li>
 <li><code>productCode</code> - product's code <em>(string)</em></li>
-<li class="" data-release="R213"><code>tags</code> - product's keywords <em>(string)</em></li>
 <li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>
 <li><code>unitType</code> - unitType <em>(string)</em></li>
 <li><code>smallImage</code> - product's small image <em>(string)</em></li>
@@ -139,7 +138,7 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 });</code></pre>
-<h4><strong>Sample response</strong></h4>
+<h3>Sample response</h3>
 <pre class="language-javascript"><code>{
     "items": [{
         "id": 9683555,
@@ -148,8 +147,7 @@ request.fail(function (jqXHR) {
         "roleId": -1,
         "weight": 1,
         "productCode": "R7VWTBA6LR",
-        "tags": "featured",
-		"keywords": "featured",
+		 "keywords": "featured",
         "unitType": "",
         "smallImage": "/shop/tshirt1.jpg",
         "largeImage": "/shop/big-product-image.jpg",
@@ -210,7 +208,6 @@ request.fail(function (jqXHR) {
         "roleId": -1,
         "weight": 2,
         "productCode": "UFQ3WULVDN",
-        "tags": "new",
         "keywords": "new",
         "unitType": "",
         "smallImage": "/shop/tshirt2.jpg",
@@ -306,7 +303,6 @@ request.fail(function (jqXHR) {
   <li><code>roleId</code> - the roleID of the user to be notified if the product is about to expire (<em>-1</em> for none) <em>(number)</em></li>
   <li><code>weight</code> - product's weight <em>(number)</em></li>
   <li><code>productCode</code> - product's code <em>(string)</em></li>
-  <li class="" data-release="R213"><code>tags</code> - product's keywords <em>(string)</em></li>
 <li class="new" data-release="R213"><code>keywords</code> - product's keywords <em>(string)</em></li>
   <li><code>unitType</code> - unitType <em>(string)</em></li>
   <li><code>smallImage</code> - product's small image <em>(string)</em></li>
@@ -418,7 +414,6 @@ request.fail(function (jqXHR) {
     "roleId":-1,
     "weight":2,
     "productCode":"UFQ3WULVDN",
-    "tags": "new",
     "keywords": "new",
     "unitType":"",
     "smallImage":"/shop/tshirt2.jpg",
@@ -618,7 +613,7 @@ var request = $.ajax({
     processData: false,
     data: JSON.stringify({
         "name": "New Created Product",
-		"keywords": "test",
+		 "keywords": "test",
         "unitType": "",
         "smallImage": "/img/products/small.jpg",
         "largeImage": "/img/products/large.jpg",
@@ -860,8 +855,8 @@ request.fail(function (jqXHR) {
 </div>
 <div id="upload-image">
 
-<h2>Upload product image</h2>
-<p>Upload images  to an existing product.</p>
+<h2>Upload  image or electronic product</h2>
+<p>Upload images or e-product to an existing product.</p>
 <h3>Request</h3>
 <ul>
   <li><strong>Method:</strong> PUT </li>
@@ -872,6 +867,7 @@ request.fail(function (jqXHR) {
       <li>/webresources/api/v3/sites/current/products/[product-id]<strong>?image=popletimage1</strong></li>
       <li>/webresources/api/v3/sites/current/products/[product-id]<strong>?   ...</strong></li>
       <li>/webresources/api/v3/sites/current/products/[product-id]<strong>?image=popletimage10</strong></li>
+      <li>/webresources/api/v3/sites/current/products/[product-id]<strong>?image=eproduct</strong></li>
     </ul>
   </li>
   <li><strong>Headers:</strong>
@@ -881,7 +877,8 @@ request.fail(function (jqXHR) {
     </ul>
   </li>
 </ul>
-<p class="alert alert-info"><strong>Note: </strong>In order to be uploaded, the image path <strong>must be previously set </strong>in <code>smallImage</code> or <code>largeImage</code> or poplet image field. There are ten poplet images, from <code>popletImage1</code> to <code>popletImage10</code>. Exception <code>&quot;Image path not found.&quot;</code> will be thrown for negative case.</p>
+<p class="alert alert-info"><strong>Note: </strong>In order to be uploaded, the file path <strong>must be previously set </strong>in <code>smallImage</code>, <code>largeImage</code>, <code>popletImage[N]</code>, <code>displayFileName</code> field. There are ten poplet images, from <code>popletImage1</code> to <code>popletImage10</code>. Exception <code>&quot;Image path not found.&quot;</code> will be thrown for negative case.</p>
+<p class="alert alert-info">The electronic product can be of any extension but with a  size limit of 250MB.</p>
 <p class="alert alert-warning"><strong>WARNING:</strong> The request will overwrite any file found at the image path.</p>
 <div class="sample">
   <h3>Sample request</h3>

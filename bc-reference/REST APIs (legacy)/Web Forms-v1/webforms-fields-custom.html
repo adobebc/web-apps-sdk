@@ -1,0 +1,505 @@
+<h2 apiType="restv1">List Custom Web Form Fields</h2> 
+<ul id="toc"></ul>
+<p>Lists all custom webform fields from the specified webform.</p>
+<div id="list">
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+<ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul>
+<li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/custom</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An object with the following properties:</p>
+
+<ul>
+<li><code>links</code> - a collection of links <em>(array)</em>
+
+<ul>
+<li><code>self</code> - the API URL that will return this result <em>(string)</em></li>
+<li><code>previous</code> - the API URL that will return the previous page of results, if any <em>(string)</em></li>
+<li><code>next</code> - the API URL that will return the next page of results, if any <em>(string)</em></li>
+</ul></li>
+<li><code>items</code> - an array of Web Form objects with the following properties <em>(array)</em> 
+
+  <ul>
+<li><code>links</code> - a collection of links <em>(array)</em>
+
+<ul>
+<li><code>self</code> - the API URL that will return full details for this web form <em>(string)</em></li>
+</ul></li>
+<li><code>id</code> - the ID of the web form field <em>(integer)</em> </li>
+<li><code>name</code> - the name of the web form field <em>(string)</em></li>
+<li><code>type</code> - an object of the field's type
+  <ul>
+    <li><code>id</code> - the ID of the web form field type <em>(integer)</em></li>
+    <li><code>name</code> - the name of the web form field type <em>(string)</em></li>
+  </ul>
+</li>
+<li><code>mandatory</code> - if the web form is mandatory set this to true <em>(bool)</em></li>
+<li><code>order</code> - the order of the field in the web form<em> (integer)</em></li>
+  </ul>
+</li>
+</ul>
+
+
+<p>Accepts and returns JSON or XML as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>GET /api/v1/admin/sites/1767665/webforms/29382/fields/custom
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json</code></pre>
+
+<h3>Sample response</h3>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "links": [{
+        "rel": "self",
+        "uri": "https:\/\/api.worldsecuresystems.com\/api\/v1\/admin\/sites\/1767665\/webforms\/29382\/fields\/custom"
+    }, {
+        "rel": "previous",
+        "uri": null
+    }, {
+        "rel": "next",
+        "uri": null
+    }],
+    "items": [{
+        "links": [{
+            "rel": "self",
+            "uri": "https:\/\/api.worldsecuresystems.com\/api\/v1\/admin\/sites\/1767665\/webforms\/29382\/fields\/custom\/131102"
+        }],
+        "id": 131102,
+        "name": "Updated New Field",
+        "type": {
+            "id": 2,
+            "name": "Number"
+        },
+        "mandatory": true,
+        "order": 2
+    }, {
+        "links": [{
+            "rel": "self",
+            "uri": "https:\/\/api.worldsecuresystems.com\/api\/v1\/admin\/sites\/1767665\/webforms\/29382\/fields\/custom\/131101"
+        }],
+        "id": 131101,
+        "name": "Test New Field",
+        "type": {
+            "id": 2,
+            "name": "Number"
+        },
+        "mandatory": true,
+        "order": 8
+    }],
+    "totalItemsCount": 2,
+    "itemsPerPageCount": 1000,
+    "currentPage": 1
+}</code></pre>
+
+<h3>Sample code</h3>
+
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v1/admin/sites/1767665/webforms/29382/fields/custom",
+    type: "GET",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json"
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
+<hr>
+</div>
+
+
+</div>
+<div id="details">
+<h2 id="WebFormsAPI-Getsystemwebformfielddetails">Get Custom Web Form Field Details</h2>
+
+    <p>Gets the details of a custom webform field, specified by id</p>
+
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+<ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul>
+<li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/custom/[field_ID]</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An object with the following properties:</p>
+
+<ul>
+  <li><code>links</code> - a collection of links <em>(array)</em>
+    <ul>
+      <li><code>self</code> - the API URL that will return full details for this web form <em>(string)</em></li>
+    </ul>
+  </li>
+  <li><code>id</code> - the ID of the web form field <em>(integer)</em></li>
+  <li><code>name</code> - the name of the web form field <em>(string)</em></li>
+  <li><code>type</code> - an object of the field's type
+    <ul>
+      <li><code>id</code> - the ID of the web form field type <em>(integer)</em></li>
+      <li><code>name</code> - the name of the web form field type <em>(string)</em></li>
+    </ul>
+  </li>
+  <li><code>mandatory</code> - if the web form is mandatory set this to true <em>(bool)</em></li>
+  <li><code>order</code> - the order of the field in the web form<em> (integer)</em></li>
+</ul>
+
+
+<p>Accepts and returns JSON or XML as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>GET /api/v1/admin/sites/1767665/webforms/29382/fields/custom/131102
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json</code></pre>
+
+<h3>Sample response</h3>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "links": [{         
+        "rel": "self",          
+        "uri": "https:\/\/api.worldsecuresystems.com\/api\/v1\/admin\/sites\/1767665\/webforms\/29382\/fields\/custom\/131102"     
+    }],
+    "id": 131102,
+    "name": "Updated New Field",
+    "type": {         
+        "id": 2,          
+        "name": "Number"     
+    },
+    "mandatory": true,
+    "order": 2,
+    "optionItems": null
+}
+</code></pre>
+
+<h3>Sample code</h3>
+
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v1/admin/sites/current/webforms/1767665/webforms/10090/fields/system/-400",
+    type: "GET",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json"
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
+<hr>
+</div>
+
+
+</div>
+<div id="create">
+<h2 id="WebFormsAPI-CreateSystemWebFormField">Create Custom  Field in Web Form</h2>
+<p>Creates a new custom field.</p>
+
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+<ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul>
+<li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/custom</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+  <li><code>name</code> - display name of the web form field <em>(string)</em></li>
+  <li><code>type</code> - an object of the field's type
+    <ul>
+      <li><code>id</code> - the ID of the web form field type <em>(integer)</em></li>
+    </ul>
+  </li>
+  <li><code>mandatory</code> - if the web form is mandatory set this to true <em>(bool)</em></li>
+  <li><code>order</code> - the order of the field in the web form<em> (integer)</em></li>
+  <li><code>optionItems</code> - for field types that support items, otherwise is null
+        <ul>
+          <li><code>item.value</code> - the value and text of the item that will be displayed on the field</li>
+          <li><code>item.selected</code> - if the value is selected or checked by default for the field</li>
+        </ul>
+  </li>
+</ul>
+<h4 id="WebFormsAPI-Fieldthatsupportitems">Field that support items</h4>
+<p>Field types:</p>
+<pre class="language-javascript"><code>{ "id": 5, "name": "Category_DropDown" },
+{ "id": 6, "name": "Category_CheckBox" },
+{ "id": 7, "name": "Category_Radio" },
+{ "id": 10, "name": "Category_ListBox" }</code>
+</pre>
+
+</div>
+<div class="response">
+<h3>Response</h3>
+<p>Accepts JSON or XML as Content-Type.</p>
+<div class="response-sample">
+  <pre class="  language-javascript"><code>HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "links":[
+    {
+      "rel":"self",
+      "uri":"https:\/\/api.worldsecuresystems.com\/api\/v1\/admin\/sites\/1767665\/webforms\/32480\/fields\/custom\/132319"
+    }
+  ],
+  "id":132319
+}</code></pre>
+</div>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>POST /api/v1/admin/sites/current/webforms
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json</code>
+</pre>
+<h3>Sample code</h3>
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v1/admin/sites/1767665/webforms/10090/fields/custom",
+    type: "POST",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json",
+	&quot;processData&quot;: false,
+    data: JSON.stringify({
+      "name":"Test List Field",
+      "type":{
+        "id":10
+      },
+      "mandatory":true,
+      "order":6,
+      "optionItems":[
+        {
+          "value":"item1",
+          "selected":false
+        },
+        {
+          "value":"item2",
+          "selected":true
+        },
+        {
+          "value":"item3",
+          "selected":false
+        }
+      ]
+    })
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
+<hr>
+</div>
+
+
+</div>
+<div id="edit">
+  <h2>Update Custom Web Form Field</h2>
+  <p>Updates an existing custom field.</p>
+  <div class="request">
+    <h3>Request</h3>
+    <ul>
+      <li><strong>Method:</strong> PUT</li>
+      <li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+      <ul>
+        <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+      </ul>
+      <li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/custom/[field_ID]</li>
+      <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+      <li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+    </ul>
+    <h4>Parameters</h4>
+    <ul>
+      <li><code>name</code> - display name of the web form field <em>(string)</em></li>
+      <li><code>type</code> - an object of the field's type
+        <ul>
+          <li><code>id</code> - the ID of the web form field type <em>(integer)</em></li>
+        </ul>
+      </li>
+      <li><code>mandatory</code> - if the web form is mandatory set this to true <em>(bool)</em></li>
+      <li><code>order</code> - the order of the field in the web form<em> (integer)</em></li>
+      <li><code>optionItems</code> - for field types that support items, otherwise is null
+        <ul>
+          <li><code>item.value</code> - the value and text of the item that will be displayed on the field</li>
+          <li><code>item.selected</code> - if the value is selected or checked by default for the field</li>
+        </ul>
+      </li>
+    </ul>
+    <h4 id="WebFormsAPI-Fieldthatsupportitems2">Field that support items</h4>
+    <p>Field types:</p>
+    <pre class="language-javascript"><code>{ "id": 5, "name": "Category_DropDown" },
+{ "id": 6, "name": "Category_CheckBox" },
+{ "id": 7, "name": "Category_Radio" },
+{ "id": 10, "name": "Category_ListBox" }</code></pre>
+
+    <p class="alert alert-info"><strong><strong>WARNING</strong>:</strong>  When editing a custom field that has option items, and you update the field without the including the items in the request, the old items will be removed.<br/>
+      E.g You have a field that has item1 and item2 in a ListBox and you want to change the type of the field to something else. You need to send the item1 and item2 data again in addition to the changed type.id</p>
+  </div>
+  <div class="response">
+    <div class="response">
+      <h3>Response</h3>
+      <p>Returns an empty body if successful or a detailed error message.</p>
+      <p>Accepts JSON or XML as Content-Type.</p>
+      <div class="response-sample">
+        <pre class="  language-javascript"><code>HTTP/1.1 200 OK
+Content-Length: 0</code></pre>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="sample">
+    <h3>Sample request</h3>
+    <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/api/v1/admin/sites/1767665/webforms/10090/fields/custom/323505",
+    type: "PUT",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },   
+    processData: false,
+    data: JSON.stringify({
+      "name":"Updated List Field",
+      "type":{
+        "id":8
+      },
+      "mandatory":false,
+      "order":6,
+      "optionItems":[
+        {
+          "value":"updated item1",
+          "selected":true
+        },
+        {
+          "value":"updated item2",
+          "selected":false
+        },
+        {
+          "value":"updated item3",
+          "selected":false
+        }
+      ]
+    })
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code>
+    </pre>
+  </div>
+</div>
+<div id="delete">
+  <h2>Delete Custom Web Form Field</h2>
+  <p>Delete custom field from the web form.</p>
+  <div class="request">
+    <h3>Request</h3>
+    <ul>
+      <li><strong>Method:</strong> DELETE      </li>
+      <li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+      <ul>
+        <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+      </ul>
+      <li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/fields/custom/[field_ID]      </li>
+      <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+      <li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+    </ul>
+    <div class="response-sample">
+      <pre class="  language-javascript"><code>DELETE /api/v1/admin/sites/1767665/webforms/10851/fields/custom/323505 HTTPS/1.1
+Content-Type: application/json; charset=utf-8</code></pre>
+    </div>
+  </div>
+  <div class="response">
+    <h3>Response</h3>
+    <p>Returns an empty body if successful or a detailed error message.</p>
+    <div class="request-sample">
+      <pre class="  language-javascript"><code>HTTP/1.1 200 OK</code>
+<code>Content-Length: 0</code></pre>
+    </div>
+  </div>
+  <hr>
+  <div class="sample">
+    <h3>Sample request</h3>
+    <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/api/v1/admin/sites/1767665/webforms/10090/fields/custom/323505",
+    type: "DELETE",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+  </div>
+</div>

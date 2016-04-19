@@ -1,0 +1,207 @@
+<h1 apiType="restv3">Photo Galleries Items</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2 id="list-products">List all  items of a photo gallery</h2>
+<p>Get all the items of a photo gallery.</p>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+
+  <ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/photogalleries/[photogallery_ID]/items
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response body</h3>
+
+<p>An array of the first 10 items; each object has the following properties:</p>
+
+<ul>
+<li><code>id</code> - photo gallery's item ID <em>(number)</em></li>
+<li><code>folderId</code> - photo gallery's folder ID <em>(number)</em></li>
+<li><code>siteId</code> - site ID <em>(number)</em></li>
+<li><code>name</code> - path to filename <em>(string)</em></li>
+<li><code>size</code> - size in kilobits <em>(number)</em></li>
+<li><code>description</code> - item's description / caption <em>(string)</em></li>
+</ul>
+<p><span class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</span></p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/photogalleries/4151/items",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "id": 44037076,
+      "folderId": 4866666,
+      "siteId": 1760549,
+      "name": "11039939_931516763548589_1316328636_n.jpg",
+      "size": 51496,
+      "description": "This is a caption."
+    },
+    {
+      "id": 44037077,
+      "folderId": 4866666,
+      "siteId": 1760549,
+      "name": "11005927_931516720215260_713654233_n.jpg",
+      "size": 54459,
+      "description": "This is another caption."
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
+</div>
+</div>
+<div id="list-relationships">
+<h2 id="list-relationships-photogalleries">Resource relationships</h2>
+<p>List items with resources asociated with the photogallery by requesting these objects in the fields parameter:</p>
+<ul>
+  <li><strong>folder</strong></li>
+  <li><strong>descriptionMetadata</strong></li>
+</ul>
+<div class="request">
+  <h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+
+  <ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/photogalleries/[photogallery_ID]/items?fields=id,folderId,siteId,name,size,<strong>folder</strong>,<strong>descriptionMetadata</strong>
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response body</h3>
+
+<p>An array of the first 10 items; each object has the following properties in addition to the default fields:</p>
+<ul>
+<li><code>folder </code>- item's folder object resource
+  <ul>
+    <li><code>id</code> - folder's ID <em>(number)</em></li>
+    <li><code>siteId</code> - site ID <em>(number)</em></li>
+    <li><code>parentId</code> - folder's parent ID <em>(number)</em></li>
+    <li><code>folderName</code> - folder's name <em>(string)</em></li>
+    <li><code>folderPath</code> - folder's path <em>(string)</em></li>
+  </ul>
+</li>
+<li><code>descriptionMetadata</code> - item's metadata object resource (null if item has not description)
+  <ul>
+    <li><code>fileName</code> - item's filename <em>(string)</em></li>
+    <li><code>siteId</code> - site ID <em>(number)</em></li>
+    <li><code>photoGalleryId</code> - photo gallery ID <em>(number)</em></li>
+    <li><code>description</code> - item's description/caption <em>(string)</em></li>
+    <li><code>createDate </code>- item's metadata creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+    <li><code>lastUpdateDate</code> -  item's metadata  update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+  </ul>
+</li>
+</ul>
+<p><span class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</span></p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/photogalleries/4151/items?fields=id,name,folder,descriptionMetadata",
+    type: "GET"
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "id": 44043154,
+      "name": "item1.png",
+      "folder": {
+        "id": 4869750,
+        "siteId": 1767665,
+        "parentId": -1,
+        "folderName": "img",
+        "folderPath": "/img/"
+      },
+      "descriptionMetadata": null
+    },
+    {
+      "id": 44043155,
+      "name": "cards.png",
+      "folder": {
+        "id": 4869750,
+        "siteId": 1767665,
+        "parentId": -1,
+        "folderName": "img",
+        "folderPath": "/img/"
+      },
+      "descriptionMetadata": {
+        "fileName": "item2.png",
+        "siteId": 1767665,
+        "photoGalleryId": 30847,
+        "description": "Card caption",
+        "createDate": "2016-04-18T11:41:27.6",
+        "lastUpdateDate": "2016-04-18T11:41:27.6"
+      }
+    }
+  ],
+  "totalItemsCount": 2,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
+</div>
+</div>

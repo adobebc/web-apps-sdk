@@ -1,0 +1,288 @@
+<h2 id="WebFormsAPI-ListCustomWebFormFieldTypes">List Custom Web Form Field Types</h2> 
+<ul id="toc"></ul>
+<p>Lists the types of custom form fields supported, with an id and a name.</p>
+<div id="list-custom">
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+<ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul>
+<li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webformfieldtypes/custom 
+  
+  <ul>
+  <li>Alternatively use "current" in place of site_ID for current login token's site</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li></ul></div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>GET /api/v1/admin/sites/current/webformfieldtypes/custom 
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json</code></pre>
+
+<h3>Sample response</h3>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "links": [{
+        "rel": "self",
+        "uri": "https:\/\/api.worldsecuresystems.com\/api\/v1\/admin\/sites\/1767665\/webformfieldtypes\/custom"
+    }, {
+        "rel": "previous",
+        "uri": null
+    }, {
+        "rel": "next",
+        "uri": null
+    }],
+    "items": [{
+        "id": 1,
+        "name": "String"
+    }, {
+        "id": 2,
+        "name": "Number"
+    }, {
+        "id": 3,
+        "name": "Boolean"
+    }, {
+        "id": 4,
+        "name": "DateTime"
+    }, {
+        "id": 5,
+        "name": "Category_DropDown"
+    }, {
+        "id": 6,
+        "name": "Category_CheckBox"
+    }, {
+        "id": 7,
+        "name": "Category_Radio"
+    }, {
+        "id": 8,
+        "name": "Image"
+    }, {
+        "id": 9,
+        "name": "String_MultiLine"
+    }, {
+        "id": 10,
+        "name": "Category_ListBox"
+    }, {
+        "id": 11,
+        "name": "String_Hyperlink"
+    }, {
+        "id": 12,
+        "name": "DataSource"
+    }],
+    "totalItemsCount": 12,
+    "itemsPerPageCount": 1000,
+    "currentPage": 1
+}</code></pre>
+
+<h3>Sample code</h3>
+
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v1/admin/sites/current/webformfieldtypes/custom",
+    type: "GET",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json"
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
+<hr>
+</div>
+
+
+</div>
+<div id="list-system">
+<h2 id="WebFormsAPI-ListSystemWebFormFieldTypes">List System Web Form Field Types</h2>
+<p>Lists the types of system form fields supported, with and id and a name. The list is not plan or site dependent - contains even eCommerce or CRM specific entries</p>
+
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+<ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul>
+<li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webformfieldtypes/system
+  
+  <ul>
+  <li>Alternatively use "current" in place of site_ID for current login token's site</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+</ul>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>GET /api/v1/admin/sites/current/webformfieldtypes/system
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json</code></pre>
+
+<h3>Sample response</h3>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "links": [{
+        "rel": "self",
+        "uri": "https:\/\/api.worldsecuresystems.com\/api\/v1\/admin\/sites\/1767665\/webformfieldtypes\/system"
+    }, {
+        "rel": "previous",
+        "uri": null
+    }, {
+        "rel": "next",
+        "uri": null
+    }],
+    "items": [{
+        "id": -500,
+        "name": "ReferAFriend"
+    }, {
+        "id": -402,
+        "name": "ImageVerificationV2Only"
+    }, {
+        "id": -400,
+        "name": "ImageVerification"
+    }, {
+        "id": -304,
+        "name": "WebFormSecurity"
+    }, {
+        "id": -303,
+        "name": "CreditCardUpdate"
+    }, {
+        "id": -302,
+        "name": "CreditCardPayment"
+    }, {
+        "id": -301,
+        "name": "PaymentMethodType"
+    }, {
+        "id": -300,
+        "name": "CreditCardProcessing"
+    }, {
+        "id": -200,
+        "name": "FileAttachment"
+    }, {
+        "id": -100,
+        "name": "CustomerFeedback"
+    }, {
+        "id": -41,
+        "name": "CustomerShippingAttention"
+    }, {
+        "id": -40,
+        "name": "CustomerShippingDetails"
+    }, {
+        "id": -34,
+        "name": "CustomerAnniversary5"
+    }, {
+        "id": -33,
+        "name": "CustomerAnniversary4"
+    }, {
+        "id": -32,
+        "name": "CustomerAnniversary3"
+    }, {
+        "id": -31,
+        "name": "CustomerAnniversary2"
+    }, {
+        "id": -30,
+        "name": "CustomerAnniversary1"
+    }, {
+        "id": -25,
+        "name": "CustomerWebAddress"
+    }, {
+        "id": -24,
+        "name": "CustomerWorkFaxNumber"
+    }, {
+        "id": -23,
+        "name": "CustomerHomeFaxNumber"
+    }, {
+        "id": -22,
+        "name": "CustomerMobilePhoneNumber"
+    }, {
+        "id": -21,
+        "name": "CustomerWorkPhoneNumber"
+    }, {
+        "id": -20,
+        "name": "CustomerHomePhoneNumber"
+    }, {
+        "id": -13,
+        "name": "CustomerBillingAddress"
+    }, {
+        "id": -12,
+        "name": "CustomerShippingAddress"
+    }, {
+        "id": -11,
+        "name": "CustomerWorkAddress"
+    }, {
+        "id": -10,
+        "name": "CustomerHomeAddress"
+    }, {
+        "id": -7,
+        "name": "CustomerDOB"
+    }, {
+        "id": -6,
+        "name": "CustomerPassword"
+    }, {
+        "id": -5,
+        "name": "CustomerUsername"
+    }, {
+        "id": -4,
+        "name": "CustomerCompanyDetails"
+    }, {
+        "id": -3,
+        "name": "CustomerEmailAddress"
+    }, {
+        "id": -2,
+        "name": "CustomerDetails"
+    }, {
+        "id": -1,
+        "name": "CaseCategory"
+    }],
+    "totalItemsCount": 34,
+    "itemsPerPageCount": 1000,
+    "currentPage": 1
+}</code></pre>
+
+<h3>Sample code</h3>
+
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v1/admin/sites/current/webformfieldtypes/system",
+    type: "GET",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json"
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
+<hr>
+</div>
+
+
+</div>

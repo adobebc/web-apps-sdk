@@ -1,0 +1,171 @@
+<h2 apiType="restv1">Get Web Form Autoresponder Details</h2> 
+<ul id="toc"></ul>
+<p>Get autoresponder.</p>
+<div id="details">
+<p class="alert alert-info"><strong>Note:</strong> This operation does not support: pagination, filtering, or sorting parameters.</p>
+
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+<ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul>
+<li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/autoresponder
+  
+  <ul>
+  <li>Alternatively use "current" in place of site_ID for current login token's site</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+<li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An object with the following properties:    </p>
+<ul>
+<li>  <code>fromName</code> - name of the sender <em>(string)</em></li>
+<li><code>fromEmail</code> - email of the sender <em>(string)</em></li>
+<li><code>subject</code> - autoresponder subject <em>(string)</em></li>
+<li><code>body</code> - body of the email<em>(string)</em></li>
+<li><code>format</code> - body format <em>(integer)</em>
+  <ul>
+    <li><strong>1</strong> - HTML</li>
+    <li><strong>2</strong> - Text</li>
+  </ul>
+</li>
+<li><code>templateId</code> - template ID <em>(integer)</em></li>
+</ul>
+
+
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>GET /api/v1/admin/sites/current/webforms/10851/autoresponder
+Authorization: 7e04176165cd4df7b628cc8ad022a8becf3bb84de44d480aadfae75e4fa07b56
+Content-Type: application/json</code></pre>
+
+<h3>Sample response</h3>
+
+<pre class="language-javascript"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "fromName": "John Doe",
+  "fromEmail": "john@mysite.com",
+  "subject": "Thank you for your enquiry",
+  "body": "This is the body of the message",
+  "format": 2,
+  "templateId": -1
+}</code></pre>
+
+<h3>Sample code</h3>
+
+
+<pre class="language-javascript"><code>var request = $.ajax({
+    url: "/api/v1/admin/sites/current/webforms/10851/autoresponder",
+    type: "GET",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    contentType: "application/json"
+});
+request.done(function (msg) {
+    console.log('Request successful, response is: ')
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed. Error code: " + jqXHR.status);
+})</code></pre>
+<hr>
+</div>
+
+
+</div>
+<div id="edit">
+  <h2>Edit a Web Form Autoresponder</h2>
+  <p>Update autoresponder details of a web form.</p>
+  <div class="request">
+    <h3>Request</h3>
+    <ul>
+      <li><strong>Method:</strong> PUT</li>
+      <li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+      <ul>
+        <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+      </ul>
+      <li><strong>Path:</strong> /api/v1/admin/sites/[site_ID]/webforms/[webform_ID]/autoresponder
+        <ul>
+          <li>Alternatively use "current" in place of site_ID for current login token's site</li>
+        </ul>
+      </li>
+      <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+      <li><strong>Accept header:</strong> <code>application/xml</code> or <code>application/json</code></li>
+    </ul>
+    <h4>Parameters</h4>
+    <ul>
+      
+      <li> <code>fromName</code> - name of the sender <em>(string)</em></li>
+      <li><code>fromEmail</code> - email of the sender <em>(string)</em></li>
+      <li><code>subject</code> - autoresponder subject <em>(string)</em></li>
+      <li><code>body</code> - body of the email<em> (string)</em></li>
+      <li><code>format</code> - body format <em>(integer)</em>
+        <ul>
+          <li><strong>1</strong> - HTML</li>
+          <li><strong>2</strong> - Text</li>
+        </ul>
+      </li>
+      <li><code>templateId</code> - template ID <em>(integer)</em></li>
+    </ul>
+    <p>&nbsp;</p>
+  </div>
+  <div class="response">
+    <div class="response">
+      <h3>Response</h3>
+      <p>Returns an empty body if successful or a detailed error message.</p>
+      <p>Accepts JSON or XML as Content-Type.</p>
+      <div class="response-sample">
+        <pre class="  language-javascript"><code>HTTP/1.1 200 OK
+Content-Length: 0</code></pre>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="sample">
+    <h3>Sample request</h3>
+    <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/api/v1/admin/sites/current/webforms/10851/autoresponder",
+    type: "PUT",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },   
+    processData: false,
+	data: JSON.stringify({
+      "fromName": "John Doe 2",
+      "fromEmail": "office@mysite.com",
+      "subject": "Thank you for your email",
+      "body": "&lt;p style=\&quot;font:10pt arial;\&quot;&gt;Dear {tag_recipientname},&lt;br/&gt;&lt;br/&gt;\r\nThank you for reaching out to us via our website;  we'll be in touch as soon as we can. &lt;br/&gt;&lt;br/&gt;\r\n{tag_webformresults}\r\n&lt;/p&gt;",
+      "format": 1,
+      "templateId": -1
+    })
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code>
+    </pre>
+  </div>
+</div>

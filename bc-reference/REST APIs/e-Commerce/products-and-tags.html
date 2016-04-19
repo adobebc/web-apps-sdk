@@ -1,8 +1,9 @@
-<h1 apiType="restv3">Related products</h1><ul id="toc"></ul>
+<h1 apiType="restv3">Product tags</h1> 
+<ul id="toc"></ul>
 <div id="list">
-<h2 id ="list-products">Get all related products for a product</h2>
+<h2 id ="list-blogs">List all  tags of a product</h2>
 <div class="request">
-  <h3>Request</h3>
+<h3>Request</h3>
 
 <ul>
 <li><strong>Method:</strong> GET</li>
@@ -12,9 +13,10 @@
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/<code>products</code>/<code>[product_ID]</code>/<code>relatedproducts</code>
-<ul>
-  <li>Alternatively, use siteID instead of 'current'</li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/products/[product_ID]/tags
+
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 
@@ -23,99 +25,65 @@
 <div class="response">
 <h3>Response</h3>
 
-<p>An array of the first 10 variations; each object has the following properties:</p>
+<p>An array of the first 10 tags; each object has the following properties:</p>
 
 <ul>
-<li><code>productId</code> - product ID <em>(number)</em></li>
-<li><code>relatedProductId</code> - related product's ID <em>(number)</em></li>
-<li><code>siteId</code> - site ID <em>(number)</em></li>
-<li><code>relatedProduct</code> - related product's object - full list in <a href="/reference/rest-apis/e-commerce/products.html" title="Products API" target="_blank">Products API page</a> <em>(object)</em></li>
+<li><code>objectId</code> - the tag's ID <em>(numeric)</em></li>
+<li><code>tagId</code> - the site's ID <em>(numeric)</em></li>
+<li><code>objectType</code> - the object type ID <em>(numeric)</em></li>
+<li><code>siteId</code> - the site's ID <em>(numeric)</em></li>
+<li><code>tag</code> - the <a href="/reference/rest-apis/tags/tags.html" title="Tags" target="_blank">tag's object</a> <em>(object)</em></li>
 </ul>
-
-
-
+<p><span class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</span></p>
 <p>Accepts and returns JSON as Content-Type.</p>
 </div>
 <hr>
 <div class="sample">
 <h3>Sample request</h3>
-<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 
 
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/products/6710934/relatedproducts",
+    url: "/webresources/api/v3/sites/current/products/951888/tags",
     type: "GET",
     connection: "keep-alive",    
-    contentType: "application/json",
-    mimeType: "application/json ",
+	contentType: "application/json",
     headers: {
         "Authorization": $.cookie('access_token')
     }
 });
 request.done(function (msg) {
     console.log(msg);
-});
+})
 request.fail(function (jqXHR) {
     console.log("Request failed.");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-});</code></pre>
+}){% endraw %}</code></pre>
 <p><strong>Sample response</strong></p>
-<pre class="language-javascript"><code>{
+<pre class="language-javascript"><code>{% raw %}{
   "items": [
     {
-      "productId": 6710934,
-      "relatedProductId": 6710935,
-      "siteId": 1767665,
-      "relatedProduct": {
-        "id": 6710935,
-        "siteId": 1767665,
-        "name": "Item 2",
-        ...
-      }
-    },
-    {
-      "productId": 6710934,
-      "relatedProductId": 6710936,
-      "siteId": 1767665,
-      "relatedProduct": {
-        "id": 6710936,
-        "siteId": 1767665,
-        "name": "Item 3",
-        ...
-      }
-    },
-    {
-      "productId": 6710934,
-      "relatedProductId": 6710937,
-      "siteId": 1767665,
-      "relatedProduct": {
-        "id": 6710937,
-        "siteId": 1767665,
-        "name": "Item 4",
-        ...
-      }
-    },
-    {
-      "productId": 6710934,
-      "relatedProductId": 6710938,
-      "siteId": 1767665,
-      "relatedProduct": {
-        "id": 6710938,
-        "siteId": 1767665,
-        "name": "Item 5",
-        ...
+      "objectId": 951888,
+      "tagId": 18420,
+      "objectType": 27,
+      "siteId": 38581,
+      "tag": {
+        "id": 18420,
+        "siteId": 38581,
+        "tagName": "New"
       }
     }
-  ],
-  "totalItemsCount": 4,
+  "totalItemsCount": 1,
   "skip": 0,
   "limit": 10
-</code></pre></div>
+}{% endraw %}</code></pre>
+</div>
+<hr>
 </div>
 <div id="create">
-<h2>Add a related product to a product</h2>
+<h2>Add an existing tag to a product</h2>
 <div class="request">
 <h3>Request</h3>
 
@@ -127,7 +95,7 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/products/[product_ID]/relatedproducts
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/products/[product_ID]/tags
   <ul>
   <li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
@@ -135,7 +103,7 @@ request.fail(function (jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>relatedProductId</code> - the product's ID to be related <em>(numeric)</em></li>
+<li><code>tagId</code> - the tag's ID <em>(numeric)</em></li>
 </ul>
 </div>
 </div>
@@ -154,8 +122,9 @@ request.fail(function (jqXHR) {
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 
+
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/products/951888/relatedproducts",
+    url: "/webresources/api/v3/sites/current/products/951888/tags",
     type: "POST",
     connection: "keep-alive",    
 	contentType: "application/json",
@@ -165,7 +134,7 @@ var request = $.ajax({
     processData: false,
     data: JSON.stringify({
         "items": [
-        {	"relatedProductId": 951894
+        {	"tagId": 18420
         }]
     })
 });
@@ -181,7 +150,7 @@ request.fail(function (jqXHR) {
 </div>
 <hr>
 <div id="delete">
-  <h2>Remove related product from a product</h2>
+  <h2>Remove tag from product</h2>
   <div class="request">
 <h3>Request</h3>
 
@@ -193,9 +162,9 @@ request.fail(function (jqXHR) {
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/products/[product_ID]/relatedproducts?items={"relatedProductId":[related_product_ID]}]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/products/[product_ID]/tags?items=[{"tagId":[tag_ID1]},{"tagId":[tag_ID2]}]
   <ul>
-  <li>Alternatively, use siteID instead of 'current'</li>
+    <li>Alternatively, use siteID instead of 'current'</li>
 </ul></li>
 <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
 
@@ -210,7 +179,7 @@ request.fail(function (jqXHR) {
 <div class="request-sample">
 <p><strong>Request:</strong></p>
 
-<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/products/955809/relatedproducts?items={"relatedProductId":951894}] HTTPS/1.1
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/products/951888/tags?items=[{"tagId":18420}] HTTPS/1.1
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
@@ -226,9 +195,10 @@ Content-Type: application/json
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 
+
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/products/955809/relatedproducts?items={"relatedProductId":951894}]",
-    type: "DELETE
+    url: "/webresources/api/v3/sites/current/products/951888/tags?items=[{"tagId":18420},{"tagId":18421}]",
+    type: "DELETE",
     connection: "keep-alive",    
 	contentType: "application/json",
     headers: {

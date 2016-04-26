@@ -31,13 +31,13 @@
         <li><code>classified</code> - all the items in a category</li>
     </ul>
     </li>
-    <li><strong>itemid</strong> &ndash; the itemID or the categoryId, depending on the filter type can be hoe many items to display</li>
-    <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in <strong>true</strong>, otherwise leave empty or you can also pass <strong>false</strong></li>
-    <li><strong>effect</strong> &ndash; enter <em>ajax</em> (see the examples below) if you want to take advantage of the latest web technologies for a better customer experience</li>
-    <li><strong>targetFrame</strong> &ndash; the frame in which to open the item in</li>
+    <li><code>itemid</code> &ndash; the itemID or the categoryId, depending on the filter type can be hoe many items to display</li>
+    <li><code>noTemplate</code> &ndash; if you want to force the item not to use a site-level template when displayed pass in <code>true</code>, otherwise leave empty or you can also pass <code>false</code></li>
+    <li><code>effect</code> &ndash; enter <em>ajax</em> (see the examples below) if you want to take advantage of the latest web technologies for a better customer experience</li>
+    <li><code>targetFrame</code> &ndash; the frame in which to open the item in</li>
     <li><code>rowLength</code> - this parameter is only used when the filter is either "l" or "cl" and dictates how many items are rendered per row</li>
-    <li><strong>resultsPerPage </strong>- number of items per page</li>
-    <li><strong>hideEmptyMessages </strong>- hide the default text rendered when no announcements are found</li>
+    <li><code>resultsPerPage </code>- number of items per page</li>
+    <li><code>hideEmptyMessages </code>- hide the default text rendered when no announcements are found</li>
     <li><code>sortType</code> - if you leave this parameter blank, by default announcements will be sorted from the latest to the oldest where the latest is displayed first
   <ul>
     <li><code>alphabetical</code> - will sort announcements alphabetically</li>
@@ -60,7 +60,7 @@
 <h2>Examples</h2>
 <ul>
     <li><code>{% raw %}&#123;module_announcement filter=&quot;all&quot; targetFrame=&quot;_parent&quot;&#125;{% endraw %}</code> - will display all news items and open them in parent frame </li>
-    <li><code>{% raw %}&#123;module_announcement filter=&quot;last&quot; itemID=&quot;5&quot;&#125;{% endraw %}</code> - will display the latest 5 news</li>
+    <li><code>{% raw %}&#123;module_announcement filter=&quot;latest&quot; itemid=&quot;5&quot;&#125;{% endraw %}</code> - will display the latest 5 news</li>
     <li><code>{% raw %}&#123;module_announcement filter=&quot;random&quot; noTemplate=&quot;true&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; sortType=&quot;datereverse&quot;&#125;{% endraw %}</code> - will open a random item in a new window and will not apply the template and will use the Ajax effect where the detail content opens right underneath the news name and all the news items will be displayed from the oldest to the latest </li>
     <li><code>{% raw %}&#123;module_announcement filter=&quot;latestClassified&quot; itemid=&quot;34392&quot; effect=&quot;ajax&quot; resultsPerPage=&quot;5&quot;&#125;{% endraw %}</code> - will display the 5 latest news items in the category with the ID 34392</li>
     <li><code>{% raw %}&#123;module_announcement filter=&quot;all&quot; effect=&quot;ajax&quot; targetFrame=&quot;_blank&quot; template="/Layouts/Custom/news.tpl"&#125;{% endraw %}</code> - will display all the news items using the "ajax" effect using the news.tpl <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a> </li>
@@ -87,12 +87,12 @@
         <li>cr - displays a random item in a particular category</li>
     </ul>
     </li>
-    <li><strong>id</strong> &ndash; system generated (do not change)</li>
-    <li><strong>noTemplate</strong> &ndash; if you want to force the item not to use a site-level template when displayed pass in true, otherwise leave empty</li>
-    <li><strong>effect</strong> &ndash; enter <em>ajax</em> (see the examples below) if you want to take advantage of the latest web technologies for a better customer experience</li>
-    <li><strong>target</strong> &ndash; the frame in which to open the item in</li>
+    <li><code>id</code> &ndash; system generated (do not change)</li>
+    <li><code>noTemplate</code> &ndash; if you want to force the item not to use a site-level template when displayed pass in true, otherwise leave empty</li>
+    <li><code>effect</code> &ndash; enter <em>ajax</em> (see the examples below) if you want to take advantage of the latest web technologies for a better customer experience</li>
+    <li><code>target</code> &ndash; the frame in which to open the item in</li>
     <li><code>reserved</code> - for use in a future release</li>
-    <li><strong>resultsPerPage </strong>- number of items per page</li>
+    <li><code>resultsPerPage </code>- number of items per page</li>
     <li><code>length</code> - this parameter is only used when the filter is either "l" or "cl" and dictates how many items are rendered per row</li>
     <li><code>sort</code> - if you leave this parameter blank, by default announcements will be sorted from the latest to the oldest where the latest is displayed first
 <ul>

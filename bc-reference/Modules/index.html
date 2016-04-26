@@ -28,4 +28,14 @@
 <li>&#123;module_productfeaturelist&#125; - it does not have a customizable template, but uses the product template to render each product.</li>
 </ul><h2>Using Modules inside Modules</h2>
 <p>You have the ability to use modules within modules. This means that for example,within a Content Holder you can place one or more of the below modules within it. There are some important items to note when doing this:</p><ol>
-  <li>There is a 75 maximum module limit on any page rendered by the system. This includes modules placed within other modules, for example if you have a Content Holder that has a Bookings module rendering within the Content Holder itself, this will countas two modules on the page.</li><li>Rendering modules within modules will only render 3 levels deep. For example,if you have a recursive Content Holder that contains itself within the content,this will render 3 levels before no longer rendering. See below tree-structurefor an example of inserting this Content Holder on a page:<ul><li>Content Holder 1<ul><li>Content Holder 2 <em>- LEVEL 1</em><ul><li>Content Holder 3 <em>- LEVEL 2</em><ul><li>Content Holder 4 <em>- LEVEL 3</em><ul><li>Content Holder 5 <em>- WILL NOT RENDER</em></li></ul></li></ul></li></ul></li></ul></li></ul></li></ol>
+<!--  <li>There is a 300 maximum module limit on any page rendered by the system. This includes:  </li>
+  <ul>
+    <li>modules placed within other modules, (e.g if you have a Content Holder that has a Bookings module rendering within the Content Holder itself, this will count as two modules on the page).</li>
+    <li><a href="/reference/liquid/logic-tags.html#INCLUDE" title="Include">Liquid include</a> counts as a module	</li>
+  </ul>-->
+  <li>Rendering modules within modules will only render 3 levels deep. For example,if you have a recursive Content Holder that contains itself within the content,this will render 3 levels before no longer rendering. See below tree-structurefor an example of inserting this Content Holder on a page:</li>
+</ol>
+<ol>
+  <ul><li>Content Holder 1<ul><li>Content Holder 2 <em>- LEVEL 1</em><ul><li>Content Holder 3 <em>- LEVEL 2</em><ul><li>Content Holder 4 <em>- LEVEL 3</em><ul><li>Content Holder 5 <em>- WILL NOT RENDER</em></li></ul></li></ul></li></ul></li></ul></li></ul>
+</ol>
+<p>&nbsp;</p>

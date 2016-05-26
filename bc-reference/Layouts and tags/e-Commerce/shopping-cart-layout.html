@@ -37,7 +37,9 @@ This way, with one layout for every country defined you can vary the contents of
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;buyUrl&#125;&#125;{% endraw %}</code></td>
          <td valign="top" class="legacy tag"></td>
-         <td class="description">The URL for the Buy button</td>
+         <td class="description"><p>The URL for the Buy button</p>
+          <p>To ensure server side validation of shipping options please add <strong>&amp;VS=True</strong><br>            
+          <code class="language-markup">&lt;a href=&quot;{{burUrl}}&amp;VS=True&quot;&gt;Checkout&lt;/a&gt; </code></p></td>
         </tr>
         <tr>
             <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;buyButtonOnClick&#125;&#125;{% endraw %}</code></td>

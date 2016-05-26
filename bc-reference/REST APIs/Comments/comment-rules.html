@@ -1,0 +1,481 @@
+<h1 apiType="restv3">Comment rules</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2 id="list-products">List all comments</h2>
+<div class="request">
+  <h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.</li>
+
+  <ul>
+  <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/commentrules
+  <ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response body</h3>
+
+<p>An array of the first 10 items; each object has the following properties:</p>
+<ul>
+<li><code class="language-markup">objectType</code> <em>(integer)</em>
+  <ul>
+    <li><strong>1</strong> - WebPages</li>
+    <li><strong>7</strong> - Announcements</li>
+    <li><strong>9</strong> - Faq</li>
+    <li><strong>26</strong> - Catalogue</li>
+    <li><strong>27</strong> - Product</li>
+    <li><strong>35</strong> - Webapp</li>
+    <li><strong>56</strong> - Blog</li>
+    </ul>
+</li>
+<li><code class="language-markup">siteId</code> (<em>integer</em>)</li>
+<li><code class="language-markup">moderateNewComments</code>  (<em>boolean</em>)</li>
+<li><code class="language-markup">roleToNotify</code>  - must belong to an existing role or -1 for null (<em>integer</em>)</li>
+<li><code class="language-markup">whoCanComment</code> <em>(integer)</em>
+  <ul>
+    <li><strong>0</strong> - Anyone can comment</li>
+    <li><strong>1</strong> - Must be logged in - can comment unlimited</li>
+    <li><strong>2</strong> - Must be logged in - can comment once only</li>
+  </ul>
+</li>
+<li><code class="language-markup">automaticSpamDetection</code> - must belong to an existing customer (<em>boolean</em>)</li>
+<li><code>autoDeleteSpam</code> <em>(boolean)</em></li>
+</ul>
+
+
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/commentrules",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "items": [
+    {
+      "objectType": 1,
+      "siteId": 38592,
+      "moderateNewComments": true,
+      "roleToNotify": -1,
+      "whoCanComment": 0,
+      "automaticSpamDetection": true,
+      "autoDeleteSpam": true
+    },
+    {
+      "objectType": 7,
+      "siteId": 38592,
+      "moderateNewComments": true,
+      "roleToNotify": -1,
+      "whoCanComment": 0,
+      "automaticSpamDetection": true,
+      "autoDeleteSpam": true
+    },
+    {
+      "objectType": 9,
+      "siteId": 38592,
+      "moderateNewComments": true,
+      "roleToNotify": -1,
+      "whoCanComment": 0,
+      "automaticSpamDetection": true,
+      "autoDeleteSpam": true
+    },
+    {
+      "objectType": 26,
+      "siteId": 38592,
+      "moderateNewComments": true,
+      "roleToNotify": -1,
+      "whoCanComment": 0,
+      "automaticSpamDetection": true,
+      "autoDeleteSpam": true
+    },
+    {
+      "objectType": 27,
+      "siteId": 38592,
+      "moderateNewComments": true,
+      "roleToNotify": -1,
+      "whoCanComment": 0,
+      "automaticSpamDetection": true,
+      "autoDeleteSpam": true
+    },
+    {
+      "objectType": 35,
+      "siteId": 38592,
+      "moderateNewComments": true,
+      "roleToNotify": -1,
+      "whoCanComment": 0,
+      "automaticSpamDetection": true,
+      "autoDeleteSpam": true
+    },
+    {
+      "objectType": 56,
+      "siteId": 38592,
+      "moderateNewComments": true,
+      "roleToNotify": -1,
+      "whoCanComment": 0,
+      "automaticSpamDetection": true,
+      "autoDeleteSpam": true
+    }
+  ],
+  "totalItemsCount": 7,
+  "skip": 0,
+  "limit": 10
+}</code></pre>
+</div>
+<hr>
+</div>
+<div id="details">
+<h2>Get comment rule</h2>
+<p>Get comment rule with object type = 1</p>
+<div class="request">
+<h3>Request</h3>
+
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li>
+<li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/commentrules/[objectType_ID]
+
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+</ul></li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+<ul>
+  <li><code class="language-markup">objectType</code> <em>(integer)</em>
+    <ul>
+      <li><strong>1</strong> - WebPages</li>
+      <li><strong>7</strong> - Announcements</li>
+      <li><strong>9</strong> - Faq</li>
+      <li><strong>26</strong> - Catalogue</li>
+      <li><strong>27</strong> - Product</li>
+      <li><strong>35</strong> - Webapp</li>
+      <li><strong>56</strong> - Blog</li>
+    </ul>
+  </li>
+  <li><code class="language-markup">siteId</code> (<em>integer</em>)</li>
+  <li><code class="language-markup">moderateNewComments</code> (<em>boolean</em>)</li>
+  <li><code class="language-markup">roleToNotify</code> - must belong to an existing role or -1 for null (<em>integer</em>)</li>
+  <li><code class="language-markup">whoCanComment</code> <em>(integer)</em>
+    <ul>
+      <li><strong>0</strong> - Anyone can comment</li>
+      <li><strong>1</strong> - Must be logged in - can comment unlimited</li>
+      <li><strong>2</strong> - Must be logged in - can comment once only</li>
+    </ul>
+  </li>
+  <li><code class="language-markup">automaticSpamDetection</code> - must belong to an existing customer (<em>boolean</em>)</li>
+  <li><code>autoDeleteSpam</code> <em>(boolean)</em>  </li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample request</h3>
+<pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/commentrule/1",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code></pre>
+<p><strong>Sample response</strong></p>
+<pre class="language-javascript"><code>{
+  "objectType": 1,
+  "siteId": 38592,
+  "moderateNewComments": true,
+  "roleToNotify": -1,
+  "whoCanComment": 0,
+  "automaticSpamDetection": true,
+  "autoDeleteSpam": true
+}</code></pre></div>
+</div>
+<div id="create">
+  <h2>Create a comment rule </h2>
+  <p>Create a comment rule if doesn't exists. Throws an error if the comment rule exists</p>
+  <div class="request">
+    <h3>Request</h3>
+    <ul>
+      <li><strong>Method:</strong> POST</li>
+      <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields
+        <p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p>
+      </li>
+      <li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+        <ul>
+          <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+        </ul>
+      </li>
+      <li><strong>Path:</strong> /webresources/api/v3/sites/current/commentrules
+        <ul>
+          <li>Alternatively, use siteID instead of 'current'</li>
+        </ul>
+      </li>
+      <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+    </ul>
+  </div>
+  <div class="response">
+    <h3>Parameters</h3>
+    <ul>
+      <li><code class="language-markup">objectType</code> <em>(integer)</em>
+        <ul>
+          <li><strong>1</strong> - WebPages</li>
+          <li><strong>7</strong> - Announcements</li>
+          <li><strong>9</strong> - Faq</li>
+          <li><strong>26</strong> - Catalogue</li>
+          <li><strong>27</strong> - Product</li>
+          <li><strong>35</strong> - Webapp</li>
+          <li><strong>56</strong> - Blog</li>
+        </ul>
+      </li>
+      <li><code class="language-markup">siteId</code> (<em>integer</em>)</li>
+      <li><code class="language-markup">moderateNewComments</code> (<em>boolean</em>)</li>
+      <li><code class="language-markup">roleToNotify</code> - must belong to an existing role or -1 for null (<em>integer</em>)</li>
+      <li><code class="language-markup">whoCanComment</code> <em>(integer)</em>
+        <ul>
+          <li><strong>0</strong> - Anyone can comment</li>
+          <li><strong>1</strong> - Must be logged in - can comment unlimited</li>
+          <li><strong>2</strong> - Must be logged in - can comment once only</li>
+        </ul>
+      </li>
+      <li><code class="language-markup">automaticSpamDetection</code> - must belong to an existing customer (<em>boolean</em>)</li>
+      <li><code>autoDeleteSpam</code> <em>(boolean)</em></li>
+    </ul>
+    <p>Accepts and returns JSON as Content-Type.</p>
+  </div>
+  <hr>
+  <div class="sample">
+    <h3>Sample request</h3>
+    <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/commentrules",
+    type: "POST",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+	processData: false,
+    data: JSON.stringify({
+      "objectType": 1,
+      "moderateNewComments": true,
+      "roleToNotify": -1,
+      "whoCanComment": 0,
+      "automaticSpamDetection": true,
+      "autoDeleteSpam": false
+	})
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code>
+  </pre>
+  </div>
+    <div class="response">
+      <h3>Response</h3>
+      <p>Returns an empty body if successful or a detailed error message.</p>
+      <p>201 Created</p>
+      <p>Accepts and returns JSON as Content-Type.</p>
+    </div>
+</div>
+<div id="update">
+  <h2>Update a comment  </h2>
+  <div class="request">
+    <h3>Request</h3>
+    <ul>
+      <li><strong>Method:</strong> PUT</li>
+      <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields
+        <p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p>
+      </li>
+      <li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+        <ul>
+          <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+        </ul>
+      </li>
+      <li><strong>Path:</strong> /webresources/api/v3/sites/current/commentrules/[objectType_ID]
+        <ul>
+          <li>Alternatively, use siteID instead of 'current'</li>
+        </ul>
+      </li>
+      <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+    </ul>
+  </div>
+  <div class="response">
+    <h3>Parameters</h3>
+    <ul>
+      <li><code class="language-markup">objectType</code> <em>(integer)</em>
+        <ul>
+          <li><strong>1</strong> - WebPages</li>
+          <li><strong>7</strong> - Announcements</li>
+          <li><strong>9</strong> - Faq</li>
+          <li><strong>26</strong> - Catalogue</li>
+          <li><strong>27</strong> - Product</li>
+          <li><strong>35</strong> - Webapp</li>
+          <li><strong>56</strong> - Blog</li>
+        </ul>
+      </li>
+      <li><code class="language-markup">siteId</code> (<em>integer</em>)</li>
+      <li><code class="language-markup">moderateNewComments</code> (<em>boolean</em>)</li>
+      <li><code class="language-markup">roleToNotify</code> - must belong to an existing role or -1 for null (<em>integer</em>)</li>
+      <li><code class="language-markup">whoCanComment</code> <em>(integer)</em>
+        <ul>
+          <li><strong>0</strong> - Anyone can comment</li>
+          <li><strong>1</strong> - Must be logged in - can comment unlimited</li>
+          <li><strong>2</strong> - Must be logged in - can comment once only</li>
+        </ul>
+      </li>
+      <li><code class="language-markup">automaticSpamDetection</code> - must belong to an existing customer (<em>boolean</em>)</li>
+      <li><code>autoDeleteSpam</code> <em>(boolean)</em></li>
+    </ul>
+    <p>Accepts and returns JSON as Content-Type.</p>
+  </div>
+  <hr>
+  <div class="sample">
+    <h3>Sample request</h3>
+    <pre class="language-javascript"><code>var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/comments/1",
+    type: "PUT",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    mimeType: "application/json ",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    },
+    data: JSON.stringify({
+      "moderateNewComments": false,
+      "roleToNotify": -1,
+      "whoCanComment": 0,
+      "automaticSpamDetection": false,
+      "autoDeleteSpam": false
+    })
+    
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+})</code>
+  </pre>
+  </div>
+    <div class="response">
+      <h3>Response</h3>
+      <p>Returns an empty body if successful or a detailed error message.</p>
+      <p>204 OK</p>
+      <p>Accepts and returns JSON as Content-Type.</p>
+    </div>
+</div>
+<div id="delete">
+  <h2>Delete a comment</h2>
+  <div class="request">
+    <h3>Request</h3>
+    <ul>
+      <li><strong>Method:</strong> DELETE</li>
+      <li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields
+        <p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p>
+      </li>
+      <li><strong>Server:</strong> https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+        <ul>
+          <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+        </ul>
+      </li>
+      <li><strong>Path:</strong> /webresources/api/v3/sites/current/commentrules/[objectType_ID]
+        <ul>
+          <li>Alternatively, use siteID instead of 'current'</li>
+        </ul>
+      </li>
+      <li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+    </ul>
+  </div>
+  <hr>
+  <div class="request-sample">
+    <p><strong>Request:</strong></p>
+    <pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/commentrules/1 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+  </div>
+  <div class="response-sample">
+    <p><strong>Response:</strong></p>
+    <pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/commentruless/[objectType_ID]
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+  </div>
+  <hr>
+  <div class="sample">
+    <h3>Sample request</h3>
+    <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+
+
+var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/commentrules/[objectType_ID]",<br>    type: "DELETE",
+    connection: "keep-alive",<br>    contentType: "application/json",
+	mimeType: "application/json ",<br>    headers: {<br>       	"Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
+  </div>
+  <div class="response">
+    <h3>Response</h3>
+    <p>Returns an empty body if successful or a detailed error message.</p>
+  </div>
+</div>

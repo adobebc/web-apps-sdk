@@ -20,7 +20,7 @@
 <li><code>render</code> - for this module this can only be <em>item</em>. For more information on how to use this parameter take a look at the <a href="/developers/liquid/render-parameter">render parameter's article</a> for more details on how to use it</li>
     <li><code>rowCount</code> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
     <li><code>targetFrame</code> - possible values are  <em>_blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
-    <li><code>resultsPerPage</code> - specifies the number of results the search will display per page.</li>
+    <li><code>resultPerPage</code> - specifies the number of results the search will display per page.</li>
     <li><code>sortType</code> - sortType can be alphabetical, price, date, or weight. Do note the sortType is ignored if the "Sort By" field is present in the product search form.</li>
     <li><code>hideEmptyMessage</code> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed</li>
     <li><code>useLi</code> - specify <strong>true</strong> to render the output in Li's instead of tables</li>
@@ -310,23 +310,23 @@
 <div class="examples">
 <h2>Examples</h2>
 <ul>
-    <li><code>{% raw %}&#123;module_productresults rowCount=&quot;4&quot; targetFrame=&quot;_blank&quot; resultsPerPage=&quot;10&quot; hideEmptyMessage=&quot;true&quot;&#125;{% endraw %}</code> - displays the products that match the search criteria 4 per rotw, 10 per page and hides the "No products found matching your query." if no products are found. The structure rendered is a table. When clicking the product name the detail view (rendered using the <a href="/reference/layouts-and-tags/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in a new tab.</li>
-    <li><code>{% raw %}&#123;module_productresults targetFrame=&quot;_self&quot; resultsPerPage=&quot;2&quot; hideEmptyMessage=&quot;true&quot;&#125;{% endraw %}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure rendered is an unordered list. When clicking the product name the detail view (rendered using the <a href="/reference/layouts-and-tags/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in the same tab.</li>
-    <li><code>{% raw %}&#123;module_productresults rowCount=&quot;2&quot; targetFrame=&quot;_self&quot; resultsPerPage=&quot;2&quot; hideEmptyMessage=&quot;true&quot;  template="/layouts/custom/moduleproductresults.tpl"&#125;{% endraw %}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure is no longer an unordered list as it is in the example above, the <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a> is used instead.</li><li><code>{% raw %} &#123;module_productresults collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
+    <li><code>{% raw %}&#123;module_productresults rowCount=&quot;4&quot; targetFrame=&quot;_blank&quot; resultPerPage=&quot;10&quot; hideEmptyMessage=&quot;true&quot;&#125;{% endraw %}</code> - displays the products that match the search criteria 4 per rotw, 10 per page and hides the "No products found matching your query." if no products are found. The structure rendered is a table. When clicking the product name the detail view (rendered using the <a href="/reference/layouts-and-tags/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in a new tab.</li>
+    <li><code>{% raw %}&#123;module_productresults targetFrame=&quot;_self&quot; resultPerPage=&quot;2&quot; hideEmptyMessage=&quot;true&quot;&#125;{% endraw %}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure rendered is an unordered list. When clicking the product name the detail view (rendered using the <a href="/reference/layouts-and-tags/e-commerce/individual-product-large-layout.html">Individual Product - Large</a> layout) opens up in the same tab.</li>
+    <li><code>{% raw %}&#123;module_productresults rowCount=&quot;2&quot; targetFrame=&quot;_self&quot; resultPerPage=&quot;2&quot; hideEmptyMessage=&quot;true&quot;  template="/layouts/custom/moduleproductresults.tpl"&#125;{% endraw %}</code> - displays the products that match the search criteria 2 per page and renders "No products found matching your query." if no products are found. The structure is no longer an unordered list as it is in the example above, the <a href="/reference/layouts-and-tags/custom-templates/custom-templates.html">custom template</a> is used instead.</li><li><code>{% raw %} &#123;module_productresults collection=&quot;collection1&quot; template=&quot;&quot;&#125;{% endraw %}</code> - in this case nothing will be displayed, however the module's Liquid tags will become available in the <strong>collection1</strong> <a href="/developers/liquid/getting-started-with-liquid#liquid-modules#collections">collection</a>.</li>
 </ul>
 </div>
 </div>
   <div id="legacy">
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{% raw %}&#123;module_productresults, rowLength, targetFrame, resultsPerPage, sortType, hideEmptyMessage, useLi&#125;{% endraw %}</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_productresults, rowLength, targetFrame, resultPerPage, sortType, hideEmptyMessage, useLi&#125;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
     <li><code>rowLength</code> - will limit the number of items per row when items are displayed as a list. Default is 1 item per row.</li>
     <li><code>targetFrame</code> - possible values are  <em>_blank</em>, <em>_self</em> and <em>_top</em>. This parameter is used to specify the frame you want the item to open in.</li>
-    <li><code>resultsPerPage</code> - specifies the number of results the search will display per page.</li>
+    <li><code>resultPerPage</code> - specifies the number of results the search will display per page.</li>
     <li><code>sortType</code> - sortType can be alphabetical, price, date, or weight. Do note the sortType is ignored if the "Sort By" field is present in the product search form.</li>
     <li><code>hideEmptyMessage</code> - specify <strong>true</strong> if you don't want the <em>No Items Found</em> message to be displayed</li>
     <li><code>UseLi</code> - specify <strong>true</strong> to render the output in Li's instead of tables</li>

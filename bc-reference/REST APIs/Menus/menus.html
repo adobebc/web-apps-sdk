@@ -65,7 +65,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-});</code></pre>
+});</code>
 <p><strong>Sample response</strong></p>
 <pre class="language-javascript"><code>{
   "items": [
@@ -260,7 +260,7 @@ request.fail(function (jqXHR) {
   "totalItemsCount": 2,
   "skip": 0,
   "limit": 10
-}</code></pre>
+}</code>
 </div>
 <hr>
 </div>
@@ -327,7 +327,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-})</code></pre>
+})</code>
 <p><strong>Sample response</strong></p>
 <pre class="language-javascript"><code>{
       "id": 555049,
@@ -422,7 +422,7 @@ request.fail(function (jqXHR) {
           "borderWidth": 0
         }
       }
-    }</code></pre>
+    }</code>
 </div>
 </div>
 
@@ -463,7 +463,7 @@ request.fail(function (jqXHR) {
     <pre class="language-javascript"><code>{% raw %}HTTP/1.1 201 CREATED
 Location: /webresources/api/v3/sites/current/menus
 Content-Type: application/json; charset=utf-8
-Content-Length: length{% endraw %}</code></pre>
+Content-Length: length{% endraw %}</code>
   </div>
   <hr>
   <div class="sample">
@@ -578,7 +578,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-}){% endraw %}</code></pre>
+}){% endraw %}</code>
   </div>
   <div class="response">
     <h3>Response</h3>
@@ -737,7 +737,7 @@ request.fail(function (jqXHR) {
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
-}){% endraw %}</code></pre>
+}){% endraw %}</code>
   </div>
   <hr>
 </div>
@@ -770,7 +770,7 @@ request.fail(function (jqXHR) {
 Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
-{% endraw %}</code></pre>
+{% endraw %}</code>
   </div>
   <div class="response-sample">
     <p><strong>Response:</strong></p>
@@ -778,7 +778,7 @@ Content-Type: application/json
 HTTP/1.1 204 NO CONTENT
 Location: /webresources/api/v3/sites/current/menus/[menu_ID]
 Content-Type: application/json; charset=utf-8
-Content-Length: length{% endraw %}</code></pre>
+Content-Length: length{% endraw %}</code>
   </div>
   <hr>
   <div class="sample">
@@ -805,7 +805,7 @@ var request = $.ajax({
         console.log("Error code: " + jqXHR.status);
         console.log("Error text: " + jqXHR.statusText);
         console.log("Response text: " + jqXHR.responseText);
-    }){% endraw %}</code></pre>
+    }){% endraw %}</code>
   </div>
   <div class="response">
     <h3>Response</h3>
@@ -824,11 +824,11 @@ var request = $.ajax({
           <td width="202">Property type</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>rootMenu</pre></td>
+          <td colspan="1">rootMenu</td>
           <td colspan="1">object</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>subMenu</pre></td>
+          <td colspan="1">subMenu</td>
           <td colspan="1">object</td>
         </tr>
       </tbody>
@@ -839,19 +839,19 @@ var request = $.ajax({
     <table>
       <tbody>
         <tr>
-          <td width="190"><pre>RootMenuLookOnMouseOut</pre></td>
-          <td width="118"><p>object</p></td>
+          <td width="190">RootMenuLookOnMouseOut</td>
+          <td width="118"><p>object</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>rootMenuOnMouseOver</pre></td>
+          <td colspan="1">rootMenuOnMouseOver</td>
           <td colspan="1">object</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>subMenuLookOnMouseOut</pre></td>
+          <td colspan="1">subMenuLookOnMouseOut</td>
           <td colspan="1">object</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>subMenuOnMouseOver</pre></td>
+          <td colspan="1">subMenuOnMouseOver</td>
           <td colspan="1">object</td>
         </tr>
       </tbody>
@@ -862,42 +862,42 @@ var request = $.ajax({
     <table width="100%">
       <tbody>
         <tr>
-          <td><pre>menuDirectionId</pre></td>
-          <td><p>menuDirectionId (number)</p></td>
+          <td>menuDirectionId</td>
+          <td>menuDirectionId (number)</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>displaySubMenuArrow</pre></td>
+          <td colspan="1">displaySubMenuArrow</td>
           <td colspan="1">boolean</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>subMenuPositionId</pre></td>
+          <td colspan="1">subMenuPositionId</td>
           <td colspan="1">subMenuPositionId (number)</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>xPosition</pre></td>
+          <td colspan="1">xPosition</td>
           <td colspan="1">float</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>yPosition</pre></td>
+          <td colspan="1">yPosition</td>
           <td colspan="1">float</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderColor</pre></td>
+          <td colspan="1">borderColor</td>
           <td colspan="1">string</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderStyleId</pre></td>
+          <td colspan="1">borderStyleId</td>
           <td colspan="1">borderStyleId (number)</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderWidth</pre></td>
+          <td colspan="1">borderWidth</td>
           <td colspan="1">float</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3)</td>
         </tr>
@@ -909,42 +909,42 @@ var request = $.ajax({
     <table width="100%">
       <tbody>
         <tr>
-          <td><pre>menuDirectionId</pre></td>
-          <td width="219"><p>menuDirectionId (number)</p></td>
+          <td>menuDirectionId</td>
+          <td width="219"><p>menuDirectionId (number)</td>
           <td width="350" colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>displaySubMenuArrow</pre></td>
+          <td colspan="1">displaySubMenuArrow</td>
           <td colspan="1">boolean</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>subMenuPositionId</pre></td>
+          <td colspan="1">subMenuPositionId</td>
           <td colspan="1">subMenuPositionId (number)</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>xPosition</pre></td>
+          <td colspan="1">xPosition</td>
           <td colspan="1">float</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3) OR subMenuPositionId IN (0, 1)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>yPosition</pre></td>
+          <td colspan="1">yPosition</td>
           <td colspan="1">float</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3) OR subMenuPositionId IN (0, 1)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderColor</pre></td>
+          <td colspan="1">borderColor</td>
           <td colspan="1">string</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderStyleId</pre></td>
+          <td colspan="1">borderStyleId</td>
           <td colspan="1">borderStyleId (number)</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderWidth</pre></td>
+          <td colspan="1">borderWidth</td>
           <td colspan="1">float</td>
           <td colspan="1"> </td>
         </tr>
@@ -956,82 +956,82 @@ var request = $.ajax({
     <table width="100%">
       <tbody>
         <tr>
-          <td><pre>font</pre></td>
-          <td><p>string</p></td>
+          <td>font</td>
+          <td>string</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>fontSize </pre></td>
+          <td colspan="1">fontSize </td>
           <td colspan="1">float</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>fontColor </pre></td>
+          <td colspan="1">fontColor </td>
           <td colspan="1">string</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>backgroundColor </pre></td>
+          <td colspan="1">backgroundColor </td>
           <td colspan="1">string</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>textHorizontalAlignId</pre></td>
+          <td colspan="1">textHorizontalAlignId</td>
           <td colspan="1">MenutextHorizontalAlignId (number)</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>textVerticalAlign</pre></td>
+          <td colspan="1">textVerticalAlign</td>
           <td colspan="1">MenuTextVerticalAlignId (number)</td>
           <td colspan="1">ignored for menuTypeId IN (2, 3)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>textStyleUnderline</pre></td>
+          <td colspan="1">textStyleUnderline</td>
           <td colspan="1">boolean</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>textStyleBold</pre></td>
+          <td colspan="1">textStyleBold</td>
           <td colspan="1">boolean</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>textStyleItalics</pre></td>
+          <td colspan="1">textStyleItalics</td>
           <td colspan="1">boolean</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderColor</pre></td>
+          <td colspan="1">borderColor</td>
           <td colspan="1">string</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderStyleId</pre></td>
+          <td colspan="1">borderStyleId</td>
           <td colspan="1">borderStyleId (number)</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderWidth</pre></td>
+          <td colspan="1">borderWidth</td>
           <td colspan="1">float</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>paddingTop</pre></td>
+          <td colspan="1">paddingTop</td>
           <td colspan="1">float</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>paddingBottom</pre></td>
+          <td colspan="1">paddingBottom</td>
           <td colspan="1">float</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>paddingLeft</pre></td>
+          <td colspan="1">paddingLeft</td>
           <td colspan="1">float</td>
           <td colspan="1"> </td>
         </tr>
         <tr>
-          <td colspan="1"><pre>paddingRight</pre></td>
+          <td colspan="1">paddingRight</td>
           <td colspan="1">float</td>
           <td colspan="1"> </td>
         </tr>
@@ -1043,43 +1043,43 @@ var request = $.ajax({
     <table width="58%">
       <tbody>
         <tr>
-          <td><pre>font</pre></td>
-          <td><p>string</p></td>
+          <td>font</td>
+          <td>string</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>fontSize </pre></td>
+          <td colspan="1">fontSize </td>
           <td colspan="1">float</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>fontColor </pre></td>
+          <td colspan="1">fontColor </td>
           <td colspan="1">string</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>backgroundColor </pre></td>
+          <td colspan="1">backgroundColor </td>
           <td colspan="1">string</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>textStyleUnderline</pre></td>
+          <td colspan="1">textStyleUnderline</td>
           <td colspan="1">boolean</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>textStyleBold</pre></td>
+          <td colspan="1">textStyleBold</td>
           <td colspan="1">boolean</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>textStyleItalics</pre></td>
+          <td colspan="1">textStyleItalics</td>
           <td colspan="1">boolean</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderColor</pre></td>
+          <td colspan="1">borderColor</td>
           <td colspan="1">string</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderStyleId</pre></td>
+          <td colspan="1">borderStyleId</td>
           <td colspan="1">borderStyleId (number)</td>
         </tr>
         <tr>
-          <td colspan="1"><pre>borderWidth</pre></td>
+          <td colspan="1">borderWidth</td>
           <td colspan="1">float</td>
         </tr>
       </tbody>
@@ -1098,12 +1098,12 @@ var request = $.ajax({
       </thead>
       <tbody>
         <tr>
-          <td><p>Vertical</p></td>
-          <td><p>0 (default)</p></td>
+          <td>Vertical</td>
+          <td>0 (default)</td>
         </tr>
         <tr>
-          <td><p>Horizontal</p></td>
-          <td><p>1</p></td>
+          <td>Horizontal</td>
+          <td>1</td>
         </tr>
       </tbody>
     </table>
@@ -1120,12 +1120,12 @@ var request = $.ajax({
       </thead>
       <tbody>
         <tr>
-          <td><p>Left</p></td>
-          <td><p>0 (default)</p></td>
+          <td>Left</td>
+          <td>0 (default)</td>
         </tr>
         <tr>
-          <td><p>Center</p></td>
-          <td><p>1</p></td>
+          <td>Center</td>
+          <td>1</td>
         </tr>
         <tr>
           <td colspan="1">Right</td>
@@ -1145,12 +1145,12 @@ var request = $.ajax({
       </thead>
       <tbody>
         <tr>
-          <td><p>Top</p></td>
-          <td><p>0 (default)</p></td>
+          <td>Top</td>
+          <td>0 (default)</td>
         </tr>
         <tr>
-          <td><p>Middle</p></td>
-          <td><p>1</p></td>
+          <td>Middle</td>
+          <td>1</td>
         </tr>
         <tr>
           <td colspan="1">Bottom</td>
@@ -1174,12 +1174,12 @@ var request = $.ajax({
       </thead>
       <tbody>
         <tr>
-          <td><p>None</p></td>
-          <td><p>0 (default)</p></td>
+          <td>None</td>
+          <td>0 (default)</td>
         </tr>
         <tr>
-          <td><p>Dotted</p></td>
-          <td><p>1</p></td>
+          <td>Dotted</td>
+          <td>1</td>
         </tr>
         <tr>
           <td colspan="1">Dashed</td>
@@ -1223,12 +1223,12 @@ var request = $.ajax({
       </thead>
       <tbody>
         <tr>
-          <td><p>Under Parent</p></td>
-          <td><p>0 (default)</p></td>
+          <td>Under Parent</td>
+          <td>0 (default)</td>
         </tr>
         <tr>
-          <td><p>Next to Parent</p></td>
-          <td><p>1</p></td>
+          <td>Next to Parent</td>
+          <td>1</td>
         </tr>
         <tr>
           <td colspan="1">Relative to Parent</td>
@@ -1256,12 +1256,12 @@ var request = $.ajax({
       </thead>
       <tbody>
         <tr>
-          <td><p>Default</p></td>
-          <td><p>1 (default)</p></td>
+          <td>Default</td>
+          <td>1 (default)</td>
         </tr>
         <tr>
-          <td><p>CSS</p></td>
-          <td><p>2</p></td>
+          <td>CSS</td>
+          <td>2</td>
         </tr>
         <tr>
           <td colspan="1">CSS (HTML only)</td>

@@ -1,6 +1,6 @@
 /* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -42,7 +42,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -221,7 +221,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -280,7 +280,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -585,7 +585,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -719,7 +719,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -782,7 +782,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -1263,7 +1263,7 @@
 
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -1466,7 +1466,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -1553,7 +1553,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -1723,7 +1723,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 
@@ -1995,7 +1995,7 @@
 })(jQuery);
 ;/* 
 * 
-* Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+* Copyright © 2016 Adobe. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"), 

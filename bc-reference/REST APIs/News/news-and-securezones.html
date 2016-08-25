@@ -69,7 +69,7 @@
             url: "/webresources/api/v3/sites/current/pages/9113941/securezones",
             type: "GET",
             connection: "keep-alive",    contentType: "application/json",
-mimeType: "application/json ",
+
             headers: {
                 "Authorization": $.cookie('access_token')
             }
@@ -163,15 +163,12 @@ mimeType: "application/json ",
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/news/87261/securezones",
     type: "POST",
     mimeType: "application/json", 
     connection: "keep-alive",
-    contentType: "application/json",
-    headers: {
+    contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     },
     processData: false,
@@ -228,15 +225,12 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url:"/webresources/api/v3/sites/current/news/87261/securezones?items=[{'zoneId':51}]",
     type: "DELETE",
     connection: "keep-alive",
     mimeType: "application/json",
-    contentType: "application/json",
-    headers: { "Authorization": $.cookie('access_token') }
+    contentType: "application/json",headers: { "Authorization": $.cookie('access_token') }
 });
 
 request.done(function (msg) {

@@ -291,14 +291,11 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p><strong>Get the addresses for a specific order</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orders/7051740/products",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -397,14 +394,11 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample codes</h3>
 <p>Add a product to an existing order. If the &quot;units&quot; field is not present only 1 item will be added.</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orders/108293/products",
 type: "PUT",
 connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
 headers: {
     "Authorization": $.cookie('access_token')
 },
@@ -428,14 +422,12 @@ console.log("Response text: " + jqXHR.responseText);
 }){% endraw %}</code></pre>
 <p>In this example we will add 3 units of the product with the ID 951917 and variation code 9 to the order:</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orders/108293/products",
 type: "PUT",
 connection: "keep-alive",    
 contentType: "application/json",
-mimeType: "application/json ",
+
 headers: {
     "Authorization": $.cookie('access_token')
 },
@@ -512,14 +504,12 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample codes</h3>
 <p>Add a product to an existing order. If the &quot;units&quot; field is not present only 1 item will be added.</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orders/108293/products?items=[{"itemId":12586375,"orderId":108293,"productId":3909340}]",
 type: "DELETE",
 connection: "keep-alive",    
 contentType: "application/json",
-mimeType: "application/json ",
+
 headers: {
     "Authorization": $.cookie('access_token')
 }

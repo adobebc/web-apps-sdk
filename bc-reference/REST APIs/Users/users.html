@@ -89,14 +89,11 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p>Get access token bearer's user </p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/users/me",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -189,14 +186,11 @@ Content-Type: application/json
     <h3>Sample code</h3>
     <p>Get access token bearer's user </p>
     <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/users/54277",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

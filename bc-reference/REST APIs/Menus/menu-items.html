@@ -65,7 +65,6 @@ var request = $.ajax({
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -225,7 +224,6 @@ var request = $.ajax({
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -321,14 +319,11 @@ Content-Length: length{% endraw %}</code></pre>
   <div class="sample">
     <h3>Sample request</h3>
     <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/menuitems",
     type: "POST",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -423,14 +418,11 @@ request.fail(function (jqXHR) {
   <div class="sample">
     <h3>Sample request</h3>
     <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/menuitems/528671",
     type: "PUT",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -512,14 +504,12 @@ Content-Length: length{% endraw %}</code></pre>
   <div class="sample">
     <h3>Sample request</h3>
     <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 	url: "/webresources/api/v3/sites/current/menuitems/528671",
     type: "DELETE",
     connection: "keep-alive",
     contentType: "application/json",
-	mimeType: "application/json ",
+	
     headers: {
     	"Authorization": $.cookie('access_token')
         }

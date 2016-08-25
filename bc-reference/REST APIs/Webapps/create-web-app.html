@@ -100,8 +100,7 @@ If you pass in values for itemSystemFields and / or itemFields they will be igno
     url: "/api/v2/admin/sites/current/webapps",
     type: "POST",
     connection: "keep-alive",
-    contentType: "application/json",
-    headers: {
+    contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     },
     processData: false,

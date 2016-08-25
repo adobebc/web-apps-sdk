@@ -147,14 +147,11 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p class="get-customer-orders"><strong>Get the list of orders for the customer with the ID <em>10428439</em></strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/10428439/orders",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -170,14 +167,11 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>Get the customer's orders with the total price over <em>40</em>:</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/10428439/orders?where={'totalPrice':{'$gt':'40'&#125;&#125;",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

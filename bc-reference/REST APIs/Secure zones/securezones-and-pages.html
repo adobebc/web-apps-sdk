@@ -32,14 +32,11 @@
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: &quot;/webresources/api/v3/sites/current/securezones/3309/pages&quot;,
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -160,8 +157,6 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
      url: "/webresources/api/v3/sites/current/securezones/3309/pages",
      processData: false,
@@ -172,7 +167,6 @@ var request = $.ajax({
         }),
     type: "POST",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -221,13 +215,10 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/securezones/3309/pages?items=[{'objectId':5463960,'zoneId':51,'objectType':1,'displayable':1}]]",
     type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

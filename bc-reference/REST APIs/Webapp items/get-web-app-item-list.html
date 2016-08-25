@@ -149,8 +149,7 @@ Content-Length: {length}
     url: "/api/v2/admin/sites/current/webapps/apicreated/items?order=name",
     type: "GET",
     connection: "keep-alive",
-    contentType: "application/json",
-    headers: {
+    contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     }
 });
@@ -168,8 +167,7 @@ request.fail(function (jqXHR) {
     url: "/api/v2/admin/sites/current/webapps/apicreated/items?order=-name",
     type: "GET",
     connection: "keep-alive",
-    contentType: "application/json",
-    headers: {
+    contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     }
 });

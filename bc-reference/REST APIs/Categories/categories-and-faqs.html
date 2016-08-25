@@ -46,14 +46,11 @@
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/categories/[categoryId]",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -150,12 +147,9 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/14610/faqs",<br>    data:JSON.stringify({"items":[{"objectId":44772}]}),<br>    type: "POST",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -222,11 +216,8 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/14610/faqs",<br>    data:JSON.stringify({"items":[{"objectId":44772}]}),<br>    type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

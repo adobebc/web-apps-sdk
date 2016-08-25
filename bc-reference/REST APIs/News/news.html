@@ -142,14 +142,11 @@ This Announcement was created to provide you with an example. Update it to suit 
 <h3>Sample code</h3>
 <p><strong>List all the news items on the site</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/news",
 type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -269,8 +266,6 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
   url: "/webresources/api/v3/sites/current/news",
   data:JSON.stringify({
@@ -297,7 +292,6 @@ var request = $.ajax({
   }),
   type: "POST",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -396,8 +390,6 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/news/57625",<br>    data:JOSN.stringify(
 {
       "id": 57625,
@@ -407,7 +399,6 @@ var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/new
 }
 ),<br>    type: "PUT",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -472,11 +463,8 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({<br>    url: "/webresources/api/v3/sites/current/news/57625",<br>    type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

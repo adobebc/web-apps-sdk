@@ -41,14 +41,11 @@
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/products/951888/tags",
     type: "GET",
     connection: "keep-alive",    
-	contentType: "application/json",
-    headers: {
+	contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     }
 });
@@ -121,14 +118,11 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/products/951888/tags",
     type: "POST",
     connection: "keep-alive",    
-	contentType: "application/json",
-    headers: {
+	contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     },
     processData: false,
@@ -194,14 +188,11 @@ Content-Type: application/json
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/products/951888/tags?items=[{"tagId":18420},{"tagId":18421}]",
     type: "DELETE",
     connection: "keep-alive",    
-	contentType: "application/json",
-    headers: {
+	contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     }
 });

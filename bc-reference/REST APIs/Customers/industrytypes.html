@@ -83,14 +83,11 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p><strong>Get the list of industrytypes</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/industrytypes",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -106,14 +103,11 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>Get the details of a particular industryType</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/industrytypes/287045",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -190,14 +184,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/industrytypes",
 type: "PUT",
 connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
 headers: {
     "Authorization": $.cookie('access_token')
 },
@@ -278,14 +269,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/industrytypes/28742",
 type: "PUT",
 connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
 headers: {
     "Authorization": $.cookie('access_token')
 },
@@ -355,14 +343,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/industrytypes/9593213",
     type: "DELETE",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

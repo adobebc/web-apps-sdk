@@ -47,14 +47,11 @@
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/categories",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -146,14 +143,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/categories",
     type: "POST",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -238,11 +232,8 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({<br>    url: &quot;/webresources/api/v3/sites/current/categories/46148&quot;,<br>    data:JSON.stringify({&quot;id&quot;:46148, &quot;category&quot;:&quot;bctestAPIupdated&quot;}),<br>    type: &quot;PUT&quot;,    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -307,11 +298,8 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/categories/46148",<br>    type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

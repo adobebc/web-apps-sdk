@@ -89,7 +89,6 @@
                 url: "/webresources/api/v3/sites/current/pages/9113941/securezones",
                 type: "GET",
                 connection: "keep-alive",    contentType: "application/json",
-    mimeType: "application/json ",
                 headers: {
                     "Authorization": $.cookie('access_token')
                 }
@@ -184,7 +183,6 @@
       type: "POST",
       mimeType: "application/json", 
       connection: "keep-alive",    contentType: "application/json",
-    mimeType: "application/json ",
       headers: {
           "Authorization": $.cookie('access_token')
       },
@@ -248,8 +246,7 @@
       url:"/webresources/api/v3/sites/current/pages/9113941/securezones?items=[{'zoneId':51}]",
       type: "DELETE",
       mimeType: "application/json", 
-      connection: "keep-alive",    <br>	    contentType: "application/json",
-      mimeType: "application/json ",
+      connection: "keep-alive",    <br>	    contentType: "application/json",  
       headers: { "Authorization": $.cookie('access_token') }
   });
   

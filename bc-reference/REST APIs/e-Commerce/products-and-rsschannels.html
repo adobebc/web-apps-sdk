@@ -48,8 +48,7 @@ var request = $.ajax({
     url: "/webresources/api/v3/sites/current/products/951888/rsschannels",
     type: "GET",
     connection: "keep-alive",    
-	contentType: "application/json",
-    headers: {
+	contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     }
 });
@@ -136,8 +135,7 @@ var request = $.ajax({
     url: "/webresources/api/v3/sites/current/products/951888/rsschannels",
     type: "POST",
     connection: "keep-alive",    
-	contentType: "application/json",
-    headers: {
+	contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     },
     processData: false,
@@ -208,8 +206,7 @@ var request = $.ajax({
     url: "/webresources/api/v3/sites/current/products/951888/rsschannels?items=[{"rssChannelId":4096},{"tagId":4097}]",
     type: "DELETE
     connection: "keep-alive",    
-	contentType: "application/json",
-    headers: {
+	contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     }
 });

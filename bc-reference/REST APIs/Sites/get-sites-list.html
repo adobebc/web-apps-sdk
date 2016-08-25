@@ -143,8 +143,7 @@ Content-Type: application/json; charset=utf-8
 <pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites",
     type: "GET",
-    contentType: "application/json",
-    headers: {
+    contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     }
 });

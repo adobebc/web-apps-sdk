@@ -80,14 +80,11 @@
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/shippingoptions",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -253,14 +250,11 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/shippingoptions/155083",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -355,8 +349,6 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 	url: "/webresources/api/v3/sites/current/shippingoptions",
     processData: false,
@@ -364,7 +356,6 @@ var request = $.ajax({
 	  &quot;type&quot;: 1,<br>    &quot;price&quot;: 10,<br>    &quot;taxCodeId&quot;: 0,<br>    &quot;countryCode&quot;: &quot;US&quot;,<br>    &quot;postcode&quot;: &quot;01010&quot;,<br>    &quot;limitDeliveryTo&quot;: &quot;US;RO&quot;<br>}),
     type: "POST",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -428,15 +419,12 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/shippingoptions/155085",
     processData: false,
     data: JSON.stringify({<br>    &quot;description&quot;: &quot;My custom shipping option1&quot;,<br>    &quot;type&quot;: 1,<br>    &quot;price&quot;: 100,<br>    &quot;taxCodeId&quot;: 0,<br>    &quot;countryCode&quot;: &quot;US&quot;,<br>    &quot;postcode&quot;: &quot;01010&quot;,<br>    &quot;limitDeliveryTo&quot;: &quot;US;RO;GB&quot;<br>	  }),
     type: "PUT",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
               "Authorization": $.cookie('access_token')
     }
@@ -489,13 +477,10 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/shippingoptions/155085",
     type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

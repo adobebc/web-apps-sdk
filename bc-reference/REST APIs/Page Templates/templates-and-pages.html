@@ -134,13 +134,11 @@ Content-Type: application/json
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/templates/1386374/pages",
 type: "GET",
 connection: "keep-alive",    
-contentType: "application/json",<br>mimeType: "application/json ",
+contentType: "application/json",<br>
 headers: {
 "Authorization": $.cookie('access_token')
 }
@@ -210,10 +208,8 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/templates/592040/pages",<br>    data:{"items":[{"id":5299853}]},<br>    type: "POST",<br>    contentType: "application/json",
-mimeType: "application/json ",<br>    headers: {
+<br>    headers: {
         "Authorization": $.cookie('access_token')<br>    }<br>});<br>request.done(function (msg) {<br>	$('.output pre').html(JSON.stringify(msg, null, 2));<br>	console.log(msg);<br><br>})<br>    request.fail(function(jqXHR) {<br>    console.log("Request failed.");<br>    console.log("Error code: " + jqXHR.status);<br>    console.log("Error text: " + jqXHR.statusText);<br>    console.log("Response text: " + jqXHR.responseText);<br>}){% endraw %}</code></pre>
 </div>
 <p class="alert alert-warning"><strong>Important!</strong> To remove a template from a page you can make a PUT through the Pages api and modify the template Assigned value to either -1 (no template) or 0(default template).</p>

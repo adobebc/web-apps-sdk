@@ -118,14 +118,11 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p><strong>Get the list of addresses</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -141,14 +138,11 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>Get the details of a particular address</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses/13999241",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -260,14 +254,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses",
     data:{"addressType":1,"objectId":60465861,"objectType":1001,"createDate":"2013-12-05T16:50:53.057","lastUpdateDate":"2013-12-06T08:39:08.18","default":true,"address1":"","address2":null,"zipCode":"","city":"","countryCode":"RO","state":""},
     type: "POST",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -353,14 +344,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses/28742",
 	  data:{"default":true},
     type: "PUT",    
     contentType: "application/json",
-    mimeType: "application/json ",
     data:{"countryCode":"US","state":"NY"},
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
@@ -426,13 +414,10 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/addresses/9593213",
     type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

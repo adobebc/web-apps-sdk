@@ -49,8 +49,7 @@ Authorization: c50f6e6be0d1481ca0d8eb0c63642fdd171c17846af04cdd95676a0888141f73
 <pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites/current/storage/images/original.txt?meta",
     type: "PUT",
-    contentType: "application/json",
-    processData: false,
+    contentType: "application/json",processData: false,
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -74,8 +73,7 @@ request.fail(function (jqXHR) {
 <pre class="language-javascript"><code>{% raw %}var request = $.ajax({
     url: "/api/v2/admin/sites/current/storage/csss/?meta",
     type: "PUT",
-    contentType: "application/json",
-    processData: false,
+    contentType: "application/json",processData: false,
     headers: {
         "Authorization": $.cookie('access_token')
     },

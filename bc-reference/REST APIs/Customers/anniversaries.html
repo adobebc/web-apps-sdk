@@ -101,14 +101,11 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p><strong>List all the CRM records with at least one anniversary set</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -124,14 +121,11 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>List all anniversary dates for a particular customer</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries/61396913",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -227,14 +221,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries",
     data:{"anniversary1":"1968-03-20T23:00:00","anniversary1Title":"Birthday","anniversary2":null,"anniversary2Title":"","anniversary3":null,"anniversary3Title":"","anniversary4":null,"anniversary4Title":"","anniversary5":null,"anniversary5Title":""},
     type: "POST",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -332,14 +323,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries/61396913",
     data:{"anniversary1":"1968-03-20T23:00:00"},
     type: "PUT",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -404,13 +392,10 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/anniversaries/61396913",
     type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

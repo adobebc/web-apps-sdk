@@ -485,8 +485,7 @@ var request = $.ajax({
     url: "/api/v1/admin/sites/current/webforms/10851",
     type: "PUT",
     connection: "keep-alive",    
-    contentType: "application/json",
-    headers: {
+    contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     },   
     processData: false,
@@ -557,8 +556,7 @@ var request = $.ajax({
     url: "/api/v1/admin/sites/current/webforms/10851",
     type: "DELETE",
     connection: "keep-alive",    
-    contentType: "application/json",
-    headers: {
+    contentType: "application/json",headers: {
         "Authorization": $.cookie('access_token')
     }
 });

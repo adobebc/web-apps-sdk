@@ -42,14 +42,11 @@
   <div class="sample">
     <h3>Sample request</h3>
     <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/blogs/4405/categories",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -139,7 +136,6 @@ var request = $.ajax({
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -198,7 +194,7 @@ var request = $.ajax({
     url:"/webresources/api/v3/sites/current/blogs/[blogId]/categories?items=[{'objectId':[blogID],'categoryId':14606,'objectType':55,'displayable':1}]",<br>    type: "DELETE",
 	connection: "keep-alive",
     contentType: "application/json",
-	mimeType: "application/json ",
+	
     headers: {
        	"Authorization": $.cookie('access_token')
     }

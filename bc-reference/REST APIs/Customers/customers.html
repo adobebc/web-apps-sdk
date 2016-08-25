@@ -112,14 +112,11 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p><strong>Get the list of customers for a site</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
 
@@ -136,14 +133,11 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>Get the list of customers </strong><strong>- this only includes the specified fields:</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers?fields=email1,email2,email3,homeFax,mobilePhone,pager,webAddress,workFax,workPhone,anniversary,titleType,ratingType,leadSourceType,industryType,customerType",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -374,14 +368,11 @@ Content-Type: application/json
 <h3>Sample code</h3>
 <p><strong>Get the details of customer</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/7051740",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -397,14 +388,11 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>Get the details of a customer - this only includes the specified fields:</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/7051740?fields=email1,email2,email3,homeFax,mobilePhone,pager,webAddress,workFax,workPhone,anniversary,titleType,ratingType,leadSourceType,industryType,customerType",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -421,14 +409,11 @@ request.fail(function (jqXHR) {
 <p id="get-by-mail"><strong>Get a customer by email address</strong></p>
 <p>For this example we will add the email address field to the output and add a filtering condition. Take a look at this </p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
   url: '/webresources/api/v3/sites/current/customers?fields=email1,middleName,firstName,lastName&where={"email1.value":"mtest@mailinator.com"}',
   type: "GET",
   connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -465,14 +450,11 @@ request.fail(function(jqXHR) {
 }{% endraw %}</code></pre>
 <p id="get-by-username"><strong>Get a customer by username</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: '/webresources/api/v3/sites/current/customers?where={"username":"myUsername"}',
   type: "GET",
   connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -613,14 +595,11 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample code</h3>
 <p><strong>Create a new customer</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/customers",
 type: "POST",
 connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
 processData: false,
 headers: {
     "Authorization": $.cookie('access_token'),
@@ -755,14 +734,11 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample code</h3>
 <p id="edit-by-id"><strong>Edit a customer's name and e-mail address</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/customers/9593213",
 type: "PUT",
 connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
 headers: {
     "Authorization": $.cookie('access_token')
 },
@@ -788,14 +764,11 @@ console.log("Response text: " + jqXHR.responseText);
 
 <p id="edit-by-email"><strong>Get a customer by email address and edit its details</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
   url: '/webresources/api/v3/sites/current/customers?fields=email1&where={"email1.value":"mtest@mailinator.com"}',
   type: "GET",
   connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -805,14 +778,11 @@ request.done(function(msg) {
 //now that we have the CRM ID that belongs to the user with the email address mtest@mailinator.com we can edit its properties:
 
           var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
           url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].email1.value,
           type: "PUT",
           connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
           headers: {
               "Authorization": $.cookie('access_token')
           },
@@ -896,14 +866,11 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample code</h3>
 <p>Delete a CRM address by ID</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/customers/9593213",
     type: "DELETE",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -919,14 +886,11 @@ request.fail(function(jqXHR) {
 }){% endraw %}</code></pre>
 <p id="delete-by-email"><strong>In this example we will first get a CRM entity by email address, get its ID and then delete it:</strong></p>
 <pre><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
   url: '/webresources/api/v3/sites/current/customers?fields=id,email1,middleName,firstName,lastName&where={"email1.value":"new_user123123@mailinator.com"}',
   type: "GET",
   connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -936,14 +900,12 @@ request.done(function(msg) {
 //now we have the CRM record we need to delete, bwlow we'll run a DELETE request and pass the CRM record's ID:
 
           var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
             url: "/webresources/api/v3/sites/current/customers/" + msg.items[0].id,
             type: "DELETE",
             connection: "keep-alive",    
    	      contentType: "application/json",
-  		  mimeType: "application/json ",
+  		  
             headers: {
               "Authorization": $.cookie('access_token')
             }

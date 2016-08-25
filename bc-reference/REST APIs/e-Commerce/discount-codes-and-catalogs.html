@@ -30,14 +30,11 @@
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: &quot;/webresources/api/v3/sites/current/discountcodes/3309/catalogs&quot;,
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -155,8 +152,6 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes/65460/catalogs",
     data: JSON.stringify({
@@ -168,7 +163,6 @@ var request = $.ajax({
     }),
         type:   "POST",
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -217,13 +211,11 @@ request.fail(function(jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var  request = $.ajax({    
   url: "/webresources/api/v3/sites/current/discountcodes/6188/catalogs?items=[{'catalogueId':25481},{'catalogueId':25482}]",
   type:   "DELETE",
   contentType: "application/json",
-  mimeType: "application/json ",
+  
   headers: {
       "Authorization": $.cookie('access_token')
   }

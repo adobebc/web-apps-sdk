@@ -29,14 +29,11 @@
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: &quot;/webresources/api/v3/sites/current/shippingoptions/304222/excludedCatalogs&quot;,
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -154,11 +151,8 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/shippingoptions/304222/excludedCatalogs",<br>    data:JSON.stringify({"items":[{"optionId":304222,"catalogueId":25481}]}),<br>    type: "POST",    
     contentType: "application/json",
-    mimeType: "application/json ",
   headers: {
     "Authorization": $.cookie('access_token')
   }
@@ -206,11 +200,8 @@ request.fail(function(jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({<br>    url:"/webresources/api/v3/sites/current/shippingoptions/304222/excludedCatalogs?items=[{'optionId':304222,'catalogueId':25481}]",<br>    type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

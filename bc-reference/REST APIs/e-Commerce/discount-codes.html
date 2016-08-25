@@ -58,14 +58,11 @@
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -174,14 +171,11 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample request</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes/146985",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -266,15 +260,12 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 	url: "/webresources/api/v3/sites/current/discountcodes",
     processData: false,
     data: JSON.stringify({<br>    &quot;discountType&quot;: 1,<br>    &quot;code&quot;: &quot;DC1093&quot;,<br>    &quot;description&quot;: &quot;Discount for Electronics&quot;,<br>    &quot;discountPercentageOrFixedAmount&quot;: 0.5<br>}),
     type: "POST",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -346,15 +337,12 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes/17339",
     processData: false,
     data: JSON.stringify({<br>	  	&quot;code&quot;: &quot;DC1093-extended&quot;,<br> 	 	&quot;discountPercentageOrFixedAmount&quot;: 0.8,<br>  	&quot;expiryDate&quot;:&quot;2016-01-11T23:00:00&quot;<br>	}),
     type: "PUT",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
               "Authorization": $.cookie('access_token')
     }
@@ -407,13 +395,10 @@ request.fail(function (jqXHR) {
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/discountcodes/17339",
     type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

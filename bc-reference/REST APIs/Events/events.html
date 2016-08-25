@@ -159,14 +159,11 @@ Amount *
 <h3>Sample code</h3>
 <p><strong>Get the list of events</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -182,14 +179,11 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>Get the details of a particular event</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings/194481",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -286,14 +280,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings",
     data:{"name":"Store opening","body":"&lt;p&gt;Our store is opening today!&lt;/p&gt;","date":"2014-01-05T23:00:00","capacity":50,"hideWhenFull":false,"disabled":false,"deleted":false,"requiresPayment":false,"CreateDate":"2013-12-16T10:50:11.2","lastUpdateDate":"2013-12-16T12:39:05.253"},
     type: "POST",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -389,14 +380,11 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings/194481",
     data:{"capacity":50},
     type: "PUT",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }
@@ -461,13 +449,10 @@ Content-Length: length{% endraw %}</code></pre>
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/bookings/194481",
     type: "DELETE",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
          "Authorization": BCAPI.Helper.Site.getAccessToken()
     }

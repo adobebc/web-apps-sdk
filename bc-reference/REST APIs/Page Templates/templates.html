@@ -140,13 +140,10 @@ Content-Type: application/json
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates",
     type: "GET",
     connection: "keep-alive",    contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -162,13 +159,10 @@ request.fail(function (jqXHR) {
 }){% endraw %}</code></pre>
 <p><strong>Get the list of templates - this only includes the specified fields:</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates?fields=desktopContent,tabletContent,mobileContent",
     type: "GET",
     connection: "keep-alive",    contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -323,13 +317,10 @@ Content-Type: application/json
 <div class="sample">
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/templates/1386374",
 type: "GET",
 connection: "keep-alive",    contentType: "application/json",
-    mimeType: "application/json ",
 headers: {
 "Authorization": $.cookie('access_token')
 }
@@ -377,13 +368,10 @@ console.log("Response text: " + jqXHR.responseText);
     }{% endraw %}</code></pre>
 <p><strong>Get the list of templates - this only includes the specified fields:</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates/1386374?fields= desktopContent,tabletContent,mobileContent",
     type: "GET",
     connection: "keep-alive",    contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }
@@ -500,13 +488,10 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample code</h3>
 <p><strong>Create a new template</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/templates",
 type: "POST",
 connection: "keep-alive",    contentType: "application/json",
-    mimeType: "application/json ",
 headers: {
 "Authorization": $.cookie('access_token')
 },
@@ -626,13 +611,10 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample code</h3>
 <p><strong>Modify a template's name</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates/1386374",
     type: "PUT",
     connection: "keep-alive",    contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     },
@@ -705,14 +687,11 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample code</h3>
 <p><strong>Delete a template</strong></p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
-
-
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/templates/1656548",
     type: "DELETE",
     connection: "keep-alive",    
     contentType: "application/json",
-    mimeType: "application/json ",
     headers: {
         "Authorization": $.cookie('access_token')
     }

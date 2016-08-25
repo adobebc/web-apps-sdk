@@ -1,0 +1,108 @@
+<h1 apiType="restv3">Subscribers and Affiliate Programs</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2>Get the subscribers for an affiliate program</h2>
+<div class="description">
+<p>Gets the list of subscribers to an affiliate program.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/affiliates/3/subscribers
+  <ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The details for the specified customer ID in JSON format.</p>
+
+<ul>
+<li><code>{% raw %}entityId{% endraw %}</code> - the id of the customer  <em>(integer)</em></li>
+
+<li><code>{% raw %}affiliateId{% endraw %}</code> - the id of the affiliate program <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code>   - the site's ID<em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> -  <em>(date)</em></li>
+
+
+</ul>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/affiliates/[affiliate_program_ID]/subscribers HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %} {
+  "items": [
+    {
+      "entityId": 7051846,
+      "affiliateId": 3,
+      "siteId": 38581,
+      "createDate": "2016-06-07T14:15:05.14"
+    },
+    {
+      "entityId": 7054920,
+      "affiliateId": 3,
+      "siteId": 38581,
+      "createDate": "2016-06-07T14:07:12.73"
+    },
+    {
+      "entityId": 7054933,
+      "affiliateId": 3,
+      "siteId": 38581,
+      "createDate": "2016-06-07T14:06:58.143"
+    }
+  ],
+  "totalItemsCount": 3,
+  "skip": 0,
+  "limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>Get the list of subscribers to an affiliate program</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/affiliates/3/subscribers",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code>
+</pre>
+</div>
+<hr>
+</div>

@@ -28,20 +28,70 @@
 <p>The details for the specified customer ID in JSON format.</p>
 
 <ul>
-<li><code>{% raw %}id{% endraw %}</code> - the id of the customer<em>(integer)</em></li>
-
-<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
-<li><code>{% raw %}customerTypeId{% endraw %}</code> - the ID of the customer type assigned <em>(integer)</em></li>
-<li><code>{% raw %}leadSourceTypeId{% endraw %}</code> - the ID of the lead source type assigned <em>(integer)</em></li>
-<li><code>{% raw %}ratingTypeId{% endraw %}</code> - the ID of the rating type assigned <em>(integer)</em></li>
-<li><code>{% raw %}titleTypeId{% endraw %}</code> - the ID of the title type assigned <em>(integer)</em></li>
-<li><code>{% raw %}firstName{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}middleName{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}lastName{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}company{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}username{% endraw %}</code> <em>(string)</em></li>
-
+    <li><code>{% raw %}assignedUserId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}categoryId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}countryCode{% endraw %}</code> - <em>(string)</em></li>
+    <li><code>{% raw %}createDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+    <li><code>{% raw %}cycleTypeId{% endraw %}</code> - <em>(integer)</em>
+        <ul>
+            <li><code>1</code> - Once</li>
+            <li><code>2</code> - Daily</li>
+            <li><code>3</code> - Weekly</li>
+            <li><code>4</code> - Fortnightly</li>
+            <li><code>5</code> - Monthly</li>
+            <li><code>6</code> - Quarterly</li>
+            <li><code>7</code> - Half Yearly</li>
+            <li><code>8</code> - Yearly</li>
+        </ul>
+    </li>
+    <li><code>{% raw %}destinationAddressIsResidential{% endraw %}</code> - <em>(boolean)</em></li>
+    <li><code>{% raw %}directDebitDays{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}directDebitProcessed{% endraw %}</code> - <em>(boolean)</em></li>
+    <li><code>{% raw %}directDebitTypeId{% endraw %}</code> - <em>(integer)</em>
+        <ul>
+            <li><code>1</code> - Credit card</li>
+            <li><code>2</code> - Direct debit</li>
+        </ul>
+    </li>
+    <li><code>{% raw %}discountCodeId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}discountRate{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}endRecurDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+    <li><code>{% raw %}entityId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}giftVoucherAmount{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}giftVoucherId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}id{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}integrationId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}invoiceDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+    <li><code>{% raw %}invoiceNumber{% endraw %}</code> - <em>(string)</em></li>
+    <li><code>{% raw %}invoiced{% endraw %}</code> - <em>(boolean)</em></li>
+    <li><code>{% raw %}isIntermediate{% endraw %}</code> - <em>(boolean)</em></li>
+    <li><code>{% raw %}lastUpdateDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+    <li><code>{% raw %}name{% endraw %}</code> - <em>(string)</em></li>
+    <li><code>{% raw %}nextInvoiceDate{% endraw %}</code> - <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em> - the date must be in this format - 2014-09-03T07:00:00</li>
+    <li><code>{% raw %}parentId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}paymentMethodTypeId{% endraw %}</code> - <em>(integer)</em>
+        <ul>
+            <li><code>1</code> - Credit card</li>
+            <li><code>2</code> - Check</li>
+            <li><code>3</code> - Cash</li>
+            <li><code>4</code> - EFT</li>
+        </ul>
+    </li>
+    <li><code>{% raw %}quote{% endraw %}</code> - <em>(boolean)</em></li>
+    <li><code>{% raw %}recur{% endraw %}</code> - <em>(boolean)</em></li>
+    <li><code>{% raw %}shippingAttention{% endraw %}</code> - <em>(string)</em></li>
+    <li><code>{% raw %}shippingDescription{% endraw %}</code> - <em>(string)</em></li>
+    <li><code>{% raw %}shippingInstructions{% endraw %}</code> - <em>(string)</em></li>
+    <li><code>{% raw %}shippingOptionId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}shippingPrice{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}shippingRateKey{% endraw %}</code> - <em>(string)</em></li>
+    <li><code>{% raw %}shippingTaxRate{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}siteId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}statusTypeId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}taxCodeId{% endraw %}</code> - <em>(integer)</em></li>
+    <li><code>{% raw %}totalPrice{% endraw %}</code> - <em>(integer)</em></li>
 </ul>
+
 <p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
 <p>Accepts and returns JSON as Content-Type.</p>
@@ -61,82 +111,87 @@ Content-Type: application/json
 
 <pre class="language-javascript"><code>{% raw %}{
   "items": [{
-    "id": 254248,
-    "siteId": 146985,
-    "entityId": 10428439,
-    "categoryId": 10044,
-    "statusTypeId": 52868,
-    "discountCodeId": null,
-    "shippingOptionId": 68325,
-    "paymentMethodTypeId": 1,
-    "taxCodeId": null,
-    "giftVoucherId": null,
-    "cycleTypeId": null,
-    "directDebitTypeId": 0,
-    "integrationId": null,
-    "parentId": null,
-    "name": "Online Shop 10-Jan-2014 03:18 PM",
-    "userIdAssignedTo": null,
-    "countryCode": "GB",
-    "shippingPrice": 30,
-    "shippingTaxRate": 0,
-    "discountRate": 0,
-    "giftVoucherAmount": null,
-    "totalPrice": 30,
-    "shippingDescription": "UK internal shipping",
-    "shippingAttention": null,
-    "shippingInstructions": null,
-    "Quote": false,
-    "invoiced": true,
-    "invoiceNumber": "1086",
-    "invoiceDate": "2014-01-10T14:18:38.067",
-    "recur": false,
-    "nextInvoiceDate": null,
-    "endRecurDate": null,
-    "directDebitDays": 0,
-    "directDebitProcessed": false,
-    "destinationAddressIsResidential": null,
-    "isIntermediate": null,
-    "shippingRateKey": null
-  }, {
-    "id": 261657,
-    "siteId": 146985,
-    "entityId": 10428439,
-    "categoryId": 10044,
-    "statusTypeId": 52868,
-    "discountCodeId": null,
-    "shippingOptionId": 68325,
-    "paymentMethodTypeId": 1,
-    "taxCodeId": null,
-    "giftVoucherId": null,
-    "cycleTypeId": null,
-    "directDebitTypeId": 0,
-    "integrationId": null,
-    "parentId": null,
-    "name": "Online Shop 23-Jan-2014 11:21 AM",
-    "userIdAssignedTo": null,
-    "countryCode": "GB",
-    "shippingPrice": 30,
-    "shippingTaxRate": 0,
-    "discountRate": 0,
-    "giftVoucherAmount": null,
-    "totalPrice": 42,
-    "shippingDescription": "UK internal shipping",
-    "shippingAttention": null,
-    "shippingInstructions": null,
-    "Quote": false,
-    "invoiced": true,
-    "invoiceNumber": "1087",
-    "invoiceDate": "2014-01-23T10:22:05.123",
-    "recur": false,
-    "nextInvoiceDate": null,
-    "endRecurDate": null,
-    "directDebitDays": 0,
-    "directDebitProcessed": false,
-    "destinationAddressIsResidential": null,
-    "isIntermediate": null,
-    "shippingRateKey": null
-  }],
+        "assignedUserId":null
+        "categoryId":10044
+        "countryCode":"US"
+        "createDate":"2016-10-10T16:56:04.5"
+        "cycleTypeId":1
+        "destinationAddressIsResidential":null
+        "directDebitDays":0
+        "directDebitProcessed":false
+        "directDebitTypeId":0
+        "discountCodeId":73824
+        "discountRate":1262.2
+        "endRecurDate":null
+        "entityId":17759319
+        "giftVoucherAmount":null
+        "giftVoucherId":null
+        "id":1162870
+        "integrationId":null
+        "invoiceDate":"2016-10-10T00:00:00"
+        "invoiceNumber":"92111"
+        "invoiced":true
+        "isIntermediate":false
+        "lastUpdateDate":"2016-10-10T20:12:07.77"
+        "name":"Online Shop 10-Oct-2016 04:56 PM"
+        "nextInvoiceDate":null
+        "parentId":null
+        "paymentMethodTypeId":1
+        "quote":false
+        "recur":false
+        "shippingAttention":""
+        "shippingDescription":"United States"
+        "shippingInstructions":""
+        "shippingOptionId":322049
+        "shippingPrice":200
+        "shippingRateKey":null
+        "shippingTaxRate":0
+        "siteId":2455866
+        "statusTypeId":3630945
+        "taxCodeId":61854
+        "totalPrice":11559.8
+    },
+    {
+        "assignedUserId":null
+        "categoryId":-1
+        "countryCode":"US"
+        "createDate":"2016-10-10T15:56:18.237"
+        "cycleTypeId":1
+        "destinationAddressIsResidential":null
+        "directDebitDays":0
+        "directDebitProcessed":false
+        "directDebitTypeId":0
+        "discountCodeId":73824
+        "discountRate":1377.42
+        "endRecurDate":null
+        "entityId":17759319
+        "giftVoucherAmount":null
+        "giftVoucherId":null
+        "id":1162847
+        "integrationId":null
+        "invoiceDate":"2016-10-10T00:00:00"
+        "invoiceNumber":"1029"
+        "invoiced":true
+        "isIntermediate":null
+        "lastUpdateDate":"2016-10-10T15:56:42.73"
+        "name":"Check Attributes for this order"
+        "nextInvoiceDate":null
+        "parentId":null
+        "paymentMethodTypeId":1
+        "quote":false
+        "recur":false
+        "shippingAttention":""
+        "shippingDescription":"International Shipping"
+        "shippingInstructions":""
+        "shippingOptionId":322050
+        "shippingPrice":300
+        "shippingRateKey":null
+        "shippingTaxRate":0
+        "siteId":2455866
+        "statusTypeId":3630945
+        "taxCodeId":null
+        "totalPrice":12696.78
+    }],
   "totalItemsCount": 279,
   "skip": 0,
   "limit": 2

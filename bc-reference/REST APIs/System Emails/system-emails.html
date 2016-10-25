@@ -1,0 +1,768 @@
+<h1 apiType="restv3">Customers</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2>Get all the system emails</h2>
+<div class="description">
+<p>Get the list of system emails for the current site.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/systememails
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+  </ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of the system emails available, each object has the following properties:</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the system email<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id of the template used for the system email <em>(integer)</em></li>
+<li><code>{% raw %}fromAddress{% endraw %}</code> - the from address <em>(string)</em></li>
+<li><code>{% raw %}emailFormat{% endraw %}</code> - format used for this email, use <strong>1</strong> for "text", <strong>2</strong> for HTML <em>(integer)</em></li>
+<li><code>{% raw %}subject{% endraw %}</code> - the email's subject <em>(string)</em></li>
+<li><code>{% raw %}body{% endraw %}</code> - the email's body <em>(string)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> <em>(dateTime)</em></li>
+<li><code>{% raw %}typeInfo{% endraw %}</code> <em>(JSON)</em>
+<ul>
+<li><code>{% raw %}type{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}group{% endraw %}</code> <em>(string)</em></li>
+</ul>
+</li>
+</ul>
+<p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/systememails HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+	&quot;items&quot;: [
+		{
+			&quot;id&quot;: 1,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Reset password&quot;,
+			&quot;body&quot;: &quot;\n\t&lt;html&gt;\n\t\t&lt;head&gt;\n\t\t\t&lt;style type=\&quot;text/css\&quot;&gt;\n\t\t\t\tbody { margin: 30px; } body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;} table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; } table td { border-top: 1px solid #eee; border-left: 1px solid #eee; } table span { color: #888;}\n\t\t\t&lt;/style&gt;\n\t\t&lt;/head&gt;\n\t\t&lt;body&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tDear {tag_recipientName},\n\t\t\t&lt;/p&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tYou requested that your password be reset. &lt;br/&gt;\n\t\t\t\t&lt;br/&gt;\n\t\t\t\tYour username is &lt;strong&gt;{tag_userName}&lt;/strong&gt;. &lt;br/&gt;\n\t\t\t\tClick on the link below or paste it in your browser to reset your password: &lt;br/&gt; \n\t\t\t\t&lt;a href=\&quot;{tag_passwordResetLink}\&quot;&gt;{tag_passwordResetLink}&lt;/a&gt;&lt;br/&gt;\n\t\t\t\t&lt;br/&gt;\n\t\t\t\tIf this request did not come from you, please disregard this email.\n\t\t\t&lt;/p&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tThank you!\n\t\t\t&lt;/p&gt;\n\t\t&lt;/body&gt;\n\t&lt;/html&gt;&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;LostPassword&quot;,
+				&quot;group&quot;: &quot;Users&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 3,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Invoice&quot;,
+			&quot;body&quot;: &quot;\r\n  &lt;html&gt;   &lt;head&gt;    &lt;style type=\&quot;text/css\&quot;&gt;     body { margin: 18px; }     body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Arial, Verdana, sans-serif; }     table.border { font: 11px/18px \&quot;Lucida Grande\&quot;, Arial, Verdana, sans-serif; }     table.border { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }     table.border td { border-top: 1px solid #eee; border-left: 1px solid #eee; }     table span { color: #888; }    &lt;/style&gt;   &lt;/head&gt;    &lt;body&gt;    &lt;table class=\&quot;invoice\&quot; width=\&quot;100%\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;6\&quot;&gt;   &lt;tr&gt;      &lt;td&gt;&lt;strong&gt;Invoice Date&lt;/strong&gt;&lt;br /&gt;        {tag_invoicedate}      &lt;/td&gt;      &lt;td align=\&quot;right\&quot;&gt;&lt;strong&gt;Invoice Number&lt;/strong&gt;&lt;br /&gt;        {tag_invoicenumber}      &lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;&lt;td colspan=\&quot;2\&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;    &lt;tr&gt;       &lt;td&gt;     {tag_recipientname}&lt;br /&gt;      {tag_addressdefault}    &lt;/td&gt;    &lt;/tr&gt;   &lt;tr&gt;&lt;td colspan=\&quot;2\&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;   &lt;tr&gt;    &lt;td colspan=\&quot;2\&quot;&gt;    &lt;table class=\&quot;border\&quot; width=\&quot;100%\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;6\&quot;&gt;     &lt;tr&gt;      &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Product Code&lt;/span&gt;&lt;/td&gt;      &lt;td width=\&quot;20%\&quot;&gt;&lt;span&gt;Product&lt;/span&gt;&lt;/td&gt;      &lt;td width=\&quot;30%\&quot;&gt;&lt;span&gt;Description&lt;/span&gt;&lt;/td&gt;      &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Unit Price&lt;/span&gt;&lt;/td&gt;      &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Tax&lt;/span&gt;&lt;/td&gt;      &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Quantity&lt;/span&gt;&lt;/td&gt;      &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Total&lt;/span&gt;&lt;/td&gt;     &lt;/tr&gt;     &lt;tr class=\&quot;text\&quot;&gt;      &lt;td width=\&quot;10%\&quot;&gt;{tag_productcode}&lt;/td&gt;      &lt;td width=\&quot;20%\&quot;&gt;{tag_productname}&lt;/td&gt;      &lt;td width=\&quot;30%\&quot;&gt;{tag_productdescription}&lt;/td&gt;      &lt;td width=\&quot;10%\&quot;&gt;{tag_productextaxamount}&lt;/td&gt;      &lt;td width=\&quot;10%\&quot;&gt;{tag_producttaxamount}&lt;/td&gt;      &lt;td width=\&quot;10%\&quot;&gt;{tag_productquantity}&lt;/td&gt;      &lt;td width=\&quot;10%\&quot;&gt;{tag_producttotal}&lt;/td&gt;     &lt;/tr&gt;    &lt;/table&gt;    &lt;table width=\&quot;100%\&quot; class=\&quot;textb\&quot; border=\&quot;0\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;6\&quot;&gt;     &lt;tr&gt;      &lt;td colspan=\&quot;2\&quot;&gt;&lt;br /&gt;&lt;hr /&gt;&lt;/td&gt;         &lt;/tr&gt;     &lt;tr&gt;      &lt;td align=\&quot;right\&quot; width=\&quot;90%\&quot;&gt;&lt;strong&gt;Shipping Cost:&lt;/strong&gt;&lt;/td&gt;      &lt;td class=\&quot;text\&quot;&gt;{tag_shippingextaxamount}&lt;/td&gt;     &lt;/tr&gt;     &lt;tr&gt;      &lt;td align=\&quot;right\&quot; width=\&quot;90%\&quot;&gt;&lt;strong&gt;Shipping Tax:&lt;/strong&gt;&lt;/td&gt;      &lt;td class=\&quot;text\&quot;&gt;{tag_shippingtaxamount}&lt;/td&gt;     &lt;/tr&gt;        &lt;tr&gt;      &lt;td align=\&quot;right\&quot; width=\&quot;90%\&quot;&gt;&lt;strong&gt;Grand Total:&lt;/strong&gt;&lt;/td&gt;      &lt;td&gt;{tag_invoicetotal}&lt;/td&gt;     &lt;/tr&gt;     &lt;tr&gt;      &lt;td align=\&quot;right\&quot; width=\&quot;90%\&quot;&gt;&lt;strong&gt;Paid Already:&lt;/strong&gt;&lt;/td&gt;      &lt;td&gt;{tag_amountpaid}&lt;/td&gt;     &lt;/tr&gt;     &lt;tr&gt;      &lt;td align=\&quot;right\&quot; width=\&quot;90%\&quot;&gt;&lt;strong&gt;Outstanding:&lt;/strong&gt;&lt;/td&gt;      &lt;td&gt;{tag_amountoutstanding}&lt;/td&gt;     &lt;/tr&gt;    &lt;/table&gt;   &lt;/td&gt;   &lt;/tr&gt;   &lt;/table&gt;    &lt;/body&gt;  &lt;/html&gt;        \r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;Invoice&quot;,
+				&quot;group&quot;: &quot;Online Shop&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 4,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Quote&quot;,
+			&quot;body&quot;: &quot;\r\n  &lt;html&gt;   &lt;head&gt;    &lt;style type=\&quot;text/css\&quot;&gt;     body { margin: 18px; }     body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Arial, Verdana, sans-serif; }     table.border { font: 11px/18px \&quot;Lucida Grande\&quot;, Arial, Verdana, sans-serif; }     table.border { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }     table.border td { border-top: 1px solid #eee; border-left: 1px solid #eee; }     table span { color: #888; }    &lt;/style&gt;   &lt;/head&gt;    &lt;body&gt;    &lt;table width=\&quot;100%\&quot; border=\&quot;0\&quot;cellspacing=\&quot;0\&quot; cellpadding=\&quot;6\&quot;&gt;   &lt;tr&gt;      &lt;td colspan=\&quot;2\&quot;&gt;&lt;strong&gt;Quote Date&lt;/strong&gt;&lt;br /&gt;       {tag_quotedate}&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;&lt;td colspan=\&quot;2\&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;   &lt;tr&gt;       &lt;td&gt;{tag_recipientname}&lt;br /&gt;    {tag_addressdefault}&lt;/td&gt;   &lt;/tr&gt;    &lt;tr&gt;&lt;td colspan=\&quot;2\&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;    &lt;tr&gt;     &lt;td colspan=\&quot;2\&quot;&gt;     &lt;table width=\&quot;100%\&quot; class=\&quot;border\&quot; cellspacing=\&quot;0\&quot;cellpadding=\&quot;6\&quot;&gt;      &lt;tr&gt;       &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Product Code&lt;/span&gt;&lt;/td&gt;       &lt;td width=\&quot;20%\&quot;&gt;&lt;span&gt;Product&lt;/span&gt;&lt;/td&gt;       &lt;td width=\&quot;30%\&quot;&gt;&lt;span&gt;Description&lt;/span&gt;&lt;/td&gt;       &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Unit Price&lt;/span&gt;&lt;/td&gt;       &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Tax&lt;/span&gt;&lt;/td&gt;       &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Quantity&lt;/span&gt;&lt;/td&gt;       &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Total&lt;/span&gt;&lt;/td&gt;      &lt;/tr&gt;      &lt;tr&gt;       &lt;td width=\&quot;10%\&quot;&gt;{tag_productcode}&lt;/td&gt;       &lt;td width=\&quot;20%\&quot;&gt;{tag_productname}&lt;/td&gt;       &lt;td width=\&quot;30%\&quot;&gt;{tag_productdescription}&lt;/td&gt;       &lt;td width=\&quot;10%\&quot;&gt;{tag_productextaxamount}&lt;/td&gt;       &lt;td width=\&quot;10%\&quot;&gt;{tag_producttaxamount}&lt;/td&gt;       &lt;td width=\&quot;10%\&quot;&gt;{tag_productquantity}&lt;/td&gt;       &lt;td width=\&quot;10%\&quot;&gt;{tag_producttotal}&lt;/td&gt;      &lt;/tr&gt;     &lt;/table&gt;     &lt;table width=\&quot;100%\&quot; border=\&quot;0\&quot;cellspacing=\&quot;0\&quot;cellpadding=\&quot;6\&quot;&gt;      &lt;tr&gt;       &lt;td colspan=\&quot;2\&quot;&gt;&lt;br /&gt;&lt;hr /&gt;&lt;/td&gt;          &lt;/tr&gt;         &lt;tr&gt;       &lt;td width=\&quot;90%\&quot; align=\&quot;right\&quot;&gt;&lt;strong&gt;Grand Total:&lt;/strong&gt;&lt;/td&gt;         &lt;td&gt;{tag_invoicetotal}&lt;/td&gt;        &lt;/tr&gt;      &lt;tr&gt;         &lt;td align=\&quot;right\&quot;&gt;&amp;nbsp;&lt;/td&gt;         &lt;td&gt;&amp;nbsp;&lt;/td&gt;        &lt;/tr&gt;      &lt;tr&gt;       &lt;td colspan=\&quot;2\&quot; align=\&quot;left\&quot;&gt;&lt;strong&gt;Notes:&lt;/strong&gt;        &lt;ul&gt;               &lt;li&gt;This quote is valid for 30-days from above date&lt;/li&gt;                 &lt;li&gt;If one or more products have a $0\&quot;total this quote is incomplete until we contact you &lt;/li&gt;             &lt;/ul&gt;       &lt;/td&gt;      &lt;/tr&gt;     &lt;/table&gt;     &lt;/td&gt;    &lt;/tr&gt;    &lt;/table&gt;    &lt;/body&gt;  &lt;/html&gt;        \r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;Order&quot;,
+				&quot;group&quot;: &quot;Online Shop&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 5,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Workflow Notification&quot;,
+			&quot;body&quot;: &quot;\r\n  &lt;html&gt;   &lt;head&gt;   &lt;style type=\&quot;text/css\&quot;&gt;    body { margin: 30px; }    body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;}    table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }    table td { border-top: 1px solid #eee; border-left: 1px solid #eee; }    table span { color: #888;}   &lt;/style&gt;   &lt;/head&gt;  &lt;body&gt;    &lt;p&gt;Dear {tag_recipientname},&lt;/p&gt;  &lt;p&gt;This is an email to notify you of the completion of a workflow step on item [&lt;strong&gt;{tag_name}&lt;/strong&gt;].&lt;/p&gt;  &lt;p&gt;The following message is relevant to the current step of the workflow:&lt;/p&gt;  &lt;hr /&gt;  &lt;strong&gt;{tag_3rdpartycontent}&lt;/strong&gt;  &lt;hr /&gt;  &lt;p&gt;Thank you!&lt;/p&gt;    &lt;/body&gt;  &lt;/html&gt;    \r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;Workflow3rdParty&quot;,
+				&quot;group&quot;: &quot;Workflows&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 7,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Forum New Post Alert&quot;,
+			&quot;body&quot;: &quot;\r\n  &lt;html&gt;   &lt;head&gt;   &lt;style type=\&quot;text/css\&quot;&gt;    body { margin: 30px; }    body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;}    table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }    table td { border-top: 1px solid #eee; border-left: 1px solid #eee; }    table span { color: #888;}   &lt;/style&gt;   &lt;/head&gt;  &lt;body&gt;     &lt;p&gt;Dear {tag_RecipientName},&lt;/p&gt;    &lt;p&gt;A forum that you are subscribed to has been posted to. Below is the details of this new post.&lt;/p&gt;    &lt;table width=\&quot;100%\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;6\&quot;&gt;    &lt;tr&gt;     &lt;td width=\&quot;20%\&quot;&gt;&lt;span&gt;Topic:&lt;/span&gt;&lt;/td&gt;     &lt;td width=\&quot;80%\&quot;&gt;{tag_topicname}&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;     &lt;td width=\&quot;20%\&quot;&gt;&lt;span&gt;Last Post Author:&lt;/span&gt;&lt;/td&gt;     &lt;td width=\&quot;80%\&quot;&gt;{tag_postauthor}&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;     &lt;td width=\&quot;20%\&quot;&gt;&lt;span&gt;Last Post Date:&lt;/span&gt;&lt;/td&gt;     &lt;td width=\&quot;80%\&quot;&gt;{tag_postdate}&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;     &lt;td width=\&quot;20%\&quot;&gt;&lt;span&gt;Click to View:&lt;/span&gt;&lt;/td&gt;     &lt;td width=\&quot;80%\&quot;&gt;{tag_topicurl}&lt;/td&gt;    &lt;/tr&gt;  &lt;/table&gt;    &lt;p&gt;Click to unsubscribe from this topic: {tag_unsubscribe}&lt;/p&gt;    &lt;p&gt;Thank you!&lt;/p&gt;  &lt;/body&gt;  &lt;/html&gt;    \r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;ForumSubscriberAlert&quot;,
+				&quot;group&quot;: &quot;Forums&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 8,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Verify your Subscription&quot;,
+			&quot;body&quot;: &quot;\r\n  &lt;html&gt;   &lt;head&gt;   &lt;style type=\&quot;text/css\&quot;&gt;    body { margin: 30px; }    body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;}    table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }    table td { border-top: 1px solid #eee; border-left: 1px solid #eee; }    table span { color: #888;}   &lt;/style&gt;   &lt;/head&gt;  &lt;body&gt;    &lt;p&gt;Dear {tag_RecipientName},&lt;/p&gt;    &lt;p&gt;You recently subscribed to one of our email marketing lists. Please click on the following link to verify [&lt;strong&gt;{tag_verificationurl}&lt;/strong&gt;] your subscription.&lt;/p&gt;    &lt;p&gt;Thank you!&lt;/p&gt;    &lt;/body&gt;  &lt;/html&gt;    \r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;DoubleOptInEmail&quot;,
+				&quot;group&quot;: &quot;Email Marketing&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 9,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Member Only Area Details&quot;,
+			&quot;body&quot;: &quot;\n\t&lt;html&gt;\n\t\t&lt;head&gt;\n\t\t\t&lt;style type=\&quot;text/css\&quot;&gt;\n\t\t\t\tbody { margin: 30px; } body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;} table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; } table td { border-top: 1px solid #eee; border-left: 1px solid #eee; } table span { color: #888;}\n\t\t\t&lt;/style&gt;\n\t\t&lt;/head&gt;\n\t\t&lt;body&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tDear {tag_recipientName},\n\t\t\t&lt;/p&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tBelow are your details to access the \&quot;Member Only\&quot; secure areas within our website.\n\t\t\t&lt;/p&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tYour username is &lt;strong&gt;{tag_userName}&lt;/strong&gt;. &lt;br/&gt;\n\t\t\t\tFor security reasons your password has not been included in this email. If you want to reset it please click on the link below or paste it in your browser: &lt;br/&gt;\n\t\t\t\t&lt;a href=\&quot;{tag_passwordResetLink}\&quot;&gt;{tag_passwordResetLink}&lt;/a&gt;\n\t\t\t&lt;/p&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tCurrently you have access to the following \&quot;Member Only\&quot; areas:\n\t\t\t&lt;/p&gt;\n\t\t\t&lt;strong&gt;{tag_secureZoneList}&lt;/strong&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tPlease visit our website at: &lt;strong&gt;{tag_siteUrl}&lt;/strong&gt;\n\t\t\t&lt;/p&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tThank you!\n\t\t\t&lt;/p&gt;\n\t\t&lt;/body&gt;\n\t&lt;/html&gt;&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;SecureZoneDetails&quot;,
+				&quot;group&quot;: &quot;Secure Zones&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 11,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Start Earning Revenue!&quot;,
+			&quot;body&quot;: &quot;\r\n  &lt;html&gt;   &lt;head&gt;   &lt;style type=\&quot;text/css\&quot;&gt;    body { margin: 30px; }    body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;}    table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }    table td { border-top: 1px solid #eee; border-left: 1px solid #eee; }    table span { color: #888;}   &lt;/style&gt;   &lt;/head&gt;  &lt;body&gt;     &lt;p&gt;Dear {tag_RecipientName},&lt;/p&gt;   &lt;p&gt;Please find information about our Affiliate Programs that you can start earning revenue from! You can do so by either forwarding the Affiliate Program link to suitable friends and colleagues who may benefit from this program or place this link on your website.&lt;/p&gt;     &lt;strong&gt;{tag_affiliateprogramlist}&lt;/strong&gt;     &lt;p&gt;Thank you!&lt;/p&gt;       &lt;/body&gt;  &lt;/html&gt;        \r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;AffiliateProgramDetails&quot;,
+				&quot;group&quot;: &quot;Affiliates&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 12,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;You have a Gift Voucher!&quot;,
+			&quot;body&quot;: &quot;    &lt;html&gt;   &lt;head&gt;   &lt;style type=\&quot;text/css\&quot;&gt;    body { margin: 30px; }    body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;}    table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }    table td { border-top: 1px solid #eee; border-left: 1px solid #eee; }    table span { color: #888;}   &lt;/style&gt;   &lt;/head&gt;  &lt;body&gt;     &lt;p&gt;Dear {tag_RecipientName},&lt;/p&gt;   &lt;p&gt;{tag_purchasername} has bought a Gift Voucher for you which you can use in our online shop. They left you a personal message with this gift:&lt;/p&gt;   &lt;strong&gt;{tag_message}&lt;/strong&gt;        &lt;p&gt;Please visit our online shop at: &lt;strong&gt;{tag_siteurl}&lt;/strong&gt;&lt;/p&gt;   &lt;p&gt;The value of your gift voucher is {tag_giftvoucheramount}. To redeem your gift voucher you must enter the following code when checking out: {tag_giftvouchercode}.&lt;/p&gt;   &lt;p&gt;Thank you!&lt;/p&gt;       &lt;/body&gt;  &lt;/html&gt;  &quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;GiftVoucherEmail&quot;,
+				&quot;group&quot;: &quot;Online Shop&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 13,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;New Order (Drop Shipping)&quot;,
+			&quot;body&quot;: &quot;\r\n  &lt;html&gt;&lt;head&gt;  &lt;style type=text/css&gt;     body { margin: 18px; }     body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Arial, Verdana, sans-serif; }     table.border { font: 11px/18px \&quot;Lucida Grande\&quot;, Arial, Verdana, sans-serif; }     table.border { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }     table.border td { border-top: 1px solid #eee; border-left: 1px solid #eee; }     table span { color: #888; }    &lt;/style&gt;  &lt;/head&gt;  &lt;body&gt;  &lt;table class=invoice cellSpacing=0 cellPadding=6 width=\&quot;100%\&quot;&gt;  &lt;tbody&gt;  &lt;tr&gt;  &lt;td&gt;&lt;strong&gt;Invoice Date&lt;/strong&gt;&lt;br&gt;{tag_invoicedate} &lt;/td&gt;  &lt;td align=right&gt;&lt;strong&gt;Invoice Number&lt;/strong&gt;&lt;br&gt;{tag_invoicenumber} &lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;  &lt;td colSpan=2&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;{tag_recipientname}&lt;br&gt;  {tag_addressshipping} &lt;/td&gt;  &lt;td&gt;{tag_shippingdescription}&lt;br&gt;    {tag_shippinginstructions}&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td colSpan=2&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;  &lt;td colSpan=2&gt;  &lt;table class=border cellSpacing=0 cellPadding=6 width=\&quot;100%\&quot;&gt;  &lt;tbody&gt;  &lt;tr&gt;  &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Product Code&lt;/span&gt;&lt;/td&gt;  &lt;td width=\&quot;20%\&quot;&gt;&lt;span&gt;Product&lt;/span&gt;&lt;/td&gt;  &lt;td width=\&quot;30%\&quot;&gt;&lt;span&gt;Description&lt;/span&gt;&lt;/td&gt;  &lt;td width=\&quot;10%\&quot;&gt;&lt;span&gt;Quantity&lt;/span&gt;&lt;/td&gt;  &lt;/tr&gt;  &lt;tr class=text&gt;  &lt;td width=\&quot;10%\&quot;&gt;{tag_productcode}&lt;/td&gt;  &lt;td width=\&quot;20%\&quot;&gt;{tag_productname}&lt;/td&gt;  &lt;td width=\&quot;30%\&quot;&gt;{tag_productdescription}&lt;/td&gt;  &lt;td width=\&quot;10%\&quot;&gt;{tag_productquantity}&lt;/td&gt;  &lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;  &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;  \r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;DropShipping&quot;,
+				&quot;group&quot;: &quot;Online Shop&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 14,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Take a look at this&quot;,
+			&quot;body&quot;: &quot;\r\n&lt;html&gt;   &lt;head&gt;   &lt;style type=\&quot;text/css\&quot;&gt;    body { margin: 30px; }    body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;}    table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }    table td { border-top: 1px solid #eee; border-left: 1px solid #eee; }    table span { color: #888;}   &lt;/style&gt;   &lt;/head&gt;  &lt;body&gt;     &lt;p&gt;Hi,&lt;/p&gt;        &lt;p&gt;{tag_fromname} said:&lt;/p&gt;         &lt;blockquote&gt;&lt;p&gt;{tag_message}&lt;/p&gt;&lt;/blockquote&gt;           &lt;p&gt;This item on this website might interest you.&lt;/p&gt;      &lt;table&gt;    &lt;tr&gt;     &lt;td&gt;&lt;span&gt;Site&lt;/span&gt;&lt;/td&gt;     &lt;td&gt;{tag_siteurl}&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;       &lt;td&gt;&lt;span&gt;Item&lt;/span&gt;&lt;/td&gt;     &lt;td&gt;{tag_itemname}&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;     &lt;td&gt;&lt;span&gt;Item Link&lt;/span&gt;&lt;/td&gt;     &lt;td&gt;{tag_itemurl}&lt;/td&gt;    &lt;/tr&gt;     &lt;/table&gt;        &lt;/body&gt;  &lt;/html&gt;\r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;Tell-a-Friend&quot;,
+				&quot;group&quot;: &quot;Tell-a-Friend&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 16,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;Not Applicable&quot;,
+			&quot;body&quot;: &quot;{tag_threadlast}&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;CSF&quot;,
+				&quot;group&quot;: &quot;CST&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 18,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Mihai test\&quot; mtica-new@mailinator.com&quot;,
+			&quot;subject&quot;: &quot;{tag_objectname}&quot;,
+			&quot;body&quot;: &quot;&lt;!DOCTYPE HTML PUBLIC \&quot;-//W3C//DTD HTML 4.01 Transitional//EN\&quot;&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;System Email&lt;/title&gt;&lt;/head&gt;&lt;body style=\&quot;background-color: #ffffff;color:#000000;font:12px/18px Helvetica, Arial, Verdana, sans-serif;word-wrap: break-all;\&quot;&gt;&lt;style type=\&quot;text/css\&quot;&gt; body{background-color: #ffffff;color:#000000;font:12px/18px Helvetica, Arial, Verdana, sans-serif;word-wrap: break-all;}a{color: #005ba7;text-decoration:none;}#customfields{padding-top:0px;}#title, #casenumber{display:none;}.tag_formsummary td{padding-top:18px;}&lt;/style&gt;&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; width=\&quot;100%\&quot; style=\&quot;background-color: #ffffff;\&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td valign=\&quot;top\&quot; align=\&quot;center\&quot;&gt;&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;4px\&quot; border=\&quot;0\&quot; style=\&quot;background-color: #ffffff;\&quot;&gt;&lt;tbody&gt;&lt;tr style=&#39;background-color:#eeeeee&#39;&gt;&lt;td style=\&quot;width:20px;\&quot;&gt;&#194;&#160;&lt;/td&gt;&lt;td&gt;&lt;p style=&#39;font-size:20px;margin-top:22px;margin-bottom:18px;&#39;&gt;\&quot;{tag_objectname}\&quot; has a new form submission.&lt;span style=&#39;font-size:11px;line-height:11px;&#39;&gt;&lt;br/&gt;&lt;br/&gt;Automated email from {tag_siteurl}&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=\&quot;width:20px;\&quot;&gt;&#194;&#160;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td valign=\&quot;top\&quot; class=\&quot;col-main\&quot; style=\&quot;background-color: #ffffff;\&quot;&gt;&lt;p class=&#39;tag_formsummary&#39;&gt;{tag_formsummary}&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&#39;background-color:#eeeeee&#39;&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;p style=&#39;font-size:11px;line-height:17px;margin-top:18px;margin-bottom: 18px;&#39;&gt;&lt;strong style=&#39;font-weight:bold&#39;&gt;Privacy&lt;/strong&gt;&lt;br/&gt; You have received this email because the administrator of the website at {tag_siteurl} configured a form to send results to this address. If you wish to stop receiving this email, please contact the administrator of this site.&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowNotification&quot;,
+				&quot;group&quot;: &quot;Workflows&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 19,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Adobe&#174; Business Catalyst\&quot; info@testsuite.biz&quot;,
+			&quot;subject&quot;: &quot;Workflow Task - {tag_objectname}&quot;,
+			&quot;body&quot;: &quot;\r\n&lt;!DOCTYPE HTML PUBLIC \&quot;-//W3C//DTD HTML 4.01 Transitional//EN\&quot;&gt;\r\n\t&lt;html&gt;\r\n\t\t&lt;head&gt;\r\n\t\t\t&lt;title&gt;System Email&lt;/title&gt;\r\n\t\t&lt;/head&gt;\r\n\t\t&lt;body bgcolor=\&quot;#ffffff\&quot; font-size=\&quot;10px\&quot; leftmargin=\&quot;0\&quot; topmargin=\&quot;0\&quot; rightmargin=\&quot;0\&quot; bottommargin=\&quot;0\&quot; marginwidth=\&quot;0\&quot; marginheight=\&quot;0\&quot;&gt;\r\n\t\t\t&lt;style type=\&quot;text/css\&quot;&gt;\r\n\t\t\tbody,td { color:#000000; font:12px/18px Helvetica, Arial, Verdana, sans-serif; word-wrap: break-all; margin: 0;}\r\n\t\t\tp, address { color:#333333; font:12px/18px Helvetica, Arial, Verdana, sans-serif; }\r\n\t\t\taddress { font-style:normal; }\r\n\t\t\ta { color: #005ba7; text-decoration:none; }\r\n\t\t\ta:hover { color:#000000; text-decoration: none; }\r\n\t\t\th1 { line-height: 1.1em; text-transform: uppercase; font-size: 24px;}\r\n\t\t\th1 span { color: #aaa; font-size: 14px;}\r\n\t\t\th1 span.date { color: #aaa; font-size: 14px; font-weight: normal;}\r\n\t\t\th2 { color:#000000; font-size:17px; margin:10px 0 8px 0; line-height:1.4em; }\r\n\t\t\th3 { color:#111111; font-size:15px; margin: 10px 0 4px 0;}\r\n\t\t\tstrong { font-weight: bold; }\r\n\t\t\tspan.auto { color: #aaaaaa; font-size: 14px; font-weight: bold; font-style: italic;}\r\n\t\t\ttd.footer p, td.footer address { color:#666666; font-size:11px; line-height:17px;}\r\n\t\t\timg.d-separator { margin:3px 0;}\r\n\t\t\tdiv.livefeed ul li { font-size: 11px;}\r\n\t\t\t&lt;/style&gt;\r\n\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; width=\&quot;100%\&quot; bgcolor=\&quot;#555555\&quot;&gt;\r\n\r\n\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t&lt;td valign=\&quot;top\&quot; align=\&quot;center\&quot;&gt;\r\n&lt;!-- [start] header --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;&lt;img src=\&quot;http://testsuite.biz/CatalystImages/adobebusinesscatalyst.png\&quot; alt=\&quot;Adobe&#174; Business Catalyst\&quot; /&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td align=\&quot;right\&quot; class=\&quot;header\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;span class=\&quot;auto\&quot;&gt;Automated Email&lt;/span&gt;\r\n\t\t\t\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;4\&quot; bgcolor=\&quot;#cccccc\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;30px\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;h1&gt;Workflow Task&lt;br&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/h1&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#eeeeee\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [end] header --&gt;\r\n\t\t\t\t\t\t\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t  &lt;td valign=\&quot;top\&quot; class=\&quot;col-main\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;16\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;10\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t\t&lt;td&gt;\r\n\t\t\t\t\t\t\t\t\t\t\t\tThis   is a notification for a step of a workflow that you are responsible for. You   should login and review the item and approve or reject the changes made to it.\r\n                                          &lt;p&gt;User &lt;strong&gt;{tag_currentusername}&lt;/strong&gt; has requested that you approve the changes   made to item &lt;strong&gt;{tag_objectname}&lt;/strong&gt;.&lt;/p&gt;\r\n                                          &lt;p&gt;The current step of the workflow &lt;strong&gt;{tag_workflowname}&lt;/strong&gt; requires approval   from any user that belongs to role &lt;strong&gt;{tag_rolename}&lt;/strong&gt;. &lt;/p&gt;\r\n                                          &lt;p&gt;Click on the link below to view this item&lt;BR&gt;\r\n                                  \t\t\t  &lt;strong&gt;&lt;A href=\&quot;{tag_objecturl}\&quot;&gt;View this item&lt;/A&gt;&lt;/strong&gt; (&lt;A href=\&quot;{tag_objecturlsecure}\&quot;&gt;Secure Link&lt;/A&gt;)&lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t\t\t  &lt;p&gt;{tag_formsummary} &lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;15\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;15\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\r\n\t\t\t\t\t\t\t    &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#f9f9f9\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;19\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;19\&quot; border=\&quot;0\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td class=\&quot;footer\&quot; valign=\&quot;top\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;strong&gt;Privacy&lt;/strong&gt;&lt;br/&gt;\r\n\t\t\t\t\t\t\t\t\t\tAdobe&#174; Business Catalyst is committed to protecting your privacy. You have received this email because you are a registered user of the Adobe&#174; Business Catalyst system. If you wish to stop receiving this email please contact your system administrator.\t\t\t\t\t\t\t\t\t&lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\t\t\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t&amp;copy; Adobe&#174; Business Catalyst 2004-2016, All Rights Reserved&lt;/a&gt;&lt;br&gt;\r\n\t\t\t\t\t\t\t\t  &lt;/p&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;29\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;29\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t&lt;/tr&gt;\r\n\t\t\t&lt;/table&gt;\r\n\t\t&lt;/body&gt;\r\n\t&lt;/html&gt;\r\n\r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2016-10-25T11:26:19.0639542&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowTask&quot;,
+				&quot;group&quot;: &quot;Workflows&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 21,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Adobe&#174; Business Catalyst\&quot; info@testsuite.biz&quot;,
+			&quot;subject&quot;: &quot;Workflow Reminder&quot;,
+			&quot;body&quot;: &quot;\r\n&lt;!DOCTYPE HTML PUBLIC \&quot;-//W3C//DTD HTML 4.01 Transitional//EN\&quot;&gt;\r\n\t&lt;html&gt;\r\n\t\t&lt;head&gt;\r\n\t\t\t&lt;title&gt;System Email&lt;/title&gt;\r\n\t\t&lt;/head&gt;\r\n\t\t&lt;body bgcolor=\&quot;#ffffff\&quot; font-size=\&quot;10px\&quot; leftmargin=\&quot;0\&quot; topmargin=\&quot;0\&quot; rightmargin=\&quot;0\&quot; bottommargin=\&quot;0\&quot; marginwidth=\&quot;0\&quot; marginheight=\&quot;0\&quot;&gt;\r\n\t\t\t&lt;style type=\&quot;text/css\&quot;&gt;\r\n\t\t\tbody,td { color:#000000; font:12px/18px Helvetica, Arial, Verdana, sans-serif; word-wrap: break-all; margin: 0;}\r\n\t\t\tp, address { color:#333333; font:12px/18px Helvetica, Arial, Verdana, sans-serif; }\r\n\t\t\taddress { font-style:normal; }\r\n\t\t\ta { color: #005ba7; text-decoration:none; }\r\n\t\t\ta:hover { color:#000000; text-decoration: none; }\r\n\t\t\th1 { line-height: 1.1em; text-transform: uppercase; font-size: 24px;}\r\n\t\t\th1 span { color: #aaa; font-size: 14px;}\r\n\t\t\th1 span.date { color: #aaa; font-size: 14px; font-weight: normal;}\r\n\t\t\th2 { color:#000000; font-size:17px; margin:10px 0 8px 0; line-height:1.4em; }\r\n\t\t\th3 { color:#111111; font-size:15px; margin: 10px 0 4px 0;}\r\n\t\t\tstrong { font-weight: bold; }\r\n\t\t\tspan.auto { color: #aaaaaa; font-size: 14px; font-weight: bold; font-style: italic;}\r\n\t\t\ttd.footer p, td.footer address { color:#666666; font-size:11px; line-height:17px;}\r\n\t\t\timg.d-separator { margin:3px 0;}\r\n\t\t\tdiv.livefeed ul li { font-size: 11px;}\r\n\t\t\t&lt;/style&gt;\r\n\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; width=\&quot;100%\&quot; bgcolor=\&quot;#555555\&quot;&gt;\r\n\r\n\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t&lt;td valign=\&quot;top\&quot; align=\&quot;center\&quot;&gt;\r\n&lt;!-- [start] header --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;&lt;img src=\&quot;http://testsuite.biz/CatalystImages/adobebusinesscatalyst.png\&quot; alt=\&quot;Adobe&#174; Business Catalyst\&quot; /&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td align=\&quot;right\&quot; class=\&quot;header\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;span class=\&quot;auto\&quot;&gt;Automated Email&lt;/span&gt;\r\n\t\t\t\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;4\&quot; bgcolor=\&quot;#cccccc\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;30px\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;h1&gt;Workflow Reminder&lt;br&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/h1&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#eeeeee\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [end] header --&gt;\r\n\t\t\t\t\t\t\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t  &lt;td valign=\&quot;top\&quot; class=\&quot;col-main\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;16\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;10\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t\t&lt;td&gt;\r\n\t\t\t\t\t\t\t\t\t\t\t\tThis is a reminder notification for an existing workflow. You should login and   review the item and approve or reject the changes made to it.\r\n                                &lt;p&gt;Step: &lt;strong&gt;{tag_stepname}&lt;/strong&gt; for workflow &lt;strong&gt;{tag_workflowname}&lt;/strong&gt; on item&lt;strong&gt; {tag_objectname}&lt;/strong&gt; should be completed by &lt;strong&gt;{tag_expirydate}&lt;/strong&gt;.&lt;/p&gt;\r\n                                &lt;p&gt;Click on the link below to view this item&lt;BR&gt;\r\n                                  &lt;strong&gt;&lt;A href=\&quot;{tag_objecturl}\&quot;&gt;View this item&lt;/A&gt;&lt;/strong&gt;&lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;15\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;15\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#f9f9f9\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;19\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;19\&quot; border=\&quot;0\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td class=\&quot;footer\&quot; valign=\&quot;top\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;strong&gt;Privacy&lt;/strong&gt;&lt;br/&gt;\r\n\t\t\t\t\t\t\t\t\t\tAdobe&#174; Business Catalyst is committed to protecting your privacy. You have received this email because you are a registered user of the Adobe&#174; Business Catalyst system. If you wish to stop receiving this email please contact your system administrator.\t\t\t\t\t\t\t\t\t&lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\t\t\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t&amp;copy; Adobe&#174; Business Catalyst 2004-2016, All Rights Reserved&lt;/a&gt;&lt;br&gt;\r\n\t\t\t\t\t\t\t\t  &lt;/p&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;29\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;29\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t&lt;/tr&gt;\r\n\t\t\t&lt;/table&gt;\r\n\t\t&lt;/body&gt;\r\n\t&lt;/html&gt;\r\n\r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2016-10-25T11:26:19.0795782&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowReminder&quot;,
+				&quot;group&quot;: &quot;Workflows&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 22,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Adobe&#174; Business Catalyst\&quot; info@testsuite.biz&quot;,
+			&quot;subject&quot;: &quot;Workflow Escalation&quot;,
+			&quot;body&quot;: &quot;\r\n&lt;!DOCTYPE HTML PUBLIC \&quot;-//W3C//DTD HTML 4.01 Transitional//EN\&quot;&gt;\r\n\t&lt;html&gt;\r\n\t\t&lt;head&gt;\r\n\t\t\t&lt;title&gt;System Email&lt;/title&gt;\r\n\t\t&lt;/head&gt;\r\n\t\t&lt;body bgcolor=\&quot;#ffffff\&quot; font-size=\&quot;10px\&quot; leftmargin=\&quot;0\&quot; topmargin=\&quot;0\&quot; rightmargin=\&quot;0\&quot; bottommargin=\&quot;0\&quot; marginwidth=\&quot;0\&quot; marginheight=\&quot;0\&quot;&gt;\r\n\t\t\t&lt;style type=\&quot;text/css\&quot;&gt;\r\n\t\t\tbody,td { color:#000000; font:12px/18px Helvetica, Arial, Verdana, sans-serif; word-wrap: break-all; margin: 0;}\r\n\t\t\tp, address { color:#333333; font:12px/18px Helvetica, Arial, Verdana, sans-serif; }\r\n\t\t\taddress { font-style:normal; }\r\n\t\t\ta { color: #005ba7; text-decoration:none; }\r\n\t\t\ta:hover { color:#000000; text-decoration: none; }\r\n\t\t\th1 { line-height: 1.1em; text-transform: uppercase; font-size: 24px;}\r\n\t\t\th1 span { color: #aaa; font-size: 14px;}\r\n\t\t\th1 span.date { color: #aaa; font-size: 14px; font-weight: normal;}\r\n\t\t\th2 { color:#000000; font-size:17px; margin:10px 0 8px 0; line-height:1.4em; }\r\n\t\t\th3 { color:#111111; font-size:15px; margin: 10px 0 4px 0;}\r\n\t\t\tstrong { font-weight: bold; }\r\n\t\t\tspan.auto { color: #aaaaaa; font-size: 14px; font-weight: bold; font-style: italic;}\r\n\t\t\ttd.footer p, td.footer address { color:#666666; font-size:11px; line-height:17px;}\r\n\t\t\timg.d-separator { margin:3px 0;}\r\n\t\t\tdiv.livefeed ul li { font-size: 11px;}\r\n\t\t\t&lt;/style&gt;\r\n\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; width=\&quot;100%\&quot; bgcolor=\&quot;#555555\&quot;&gt;\r\n\r\n\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t&lt;td valign=\&quot;top\&quot; align=\&quot;center\&quot;&gt;\r\n&lt;!-- [start] header --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;&lt;img src=\&quot;http://testsuite.biz/CatalystImages/adobebusinesscatalyst.png\&quot; alt=\&quot;Adobe&#174; Business Catalyst\&quot; /&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td align=\&quot;right\&quot; class=\&quot;header\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;span class=\&quot;auto\&quot;&gt;Automated Email&lt;/span&gt;\r\n\t\t\t\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;4\&quot; bgcolor=\&quot;#cccccc\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;30px\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;h1&gt;Workflow Escalation&lt;br&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/h1&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#eeeeee\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [end] header --&gt;\r\n\t\t\t\t\t\t\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t  &lt;td valign=\&quot;top\&quot; class=\&quot;col-main\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;16\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;10\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t\t&lt;td&gt;\r\n\t\t\t\t\t\t\t\t\t\t\t\tThis is an escalation notification for an existing workflow. You should notify   the persons responsible for this step of the workflow to login and review the   item and approve or reject the changes made to it. Alternatively you may   undertake this task.\r\n                                &lt;p&gt;Step &lt;strong&gt;{tag_stepname}&lt;/strong&gt; for workflow &lt;strong&gt;{tag_workflowname}&lt;/strong&gt; on item &lt;strong&gt;{tag_objectname}&lt;/strong&gt; should have been completed by &lt;strong&gt;{tag_expirydate}&lt;/strong&gt;.&lt;/p&gt;\r\n                                &lt;p&gt;Click on the link below to view this item&lt;BR&gt;\r\n                                  &lt;strong&gt;&lt;A href=\&quot;{tag_objecturl}\&quot;&gt;View this item&lt;/A&gt;&lt;/strong&gt;&lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;15\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;15\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#f9f9f9\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;19\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;19\&quot; border=\&quot;0\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td class=\&quot;footer\&quot; valign=\&quot;top\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;strong&gt;Privacy&lt;/strong&gt;&lt;br/&gt;\r\n\t\t\t\t\t\t\t\t\t\tAdobe&#174; Business Catalyst is committed to protecting your privacy. You have received this email because you are a registered user of the Adobe&#174; Business Catalyst system. If you wish to stop receiving this email please contact your system administrator.\t\t\t\t\t\t\t\t\t&lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\t\t\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t&amp;copy; Adobe&#174; Business Catalyst 2004-2016, All Rights Reserved&lt;/a&gt;&lt;br&gt;\r\n\t\t\t\t\t\t\t\t  &lt;/p&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;29\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;29\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t&lt;/tr&gt;\r\n\t\t\t&lt;/table&gt;\r\n\t\t&lt;/body&gt;\r\n\t&lt;/html&gt;\r\n\r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2016-10-25T11:26:19.0795782&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowEscalation&quot;,
+				&quot;group&quot;: &quot;Workflows&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 23,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Adobe&#174; Business Catalyst\&quot; info@testsuite.biz&quot;,
+			&quot;subject&quot;: &quot;Workflow Rejection&quot;,
+			&quot;body&quot;: &quot;\r\n&lt;!DOCTYPE HTML PUBLIC \&quot;-//W3C//DTD HTML 4.01 Transitional//EN\&quot;&gt;\r\n\t&lt;html&gt;\r\n\t\t&lt;head&gt;\r\n\t\t\t&lt;title&gt;System Email&lt;/title&gt;\r\n\t\t&lt;/head&gt;\r\n\t\t&lt;body bgcolor=\&quot;#ffffff\&quot; font-size=\&quot;10px\&quot; leftmargin=\&quot;0\&quot; topmargin=\&quot;0\&quot; rightmargin=\&quot;0\&quot; bottommargin=\&quot;0\&quot; marginwidth=\&quot;0\&quot; marginheight=\&quot;0\&quot;&gt;\r\n\t\t\t&lt;style type=\&quot;text/css\&quot;&gt;\r\n\t\t\tbody,td { color:#000000; font:12px/18px Helvetica, Arial, Verdana, sans-serif; word-wrap: break-all; margin: 0;}\r\n\t\t\tp, address { color:#333333; font:12px/18px Helvetica, Arial, Verdana, sans-serif; }\r\n\t\t\taddress { font-style:normal; }\r\n\t\t\ta { color: #005ba7; text-decoration:none; }\r\n\t\t\ta:hover { color:#000000; text-decoration: none; }\r\n\t\t\th1 { line-height: 1.1em; text-transform: uppercase; font-size: 24px;}\r\n\t\t\th1 span { color: #aaa; font-size: 14px;}\r\n\t\t\th1 span.date { color: #aaa; font-size: 14px; font-weight: normal;}\r\n\t\t\th2 { color:#000000; font-size:17px; margin:10px 0 8px 0; line-height:1.4em; }\r\n\t\t\th3 { color:#111111; font-size:15px; margin: 10px 0 4px 0;}\r\n\t\t\tstrong { font-weight: bold; }\r\n\t\t\tspan.auto { color: #aaaaaa; font-size: 14px; font-weight: bold; font-style: italic;}\r\n\t\t\ttd.footer p, td.footer address { color:#666666; font-size:11px; line-height:17px;}\r\n\t\t\timg.d-separator { margin:3px 0;}\r\n\t\t\tdiv.livefeed ul li { font-size: 11px;}\r\n\t\t\t&lt;/style&gt;\r\n\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; width=\&quot;100%\&quot; bgcolor=\&quot;#555555\&quot;&gt;\r\n\r\n\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t&lt;td valign=\&quot;top\&quot; align=\&quot;center\&quot;&gt;\r\n&lt;!-- [start] header --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;&lt;img src=\&quot;http://testsuite.biz/CatalystImages/adobebusinesscatalyst.png\&quot; alt=\&quot;Adobe&#174; Business Catalyst\&quot; /&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td align=\&quot;right\&quot; class=\&quot;header\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;span class=\&quot;auto\&quot;&gt;Automated Email&lt;/span&gt;\r\n\t\t\t\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;4\&quot; bgcolor=\&quot;#cccccc\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;30px\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;h1&gt;Workflow Rejection&lt;br&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/h1&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#eeeeee\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [end] header --&gt;\r\n\t\t\t\t\t\t\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t  &lt;td valign=\&quot;top\&quot; class=\&quot;col-main\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;16\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;10\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t\t&lt;td&gt;\r\n\t\t\t\t\t\t\t\t\t\t\tThis is a notification for a workflow step that has been rejected. Below is the   reason for the rejection and what you should do next.\r\n                                &lt;p&gt;User &lt;strong&gt;{tag_currentusername}&lt;/strong&gt; in role &lt;strong&gt;{tag_rolename}&lt;/strong&gt; has rejected   the changes made to item &lt;strong&gt;{tag_objectname}&lt;/strong&gt;.&lt;/p&gt;\r\n                                &lt;p&gt;Below is their reason for the rejection &lt;BR&gt;\r\n                                    &lt;strong&gt;{tag_rejectionreason}&lt;/strong&gt;&lt;/p&gt;\r\n                                &lt;p&gt;If you initiated this workflow please login and review the item. You may   either re-initiate the workflow, delete your changes and/or the workflow   process.&amp;nbsp; Your workflow has been marked inactive. If you are not the initiator   there is no further action required on your behalf.&lt;/p&gt;\r\n                                &lt;p&gt;Click on the link below to view this item&lt;BR&gt;\r\n                                  &lt;strong&gt;&lt;A href=\&quot;{tag_objecturl}\&quot;&gt;View this item&lt;/A&gt;&lt;/strong&gt; (&lt;A href=\&quot;{tag_objecturlsecure}\&quot;&gt;Secure Link&lt;/A&gt;)&lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;15\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;15\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#f9f9f9\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;19\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;19\&quot; border=\&quot;0\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td class=\&quot;footer\&quot; valign=\&quot;top\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;strong&gt;Privacy&lt;/strong&gt;&lt;br/&gt;\r\n\t\t\t\t\t\t\t\t\t\tAdobe&#174; Business Catalyst is committed to protecting your privacy. You have received this email because you are a registered user of the Adobe&#174; Business Catalyst system. If you wish to stop receiving this email please contact your system administrator.\t\t\t\t\t\t\t\t\t&lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\t\t\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t&amp;copy; Adobe&#174; Business Catalyst 2004-2016, All Rights Reserved&lt;/a&gt;&lt;br&gt;\r\n\t\t\t\t\t\t\t\t  &lt;/p&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;29\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;29\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t&lt;/tr&gt;\r\n\t\t\t&lt;/table&gt;\r\n\t\t&lt;/body&gt;\r\n\t&lt;/html&gt;\r\n\r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2016-10-25T11:26:19.0795782&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowRejection&quot;,
+				&quot;group&quot;: &quot;Workflows&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 25,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Adobe&#174; Business Catalyst\&quot; info@testsuite.biz&quot;,
+			&quot;subject&quot;: &quot;Workflow Completion&quot;,
+			&quot;body&quot;: &quot;\r\n&lt;!DOCTYPE HTML PUBLIC \&quot;-//W3C//DTD HTML 4.01 Transitional//EN\&quot;&gt;\r\n\t&lt;html&gt;\r\n\t\t&lt;head&gt;\r\n\t\t\t&lt;title&gt;System Email&lt;/title&gt;\r\n\t\t&lt;/head&gt;\r\n\t\t&lt;body bgcolor=\&quot;#ffffff\&quot; font-size=\&quot;10px\&quot; leftmargin=\&quot;0\&quot; topmargin=\&quot;0\&quot; rightmargin=\&quot;0\&quot; bottommargin=\&quot;0\&quot; marginwidth=\&quot;0\&quot; marginheight=\&quot;0\&quot;&gt;\r\n\t\t\t&lt;style type=\&quot;text/css\&quot;&gt;\r\n\t\t\tbody,td { color:#000000; font:12px/18px Helvetica, Arial, Verdana, sans-serif; word-wrap: break-all; margin: 0;}\r\n\t\t\tp, address { color:#333333; font:12px/18px Helvetica, Arial, Verdana, sans-serif; }\r\n\t\t\taddress { font-style:normal; }\r\n\t\t\ta { color: #005ba7; text-decoration:none; }\r\n\t\t\ta:hover { color:#000000; text-decoration: none; }\r\n\t\t\th1 { line-height: 1.1em; text-transform: uppercase; font-size: 24px;}\r\n\t\t\th1 span { color: #aaa; font-size: 14px;}\r\n\t\t\th1 span.date { color: #aaa; font-size: 14px; font-weight: normal;}\r\n\t\t\th2 { color:#000000; font-size:17px; margin:10px 0 8px 0; line-height:1.4em; }\r\n\t\t\th3 { color:#111111; font-size:15px; margin: 10px 0 4px 0;}\r\n\t\t\tstrong { font-weight: bold; }\r\n\t\t\tspan.auto { color: #aaaaaa; font-size: 14px; font-weight: bold; font-style: italic;}\r\n\t\t\ttd.footer p, td.footer address { color:#666666; font-size:11px; line-height:17px;}\r\n\t\t\timg.d-separator { margin:3px 0;}\r\n\t\t\tdiv.livefeed ul li { font-size: 11px;}\r\n\t\t\t&lt;/style&gt;\r\n\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; width=\&quot;100%\&quot; bgcolor=\&quot;#555555\&quot;&gt;\r\n\r\n\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t&lt;td valign=\&quot;top\&quot; align=\&quot;center\&quot;&gt;\r\n&lt;!-- [start] header --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;&lt;img src=\&quot;http://testsuite.biz/CatalystImages/adobebusinesscatalyst.png\&quot; alt=\&quot;Adobe&#174; Business Catalyst\&quot; /&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td align=\&quot;right\&quot; class=\&quot;header\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;span class=\&quot;auto\&quot;&gt;Automated Email&lt;/span&gt;\r\n\t\t\t\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;50\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;4\&quot; bgcolor=\&quot;#cccccc\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; height=\&quot;50\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;30px\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;h1&gt;Workflow Completion&lt;br&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/h1&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#eeeeee\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [end] header --&gt;\r\n\t\t\t\t\t\t\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t  &lt;td valign=\&quot;top\&quot; class=\&quot;col-main\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;16\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;10\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t\t&lt;td&gt;This is a notification for a workflow that you were involved in being completed.   There is no further action required on your behalf.\r\n\t\t\t\t\t\t\t\t\t\t\t  &lt;p&gt;Workflow &lt;strong&gt;{tag_workflowname}&lt;/strong&gt; on item &lt;strong&gt;{tag_objectname}&lt;/strong&gt; is now   complete.&lt;/p&gt;\r\n                                          &lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;tr&gt;&lt;td height=\&quot;15\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;15\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;19\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n&lt;!-- [start] middle --&gt;\r\n\t\t\t\t\t\t&lt;table align=\&quot;center\&quot; width=\&quot;604\&quot; cellspacing=\&quot;0\&quot; cellpadding=\&quot;0\&quot; border=\&quot;0\&quot; bgcolor=\&quot;#ffffff\&quot;&gt;\t\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td colspan=\&quot;3\&quot; bgcolor=\&quot;#f9f9f9\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;19\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;19\&quot; border=\&quot;0\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td class=\&quot;footer\&quot; valign=\&quot;top\&quot;&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\r\n\t\t\t\t\t\t\t\t\t\t&lt;strong&gt;Privacy&lt;/strong&gt;&lt;br/&gt;\r\n\t\t\t\t\t\t\t\t\t\tAdobe&#174; Business Catalyst is committed to protecting your privacy. You have received this email because you are a registered user of the Adobe&#174; Business Catalyst system. If you wish to stop receiving this email please contact your system administrator.\t\t\t\t\t\t\t\t\t&lt;/p&gt;\r\n\t\t\t\t\t\t\t\t\t&lt;p&gt;\t\t\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t&amp;copy; Adobe&#174; Business Catalyst 2004-2016, All Rights Reserved&lt;/a&gt;&lt;br&gt;\r\n\t\t\t\t\t\t\t\t  &lt;/p&gt;\r\n\t\t\t\t\t\t\t  &lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;20\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;20\&quot; height=\&quot;1\&quot;&gt;&lt;/td&gt;\r\n\t\t\t\t\t\t\t\t&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;\t\r\n\t\t\t\t\t\t\t&lt;/tr&gt;\r\n\t\t\t\t\t\t\t&lt;tr&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;td height=\&quot;29\&quot; colspan=\&quot;3\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;1\&quot; height=\&quot;29\&quot;&gt;&lt;/td&gt;&lt;td width=\&quot;2\&quot; bgcolor=\&quot;#444444\&quot;&gt;&lt;img src=\&quot;http://businesscatalyst.com/CatalystImages/1x1.gif\&quot; width=\&quot;2\&quot; height=\&quot;2\&quot;&gt;&lt;/td&gt;&lt;/tr&gt;\r\n\t\t\t\t\t\t&lt;/table&gt;\r\n\t\t\t\t\t&lt;/td&gt;\r\n\t\t\t\t&lt;/tr&gt;\r\n\t\t\t&lt;/table&gt;\r\n\t\t&lt;/body&gt;\r\n\t&lt;/html&gt;\r\n\r\n&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2016-10-25T11:26:19.0952062&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowCompletion&quot;,
+				&quot;group&quot;: &quot;Workflows&quot;
+			}
+		},
+		{
+			&quot;id&quot;: 27,
+			&quot;siteId&quot;: 2672227,
+			&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+			&quot;subject&quot;: &quot;New Topic: {tag_topicname} on {tag_forumname}&quot;,
+			&quot;body&quot;: &quot;&lt;html&gt;\r\n    &lt;head&gt;\r\n        &lt;style type=\&quot;text/css\&quot;&gt;\r\n            body { margin: 30px; }    body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;}    table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }    table td { border-top: 1px solid #eee; border-left: 1px solid #eee; }    table span { color: #888;}\r\n        &lt;/style&gt;\r\n    &lt;/head&gt;\r\n    &lt;body&gt;\r\n        &lt;p&gt;Dear {tag_RecipientName},&lt;/p&gt;\r\n        &lt;p&gt;A new topic has been created on a forum you are registered to. Below is the details of the new topic.&lt;/p&gt;\r\n        &lt;table cellspacing=\&quot;0\&quot; cellpadding=\&quot;6\&quot; width=\&quot;100%\&quot;&gt;\r\n            &lt;tbody&gt;\r\n                &lt;tr&gt;\r\n                    &lt;td style=\&quot;width: 20%;\&quot;&gt;&lt;span&gt;Forum:&lt;/span&gt;&lt;/td&gt;\r\n                    &lt;td style=\&quot;width: 80%;\&quot;&gt;{tag_forumname}&lt;/td&gt;\r\n                &lt;/tr&gt;\r\n                &lt;tr&gt;\r\n                    &lt;td style=\&quot;width: 20%;\&quot;&gt;&lt;span&gt;Topic:&lt;/span&gt;&lt;/td&gt;\r\n                    &lt;td style=\&quot;width: 80%;\&quot;&gt;{tag_topicname}&lt;/td&gt;\r\n                &lt;/tr&gt;\r\n                &lt;tr&gt;\r\n                    &lt;td style=\&quot;width: 20%;\&quot;&gt;&lt;span&gt;Topic Date:&lt;/span&gt;&lt;/td&gt;\r\n                    &lt;td style=\&quot;width: 80%;\&quot;&gt;{tag_topicdate}&lt;/td&gt;\r\n                &lt;/tr&gt;\r\n                &lt;tr&gt;\r\n                    &lt;td style=\&quot;width: 20%;\&quot;&gt;&lt;span&gt;Click to View:&lt;/span&gt;&lt;/td&gt;\r\n                    &lt;td style=\&quot;width: 80%;\&quot;&gt;{tag_topicurl}&lt;/td&gt;\r\n                &lt;/tr&gt;\r\n            &lt;/tbody&gt;\r\n        &lt;/table&gt;\r\n        &lt;p&gt;Click to unsubscribe from this forum: {tag_unsubscribe}&lt;/p&gt;\r\n        &lt;p&gt;Thank you!&lt;/p&gt;\r\n    &lt;/body&gt;\r\n&lt;/html&gt;&quot;,
+			&quot;emailFormat&quot;: 1,
+			&quot;templateId&quot;: -1,
+			&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;ForumNewTopicsAlert&quot;,
+				&quot;group&quot;: &quot;Forums&quot;
+			}
+		}
+	],
+	&quot;totalItemsCount&quot;: 19,
+	&quot;skip&quot;: 0,
+	&quot;limit&quot;: 50
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>Get the system emails for a site</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/systememails",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});{% endraw %}</code></pre>
+<p><strong>Get the list of system emails and filter the fields:</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/systememails?fields=typeInfo(name)",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(JSON.stringify(msg));
+});
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+});{% endraw %}</code></pre>
+<p>In this case the response looks like this:</p>
+
+<pre class="language-javascript"><code>{% raw %}{
+	&quot;items&quot;: [
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;LostPassword&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;Invoice&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;Order&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;Workflow3rdParty&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;ForumSubscriberAlert&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;DoubleOptInEmail&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;SecureZoneDetails&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;AffiliateProgramDetails&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;GiftVoucherEmail&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;DropShipping&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;Tell-a-Friend&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;CSF&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowNotification&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowTask&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowReminder&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowEscalation&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowRejection&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;WorkflowCompletion&quot;
+			}
+		},
+		{
+			&quot;typeInfo&quot;: {
+				&quot;name&quot;: &quot;ForumNewTopicsAlert&quot;
+			}
+		}
+	],
+	&quot;totalItemsCount&quot;: 19,
+	&quot;skip&quot;: 0,
+	&quot;limit&quot;: 50
+}{% endraw %}</code></pre>
+
+</div>
+<hr></div>
+<div id="details">
+  <h2 id="get-by-id">Get a the details for a particular system email</h2>
+  <div class="description">
+    <p>Get a particular system email by ID.</p>
+  </div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/systememails/[system-email_ID]
+<ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+  </ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The details for the specified system email ID in JSON format.</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the system email<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id of the template used for thesystem email <em>(integer)</em></li>
+<li><code>{% raw %}fromAddress{% endraw %}</code> - the from address <em>(string)</em></li>
+<li><code>{% raw %}emailFormat{% endraw %}</code> - format used for this email, use <strong>1</strong> for "text", <strong>2</strong> for HTML <em>(integer)</em></li>
+<li><code>{% raw %}subject{% endraw %}</code> - the email's subject <em>(string)</em></li>
+<li><code>{% raw %}body{% endraw %}</code> - the email's body <em>(string)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> <em>(dateTime)</em></li>
+<li><code>{% raw %}typeInfo{% endraw %}</code> <em>(JSON)</em>
+<ul>
+<li><code>{% raw %}type{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}group{% endraw %}</code> <em>(string)</em></li>
+</ul>
+</li>
+</ul>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/systememails/1 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+	&quot;id&quot;: 1,
+	&quot;siteId&quot;: 2672227,
+	&quot;fromAddress&quot;: &quot;\&quot;Your Name\&quot; info@yourdomain.com&quot;,
+	&quot;subject&quot;: &quot;Reset password&quot;,
+	&quot;body&quot;: &quot;\n\t&lt;html&gt;\n\t\t&lt;head&gt;\n\t\t\t&lt;style type=\&quot;text/css\&quot;&gt;\n\t\t\t\tbody { margin: 30px; } body, table { font: 12px/18px \&quot;Lucida Grande\&quot;, Helvetica, Arial, Verdana, sans-serif;} table { border-right: 1px solid #eee; border-bottom: 1px solid #eee; } table td { border-top: 1px solid #eee; border-left: 1px solid #eee; } table span { color: #888;}\n\t\t\t&lt;/style&gt;\n\t\t&lt;/head&gt;\n\t\t&lt;body&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tDear {tag_recipientName},\n\t\t\t&lt;/p&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tYou requested that your password be reset. &lt;br/&gt;\n\t\t\t\t&lt;br/&gt;\n\t\t\t\tYour username is &lt;strong&gt;{tag_userName}&lt;/strong&gt;. &lt;br/&gt;\n\t\t\t\tClick on the link below or paste it in your browser to reset your password: &lt;br/&gt; \n\t\t\t\t&lt;a href=\&quot;{tag_passwordResetLink}\&quot;&gt;{tag_passwordResetLink}&lt;/a&gt;&lt;br/&gt;\n\t\t\t\t&lt;br/&gt;\n\t\t\t\tIf this request did not come from you, please disregard this email.\n\t\t\t&lt;/p&gt;\n\t\t\t&lt;p&gt;\n\t\t\t\tThank you!\n\t\t\t&lt;/p&gt;\n\t\t&lt;/body&gt;\n\t&lt;/html&gt;&quot;,
+	&quot;emailFormat&quot;: 1,
+	&quot;templateId&quot;: -1,
+	&quot;lastUpdateDate&quot;: &quot;2011-12-31T16:00:00&quot;,
+	&quot;typeInfo&quot;: {
+		&quot;name&quot;: &quot;LostPassword&quot;,
+		&quot;group&quot;: &quot;Users&quot;
+	}
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>Get the details of a system email</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/systememails/1",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</code></pre>
+</div>
+<hr></div>
+<div id="create">
+<h2 id="create-system-emails">Creating new system emails is not supported</h2>
+<hr>
+</div>
+<div id="edit">
+<h2 id="edit-system-emails">Edit  a system email's details</h2>
+<div class="description">Edit the details for an existing system email. The fields that can be edited are:
+  <ul>
+    <li>templateId</li>
+    <li>fromAddress</li>
+    <li>emailFormat</li>
+    <li>subject</li>
+    <li>body</li>
+  </ul>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> PUT</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/systememails/[system-email_ID]
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+
+<li><code>{% raw %}templateId{% endraw %}</code> - the id of the template used for the system email <em>(integer)</em></li>
+<li><code>{% raw %}fromAddress{% endraw %}</code> - the from address <em>(string)</em></li>
+<li><code>{% raw %}emailFormat{% endraw %}</code> - format used for this email, use <strong>1</strong> for "text", <strong>2</strong> for HTML <em>(integer)</em></li>
+<li><code>{% raw %}subject{% endraw %}</code> - the email's subject <em>(string)</em></li>
+<li><code>{% raw %}body{% endraw %}</code> - the email's body <em>(string)</em></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}PUT /webresources/api/v3/sites/current/systememails/1 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+
+
+{
+    "subject": "Custom subject",
+    "body": "Email content"
+}{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/systememails/[system-email_ID]
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p id="edit-by-id"><strong>Edit a system email's subject</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+url: "/webresources/api/v3/sites/current/systememails/1",
+type: "PUT",
+connection: "keep-alive",    
+    contentType: "application/json",
+headers: {
+    "Authorization": $.cookie('access_token')
+},
+processData: false,
+data: JSON.stringify({
+    "subject": "Reset my password",
+    "fromAddress": '\"Your Name\" username@domain.com'
+})
+});
+request.done(function(msg) {
+console.log(msg);
+})
+request.fail(function(jqXHR) {
+console.log("Request failed.");
+console.log("Error code: " + jqXHR.status);
+console.log("Error text: " + jqXHR.statusText);
+console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr></div>
+<div id="delete">
+  <h2>Reset &nbsp;a system email</h2>
+  <div class="description">Reset a system email to its default data. Do note system emails cannot be deleted.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/systememails/[system-email_ID]
+<ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/systememails/1 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>
+<p>If the system email had been customized before and the reset operation was successful the response will be:</p>
+{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/systememails/[system-email_ID]
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+
+<p>If the system email was already the default one the response will be "404 Not Found" with the response text:</p>
+<pre class="language-javascript"><code>
+{% raw %}
+Request failed.
+VM197:17 Error code: 404
+VM197:18 Error text: Not Found
+VM197:19 Response text: {"errorCode":10400,"description":"Item 1 not found on site 2672227.","uri":"https://docs.worldsecuresystems.com/developers/","extraInfo":"The delete operation restores the system email to default content. Item 1 is already restored to default."}{% endraw %}</code></pre>
+
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p>Reset a system email.</p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/systememails/1",
+    type: "DELETE",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function(msg) {
+    console.log(msg);
+})
+request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>

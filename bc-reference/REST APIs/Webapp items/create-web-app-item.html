@@ -171,7 +171,8 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}200004{% endraw %}</code> - The slug is already used</li>
 <li><code>{% raw %}200005{% endraw %}</code> - The name provided is invalid (empty or null)</li>
 <li><code>{% raw %}200006{% endraw %}</code> - A custom field failed validation</li>
-<li><code>{% raw %}200008{% endraw %}</code> - There is a problem with the address. The related webapp has "location</li>
+<li><code>{% raw %}200008{% endraw %}</code> - There is a problem with the address. The related webapp has "locationEnabled" to true, but the country field is empty in the request</li>
+<li><code>{% raw %}210003{% endraw %}</code> - Invalid name (name is invalid syntactically or there is already a custom or system field with the same name)</li>
 </ul></li>
 </ul>
 

@@ -29,11 +29,20 @@
 
 <ul>
 <li><code>{% raw %}id{% endraw %}</code> - the id of the order status <em>(integer)</em></li>
-
 <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
 <li><code>{% raw %}label{% endraw %}</code> - the name of the orderstatus <em>(string)</em></li>
 <li><code>{% raw %}default{% endraw %}</code> <em>(boolean)</em></li>
-
+<li><code>{% raw %}notifyCustomer{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}soteNotificationId{% endraw %}</code> <em>(numeric)</em></li>
+<li><code>{% raw %}notification{% endraw %}</code> <em>(JSON)</em>
+	<ul>
+		<li><code>{% raw %}templateId{% endraw %}</code> <em>(numeric)</em></li>
+		<li><code>{% raw %}fromAddress{% endraw %}</code> <em>(string)</em></li>
+		<li><code>{% raw %}emailFormat{% endraw %}</code> <em>(string)</em></li>
+		<li><code>{% raw %}subject{% endraw %}</code> <em>(string)</em></li>
+		<li><code>{% raw %}body{% endraw %}</code> <em>(string)</em></li>
+	</ul>
+</li>
 </ul>
 <p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
@@ -53,49 +62,92 @@ Content-Type: application/json
 <p><strong>Response:</strong></p>
 
 <pre class="language-javascript"><code>{% raw %}{
-    "items": [
-        {
-            "id": 27,
-            "siteId": 38581,
-            "label": "Goods Received",
-            "default": false,
-            "notifyCustomer": false,
-            "siteNotificationId": 8
-        },
-        {
-            "id": 28,
-            "siteId": 38581,
-            "label": "Purchase - Awaiting Payment",
-            "default": false,
-            "notifyCustomer": false,
-            "siteNotificationId": 11
-        },
-        {
-            "id": 29,
-            "siteId": 38581,
-            "label": "Purchase - Payment Received",
-            "default": false,
-            "notifyCustomer": false,
-            "siteNotificationId": 12
-        },
-        {
-            "id": 34,
-            "siteId": 38581,
-            "label": "new_status",
-            "default": false,
-            "notifyCustomer": true,
-            "siteNotificationId": 28
-        }
-    ],
-    "totalItemsCount": 4,
-    "skip": 0,
-    "limit": 10
+	"items": [
+		{
+			"id": 102839,
+			"siteId": 2672227,
+			"siteNotificationId": 19277,
+			"label": "Goods Dispatched",
+			"default": false,
+			"notifyCustomer": false,
+			"notification": {
+				"templateId": -1,
+				"fromAddress": "\"Adobe® Business Catalyst\" info@testsuite.biz",
+				"emailFormat": 1,
+				"subject": "Your goods have been dispatched",
+				"body": "&lt;html&gt;\n\r    &lt;head&gt;\n\r        &lt;title&gt;&lt;/title&gt;\n\r        &lt;style type=\"text/css\"&gt;\n\r            body { margin: 18px; }     body, table { font: 12px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { font: 11px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }     table.border td { border-top: 1px solid #eee; border-left: 1px solid #eee; }     table span { color: #888; }\n\r        &lt;/style&gt;\n\r    &lt;/head&gt;\n\r    &lt;body&gt;\n\r        &lt;p&gt;Dear &lt;b&gt;{tag_recipientname}&lt;/b&gt;,&lt;/p&gt;\n\r        &lt;p&gt;We’d like to inform you that your order has been processed and dispatched to the address listed below:&lt;/p&gt;\n\r        &lt;table width=\"100%\" class=\"invoice\" cellspacing=\"0\" cellpadding=\"6\"&gt;\n\r            &lt;tbody&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td colspan=\"2\"&gt;{tag_addressshipping}&lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td colspan=\"2\"&gt;&amp;nbsp;&lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td colspan=\"2\"&gt;\n\r                    &lt;table width=\"100%\" class=\"border\" cellspacing=\"0\" cellpadding=\"6\"&gt;\n\r                        &lt;tbody&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Product Code&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 20%;\"&gt;&lt;span&gt;Product&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 30%;\"&gt;&lt;span&gt;Description&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Quantity&lt;/span&gt;&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr class=\"text\"&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_productcode}&lt;/td&gt;\n\r                                &lt;td style=\"width: 20%;\"&gt;{tag_productname}&lt;/td&gt;\n\r                                &lt;td style=\"width: 30%;\"&gt;{tag_productdescription}&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_productquantity}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                        &lt;/tbody&gt;\n\r                    &lt;/table&gt;\n\r                    &lt;/td&gt;\n\r                &lt;/tr&gt;\n\r            &lt;/tbody&gt;\n\r        &lt;/table&gt;\n\r    &lt;/body&gt;\n\r&lt;/html&gt;"
+			}
+		},
+		{
+			"id": 102840,
+			"siteId": 2672227,
+			"siteNotificationId": 19278,
+			"label": "Goods Received",
+			"default": false,
+			"notifyCustomer": false,
+			"notification": {
+				"templateId": -1,
+				"fromAddress": "\"Adobe® Business Catalyst\" info@testsuite.biz",
+				"emailFormat": 1,
+				"subject": "Thank you for shopping with us!",
+				"body": "&lt;html&gt;\n\r    &lt;head&gt;\n\r        &lt;title&gt;&lt;/title&gt;\n\r        &lt;style type=\"text/css\"&gt;\n\r            body { margin: 18px; }     body, table { font: 12px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { font: 11px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }     table.border td { border-top: 1px solid #eee; border-left: 1px solid #eee; }     table span { color: #888; }\n\r        &lt;/style&gt;\n\r    &lt;/head&gt;\n\r    &lt;body&gt;\n\r        &lt;p&gt;Dear &lt;b&gt;{tag_recipientname}&lt;/b&gt;,&lt;/p&gt;\n\r        &lt;p&gt;Our records indicate that your goods have been received successfully. We’d just like to thank you for shopping with us and hope to see you again soon!&lt;/p&gt;\n\r    &lt;/body&gt;\n\r&lt;/html&gt;"
+			}
+		},
+		{
+			"id": 102841,
+			"siteId": 2672227,
+			"siteNotificationId": 19279,
+			"label": "Purchase - Awaiting Payment",
+			"default": false,
+			"notifyCustomer": false,
+			"notification": {
+				"templateId": -1,
+				"fromAddress": "\"Adobe® Business Catalyst\" info@testsuite.biz",
+				"emailFormat": 1,
+				"subject": "Awaiting payment for your purchase",
+				"body": "&lt;html&gt;\n\r    &lt;head&gt;\n\r        &lt;title&gt;&lt;/title&gt;\n\r        &lt;style type=\"text/css\"&gt;\n\r            body { margin: 18px; }     body, table { font: 12px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { font: 11px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }     table.border td { border-top: 1px solid #eee; border-left: 1px solid #eee; }     table span { color: #888; }\n\r        &lt;/style&gt;\n\r    &lt;/head&gt;\n\r    &lt;body&gt;\n\r        &lt;p&gt;Dear &lt;b&gt;{tag_recipientname}&lt;/b&gt;,&lt;/p&gt;\n\r        &lt;p&gt;We’ve received your order and are awaiting payment before further processing. We’ll be in touch once payment has been successfully received. Below you’ll find the full details of your order:&lt;/p&gt;\n\r        &lt;table width=\"100%\" class=\"invoice\" cellspacing=\"0\" cellpadding=\"6\"&gt;\n\r            &lt;tbody&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td&gt;&lt;strong&gt;Invoice Date&lt;/strong&gt;&lt;br /&gt;\n\r                    {tag_invoicedate} &lt;/td&gt;\n\r                    &lt;td align=\"right\"&gt;&lt;strong&gt;Invoice Number&lt;/strong&gt;&lt;br /&gt;\n\r                    {tag_invoicenumber} &lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td colspan=\"2\"&gt;&amp;nbsp;&lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td&gt;{tag_recipientname}&lt;br /&gt;\n\r                    {tag_addressdefault} &lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td colspan=\"2\"&gt;&amp;nbsp;&lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td colspan=\"2\"&gt;\n\r                    &lt;table width=\"100%\" class=\"border\" cellspacing=\"0\" cellpadding=\"6\"&gt;\n\r                        &lt;tbody&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Product Code&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 20%;\"&gt;&lt;span&gt;Product&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 30%;\"&gt;&lt;span&gt;Description&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Unit Price&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Tax&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Quantity&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Total&lt;/span&gt;&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr class=\"text\"&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_productcode}&lt;/td&gt;\n\r                                &lt;td style=\"width: 20%;\"&gt;{tag_productname}&lt;/td&gt;\n\r                                &lt;td style=\"width: 30%;\"&gt;{tag_productdescription}&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_productextaxamount}&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_producttaxamount}&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_productquantity}&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_producttotal}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                        &lt;/tbody&gt;\n\r                    &lt;/table&gt;\n\r                    &lt;table width=\"100%\" class=\"textb\" border=\"0\" cellspacing=\"0\" cellpadding=\"6\"&gt;\n\r                        &lt;tbody&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td colspan=\"2\"&gt;&lt;br /&gt;\n\r                                &lt;hr /&gt;\n\r                                &lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Shipping Cost:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td class=\"text\"&gt;{tag_shippingextaxamount}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Shipping Tax:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td class=\"text\"&gt;{tag_shippingtaxamount}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Grand Total:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td&gt;{tag_invoicetotal}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Paid Already:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td&gt;{tag_amountpaid}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Outstanding:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td&gt;{tag_amountoutstanding}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                        &lt;/tbody&gt;\n\r                    &lt;/table&gt;\n\r                    &lt;/td&gt;\n\r                &lt;/tr&gt;\n\r            &lt;/tbody&gt;\n\r        &lt;/table&gt;\n\r    &lt;/body&gt;\n\r&lt;/html&gt;"
+			}
+		},
+		{
+			"id": 102842,
+			"siteId": 2672227,
+			"siteNotificationId": 19280,
+			"label": "Purchase - Payment Received",
+			"default": true,
+			"notifyCustomer": false,
+			"notification": {
+				"templateId": -1,
+				"fromAddress": "\"Adobe® Business Catalyst\" info@testsuite.biz",
+				"emailFormat": 1,
+				"subject": "Payment has been received for your purchase",
+				"body": "&lt;html&gt;\n\r    &lt;head&gt;\n\r        &lt;title&gt;&lt;/title&gt;\n\r        &lt;style type=\"text/css\"&gt;\n\r            body { margin: 18px; }     body, table { font: 12px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { font: 11px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }     table.border td { border-top: 1px solid #eee; border-left: 1px solid #eee; }     table span { color: #888; }\n\r        &lt;/style&gt;\n\r    &lt;/head&gt;\n\r    &lt;body&gt;\n\r        &lt;p&gt;Dear &lt;b&gt;{tag_recipientname}&lt;/b&gt;,&lt;/p&gt;\n\r        &lt;p&gt;We’d like to inform you that we’ve successfully received payment for your order. We’ll be in touch again once your order has been dispatched. For your reference, please find the full details of your order below:&lt;/p&gt;\n\r        &lt;table width=\"100%\" class=\"invoice\" cellspacing=\"0\" cellpadding=\"6\"&gt;\n\r            &lt;tbody&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td&gt;&lt;strong&gt;Invoice Date&lt;/strong&gt;&lt;br /&gt;\n\r                    {tag_invoicedate} &lt;/td&gt;\n\r                    &lt;td align=\"right\"&gt;&lt;strong&gt;Invoice Number&lt;/strong&gt;&lt;br /&gt;\n\r                    {tag_invoicenumber} &lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td colspan=\"2\"&gt;&amp;nbsp;&lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td&gt;{tag_recipientname}&lt;br /&gt;\n\r                    {tag_addressdefault} &lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td colspan=\"2\"&gt;&amp;nbsp;&lt;/td&gt;\n\r                &lt;/tr&gt;\n\r                &lt;tr&gt;\n\r                    &lt;td colspan=\"2\"&gt;\n\r                    &lt;table width=\"100%\" class=\"border\" cellspacing=\"0\" cellpadding=\"6\"&gt;\n\r                        &lt;tbody&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Product Code&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 20%;\"&gt;&lt;span&gt;Product&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 30%;\"&gt;&lt;span&gt;Description&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Unit Price&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Tax&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Quantity&lt;/span&gt;&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;&lt;span&gt;Total&lt;/span&gt;&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr class=\"text\"&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_productcode}&lt;/td&gt;\n\r                                &lt;td style=\"width: 20%;\"&gt;{tag_productname}&lt;/td&gt;\n\r                                &lt;td style=\"width: 30%;\"&gt;{tag_productdescription}&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_productextaxamount}&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_producttaxamount}&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_productquantity}&lt;/td&gt;\n\r                                &lt;td style=\"width: 10%;\"&gt;{tag_producttotal}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                        &lt;/tbody&gt;\n\r                    &lt;/table&gt;\n\r                    &lt;table width=\"100%\" class=\"textb\" border=\"0\" cellspacing=\"0\" cellpadding=\"6\"&gt;\n\r                        &lt;tbody&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td colspan=\"2\"&gt;&lt;br /&gt;\n\r                                &lt;hr /&gt;\n\r                                &lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Shipping Cost:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td class=\"text\"&gt;{tag_shippingextaxamount}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Shipping Tax:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td class=\"text\"&gt;{tag_shippingtaxamount}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Grand Total:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td&gt;{tag_invoicetotal}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Paid Already:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td&gt;{tag_amountpaid}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                            &lt;tr&gt;\n\r                                &lt;td align=\"right\" style=\"width: 90%;\"&gt;&lt;strong&gt;Outstanding:&lt;/strong&gt;&lt;/td&gt;\n\r                                &lt;td&gt;{tag_amountoutstanding}&lt;/td&gt;\n\r                            &lt;/tr&gt;\n\r                        &lt;/tbody&gt;\n\r                    &lt;/table&gt;\n\r                    &lt;/td&gt;\n\r                &lt;/tr&gt;\n\r            &lt;/tbody&gt;\n\r        &lt;/table&gt;\n\r    &lt;/body&gt;\n\r&lt;/html&gt;"
+			}
+		},
+		{
+			"id": 105543,
+			"siteId": 2672227,
+			"siteNotificationId": 19330,
+			"label": "Received Order",
+			"default": false,
+			"notifyCustomer": true,
+			"notification": {
+				"templateId": -1,
+				"fromAddress": "\"Adobe® Business Catalyst\" info@testsuite.biz",
+				"emailFormat": 1,
+				"subject": "Your order status has changed",
+				"body": "&lt;html&gt;\n\r    &lt;head&gt;\n\r        &lt;title&gt;&lt;/title&gt;\n\r        &lt;style type=\"text/css\"&gt;\n\r            body { margin: 18px; }     body, table { font: 12px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { font: 11px/18px \"Lucida Grande\", Arial, Verdana, sans-serif; }     table.border { border-right: 1px solid #eee; border-bottom: 1px solid #eee; }     table.border td { border-top: 1px solid #eee; border-left: 1px solid #eee; }     table span { color: #888; }\n\r        &lt;/style&gt;\n\r    &lt;/head&gt;\n\r    &lt;body&gt;\n\r        &lt;p&gt;Dear &lt;b&gt;{tag_recipientname}&lt;/b&gt;,&lt;/p&gt;\n\r        &lt;p&gt;We’d like to inform you that the status of your order has changed from {tag_orderstatusold} to {tag_orderstatusnew}. We’ll keep you updated with your order status as it’s processed further. &lt;/p&gt;\n\r    &lt;/body&gt;\n\r&lt;/html&gt;"
+			}
+		}
+	],
+	"totalItemsCount": 5,
+	"skip": 0,
+	"limit": 10
 }{% endraw %}</code></pre>
 </div>
 <hr>
 <div class="sample">
-<h3>Sample code</h3>
-<p><strong>Get the list of order statuses</strong></p>
+<h3>Sample codes</h3>
+<p><strong>Get the list of order statuses</strong> (the notification is not included by default)</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 var request = $.ajax({
     url: "/webresources/api/v3/sites/current/orderstatuses",
@@ -115,10 +167,31 @@ request.fail(function (jqXHR) {
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);
 }){% endraw %}</code></pre>
-<p><strong>Get the details of a particular order status</strong></p>
+<p><strong>Get the details of a particular order status</strong> (the notification is not included by default)</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/orderstatuses/287045",
+    url: "/webresources/api/v3/sites/current/orderstatuses/105543",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+<p><strong>Get the notifications for an orderStatus item</strong></p>
+	<p class="alert alert-warning">At the moment in order to get the notification JSON object you need to include it in the "fields" parameter as seen below.</p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/orderstatuses/105543?fields=id,siteId,siteNotificationId,label,default,notifyCustomer,notification",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",
@@ -159,10 +232,19 @@ request.fail(function (jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>{% raw %}label{% endraw %}</code> - the name of the orderStatus resource<em> (string)</em></li>
-<li><code>{% raw %}default{% endraw %}</code><em> (boolean)</em></li>
-<li><code>{% raw %}notifyCustomer{% endraw %}</code> - whether to notify the customer as the order status is changed<em> (boolean)</em></li>
-
+<li><code>{% raw %}label{% endraw %}</code> - the name of the orderstatus <em>(string)</em></li>
+<li><code>{% raw %}default{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}notifyCustomer{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}soteNotificationId{% endraw %}</code> <em>(numeric)</em></li>
+<li><code>{% raw %}notification{% endraw %}</code> <em>(JSON)</em>
+	<ul>
+		<li><code>{% raw %}templateId{% endraw %}</code> <em>(numeric)</em></li>
+		<li><code>{% raw %}fromAddress{% endraw %}</code> <em>(string)</em></li>
+		<li><code>{% raw %}emailFormat{% endraw %}</code> <em>(string)</em></li>
+		<li><code>{% raw %}subject{% endraw %}</code> <em>(string)</em></li>
+		<li><code>{% raw %}body{% endraw %}</code> <em>(string)</em></li>
+	</ul>
+</li>
 </ul>
 </div>
 <div class="response">
@@ -180,10 +262,17 @@ Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
 Connection: keep-alive
 Content-Type: application/json
 
-
 {
-    "label": "Goods Received",
-    "default": false
+    "label": "Command updated",
+    "default": false,
+    "notifyCustomer": false,
+    "notification": {
+        "templateId": -1,
+        "fromAddress": "\"Adobe® Business Catalyst\" no-reply@businesscatalyst.com",
+        "emailFormat": 1,
+        "subject": "Your goods have been dispatched - customized",
+        "body": "&lt;html&gt;\n\r    &lt;head&gt;\n\r        &lt;title&gt;&lt;/title&gt;\n\r ..."
+      }
 }{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
@@ -201,7 +290,7 @@ Content-Length: length{% endraw %}</code></pre>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 var request = $.ajax({
 url: "/webresources/api/v3/sites/current/orderstatuses",
-type: "PUT",
+type: "POST",
 connection: "keep-alive",    
     contentType: "application/json",
 headers: {
@@ -209,8 +298,16 @@ headers: {
 },
 processData: false,
 data: JSON.stringify({
-    "label": "Goods Received",
-    "default": false
+    "label": "Command updated",
+    "default": false,
+    "notifyCustomer": false,
+    "notification": {
+        "templateId": -1,
+        "fromAddress": "\"Adobe® Business Catalyst\" no-reply@businesscatalyst.com",
+        "emailFormat": 1,
+        "subject": "Your goods have been dispatched - customized",
+        "body": "&lt;html&gt;\n\r    &lt;head&gt;\n\r        &lt;title&gt;&lt;/title&gt;\n\r ..."
+      }
 })
 });
 request.done(function(msg) {
@@ -237,7 +334,7 @@ console.log("Response text: " + jqXHR.responseText);
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/orderstatuses/[customerType_ID]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/orderstatuses/[orderStatus_ID]
   <ul>
   <li>Alternatively, use siteID instead of 'current'</li>
 </ul>
@@ -246,10 +343,20 @@ console.log("Response text: " + jqXHR.responseText);
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>{% raw %}label{% endraw %}</code> - the name of the orderStatus resource<em> (string)</em></li>
-<li><code>{% raw %}default{% endraw %}</code><em> (boolean)</em></li>
-<li><code>{% raw %}notifyCustomer{% endraw %}</code> - whether to notify the customer as the order status is changed<em> (boolean)</em></li>
-
+<li><code>{% raw %}id{% endraw %}</code> - the id of the order status <em>(integer)</em></li>
+<li><code>{% raw %}label{% endraw %}</code> - the name of the orderstatus <em>(string)</em></li>
+<li><code>{% raw %}default{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}notifyCustomer{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}soteNotificationId{% endraw %}</code> <em>(numeric)</em></li>
+<li><code>{% raw %}notification{% endraw %}</code> <em>(JSON)</em>
+	<ul>
+		<li><code>{% raw %}templateId{% endraw %}</code> <em>(numeric)</em></li>
+		<li><code>{% raw %}fromAddress{% endraw %}</code> <em>(string)</em></li>
+		<li><code>{% raw %}emailFormat{% endraw %}</code> <em>(string)</em></li>
+		<li><code>{% raw %}subject{% endraw %}</code> <em>(string)</em></li>
+		<li><code>{% raw %}body{% endraw %}</code> <em>(string)</em></li>
+	</ul>
+</li>
 </ul>
 </div>
 <div class="response">
@@ -269,8 +376,16 @@ Content-Type: application/json
 
 
 {
-    "label": "Goods Received",
-    "default": false
+    "label": "Command updated",
+    "default": false,
+    "notifyCustomer": false,
+    "notification": {
+        "templateId": -1,
+        "fromAddress": "\"Adobe® Business Catalyst\" no-reply@businesscatalyst.com",
+        "emailFormat": 1,
+        "subject": "Your goods have been dispatched - customized",
+        "body": "&lt;html&gt;\n\r    &lt;head&gt;\n\r        &lt;title&gt;&lt;/title&gt;\n\r ..."
+      }
 }{% endraw %}</code></pre>
 </div>
 <div class="response-sample">
@@ -287,7 +402,7 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 var request = $.ajax({
-url: "/webresources/api/v3/sites/current/orderstatuses/28742",
+url: "/webresources/api/v3/sites/current/orderstatuses/105545",
 type: "PUT",
 connection: "keep-alive",    
     contentType: "application/json",
@@ -296,7 +411,7 @@ headers: {
 },
 processData: false,
 data: JSON.stringify({
-    "label": "Goods Received",
+    "label": Command has been updated",
     "default": false
 })
 });
@@ -324,7 +439,7 @@ console.log("Response text: " + jqXHR.responseText);
 <ul>
 <li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
 </ul></li>
-<li><strong>Path:</strong> /webresources/api/v3/sites/current/orderstatuses/[customerType_ID]
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/orderstatuses/[orderStatus_ID]
   <ul>
   <li>Alternatively, use siteID instead of 'current'</li>
 </ul>
@@ -361,7 +476,7 @@ Content-Length: length{% endraw %}</code></pre>
 <h3>Sample code</h3>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/orderstatuses/9593213",
+    url: "/webresources/api/v3/sites/current/orderstatuses/105545",
     type: "DELETE",
     connection: "keep-alive",    
     contentType: "application/json",

@@ -188,10 +188,9 @@ request.fail(function (jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 }){% endraw %}</code></pre>
 <p><strong>Get the notifications for an orderStatus item</strong></p>
-	<p class="alert alert-warning">At the moment in order to get the notification JSON object you need to include it in the "fields" parameter as seen below.</p>
 <pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
 var request = $.ajax({
-    url: "/webresources/api/v3/sites/current/orderstatuses/105543?fields=id,siteId,siteNotificationId,label,default,notifyCustomer,notification",
+    url: "/webresources/api/v3/sites/current/orderstatuses/105543",
     type: "GET",
     connection: "keep-alive",    
     contentType: "application/json",

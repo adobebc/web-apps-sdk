@@ -101,18 +101,18 @@ request.fail(function (jqXHR) {
 <hr><h2>Error codes</h2>
 <p>This method will return the following error codes:</p>
 <ul>
-<li><code>{% raw %}200{% endraw %}</code> - success</li>
-<li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
+<li><code>200</code> - success</li>
+<li><code>401</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
 
 <ul>
-<li><code>{% raw %}101000{% endraw %}</code> - sub-error code</li>
+<li><code>101000</code> - sub-error code</li>
 </ul></li>
-<li><code>{% raw %}403{% endraw %}</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
-<li><code>{% raw %}404{% endraw %}</code> - if trying to access a webapp that does not exist - may happen for the following reasons:
+<li><code>403</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+<li><code>404</code> - if trying to access a webapp that does not exist - may happen for the following reasons:
 <ul>
-<li>{% raw %}Web App Name contains special characters: %,*,:,<,>,+,#,, ?,\{% endraw %}</li>
+<li>Web App Name contains special characters: %,*,:,<,>,+,#,, ?,\</li>
 	</ul></li>
-<li><code>{% raw %}500{% endraw %}</code> - server error : this is returned when the call to the API is invalid due to the following reasons:
+<li><code>500</code> - server error : this is returned when the call to the API is invalid due to the following reasons:
 <ul>
 	<li>Web App contains 2 or more custom fields with exactly the same custom field name</li>
 	</ul>

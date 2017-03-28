@@ -98,12 +98,8 @@ request.fail(function (jqXHR) {
     console.log("Response text: " + jqXHR.responseText);
 })
 {% endraw %}</code></pre>
-
-
 <hr><h2>Error codes</h2>
-
 <p>This method will return the following error codes:</p>
-
 <ul>
 <li><code>{% raw %}200{% endraw %}</code> - success</li>
 <li><code>{% raw %}401{% endraw %}</code> - unauthorized - when the Authorization header is not present, or contains an invalid site token
@@ -112,6 +108,12 @@ request.fail(function (jqXHR) {
 <li><code>{% raw %}101000{% endraw %}</code> - sub-error code</li>
 </ul></li>
 <li><code>{% raw %}403{% endraw %}</code> - forbidden : this is returned when the user trying to access the API does not have the proper permissions</li>
+<li><code>{% raw %}404{% endraw %}</code> - if trying to access a webapp that does not exist - may happen for the following reasons:
+<ul>
+<li>{% raw %}Web App Name contains special characters: %,*,:,<,>,+,#,, ?,\{% endraw %}</li>
+	</ul></li>
+<li><code>{% raw %}500{% endraw %}</code> - server error : this is returned when the call to the API is invalid due to the following reasons:
+<ul>
+	<li>Web App contains 2 or more custom fields with exactly the same custom field name</li>
+	</ul>
 </ul>
-
-        

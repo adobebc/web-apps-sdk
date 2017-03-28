@@ -7,19 +7,21 @@
 
   <div class="syntax">
 <h2>Syntax</h2>
-<pre class="language-markup"><code>{% raw %}&#123;module_json json=&quot;the-json-file&quot; template=&quot;/the-template-to-use&quot;&#125;{% endraw %}</code></pre>
+<pre class="language-markup"><code>{% raw %}&#123;module_json json=&quot;the-json-file&quot; template=&quot;/the-template-to-use&quot;&#125; collection=&quot;myData&quot;{% endraw %}</code></pre>
 </div>
 <div class="parameters">
 <h2>Parameters</h2>
 <ul>
 <li><code>json</code> - the path to the JSON file (the data source file)</li>
-    <li><code>template</code> - the template file you want to use to represent the data set with</li>
+    <li><code>template (optional)</code> - the template file you want to use to represent the data set with</li>
+    <li><code>collection (optional)</code> - the collection where the JSON data is stored</li>
 </ul>
 </div>
 <div class="examples">
 <h2>Examples</h2>
 <ul>
     <li><code>{% raw %} &#123;module_json, json="/module_json/data.json" template="/module_json/template.tpl"&#125;{% endraw %}</code> - this will use the <em>data.json</em> file and render it using the <em>template.tpl</em> template</li>
+    <li><code>{% raw %} &#123;module_json, json="/module_json/data.json" collection=&quot;myData&quot;{% endraw %}</code> - this will use the <em>data.json</em> file and store it into a collection called <em>myData</em></li>
 </ul>
 
 </div>

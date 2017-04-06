@@ -28,19 +28,20 @@
 <p>The details for the specified customer ID in JSON format.</p>
 
 <ul>
-<li><code>{% raw %}id{% endraw %}</code> - the id of the gift voucher <em>(numeric)</em></li>
-<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(numeric)</em></li>
-<li><code>{% raw %}orderId{% endraw %}</code> - the name of the customer Type <em>(numeric)</em></li>
-<li><code>{% raw %}countryCode{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}code{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}recipientName{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}recipiendEmail{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}message{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}totalValue{% endraw %}</code> <em>(numeric)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}createDate{% endraw %}</code> <em>(dateTime)</em></li>
-<li><code>{% raw %}lastUpdateDate{% endraw %}</code> <em>(dateTime)</em></li>
 <li><code>{% raw %}createdByAdmin{% endraw %}</code> <em>(boolean)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}id{% endraw %}</code> - the id of the gift voucher <em>(numeric)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> <em>(dateTime)</em></li>
+<li><code>{% raw %}message{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}orderId{% endraw %}</code> - the name of the customer Type <em>(numeric)</em></li>
+<li><code>{% raw %}recipiendEmail{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}recipientName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}remainingBalance{% endraw %}</code> - the remaining balance of the gift voucher <em>(numeric)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(numeric)</em></li>
+<li><code>{% raw %}totalValue{% endraw %}</code> <em>(numeric)</em></li>
 </ul>
 
 <p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
@@ -61,41 +62,25 @@ Content-Type: application/json
 <p><strong>Response:</strong></p>
 
 <pre class="language-javascript"><code>{% raw %}{
-  "items": [
-    {
-      "id": 77001,
-      "siteId": 246884,
-      "orderId": -1,
-      "countryCode": "US",
-      "code": "BirthdayGift",
-      "recipientName": "John Doe",
-      "recipientEmail": "jdoe123456@mailinator.com",
-      "message": "Happy birthday John, here is a $10 gift voucher for you!",
-      "totalValue": 10,
-      "createDate": "2015-02-20T14:51:26.23",
-      "lastUpdateDate": "2015-02-20T14:51:26.23",
-      "createdByAdmin": true,
-      "enabled": true
-    },
-    {
-      "id": 77002,
-      "siteId": 246884,
-      "orderId": -1,
-      "countryCode": "US",
-      "code": "$50 special",
-      "recipientName": "Jane Doe",
-      "recipientEmail": "jane_doe@mailinator.com",
-      "message": "Hi Jane, here is a gift voucher for you!",
-      "totalValue": 50,
-      "createDate": "2015-02-20T14:52:08.3",
-      "lastUpdateDate": "2015-02-20T14:52:08.3",
-      "createdByAdmin": true,
-      "enabled": true
-    }
-  ],
-  "totalItemsCount": 2,
-  "skip": 0,
-  "limit": 10
+    "items": [{
+        "id": 6695,
+        "orderId": -1,
+        "siteId": 1383175,
+        "countryCode": "US",
+        "code": "GV-10",
+        "recipientName": "John Doe",
+        "recipientEmail": "jdoe@mailinator.com",
+        "message": "Thank you for your purchase, here is a token of our appreciation.",
+        "totalValue": 10,
+        "remainingBalance": 10,
+        "createDate": "2017-04-05T16:59:33.283",
+        "lastUpdateDate": "2017-04-05T16:59:33.283",
+        "createdByAdmin": true,
+        "enabled": true
+    }],
+    "totalItemsCount": 1,
+    "skip": 0,
+    "limit": 10
 }{% endraw %}</code></pre>
 </div>
 <hr>
@@ -167,19 +152,17 @@ request.fail(function (jqXHR) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>{% raw %}id{% endraw %}</code> - the id of the gift voucher <em>(numeric)</em></li>
-<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(numeric)</em></li>
-<li><code>{% raw %}orderId{% endraw %}</code> - the name of the customer Type <em>(numeric)</em></li>
-<li><code>{% raw %}countryCode{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}code{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}recipientName{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}recipiendEmail{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}message{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}totalValue{% endraw %}</code> <em>(numeric)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}createDate{% endraw %}</code> <em>(dateTime)</em></li>
-<li><code>{% raw %}lastUpdateDate{% endraw %}</code> <em>(dateTime)</em></li>
 <li><code>{% raw %}createdByAdmin{% endraw %}</code> <em>(boolean)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> <em>(dateTime)</em></li>
+<li><code>{% raw %}message{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}orderId{% endraw %}</code> - the name of the customer Type <em>(numeric)</em></li>
+<li><code>{% raw %}recipiendEmail{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}recipientName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}totalValue{% endraw %}</code> <em>(numeric)</em></li>
 </ul>
 </div>
 <div class="response">
@@ -238,7 +221,7 @@ request.done(function(data) {
 <hr>
 </div>
 <div id="edit">
-<h2>Edit  an gift voucher resource</h2>
+<h2>Edit  a gift voucher resource</h2>
 <div class="description">Using this method you can edit a gift voucher resource</div>
 <div class="request">
 <h3>Request</h3>
@@ -258,19 +241,17 @@ request.done(function(data) {
 </ul>
 <h4>Parameters</h4>
 <ul>
-<li><code>{% raw %}id{% endraw %}</code> - the id of the gift voucher <em>(numeric)</em></li>
-<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(numeric)</em></li>
-<li><code>{% raw %}orderId{% endraw %}</code> - the name of the customer Type <em>(numeric)</em></li>
-<li><code>{% raw %}countryCode{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}code{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}recipientName{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}recipiendEmail{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}message{% endraw %}</code> <em>(string)</em></li>
-<li><code>{% raw %}totalValue{% endraw %}</code> <em>(numeric)</em></li>
+<li><code>{% raw %}countryCode{% endraw %}</code> <em>(string)</em></li>
 <li><code>{% raw %}createDate{% endraw %}</code> <em>(dateTime)</em></li>
-<li><code>{% raw %}lastUpdateDate{% endraw %}</code> <em>(dateTime)</em></li>
 <li><code>{% raw %}createdByAdmin{% endraw %}</code> <em>(boolean)</em></li>
 <li><code>{% raw %}enabled{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> <em>(dateTime)</em></li>
+<li><code>{% raw %}message{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}orderId{% endraw %}</code> - the name of the customer Type <em>(numeric)</em></li>
+<li><code>{% raw %}recipiendEmail{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}recipientName{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}totalValue{% endraw %}</code> <em>(numeric)</em></li>
 </ul>
 </div>
 <div class="response">
@@ -342,7 +323,7 @@ request.done(function(data) {
 <hr>
 </div>
 <div id="delete">
-<h2>Delete  an gift voucher entity</h2>
+<h2>Delete  a gift voucher entity</h2>
 <div class="description">Delete an gift voucher entity.</div>
 <div class="request">
 <h3>Request</h3>

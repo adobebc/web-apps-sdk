@@ -241,6 +241,7 @@ request.fail(function (jqXHR) {
       <li><code class="language-markup">feedback</code> <em>(string)</em></li>
       <li><code class="language-markup">entityId</code> (<em>integer</em>)</li>
       <li><code>status</code> <em>(integer)</em></li>
+      <li><code>website</code> <em>(string)</em></li>    
     </ul>
     <p>Accepts and returns JSON as Content-Type.</p>
   </div>
@@ -262,7 +263,12 @@ var request = $.ajax({
       "rating": 0,
       "feedback": "comment 1 - test post 1",
       "entityId": 12344,
-      "status": 1
+      "status": 1,
+      "createDate": "2016-09-08T19:47:08.417",
+      "website":"example.com",
+      "objectType":56,
+      "objectId": 840181,
+      "entityId": 17759319,
     })
 });
 request.done(function (msg) {

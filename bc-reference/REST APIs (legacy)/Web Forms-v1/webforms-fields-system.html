@@ -40,7 +40,43 @@
 <ul>
 <li><code>self</code> - the API URL that will return full details for this web form <em>(string)</em></li>
 </ul></li>
-<li><code>id</code> - the ID of the web form field <em>(integer)</em> </li>
+<li><code>id</code> - the ID of the web form field <em>(integer)</em> possible values are:
+<ul>
+<li><code>-2</code> - CustomerDetails </li>
+<li><code>-3</code> - CustomerEmailAddress </li>
+<li><code>-304</code> - WebFormSecurity </li>
+<li><code>-10</code> - CustomerHomeAddress </li>
+<li><code>-20</code> - CustomerHomePhoneNumber </li>
+<li><code>-23</code> - CustomerHomeFaxNumber </li>
+<li><code>-5</code> - CustomerUsername </li>
+<li><code>-6</code> - CustomerPassword </li>
+<li><code>-7</code> - CustomerDOB </li>
+<li><code>-11</code> - CustomerWorkAddress </li>
+<li><code>-21</code> - CustomerWorkPhoneNumber </li>
+<li><code>-24</code> - CustomerWorkFaxNumber </li>
+<li><code>-25</code> - CustomerWebAddress </li>
+<li><code>-4</code> - CustomerCompanyDetails </li>
+<li><code>-22</code> - CustomerMobilePhoneNumber </li>
+<li><code>-500</code> - ReferAFriend </li>
+<li><code>-31</code> - CustomerAnniversary2 </li>
+<li><code>-33</code> - CustomerAnniversary4 </li>
+<li><code>-34</code> - CustomerAnniversary5 </li>
+<li><code>-32</code> - CustomerAnniversary3 </li>
+<li><code>-30</code> - CustomerAnniversary1 </li>
+<li><code>-301</code> - PaymentMethodType </li>
+<li><code>-302</code> - CreditCardPayment </li>
+<li><code>-13</code> - CustomerBillingAddress </li>
+<li><code>-40</code> - CustomerShippingDetails </li>
+<li><code>-41</code> - CustomerShippingAttention </li>
+<li><code>-12</code> - CustomerShippingAddress </li>
+<li><code>-303</code> - CreditCardUpdate </li>
+<li><code>-300</code> - CreditCardProcessing </li>
+<li><code>-200</code> - FileAttachment </li>
+<li><code>-403</code> - Recaptcha </li>
+<li><code>-404</code> - RecaptchaV2 </li>
+<li><code>-402</code> - ImageVerificationV2Only </li>
+</ul>
+</li>
 <li><code>name</code> - the name of the web form field <em>(string)</em></li>
 <li><code>type</code> - an object of the field's type
   <ul>
@@ -226,7 +262,42 @@ request.fail(function (jqXHR) {
       <li><code>self</code> - the API URL that will return full details for this web form <em>(string)</em></li>
     </ul>
   </li>
-  <li><code>id</code> - the ID of the web form field <em>(integer)</em></li>
+  <li><code>id</code> - the ID of the web form field <em>(integer)</em> possible values are:
+<ul>
+<li><code>-2</code> - CustomerDetails </li>
+<li><code>-3</code> - CustomerEmailAddress </li>
+<li><code>-304</code> - WebFormSecurity </li>
+<li><code>-10</code> - CustomerHomeAddress </li>
+<li><code>-20</code> - CustomerHomePhoneNumber </li>
+<li><code>-23</code> - CustomerHomeFaxNumber </li>
+<li><code>-5</code> - CustomerUsername </li>
+<li><code>-6</code> - CustomerPassword </li>
+<li><code>-7</code> - CustomerDOB </li>
+<li><code>-11</code> - CustomerWorkAddress </li>
+<li><code>-21</code> - CustomerWorkPhoneNumber </li>
+<li><code>-24</code> - CustomerWorkFaxNumber </li>
+<li><code>-25</code> - CustomerWebAddress </li>
+<li><code>-4</code> - CustomerCompanyDetails </li>
+<li><code>-22</code> - CustomerMobilePhoneNumber </li>
+<li><code>-500</code> - ReferAFriend </li>
+<li><code>-31</code> - CustomerAnniversary2 </li>
+<li><code>-33</code> - CustomerAnniversary4 </li>
+<li><code>-34</code> - CustomerAnniversary5 </li>
+<li><code>-32</code> - CustomerAnniversary3 </li>
+<li><code>-30</code> - CustomerAnniversary1 </li>
+<li><code>-301</code> - PaymentMethodType </li>
+<li><code>-302</code> - CreditCardPayment </li>
+<li><code>-13</code> - CustomerBillingAddress </li>
+<li><code>-40</code> - CustomerShippingDetails </li>
+<li><code>-41</code> - CustomerShippingAttention </li>
+<li><code>-12</code> - CustomerShippingAddress </li>
+<li><code>-303</code> - CreditCardUpdate </li>
+<li><code>-300</code> - CreditCardProcessing </li>
+<li><code>-200</code> - FileAttachment </li>
+<li><code>-403</code> - Recaptcha </li>
+<li><code>-404</code> - RecaptchaV2 </li>
+<li><code>-402</code> - ImageVerificationV2Only </li>
+</ul>
   <li><code>name</code> - the name of the web form field <em>(string)</em></li>
   <li><code>type</code> - an object of the field's type
     <ul>
@@ -315,7 +386,42 @@ request.fail(function (jqXHR) {
 <ul>
   <li><code>type</code> - field's type
     <ul>
-      <li><code>id</code> - the ID of the web form field type <em>(integer)</em></li>
+      <li><code>id</code> - the ID of the web form field type <em>(integer)</em> possible values are:
+<ul>
+<li><code>-2</code> - CustomerDetails </li>
+<li><code>-3</code> - CustomerEmailAddress </li>
+<li><code>-304</code> - WebFormSecurity </li>
+<li><code>-10</code> - CustomerHomeAddress </li>
+<li><code>-20</code> - CustomerHomePhoneNumber </li>
+<li><code>-23</code> - CustomerHomeFaxNumber </li>
+<li><code>-5</code> - CustomerUsername </li>
+<li><code>-6</code> - CustomerPassword </li>
+<li><code>-7</code> - CustomerDOB </li>
+<li><code>-11</code> - CustomerWorkAddress </li>
+<li><code>-21</code> - CustomerWorkPhoneNumber </li>
+<li><code>-24</code> - CustomerWorkFaxNumber </li>
+<li><code>-25</code> - CustomerWebAddress </li>
+<li><code>-4</code> - CustomerCompanyDetails </li>
+<li><code>-22</code> - CustomerMobilePhoneNumber </li>
+<li><code>-500</code> - ReferAFriend </li>
+<li><code>-31</code> - CustomerAnniversary2 </li>
+<li><code>-33</code> - CustomerAnniversary4 </li>
+<li><code>-34</code> - CustomerAnniversary5 </li>
+<li><code>-32</code> - CustomerAnniversary3 </li>
+<li><code>-30</code> - CustomerAnniversary1 </li>
+<li><code>-301</code> - PaymentMethodType </li>
+<li><code>-302</code> - CreditCardPayment </li>
+<li><code>-13</code> - CustomerBillingAddress </li>
+<li><code>-40</code> - CustomerShippingDetails </li>
+<li><code>-41</code> - CustomerShippingAttention </li>
+<li><code>-12</code> - CustomerShippingAddress </li>
+<li><code>-303</code> - CreditCardUpdate </li>
+<li><code>-300</code> - CreditCardProcessing </li>
+<li><code>-200</code> - FileAttachment </li>
+<li><code>-403</code> - Recaptcha </li>
+<li><code>-404</code> - RecaptchaV2 </li>
+<li><code>-402</code> - ImageVerificationV2Only </li>
+</ul>
       </ul>
   </li>
   <li><code>mandatory</code> - if the web form is mandatory set this to true <em>(bool)</em></li>

@@ -233,15 +233,15 @@ request.fail(function (jqXHR) {
   <div class="response">
     <h3>Parameters</h3>
     <ul>
-      <li><code>createDate</code> <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
-      <li><code class="language-markup">objectType</code> <em>(integer)</em></li>
-      <li><code class="language-markup">siteId</code> (<em>integer</em>)</li>
-      <li><code class="language-markup">objectId</code> (<em>integer</em>)</li>
-      <li><code class="language-markup">rating</code> (<em>integer</em>)</li>
-      <li><code class="language-markup">feedback</code> <em>(string)</em></li>
-      <li><code class="language-markup">entityId</code> (<em>integer</em>)</li>
-      <li><code>status</code> <em>(integer)</em></li>
-      <li><code>website</code> <em>(string)</em></li>    
+      <li><code>createDate</code> <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>) - Optional</em></li>
+      <li><code class="language-markup">objectType</code> <em>(integer)</em> - Mandatory</li>
+      <li><code class="language-markup">siteId</code> (<em>integer</em>) - Optional</li>
+      <li><code class="language-markup">objectId</code> (<em>integer</em>) - Mandatory</li>
+      <li><code class="language-markup">rating</code> (<em>integer</em>) - Optional</li>
+      <li><code class="language-markup">feedback</code> <em>(string)</em> - Mandatory</li>
+      <li><code class="language-markup">entityId</code> (<em>integer</em>) - Optional</li>
+      <li><code>status</code> <em>(integer)</em> - Mandatory</li>
+      <li><code>website</code> <em>(string)</em> - Mandatory</li>    
     </ul>
     <p>Accepts and returns JSON as Content-Type.</p>
   </div>
@@ -286,6 +286,8 @@ request.fail(function (jqXHR) {
       <h3>Response</h3>
       <p>Returns an empty body if successful or a detailed error message.</p>
       <p>201 Created</p>
+	  <p> 500 - An unexpected error occurred </p>
+	  <p>10620 - Value passed in the request body is not found valid  </p>
       <p>Accepts and returns JSON as Content-Type.</p>
     </div>
 </div>

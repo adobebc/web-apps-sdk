@@ -30,22 +30,22 @@
 <ul>
 <li><code>{% raw %}id{% endraw %}</code> - the mailing list's ID<em> (integer)</em></li>
 <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
-<li><code>{% raw %}roleId{% endraw %}</code> - the rold responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
-<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder <em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - the role id responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder. Special values include -1 for none and 0 for the default template. <em>(integer)</em></li>
 <li><code>{% raw %}name{% endraw %}</code> - the mailing list's name <em>(integer)</em></li>
-<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot;name<em> (integer)</em></li>
+<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; name<em> (integer)</em></li>
 <li><code>{% raw %}emailAddress{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; email address<em>(integer)</em></li>
 <li><code>{% raw %}emailSubject{% endraw %}</code> - the mail list autoresponder's subject<em>  (string)</em></li>
 <li><code>{% raw %}emailFormat{% endraw %} </code> - the mail list autoresponder's format. Possible values:<em>(string)</em>
   <ul>
-    <li>1 - text</li>
-    <li>2 - HTML</li>
+    <li>2 - text</li>
+    <li>1 - HTML</li>
   </ul>
 </li>
 <li><code>{% raw %}emailContent{% endraw %}</code> - the autoresponder email content <em>(string)</em></li>
 <li><code>{% raw %}createDate{% endraw %}</code> - the mailing list's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
 <li><code>{% raw %}lastUpdateDate{% endraw %}</code> - the mailing list's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
-<li><code>{% raw %}enable{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 <p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
 <p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
@@ -173,22 +173,22 @@ request.fail(function (jqXHR) {
 <ul>
 <li><code>{% raw %}id{% endraw %}</code> - the mailing list's ID<em> (integer)</em></li>
 <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
-<li><code>{% raw %}roleId{% endraw %}</code> - the rold responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
-<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder <em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - the role id responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder. Special values include -1 for none and 0 for the default template. <em>(integer)</em></li>
 <li><code>{% raw %}name{% endraw %}</code> - the mailing list's name <em>(integer)</em></li>
-<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot;name<em> (integer)</em></li>
+<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; name<em> (integer)</em></li>
 <li><code>{% raw %}emailAddress{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; email address<em>(integer)</em></li>
 <li><code>{% raw %}emailSubject{% endraw %}</code> - the mail list autoresponder's subject<em>  (string)</em></li>
 <li><code>{% raw %}emailFormat{% endraw %} </code> - the mail list autoresponder's format. Possible values:<em>(string)</em>
   <ul>
-    <li>1 - text</li>
-    <li>2 - HTML</li>
+    <li>2 - text</li>
+    <li>1 - HTML</li>
   </ul>
 </li>
 <li><code>{% raw %}emailContent{% endraw %}</code> - the autoresponder email content <em>(string)</em></li>
 <li><code>{% raw %}createDate{% endraw %}</code> - the mailing list's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
 <li><code>{% raw %}lastUpdateDate{% endraw %}</code> - the mailing list's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
-<li><code>{% raw %}enable{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 
 <p class="alert alert-info">The response is paginated, you can return only a few of the mailing list's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
@@ -271,20 +271,20 @@ request.fail(function (jqXHR) {
 <h4>Parameters</h4>
 <ul>
 <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
-<li><code>{% raw %}roleId{% endraw %}</code> - the rold responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
-<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder <em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - the role id responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder. Special values include -1 for none and 0 for the default template. <em>(integer)</em></li>
 <li><code>{% raw %}name{% endraw %}</code> - the mailing list's name <em>(integer)</em></li>
-<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot;name<em> (integer)</em></li>
+<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; name<em> (integer)</em></li>
 <li><code>{% raw %}emailAddress{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; email address<em>(integer)</em></li>
 <li><code>{% raw %}emailSubject{% endraw %}</code> - the mail list autoresponder's subject<em>  (string)</em></li>
 <li><code>{% raw %}emailFormat{% endraw %} </code> - the mail list autoresponder's format. Possible values:<em>(string)</em>
   <ul>
-    <li>1 - text</li>
-    <li>2 - HTML</li>
+    <li>2 - text</li>
+    <li>1 - HTML</li>
   </ul>
 </li>
 <li><code>{% raw %}emailContent{% endraw %}</code> - the autoresponder email content <em>(string)</em></li>
-<li><code>{% raw %}enable{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 </div>
 
@@ -348,20 +348,20 @@ console.log("Response text: " + jqXHR.responseText);
 <h4>Parameters</h4>
 <ul>
 <li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
-<li><code>{% raw %}roleId{% endraw %}</code> - the rold responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
-<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder <em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - the role id responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder. Special values include -1 for none and 0 for the default template. <em>(integer)</em></li>
 <li><code>{% raw %}name{% endraw %}</code> - the mailing list's name <em>(integer)</em></li>
-<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot;name<em> (integer)</em></li>
+<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; name<em> (integer)</em></li>
 <li><code>{% raw %}emailAddress{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; email address<em>(integer)</em></li>
 <li><code>{% raw %}emailSubject{% endraw %}</code> - the mail list autoresponder's subject<em>  (string)</em></li>
 <li><code>{% raw %}emailFormat{% endraw %} </code> - the mail list autoresponder's format. Possible values:<em>(string)</em>
   <ul>
-    <li>1 - text</li>
-    <li>2 - HTML</li>
+    <li>2 - text</li>
+    <li>1 - HTML</li>
   </ul>
 </li>
 <li><code>{% raw %}emailContent{% endraw %}</code> - the autoresponder email content <em>(string)</em></li>
-<li><code>{% raw %}enable{% endraw %}</code> <em>(boolean)</em></li>
+<li><code>{% raw %}enabled{% endraw %}</code> <em>(boolean)</em></li>
 </ul>
 </div>
 <div class="response">

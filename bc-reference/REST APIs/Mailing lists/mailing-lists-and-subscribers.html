@@ -25,10 +25,9 @@
 <div class="response">
 <h3>Response</h3>
 
-<p>The list of secure zones in JSON format.</p>
+<p>The list of subscribers in JSON format.</p>
 
 <ul>
-<li><code>{% raw %}customer{% endraw %}</code> - the customer's details (JSON)<em></em></li>
 <li><code>{% raw %}entityId{% endraw %}</code> - the id of the subscribed entity <em>(integer)</em></li>
 <li><code>{% raw %}listId{% endraw %}</code> - the id of the mailing list <em>(integer)</em></li>
 
@@ -43,6 +42,7 @@
 	  <li>6 - via an API call</li>
 	</ul>
 
+<li><code>{% raw %}customer{% endraw %}</code> - the customer's details (JSON)<em></em></li>
 
 </ul>
 <p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>

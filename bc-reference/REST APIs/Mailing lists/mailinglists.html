@@ -1,0 +1,472 @@
+<h1 apiType="restv3">Mailing lists</h1> 
+<ul id="toc"></ul>
+<div id="list">
+<h2>Get all the mailing lists </h2>
+<div class="description">
+<p>Get all the mailing lists created on a website</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/mailinglists
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+  </ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>An array of the first 10 mailing lists; each object has the following properties:</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the mailing list's ID<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - the rold responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the mailing list's name <em>(integer)</em></li>
+<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot;name<em> (integer)</em></li>
+<li><code>{% raw %}emailAddress{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; email address<em>(integer)</em></li>
+<li><code>{% raw %}emailSubject{% endraw %}</code> - the mail list autoresponder's subject<em>  (string)</em></li>
+<li><code>{% raw %}emailFormat{% endraw %} </code> - the mail list autoresponder's format. Possible values:<em>(string)</em>
+  <ul>
+    <li>1 - text</li>
+    <li>2 - HTML</li>
+  </ul>
+</li>
+<li><code>{% raw %}emailContent{% endraw %}</code> - the autoresponder email content <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - the mailing list's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - the mailing list's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}enable{% endraw %}</code> <em>(boolean)</em></li>
+</ul>
+<p class="alert alert-info">The response is paginated, you can skip and limit the number if items retrieved. Also take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/mailinglists HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+	"items": [
+		{
+			"id": 51787,
+			"siteId": 2684161,
+			"roleId": -1,
+			"templateId": -1,
+			"name": "Clients",
+			"emailFrom": "John Doe",
+			"emailAddress": "jdoe@mailinator.com",
+			"emailSubject": "Thank you for your subscription",
+			"emailFormat": 2,
+			"emailContent": "<p style=\"font:10pt arial;\">Dear {tag_recipientfirstname},<br /><br />Thank you for your subscription</p>",
+			"createDate": "2017-05-11T11:23:46.3",
+			"lastUpdateDate": "2017-05-11T11:23:46.3",
+			"enabled": true
+		},
+		{
+			"id": 51846,
+			"siteId": 2684161,
+			"roleId": -1,
+			"templateId": -1,
+			"name": "Platinum customers",
+			"emailFrom": "Jane Doe",
+			"emailAddress": "j-doe@mailinator.com",
+			"emailSubject": "Thank you for your subscription",
+			"emailFormat": 2,
+			"emailContent": "<p style=\"font:10pt arial;\">Dear {tag_recipientfirstname},<br /><br />Thank you for your subscription</p>",
+			"createDate": "2017-11-13T11:59:51.39",
+			"lastUpdateDate": "2017-11-13T12:00:33.973",
+			"enabled": true
+		},
+		{
+			"id": 51847,
+			"siteId": 2684161,
+			"roleId": -1,
+			"templateId": -1,
+			"name": "Gold customers",
+			"emailFrom": "Jane Doe",			
+			"emailAddress": "j-doe@mailinator.com",
+			"emailSubject": "Thank you for your subscription",
+			"emailFormat": 2,
+			"emailContent": "<p style=\"font:10pt arial;\">Dear {tag_recipientfirstname},<br /><br />Thank you for your subscription</p>",
+			"createDate": "2017-11-13T12:00:18.593",
+			"lastUpdateDate": "2017-11-13T12:00:18.593",
+			"enabled": true
+		}
+	],
+	"totalItemsCount": 3,
+	"skip": 0,
+	"limit": 10
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p><strong>Get all the mailing lists for a site</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/mailinglists",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr></div>
+<div id="details">
+<h2 id="get-by-id">Get a mailing list's details</h2>
+<div class="description">
+<p>Get a particular mailing list by ID.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/mailinglists/[mailinglist_ID]
+  <ul>
+<li>Alternatively, use siteID instead of 'current'</li>
+  </ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The details for the specified mailing list ID in JSON format.</p>
+
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> - the mailing list's ID<em> (integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - the rold responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the mailing list's name <em>(integer)</em></li>
+<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot;name<em> (integer)</em></li>
+<li><code>{% raw %}emailAddress{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; email address<em>(integer)</em></li>
+<li><code>{% raw %}emailSubject{% endraw %}</code> - the mail list autoresponder's subject<em>  (string)</em></li>
+<li><code>{% raw %}emailFormat{% endraw %} </code> - the mail list autoresponder's format. Possible values:<em>(string)</em>
+  <ul>
+    <li>1 - text</li>
+    <li>2 - HTML</li>
+  </ul>
+</li>
+<li><code>{% raw %}emailContent{% endraw %}</code> - the autoresponder email content <em>(string)</em></li>
+<li><code>{% raw %}createDate{% endraw %}</code> - the mailing list's creation date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}lastUpdateDate{% endraw %}</code> - the mailing list's last update date <em>(<a href="/developers/liquid/datatypes#datetime" target="_blank">dateTime</a>)</em></li>
+<li><code>{% raw %}enable{% endraw %}</code> <em>(boolean)</em></li>
+</ul>
+
+<p class="alert alert-info">The response is paginated, you can return only a few of the mailing list's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/mailinglists/51787 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}{
+	"id": 51787,
+	"siteId": 2684161,
+	"roleId": -1,
+	"templateId": -1,
+	"name": "Clients",
+	"emailFrom": "Catalin Usurelu",
+	"emailAddress": "usurelu@mailinator.com",
+	"emailSubject": "Thank you for your subscription",
+	"emailFormat": 2,
+	"emailContent": "<p style=\"font:10pt arial;\">Dear {tag_recipientfirstname},<br /><br />Thank you for your subscription</p>",
+	"createDate": "2017-05-11T11:23:46.3",
+	"lastUpdateDate": "2017-05-11T11:23:46.3",
+	"enabled": true
+}{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/mailinglists/51787",
+    type: "GET",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function (msg) {
+    console.log(msg);
+})
+request.fail(function (jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr></div>
+<div id="create">
+<h2 id="create-cust">Create a mailing list</h2>
+<div class="description">
+<p>Create a new mailing list.</p>
+</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/mailinglists/
+  <ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - the rold responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the mailing list's name <em>(integer)</em></li>
+<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot;name<em> (integer)</em></li>
+<li><code>{% raw %}emailAddress{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; email address<em>(integer)</em></li>
+<li><code>{% raw %}emailSubject{% endraw %}</code> - the mail list autoresponder's subject<em>  (string)</em></li>
+<li><code>{% raw %}emailFormat{% endraw %} </code> - the mail list autoresponder's format. Possible values:<em>(string)</em>
+  <ul>
+    <li>1 - text</li>
+    <li>2 - HTML</li>
+  </ul>
+</li>
+<li><code>{% raw %}emailContent{% endraw %}</code> - the autoresponder email content <em>(string)</em></li>
+<li><code>{% raw %}enable{% endraw %}</code> <em>(boolean)</em></li>
+</ul>
+</div>
+
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+url: "/webresources/api/v3/sites/current/mailinglists",
+type: "POST",
+connection: "keep-alive",    
+    contentType: "application/json",
+processData: false,
+headers: {
+    "Authorization": $.cookie('access_token'),
+  
+},
+  data: JSON.stringify({
+    "roleId": -1,
+    "templateId": -1,
+    "name": "Bronze customers",
+    "emailFrom": "Jane Doe",
+    "emailAddress": "jadoe@mailinator.com",
+    "emailSubject": "Thank you for your subscription",
+    "emailFormat": 2,
+    "emailContent": "Your subscription to our mailing list has been successful!",
+    "enabled": true
+})
+});
+request.done(function(msg) {
+console.log(msg);
+})
+request.fail(function(jqXHR) {
+console.log("Request failed.");
+console.log("Error code: " + jqXHR.status);
+console.log("Error text: " + jqXHR.statusText);
+console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>
+<div id="edit">
+<h2 id="edit-details">Edit  a mailing list's details</h2>
+<div class="description">Edit the details for an existing mailing list.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> PUT</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/mailinglists/[mailinglist_ID]
+  <ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+<h4>Parameters</h4>
+<ul>
+<li><code>{% raw %}siteId{% endraw %}</code> - the id of the site <em>(integer)</em></li>
+<li><code>{% raw %}roleId{% endraw %}</code> - the rold responsible assigned to the mailing list<em>. -1 for none (integer)</em></li>
+<li><code>{% raw %}templateId{% endraw %}</code> - the id assigned to the mailing list's autoresponder <em>(integer)</em></li>
+<li><code>{% raw %}name{% endraw %}</code> - the mailing list's name <em>(integer)</em></li>
+<li><code>{% raw %}emailFrom{% endraw %}</code> - the mail list autoresponder's &quot;from&quot;name<em> (integer)</em></li>
+<li><code>{% raw %}emailAddress{% endraw %}</code> - the mail list autoresponder's &quot;from&quot; email address<em>(integer)</em></li>
+<li><code>{% raw %}emailSubject{% endraw %}</code> - the mail list autoresponder's subject<em>  (string)</em></li>
+<li><code>{% raw %}emailFormat{% endraw %} </code> - the mail list autoresponder's format. Possible values:<em>(string)</em>
+  <ul>
+    <li>1 - text</li>
+    <li>2 - HTML</li>
+  </ul>
+</li>
+<li><code>{% raw %}emailContent{% endraw %}</code> - the autoresponder email content <em>(string)</em></li>
+<li><code>{% raw %}enable{% endraw %}</code> <em>(boolean)</em></li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<p id="edit-by-id"><strong>Edit a mailing list's name</strong></p>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+url: "/webresources/api/v3/sites/current/mailinglists/51787",
+type: "PUT",
+connection: "keep-alive",    
+    contentType: "application/json",
+headers: {
+    "Authorization": $.cookie('access_token')
+},
+processData: false,
+data: JSON.stringify({
+    "name": "Platinum customers - duplicate",
+    "lastName": "Smith"
+})
+});
+request.done(function(msg) {
+console.log(msg);
+})
+request.fail(function(jqXHR) {
+console.log("Request failed.");
+console.log("Error code: " + jqXHR.status);
+console.log("Error text: " + jqXHR.statusText);
+console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code>
+</pre>
+</div>
+<hr></div>
+<div id="delete">
+<h2>Delete  a mailing list</h2>
+<div class="description">Delete a mailing list.</div>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> DELETE</li>
+<li><strong>Version:</strong> v3</li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/mailinglists/[mailinglist_ID]
+  <ul>
+  <li>Alternatively, use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>Returns an empty body if successful or a detailed error message.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}DELETE /webresources/api/v3/sites/current/mailinglists/51787 HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<div class="response-sample">
+<p><strong>Response:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}
+HTTP/1.1 204 NO CONTENT
+Location: /webresources/api/v3/sites/current/mailinglists/[mailinglist_ID]
+Content-Type: application/json; charset=utf-8
+Content-Length: length{% endraw %}</code></pre>
+</div>
+<hr>
+<div class="sample">
+<h3>Sample code</h3>
+<pre class="language-javascript"><code>{% raw %}var access_token = BCAPI.Helper.Site.getAccessToken();
+var request = $.ajax({
+    url: "/webresources/api/v3/sites/current/mailinglists/51787",
+    type: "DELETE",
+    connection: "keep-alive",    
+    contentType: "application/json",
+    headers: {
+        "Authorization": $.cookie('access_token')
+    }
+});
+request.done(function(msg) {
+    console.log(msg);
+})
+request.fail(function(jqXHR) {
+    console.log("Request failed.");
+    console.log("Error code: " + jqXHR.status);
+    console.log("Error text: " + jqXHR.statusText);
+    console.log("Response text: " + jqXHR.responseText);
+}){% endraw %}</code></pre>
+</div>
+<hr>
+</div>

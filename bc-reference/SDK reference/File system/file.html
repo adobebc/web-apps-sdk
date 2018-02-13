@@ -54,7 +54,7 @@ f.fetch().done(function () {
 f.download().done(function (content) {
     console.log('File content is: ' + content);
 }).error(function (jqXHR) {
-    console.log("Dwonload failed.");
+    console.log("Download failed");
     console.log("Error code: " + jqXHR.status);
     console.log("Error text: " + jqXHR.statusText);
     console.log("Response text: " + jqXHR.responseText);

@@ -549,7 +549,7 @@
             <tr>
                 <td><code>\</code>
                 </td>
-                <td>The escape character. If you want to display a cahracter that would be normally
+                <td>The escape character. If you want to display a character that would be normally
                     interpreted as a switch, for example /ddd will output - d05</td>
             </tr>
       </tbody>
@@ -560,6 +560,7 @@
             the double quotes).</p>
         <p>To output <strong>Result : d05-h03-m18</strong> use <code>{% raw %}{{dateDiff | date:"'Result : '\ddd'-'\hhh'-'\mmm"}}{% endraw %}</code>
         </p>
+  <p>Do note whether the result is in the past or future system will  return a value without any + or - signs. Output will be just the difference, e.g, d05-h03-m18</p>
   </div>
 </div>
 <div type="cs-pod">

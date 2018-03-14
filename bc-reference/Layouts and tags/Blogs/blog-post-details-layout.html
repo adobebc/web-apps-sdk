@@ -11,6 +11,7 @@
   <li><strong>Admin Console:</strong> Site Manager &gt; Module Templates &gt; Blog Layouts</li>
   <li><strong>SFTP &amp; Develop Mode:</strong>  /Layouts/Blog/post.html
 </li>
+    <li><strong> Please use Liquid date filters for deprecated liquid tags </strong> </li>
 </ul></div>
 <div id="tags">
 <h2>Renders these tags</h2>
@@ -77,15 +78,15 @@
         </tr>
 
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;day&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;day&#125;&#125; - <i>(Deprecated)</i>{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostday&#125;{% endraw %}</code></td><td class="description">Day of the post</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;month&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;month&#125;&#125; - <i>(Deprecated)</i>{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostmonth&#125;{% endraw %}</code></td><td class="description">Month of the post</td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;monthNumeric&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;monthNumeric&#125;&#125; - <i>(Deprecated)</i>{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostmonthnumeric&#125;{% endraw %}</code></td><td class="description">Month of the post in numeric format, e.g Mar = <em>3</em></td>
         </tr>
         <tr>
@@ -108,7 +109,7 @@
           <td class="description">The featured image's URL of the blog post (relative to site root). e.g. <em>/img/featured-1.jpg</em></td>
         </tr>
         <tr>
-            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;year&#125;&#125;{% endraw %}</code></td>
+            <td valign="top" class="liquid tag"><code>{% raw %}&#123;&#123;year&#125;&#125; - <i>(Deprecated)</i>{% endraw %}</code></td>
          <td valign="top" class="legacy tag"><code>{% raw %}&#123;tag_blogpostyear&#125;{% endraw %}</code></td><td class="description">Year part of the date that the post was submitted. Example: 11-Dec-14 will render as the year only, like this: <em>2014</em></td>
         </tr>
         <tr>

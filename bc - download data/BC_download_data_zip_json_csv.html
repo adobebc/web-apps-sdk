@@ -67,6 +67,9 @@
                 <td>
                     <button type="button" class="btn btn-default" style="width:100%" onclick="downloadWebForms(false)">Download WebForms</button>
                 </td>
+                <td>
+                    <button type="button" class="btn btn-default" style="width:100%" onclick="downloadWebApps(false)">Download WebApps</button>
+                </td>
             </tr>
                 
             <tr>
@@ -1434,6 +1437,54 @@
                 getWebFormsIds(recursiveWebFormsGeneralDownloader, preProcessFunction, urlConstructor, "WebFormsCustomFields", toZip);
             }
         }
+        
+        function getWebAppsNames(preProcessFunction, urlConstructor, filename, toZip) { 
+            var requestUrl = "/api/v2/admin/sites/current/webapps";
+            
+            var request = $.ajax({
+                url: requestUrl,
+                type: "GET",
+                contentType: "application/json",
+                headers: {
+                    "Authorization": BCAPI.Helper.Site.getAccessToken()
+                }
+            });
+            
+            request.done(function(data) {
+                var names = [];
+                data = data.items;
+                for (var i = 0; i < data.length; i++) {
+                    names.push(data[i].name);
+                }
+                recursiveWebFormsGeneralDownloader("current", [], 0, names, preProcessFunction, urlConstructor, filename, toZip);
+            });
+            
+            request.fail(function(jqXHR) {
+                console.log("Request failed.");
+                console.log("Error code: " + jqXHR.status);
+                console.log("Error text: " + jqXHR.statusText);
+                console.log("Response text: " + jqXHR.responseText);
+            });
+            
+        }
+        
+        function downloadWebApps(toZip) {
+            if (pressableButtons || toZip) {
+                pressableButtons = false;
+                
+                var urlConstructor = function(siteId, index) {
+                    return"/api/v2/admin/sites/" + siteId + "/webapps/" + index;
+                };
+                
+                var preProcessFunction = function(id, data) {
+                   	delete(data.links);
+                    return data;
+                };
+                
+                getWebAppsNames(preProcessFunction, urlConstructor, "WebApps", toZip);
+            }
+        }
+        
         
         function downloadEveything() {
             if (pressableButtons) {

@@ -1,0 +1,1027 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ 
+    <head>
+    <title>Hello world</title>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+        <script type="text/javascript" src="//cdn.worldsecuresystems.com/bcapi/bcapi-0.1.0.min.js"></script>
+    </head>
+     
+    <body>
+        <p class="message">From here you can download your site's data in JSON or CSV. In case you what to download all the data at once a zip file will be generated (it may take some minutes).</p>
+        
+        <table>
+        	<tr>
+                <td>
+                    <select id="extensionType">
+                        <option value="csv" selected="selected">CSV</option>
+                        <option value="json">JSON</option>
+                    </select>
+                </td>
+            </tr>
+        	<tr>
+                <td>
+        			<button type="button" onclick="downloadEveything();">Download everything</button>
+        		</td>
+            <tr>
+        </table>
+        
+        <table>
+        	
+            <tr>
+                <td>
+        			<button type="button" onclick="downloadAnniversaries(false);">Download Anniversaries</button>
+                </td>
+       			<td> 
+        			<button type="button" onclick="downloadAdrotators(false);">Download AdRotators</button>
+                </td>
+        		<td>
+        			<button type="button" onclick="downloadNews(false);">Download News</button>
+                </td>
+        		<td>
+        			<button type="button" onclick="downloadTaskTypes(false);">Download TaskTypes</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                	<button type="button" onclick="downloadTasks(false);">Download Tasks</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadBookingStatuses(false);">Download BookingStatuses</button>
+                </td>
+                <td>
+                	<button type="button" onclick="downloadCompanyTypes(false);">Download CompanyTypes</button>
+                </td>
+                <td>
+                	<button type="button" onclick="downloadCompanies(false);">Download Companies</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                	<button type="button" onclick="downloadCustomerRelationships(false);">Download CustomerRelationships</button>
+                </td>
+                <td>
+        			<button type="button" onclick="downloadRelationshipTypes(false);">Download RelationshipTypes</button>
+                </td> 
+        		<td>
+        			<button type="button" onclick="downloadMailingLists(false);">Download MailingLists</button>
+                </td>
+        		<td>
+        			<button type="button" onclick="downloadOrderPayments(false);">Download OrderPayments</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                	<button type="button" onclick="downloadAffiliates(false);">Download Affiliates</button>
+                </td>
+        		<td>
+        			<button type="button" onclick="downloadAffiliateSubscribers(false);">Download AffiliateSubscribers</button>
+        		</td>
+        		<td>
+        			<button type="button" onclick="downloadCatalogs(false);">Download Catalogs</button>
+        		</td>
+        		<td>
+        			<button type="button" onclick="downloadCatalogProducts(false);">Download CatalogProducts</button>
+        		</td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadCustomerTypes(false);">Download CustomerTypes</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadDiscountCodes(false);">Download DiscountCodes</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadSystemDiscountCodeNotes(false);">Download SystemDiscountCodeNotes</button>
+                </td>
+                <td>
+                	<button type="button" onclick="downloadSystemDiscountCodes(false);">Download SystemDiscountCodes</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadSystemDiscountCodesRules(false);">Download SystemDiscountCodesRules</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadGiftVouchers(false);">Download GiftVouchers</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadCatalogDiscountCodes(false);">Download CatalogDiscountCodes</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadNotifications(false);">Download Notifications</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadOrderStatuses(false);">Download OrderStatuses</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadOrderItems(false);">Download OrderItems</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadOrders(false);">Download Orders</button>
+                </td>
+                <td>
+                    <!-- <button type="button" onclick="downloadPostcodes(false);"> --><p>Download Postcodes</p><!--</button> -->
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadPrices(false);">Download Prices</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadProductsAttributes(false);">Download ProductsAttributes</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadProductsAttributeOptionsPrices(false);">Download ProductsAttributeOptionsPrices</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadProductsAttributeOptions(false);">Download ProductsAttributeOptions</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadGroupingItems(false);">Download GroupingItems</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadGroupings(false);">Download Groupings</button>
+                </td>
+                <td>    
+                    <button type="button" onclick="downloadSystemEmails(false);">Download SystemEmails</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadRelatedProducts(false);">Download RelatedProducts</button>
+                </td>
+            </tr>
+            
+            <tr>
+            	<td>
+                    <button type="button" onclick="downloadPhotoGalleries(false);">Download PhotoGalleries</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadTagObjects(false);">Download TagObjects</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadTags(false);">Download Tags</button>
+                </td>
+                <td>
+                	<button type="button" onclick="downloadBlogPosts(false);">Download BlogPosts</button>
+                </td>
+            </tr>    
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadBlogs(false);">Download Blogs</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadComments(false);">Download Comments</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadCommentRules(false);">Download CommentRules</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadTaskStatusTypes(false);">Download TaskStatusTypes</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadLiteratureTypes(false);">Download LiteratureTypes</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadMediaDownloads(false);">Download MediaDownloads</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadFAQs(false);">Download FAQs</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadMenuItems(false);">Download MenuItems</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadMenus(false);">Download Menus</button>
+                </td>
+                <td>
+                	<button type="button" onclick="downloadShippingOptionsCatalogues(false);">Download ShippingOptionsCatalogues</button>
+                </td>
+                <td>
+                	<button type="button" onclick="downloadShippingOptions(false);">Download ShippingOptions</button>
+                </td>
+                <td>
+                    <!-- <button type="button" onclick="downloadSecurityQuestions(false);"> --><p>Download SecurityQuestions</p><!-- </button> -->
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <!-- <button type="button" onclick="downloadUserSecurityQuestions(false);"> --><p>Download UserSecurityQuestions</p><!-- </button> -->
+                </td>
+                <td>
+                    <button type="button" onclick="downloadSiteUsers(false);">Download SiteUsers</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadTaxcodes(false);">Download Taxcodes</button>
+                </td>
+            	<td>
+                    <button type="button" onclick="downloadAddresses(false);">Download Addresses</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadAddressTypes(false);">Download AddressTypes</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadContactInformation(false);">Download ContactInformation</button>
+                </td>
+                <td>
+                	<button type="button" onclick="downloadCustomers(false);">Download Customers</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadMasterEntities(false);">Download MasterEntities</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadFolders(false);">Download Folders</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadIndustryTypes(false);">Download IndustryTypes</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadLeadSourceTypes(false);">Download LeadSourceTypes</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadPages(false);">Download Pages</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadBookingCustomerRelations(false);">Download BookingCustomerRelations</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadBookings(false);">Download Bookings</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadProducts(false);">Download Products</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadRatingTypes(false);">Download RatingTypes</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadSecureZones(false);">Download SecureZones</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadZoneCustomers(false);">Download ZoneCustomers</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadZoneObjects(false);">Download ZoneObjects</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadCategories(false);">Download Categories</button>
+                </td>
+            </tr>
+            
+            <tr>
+              	<td>
+                    <button type="button" onclick="downloadClassifications(false);">Download Classifications</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadMasterCategoryACL(false);">Download MasterCategoryACL</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadMasterCategoryHierarchy(false);">Download MasterCategoryHierarchy</button>
+                </td>
+                <td>
+                   <button type="button" onclick="downloadRssChannelItems(false);">Download RssChannelItems</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadRssChannels(false);">Download RssChannels</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadUserRoles(false);">Download UserRoles</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadTemplatesContent(false);">Download TemplatesContent</button>
+                </td>
+              	<td>
+                    <button type="button" onclick="downloadTemplates(false);">Download Templates</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadTitleTypes(false);">Download TitleTypes</button>
+                </td>
+                <td>
+                    <!-- <button type="button" onclick="downloadUsers(false);"> --><p>Download Users</p><!-- </button> -->
+                </td>
+                <td>
+                    <button type="button" onclick="downloadSiteURLs(false);">Download SiteURLs</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadVariations(false);">Download Variations</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button type="button" onclick="downloadWorkflows(false);">Download Workflows</button>
+                </td>
+                <td>
+                    <button type="button" onclick="downloadWebhooks(false);">Download Webhooks</button>
+                </td>
+            </tr>
+            
+        </table>
+
+        <!-- <p id = "result"></p> -->
+    
+    </body>
+    
+    <script src="download.js"></script>
+    <script src="jszip.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+        var LIMIT = 500;
+        var zipFiles = null;
+        //86 in total
+        NUMBER_OF_LINKS = 82; //82; //86; problems at Postcodes, SecurityQuestions, UserSecurityQuestions, Users
+        count = 0;
+        
+        function saveZip() {
+        	//Generate ZIP.
+            count = 0;
+            zipFiles.generateAsync({type:"blob"}).then(
+                function(content) {
+                 	   download(content, "BC_ALL_DATA.zip");
+                }
+            );   
+        }
+        
+        function getJSONstructure(object, pathSoFar, fieldsList) {
+            if (object == null || typeof object == "string" || typeof object == "boolean" || typeof object == "number") {
+            	fieldsList.push(pathSoFar);
+                return;
+            }
+
+            for (var key in object) {
+                getJSONstructure(object[key], pathSoFar + "/" + String(key), fieldsList);     
+            }
+        }
+        
+        function commonJSONstructure(objectsList) {
+            var fieldsList = [];
+            for (i = 0; i < objectsList.length; i++) {
+             	var auxList = [];
+                getJSONstructure(objectsList[i], "", auxList);
+                
+                for (j = 0; j < auxList.length; j++) {
+                    if (0 > fieldsList.indexOf(auxList[j])) {
+                    	fieldsList.push(auxList[j]);    
+                    }
+                }
+            }
+            
+            return fieldsList;
+        }
+        
+        function getCSVtable(tableHead, chunks) {
+     		var matrix = [];
+            for (var i = 0; i < chunks.length + 1; i++) {
+            	matrix[i] = [];
+                for (var j = 0; j < tableHead.length; j++) {
+                     matrix[i][j] = "";
+                }
+            }
+            
+            for (var j = 0; j < tableHead.length; j++) {
+            	matrix[0][j] = tableHead[j];   
+            }
+            
+            for (var i = 0; i < chunks.length; i++) {
+                for (var j = 0; j < tableHead.length; j++) {
+                    var path = tableHead[j].substring(1,tableHead[j].length).split("/");
+                    var target = chunks[i];
+                    var ok = true;
+                    for (var k = 0; k < path.length; k++) {
+                        if (target != null && target.hasOwnProperty(path[k])) {
+							target = target[path[k]];
+                        } else {
+                            ok = false;
+                         	break;   
+                        }
+                    }
+                    if (ok) {
+                        //console.log(target);
+                        if (target != null) {
+                        	matrix[i + 1][j] = target;
+                        } else {
+                        	matrix[i + 1][j] = "null";   
+                        }
+                    }
+                }
+            }
+            return matrix;
+        }
+        
+        function saveChunksToCSV(chunks, save_file, toZip) {
+            dataToSave = "";
+            if (chunks.length !== 0) {   
+                
+                var tableHead = commonJSONstructure(chunks);
+                
+                var csv = getCSVtable(tableHead, chunks);
+                
+                var lines = [];
+                csv.forEach(
+                    function (row, index) {
+                        var line = [];
+                        
+                        row.forEach(
+                            function (cell, index) {
+                                line.push('"' + cell.toString().replace(/"/g,'""').replace(/\n/g, " ") + '"');   
+                            }
+                        );
+                        
+                        newRow = line.join(',');
+                        
+                        //lines.push(index == 0 ? "data:text/csv;charset=utf-8," + newRow : newRow);
+                        lines.push(newRow);
+                    }
+                );
+                dataToSave = lines.join("\r\n");
+                
+            }
+        	
+            if (toZip) {
+            	zipFiles.file(save_file + ".csv", dataToSave);
+                count = count + 1;
+                if (count === NUMBER_OF_LINKS) {
+                    saveZip();
+                }
+            } else {
+                download(dataToSave, save_file + ".csv");
+            }
+        }
+        
+        function saveChunksToJson(chunks, save_file, toZip) {
+            //console.log(chunks);
+            toSave = {
+                "items" : chunks,
+                "totalItemsCount" : chunks.length
+            };
+            dataToSave = JSON.stringify(toSave);
+            //console.log(dataToSave);
+            if (toZip) {
+                zipFiles.file(save_file + ".json", dataToSave);
+                count = count + 1;
+                //console.log(count);
+                if (count === NUMBER_OF_LINKS) {
+                    saveZip();
+                }
+            } else {
+                download(dataToSave, save_file + ".json");
+            }
+        }
+        
+        function getChunks(chunks, url_string, skip, order, save_file, toZip) {
+            request_url_string = url_string + "&skip=" + skip + "&limit=" + LIMIT + "&order=" + order;
+            
+            var request = $.ajax({
+                url: request_url_string,
+                type: "GET",
+                contentType: "application/json",
+                headers: {
+                    "Authorization": BCAPI.Helper.Site.getAccessToken()
+                }
+             });
+            
+            request.done(function(data) {
+                if(data.items.length > 0) {
+                    //console.log(data);
+                    for (var i = 0; i < data.items.length; i++) {
+                        //console.log("aici");
+                    	chunks.push(data.items[i]);
+                    }
+                    getChunks(chunks, url_string, skip + LIMIT, order, save_file, toZip);
+                } else {
+                    selector = document.getElementById("extensionType");
+                    if (selector.options[selector.selectedIndex].value == "csv") {
+                        saveChunksToCSV(chunks, save_file, toZip); 
+                    } else {
+                        saveChunksToJson(chunks, save_file, toZip);
+                    }
+                }
+            });
+            
+            request.fail(function(jqXHR) {
+                console.log("Request failed.");
+                console.log("Error code: " + jqXHR.status);
+                console.log("Error text: " + jqXHR.statusText);
+                console.log("Response text: " + jqXHR.responseText);
+            });
+        }
+        
+        /*
+        window.onload = function() {
+			console.log("aici");
+            //chunk = getChunk("/webresources/api/v3/sites/current/adrotators?fields=id,siteId,name,createDate,lastUpdateDate,enabled&skip=0&limit=500&order=id");
+            //console.log(chunk);
+            
+            var request = $.ajax({
+                url: "/webresources/api/v3/sites/current/adrotators?fields=id,siteId,name,createDate,lastUpdateDate,enabled&skip=0&limit=500&order=id",
+                type: "GET",
+                contentType: "application/json",
+                headers: {
+                    "Authorization": BCAPI.Helper.Site.getAccessToken()
+                }
+             });
+            request.done(function(data) {
+                //console.log(data);
+                //document.getElementById("result").innerHTML = JSON.stringify(data);
+                console.log(data);
+                document.getElementById("result").innerHTML = JSON.stringify(data);
+            });
+            request.fail(function(jqXHR) {
+                console.log("Request failed.");
+                console.log("Error code: " + jqXHR.status);
+                console.log("Error text: " + jqXHR.statusText);
+                console.log("Response text: " + jqXHR.responseText);
+            });
+        };
+        */
+        
+        function generalDownload(toZip, url_string, order, save_file_name) {
+            getChunks([], url_string, 0, order, save_file_name, toZip);
+        }
+        
+        function downloadAdrotators(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/adrotators?fields=id,siteId,name,createDate,lastUpdateDate,enabled", "id", "AdRotators");	   
+        }
+        
+        function downloadNews(toZip) {
+            generalDownload(toZip, "/webresources/api/v3/sites/current/news?fields=id,siteId,roleId,subject,body,templateId,weight,createBy,createDate,lastUpdateBy,lastUpdateDate,eventFromDate,eventToDate,releaseDate,expiryDate,enabled,deleted,displayable,parentId,urlPrefix,slug,url", "id", "News");
+        }
+        
+        function downloadTaskTypes(toZip) {
+         	generalDownload(toZip, "/webresources/api/v3/sites/current/tasktypes?fields=id,taskType", "id", "TaskTypes");   
+        }
+        
+        function downloadTasks(toZip) {
+         	generalDownload(toZip, "/webresources/api/v3/sites/current/tasks?fields=id,siteId,taskTypeId,objectId,statusTypeId,priorityTypeId,name,description,startDate,endDate,remindDate,percentageComplete,location,objectType,CreateDate,lastUpdateDate,publicAccess,deleted,taskType,taskStatusType,booking", "id", "Tasks");   
+        }
+        
+        function downloadBookingStatuses(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/bookingstatuses?fields=id,bookingStatus,default", "id", "BookingStatuses");   
+        }
+        
+        function downloadCompanyTypes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/companytypes?fields=id,siteId,label,default", "id", "CompanyTypes");   
+        }
+        
+        function downloadCompanies(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/companies?fields=id,siteId,externalId,ownBy,ownDate,company,abn,companyTypeId,customerTypeId,leadSourceTypeId,industryTypeId,ratingTypeId,customerType,industryType,leadSourceType,ratingType,companyType,homePhone,homeFax,workPhone,workFax,mobilePhone,pager,email1,email2,email3,webAddress", "id", "Companies");   
+        }
+        
+        function downloadCustomerRelationships(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/customerrelationships?fields=id,siteId,referrerId,referrerType,refereeId,refereeType,relationshipTypeId", "id", "CustomerRelationships");   
+        }
+        
+        function downloadRelationshipTypes(toZip) {
+            generalDownload(toZip, "/webresources/api/v3/sites/current/relationshiptypes?fields=id,siteId,label,default", "id", "RelationshipTypes");
+        }
+        
+        function downloadMailingLists(toZip) {
+            generalDownload(toZip, "/webresources/api/v3/sites/current/mailinglists?fields=id,siteId,roleId,templateId,name,emailFrom,emailAddress,emailSubject,emailFormat,emailContent,createDate,lastUpdateDate,enabled", "id", "MailingLists");
+        }
+        
+        function downloadOrderPayments(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/orderpayments?fields=id,orderId,siteId,paymentTypeId,paymentStatusId,amount,order", "id", "OrderPayments");   
+        }
+        
+        function downloadAffiliates(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/affiliates?fields=id,siteId,name,landingPage,commissionRate,createDate,lastUpdateDate", "id", "Affiliates");    
+        }
+        
+        function downloadAffiliateSubscribers(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/affiliatesubscribers?fields=entityId,affiliateId,siteId,createDate", "affiliateId", "AffiliateSubscribers");   
+        }    
+        
+        function downloadCatalogs(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/catalogs?fields=id,siteId,parentId,templateId,roleId,displayTypeId,weight,name,title,description,imageUrl,releaseDate,expiryDate,notify,createDate,lastUpdateDate,useFriendlyUrl,excludeFromFeed,enabled,deleted,minPrice,maxPrice,priceSlots,productsStatsXml,reIndex,url", "id", "Catalogs");   
+        }
+        
+        function downloadCatalogProducts(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/catalogproducts?fields=productId,catalogueId,siteId,canonicalCatalog,productUrl,absoluteProductUrl,product,catalogue", "catalogueId", "CatalogProducts");   
+        }
+        
+        function downloadCustomerTypes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/customertypes?fields=id,siteId,label,default", "id", "CustomerTypes");   
+        }
+        
+        function downloadAnniversaries(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/anniversaries?fields=customerId,siteId,anniversary1,anniversary1Title,anniversary2,anniversary2Title,anniversary3,anniversary3Title,anniversary4,anniversary4Title,anniversary5,anniversary5Title", "customerId", "Anniversaries");   
+        }
+        
+        function downloadDiscountCodes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/discountcodes?fields=id,siteId,discountType,code,description,discountPercentageOrFixedAmount,discountThreshold,expireAfterXUses,releaseDate,expiryDate,createDate,lastUpdateDate,enabled,systemDiscountCode", "id", "DiscountCodes");   
+        }
+        
+        function downloadSystemDiscountCodeNotes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/systemdiscountcodenotes?fields=noteId,discountCodeSiteId,discountCodeId,userId,createDate,note", "noteId", "SystemDiscountCodeNotes");   
+        }
+        
+        function downloadSystemDiscountCodes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/systemdiscountcodes?fields=discountCodeId,siteId,purpose,approvedBy", "discountCodeId", "SystemDiscountCodes");   
+        }
+        
+        function downloadSystemDiscountCodesRules(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/systemdiscountcodesrules?fields=ruleId,discountCodeSiteId,discountCodeId,type,value", "ruleId", "SystemDiscountCodesRules");   
+        }
+        
+        function downloadGiftVouchers(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/giftvouchers?fields=id,orderId,siteId,countryCode,code,recipientName,recipientEmail,message,totalValue,remainingBalance,createDate,lastUpdateDate,createdByAdmin,enabled,order", "orderId", "GiftVouchers");   
+        }
+        
+        function downloadCatalogDiscountCodes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/catalogdiscountcodes?fields=discountCodeId,catalogueId,siteId,discountCode,catalogue", "catalogueId", "CatalogDiscountCodes");   
+        }
+        
+        function downloadNotifications(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/notifications?fields=id,siteId,notificationType,templateId,fromAddress,emailFormat,subject,body,objectType,objectId", "id", "Notifications");    
+        }
+        
+        function downloadOrderStatuses(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/orderstatuses?fields=id,siteId,siteNotificationId,label,default,notifyCustomer,notification", "id", "OrderStatuses");   
+        }
+        
+        function downloadOrderItems(toZip) {
+            generalDownload(toZip, "/webresources/api/v3/sites/current/orderitems?fields=itemId,orderId,productId,siteId,variationId,catalogueId,units,unitPrice,unitTaxRate,totalPrice,description,createDate,lastUpdateDate,attributeExtras,deletedByTaskOrAdmin,product,order,variation", "productId", "OrderItems");
+        }
+        
+        function downloadOrders(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/orders?fields=id,siteId,entityId,categoryId,statusTypeId,discountCodeId,shippingOptionId,paymentMethodTypeId,taxCodeId,giftVoucherId,cycleTypeId,directDebitTypeId,integrationId,parentId,assignedUserId,name,countryCode,shippingPrice,shippingTaxRate,discountRate,giftVoucherAmount,totalPrice,shippingDescription,shippingAttention,shippingInstructions,quote,invoiced,invoiceNumber,invoiceDate,recur,nextInvoiceDate,endRecurDate,directDebitDays,directDebitProcessed,createDate,lastUpdateDate,destinationAddressIsResidential,isIntermediate,shippingRateKey,status,discountCode,workflow,customer,company,taxCode,assignedUser", "id", "Orders");   
+        }
+        
+        function downloadPostcodes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/postcodes?fields=postcode,suburb,state,countryCode,latitude,longitude", "postcode", "Postcodes");
+        }
+        
+        function downloadPrices(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/prices?fields=productId,siteId,countryCode,taxCodeId,wTaxCodeId,retailPrice,salePrice,salePrice2,salePrice3,quantity2,quantity3,wSalePrice,wSalePrice2,wSalePrice3,wQuantity2,wQuantity3,wTaxCode,taxCode,product", "countryCode", "Prices");   
+        }
+        
+        function downloadProductsAttributes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/productsattributes?fields=id,siteId,productId,groupName,fieldTypeId,mandatory,keepStock,product", "id", "ProductsAttributes");   
+        }
+        
+        function downloadProductsAttributeOptionsPrices(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/productsattributeoptionsprices?fields=id,siteId,countryCode,price,options", "countryCode", "ProductsAttributeOptionsPrices");   
+        }
+        
+        function downloadProductsAttributeOptions(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/productsattributeoptions?fields=id,siteId,groupId,optionName,imagePath,attribute", "id", "ProductsAttributeOptions");   
+        }
+        
+        function downloadGroupingItems(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/groupingitems?fields=groupingId,productId,siteId,attribute,weight,grouping,product", "productId", "GroupingItems");   
+        }
+        
+        function downloadGroupings(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/groupings?fields=id,siteId", "id", "Groupings");   
+        }
+        
+        function downloadSystemEmails(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/systememails?fields=id,siteId,fromAddress,subject,body,emailFormat,templateId,lastUpdateDate,typeInfo", "id", "SystemEmails");   
+        }
+        
+        function downloadRelatedProducts(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/relatedproducts?fields=productId,relatedProductId,siteId,product,relatedProduct", "relatedProductId", "RelatedProducts");   
+        }
+        
+        function downloadPhotoGalleries(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/photogalleries?fields=id,siteId,folderId,photoGalleryName,createDate,lastUpdateDate,folder", "id", "PhotoGalleries");   
+        }
+        
+        function downloadTagObjects(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/tagobjects?fields=objectId,tagId,objectType,siteId,tag,tagBlogPost,tagProduct,post,product", "objectType", "TagObjects");   
+        }
+        
+        function downloadTags(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/tags?fields=id,siteId,tagName", "id", "Tags");   
+        }
+        
+        function downloadBlogPosts(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/blogposts?fields=id,siteId,blogId,postTitle,postFeaturedImage,postBody,createBy,releaseDate,createDate,lastUpdateDate,enabled,deleted,disableComments,slug,postUrl,metaBlogPostTitle,metaBlogPostDescription,blog,author", "id", "BlogPosts");   
+        }
+        
+        function downloadBlogs(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/blogs?fields=id,siteId,roleId,templateId,blogName,blogDescription,title,allowRSS,rssChannelId,allowTrackbacks,lastPostDate,postCount,weight,releaseDate,expiryDate,createDate,lastUpdateDate,enabled,disableComments,slug,blogUrl", "id", "Blogs");   
+        }
+        
+        function downloadComments(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/comments?fields=id,createDate,objectType,siteId,objectId,rating,feedback,website,entityId,status", "objectType", "Comments");   
+        }
+        
+        function downloadCommentRules(toZip) {
+       		generalDownload(toZip, "/webresources/api/v3/sites/current/commentrules?fields=objectType,siteId,moderateNewComments,roleToNotify,whoCanComment,automaticSpamDetection,autoDeleteSpam", "objectType", "CommentRules");   
+        }
+        
+        function downloadTaskStatusTypes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/taskstatustypes?fields=id,siteId,taskTypeID,statusType,default", "id", "TaskStatusTypes");   
+        }
+        
+        function downloadLiteratureTypes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/literaturetypes?fields=id,literatureType,imageUrl,viewOrder", "id", "LiteratureTypes");   
+        }
+        
+        function downloadMediaDownloads(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/mediadownloads?fields=id,siteId,roleId,name,literatureTypeId,description,displayFileName,size,weight,enabled,deleted,createBy,createDate,lastUpdateBy,lastUpdateDate,releaseDate,expiryDate,literatureIdShadow,displayable,reIndex,excludeFromSearch,uploadedContentType,downloadUrl,literatureType,role", "id", "MediaDownloads");   
+        }
+        
+        function downloadFAQs(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/faqs?fields=id,siteId,roleId,question,answer,internalNotes,templateId,weight,createBy,createDate,lastUpdateBy,lastUpdateDate,releaseDate,expiryDate,enabled,deleted,faqIdShadow,displayable,reIndex", "id", "FAQs");   
+        }
+        
+        function downloadMenuItems(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/menuitems?fields=id,menuId,siteId,parentId,name,url,targetFrame,image,rollOverImage,selectedImage,repeatImage,cssClassName,rollOverCssClassName,selectedCssClassName,width,height,order,createDate,lastUpdateDate,htmlId,title,enabled,menu,parent", "menuId", "MenuItems");
+        }
+        
+        function downloadMenus(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/menus?fields=id,siteId,name,menuTypeId,createDate,lastUpdateDate,menuLook,menuItemLook", "id", "Menus");   
+        }
+        
+        function downloadShippingOptionsCatalogues(toZip) {
+            generalDownload(toZip, "/webresources/api/v3/sites/current/shippingoptionscatalogues?fields=optionId,catalogueId,siteId,shippingOption,catalog", "catalogueId", "ShippingOptionsCatalogues");   
+        }
+        
+        function downloadShippingOptions(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/shippingoptions?fields=id,siteId,description,price,type,packageType,taxCodeId,countryCode,state,postcode,productMinWeight,productMinVolume,productMinHeight,productMinDepth,productMaxWeight,productMaxVolume,productMaxHeight,productMaxDepth,totalOrderPriceMin,totalOrderPriceMax,handlingBaseCharge,handlingPerItemCharge,freeThreshold,limitDeliveryTo,userAccountNumber,userAccountId,userAccountKey,userAccountPassword,upsAccountType,upsPackageType,upsConfirmationType,createDate,lastUpdateDate", "id", "ShippingOptions");   
+        }
+        
+        function downloadSecurityQuestions(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/securityquestions?fields=id,key,value,countryCode,languageCode", "id", "SecurityQuestions");   
+        }
+        
+        function downloadUserSecurityQuestions(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/usersecurityquestions?fields=id,siteId,userId,question,answer", "id", "UserSecurityQuestions");   
+        }
+        
+        function downloadSiteUsers(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/siteusers?fields=userId,siteId,canLogin,isAccounts,user", "userId", "SiteUsers");   
+        }
+        
+        function downloadTaxcodes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/taxcodes?fields=id,siteId,countryCode,code,rate", "id", "Taxcodes");   
+        }
+        
+        function downloadAddresses(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/addresses?fields=id,siteId,addressType,objectId,objectType,createDate,lastUpdateDate,default,address1,address2,zipCode,city,countryCode,state,customer,company,order", "id", "Addresses");   
+        }
+        
+        function downloadAddressTypes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/addresstypes?fields=addressTypeId,addressType", "addressTypeId", "AddressTypes");   
+        }
+        
+        function downloadContactInformation(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/contactinformation?fields=id,siteId,phoneNumberTypeId,objectId,objectType,createDate,lastUpdateDate,value,default,customer,company", "id", "ContactInformation");   
+        }
+        
+        function downloadCustomers(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/customers?fields=id,siteId,customerTypeId,leadSourceTypeId,industryTypeId,ratingTypeId,titleTypeId,externalId,firstName,middleName,lastName,company,dateOfBirth,username,createDate,lastUpdateDate,wholesaler,homePhone,homeFax,workPhone,workFax,mobilePhone,pager,email1,email2,email3,webAddress,anniversary,industryType,leadSourceType,customerType,ratingType,masterEntity,titleType", "id", "Customers");   
+        }
+        
+        function downloadMasterEntities(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/masterentities?fields=id,siteId,type,masterOptIn,doubleOptIn", "id", "MasterEntities");   
+        }
+        
+        function downloadFolders(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/folders?fields=id,siteId,parentId,folderName,folderPath", "id", "Folders");   
+        }
+        
+        function downloadIndustryTypes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/industrytypes?fields=id,siteId,label,default", "id", "IndustryTypes");   
+        }
+        
+        function downloadLeadSourceTypes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/leadsourcetypes?fields=id,siteId,label,default", "id", "LeadSourceTypes");   
+        }
+        
+        function downloadPages(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/pages?fields=id,siteId,workflowId,roleId,templateId,parentId,livePageId,pageUrl,name,displayFileName,size,enabled,startPage,createDate,lastUpdateDate,releaseDate,expiryDate,displayable,excludeFromSearch,content,redirect301,title,seoMetadataDescription,template,livePage,workflow,parent", "id", "Pages");   
+        }
+        
+        function downloadBookingCustomerRelations(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/booking-customer-relations?fields=subscriptionId,siteId,bookingId,customerId,deleted,allocation,assignedUserId,workflowId,bookingStatusId,description,createDate,lastUpdateDate,customer,booking,assignedUser,workflow,bookingStatus", "subscriptionId", "BookingCustomerRelations");   
+        }
+        
+        function downloadBookings(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/bookings?fields=id,siteId,name,body,date,capacity,hideWhenFull,disabled,deleted,requiresPayment,createDate,lastUpdateDate", "id", "Bookings");   
+        }
+        
+        function downloadProducts(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/products?fields=id,siteId,name,roleId,weight,productCode,keywords,unitType,smallImage,largeImage,description,inventoryControl,canPreorder,minUnits,maxUnits,inStock,onOrder,reOrder,reOrderNotified,cycleTypeId,variablePerCycle,groupingID,GroupingDefault,electronicProduct,displayFileName,size,downloadLimitCount,downloadLimitIp,productWeight,productVolume,productHeight,productDepth,supplierEntityId,supplierCommission,isGiftVoucher,poplets,attributes,custom1,custom2,custom3,custom4,releaseDate,expiryDate,createDate,lastUpdateDate,captureDetails,isOnSale,hideIfNoStock,enableDropShipping,excludeFromSearch,enabled,deleted,title,reIndex,hasAttributes,cycleTypeCount,hasVariations,slug,metaProductDescription,canonicalUrl,absoluteCanonicalUrl,popletImage1,popletImage2,popletImage3,popletImage4,popletImage5,popletImage6,popletImage7,popletImage8,popletImage9,popletImage10", "id", "Products");   
+        }
+        
+        function downloadRatingTypes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/ratingtypes?fields=id,siteId,label,default", "id", "RatingTypes");   
+        }
+        
+        function downloadSecureZones(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/securezones?fields=id,siteId,landingPageId,name,sellAccess,costPerPeriod,orderCountryCode,cycleType,createDate,lastUpdateDate", "id", "SecureZones");   
+        }
+        
+        function downloadZoneCustomers(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/zonecustomers?fields=customerId,zoneId,siteId,createDate,expiryDate,secureZone,customer", "zoneId", "ZoneCustomers");   
+        }
+        
+        function downloadZoneObjects(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/zoneobjects?fields=objectId,zoneId,objectType,displayable,siteId,secureZone,secureZoneNews,zoneMediaDownload,blogSecureZone,faqSecureZone,page,blog,news,mediaDownload,faq", "displayable", "ZoneObjects");   
+        }
+        
+        function downloadCategories(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/categories?fields=id,siteId,categoryTypeId,parentId,category,publicAccess,default", "id", "Categories");   
+        }
+        
+        function downloadClassifications(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/classifications?fields=objectId,categoryId,objectType,displayable,siteId,category,categoryClone,categoryNews,categoryMediaDownload,FaqsCategoryRelation,blog,post,news,mediaDownload,faq", "displayable", "Classifications");   
+        }
+        
+        function downloadMasterCategoryACL(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/mastercategoryacl?fields=categoryId,siteId,roleId", "roleId", "MasterCategoryACL");   
+        }
+        
+        function downloadMasterCategoryHierarchy(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/mastercategoryhierarchy?fields=id,siteId,name,image,order,enabled", "id", "MasterCategoryHierarchy");   
+        }
+        
+        function downloadRssChannelItems(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/rsschannelitems?fields=objectId,rssChannelId,objectType,displayable,siteId,deleted,rssChannel,rssChannelNews,rssChannelFaq,rssChannelMediaDownloads,rssProducts,mediaDownload,news,faq,products", "displayable", "RssChannelItems");   
+        }
+        
+        function downloadRssChannels(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/rsschannels?fields=Id,siteId,title,description,maxFeedEntries,createBy,createDate,lastUpdateBy,lastUpdateDate,enabled", "Id", "RssChannels");   
+        }
+        
+        function downloadUserRoles(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/userroles?fields=id,siteId,role,deleted", "id", "UserRoles");   
+        }
+        
+        function downloadTemplatesContent(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/templatescontent?fields=templateId,siteId,deviceId,content,size,createDate,lastUpdateDate", "deviceId", "TemplatesContent");   
+        }
+        
+        function downloadTemplates(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/templates?fields=id,siteId,workflowId,liveTemplateId,name,description,displayFileName,createDate,lastUpdateDate,printerView,displayable,deleted,enabled,default,noHeaders,mobileContent,tabletContent,desktopContent,liveTemplate,workflow", "id", "Templates");   
+        }
+        
+        function downloadTitleTypes(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/titletypes?fields=id,siteId,label,default", "id", "TitleTypes");   
+        }
+        
+        function downloadUsers(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/users?fields=id,siteId,email,firstName,lastName,mobileNumber,aliases,createDate,lastUpdateDate,mail,catchAll,superUser,enabled,userTypeId,totalLogins,lastLogin,alternateEmail,nextNPSSurveyDate,adminRedirect,isNewUser", "id", "Users");   
+        }
+        
+        function downloadSiteURLs(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/siteurls?fields=id,siteId,siteUrl,createDate,lastUpdateDate,defaultCountryCode,default,system,secure,mail,startObjectTypeId,startObjectId,deleted,culture", "id", "SiteURLs");   
+        }
+        
+        function downloadVariations(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/variations?fields=id,siteId,productId,sku,inStock,onOrder,enabled,product", "id", "Variations");   
+        }
+        
+        function downloadWorkflows(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/workflows?fields=id,siteId,name,description,orders,createDate,lastUpdateDate,deleted", "id", "Workflows");   
+        }
+        
+        function downloadWebhooks(toZip) {
+        	generalDownload(toZip, "/webresources/api/v3/sites/current/webhooks?fields=id,siteId,target_url,event,createDate,lastUpdateDate,deleted", "id", "Webhooks");   
+        }
+        
+        function downloadEveything() {
+            zipFiles = new JSZip();
+            count = 0;
+            
+       		downloadAdrotators(true);
+            downloadNews(true);
+            downloadTaskTypes(true);
+            downloadTasks(true);
+            downloadBookingStatuses(true);
+            downloadCompanyTypes(true);
+            downloadCompanies(true);
+            downloadCustomerRelationships(true);
+            downloadRelationshipTypes(true);
+            downloadMailingLists(true);
+            downloadOrderPayments(true);
+            downloadAffiliates(true);
+            downloadAffiliateSubscribers(true);
+            downloadCatalogs(true);
+            downloadCatalogProducts(true);
+            downloadCustomerTypes(true);
+            downloadAnniversaries(true);
+            downloadDiscountCodes(true);
+            downloadSystemDiscountCodeNotes(true);
+            downloadSystemDiscountCodes(true);
+            downloadSystemDiscountCodesRules(true);
+            downloadGiftVouchers(true);
+            downloadCatalogDiscountCodes(true);
+            downloadNotifications(true);
+            downloadOrderStatuses(true);
+            downloadOrderItems(true);
+            downloadOrders(true);
+            
+            //Non stoping requests (one million postcodes). Master_PostcodeList
+            //downloadPostcodes(true);
+            
+            downloadPrices(true);
+            downloadProductsAttributes(true);
+            downloadProductsAttributeOptionsPrices(true);
+            downloadProductsAttributeOptions(true);
+            downloadGroupingItems(true);
+            downloadGroupings(true);
+            downloadSystemEmails(true);
+            downloadRelatedProducts(true);
+            downloadPhotoGalleries(true);
+            downloadTagObjects(true);
+            downloadTags(true);
+            downloadBlogPosts(true);
+            downloadBlogs(true);
+            downloadComments(true);
+            downloadCommentRules(true);
+            downloadTaskStatusTypes(true);
+            downloadLiteratureTypes(true);
+            downloadMediaDownloads(true);
+            downloadFAQs(true);
+            downloadMenuItems(true);
+            downloadMenus(true);
+            downloadShippingOptionsCatalogues(true);
+            downloadShippingOptions(true);
+            
+            //Security concerns.
+            //downloadSecurityQuestions(true);
+            //downloadUserSecurityQuestions(true);
+            
+            downloadSiteUsers(true);
+            downloadTaxcodes(true);
+            downloadAddresses(true);
+            downloadAddressTypes(true);
+            downloadContactInformation(true);
+            downloadCustomers(true);
+            downloadMasterEntities(true);
+            downloadFolders(true);
+            downloadIndustryTypes(true);
+            downloadLeadSourceTypes(true);
+            downloadPages(true);
+            downloadBookingCustomerRelations(true);
+            downloadBookings(true);
+            downloadProducts(true);
+            downloadRatingTypes(true);
+            downloadSecureZones(true);
+            downloadZoneCustomers(true);
+            downloadZoneObjects(true);
+            downloadCategories(true);
+            downloadClassifications(true);
+            downloadMasterCategoryACL(true);
+            downloadMasterCategoryHierarchy(true);
+           	downloadRssChannelItems(true);
+            downloadRssChannels(true);
+            downloadUserRoles(true);
+            downloadTemplatesContent(true);
+            downloadTemplates(true);
+            downloadTitleTypes(true);
+            
+            //Only for the current logged i admin user details can be obtained.
+            //downloadUsers(true);
+            
+            downloadSiteURLs(true);
+            downloadVariations(true);
+            downloadWorkflows(true);
+            downloadWebhooks(true);
+        }
+        
+    </script>
+</html>

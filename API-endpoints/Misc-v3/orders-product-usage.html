@@ -1,0 +1,51 @@
+<div id="list">
+<h2>Orders product usage</h2>
+<div class="request">
+<h3>Request</h3>
+<ul>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Version:</strong> v3, this API call supports <a href="/developers/api/sorting-filtering-and-pagination-methods">additional sort and filter mechanisms</a> as well as retrieving only a sub-set of fields<p class="alert alert-info"><strong>Note:</strong> In order to access the v3 API endpoints please make sure you have <a href="/developers/liquid/introduction-to-liquid#enable" target="_blank">enabled the new rendering engine</a>. </p></li><li><strong>Server:</strong>  https://[app key here]-[site_ID here]-apps.worldsecuresystems.com. Take a look at the <a href="/developers/api/authorize-your-api-calls">Authorize your API calls</a> document for more info on how this URL is formed.
+
+<ul>
+<li>Note: When building apps always use relative request URLs. Do not use the "full" URL above because you might have problems running your app on a different site as the site_ID parameter will be different.</li>
+</ul></li>
+<li><strong>Path:</strong> /webresources/api/v3/sites/current/rsschannels
+  <ul>
+  <li>Alternatively, use use siteID instead of 'current'</li>
+</ul>
+</li>
+<li><strong>Authorization header:</strong> This should contain the authorization token. Here is how to <a href="/developers/api/authorize-your-api-calls#token">obtain the token</a>.</li>
+</ul>
+</div>
+<div class="response">
+<h3>Response</h3>
+
+<p>The details for the specified customer ID in JSON format.</p>
+<ul>
+<li><code>{% raw %}id{% endraw %}</code> <em>(integer)</em></li>
+<li><code>{% raw %}siteId{% endraw %}</code> <em>(integer)</em></li>
+<li><code>{% raw %}visitId{% endraw %}</code> <em>(string)</em></li>
+
+<li><code>{% raw %}anonymousId{% endraw %}</code> <em>(string)</em></li>
+<li><code>{% raw %}entityId{% endraw %}</code> <em>(integer)</em></li>
+<li><code>{% raw %}usageDate{% endraw %}</code> <em>(dateTime)</em></li>
+<li><code>{% raw %}productId{% endraw %}</code> <em>(integer)</em></li>
+<li><code>{% raw %}serverName{% endraw %}</code> <em>(string)</em></li>
+
+</ul>
+<p class="alert alert-info">The response is paginated, you can return only a few of the customer's fields. Take a look at the <a href="/developers/api/sorting-filtering-and-pagination-methods">API V3: sorting and filtering</a> for additional switches you can use.</p>
+<p class="alert alert-info">You can output additional fields to those listed above as default, see  the <a href="/developers/apps/bc-api-discovery">API v3 Discovery APP</a> for additional details.</p>
+<p>Accepts and returns JSON as Content-Type.</p>
+</div>
+<hr>
+<div class="request-sample">
+<p><strong>Request:</strong></p>
+
+<pre class="language-javascript"><code>{% raw %}GET /webresources/api/v3/sites/current/ordersproductusage HTTPS/1.1
+Authorization: 14f87f21c5ea4830a06a6314a8aad82b45bc61dc08f24a0fb55599cea83ca811
+Connection: keep-alive
+Content-Type: application/json
+{% endraw %}</code></pre>
+</div>
+<hr>
+</div>

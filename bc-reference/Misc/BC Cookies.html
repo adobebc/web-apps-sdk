@@ -1,5 +1,5 @@
 <h1>BC Cookies - Quick reference</h1>
-<p>This document outlines all cookies used on Business Catalyst sites. <em>Last updated 27/8/2012</em>
+<p>This document outlines all cookies used on Business Catalyst sites. <em>Last updated 8/9/2018</em>
 </p>
 <section>
     <p>The cookies used can be categorized as follows:</p>
@@ -7,7 +7,7 @@
         <li>Required - These cookies are necessary for site functionality and cannot be disabled</li>
         <li>Performance and tracking - These cookies can be disabled</li>
     </ul>
-    <p>See <a href="/user-manual/site-design/allow-site-visitors-to-disable-cookies">Allow site visitors to disable cookies</a> .</p>
+    <p>See <a href="/user-manual/site-design/allow-site-visitors-to-disable-cookies">Allow site visitors to disable cookies</a>.</p>
     <h2>Required cookies</h2>
     <table>
         <thead>
@@ -22,31 +22,65 @@
         </thead>
         <tbody>
             <tr>
-                <td> CaseRetrieve.aspx.vb
-                    <br /> CatalogueRetrieve.aspx.vb
-                    <br /> CustomContentProcess.aspx.vb
-                    <br /> CustomContentRetrieve.aspx.vb
-                    <br /> FavoriteProcess.aspx.vb
-                    <br /> FileRetrieveExternal.aspx.vb
-                    <br /> FormProcess.aspx.vb
-                    <br /> FormProcessv2.aspx.vb
-                    <br /> ForumEditor.aspx.vb
-                    <br /> ForumRetrieve.aspx.vb
-                    <br /> LogOutProcess.aspx.vb
-                    <br /> MemberProcess.aspx.vb
-                    <br /> OrderRetrievev2.aspx.vb
-                    <br /> PaymentProcess.aspx.vb
-                    <br /> PaymentProcessCardia.aspx.vb
-                    <br /> PaymentProcessDIBS.aspx.vb
-                    <br /> PaymentProcessDPS.aspx.vb
-                    <br /> PaymentProcessGoogle.aspx.vb
-                    <br /> PaymentProcessHPay.aspx.vb
-                    <br /> PaymentProcessValitor.aspx.vb
-                    <br /> ProductRetrieve.aspx.vb
-                    <br /> RatingProcess.aspx.vb
-                    <br /> ReferAFriendProcess.aspx.vb
-                    <br /> RSSRetrieve.aspx.vb
-                    <br /> ZoneProcess.aspx.vb</td>
+              <td>{module_managecookies} </td>
+              <td>&nbsp;</td>
+              <td>5 years</td>
+              <td>ck_settings{siteId} </td>
+              <td>&nbsp;</td>
+              <td>Used to store the {ManageCookieForm} </td>
+            </tr>
+            <tr>
+              <td>OrderRetrievev2.aspx </td>
+              <td>&nbsp;</td>
+              <td>Session</td>
+              <td>cart_language </td>
+              <td>&nbsp;</td>
+              <td>Used to select the shopping cart template associated with the country code. </td>
+            </tr>
+            <tr>
+              <td>RatingProcess.aspx </td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>GEID{siteId} </td>
+              <td>&nbsp;</td>
+              <td>Entity tracking for comments. </td>
+            </tr>
+            <tr>
+              <td><p>AP.aspx <br/>TP.aspx <br/>OrderRetrievev2.aspx</p></td>
+              <td>&nbsp;</td>
+              <td>1 year</td>
+              <td><p>ASESSID{siteId} </p>
+              <br></td>
+              <td>&nbsp;</td>
+              <td><p>Affiliate visitor id: the visitor id for affiliate programs tracking.</p>
+              <br></td>
+            </tr>
+            <tr>
+                <td> CaseRetrieve.aspx
+                    <br /> CatalogueRetrieve.aspx
+                    <br /> CustomContentProcess.aspx
+                    <br /> CustomContentRetrieve.aspx
+                    <br /> FavoriteProcess.aspx
+                    <br /> FileRetrieveExternal.aspx
+                    <br /> FormProcess.aspx
+                    <br /> FormProcessv2.aspx
+                    <br /> ForumEditor.aspx
+                    <br /> ForumRetrieve.aspx
+                    <br /> LogOutProcess.aspx
+                    <br /> MemberProcess.aspx
+                    <br /> OrderRetrievev2.aspx
+                    <br /> PaymentProcess.aspx
+                    <br /> PaymentProcessCardia.aspx
+                    <br /> PaymentProcessDIBS.aspx
+                    <br /> PaymentProcessDPS.aspx
+                    <br /> PaymentProcessGoogle.aspx
+                    <br /> PaymentProcessHPay.aspx
+                    <br /> PaymentProcessValitor.aspx
+                    <br /> ProductRetrieve.aspx
+                    <br /> RatingProcess.aspx
+                    <br /> ReferAFriendProcess.aspx
+                    <br /> RSSRetrieve.aspx
+                    <br /> ZoneProcess.aspx</td>
                 <td>No</td>
                 <td>Usually is set to one year, but in some places the expiration date for this cookie is not set, and it this case it will last for a duration
                     of a session (30 minutes)</td>
@@ -55,10 +89,10 @@
                 <td>EntityID cookie - identifies logged in users in SecureZones.</td>
             </tr>
             <tr>
-                <td> CampaignProcess.aspx.vb
-                    <br /> LogOutProcess.aspx.vb
-                    <br /> OrderRetrievev2.aspx.vb
-                    <br /> ZoneProcess.aspx.vb</td>
+                <td> CampaignProcess.aspx
+                    <br /> LogOutProcess.aspx
+                    <br /> OrderRetrievev2.aspx
+                    <br /> ZoneProcess.aspx</td>
                 <td>No</td>
                 <td>Usually is set to one year, but in some places the expiration date for this cookie is not set, and it this case it will last for a duration
                     of a session (30 minutes)</td>
@@ -70,8 +104,8 @@
                     (It is actually the ASP.NET_SessionId associated to a logged in entity (VID) for a secure zone)</td>
             </tr>
             <tr>
-                <td> CatalogueRetrieve.aspx.vb
-                    <br /> OrderRetrievev2.aspx.vb</td>
+                <td> CatalogueRetrieve.aspx
+                    <br /> OrderRetrievev2.aspx</td>
                 <td>No</td>
                 <td>Default session timeout (30 minutes)</td>
                 <td>SelectedRateKey</td>
@@ -79,8 +113,8 @@
                 <td>It holds the selected shipping options for some shipping providers.</td>
             </tr>
             <tr>
-                <td> CatalogueRetrieve.aspx.vb
-                    <br /> OrderRetrievev2.aspx.vb</td>
+                <td> CatalogueRetrieve.aspx
+                    <br /> OrderRetrievev2.aspx</td>
                 <td>No</td>
                 <td>Default session timeout (30 minutes)</td>
                 <td>CartID</td>
@@ -96,16 +130,8 @@
                 <td>System session cookie</td>
             </tr>
             <tr>
-                <td>Ap.aspx.vb</td>
-                <td>No</td>
-                <td>It is not seen by the user (it is set in a page which makes a redirect to another page were it is removed)</td>
-                <td>CHANNEL_AFFILIATE</td>
-                <td>1</td>
-                <td>Used for affiliate programs.</td>
-            </tr>
-            <tr>
-                <td>FB/Authorize.aspx.vb
-                    <br /> FB/Login.aspx.vb</td>
+                <td>FB/Authorize.aspx
+                    <br /> FB/Login.aspx</td>
                 <td>No</td>
                 <td>Default session timeout (30 minutes)</td>
                 <td>FBKEY</td>
@@ -113,8 +139,8 @@
                 <td>Used for login into secure zones with Facebook account</td>
             </tr>
             <tr>
-                <td>FB/Authorize.aspx.vb
-                    <br /> FB/Login.aspx.vb</td>
+                <td>FB/Authorize.aspx
+                    <br /> FB/Login.aspx</td>
                 <td>No</td>
                 <td>Default session timeout (30 minutes)</td>
                 <td>FBRURL</td>
@@ -123,7 +149,7 @@
                 <td>Used for login into secure zones with Facebook account. Return URL from FB</td>
             </tr>
             <tr>
-                <td>FB/LinkToContact.aspx.vb</td>
+                <td>FB/LinkToContact.aspx</td>
                 <td>No</td>
                 <td>Default session timeout (30 minutes)</td>
                 <td>AuthProcessUrl</td>
@@ -133,7 +159,7 @@
                     <br /> It is used when the user authenticates with success in Facebook and he is redirected back to our system.</td>
             </tr>
             <tr>
-                <td>FB/LinkToContact.aspx.vb</td>
+                <td>FB/LinkToContact.aspx</td>
                 <td>No</td>
                 <td>Default session timeout (30 minutes)</td>
                 <td>SNU</td>
@@ -141,7 +167,7 @@
                 <td>Flag with specify if the user will be automatically subscribed to a secure zone when it comes back from Facebook authentication.</td>
             </tr>
             <tr>
-                <td>FB/LinkToContact.aspx.vb</td>
+                <td>FB/LinkToContact.aspx</td>
                 <td>No</td>
                 <td>Default session timeout (30 minutes)</td>
                 <td>ZID</td>
@@ -149,7 +175,7 @@
                 <td>Holds the zone id were the user needs to be logged in when it comes backs from Facebook authentication.</td>
             </tr>
             <tr>
-                <td>FB/LinkToContact.aspx.vb</td>
+                <td>FB/LinkToContact.aspx</td>
                 <td>No</td>
                 <td>Default session timeout (30 minutes)</td>
                 <td>PID</td>
@@ -158,7 +184,7 @@
             </tr>
         </tbody>
     </table>
-    <h2>Performance and tracking cookies</h2>
+  <h2>Performance and tracking cookies</h2>
     <table>
         <thead>
             <tr>
@@ -169,19 +195,35 @@
                 <th>Sample Content</th>
                 <th>Purpose</th>
             </tr>
+            <tr>
+              <td>Ap.aspx</td>
+              <td>No</td>
+              <td>It is not seen by the user (it is set in a page which makes a redirect to another page were it is removed)</td>
+              <td>CHANNEL_AFFILIATE</td>
+              <td>1</td>
+              <td>Used for affiliate programs.</td>
+            </tr>
         </thead>
         <tbody>
             <tr>
-                <td>CampaignProcess.aspx.vb</td>
+              <td>TP.aspx </td>
+              <td>No</td>
+              <td>It is not seen by the user (it is set in a page which makes a redirect to another page were it is removed)</td>
+              <td>CHANNEL_TRACKER </td>
+              <td>1</td>
+              <td>Used for analyzing clicks in emails</td>
+            </tr>
+            <tr>
+                <td>CampaignProcess.aspx</td>
                 <td>No</td>
                 <td>It is not seen by the user (it is set in a page which makes a redirect to another page were it is removed)</td>
                 <td>CHANNEL_CAMPAIGN</td>
                 <td>1</td>
-                <td>Used for analyzing clicks in emails</td>
+                <td><p>Used for analyzing clicks in emails</p></td>
             </tr>
             <tr>
-                <td>OrderRetrievev2.aspx.vb
-                    <br /> ZoneProcess.aspx.vb</td>
+                <td>OrderRetrievev2.aspx
+                    <br /> ZoneProcess.aspx</td>
                 <td>No</td>
                 <td>30 minutes</td>
                 <td>VISID{0} - siteId</td>
@@ -189,8 +231,8 @@
                 <td>This track visit session identifier which is used to aggregate page usages. It is actually used in all front end pages</td>
             </tr>
             <tr>
-                <td>OrderRetrievev2.aspx.vb
-                    <br /> ZoneProcess.aspx.vb</td>
+                <td>OrderRetrievev2.aspx
+                    <br /> ZoneProcess.aspx</td>
                 <td>No</td>
                 <td>30 minutes</td>
                 <td>ANONID{0} - siteId</td>
@@ -198,8 +240,8 @@
                 <td>Usually is used in conjunction with VISID cookie for the same purpose</td>
             </tr>
             <tr>
-                <td>OrderRetrievev2.aspx.vb
-                    <br /> ZoneProcess.aspx.vb</td>
+                <td>OrderRetrievev2.aspx
+                    <br /> ZoneProcess.aspx</td>
                 <td>No</td>
                 <td>30 minutes</td>
                 <td>ANONID_FS{0} -siteId</td>
